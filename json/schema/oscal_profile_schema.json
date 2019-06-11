@@ -1011,9 +1011,8 @@
         "type" : "object",
         "properties" : 
         { "settings" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/set" } },
+          { "type" : "object",
+            "$ref" : "#/definitions/settings" },
           "alterations" : 
           { "type" : "array",
             "items" : 

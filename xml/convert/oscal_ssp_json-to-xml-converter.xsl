@@ -16,9 +16,9 @@
    <xsl:preserve-space elements="string"/>
    <xsl:param name="json-file" as="xs:string"/>
    <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
-   <xsl:template match="/">
+   <xsl:template name="xsl:initial-template" match="/">
       <xsl:choose>
-         <xsl:when test="exists($json-xml/map)">
+         <xsl:when test="matches($json-file,'\S') and exists($json-xml/map)">
             <xsl:apply-templates select="$json-xml" mode="json2xml"/>
          </xsl:when>
          <xsl:otherwise>
@@ -32,24 +32,23 @@
    <xsl:template match="array" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="array[@key='prose']/*" priority="5" mode="json2xml">
-      <xsl:element name="p" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:variable name="text-contents" select="string-join(string,'&#xA;')"/>
-         <xsl:call-template name="parse">
-            <xsl:with-param name="str" select="$text-contents"/>
-         </xsl:call-template>
-      </xsl:element>
+   <xsl:template match="array[@key='prose']" priority="5" mode="json2xml">
+      <xsl:variable name="text-contents" select="string-join(string,'&#xA;')"/>
+      <xsl:call-template name="parse">
+         <xsl:with-param name="str" select="$text-contents"/>
+      </xsl:call-template>
    </xsl:template>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
-      <xsl:call-template name="parse"/>
+   <xsl:template match="string" mode="handle-inlines"/>
+   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml handle-inlines">
+      <xsl:variable name="markup">
+         <xsl:apply-templates mode="infer-inlines"/>
+      </xsl:variable>
+      <xsl:apply-templates mode="cast-ns" select="$markup"/>
    </xsl:template>
    <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template mode="as-attribute" match="*"/>
-   <xsl:template mode="as-attribute" match="map">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
    <xsl:template mode="as-attribute" match="string[@key='id']" priority="0.4">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
@@ -111,22 +110,22 @@
    <!-- 000 Handling field "system-id" 000 -->
    <xsl:template match="*[@key='system-id']" priority="2" mode="json2xml">
       <xsl:element name="system-id" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "system-name" 000 -->
    <xsl:template match="*[@key='system-name']" priority="2" mode="json2xml">
       <xsl:element name="system-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "system-name-short" 000 -->
    <xsl:template match="*[@key='system-name-short']" priority="2" mode="json2xml">
       <xsl:element name="system-name-short" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "description" 000 -->
@@ -141,8 +140,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="security-sensitivity-level" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "system-information" 000 -->
@@ -179,8 +178,8 @@
    <!-- 000 Handling field "declaration" 000 -->
    <xsl:template match="*[@key='declaration']" priority="2" mode="json2xml">
       <xsl:element name="declaration" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "qualifiers" 000 -->
@@ -206,22 +205,22 @@
    <!-- 000 Handling field "qual-question" 000 -->
    <xsl:template match="*[@key='qual-question']" priority="2" mode="json2xml">
       <xsl:element name="qual-question" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "qual-response" 000 -->
    <xsl:template match="*[@key='qual-response']" priority="2" mode="json2xml">
       <xsl:element name="qual-response" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "qual-notes" 000 -->
    <xsl:template match="*[@key='qual-notes']" priority="2" mode="json2xml">
       <xsl:element name="qual-notes" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "information-type" 000 -->
@@ -275,15 +274,15 @@
    <!-- 000 Handling field "base" 000 -->
    <xsl:template match="*[@key='base']" priority="2" mode="json2xml">
       <xsl:element name="base" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "selected" 000 -->
    <xsl:template match="*[@key='selected']" priority="2" mode="json2xml">
       <xsl:element name="selected" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "adjustment-justification" 000 -->
@@ -291,8 +290,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="adjustment-justification" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "security-impact-level" 000 -->
@@ -312,8 +311,8 @@
                  mode="json2xml">
       <xsl:element name="security-objective-confidentiality"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-objective-integrity" 000 -->
@@ -322,8 +321,8 @@
                  mode="json2xml">
       <xsl:element name="security-objective-integrity"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-objective-availability" 000 -->
@@ -332,8 +331,8 @@
                  mode="json2xml">
       <xsl:element name="security-objective-availability"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "security-eauth" 000 -->
@@ -351,36 +350,36 @@
    <!-- 000 Handling field "security-auth-ial" 000 -->
    <xsl:template match="*[@key='security-auth-ial']" priority="2" mode="json2xml">
       <xsl:element name="security-auth-ial" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-auth-aal" 000 -->
    <xsl:template match="*[@key='security-auth-aal']" priority="2" mode="json2xml">
       <xsl:element name="security-auth-aal" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-auth-fal" 000 -->
    <xsl:template match="*[@key='security-auth-fal']" priority="2" mode="json2xml">
       <xsl:element name="security-auth-fal" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-eauth-level" 000 -->
    <xsl:template match="*[@key='security-eauth-level']" priority="2" mode="json2xml">
       <xsl:element name="security-eauth-level" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "status" 000 -->
    <xsl:template match="*[@key='status']" priority="2" mode="json2xml">
       <xsl:element name="status" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "status-other-description" 000 -->
@@ -388,15 +387,15 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="status-other-description" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "deployment-model" 000 -->
    <xsl:template match="*[@key='deployment-model']" priority="2" mode="json2xml">
       <xsl:element name="deployment-model" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "deployment-model-other-description" 000 -->
@@ -405,8 +404,8 @@
                  mode="json2xml">
       <xsl:element name="deployment-model-other-description"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "service-model" 000 -->
@@ -414,8 +413,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="service-model" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "service-model-other-description" 000 -->
@@ -424,8 +423,8 @@
                  mode="json2xml">
       <xsl:element name="service-model-other-description"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "leveraged-authorizations" 000 -->
@@ -457,8 +456,8 @@
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-name"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-service-provider" 000 -->
@@ -467,8 +466,8 @@
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-service-provider"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-date-granted" 000 -->
@@ -477,8 +476,8 @@
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-date-granted"
                    namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "authorization-boundary" 000 -->
@@ -589,8 +588,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="privilege" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "responsibility" 000 -->
@@ -598,8 +597,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="responsibility" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "statistics" 000 -->
@@ -619,8 +618,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="internal-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "internal-user-total-future" 000 -->
@@ -628,8 +627,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="internal-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-user-total-current" 000 -->
@@ -637,8 +636,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="external-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-user-total-future" 000 -->
@@ -646,8 +645,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="external-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "system-implementation" 000 -->
@@ -699,15 +698,18 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="port-range" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "purpose" 000 -->
    <xsl:template match="*[@key='purpose']" priority="2" mode="json2xml">
       <xsl:element name="purpose" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "used-by" 000 -->
@@ -715,8 +717,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="used-by" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "interconnected" 000 -->
@@ -744,15 +746,15 @@
    <!-- 000 Handling field "external-system-name" 000 -->
    <xsl:template match="*[@key='external-system-name']" priority="2" mode="json2xml">
       <xsl:element name="external-system-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-system-org" 000 -->
    <xsl:template match="*[@key='external-system-org']" priority="2" mode="json2xml">
       <xsl:element name="external-system-org" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "isa-authorization" 000 -->
@@ -760,22 +762,22 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="isa-authorization" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "isa-name" 000 -->
    <xsl:template match="*[@key='isa-name']" priority="2" mode="json2xml">
       <xsl:element name="isa-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "isa-date" 000 -->
    <xsl:template match="*[@key='isa-date']" priority="2" mode="json2xml">
       <xsl:element name="isa-date" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "component" 000 -->
@@ -820,22 +822,22 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="vendor" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "release-date" 000 -->
    <xsl:template match="*[@key='release-date']" priority="2" mode="json2xml">
       <xsl:element name="release-date" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "model" 000 -->
    <xsl:template match="*[@key='model']" priority="2" mode="json2xml">
       <xsl:element name="model" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "part" 000 -->
@@ -864,8 +866,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="ip-address" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "satisfaction" 000 -->
@@ -909,8 +911,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="dns-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "host-item" 000 -->
@@ -940,8 +942,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="netbios-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "mac-address" 000 -->
@@ -949,8 +951,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="mac-address" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "os-name" 000 -->
@@ -958,8 +960,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="os-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "os-version" 000 -->
@@ -967,8 +969,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="os-version" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "location" 000 -->
@@ -976,8 +978,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="location" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "asset-type" 000 -->
@@ -985,8 +987,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="asset-type" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "hardware-model" 000 -->
@@ -994,8 +996,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="hardware-model" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "authenticated-scan" 000 -->
@@ -1003,8 +1005,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="authenticated-scan" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "software-item" 000 -->
@@ -1027,8 +1029,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="software-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "software-version" 000 -->
@@ -1036,8 +1038,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="software-version" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "software-patch-level" 000 -->
@@ -1045,8 +1047,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="software-patch-level" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "function" 000 -->
@@ -1054,22 +1056,22 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="function" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "comments" 000 -->
    <xsl:template match="*[@key='comments']" priority="2" mode="json2xml">
       <xsl:element name="comments" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "serial-no" 000 -->
    <xsl:template match="*[@key='serial-no']" priority="2" mode="json2xml">
       <xsl:element name="serial-no" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "network-id" 000 -->
@@ -1077,8 +1079,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="network-id" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "asset-owner" 000 -->
@@ -1086,8 +1088,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="asset-owner" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "asset-administrator" 000 -->
@@ -1095,8 +1097,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="asset-administrator" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "control-implementation" 000 -->
@@ -1127,8 +1129,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="responsible-role" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "set-param" 000 -->
@@ -1143,8 +1145,8 @@
    <!-- 000 Handling field "value" 000 -->
    <xsl:template match="*[@key='value']" priority="2" mode="json2xml">
       <xsl:element name="value" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "control-response" 000 -->
@@ -1162,7 +1164,6 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('ref', 'refs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "ref" 000 -->
@@ -1173,7 +1174,6 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "citation" 000 -->
@@ -1181,8 +1181,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="citation" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "link" 000 -->
@@ -1190,8 +1190,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="link" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "attachment" 000 -->
@@ -1210,29 +1210,29 @@
    <!-- 000 Handling field "format" 000 -->
    <xsl:template match="*[@key='format']" priority="2" mode="json2xml">
       <xsl:element name="format" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "date" 000 -->
    <xsl:template match="*[@key='date']" priority="2" mode="json2xml">
       <xsl:element name="date" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "attachment-type" 000 -->
    <xsl:template match="*[@key='attachment-type']" priority="2" mode="json2xml">
       <xsl:element name="attachment-type" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "base64" 000 -->
    <xsl:template match="*[@key='base64']" priority="2" mode="json2xml">
       <xsl:element name="base64" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "attachment-id" 000 -->
@@ -1441,15 +1441,15 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="subcomponent" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "organization" 000 -->
    <xsl:template match="*[@key='organization']" priority="2" mode="json2xml">
       <xsl:element name="organization" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "baseline-template" 000 -->
@@ -1457,8 +1457,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="baseline-template" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "scanned" 000 -->
@@ -1466,8 +1466,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="scanned" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "metadata" 000 -->
@@ -1491,8 +1491,8 @@
    <!-- 000 Handling field "title" 000 -->
    <xsl:template match="*[@key='title']" priority="2" mode="json2xml">
       <xsl:element name="title" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "author" 000 -->
@@ -1500,22 +1500,22 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="author" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "publication-date" 000 -->
    <xsl:template match="*[@key='publication-date']" priority="2" mode="json2xml">
       <xsl:element name="publication-date" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "version" 000 -->
    <xsl:template match="*[@key='version']" priority="2" mode="json2xml">
       <xsl:element name="version" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "iso-date" 000 -->
@@ -1530,8 +1530,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="doc-id" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "prop" 000 -->
@@ -1539,8 +1539,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="prop" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "party" 000 -->
@@ -1591,8 +1591,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="person-id" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "org-id" 000 -->
@@ -1600,8 +1600,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="org-id" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "hlink" 000 -->
@@ -1633,22 +1633,22 @@
    <!-- 000 Handling field "person-name" 000 -->
    <xsl:template match="*[@key='person-name']" priority="2" mode="json2xml">
       <xsl:element name="person-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "org-name" 000 -->
    <xsl:template match="*[@key='org-name']" priority="2" mode="json2xml">
       <xsl:element name="org-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "short-name" 000 -->
    <xsl:template match="*[@key='short-name']" priority="2" mode="json2xml">
       <xsl:element name="short-name" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "address" 000 -->
@@ -1667,36 +1667,36 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="addr-line" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "city" 000 -->
    <xsl:template match="*[@key='city']" priority="2" mode="json2xml">
       <xsl:element name="city" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "state" 000 -->
    <xsl:template match="*[@key='state']" priority="2" mode="json2xml">
       <xsl:element name="state" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "postal-code" 000 -->
    <xsl:template match="*[@key='postal-code']" priority="2" mode="json2xml">
       <xsl:element name="postal-code" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "country" 000 -->
    <xsl:template match="*[@key='country']" priority="2" mode="json2xml">
       <xsl:element name="country" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "email" 000 -->
@@ -1704,8 +1704,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="email" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "phone" 000 -->
@@ -1713,8 +1713,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="phone" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "url" 000 -->
@@ -1722,8 +1722,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="url" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "notes" 000 -->
@@ -1736,8 +1736,8 @@
    <!-- 000 Handling field "desc" 000 -->
    <xsl:template match="*[@key='desc']" priority="2" mode="json2xml">
       <xsl:element name="desc" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "resource" 000 -->
@@ -1761,8 +1761,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="hash" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "algorithm" 000 -->
@@ -1806,8 +1806,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="meta" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "term" 000 -->
@@ -1840,8 +1840,8 @@
    <!-- 000 Handling field "all" 000 -->
    <xsl:template match="*[@key='all']" priority="2" mode="json2xml">
       <xsl:element name="all" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "call" 000 -->
@@ -1849,8 +1849,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="call" namespace="urn:OSCAL-SSP-metaschema">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "with-subcontrols" 000 -->
@@ -2039,13 +2039,13 @@
       <xsl:copy-of select="."/>
    </xsl:template>
    <xsl:template match="text()" mode="infer-inlines">
-      <xsl:variable name="markup" expand-text="true">
+      <xsl:variable name="markup">
          <xsl:apply-templates select="$tag-replacements/m:rules">
             <xsl:with-param name="original" tunnel="yes" as="text()" select="."/>
          </xsl:apply-templates>
       </xsl:variable>
       <xsl:try select="parse-xml-fragment($markup)">
-         <xsl:catch expand-text="yes" select="."/>
+         <xsl:catch select="."/>
       </xsl:try>
    </xsl:template>
    <xsl:template mode="cast-ns" match="*">
@@ -2083,6 +2083,7 @@
          <replace match="&lt;">&amp;lt;</replace>
          <!-- next, explicit escape sequences -->
          <replace match="\\&#34;">&amp;quot;</replace>
+         <replace match="\\'">&amp;apos;</replace>
          <replace match="\\\*">&amp;#2A;</replace>
          <replace match="\\`">&amp;#60;</replace>
          <replace match="\\~">&amp;#7E;</replace>
@@ -2107,6 +2108,7 @@
       <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
          <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+         <insert param-id="\{{{{$nws}}\}}"/>
          <a href="\[{{$text}}\]">\(<text/>\)</a>
          <code>`<text/>`</code>
          <strong>
@@ -2123,7 +2125,7 @@
       <xsl:text>&lt;</xsl:text>
       <xsl:value-of select="local-name()"/>
       <!-- coercing the order to ensure correct formation of regegex       -->
-      <xsl:apply-templates mode="#current" select="@href, @alt, @src"/>
+      <xsl:apply-templates mode="#current" select="@*"/>
       <xsl:text>&gt;</xsl:text>
       <xsl:apply-templates mode="#current" select="*"/>
       <xsl:text>&lt;/</xsl:text>
@@ -2136,22 +2138,29 @@
    <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
    </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
+      <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
+   </xsl:template>
    <xsl:template match="m:text" mode="write-replace">
       <xsl:text>$1</xsl:text>
    </xsl:template>
+   <xsl:template match="m:insert/@param-id" mode="write-replace">
+      <xsl:text> param-id='$1'</xsl:text>
+   </xsl:template>
    <xsl:template match="m:a/@href" mode="write-replace">
-      <xsl:text> href="$2"</xsl:text>
+      <xsl:text> href='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:img/@alt" mode="write-replace">
-      <xsl:text> alt="$1"</xsl:text>
+      <xsl:text> alt='$1'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:img/@src" mode="write-replace">
-      <xsl:text> src="$2"</xsl:text>
+      <xsl:text> src='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:text" mode="write-match">
       <xsl:text>(.*?)</xsl:text>
    </xsl:template>
+   <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
 </xsl:stylesheet>

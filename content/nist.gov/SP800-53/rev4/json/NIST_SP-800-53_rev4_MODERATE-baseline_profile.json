@@ -3065,7 +3065,8 @@
         {
           id: "catalog",
           desc: {
-            RICHTEXT: "NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations"
+            RICHTEXT: "NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
+            Information Systems and Organizations"
           },
           rlinks: [
             {

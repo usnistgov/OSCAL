@@ -1011,1472 +1011,1289 @@
     merge: {
     },
     modify: {
-      settings: [
-        {
-          param-id: "ac-1_prm_2",
+      settings: {
+        ac-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ac-1_prm_3",
+        },
+        ac-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ac-2_prm_4",
+        },
+        ac-2_prm_4: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ac-2.2_prm_2",
+        },
+        ac-2.2_prm_2: {
           constraints: [
             {
               STRVALUE: "no more than 30 days for temporary and emergency account types"
             }
           ]
-        }, 
-        {
-          param-id: "ac-2.3_prm_1",
+        },
+        ac-2.3_prm_1: {
           constraints: [
             {
               STRVALUE: "90 days for user accounts"
             }
           ]
-        }, 
-        {
-          param-id: "ac-6.2_prm_1",
+        },
+        ac-6.2_prm_1: {
           constraints: [
             {
               STRVALUE: "all security functions"
             }
           ]
-        }, 
-        {
-          param-id: "ac-7_prm_1",
+        },
+        ac-7_prm_1: {
           constraints: [
             {
               STRVALUE: "not more than three (3)"
             }
           ]
-        }, 
-        {
-          param-id: "ac-7_prm_2",
+        },
+        ac-7_prm_2: {
           constraints: [
             {
               STRVALUE: "fifteen (15) minutes"
             }
           ]
-        }, 
-        {
-          param-id: "ac-7_prm_3",
+        },
+        ac-7_prm_3: {
           constraints: [
             {
               STRVALUE: "locks the account/node for thirty minutes"
             }
           ]
-        }, 
-        {
-          param-id: "ac-7_prm_4",
+        },
+        ac-7_prm_4: {
           constraints: [
             {
               STRVALUE: "locks the account/node for thirty minutes"
             }
           ]
-        }, 
-        {
-          param-id: "ac-8_prm_1",
+        },
+        ac-8_prm_1: {
           constraints: [
             {
               STRVALUE: "see additional Requirements and Guidance"
             }
           ]
-        }, 
-        {
-          param-id: "ac-8_prm_2",
+        },
+        ac-8_prm_2: {
           constraints: [
             {
               STRVALUE: "see additional Requirements and Guidance]"
             }
           ]
-        }, 
-        {
-          param-id: "ac-10_prm_2",
+        },
+        ac-10_prm_2: {
           constraints: [
             {
               STRVALUE: "three (3) sessions for privileged access and two (2) sessions for non-privileged access"
             }
           ]
-        }, 
-        {
-          param-id: "ac-11_prm_1",
+        },
+        ac-11_prm_1: {
           constraints: [
             {
               STRVALUE: "fifteen (15) minutes"
             }
           ]
-        }, 
-        {
-          param-id: "ac-17.9_prm_1",
+        },
+        ac-17.9_prm_1: {
           constraints: [
             {
               STRVALUE: "no greater than 15 minutes"
             }
           ]
-        }, 
-        {
-          param-id: "ac-22_prm_1",
+        },
+        ac-22_prm_1: {
           constraints: [
             {
               STRVALUE: "at least quarterly"
             }
           ]
-        }, 
-        {
-          param-id: "at-1_prm_2",
+        },
+        at-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "at-1_prm_3",
+        },
+        at-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "at-2_prm_1",
+        },
+        at-2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "at-3_prm_1",
+        },
+        at-3_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "at-4_prm_1",
+        },
+        at-4_prm_1: {
           constraints: [
             {
               STRVALUE: "At least one year"
             }
           ]
-        }, 
-        {
-          param-id: "au-1_prm_2",
+        },
+        au-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "au-1_prm_3",
+        },
+        au-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "au-2_prm_1",
+        },
+        au-2_prm_1: {
           constraints: [
             {
               STRVALUE: "Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes"
             }
           ]
-        }, 
-        {
-          param-id: "au-2_prm_2",
+        },
+        au-2_prm_2: {
           constraints: [
             {
               STRVALUE: "organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event"
             }
           ]
-        }, 
-        {
-          param-id: "au-2.3_prm_1",
+        },
+        au-2.3_prm_1: {
           constraints: [
             {
               STRVALUE: "annually or whenever there is a change in the threat environment"
             }
           ]
-        }, 
-        {
-          param-id: "au-3.1_prm_1",
+        },
+        au-3.1_prm_1: {
           constraints: [
             {
               STRVALUE: "session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon"
             }
           ]
-        }, 
-        {
-          param-id: "au-5_prm_2",
+        },
+        au-5_prm_2: {
           constraints: [
             {
               STRVALUE: "organization-defined actions to be taken (overwrite oldest record)"
             }
           ]
-        }, 
-        {
-          param-id: "au-6_prm_1",
+        },
+        au-6_prm_1: {
           constraints: [
             {
               STRVALUE: "at least weekly"
             }
           ]
-        }, 
-        {
-          param-id: "au-8.1_prm_1",
+        },
+        au-8.1_prm_1: {
           constraints: [
             {
               STRVALUE: "At least hourly"
             }
           ]
-        }, 
-        {
-          param-id: "au-8.1_prm_2",
+        },
+        au-8.1_prm_2: {
           constraints: [
             {
               STRVALUE: "http://tfnistgov/tf-cgi/serverscgi"
             }
           ]
-        }, 
-        {
-          param-id: "au-9.2_prm_1",
+        },
+        au-9.2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least weekly"
             }
           ]
-        }, 
-        {
-          param-id: "au-11_prm_1",
+        },
+        au-11_prm_1: {
           constraints: [
             {
               STRVALUE: "at least ninety days"
             }
           ]
-        }, 
-        {
-          param-id: "au-12_prm_1",
+        },
+        au-12_prm_1: {
           constraints: [
             {
               STRVALUE: "all information system and network components where audit capability is deployed/available"
             }
           ]
-        }, 
-        {
-          param-id: "au-12_prm_2",
+        },
+        au-12_prm_2: {
           constraints: [
             {
               STRVALUE: "all information system and network components where audit capability is deployed/available"
             }
           ]
-        }, 
-        {
-          param-id: "ca-1_prm_2",
+        },
+        ca-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ca-1_prm_3",
+        },
+        ca-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2_prm_1",
+        },
+        ca-2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2_prm_2",
+        },
+        ca-2_prm_2: {
           constraints: [
             {
               STRVALUE: "individuals or roles to include FedRAMP PMO"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2.2_prm_1",
+        },
+        ca-2.2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2.3_prm_1",
+        },
+        ca-2.3_prm_1: {
           constraints: [
             {
               STRVALUE: "any FedRAMP Accredited 3PAO"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2.3_prm_2",
+        },
+        ca-2.3_prm_2: {
           constraints: [
             {
               STRVALUE: "any FedRAMP Accredited 3PAO"
             }
           ]
-        }, 
-        {
-          param-id: "ca-2.3_prm_3",
+        },
+        ca-2.3_prm_3: {
           constraints: [
             {
               STRVALUE: "the conditions of a Authorizing Official in the FedRAMP Repository"
             }
           ]
-        }, 
-        {
-          param-id: "ca-3_prm_1",
+        },
+        ca-3_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually and on input from FedRAMP"
             }
           ]
-        }, 
-        {
-          param-id: "ca-3.3_prm_2",
+        },
+        ca-3.3_prm_2: {
           constraints: [
             {
               STRVALUE: "Boundary Protections which meet the Trusted Internet Connection (TIC) requirements"
             }
           ]
-        }, 
-        {
-          param-id: "ca-5_prm_1",
+        },
+        ca-5_prm_1: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "ca-6_prm_1",
+        },
+        ca-6_prm_1: {
           constraints: [
             {
               STRVALUE: "at least every three years or when a significant change occurs"
             }
           ]
-        }, 
-        {
-          param-id: "ca-7_prm_4",
+        },
+        ca-7_prm_4: {
           constraints: [
             {
               STRVALUE: "to meet Federal and FedRAMP requirements (See additional guidance)"
             }
           ]
-        }, 
-        {
-          param-id: "ca-7_prm_5",
+        },
+        ca-7_prm_5: {
           constraints: [
             {
               STRVALUE: "to meet Federal and FedRAMP requirements (See additional guidance)"
             }
           ]
-        }, 
-        {
-          param-id: "ca-8_prm_1",
+        },
+        ca-8_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ca-8_prm_2",
+        },
+        ca-8_prm_2: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cm-1_prm_2",
+        },
+        cm-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "cm-1_prm_3",
+        },
+        cm-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cm-2.1_prm_1",
+        },
+        cm-2.1_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually or when a significant change occurs"
             }
           ]
-        }, 
-        {
-          param-id: "cm-2.1_prm_2",
+        },
+        cm-2.1_prm_2: {
           constraints: [
             {
               STRVALUE: "to include when directed by the JAB"
             }
           ]
-        }, 
-        {
-          param-id: "cm-5.5_prm_1",
+        },
+        cm-5.5_prm_1: {
           constraints: [
             {
               STRVALUE: "at least quarterly"
             }
           ]
-        }, 
-        {
-          param-id: "cm-6_prm_1",
+        },
+        cm-6_prm_1: {
           constraints: [
             {
               STRVALUE: "United States Government Configuration Baseline (USGCB)"
             }
           ]
-        }, 
-        {
-          param-id: "cm-7_prm_1",
+        },
+        cm-7_prm_1: {
           constraints: [
             {
               STRVALUE: "United States Government Configuration Baseline (USGCB)"
             }
           ]
-        }, 
-        {
-          param-id: "cm-7.1_prm_1",
+        },
+        cm-7.1_prm_1: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "cm-7.5_prm_2",
+        },
+        cm-7.5_prm_2: {
           constraints: [
             {
               STRVALUE: "at least Annually or when there is a change"
             }
           ]
-        }, 
-        {
-          param-id: "cm-8_prm_2",
+        },
+        cm-8_prm_2: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "cm-8.3_prm_1",
+        },
+        cm-8.3_prm_1: {
           constraints: [
             {
               STRVALUE: "Continuously, using automated mechanisms with a maximum five-minute delay in detection"
             }
           ]
-        }, 
-        {
-          param-id: "cm-11_prm_3",
+        },
+        cm-11_prm_3: {
           constraints: [
             {
               STRVALUE: "Continuously (via CM-7 (5))"
             }
           ]
-        }, 
-        {
-          param-id: "cp-1_prm_2",
+        },
+        cp-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "cp-1_prm_3",
+        },
+        cp-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cp-2_prm_3",
+        },
+        cp-2_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cp-3_prm_1",
+        },
+        cp-3_prm_1: {
           constraints: [
             {
               STRVALUE: "ten (10) days"
             }
           ]
-        }, 
-        {
-          param-id: "cp-3_prm_2",
+        },
+        cp-3_prm_2: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cp-4_prm_1",
+        },
+        cp-4_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "cp-4_prm_2",
+        },
+        cp-4_prm_2: {
           constraints: [
             {
               STRVALUE: "functional exercises"
             }
           ]
-        }, 
-        {
-          param-id: "cp-9_prm_1",
+        },
+        cp-9_prm_1: {
           constraints: [
             {
               STRVALUE: "daily incremental; weekly full"
             }
           ]
-        }, 
-        {
-          param-id: "cp-9_prm_2",
+        },
+        cp-9_prm_2: {
           constraints: [
             {
               STRVALUE: "daily incremental; weekly full"
             }
           ]
-        }, 
-        {
-          param-id: "cp-9_prm_3",
+        },
+        cp-9_prm_3: {
           constraints: [
             {
               STRVALUE: "daily incremental; weekly full"
             }
           ]
-        }, 
-        {
-          param-id: "cp-9.1_prm_1",
+        },
+        cp-9.1_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ia-1_prm_2",
+        },
+        ia-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ia-1_prm_3",
+        },
+        ia-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ia-2.11_prm_1",
+        },
+        ia-2.11_prm_1: {
           constraints: [
             {
               STRVALUE: "FIPS 140-2, NIAP Certification, or NSA approval"
             }
           ]
-        }, 
-        {
-          param-id: "ia-4_prm_2",
+        },
+        ia-4_prm_2: {
           constraints: [
             {
               STRVALUE: "IA-4 (d) [at least two years]"
             }
           ]
-        }, 
-        {
-          param-id: "ia-4_prm_3",
+        },
+        ia-4_prm_3: {
           constraints: [
             {
               STRVALUE: "ninety days for user identifiers (See additional requirements and guidance)"
             }
           ]
-        }, 
-        {
-          param-id: "ia-4.4_prm_1",
+        },
+        ia-4.4_prm_1: {
           constraints: [
             {
               STRVALUE: "contractors; foreign nationals"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5_prm_1",
+        },
+        ia-5_prm_1: {
           constraints: [
             {
               STRVALUE: "to include sixty (60) days for passwords"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.1_prm_1",
+        },
+        ia-5.1_prm_1: {
           constraints: [
             {
               STRVALUE: "case sensitive, minimum of twelve characters, and at least one each of upper-case letters, lower-case letters, numbers, and special characters"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.1_prm_2",
+        },
+        ia-5.1_prm_2: {
           constraints: [
             {
               STRVALUE: "case sensitive, minimum of twelve characters, and at least one IA-5 (1) (b) [at least one"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.1_prm_3",
+        },
+        ia-5.1_prm_3: {
           constraints: [
             {
               STRVALUE: "one (1) day minimum, sixty (60) day maximum"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.1_prm_4",
+        },
+        ia-5.1_prm_4: {
           constraints: [
             {
               STRVALUE: "twenty four (24)"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.3_prm_1",
+        },
+        ia-5.3_prm_1: {
           constraints: [
             {
               STRVALUE: "All hardware/biometric (multifactor authenticators)"
             }
           ]
-        }, 
-        {
-          param-id: "ia-5.3_prm_2",
+        },
+        ia-5.3_prm_2: {
           constraints: [
             {
               STRVALUE: "in person"
             }
           ]
-        }, 
-        {
-          param-id: "ir-1_prm_2",
+        },
+        ir-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ir-1_prm_3",
+        },
+        ir-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ir-2_prm_2",
+        },
+        ir-2_prm_2: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ir-3_prm_1",
+        },
+        ir-3_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ir-3_prm_2",
+        },
+        ir-3_prm_2: {
           constraints: [
             {
               STRVALUE: "see additional FedRAMP Requirements and Guidance"
             }
           ]
-        }, 
-        {
-          param-id: "ir-6_prm_1",
+        },
+        ir-6_prm_1: {
           constraints: [
             {
               STRVALUE: "US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)"
             }
           ]
-        }, 
-        {
-          param-id: "ir-8_prm_2",
+        },
+        ir-8_prm_2: {
           constraints: [
             {
               STRVALUE: "see additional FedRAMP Requirements and Guidance"
             }
           ]
-        }, 
-        {
-          param-id: "ir-8_prm_3",
+        },
+        ir-8_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ir-8_prm_4",
+        },
+        ir-8_prm_4: {
           constraints: [
             {
               STRVALUE: "see additional FedRAMP Requirements and Guidance"
             }
           ]
-        }, 
-        {
-          param-id: "ma-1_prm_2",
+        },
+        ma-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ma-1_prm_3",
+        },
+        ma-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ma-3.3_prm_1",
+        },
+        ma-3.3_prm_1: {
           constraints: [
             {
               STRVALUE: "the information owner explicitly authorizing removal of the equipment from the facility"
             }
           ]
-        }, 
-        {
-          param-id: "mp-1_prm_2",
+        },
+        mp-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "mp-1_prm_3",
+        },
+        mp-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "mp-3_prm_1",
+        },
+        mp-3_prm_1: {
           constraints: [
             {
               STRVALUE: "no removable media types"
             }
           ]
-        }, 
-        {
-          param-id: "mp-4_prm_1",
+        },
+        mp-4_prm_1: {
           constraints: [
             {
               STRVALUE: "all types of digital and non-digital media with sensitive information"
             }
           ]
-        }, 
-        {
-          param-id: "mp-4_prm_2",
+        },
+        mp-4_prm_2: {
           constraints: [
             {
               STRVALUE: "FedRAMP Assignment: see additional FedRAMP requirements and guidance"
             }
           ]
-        }, 
-        {
-          param-id: "mp-5_prm_1",
+        },
+        mp-5_prm_1: {
           constraints: [
             {
               STRVALUE: "all media with sensitive information"
             }
           ]
-        }, 
-        {
-          param-id: "mp-5_prm_2",
+        },
+        mp-5_prm_2: {
           constraints: [
             {
               STRVALUE: "prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digitital media, secured in locked container"
             }
           ]
-        }, 
-        {
-          param-id: "mp-6.2_prm_1",
+        },
+        mp-6.2_prm_1: {
           constraints: [
             {
               STRVALUE: "At least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pe-1_prm_2",
+        },
+        pe-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "pe-1_prm_3",
+        },
+        pe-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pe-2_prm_1",
+        },
+        pe-2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pe-3_prm_2",
+        },
+        pe-3_prm_2: {
           constraints: [
             {
               STRVALUE: "CSP defined physical access control systems/devices AND guards"
             }
           ]
-        }, 
-        {
-          param-id: "pe-3_prm_3",
+        },
+        pe-3_prm_3: {
           constraints: [
             {
               STRVALUE: "CSP defined physical access control systems/devices"
             }
           ]
-        }, 
-        {
-          param-id: "pe-3_prm_6",
+        },
+        pe-3_prm_6: {
           constraints: [
             {
               STRVALUE: "in all circumstances within restricted access area where the information system resides"
             }
           ]
-        }, 
-        {
-          param-id: "pe-3_prm_8",
+        },
+        pe-3_prm_8: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pe-3_prm_9",
+        },
+        pe-3_prm_9: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pe-6_prm_1",
+        },
+        pe-6_prm_1: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "pe-8_prm_1",
+        },
+        pe-8_prm_1: {
           constraints: [
             {
               STRVALUE: "for a minimum of one (1) year"
             }
           ]
-        }, 
-        {
-          param-id: "pe-8_prm_2",
+        },
+        pe-8_prm_2: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "pe-14_prm_1",
+        },
+        pe-14_prm_1: {
           constraints: [
             {
               STRVALUE: "consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments"
             }
           ]
-        }, 
-        {
-          param-id: "pe-14_prm_2",
+        },
+        pe-14_prm_2: {
           constraints: [
             {
               STRVALUE: "continuously"
             }
           ]
-        }, 
-        {
-          param-id: "pe-16_prm_1",
+        },
+        pe-16_prm_1: {
           constraints: [
             {
               STRVALUE: "all information system components"
             }
           ]
-        }, 
-        {
-          param-id: "pl-1_prm_2",
+        },
+        pl-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "pl-1_prm_3",
+        },
+        pl-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pl-2_prm_2",
+        },
+        pl-2_prm_2: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "pl-4_prm_1",
+        },
+        pl-4_prm_1: {
           constraints: [
             {
               STRVALUE: "At least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "pl-8_prm_1",
+        },
+        pl-8_prm_1: {
           constraints: [
             {
               STRVALUE: "At least annually or when a significant change occurs"
             }
           ]
-        }, 
-        {
-          param-id: "ps-1_prm_2",
+        },
+        ps-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ps-1_prm_3",
+        },
+        ps-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ps-2_prm_1",
+        },
+        ps-2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least every three years"
             }
           ]
-        }, 
-        {
-          param-id: "ps-3_prm_1",
+        },
+        ps-3_prm_1: {
           constraints: [
             {
               STRVALUE: "for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions"
             }
           ]
-        }, 
-        {
-          param-id: "ps-3.3_prm_1",
+        },
+        ps-3.3_prm_1: {
           constraints: [
             {
               STRVALUE: "personnel screening criteria - as required by specific information"
             }
           ]
-        }, 
-        {
-          param-id: "ps-4_prm_1",
+        },
+        ps-4_prm_1: {
           constraints: [
             {
               STRVALUE: "same day"
             }
           ]
-        }, 
-        {
-          param-id: "ps-5_prm_4",
+        },
+        ps-5_prm_4: {
           constraints: [
             {
               STRVALUE: "five days of the time period following the formal transfer action (DoD 24 hours)"
             }
           ]
-        }, 
-        {
-          param-id: "ps-6_prm_1",
+        },
+        ps-6_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ps-6_prm_2",
+        },
+        ps-6_prm_2: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ps-7_prm_2",
+        },
+        ps-7_prm_2: {
           constraints: [
             {
               STRVALUE: "organization-defined time period - same day"
             }
           ]
-        }, 
-        {
-          param-id: "ra-1_prm_2",
+        },
+        ra-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "ra-1_prm_3",
+        },
+        ra-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "ra-3_prm_2",
+        },
+        ra-3_prm_2: {
           constraints: [
             {
               STRVALUE: "security assessment report"
             }
           ]
-        }, 
-        {
-          param-id: "ra-3_prm_3",
+        },
+        ra-3_prm_3: {
           constraints: [
             {
               STRVALUE: "at least every three (3) years or when a significant change occurs"
             }
           ]
-        }, 
-        {
-          param-id: "ra-3_prm_5",
+        },
+        ra-3_prm_5: {
           constraints: [
             {
               STRVALUE: "at least every three (3) years or when a significant change occurs"
             }
           ]
-        }, 
-        {
-          param-id: "ra-5_prm_1",
+        },
+        ra-5_prm_1: {
           constraints: [
             {
               STRVALUE: "monthly operating system/infrastructure; monthly web applications and database"
             }
           ]
-        }, 
-        {
-          param-id: "ra-5_prm_2",
+        },
+        ra-5_prm_2: {
           constraints: [
             {
               STRVALUE: "high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery"
             }
           ]
-        }, 
-        {
-          param-id: "ra-5.2_prm_1",
+        },
+        ra-5.2_prm_1: {
           constraints: [
             {
               STRVALUE: "prior to a new scan"
             }
           ]
-        }, 
-        {
-          param-id: "ra-5.5_prm_1",
+        },
+        ra-5.5_prm_1: {
           constraints: [
             {
               STRVALUE: "operating systems / web applications / databases"
             }
           ]
-        }, 
-        {
-          param-id: "ra-5.5_prm_2",
+        },
+        ra-5.5_prm_2: {
           constraints: [
             {
               STRVALUE: "all scans"
             }
           ]
-        }, 
-        {
-          param-id: "sa-1_prm_2",
+        },
+        sa-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "sa-1_prm_3",
+        },
+        sa-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "sa-4.2_prm_1",
+        },
+        sa-4.2_prm_1: {
           constraints: [
             {
               STRVALUE: "to include security-relevant external system interfaces and high-level design"
             }
           ]
-        }, 
-        {
-          param-id: "sa-4.8_prm_1",
+        },
+        sa-4.8_prm_1: {
           constraints: [
             {
               STRVALUE: "at least the minimum requirement as defined in control CA-7"
             }
           ]
-        }, 
-        {
-          param-id: "sa-9_prm_1",
+        },
+        sa-9_prm_1: {
           constraints: [
             {
               STRVALUE: "FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system"
             }
           ]
-        }, 
-        {
-          param-id: "sa-9_prm_2",
+        },
+        sa-9_prm_2: {
           constraints: [
             {
               STRVALUE: "Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored"
             }
           ]
-        }, 
-        {
-          param-id: "sa-9.2_prm_1",
+        },
+        sa-9.2_prm_1: {
           constraints: [
             {
               STRVALUE: "All external systems where Federal information is processed or stored"
             }
           ]
-        }, 
-        {
-          param-id: "sa-9.4_prm_2",
+        },
+        sa-9.4_prm_2: {
           constraints: [
             {
               STRVALUE: "All external systems where Federal information is processed or stored"
             }
           ]
-        }, 
-        {
-          param-id: "sa-9.5_prm_1",
+        },
+        sa-9.5_prm_1: {
           constraints: [
             {
               STRVALUE: "information processing, information data, AND information services"
             }
           ]
-        }, 
-        {
-          param-id: "sa-10_prm_1",
+        },
+        sa-10_prm_1: {
           constraints: [
             {
               STRVALUE: "development, implementation, AND operation"
             }
           ]
-        }, 
-        {
-          param-id: "sc-1_prm_2",
+        },
+        sc-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "sc-1_prm_3",
+        },
+        sc-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "sc-7.4_prm_1",
+        },
+        sc-7.4_prm_1: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "sc-8_prm_1",
+        },
+        sc-8_prm_1: {
           constraints: [
             {
               STRVALUE: "confidentiality AND integrity"
             }
           ]
-        }, 
-        {
-          param-id: "sc-8.1_prm_1",
+        },
+        sc-8.1_prm_1: {
           constraints: [
             {
               STRVALUE: "prevent unauthorized disclosure of information AND detect changes to information"
             }
           ]
-        }, 
-        {
-          param-id: "sc-8.1_prm_2",
+        },
+        sc-8.1_prm_2: {
           constraints: [
             {
               STRVALUE: "a hardened or alarmed carrier Protective Distribution System (PDS)"
             }
           ]
-        }, 
-        {
-          param-id: "sc-10_prm_1",
+        },
+        sc-10_prm_1: {
           constraints: [
             {
               STRVALUE: "no longer than 30 minutes for RAS-based sessions or no longer than 60 minutes for non-interactive user sessions"
             }
           ]
-        }, 
-        {
-          param-id: "sc-12.2_prm_1",
+        },
+        sc-12.2_prm_1: {
           constraints: [
             {
               STRVALUE: "NIST FIPS-compliant"
             }
           ]
-        }, 
-        {
-          param-id: "sc-13_prm_1",
+        },
+        sc-13_prm_1: {
           constraints: [
             {
               STRVALUE: "FIPS-validated or NSA-approved cryptography"
             }
           ]
-        }, 
-        {
-          param-id: "sc-15_prm_1",
+        },
+        sc-15_prm_1: {
           constraints: [
             {
               STRVALUE: "no exceptions"
             }
           ]
-        }, 
-        {
-          param-id: "sc-28_prm_1",
+        },
+        sc-28_prm_1: {
           constraints: [
             {
               STRVALUE: "confidentiality AND integrity"
             }
           ]
-        }, 
-        {
-          param-id: "si-1_prm_2",
+        },
+        si-1_prm_2: {
           constraints: [
             {
               STRVALUE: "at least every 3 years"
             }
           ]
-        }, 
-        {
-          param-id: "si-1_prm_3",
+        },
+        si-1_prm_3: {
           constraints: [
             {
               STRVALUE: "at least annually"
             }
           ]
-        }, 
-        {
-          param-id: "si-2_prm_1",
+        },
+        si-2_prm_1: {
           constraints: [
             {
               STRVALUE: "within 30 days of release of updates"
             }
           ]
-        }, 
-        {
-          param-id: "si-2.2_prm_1",
+        },
+        si-2.2_prm_1: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "si-3_prm_1",
+        },
+        si-3_prm_1: {
           constraints: [
             {
               STRVALUE: "at least weekly"
             }
           ]
-        }, 
-        {
-          param-id: "si-3_prm_2",
+        },
+        si-3_prm_2: {
           constraints: [
             {
               STRVALUE: "to include endpoints"
             }
           ]
-        }, 
-        {
-          param-id: "si-3_prm_3",
+        },
+        si-3_prm_3: {
           constraints: [
             {
               STRVALUE: "to include alerting administrator or defined security personnel"
             }
           ]
-        }, 
-        {
-          param-id: "si-4.4_prm_1",
+        },
+        si-4.4_prm_1: {
           constraints: [
             {
               STRVALUE: "continuously"
             }
           ]
-        }, 
-        {
-          param-id: "si-5_prm_1",
+        },
+        si-5_prm_1: {
           constraints: [
             {
               STRVALUE: "to include US-CERT"
             }
           ]
-        }, 
-        {
-          param-id: "si-5_prm_2",
+        },
+        si-5_prm_2: {
           constraints: [
             {
               STRVALUE: "to include system security personnel and administrators with configuration/patch-management responsibilities"
             }
           ]
-        }, 
-        {
-          param-id: "si-6_prm_3",
+        },
+        si-6_prm_3: {
           constraints: [
             {
               STRVALUE: "to include upon system startup and/or restart"
             }
           ]
-        }, 
-        {
-          param-id: "si-6_prm_4",
+        },
+        si-6_prm_4: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
-        }, 
-        {
-          param-id: "si-6_prm_5",
+        },
+        si-6_prm_5: {
           constraints: [
             {
               STRVALUE: "to include system administrators and security personnel"
             }
           ]
-        }, 
-        {
-          param-id: "si-6_prm_7",
+        },
+        si-6_prm_7: {
           constraints: [
             {
               STRVALUE: "to include notification of system administrators and security personnel"
             }
           ]
-        }, 
-        {
-          param-id: "si-7.1_prm_3",
+        },
+        si-7.1_prm_3: {
           constraints: [
             {
               STRVALUE: "Selection to include security relevant events"
             }
           ]
-        }, 
-        {
-          param-id: "si-7.1_prm_4",
+        },
+        si-7.1_prm_4: {
           constraints: [
             {
               STRVALUE: "at least monthly"
             }
           ]
         }
-      ],
+      },
       alterations: [
         {
           subcontrol-id: "ac-2.5",
@@ -2532,7 +2349,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(a) Guidance: Required for privileged accounts.", "(b) Guidance: Required for privileged accounts."]
+                  prose: ["(a) Guidance: Required for privileged accounts.", "", "(b) Guidance: Required for privileged accounts."]
                 }
               ]
             }
@@ -2547,7 +2364,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Additional FedRAMP Requirements and Guidance:", "Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP."]
+                  prose: ["Additional FedRAMP Requirements and Guidance:", "", "Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP."]
                 }
               ]
             }
@@ -2562,7 +2379,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Guidance: Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions."]
+                  prose: ["Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions."]
                 }
               ]
             }
@@ -2577,7 +2394,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB.", "Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB.", "Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB."]
+                  prose: ["Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB.", "", "Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB.", "", "Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB."]
                 }
               ]
             }
@@ -2652,7 +2469,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.", "Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.", "Guidance: Synchronization of system clocks improves the accuracy of log analysis."]
+                  prose: ["Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.", "", "Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.", "", "Guidance: Synchronization of system clocks improves the accuracy of log analysis."]
                 }
               ]
             }
@@ -2697,7 +2514,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: To include 'announced', 'vulnerability scanning'"]
+                  prose: ["Requirement: To include \'announced\', \'vulnerability scanning\'"]
                 }
               ]
             }
@@ -2772,7 +2589,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually", "Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.", "Operating System Scans: at least monthly", "Database and Web Application Scans: at least monthly", "All scans performed by Independent Assessor: at least annually"]
+                  prose: ["Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually", "", "Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.", "", "Operating System Scans: at least monthly", "", "Database and Web Application Scans: at least monthly", "", "All scans performed by Independent Assessor: at least annually"]
                 }
               ]
             }
@@ -2787,7 +2604,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.", "-e Guidance: In accordance with record retention policies and procedures."]
+                  prose: ["Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.", "", "-e Guidance: In accordance with record retention policies and procedures."]
                 }
               ]
             }
@@ -2817,7 +2634,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.", "(a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).", "(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc"]
+                  prose: ["(a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.", "", "(a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).", "", "(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc"]
                 }
               ]
             }
@@ -2832,7 +2649,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.", "Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc", "(Partially derived from AC-17(8).)"]
+                  prose: ["(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.", "", "Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc", "", "(Partially derived from AC-17(8).)"]
                 }
               ]
             }
@@ -2952,7 +2769,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.", "(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.", "(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.", "(c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative."]
+                  prose: ["Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.", "", "(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.", "", "(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.", "", "(c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative."]
                 }
               ]
             }
@@ -2997,7 +2814,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(e) Requirement: The service provider defines time period of inactivity for device identifiers.", "Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx."]
+                  prose: ["(e) Requirement: The service provider defines time period of inactivity for device identifiers.", "", "Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx."]
                 }
               ]
             }
@@ -3027,7 +2844,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["-2 Requirement 1: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended).", "-2 Requirement 2: For JAB Authorization, the service provider provides test plans to the JAB/AO annually.", "-2 Requirement 3: Test plans are approved and accepted by the Authorizing Official (AO) prior to test commencing."]
+                  prose: ["-2 Requirement 1: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended).", "", "-2 Requirement 2: For JAB Authorization, the service provider provides test plans to the JAB/AO annually.", "", "-2 Requirement 3: Test plans are approved and accepted by the Authorizing Official (AO) prior to test commencing."]
                 }
               ]
             }
@@ -3072,7 +2889,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.", "(e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel."]
+                  prose: ["(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.", "", "(e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel."]
                 }
               ]
             }
@@ -3132,7 +2949,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(a) Additional FedRAMP Requirements and Guidance:", "Requirement: The service provider defines security measures to protect digital and non-digital media in transport. The security measures are approved and accepted by the JAB."]
+                  prose: ["(a) Additional FedRAMP Requirements and Guidance:", "", "Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB."]
                 }
               ]
             }
@@ -3162,7 +2979,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(a). Requirements: The service provider measures temperature at server inlets and humidity levels by dew point."]
+                  prose: ["(a). Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point."]
                 }
               ]
             }
@@ -3192,7 +3009,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.", "(d) Requirement: Include all Authoring Officials and FedRAMP ISSOs."]
+                  prose: ["Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.", "", "(d) Requirement: Include all Authoring Officials and FedRAMP ISSOs."]
                 }
               ]
             }
@@ -3207,7 +3024,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.", "(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP"]
+                  prose: ["(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.", "", "(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP"]
                 }
               ]
             }
@@ -3237,7 +3054,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability."]
+                  prose: ["Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST\'s definition of high vulnerability."]
                 }
               ]
             }
@@ -3252,7 +3069,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.", "See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html."]
+                  prose: ["Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.", "", "See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html."]
                 }
               ]
             }
@@ -3282,7 +3099,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["(e) Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP."]
+                  prose: ["(e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP."]
                 }
               ]
             }
@@ -3357,7 +3174,7 @@
                 {
                   name: "guidance",
                   ns: "FedRAMP",
-                  prose: ["Additional FedRAMP Requirements and Guidance:", "Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use."]
+                  prose: ["Additional FedRAMP Requirements and Guidance:", "", "Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use."]
                 }
               ]
             }

@@ -57,12 +57,21 @@
          </string>
       </xsl:if>
    </xsl:template>
+   <xsl:template name="conditional-lf">
+      <xsl:variable name="predecessor"
+                    select="preceding-sibling::p | preceding-sibling::ul | preceding-sibling::ol | preceding-sibling::table | preceding-sibling::pre"/>
+      <xsl:if test="exists($predecessor)">
+         <string/>
+      </xsl:if>
+   </xsl:template>
    <xsl:template mode="md" match="p | link | part/*">
+      <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
+      <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates select="." mode="mark"/>
          <xsl:apply-templates mode="md"/>
@@ -75,6 +84,7 @@
    <xsl:template mode="mark" match="h5">##### </xsl:template>
    <xsl:template mode="mark" match="h6">###### </xsl:template>
    <xsl:template mode="md" match="table">
+      <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template mode="md" match="tr">
@@ -95,6 +105,7 @@
       <xsl:text> |</xsl:text>
    </xsl:template>
    <xsl:template mode="md" priority="1" match="pre">
+      <xsl:call-template name="conditional-lf"/>
       <string>```</string>
       <string>
          <xsl:apply-templates mode="md"/>
@@ -102,7 +113,7 @@
       <string>```</string>
    </xsl:template>
    <xsl:template mode="md" priority="1" match="ul | ol">
-      <string/>
+      <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates mode="md"/>
       <string/>
    </xsl:template>
@@ -148,6 +159,11 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>"</xsl:text>
    </xsl:template>
+   <xsl:template mode="md" match="insert">
+      <xsl:text>{ </xsl:text>
+      <xsl:value-of select="@param-id"/>
+      <xsl:text> }</xsl:text>
+   </xsl:template>
    <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
    <xsl:template mode="md" match="a">
       <xsl:text>[</xsl:text>
@@ -158,7 +174,7 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template match="text()" mode="md">
-      <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>
+      <xsl:value-of select="replace(.,'([`~\^\*''&#34;])','\\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
    <xsl:template match="system-security-plan" mode="xml2json">

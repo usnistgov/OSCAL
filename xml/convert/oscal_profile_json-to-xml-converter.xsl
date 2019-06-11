@@ -16,9 +16,9 @@
    <xsl:preserve-space elements="string"/>
    <xsl:param name="json-file" as="xs:string"/>
    <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
-   <xsl:template match="/" name="start">
+   <xsl:template name="xsl:initial-template" match="/">
       <xsl:choose>
-         <xsl:when test="exists($json-xml/map)">
+         <xsl:when test="matches($json-file,'\S') and exists($json-xml/map)">
             <xsl:apply-templates select="$json-xml" mode="json2xml"/>
          </xsl:when>
          <xsl:otherwise>
@@ -32,24 +32,23 @@
    <xsl:template match="array" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="array[@key='prose']/*" priority="5" mode="json2xml">
-      <xsl:element name="p" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:variable name="text-contents" select="string-join(string,'&#xA;')"/>
-         <xsl:call-template name="parse">
-            <xsl:with-param name="str" select="$text-contents"/>
-         </xsl:call-template>
-      </xsl:element>
+   <xsl:template match="array[@key='prose']" priority="5" mode="json2xml">
+      <xsl:variable name="text-contents" select="string-join(string,'&#xA;')"/>
+      <xsl:call-template name="parse">
+         <xsl:with-param name="str" select="$text-contents"/>
+      </xsl:call-template>
    </xsl:template>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
-      <xsl:call-template name="parse"/>
+   <xsl:template match="string" mode="handle-inlines"/>
+   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml handle-inlines">
+      <xsl:variable name="markup">
+         <xsl:apply-templates mode="infer-inlines"/>
+      </xsl:variable>
+      <xsl:apply-templates mode="cast-ns" select="$markup"/>
    </xsl:template>
    <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template mode="as-attribute" match="*"/>
-   <xsl:template mode="as-attribute" match="map">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
    <xsl:template mode="as-attribute" match="string[@key='id']" priority="0.4">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
@@ -79,8 +78,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="link" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "author" 000 -->
@@ -88,29 +87,29 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="author" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "last-modified-date" 000 -->
    <xsl:template match="*[@key='last-modified-date']" priority="2" mode="json2xml">
       <xsl:element name="last-modified-date" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "version" 000 -->
    <xsl:template match="*[@key='version']" priority="2" mode="json2xml">
       <xsl:element name="version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "oscal-version" 000 -->
    <xsl:template match="*[@key='oscal-version']" priority="2" mode="json2xml">
       <xsl:element name="oscal-version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "doc-id" 000 -->
@@ -118,8 +117,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="doc-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "type" 000 -->
@@ -135,8 +134,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="prop" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "name" 000 -->
@@ -211,8 +210,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="person-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "org-id" 000 -->
@@ -220,8 +219,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="org-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "rlink" 000 -->
@@ -252,22 +251,22 @@
    <!-- 000 Handling field "person-name" 000 -->
    <xsl:template match="*[@key='person-name']" priority="2" mode="json2xml">
       <xsl:element name="person-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "org-name" 000 -->
    <xsl:template match="*[@key='org-name']" priority="2" mode="json2xml">
       <xsl:element name="org-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "short-name" 000 -->
    <xsl:template match="*[@key='short-name']" priority="2" mode="json2xml">
       <xsl:element name="short-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "address" 000 -->
@@ -288,36 +287,36 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="addr-line" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "city" 000 -->
    <xsl:template match="*[@key='city']" priority="2" mode="json2xml">
       <xsl:element name="city" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "state" 000 -->
    <xsl:template match="*[@key='state']" priority="2" mode="json2xml">
       <xsl:element name="state" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "postal-code" 000 -->
    <xsl:template match="*[@key='postal-code']" priority="2" mode="json2xml">
       <xsl:element name="postal-code" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "country" 000 -->
    <xsl:template match="*[@key='country']" priority="2" mode="json2xml">
       <xsl:element name="country" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "email" 000 -->
@@ -325,8 +324,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="email" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "phone" 000 -->
@@ -334,8 +333,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="phone" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "url" 000 -->
@@ -343,8 +342,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="url" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "notes" 000 -->
@@ -371,8 +370,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="hash" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "algorithm" 000 -->
@@ -427,8 +426,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="meta" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "term" 000 -->
@@ -450,8 +449,8 @@
    <!-- 000 Handling field "base64" 000 -->
    <xsl:template match="*[@key='base64']" priority="2" mode="json2xml">
       <xsl:element name="base64" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "filename" 000 -->
@@ -478,7 +477,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('doc-id', 'document-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "target" 000 -->
@@ -486,8 +484,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="target" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "back-matter" 000 -->
@@ -501,8 +499,11 @@
    <!-- 000 Handling field "title" 000 -->
    <xsl:template match="*[@key='title']" priority="2" mode="json2xml">
       <xsl:element name="title" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "param" 000 -->
@@ -510,7 +511,7 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="param" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:attribute name="id" select="../@key"/>
+         <xsl:attribute name="id" select="@key"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
@@ -519,7 +520,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <xsl:template mode="as-attribute"
@@ -528,8 +528,11 @@
    <!-- 000 Handling field "label" 000 -->
    <xsl:template match="*[@key='label']" priority="2" mode="json2xml">
       <xsl:element name="label" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "desc" 000 -->
@@ -537,8 +540,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="desc" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "constraint" 000 -->
@@ -546,8 +549,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="constraint" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "guideline" 000 -->
@@ -557,14 +560,16 @@
       <xsl:element name="guideline" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "value" 000 -->
    <xsl:template match="*[@key='value']" priority="2" mode="json2xml">
       <xsl:element name="value" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "select" 000 -->
@@ -572,7 +577,6 @@
       <xsl:element name="select" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('choice', 'alternatives')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "choice" 000 -->
@@ -580,8 +584,11 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="choice" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='RICHTEXT']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "part" 000 -->
@@ -595,7 +602,6 @@
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "id" 000 -->
@@ -664,15 +670,15 @@
    <!-- 000 Handling field "combine" 000 -->
    <xsl:template match="*[@key='combine']" priority="2" mode="json2xml">
       <xsl:element name="combine" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "as-is" 000 -->
    <xsl:template match="*[@key='as-is']" priority="2" mode="json2xml">
       <xsl:element name="as-is" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "method" 000 -->
@@ -728,8 +734,8 @@
    <!-- 000 Handling field "all" 000 -->
    <xsl:template match="*[@key='all']" priority="2" mode="json2xml">
       <xsl:element name="all" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "call" 000 -->
@@ -737,8 +743,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="call" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "match" 000 -->
@@ -746,8 +752,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="match" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "exclude" 000 -->
@@ -765,7 +771,7 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="set" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:attribute name="param-id" select="../@key"/>
+         <xsl:attribute name="param-id" select="@key"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
@@ -794,8 +800,8 @@
                  priority="2"
                  mode="json2xml">
       <xsl:element name="remove" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "add" 000 -->
@@ -1079,13 +1085,13 @@
       <xsl:copy-of select="."/>
    </xsl:template>
    <xsl:template match="text()" mode="infer-inlines">
-      <xsl:variable name="markup" expand-text="true">
+      <xsl:variable name="markup">
          <xsl:apply-templates select="$tag-replacements/m:rules">
             <xsl:with-param name="original" tunnel="yes" as="text()" select="."/>
          </xsl:apply-templates>
       </xsl:variable>
       <xsl:try select="parse-xml-fragment($markup)">
-         <xsl:catch expand-text="yes" select="."/>
+         <xsl:catch select="."/>
       </xsl:try>
    </xsl:template>
    <xsl:template mode="cast-ns" match="*">
@@ -1123,6 +1129,7 @@
          <replace match="&lt;">&amp;lt;</replace>
          <!-- next, explicit escape sequences -->
          <replace match="\\&#34;">&amp;quot;</replace>
+         <replace match="\\'">&amp;apos;</replace>
          <replace match="\\\*">&amp;#2A;</replace>
          <replace match="\\`">&amp;#60;</replace>
          <replace match="\\~">&amp;#7E;</replace>
@@ -1147,6 +1154,7 @@
       <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
          <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+         <insert param-id="\{{{{$nws}}\}}"/>
          <a href="\[{{$text}}\]">\(<text/>\)</a>
          <code>`<text/>`</code>
          <strong>
@@ -1163,7 +1171,7 @@
       <xsl:text>&lt;</xsl:text>
       <xsl:value-of select="local-name()"/>
       <!-- coercing the order to ensure correct formation of regegex       -->
-      <xsl:apply-templates mode="#current" select="@href, @alt, @src"/>
+      <xsl:apply-templates mode="#current" select="@*"/>
       <xsl:text>&gt;</xsl:text>
       <xsl:apply-templates mode="#current" select="*"/>
       <xsl:text>&lt;/</xsl:text>
@@ -1176,22 +1184,29 @@
    <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
    </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
+      <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
+   </xsl:template>
    <xsl:template match="m:text" mode="write-replace">
       <xsl:text>$1</xsl:text>
    </xsl:template>
+   <xsl:template match="m:insert/@param-id" mode="write-replace">
+      <xsl:text> param-id='$1'</xsl:text>
+   </xsl:template>
    <xsl:template match="m:a/@href" mode="write-replace">
-      <xsl:text> href="$2"</xsl:text>
+      <xsl:text> href='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:img/@alt" mode="write-replace">
-      <xsl:text> alt="$1"</xsl:text>
+      <xsl:text> alt='$1'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:img/@src" mode="write-replace">
-      <xsl:text> src="$2"</xsl:text>
+      <xsl:text> src='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
    <xsl:template match="m:text" mode="write-match">
       <xsl:text>(.*?)</xsl:text>
    </xsl:template>
+   <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
 </xsl:stylesheet>

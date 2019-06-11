@@ -14,7 +14,7 @@
    </xsl:character-map>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <xsl:mode name="rectify" on-no-match="shallow-copy"/>
-   <xsl:template mode="rectify" name="start"
+   <xsl:template mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                  match="/*/@key | array/*/@key"/>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
@@ -57,12 +57,21 @@
          </string>
       </xsl:if>
    </xsl:template>
+   <xsl:template name="conditional-lf">
+      <xsl:variable name="predecessor"
+                    select="preceding-sibling::p | preceding-sibling::ul | preceding-sibling::ol | preceding-sibling::table | preceding-sibling::pre"/>
+      <xsl:if test="exists($predecessor)">
+         <string/>
+      </xsl:if>
+   </xsl:template>
    <xsl:template mode="md" match="p | link | part/*">
+      <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
+      <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates select="." mode="mark"/>
          <xsl:apply-templates mode="md"/>
@@ -75,6 +84,7 @@
    <xsl:template mode="mark" match="h5">##### </xsl:template>
    <xsl:template mode="mark" match="h6">###### </xsl:template>
    <xsl:template mode="md" match="table">
+      <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template mode="md" match="tr">
@@ -95,6 +105,7 @@
       <xsl:text> |</xsl:text>
    </xsl:template>
    <xsl:template mode="md" priority="1" match="pre">
+      <xsl:call-template name="conditional-lf"/>
       <string>```</string>
       <string>
          <xsl:apply-templates mode="md"/>
@@ -102,7 +113,7 @@
       <string>```</string>
    </xsl:template>
    <xsl:template mode="md" priority="1" match="ul | ol">
-      <string/>
+      <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates mode="md"/>
       <string/>
    </xsl:template>
@@ -148,6 +159,11 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>"</xsl:text>
    </xsl:template>
+   <xsl:template mode="md" match="insert">
+      <xsl:text>{ </xsl:text>
+      <xsl:value-of select="@param-id"/>
+      <xsl:text> }</xsl:text>
+   </xsl:template>
    <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
    <xsl:template mode="md" match="a">
       <xsl:text>[</xsl:text>
@@ -158,7 +174,7 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template match="text()" mode="md">
-      <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>
+      <xsl:value-of select="replace(.,'([`~\^\*''&#34;])','\\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
    <xsl:template match="metadata" mode="xml2json">
@@ -639,7 +655,6 @@
    </xsl:template>
    <xsl:template match="subcontrol" mode="xml2json">
       <map key="{@id}">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:for-each-group select="param" group-by="local-name()">
@@ -671,7 +686,6 @@
    </xsl:template>
    <xsl:template match="param" mode="xml2json">
       <map key="{@id}">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
