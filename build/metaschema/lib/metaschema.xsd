@@ -12,6 +12,7 @@
       
       <xs:sequence>
         <xs:element ref="m:schema-name"/>
+        <xs:element ref="m:schema-version" minOccurs="0"/>
         <xs:element ref="m:short-name"/>
         <xs:element ref="m:namespace" minOccurs="1"/>
         <xs:element ref="m:remarks" minOccurs="0"/>
@@ -133,6 +134,9 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
       </xs:choice>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="schema-version">
+    <xs:complexType mixed="true"/>
   </xs:element>
   <xs:element name="short-name">
     <xs:complexType mixed="true">
