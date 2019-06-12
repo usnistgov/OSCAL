@@ -1,0 +1,29 @@
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+   <map key="lunch">
+      <map key="sandwich">
+         <string key="prose">Ham and cheese</string>
+      </map>
+      <array key="chips">
+         <string>malt vinegar</string>
+         <string>malt vinegar</string>
+         <string>malt vinegar</string>
+      </array>
+      <array key="cookies">
+         <map>
+            <string key="days">Sun Mon Tue</string>
+            <string key="baker">jean</string>
+            <string key="STRVALUE">chocolate chip</string>
+         </map>
+         <map>
+            <string key="days">Sun Mon Tue</string>
+            <string key="baker">jean</string>
+            <string key="STRVALUE">oatmeal</string>
+         </map>
+         <map>
+            <string key="days">Sun Mon Tue</string>
+            <string key="baker">jean</string>
+            <string key="STRVALUE">snickerdoodle</string>
+         </map>
+      </array>
+   </map>
+</map>

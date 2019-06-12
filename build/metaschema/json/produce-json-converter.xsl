@@ -72,7 +72,8 @@
                 <xsl:value-of>
                     <xsl:text>*[@key='{@name}']/{$match-step}</xsl:text>
                     <xsl:if test="matches(@group-as, '\i\c*')">
-                        <xsl:text> | *[@key='{@group-as}']/*/{$match-step}</xsl:text>
+                        <xsl:text> | *[@key='{@group-as}']/{$match-step}</xsl:text>
+                        <xsl:text> | array[@key='{@group-as}']/*/{$match-step}</xsl:text>
                     </xsl:if>
                 </xsl:value-of>
             </xsl:for-each>
@@ -103,8 +104,9 @@
     </xsl:template>
     
     <xsl:template match="define-field" expand-text="true">
-        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ''}</xsl:variable>
+        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
+        <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <XSLT:template match="{$field-match}" priority="2" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
@@ -117,6 +119,12 @@
         <xsl:call-template name="drop-address"/>
     </xsl:template>
     
+    <!-- We produce a template to override the assembly match on arrays
+         (whose members represent the elements). -->
+    
+    
+    
+    <!-- When there are no flags, we don't have to isolate the contents of a field -->
     <xsl:template match="define-field" mode="field-text">
         <XSLT:apply-templates mode="json2xml"/>
     </xsl:template>
@@ -129,12 +137,16 @@
     </xsl:template>
     
     <xsl:template priority="2" match="define-field[exists(flag)]" mode="field-text">
+        <!-- XXX to do: fetch value for alternative label       -->
         <XSLT:apply-templates mode="json2xml" select="string[@key=('{$string-value-label}','{$markdown-value-label}')]"/>
     </xsl:template>
     
     <xsl:template match="define-assembly" expand-text="true">
-        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }</xsl:variable>
+        
+        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
+        
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
+        <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <XSLT:template match="{$assembly-match}" priority="2" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
@@ -184,14 +196,20 @@
             <XSLT:apply-templates mode="#current" select="*[@key=('{@root}')]"/>
         </XSLT:template>
         
-        <XSLT:template match="array" mode="json2xml">
+        <XSLT:template match="array" priority="10" mode="json2xml">
             <XSLT:apply-templates mode="#current"/>
         </XSLT:template>
         
-        <XSLT:template match="array[@key='prose']" priority="5" mode="json2xml">
+        <XSLT:template match="array[@key='prose']" priority="11" mode="json2xml">
             <XSLT:variable name="text-contents" select="string-join(string,'&#xA;')"/>
             <XSLT:call-template name="parse">
                 <XSLT:with-param name="str" select="$text-contents"/>
+            </XSLT:call-template>
+        </XSLT:template>
+        
+        <XSLT:template match="string[@key='prose']" priority="11" mode="json2xml">
+            <XSLT:call-template name="parse">
+                <XSLT:with-param name="str" select="string(.)"/>
             </XSLT:call-template>
         </XSLT:template>
         

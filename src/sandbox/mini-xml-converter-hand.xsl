@@ -58,6 +58,25 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
+   
+   <xsl:template match="array[@key='cookies'][count(map) gt 1]" mode="rectify"
+      xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+      <xsl:for-each-group select="map" group-by="string-join(
+         (*[@key='days']/normalize-space(.),
+          *[@key='baker']/normalize-space(.) ),'#')">
+         <map key="cookies">
+            <xsl:copy-of select="*[@key=('days','baker')]"/>
+            <array key="STRVALUE">
+               <xsl:for-each select="current-group()/string[@key='STRVALUE']">
+                  <string>
+                     <xsl:apply-templates mode="#current"/>
+                  </string>
+               </xsl:for-each>
+            </array>
+         </map>
+      </xsl:for-each-group>
+   </xsl:template>
+   
    <xsl:template name="prose">
       <xsl:variable name="blocks"
                     select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
@@ -222,45 +241,24 @@
       </map>
    </xsl:template>
    <xsl:template match="chip" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="chip">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="cookie" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="cookie">
          <xsl:apply-templates mode="as-string" select="@days"/>
          <xsl:apply-templates mode="as-string" select="@baker"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
       </map>
    </xsl:template>
-   <xsl:template match="array[@key = 'cookies'][count(map) gt 1]"
-                 mode="rectify"
-                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
-      <xsl:for-each-group select="map"
-                          group-by="string-join( (*[@key = 'baker'],*[@key = 'days'] ), '#' )">
-         <map key="cookies">
-            <xsl:copy-of select="*[@key = ('days', 'baker')]"/>
-            <array key="{$text-key}">
-               <xsl:for-each select="current-group()/string[@key = $text-key]">
-                  <string>
-                     <xsl:apply-templates mode="#current"/>
-                  </string>
-               </xsl:for-each>
-            </array>
-         </map>
-      </xsl:for-each-group>
-   </xsl:template>
    <xsl:template match="cupcake" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="cupcake">
          <xsl:apply-templates mode="as-string" select="@icing"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -284,23 +282,16 @@
       </map>
    </xsl:template>
    <xsl:template match="masked-field" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="string[@key='name']"/>
-      </xsl:variable>
       <string key="masked-field">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="labeled-value-field" mode="xml2json">
-      <xsl:variable name="text-key">label</xsl:variable>
       <string key="labeled-value-field">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="ID-object" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="string[@key='big']"/>
-      </xsl:variable>
       <string key="ID-object">
          <xsl:apply-templates mode="md"/>
       </string>

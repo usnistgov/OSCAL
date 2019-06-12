@@ -116,6 +116,7 @@
   </define-assembly>
 
   <define-assembly name="control" group-as="controls">
+    
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Control</formal-name>

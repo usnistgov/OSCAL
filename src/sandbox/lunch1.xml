@@ -5,5 +5,7 @@
     <chip>malt vinegar</chip>
     <chip>malt vinegar</chip>
     <chip>malt vinegar</chip>
-    <cookie>chocolate chip</cookie>
+    <cookie days="Sun Mon Tue" baker="jean">chocolate chip</cookie>
+    <cookie days="Sun Mon Tue" baker="jean">oatmeal</cookie>
+    <cookie days="Sun Mon Tue" baker="jean">snickerdoodle</cookie>
 </lunch>

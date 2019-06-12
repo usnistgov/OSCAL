@@ -1,0 +1,11 @@
+
+  { "lunch" : 
+    { "sandwich" : 
+      { "prose" : "Ham and cheese" },
+      "chips" : 
+      [ "malt vinegar",
+        "malt vinegar",
+        "malt vinegar" ],
+      "cookies" : 
+      { "variety" : "chocolatechip",
+        "STRVALUE" : "chocolate chip" } } }

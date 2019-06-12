@@ -3,7 +3,8 @@
            xmlns:oscal-mini="urn:mini"
            xmlns:oscal-prose="urn:mini"
            elementFormDefault="qualified"
-           targetNamespace="urn:mini"><!--MINI Testing Schema--><!--short name: oscal-mini--><!--A test schema for prototyping and demonstrating the metaschema feature set.-->
+           targetNamespace="urn:mini"
+           version="testing"><!--MINI Testing Schema--><!--short name: oscal-mini--><!--A test schema for prototyping and demonstrating the metaschema feature set.-->
    <xs:element name="lunch">
       <xs:annotation>
          <xs:documentation>
@@ -11,9 +12,11 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-mini:salad"/>
             <xs:element minOccurs="0" ref="oscal-mini:sandwich"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:chip"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:cookie"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:cupcake"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -39,6 +42,76 @@
       <xs:annotation>
          <xs:documentation>
             <b>Cookie: </b>Have several.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="days" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Days available: </b>
+               </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="baker" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Who baked it: </b>
+               </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="cupcake">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Cookie: </b>Have several.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="icing" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Type of icing: </b>
+               </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="salad">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Dump Truck: </b>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:masked-field"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-mini:labeled-value-field"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:ID-object"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="masked-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b> : </b>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="labeled-value-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b> : </b>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="ID-object">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Identified Flying Object: </b>
+         </xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
