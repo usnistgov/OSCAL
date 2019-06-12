@@ -8,6 +8,10 @@
   <!--<xs:import namespace="http://csrc.nist.gov/ns/oscal/1.0"
     schemaLocation="../../../schema/xml/oscal-catalog-schema.xsd"/>-->
   <xs:element name="METASCHEMA">
+    <xs:annotation>
+      <xs:documentation>Root element of an OSCAL Metaschema metaschema. Defines a family of data
+        structures.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       
       <xs:sequence>
@@ -29,8 +33,15 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="define-assembly">
+    <xs:annotation>
+      <xs:documentation>An element with structured element content in XML; in JSON, an object with
+        properties.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+        
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
@@ -61,8 +72,15 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="define-field">
+    <xs:annotation>
+      <xs:documentation>In JSON, an object with a nominal string value (potentially with internal
+        inline - not fully structured - markup). In XML, an element with string or mixed
+        content.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
@@ -85,7 +103,50 @@
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
+
+  <xs:element name="key">
+    <xs:annotation>
+      <xs:documentation>In the XML, produces an attribute with the given name, whose value is used as a key value (aka object property name) in the JSON, enabling objects to be 'lifted' out of arrays when such values are distinct. Implies that siblings will never share values. Overloading with datatype 'ID' and naming the key 'id' is legitimate and useful. Even without ID validation, uniqueness of these values among siblings is validable.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
+      <xs:attribute name="datatype" type="xs:NCName"/>
+      <!-- should Schematron check uniqueness among siblings irrespective of datatype -->
+      <xs:attribute name="name"     type="xs:NCName" use="required"/>
+      <!-- do not have to flag if required; it always will be <xs:attribute name="required" type="xs:NCName"/>-->
+    </xs:complexType>
+  </xs:element>
+  
+<!-- a value-key produces an attribute in the XML if a @name is given; otherwise
+     it is simply a literal  -->
+  <xs:element name="value-key">
+    <xs:annotation>
+      <xs:documentation>With a @name, produces an attribute in the XML, whose value is used as a key
+        value (object property name) in the JSON for the text value of the field, masking the system
+        default name for the text (string) content. With a literal value instead of the @name,
+        simply uses the value given as the mask. When both are given, the attribute is produced as
+        optional and the given value used as a fallback.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
+      <xs:attribute name="datatype" type="xs:NCName"/>
+<!-- either a name (for an attribute) or a value (for a literal) must be given: Sch -->
+      <xs:attribute name="name"     type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  
   <xs:element name="define-flag">
+    <xs:annotation>
+      <xs:documentation>A data point to be expressed as an attribute in the XML or a name/value pair
+        in the JSON. TBD: make flag definitions optional and implicit from their
+        calls.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
@@ -99,8 +160,26 @@
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="formal-name" type="xs:string"/>
-  <xs:element name="namespace"   type="xs:anyURI"/>
+  <xs:element name="formal-name" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>A formal name for the data construct, to be presented in documentation. It
+        is permissible for a formal name to provide nothing but an expanson of what is already given
+        by a tag (for example, this element could have formal name "Formal name") but it should at
+        the very least confirm, not confuse.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="namespace" type="xs:anyURI">
+    <xs:annotation>
+      <xs:documentation>The XML namespace governing the names of elements in XML documents, which
+        expect to be conformant to the schemas expressed by this metaschema. By using this
+        namespace, documents and document fragments used in mixed-format environments may be
+        distinguished from neighbor XML formats using other namespaces. NB this is only for the
+        convenience of XML users; this value is not reflected in OSCAL JSON, and OSCAL applications
+        should not rely on namespaces alone to disambiguate or resolve semantics – only for
+        something more important, namely to manage and expose the governance of relevant
+        specifications.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:group name="markup-elements">
     <xs:sequence>
       <xs:choice maxOccurs="unbounded">
@@ -113,6 +192,12 @@
     </xs:sequence>
   </xs:group>
   <xs:element name="description">
+    <xs:annotation>
+      <xs:documentation>A short description of the data construct, to be inserted into
+        documentation. Unlike 'formal-name' this should not simply repeat what is readily
+        discernable from a tag (element name or json label), but say a little more about
+        it.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true">
       <xs:group ref="m:markup-elements"/>
     </xs:complexType>
@@ -239,7 +324,6 @@
       <xs:attribute name="datatype" type="xs:NCName"/>
       <xs:attribute name="name"     type="xs:NCName" use="required"/>
       <xs:attribute name="required" type="xs:NCName"/>
-      <xs:attribute name="primary"  type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="choice">

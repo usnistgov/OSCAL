@@ -438,10 +438,11 @@
     <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
     
      <xsl:variable name="examples" xml:space="preserve">
-        <p>**Markdown** and even " quoted text"</p>
+        <p>**Markdown** and even " quoted text" and **more markdown**</p>
         <p>
 ## My test file!            
 
+Bit of `code` here and there, such as one might have along with *italics*.
 
  { ac-4.4_prm_2 } 
  
