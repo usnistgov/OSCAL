@@ -85,13 +85,13 @@ commands:
           name: Get markdown-link-check
           command: |
             sudo npm install -g markdown-link-check
-  install-jsome:
-    description: "Install jsome"
+  install-jq:
+    description: "Install jq"
     steps:
       - run:
           name: Get jsome
           command: |
-            sudo npm install -g jsome
+            sudo apt-get install jq
   install-prettyjson:
     description: "Install prettyjson"
     steps:
@@ -137,7 +137,7 @@ executors:
   python-executor:
     docker: #run the python jobs with Docker
       - image: circleci/python:3.7.3-node-browsers
-    <<: *common_environment
+    <<: *common_environment 
   go-executor:
     docker: # run the steps with Docker
       - image: circleci/golang:1.12.5
@@ -222,7 +222,7 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-saxon
-      - install-jsome
+      - install-jq
       - install-prettyjson
       - run:
           name: Generate OSCAL converters

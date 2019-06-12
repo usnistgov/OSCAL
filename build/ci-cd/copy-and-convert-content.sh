@@ -59,7 +59,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         json)
           # produce pretty JSON
           dest_pretty="$working_dir/${newpath}.${altformat}"
-          jsome -r -c false -s 2 "$dest" > "$dest_pretty"
+          jq . "$dest" > "$dest_pretty"
 
           # produce yaml
           newpath="${newpath/\/json\///yaml/}" # change path 
