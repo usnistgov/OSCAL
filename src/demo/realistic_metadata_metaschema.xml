@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="VALIDATION_root">
+
+  <schema-name>OSCAL Document Metadata Description</schema-name>
+  <schema-version>1.0-M1</schema-version>
+  <short-name>oscal-metadata</short-name>
+  <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
+  
+  <define-assembly name="VALIDATION_root">
+    <formal-name>(nominal root)</formal-name>
+    <description>NOT TO BE USED IN A METASCHEMA</description>
+    <remarks>
+      <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
+    </remarks>
+    <model>
+      <assembly named="metadata"/>
+      <assembly named="back-matter"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="metadata">
+    <formal-name>Publication metadata</formal-name>
+    <description>Provides information about the publication and availability of the containing document.</description>
+    <model>
+      <field      named="title"         required="yes"/>
+      <field      named="last-modified-date"/>
+      <field      named="version"/>
+      <field      named="oscal-version" required="yes"/>
+      <fields     named="doc-id"/>
+      <fields     named="prop"/>
+      <fields     named="link"/>
+      <assemblies named="role"/>
+      <assemblies named="party"/>
+      <assembly   named="notes"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="back-matter">
+    <formal-name>Back matter</formal-name>
+    <description>A collection of citations and resource references.</description>
+    <remarks>
+      <p>Provides a collection of identified <code>citation</code> and <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a citation identifier. A <code>citation</code> can reference a <code>resource</code> by specifying a local target value using the same fragment-identifier approach.</p>
+    </remarks>
+    <model>
+      <!--<assemblies named="section"/>-->
+      <assemblies named="citation"/>
+      <assemblies named="resource"/>
+    </model>
+    <example>
+      <description>Use of link, citation, and resource</description>
+      <remarks>
+        <p>The following is a contrived example to show the use of link, citation, and resource.</p>
+      </remarks>
+      <o:oscal>
+        <o:link rel="reference" href="#citation1">My citation</o:link>
+        ...snip...
+        <o:back-matter>
+          <o:citation id="citation1">
+            <o:target>#resource1</o:target>
+          </o:citation>
+          <o:resource id="resource1">
+            <o:rlink href="https://example.org/some-resource"/>
+          </o:resource>
+        </o:back-matter>
+      </o:oscal>
+    </example>
+  </define-assembly>
+
+  <define-field name="link" group-as="links" as="mixed">
+    <flag name="href" datatype="anyURI" required="yes"/>
+    <flag name="rel" datatype="NCName"/>
+    <flag name="media-type" datatype="string"/>
+    <formal-name>Link</formal-name>
+    <description>A reference to a local or remote resource, with associated markup.</description>
+    <remarks>
+      <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
+        element.</p>
+      <p>The <code>href</code> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>citation</code> or <code>resource</code> in the document's <code>back-matter</code>. If a remote resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document conatining the link.</p>
+      <p>To provide a cryptographic hash for a remote target resource, a local reference to a <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink</code> <code>hash</code> object.</p>
+      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a></p>
+    </remarks>
+    <example>
+      <description>Providing for link integrity</description>
+      <remarks>
+        <p>The following is a contrived example to show the use of link, citation, and resource.</p>
+      </remarks>
+      <o:oscal>
+        <o:link rel="reference" href="#resource1">My Hashed Resource</o:link>
+        ...snip...
+        <o:back-matter>
+          <o:resource id="resource1">
+            <o:rlink href="https://example.org/some-resource">
+              <o:hash algorithm="sha512">C2E9C1..snip..F88D2E</o:hash>
+            </o:rlink>
+          </o:resource>
+        </o:back-matter>
+      </o:oscal>
+    </example>
+  </define-field>
+  
+  <define-field name="last-modified-date">
+    <formal-name>Last modified date</formal-name>
+    <description>Date of last modification.</description>
+    <remarks>
+      <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
+      <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+    </remarks>
+  </define-field>
+
+  <define-field name="version">
+    <formal-name>Document version</formal-name>
+    <description>The version of the document content.</description>
+    <remarks><p>A string indicating the document's version, by release number, date, or other identifier. This version is typically set by the document owner or by the tool used to maintain the content.</p></remarks>
+  </define-field>
+  
+  <define-field name="oscal-version">
+    <formal-name>OSCAL version</formal-name>
+    <description>OSCAL model version.</description>
+    <remarks><p>Indicates the version of the OSCAL model to which this data set conforms, for example
+      <q>1.0-M1</q>.</p></remarks>
+  </define-field>
+  
+  <define-field name="doc-id" group-as="document-ids">
+    <flag name="type" required="yes">
+      <description>Qualifies the kind of document identifier.</description>
+      <valid-values allow-other="yes">
+        <value name="doi">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</value>
+      </valid-values>
+    </flag>
+    <formal-name>Document Identifier</formal-name>
+    <description>A document identifier qualified by an identifier <code>type</code>.</description>
+    <remarks>
+      <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
+
+      <p>Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p>
+    </remarks>
+  </define-field>
+
+  <define-flag name="type" datatype="string">
+    <formal-name>Type</formal-name>
+    <description>Indicating the type of identifier, address, email or other data item.</description>
+    <remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></remarks>
+  </define-flag>
+
+  <define-field name="prop" group-as="properties">
+    <flag name="id" datatype="ID"/>
+    <flag name="name" required="yes" primary="yes">
+      <valid-values allow-other="yes">
+        <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
+        <value name="label">A human-readable label for the parent context.</value>
+        <value name="method">An assessment method.</value>
+        <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
+      </valid-values>
+    </flag>
+    <flag name="ns"/>
+    <flag name="class"/>
+    <formal-name>Property</formal-name>
+    <description>A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</description>
+    <remarks>
+      <p>Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p>
+      <p>The value of a property is a
+        simple scalar value or list of values.</p>
+      <p>The lexical composition of properties may be constrained by declarations including matching
+        to regular expressions or by declaring a known datatype.</p>
+      <p>Because properties are often used as selectors or identifiers for OSCAL operations, their
+        values can be expected frequently to be normalized (e.g., with respect to whitespace) in
+        use; however, this is application defined.</p>
+      <p>For singletons (that is, the only element among siblings with its <code>class</code>),
+        properties are especially useful as proxies (unique identifiers) for their controls, such
+        that controls may be returned one for one on queries for properties (name and value). The
+        robustness of such queries can be ensured by appropriate property declarations (as
+        singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
+        (which also supports other constraints over property values).</p>
+    </remarks>
+  </define-field>
+  
+  <define-flag name="name" datatype="string">
+    <formal-name>Name</formal-name>
+    <description>Identifying the purpose and intended use of the property, part or other object.</description>
+    <remarks><p>This flag is intended to be used as a control point for validation of properties and parts
+      with respect to constraints related to local semantics. A name is not necessarily expected to be unique,
+      even within the scope of the parent (containing) structure. In some local applications, it is possible for a name to be unique and uniqueness of a name can be validated in such cases.</p>
+      <p>The definition of a name is subject to its namespace, offered by an <code>ns</code> flag (q.v.). When <code>ns</code> is not given, the namespace is assumed to be <q>oscal</q> and the name should be one of the recognized values for names
+      in OSCAL.</p></remarks>
+  </define-flag>
+  
+  <define-flag name="ns" datatype="string">
+    <formal-name>Namespace</formal-name>
+    <description>A namespace qualifying the name.</description>
+    <remarks>
+      <p>Identifies an organization or compliance regime defining the information needs (requirements) addressed by
+      an object. When this attribute is not given, its value should be assumed to be <code>oscal</code> and the name should be a name defined by this specification.</p>
+    </remarks>
+  </define-flag>
+  
+  <define-flag name="class" datatype="NMTOKENS">
+    <formal-name>Class</formal-name>
+    <description>Indicating the type or classification of the containing object</description>
+    <remarks>
+      <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
+    </remarks>
+  </define-flag>
+  
+  <define-assembly name="party" group-as="parties">
+    <flag name="id" datatype="ID"/>
+    <flag name="role-id"/>
+    <formal-name>Party (organization or person)</formal-name>
+    <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
+    <remarks>
+      <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
+      <p>Note that persons can also be indicated with organizational affiliations by using
+        <code>orgname</code> inside <code>person</code>. Contact information in that
+        case belongs to the person, not the organization: use <code>org</code> when an
+      organization as such serves as a documented party.</p>
+    </remarks>
+    <model>
+      <assemblies named="person"/>
+      <assembly named="org"/>
+      <assembly named="notes"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="person" group-as="persons">
+    <formal-name>Person</formal-name>
+    <description>A person, with contact information</description>
+    <model>
+      <field    named="person-name"/>
+      <field    named="short-name"/>
+      <field    named="org-name">
+        <description>Affiliated organization</description>
+      </field>
+      <fields     named="person-id"/>
+      <fields     named="org-id"/>
+      <assemblies named="address"/>
+      <fields     named="email"/>
+      <fields     named="phone"/>
+      <fields     named="url"/>
+      <assembly   named="notes"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="org">
+    <formal-name>Organization</formal-name>
+    <description>An organization or legal entity (not a person), with contact information</description>
+    <model>
+      <field      named="org-name"/>
+      <field      named="short-name"/>
+      <fields     named="org-id"/>
+      <assemblies named="address"/>
+      <fields     named="email"/>
+      <fields     named="phone"/>
+      <fields     named="url"/>
+      <assembly   named="notes"/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="person-id" group-as="person-ids">
+    <flag name="type"/>
+    <formal-name>Personal Identifier</formal-name>
+    <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
+  </define-field>
+  
+  <define-field name="org-id" group-as="organization-ids">
+    <flag name="type"/>
+    <formal-name>Organization Identifier</formal-name>
+    <description>An identifier for an organization using a designated scheme.</description>
+  </define-field>
+  
+  <define-assembly name="rlink" group-as="rlinks">
+    <flag name="href" datatype="anyURI" required="yes"/>
+    <flag name="media-type"/>
+    <formal-name>Related link</formal-name>
+    <description>A pointer to an external copy of a document with optional hash for verification</description>
+    <remarks>
+      <p>This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
+    </remarks>
+    <model>
+      <field named="hash"/>
+    </model>
+  </define-assembly>
+  
+  <define-flag name="rel" datatype="NCName">
+    <formal-name>Relation</formal-name>
+    <description>Purpose of the link</description>
+    <remarks>
+      <p>TO DO: discuss IANA link relation registry.</p>
+    </remarks>
+  </define-flag>
+  
+  <define-flag name="media-type" datatype="string">
+    <formal-name>Media type</formal-name>
+    <description>Describes the media type of a linked resource</description>
+    <remarks>
+      <p>TO DO: discuss IANA media type registry.</p>
+    </remarks>
+  </define-flag>
+  
+  <define-field name="person-name">
+    <formal-name>Person Name</formal-name>
+    <description>Full (legal) name of an individual</description>
+  </define-field>
+  
+  <define-field name="org-name">
+    <formal-name>Organization Name</formal-name>
+    <description>Full (legal) name of an organization</description>
+    <remarks>
+      <p>Only when this element is used directly within <code>org</code> can it be accepted of the name of the thing to which it is attached. This element may also be used directly on <code>person</code> to name an affiliated organization.</p>
+      <p><code>href</code> can be used to provide external links or internal links to other elements. The sibling <code>org-id</code> element
+        (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p>
+    </remarks>
+  </define-field>
+  
+  <define-field name="short-name">
+    <formal-name>short-name</formal-name>
+    <description>A common name, short name or acronym</description>
+    <remarks>
+      <p>This element is not expected to be used to identify individual persons, but rather an
+        organization or system.</p>
+    </remarks>
+  </define-field>
+
+  <define-assembly name="address" group-as="addresses">
+    <flag name="type">
+      <description>Indicates the type of address.</description>
+      <valid-values allow-other="yes">
+        <value name="home">A home address.</value>
+        <value name="work">A work address.</value>
+      </valid-values>
+    </flag>
+    <formal-name>Address</formal-name>
+    <description>A postal address.</description>
+    <model>
+      <fields named="addr-line"/>
+      <field  named="city"/>
+      <field  named="state"/>
+      <field  named="postal-code"/>
+      <field  named="country"/>
+      <!-- More address stuff -->
+    </model>
+  </define-assembly>
+
+
+  <define-field name="addr-line" group-as="postal-address">
+    <formal-name>Address line</formal-name>
+    <description>A single line of an address.</description>
+  </define-field>
+
+  <define-field name="city">
+    <formal-name>City</formal-name>
+    <description>City, town or geographical region for mailing address</description>
+  </define-field>
+
+  <define-field name="state">
+    <formal-name>State</formal-name>
+    <description>State, province or analogous geographical region for mailing address</description>
+  </define-field>
+
+  <define-field name="postal-code">
+    <formal-name>Postal Code</formal-name>
+    <description>Postal or ZIP code for mailing address</description>
+  </define-field>
+
+  <define-field name="country">
+    <formal-name>Country</formal-name>
+    <description>Country for mailing address</description>
+  </define-field>
+
+  <define-field name="email" group-as="email-addresses">
+    <formal-name>Email</formal-name>
+    <description>Email address</description>
+  </define-field>
+
+  <define-field name="phone" group-as="telephone-numbers">
+    <flag name="type">
+      <description>Indicates the type of phone number.</description>
+      <valid-values allow-other="yes">
+        <value name="home">A home phone number.</value>
+        <value name="office">An office phone number.</value>
+        <value name="mobibe">A mobile phone number.</value>
+      </valid-values>
+    </flag>
+    <formal-name>Telephone</formal-name>
+    <description>Contact number by telephone</description>
+  </define-field>
+
+  <define-field name="url" group-as="URLs">
+    <formal-name>URL</formal-name>
+    <description>URL for web site or Internet presence</description>
+  </define-field>
+
+  <define-assembly name="notes">
+    <flag name="type">
+      <description>Indicates the type of note.</description>
+    </flag>
+    <formal-name>Notes</formal-name>
+    <description>Any notes with further information</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+
+  <define-field name="desc">
+    <formal-name>Description</formal-name>
+    <description>A short textual description</description>
+  </define-field>
+  
+  <define-assembly name="resource" group-as="resources">
+    <flag name="id" datatype="ID" required="yes"/>
+    <formal-name>Resource</formal-name>
+    <description>A resource associated with the present document.</description>
+    <remarks>
+      <p>Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p>
+      <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource, or 2) be included as an attachment.</p>
+    </remarks>
+    <model>
+      <field named="desc" />
+      <choice>
+        <assemblies named="rlink"/>
+        <field      named="base64" />
+      </choice>
+      <assembly named="notes"/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="hash" group-as="hashes">
+    <flag name="algorithm" required="yes"/>
+    <formal-name>Hash</formal-name>
+    <description>A representation of a cryptographic digest generated over a resource using a hash algorithm.</description>
+    <remarks>
+      <p>A hash value can be used to authenticate that a referenced resource is the same resources as was pointed to by the author of the reference.</p>
+      <p>When appearing as part of a resource (data object), the hash should apply to the referenced object.</p>
+    </remarks>
+  </define-field>
+
+  <define-flag name="algorithm" datatype="string">
+    <formal-name>Hash algorithm</formal-name>
+    <description>Method by which a hash is derived</description>
+    <!-- FIX: valid values are not displaying -->
+    <valid-values allow-other="yes">
+      <value name="SHA-224"/>
+      <value name="SHA-256"/>
+      <value name="SHA-384"/>
+      <value name="SHA-512"/>
+      <value name="RIPEMD-160"/>
+    </valid-values>
+    <remarks><p>Valid values MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p></remarks>
+  </define-flag>
+  
+  <define-assembly name="role" group-as="roles">
+    <flag name="id" datatype="ID" required="yes"/>
+    <formal-name>Role</formal-name>
+    <description>Defining a role to be assigned to a party or agent</description>
+    <remarks>
+      <p>Permissible values to be determined closer to the application (e.g. by a receiving
+        authority).</p>
+    </remarks>
+    <model>
+      <field named="title"/>
+      <field named="short-name"/>
+      <field named="desc"/>
+    </model>
+  </define-assembly>
+  
+  <define-flag name="href" datatype="anyURI">
+    <formal-name>hypertext reference</formal-name>
+    <description>A link to a document or document fragment (actual, nominal or projected)</description>
+    <remarks>
+      <p>Note in particular that <code>href</code> targets include elements (locations) in
+        representations of documents that exist only by virtue of dynamic application, such as (for
+        example) the results of profile resolution.</p>
+    </remarks>
+  </define-flag>
+
+  <define-flag name="id" datatype="ID">
+    <formal-name>Identifier</formal-name>
+    <description>Unique identifier of the containing object</description>
+    <remarks>
+      <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
+        different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
+    </remarks>
+      <example>
+        <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+      </example>
+  </define-flag>
+  
+  <define-flag name="role-id" datatype="IDREFS">
+    <formal-name>Role identifier</formal-name>
+    <description>References a <code>role</code> element defined in metadata.</description>
+    <valid-values allow-other="yes">
+      <value name="content-creator">Identifies a party responsible for creating the content.</value>
+      <value name="content-maintainer">Identifies a party responsible for maintainer the content on an ongoing basis.</value>
+      <!-- TODO: Need to add others -->
+    </valid-values>
+  </define-flag>
+  
+  <define-field name="title" as="mixed">
+    <formal-name>Title</formal-name>
+    <description>A title for display and navigation, exclusive of more specific properties</description>
+    <remarks>
+      <p>A title for the containing object as it should appear in a formatted document.</p>
+    </remarks>
+  </define-field>
+  
+  <define-field name="base64" as="string">
+    <flag name="filename" datatype="string"/>
+    <flag name="media-type"/>
+    <formal-name>Base64</formal-name>
+    <description></description>
+  </define-field>
+  
+  <define-flag name="filename" datatype="string">
+    <formal-name>File Name</formal-name>
+    <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
+  </define-flag>
+ 
+  <define-assembly name="citation" group-as="citations">
+    <flag name="id" datatype="ID" required="yes"/>
+    <formal-name>Citation</formal-name>
+    <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
+    <remarks>
+      <p>The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information (e.g., database) will be handled by use of a <code>doc-id</code>. Use of a canonical identifier such as a DOI is recommended for any citation.</p>
+      <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide a bibliographic entry.</p>
+    </remarks>
+    <model>
+      <fields named="target"/>
+      <field named="title"/>
+      <field named="desc"/>
+      <fields named="doc-id"/>
+      <any/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="target" group-as="targets">
+    <formal-name>Citation target</formal-name>
+    <description>An address for retrieval of a citation</description>
+    <remarks>
+      <p>Semantically equivalent to an <code>href</code> (flag), this is represented as a field in order to permit citations to carry an extra target (for cross-check or fallback) and to permit further qualification (with flags of its own) in future.</p>
+      <p>This value is expected to be a URI, and may be an internal link to
+      another object such as a <code>resource</code> documented in back matter.</p>
+      <p>When a citation is given as a full (but unparsed) bibliographic citation, use <code>desc</code> instead
+      of <code>title</code> inside this object.</p>
+    </remarks>
+  </define-field>
+  
+</METASCHEMA>

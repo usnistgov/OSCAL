@@ -135,11 +135,17 @@ PROPOSAL: the definition in the metaschema uses the same 'value-key' element:
 
 ADDITIONAL PROPOSAL: if both value-key/@name and a literal value-key are given, the processor can fall back to the literal when the flag is not available -- meaning the flag can be optional as well, not required.
 
+### JSON object grouping
+
+Where JSON objects are isomorphic except for single value (have the same property set), we can permit them to collapse. This is described on tickets and in notes. It happens separately from the enhancement described above.
+
 ### Plain-old collapsing
 
-Additionally to these enhancements we can as a rule collapse single-member arrays, into single objects (or strings), using the same method.
+Additionally to these enhancements we can as a rule collapse single-member arrays, into single objects (or strings), wherever they appear.
 
 The more challenging part of that casting is seeing to it that things are rendered back up into XML correctly and that nothing is dropped.
+
+However, if we introduce all these features incrementally, we can test the reverse conversion as we go.
 
 
 #### Singleton vs array in JSON (#239.2)

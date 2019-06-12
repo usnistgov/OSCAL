@@ -8,6 +8,7 @@
 
   
   <schema-name>MINI Testing Schema</schema-name>
+  <schema-version>testing</schema-version>
   <short-name>oscal-mini</short-name>
   <namespace>urn:mini</namespace>
   <remarks>
@@ -19,6 +20,7 @@
     <formal-name>Lunch</formal-name>
     <description>lunch</description>
     <model>
+      <assembly named="dumptruck"/>
       <assembly named="sandwich"/>
       <fields   named="chip"/>
       <fields   named="cookie"/>
@@ -43,5 +45,56 @@
     <description>Have several.</description>
   </define-field>
   
+  <define-assembly name="dumptruck">
+    <formal-name>Dump Truck</formal-name>
+    <description/>
+    <model>
+      <fields named="masked-field"/>
+      <fields named="labeled-value-field"/>
+      <fields named="ID-object"/>
+    </model>
+  </define-assembly>
   
+  <define-field name="masked-field" group-as="masked-fields">
+    <value-key name="name" datatype="string"/>
+    <formal-name> </formal-name>
+    <description/>
+    <!-- in XML, produces an attribute named @name; in JSON,
+         uses this to mask the form of the value -->
+  </define-field>
+  
+  <define-field name="labeled-value-field" group-as="labeled--value-fields">
+    <value-key>label</value-key> <!-- in XML, produces an attribute named @name; in JSON,
+      uses this to mask the form of the value -->
+    <formal-name> </formal-name>
+    <description/>
+  </define-field>
+
+  <define-field name="ID-object" group-as="ID-objects">
+    <key name="id" datatype="ID"/> 
+    <value-key></value-key>
+    
+    <formal-name> </formal-name>
+    <description/>
+  </define-field>
+  
+  
+    <!-- xml - adds @{name}id attribute with ID validation -
+         json - uses that value as object key -->
+  
+<!-- xml - declares an attribute for carrying the value key
+        replacing either of STRVALUE or RICHTEXT 
+    
+    INVESTIGATE WHETHER METASCHEMA COULD SET THESE NAMES FROM THE TOP? (WHY NOT?)
+    -->
+    
+    
+  <define-assembly name="param" address="id" group-as="parameters">
+    <flag name="id" datatype="ID" required="yes"/>
+    <flag name="class"/>
+    <flag name="depends-on" datatype="IDREF"/>
+    <formal-name>Parameter</formal-name>
+    <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
+    ...
+  </define-assembly>
 </METASCHEMA>
