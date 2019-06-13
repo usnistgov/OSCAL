@@ -18,7 +18,7 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
 - OSCAL 1.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1): Develop the OSCAL Catalog and Profile models
 
-  The initial OSCAL work encompasses the [catalog]({{ site.baseurl }}/docs/architecture/catalog/) and [profile]({{ site.baseurl }}/docs/architecture/profile/) concepts of the OSCAL [architecture]({{ site.baseurl }}/docs/architecture/). There are several types of users who will benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
+  The initial OSCAL work encompasses the [catalog]({{ site.baseurl }}/docs/catalog/) and [profile]({{ site.baseurl }}/docs/profile/) concepts of the OSCAL [architecture]({{ site.baseurl }}/docs/). There are several types of users who will benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
 
   - **Catalog maintainers:** publishing catalogs into OSCAL format (e.g., NIST, ISO, ISACA)
   - **Standard profile maintainers:** profiles in OSCAL format used by many organizations consuming OSCAL catalogs (e.g., NIST, FedRAMP)
