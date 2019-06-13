@@ -1,30 +1,32 @@
 ---
 title: Profile
 description: Profile
-permalink: /docs/architecture/profile/
+permalink: /docs/profile/
 layout: post
-topnav: concepts
-sidenav: concepts
+topnav: architecture
+sidenav: architecture
 subnav:
   - text: Control
-    href: /docs/architecture/control/
+    href: /docs/control/
   - text: Catalog
-    href: /docs/architecture/catalog/
+    href: /docs/catalog/
   - text: Profile
-    href: /docs/architecture/profile/
+    href: /docs/profile/
     current: true
 sticky_sidenav: true
 ---
 
-[See examples of OSCAL profiles](/OSCAL/resources/examples/profiles/)
+In OSCAL a profile is:
 
-An OSCAL profile is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Commonly referred to as *baselines* or *overlays* (in order to indicate their relations to the catalogs from which their controls are drawn), examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
+> A specific set of security requirements; also called a *baseline* or *overlay*. A profile represents a selection of controls from one or more catalogs, with configuration or qualification appropriate to its use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and NIST SP800-171 (a controls baseline for CUI/NFO).  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
 
 OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
 
 * Which controls are *selected* from the catalog and thereby considered to be in scope for the application;
 * How the control selection should be *organized* and represented, including whether and how competing control definitions are to be resolved and merged;
 * Whether and where any controls are to be *configured* or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls and subcontrols, to describe their application in the system. 
+
+See [examples](/OSCAL/resources/examples/profiles/) of OSCAL profiles.
 
 These three functions are reflected in the organization of a profile document, which may contain (in addition to document metadata) any of three sections, `import`, `merge`, and `modify`:
 

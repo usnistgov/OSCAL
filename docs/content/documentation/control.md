@@ -1,22 +1,26 @@
 ---
 title: Control
 description: Control component description
-permalink: /docs/architecture/control/
+permalink: /docs/control/
 layout: post
-topnav: concepts
-sidenav: concepts
+topnav: architecture
+sidenav: architecture
 subnav:
   - text: Control
-    href: /docs/architecture/control/
+    href: /docs/control/
     current: true
   - text: Catalog
-    href: /docs/architecture/catalog/
+    href: /docs/catalog/
   - text: Profile
-    href: /docs/architecture/profile/
+    href: /docs/profile/
 sticky_sidenav: true
 ---
 
-In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures", but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:
+In OSCAL, a control is:
+
+> A safeguard or countermeasure designed to satisfy a set of defined security requirements.
+
+The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures", but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:
 
 <img src="{{ site.baseurl }}/assets/img/NIST-SP-800-53-Rev4-AC1.png" alt="800-53Rev4AC1" width="800" />
 
