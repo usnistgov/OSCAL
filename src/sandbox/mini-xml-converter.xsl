@@ -17,7 +17,7 @@
    </xsl:character-map>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
-   <xsl:param name="diagnostic" as="xs:string">rectified</xsl:param>
+   <xsl:param name="diagnostic" as="xs:string">none</xsl:param>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
          <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>

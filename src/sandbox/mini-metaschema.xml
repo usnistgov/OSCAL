@@ -14,7 +14,6 @@
   <remarks>
     <p>A test schema for prototyping and demonstrating the metaschema feature set.</p>
   </remarks>
-
   
  <define-assembly name="lunch">
     <formal-name>Lunch</formal-name>

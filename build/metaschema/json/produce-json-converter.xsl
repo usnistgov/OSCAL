@@ -103,8 +103,26 @@
         <XSLT:apply-templates mode="#current" select="*[@key='prose']"/>    
     </xsl:template>
     
+    <xsl:template match="define-field" mode="text-key"             >STRVALUE</xsl:template>
+    <xsl:template match="define-field[@as='mixed']" mode="text-key">RICHTEXT</xsl:template>
+    
+    <xsl:template match="define-field[exists(value-key)]" mode="text-key">
+        <xsl:for-each select="value-key/@name">
+            <XSLT:value-of select="string[@key='{.}']"/>
+        </xsl:for-each>
+        <xsl:if test="empty(value-key/@name)">
+            <xsl:value-of select="value-key"/>
+        </xsl:if>
+    </xsl:template>
+    
+    
     <xsl:template match="define-field" expand-text="true">
-        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
+        <xsl:variable name="text-value-key" as="xs:string">
+            <xsl:apply-templates select="." mode="text-key"/>
+        </xsl:variable>
+        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{
+            @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{
+            if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <XSLT:template match="{$field-match}" priority="2" mode="json2xml">
@@ -116,6 +134,30 @@
                 <xsl:apply-templates select="." mode="field-text"/>
             </XSLT:element>
         </XSLT:template>
+        
+        <xsl:if test="matches(@group-as,'\S')">
+            <XSLT:template match="map[@key='{@group-as}'][array/@key='{$text-value-key}']" priority="3" mode="json2xml">
+<!-- A supervening template matching a map will unspool itself as if it hadn't been compressed, into an array,
+                then apply templates to that ... -->
+                <XSLT:variable name="expanded" as="element()*">
+                    <array xmlns="http://www.w3.org/2005/xpath-functions" key="{@group-as}">
+                      <XSLT:apply-templates mode="expand" select="array[@key='{$text-value-key}']/string"/>
+                    </array>
+                </XSLT:variable>
+                <XSLT:apply-templates select="$expanded" mode="json2xml"/>
+            </XSLT:template>
+            <XSLT:template mode="expand" match="map[@key='{@group-as}']/array[@key='{$text-value-key}']/string">
+                <XSLT:variable name="me" select="."/>
+                <XSLT:for-each select="parent::array/parent::map">
+                    <XSLT:copy>
+                        <XSLT:copy-of select="* except array[@key='{$text-value-key}']"/>
+                        <string xmlns="http://www.w3.org/2005/xpath-functions" key="{$text-value-key}">
+                            <XSLT:value-of select="$me"/>
+                        </string>
+                    </XSLT:copy>
+               </XSLT:for-each>
+            </XSLT:template>
+        </xsl:if>
         <xsl:call-template name="drop-address"/>
     </xsl:template>
     
