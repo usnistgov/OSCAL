@@ -37,7 +37,7 @@ The OSCAL project uses the [Another Json Validator](https://ajv.js.org/) (AJV) [
 The following example uses the **ajv-cli** to perform validation of an OSCAL catalog JSON file.
 
 ```
-ajv validate -s "oscal_catalog_schema.xsd" -d "catalog.xml" --extend-refs=true --verbose
+ajv validate -s "oscal_catalog_schema.json" -d "catalog.json" --extend-refs=true --verbose
 ```
 
 The [online documentation](https://github.com/jessedc/ajv-cli) for *ajv-cli* provides more information on the commandline arguments.
