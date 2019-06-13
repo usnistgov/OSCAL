@@ -226,7 +226,9 @@
       </map>
    </xsl:template>
    <xsl:template match="chip" mode="xml2json">
-      <xsl:variable name="text-key">flavor</xsl:variable>
+      <xsl:variable name="text-key">
+         <xsl:value-of select="@type"/>
+      </xsl:variable>
       <map key="chip">
          <xsl:apply-templates mode="as-string" select="@brand"/>
          <xsl:apply-templates mode="as-string" select=".">
@@ -235,7 +237,7 @@
       </map>
    </xsl:template>
    <xsl:template match="cookie" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
+      <xsl:variable name="text-key">type</xsl:variable>
       <map key="cookie">
          <xsl:apply-templates mode="as-string" select="@days"/>
          <xsl:apply-templates mode="as-string" select="@baker"/>
@@ -247,7 +249,7 @@
    <xsl:template match="array[@key = 'cookies'][count(map) gt 1]"
                  mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
+      <xsl:variable name="text-key">type</xsl:variable>
       <xsl:for-each-group select="map"
                           group-by="string-join( (*[@key = 'baker'],*[@key = 'days'] ), '#' )">
          <map key="cookies">

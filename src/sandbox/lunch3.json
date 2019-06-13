@@ -13,12 +13,12 @@
         "chips": [
             {
                 "brand": "nabisco",
-                "flavor": "malt vinegar"
+                "muncher": "malt vinegar"
             },
-            {"flavor": "malt vinegar"},
+            {"cruncher": "malt vinegar"},
             {
                 "brand": "sunshine",
-                "flavor": "malt vinegar"
+                "special": "malt vinegar"
             }
         ],
         "cookies": {

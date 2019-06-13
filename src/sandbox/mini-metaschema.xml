@@ -37,7 +37,7 @@
   </define-assembly>
   
   <define-field name="chip" group-as="chips">
-    <value-key>flavor</value-key>
+    <value-key name="type"/>
     <flag name="brand"/>
     
     <formal-name>Chip</formal-name>
@@ -45,6 +45,7 @@
   </define-field>
   
   <define-field name="cookie" group-as="cookies" collapsible="true">
+    <value-key>type</value-key>
     <flag name="days"/>
     <flag name="baker"/>
     <formal-name>Cookie</formal-name>

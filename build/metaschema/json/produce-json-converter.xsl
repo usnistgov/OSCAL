@@ -139,6 +139,18 @@
             </XSLT:element>
         </XSLT:template>
         
+        <!-- when a field has value-key/@name, we need a template
+             to match the field with the value key and make an
+             attribute for it, {name}={label} -->
+        <xsl:if test="matches(value-key/@name,'\S')">
+        <xsl:variable name="flag-names" select="flag/@name"/>
+        <XSLT:template match="({$field-match})/string[not(@key=({string-join($flag-names/('''' || . || ''''),',')}))]" mode="as-attribute">
+            <XSLT:attribute name="{value-key/@name}">
+                <XSLT:value-of select="@key"/>
+            </XSLT:attribute>
+        </XSLT:template>
+        </xsl:if>
+        
         <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
              (for a 'collapsible' field definition) -->
         <xsl:if test="matches(@group-as,'\S')">
@@ -180,6 +192,12 @@
         <XSLT:for-each select="self::string[empty(@key)]">
             <XSLT:apply-templates mode="json2xml"/>
         </XSLT:for-each>
+    </xsl:template>
+    
+    <xsl:template match="define-field[matches(value-key/@name,'\S')]" mode="field-text">
+        <xsl:variable name="flag-names" select="flag/@name"/>
+        <XSLT:apply-templates select="string[not(@key=({
+            string-join($flag-names/('''' || . || ''''),',')}))]" mode="json2xml"/>
     </xsl:template>
     
     <xsl:template priority="3" match="define-field[@as='mixed']" mode="field-text">

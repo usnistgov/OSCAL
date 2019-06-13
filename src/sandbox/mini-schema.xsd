@@ -38,6 +38,7 @@
             <b>Chip: </b>Only one?</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string" use="required"/>
          <xs:attribute name="brand" type="xs:string">
             <xs:annotation>
                <xs:documentation>
@@ -122,7 +123,9 @@
             <b>Identified Flying Object: </b>
          </xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType mixed="true">
+         <xs:attribute name="id" type="xs:ID" use="required"/>
+      </xs:complexType>
    </xs:element>
    <xs:group name="prose">
       <xs:choice>

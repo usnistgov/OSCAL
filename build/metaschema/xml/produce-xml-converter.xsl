@@ -138,10 +138,13 @@
     
     <xsl:template match="define-field[exists(value-key)]" mode="text-key">
         <xsl:for-each select="value-key/@name">
-            <XSLT:value-of select="string[@key='{.}']"/>
+            <XSLT:value-of select="@{.}"/>
         </xsl:for-each>
         <xsl:if test="empty(value-key/@name)">
             <xsl:value-of select="value-key"/>
+            <xsl:if test="not(matches(value-key,'\S'))">
+                <xsl:next-match/>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
     

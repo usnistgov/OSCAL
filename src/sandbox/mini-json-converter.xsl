@@ -91,28 +91,31 @@
                  mode="json2xml">
       <xsl:element name="chip" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='flavor']" mode="json2xml"/>
-         <xsl:for-each select="self::string[empty(@key)]">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
+         <xsl:apply-templates select="string[not(@key=('brand'))]" mode="json2xml"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='chips'][array/@key='flavor']"
+   <xsl:template match="(*[@key='chip'] | *[@key='chips'] | *[@key='chips']/*)/string[not(@key=('brand'))]"
+                 mode="as-attribute">
+      <xsl:attribute name="type">
+         <xsl:value-of select="@key"/>
+      </xsl:attribute>
+   </xsl:template>
+   <xsl:template match="map[@key='chips'][array/@key='']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
          <array xmlns="http://www.w3.org/2005/xpath-functions" key="chips">
-            <xsl:apply-templates mode="expand" select="array[@key='flavor']/string"/>
+            <xsl:apply-templates mode="expand" select="array[@key='']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='chips']/array[@key='flavor']/string">
+   <xsl:template mode="expand" match="map[@key='chips']/array[@key='']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key='flavor']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="flavor">
+            <xsl:copy-of select="* except array[@key='']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>
@@ -125,28 +128,28 @@
                  mode="json2xml">
       <xsl:element name="cookie" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='type']" mode="json2xml"/>
          <xsl:for-each select="self::string[empty(@key)]">
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='cookies'][array/@key='STRVALUE']"
+   <xsl:template match="map[@key='cookies'][array/@key='type']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
          <array xmlns="http://www.w3.org/2005/xpath-functions" key="cookies">
-            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+            <xsl:apply-templates mode="expand" select="array[@key='type']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='cookies']/array[@key='STRVALUE']/string">
+   <xsl:template mode="expand" match="map[@key='cookies']/array[@key='type']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+            <xsl:copy-of select="* except array[@key='type']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="type">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>
