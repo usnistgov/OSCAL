@@ -57,7 +57,7 @@ The OSCAL project uses [Saxon-HE (Saxon Home Edition)](http://saxon.sourceforge.
 
 The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 
-The following example uses **Saxon HE** to convert an OSCAL catalog JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that Java 8+ and Saxon-HE have already been installed.
+The following example uses **Saxon HE** to convert an OSCAL catalog JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
 java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it json-file="oscal-catalog.json"

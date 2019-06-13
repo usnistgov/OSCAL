@@ -26,9 +26,9 @@ The following directories provide:
 
 JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/architecture/):
 
-- [Catalog JSON Schema](schema/oscal_catalog_schema.xsd): Supports the validation of OSCAL JSON-based control catalogs.
-- [Profile JSON Schema](schema/oscal_profile_schema.xsd): Supports the validation of OSCAL JSON-based control baselines.
-- [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.xsd): (Experimental) Supports the validation of OSCAL JSON-based SSPs.
+- [Catalog JSON Schema](schema/oscal_catalog_schema.json): Supports the validation of OSCAL JSON-based control catalogs.
+- [Profile JSON Schema](schema/oscal_profile_schema.json): Supports the validation of OSCAL JSON-based control baselines.
+- [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.json): (Experimental) Supports the validation of OSCAL JSON-based SSPs.
 
 ## Validating OSCAL JSON Content
 
@@ -58,7 +58,7 @@ The OSCAL project uses [Saxon-HE (Saxon Home Edition)](http://saxon.sourceforge.
 
 The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 
-The following example uses **Saxon HE** to convert an OSCAL catalog XML file to JSON using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that Java 8+ and Saxon-HE have already been installed.
+The following example uses **Saxon HE** to convert an OSCAL catalog XML file to JSON using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that Java 8+ has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
 java -jar "saxon9he.jar" -xsl:"oscal_catalog_xml-to-json-converter.xsl" -s:"oscal-catalog.xml" -o:"oscal-catalog.json" json-indent=yes
