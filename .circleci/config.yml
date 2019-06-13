@@ -29,7 +29,7 @@ references:
         - ~/jekyll-bundle
 commands:
   install-saxon:
-    description: "Retrieve Saxon-HE and setup the environment to run it"
+    description: "Install Saxon-HE"
     steps:
       - restore_cache:
           key: maven-m2
@@ -42,7 +42,7 @@ commands:
           paths:
             - ~/.m2
   install-schematron:
-    description: "Retrieve the schematron skeleton and setup the environment to run it"
+    description: "Install the schematron skeleton"
     steps:
       - run:
           name: Get schematron skeleton
@@ -65,47 +65,47 @@ commands:
           command: |
             sudo pip install lxml
   install-xmllint:
-    description: "Retrieve xmllint and setup the environment to run it"
+    description: "Install xmllint"
     steps:
       - run:
           name: Get xmllint
           command: |
             sudo apt-get install libxml2-utils
   install-ajv:
-    description: "Retrieve ajv and setup the environment to run it"
+    description: "Install ajv"
     steps:
       - run:
           name: Get ajv
           command: |
             sudo npm install -g ajv-cli
   install-markdown-link-check:
-    description: "Retrieve markdown-link-check and setup the environment to run it"
+    description: "Install markdown-link-check"
     steps:
       - run:
           name: Get markdown-link-check
           command: |
             sudo npm install -g markdown-link-check
   install-jsome:
-    description: "Retrieve jsome and setup the environment to run it"
+    description: "Install jsome"
     steps:
       - run:
           name: Get jsome
           command: |
             sudo npm install -g jsome
   install-prettyjson:
-    description: "Retrieve prettyjson and setup the environment to run it"
+    description: "Install prettyjson"
     steps:
       - run:
           name: Get prettyjson
           command: |
             sudo npm install -g prettyjson
-  install-hub:
-    description: "Retrieve hub and setup the environment to run it"
+  install-github-release:
+    description: "Install Github Release"
     steps:
       - run:
-          name: Get hub
+          name: Get Github Release
           command: |
-            sudo brew install hub
+            go get github.com/aktau/github-release
   install-bundler:
     description: "Install bundler and html-proofer"
     steps:
@@ -137,6 +137,10 @@ executors:
   python-executor:
     docker: #run the python jobs with Docker
       - image: circleci/python:3.7.3-node-browsers
+    <<: *common_environment
+  go-executor:
+    docker: # run the steps with Docker
+      - image: circleci/golang:1.12.5
     <<: *common_environment 
 jobs: # a collection of 
   job-ci-skip-check:
@@ -375,11 +379,29 @@ jobs: # a collection of
             git config user.name "Deployment Bot"
             bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
       - *publish_artifacts
+  package:
+    executor: go-executor
+    steps:
+      - *checkout
+      - install-github-release
+      - run:
+          name: Package Release
+          command: |
+            bash -x "$CICD_DIR/package-release.sh" "$OSCAL_BUILD_DIR"
 workflows:
   version: 2
   build:
     jobs:
-      - job-ci-skip-check
+      - package:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v\d+.+/
+      - job-ci-skip-check:
+          filters:
+            tags:
+              ignore: /.*/
       - job-validate-markdown:
           requires:
             - job-ci-skip-check

@@ -1,3 +1,4 @@
+
 # Proprietary files not to be propagated
 vault
 
@@ -20,6 +21,7 @@ target/
 xspec/*.html
 
 # ignore generated content
+archive
 roundtrip
 content
 xml
@@ -30,5 +32,8 @@ svrl
 
 # but allow markdown files
 !content/**/*.md
+!xml/*.md
 !xml/**/*.md
+!json/*.md
 !json/**/*.md
+
