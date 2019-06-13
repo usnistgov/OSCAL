@@ -1,8 +1,8 @@
-# Running Jekyll locally
+# OSCAL Website
 
-This subdirectory contains source code for the OSCAL Pages web site.
+This subdirectory contains source code for the OSCAL Pages web site. For development you may need to know how to run it.
 
-For development you may need to know how to run it.
+## Developing with Ruby
 
 Jekyll, a Ruby application, is documented with a Quickstart here: https://jekyllrb.com/docs/
 
@@ -41,4 +41,17 @@ or even
 JEKYLL_ENV=production bundle exec jekyll serve --incremental
 ``` 
 
-At that point you should have a Jekyll site running at http:localhost:4000
+At that point you should have a Jekyll site running at http://localhost:4000
+
+## Developing with Docker
+
+The website can also be developed and built using the included Docker resources. Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
+
+```
+docker-compose up
+```
+
+Once the site is running, it can be accessed at http://localhost:4000
+
+The `docker-compose.yml` file uses the `Dockerfile.dev` image to build the development version of the website.
+
