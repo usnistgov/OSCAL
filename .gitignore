@@ -21,19 +21,19 @@ target/
 xspec/*.html
 
 # ignore generated content
-archive
-roundtrip
-content
-xml
-json
+/archive
+/roundtrip
+/content
+/xml
+/json
 svrl
-.skipbuild
-.runbuild
+/.skipbuild
+/.runbuild
 
 # but allow markdown files
-!content/**/*.md
-!xml/*.md
-!xml/**/*.md
-!json/*.md
-!json/**/*.md
+!/content/**/*.md
+!/xml/*.md
+!/xml/**/*.md
+!/json/*.md
+!/json/**/*.md
 
