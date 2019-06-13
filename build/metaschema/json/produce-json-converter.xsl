@@ -103,42 +103,48 @@
         <XSLT:apply-templates mode="#current" select="*[@key='prose']"/>    
     </xsl:template>
     
-    <xsl:template match="define-field" mode="text-key"             >STRVALUE</xsl:template>
-    <xsl:template match="define-field[@as='mixed']" mode="text-key">RICHTEXT</xsl:template>
+    <xsl:template match="define-field" mode="text-key">
+        <xsl:value-of select="$string-value-label"/>
+    </xsl:template>
     
-    <xsl:template match="define-field[exists(value-key)]" mode="text-key">
-        <xsl:for-each select="value-key/@name">
+    <xsl:template match="define-field[@as='mixed']" mode="text-key">
+        <xsl:value-of select="$markdown-value-label"/>
+    </xsl:template>
+    
+    <xsl:template priority="2" match="define-field[exists(value-key)]" mode="text-key">
+        <xsl:for-each select="value-key/@name[matches(.,'\S')]">
             <XSLT:value-of select="string[@key='{.}']"/>
         </xsl:for-each>
-        <xsl:if test="empty(value-key/@name)">
+        <xsl:if test="empty(value-key/@name[matches(.,'\S')])">
             <xsl:value-of select="value-key"/>
         </xsl:if>
     </xsl:template>
-    
     
     <xsl:template match="define-field" expand-text="true">
         <xsl:variable name="text-value-key" as="xs:string">
             <xsl:apply-templates select="." mode="text-key"/>
         </xsl:variable>
         <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{
-            @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{
+            @group-as/(' | *[@key=''' || . || '''] | *[@key=''' || . || ''']/*') }{
             if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <XSLT:template match="{$field-match}" priority="2" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
-                <xsl:for-each select="@address">
-                    <XSLT:attribute name="{.}" select="../@key"/>
+                <xsl:for-each select="key">
+                    <XSLT:attribute name="{@name}" select="../@key"/>
                 </xsl:for-each>
                 <XSLT:apply-templates select="*" mode="as-attribute"/>
                 <xsl:apply-templates select="." mode="field-text"/>
             </XSLT:element>
         </XSLT:template>
         
+        <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
+             (for a 'collapsible' field definition) -->
         <xsl:if test="matches(@group-as,'\S')">
             <XSLT:template match="map[@key='{@group-as}'][array/@key='{$text-value-key}']" priority="3" mode="json2xml">
-<!-- A supervening template matching a map will unspool itself as if it hadn't been compressed, into an array,
-                then apply templates to that ... -->
+            <!-- A supervening template matching a map will unspool itself as if it hadn't been compressed,
+                 then apply templates to the resulting array ... -->
                 <XSLT:variable name="expanded" as="element()*">
                     <array xmlns="http://www.w3.org/2005/xpath-functions" key="{@group-as}">
                       <XSLT:apply-templates mode="expand" select="array[@key='{$text-value-key}']/string"/>
@@ -158,57 +164,79 @@
                </XSLT:for-each>
             </XSLT:template>
         </xsl:if>
-        <xsl:call-template name="drop-address"/>
+        <!--<xsl:call-template name="drop-address"/>-->
     </xsl:template>
     
     <!-- We produce a template to override the assembly match on arrays
          (whose members represent the elements). -->
     
-    
-    
-    <!-- When there are no flags, we don't have to isolate the contents of a field -->
     <xsl:template match="define-field" mode="field-text">
-        <XSLT:apply-templates mode="json2xml"/>
+        <xsl:variable name="key">
+            <xsl:apply-templates select="." mode="text-key"/>
+        </xsl:variable>
+        <!-- self::string[empty(@key)] because sometimes a data point for
+            an element is represented by an anonymous string inside a (named) array -->
+        <XSLT:apply-templates select="string[@key='{$key}']" mode="json2xml"/>
+        <XSLT:for-each select="self::string[empty(@key)]">
+            <XSLT:apply-templates mode="json2xml"/>
+        </XSLT:for-each>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='mixed']" mode="field-text">
+    <xsl:template priority="3" match="define-field[@as='mixed']" mode="field-text">
+        <xsl:variable name="key">
+            <xsl:apply-templates select="." mode="text-key"/>
+        </xsl:variable>
+        <XSLT:for-each select="string[@key={$key}], self::string[empty(@key)]">
+            <xsl:call-template name="render-markdown-field"/>
+        </XSLT:for-each>
+    </xsl:template>
+    
+    <xsl:template name="render-markdown-field">
         <XSLT:variable name="markup">
             <XSLT:apply-templates mode="infer-inlines"/>
         </XSLT:variable>
         <XSLT:apply-templates mode="cast-ns" select="$markup"/>
     </xsl:template>
     
-    <xsl:template priority="2" match="define-field[exists(flag)]" mode="field-text">
-        <!-- XXX to do: fetch value for alternative label       -->
+    <!--<xsl:template priority="2" match="define-field[exists(flag)]" mode="field-text">
+        <!-\- XXX to do: fetch value for alternative label       -\->
         <XSLT:apply-templates mode="json2xml" select="string[@key=('{$string-value-label}','{$markdown-value-label}')]"/>
+    </xsl:template>-->
+    
+    <xsl:template match="define-assembly[exists(key) and matches(@group-as,'\S')]">
+        <XSLT:template match="map[@key='{@group-as}']" priority="3" mode="json2xml">
+            <XSLT:apply-templates mode="#current"/>
+        </XSLT:template>
+        
+        <xsl:next-match/>
     </xsl:template>
     
     <xsl:template match="define-assembly" expand-text="true">
         
-        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
+        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | *[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <XSLT:template match="{$assembly-match}" priority="2" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
-                <xsl:for-each select="@address">
-                    <XSLT:attribute name="{.}" select="@key"/>
+                <xsl:for-each select="child::key">
+                    <XSLT:attribute name="{@name}" select="@key"/>
                 </xsl:for-each>
                 <XSLT:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
             </XSLT:element>
         </XSLT:template>
-        <xsl:call-template name="drop-address"/>
+        <!--<xsl:call-template name="drop-address"/>-->
     </xsl:template>
     
-    <xsl:template name="drop-address">
-        <!-- When a flag is promoted as an address, it appears in the JSON as a label, so no attribute should be made in the regular traversal. -->
+    <!--<xsl:template name="drop-address">
+        <!-\- When a flag is promoted as an address, it appears in the JSON as a label, so no attribute should be made in the regular traversal. -\->
         <xsl:if test="matches(@address, '\i\c*')">
             <XSLT:template mode="as-attribute" priority="2"
                 match="*[@key='{@name}']/string[@key='{@address}']{ @group-as/(' | ' || '*[@key=''' || . || ''']/*/string[@key=''{@address}'']') }"
             />
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template name="furniture">
         
@@ -256,13 +284,18 @@
         </XSLT:template>
         
         <!-- drops all strings except those expecting the inline markup -->
-        <XSLT:template match="string" mode="handle-inlines"/>
-        
-        <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml handle-inlines">
+        <!--<XSLT:template match="string" mode="handle-inlines">
             <XSLT:variable name="markup">
                 <XSLT:apply-templates mode="infer-inlines"/>
             </XSLT:variable>
             <XSLT:apply-templates mode="cast-ns" select="$markup"/>
+        </XSLT:template>-->
+        
+        <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
+            <!--<XSLT:apply-templates select="." mode="handle-inlines"/>-->
+            <XSLT:call-template name="parse">
+                <XSLT:with-param name="str" select="string(.)"/>
+            </XSLT:call-template>
         </XSLT:template>
         
         <XSLT:template match="string[@key='{$string-value-label}']" mode="json2xml">

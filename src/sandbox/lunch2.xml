@@ -5,9 +5,9 @@
       <p>hold the mustard</p>
     </sandwich>
     <sandwich id="cap"><p>Mayonnaise</p></sandwich>
+    <chip brand="nabisco">malt vinegar</chip>
     <chip>malt vinegar</chip>
-    <chip>malt vinegar</chip>
-    <chip>malt vinegar</chip>
+    <chip brand="sunshine">malt vinegar</chip>
     <cookie days="Sun Mon Tue" baker="jean">chocolate chip</cookie>
     <cookie days="Sun Mon Tue" baker="jean">oatmeal</cookie>
     <cookie days="Sun Mon Tue" baker="jean">snickerdoodle</cookie>

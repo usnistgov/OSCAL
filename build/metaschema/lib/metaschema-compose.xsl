@@ -203,8 +203,9 @@
     <xsl:template mode="digest" match="flag | key | value-key">
         <xsl:copy>
             <xsl:attribute name="datatype">string</xsl:attribute>
-            <xsl:copy-of select="@*"/>
             <xsl:copy-of select="key('definition-by-name',@name)/@datatype"/>
+            <!-- Allowing local datatype to override the definition's datatype -->
+            <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>

@@ -132,7 +132,7 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
                 <xsl:apply-templates select="model"/>
-                <xsl:apply-templates select="flag"/>
+                <xsl:apply-templates select="key | value-key[matches(@name,'\S')] | flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -176,10 +176,11 @@
     </xsl:template>
     
     
-    <xsl:template match="flag">
+    <xsl:template match="flag | key | value-key[matches(@name,'\S')]">
         <xsl:variable name="name" select="@name"/>
         <xs:attribute name="{ @name }" type="xs:string">
-            <xsl:for-each select="@required[.='yes']">
+            <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
+            <xsl:for-each select=".[@required='yes'] | self::key | self::value-key[not(matches(.,'\S'))]">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:for-each>
             <xsl:for-each select="(@datatype,key('definition-by-name',@name)/@datatype)[1]">

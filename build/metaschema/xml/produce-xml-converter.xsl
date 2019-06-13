@@ -146,12 +146,14 @@
     </xsl:template>
     
     <xsl:template match="define-field">
-        <xsl:message expand-text="yes">matching for { @name }</xsl:message>
         <XSLT:template match="{@name}" mode="xml2json">
             <XSLT:variable name="text-key">
                 <xsl:apply-templates select="." mode="text-key"/>
             </XSLT:variable>
             <map key="{@name}">
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
                 <xsl:apply-templates select="flag"/>
 
                 <XSLT:apply-templates mode="as-string" select=".">
@@ -160,7 +162,7 @@
             </map>
         </XSLT:template>
         <!-- flagged, groupable fields marked as collapsible may be collapsed -->
-        <xsl:if test="matches(@group-as, '\S') and exists(flag) and @collapsible = 'yes'">
+        <xsl:if test="matches(@group-as, '\S') and exists(flag) and @collapsible = ('yes','true')">
             <XSLT:template match="array[@key = '{@group-as}'][count(map) gt 1]" mode="rectify"
                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
                 <XSLT:variable name="text-key">
@@ -176,7 +178,7 @@
                 </xsl:variable>
                 <XSLT:for-each-group select="map"
                     group-by="string-join( ({ $group-properties } ), '#' )">
-                    <map key="cookies">
+                    <map key="{ @group-as}">
                         <XSLT:copy-of select="*[@key = ('days', 'baker')]"/>
                         <array key="{{$text-key}}">
                             <XSLT:for-each select="current-group()/string[@key = $text-key]">
@@ -196,19 +198,16 @@
     <xsl:template match="define-assembly">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
-                <xsl:for-each select="@address">
-                    <xsl:attribute name="key">{@<xsl:value-of select="."/>}</xsl:attribute>
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
                 </xsl:for-each>
-                
+
                 <xsl:apply-templates select="flag"/>
-                
+
                 <xsl:apply-templates select="model"/>
             </map>
         </XSLT:template>
     </xsl:template>
-    
-    <!-- dropping a flag that has been used as an address -->
-    <xsl:template match="flag[@name=../@address]"/>
     
     <xsl:template match="flag">
         <!-- no datatyping support yet -->
@@ -239,7 +238,9 @@
         </XSLT:call-template>-->
     </xsl:template>
     
-    <xsl:template match="fields[@address] | assemblies[@address]">
+    <xsl:template match="fields[exists(key('definition-by-name',@named)/key)] |
+        assemblies[exists(key('definition-by-name',@named)/key)]">
+        <xsl:variable name="key" select="exists(key('definition-by-name',@named)/key)"/>
             <XSLT:for-each-group select="{@named}" group-by="local-name()">
                 <map key="{  key('definition-by-name',@named)/@group-as }">
                     <XSLT:apply-templates select="current-group()" mode="#current"/>

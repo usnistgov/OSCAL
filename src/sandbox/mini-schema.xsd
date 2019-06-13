@@ -13,7 +13,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal-mini:salad"/>
-            <xs:element minOccurs="0" ref="oscal-mini:sandwich"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:sandwich"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:chip"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:cookie"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-mini:cupcake"/>
@@ -29,6 +29,7 @@
          <xs:sequence>
             <xs:group ref="oscal-mini:prose" maxOccurs="unbounded" minOccurs="0"/>
          </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="chip">
@@ -36,7 +37,15 @@
          <xs:documentation>
             <b>Chip: </b>Only one?</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType mixed="true">
+         <xs:attribute name="brand" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Brand name: </b>
+               </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
    </xs:element>
    <xs:element name="cookie">
       <xs:annotation>
@@ -63,7 +72,7 @@
    <xs:element name="cupcake">
       <xs:annotation>
          <xs:documentation>
-            <b>Cookie: </b>Have several.</xs:documentation>
+            <b>Cupcake: </b>Most delicious.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="icing" type="xs:string">

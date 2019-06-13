@@ -17,7 +17,7 @@
    </xsl:character-map>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
-   <xsl:param name="diagnostic" as="xs:string">none</xsl:param>
+   <xsl:param name="diagnostic" as="xs:string">no</xsl:param>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
          <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
@@ -198,7 +198,11 @@
    <xsl:template match="lunch" mode="xml2json">
       <map key="lunch">
          <xsl:apply-templates select="salad" mode="#current"/>
-         <xsl:apply-templates select="sandwich" mode="#current"/>
+         <xsl:for-each-group select="sandwich" group-by="local-name()">
+            <map key="sandwiches">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
          <xsl:if test="exists(chip)">
             <array key="chips">
                <xsl:apply-templates select="chip" mode="#current"/>
@@ -217,15 +221,18 @@
       </map>
    </xsl:template>
    <xsl:template match="sandwich" mode="xml2json">
-      <map key="sandwich">
+      <map key="{@id}">
          <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
    <xsl:template match="chip" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
-      <string key="chip">
-         <xsl:apply-templates mode="md"/>
-      </string>
+      <xsl:variable name="text-key">flavor</xsl:variable>
+      <map key="chip">
+         <xsl:apply-templates mode="as-string" select="@brand"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key" select="$text-key"/>
+         </xsl:apply-templates>
+      </map>
    </xsl:template>
    <xsl:template match="cookie" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
@@ -276,17 +283,15 @@
                <xsl:apply-templates select="labeled-value-field" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(ID-object)">
-            <array key="ID-objects">
-               <xsl:apply-templates select="ID-object" mode="#current"/>
-            </array>
-         </xsl:if>
+         <xsl:for-each-group select="ID-object" group-by="local-name()">
+            <map key="ID-objects">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
       </map>
    </xsl:template>
    <xsl:template match="masked-field" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="string[@key='name']"/>
-      </xsl:variable>
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="masked-field">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -298,9 +303,7 @@
       </string>
    </xsl:template>
    <xsl:template match="ID-object" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="string[@key='big']"/>
-      </xsl:variable>
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="ID-object">
          <xsl:apply-templates mode="md"/>
       </string>

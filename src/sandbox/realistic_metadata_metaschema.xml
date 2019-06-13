@@ -152,7 +152,7 @@
 
   <define-field name="prop" group-as="properties">
     <flag name="id" datatype="ID"/>
-    <flag name="name" required="yes" primary="yes">
+    <flag name="name" required="yes">
       <valid-values allow-other="yes">
         <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
         <value name="label">A human-readable label for the parent context.</value>
@@ -385,7 +385,7 @@
       <valid-values allow-other="yes">
         <value name="home">A home phone number.</value>
         <value name="office">An office phone number.</value>
-        <value name="mobibe">A mobile phone number.</value>
+        <value name="mobile">A mobile phone number.</value>
       </valid-values>
     </flag>
     <formal-name>Telephone</formal-name>
@@ -432,7 +432,14 @@
   </define-assembly>
   
   <define-field name="hash" group-as="hashes">
-    <flag name="algorithm" required="yes"/>
+    <flag name="algorithm" required="yes">
+      <valid-values allow-other="yes">
+        <value name="SHA-224"/>
+        <value name="SHA-256"/>
+        <value name="SHA-384"/>
+        <value name="SHA-512"/>
+      </valid-values>
+    </flag>
     <formal-name>Hash</formal-name>
     <description>A representation of a cryptographic digest generated over a resource using a hash algorithm.</description>
     <remarks>
@@ -446,6 +453,7 @@
     <description>Method by which a hash is derived</description>
     <!-- FIX: valid values are not displaying -->
     <valid-values allow-other="yes">
+      <value name="SHA-1"/>
       <value name="SHA-224"/>
       <value name="SHA-256"/>
       <value name="SHA-384"/>

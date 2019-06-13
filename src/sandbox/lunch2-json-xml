@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <map xmlns="http://www.w3.org/2005/xpath-functions">
    <map key="lunch">
       <map key="sandwiches">
@@ -13,9 +14,17 @@
          </map>
       </map>
       <array key="chips">
-         <string>malt vinegar</string>
-         <string>malt vinegar</string>
-         <string>malt vinegar</string>
+         <map>
+            <string key="brand">nabisco</string>
+            <string key="flavor">malt vinegar</string>
+         </map>
+         <map>
+            <string key="flavor">malt vinegar</string>
+         </map>
+         <map>
+            <string key="brand">sunshine</string>
+            <string key="flavor">malt vinegar</string>
+         </map>
       </array>
       <map key="cookies">
          <string key="days">Sun Mon Tue</string>

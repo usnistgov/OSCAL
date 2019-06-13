@@ -41,12 +41,10 @@
          <xsl:with-param name="str" select="string(.)"/>
       </xsl:call-template>
    </xsl:template>
-   <xsl:template match="string" mode="handle-inlines"/>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml handle-inlines">
-      <xsl:variable name="markup">
-         <xsl:apply-templates mode="infer-inlines"/>
-      </xsl:variable>
-      <xsl:apply-templates mode="cast-ns" select="$markup"/>
+   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
+      <xsl:call-template name="parse">
+         <xsl:with-param name="str" select="string(.)"/>
+      </xsl:call-template>
    </xsl:template>
    <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
@@ -72,42 +70,49 @@
          <xsl:apply-templates mode="#current" select="*[@key=('cupcake', 'cupcakes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='sandwiches']" priority="3" mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
    <!-- 000 Handling assembly "sandwich" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='sandwich'] | *[@key='sandwiches'] | array[@key='sandwiches']/*"
+   <xsl:template match="*[@key='sandwich'] | *[@key='sandwiches'] | *[@key='sandwiches']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="sandwich" namespace="urn:mini">
+         <xsl:attribute name="id" select="@key"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "chip" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='chip'] | *[@key='chips'] | array[@key='chips']/*"
+   <xsl:template match="*[@key='chip'] | *[@key='chips'] | *[@key='chips']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="chip" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='flavor']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='chips'][array/@key='STRVALUE']"
+   <xsl:template match="map[@key='chips'][array/@key='flavor']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
          <array xmlns="http://www.w3.org/2005/xpath-functions" key="chips">
-            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+            <xsl:apply-templates mode="expand" select="array[@key='flavor']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='chips']/array[@key='STRVALUE']/string">
+   <xsl:template mode="expand" match="map[@key='chips']/array[@key='flavor']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+            <xsl:copy-of select="* except array[@key='flavor']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="flavor">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>
@@ -115,12 +120,15 @@
    </xsl:template>
    <!-- 000 Handling field "cookie" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='cookie'] | *[@key='cookies'] | array[@key='cookies']/*"
+   <xsl:template match="*[@key='cookie'] | *[@key='cookies'] | *[@key='cookies']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="cookie" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <xsl:template match="map[@key='cookies'][array/@key='STRVALUE']"
@@ -144,6 +152,14 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
+   <!-- 000 Handling flag "brand" 000 -->
+   <xsl:template match="*[@key='brand']" mode="json2xml"/>
+   <xsl:template match="*[@key='chip']/*[@key='brand'] | *[@key='chips']/*[@key='brand'] | array[@key='chips']/*/*[@key='brand']"
+                 mode="as-attribute">
+      <xsl:attribute name="brand">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
    <!-- 000 Handling flag "days" 000 -->
    <xsl:template match="*[@key='days']" mode="json2xml"/>
    <xsl:template match="*[@key='cookie']/*[@key='days'] | *[@key='cookies']/*[@key='days'] | array[@key='cookies']/*/*[@key='days']"
@@ -162,12 +178,15 @@
    </xsl:template>
    <!-- 000 Handling field "cupcake" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='cupcake'] | *[@key='cupcakes'] | array[@key='cupcakes']/*"
+   <xsl:template match="*[@key='cupcake'] | *[@key='cupcakes'] | *[@key='cupcakes']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="cupcake" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <xsl:template match="map[@key='cupcakes'][array/@key='STRVALUE']"
@@ -213,30 +232,34 @@
    </xsl:template>
    <!-- 000 Handling field "masked-field" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='masked-field'] | *[@key='masked-fields'] | array[@key='masked-fields']/*"
+   <xsl:template match="*[@key='masked-field'] | *[@key='masked-fields'] | *[@key='masked-fields']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="masked-field" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='masked-fields'][array/@key='']"
+   <xsl:template match="map[@key='masked-fields'][array/@key='STRVALUE']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
          <array xmlns="http://www.w3.org/2005/xpath-functions" key="masked-fields">
-            <xsl:apply-templates mode="expand" select="array[@key='']/string"/>
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='masked-fields']/array[@key='']/string">
+   <xsl:template mode="expand"
+                 match="map[@key='masked-fields']/array[@key='STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key='']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="">
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>
@@ -244,12 +267,15 @@
    </xsl:template>
    <!-- 000 Handling field "labeled-value-field" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='labeled-value-field'] | *[@key='labeled-value-fields'] | array[@key='labeled-value-fields']/*"
+   <xsl:template match="*[@key='labeled-value-field'] | *[@key='labeled-value-fields'] | *[@key='labeled-value-fields']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="labeled-value-field" namespace="urn:mini">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='label']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <xsl:template match="map[@key='labeled-value-fields'][array/@key='label']"
@@ -276,30 +302,35 @@
    </xsl:template>
    <!-- 000 Handling field "ID-object" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='ID-object'] | *[@key='ID-objects'] | array[@key='ID-objects']/*"
+   <xsl:template match="*[@key='ID-object'] | *[@key='ID-objects'] | *[@key='ID-objects']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="ID-object" namespace="urn:mini">
+         <xsl:attribute name="id" select="../@key"/>
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string[empty(@key)]">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='ID-objects'][array/@key='']"
+   <xsl:template match="map[@key='ID-objects'][array/@key='STRVALUE']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
          <array xmlns="http://www.w3.org/2005/xpath-functions" key="ID-objects">
-            <xsl:apply-templates mode="expand" select="array[@key='']/string"/>
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='ID-objects']/array[@key='']/string">
+   <xsl:template mode="expand"
+                 match="map[@key='ID-objects']/array[@key='STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key='']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="">
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>

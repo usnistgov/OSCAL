@@ -40,8 +40,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
-        
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
@@ -98,6 +96,7 @@
             </xs:restriction>
           </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="collapsible" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>

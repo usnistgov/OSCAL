@@ -1,11 +1,21 @@
 
   { "lunch" : 
-    { "sandwich" : 
-      { "prose" : "Ham and cheese" },
+    { "sandwiches" : 
+      { "wap" : 
+        { "prose" : 
+          [ "Ham and cheese",
+            "",
+            "hold the mustard" ] },
+        "cap" : 
+        { "prose" : "Mayonnaise" } },
       "chips" : 
       [ "malt vinegar",
         "malt vinegar",
         "malt vinegar" ],
       "cookies" : 
-      { "variety" : "chocolatechip",
-        "STRVALUE" : "chocolate chip" } } }
+      { "days" : "Sun Mon Tue",
+        "baker" : "jean",
+        "STRVALUE" : 
+        [ "chocolate chip",
+          "oatmeal",
+          "snickerdoodle" ] } } }
