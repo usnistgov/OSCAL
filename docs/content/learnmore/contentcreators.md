@@ -1,5 +1,5 @@
 ---
-title: Policy Authors (content creators)
+title: Policy Authors (Content Creators)
 description: How can policy authors get involved
 permalink: /learnmore/contentcreators/
 layout: post
