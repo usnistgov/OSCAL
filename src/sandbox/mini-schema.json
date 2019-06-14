@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "http://csrc.nist.gov/ns/oscal/1.0/oscal-mini-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/testing/oscal-mini-schema.json",
     "$comment" : "MINI Testing Schema: JSON Schema",
     "type" : "object",
     "definitions" : 
@@ -10,9 +10,13 @@
         "$id" : "#/definitions/lunch",
         "type" : "object",
         "properties" : 
-        { "sandwich" : 
+        { "salad" : 
           { "type" : "object",
-            "$ref" : "#/definitions/sandwich" },
+            "$ref" : "#/definitions/salad" },
+          "sandwiches" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/sandwich" } },
           "chips" : 
           { "type" : "array",
             "items" : 
@@ -20,13 +24,19 @@
           "cookies" : 
           { "type" : "array",
             "items" : 
-            { "$ref" : "#/definitions/cookie" } } },
+            { "$ref" : "#/definitions/cookie" } },
+          "cupcakes" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/cupcake" } } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "sandwich",
-            "chip",
-            "cookie" ] } },
+          [ "salad",
+            "sandwiches",
+            "chips",
+            "cookies",
+            "cupcakes" ] } },
       "sandwich" : 
       { "title" : "Sandwich",
         "description" : "Yeah....",
@@ -43,11 +53,88 @@
       { "title" : "Chip",
         "description" : "Only one?",
         "$id" : "#/definitions/chip",
-        "type" : "string" },
+        "type" : "object",
+        "properties" : 
+        { "brand" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "brand" ] } },
       "cookie" : 
       { "title" : "Cookie",
         "description" : "Have several.",
         "$id" : "#/definitions/cookie",
+        "type" : "object",
+        "properties" : 
+        { "days" : 
+          { "type" : "string" },
+          "baker" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "days",
+            "baker" ] } },
+      "cupcake" : 
+      { "title" : "Cupcake",
+        "description" : "Most delicious.",
+        "$id" : "#/definitions/cupcake",
+        "type" : "object",
+        "properties" : 
+        { "icing" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "icing" ] } },
+      "salad" : 
+      { "title" : "Dump Truck",
+        "description" : "",
+        "$id" : "#/definitions/salad",
+        "type" : "object",
+        "properties" : 
+        { "masked-fields" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/masked-field" } },
+          "labeled-value-fields" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/labeled-value-field" } },
+          "ID-objects" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/ID-object" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "masked-fields",
+            "labeled-value-fields",
+            "ID-objects" ] } },
+      "masked-field" : 
+      { "title" : " ",
+        "description" : "",
+        "$id" : "#/definitions/masked-field",
+        "type" : "string" },
+      "labeled-value-field" : 
+      { "title" : " ",
+        "description" : "",
+        "$id" : "#/definitions/labeled-value-field",
+        "type" : "string" },
+      "ID-object" : 
+      { "title" : "Identified Flying Object",
+        "description" : "",
+        "$id" : "#/definitions/ID-object",
         "type" : "string" },
       "prose" : 
       { "type" : "array",

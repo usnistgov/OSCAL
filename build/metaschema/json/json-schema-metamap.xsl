@@ -157,7 +157,7 @@
     
     <xsl:template match="*" mode="property-name">
         <string>
-            <xsl:value-of select="(@group-as,@named,@name)[1]"/>
+            <xsl:value-of select="(key('definition-by-name',@named)/@group-as,@named,@name)[1]"/>
         </string>
     </xsl:template>
     
