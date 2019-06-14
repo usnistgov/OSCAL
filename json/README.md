@@ -24,7 +24,7 @@ The following directories provide:
 
 # JSON Schema for OSCAL Models
 
-JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/architecture/):
+JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
 
 - [Catalog JSON Schema](schema/oscal_catalog_schema.json): Supports the validation of OSCAL JSON-based control catalogs.
 - [Profile JSON Schema](schema/oscal_profile_schema.json): Supports the validation of OSCAL JSON-based control baselines.
@@ -44,7 +44,7 @@ The [online documentation](https://github.com/jessedc/ajv-cli) for *ajv-cli* pro
 
 # OSCAL XML to JSON Converters
 
-The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/architecture/):
+The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
 
 - [Catalog XML-to-JSON](convert/oscal_catalog_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control catalogs to the OSCAL JSON catalog format.
 - [Profile XML-to-JSON](convert/oscal_profile_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control baselines to the OSCAL JSON profile format.
