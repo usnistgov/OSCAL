@@ -2,12 +2,15 @@
 title: Downloads
 description: Downloads
 permalink: /downloads/
+sidenav: downloads
+topnav: downloads
+sticky_sidenav: true
 layout: post
 ---
 
 Official releases of the OSCAL Project are available on the project's [GitHub repository](https://github.com/usnistgov/OSCAL/releases). These releases align with the project's [roadmap](/OSCAL/learnmore/roadmap/).
 
-- [OSCAL 1.0 Milestone 1](): Stable releases of the OSCAL Catalog and Profile layers, including XML and JSON schema, content examples, and content converters.
+- [OSCAL 1.0 Milestone 1](https://github.com/usnistgov/OSCAL/releases): Stable releases of the OSCAL Catalog and Profile layers, including XML and JSON schema, content examples, and content converters.
 
 # Future OSCAL Compatibility Commitment
 

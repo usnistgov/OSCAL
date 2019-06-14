@@ -17,9 +17,9 @@ subnav:
 sticky_sidenav: true
 ---
 
-*Tool developers who build security compliance systems (Electronic Governance Risk and Compliance [eGRC] systems) or who provide secure infrastructure/software solutions to the Federal Government or to highly regulated industries*
+*Tool developers who build security compliance systems (Electronic Governance Risk and Compliance [eGRC] systems), or who provide secure infrastructure/software solutions to the Federal Government or to highly regulated industries*
 
-OSCAL provides standardized formats for consuming control, catalog, profile, and implementation information to visualize and automate security compliance processes. Provides a standardized means for the automated assessment of infrastructure and software solutions to attest to their security control implementation.
+OSCAL provides standardized formats for consuming control, catalog, profile, and implementation information to visualize and automate security compliance processes. OSCAL provides a standardized means for the automated assessment of infrastructure and software solutions to verify the ongoing effectiveness of the system's security control implementation.
 
 ## How Does OSCAL Help Me?
 

@@ -56,6 +56,10 @@ architecture:
   - text: Relations to Documentary Encoding Standards
     href: /docs/relations/
 
+downloads:
+  - text: Downloads
+    href: /downloads/
+
 resources:
   - text: Resources
     href: /resources/

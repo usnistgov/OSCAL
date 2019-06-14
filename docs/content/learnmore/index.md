@@ -31,7 +31,7 @@ There are a number of factors contributing to the challenges faced by informatio
 
 To provide assurance of a system's security posture, the implementation of security systems must be both correctly described, assessed and authorized against relevant security controls. Typically this process is resource-intensive, and often challenging within budget constraints given the complexity of the problem.
 
-By streamlining and standardizing the processes of documenting, implementing and assessing security controls, OSCAL will reduce complexity, decrease implementation costs, and enable the simultaneous, continuous assessment of system security against multiple sets of requirements. Additionally, paperwork will be significantly reduced.
+The standardized formats provided by the OSCAL project help to streamline and standardize the processes of documenting, implementing and assessing security controls. The automation enabled by the OSCAL formats will reduce complexity, decrease implementation costs, and enable the simultaneous, continuous assessment of a system's security against multiple sets of requirements. Additionally, paperwork will be significantly reduced.
 
 <!-- markdownlint-disable MD026 -->
 ## How OSCAL Supports Your Role?

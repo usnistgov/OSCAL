@@ -18,7 +18,7 @@ sticky_sidenav: true
 
 In OSCAL, a control is:
 
-> A safeguard or countermeasure designed to satisfy a set of defined security requirements.
+> A description of a safeguard or countermeasure designed to satisfy a set of defined security requirements that may be implemented in a system to manage a security or privacy risk.
 
 The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures", but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:
 

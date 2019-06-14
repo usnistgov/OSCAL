@@ -8,13 +8,13 @@ sticky_sidenav: true
 layout: post
 ---
 
-## General Services Administation FedRAMP
+## General Services Administration (GSA) Federal Risk and Authorization Management Program (FedRAMP)
 
 [Government Computer News Story - FedRAMP Updates](https://gcn.com/articles/2018/06/14/fedramp-updates.aspx)
 
-FedRAMP officials want to make it easier for agencies to get cloud service providers approved. The National Institute of Standards and Technology’s Open Security Controls Assessment Language, which speeds up the security controls assessment process through standardization and automation, will be available for testing by the end of [the 2019] fiscal year, FedRAMP Director Matt Goodrich said at the June 13 ATARC Federal Cloud and Data Center Summit.
+"FedRAMP officials want to make it easier for agencies to get cloud service providers [authorized]. The National Institute of Standards and Technology’s Open Security Controls Assessment Language, which speeds up the security controls assessment process through standardization and automation, will be available for testing by the end of [the 2019] fiscal year", Matt Goodrich said at the June 13 Advanced Technology Academic Research Center (ATARC) Federal Cloud and Data Center Summit. He was FedRAMP Director at this time.
 
-OSCAL automates FedRAMP’s security control assessments and tracks associated risks.
+OSCAL enables automation of FedRAMP’s security control assessments, and tracking of associated risks.
 
 “We think OSCAL will really help agencies transform the way that they are doing their work by making sure that they can use whatever tool that they want to use and automate whatever they can in the process to do their authorizations,” Goodrich said.
 

@@ -18,7 +18,7 @@ sticky_sidenav: true
 
 In OSCAL a profile is:
 
-> A specific set of security requirements; also called a *baseline* or *overlay*. A profile represents a selection of controls from one or more catalogs, with configuration or qualification appropriate to its use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and NIST SP 800-171 (a controls baseline for CUI/NFO).  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
+> A specific set of security [control]({{ site.baseurl }}/docs/control/) requirements; also called a *baseline* or *overlay*. A profile represents a selection of controls from one or more [catalogs]({{ site.baseurl }}/docs/catalog/), with configuration or qualification appropriate to the profile's use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and NIST SP 800-171 (a controls baseline for CUI/NFO).  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
 
 OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
 

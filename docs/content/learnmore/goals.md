@@ -25,7 +25,7 @@ The OSCAL project is working to address the following goals:
 To address these goals, the OSCAL project is guided by the following design principles:
 
 - Produce a set of interoperable, extensible, machine-readable formats through a community-focused effort that supports a broad range of control-based risk management processes.
-  - Provide XML-, JSON-, and YAML-based formats that allow for lossless translations between XML, JSON, and YAML representations; improve the Machine Experience (MX)
+  - Provide XML-, JSON-, and YAML-based formats that allow for lossless translations between XML, JSON, and YAML representations.
   - Provide a common means to identify and version shared resources.
   - Standardize the expression of assessment artifacts, driving crowd-sourced development and improvement across profile and implementation layers.
 - Align OSCAL models with current, practical information, and support advanced structures that provide for greater automation and verification.

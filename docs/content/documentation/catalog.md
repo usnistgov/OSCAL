@@ -18,7 +18,7 @@ sticky_sidenav: true
 
 In OSCAL, a catalog is:
 
-> A set of security control definitions. Examples of catalogs include NIST SP 800-53, ISO 27001, and COBIT. The *catalog model* in OSCAL refers to any data made available for processing in one of OSCAL's formats for representing catalog information.
+> A set of security and/or privacy [controls]({{ site.baseurl }}/docs/control/). Examples of catalogs include NIST SP 800-53, ISO 27001, and COBIT. The *catalog model* in OSCAL refers to any data made available for processing in one of OSCAL's formats for representing catalog information.
 
 An OSCAL catalog is a set of OSCAL controls published as a machine readable document. The catalog for NIST Special Publication (SP) 800-53 Revision 4 defines all NIST SP 800-53 controls. Other catalogs can represent controls of any kind, design or purpose.
 
