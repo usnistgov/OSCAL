@@ -63,7 +63,6 @@
 
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
-      <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>
@@ -252,7 +251,6 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>

@@ -75,6 +75,7 @@
   </define-assembly>
 
   <define-field name="link" group-as="links" as="mixed">
+    <value-key>text</value-key>
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel" datatype="NCName"/>
     <flag name="media-type" datatype="string"/>
@@ -151,14 +152,15 @@
   </define-flag>
 
   <define-field name="prop" group-as="properties">
-    <value-key name="name">
+    <flag name="name" required="yes">
+      <value-key/>
       <valid-values allow-other="yes">
       <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
       <value name="label">A human-readable label for the parent context.</value>
       <value name="method">An assessment method.</value>
       <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
     </valid-values>
-    </value-key>
+    </flag>
     <flag name="id" datatype="ID"/>
     <flag name="ns"/>
     <flag name="class"/>
@@ -432,6 +434,7 @@
   </define-assembly>
   
   <define-field name="hash" group-as="hashes">
+    <value-key>value</value-key>
     <flag name="algorithm" required="yes"/>
     <formal-name>Hash</formal-name>
     <description>A representation of a cryptographic digest generated over a resource using a hash algorithm.</description>

@@ -106,10 +106,6 @@
             <sch:let name="decl" value="key('definition-by-name',@named,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@named"/>', but their definition does not give a group name.</sch:assert>
-            <sch:assert test="(empty($decl/@address) and empty(@address)) or ($decl/@address = @address)">The referenced definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
-            <!--<sch:assert test="exists($decl/@acquire-from) or empty(@address) or ($decl/m:flag/@name = @address)">The referenced definition has no flag named '<sch:value-of select="@address"/>'</sch:assert>
-            <sch:assert test="empty($decl/@acquire-from) or empty(@address) or not($decl/m:flag/@name = @address) or ($decl/m:flag[@name = current()/@address]/@required='yes')">The target definition has no required flag named <sch:value-of select="@address"/></sch:assert>-->
-            
             
             <sch:report test="@named = ../(* except current())/@named">Everything named the same must appear together</sch:report>
             <sch:report test="@named = ../*/@group-as">Clashing name with group name: <sch:value-of select="@named"/></sch:report>
@@ -144,7 +140,7 @@
             <sch:assert role="warning" test="@name = ($composed-metaschema//m:field/@named | $composed-metaschema//m:fields/@named)">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-flag">
-            <sch:assert role="warning" test="@name = //m:flag/@name">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = (//m:flag/@name | //m:key/@name)">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:assembly | m:assemblies">
             <sch:assert test="@named = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.

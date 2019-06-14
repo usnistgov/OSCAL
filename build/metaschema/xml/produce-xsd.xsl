@@ -179,9 +179,9 @@
         <xsl:variable name="name" select="@name"/>
         <xs:attribute name="{ @name }" type="xs:string">
             <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
-            <xsl:for-each select="(@required='yes') or exists(self::key|child::value-key)">
+            <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
                 <xsl:attribute name="use">required</xsl:attribute>
-            </xsl:for-each>
+            </xsl:if>
             <xsl:for-each select="(@datatype,key('definition-by-name',@name)/@datatype)[1]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>

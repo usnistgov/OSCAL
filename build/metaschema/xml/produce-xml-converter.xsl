@@ -122,6 +122,20 @@
         </XSLT:template>
     </xsl:template>
     
+    <xsl:template match="define-field[@as='boolean']" priority="3">
+        <XSLT:template match="{@name}" mode="xml2json">
+            <boolean key="{@name}">
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
+                <XSLT:apply-templates mode="#current"/>
+                <!--<XSLT:apply-templates mode="as-boolean" select=".">
+                    <XSLT:with-param name="key">boolean</XSLT:with-param>
+                </XSLT:apply-templates>-->
+            </boolean>
+        </XSLT:template>
+    </xsl:template>
+    
     <!--<xsl:template match="define-field[@as='mixed']">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
@@ -330,18 +344,21 @@
         <XSLT:template name="prose">
             <XSLT:variable name="blocks" select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
             <XSLT:if test="exists($blocks)">
-                <array key="prose">
+                <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
-                </array>
+                </XSLT:variable>
+                <string key="prose">
+                    <XSLT:value-of select="string-join($string-sequence,'\n')"/>
+                </string>
             </XSLT:if>
         </XSLT:template>
         
         <XSLT:template mode="as-string" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
             <XSLT:if test="matches(.,'\S')">
-            <string key="{{$key}}">
-                <XSLT:value-of select="."/>
-            </string>
+                <string key="{{$key}}">
+                    <XSLT:value-of select="."/>
+                </string>
             </XSLT:if>
         </XSLT:template>
         

@@ -39,8 +39,6 @@
       <assembly named="back-matter">
         <description>Back matter including references and resources.</description>
       </assembly>
-        <description>Back matter including references and resources.</description>
-      </assembly>
     </model>
     <example>
       <description>A small catalog with a single control</description>
@@ -95,7 +93,7 @@
     </remarks>
     <model>
       <field named="title" required="yes"/>
-      <assemblies named="param" address="id"/>
+      <assemblies named="param"/>
       <fields named="prop"/>
       <assemblies named="part"/>
       <choice>
@@ -127,12 +125,12 @@
     </remarks>
     <model>
       <field named="title" required="yes"/>
-      <assemblies named="param" address="id"/>
+      <assemblies named="param"/>
       <!-- TODO: Need to be able to add valid values in context -->
       <fields named="prop"/>
       <fields named="link"/>
       <assemblies named="part"/>
-      <assemblies named="subcontrol" address="id"/>
+      <assemblies named="subcontrol"/>
       <!--<assembly named="ref-list"/>-->
       <any/>
     </model>
@@ -143,7 +141,7 @@
     </example>
   </define-assembly>
 
-  <define-assembly name="subcontrol" group-as="subcontrols" address="id">
+  <define-assembly name="subcontrol" group-as="subcontrols">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
@@ -155,7 +153,7 @@
       <field named="title" required="yes">
         <description>The subcontrol's human-readable name.</description>
       </field>
-      <assemblies named="param" address="id"/>
+      <assemblies named="param"/>
       <fields named="prop"/>
       <fields named="link"/>
       <assemblies named="part"/>
@@ -166,7 +164,7 @@
   
   <!-- See metadata model for 'prop' element -->
 
-  <define-assembly name="param" address="id" group-as="parameters">
+  <define-assembly name="param" group-as="parameters">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <flag name="depends-on" datatype="IDREF"/>
