@@ -53,10 +53,18 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           echo "${P_ERROR}Content conversion to ${altformat^^} failed for '$file'.${P_END}"
           exitcode=1
         fi
-        # TODO: validate generated file
 
+        # Format specific post-processing
         case $altformat in
         json)
+          # translate path names, starting first with the xml directory, then the filename
+          # cat  NIST_SP-800-53_rev4_LOW-baseline_profile.json | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json/' | perl -lpe 's/(\"(?:[^\/]+\/)*.+(?=\.xml\"))\.xml\"/\1.json\"/'
+          cat "$dest" | perl -lpe 's/\\\//\//g' | perl -lpe 's/(application\/oscal\.[a-z]+\+)xml\"/\1json\"/g' | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json\//g' | perl -lpe 's/(\"(?:[^"\/]+\/)*[^"]+(?=\.xml\"))\.xml\"/\1.json\"/g' > "$dest"
+
+          # validate generated file
+          schema="$working_dir/json/schema/oscal_${model}_schema.json"
+          ajv validate -s "$schema" -d "$dest" --extend-refs=true --verbose
+
           # produce pretty JSON
           dest_pretty="$working_dir/${newpath}.${altformat}"
           jq . "$dest" > "$dest_pretty"
@@ -74,6 +82,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
     done
   fi
 done < "$OSCALDIR/build/ci-cd/config/content"
+
 shopt -u nullglob
 shopt -u globstar
 

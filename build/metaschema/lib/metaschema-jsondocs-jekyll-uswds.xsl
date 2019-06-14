@@ -147,12 +147,12 @@
                </xsl:variable>
                <xsl:variable name="noun">
                   <xsl:choose>
-                     <xsl:when test="count(flag) gt 1">(string) properties </xsl:when>
+                     <xsl:when test="count(flag) gt 1">(string) properties</xsl:when>
                      <xsl:otherwise>a (string) property</xsl:otherwise>
                   </xsl:choose>
                </xsl:variable>
                <div class="model">
-                  <p xsl:expand-text="true">The {@name} object { $modal } have { $noun }</p>
+                  <p xsl:expand-text="true">The {@name} object { $modal } have { $noun }:</p>
                   <ul>
                      <xsl:apply-templates select="flag" mode="model"/>
                   </ul>
@@ -176,8 +176,8 @@
 
    <xsl:template name="group-label">
       <xsl:if test="matches(@group-as, '\S')">
-         <h5>This object appears <i>unlabelled</i> in any array called <code xsl:expand-text="true"
-               >{ @group-as }</code></h5>
+         <p>This object appears <i>unlabelled</i> in an array called <code xsl:expand-text="true"
+               >{ @group-as }</code>.</p>
       </xsl:if>
    </xsl:template>
 
@@ -271,7 +271,10 @@
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
-         <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
+         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
+            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -284,7 +287,7 @@
 
    <xsl:template match="model">
       <div class="model">
-         <p class="usa-font-lead">The <xsl:apply-templates select="../@name"/> object has the following members (properties):</p>
+         <p>The <xsl:apply-templates select="../@name"/> object has the following members (properties):</p>
          <ul>
             <xsl:apply-templates select="../flag" mode="model"/>
             <xsl:apply-templates/>
@@ -303,7 +306,10 @@
          <xsl:text expand-text="true"> object </xsl:text>
          <xsl:apply-templates select="." mode="cardinality"/>
          
-         <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="if (description) then description else key('definitions', @named)/description" mode="model"/>
+         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
+           <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>

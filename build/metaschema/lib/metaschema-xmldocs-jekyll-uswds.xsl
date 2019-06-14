@@ -98,7 +98,7 @@
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-flag" id="{@name}">
          <header>
-         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-darkest usa-color-text-white">
+           <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> attribute</h4>
             <xsl:call-template name="cross-links"/>
@@ -129,7 +129,7 @@
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-field" id="{@name}">
          <header>
-         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-darkest usa-color-text-white">
+           <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> element</h4>
             <xsl:call-template name="cross-links"/>
@@ -154,11 +154,11 @@
                <xsl:variable name="noun">
                   <xsl:choose>
                      <xsl:when test="count(flag) gt 1">attributes</xsl:when>
-                     <xsl:otherwise>an attribute</xsl:otherwise>
+                     <xsl:otherwise>the attribute</xsl:otherwise>
                   </xsl:choose>
                </xsl:variable>
                <div class="model">
-                  <p xsl:expand-text="true">The {@name} element { $modal } have { $noun }</p>
+                  <p xsl:expand-text="true">The {@name} element { $modal } have { $noun }:</p>
                   <ul>
                      <xsl:apply-templates select="flag" mode="model"/>
                   </ul>
@@ -186,7 +186,7 @@
       
       <div class="definition define-assembly" id="{@name}">
       <header>
-         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-darkest usa-color-text-white">
+        <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> element</h4>
          <xsl:call-template name="cross-links"/>
@@ -261,7 +261,10 @@
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
-         <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
+         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
+            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -274,7 +277,7 @@
 
    <xsl:template match="model">
       <div class="model">
-         <p class="usa-font-lead">The <xsl:apply-templates select="../@name"/> element has the following contents <xsl:if
+         <p>The <xsl:apply-templates select="../@name"/> element has the following contents<xsl:if
                test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
             <xsl:apply-templates select="../flag" mode="model"/>
@@ -294,7 +297,10 @@
          <xsl:text expand-text="true"> element </xsl:text>
          <xsl:apply-templates select="." mode="cardinality"/>
 
-         <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="if (description) then description else key('definitions', @named)/description" mode="model"/>
+         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
+            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>

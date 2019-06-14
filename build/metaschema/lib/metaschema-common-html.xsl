@@ -7,7 +7,7 @@
    exclude-result-prefixes="xs m">
    
    <xsl:template match="m:METASCHEMA/m:short-name">
-      <p>The short name (file identifier) for this schema shall be <i><xsl:apply-templates/></i>. It is used internally when an
+      <p>The short name (file identifier) for this schema is <i><xsl:apply-templates/></i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
    </xsl:template>
    
@@ -22,7 +22,7 @@
    </xsl:template>
    
    <xsl:template match="m:choice">
-      <li class="choice">A choice between
+      <li class="choice">A choice between:
          <ul>
            <xsl:apply-templates/>
          </ul>
@@ -41,7 +41,25 @@
       <li class="prose">Prose contents (paragraphs and lists)</li>
    </xsl:template>
 
-   <xsl:template  match="m:remarks">
+   <xsl:template match="m:valid-values">
+      <xsl:choose>
+        <xsl:when test="@allow-other and @allow-other='yes'">
+          <p>The value can be one of the following:</p>
+        </xsl:when>
+        <xsl:otherwise>
+          <p>The value can only be one of the following:</p>
+        </xsl:otherwise>
+      </xsl:choose>
+      <ul>
+        <xsl:apply-templates/>
+      </ul>   
+   </xsl:template>
+
+   <xsl:template match="m:value">
+     <li><strong><xsl:value-of select="@name"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
+   </xsl:template>
+
+  <xsl:template  match="m:remarks">
       <div class="remarks">
          <xsl:apply-templates/>
       </div>
@@ -99,7 +117,10 @@
       </xsl:element>
    </xsl:template>
 
-     
+   <xsl:template match="m:a">
+     <a href="{@href}"><xsl:apply-templates/></a>
+   </xsl:template>
+    
    <xsl:template match="*" mode="serialize">
       <xsl:call-template name="indent-for-pre"/>
       

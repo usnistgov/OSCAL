@@ -165,6 +165,7 @@
                     <xsl:message expand-text="true">Formal name override for  { replace(local-name(),'^define-','')} '{ @name }': using "{ $me-and-mine[last()]/formal-name }"</xsl:message>
                 </xsl:if>
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
+                <xsl:copy-of select="$me-and-mine[last()]/valid-values"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
                 </xsl:apply-templates>

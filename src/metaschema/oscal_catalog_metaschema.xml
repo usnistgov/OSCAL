@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/example"
  root="catalog">
 
   <schema-name>OSCAL Control Catalog Format</schema-name>
@@ -16,7 +16,6 @@
 
   <remarks>
     <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
-    <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd">provided</a> for the OSCAL Catalog XML model.</p>
   </remarks>
   
   <import href="oscal_metadata_metaschema.xml"/>
@@ -24,9 +23,10 @@
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Catalog</formal-name>
-    <description>A collection of controls</description>
+    <description>A collection of controls.</description>
     <remarks>
-      <p>Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
+      <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
+      <p>An OSCAL catalog model provides a structured representation of control information. Representing the other non-control propose contents of a source catalog is beyond the scope of the OSCAL catalog model. It is expected that <a href="https://pages.nist.gov/OSCAL/docs/relations">other document formats</a> will address this additional information.</p>
     </remarks>
     <model>
       <assembly named="metadata" required="yes"/>
@@ -36,27 +36,19 @@
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <assembly named="back-matter"/>
+      <assembly named="back-matter">
+        <description>Back matter including references and resources.</description>
+      </assembly>
     </model>
     <example>
       <description>A small catalog with a single control</description>
-      <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/1.0" model-version="0.99">
+      <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/example" model-version="0.99">
         <title>A Miniature Catalog</title>
         <control id="single">
           <title>A Single Control</title>
         </control>
       </catalog>
     </example>
-  </define-assembly>
-
-  <define-assembly name="back-matter">
-    <formal-name>Back matter</formal-name>
-    <description>References, resources and attachments</description>
-    <model>
-      <!--<assemblies named="section"/>-->
-      <assembly named="citation-list"/>
-      <assemblies named="resource"/>
-    </model>
   </define-assembly>
   
   <!--<define-field name="declarations" as="empty">
@@ -69,12 +61,23 @@
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
-    <description>Allows the inclusion of prose content within a Catalog.</description>
+    <description>Provides a means for the grouping of prose content and controls as a chapter within an OSCAL Catalog.</description>
+    <remarks>
+      <p>Sections are recursive; a given section can contain child (sub)-sections.</p>
+    </remarks>
     <model>
-      <field named="title" required="yes"/>
-      <prose/>
-      <assemblies named="section"/>
-      <assembly named="citation-list"/>
+      <field named="title" required="yes">
+        <description>A meaningful human-readable name for the section.</description>
+      </field>
+      <prose>
+        <description>Prose content allows for the inclusion of human-readable text in the body of the section.</description>
+      </prose>
+      <assemblies named="section">
+        <description>A child sub-section.</description>
+      </assemblies>
+      <assembly named="citation-list">
+        <description>A list of supporting references for the section.</description>
+      </assembly>
       <any/>
     </model>
   </define-assembly>-->
@@ -85,7 +88,8 @@
     <formal-name>Control Group</formal-name>
     <description>A group of controls, or of groups of controls.</description>
     <remarks>
-      <p>Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p>
+      <p>Catalogs can use a <code>group</code> to collect related controls into a single grouping. That can be useful to group controls into a family or other logical grouping.</p>
+      <p>A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group.</p>
     </remarks>
     <model>
       <field named="title" required="yes"/>
@@ -100,7 +104,7 @@
       <any/>
     </model>
     <example>
-      <group xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz">
+      <group xmlns="http://csrc.nist.gov/ns/oscal/example" id="xyz">
         <title>My Group</title>
         <prop class="required">some property</prop>
         <control id="xyz1">
@@ -122,6 +126,7 @@
     <model>
       <field named="title" required="yes"/>
       <assemblies named="param" address="id"/>
+      <!-- TODO: Need to be able to add valid values in context -->
       <fields named="prop"/>
       <fields named="link"/>
       <assemblies named="part"/>
@@ -130,7 +135,7 @@
       <any/>
     </model>
     <example>
-      <control id="x" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+      <control id="x" xmlns="http://csrc.nist.gov/ns/oscal/example">
         <title>Control 1</title>
       </control>
     </example>
@@ -141,8 +146,13 @@
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
     <description>A control extension or enhancement</description>
+    <remarks>
+      <p></p>
+    </remarks>
     <model>
-      <field named="title" required="yes"/>
+      <field named="title" required="yes">
+        <description>The subcontrol's human-readable name.</description>
+      </field>
       <assemblies named="param" address="id"/>
       <fields named="prop"/>
       <fields named="link"/>
@@ -152,18 +162,8 @@
     </model>
   </define-assembly>
   
-  <define-field name="title" as="mixed">
-    <formal-name>Title</formal-name>
-    <description>A title for display and navigation, exclusive of more specific properties</description>
-    <remarks>
-      <p>A title given to a control or subcontrol will be its name or whatever
-      human-readable string it is known by. Given to other objects (sections,
-      groups, parts) it is the title as it should appear in a formatted document.</p>
-    </remarks>
-  </define-field>
-
   <!-- See metadata model for 'prop' element -->
-  
+
   <define-assembly name="param" address="id" group-as="parameters">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
@@ -181,7 +181,7 @@
           <p>The label value should be suitable for inline display in a rendered catalog.</p>
         </remarks>
       </field>
-      <fields named="desc">
+      <fields named="usage">
         <description>A short summary of the parameter's intended use.</description>
         <remarks><p> A label is optional, but should be provided unless a <code>select</code> (selection) is provided.</p></remarks>
       </fields>
@@ -222,13 +222,14 @@
 
   <!-- @has-id = none on fields, when there are no attributes, permits
      us to produce a string (not an object) on the JSON side. -->
-  <define-field name="desc" group-as="descriptions" as="mixed">
+  <define-field name="usage" group-as="descriptions" as="mixed">
     <flag name="id" datatype="ID"/>
     <formal-name>Parameter description</formal-name>
     <description>Indicates and explains the purpose and use of a parameter</description>
   </define-field>
 
   <define-field name="constraint" group-as="constraints">
+    <!-- TODO: a test needs a named scheme that provides context on how to interpret the test. -->
     <flag name="test"/>
     <formal-name>Constraint</formal-name>
     <description>A formal or informal expression of a constraint or test</description>
@@ -280,17 +281,11 @@
     <formal-name>Part</formal-name>
     <description>A partition or component of a control, subcontrol or part</description>
     <remarks>
-      <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
-        distinguished from other elements within their controls by their assigned
-        <code>class</code>, such that they may be subjected to <q>declarations logic</q> using
-        these values as bindings (and thereby getting open-ended extensibility).</p>
-      <p>An assigned class may frequently provide for a header in display, such that
-        <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
-        Parts may also however have their own titles (<code>title</code> elements).</p>
-      <p>Many parts are logical partitions or sections for prose. Other parts may be more formally
-        constructed out of properties (<code>prop</code> elements) and/or their own parts. Such
-        structured objects may, at the extreme, function virtually as control extensions or
-        subcontrol-like objects (<q>enhancements</q>).</p>
+      <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+      <p>A <code>part</code> can be assigned an optional <code>id</code>>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+      <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+      <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+      <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
     </remarks>
     <model>
       <field named="title"/>
@@ -300,19 +295,14 @@
       <fields named="link"/>
       <any/>
     </model>
-  </define-assembly>
-
-  <define-flag name="id" datatype="ID">
-    <formal-name>ID / identifier</formal-name>
-    <description>Unique identifier</description>
-    <remarks>
-      <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
-        different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
-    </remarks>
     <example>
-      <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+      <description>Multiple Parts with Different Organization-Specific Names</description>
+      <o:part name="statement" id="statement-A">
+        <o:part ns="https://fedramp.gov" name="status"  id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
+        <o:part ns="https://defense.gov" name="status"  id="statement-A-DoD">Something DoD Cares About</o:part>
+      </o:part>
     </example>
-  </define-flag>
+  </define-assembly>
 
   <define-flag name="test" datatype="string">
     <formal-name>Constraint test</formal-name>
@@ -328,5 +318,5 @@
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
-    
+  
 </METASCHEMA>
