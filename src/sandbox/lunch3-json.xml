@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+   <map key="lunch">
+      <map key="sandwiches">
+         <map key="wap">
+            <array key="prose">
+               <string>Ham and cheese</string>
+               <string/>
+               <string>hold the mustard</string>
+            </array>
+         </map>
+         <map key="cap">
+            <string key="prose">Mayonnaise</string>
+         </map>
+      </map>
+      <array key="chips">
+         <map>
+            <string key="brand">nabisco</string>
+            <string key="muncher">malt vinegar</string>
+         </map>
+         <map>
+            <string key="cruncher">malt vinegar</string>
+         </map>
+         <map>
+            <string key="brand">sunshine</string>
+            <string key="special">malt vinegar</string>
+         </map>
+      </array>
+      <array key="cookies">
+         <map>
+            <string key="days">Sun Mon Tue</string>
+            <string key="baker">jean</string>
+            <array key="type">
+               <string>chocolate chip</string>
+               <string>oatmeal</string>
+            </array>
+         </map>
+         <map>
+            <string key="days">Sun Mon Wed</string>
+            <string key="baker">jean</string>
+            <array key="type">
+               <string>snickerdoodle</string>
+            </array>
+         </map>
+      </array>
+   </map>
+</map>

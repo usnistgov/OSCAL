@@ -12,7 +12,7 @@
    <xsl:output indent="yes"/>
    <xsl:strip-space elements="*"/>
    <xsl:preserve-space elements="string"/>
-   <xsl:param name="json-file" as="xs:string"/>
+   <xsl:param name="json-file" as="xs:string?"/>
    <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
    <xsl:template name="xsl:initial-template" match="/">
       <xsl:choose>
@@ -100,7 +100,7 @@
          <xsl:value-of select="@key"/>
       </xsl:attribute>
    </xsl:template>
-   <xsl:template match="map[@key='chips'][array/@key='']"
+   <xsl:template match="map[@key='chips'][array/@key=''] |  array[@key='chips']/map[array/@key='']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -110,7 +110,8 @@
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='chips']/array[@key='']/string">
+   <xsl:template mode="expand"
+                 match="map[@key='chips']/array[@key='']/string |  array[@key='chips']/map/array[@key='']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -134,7 +135,7 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='cookies'][array/@key='type']"
+   <xsl:template match="map[@key='cookies'][array/@key='type'] |  array[@key='cookies']/map[array/@key='type']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -144,7 +145,8 @@
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
-   <xsl:template mode="expand" match="map[@key='cookies']/array[@key='type']/string">
+   <xsl:template mode="expand"
+                 match="map[@key='cookies']/array[@key='type']/string |  array[@key='cookies']/map/array[@key='type']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -192,7 +194,7 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='cupcakes'][array/@key='STRVALUE']"
+   <xsl:template match="map[@key='cupcakes'][array/@key='STRVALUE'] |  array[@key='cupcakes']/map[array/@key='STRVALUE']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -203,7 +205,7 @@
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key='cupcakes']/array[@key='STRVALUE']/string">
+                 match="map[@key='cupcakes']/array[@key='STRVALUE']/string |  array[@key='cupcakes']/map/array[@key='STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -246,7 +248,7 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='masked-fields'][array/@key='STRVALUE']"
+   <xsl:template match="map[@key='masked-fields'][array/@key='STRVALUE'] |  array[@key='masked-fields']/map[array/@key='STRVALUE']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -257,7 +259,7 @@
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key='masked-fields']/array[@key='STRVALUE']/string">
+                 match="map[@key='masked-fields']/array[@key='STRVALUE']/string |  array[@key='masked-fields']/map/array[@key='STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -281,7 +283,7 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='labeled-value-fields'][array/@key='label']"
+   <xsl:template match="map[@key='labeled-value-fields'][array/@key='label'] |  array[@key='labeled-value-fields']/map[array/@key='label']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -292,7 +294,7 @@
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key='labeled-value-fields']/array[@key='label']/string">
+                 match="map[@key='labeled-value-fields']/array[@key='label']/string |  array[@key='labeled-value-fields']/map/array[@key='label']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -317,7 +319,7 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key='ID-objects'][array/@key='STRVALUE']"
+   <xsl:template match="map[@key='ID-objects'][array/@key='STRVALUE'] |  array[@key='ID-objects']/map[array/@key='STRVALUE']"
                  priority="3"
                  mode="json2xml">
       <xsl:variable name="expanded" as="element()*">
@@ -328,7 +330,7 @@
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key='ID-objects']/array[@key='STRVALUE']/string">
+                 match="map[@key='ID-objects']/array[@key='STRVALUE']/string |  array[@key='ID-objects']/map/array[@key='STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>

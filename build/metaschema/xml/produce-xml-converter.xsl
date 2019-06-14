@@ -179,19 +179,34 @@
                     </xsl:variable>
                     <xsl:sequence select="string-join($flag-names ! ( '*[@key = ''' || . || ''']'),',')"/>
                 </xsl:variable>
-                <XSLT:for-each-group select="map"
-                    group-by="string-join( ({ $group-properties } ), '#' )">
-                    <map key="{ @group-as}">
-                        <XSLT:copy-of select="*[@key = ('days', 'baker')]"/>
-                        <array key="{{$text-key}}">
-                            <XSLT:for-each select="current-group()/string[@key = $text-key]">
-                                <string>
-                                    <XSLT:apply-templates mode="#current"/>
-                                </string>
-                            </XSLT:for-each>
+                
+                <XSLT:variable name="grouped-maps" as="element()*">
+                    <XSLT:for-each-group select="map"
+                        group-by="string-join( ({ $group-properties } ), '#' )">
+                        <map>
+                            <XSLT:copy-of select="*[@key = ('days', 'baker')]"/>
+                            <array key="{{$text-key}}">
+                                <XSLT:for-each select="current-group()/string[@key = $text-key]">
+                                    <string>
+                                        <XSLT:apply-templates mode="#current"/>
+                                    </string>
+                                </XSLT:for-each>
+                            </array>
+                        </map>
+                    </XSLT:for-each-group>
+                </XSLT:variable>
+                <XSLT:choose>
+                    <XSLT:when test="count($grouped-maps) gt 1">
+                        <array key="{ @group-as}">
+                            <XSLT:copy-of select="$grouped-maps"/>
                         </array>
-                    </map>
-                </XSLT:for-each-group>
+                    </XSLT:when>
+                    <XSLT:otherwise>
+                        <map key="{ @group-as}">
+                            <XSLT:copy-of select="$grouped-maps/*"/>
+                        </map>
+                    </XSLT:otherwise>
+                </XSLT:choose>
             </XSLT:template>
         </xsl:if>
     </xsl:template>

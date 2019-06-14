@@ -250,19 +250,33 @@
                  mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
       <xsl:variable name="text-key">type</xsl:variable>
-      <xsl:for-each-group select="map"
-                          group-by="string-join( (*[@key = 'baker'],*[@key = 'days'] ), '#' )">
-         <map key="cookies">
-            <xsl:copy-of select="*[@key = ('days', 'baker')]"/>
-            <array key="{$text-key}">
-               <xsl:for-each select="current-group()/string[@key = $text-key]">
-                  <string>
-                     <xsl:apply-templates mode="#current"/>
-                  </string>
-               </xsl:for-each>
+      <xsl:variable name="grouped-maps" as="element()*">
+         <xsl:for-each-group select="map"
+                             group-by="string-join( (*[@key = 'baker'],*[@key = 'days'] ), '#' )">
+            <map>
+               <xsl:copy-of select="*[@key = ('days', 'baker')]"/>
+               <array key="{$text-key}">
+                  <xsl:for-each select="current-group()/string[@key = $text-key]">
+                     <string>
+                        <xsl:apply-templates mode="#current"/>
+                     </string>
+                  </xsl:for-each>
+               </array>
+            </map>
+         </xsl:for-each-group>
+      </xsl:variable>
+      <xsl:choose>
+         <xsl:when test="count($grouped-maps) gt 1">
+            <array key="cookies">
+               <xsl:copy-of select="$grouped-maps"/>
             </array>
-         </map>
-      </xsl:for-each-group>
+         </xsl:when>
+         <xsl:otherwise>
+            <map key="cookies">
+               <xsl:copy-of select="$grouped-maps/*"/>
+            </map>
+         </xsl:otherwise>
+      </xsl:choose>
    </xsl:template>
    <xsl:template match="cupcake" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>

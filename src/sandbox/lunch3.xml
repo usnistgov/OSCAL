@@ -10,5 +10,5 @@
     <chip type="special" brand="sunshine">malt vinegar</chip>
     <cookie days="Sun Mon Tue" baker="jean">chocolate chip</cookie>
     <cookie days="Sun Mon Tue" baker="jean">oatmeal</cookie>
-    <cookie days="Sun Mon Tue" baker="jean">snickerdoodle</cookie>
+    <cookie days="Sun Mon Wed" baker="jean">snickerdoodle</cookie>
 </lunch>

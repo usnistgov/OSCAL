@@ -154,7 +154,8 @@
         <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
              (for a 'collapsible' field definition) -->
         <xsl:if test="matches(@group-as,'\S')">
-            <XSLT:template match="map[@key='{@group-as}'][array/@key='{$text-value-key}']" priority="3" mode="json2xml">
+            <XSLT:template match="map[@key='{@group-as}'][array/@key='{$text-value-key}'] | {
+                             () } array[@key='{@group-as}']/map[array/@key='{$text-value-key}']" priority="3" mode="json2xml">
             <!-- A supervening template matching a map will unspool itself as if it hadn't been compressed,
                  then apply templates to the resulting array ... -->
                 <XSLT:variable name="expanded" as="element()*">
@@ -164,7 +165,8 @@
                 </XSLT:variable>
                 <XSLT:apply-templates select="$expanded" mode="json2xml"/>
             </XSLT:template>
-            <XSLT:template mode="expand" match="map[@key='{@group-as}']/array[@key='{$text-value-key}']/string">
+            <XSLT:template mode="expand" match="map[@key='{@group-as}']/array[@key='{$text-value-key}']/string | {
+                                           () } array[@key='{@group-as}']/map/array[@key='{$text-value-key}']/string">
                 <XSLT:variable name="me" select="."/>
                 <XSLT:for-each select="parent::array/parent::map">
                     <XSLT:copy>
@@ -263,7 +265,7 @@
         <XSLT:strip-space elements="*"/>
         <XSLT:preserve-space elements="string"/>
         
-        <XSLT:param name="json-file" as="xs:string"/>
+        <XSLT:param name="json-file" as="xs:string?"/>
         
         <XSLT:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
         
