@@ -25,7 +25,7 @@ NIST is developing the Open Security Controls Assessment Language (OSCAL) as a s
 
 There are a number of factors contributing to the challenges faced by information system security professionals today:
 
-* multiple regulatory standards and frameworks (e.g., [NIST FISMA](https://www.nist.gov/programs-projects/federal-information-security-management-act-fisma-implementation-project), [PCI](https://www.pcisecuritystandards.org/pci_security/), [HIPAA](https://www.hhs.gov/hipaa/index.html), [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)), which change over time;
+* multiple regulatory standards and frameworks (e.g., NIST [FISMA Implementation Project](https://www.nist.gov/programs-projects/federal-information-security-management-act-fisma-implementation-project), [PCI](https://www.pcisecuritystandards.org/pci_security/), [HIPAA](https://www.hhs.gov/hipaa/index.html), [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)), which change over time;
 * their overlapping scope and the requirement to manage them together; and
 * the size, complexity and ongoing development of the systems being documented.
 
