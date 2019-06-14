@@ -10,7 +10,7 @@
  root="VALIDATION_root">
 
   <schema-name>OSCAL Document Metadata Description</schema-name>
-  <schema-version>1.0-M1</schema-version>
+  <schema-version>1.0-milestone1</schema-version>
   <short-name>oscal-metadata</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
   

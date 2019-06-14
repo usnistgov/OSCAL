@@ -9,7 +9,7 @@
       
       <last-modified-date>2019-06-05T17:36:38.803-04:00</last-modified-date>
       <version>2015-01-22</version>
-      <oscal-version>1.0-M1</oscal-version>
+      <oscal-version>1.0-milestone1</oscal-version>
       <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
       <link rel="alternate" href="#resource-pdf-sp-800-53r4"/>
       <link rel="canonical" href="#resource-doi-sp-800-53r4"/>
