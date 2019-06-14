@@ -8,20 +8,16 @@ sidenav: schemas
 sticky_sidenav: true
 ---
 
-## About the schemas
+The OSCAL project is modeling each OSCAL [layer](https://pages.nist.gov/OSCAL/docs/) using a framework, called a [Metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema). This framework allows the OSCAL project to model each OSCAL **layer** based on the information needs of the OSCAL **model**, creating an *information model* for each OSCAL layer. An OSCAL **schema** represents a *data model* that defines how to represent the an OSCAL *information model* in a serialized format, such as JSON or XML. The OSCAL project uses the Metaschema framework to produce these schemas. This framework is also used to generate converters capable of converting OSCAL content for a given model to another supported format, and to produce documentation for each OSCAL model format.
 
-Each OSCAL **model** comes with an XSD (W3C XML Schema) and a corresponding JSON Schema.
+The OSCAL project is producing the following types of schemas:
 
-### XML and/or JSON
+* XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) that describes an XML tag set for an OSCAL model
+* JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) that describes a JSON data object for an OSCAL model
 
-The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a metamodel, which is subsequently processed and written out into two different expressions:
+XML documents that are conforming (validate) to an OSCAL XSD can be converted without loss into the corresponding JSON, and vice versa. Accordingly we can produce not only the models and their documentation, but also tools for converting data sets in the respective formats into their "opposites".
 
-* An XSD (W3C XML Schema) that describes an XML tag set
-* A JSON Schema (v7) that describes a JSON data object
-
-XML documents that are conformant (validate) to an OSCAL XSD can be converted without loss into the corresponding JSON, according to a mapping provided by the metamodel, and vice versa. Accordingly we can produce not only the models and their documentation, but also tools for converting data sets in the respective formats into their "opposites".
-
-In addition to the improved control over modeling and documentation this architecture gives us, this enables OSCAL to serve the needs of developers who use either or both formats. We hope and expect that developers' experience with different approaches will inform further efforts to unify and consolidate a coherent data model.
+In addition to the improved control over modeling and documentation this framework gives us, the framework also enables OSCAL to serve the needs of developers who use either or both formats. We hope and expect that developers' experience with different approaches will inform further efforts to unify and consolidate a coherent information model for the OSCAL models.
 
 In future, we plan to extend our models with mappings to other formats as well. As a superset of JSON, YAML syntax is an attractive candidate, as is a Markdown application. Once we have demonstrated that the models themselves are adequate to the data, many more things become possible.
 
