@@ -224,6 +224,7 @@ jobs: # a collection of
       - install-saxon
       - install-jq
       - install-prettyjson
+      - install-ajv
       - run:
           name: Generate OSCAL converters
           command: |
