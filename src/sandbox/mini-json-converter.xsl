@@ -157,6 +157,14 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
+   <!-- 000 Handling flag "type" 000 -->
+   <xsl:template match="*[@key='type']" mode="json2xml"/>
+   <xsl:template match="*[@key='chip']/*[@key='type'] | *[@key='chips']/*[@key='type'] | array[@key='chips']/*/*[@key='type']"
+                 mode="as-attribute">
+      <xsl:attribute name="type">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
    <!-- 000 Handling flag "brand" 000 -->
    <xsl:template match="*[@key='brand']" mode="json2xml"/>
    <xsl:template match="*[@key='chip']/*[@key='brand'] | *[@key='chips']/*[@key='brand'] | array[@key='chips']/*/*[@key='brand']"

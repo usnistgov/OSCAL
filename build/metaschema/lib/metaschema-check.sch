@@ -72,15 +72,28 @@
         </sch:rule>-->
         
 
+        <sch:rule context="m:key">
+            <sch:assert test="count(../*[@name = current()/@name]) eq 1">Only one flag (or key) may be named 
+                <sch:value-of select="@name"/>
+            </sch:assert>
+        </sch:rule>
+        
+        <sch:rule context="m:value-key">
+            <sch:assert test="not(parent::define-field) or matches(.,'\S')">Inside a field definition, a value-key must be
+                given with a literal value</sch:assert>
+            <sch:assert test="not(parent::flag) or empty(node())">Inside a flag reference, a value-key must be empty
+                (serving to declare the flag as the value key)</sch:assert>
+        </sch:rule>
+        
         <sch:rule context="m:flag">
             <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
-            
-            <sch:assert test="empty(@primary) or (count(../*[@primary]) eq 1)">Only one flag may be marked as "primary".</sch:assert>
-            <sch:report test="@primary != 'yes'">Value of @primary should be "yes"</sch:report>
-            <sch:assert test="not(@primary = 'yes') or (@required = 'yes')">Flag must be required when designated as primary (required="yes" primary="yes")</sch:assert>
+            <sch:assert test="empty(m:value-key) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
+            <sch:assert test="empty(m:value-key) or empty(../m:value-key)">A flag may not be marked as a value key when its field has a (literal) value key.</sch:assert>
+            <sch:assert test="empty(m:value-key) or (count(../m:flag/m:value-key) eq 1)">Only one flag may be marked as a value key on a field.</sch:assert>
+            <sch:assert test="count(../*[@name = current()/@name]) eq 1">Only one flag (or key or value-key) may be named 
+                <sch:value-of select="@name"/></sch:assert>
             <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
-            <sch:assert test="not(@name=../@address) or @required='yes'">Definition set to address by '<sch:value-of select="@name"/>', but its flag is not required.</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE')">Flag should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
         </sch:rule>
         

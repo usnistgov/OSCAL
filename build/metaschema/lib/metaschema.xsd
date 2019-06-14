@@ -119,25 +119,19 @@
     </xs:complexType>
   </xs:element>
   
-<!-- a value-key produces an attribute in the XML if a @name is given; otherwise
-     it is simply a literal  -->
+<!-- a value-key provides a literal to be used in JSON as a key for the field value;
+     when given as a child of a flag (reference), designates that flag's value to serve as
+     the key (JSON property label) for the field's value. Inside flag this element
+     must be empty.  -->
   <xs:element name="value-key">
     <xs:annotation>
-      <xs:documentation>With a @name, produces an attribute in the XML, whose value is used as a key
-        value (object property name) in the JSON for the text value of the field, masking the system
-        default name for the text (string) content. With a literal value instead of the @name,
-        simply uses the value given as the mask. When both are given, the attribute is produced as
-        optional and the given value used as a fallback.</xs:documentation>
+      <xs:documentation>Used inside a flag reference, designates
+        the flag as a label (key) to be used for the field value in the JSON on
+        the field being defined. Used directly inside a field
+       definition with a literal value, indicates that the value of the field
+       is to be labeled in the JSON with this value.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true">
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
-      </xs:sequence>
-      <xs:attribute name="datatype" type="xs:NCName"/>
-<!-- either a name (for an attribute) or a value (for a literal) must be given: Sch -->
-      <xs:attribute name="name"     type="xs:NCName"/>
-    </xs:complexType>
+    <xs:complexType mixed="true"/>
   </xs:element>
   
   <xs:element name="define-flag">
@@ -317,6 +311,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:value"/>
       </xs:sequence>

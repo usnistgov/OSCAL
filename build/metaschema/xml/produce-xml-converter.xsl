@@ -24,6 +24,9 @@
     
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
+    <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
+    <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
+    
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
     
@@ -133,20 +136,22 @@
         </XSLT:template>
     </xsl:template>-->
     
-    <xsl:template match="define-field" mode="text-key"             >STRVALUE</xsl:template>
-    <xsl:template match="define-field[@as='mixed']" mode="text-key">RICHTEXT</xsl:template>
     
-    <xsl:template match="define-field[exists(value-key)]" mode="text-key">
-        <xsl:for-each select="value-key/@name">
-            <XSLT:value-of select="@{.}"/>
-        </xsl:for-each>
-        <xsl:if test="empty(value-key/@name)">
-            <xsl:value-of select="value-key"/>
-            <xsl:if test="not(matches(value-key,'\S'))">
-                <xsl:next-match/>
-            </xsl:if>
-        </xsl:if>
+    <xsl:template match="define-field" mode="text-key">
+        <xsl:value-of select="$string-value-label"/>
     </xsl:template>
+    
+    <xsl:template match="define-field[@as='mixed']" mode="text-key">
+        <xsl:value-of select="$markdown-value-label"/>
+    </xsl:template>
+    
+    <xsl:template priority="3" match="define-field[exists(value-key)]" mode="text-key">
+        <xsl:value-of select="value-key"/>
+    </xsl:template>
+    
+    <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
+        <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
+    </xsl:template>-->
     
     <xsl:template match="define-field">
         <XSLT:template match="{@name}" mode="xml2json">

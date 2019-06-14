@@ -24,7 +24,7 @@
         "cookies": {
             "days": "Sun Mon Tue",
             "baker": "jean",
-            "STRVALUE": [
+            "type": [
                 "chocolate chip",
                 "oatmeal",
                 "snickerdoodle"

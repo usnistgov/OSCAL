@@ -111,13 +111,12 @@
         <xsl:value-of select="$markdown-value-label"/>
     </xsl:template>
     
-    <xsl:template priority="2" match="define-field[exists(value-key)]" mode="text-key">
-        <xsl:for-each select="value-key/@name[matches(.,'\S')]">
-            <XSLT:value-of select="string[@key='{.}']"/>
-        </xsl:for-each>
-        <xsl:if test="empty(value-key/@name[matches(.,'\S')])">
-            <xsl:value-of select="value-key"/>
-        </xsl:if>
+    <xsl:template priority="3" match="define-field[exists(value-key)]" mode="text-key">
+        <xsl:value-of select="value-key"/>
+    </xsl:template>
+    
+    <xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
+        <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
     </xsl:template>
     
     <xsl:template match="define-field" expand-text="true">
@@ -142,13 +141,15 @@
         <!-- when a field has value-key/@name, we need a template
              to match the field with the value key and make an
              attribute for it, {name}={label} -->
-        <xsl:if test="matches(value-key/@name,'\S')">
-        <xsl:variable name="flag-names" select="flag/@name"/>
-        <XSLT:template match="({$field-match})/string[not(@key=({string-join($flag-names/('''' || . || ''''),',')}))]" mode="as-attribute">
-            <XSLT:attribute name="{value-key/@name}">
-                <XSLT:value-of select="@key"/>
-            </XSLT:attribute>
-        </XSLT:template>
+        <xsl:if test="exists(flag/value-key)">
+            <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
+            <XSLT:template
+                match="({$field-match})/string[not(@key=({string-join($flag-names/('''' || . || ''''),',')}))]"
+                mode="as-attribute">
+                <XSLT:attribute name="{flag/value-key/../@name}">
+                    <XSLT:value-of select="@key"/>
+                </XSLT:attribute>
+            </XSLT:template>
         </xsl:if>
         
         <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
@@ -196,8 +197,8 @@
         </XSLT:for-each>
     </xsl:template>
     
-    <xsl:template match="define-field[matches(value-key/@name,'\S')]" mode="field-text">
-        <xsl:variable name="flag-names" select="flag/@name"/>
+    <xsl:template match="define-field[exists(flag/value-key)]" mode="field-text">
+        <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
         <XSLT:apply-templates select="string[not(@key=({
             string-join($flag-names/('''' || . || ''''),',')}))]" mode="json2xml"/>
     </xsl:template>

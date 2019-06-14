@@ -151,15 +151,15 @@
   </define-flag>
 
   <define-field name="prop" group-as="properties">
-    <flag name="id" datatype="ID"/>
-    <flag name="name" required="yes" primary="yes">
+    <value-key name="name">
       <valid-values allow-other="yes">
-        <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
-        <value name="label">A human-readable label for the parent context.</value>
-        <value name="method">An assessment method.</value>
-        <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
-      </valid-values>
-    </flag>
+      <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
+      <value name="label">A human-readable label for the parent context.</value>
+      <value name="method">An assessment method.</value>
+      <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
+    </valid-values>
+    </value-key>
+    <flag name="id" datatype="ID"/>
     <flag name="ns"/>
     <flag name="class"/>
     <formal-name>Property</formal-name>

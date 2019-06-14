@@ -8,7 +8,7 @@
 
   
   <schema-name>MINI Testing Schema</schema-name>
-  <schema-version>testing</schema-version>
+  <schema-version>0.1-testing</schema-version>
   <short-name>oscal-mini</short-name>
   <namespace>urn:mini</namespace>
   <remarks>
@@ -37,7 +37,9 @@
   </define-assembly>
   
   <define-field name="chip" group-as="chips">
-    <value-key name="type"/>
+    <flag name="type" required="yes">
+      <value-key/>
+    </flag>
     <flag name="brand"/>
     
     <formal-name>Chip</formal-name>
@@ -51,6 +53,10 @@
     <formal-name>Cookie</formal-name>
     <description>Have several.</description>
   </define-field>
+  
+  <define-flag name="type" datatype="string">
+    <formal-name>Cookie type</formal-name><description>Will appear as the value key in the JSON.</description>
+  </define-flag>
   
   <define-flag name="brand" datatype="string">
     <formal-name>Brand name</formal-name><description/>

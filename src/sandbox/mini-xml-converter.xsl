@@ -226,10 +226,9 @@
       </map>
    </xsl:template>
    <xsl:template match="chip" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="@type"/>
-      </xsl:variable>
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="chip">
+         <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select="@brand"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
