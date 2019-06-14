@@ -4,7 +4,7 @@
            xmlns:oscal-prose="urn:OSCAL-SSP-metaschema"
            elementFormDefault="qualified"
            targetNamespace="urn:OSCAL-SSP-metaschema"
-           version="1.0-M1"><!--OSCAL System Security Plan (SSP) Format--><!--short name: oscal-ssp--><!--The OSCAL Control SSP format can be used to describe the information typically specified in a FedRAMP system security plan. The root of the Control Catalog format is system_security_plan.--><!--An XML Schema is provided for the OSCAL SSP XML model.-->
+           version="1.0-milestone1"><!--OSCAL System Security Plan (SSP) Format--><!--short name: oscal-ssp--><!--The OSCAL Control SSP format can be used to describe the information typically specified in a FedRAMP system security plan. The root of the Control Catalog format is system_security_plan.--><!--An XML Schema is provided for the OSCAL SSP XML model.-->
    <xs:element name="metadata">
       <xs:annotation>
          <xs:documentation>
