@@ -6,17 +6,13 @@
     "definitions" : 
     { "metadata" : 
       { "title" : "Publication metadata",
-        "description" : "Information describing the publication or availability of this document",
+        "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
         "type" : "object",
         "properties" : 
         { "title" : 
           { "type" : "string",
             "$ref" : "#/definitions/title" },
-          "authors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/author" } },
           "last-modified-date" : 
           { "type" : "string",
             "$ref" : "#/definitions/last-modified-date" },
@@ -48,10 +44,7 @@
             { "$ref" : "#/definitions/party" } },
           "notes" : 
           { "type" : "object",
-            "$ref" : "#/definitions/notes" },
-          "extra-meta" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/extra-meta" } },
+            "$ref" : "#/definitions/notes" } },
         "required" : 
         [ "title",
           "oscal-version" ],
@@ -59,7 +52,6 @@
         "propertyNames" : 
         { "enum" : 
           [ "title",
-            "author",
             "last-modified-date",
             "version",
             "oscal-version",
@@ -68,11 +60,29 @@
             "link",
             "role",
             "party",
-            "notes",
-            "extra-meta" ] } },
+            "notes" ] } },
+      "back-matter" : 
+      { "title" : "Back matter",
+        "description" : "A collection of citations and resource references.",
+        "$id" : "#/definitions/back-matter",
+        "type" : "object",
+        "properties" : 
+        { "citations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/citation" } },
+          "resources" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/resource" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "citation",
+            "resource" ] } },
       "link" : 
       { "title" : "Link",
-        "description" : "A line or paragraph with a hypertext link",
+        "description" : "A reference to a local or remote resource, with associated markup.",
         "$id" : "#/definitions/link",
         "type" : "object",
         "properties" : 
@@ -93,29 +103,24 @@
             "href",
             "rel",
             "media-type" ] } },
-      "author" : 
-      { "title" : "Author",
-        "description" : "A named author",
-        "$id" : "#/definitions/author",
-        "type" : "string" },
       "last-modified-date" : 
       { "title" : "Last modified date",
-        "description" : "Date of last modification",
+        "description" : "Date of last modification.",
         "$id" : "#/definitions/last-modified-date",
         "type" : "string" },
       "version" : 
       { "title" : "Document version",
-        "description" : "Provided by document owner",
+        "description" : "The version of the document content.",
         "$id" : "#/definitions/version",
         "type" : "string" },
       "oscal-version" : 
       { "title" : "OSCAL version",
-        "description" : "OSCAL model version",
+        "description" : "OSCAL model version.",
         "$id" : "#/definitions/oscal-version",
         "type" : "string" },
       "doc-id" : 
       { "title" : "Document Identifier",
-        "description" : "Any sort of document identifier, name, code, path or other indicator of where and how this document may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.",
+        "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/doc-id",
         "type" : "object",
         "properties" : 
@@ -353,7 +358,7 @@
         "type" : "string" },
       "address" : 
       { "title" : "Address",
-        "description" : "A postal address",
+        "description" : "A postal address.",
         "$id" : "#/definitions/address",
         "type" : "object",
         "properties" : 
@@ -386,7 +391,7 @@
             "country" ] } },
       "addr-line" : 
       { "title" : "Address line",
-        "description" : "A single line of an address",
+        "description" : "A single line of an address.",
         "$id" : "#/definitions/addr-line",
         "type" : "string" },
       "city" : 
@@ -449,9 +454,14 @@
         { "enum" : 
           [ "type",
             "prose" ] } },
+      "desc" : 
+      { "title" : "Description",
+        "description" : "A short textual description",
+        "$id" : "#/definitions/desc",
+        "type" : "string" },
       "resource" : 
       { "title" : "Resource",
-        "description" : "A resource to inform or authenticate the present document, or to supplement it as an attachment",
+        "description" : "A resource associated with the present document.",
         "$id" : "#/definitions/resource",
         "type" : "object",
         "properties" : 
@@ -482,7 +492,7 @@
             "notes" ] } },
       "hash" : 
       { "title" : "Hash",
-        "description" : "A document hash or other value subject to cryptographic authentication",
+        "description" : "A representation of a cryptographic digest generated over a resource using a hash algorithm.",
         "$id" : "#/definitions/hash",
         "type" : "object",
         "properties" : 
@@ -523,76 +533,11 @@
             "title",
             "short-name",
             "desc" ] } },
-      "extra-meta" : 
-      { "title" : "Extra metadata",
-        "description" : "Container for (system-defined) metadata",
-        "$id" : "#/definitions/extra-meta",
-        "type" : "object",
-        "properties" : 
-        { "metadata-groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta-group" } },
-          "metadata-fields" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "meta-group",
-            "meta",
-            "notes" ] } },
-      "meta-group" : 
-      { "title" : "Metadata group",
-        "description" : "Custom- or application-defined annotated metadata.",
-        "$id" : "#/definitions/meta-group",
-        "type" : "object",
-        "properties" : 
-        { "term" : 
-          { "type" : "string" },
-          "type" : 
-          { "type" : "string" },
-          "metadata-fields" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta" } },
-          "metadata-groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta-group" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "term",
-            "type",
-            "meta",
-            "meta-group",
-            "notes" ] } },
-      "meta" : 
-      { "title" : "Metadata field value",
-        "description" : "Any customized or specialized metadata value.",
-        "$id" : "#/definitions/meta",
-        "type" : "object",
-        "properties" : 
-        { "term" : 
-          { "type" : "string" },
-          "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "term",
-            "type" ] } },
+      "title" : 
+      { "title" : "Title",
+        "description" : "A title for display and navigation, exclusive of more specific properties",
+        "$id" : "#/definitions/title",
+        "type" : "string" },
       "base64" : 
       { "title" : "Base64",
         "description" : "",
@@ -611,23 +556,9 @@
           [ "STRVALUE",
             "filename",
             "media-type" ] } },
-      "citation-list" : 
-      { "title" : "Citation list",
-        "description" : "A list of citations to resources, either external or (by means of internal cross-reference) saved or documented internally.",
-        "$id" : "#/definitions/citation-list",
-        "type" : "object",
-        "properties" : 
-        { "citations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/citation" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "citation" ] } },
       "citation" : 
       { "title" : "Citation",
-        "description" : "Citation of a resource",
+        "description" : "A citation to resources, either external or internal (by means of internal cross-reference).",
         "$id" : "#/definitions/citation",
         "type" : "object",
         "properties" : 
@@ -647,6 +578,8 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/doc-id" } } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -659,29 +592,6 @@
       { "title" : "Citation target",
         "description" : "An address for retrieval of a citation",
         "$id" : "#/definitions/target",
-        "type" : "string" },
-      "back-matter" : 
-      { "title" : "Back matter",
-        "description" : "References, resources and attachments",
-        "$id" : "#/definitions/back-matter",
-        "type" : "object",
-        "properties" : 
-        { "citation-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/citation-list" },
-          "resources" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/resource" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "citation-list",
-            "resource" ] } },
-      "title" : 
-      { "title" : "Title",
-        "description" : "A title for display and navigation, exclusive of more specific properties",
-        "$id" : "#/definitions/title",
         "type" : "string" },
       "parameters" : 
       { "$id" : "#/definitions/parameters",
@@ -707,7 +617,7 @@
           "descriptions" : 
           { "type" : "array",
             "items" : 
-            { "$ref" : "#/definitions/desc" } },
+            { "$ref" : "#/definitions/usage" } },
           "constraints" : 
           { "type" : "array",
             "items" : 
@@ -732,7 +642,7 @@
             "class",
             "depends-on",
             "label",
-            "desc",
+            "usage",
             "constraint",
             "guideline",
             "value",
@@ -743,10 +653,10 @@
         "description" : "A placeholder for a missing value, in display.",
         "$id" : "#/definitions/label",
         "type" : "string" },
-      "desc" : 
+      "usage" : 
       { "title" : "Parameter description",
         "description" : "Indicates and explains the purpose and use of a parameter",
-        "$id" : "#/definitions/desc",
+        "$id" : "#/definitions/usage",
         "type" : "object",
         "properties" : 
         { "id" : 
@@ -1151,7 +1061,7 @@
           "descriptions" : 
           { "type" : "array",
             "items" : 
-            { "$ref" : "#/definitions/desc" } },
+            { "$ref" : "#/definitions/usage" } },
           "constraints" : 
           { "type" : "array",
             "items" : 
@@ -1176,7 +1086,7 @@
             "class",
             "depends-on",
             "label",
-            "desc",
+            "usage",
             "constraint",
             "value",
             "select",
@@ -1253,10 +1163,7 @@
           "parts" : 
           { "type" : "array",
             "items" : 
-            { "$ref" : "#/definitions/part" } },
-          "citation-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/citation-list" } },
+            { "$ref" : "#/definitions/part" } } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -1265,8 +1172,7 @@
             "param",
             "prop",
             "link",
-            "part",
-            "citation-list" ] } },
+            "part" ] } },
       "prose" : 
       { "type" : "array",
         "items" : 

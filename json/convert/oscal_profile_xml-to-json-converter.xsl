@@ -180,11 +180,6 @@
    <xsl:template match="metadata" mode="xml2json">
       <map key="metadata">
          <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:if test="exists(author)">
-            <array key="authors">
-               <xsl:apply-templates select="author" mode="#current"/>
-            </array>
-         </xsl:if>
          <xsl:apply-templates select="last-modified-date" mode="#current"/>
          <xsl:apply-templates select="version" mode="#current"/>
          <xsl:apply-templates select="oscal-version" mode="#current"/>
@@ -214,7 +209,20 @@
             </array>
          </xsl:if>
          <xsl:apply-templates select="notes" mode="#current"/>
-         <xsl:apply-templates select="extra-meta" mode="#current"/>
+      </map>
+   </xsl:template>
+   <xsl:template match="back-matter" mode="xml2json">
+      <map key="back-matter">
+         <xsl:if test="exists(citation)">
+            <array key="citations">
+               <xsl:apply-templates select="citation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(resource)">
+            <array key="resources">
+               <xsl:apply-templates select="resource" mode="#current"/>
+            </array>
+         </xsl:if>
       </map>
    </xsl:template>
    <xsl:template match="link" mode="xml2json">
@@ -228,11 +236,6 @@
             </string>
          </xsl:if>
       </map>
-   </xsl:template>
-   <xsl:template match="author" mode="xml2json">
-      <string key="author">
-         <xsl:apply-templates mode="md"/>
-      </string>
    </xsl:template>
    <xsl:template match="last-modified-date" mode="xml2json">
       <string key="last-modified-date">
@@ -452,6 +455,11 @@
          <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
+   <xsl:template match="desc" mode="xml2json">
+      <string key="desc">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
    <xsl:template match="resource" mode="xml2json">
       <map key="resource">
          <xsl:apply-templates mode="as-string" select="@id"/>
@@ -481,46 +489,10 @@
          <xsl:apply-templates select="desc" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="extra-meta" mode="xml2json">
-      <map key="extra-meta">
-         <xsl:if test="exists(meta-group)">
-            <array key="metadata-groups">
-               <xsl:apply-templates select="meta-group" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(meta)">
-            <array key="metadata-fields">
-               <xsl:apply-templates select="meta" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:apply-templates select="notes" mode="#current"/>
-      </map>
-   </xsl:template>
-   <xsl:template match="meta-group" mode="xml2json">
-      <map key="meta-group">
-         <xsl:apply-templates mode="as-string" select="@term"/>
-         <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:if test="exists(meta)">
-            <array key="metadata-fields">
-               <xsl:apply-templates select="meta" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(meta-group)">
-            <array key="metadata-groups">
-               <xsl:apply-templates select="meta-group" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:apply-templates select="notes" mode="#current"/>
-      </map>
-   </xsl:template>
-   <xsl:template match="meta" mode="xml2json">
-      <map key="meta">
-         <xsl:apply-templates mode="as-string" select="@term"/>
-         <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
-         </xsl:apply-templates>
-      </map>
+   <xsl:template match="title" mode="xml2json">
+      <string key="title">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="base64" mode="xml2json">
       <map key="base64">
@@ -529,15 +501,6 @@
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
-      </map>
-   </xsl:template>
-   <xsl:template match="citation-list" mode="xml2json">
-      <map key="citation-list">
-         <xsl:if test="exists(citation)">
-            <array key="citations">
-               <xsl:apply-templates select="citation" mode="#current"/>
-            </array>
-         </xsl:if>
       </map>
    </xsl:template>
    <xsl:template match="citation" mode="xml2json">
@@ -562,29 +525,14 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template match="back-matter" mode="xml2json">
-      <map key="back-matter">
-         <xsl:apply-templates select="citation-list" mode="#current"/>
-         <xsl:if test="exists(resource)">
-            <array key="resources">
-               <xsl:apply-templates select="resource" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="title" mode="xml2json">
-      <string key="title">
-         <xsl:apply-templates mode="md"/>
-      </string>
-   </xsl:template>
    <xsl:template match="param" mode="xml2json">
       <map key="{@id}">
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
-         <xsl:if test="exists(desc)">
+         <xsl:if test="exists(usage)">
             <array key="descriptions">
-               <xsl:apply-templates select="desc" mode="#current"/>
+               <xsl:apply-templates select="usage" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(constraint)">
@@ -611,8 +559,8 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template match="desc" mode="xml2json">
-      <map key="desc">
+   <xsl:template match="usage" mode="xml2json">
+      <map key="usage">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="matches(.,'\S')">
             <string key="RICHTEXT">
@@ -836,9 +784,9 @@
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
-         <xsl:if test="exists(desc)">
+         <xsl:if test="exists(usage)">
             <array key="descriptions">
-               <xsl:apply-templates select="desc" mode="#current"/>
+               <xsl:apply-templates select="usage" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(constraint)">
@@ -910,7 +858,6 @@
                <xsl:apply-templates select="part" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="citation-list" mode="#current"/>
       </map>
    </xsl:template>
 </xsl:stylesheet>

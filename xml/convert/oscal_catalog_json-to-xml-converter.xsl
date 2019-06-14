@@ -60,7 +60,6 @@
       <xsl:element name="metadata" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('author', 'authors')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('last-modified-date')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('version')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('oscal-version')]"/>
@@ -70,7 +69,14 @@
          <xsl:apply-templates mode="#current" select="*[@key=('role', 'roles')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('party', 'parties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('extra-meta')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling assembly "back-matter" 000 -->
+   <xsl:template match="*[@key='back-matter']" priority="2" mode="json2xml">
+      <xsl:element name="back-matter" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('resource', 'resources')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "link" 000 -->
@@ -80,15 +86,6 @@
       <xsl:element name="link" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "author" 000 -->
-   <xsl:template match="*[@key='author'] | *[@key='authors']/*"
-                 priority="2"
-                 mode="json2xml">
-      <xsl:element name="author" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "last-modified-date" 000 -->
@@ -123,7 +120,7 @@
    </xsl:template>
    <!-- 000 Handling flag "type" 000 -->
    <xsl:template match="*[@key='type']" mode="json2xml"/>
-   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*/*[@key='type'] | *[@key='notes']/*[@key='type'] | *[@key='meta-group']/*[@key='type'] | *[@key='metadata-groups']/*/*[@key='type'] | *[@key='meta']/*[@key='type'] | *[@key='metadata-fields']/*/*[@key='type']"
+   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*/*[@key='type'] | *[@key='notes']/*[@key='type']"
                  mode="as-attribute">
       <xsl:attribute name="type">
          <xsl:apply-templates mode="#current"/>
@@ -353,13 +350,20 @@
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
+   <!-- 000 Handling field "desc" 000 -->
+   <xsl:template match="*[@key='desc']" priority="2" mode="json2xml">
+      <xsl:element name="desc" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "resource" 000 -->
    <xsl:template match="*[@key='resource'] | *[@key='resources']/*"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="resource" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('rlink', 'rlinks')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('base64')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
@@ -390,7 +394,7 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "href" 000 -->
@@ -401,40 +405,11 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 000 Handling assembly "extra-meta" 000 -->
-   <xsl:template match="*[@key='extra-meta']" priority="2" mode="json2xml">
-      <xsl:element name="extra-meta" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('meta-group', 'metadata-groups')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('meta', 'metadata-fields')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling assembly "meta-group" 000 -->
-   <xsl:template match="*[@key='meta-group'] | *[@key='metadata-groups']/*"
-                 priority="2"
-                 mode="json2xml">
-      <xsl:element name="meta-group" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('meta', 'metadata-fields')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('meta-group', 'metadata-groups')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "meta" 000 -->
-   <xsl:template match="*[@key='meta'] | *[@key='metadata-fields']/*"
-                 priority="2"
-                 mode="json2xml">
-      <xsl:element name="meta" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling flag "term" 000 -->
-   <xsl:template match="*[@key='term']" mode="json2xml"/>
-   <xsl:template match="*[@key='meta-group']/*[@key='term'] | *[@key='metadata-groups']/*/*[@key='term'] | *[@key='meta']/*[@key='term'] | *[@key='metadata-fields']/*/*[@key='term']"
+   <!-- 000 Handling flag "id" 000 -->
+   <xsl:template match="*[@key='id']" mode="json2xml"/>
+   <xsl:template match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*/*[@key='id'] | *[@key='catalog']/*[@key='id'] | *[@key='control-catalog']/*/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*/*[@key='id'] | *[@key='subcontrol']/*[@key='id'] | *[@key='subcontrols']/*/*[@key='id'] | *[@key='param']/*[@key='id'] | *[@key='parameters']/*/*[@key='id'] | *[@key='usage']/*[@key='id'] | *[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*/*[@key='id']"
                  mode="as-attribute">
-      <xsl:attribute name="term">
+      <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -445,6 +420,16 @@
       <xsl:attribute name="role-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling field "title" 000 -->
+   <xsl:template match="*[@key='title']" priority="2" mode="json2xml">
+      <xsl:element name="title" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:variable name="markup">
+            <xsl:apply-templates mode="infer-inlines"/>
+         </xsl:variable>
+         <xsl:apply-templates mode="cast-ns" select="$markup"/>
+      </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "base64" 000 -->
    <xsl:template match="*[@key='base64']" priority="2" mode="json2xml">
@@ -460,13 +445,6 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 000 Handling assembly "citation-list" 000 -->
-   <xsl:template match="*[@key='citation-list']" priority="2" mode="json2xml">
-      <xsl:element name="citation-list" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
-      </xsl:element>
-   </xsl:template>
    <!-- 000 Handling assembly "citation" 000 -->
    <xsl:template match="*[@key='citation'] | *[@key='citations']/*"
                  priority="2"
@@ -475,7 +453,7 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('target', 'targets')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('doc-id', 'document-ids')]"/>
       </xsl:element>
    </xsl:template>
@@ -498,14 +476,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('back-matter')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling assembly "back-matter" 000 -->
-   <xsl:template match="*[@key='back-matter']" priority="2" mode="json2xml">
-      <xsl:element name="back-matter" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('citation-list')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('resource', 'resources')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "group" 000 -->
@@ -553,16 +523,6 @@
    <xsl:template mode="as-attribute"
                  priority="2"
                  match="*[@key='subcontrol']/string[@key='id'] | *[@key='subcontrols']/*/string[@key='{@address}']"/>
-   <!-- 000 Handling field "title" 000 -->
-   <xsl:template match="*[@key='title']" priority="2" mode="json2xml">
-      <xsl:element name="title" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:variable name="markup">
-            <xsl:apply-templates mode="infer-inlines"/>
-         </xsl:variable>
-         <xsl:apply-templates mode="cast-ns" select="$markup"/>
-      </xsl:element>
-   </xsl:template>
    <!-- 000 Handling assembly "param" 000 -->
    <xsl:template match="*[@key='param'] | *[@key='parameters']/*"
                  priority="2"
@@ -571,7 +531,7 @@
          <xsl:attribute name="id" select="@key"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('usage', 'descriptions')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('constraint', 'constraints')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('guideline', 'guidance')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
@@ -592,11 +552,11 @@
          <xsl:apply-templates mode="cast-ns" select="$markup"/>
       </xsl:element>
    </xsl:template>
-   <!-- 000 Handling field "desc" 000 -->
-   <xsl:template match="*[@key='desc'] | *[@key='descriptions']/*"
+   <!-- 000 Handling field "usage" 000 -->
+   <xsl:template match="*[@key='usage'] | *[@key='descriptions']/*"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="desc" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="usage" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
       </xsl:element>
@@ -660,14 +620,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
       </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling flag "id" 000 -->
-   <xsl:template match="*[@key='id']" mode="json2xml"/>
-   <xsl:template match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*/*[@key='id'] | *[@key='catalog']/*[@key='id'] | *[@key='control-catalog']/*/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*/*[@key='id'] | *[@key='subcontrol']/*[@key='id'] | *[@key='subcontrols']/*/*[@key='id'] | *[@key='param']/*[@key='id'] | *[@key='parameters']/*/*[@key='id'] | *[@key='desc']/*[@key='id'] | *[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*/*[@key='id']"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "test" 000 -->
    <xsl:template match="*[@key='test']" mode="json2xml"/>

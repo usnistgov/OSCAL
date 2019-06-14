@@ -4,16 +4,15 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0-M1"><!--OSCAL Control Catalog Format--><!--short name: oscal-catalog--><!--The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.--><!--An XML Schema is provided for the OSCAL Catalog XML model.-->
+           version="1.0-M1"><!--OSCAL Control Catalog Format--><!--short name: oscal-catalog--><!--The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.-->
    <xs:element name="metadata">
       <xs:annotation>
          <xs:documentation>
-            <b>Publication metadata: </b>Information describing the publication or availability of this document</xs:documentation>
+            <b>Publication metadata: </b>Provides information about the publication and availability of the containing document.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal-catalog:title"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:author"/>
             <xs:element minOccurs="0" ref="oscal-catalog:last-modified-date"/>
             <xs:element minOccurs="0" ref="oscal-catalog:version"/>
             <xs:element minOccurs="1" ref="oscal-catalog:oscal-version"/>
@@ -23,16 +22,25 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:role"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:party"/>
             <xs:element minOccurs="0" ref="oscal-catalog:notes"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:extra-meta"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="back-matter">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Back matter: </b>A collection of citations and resource references.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:citation"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:resource"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
    <xs:element name="link">
       <xs:annotation>
          <xs:documentation>
-            <b>Link: </b>
-      A line or paragraph with a hypertext link
-    </xs:documentation>
+            <b>Link: </b>A reference to a local or remote resource, with associated markup.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal-catalog:everything-inline"/>
@@ -56,39 +64,31 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="author">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Author: </b>A named author</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
    <xs:element name="last-modified-date">
       <xs:annotation>
          <xs:documentation>
-            <b>Last modified date: </b>Date of last modification</xs:documentation>
+            <b>Last modified date: </b>Date of last modification.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="version">
       <xs:annotation>
          <xs:documentation>
-            <b>Document version: </b>Provided by document owner</xs:documentation>
+            <b>Document version: </b>The version of the document content.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="oscal-version">
       <xs:annotation>
          <xs:documentation>
-            <b>OSCAL version: </b>OSCAL model version</xs:documentation>
+            <b>OSCAL version: </b>OSCAL model version.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="doc-id">
       <xs:annotation>
          <xs:documentation>
-            <b>Document Identifier: </b>Any sort of document identifier, name, code, path or other indicator of where and how this document
-      may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.</xs:documentation>
+            <b>Document Identifier: </b>A document identifier qualified by an identifier type.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="type" type="xs:string" use="required">
@@ -109,7 +109,7 @@
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="name" type="xs:string" use="required">
@@ -127,8 +127,7 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -147,7 +146,7 @@
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="role-id" type="xs:IDREFS">
@@ -271,7 +270,7 @@
    <xs:element name="address">
       <xs:annotation>
          <xs:documentation>
-            <b>Address: </b>A postal address</xs:documentation>
+            <b>Address: </b>A postal address.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -292,7 +291,7 @@
    <xs:element name="addr-line">
       <xs:annotation>
          <xs:documentation>
-            <b>Address line: </b>A single line of an address</xs:documentation>
+            <b>Address line: </b>A single line of an address.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
@@ -369,10 +368,17 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
+   <xs:element name="desc">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Description: </b>A short textual description</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
    <xs:element name="resource">
       <xs:annotation>
          <xs:documentation>
-            <b>Resource: </b>A resource to inform or authenticate the present document, or to supplement it as an attachment</xs:documentation>
+            <b>Resource: </b>A resource associated with the present document.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -386,7 +392,7 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -394,7 +400,7 @@
    <xs:element name="hash">
       <xs:annotation>
          <xs:documentation>
-            <b>Hash: </b>A document hash or other value subject to cryptographic authentication</xs:documentation>
+            <b>Hash: </b>A representation of a cryptographic digest generated over a resource using a hash algorithm.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="algorithm" type="xs:string" use="required">
@@ -419,69 +425,18 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="extra-meta">
+   <xs:element name="title">
       <xs:annotation>
          <xs:documentation>
-            <b>Extra metadata: </b>Container for (system-defined) metadata</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:choice>
-               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:meta-group"/>
-               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:meta"/>
-            </xs:choice>
-            <xs:element minOccurs="0" ref="oscal-catalog:notes"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="meta-group">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Metadata group: </b>Custom- or application-defined annotated metadata.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:meta"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:meta-group"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:notes"/>
-         </xs:sequence>
-         <xs:attribute name="term" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Metadata term: </b>A classification (according to any schema or taxonomy) of a metadata value or set of values.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="meta">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Metadata field value: </b>Any customized or specialized metadata value.</xs:documentation>
+            <b>Title: </b>A title for display and navigation, exclusive of more specific properties</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:attribute name="term" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Metadata term: </b>A classification (according to any schema or taxonomy) of a metadata value or set of values.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:group ref="oscal-catalog:everything-inline"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="base64">
@@ -494,7 +449,7 @@
          <xs:attribute name="filename" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>File Name: </b>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</xs:documentation>
+                  <b>File Name: </b>Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="media-type" type="xs:string">
@@ -505,22 +460,10 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="citation-list">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Citation list: </b>A list of citations to resources, either external or (by means of internal cross-reference)
-      saved or documented internally.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:citation"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="citation">
       <xs:annotation>
          <xs:documentation>
-            <b>Citation: </b>Citation of a resource</xs:documentation>
+            <b>Citation: </b>A citation to resources, either external or internal (by means of internal cross-reference).</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -529,10 +472,10 @@
             <xs:element minOccurs="0" ref="oscal-catalog:desc"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:doc-id"/>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -547,7 +490,7 @@
    <xs:element name="catalog">
       <xs:annotation>
          <xs:documentation>
-            <b>Catalog: </b>A collection of controls</xs:documentation>
+            <b>Catalog: </b>A collection of controls.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -561,21 +504,9 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="back-matter">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Back matter: </b>References, resources and attachments</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-catalog:citation-list"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:resource"/>
-         </xs:sequence>
       </xs:complexType>
    </xs:element>
    <xs:element name="group">
@@ -597,14 +528,13 @@
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -626,14 +556,13 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -654,25 +583,15 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="title">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Title: </b>A title for display and navigation, exclusive of more specific properties</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-catalog:everything-inline"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="param">
@@ -683,7 +602,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal-catalog:label"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:desc"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:usage"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:constraint"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:guideline"/>
             <xs:choice>
@@ -695,14 +614,13 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="depends-on" type="xs:IDREF">
@@ -722,7 +640,7 @@
          <xs:group ref="oscal-catalog:everything-inline"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="desc">
+   <xs:element name="usage">
       <xs:annotation>
          <xs:documentation>
             <b>Parameter description: </b>Indicates and explains the purpose and use of a parameter</xs:documentation>
@@ -732,7 +650,7 @@
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -813,7 +731,7 @@
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="name" type="xs:string" use="required">
@@ -831,8 +749,7 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
