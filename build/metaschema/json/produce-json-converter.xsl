@@ -65,7 +65,7 @@
         <!-- Flags won't be producing elements in the regular traversal -->
         <xsl:comment> 000 Handling flag "{ @name }" 000 </xsl:comment>
         
-        <XSLT:template match="*[@key='{@name}']" mode="json2xml"/>
+        <XSLT:template match="*[@key='{@name}']" priority="6" mode="json2xml"/>
         <xsl:variable name="match-step" expand-text="yes" as="xs:string">*[@key='{@name}']</xsl:variable>
         <xsl:variable name="match-patterns" as="xs:string*">
             <xsl:for-each select="key('callers-by-flags',@name)">
@@ -78,7 +78,7 @@
                 </xsl:value-of>
             </xsl:for-each>
         </xsl:variable>
-        <XSLT:template match="{string-join($match-patterns,' | ')}" mode="as-attribute">
+        <XSLT:template priority="2" match="{string-join($match-patterns,' | ')}" mode="as-attribute">
             <XSLT:attribute name="{@name}">
                 <XSLT:apply-templates mode="#current"/>
             </XSLT:attribute>
@@ -124,11 +124,11 @@
             <xsl:apply-templates select="." mode="text-key"/>
         </xsl:variable>
         <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{
-            @group-as/(' | *[@key=''' || . || '''] | *[@key=''' || . || ''']/*') }{
+            @group-as/(' | *[@key=''' || . || '''] | array[@key=''' || . || ''']/*') }{
             if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
-        <XSLT:template match="{$field-match}" priority="2" mode="json2xml">
+        <XSLT:template match="{$field-match}" priority="5" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="key">
                     <XSLT:attribute name="{@name}" select="../@key"/>
@@ -143,8 +143,9 @@
              attribute for it, {name}={label} -->
         <xsl:if test="exists(flag/value-key)">
             <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
+            <xsl:variable name="reserved-names" select="$flag-names/string(), $string-value-label,$markdown-value-label"/>
             <XSLT:template
-                match="({$field-match})/string[not(@key=({string-join($flag-names/('''' || . || ''''),',')}))]"
+                match="({$field-match})/string[not(@key=({string-join($reserved-names ! ('''' || . || ''''),',')}))]"
                 mode="as-attribute">
                 <XSLT:attribute name="{flag/value-key/../@name}">
                     <XSLT:value-of select="@key"/>
@@ -192,22 +193,24 @@
         <!-- self::string[empty(@key)] because sometimes a data point for
             an element is represented by an anonymous string inside a (named) array -->
         <XSLT:apply-templates select="string[@key='{$key}']" mode="json2xml"/>
-        <XSLT:for-each select="self::string[empty(@key)]">
+        <!-- handling where promotion has made a simple value -->
+        <XSLT:for-each select="self::string | self::boolean | self::number">
             <XSLT:apply-templates mode="json2xml"/>
         </XSLT:for-each>
     </xsl:template>
     
     <xsl:template match="define-field[exists(flag/value-key)]" mode="field-text">
         <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
+        <!--<xsl:variable name="reserved-names" select="$flag-names/string(), $string-value-label,$markdown-value-label"/>-->
         <XSLT:apply-templates select="string[not(@key=({
-            string-join($flag-names/('''' || . || ''''),',')}))]" mode="json2xml"/>
+            string-join($flag-names ! ('''' || . || ''''),',')}))]" mode="json2xml"/>
     </xsl:template>
     
     <xsl:template priority="3" match="define-field[@as='mixed']" mode="field-text">
         <xsl:variable name="key">
             <xsl:apply-templates select="." mode="text-key"/>
         </xsl:variable>
-        <XSLT:for-each select="string[@key={$key}], self::string[empty(@key)]">
+        <XSLT:for-each select="string[@key='{$key}'], self::string"><!-- XXX -->
             <xsl:call-template name="render-markdown-field"/>
         </XSLT:for-each>
     </xsl:template>
@@ -225,7 +228,7 @@
     </xsl:template>-->
     
     <xsl:template match="define-assembly[exists(key) and matches(@group-as,'\S')]">
-        <XSLT:template match="map[@key='{@group-as}']" priority="3" mode="json2xml">
+        <XSLT:template match="map[@key='{@group-as}']" priority="4" mode="json2xml">
             <XSLT:apply-templates mode="#current"/>
         </XSLT:template>
         
@@ -234,11 +237,13 @@
     
     <xsl:template match="define-assembly" expand-text="true">
         
-        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || '''] | *[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
+        <xsl:variable name="simple-match" as="xs:string">*[@key='{@name}']{
+            @group-as/(' | *[@key=''' || . || ''']') }{
+            if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
-        <XSLT:template match="{$assembly-match}" priority="2" mode="json2xml">
+        <xsl:variable name="assembly-construction">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="child::key">
                     <XSLT:attribute name="{@name}" select="@key"/>
@@ -246,18 +251,27 @@
                 <XSLT:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
             </XSLT:element>
+        </xsl:variable>
+        <XSLT:template match="{$simple-match}" priority="4" mode="json2xml">
+            <xsl:copy-of select="$assembly-construction"/>
         </XSLT:template>
+        <xsl:if test="matches(@group-as,'\S')">
+            
+            <xsl:if test="exists(child::key)">
+            <XSLT:template match="map[@key='{@group-as}']" priority="5" mode="json2xml">
+                <XSLT:apply-templates mode="json2xml"/>
+            </XSLT:template>
+            </xsl:if>
+            
+            
+            <xsl:variable name="group-match" as="xs:string">*[@key='{@group-as}']/*</xsl:variable>
+            
+            <XSLT:template match="{$group-match}" priority="3" mode="json2xml">
+                <xsl:copy-of select="$assembly-construction"/>
+            </XSLT:template>
+        </xsl:if>
         <!--<xsl:call-template name="drop-address"/>-->
     </xsl:template>
-    
-    <!--<xsl:template name="drop-address">
-        <!-\- When a flag is promoted as an address, it appears in the JSON as a label, so no attribute should be made in the regular traversal. -\->
-        <xsl:if test="matches(@address, '\i\c*')">
-            <XSLT:template mode="as-attribute" priority="2"
-                match="*[@key='{@name}']/string[@key='{@address}']{ @group-as/(' | ' || '*[@key=''' || . || ''']/*/string[@key=''{@address}'']') }"
-            />
-        </xsl:if>
-    </xsl:template>-->
     
     <xsl:template name="furniture">
         
@@ -294,13 +308,13 @@
         <XSLT:template match="array[@key='prose']" priority="11" mode="json2xml">
             <XSLT:variable name="text-contents" select="string-join(string,'&#xA;')"/>
             <XSLT:call-template name="parse">
-                <XSLT:with-param name="str" select="$text-contents"/>
+                <XSLT:with-param name="markdown-str" select="$text-contents"/>
             </XSLT:call-template>
         </XSLT:template>
         
         <XSLT:template match="string[@key='prose']" priority="11" mode="json2xml">
             <XSLT:call-template name="parse">
-                <XSLT:with-param name="str" select="string(.)"/>
+                <XSLT:with-param name="markdown-str" select="string(.)"/>
             </XSLT:call-template>
         </XSLT:template>
         
@@ -315,7 +329,7 @@
         <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
             <!--<XSLT:apply-templates select="." mode="handle-inlines"/>-->
             <XSLT:call-template name="parse">
-                <XSLT:with-param name="str" select="string(.)"/>
+                <XSLT:with-param name="markdown-str" select="string(.)"/>
             </XSLT:call-template>
         </XSLT:template>
         

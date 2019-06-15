@@ -11,9 +11,9 @@
     <xsl:param name="target-ns" as="xs:string?">http://csrc.nist.gov/ns/oscal/1.0</xsl:param>
 
     <xsl:template name="xsl:initial-template" match="/">
-        <!--<xsl:copy-of select="$tag-replacements"/>-->
+        <!--<xsl:copy-of select="$examples"/>-->
         <xsl:call-template name="parse">
-            <xsl:with-param name="str" select="string($examples)"/>
+            <xsl:with-param name="markdown-str" select="string($examples)"/>
         </xsl:call-template>
         <!--<xsl:for-each select="$line-example">
             <xsl:apply-templates select="text()" mode="infer-inlines"/>
@@ -58,8 +58,9 @@
         
         -->
         <!-- $str may be passed in, or we can process the current node -->
-        <xsl:param name="str" select="string(.)"/>
-
+        <xsl:param name="markdown-str" as="xs:string" required="yes"/>
+        <xsl:variable name="str" select="string($markdown-str) => replace('\\n','&#xA;')"/>
+        
         <xsl:variable name="starts-with-code"   select="matches($str,'^```')"/>
         
 <!-- Blocks is split between code blocks and everything else -->
@@ -327,7 +328,7 @@
     <xsl:variable name="tag-replacements" xmlns="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
         <rules>
             <!-- first, literal replacements -->
-            <replace match="&amp;"  >&amp;amp;</replace>
+            <!--<replace match="&amp;"  >&amp;amp;</replace>-->
             <replace match="&lt;"   >&amp;lt;</replace>
             <!-- next, explicit escape sequences -->
             <replace match="\\&#34;">&amp;quot;</replace>
@@ -440,7 +441,10 @@
      <xsl:variable name="examples" xml:space="preserve">
         <p>**Markdown** and even " quoted text" and **more markdown**</p>
         <p>
-## My test file!            
+            
+Paragraph, \n\nand new paragraph
+            
+## My test file!   has an &amp; ampersand         
 
 Bit of `code` here and there, such as one might have along with *italics*.
 
