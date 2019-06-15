@@ -63,7 +63,6 @@ commands:
       - run:
           name: Build JSON Validation CLI
           command: |
-            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
             cd "${OSCAL_TOOLS_DIR}/json-cli"
             mvn dependency:go-offline
             mvn install
