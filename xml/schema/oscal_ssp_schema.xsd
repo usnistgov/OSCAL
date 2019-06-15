@@ -79,16 +79,16 @@
       or group.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:attribute name="id" type="xs:ID">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Component identification number.: </b>.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
          <xs:attribute name="name" type="xs:string" use="required">
             <xs:annotation>
                <xs:documentation>
                   <b>Name: </b>Name allows the information to be named.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Component identification number.: </b>.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="ns" type="xs:string">
@@ -448,7 +448,7 @@
             <b>Call (control or subcontrol): </b>Call a control or subcontrol by its ID</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:attribute name="control-id" type="xs:NMTOKEN">
+         <xs:attribute name="control-id" type="xs:NCName">
             <xs:annotation>
                <xs:documentation>
                   <b>Control ID / identifier: </b>Pointer to a control, by its ID</xs:documentation>

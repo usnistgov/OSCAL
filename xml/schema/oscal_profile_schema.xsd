@@ -106,16 +106,16 @@
       or group.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:attribute name="id" type="xs:ID">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
          <xs:attribute name="name" type="xs:string" use="required">
             <xs:annotation>
                <xs:documentation>
                   <b>Name: </b>Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Identifier: </b>Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="ns" type="xs:string">
@@ -878,8 +878,7 @@
    <xs:element name="set">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter Setting: </b> A parameter setting, to be propagated to points of insertion
-      </xs:documentation>
+            <b>Parameter Setting: </b>A parameter setting, to be propagated to points of insertion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -893,12 +892,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:part"/>
          </xs:sequence>
-         <xs:attribute name="param-id" type="xs:NCName" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Parameter ID: </b>Value of the 'id' flag on a target parameter</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="param-id" type="xs:NCName" use="required"/>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>

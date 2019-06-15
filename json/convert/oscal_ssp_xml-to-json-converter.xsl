@@ -5,7 +5,10 @@
                 version="3.0"
                 xpath-default-namespace="urn:OSCAL-SSP-metaschema"
                 exclude-result-prefixes="#all">
-   <xsl:output indent="yes" method="text" use-character-maps="delimiters"/>
+   <xsl:output indent="yes"
+               method="xml"
+               omit-xml-declaration="yes"
+               use-character-maps="delimiters"/>
    <!-- METASCHEMA conversion stylesheet supports XML->JSON conversion -->
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
    <xsl:character-map name="delimiters">
@@ -13,40 +16,58 @@
       <xsl:output-character character="&gt;" string="\u003e"/>
    </xsl:character-map>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
-   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
-   <xsl:template mode="rectify"
-                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
-                 match="/*/@key | array/*/@key"/>
+   <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
+   <xsl:param name="diagnostic" as="xs:string">no</xsl:param>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
          <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
       </xsl:map>
    </xsl:variable>
-   <xsl:template match="/" mode="debug">
+   <xsl:variable name="xpath-json">
       <map>
-         <xsl:apply-templates mode="xml2json"/>
+         <xsl:apply-templates select="/" mode="xml2json"/>
       </map>
-   </xsl:template>
+   </xsl:variable>
+   <xsl:variable name="rectified">
+      <xsl:apply-templates select="$xpath-json" mode="rectify"/>
+   </xsl:variable>
    <xsl:template match="/">
-      <xsl:variable name="xpath-json">
-         <map>
-            <xsl:apply-templates mode="xml2json"/>
-         </map>
-      </xsl:variable>
-      <xsl:variable name="rectified">
-         <xsl:apply-templates select="$xpath-json" mode="rectify"/>
-      </xsl:variable>
-      <json>
-         <xsl:value-of select="xml-to-json($rectified, $write-options)"/>
-      </json>
+      <xsl:choose>
+         <xsl:when test="$diagnostic='rough'">
+            <xsl:copy-of select="$xpath-json"/>
+         </xsl:when>
+         <xsl:when test="$diagnostic='rectified'">
+            <xsl:copy-of select="$rectified"/>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:value-of select="xml-to-json($rectified, $write-options)"/>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
+   <xsl:template mode="rectify"
+                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
+                 match="/*/@key | array/*/@key"/>
+   <xsl:template mode="rectify"
+                 match="array[count(*) eq 1]"
+                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+      <xsl:for-each select="*">
+         <xsl:copy>
+            <xsl:copy-of select="../@key"/>
+            <xsl:apply-templates mode="#current"/>
+         </xsl:copy>
+      </xsl:for-each>
    </xsl:template>
    <xsl:template name="prose">
       <xsl:variable name="blocks"
                     select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
       <xsl:if test="exists($blocks)">
-         <array key="prose">
+         <xsl:variable name="string-sequence" as="element()*">
             <xsl:apply-templates mode="md" select="$blocks"/>
-         </array>
+         </xsl:variable>
+         <string key="prose">
+            <xsl:value-of select="string-join($string-sequence,'\n')"/>
+         </string>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="as-string" match="@* | *">
@@ -226,36 +247,41 @@
       </map>
    </xsl:template>
    <xsl:template match="last-modified-date" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="last-modified-date">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="version" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="oscal-version" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="oscal-version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="doc-id" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="doc-id">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="prop" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="prop">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@name"/>
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -343,18 +369,20 @@
       </map>
    </xsl:template>
    <xsl:template match="person-id" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="person-id">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="org-id" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="org-id">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -366,16 +394,19 @@
       </map>
    </xsl:template>
    <xsl:template match="person-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="person-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="org-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="org-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="short-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="short-name">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -395,44 +426,52 @@
       </map>
    </xsl:template>
    <xsl:template match="addr-line" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="addr-line">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="city" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="city">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="state" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="state">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="postal-code" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="postal-code">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="country" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="country">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="email" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="email">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="phone" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="phone">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="url" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="url">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -444,6 +483,7 @@
       </map>
    </xsl:template>
    <xsl:template match="desc" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="desc">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -462,14 +502,16 @@
       </map>
    </xsl:template>
    <xsl:template match="hash" mode="xml2json">
+      <xsl:variable name="text-key">value</xsl:variable>
       <map key="hash">
          <xsl:apply-templates mode="as-string" select="@algorithm"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="title" mode="xml2json">
+      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="title">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -497,32 +539,35 @@
       </map>
    </xsl:template>
    <xsl:template match="all" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="all">
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="call" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="call">
          <xsl:apply-templates mode="as-string" select="@control-id"/>
          <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="match" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="match">
          <xsl:apply-templates mode="as-string" select="@pattern"/>
          <xsl:apply-templates mode="as-string" select="@order"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -589,19 +634,22 @@
       </map>
    </xsl:template>
    <xsl:template match="system-id" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="system-id">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="system-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="system-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="system-name-short" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="system-name-short">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -612,6 +660,7 @@
       </map>
    </xsl:template>
    <xsl:template match="security-sensitivity-level" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-sensitivity-level">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -652,9 +701,9 @@
       </map>
    </xsl:template>
    <xsl:template match="declaration" mode="xml2json">
-      <string key="declaration">
-         <xsl:apply-templates mode="md"/>
-      </string>
+      <boolean key="declaration">
+         <xsl:apply-templates mode="#current"/>
+      </boolean>
    </xsl:template>
    <xsl:template match="qualifiers" mode="xml2json">
       <map key="qualifiers">
@@ -674,16 +723,18 @@
       </map>
    </xsl:template>
    <xsl:template match="qual-question" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="qual-question">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="qual-response" mode="xml2json">
-      <string key="qual-response">
-         <xsl:apply-templates mode="md"/>
-      </string>
+      <boolean key="qual-response">
+         <xsl:apply-templates mode="#current"/>
+      </boolean>
    </xsl:template>
    <xsl:template match="qual-notes" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="qual-notes">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -720,16 +771,19 @@
       </map>
    </xsl:template>
    <xsl:template match="base" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="base">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="selected" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="selected">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="adjustment-justification" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="adjustment-justification">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -742,16 +796,19 @@
       </map>
    </xsl:template>
    <xsl:template match="security-objective-confidentiality" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-objective-confidentiality">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="security-objective-integrity" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-objective-integrity">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="security-objective-availability" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-objective-availability">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -765,51 +822,61 @@
       </map>
    </xsl:template>
    <xsl:template match="security-auth-ial" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-auth-ial">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="security-auth-aal" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-auth-aal">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="security-auth-fal" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-auth-fal">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="security-eauth-level" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="security-eauth-level">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="status" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="status">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="status-other-description" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="status-other-description">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="deployment-model" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="deployment-model">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="deployment-model-other-description" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="deployment-model-other-description">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="service-model" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="service-model">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="service-model-other-description" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="service-model-other-description">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -832,16 +899,19 @@
       </map>
    </xsl:template>
    <xsl:template match="leveraged-authorization-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="leveraged-authorization-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="leveraged-authorization-service-provider" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="leveraged-authorization-service-provider">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="leveraged-authorization-date-granted" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="leveraged-authorization-date-granted">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -942,11 +1012,13 @@
       </map>
    </xsl:template>
    <xsl:template match="privilege" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="privilege">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="responsibility" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="responsibility">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -960,21 +1032,25 @@
       </map>
    </xsl:template>
    <xsl:template match="internal-user-total-current" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="internal-user-total-current">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="internal-user-total-future" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="internal-user-total-future">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="external-user-total-current" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="external-user-total-current">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="external-user-total-future" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="external-user-total-future">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1033,21 +1109,24 @@
       </map>
    </xsl:template>
    <xsl:template match="port-range" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="port-range">
          <xsl:apply-templates mode="as-string" select="@start"/>
          <xsl:apply-templates mode="as-string" select="@end"/>
          <xsl:apply-templates mode="as-string" select="@transport"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="purpose" mode="xml2json">
+      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="purpose">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="used-by" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="used-by">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1067,26 +1146,31 @@
       </map>
    </xsl:template>
    <xsl:template match="external-system-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="external-system-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="external-system-org" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="external-system-org">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="isa-authorization" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="isa-authorization">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="isa-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="isa-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="isa-date" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="isa-date">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1143,20 +1227,23 @@
       </map>
    </xsl:template>
    <xsl:template match="vendor" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="vendor">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="release-date" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="release-date">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="model" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="model">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1198,10 +1285,11 @@
       </map>
    </xsl:template>
    <xsl:template match="ip-address" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="ip-address">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -1267,6 +1355,7 @@
       </map>
    </xsl:template>
    <xsl:template match="dns-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="dns-name">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1336,44 +1425,51 @@
       </map>
    </xsl:template>
    <xsl:template match="netbios-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="netbios-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="mac-address" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="mac-address">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="os-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="os-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="os-version" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="os-version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="location" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="location">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="asset-type" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="asset-type">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="hardware-model" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="hardware-model">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="authenticated-scan" mode="xml2json">
-      <string key="authenticated-scan">
-         <xsl:apply-templates mode="md"/>
-      </string>
+      <boolean key="authenticated-scan">
+         <xsl:apply-templates mode="#current"/>
+      </boolean>
    </xsl:template>
    <xsl:template match="software-item" mode="xml2json">
       <map key="software-item">
@@ -1405,53 +1501,62 @@
       </map>
    </xsl:template>
    <xsl:template match="software-name" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="software-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="software-version" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="software-version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="software-patch-level" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="software-patch-level">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="function" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="function">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="comments" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="comments">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="serial-no" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="serial-no">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="network-id" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="network-id">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="asset-owner" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="asset-owner">
          <xsl:apply-templates mode="as-string" select="@poc-id"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="asset-administrator" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="asset-administrator">
          <xsl:apply-templates mode="as-string" select="@poc-id"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -1492,10 +1597,11 @@
       </map>
    </xsl:template>
    <xsl:template match="responsible-role" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="responsible-role">
          <xsl:apply-templates mode="as-string" select="@role-id"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -1507,6 +1613,7 @@
       </map>
    </xsl:template>
    <xsl:template match="value" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="value">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -1545,25 +1652,23 @@
       </map>
    </xsl:template>
    <xsl:template match="citation" mode="xml2json">
+      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <map key="citation">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@href"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key" select="$text-key"/>
+         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="link" mode="xml2json">
+      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <map key="link">
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:apply-templates mode="as-string" select="@rel"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key" select="$text-key"/>
+         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="attachment" mode="xml2json">
@@ -1579,25 +1684,29 @@
       </map>
    </xsl:template>
    <xsl:template match="format" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="format">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="date" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="date">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="attachment-type" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="attachment-type">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="base64" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="base64">
          <xsl:apply-templates mode="as-string" select="@filename"/>
          <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+            <xsl:with-param name="key" select="$text-key"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -1612,21 +1721,25 @@
       </map>
    </xsl:template>
    <xsl:template match="subcomponent" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="subcomponent">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="organization" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="organization">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="baseline-template" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="baseline-template">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="scanned" mode="xml2json">
+      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="scanned">
          <xsl:apply-templates mode="md"/>
       </string>

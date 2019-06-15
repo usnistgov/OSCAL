@@ -14,7 +14,7 @@
    <xsl:output indent="yes"/>
    <xsl:strip-space elements="*"/>
    <xsl:preserve-space elements="string"/>
-   <xsl:param name="json-file" as="xs:string"/>
+   <xsl:param name="json-file" as="xs:string?"/>
    <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
    <xsl:template name="xsl:initial-template" match="/">
       <xsl:choose>
@@ -29,21 +29,24 @@
    <xsl:template match="/map[empty(@key)]" priority="10" mode="json2xml">
       <xsl:apply-templates mode="#current" select="*[@key=('system-security-plan')]"/>
    </xsl:template>
-   <xsl:template match="array" mode="json2xml">
+   <xsl:template match="array" priority="10" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="array[@key='prose']" priority="5" mode="json2xml">
+   <xsl:template match="array[@key='prose']" priority="11" mode="json2xml">
       <xsl:variable name="text-contents" select="string-join(string,'&#xA;')"/>
       <xsl:call-template name="parse">
-         <xsl:with-param name="str" select="$text-contents"/>
+         <xsl:with-param name="markdown-str" select="$text-contents"/>
       </xsl:call-template>
    </xsl:template>
-   <xsl:template match="string" mode="handle-inlines"/>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml handle-inlines">
-      <xsl:variable name="markup">
-         <xsl:apply-templates mode="infer-inlines"/>
-      </xsl:variable>
-      <xsl:apply-templates mode="cast-ns" select="$markup"/>
+   <xsl:template match="string[@key='prose']" priority="11" mode="json2xml">
+      <xsl:call-template name="parse">
+         <xsl:with-param name="markdown-str" select="string(.)"/>
+      </xsl:call-template>
+   </xsl:template>
+   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
+      <xsl:call-template name="parse">
+         <xsl:with-param name="markdown-str" select="string(.)"/>
+      </xsl:call-template>
    </xsl:template>
    <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
@@ -56,7 +59,8 @@
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
    <!-- 000 Handling assembly "metadata" 000 -->
-   <xsl:template match="*[@key='metadata']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='metadata']" priority="4" mode="json2xml">
       <xsl:element name="metadata" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
@@ -72,7 +76,8 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "back-matter" 000 -->
-   <xsl:template match="*[@key='back-matter']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='back-matter']" priority="4" mode="json2xml">
       <xsl:element name="back-matter" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
@@ -80,55 +85,124 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "last-modified-date" 000 -->
-   <xsl:template match="*[@key='last-modified-date']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='last-modified-date']" priority="5" mode="json2xml">
       <xsl:element name="last-modified-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "version" 000 -->
-   <xsl:template match="*[@key='version']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='version']" priority="5" mode="json2xml">
       <xsl:element name="version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "oscal-version" 000 -->
-   <xsl:template match="*[@key='oscal-version']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='oscal-version']" priority="5" mode="json2xml">
       <xsl:element name="oscal-version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "doc-id" 000 -->
-   <xsl:template match="*[@key='doc-id'] | *[@key='document-ids']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="doc-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='document-ids'][array/@key='STRVALUE'] |  array[@key='document-ids']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="document-ids">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='document-ids']/array[@key='STRVALUE']/string |  array[@key='document-ids']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "prop" 000 -->
-   <xsl:template match="*[@key='prop'] | *[@key='properties']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="prop" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[not(@key=('id','ns','class'))]" mode="json2xml"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="(*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*)/string[not(@key=('id','ns','class','STRVALUE','RICHTEXT'))]"
+                 mode="as-attribute">
+      <xsl:attribute name="name">
+         <xsl:value-of select="@key"/>
+      </xsl:attribute>
+   </xsl:template>
+   <xsl:template match="map[@key='properties'][array/@key=''] |  array[@key='properties']/map[array/@key='']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="properties">
+            <xsl:apply-templates mode="expand" select="array[@key='']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='properties']/array[@key='']/string |  array[@key='properties']/map/array[@key='']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling flag "ns" 000 -->
-   <xsl:template match="*[@key='ns']" mode="json2xml"/>
-   <xsl:template match="*[@key='prop']/*[@key='ns'] | *[@key='properties']/*/*[@key='ns']"
+   <xsl:template match="*[@key='ns']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns']"
                  mode="as-attribute">
       <xsl:attribute name="ns">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling assembly "party" 000 -->
-   <xsl:template match="*[@key='party'] | *[@key='parties']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='party'] | *[@key='parties']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="party" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -137,9 +211,18 @@
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='parties']/*" priority="3" mode="json2xml">
+      <xsl:element name="party" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('person', 'persons')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('org')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "person" 000 -->
-   <xsl:template match="*[@key='person'] | *[@key='persons']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='person'] | *[@key='persons']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="person" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -155,8 +238,24 @@
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='persons']/*" priority="3" mode="json2xml">
+      <xsl:element name="person" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('person-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('person-id', 'person-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('org-id', 'organization-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "org" 000 -->
-   <xsl:template match="*[@key='org']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='org']" priority="4" mode="json2xml">
       <xsl:element name="org" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
@@ -170,72 +269,146 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "person-id" 000 -->
-   <xsl:template match="*[@key='person-id'] | *[@key='person-ids']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="person-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='person-ids'][array/@key='STRVALUE'] |  array[@key='person-ids']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="person-ids">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='person-ids']/array[@key='STRVALUE']/string |  array[@key='person-ids']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "org-id" 000 -->
-   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="org-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='organization-ids'][array/@key='STRVALUE'] |  array[@key='organization-ids']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="organization-ids">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='organization-ids']/array[@key='STRVALUE']/string |  array[@key='organization-ids']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "rlink" 000 -->
-   <xsl:template match="*[@key='rlink'] | *[@key='rlinks']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='rlink'] | *[@key='rlinks']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="rlink" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('hash', 'hashes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='rlinks']/*" priority="3" mode="json2xml">
+      <xsl:element name="rlink" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('hash', 'hashes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling flag "rel" 000 -->
-   <xsl:template match="*[@key='rel']" mode="json2xml"/>
-   <xsl:template match="*[@key='link']/*[@key='rel'] | *[@key='links']/*/*[@key='rel']"
+   <xsl:template match="*[@key='rel']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='link']/*[@key='rel'] | *[@key='links']/*[@key='rel'] | array[@key='links']/*/*[@key='rel']"
                  mode="as-attribute">
       <xsl:attribute name="rel">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "media-type" 000 -->
-   <xsl:template match="*[@key='media-type']" mode="json2xml"/>
-   <xsl:template match="*[@key='rlink']/*[@key='media-type'] | *[@key='rlinks']/*/*[@key='media-type']"
+   <xsl:template match="*[@key='media-type']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='rlink']/*[@key='media-type'] | *[@key='rlinks']/*[@key='media-type'] | array[@key='rlinks']/*/*[@key='media-type']"
                  mode="as-attribute">
       <xsl:attribute name="media-type">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling field "person-name" 000 -->
-   <xsl:template match="*[@key='person-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='person-name']" priority="5" mode="json2xml">
       <xsl:element name="person-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "org-name" 000 -->
-   <xsl:template match="*[@key='org-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='org-name']" priority="5" mode="json2xml">
       <xsl:element name="org-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "short-name" 000 -->
-   <xsl:template match="*[@key='short-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='short-name']" priority="5" mode="json2xml">
       <xsl:element name="short-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "address" 000 -->
-   <xsl:template match="*[@key='address'] | *[@key='addresses']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='address'] | *[@key='addresses']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="address" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -246,87 +419,223 @@
          <xsl:apply-templates mode="#current" select="*[@key=('country')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='addresses']/*" priority="3" mode="json2xml">
+      <xsl:element name="address" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('addr-line', 'postal-address')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('city')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('state')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('postal-code')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('country')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "addr-line" 000 -->
-   <xsl:template match="*[@key='addr-line'] | *[@key='postal-address']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="addr-line" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='postal-address'][array/@key='STRVALUE'] |  array[@key='postal-address']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="postal-address">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='postal-address']/array[@key='STRVALUE']/string |  array[@key='postal-address']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "city" 000 -->
-   <xsl:template match="*[@key='city']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='city']" priority="5" mode="json2xml">
       <xsl:element name="city" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "state" 000 -->
-   <xsl:template match="*[@key='state']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='state']" priority="5" mode="json2xml">
       <xsl:element name="state" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "postal-code" 000 -->
-   <xsl:template match="*[@key='postal-code']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='postal-code']" priority="5" mode="json2xml">
       <xsl:element name="postal-code" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "country" 000 -->
-   <xsl:template match="*[@key='country']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='country']" priority="5" mode="json2xml">
       <xsl:element name="country" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "email" 000 -->
-   <xsl:template match="*[@key='email'] | *[@key='email-addresses']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="email" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='email-addresses'][array/@key='STRVALUE'] |  array[@key='email-addresses']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="email-addresses">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='email-addresses']/array[@key='STRVALUE']/string |  array[@key='email-addresses']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "phone" 000 -->
-   <xsl:template match="*[@key='phone'] | *[@key='telephone-numbers']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="phone" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='telephone-numbers'][array/@key='STRVALUE'] |  array[@key='telephone-numbers']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="telephone-numbers">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='telephone-numbers']/array[@key='STRVALUE']/string |  array[@key='telephone-numbers']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "url" 000 -->
-   <xsl:template match="*[@key='url'] | *[@key='URLs']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="url" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='URLs'][array/@key='STRVALUE'] |  array[@key='URLs']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="URLs">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='URLs']/array[@key='STRVALUE']/string |  array[@key='URLs']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "notes" 000 -->
-   <xsl:template match="*[@key='notes']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='notes']" priority="4" mode="json2xml">
       <xsl:element name="notes" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "desc" 000 -->
-   <xsl:template match="*[@key='desc']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='desc']" priority="5" mode="json2xml">
       <xsl:element name="desc" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "resource" 000 -->
-   <xsl:template match="*[@key='resource'] | *[@key='resources']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='resource'] | *[@key='resources']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="resource" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -336,44 +645,85 @@
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='resources']/*" priority="3" mode="json2xml">
+      <xsl:element name="resource" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('rlink', 'rlinks')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('base64')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "hash" 000 -->
-   <xsl:template match="*[@key='hash'] | *[@key='hashes']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="hash" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='value']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='hashes'][array/@key='value'] |  array[@key='hashes']/map[array/@key='value']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="hashes">
+            <xsl:apply-templates mode="expand" select="array[@key='value']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='hashes']/array[@key='value']/string |  array[@key='hashes']/map/array[@key='value']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='value']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="value">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling flag "algorithm" 000 -->
-   <xsl:template match="*[@key='algorithm']" mode="json2xml"/>
-   <xsl:template match="*[@key='hash']/*[@key='algorithm'] | *[@key='hashes']/*/*[@key='algorithm']"
+   <xsl:template match="*[@key='algorithm']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='hash']/*[@key='algorithm'] | *[@key='hashes']/*[@key='algorithm'] | array[@key='hashes']/*/*[@key='algorithm']"
                  mode="as-attribute">
       <xsl:attribute name="algorithm">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "href" 000 -->
-   <xsl:template match="*[@key='href']" mode="json2xml"/>
-   <xsl:template match="*[@key='rlink']/*[@key='href'] | *[@key='rlinks']/*/*[@key='href'] | *[@key='import']/*[@key='href'] | *[@key='imports']/*/*[@key='href'] | *[@key='part']/*[@key='href'] | *[@key='ssp-part']/*/*[@key='href'] | *[@key='control']/*[@key='href'] | *[@key='controls']/*/*[@key='href'] | *[@key='citation']/*[@key='href'] | *[@key='citations']/*/*[@key='href'] | *[@key='link']/*[@key='href'] | *[@key='links']/*/*[@key='href']"
+   <xsl:template match="*[@key='href']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='rlink']/*[@key='href'] | *[@key='rlinks']/*[@key='href'] | array[@key='rlinks']/*/*[@key='href'] | *[@key='import']/*[@key='href'] | *[@key='imports']/*[@key='href'] | array[@key='imports']/*/*[@key='href'] | *[@key='part']/*[@key='href'] | *[@key='ssp-part']/*[@key='href'] | array[@key='ssp-part']/*/*[@key='href'] | *[@key='control']/*[@key='href'] | *[@key='controls']/*[@key='href'] | array[@key='controls']/*/*[@key='href'] | *[@key='citation']/*[@key='href'] | *[@key='citations']/*[@key='href'] | array[@key='citations']/*/*[@key='href'] | *[@key='link']/*[@key='href'] | *[@key='links']/*[@key='href'] | array[@key='links']/*/*[@key='href']"
                  mode="as-attribute">
       <xsl:attribute name="href">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling field "title" 000 -->
-   <xsl:template match="*[@key='title']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='title']" priority="5" mode="json2xml">
       <xsl:element name="title" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:variable name="markup">
-            <xsl:apply-templates mode="infer-inlines"/>
-         </xsl:variable>
-         <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "import" 000 -->
-   <xsl:template match="*[@key='import'] | *[@key='imports']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='import'] | *[@key='imports']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="import" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -381,9 +731,17 @@
          <xsl:apply-templates mode="#current" select="*[@key=('exclude', 'excludes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='imports']/*" priority="3" mode="json2xml">
+      <xsl:element name="import" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('include', 'includes')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('exclude', 'excludes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "include" 000 -->
-   <xsl:template match="*[@key='include'] | *[@key='includes']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='include'] | *[@key='includes']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="include" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -392,34 +750,99 @@
          <xsl:apply-templates mode="#current" select="*[@key=('match', 'pattern-selectors')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='includes']/*" priority="3" mode="json2xml">
+      <xsl:element name="include" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('all')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('call', 'id-selectors')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('match', 'pattern-selectors')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "all" 000 -->
-   <xsl:template match="*[@key='all']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='all']" priority="5" mode="json2xml">
       <xsl:element name="all" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "call" 000 -->
-   <xsl:template match="*[@key='call'] | *[@key='id-selectors']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="call" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='id-selectors'][array/@key='STRVALUE'] |  array[@key='id-selectors']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="id-selectors">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='id-selectors']/array[@key='STRVALUE']/string |  array[@key='id-selectors']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "match" 000 -->
-   <xsl:template match="*[@key='match'] | *[@key='pattern-selectors']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="match" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='pattern-selectors'][array/@key='STRVALUE'] |  array[@key='pattern-selectors']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="pattern-selectors">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='pattern-selectors']/array[@key='STRVALUE']/string |  array[@key='pattern-selectors']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "exclude" 000 -->
-   <xsl:template match="*[@key='exclude'] | *[@key='excludes']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='exclude'] | *[@key='excludes']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="exclude" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -427,49 +850,62 @@
          <xsl:apply-templates mode="#current" select="*[@key=('match', 'pattern-selectors')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='excludes']/*" priority="3" mode="json2xml">
+      <xsl:element name="exclude" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('call', 'id-selectors')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('match', 'pattern-selectors')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling flag "with-control" 000 -->
-   <xsl:template match="*[@key='with-control']" mode="json2xml"/>
-   <xsl:template match="*[@key='call']/*[@key='with-control'] | *[@key='id-selectors']/*/*[@key='with-control'] | *[@key='match']/*[@key='with-control'] | *[@key='pattern-selectors']/*/*[@key='with-control']"
+   <xsl:template match="*[@key='with-control']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='call']/*[@key='with-control'] | *[@key='id-selectors']/*[@key='with-control'] | array[@key='id-selectors']/*/*[@key='with-control'] | *[@key='match']/*[@key='with-control'] | *[@key='pattern-selectors']/*[@key='with-control'] | array[@key='pattern-selectors']/*/*[@key='with-control']"
                  mode="as-attribute">
       <xsl:attribute name="with-control">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "with-subcontrols" 000 -->
-   <xsl:template match="*[@key='with-subcontrols']" mode="json2xml"/>
-   <xsl:template match="*[@key='all']/*[@key='with-subcontrols'] | *[@key='call']/*[@key='with-subcontrols'] | *[@key='id-selectors']/*/*[@key='with-subcontrols'] | *[@key='match']/*[@key='with-subcontrols'] | *[@key='pattern-selectors']/*/*[@key='with-subcontrols']"
+   <xsl:template match="*[@key='with-subcontrols']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='all']/*[@key='with-subcontrols'] | *[@key='call']/*[@key='with-subcontrols'] | *[@key='id-selectors']/*[@key='with-subcontrols'] | array[@key='id-selectors']/*/*[@key='with-subcontrols'] | *[@key='match']/*[@key='with-subcontrols'] | *[@key='pattern-selectors']/*[@key='with-subcontrols'] | array[@key='pattern-selectors']/*/*[@key='with-subcontrols']"
                  mode="as-attribute">
       <xsl:attribute name="with-subcontrols">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "subcontrol-id" 000 -->
-   <xsl:template match="*[@key='subcontrol-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='call']/*[@key='subcontrol-id'] | *[@key='id-selectors']/*/*[@key='subcontrol-id']"
+   <xsl:template match="*[@key='subcontrol-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='call']/*[@key='subcontrol-id'] | *[@key='id-selectors']/*[@key='subcontrol-id'] | array[@key='id-selectors']/*/*[@key='subcontrol-id']"
                  mode="as-attribute">
       <xsl:attribute name="subcontrol-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "pattern" 000 -->
-   <xsl:template match="*[@key='pattern']" mode="json2xml"/>
-   <xsl:template match="*[@key='match']/*[@key='pattern'] | *[@key='pattern-selectors']/*/*[@key='pattern']"
+   <xsl:template match="*[@key='pattern']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='match']/*[@key='pattern'] | *[@key='pattern-selectors']/*[@key='pattern'] | array[@key='pattern-selectors']/*/*[@key='pattern']"
                  mode="as-attribute">
       <xsl:attribute name="pattern">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "order" 000 -->
-   <xsl:template match="*[@key='order']" mode="json2xml"/>
-   <xsl:template match="*[@key='match']/*[@key='order'] | *[@key='pattern-selectors']/*/*[@key='order']"
+   <xsl:template match="*[@key='order']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='match']/*[@key='order'] | *[@key='pattern-selectors']/*[@key='order'] | array[@key='pattern-selectors']/*/*[@key='order']"
                  mode="as-attribute">
       <xsl:attribute name="order">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling assembly "system-security-plan" 000 -->
-   <xsl:template match="*[@key='system-security-plan'] | *[@key='ssp']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-security-plan'] | *[@key='ssp'] | /map[empty(@key)]"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="system-security-plan" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -486,9 +922,59 @@
          <xsl:apply-templates mode="#current" select="*[@key=('back-matter')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp']/*" priority="3" mode="json2xml">
+      <xsl:element name="system-security-plan" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('metadata')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('import', 'imports')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('system-characteristics', 'ssp-system-characteristics')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('system-implementation', 'ssp-system-implementation')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('control-implementation', 'ssp-control-implementation')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('references')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('attachment')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('back-matter')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "system-characteristics" 000 -->
-   <xsl:template match="*[@key='system-characteristics'] | *[@key='ssp-system-characteristics']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-characteristics'] | *[@key='ssp-system-characteristics']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="system-characteristics" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('system-id')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('system-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('system-name-short')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-sensitivity-level')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('system-information', 'ssp-system-information')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('security-impact-level', 'ssp-security-impact-level')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('security-eauth', 'ssp-security-eauth')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('status')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('status-other-description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('deployment-model')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('deployment-model-other-description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('service-model', 'service-models')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('service-model-other-description', 'service-model-descriptions')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('leveraged-authorizations', 'ssp-leveraged-authorizations')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('authorization-boundary', 'ssp-authorization-boundary')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('network-architecture', 'ssp-network-architecture')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('data-flow', 'ssp-data-flow')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('users', 'ssp-users')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-system-characteristics']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="system-characteristics" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -521,45 +1007,73 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "system-id" 000 -->
-   <xsl:template match="*[@key='system-id']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-id']" priority="5" mode="json2xml">
       <xsl:element name="system-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "system-name" 000 -->
-   <xsl:template match="*[@key='system-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-name']" priority="5" mode="json2xml">
       <xsl:element name="system-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "system-name-short" 000 -->
-   <xsl:template match="*[@key='system-name-short']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-name-short']" priority="5" mode="json2xml">
       <xsl:element name="system-name-short" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "description" 000 -->
-   <xsl:template match="*[@key='description']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='description']" priority="4" mode="json2xml">
       <xsl:element name="description" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-sensitivity-level" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='security-sensitivity-level']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="security-sensitivity-level" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "system-information" 000 -->
-   <xsl:template match="*[@key='system-information'] | *[@key='ssp-system-information']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-information'] | *[@key='ssp-system-information']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="system-information" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('information-type', 'ssp-information-type')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('designations', 'ssp-designations')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-system-information']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="system-information" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -569,17 +1083,25 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "designations" 000 -->
-   <xsl:template match="*[@key='designations'] | *[@key='ssp-designations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='designations'] | *[@key='ssp-designations']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="designations" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('designation', 'ssp-designation')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-designations']/*" priority="3" mode="json2xml">
+      <xsl:element name="designations" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('designation', 'ssp-designation')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "designation" 000 -->
-   <xsl:template match="*[@key='designation'] | *[@key='ssp-designation']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='designation'] | *[@key='ssp-designation']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="designation" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -588,25 +1110,45 @@
          <xsl:apply-templates mode="#current" select="*[@key=('qualifiers', 'ssp-qualifiers')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-designation']/*" priority="3" mode="json2xml">
+      <xsl:element name="designation" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('declaration')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('qualifiers', 'ssp-qualifiers')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "declaration" 000 -->
-   <xsl:template match="*[@key='declaration']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='declaration']" priority="5" mode="json2xml">
       <xsl:element name="declaration" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "qualifiers" 000 -->
-   <xsl:template match="*[@key='qualifiers'] | *[@key='ssp-qualifiers']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='qualifiers'] | *[@key='ssp-qualifiers']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="qualifiers" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('qualifier', 'ssp-qualifiers')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-qualifiers']/*" priority="3" mode="json2xml">
+      <xsl:element name="qualifiers" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('qualifier', 'ssp-qualifiers')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "qualifier" 000 -->
-   <xsl:template match="*[@key='qualifier'] | *[@key='ssp-qualifiers']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='qualifier'] | *[@key='ssp-qualifiers']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="qualifier" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -615,30 +1157,65 @@
          <xsl:apply-templates mode="#current" select="*[@key=('qual-notes')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-qualifiers']/*" priority="3" mode="json2xml">
+      <xsl:element name="qualifier" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('qual-question')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('qual-response')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('qual-notes')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "qual-question" 000 -->
-   <xsl:template match="*[@key='qual-question']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='qual-question']" priority="5" mode="json2xml">
       <xsl:element name="qual-question" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "qual-response" 000 -->
-   <xsl:template match="*[@key='qual-response']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='qual-response']" priority="5" mode="json2xml">
       <xsl:element name="qual-response" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "qual-notes" 000 -->
-   <xsl:template match="*[@key='qual-notes']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='qual-notes']" priority="5" mode="json2xml">
       <xsl:element name="qual-notes" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "information-type" 000 -->
-   <xsl:template match="*[@key='information-type'] | *[@key='ssp-information-type']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='information-type'] | *[@key='ssp-information-type']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="information-type" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('confidentiality-impact', 'ssp-confidentiality-impact')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('integrity-impact', 'ssp-integrity-impact')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('availability-impact', 'ssp-availability-impact')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-information-type']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="information-type" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -652,8 +1229,19 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "confidentiality-impact" 000 -->
-   <xsl:template match="*[@key='confidentiality-impact'] | *[@key='ssp-confidentiality-impact']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='confidentiality-impact'] | *[@key='ssp-confidentiality-impact']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="confidentiality-impact" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('base')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('selected')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('adjustment-justification')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-confidentiality-impact']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="confidentiality-impact" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -663,8 +1251,19 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "integrity-impact" 000 -->
-   <xsl:template match="*[@key='integrity-impact'] | *[@key='ssp-integrity-impact']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='integrity-impact'] | *[@key='ssp-integrity-impact']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="integrity-impact" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('base')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('selected')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('adjustment-justification')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-integrity-impact']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="integrity-impact" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -674,8 +1273,19 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "availability-impact" 000 -->
-   <xsl:template match="*[@key='availability-impact'] | *[@key='ssp-availability-impact']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='availability-impact'] | *[@key='ssp-availability-impact']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="availability-impact" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('base')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('selected')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('adjustment-justification')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-availability-impact']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="availability-impact" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -685,31 +1295,54 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "base" 000 -->
-   <xsl:template match="*[@key='base']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='base']" priority="5" mode="json2xml">
       <xsl:element name="base" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "selected" 000 -->
-   <xsl:template match="*[@key='selected']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='selected']" priority="5" mode="json2xml">
       <xsl:element name="selected" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "adjustment-justification" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='adjustment-justification']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="adjustment-justification" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "security-impact-level" 000 -->
-   <xsl:template match="*[@key='security-impact-level'] | *[@key='ssp-security-impact-level']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-impact-level'] | *[@key='ssp-security-impact-level']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="security-impact-level" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-objective-confidentiality')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-objective-integrity')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-objective-availability')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-security-impact-level']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="security-impact-level" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -719,38 +1352,51 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-objective-confidentiality" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='security-objective-confidentiality']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-confidentiality"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-objective-integrity" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='security-objective-integrity']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-integrity"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-objective-availability" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='security-objective-availability']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-availability"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "security-eauth" 000 -->
-   <xsl:template match="*[@key='security-eauth'] | *[@key='ssp-security-eauth']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-eauth'] | *[@key='ssp-security-eauth']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="security-eauth" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -760,89 +1406,193 @@
          <xsl:apply-templates mode="#current" select="*[@key=('security-eauth-level')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-security-eauth']/*" priority="3" mode="json2xml">
+      <xsl:element name="security-eauth" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-auth-ial')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-auth-aal')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-auth-fal')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('security-eauth-level')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "security-auth-ial" 000 -->
-   <xsl:template match="*[@key='security-auth-ial']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-auth-ial']" priority="5" mode="json2xml">
       <xsl:element name="security-auth-ial" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-auth-aal" 000 -->
-   <xsl:template match="*[@key='security-auth-aal']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-auth-aal']" priority="5" mode="json2xml">
       <xsl:element name="security-auth-aal" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-auth-fal" 000 -->
-   <xsl:template match="*[@key='security-auth-fal']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-auth-fal']" priority="5" mode="json2xml">
       <xsl:element name="security-auth-fal" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "security-eauth-level" 000 -->
-   <xsl:template match="*[@key='security-eauth-level']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='security-eauth-level']" priority="5" mode="json2xml">
       <xsl:element name="security-eauth-level" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "status" 000 -->
-   <xsl:template match="*[@key='status']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='status']" priority="5" mode="json2xml">
       <xsl:element name="status" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "status-other-description" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='status-other-description']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="status-other-description" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "deployment-model" 000 -->
-   <xsl:template match="*[@key='deployment-model']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='deployment-model']" priority="5" mode="json2xml">
       <xsl:element name="deployment-model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "deployment-model-other-description" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='deployment-model-other-description']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="deployment-model-other-description"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "service-model" 000 -->
-   <xsl:template match="*[@key='service-model'] | *[@key='service-models']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="service-model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='service-models'][array/@key='STRVALUE'] |  array[@key='service-models']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="service-models">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='service-models']/array[@key='STRVALUE']/string |  array[@key='service-models']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "service-model-other-description" 000 -->
-   <xsl:template match="*[@key='service-model-other-description'] | *[@key='service-model-descriptions']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="service-model-other-description"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='service-model-descriptions'][array/@key='STRVALUE'] |  array[@key='service-model-descriptions']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions"
+                key="service-model-descriptions">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='service-model-descriptions']/array[@key='STRVALUE']/string |  array[@key='service-model-descriptions']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "leveraged-authorizations" 000 -->
-   <xsl:template match="*[@key='leveraged-authorizations'] | *[@key='ssp-leveraged-authorizations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='leveraged-authorizations'] | *[@key='ssp-leveraged-authorizations']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="leveraged-authorizations" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('leveraged-authorization', 'ssp-leveraged-authorization')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-leveraged-authorizations']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="leveraged-authorizations" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -851,8 +1601,21 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "leveraged-authorization" 000 -->
-   <xsl:template match="*[@key='leveraged-authorization'] | *[@key='ssp-leveraged-authorization']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='leveraged-authorization'] | *[@key='ssp-leveraged-authorization']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="leveraged-authorization" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('leveraged-authorization-name')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('leveraged-authorization-service-provider')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('leveraged-authorization-date-granted')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-leveraged-authorization']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -864,38 +1627,60 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-name" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='leveraged-authorization-name']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-name"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-service-provider" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='leveraged-authorization-service-provider']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-service-provider"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-date-granted" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='leveraged-authorization-date-granted']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-date-granted"
                    namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "authorization-boundary" 000 -->
-   <xsl:template match="*[@key='authorization-boundary'] | *[@key='ssp-authorization-boundary']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='authorization-boundary'] | *[@key='ssp-authorization-boundary']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="authorization-boundary" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('boundary-diagram', 'ssp-boundary-diagram')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-authorization-boundary']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="authorization-boundary" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -904,8 +1689,17 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "boundary-diagram" 000 -->
-   <xsl:template match="*[@key='boundary-diagram'] | *[@key='ssp-boundary-diagram']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='boundary-diagram'] | *[@key='ssp-boundary-diagram']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="boundary-diagram" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('boundary-description')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-boundary-diagram']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="boundary-diagram" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -913,15 +1707,26 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "boundary-description" 000 -->
-   <xsl:template match="*[@key='boundary-description']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='boundary-description']" priority="4" mode="json2xml">
       <xsl:element name="boundary-description" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "network-architecture" 000 -->
-   <xsl:template match="*[@key='network-architecture'] | *[@key='ssp-network-architecture']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='network-architecture'] | *[@key='ssp-network-architecture']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="network-architecture" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('network-diagram', 'ssp-network-boundary')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-network-architecture']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="network-architecture" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -930,8 +1735,17 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "network-diagram" 000 -->
-   <xsl:template match="*[@key='network-diagram'] | *[@key='ssp-network-boundary']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='network-diagram'] | *[@key='ssp-network-boundary']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="network-diagram" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('network-description')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-network-boundary']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="network-diagram" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -939,15 +1753,17 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "network-description" 000 -->
-   <xsl:template match="*[@key='network-description']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='network-description']" priority="4" mode="json2xml">
       <xsl:element name="network-description" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "data-flow" 000 -->
-   <xsl:template match="*[@key='data-flow'] | *[@key='ssp-data-flow']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='data-flow'] | *[@key='ssp-data-flow']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="data-flow" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -955,9 +1771,25 @@
                               select="*[@key=('data-flow-diagram', 'ssp-data-flow-diagram')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-data-flow']/*" priority="3" mode="json2xml">
+      <xsl:element name="data-flow" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('data-flow-diagram', 'ssp-data-flow-diagram')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "data-flow-diagram" 000 -->
-   <xsl:template match="*[@key='data-flow-diagram'] | *[@key='ssp-data-flow-diagram']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='data-flow-diagram'] | *[@key='ssp-data-flow-diagram']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="data-flow-diagram" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('data-flow-description')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-data-flow-diagram']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="data-flow-diagram" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -965,8 +1797,9 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "data-flow-description" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='data-flow-description']"
-                 priority="2"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="data-flow-description" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -974,8 +1807,9 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "users" 000 -->
-   <xsl:template match="*[@key='users'] | *[@key='ssp-users']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='users'] | *[@key='ssp-users']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="users" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -983,9 +1817,17 @@
          <xsl:apply-templates mode="#current" select="*[@key=('statistics', 'ssp-statistics')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-users']/*" priority="3" mode="json2xml">
+      <xsl:element name="users" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('role', 'roles')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('statistics', 'ssp-statistics')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "role" 000 -->
-   <xsl:template match="*[@key='role'] | *[@key='roles']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='role'] | *[@key='roles']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="role" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -996,27 +1838,90 @@
          <xsl:apply-templates mode="#current" select="*[@key=('responsibility', 'responsibilities')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='roles']/*" priority="3" mode="json2xml">
+      <xsl:element name="role" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('privilege', 'privileges')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('responsibility', 'responsibilities')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "privilege" 000 -->
-   <xsl:template match="*[@key='privilege'] | *[@key='privileges']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="privilege" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='privileges'][array/@key='STRVALUE'] |  array[@key='privileges']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="privileges">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='privileges']/array[@key='STRVALUE']/string |  array[@key='privileges']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "responsibility" 000 -->
-   <xsl:template match="*[@key='responsibility'] | *[@key='responsibilities']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="responsibility" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='responsibilities'][array/@key='STRVALUE'] |  array[@key='responsibilities']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="responsibilities">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='responsibilities']/array[@key='STRVALUE']/string |  array[@key='responsibilities']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "statistics" 000 -->
-   <xsl:template match="*[@key='statistics'] | *[@key='ssp-statistics']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='statistics'] | *[@key='ssp-statistics']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="statistics" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1026,45 +1931,85 @@
          <xsl:apply-templates mode="#current" select="*[@key=('external-user-total-future')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-statistics']/*" priority="3" mode="json2xml">
+      <xsl:element name="statistics" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('internal-user-total-current')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('internal-user-total-future')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('external-user-total-current')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('external-user-total-future')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "internal-user-total-current" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='internal-user-total-current']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="internal-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "internal-user-total-future" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='internal-user-total-future']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="internal-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-user-total-current" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='external-user-total-current']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="external-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-user-total-future" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='external-user-total-future']"
-                 priority="2"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="external-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "system-implementation" 000 -->
-   <xsl:template match="*[@key='system-implementation'] | *[@key='ssp-system-implementation']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-implementation'] | *[@key='ssp-system-implementation']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="system-implementation" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('ports-protocols-services', 'ssp-ports-protocols-services')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('interconnection', 'ssp-interconnection')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('component', 'components')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('system-inventory', 'ssp-system-inventory')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-system-implementation']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="system-implementation" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1078,8 +2023,17 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "ports-protocols-services" 000 -->
-   <xsl:template match="*[@key='ports-protocols-services'] | *[@key='ssp-ports-protocols-services']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='ports-protocols-services'] | *[@key='ssp-ports-protocols-services']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="ports-protocols-services" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('service', 'ssp-service')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-ports-protocols-services']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="ports-protocols-services" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1087,8 +2041,9 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "service" 000 -->
-   <xsl:template match="*[@key='service'] | *[@key='ssp-service']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='service'] | *[@key='ssp-service']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="service" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1097,54 +2052,139 @@
          <xsl:apply-templates mode="#current" select="*[@key=('used-by', 'component-users')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-service']/*" priority="3" mode="json2xml">
+      <xsl:element name="service" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('protocol', 'ssp-protocol')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('purpose')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('used-by', 'component-users')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "protocol" 000 -->
-   <xsl:template match="*[@key='protocol'] | *[@key='ssp-protocol']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='protocol'] | *[@key='ssp-protocol']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="protocol" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('port-range', 'port-ranges')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-protocol']/*" priority="3" mode="json2xml">
+      <xsl:element name="protocol" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('port-range', 'port-ranges')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "port-range" 000 -->
-   <xsl:template match="*[@key='port-range'] | *[@key='port-ranges']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="port-range" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='port-ranges'][array/@key='STRVALUE'] |  array[@key='port-ranges']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="port-ranges">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='port-ranges']/array[@key='STRVALUE']/string |  array[@key='port-ranges']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "purpose" 000 -->
-   <xsl:template match="*[@key='purpose']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='purpose']" priority="5" mode="json2xml">
       <xsl:element name="purpose" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:variable name="markup">
-            <xsl:apply-templates mode="infer-inlines"/>
-         </xsl:variable>
-         <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "used-by" 000 -->
-   <xsl:template match="*[@key='used-by'] | *[@key='component-users']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="used-by" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='component-users'][array/@key='STRVALUE'] |  array[@key='component-users']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="component-users">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='component-users']/array[@key='STRVALUE']/string |  array[@key='component-users']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling flag "interconnected" 000 -->
-   <xsl:template match="*[@key='interconnected']" mode="json2xml"/>
-   <xsl:template match="*[@key='system-implementation']/*[@key='interconnected'] | *[@key='ssp-system-implementation']/*/*[@key='interconnected']"
+   <xsl:template match="*[@key='interconnected']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='system-implementation']/*[@key='interconnected'] | *[@key='ssp-system-implementation']/*[@key='interconnected'] | array[@key='ssp-system-implementation']/*/*[@key='interconnected']"
                  mode="as-attribute">
       <xsl:attribute name="interconnected">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling assembly "interconnection" 000 -->
-   <xsl:template match="*[@key='interconnection'] | *[@key='ssp-interconnection']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='interconnection'] | *[@key='ssp-interconnection']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="interconnection" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('external-system-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('external-system-org')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('isa-authorization', 'isa-authorizations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('isa-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('isa-date')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-interconnection']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="interconnection" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1157,45 +2197,88 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-system-name" 000 -->
-   <xsl:template match="*[@key='external-system-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='external-system-name']" priority="5" mode="json2xml">
       <xsl:element name="external-system-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "external-system-org" 000 -->
-   <xsl:template match="*[@key='external-system-org']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='external-system-org']" priority="5" mode="json2xml">
       <xsl:element name="external-system-org" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "isa-authorization" 000 -->
-   <xsl:template match="*[@key='isa-authorization'] | *[@key='isa-authorizations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="isa-authorization" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='isa-authorizations'][array/@key='STRVALUE'] |  array[@key='isa-authorizations']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="isa-authorizations">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='isa-authorizations']/array[@key='STRVALUE']/string |  array[@key='isa-authorizations']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "isa-name" 000 -->
-   <xsl:template match="*[@key='isa-name']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='isa-name']" priority="5" mode="json2xml">
       <xsl:element name="isa-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "isa-date" 000 -->
-   <xsl:template match="*[@key='isa-date']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='isa-date']" priority="5" mode="json2xml">
       <xsl:element name="isa-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "component" 000 -->
-   <xsl:template match="*[@key='component'] | *[@key='components']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='component'] | *[@key='components']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="component" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1208,9 +2291,22 @@
          <xsl:apply-templates mode="#current" select="*[@key=('subcomponent', 'subcomponents')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='components']/*" priority="3" mode="json2xml">
+      <xsl:element name="component" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('origin', 'ssp-origin')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('characteristics', 'ssp-characteristics')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('satisfaction', 'ssp-satisfaction')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('validation', 'validations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('provisioning', 'ssp-provisioning')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('subcomponent', 'subcomponents')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "origin" 000 -->
-   <xsl:template match="*[@key='origin'] | *[@key='ssp-origin']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='origin'] | *[@key='ssp-origin']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="origin" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1222,40 +2318,87 @@
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'ssp-part')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-origin']/*" priority="3" mode="json2xml">
+      <xsl:element name="origin" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('organization')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('version')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('release-date')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('model')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('part', 'ssp-part')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling flag "id" 000 -->
-   <xsl:template match="*[@key='id']" mode="json2xml"/>
-   <xsl:template match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*/*[@key='id'] | *[@key='system-security-plan']/*[@key='id'] | *[@key='ssp']/*/*[@key='id'] | *[@key='designation']/*[@key='id'] | *[@key='ssp-designation']/*/*[@key='id'] | *[@key='qualifier']/*[@key='id'] | *[@key='ssp-qualifiers']/*/*[@key='id'] | *[@key='information-type']/*[@key='id'] | *[@key='ssp-information-type']/*/*[@key='id'] | *[@key='leveraged-authorization']/*[@key='id'] | *[@key='ssp-leveraged-authorization']/*/*[@key='id'] | *[@key='boundary-diagram']/*[@key='id'] | *[@key='ssp-boundary-diagram']/*/*[@key='id'] | *[@key='network-diagram']/*[@key='id'] | *[@key='ssp-network-boundary']/*/*[@key='id'] | *[@key='data-flow-diagram']/*[@key='id'] | *[@key='ssp-data-flow-diagram']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*/*[@key='id'] | *[@key='service']/*[@key='id'] | *[@key='ssp-service']/*/*[@key='id'] | *[@key='interconnection']/*[@key='id'] | *[@key='ssp-interconnection']/*/*[@key='id'] | *[@key='component']/*[@key='id'] | *[@key='components']/*/*[@key='id'] | *[@key='origin']/*[@key='id'] | *[@key='ssp-origin']/*/*[@key='id'] | *[@key='vendor']/*[@key='id'] | *[@key='vendors']/*/*[@key='id'] | *[@key='satisfaction']/*[@key='id'] | *[@key='ssp-satisfaction']/*/*[@key='id'] | *[@key='inventory-item']/*[@key='id'] | *[@key='inventory-items']/*/*[@key='id'] | *[@key='references']/*[@key='id'] | *[@key='ref']/*[@key='id'] | *[@key='refs']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*/*[@key='id'] | *[@key='attachment']/*[@key='id']"
+   <xsl:template match="*[@key='id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*[@key='id'] | array[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*[@key='id'] | array[@key='resources']/*/*[@key='id'] | *[@key='system-security-plan']/*[@key='id'] | *[@key='ssp']/*[@key='id'] | array[@key='ssp']/*/*[@key='id'] | *[@key='designation']/*[@key='id'] | *[@key='ssp-designation']/*[@key='id'] | array[@key='ssp-designation']/*/*[@key='id'] | *[@key='qualifier']/*[@key='id'] | *[@key='ssp-qualifiers']/*[@key='id'] | array[@key='ssp-qualifiers']/*/*[@key='id'] | *[@key='information-type']/*[@key='id'] | *[@key='ssp-information-type']/*[@key='id'] | array[@key='ssp-information-type']/*/*[@key='id'] | *[@key='leveraged-authorization']/*[@key='id'] | *[@key='ssp-leveraged-authorization']/*[@key='id'] | array[@key='ssp-leveraged-authorization']/*/*[@key='id'] | *[@key='boundary-diagram']/*[@key='id'] | *[@key='ssp-boundary-diagram']/*[@key='id'] | array[@key='ssp-boundary-diagram']/*/*[@key='id'] | *[@key='network-diagram']/*[@key='id'] | *[@key='ssp-network-boundary']/*[@key='id'] | array[@key='ssp-network-boundary']/*/*[@key='id'] | *[@key='data-flow-diagram']/*[@key='id'] | *[@key='ssp-data-flow-diagram']/*[@key='id'] | array[@key='ssp-data-flow-diagram']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | *[@key='service']/*[@key='id'] | *[@key='ssp-service']/*[@key='id'] | array[@key='ssp-service']/*/*[@key='id'] | *[@key='interconnection']/*[@key='id'] | *[@key='ssp-interconnection']/*[@key='id'] | array[@key='ssp-interconnection']/*/*[@key='id'] | *[@key='component']/*[@key='id'] | *[@key='components']/*[@key='id'] | array[@key='components']/*/*[@key='id'] | *[@key='origin']/*[@key='id'] | *[@key='ssp-origin']/*[@key='id'] | array[@key='ssp-origin']/*/*[@key='id'] | *[@key='vendor']/*[@key='id'] | *[@key='vendors']/*[@key='id'] | array[@key='vendors']/*/*[@key='id'] | *[@key='satisfaction']/*[@key='id'] | *[@key='ssp-satisfaction']/*[@key='id'] | array[@key='ssp-satisfaction']/*/*[@key='id'] | *[@key='inventory-item']/*[@key='id'] | *[@key='inventory-items']/*[@key='id'] | array[@key='inventory-items']/*/*[@key='id'] | *[@key='references']/*[@key='id'] | *[@key='ref']/*[@key='id'] | *[@key='refs']/*[@key='id'] | array[@key='refs']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*[@key='id'] | array[@key='citations']/*/*[@key='id'] | *[@key='attachment']/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling field "vendor" 000 -->
-   <xsl:template match="*[@key='vendor'] | *[@key='vendors']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="vendor" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='vendors'][array/@key='STRVALUE'] |  array[@key='vendors']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="vendors">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='vendors']/array[@key='STRVALUE']/string |  array[@key='vendors']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "release-date" 000 -->
-   <xsl:template match="*[@key='release-date']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='release-date']" priority="5" mode="json2xml">
       <xsl:element name="release-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "model" 000 -->
-   <xsl:template match="*[@key='model']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='model']" priority="5" mode="json2xml">
       <xsl:element name="model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "part" 000 -->
-   <xsl:template match="*[@key='part'] | *[@key='ssp-part']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='part'] | *[@key='ssp-part']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="part" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1263,9 +2406,27 @@
          <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-part']/*" priority="3" mode="json2xml">
+      <xsl:element name="part" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "characteristics" 000 -->
-   <xsl:template match="*[@key='characteristics'] | *[@key='ssp-characteristics']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='characteristics'] | *[@key='ssp-characteristics']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="characteristics" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('ip-address', 'ip-addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('service', 'ssp-service')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('part', 'ssp-part')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-characteristics']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="characteristics" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1275,26 +2436,68 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "ip-address" 000 -->
-   <xsl:template match="*[@key='ip-address'] | *[@key='ip-addresses']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="ip-address" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='ip-addresses'][array/@key='STRVALUE'] |  array[@key='ip-addresses']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="ip-addresses">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='ip-addresses']/array[@key='STRVALUE']/string |  array[@key='ip-addresses']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "satisfaction" 000 -->
-   <xsl:template match="*[@key='satisfaction'] | *[@key='ssp-satisfaction']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='satisfaction'] | *[@key='ssp-satisfaction']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="satisfaction" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-satisfaction']/*" priority="3" mode="json2xml">
+      <xsl:element name="satisfaction" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "system-inventory" 000 -->
-   <xsl:template match="*[@key='system-inventory'] | *[@key='ssp-system-inventory']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='system-inventory'] | *[@key='ssp-system-inventory']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="system-inventory" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('inventory-item', 'inventory-items')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-system-inventory']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="system-inventory" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1302,8 +2505,9 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "inventory-item" 000 -->
-   <xsl:template match="*[@key='inventory-item'] | *[@key='inventory-items']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='inventory-item'] | *[@key='inventory-items']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="inventory-item" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1319,18 +2523,60 @@
                               select="*[@key=('asset-administrator', 'asset-administrators')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='inventory-items']/*" priority="3" mode="json2xml">
+      <xsl:element name="inventory-item" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('ip-address', 'ip-addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('dns-name', 'dns-names')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('host-item', 'ssp-host-item')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('software-item', 'ssp-software-item')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('comments')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('serial-no')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('network-id', 'network-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('asset-owner', 'asset-owners')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('asset-administrator', 'asset-administrators')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "dns-name" 000 -->
-   <xsl:template match="*[@key='dns-name'] | *[@key='dns-names']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="dns-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='dns-names'][array/@key='STRVALUE'] |  array[@key='dns-names']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="dns-names">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='dns-names']/array[@key='STRVALUE']/string |  array[@key='dns-names']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "host-item" 000 -->
-   <xsl:template match="*[@key='host-item'] | *[@key='ssp-host-item']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='host-item'] | *[@key='ssp-host-item']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="host-item" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1350,81 +2596,309 @@
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-host-item']/*" priority="3" mode="json2xml">
+      <xsl:element name="host-item" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('netbios-name', 'netbios-names')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('mac-address', 'mac-addresses')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('authenticated-scan', 'authenticated-scans')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('baseline-template', 'baseline-templates')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('os-name', 'os-names')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('os-version', 'os-versions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('location', 'locations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('asset-type', 'asset-types')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('vendor', 'vendors')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('hardware-model', 'hardware-models')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('scanned', 'ssp-scanned')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "netbios-name" 000 -->
-   <xsl:template match="*[@key='netbios-name'] | *[@key='netbios-names']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="netbios-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='netbios-names'][array/@key='STRVALUE'] |  array[@key='netbios-names']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="netbios-names">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='netbios-names']/array[@key='STRVALUE']/string |  array[@key='netbios-names']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "mac-address" 000 -->
-   <xsl:template match="*[@key='mac-address'] | *[@key='mac-addresses']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="mac-address" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='mac-addresses'][array/@key='STRVALUE'] |  array[@key='mac-addresses']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="mac-addresses">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='mac-addresses']/array[@key='STRVALUE']/string |  array[@key='mac-addresses']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "os-name" 000 -->
-   <xsl:template match="*[@key='os-name'] | *[@key='os-names']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="os-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='os-names'][array/@key='STRVALUE'] |  array[@key='os-names']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="os-names">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='os-names']/array[@key='STRVALUE']/string |  array[@key='os-names']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "os-version" 000 -->
-   <xsl:template match="*[@key='os-version'] | *[@key='os-versions']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="os-version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='os-versions'][array/@key='STRVALUE'] |  array[@key='os-versions']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="os-versions">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='os-versions']/array[@key='STRVALUE']/string |  array[@key='os-versions']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "location" 000 -->
-   <xsl:template match="*[@key='location'] | *[@key='locations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='location'] | *[@key='locations'] | array[@key='locations']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="location" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='locations'][array/@key='STRVALUE'] |  array[@key='locations']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="locations">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='locations']/array[@key='STRVALUE']/string |  array[@key='locations']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "asset-type" 000 -->
-   <xsl:template match="*[@key='asset-type'] | *[@key='asset-types']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="asset-type" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='asset-types'][array/@key='STRVALUE'] |  array[@key='asset-types']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="asset-types">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='asset-types']/array[@key='STRVALUE']/string |  array[@key='asset-types']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "hardware-model" 000 -->
-   <xsl:template match="*[@key='hardware-model'] | *[@key='hardware-models']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="hardware-model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='hardware-models'][array/@key='STRVALUE'] |  array[@key='hardware-models']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="hardware-models">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='hardware-models']/array[@key='STRVALUE']/string |  array[@key='hardware-models']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "authenticated-scan" 000 -->
-   <xsl:template match="*[@key='authenticated-scan'] | *[@key='authenticated-scans']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="authenticated-scan" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='authenticated-scans'][array/@key='STRVALUE'] |  array[@key='authenticated-scans']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="authenticated-scans">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='authenticated-scans']/array[@key='STRVALUE']/string |  array[@key='authenticated-scans']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "software-item" 000 -->
-   <xsl:template match="*[@key='software-item'] | *[@key='ssp-software-item']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='software-item'] | *[@key='ssp-software-item']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="software-item" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1437,86 +2911,297 @@
          <xsl:apply-templates mode="#current" select="*[@key=('function', 'functions')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-software-item']/*" priority="3" mode="json2xml">
+      <xsl:element name="software-item" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('vendor', 'vendors')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('software-name', 'software-names')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('software-version', 'software-versions')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('software-patch-level', 'software-patch-levels')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('function', 'functions')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "software-name" 000 -->
-   <xsl:template match="*[@key='software-name'] | *[@key='software-names']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="software-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='software-names'][array/@key='STRVALUE'] |  array[@key='software-names']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="software-names">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='software-names']/array[@key='STRVALUE']/string |  array[@key='software-names']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "software-version" 000 -->
-   <xsl:template match="*[@key='software-version'] | *[@key='software-versions']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="software-version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='software-versions'][array/@key='STRVALUE'] |  array[@key='software-versions']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="software-versions">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='software-versions']/array[@key='STRVALUE']/string |  array[@key='software-versions']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "software-patch-level" 000 -->
-   <xsl:template match="*[@key='software-patch-level'] | *[@key='software-patch-levels']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="software-patch-level" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='software-patch-levels'][array/@key='STRVALUE'] |  array[@key='software-patch-levels']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="software-patch-levels">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='software-patch-levels']/array[@key='STRVALUE']/string |  array[@key='software-patch-levels']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "function" 000 -->
-   <xsl:template match="*[@key='function'] | *[@key='functions']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='function'] | *[@key='functions'] | array[@key='functions']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="function" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='functions'][array/@key='STRVALUE'] |  array[@key='functions']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="functions">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='functions']/array[@key='STRVALUE']/string |  array[@key='functions']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "comments" 000 -->
-   <xsl:template match="*[@key='comments']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='comments']" priority="5" mode="json2xml">
       <xsl:element name="comments" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "serial-no" 000 -->
-   <xsl:template match="*[@key='serial-no']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='serial-no']" priority="5" mode="json2xml">
       <xsl:element name="serial-no" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "network-id" 000 -->
-   <xsl:template match="*[@key='network-id'] | *[@key='network-ids']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="network-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='network-ids'][array/@key='STRVALUE'] |  array[@key='network-ids']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="network-ids">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='network-ids']/array[@key='STRVALUE']/string |  array[@key='network-ids']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "asset-owner" 000 -->
-   <xsl:template match="*[@key='asset-owner'] | *[@key='asset-owners']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="asset-owner" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='asset-owners'][array/@key='STRVALUE'] |  array[@key='asset-owners']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="asset-owners">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='asset-owners']/array[@key='STRVALUE']/string |  array[@key='asset-owners']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "asset-administrator" 000 -->
-   <xsl:template match="*[@key='asset-administrator'] | *[@key='asset-administrators']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="asset-administrator" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='asset-administrators'][array/@key='STRVALUE'] |  array[@key='asset-administrators']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="asset-administrators">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='asset-administrators']/array[@key='STRVALUE']/string |  array[@key='asset-administrators']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "control-implementation" 000 -->
-   <xsl:template match="*[@key='control-implementation'] | *[@key='ssp-control-implementation']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='control-implementation'] | *[@key='ssp-control-implementation']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="control-implementation" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='ssp-control-implementation']/*"
+                 priority="3"
                  mode="json2xml">
       <xsl:element name="control-implementation" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1524,8 +3209,9 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "control" 000 -->
-   <xsl:template match="*[@key='control'] | *[@key='controls']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='control'] | *[@key='controls']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="control" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
@@ -1537,42 +3223,98 @@
                               select="*[@key=('control-response', 'control-responses')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='controls']/*" priority="3" mode="json2xml">
+      <xsl:element name="control" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('responsible-role', 'ssp-responsible-role')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('set-param', 'parameter-settings')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('control-response', 'control-responses')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "responsible-role" 000 -->
-   <xsl:template match="*[@key='responsible-role'] | *[@key='ssp-responsible-role']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="responsible-role" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='ssp-responsible-role'][array/@key='STRVALUE'] |  array[@key='ssp-responsible-role']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="ssp-responsible-role">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='ssp-responsible-role']/array[@key='STRVALUE']/string |  array[@key='ssp-responsible-role']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "set-param" 000 -->
-   <xsl:template match="*[@key='set-param'] | *[@key='parameter-settings']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='set-param'] | *[@key='parameter-settings']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="set-param" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='parameter-settings']/*" priority="3" mode="json2xml">
+      <xsl:element name="set-param" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "value" 000 -->
-   <xsl:template match="*[@key='value']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='value']" priority="5" mode="json2xml">
       <xsl:element name="value" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "control-response" 000 -->
-   <xsl:template match="*[@key='control-response'] | *[@key='control-responses']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='control-response'] | *[@key='control-responses']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="control-response" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='control-responses']/*" priority="3" mode="json2xml">
+      <xsl:element name="control-response" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "references" 000 -->
-   <xsl:template match="*[@key='references']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='references']" priority="4" mode="json2xml">
       <xsl:element name="references" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -1580,9 +3322,15 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "ref" 000 -->
-   <xsl:template match="*[@key='ref'] | *[@key='refs']/*"
-                 priority="2"
-                 mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='ref'] | *[@key='refs']" priority="4" mode="json2xml">
+      <xsl:element name="ref" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="*[@key='refs']/*" priority="3" mode="json2xml">
       <xsl:element name="ref" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
@@ -1590,25 +3338,82 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "citation" 000 -->
-   <xsl:template match="*[@key='citation'] | *[@key='citations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='citation'] | *[@key='citations'] | array[@key='citations']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="citation" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='citations'][array/@key='RICHTEXT'] |  array[@key='citations']/map[array/@key='RICHTEXT']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="citations">
+            <xsl:apply-templates mode="expand" select="array[@key='RICHTEXT']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='citations']/array[@key='RICHTEXT']/string |  array[@key='citations']/map/array[@key='RICHTEXT']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='RICHTEXT']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "link" 000 -->
-   <xsl:template match="*[@key='link'] | *[@key='links']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='link'] | *[@key='links'] | array[@key='links']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="link" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='links'][array/@key='RICHTEXT'] |  array[@key='links']/map[array/@key='RICHTEXT']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="links">
+            <xsl:apply-templates mode="expand" select="array[@key='RICHTEXT']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='links']/array[@key='RICHTEXT']/string |  array[@key='links']/map/array[@key='RICHTEXT']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='RICHTEXT']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling assembly "attachment" 000 -->
-   <xsl:template match="*[@key='attachment']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='attachment']" priority="4" mode="json2xml">
       <xsl:element name="attachment" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
@@ -1621,267 +3426,403 @@
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "format" 000 -->
-   <xsl:template match="*[@key='format']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='format']" priority="5" mode="json2xml">
       <xsl:element name="format" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "date" 000 -->
-   <xsl:template match="*[@key='date']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='date']" priority="5" mode="json2xml">
       <xsl:element name="date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "attachment-type" 000 -->
-   <xsl:template match="*[@key='attachment-type']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='attachment-type']" priority="5" mode="json2xml">
       <xsl:element name="attachment-type" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "base64" 000 -->
-   <xsl:template match="*[@key='base64']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='base64']" priority="5" mode="json2xml">
       <xsl:element name="base64" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="string[@key=('STRVALUE','RICHTEXT')]"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "attachment-id" 000 -->
-   <xsl:template match="*[@key='attachment-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='boundary-diagram']/*[@key='attachment-id'] | *[@key='ssp-boundary-diagram']/*/*[@key='attachment-id'] | *[@key='network-diagram']/*[@key='attachment-id'] | *[@key='ssp-network-boundary']/*/*[@key='attachment-id'] | *[@key='data-flow-diagram']/*[@key='attachment-id'] | *[@key='ssp-data-flow-diagram']/*/*[@key='attachment-id']"
+   <xsl:template match="*[@key='attachment-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='boundary-diagram']/*[@key='attachment-id'] | *[@key='ssp-boundary-diagram']/*[@key='attachment-id'] | array[@key='ssp-boundary-diagram']/*/*[@key='attachment-id'] | *[@key='network-diagram']/*[@key='attachment-id'] | *[@key='ssp-network-boundary']/*[@key='attachment-id'] | array[@key='ssp-network-boundary']/*/*[@key='attachment-id'] | *[@key='data-flow-diagram']/*[@key='attachment-id'] | *[@key='ssp-data-flow-diagram']/*[@key='attachment-id'] | array[@key='ssp-data-flow-diagram']/*/*[@key='attachment-id']"
                  mode="as-attribute">
       <xsl:attribute name="attachment-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "component-id" 000 -->
-   <xsl:template match="*[@key='component-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='inventory-item']/*[@key='component-id'] | *[@key='inventory-items']/*/*[@key='component-id']"
+   <xsl:template match="*[@key='component-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='inventory-item']/*[@key='component-id'] | *[@key='inventory-items']/*[@key='component-id'] | array[@key='inventory-items']/*/*[@key='component-id']"
                  mode="as-attribute">
       <xsl:attribute name="component-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "control-id" 000 -->
-   <xsl:template match="*[@key='control-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='call']/*[@key='control-id'] | *[@key='id-selectors']/*/*[@key='control-id'] | *[@key='control']/*[@key='control-id'] | *[@key='controls']/*/*[@key='control-id']"
+   <xsl:template match="*[@key='control-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='call']/*[@key='control-id'] | *[@key='id-selectors']/*[@key='control-id'] | array[@key='id-selectors']/*/*[@key='control-id'] | *[@key='control']/*[@key='control-id'] | *[@key='controls']/*[@key='control-id'] | array[@key='controls']/*/*[@key='control-id']"
                  mode="as-attribute">
       <xsl:attribute name="control-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "stmt-id" 000 -->
-   <xsl:template match="*[@key='stmt-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='control-response']/*[@key='stmt-id'] | *[@key='control-responses']/*/*[@key='stmt-id']"
+   <xsl:template match="*[@key='stmt-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='control-response']/*[@key='stmt-id'] | *[@key='control-responses']/*[@key='stmt-id'] | array[@key='control-responses']/*/*[@key='stmt-id']"
                  mode="as-attribute">
       <xsl:attribute name="stmt-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "nist-id" 000 -->
-   <xsl:template match="*[@key='nist-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='information-type']/*[@key='nist-id'] | *[@key='ssp-information-type']/*/*[@key='nist-id']"
+   <xsl:template match="*[@key='nist-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='information-type']/*[@key='nist-id'] | *[@key='ssp-information-type']/*[@key='nist-id'] | array[@key='ssp-information-type']/*/*[@key='nist-id']"
                  mode="as-attribute">
       <xsl:attribute name="nist-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "poc-id" 000 -->
-   <xsl:template match="*[@key='poc-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='asset-owner']/*[@key='poc-id'] | *[@key='asset-owners']/*/*[@key='poc-id'] | *[@key='asset-administrator']/*[@key='poc-id'] | *[@key='asset-administrators']/*/*[@key='poc-id']"
+   <xsl:template match="*[@key='poc-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='asset-owner']/*[@key='poc-id'] | *[@key='asset-owners']/*[@key='poc-id'] | array[@key='asset-owners']/*/*[@key='poc-id'] | *[@key='asset-administrator']/*[@key='poc-id'] | *[@key='asset-administrators']/*[@key='poc-id'] | array[@key='asset-administrators']/*/*[@key='poc-id']"
                  mode="as-attribute">
       <xsl:attribute name="poc-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "param-id" 000 -->
-   <xsl:template match="*[@key='param-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='set-param']/*[@key='param-id'] | *[@key='parameter-settings']/*/*[@key='param-id']"
+   <xsl:template match="*[@key='param-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='set-param']/*[@key='param-id'] | *[@key='parameter-settings']/*[@key='param-id'] | array[@key='parameter-settings']/*/*[@key='param-id']"
                  mode="as-attribute">
       <xsl:attribute name="param-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "ref-type" 000 -->
-   <xsl:template match="*[@key='ref-type']" mode="json2xml"/>
-   <xsl:template match="*[@key='ref']/*[@key='ref-type'] | *[@key='refs']/*/*[@key='ref-type']"
+   <xsl:template match="*[@key='ref-type']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='ref']/*[@key='ref-type'] | *[@key='refs']/*[@key='ref-type'] | array[@key='refs']/*/*[@key='ref-type']"
                  mode="as-attribute">
       <xsl:attribute name="ref-type">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "target" 000 -->
-   <xsl:template match="*[@key='target']" mode="json2xml"/>
-   <xsl:template match="*[@key='set-param']/*[@key='target'] | *[@key='parameter-settings']/*/*[@key='target']"
+   <xsl:template match="*[@key='target']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='set-param']/*[@key='target'] | *[@key='parameter-settings']/*[@key='target'] | array[@key='parameter-settings']/*/*[@key='target']"
                  mode="as-attribute">
       <xsl:attribute name="target">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "filename" 000 -->
-   <xsl:template match="*[@key='filename']" mode="json2xml"/>
-   <xsl:template match="*[@key='base64']/*[@key='filename']" mode="as-attribute">
+   <xsl:template match="*[@key='filename']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='base64']/*[@key='filename']"
+                 mode="as-attribute">
       <xsl:attribute name="filename">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "role-id" 000 -->
-   <xsl:template match="*[@key='role-id']" mode="json2xml"/>
-   <xsl:template match="*[@key='party']/*[@key='role-id'] | *[@key='parties']/*/*[@key='role-id'] | *[@key='responsible-role']/*[@key='role-id'] | *[@key='ssp-responsible-role']/*/*[@key='role-id']"
+   <xsl:template match="*[@key='role-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='party']/*[@key='role-id'] | *[@key='parties']/*[@key='role-id'] | array[@key='parties']/*/*[@key='role-id'] | *[@key='responsible-role']/*[@key='role-id'] | *[@key='ssp-responsible-role']/*[@key='role-id'] | array[@key='ssp-responsible-role']/*/*[@key='role-id']"
                  mode="as-attribute">
       <xsl:attribute name="role-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "class" 000 -->
-   <xsl:template match="*[@key='class']" mode="json2xml"/>
-   <xsl:template match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='ssp-part']/*/*[@key='class'] | *[@key='control']/*[@key='class'] | *[@key='controls']/*/*[@key='class']"
+   <xsl:template match="*[@key='class']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='ssp-part']/*[@key='class'] | array[@key='ssp-part']/*/*[@key='class'] | *[@key='control']/*[@key='class'] | *[@key='controls']/*[@key='class'] | array[@key='controls']/*/*[@key='class']"
                  mode="as-attribute">
       <xsl:attribute name="class">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "context" 000 -->
-   <xsl:template match="*[@key='context']" mode="json2xml"/>
-   <xsl:template match="*[@key='characteristics']/*[@key='context'] | *[@key='ssp-characteristics']/*/*[@key='context'] | *[@key='satisfaction']/*[@key='context'] | *[@key='ssp-satisfaction']/*/*[@key='context']"
+   <xsl:template match="*[@key='context']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='characteristics']/*[@key='context'] | *[@key='ssp-characteristics']/*[@key='context'] | array[@key='ssp-characteristics']/*/*[@key='context'] | *[@key='satisfaction']/*[@key='context'] | *[@key='ssp-satisfaction']/*[@key='context'] | array[@key='ssp-satisfaction']/*/*[@key='context']"
                  mode="as-attribute">
       <xsl:attribute name="context">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "name" 000 -->
-   <xsl:template match="*[@key='name']" mode="json2xml"/>
-   <xsl:template match="*[@key='prop']/*[@key='name'] | *[@key='properties']/*/*[@key='name'] | *[@key='role']/*[@key='name'] | *[@key='roles']/*/*[@key='name'] | *[@key='service']/*[@key='name'] | *[@key='ssp-service']/*/*[@key='name'] | *[@key='protocol']/*[@key='name'] | *[@key='ssp-protocol']/*/*[@key='name']"
+   <xsl:template match="*[@key='name']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='prop']/*[@key='name'] | *[@key='properties']/*[@key='name'] | array[@key='properties']/*/*[@key='name'] | *[@key='role']/*[@key='name'] | *[@key='roles']/*[@key='name'] | array[@key='roles']/*/*[@key='name'] | *[@key='service']/*[@key='name'] | *[@key='ssp-service']/*[@key='name'] | array[@key='ssp-service']/*/*[@key='name'] | *[@key='protocol']/*[@key='name'] | *[@key='ssp-protocol']/*[@key='name'] | array[@key='ssp-protocol']/*/*[@key='name']"
                  mode="as-attribute">
       <xsl:attribute name="name">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "start" 000 -->
-   <xsl:template match="*[@key='start']" mode="json2xml"/>
-   <xsl:template match="*[@key='port-range']/*[@key='start'] | *[@key='port-ranges']/*/*[@key='start']"
+   <xsl:template match="*[@key='start']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='port-range']/*[@key='start'] | *[@key='port-ranges']/*[@key='start'] | array[@key='port-ranges']/*/*[@key='start']"
                  mode="as-attribute">
       <xsl:attribute name="start">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "end" 000 -->
-   <xsl:template match="*[@key='end']" mode="json2xml"/>
-   <xsl:template match="*[@key='port-range']/*[@key='end'] | *[@key='port-ranges']/*/*[@key='end']"
+   <xsl:template match="*[@key='end']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='port-range']/*[@key='end'] | *[@key='port-ranges']/*[@key='end'] | array[@key='port-ranges']/*/*[@key='end']"
                  mode="as-attribute">
       <xsl:attribute name="end">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "transport" 000 -->
-   <xsl:template match="*[@key='transport']" mode="json2xml"/>
-   <xsl:template match="*[@key='port-range']/*[@key='transport'] | *[@key='port-ranges']/*/*[@key='transport']"
+   <xsl:template match="*[@key='transport']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='port-range']/*[@key='transport'] | *[@key='port-ranges']/*[@key='transport'] | array[@key='port-ranges']/*/*[@key='transport']"
                  mode="as-attribute">
       <xsl:attribute name="transport">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "type" 000 -->
-   <xsl:template match="*[@key='type']" mode="json2xml"/>
-   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*/*[@key='type'] | *[@key='notes']/*[@key='type'] | *[@key='system-id']/*[@key='type'] | *[@key='component']/*[@key='type'] | *[@key='components']/*/*[@key='type'] | *[@key='vendor']/*[@key='type'] | *[@key='vendors']/*/*[@key='type'] | *[@key='ip-address']/*[@key='type'] | *[@key='ip-addresses']/*/*[@key='type']"
+   <xsl:template match="*[@key='type']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*[@key='type'] | array[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*[@key='type'] | array[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*[@key='type'] | array[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*[@key='type'] | array[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*[@key='type'] | array[@key='telephone-numbers']/*/*[@key='type'] | *[@key='notes']/*[@key='type'] | *[@key='system-id']/*[@key='type'] | *[@key='component']/*[@key='type'] | *[@key='components']/*[@key='type'] | array[@key='components']/*/*[@key='type'] | *[@key='vendor']/*[@key='type'] | *[@key='vendors']/*[@key='type'] | array[@key='vendors']/*/*[@key='type'] | *[@key='ip-address']/*[@key='type'] | *[@key='ip-addresses']/*[@key='type'] | array[@key='ip-addresses']/*/*[@key='type']"
                  mode="as-attribute">
       <xsl:attribute name="type">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "public" 000 -->
-   <xsl:template match="*[@key='public']" mode="json2xml"/>
-   <xsl:template match="*[@key='inventory-item']/*[@key='public'] | *[@key='inventory-items']/*/*[@key='public']"
+   <xsl:template match="*[@key='public']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='inventory-item']/*[@key='public'] | *[@key='inventory-items']/*[@key='public'] | array[@key='inventory-items']/*/*[@key='public']"
                  mode="as-attribute">
       <xsl:attribute name="public">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "virtual" 000 -->
-   <xsl:template match="*[@key='virtual']" mode="json2xml"/>
-   <xsl:template match="*[@key='inventory-item']/*[@key='virtual'] | *[@key='inventory-items']/*/*[@key='virtual']"
+   <xsl:template match="*[@key='virtual']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='inventory-item']/*[@key='virtual'] | *[@key='inventory-items']/*[@key='virtual'] | array[@key='inventory-items']/*/*[@key='virtual']"
                  mode="as-attribute">
       <xsl:attribute name="virtual">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "external" 000 -->
-   <xsl:template match="*[@key='external']" mode="json2xml"/>
-   <xsl:template match="*[@key='role']/*[@key='external'] | *[@key='roles']/*/*[@key='external']"
+   <xsl:template match="*[@key='external']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='role']/*[@key='external'] | *[@key='roles']/*[@key='external'] | array[@key='roles']/*/*[@key='external']"
                  mode="as-attribute">
       <xsl:attribute name="external">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "access" 000 -->
-   <xsl:template match="*[@key='access']" mode="json2xml"/>
-   <xsl:template match="*[@key='role']/*[@key='access'] | *[@key='roles']/*/*[@key='access']"
+   <xsl:template match="*[@key='access']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='role']/*[@key='access'] | *[@key='roles']/*[@key='access'] | array[@key='roles']/*/*[@key='access']"
                  mode="as-attribute">
       <xsl:attribute name="access">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag "sensitivity-level" 000 -->
-   <xsl:template match="*[@key='sensitivity-level']" mode="json2xml"/>
-   <xsl:template match="*[@key='role']/*[@key='sensitivity-level'] | *[@key='roles']/*/*[@key='sensitivity-level']"
+   <xsl:template match="*[@key='sensitivity-level']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='role']/*[@key='sensitivity-level'] | *[@key='roles']/*[@key='sensitivity-level'] | array[@key='roles']/*/*[@key='sensitivity-level']"
                  mode="as-attribute">
       <xsl:attribute name="sensitivity-level">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling assembly "validation" 000 -->
-   <xsl:template match="*[@key='validation'] | *[@key='validations']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='validation'] | *[@key='validations']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="validation" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='validations']/*" priority="3" mode="json2xml">
+      <xsl:element name="validation" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling assembly "provisioning" 000 -->
-   <xsl:template match="*[@key='provisioning'] | *[@key='ssp-provisioning']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='provisioning'] | *[@key='ssp-provisioning']"
+                 priority="4"
                  mode="json2xml">
       <xsl:element name="provisioning" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="*[@key='ssp-provisioning']/*" priority="3" mode="json2xml">
+      <xsl:element name="provisioning" namespace="urn:OSCAL-SSP-metaschema">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "subcomponent" 000 -->
-   <xsl:template match="*[@key='subcomponent'] | *[@key='subcomponents']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="subcomponent" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='subcomponents'][array/@key='STRVALUE'] |  array[@key='subcomponents']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="subcomponents">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='subcomponents']/array[@key='STRVALUE']/string |  array[@key='subcomponents']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "organization" 000 -->
-   <xsl:template match="*[@key='organization']" priority="2" mode="json2xml">
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='organization']" priority="5" mode="json2xml">
       <xsl:element name="organization" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "baseline-template" 000 -->
-   <xsl:template match="*[@key='baseline-template'] | *[@key='baseline-templates']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="baseline-template" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="map[@key='baseline-templates'][array/@key='STRVALUE'] |  array[@key='baseline-templates']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="baseline-templates">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='baseline-templates']/array[@key='STRVALUE']/string |  array[@key='baseline-templates']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
    <!-- 000 Handling field "scanned" 000 -->
-   <xsl:template match="*[@key='scanned'] | *[@key='ssp-scanned']/*"
-                 priority="2"
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/*"
+                 priority="5"
                  mode="json2xml">
       <xsl:element name="scanned" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="map[@key='ssp-scanned'][array/@key='STRVALUE'] |  array[@key='ssp-scanned']/map[array/@key='STRVALUE']"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="ssp-scanned">
+            <xsl:apply-templates mode="expand" select="array[@key='STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key='ssp-scanned']/array[@key='STRVALUE']/string |  array[@key='ssp-scanned']/map/array[@key='STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key='STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
    <!-- Markdown converter-->
@@ -1891,7 +3832,8 @@
         within not-codeblock split lines at \n\s*\n
         
         --><!-- $str may be passed in, or we can process the current node -->
-      <xsl:param name="str" select="string(.)"/>
+      <xsl:param name="markdown-str" as="xs:string" required="yes"/>
+      <xsl:variable name="str" select="string($markdown-str) =&gt; replace('\\n','&#xA;')"/>
       <xsl:variable name="starts-with-code" select="matches($str,'^```')"/>
       <!-- Blocks is split between code blocks and everything else -->
       <xsl:variable name="blocks">
@@ -2101,8 +4043,7 @@
    </xsl:template>
    <xsl:variable xmlns="http://csrc.nist.gov/ns/oscal/1.0/md-convertor"
                  name="tag-replacements">
-      <rules><!-- first, literal replacements -->
-         <replace match="&amp;">&amp;amp;</replace>
+      <rules><!-- first, literal replacements --><!--<replace match="&amp;"  >&amp;amp;</replace>-->
          <replace match="&lt;">&amp;lt;</replace>
          <!-- next, explicit escape sequences -->
          <replace match="\\&#34;">&amp;quot;</replace>

@@ -23,44 +23,57 @@
           { "type" : "string",
             "$ref" : "#/definitions/oscal-version" },
           "document-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/doc-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/doc-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/doc-id" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] },
           "roles" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/role" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/role" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/role" } } ] },
           "parties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/party" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/party" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/party" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
         "required" : 
         [ "title",
           "oscal-version" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "title",
-            "last-modified-date",
-            "version",
-            "oscal-version",
-            "doc-id",
-            "prop",
-            "link",
-            "role",
-            "party",
-            "notes" ] } },
+        "additionalProperties" : false },
       "back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of citations and resource references.",
@@ -68,18 +81,24 @@
         "type" : "object",
         "properties" : 
         { "citations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/citation" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/citation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/citation" } } ] },
           "resources" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/resource" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "citation",
-            "resource" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/resource" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/resource" } } ] } },
+        "additionalProperties" : false },
       "last-modified-date" : 
       { "title" : "Last modified date",
         "description" : "Date of last modification.",
@@ -104,14 +123,16 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
         "required" : 
         [ "type" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+        "additionalProperties" : false },
       "prop" : 
       { "title" : "Property",
         "description" : "A value with a name, attributed to the containing control, subcontrol, part, or group.",
@@ -120,24 +141,12 @@
         "properties" : 
         { "id" : 
           { "type" : "string" },
-          "name" : 
-          { "type" : "string" },
           "ns" : 
           { "type" : "string" },
           "class" : 
-          { "type" : "string" },
-          "STRVALUE" : 
           { "type" : "string" } },
-        "required" : 
-        [ "name" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "id",
-            "name",
-            "ns",
-            "class" ] } },
+        "minProperties" : 1,
+        "maxProperties" : 4 },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -149,23 +158,21 @@
           "role-id" : 
           { "type" : "string" },
           "persons" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/person" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/person" } } ] },
           "org" : 
           { "type" : "object",
             "$ref" : "#/definitions/org" },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "role-id",
-            "person",
-            "org",
-            "notes" ] } },
+        "additionalProperties" : false },
       "person" : 
       { "title" : "Person",
         "description" : "A person, with contact information",
@@ -182,45 +189,63 @@
           { "type" : "string",
             "$ref" : "#/definitions/org-name" },
           "person-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/person-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/person-id" } } ] },
           "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/org-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/org-id" } } ] },
           "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/address" } } ] },
           "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" } } ] },
           "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" } } ] },
           "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/url" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/url" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "person-name",
-            "short-name",
-            "org-name",
-            "person-id",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
+        "additionalProperties" : false },
       "org" : 
       { "title" : "Organization",
         "description" : "An organization or legal entity (not a person), with contact information",
@@ -234,39 +259,54 @@
           { "type" : "string",
             "$ref" : "#/definitions/short-name" },
           "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/org-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/org-id" } } ] },
           "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/address" } } ] },
           "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" } } ] },
           "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" } } ] },
           "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/url" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/url" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "org-name",
-            "short-name",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
+        "additionalProperties" : false },
       "person-id" : 
       { "title" : "Personal Identifier",
         "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
@@ -276,12 +316,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "org-id" : 
       { "title" : "Organization Identifier",
         "description" : "An identifier for an organization using a designated scheme.",
@@ -291,12 +333,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "rlink" : 
       { "title" : "Related link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
@@ -312,12 +356,7 @@
             "$ref" : "#/definitions/hash" } },
         "required" : 
         [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "href",
-            "media-type",
-            "hash" ] } },
+        "additionalProperties" : false },
       "person-name" : 
       { "title" : "Person Name",
         "description" : "Full (legal) name of an individual",
@@ -342,9 +381,14 @@
         { "type" : 
           { "type" : "string" },
           "postal-address" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/addr-line" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/addr-line" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/addr-line" } } ] },
           "city" : 
           { "type" : "string",
             "$ref" : "#/definitions/city" },
@@ -357,15 +401,7 @@
           "country" : 
           { "type" : "string",
             "$ref" : "#/definitions/country" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "addr-line",
-            "city",
-            "state",
-            "postal-code",
-            "country" ] } },
+        "additionalProperties" : false },
       "addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
@@ -405,12 +441,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "url" : 
       { "title" : "URL",
         "description" : "URL for web site or Internet presence",
@@ -426,11 +464,7 @@
           { "type" : "string" },
           "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "prose" ] } },
+        "additionalProperties" : false },
       "desc" : 
       { "title" : "Description",
         "description" : "A short textual description",
@@ -448,9 +482,14 @@
           { "type" : "string",
             "$ref" : "#/definitions/desc" },
           "rlinks" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/rlink" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/rlink" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/rlink" } } ] },
           "base64" : 
           { "type" : "string",
             "$ref" : "#/definitions/base64" },
@@ -459,14 +498,7 @@
             "$ref" : "#/definitions/notes" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "desc",
-            "rlink",
-            "base64",
-            "notes" ] } },
+        "additionalProperties" : false },
       "hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a hash algorithm.",
@@ -475,15 +507,17 @@
         "properties" : 
         { "algorithm" : 
           { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
+          "value" : 
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
         "required" : 
         [ "algorithm" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "algorithm" ] } },
+        "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
         "description" : "A title for display and navigation, exclusive of more specific properties",
@@ -505,12 +539,7 @@
             "$ref" : "#/definitions/exclude" } },
         "required" : 
         [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "href",
-            "include",
-            "exclude" ] } },
+        "additionalProperties" : false },
       "include" : 
       { "title" : "Include controls",
         "description" : "Specifies which controls and subcontrols to include from the resource (source catalog) being imported",
@@ -521,19 +550,24 @@
           { "type" : "string",
             "$ref" : "#/definitions/all" },
           "id-selectors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/call" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/call" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/call" } } ] },
           "pattern-selectors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/match" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "all",
-            "call",
-            "match" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/match" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/match" } } ] } },
+        "additionalProperties" : false },
       "all" : 
       { "title" : "Include all",
         "description" : "Include all controls from the imported resource (catalog)",
@@ -543,12 +577,14 @@
         { "with-subcontrols" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "with-subcontrols" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "call" : 
       { "title" : "Call (control or subcontrol)",
         "description" : "Call a control or subcontrol by its ID",
@@ -564,15 +600,14 @@
           "with-subcontrols" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "control-id",
-            "subcontrol-id",
-            "with-control",
-            "with-subcontrols" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "match" : 
       { "title" : "Match controls and subcontrols by identifier",
         "description" : "Select controls by (regular expression) match on ID",
@@ -588,15 +623,14 @@
           "with-subcontrols" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "pattern",
-            "order",
-            "with-control",
-            "with-subcontrols" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "exclude" : 
       { "title" : "Exclude controls",
         "description" : "Which controls and subcontrols to exclude from the resource (source catalog) being imported",
@@ -604,18 +638,24 @@
         "type" : "object",
         "properties" : 
         { "id-selectors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/call" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/call" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/call" } } ] },
           "pattern-selectors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/match" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "call",
-            "match" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/match" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/match" } } ] } },
+        "additionalProperties" : false },
       "system-security-plan" : 
       { "title" : "System Security Plan (SSP)",
         "description" : "",
@@ -628,9 +668,14 @@
           { "type" : "object",
             "$ref" : "#/definitions/metadata" },
           "imports" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/import" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/import" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/import" } } ] },
           "system-characteristics" : 
           { "type" : "object",
             "$ref" : "#/definitions/system-characteristics" },
@@ -651,18 +696,7 @@
             "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "metadata",
-            "import",
-            "system-characteristics",
-            "system-implementation",
-            "control-implementation",
-            "references",
-            "attachment",
-            "back-matter" ] } },
+        "additionalProperties" : false },
       "system-characteristics" : 
       { "title" : "System Characteristics",
         "description" : "Contains the characteristics of the system, such as its name, purpose, and security impact level.",
@@ -706,13 +740,23 @@
           { "type" : "string",
             "$ref" : "#/definitions/deployment-model-other-description" },
           "service-models" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/service-model" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/service-model" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/service-model" } } ] },
           "service-model-descriptions" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/service-model-other-description" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/service-model-other-description" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/service-model-other-description" } } ] },
           "leveraged-authorizations" : 
           { "type" : "object",
             "$ref" : "#/definitions/leveraged-authorizations" },
@@ -731,28 +775,7 @@
         "required" : 
         [ "system-name",
           "security-sensitivity-level" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "system-id",
-            "system-name",
-            "system-name-short",
-            "description",
-            "security-sensitivity-level",
-            "system-information",
-            "security-impact-level",
-            "security-eauth",
-            "status",
-            "status-other-description",
-            "deployment-model",
-            "deployment-model-other-description",
-            "service-model",
-            "service-model-other-description",
-            "leveraged-authorizations",
-            "authorization-boundary",
-            "network-architecture",
-            "data-flow",
-            "users" ] } },
+        "additionalProperties" : false },
       "system-id" : 
       { "title" : "System Identification",
         "description" : "",
@@ -762,12 +785,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "system-name" : 
       { "title" : "System Name (Full)",
         "description" : "",
@@ -786,10 +811,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "security-sensitivity-level" : 
       { "title" : "",
         "description" : "",
@@ -802,18 +824,24 @@
         "type" : "object",
         "properties" : 
         { "ssp-information-type" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/information-type" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/information-type" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/information-type" } } ] },
           "ssp-designations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/designations" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "information-type",
-            "designations" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/designations" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/designations" } } ] } },
+        "additionalProperties" : false },
       "designations" : 
       { "title" : "System Information Designations",
         "description" : "Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).",
@@ -821,13 +849,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-designation" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/designation" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "designation" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/designation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/designation" } } ] } },
+        "additionalProperties" : false },
       "designation" : 
       { "title" : "System Information Designation",
         "description" : "Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).",
@@ -843,16 +873,15 @@
           { "type" : "boolean",
             "$ref" : "#/definitions/declaration" },
           "ssp-qualifiers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/qualifiers" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "title",
-            "declaration",
-            "qualifiers" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/qualifiers" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/qualifiers" } } ] } },
+        "additionalProperties" : false },
       "declaration" : 
       { "title" : "Declaration",
         "description" : "Identifies whether a specific designation applies to this system.",
@@ -865,13 +894,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-qualifiers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/qualifier" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "qualifier" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/qualifier" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/qualifier" } } ] } },
+        "additionalProperties" : false },
       "qualifier" : 
       { "title" : "Individual Information Designation Qualifier",
         "description" : "An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.",
@@ -889,13 +920,7 @@
           "qual-notes" : 
           { "type" : "string",
             "$ref" : "#/definitions/qual-notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "qual-question",
-            "qual-response",
-            "qual-notes" ] } },
+        "additionalProperties" : false },
       "qual-question" : 
       { "title" : "Qualifier Question",
         "description" : "A question that must be answered about this system.",
@@ -933,15 +958,7 @@
           "availability-impact" : 
           { "type" : "object",
             "$ref" : "#/definitions/availability-impact" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "nist-id",
-            "description",
-            "confidentiality-impact",
-            "integrity-impact",
-            "availability-impact" ] } },
+        "additionalProperties" : false },
       "confidentiality-impact" : 
       { "title" : "Confidentiality Impact Level",
         "description" : "",
@@ -957,12 +974,7 @@
           "adjustment-justification" : 
           { "type" : "string",
             "$ref" : "#/definitions/adjustment-justification" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "base",
-            "selected",
-            "adjustment-justification" ] } },
+        "additionalProperties" : false },
       "integrity-impact" : 
       { "title" : "Integrity Impact Level",
         "description" : "",
@@ -978,12 +990,7 @@
           "adjustment-justification" : 
           { "type" : "string",
             "$ref" : "#/definitions/adjustment-justification" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "base",
-            "selected",
-            "adjustment-justification" ] } },
+        "additionalProperties" : false },
       "availability-impact" : 
       { "title" : "Availability Impact Level",
         "description" : "",
@@ -999,12 +1006,7 @@
           "adjustment-justification" : 
           { "type" : "string",
             "$ref" : "#/definitions/adjustment-justification" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "base",
-            "selected",
-            "adjustment-justification" ] } },
+        "additionalProperties" : false },
       "base" : 
       { "title" : "Base Level (Confidentiality, Integrity, or Availability)",
         "description" : "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
@@ -1035,12 +1037,7 @@
           "security-objective-availability" : 
           { "type" : "string",
             "$ref" : "#/definitions/security-objective-availability" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "security-objective-confidentiality",
-            "security-objective-integrity",
-            "security-objective-availability" ] } },
+        "additionalProperties" : false },
       "security-objective-confidentiality" : 
       { "title" : "Security Objective (Confidentiality)",
         "description" : "",
@@ -1074,13 +1071,7 @@
           "security-eauth-level" : 
           { "type" : "string",
             "$ref" : "#/definitions/security-eauth-level" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "security-auth-ial",
-            "security-auth-aal",
-            "security-auth-fal",
-            "security-eauth-level" ] } },
+        "additionalProperties" : false },
       "security-auth-ial" : 
       { "title" : "Security Authentication (Identity Assurance Level)",
         "description" : "",
@@ -1138,13 +1129,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-leveraged-authorization" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/leveraged-authorization" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "leveraged-authorization" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/leveraged-authorization" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/leveraged-authorization" } } ] } },
+        "additionalProperties" : false },
       "leveraged-authorization" : 
       { "title" : "Leveraged Authorization",
         "description" : "The details for a single leveraged authorization",
@@ -1162,13 +1155,7 @@
           "leveraged-authorization-date-granted" : 
           { "type" : "string",
             "$ref" : "#/definitions/leveraged-authorization-date-granted" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "leveraged-authorization-name",
-            "leveraged-authorization-service-provider",
-            "leveraged-authorization-date-granted" ] } },
+        "additionalProperties" : false },
       "leveraged-authorization-name" : 
       { "title" : "Leveraged system Name",
         "description" : "Name of the leveraged system.",
@@ -1191,13 +1178,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-boundary-diagram" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/boundary-diagram" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "boundary-diagram" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/boundary-diagram" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/boundary-diagram" } } ] } },
+        "additionalProperties" : false },
       "boundary-diagram" : 
       { "title" : "Boundary Diagram",
         "description" : "",
@@ -1211,12 +1200,7 @@
           "boundary-description" : 
           { "type" : "object",
             "$ref" : "#/definitions/boundary-description" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "attachment-id",
-            "boundary-description" ] } },
+        "additionalProperties" : false },
       "boundary-description" : 
       { "title" : "Boundary Description",
         "description" : "",
@@ -1225,10 +1209,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "network-architecture" : 
       { "title" : "Network Architecture Diagrams",
         "description" : "",
@@ -1236,13 +1217,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-network-boundary" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/network-diagram" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "network-diagram" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/network-diagram" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/network-diagram" } } ] } },
+        "additionalProperties" : false },
       "network-diagram" : 
       { "title" : "Network Diagram",
         "description" : "",
@@ -1256,12 +1239,7 @@
           "network-description" : 
           { "type" : "object",
             "$ref" : "#/definitions/network-description" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "attachment-id",
-            "network-description" ] } },
+        "additionalProperties" : false },
       "network-description" : 
       { "title" : "Network Description",
         "description" : "",
@@ -1270,10 +1248,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "data-flow" : 
       { "title" : "Data Flow",
         "description" : "",
@@ -1281,13 +1256,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-data-flow-diagram" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/data-flow-diagram" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "data-flow-diagram" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/data-flow-diagram" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/data-flow-diagram" } } ] } },
+        "additionalProperties" : false },
       "data-flow-diagram" : 
       { "title" : "Data Flow Diagram",
         "description" : "",
@@ -1301,12 +1278,7 @@
           "data-flow-description" : 
           { "type" : "object",
             "$ref" : "#/definitions/data-flow-description" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "attachment-id",
-            "data-flow-description" ] } },
+        "additionalProperties" : false },
       "data-flow-description" : 
       { "title" : "Data Flow Description",
         "description" : "",
@@ -1315,10 +1287,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "users" : 
       { "title" : "Users",
         "description" : "Provides all user roles.",
@@ -1326,17 +1295,18 @@
         "type" : "object",
         "properties" : 
         { "roles" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/role" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/role" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/role" } } ] },
           "statistics" : 
           { "type" : "object",
             "$ref" : "#/definitions/statistics" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "role",
-            "statistics" ] } },
+        "additionalProperties" : false },
       "role" : 
       { "title" : "Role",
         "description" : "Defining a role to be assigned to a party or agent",
@@ -1363,28 +1333,26 @@
           { "type" : "string",
             "$ref" : "#/definitions/desc" },
           "privileges" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/privilege" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/privilege" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/privilege" } } ] },
           "responsibilities" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/responsibility" } } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/responsibility" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/responsibility" } } ] } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "name",
-            "external",
-            "access",
-            "sensitivity-level",
-            "title",
-            "short-name",
-            "desc",
-            "privilege",
-            "responsibility" ] } },
+        "additionalProperties" : false },
       "privilege" : 
       { "title" : "Privilege",
         "description" : "Identifies the type/level of system privilege for the role. For FedRAMP, the only valid values are \"p\" (Privileged), \"np\" (Non-Privileged), or \"nla\" (No Logical Access).",
@@ -1413,13 +1381,7 @@
           "external-user-total-future" : 
           { "type" : "string",
             "$ref" : "#/definitions/external-user-total-future" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "internal-user-total-current",
-            "internal-user-total-future",
-            "external-user-total-current",
-            "external-user-total-future" ] } },
+        "additionalProperties" : false },
       "internal-user-total-current" : 
       { "title" : "Total Current Internal Users",
         "description" : "",
@@ -1452,24 +1414,27 @@
           { "type" : "object",
             "$ref" : "#/definitions/ports-protocols-services" },
           "ssp-interconnection" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/interconnection" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/interconnection" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/interconnection" } } ] },
           "components" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/component" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/component" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/component" } } ] },
           "system-inventory" : 
           { "type" : "object",
             "$ref" : "#/definitions/system-inventory" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "interconnected",
-            "ports-protocols-services",
-            "interconnection",
-            "component",
-            "system-inventory" ] } },
+        "additionalProperties" : false },
       "ports-protocols-services" : 
       { "title" : "Ports, Protocols, and Services",
         "description" : "A collection of the ports, protocols, and services used within the system.",
@@ -1477,13 +1442,15 @@
         "type" : "object",
         "properties" : 
         { "ssp-service" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/service" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "service" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/service" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/service" } } ] } },
+        "additionalProperties" : false },
       "service" : 
       { "title" : "Service",
         "description" : "A collection of information about an individual service within the system.",
@@ -1495,24 +1462,27 @@
           "name" : 
           { "type" : "string" },
           "ssp-protocol" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/protocol" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/protocol" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/protocol" } } ] },
           "purpose" : 
           { "type" : "string",
             "$ref" : "#/definitions/purpose" },
           "component-users" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/used-by" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "name",
-            "protocol",
-            "purpose",
-            "used-by" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/used-by" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/used-by" } } ] } },
+        "additionalProperties" : false },
       "protocol" : 
       { "title" : "Protocol",
         "description" : "Information about the protocol used to provide a service.",
@@ -1522,14 +1492,15 @@
         { "name" : 
           { "type" : "string" },
           "port-ranges" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/port-range" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "name",
-            "port-range" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/port-range" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/port-range" } } ] } },
+        "additionalProperties" : false },
       "port-range" : 
       { "title" : "Port Range",
         "description" : "",
@@ -1543,14 +1514,14 @@
           "transport" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "start",
-            "end",
-            "transport" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "purpose" : 
       { "title" : "Purpose",
         "description" : "Describes the purpose for the service within the system.",
@@ -1576,24 +1547,21 @@
           { "type" : "string",
             "$ref" : "#/definitions/external-system-org" },
           "isa-authorizations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/isa-authorization" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/isa-authorization" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/isa-authorization" } } ] },
           "isa-name" : 
           { "type" : "string",
             "$ref" : "#/definitions/isa-name" },
           "isa-date" : 
           { "type" : "string",
             "$ref" : "#/definitions/isa-date" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "external-system-name",
-            "external-system-org",
-            "isa-authorization",
-            "isa-name",
-            "isa-date" ] } },
+        "additionalProperties" : false },
       "external-system-name" : 
       { "title" : "External System Name",
         "description" : "",
@@ -1630,40 +1598,60 @@
           "id" : 
           { "type" : "string" },
           "ssp-origin" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/origin" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/origin" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/origin" } } ] },
           "ssp-characteristics" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/characteristics" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/characteristics" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/characteristics" } } ] },
           "ssp-satisfaction" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/satisfaction" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/satisfaction" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/satisfaction" } } ] },
           "validations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/validation" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/validation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/validation" } } ] },
           "ssp-provisioning" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/provisioning" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/provisioning" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/provisioning" } } ] },
           "subcomponents" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/subcomponent" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "id",
-            "origin",
-            "characteristics",
-            "satisfaction",
-            "validation",
-            "provisioning",
-            "subcomponent" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/subcomponent" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/subcomponent" } } ] } },
+        "additionalProperties" : false },
       "origin" : 
       { "title" : "Origin",
         "description" : ".",
@@ -1688,19 +1676,15 @@
           { "type" : "string",
             "$ref" : "#/definitions/model" },
           "ssp-part" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "organization",
-            "title",
-            "version",
-            "release-date",
-            "model",
-            "part" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] } },
+        "additionalProperties" : false },
       "vendor" : 
       { "title" : "Vendor",
         "description" : ".",
@@ -1712,13 +1696,14 @@
           "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "id",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "release-date" : 
       { "title" : "Release Date",
         "description" : ".",
@@ -1740,20 +1725,24 @@
           "href" : 
           { "type" : "string" },
           "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" } } ] },
           "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "class",
-            "href",
-            "phone",
-            "email" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" } } ] } },
+        "additionalProperties" : false },
       "characteristics" : 
       { "title" : "Characteristics",
         "description" : "Component characteristics, assets and configuration information",
@@ -1763,24 +1752,33 @@
         { "context" : 
           { "type" : "string" },
           "ip-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/ip-address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/ip-address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/ip-address" } } ] },
           "ssp-service" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/service" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/service" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/service" } } ] },
           "ssp-part" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "context",
-            "ip-address",
-            "service",
-            "part" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] } },
+        "additionalProperties" : false },
       "ip-address" : 
       { "title" : "Internet Protocol Address",
         "description" : "Use the @type flag to deisgnate IPv4 or IPv6.",
@@ -1790,12 +1788,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "satisfaction" : 
       { "title" : "Satisfaction",
         "description" : "Describes how the indicated control is satisfied by this component",
@@ -1808,12 +1808,7 @@
           { "type" : "string" },
           "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "context",
-            "prose" ] } },
+        "additionalProperties" : false },
       "system-inventory" : 
       { "title" : "System Inventory",
         "description" : ".",
@@ -1821,13 +1816,15 @@
         "type" : "object",
         "properties" : 
         { "inventory-items" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/inventory-item" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "inventory-item" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/inventory-item" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/inventory-item" } } ] } },
+        "additionalProperties" : false },
       "inventory-item" : 
       { "title" : "Inventory Item",
         "description" : ".",
@@ -1843,21 +1840,41 @@
           "public" : 
           { "type" : "string" },
           "ip-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/ip-address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/ip-address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/ip-address" } } ] },
           "dns-names" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/dns-name" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/dns-name" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/dns-name" } } ] },
           "ssp-host-item" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/host-item" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/host-item" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/host-item" } } ] },
           "ssp-software-item" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/software-item" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/software-item" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/software-item" } } ] },
           "comments" : 
           { "type" : "string",
             "$ref" : "#/definitions/comments" },
@@ -1865,33 +1882,33 @@
           { "type" : "string",
             "$ref" : "#/definitions/serial-no" },
           "network-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/network-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/network-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/network-id" } } ] },
           "asset-owners" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/asset-owner" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/asset-owner" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/asset-owner" } } ] },
           "asset-administrators" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/asset-administrator" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "component-id",
-            "virtual",
-            "public",
-            "ip-address",
-            "dns-name",
-            "host-item",
-            "software-item",
-            "comments",
-            "serial-no",
-            "network-id",
-            "asset-owner",
-            "asset-administrator" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/asset-administrator" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/asset-administrator" } } ] } },
+        "additionalProperties" : false },
       "dns-name" : 
       { "title" : "Network Name",
         "description" : "If available, state the DNS name or URL of the inventory item. This can be left blank if one does not exist, or it is a dynamic field.",
@@ -1904,68 +1921,114 @@
         "type" : "object",
         "properties" : 
         { "netbios-names" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/netbios-name" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/netbios-name" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/netbios-name" } } ] },
           "mac-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/mac-address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/mac-address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/mac-address" } } ] },
           "authenticated-scans" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/authenticated-scan" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/authenticated-scan" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/authenticated-scan" } } ] },
           "baseline-templates" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/baseline-template" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/baseline-template" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/baseline-template" } } ] },
           "os-names" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/os-name" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/os-name" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/os-name" } } ] },
           "os-versions" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/os-version" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/os-version" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/os-version" } } ] },
           "locations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/location" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/location" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/location" } } ] },
           "asset-types" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/asset-type" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/asset-type" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/asset-type" } } ] },
           "vendors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/vendor" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/vendor" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/vendor" } } ] },
           "hardware-models" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/hardware-model" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/hardware-model" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/hardware-model" } } ] },
           "ssp-scanned" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/scanned" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/scanned" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/scanned" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "netbios-name",
-            "mac-address",
-            "authenticated-scan",
-            "baseline-template",
-            "os-name",
-            "os-version",
-            "location",
-            "asset-type",
-            "vendor",
-            "hardware-model",
-            "scanned",
-            "prop" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] } },
+        "additionalProperties" : false },
       "netbios-name" : 
       { "title" : "NetBIOS Name",
         "description" : "If available, state the NetBIOS name of the inventory item. This can be omitted if one does not exist, or it is a dynamic field.",
@@ -2013,33 +2076,51 @@
         "type" : "object",
         "properties" : 
         { "vendors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/vendor" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/vendor" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/vendor" } } ] },
           "software-names" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/software-name" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/software-name" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/software-name" } } ] },
           "software-versions" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/software-version" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/software-version" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/software-version" } } ] },
           "software-patch-levels" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/software-patch-level" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/software-patch-level" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/software-patch-level" } } ] },
           "functions" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/function" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "vendor",
-            "software-name",
-            "software-version",
-            "software-patch-level",
-            "function" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/function" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/function" } } ] } },
+        "additionalProperties" : false },
       "software-name" : 
       { "title" : "Software Product Name",
         "description" : ".",
@@ -2084,12 +2165,14 @@
         { "poc-id" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "poc-id" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "asset-administrator" : 
       { "title" : "Asset Administrator",
         "description" : "The individual, title, role, or team responsible for operating and maintaining the asset.",
@@ -2099,12 +2182,14 @@
         { "poc-id" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "poc-id" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "control-implementation" : 
       { "title" : "Implementation of Security Control",
         "description" : "",
@@ -2112,13 +2197,15 @@
         "type" : "object",
         "properties" : 
         { "controls" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/control" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "control" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/control" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/control" } } ] } },
+        "additionalProperties" : false },
       "control" : 
       { "title" : "Control Implementation",
         "description" : "Information related to the implementation of an individual control.",
@@ -2132,31 +2219,42 @@
           "href" : 
           { "type" : "string" },
           "ssp-responsible-role" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/responsible-role" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/responsible-role" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/responsible-role" } } ] },
           "parameter-settings" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/set-param" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/set-param" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/set-param" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "control-responses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/control-response" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "class",
-            "control-id",
-            "href",
-            "responsible-role",
-            "set-param",
-            "prop",
-            "control-response" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/control-response" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/control-response" } } ] } },
+        "additionalProperties" : false },
       "responsible-role" : 
       { "title" : "Responsible Role",
         "description" : "",
@@ -2166,12 +2264,14 @@
         { "role-id" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "role-id" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "set-param" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be filled in by the enclosed value element.",
@@ -2185,12 +2285,7 @@
           "value" : 
           { "type" : "string",
             "$ref" : "#/definitions/value" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "param-id",
-            "target",
-            "value" ] } },
+        "additionalProperties" : false },
       "value" : 
       { "title" : "Value",
         "description" : "The phrase or string that fills-in the parameter and completes the requirement statement.",
@@ -2206,11 +2301,7 @@
           { "type" : "string" },
           "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "stmt-id",
-            "prose" ] } },
+        "additionalProperties" : false },
       "references" : 
       { "title" : "References",
         "description" : "A group of reference descriptions",
@@ -2220,19 +2311,24 @@
         { "id" : 
           { "type" : "string" },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] },
           "refs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/ref" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "link",
-            "ref" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/ref" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/ref" } } ] } },
+        "additionalProperties" : false },
       "ref" : 
       { "title" : "Reference",
         "description" : "A reference, with one or more citations to standards, related documents, or other resources",
@@ -2244,18 +2340,17 @@
           "ref-type" : 
           { "type" : "string" },
           "citations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/citation" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/citation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/citation" } } ] },
           "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "ref-type",
-            "citation",
-            "prose" ] } },
+        "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
         "description" : "Citation of a resource",
@@ -2267,13 +2362,14 @@
           "href" : 
           { "type" : "string" },
           "RICHTEXT" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "id",
-            "href" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "link" : 
       { "title" : "Link",
         "description" : "A line or paragraph with a hypertext link",
@@ -2285,13 +2381,14 @@
           "rel" : 
           { "type" : "string" },
           "RICHTEXT" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "href",
-            "rel" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "attachment" : 
       { "title" : "Attachments",
         "description" : ".",
@@ -2321,17 +2418,7 @@
           "base64" : 
           { "type" : "string",
             "$ref" : "#/definitions/base64" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "title",
-            "description",
-            "format",
-            "date",
-            "version",
-            "attachment-type",
-            "base64" ] } },
+        "additionalProperties" : false },
       "format" : 
       { "title" : "Attachment Format",
         "description" : "",
@@ -2356,12 +2443,14 @@
         { "filename" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "filename" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "validation" : 
       { "title" : "validation",
         "description" : ".",
@@ -2370,10 +2459,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "provisioning" : 
       { "title" : "provisioning",
         "description" : ".",
@@ -2382,10 +2468,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "subcomponent" : 
       { "title" : "sub-component",
         "description" : ".",
@@ -2407,9 +2490,13 @@
         "$id" : "#/definitions/scanned",
         "type" : "string" },
       "prose" : 
-      { "type" : "array",
-        "items" : 
-        { "type" : "string" } } },
+      { "anyOf" : 
+        [ 
+          { "type" : "string" },
+          
+          { "type" : "array",
+            "items" : 
+            { "type" : "string" } } ] } },
     "properties" : 
     { "system-security-plan" : 
       { "$ref" : "#/definitions/system-security-plan" } } }

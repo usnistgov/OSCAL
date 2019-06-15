@@ -23,44 +23,57 @@
           { "type" : "string",
             "$ref" : "#/definitions/oscal-version" },
           "document-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/doc-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/doc-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/doc-id" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] },
           "roles" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/role" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/role" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/role" } } ] },
           "parties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/party" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/party" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/party" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
         "required" : 
         [ "title",
           "oscal-version" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "title",
-            "last-modified-date",
-            "version",
-            "oscal-version",
-            "doc-id",
-            "prop",
-            "link",
-            "role",
-            "party",
-            "notes" ] } },
+        "additionalProperties" : false },
       "back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of citations and resource references.",
@@ -68,18 +81,24 @@
         "type" : "object",
         "properties" : 
         { "citations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/citation" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/citation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/citation" } } ] },
           "resources" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/resource" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "citation",
-            "resource" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/resource" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/resource" } } ] } },
+        "additionalProperties" : false },
       "link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource, with associated markup.",
@@ -92,17 +111,17 @@
           { "type" : "string" },
           "media-type" : 
           { "type" : "string" },
-          "RICHTEXT" : 
-          { "type" : "string" } },
+          "text" : 
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
         "required" : 
         [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "href",
-            "rel",
-            "media-type" ] } },
+        "additionalProperties" : false },
       "last-modified-date" : 
       { "title" : "Last modified date",
         "description" : "Date of last modification.",
@@ -127,14 +146,16 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
         "required" : 
         [ "type" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+        "additionalProperties" : false },
       "prop" : 
       { "title" : "Property",
         "description" : "A value with a name, attributed to the containing control, subcontrol, part, or group.",
@@ -143,24 +164,12 @@
         "properties" : 
         { "id" : 
           { "type" : "string" },
-          "name" : 
-          { "type" : "string" },
           "ns" : 
           { "type" : "string" },
           "class" : 
-          { "type" : "string" },
-          "STRVALUE" : 
           { "type" : "string" } },
-        "required" : 
-        [ "name" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "id",
-            "name",
-            "ns",
-            "class" ] } },
+        "minProperties" : 1,
+        "maxProperties" : 4 },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -172,23 +181,21 @@
           "role-id" : 
           { "type" : "string" },
           "persons" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/person" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/person" } } ] },
           "org" : 
           { "type" : "object",
             "$ref" : "#/definitions/org" },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "role-id",
-            "person",
-            "org",
-            "notes" ] } },
+        "additionalProperties" : false },
       "person" : 
       { "title" : "Person",
         "description" : "A person, with contact information",
@@ -205,45 +212,63 @@
           { "type" : "string",
             "$ref" : "#/definitions/org-name" },
           "person-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/person-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/person-id" } } ] },
           "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/org-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/org-id" } } ] },
           "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/address" } } ] },
           "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" } } ] },
           "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" } } ] },
           "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/url" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/url" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "person-name",
-            "short-name",
-            "org-name",
-            "person-id",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
+        "additionalProperties" : false },
       "org" : 
       { "title" : "Organization",
         "description" : "An organization or legal entity (not a person), with contact information",
@@ -257,39 +282,54 @@
           { "type" : "string",
             "$ref" : "#/definitions/short-name" },
           "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/org-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/org-id" } } ] },
           "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/address" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/address" } } ] },
           "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" } } ] },
           "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" } } ] },
           "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/url" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/url" } } ] },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "org-name",
-            "short-name",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
+        "additionalProperties" : false },
       "person-id" : 
       { "title" : "Personal Identifier",
         "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
@@ -299,12 +339,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "org-id" : 
       { "title" : "Organization Identifier",
         "description" : "An identifier for an organization using a designated scheme.",
@@ -314,12 +356,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "rlink" : 
       { "title" : "Related link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
@@ -335,12 +379,7 @@
             "$ref" : "#/definitions/hash" } },
         "required" : 
         [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "href",
-            "media-type",
-            "hash" ] } },
+        "additionalProperties" : false },
       "person-name" : 
       { "title" : "Person Name",
         "description" : "Full (legal) name of an individual",
@@ -365,9 +404,14 @@
         { "type" : 
           { "type" : "string" },
           "postal-address" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/addr-line" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/addr-line" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/addr-line" } } ] },
           "city" : 
           { "type" : "string",
             "$ref" : "#/definitions/city" },
@@ -380,15 +424,7 @@
           "country" : 
           { "type" : "string",
             "$ref" : "#/definitions/country" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "addr-line",
-            "city",
-            "state",
-            "postal-code",
-            "country" ] } },
+        "additionalProperties" : false },
       "addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
@@ -428,12 +464,14 @@
         { "type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "url" : 
       { "title" : "URL",
         "description" : "URL for web site or Internet presence",
@@ -449,11 +487,7 @@
           { "type" : "string" },
           "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "prose" ] } },
+        "additionalProperties" : false },
       "desc" : 
       { "title" : "Description",
         "description" : "A short textual description",
@@ -471,9 +505,14 @@
           { "type" : "string",
             "$ref" : "#/definitions/desc" },
           "rlinks" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/rlink" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/rlink" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/rlink" } } ] },
           "base64" : 
           { "type" : "string",
             "$ref" : "#/definitions/base64" },
@@ -482,14 +521,7 @@
             "$ref" : "#/definitions/notes" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "desc",
-            "rlink",
-            "base64",
-            "notes" ] } },
+        "additionalProperties" : false },
       "hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a hash algorithm.",
@@ -498,15 +530,17 @@
         "properties" : 
         { "algorithm" : 
           { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
+          "value" : 
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
         "required" : 
         [ "algorithm" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "algorithm" ] } },
+        "additionalProperties" : false },
       "role" : 
       { "title" : "Role",
         "description" : "Defining a role to be assigned to a party or agent",
@@ -526,13 +560,7 @@
             "$ref" : "#/definitions/desc" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "title",
-            "short-name",
-            "desc" ] } },
+        "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
         "description" : "A title for display and navigation, exclusive of more specific properties",
@@ -549,13 +577,14 @@
           "media-type" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "filename",
-            "media-type" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
         "description" : "A citation to resources, either external or internal (by means of internal cross-reference).",
@@ -565,9 +594,14 @@
         { "id" : 
           { "type" : "string" },
           "targets" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/target" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/target" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/target" } } ] },
           "title" : 
           { "type" : "string",
             "$ref" : "#/definitions/title" },
@@ -575,19 +609,17 @@
           { "type" : "string",
             "$ref" : "#/definitions/desc" },
           "document-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/doc-id" } } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/doc-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/doc-id" } } ] } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "target",
-            "title",
-            "desc",
-            "doc-id" ] } },
+        "additionalProperties" : false },
       "target" : 
       { "title" : "Citation target",
         "description" : "An address for retrieval of a citation",
@@ -605,27 +637,30 @@
           { "type" : "object",
             "$ref" : "#/definitions/metadata" },
           "groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/group" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/group" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/group" } } ] },
           "controls" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/control" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/control" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/control" } } ] },
           "back-matter" : 
           { "type" : "object",
             "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "id",
           "metadata" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "metadata",
-            "group",
-            "control",
-            "back-matter" ] } },
+        "additionalProperties" : false },
       "group" : 
       { "title" : "Control Group",
         "description" : "A group of controls, or of groups of controls.",
@@ -640,37 +675,53 @@
           { "type" : "string",
             "$ref" : "#/definitions/title" },
           "parameters" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/parameters" },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/param" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/param" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "parts" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] },
           "groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/group" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/group" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/group" } } ] },
           "controls" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/control" } } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/control" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/control" } } ] } },
         "required" : 
         [ "title" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "class",
-            "title",
-            "param",
-            "prop",
-            "part",
-            "group",
-            "control" ] } },
+        "additionalProperties" : false },
       "control" : 
       { "title" : "Control",
         "description" : "A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.",
@@ -685,43 +736,54 @@
           { "type" : "string",
             "$ref" : "#/definitions/title" },
           "parameters" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/parameters" },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/param" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/param" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] },
           "parts" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] },
           "subcontrols" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/subcontrols" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/subcontrol" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/subcontrol" } } ] } },
         "required" : 
         [ "id",
           "title" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "class",
-            "title",
-            "param",
-            "prop",
-            "link",
-            "part",
-            "subcontrol" ] } },
-      "subcontrols" : 
-      { "$id" : "#/definitions/subcontrols",
-        "type" : "object",
-        "additionalProperties" : 
-        { "type" : "object",
-          "$ref" : "#/definitions/subcontrol" } },
+        "additionalProperties" : false },
       "subcontrol" : 
       { "title" : "Sub-Control",
         "description" : "A control extension or enhancement",
@@ -736,35 +798,45 @@
           { "type" : "string",
             "$ref" : "#/definitions/title" },
           "parameters" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/parameters" },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/param" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/param" } } ] },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] },
           "parts" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } } },
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "class",
-            "title",
-            "param",
-            "prop",
-            "link",
-            "part" ] } },
-      "parameters" : 
-      { "$id" : "#/definitions/parameters",
-        "type" : "object",
-        "additionalProperties" : 
-        { "type" : "object",
-          "$ref" : "#/definitions/param" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] } },
+        "required" : 
+        [ "id",
+          "title" ],
+        "additionalProperties" : false },
       "param" : 
       { "title" : "Parameter",
         "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
@@ -781,17 +853,32 @@
           { "type" : "string",
             "$ref" : "#/definitions/label" },
           "descriptions" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/usage" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/usage" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/usage" } } ] },
           "constraints" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/constraint" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/constraint" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/constraint" } } ] },
           "guidance" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/guideline" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/guideline" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/guideline" } } ] },
           "value" : 
           { "type" : "string",
             "$ref" : "#/definitions/value" },
@@ -799,21 +886,17 @@
           { "type" : "object",
             "$ref" : "#/definitions/select" },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } } },
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "class",
-            "depends-on",
-            "label",
-            "usage",
-            "constraint",
-            "guideline",
-            "value",
-            "select",
-            "link" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] } },
+        "required" : 
+        [ "id" ],
+        "additionalProperties" : false },
       "label" : 
       { "title" : "Parameter label",
         "description" : "A placeholder for a missing value, in display.",
@@ -828,12 +911,14 @@
         { "id" : 
           { "type" : "string" },
           "RICHTEXT" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "id" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "constraint" : 
       { "title" : "Constraint",
         "description" : "A formal or informal expression of a constraint or test",
@@ -843,12 +928,14 @@
         { "test" : 
           { "type" : "string" },
           "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "test" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false },
       "guideline" : 
       { "title" : "Guideline",
         "description" : "A prose statement that provides a recommendation for the use of a parameter.",
@@ -857,10 +944,7 @@
         "properties" : 
         { "prose" : 
           { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
+        "additionalProperties" : false },
       "value" : 
       { "title" : "Value constraint",
         "description" : "Indicates a permissible value for a parameter or property",
@@ -875,14 +959,15 @@
         { "how-many" : 
           { "type" : "string" },
           "alternatives" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/choice" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "how-many",
-            "choice" ] } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/choice" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/choice" } } ] } },
+        "additionalProperties" : false },
       "choice" : 
       { "title" : "Choice",
         "description" : "A value selection among several such options",
@@ -906,37 +991,45 @@
           { "type" : "string",
             "$ref" : "#/definitions/title" },
           "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" } } ] },
           "prose" : 
           { "$ref" : "#/definitions/prose" },
           "parts" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/part" } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" } } ] },
           "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } } },
+          { "anyOf" : 
+            [ 
+              { "type" : "object",
+                "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" } } ] } },
         "required" : 
         [ "name" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "name",
-            "ns",
-            "class",
-            "title",
-            "prop",
-            "prose",
-            "part",
-            "link" ] } },
+        "additionalProperties" : false },
       "prose" : 
-      { "type" : "array",
-        "items" : 
-        { "type" : "string" } } },
+      { "anyOf" : 
+        [ 
+          { "type" : "string" },
+          
+          { "type" : "array",
+            "items" : 
+            { "type" : "string" } } ] } },
     "properties" : 
     { "catalog" : 
       { "$ref" : "#/definitions/catalog" } } }
