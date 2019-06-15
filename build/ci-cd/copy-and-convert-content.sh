@@ -60,7 +60,12 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         json)
           # translate path names, starting first with the xml directory, then the filename
           # cat  NIST_SP-800-53_rev4_LOW-baseline_profile.json | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json/' | perl -lpe 's/(\"(?:[^\/]+\/)*.+(?=\.xml\"))\.xml\"/\1.json\"/'
-          cat "$dest" | perl -lpe 's/\\\//\//g' | perl -lpe 's/(application\/oscal\.[a-z]+\+)xml\"/\1json\"/g' | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json\//g' | perl -lpe 's/(\"(?:[^"\/]+\/)*[^"]+(?=\.xml\"))\.xml\"/\1.json\"/g' > "$dest"
+          cat "$dest" \
+            | perl -lpe 's/\\\//\//g' \ # replaces \\/ with /
+            | perl -lpe 's/(application\/oscal\.[a-z]+\+)xml\"/\1json\"/g' \ # replaces application/oscal.foo+xml with application/oscal.foo+json
+            | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json\//g' \ # replaces /xml/ with /json/
+            | perl -lpe 's/(\"(?:[^"\/]+\/)*[^"]+(?=\.xml\"))\.xml\"/\1.json\"/g' > "${dest}.tmp" # replaces .xml with .json
+          cp "${dest}.tmp" "${dest}"
 
           # validate generated file
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
