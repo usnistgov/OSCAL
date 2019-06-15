@@ -4,6 +4,7 @@ if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
+source $OSCALDIR/build/ci-cd/init-validate-json.sh
 
 if [ -z "$1" ]; then
   working_dir="$OSCALDIR"
@@ -44,7 +45,7 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
         ;;
       json)
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
-          ajv validate -s "$schema" -d "$file" --extend-refs=true --verbose
+          validate_json "$schema" "$file"
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
             echo "${P_ERROR}JSON schema validation failed for '$file'.${P_END}"

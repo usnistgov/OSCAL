@@ -6,6 +6,7 @@ if [[ -z "$OSCALDIR" ]]; then
 fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
+source $OSCALDIR/build/ci-cd/init-validate-json.sh
 
 if [ -z "$1" ]; then
   working_dir="$OSCALDIR"
@@ -63,7 +64,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
           # validate generated file
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
-          ajv validate -s "$schema" -d "$dest" --extend-refs=true --verbose
+          validate_json "$schema" "$dest"
 
           # produce pretty JSON
           dest_pretty="$working_dir/${newpath}.${altformat}"

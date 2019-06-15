@@ -4,8 +4,8 @@ if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
-
 source $OSCALDIR/build/ci-cd/saxon-init.sh
+source $OSCALDIR/build/ci-cd/init-validate-json.sh
 
 if [ -z "$1" ]; then
   working_dir="$OSCALDIR"
@@ -75,7 +75,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       # xml)
         # TODO: Add support for XML schema validation
       json)
-        ajv compile -s "$schema" --extend-refs=true --verbose
+        validate_json "$OSCALDIR/build/ci-cd/json-schema-schema.json" "$schema"
         cmd_exitcode=$?
         ;;
       *)

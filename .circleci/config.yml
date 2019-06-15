@@ -1,11 +1,15 @@
 version: 2.1 # use CircleCI 2.1
+orbs:
+  maven: circleci/maven@1.0.0
 references:
   common_environment: &common_environment
     environment:
       SAXON_VERSION: 9.9.0-1
+      JSON_CLI_VERSION: 0.0.1-SNAPSHOT
       CICD_DIR: git-oscal/build/ci-cd
       OSCAL_REPO_DIR: git-oscal
       OSCAL_BUILD_DIR: build_artifacts
+      OSCAL_TOOLS_DIR: oscal_tools
       SCHEMATRON_HOME: git-schematron
       TERM: xterm
     working_directory: ~/oscal
@@ -28,19 +32,6 @@ references:
       paths:
         - ~/jekyll-bundle
 commands:
-  install-saxon:
-    description: "Install Saxon-HE"
-    steps:
-      - restore_cache:
-          key: maven-m2
-      - run:
-          name: Get Saxon
-          command: |
-            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
-      - save_cache:
-          key: maven-m2
-          paths:
-            - ~/.m2
   install-schematron:
     description: "Install the schematron skeleton"
     steps:
@@ -50,6 +41,34 @@ commands:
             git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
             cd "$SCHEMATRON_HOME"
             git checkout master -- trunk/schematron/code
+  install-maven-dependencies:
+    description: "Install Maven Dependencies"
+    steps:
+      - run:
+          name: Generate cache checksum
+          command: |
+            # Ensure we cache the necessary dependencies
+            cat "${MAVEN_TOOLS_DIR}/json-cli/pom.xml" > .maven-cache-checksum
+            echo "$SAXON_VERSION" >> .maven-cache-checksum
+      - restore_cache:
+          keys:
+            - mvn-m2-cache-V2-{{ checksum ".maven-cache-checksum" }}
+            - mvn-m2-cache-V2
+      - run:
+          name: Get Saxon-HE
+          command: | 
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+      - run:
+          name: Get JSON Validation CLI and build it
+          command: |
+            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${MAVEN_TOOLS_DIR}"
+            cd "${MAVEN_TOOLS_DIR}/json-cli"
+            mvn dependency:go-offline
+            mvn install
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: mvn-m2-cache-V2-{{ checksum ".maven-cache-checksum" }}
   install-maven:
     description: "Installs Maven"
     steps:
@@ -169,7 +188,7 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-xmllint
-      - install-saxon
+      - install-maven-dependencies
       - install-schematron
       - run:
           name: Validate metaschema instances
@@ -186,8 +205,7 @@ jobs: # a collection of
       - *checkout
       - *attach_build_workspace
       - check-skip-build
-      - install-saxon
-      - install-ajv
+      - install-maven-dependencies
       - run:
           name: Generate OSCAL schemas
           command: |
@@ -204,7 +222,7 @@ jobs: # a collection of
       - *checkout
       - *attach_build_workspace
       - check-skip-build
-      - install-saxon
+      - install-maven-dependencies
       - run:
           name: Generate OSCAL schemas
           command: |
@@ -221,10 +239,9 @@ jobs: # a collection of
       - *checkout
       - *attach_build_workspace
       - check-skip-build
-      - install-saxon
+      - install-maven-dependencies
       - install-jq
       - install-prettyjson
-      - install-ajv
       - run:
           name: Generate OSCAL converters
           command: |
@@ -252,7 +269,7 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-xmllint
-      - install-ajv
+      - install-maven-dependencies
       - run:
           name: Validate content instances
           command: |
@@ -264,7 +281,7 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-maven
-      - install-saxon
+      - install-maven-dependencies
       - install-lxml
       - install-xmllint
       - run:
@@ -278,7 +295,7 @@ jobs: # a collection of
       - *checkout
       - *attach_build_workspace
       - check-skip-build
-      - install-saxon
+      - install-maven-dependencies
       - run:
           name: Generate schema documentation
           command: |
