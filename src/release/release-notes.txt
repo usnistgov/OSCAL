@@ -5,4 +5,4 @@ OSCAL 1.0.0 Milestone 1
 - The first official OSCAL release
 - Provides stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.
 - Includes draft versions of the NIST SP 800-53 revision 4 OSCAL content and FedRAMP baselines in OSCAL XML, JSON, and YAML formats.
-- Provides content converters that are capable of converting between OSCAL catalog and profile content in OSCAL XML and JSON formats.
+- Provides content converters that are capable of accurately converting between OSCAL catalog and profile content in OSCAL XML to OSCAL JSON format and vice versa.
