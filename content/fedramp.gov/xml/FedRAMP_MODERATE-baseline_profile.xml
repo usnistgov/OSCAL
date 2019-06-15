@@ -5,7 +5,7 @@
 		<title>FedRAMP Moderate Baseline</title>
 		<last-modified-date>2019-06-03T11:40:38.576-04:00</last-modified-date>
 		<version>1.1</version>
-		<oscal-version>1.0-milestone1</oscal-version>
+		<oscal-version>1.0.0-milestone1</oscal-version>
 	  
 	  <role id="author"><title>Author</title></role>
 	  <party role-id="author">
