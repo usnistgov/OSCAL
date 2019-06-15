@@ -1,6 +1,4 @@
 version: 2.1 # use CircleCI 2.1
-orbs:
-  maven: circleci/maven@1.0.0
 references:
   common_environment: &common_environment
     environment:
