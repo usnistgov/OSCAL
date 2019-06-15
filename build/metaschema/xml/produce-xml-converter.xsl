@@ -24,6 +24,9 @@
     
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
+    <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
+    <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
+    
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
     
@@ -39,13 +42,16 @@
             xpath-default-namespace="{ $target-namespace }"
             exclude-result-prefixes="#all">
             
-            <XSLT:output indent="yes" method="text" use-character-maps="delimiters"/>
+            <XSLT:output indent="yes" method="xml" omit-xml-declaration="yes" use-character-maps="delimiters"/>
             
             <xsl:comment> METASCHEMA conversion stylesheet supports XML->JSON conversion </xsl:comment>
-            
+            <xsl:text>&#xA;</xsl:text>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
-            <xsl:call-template  name="furniture"/>
+            <xsl:text>&#xA;</xsl:text>
+            <xsl:call-template name="furniture"/>
+            <xsl:text>&#xA;</xsl:text>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
+            <xsl:text>&#xA;</xsl:text>
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
 
 
@@ -61,23 +67,23 @@
      with fields or assemblies. -->
     <xsl:template match="define-flag"/>
     
-    <xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
+    <!--<xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
         <XSLT:template match="{@name}" mode="xml2json">
             <string key="{@address}">
                 <xsl:apply-templates mode="md"/>
             </string>
         </XSLT:template>
-    </xsl:template>
+    </xsl:template>-->
     
-    <xsl:template match="define-field[@address=flag/@name][empty(flag)]" priority="3">
+    <!--<xsl:template match="define-field[@address=flag/@name][empty(flag)]" priority="3">
         <XSLT:template match="{@name}" mode="xml2json">
             <string key="{@address}">
                 <xsl:apply-templates mode="md"/>
             </string>
         </XSLT:template>
-    </xsl:template>
+    </xsl:template>-->
     
-    <xsl:template match="define-field[@address=flag/@name][@as='mixed']" priority="2">
+    <!--<xsl:template match="define-field[@address=flag/@name][@as='mixed']" priority="2">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@address}">
                 <xsl:apply-templates select="flag"/>
@@ -89,30 +95,48 @@
                 </XSLT:if>
             </map>
         </XSLT:template>
-    </xsl:template>
+    </xsl:template>-->
     
     
 <!-- Keys are added to everything and then removed from nodes in arrays, in mode 'rectify' -->
 
     <!-- ignoring address in these cases -->
-    <xsl:template match="define-field[empty(flag)][@as='mixed']" priority="3">
+   <!-- <xsl:template match="define-field[empty(flag)][@as='mixed']" priority="3">
         <XSLT:template match="{@name}" mode="xml2json">
             <string key="{@name}">
                 <XSLT:apply-templates mode="md"/>
             </string>
         </XSLT:template>
-    </xsl:template>
+    </xsl:template>-->
     
 <!-- Handles define-field[@as='boolean']  -->
     <xsl:template match="define-field[empty(flag)]" priority="2">
         <XSLT:template match="{@name}" mode="xml2json">
+            <XSLT:variable name="text-key">
+                <xsl:apply-templates select="." mode="text-key"/>
+            </XSLT:variable>
+            
             <string key="{@name}">
                 <XSLT:apply-templates mode="md"/>
             </string>
         </XSLT:template>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='mixed']">
+    <xsl:template match="define-field[@as='boolean']" priority="3">
+        <XSLT:template match="{@name}" mode="xml2json">
+            <boolean key="{@name}">
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
+                <XSLT:apply-templates mode="#current"/>
+                <!--<XSLT:apply-templates mode="as-boolean" select=".">
+                    <XSLT:with-param name="key">boolean</XSLT:with-param>
+                </XSLT:apply-templates>-->
+            </boolean>
+        </XSLT:template>
+    </xsl:template>
+    
+    <!--<xsl:template match="define-field[@as='mixed']">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
                 <xsl:apply-templates select="flag"/>
@@ -124,18 +148,86 @@
                 </XSLT:if>
             </map>
         </XSLT:template>
+    </xsl:template>-->
+    
+    
+    <xsl:template match="define-field" mode="text-key">
+        <xsl:value-of select="$string-value-label"/>
     </xsl:template>
+    
+    <xsl:template match="define-field[@as='mixed']" mode="text-key">
+        <xsl:value-of select="$markdown-value-label"/>
+    </xsl:template>
+    
+    <xsl:template priority="3" match="define-field[exists(value-key)]" mode="text-key">
+        <xsl:value-of select="value-key"/>
+    </xsl:template>
+    
+    <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
+        <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
+    </xsl:template>-->
     
     <xsl:template match="define-field">
         <XSLT:template match="{@name}" mode="xml2json">
+            <XSLT:variable name="text-key">
+                <xsl:apply-templates select="." mode="text-key"/>
+            </XSLT:variable>
             <map key="{@name}">
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
                 <xsl:apply-templates select="flag"/>
-                
+
                 <XSLT:apply-templates mode="as-string" select=".">
-                    <XSLT:with-param name="key">STRVALUE</XSLT:with-param>
+                    <XSLT:with-param name="key" select="$text-key"/>
                 </XSLT:apply-templates>
             </map>
         </XSLT:template>
+        <!-- flagged, groupable fields marked as collapsible may be collapsed -->
+        <xsl:if test="matches(@group-as, '\S') and exists(flag) and @collapsible = ('yes','true')">
+            <XSLT:template match="array[@key = '{@group-as}'][count(map) gt 1]" mode="rectify"
+                xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+                <XSLT:variable name="text-key">
+                    <xsl:apply-templates select="." mode="text-key"/>
+                </XSLT:variable>
+                <xsl:variable name="group-properties">
+                    <xsl:variable name="flag-names" as="xs:string*">
+                        <xsl:perform-sort select="flag/@name/normalize-space(.)">
+                            <xsl:sort select="."/>
+                        </xsl:perform-sort>
+                    </xsl:variable>
+                    <xsl:sequence select="string-join($flag-names ! ( '*[@key = ''' || . || ''']'),',')"/>
+                </xsl:variable>
+                
+                <XSLT:variable name="grouped-maps" as="element()*">
+                    <XSLT:for-each-group select="map"
+                        group-by="string-join( ({ $group-properties } ), '#' )">
+                        <map>
+                            <XSLT:copy-of select="*[@key = ('days', 'baker')]"/>
+                            <array key="{{$text-key}}">
+                                <XSLT:for-each select="current-group()/string[@key = $text-key]">
+                                    <string>
+                                        <XSLT:apply-templates mode="#current"/>
+                                    </string>
+                                </XSLT:for-each>
+                            </array>
+                        </map>
+                    </XSLT:for-each-group>
+                </XSLT:variable>
+                <XSLT:choose>
+                    <XSLT:when test="count($grouped-maps) gt 1">
+                        <array key="{ @group-as}">
+                            <XSLT:copy-of select="$grouped-maps"/>
+                        </array>
+                    </XSLT:when>
+                    <XSLT:otherwise>
+                        <map key="{ @group-as}">
+                            <XSLT:copy-of select="$grouped-maps/*"/>
+                        </map>
+                    </XSLT:otherwise>
+                </XSLT:choose>
+            </XSLT:template>
+        </xsl:if>
     </xsl:template>
    
     
@@ -143,19 +235,16 @@
     <xsl:template match="define-assembly">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
-                <xsl:for-each select="@address">
-                    <xsl:attribute name="key">{@<xsl:value-of select="."/>}</xsl:attribute>
+                <xsl:for-each select="key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
                 </xsl:for-each>
-                
+
                 <xsl:apply-templates select="flag"/>
-                
+
                 <xsl:apply-templates select="model"/>
             </map>
         </XSLT:template>
     </xsl:template>
-    
-    <!-- dropping a flag that has been used as an address -->
-    <xsl:template match="flag[@name=../@address]"/>
     
     <xsl:template match="flag">
         <!-- no datatyping support yet -->
@@ -186,7 +275,9 @@
         </XSLT:call-template>-->
     </xsl:template>
     
-    <xsl:template match="fields[@address] | assemblies[@address]">
+    <xsl:template match="fields[exists(key('definition-by-name',@named)/key)] |
+        assemblies[exists(key('definition-by-name',@named)/key)]">
+        <xsl:variable name="key" select="exists(key('definition-by-name',@named)/key)"/>
             <XSLT:for-each-group select="{@named}" group-by="local-name()">
                 <map key="{  key('definition-by-name',@named)/@group-as }">
                     <XSLT:apply-templates select="current-group()" mode="#current"/>
@@ -202,11 +293,8 @@
         </XSLT:character-map>
         
         <XSLT:param name="json-indent" as="xs:string">no</XSLT:param>
-    
-        <XSLT:mode name="rectify" on-no-match="shallow-copy"/>
-        
-        <XSLT:template mode="rectify" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
-            match="/*/@key | array/*/@key"/>
+        <xsl:comment> Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass </xsl:comment>
+        <XSLT:param name="diagnostic"  as="xs:string">no</XSLT:param>
         
         <XSLT:variable name="write-options" as="map(*)" expand-text="true">
             <XSLT:map>
@@ -214,41 +302,63 @@
             </XSLT:map>
         </XSLT:variable>
         
-        <XSLT:template match="/" mode="debug">
+        <XSLT:variable name="xpath-json">
             <map>
-                <XSLT:apply-templates mode="xml2json"/>
+                <XSLT:apply-templates select="/" mode="xml2json"/>
             </map>
-        </XSLT:template>
+        </XSLT:variable>
+        
+        <XSLT:variable name="rectified">
+            <XSLT:apply-templates select="$xpath-json" mode="rectify"/>
+        </XSLT:variable>
         
         <XSLT:template match="/">
-            <XSLT:variable name="xpath-json">
-                <map>
-                  <XSLT:apply-templates mode="xml2json"/>
-                </map>
-            </XSLT:variable>
-            <XSLT:variable name="rectified">
-                <XSLT:apply-templates select="$xpath-json" mode="rectify"/>
-            </XSLT:variable>
-            <json>
-                <XSLT:value-of select="xml-to-json($rectified, $write-options)"/>
-            </json>
+            <XSLT:choose>
+                <XSLT:when test="$diagnostic='rough'">
+                    <XSLT:copy-of select="$xpath-json"/>
+                </XSLT:when>
+                <XSLT:when test="$diagnostic='rectified'">
+                    <XSLT:copy-of select="$rectified"/>
+                </XSLT:when>
+                <XSLT:otherwise>
+                    <XSLT:value-of select="xml-to-json($rectified, $write-options)"/>
+                </XSLT:otherwise>
+            </XSLT:choose>
+        </XSLT:template>
+        
+        <XSLT:mode name="rectify" on-no-match="shallow-copy"/>
+        
+        <XSLT:template mode="rectify" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
+            match="/*/@key | array/*/@key"/>
+        
+        <XSLT:template mode="rectify" match="array[count(*) eq 1]"
+            xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+            <XSLT:for-each select="*">
+                <XSLT:copy>
+                    <XSLT:copy-of select="../@key"/>
+                    <XSLT:apply-templates mode="#current"/>
+                </XSLT:copy>
+            </XSLT:for-each>
         </XSLT:template>
         
         <XSLT:template name="prose">
             <XSLT:variable name="blocks" select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
             <XSLT:if test="exists($blocks)">
-                <array key="prose">
+                <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
-                </array>
+                </XSLT:variable>
+                <string key="prose">
+                    <XSLT:value-of select="string-join($string-sequence,'\n')"/>
+                </string>
             </XSLT:if>
         </XSLT:template>
         
         <XSLT:template mode="as-string" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
             <XSLT:if test="matches(.,'\S')">
-            <string key="{{$key}}">
-                <XSLT:value-of select="."/>
-            </string>
+                <string key="{{$key}}">
+                    <XSLT:value-of select="."/>
+                </string>
             </XSLT:if>
         </XSLT:template>
         

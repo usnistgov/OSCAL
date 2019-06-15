@@ -22,20 +22,11 @@
             <xsl:apply-templates/>
         </xsl:variable>
         <!-- Running through a filter for specialized string handling -->
-        <xsl:variable name="filtered-xpath-json">
-            <xsl:apply-templates/>
-        </xsl:variable>
         <!--<xsl:copy-of select="$xpath-json"/>-->
         <json>
         <!-- Then post-processing the JSON to un-double-escape ... -->
-            <xsl:value-of select="xml-to-json($filtered-xpath-json, $write-options) => replace('\\\\\\&quot;','\\&quot;') => replace('\\/','/')"/>
+            <xsl:value-of select="xml-to-json($xpath-json, $write-options) => replace('\\\\\\&quot;','\\&quot;') => replace('\\/','/')"/>
         </json>
-    </xsl:template>
-    
-    <xsl:template match="node() | @*" mode="filter">
-        <xsl:copy>
-            <xsl:apply-templates select="node() | @*" mode="filter"/>
-        </xsl:copy>
     </xsl:template>
     
     <xsl:template match="string">

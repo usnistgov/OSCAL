@@ -115,8 +115,7 @@
                     <xs:group ref="{$declaration-prefix}:everything-inline"/>
                 </xsl:if>
                 
-                <!-- picking up attribute declarations -->
-                <xsl:apply-templates select="flag"/>
+                <xsl:apply-templates select="key | flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -132,7 +131,7 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
                 <xsl:apply-templates select="model"/>
-                <xsl:apply-templates select="flag"/>
+                <xsl:apply-templates select="key | flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -176,12 +175,13 @@
     </xsl:template>
     
     
-    <xsl:template match="flag">
+    <xsl:template match="flag | key">
         <xsl:variable name="name" select="@name"/>
         <xs:attribute name="{ @name }" type="xs:string">
-            <xsl:for-each select="@required[.='yes']">
+            <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
+            <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
                 <xsl:attribute name="use">required</xsl:attribute>
-            </xsl:for-each>
+            </xsl:if>
             <xsl:for-each select="(@datatype,key('definition-by-name',@name)/@datatype)[1]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>

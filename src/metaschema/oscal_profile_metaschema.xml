@@ -148,7 +148,7 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assemblies named="set" address="param-id"/>
+         <assemblies named="set"/>
          <assemblies named="alter"/>
       </model>
    </define-assembly>
@@ -272,13 +272,12 @@
       </model>
    </define-assembly>
 
-   <define-assembly name="set" group-as="settings" address="param-id">
-      <flag name="param-id" datatype="NCName" required="yes"/>
+   <define-assembly name="set" group-as="settings">
+      <key name="param-id" datatype="NCName"/>
       <flag name="class"/>
       <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter Setting</formal-name>
-      <description> A parameter setting, to be propagated to points of insertion
-      </description>
+      <description>A parameter setting, to be propagated to points of insertion</description>
       <model>
          <!-- declarations tbf in the imported schema and to be aligned with it -->
          <field named="label"/>
@@ -337,7 +336,7 @@
       <description>Specifies contents to be added into controls or subcontrols, in resolution</description>
       <model>
          <field named="title"/>
-         <assemblies named="param" address="id"/>
+         <assemblies named="param"/>
          <fields named="prop"/>
          <fields named="link"/>
          <assemblies named="part"/>

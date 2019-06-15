@@ -72,15 +72,28 @@
         </sch:rule>-->
         
 
+        <sch:rule context="m:key">
+            <sch:assert test="count(../*[@name = current()/@name]) eq 1">Only one flag (or key) may be named 
+                <sch:value-of select="@name"/>
+            </sch:assert>
+        </sch:rule>
+        
+        <sch:rule context="m:value-key">
+            <sch:assert test="not(parent::define-field) or matches(.,'\S')">Inside a field definition, a value-key must be
+                given with a literal value</sch:assert>
+            <sch:assert test="not(parent::flag) or empty(node())">Inside a flag reference, a value-key must be empty
+                (serving to declare the flag as the value key)</sch:assert>
+        </sch:rule>
+        
         <sch:rule context="m:flag">
             <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
-            
-            <sch:assert test="empty(@primary) or (count(../*[@primary]) eq 1)">Only one flag may be marked as "primary".</sch:assert>
-            <sch:report test="@primary != 'yes'">Value of @primary should be "yes"</sch:report>
-            <sch:assert test="not(@primary = 'yes') or (@required = 'yes')">Flag must be required when designated as primary (required="yes" primary="yes")</sch:assert>
+            <sch:assert test="empty(m:value-key) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
+            <sch:assert test="empty(m:value-key) or empty(../m:value-key)">A flag may not be marked as a value key when its field has a (literal) value key.</sch:assert>
+            <sch:assert test="empty(m:value-key) or (count(../m:flag/m:value-key) eq 1)">Only one flag may be marked as a value key on a field.</sch:assert>
+            <sch:assert test="count(../*[@name = current()/@name]) eq 1">Only one flag (or key or value-key) may be named 
+                <sch:value-of select="@name"/></sch:assert>
             <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
-            <sch:assert test="not(@name=../@address) or @required='yes'">Definition set to address by '<sch:value-of select="@name"/>', but its flag is not required.</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE')">Flag should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
         </sch:rule>
         
@@ -93,10 +106,6 @@
             <sch:let name="decl" value="key('definition-by-name',@named,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@named"/>', but their definition does not give a group name.</sch:assert>
-            <sch:assert test="(empty($decl/@address) and empty(@address)) or ($decl/@address = @address)">The referenced definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
-            <!--<sch:assert test="exists($decl/@acquire-from) or empty(@address) or ($decl/m:flag/@name = @address)">The referenced definition has no flag named '<sch:value-of select="@address"/>'</sch:assert>
-            <sch:assert test="empty($decl/@acquire-from) or empty(@address) or not($decl/m:flag/@name = @address) or ($decl/m:flag[@name = current()/@address]/@required='yes')">The target definition has no required flag named <sch:value-of select="@address"/></sch:assert>-->
-            
             
             <sch:report test="@named = ../(* except current())/@named">Everything named the same must appear together</sch:report>
             <sch:report test="@named = ../*/@group-as">Clashing name with group name: <sch:value-of select="@named"/></sch:report>
@@ -131,7 +140,7 @@
             <sch:assert role="warning" test="@name = ($composed-metaschema//m:field/@named | $composed-metaschema//m:fields/@named)">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-flag">
-            <sch:assert role="warning" test="@name = //m:flag/@name">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = (//m:flag/@name | //m:key/@name)">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:assembly | m:assemblies">
             <sch:assert test="@named = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.
