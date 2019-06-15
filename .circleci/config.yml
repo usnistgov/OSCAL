@@ -43,6 +43,10 @@ commands:
     description: "Install Maven Dependencies"
     steps:
       - run:
+          name: Get OSCAL Tools
+          command: |
+            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
+      - run:
           name: Generate cache checksum
           command: |
             # Ensure we cache the necessary dependencies
@@ -57,7 +61,7 @@ commands:
           command: | 
             mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
       - run:
-          name: Get JSON Validation CLI and build it
+          name: Build JSON Validation CLI
           command: |
             git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
             cd "${OSCAL_TOOLS_DIR}/json-cli"
@@ -165,6 +169,7 @@ jobs: # a collection of
     steps:
       - checkout
       - run:
+          name: Check if skip build
           command: |
             mkdir -p "$OSCAL_BUILD_DIR/state"
             COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
