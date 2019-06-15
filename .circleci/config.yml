@@ -7,7 +7,7 @@ references:
       CICD_DIR: git-oscal/build/ci-cd
       OSCAL_REPO_DIR: git-oscal
       OSCAL_BUILD_DIR: build_artifacts
-      OSCAL_TOOLS_DIR: oscal_tools
+      _OSCALTOOLS_DIR: oscal_tools
       SCHEMATRON_HOME: git-schematron
       TERM: xterm
     working_directory: ~/oscal
@@ -46,7 +46,7 @@ commands:
           name: Generate cache checksum
           command: |
             # Ensure we cache the necessary dependencies
-            cat "${MAVEN_TOOLS_DIR}/json-cli/pom.xml" > .maven-cache-checksum
+            cat "${OSCALTOOLS_DIR}/json-cli/pom.xml" > .maven-cache-checksum
             echo "$SAXON_VERSION" >> .maven-cache-checksum
       - restore_cache:
           keys:
@@ -59,8 +59,8 @@ commands:
       - run:
           name: Get JSON Validation CLI and build it
           command: |
-            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${MAVEN_TOOLS_DIR}"
-            cd "${MAVEN_TOOLS_DIR}/json-cli"
+            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCALTOOLS_DIR}"
+            cd "${OSCALTOOLS_DIR}/json-cli"
             mvn dependency:go-offline
             mvn install
       - save_cache:
