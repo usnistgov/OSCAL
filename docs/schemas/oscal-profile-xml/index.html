@@ -444,8 +444,6 @@
 
 
 
-
-
 <li>
   <a href="#oscal-profile-xml_profile"><code>profile (root element)</code></a>
 </li>
@@ -819,12 +817,6 @@
 
 
 <li>
-  <a href="#oscal-profile-xml_param-id"><code>param-id</code></a>
-</li>
-
-
-
-<li>
   <a href="#oscal-profile-xml_param"><code>param</code></a>
 </li>
 
@@ -1053,8 +1045,6 @@
     
   
   
-
-
 
 
 
@@ -1477,8 +1467,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="modify"><header><h4 id="oscal-profile-xml_modify" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Modify controls</b>: <code>modify</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_modify"><button>JSON</button></a></div></header><p class="description">Set parameters or amend controls in resolution</p><div class="model"><p>The <code>modify</code> element has the following contents (in order):</p><ul><li><a href="#set"><code>set</code></a> element  (<i>zero or more</i>):  A parameter setting, to be propagated to points of insertion
-      </li><li><a href="#alter"><code>alter</code></a> element  (<i>zero or more</i>): An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</li></ul></div><p>This element appears inside: <a href="#profile">profile</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="modify"><header><h4 id="oscal-profile-xml_modify" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Modify controls</b>: <code>modify</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_modify"><button>JSON</button></a></div></header><p class="description">Set parameters or amend controls in resolution</p><div class="model"><p>The <code>modify</code> element has the following contents (in order):</p><ul><li><a href="#set"><code>set</code></a> element  (<i>zero or more</i>): A parameter setting, to be propagated to points of insertion</li><li><a href="#alter"><code>alter</code></a> element  (<i>zero or more</i>): An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</li></ul></div><p>This element appears inside: <a href="#profile">profile</a>.</p></div>
 
 
 
@@ -1515,10 +1504,6 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="oscal-version"><header><h4 id="oscal-profile-xml_oscal-version" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">OSCAL version</b>: <code>oscal-version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_oscal-version"><button>JSON</button></a></div></header><p class="description">OSCAL model version.</p><div class="remarks"><p class="p">Indicates the version of the OSCAL model to which this data set conforms, for example <q>1.0-M1</q>.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="param-id"><header><h4 id="oscal-profile-xml_param-id" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter ID</b>: <code>param-id</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_param-id"><button>JSON</button></a></div></header><p class="description">Value of the 'id' flag on a target parameter</p><p>This attribute appears on: <a href="#set">set</a>.</p></div>
 
 
 
@@ -1584,12 +1569,12 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="prop"><header><h4 id="oscal-profile-xml_prop" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Property</b>: <code>prop</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_prop"><button>JSON</button></a></div></header><p class="description">A value with a name, attributed to the containing control, subcontrol, part,
-      or group.</p><div class="model"><p>The prop element may have attributes:</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>): Unique identifier of the containing object</li><li><a href="#name"><code>name</code></a> attribute <i> (required)</i>: Identifying the purpose and intended use of the property, part or other object.<p>The value can be one of the following:</p><ul>
-        <li><strong>keywords</strong>: Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</li>
-        <li><strong>label</strong>: A human-readable label for the parent context.</li>
-        <li><strong>method</strong>: An assessment method.</li>
-        <li><strong>status</strong>: The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</li>
-      </ul></li><li><a href="#ns"><code>ns</code></a> attribute  (<i>optional</i>): A namespace qualifying the name.</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>): Indicating the type or classification of the containing object</li></ul></div><div class="remarks"><p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p><p class="p">The value of a property is a simple scalar value or list of values.</p><p class="p">The lexical composition of properties may be constrained by declarations including matching to regular expressions or by declaring a known datatype.</p><p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be normalized (e.g., with respect to whitespace) in use; however, this is application defined.</p><p class="p">For singletons (that is, the only element among siblings with its <code>class</code>), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf <code>declare-prop</code> in the declarations model (which also supports other constraints over property values).</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#part">part</a>, <a href="#add">add</a>.</p></div>
+      or group.</p><div class="model"><p>The prop element may have attributes:</p><ul><li><a href="#name"><code>name</code></a> attribute <i> (required)</i>: Identifying the purpose and intended use of the property, part or other object.<p>The value can be one of the following:</p><ul>
+      <li><strong>keywords</strong>: Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</li>
+      <li><strong>label</strong>: A human-readable label for the parent context.</li>
+      <li><strong>method</strong>: An assessment method.</li>
+      <li><strong>status</strong>: The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</li>
+    </ul></li><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>): Unique identifier of the containing object</li><li><a href="#ns"><code>ns</code></a> attribute  (<i>optional</i>): A namespace qualifying the name.</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>): Indicating the type or classification of the containing object</li></ul></div><div class="remarks"><p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p><p class="p">The value of a property is a simple scalar value or list of values.</p><p class="p">The lexical composition of properties may be constrained by declarations including matching to regular expressions or by declaring a known datatype.</p><p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be normalized (e.g., with respect to whitespace) in use; however, this is application defined.</p><p class="p">For singletons (that is, the only element among siblings with its <code>class</code>), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf <code>declare-prop</code> in the declarations model (which also supports other constraints over property values).</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#part">part</a>, <a href="#add">add</a>.</p></div>
 
 
 
@@ -1626,8 +1611,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set"><header><h4 id="oscal-profile-xml_set" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_set"><button>JSON</button></a></div></header><p class="description"> A parameter setting, to be propagated to points of insertion
-      </p><div class="model"><p>The <code>set</code> element has the following contents (in order):</p><ul><li><a href="#param-id"><code>param-id</code></a> attribute <i> (required)</i>: Value of the 'id' flag on a target parameter</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>): Indicating the type or classification of the containing object</li><li><a href="#depends-on"><code>depends-on</code></a> attribute  (<i>optional</i>): Another parameter invoking this one</li><li><a href="#label"><code>label</code></a> element  (<i>zero or one</i>): A placeholder for a missing value, in display.</li><li><a href="#usage"><code>usage</code></a> element  (<i>zero or more</i>): Indicates and explains the purpose and use of a parameter</li><li><a href="#constraint"><code>constraint</code></a> element  (<i>zero or more</i>): A formal or informal expression of a constraint or test</li><li class="choice">A choice between:
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set"><header><h4 id="oscal-profile-xml_set" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_set"><button>JSON</button></a></div></header><p class="description">A parameter setting, to be propagated to points of insertion</p><div class="model"><p>The <code>set</code> element has the following contents (in order):</p><ul><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>): Indicating the type or classification of the containing object</li><li><a href="#depends-on"><code>depends-on</code></a> attribute  (<i>optional</i>): Another parameter invoking this one</li><li><a href="#label"><code>label</code></a> element  (<i>zero or one</i>): A placeholder for a missing value, in display.</li><li><a href="#usage"><code>usage</code></a> element  (<i>zero or more</i>): Indicates and explains the purpose and use of a parameter</li><li><a href="#constraint"><code>constraint</code></a> element  (<i>zero or more</i>): A formal or informal expression of a constraint or test</li><li class="choice">A choice between:
          <ul><li><a href="#value"><code>value</code></a> element  (<i>zero or one</i>): Indicates a permissible value for a parameter or property</li><li><a href="#select"><code>select</code></a> element  (<i>zero or one</i>): Presenting a choice among alternatives</li></ul></li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>): A reference to a local or remote resource, with associated markup.</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>): A partition or component of a control, subcontrol or part</li></ul></div><p>This element appears inside: <a href="#modify">modify</a>.</p></div>
 
 
