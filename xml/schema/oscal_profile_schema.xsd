@@ -892,7 +892,12 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:part"/>
          </xs:sequence>
-         <xs:attribute name="param-id" type="xs:NCName" use="required"/>
+         <xs:attribute name="param-id" type="xs:NCName" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Parameter ID: </b>Value of the 'id' flag on a target parameter</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>

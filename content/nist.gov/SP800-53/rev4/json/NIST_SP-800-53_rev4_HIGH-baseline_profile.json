@@ -1083,7 +1083,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1093,7 +1093,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1103,7 +1103,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1113,7 +1113,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1123,7 +1123,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1133,7 +1133,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1143,7 +1143,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1153,7 +1153,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1163,7 +1163,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1173,7 +1173,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1183,7 +1183,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1193,7 +1193,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1203,7 +1203,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1213,7 +1213,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1223,7 +1223,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1233,7 +1233,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1243,7 +1243,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1253,7 +1253,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1263,7 +1263,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1273,7 +1273,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1283,7 +1283,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1293,7 +1293,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1303,7 +1303,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1313,7 +1313,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1323,7 +1323,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1333,7 +1333,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1343,7 +1343,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1353,7 +1353,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1363,7 +1363,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1373,7 +1373,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1383,7 +1383,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1393,7 +1393,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1403,7 +1403,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1413,7 +1413,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1423,7 +1423,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1433,7 +1433,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1443,7 +1443,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1453,7 +1453,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1463,7 +1463,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1473,7 +1473,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1483,7 +1483,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1493,7 +1493,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1503,7 +1503,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1513,7 +1513,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1523,7 +1523,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1533,7 +1533,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1543,7 +1543,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1553,7 +1553,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1563,7 +1563,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1573,7 +1573,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1583,7 +1583,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1593,7 +1593,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1603,7 +1603,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1613,7 +1613,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1623,7 +1623,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1633,7 +1633,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1643,7 +1643,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1653,7 +1653,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1663,7 +1663,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1673,7 +1673,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1683,7 +1683,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1693,7 +1693,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1703,7 +1703,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1713,7 +1713,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1723,7 +1723,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1733,7 +1733,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1743,7 +1743,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1753,7 +1753,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1763,7 +1763,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1773,7 +1773,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1783,7 +1783,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1793,7 +1793,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1803,7 +1803,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1813,7 +1813,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1823,7 +1823,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1833,7 +1833,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1843,7 +1843,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1853,7 +1853,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1863,7 +1863,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1873,7 +1873,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1883,7 +1883,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -1893,7 +1893,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1903,7 +1903,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1913,7 +1913,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1923,7 +1923,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1933,7 +1933,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1943,7 +1943,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -1953,7 +1953,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1963,7 +1963,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1973,7 +1973,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1983,7 +1983,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -1993,7 +1993,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2003,7 +2003,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2013,7 +2013,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2023,7 +2023,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2033,7 +2033,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2043,7 +2043,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2053,7 +2053,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -2063,7 +2063,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2073,7 +2073,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2083,7 +2083,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2093,7 +2093,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2103,7 +2103,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2113,7 +2113,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2123,7 +2123,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2133,7 +2133,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2143,7 +2143,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2153,7 +2153,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -2163,7 +2163,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2173,7 +2173,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2183,7 +2183,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2193,7 +2193,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2203,7 +2203,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2213,7 +2213,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2223,7 +2223,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2233,7 +2233,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2243,7 +2243,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2253,7 +2253,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -2263,7 +2263,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2273,7 +2273,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P3"
+              "priority": "P3"
             }
           }
         },
@@ -2283,7 +2283,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2293,7 +2293,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2303,7 +2303,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2313,7 +2313,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2323,7 +2323,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2333,7 +2333,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2343,7 +2343,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2353,7 +2353,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2363,7 +2363,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2373,7 +2373,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2383,7 +2383,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2393,7 +2393,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2403,7 +2403,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2413,7 +2413,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2423,7 +2423,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2433,7 +2433,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2443,7 +2443,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2453,7 +2453,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2463,7 +2463,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2473,7 +2473,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2483,7 +2483,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2493,7 +2493,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2503,7 +2503,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2513,7 +2513,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2523,7 +2523,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2533,7 +2533,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2543,7 +2543,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2553,7 +2553,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2563,7 +2563,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2573,7 +2573,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2583,7 +2583,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2593,7 +2593,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2603,7 +2603,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2613,7 +2613,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2623,7 +2623,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2633,7 +2633,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2643,7 +2643,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2653,7 +2653,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2663,7 +2663,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2673,7 +2673,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2683,7 +2683,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2693,7 +2693,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2703,7 +2703,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2713,7 +2713,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2723,7 +2723,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2733,7 +2733,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2743,7 +2743,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         },
@@ -2753,7 +2753,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2763,7 +2763,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P2"
+              "priority": "P2"
             }
           }
         },
@@ -2773,7 +2773,7 @@
             "position": "starting",
             "properties": {
               "name": "priority",
-              "STRVALUE": "P1"
+              "priority": "P1"
             }
           }
         }

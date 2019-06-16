@@ -86,7 +86,12 @@
    </xsl:template>
    <!-- 000 Handling field "last-modified-date" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='last-modified-date']" priority="5" mode="json2xml">
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='last-modified-date']-->
+   <!--*[@key='last-modified-date']-->
+   <xsl:template match="*[@key='metadata']/*[@key='last-modified-date']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="last-modified-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -97,7 +102,12 @@
    </xsl:template>
    <!-- 000 Handling field "version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='version']" priority="5" mode="json2xml">
+   <!--metadata origin ssp-origin attachment-->
+   <!--*[@key='metadata']/*[@key='version'] | *[@key='origin']/*[@key='version'] | *[@key='attachment']/*[@key='version'] | *[@key='ssp-origin']/*[@key='version'] | *[@key='ssp-origin']/*/*[@key='version'] -->
+   <!--*[@key='version']-->
+   <xsl:template match="*[@key='metadata']/*[@key='version'] | *[@key='origin']/*[@key='version'] | *[@key='attachment']/*[@key='version'] | *[@key='ssp-origin']/*[@key='version'] | *[@key='ssp-origin']/*/*[@key='version'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -108,7 +118,12 @@
    </xsl:template>
    <!-- 000 Handling field "oscal-version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='oscal-version']" priority="5" mode="json2xml">
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='oscal-version']-->
+   <!--*[@key='oscal-version']-->
+   <xsl:template match="*[@key='metadata']/*[@key='oscal-version']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="oscal-version" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -119,7 +134,10 @@
    </xsl:template>
    <!-- 000 Handling field "doc-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*"
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*-->
+   <!--*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*"
                  priority="5"
                  mode="json2xml">
       <xsl:element name="doc-id" namespace="urn:OSCAL-SSP-metaschema">
@@ -154,7 +172,10 @@
    </xsl:template>
    <!-- 000 Handling field "prop" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*"
+   <!--metadata host-item ssp-host-item control controls-->
+   <!--*[@key='metadata']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='host-item']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='control']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='ssp-host-item']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='ssp-host-item']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*  | *[@key='controls']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='controls']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* -->
+   <!--*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='host-item']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='control']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='ssp-host-item']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='ssp-host-item']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*  | *[@key='controls']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='controls']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="prop" namespace="urn:OSCAL-SSP-metaschema">
@@ -270,7 +291,10 @@
    </xsl:template>
    <!-- 000 Handling field "person-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/*"
+   <!--person persons-->
+   <!--*[@key='person']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* -->
+   <!--*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/*-->
+   <xsl:template match="*[@key='person']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="person-id" namespace="urn:OSCAL-SSP-metaschema">
@@ -305,7 +329,10 @@
    </xsl:template>
    <!-- 000 Handling field "org-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='org']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* -->
+   <!--*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/*-->
+   <xsl:template match="*[@key='person']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='org']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="org-id" namespace="urn:OSCAL-SSP-metaschema">
@@ -374,7 +401,12 @@
    </xsl:template>
    <!-- 000 Handling field "person-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='person-name']" priority="5" mode="json2xml">
+   <!--person persons-->
+   <!--*[@key='person']/*[@key='person-name'] | *[@key='persons']/*[@key='person-name'] | *[@key='persons']/*/*[@key='person-name'] -->
+   <!--*[@key='person-name']-->
+   <xsl:template match="*[@key='person']/*[@key='person-name'] | *[@key='persons']/*[@key='person-name'] | *[@key='persons']/*/*[@key='person-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="person-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -385,7 +417,12 @@
    </xsl:template>
    <!-- 000 Handling field "org-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='org-name']" priority="5" mode="json2xml">
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='org-name'] | *[@key='org']/*[@key='org-name'] | *[@key='persons']/*[@key='org-name'] | *[@key='persons']/*/*[@key='org-name'] -->
+   <!--*[@key='org-name']-->
+   <xsl:template match="*[@key='person']/*[@key='org-name'] | *[@key='org']/*[@key='org-name'] | *[@key='persons']/*[@key='org-name'] | *[@key='persons']/*/*[@key='org-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="org-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -396,7 +433,12 @@
    </xsl:template>
    <!-- 000 Handling field "short-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='short-name']" priority="5" mode="json2xml">
+   <!--person persons org role roles-->
+   <!--*[@key='person']/*[@key='short-name'] | *[@key='org']/*[@key='short-name'] | *[@key='role']/*[@key='short-name'] | *[@key='persons']/*[@key='short-name'] | *[@key='persons']/*/*[@key='short-name']  | *[@key='roles']/*[@key='short-name'] | *[@key='roles']/*/*[@key='short-name'] -->
+   <!--*[@key='short-name']-->
+   <xsl:template match="*[@key='person']/*[@key='short-name'] | *[@key='org']/*[@key='short-name'] | *[@key='role']/*[@key='short-name'] | *[@key='persons']/*[@key='short-name'] | *[@key='persons']/*/*[@key='short-name']  | *[@key='roles']/*[@key='short-name'] | *[@key='roles']/*/*[@key='short-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="short-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -431,7 +473,10 @@
    </xsl:template>
    <!-- 000 Handling field "addr-line" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/*"
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* -->
+   <!--*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/*-->
+   <xsl:template match="*[@key='address']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="addr-line" namespace="urn:OSCAL-SSP-metaschema">
@@ -466,7 +511,12 @@
    </xsl:template>
    <!-- 000 Handling field "city" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='city']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='city'] | *[@key='addresses']/*[@key='city'] | *[@key='addresses']/*/*[@key='city'] -->
+   <!--*[@key='city']-->
+   <xsl:template match="*[@key='address']/*[@key='city'] | *[@key='addresses']/*[@key='city'] | *[@key='addresses']/*/*[@key='city'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="city" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -477,7 +527,12 @@
    </xsl:template>
    <!-- 000 Handling field "state" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='state']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='state'] | *[@key='addresses']/*[@key='state'] | *[@key='addresses']/*/*[@key='state'] -->
+   <!--*[@key='state']-->
+   <xsl:template match="*[@key='address']/*[@key='state'] | *[@key='addresses']/*[@key='state'] | *[@key='addresses']/*/*[@key='state'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="state" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -488,7 +543,12 @@
    </xsl:template>
    <!-- 000 Handling field "postal-code" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='postal-code']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='postal-code'] | *[@key='addresses']/*[@key='postal-code'] | *[@key='addresses']/*/*[@key='postal-code'] -->
+   <!--*[@key='postal-code']-->
+   <xsl:template match="*[@key='address']/*[@key='postal-code'] | *[@key='addresses']/*[@key='postal-code'] | *[@key='addresses']/*/*[@key='postal-code'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="postal-code" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -499,7 +559,12 @@
    </xsl:template>
    <!-- 000 Handling field "country" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='country']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='country'] | *[@key='addresses']/*[@key='country'] | *[@key='addresses']/*/*[@key='country'] -->
+   <!--*[@key='country']-->
+   <xsl:template match="*[@key='address']/*[@key='country'] | *[@key='addresses']/*[@key='country'] | *[@key='addresses']/*/*[@key='country'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="country" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -510,7 +575,10 @@
    </xsl:template>
    <!-- 000 Handling field "email" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*"
+   <!--person persons org part ssp-part-->
+   <!--*[@key='person']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='org']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='part']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*  | *[@key='ssp-part']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='ssp-part']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* -->
+   <!--*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*-->
+   <xsl:template match="*[@key='person']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='org']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='part']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*  | *[@key='ssp-part']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='ssp-part']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="email" namespace="urn:OSCAL-SSP-metaschema">
@@ -545,7 +613,10 @@
    </xsl:template>
    <!-- 000 Handling field "phone" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*"
+   <!--person persons org part ssp-part-->
+   <!--*[@key='person']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='org']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='part']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*  | *[@key='ssp-part']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='ssp-part']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* -->
+   <!--*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*-->
+   <xsl:template match="*[@key='person']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='org']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='part']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*  | *[@key='ssp-part']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='ssp-part']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="phone" namespace="urn:OSCAL-SSP-metaschema">
@@ -580,7 +651,10 @@
    </xsl:template>
    <!-- 000 Handling field "url" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='org']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* -->
+   <!--*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/*-->
+   <xsl:template match="*[@key='person']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='org']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="url" namespace="urn:OSCAL-SSP-metaschema">
@@ -623,7 +697,12 @@
    </xsl:template>
    <!-- 000 Handling field "desc" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='desc']" priority="5" mode="json2xml">
+   <!--resource resources role roles-->
+   <!--*[@key='resource']/*[@key='desc'] | *[@key='role']/*[@key='desc'] | *[@key='resources']/*[@key='desc'] | *[@key='resources']/*/*[@key='desc']  | *[@key='roles']/*[@key='desc'] | *[@key='roles']/*/*[@key='desc'] -->
+   <!--*[@key='desc']-->
+   <xsl:template match="*[@key='resource']/*[@key='desc'] | *[@key='role']/*[@key='desc'] | *[@key='resources']/*[@key='desc'] | *[@key='resources']/*/*[@key='desc']  | *[@key='roles']/*[@key='desc'] | *[@key='roles']/*/*[@key='desc'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="desc" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -656,7 +735,10 @@
    </xsl:template>
    <!-- 000 Handling field "hash" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/*"
+   <!--rlink rlinks-->
+   <!--*[@key='rlink']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* -->
+   <!--*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/*-->
+   <xsl:template match="*[@key='rlink']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="hash" namespace="urn:OSCAL-SSP-metaschema">
@@ -709,7 +791,12 @@
    </xsl:template>
    <!-- 000 Handling field "title" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='title']" priority="5" mode="json2xml">
+   <!--metadata designation ssp-designation role roles origin ssp-origin attachment-->
+   <!--*[@key='metadata']/*[@key='title'] | *[@key='designation']/*[@key='title'] | *[@key='role']/*[@key='title'] | *[@key='origin']/*[@key='title'] | *[@key='attachment']/*[@key='title'] | *[@key='ssp-designation']/*[@key='title'] | *[@key='ssp-designation']/*/*[@key='title']  | *[@key='roles']/*[@key='title'] | *[@key='roles']/*/*[@key='title']  | *[@key='ssp-origin']/*[@key='title'] | *[@key='ssp-origin']/*/*[@key='title'] -->
+   <!--*[@key='title']-->
+   <xsl:template match="*[@key='metadata']/*[@key='title'] | *[@key='designation']/*[@key='title'] | *[@key='role']/*[@key='title'] | *[@key='origin']/*[@key='title'] | *[@key='attachment']/*[@key='title'] | *[@key='ssp-designation']/*[@key='title'] | *[@key='ssp-designation']/*/*[@key='title']  | *[@key='roles']/*[@key='title'] | *[@key='roles']/*/*[@key='title']  | *[@key='ssp-origin']/*[@key='title'] | *[@key='ssp-origin']/*/*[@key='title'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="title" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:for-each select="string[@key='RICHTEXT'], self::string">
@@ -760,7 +847,12 @@
    </xsl:template>
    <!-- 000 Handling field "all" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='all']" priority="5" mode="json2xml">
+   <!--include includes-->
+   <!--*[@key='include']/*[@key='all'] | *[@key='includes']/*[@key='all'] | *[@key='includes']/*/*[@key='all'] -->
+   <!--*[@key='all']-->
+   <xsl:template match="*[@key='include']/*[@key='all'] | *[@key='includes']/*[@key='all'] | *[@key='includes']/*/*[@key='all'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="all" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -771,7 +863,10 @@
    </xsl:template>
    <!-- 000 Handling field "call" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*"
+   <!--include includes exclude excludes-->
+   <!--*[@key='include']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='exclude']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='excludes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='excludes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* -->
+   <!--*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*-->
+   <xsl:template match="*[@key='include']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='exclude']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='excludes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='excludes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="call" namespace="urn:OSCAL-SSP-metaschema">
@@ -806,7 +901,10 @@
    </xsl:template>
    <!-- 000 Handling field "match" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*"
+   <!--include includes exclude excludes-->
+   <!--*[@key='include']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='exclude']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='excludes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='excludes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* -->
+   <!--*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*-->
+   <xsl:template match="*[@key='include']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='exclude']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='excludes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='excludes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="match" namespace="urn:OSCAL-SSP-metaschema">
@@ -1008,7 +1106,12 @@
    </xsl:template>
    <!-- 000 Handling field "system-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='system-id']" priority="5" mode="json2xml">
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='system-id'] | *[@key='ssp-system-characteristics']/*[@key='system-id'] | *[@key='ssp-system-characteristics']/*/*[@key='system-id'] -->
+   <!--*[@key='system-id']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='system-id'] | *[@key='ssp-system-characteristics']/*[@key='system-id'] | *[@key='ssp-system-characteristics']/*/*[@key='system-id'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="system-id" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1019,7 +1122,12 @@
    </xsl:template>
    <!-- 000 Handling field "system-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='system-name']" priority="5" mode="json2xml">
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='system-name'] | *[@key='ssp-system-characteristics']/*[@key='system-name'] | *[@key='ssp-system-characteristics']/*/*[@key='system-name'] -->
+   <!--*[@key='system-name']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='system-name'] | *[@key='ssp-system-characteristics']/*[@key='system-name'] | *[@key='ssp-system-characteristics']/*/*[@key='system-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="system-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1030,7 +1138,12 @@
    </xsl:template>
    <!-- 000 Handling field "system-name-short" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='system-name-short']" priority="5" mode="json2xml">
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='system-name-short'] | *[@key='ssp-system-characteristics']/*[@key='system-name-short'] | *[@key='ssp-system-characteristics']/*/*[@key='system-name-short'] -->
+   <!--*[@key='system-name-short']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='system-name-short'] | *[@key='ssp-system-characteristics']/*[@key='system-name-short'] | *[@key='ssp-system-characteristics']/*/*[@key='system-name-short'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="system-name-short" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1049,7 +1162,10 @@
    </xsl:template>
    <!-- 000 Handling field "security-sensitivity-level" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-sensitivity-level']"
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='security-sensitivity-level'] | *[@key='ssp-system-characteristics']/*[@key='security-sensitivity-level'] | *[@key='ssp-system-characteristics']/*/*[@key='security-sensitivity-level'] -->
+   <!--*[@key='security-sensitivity-level']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='security-sensitivity-level'] | *[@key='ssp-system-characteristics']/*[@key='security-sensitivity-level'] | *[@key='ssp-system-characteristics']/*/*[@key='security-sensitivity-level'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="security-sensitivity-level" namespace="urn:OSCAL-SSP-metaschema">
@@ -1120,7 +1236,12 @@
    </xsl:template>
    <!-- 000 Handling field "declaration" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='declaration']" priority="5" mode="json2xml">
+   <!--designation ssp-designation-->
+   <!--*[@key='designation']/*[@key='declaration'] | *[@key='ssp-designation']/*[@key='declaration'] | *[@key='ssp-designation']/*/*[@key='declaration'] -->
+   <!--*[@key='declaration']-->
+   <xsl:template match="*[@key='designation']/*[@key='declaration'] | *[@key='ssp-designation']/*[@key='declaration'] | *[@key='ssp-designation']/*/*[@key='declaration'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="declaration" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1167,7 +1288,12 @@
    </xsl:template>
    <!-- 000 Handling field "qual-question" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='qual-question']" priority="5" mode="json2xml">
+   <!--qualifier ssp-qualifiers-->
+   <!--*[@key='qualifier']/*[@key='qual-question'] | *[@key='ssp-qualifiers']/*[@key='qual-question'] | *[@key='ssp-qualifiers']/*/*[@key='qual-question'] -->
+   <!--*[@key='qual-question']-->
+   <xsl:template match="*[@key='qualifier']/*[@key='qual-question'] | *[@key='ssp-qualifiers']/*[@key='qual-question'] | *[@key='ssp-qualifiers']/*/*[@key='qual-question'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="qual-question" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1178,7 +1304,12 @@
    </xsl:template>
    <!-- 000 Handling field "qual-response" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='qual-response']" priority="5" mode="json2xml">
+   <!--qualifier ssp-qualifiers-->
+   <!--*[@key='qualifier']/*[@key='qual-response'] | *[@key='ssp-qualifiers']/*[@key='qual-response'] | *[@key='ssp-qualifiers']/*/*[@key='qual-response'] -->
+   <!--*[@key='qual-response']-->
+   <xsl:template match="*[@key='qualifier']/*[@key='qual-response'] | *[@key='ssp-qualifiers']/*[@key='qual-response'] | *[@key='ssp-qualifiers']/*/*[@key='qual-response'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="qual-response" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1189,7 +1320,12 @@
    </xsl:template>
    <!-- 000 Handling field "qual-notes" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='qual-notes']" priority="5" mode="json2xml">
+   <!--qualifier ssp-qualifiers-->
+   <!--*[@key='qualifier']/*[@key='qual-notes'] | *[@key='ssp-qualifiers']/*[@key='qual-notes'] | *[@key='ssp-qualifiers']/*/*[@key='qual-notes'] -->
+   <!--*[@key='qual-notes']-->
+   <xsl:template match="*[@key='qualifier']/*[@key='qual-notes'] | *[@key='ssp-qualifiers']/*[@key='qual-notes'] | *[@key='ssp-qualifiers']/*/*[@key='qual-notes'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="qual-notes" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1296,7 +1432,12 @@
    </xsl:template>
    <!-- 000 Handling field "base" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='base']" priority="5" mode="json2xml">
+   <!--confidentiality-impact ssp-confidentiality-impact integrity-impact ssp-integrity-impact availability-impact ssp-availability-impact-->
+   <!--*[@key='confidentiality-impact']/*[@key='base'] | *[@key='integrity-impact']/*[@key='base'] | *[@key='availability-impact']/*[@key='base'] | *[@key='ssp-confidentiality-impact']/*[@key='base'] | *[@key='ssp-confidentiality-impact']/*/*[@key='base']  | *[@key='ssp-integrity-impact']/*[@key='base'] | *[@key='ssp-integrity-impact']/*/*[@key='base']  | *[@key='ssp-availability-impact']/*[@key='base'] | *[@key='ssp-availability-impact']/*/*[@key='base'] -->
+   <!--*[@key='base']-->
+   <xsl:template match="*[@key='confidentiality-impact']/*[@key='base'] | *[@key='integrity-impact']/*[@key='base'] | *[@key='availability-impact']/*[@key='base'] | *[@key='ssp-confidentiality-impact']/*[@key='base'] | *[@key='ssp-confidentiality-impact']/*/*[@key='base']  | *[@key='ssp-integrity-impact']/*[@key='base'] | *[@key='ssp-integrity-impact']/*/*[@key='base']  | *[@key='ssp-availability-impact']/*[@key='base'] | *[@key='ssp-availability-impact']/*/*[@key='base'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="base" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1307,7 +1448,12 @@
    </xsl:template>
    <!-- 000 Handling field "selected" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='selected']" priority="5" mode="json2xml">
+   <!--confidentiality-impact ssp-confidentiality-impact integrity-impact ssp-integrity-impact availability-impact ssp-availability-impact-->
+   <!--*[@key='confidentiality-impact']/*[@key='selected'] | *[@key='integrity-impact']/*[@key='selected'] | *[@key='availability-impact']/*[@key='selected'] | *[@key='ssp-confidentiality-impact']/*[@key='selected'] | *[@key='ssp-confidentiality-impact']/*/*[@key='selected']  | *[@key='ssp-integrity-impact']/*[@key='selected'] | *[@key='ssp-integrity-impact']/*/*[@key='selected']  | *[@key='ssp-availability-impact']/*[@key='selected'] | *[@key='ssp-availability-impact']/*/*[@key='selected'] -->
+   <!--*[@key='selected']-->
+   <xsl:template match="*[@key='confidentiality-impact']/*[@key='selected'] | *[@key='integrity-impact']/*[@key='selected'] | *[@key='availability-impact']/*[@key='selected'] | *[@key='ssp-confidentiality-impact']/*[@key='selected'] | *[@key='ssp-confidentiality-impact']/*/*[@key='selected']  | *[@key='ssp-integrity-impact']/*[@key='selected'] | *[@key='ssp-integrity-impact']/*/*[@key='selected']  | *[@key='ssp-availability-impact']/*[@key='selected'] | *[@key='ssp-availability-impact']/*/*[@key='selected'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="selected" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1318,7 +1464,10 @@
    </xsl:template>
    <!-- 000 Handling field "adjustment-justification" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='adjustment-justification']"
+   <!--confidentiality-impact ssp-confidentiality-impact integrity-impact ssp-integrity-impact availability-impact ssp-availability-impact-->
+   <!--*[@key='confidentiality-impact']/*[@key='adjustment-justification'] | *[@key='integrity-impact']/*[@key='adjustment-justification'] | *[@key='availability-impact']/*[@key='adjustment-justification'] | *[@key='ssp-confidentiality-impact']/*[@key='adjustment-justification'] | *[@key='ssp-confidentiality-impact']/*/*[@key='adjustment-justification']  | *[@key='ssp-integrity-impact']/*[@key='adjustment-justification'] | *[@key='ssp-integrity-impact']/*/*[@key='adjustment-justification']  | *[@key='ssp-availability-impact']/*[@key='adjustment-justification'] | *[@key='ssp-availability-impact']/*/*[@key='adjustment-justification'] -->
+   <!--*[@key='adjustment-justification']-->
+   <xsl:template match="*[@key='confidentiality-impact']/*[@key='adjustment-justification'] | *[@key='integrity-impact']/*[@key='adjustment-justification'] | *[@key='availability-impact']/*[@key='adjustment-justification'] | *[@key='ssp-confidentiality-impact']/*[@key='adjustment-justification'] | *[@key='ssp-confidentiality-impact']/*/*[@key='adjustment-justification']  | *[@key='ssp-integrity-impact']/*[@key='adjustment-justification'] | *[@key='ssp-integrity-impact']/*/*[@key='adjustment-justification']  | *[@key='ssp-availability-impact']/*[@key='adjustment-justification'] | *[@key='ssp-availability-impact']/*/*[@key='adjustment-justification'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="adjustment-justification" namespace="urn:OSCAL-SSP-metaschema">
@@ -1353,7 +1502,10 @@
    </xsl:template>
    <!-- 000 Handling field "security-objective-confidentiality" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-objective-confidentiality']"
+   <!--security-impact-level ssp-security-impact-level-->
+   <!--*[@key='security-impact-level']/*[@key='security-objective-confidentiality'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-confidentiality'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-confidentiality'] -->
+   <!--*[@key='security-objective-confidentiality']-->
+   <xsl:template match="*[@key='security-impact-level']/*[@key='security-objective-confidentiality'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-confidentiality'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-confidentiality'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-confidentiality"
@@ -1367,7 +1519,10 @@
    </xsl:template>
    <!-- 000 Handling field "security-objective-integrity" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-objective-integrity']"
+   <!--security-impact-level ssp-security-impact-level-->
+   <!--*[@key='security-impact-level']/*[@key='security-objective-integrity'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-integrity'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-integrity'] -->
+   <!--*[@key='security-objective-integrity']-->
+   <xsl:template match="*[@key='security-impact-level']/*[@key='security-objective-integrity'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-integrity'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-integrity'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-integrity"
@@ -1381,7 +1536,10 @@
    </xsl:template>
    <!-- 000 Handling field "security-objective-availability" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-objective-availability']"
+   <!--security-impact-level ssp-security-impact-level-->
+   <!--*[@key='security-impact-level']/*[@key='security-objective-availability'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-availability'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-availability'] -->
+   <!--*[@key='security-objective-availability']-->
+   <xsl:template match="*[@key='security-impact-level']/*[@key='security-objective-availability'] | *[@key='ssp-security-impact-level']/*[@key='security-objective-availability'] | *[@key='ssp-security-impact-level']/*/*[@key='security-objective-availability'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="security-objective-availability"
@@ -1417,7 +1575,12 @@
    </xsl:template>
    <!-- 000 Handling field "security-auth-ial" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-auth-ial']" priority="5" mode="json2xml">
+   <!--security-eauth ssp-security-eauth-->
+   <!--*[@key='security-eauth']/*[@key='security-auth-ial'] | *[@key='ssp-security-eauth']/*[@key='security-auth-ial'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-ial'] -->
+   <!--*[@key='security-auth-ial']-->
+   <xsl:template match="*[@key='security-eauth']/*[@key='security-auth-ial'] | *[@key='ssp-security-eauth']/*[@key='security-auth-ial'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-ial'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="security-auth-ial" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1428,7 +1591,12 @@
    </xsl:template>
    <!-- 000 Handling field "security-auth-aal" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-auth-aal']" priority="5" mode="json2xml">
+   <!--security-eauth ssp-security-eauth-->
+   <!--*[@key='security-eauth']/*[@key='security-auth-aal'] | *[@key='ssp-security-eauth']/*[@key='security-auth-aal'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-aal'] -->
+   <!--*[@key='security-auth-aal']-->
+   <xsl:template match="*[@key='security-eauth']/*[@key='security-auth-aal'] | *[@key='ssp-security-eauth']/*[@key='security-auth-aal'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-aal'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="security-auth-aal" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1439,7 +1607,12 @@
    </xsl:template>
    <!-- 000 Handling field "security-auth-fal" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-auth-fal']" priority="5" mode="json2xml">
+   <!--security-eauth ssp-security-eauth-->
+   <!--*[@key='security-eauth']/*[@key='security-auth-fal'] | *[@key='ssp-security-eauth']/*[@key='security-auth-fal'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-fal'] -->
+   <!--*[@key='security-auth-fal']-->
+   <xsl:template match="*[@key='security-eauth']/*[@key='security-auth-fal'] | *[@key='ssp-security-eauth']/*[@key='security-auth-fal'] | *[@key='ssp-security-eauth']/*/*[@key='security-auth-fal'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="security-auth-fal" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1450,7 +1623,12 @@
    </xsl:template>
    <!-- 000 Handling field "security-eauth-level" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='security-eauth-level']" priority="5" mode="json2xml">
+   <!--security-eauth ssp-security-eauth-->
+   <!--*[@key='security-eauth']/*[@key='security-eauth-level'] | *[@key='ssp-security-eauth']/*[@key='security-eauth-level'] | *[@key='ssp-security-eauth']/*/*[@key='security-eauth-level'] -->
+   <!--*[@key='security-eauth-level']-->
+   <xsl:template match="*[@key='security-eauth']/*[@key='security-eauth-level'] | *[@key='ssp-security-eauth']/*[@key='security-eauth-level'] | *[@key='ssp-security-eauth']/*/*[@key='security-eauth-level'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="security-eauth-level" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1461,7 +1639,12 @@
    </xsl:template>
    <!-- 000 Handling field "status" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='status']" priority="5" mode="json2xml">
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='status'] | *[@key='ssp-system-characteristics']/*[@key='status'] | *[@key='ssp-system-characteristics']/*/*[@key='status'] -->
+   <!--*[@key='status']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='status'] | *[@key='ssp-system-characteristics']/*[@key='status'] | *[@key='ssp-system-characteristics']/*/*[@key='status'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="status" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1472,7 +1655,10 @@
    </xsl:template>
    <!-- 000 Handling field "status-other-description" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='status-other-description']"
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='status-other-description'] | *[@key='ssp-system-characteristics']/*[@key='status-other-description'] | *[@key='ssp-system-characteristics']/*/*[@key='status-other-description'] -->
+   <!--*[@key='status-other-description']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='status-other-description'] | *[@key='ssp-system-characteristics']/*[@key='status-other-description'] | *[@key='ssp-system-characteristics']/*/*[@key='status-other-description'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="status-other-description" namespace="urn:OSCAL-SSP-metaschema">
@@ -1485,7 +1671,12 @@
    </xsl:template>
    <!-- 000 Handling field "deployment-model" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='deployment-model']" priority="5" mode="json2xml">
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='deployment-model'] | *[@key='ssp-system-characteristics']/*[@key='deployment-model'] | *[@key='ssp-system-characteristics']/*/*[@key='deployment-model'] -->
+   <!--*[@key='deployment-model']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='deployment-model'] | *[@key='ssp-system-characteristics']/*[@key='deployment-model'] | *[@key='ssp-system-characteristics']/*/*[@key='deployment-model'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="deployment-model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1496,7 +1687,10 @@
    </xsl:template>
    <!-- 000 Handling field "deployment-model-other-description" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='deployment-model-other-description']"
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='deployment-model-other-description'] | *[@key='ssp-system-characteristics']/*[@key='deployment-model-other-description'] | *[@key='ssp-system-characteristics']/*/*[@key='deployment-model-other-description'] -->
+   <!--*[@key='deployment-model-other-description']-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='deployment-model-other-description'] | *[@key='ssp-system-characteristics']/*[@key='deployment-model-other-description'] | *[@key='ssp-system-characteristics']/*/*[@key='deployment-model-other-description'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="deployment-model-other-description"
@@ -1510,7 +1704,10 @@
    </xsl:template>
    <!-- 000 Handling field "service-model" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/*"
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* | *[@key='ssp-system-characteristics']/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* | *[@key='ssp-system-characteristics']/*/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* -->
+   <!--*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/*-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* | *[@key='ssp-system-characteristics']/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* | *[@key='ssp-system-characteristics']/*/*[@key='service-model'] | *[@key='service-models'] | array[@key='service-models']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="service-model" namespace="urn:OSCAL-SSP-metaschema">
@@ -1545,7 +1742,10 @@
    </xsl:template>
    <!-- 000 Handling field "service-model-other-description" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/*"
+   <!--system-characteristics ssp-system-characteristics-->
+   <!--*[@key='system-characteristics']/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* | *[@key='ssp-system-characteristics']/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* | *[@key='ssp-system-characteristics']/*/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* -->
+   <!--*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/*-->
+   <xsl:template match="*[@key='system-characteristics']/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* | *[@key='ssp-system-characteristics']/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* | *[@key='ssp-system-characteristics']/*/*[@key='service-model-other-description'] | *[@key='service-model-descriptions'] | array[@key='service-model-descriptions']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="service-model-other-description"
@@ -1628,7 +1828,10 @@
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='leveraged-authorization-name']"
+   <!--leveraged-authorization ssp-leveraged-authorization-->
+   <!--*[@key='leveraged-authorization']/*[@key='leveraged-authorization-name'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-name'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-name'] -->
+   <!--*[@key='leveraged-authorization-name']-->
+   <xsl:template match="*[@key='leveraged-authorization']/*[@key='leveraged-authorization-name'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-name'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-name'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-name"
@@ -1642,7 +1845,10 @@
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-service-provider" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='leveraged-authorization-service-provider']"
+   <!--leveraged-authorization ssp-leveraged-authorization-->
+   <!--*[@key='leveraged-authorization']/*[@key='leveraged-authorization-service-provider'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-service-provider'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-service-provider'] -->
+   <!--*[@key='leveraged-authorization-service-provider']-->
+   <xsl:template match="*[@key='leveraged-authorization']/*[@key='leveraged-authorization-service-provider'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-service-provider'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-service-provider'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-service-provider"
@@ -1656,7 +1862,10 @@
    </xsl:template>
    <!-- 000 Handling field "leveraged-authorization-date-granted" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='leveraged-authorization-date-granted']"
+   <!--leveraged-authorization ssp-leveraged-authorization-->
+   <!--*[@key='leveraged-authorization']/*[@key='leveraged-authorization-date-granted'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-date-granted'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-date-granted'] -->
+   <!--*[@key='leveraged-authorization-date-granted']-->
+   <xsl:template match="*[@key='leveraged-authorization']/*[@key='leveraged-authorization-date-granted'] | *[@key='ssp-leveraged-authorization']/*[@key='leveraged-authorization-date-granted'] | *[@key='ssp-leveraged-authorization']/*/*[@key='leveraged-authorization-date-granted'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="leveraged-authorization-date-granted"
@@ -1850,7 +2059,10 @@
    </xsl:template>
    <!-- 000 Handling field "privilege" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/*"
+   <!--role roles-->
+   <!--*[@key='role']/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* | *[@key='roles']/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* | *[@key='roles']/*/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* -->
+   <!--*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/*-->
+   <xsl:template match="*[@key='role']/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* | *[@key='roles']/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* | *[@key='roles']/*/*[@key='privilege'] | *[@key='privileges'] | array[@key='privileges']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="privilege" namespace="urn:OSCAL-SSP-metaschema">
@@ -1885,7 +2097,10 @@
    </xsl:template>
    <!-- 000 Handling field "responsibility" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/*"
+   <!--role roles-->
+   <!--*[@key='role']/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* | *[@key='roles']/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* | *[@key='roles']/*/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* -->
+   <!--*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/*-->
+   <xsl:template match="*[@key='role']/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* | *[@key='roles']/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* | *[@key='roles']/*/*[@key='responsibility'] | *[@key='responsibilities'] | array[@key='responsibilities']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="responsibility" namespace="urn:OSCAL-SSP-metaschema">
@@ -1942,7 +2157,10 @@
    </xsl:template>
    <!-- 000 Handling field "internal-user-total-current" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='internal-user-total-current']"
+   <!--statistics ssp-statistics-->
+   <!--*[@key='statistics']/*[@key='internal-user-total-current'] | *[@key='ssp-statistics']/*[@key='internal-user-total-current'] | *[@key='ssp-statistics']/*/*[@key='internal-user-total-current'] -->
+   <!--*[@key='internal-user-total-current']-->
+   <xsl:template match="*[@key='statistics']/*[@key='internal-user-total-current'] | *[@key='ssp-statistics']/*[@key='internal-user-total-current'] | *[@key='ssp-statistics']/*/*[@key='internal-user-total-current'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="internal-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
@@ -1955,7 +2173,10 @@
    </xsl:template>
    <!-- 000 Handling field "internal-user-total-future" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='internal-user-total-future']"
+   <!--statistics ssp-statistics-->
+   <!--*[@key='statistics']/*[@key='internal-user-total-future'] | *[@key='ssp-statistics']/*[@key='internal-user-total-future'] | *[@key='ssp-statistics']/*/*[@key='internal-user-total-future'] -->
+   <!--*[@key='internal-user-total-future']-->
+   <xsl:template match="*[@key='statistics']/*[@key='internal-user-total-future'] | *[@key='ssp-statistics']/*[@key='internal-user-total-future'] | *[@key='ssp-statistics']/*/*[@key='internal-user-total-future'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="internal-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
@@ -1968,7 +2189,10 @@
    </xsl:template>
    <!-- 000 Handling field "external-user-total-current" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='external-user-total-current']"
+   <!--statistics ssp-statistics-->
+   <!--*[@key='statistics']/*[@key='external-user-total-current'] | *[@key='ssp-statistics']/*[@key='external-user-total-current'] | *[@key='ssp-statistics']/*/*[@key='external-user-total-current'] -->
+   <!--*[@key='external-user-total-current']-->
+   <xsl:template match="*[@key='statistics']/*[@key='external-user-total-current'] | *[@key='ssp-statistics']/*[@key='external-user-total-current'] | *[@key='ssp-statistics']/*/*[@key='external-user-total-current'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="external-user-total-current" namespace="urn:OSCAL-SSP-metaschema">
@@ -1981,7 +2205,10 @@
    </xsl:template>
    <!-- 000 Handling field "external-user-total-future" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='external-user-total-future']"
+   <!--statistics ssp-statistics-->
+   <!--*[@key='statistics']/*[@key='external-user-total-future'] | *[@key='ssp-statistics']/*[@key='external-user-total-future'] | *[@key='ssp-statistics']/*/*[@key='external-user-total-future'] -->
+   <!--*[@key='external-user-total-future']-->
+   <xsl:template match="*[@key='statistics']/*[@key='external-user-total-future'] | *[@key='ssp-statistics']/*[@key='external-user-total-future'] | *[@key='ssp-statistics']/*/*[@key='external-user-total-future'] "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="external-user-total-future" namespace="urn:OSCAL-SSP-metaschema">
@@ -2078,7 +2305,10 @@
    </xsl:template>
    <!-- 000 Handling field "port-range" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/*"
+   <!--protocol ssp-protocol-->
+   <!--*[@key='protocol']/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* | *[@key='ssp-protocol']/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* | *[@key='ssp-protocol']/*/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* -->
+   <!--*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/*-->
+   <xsl:template match="*[@key='protocol']/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* | *[@key='ssp-protocol']/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* | *[@key='ssp-protocol']/*/*[@key='port-range'] | *[@key='port-ranges'] | array[@key='port-ranges']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="port-range" namespace="urn:OSCAL-SSP-metaschema">
@@ -2113,7 +2343,12 @@
    </xsl:template>
    <!-- 000 Handling field "purpose" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='purpose']" priority="5" mode="json2xml">
+   <!--service ssp-service-->
+   <!--*[@key='service']/*[@key='purpose'] | *[@key='ssp-service']/*[@key='purpose'] | *[@key='ssp-service']/*/*[@key='purpose'] -->
+   <!--*[@key='purpose']-->
+   <xsl:template match="*[@key='service']/*[@key='purpose'] | *[@key='ssp-service']/*[@key='purpose'] | *[@key='ssp-service']/*/*[@key='purpose'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="purpose" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:for-each select="string[@key='RICHTEXT'], self::string">
@@ -2126,7 +2361,10 @@
    </xsl:template>
    <!-- 000 Handling field "used-by" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/*"
+   <!--service ssp-service-->
+   <!--*[@key='service']/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* | *[@key='ssp-service']/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* | *[@key='ssp-service']/*/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* -->
+   <!--*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/*-->
+   <xsl:template match="*[@key='service']/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* | *[@key='ssp-service']/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* | *[@key='ssp-service']/*/*[@key='used-by'] | *[@key='component-users'] | array[@key='component-users']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="used-by" namespace="urn:OSCAL-SSP-metaschema">
@@ -2198,7 +2436,12 @@
    </xsl:template>
    <!-- 000 Handling field "external-system-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='external-system-name']" priority="5" mode="json2xml">
+   <!--interconnection ssp-interconnection-->
+   <!--*[@key='interconnection']/*[@key='external-system-name'] | *[@key='ssp-interconnection']/*[@key='external-system-name'] | *[@key='ssp-interconnection']/*/*[@key='external-system-name'] -->
+   <!--*[@key='external-system-name']-->
+   <xsl:template match="*[@key='interconnection']/*[@key='external-system-name'] | *[@key='ssp-interconnection']/*[@key='external-system-name'] | *[@key='ssp-interconnection']/*/*[@key='external-system-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="external-system-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2209,7 +2452,12 @@
    </xsl:template>
    <!-- 000 Handling field "external-system-org" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='external-system-org']" priority="5" mode="json2xml">
+   <!--interconnection ssp-interconnection-->
+   <!--*[@key='interconnection']/*[@key='external-system-org'] | *[@key='ssp-interconnection']/*[@key='external-system-org'] | *[@key='ssp-interconnection']/*/*[@key='external-system-org'] -->
+   <!--*[@key='external-system-org']-->
+   <xsl:template match="*[@key='interconnection']/*[@key='external-system-org'] | *[@key='ssp-interconnection']/*[@key='external-system-org'] | *[@key='ssp-interconnection']/*/*[@key='external-system-org'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="external-system-org" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2220,7 +2468,10 @@
    </xsl:template>
    <!-- 000 Handling field "isa-authorization" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/*"
+   <!--interconnection ssp-interconnection-->
+   <!--*[@key='interconnection']/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* | *[@key='ssp-interconnection']/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* | *[@key='ssp-interconnection']/*/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* -->
+   <!--*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/*-->
+   <xsl:template match="*[@key='interconnection']/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* | *[@key='ssp-interconnection']/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* | *[@key='ssp-interconnection']/*/*[@key='isa-authorization'] | *[@key='isa-authorizations'] | array[@key='isa-authorizations']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="isa-authorization" namespace="urn:OSCAL-SSP-metaschema">
@@ -2255,7 +2506,12 @@
    </xsl:template>
    <!-- 000 Handling field "isa-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='isa-name']" priority="5" mode="json2xml">
+   <!--interconnection ssp-interconnection-->
+   <!--*[@key='interconnection']/*[@key='isa-name'] | *[@key='ssp-interconnection']/*[@key='isa-name'] | *[@key='ssp-interconnection']/*/*[@key='isa-name'] -->
+   <!--*[@key='isa-name']-->
+   <xsl:template match="*[@key='interconnection']/*[@key='isa-name'] | *[@key='ssp-interconnection']/*[@key='isa-name'] | *[@key='ssp-interconnection']/*/*[@key='isa-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="isa-name" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2266,7 +2522,12 @@
    </xsl:template>
    <!-- 000 Handling field "isa-date" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='isa-date']" priority="5" mode="json2xml">
+   <!--interconnection ssp-interconnection-->
+   <!--*[@key='interconnection']/*[@key='isa-date'] | *[@key='ssp-interconnection']/*[@key='isa-date'] | *[@key='ssp-interconnection']/*/*[@key='isa-date'] -->
+   <!--*[@key='isa-date']-->
+   <xsl:template match="*[@key='interconnection']/*[@key='isa-date'] | *[@key='ssp-interconnection']/*[@key='isa-date'] | *[@key='ssp-interconnection']/*/*[@key='isa-date'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="isa-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2340,7 +2601,10 @@
    </xsl:template>
    <!-- 000 Handling field "vendor" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/*"
+   <!--host-item ssp-host-item software-item ssp-software-item-->
+   <!--*[@key='host-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='software-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-host-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-host-item']/*/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/*  | *[@key='ssp-software-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-software-item']/*/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* -->
+   <!--*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='software-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-host-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-host-item']/*/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/*  | *[@key='ssp-software-item']/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* | *[@key='ssp-software-item']/*/*[@key='vendor'] | *[@key='vendors'] | array[@key='vendors']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="vendor" namespace="urn:OSCAL-SSP-metaschema">
@@ -2375,7 +2639,12 @@
    </xsl:template>
    <!-- 000 Handling field "release-date" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='release-date']" priority="5" mode="json2xml">
+   <!--origin ssp-origin-->
+   <!--*[@key='origin']/*[@key='release-date'] | *[@key='ssp-origin']/*[@key='release-date'] | *[@key='ssp-origin']/*/*[@key='release-date'] -->
+   <!--*[@key='release-date']-->
+   <xsl:template match="*[@key='origin']/*[@key='release-date'] | *[@key='ssp-origin']/*[@key='release-date'] | *[@key='ssp-origin']/*/*[@key='release-date'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="release-date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2386,7 +2655,12 @@
    </xsl:template>
    <!-- 000 Handling field "model" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='model']" priority="5" mode="json2xml">
+   <!--origin ssp-origin-->
+   <!--*[@key='origin']/*[@key='model'] | *[@key='ssp-origin']/*[@key='model'] | *[@key='ssp-origin']/*/*[@key='model'] -->
+   <!--*[@key='model']-->
+   <xsl:template match="*[@key='origin']/*[@key='model'] | *[@key='ssp-origin']/*[@key='model'] | *[@key='ssp-origin']/*/*[@key='model'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="model" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -2437,7 +2711,10 @@
    </xsl:template>
    <!-- 000 Handling field "ip-address" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/*"
+   <!--characteristics ssp-characteristics inventory-item inventory-items-->
+   <!--*[@key='characteristics']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='inventory-item']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='ssp-characteristics']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='ssp-characteristics']/*/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/*  | *[@key='inventory-items']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='inventory-items']/*/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* -->
+   <!--*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/*-->
+   <xsl:template match="*[@key='characteristics']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='inventory-item']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='ssp-characteristics']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='ssp-characteristics']/*/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/*  | *[@key='inventory-items']/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* | *[@key='inventory-items']/*/*[@key='ip-address'] | *[@key='ip-addresses'] | array[@key='ip-addresses']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="ip-address" namespace="urn:OSCAL-SSP-metaschema">
@@ -2540,7 +2817,10 @@
    </xsl:template>
    <!-- 000 Handling field "dns-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/*"
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* | *[@key='inventory-items']/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* | *[@key='inventory-items']/*/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* -->
+   <!--*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/*-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* | *[@key='inventory-items']/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* | *[@key='inventory-items']/*/*[@key='dns-name'] | *[@key='dns-names'] | array[@key='dns-names']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="dns-name" namespace="urn:OSCAL-SSP-metaschema">
@@ -2617,7 +2897,10 @@
    </xsl:template>
    <!-- 000 Handling field "netbios-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* | *[@key='ssp-host-item']/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* | *[@key='ssp-host-item']/*/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* -->
+   <!--*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* | *[@key='ssp-host-item']/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* | *[@key='ssp-host-item']/*/*[@key='netbios-name'] | *[@key='netbios-names'] | array[@key='netbios-names']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="netbios-name" namespace="urn:OSCAL-SSP-metaschema">
@@ -2652,7 +2935,10 @@
    </xsl:template>
    <!-- 000 Handling field "mac-address" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* | *[@key='ssp-host-item']/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* | *[@key='ssp-host-item']/*/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* -->
+   <!--*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* | *[@key='ssp-host-item']/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* | *[@key='ssp-host-item']/*/*[@key='mac-address'] | *[@key='mac-addresses'] | array[@key='mac-addresses']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="mac-address" namespace="urn:OSCAL-SSP-metaschema">
@@ -2687,7 +2973,10 @@
    </xsl:template>
    <!-- 000 Handling field "os-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* | *[@key='ssp-host-item']/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* | *[@key='ssp-host-item']/*/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* -->
+   <!--*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* | *[@key='ssp-host-item']/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* | *[@key='ssp-host-item']/*/*[@key='os-name'] | *[@key='os-names'] | array[@key='os-names']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="os-name" namespace="urn:OSCAL-SSP-metaschema">
@@ -2722,7 +3011,10 @@
    </xsl:template>
    <!-- 000 Handling field "os-version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* | *[@key='ssp-host-item']/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* | *[@key='ssp-host-item']/*/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* -->
+   <!--*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* | *[@key='ssp-host-item']/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* | *[@key='ssp-host-item']/*/*[@key='os-version'] | *[@key='os-versions'] | array[@key='os-versions']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="os-version" namespace="urn:OSCAL-SSP-metaschema">
@@ -2757,7 +3049,10 @@
    </xsl:template>
    <!-- 000 Handling field "location" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='location'] | *[@key='locations'] | array[@key='locations']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* | *[@key='ssp-host-item']/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* | *[@key='ssp-host-item']/*/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* -->
+   <!--*[@key='location'] | *[@key='locations'] | array[@key='locations']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* | *[@key='ssp-host-item']/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* | *[@key='ssp-host-item']/*/*[@key='location'] | *[@key='locations'] | array[@key='locations']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="location" namespace="urn:OSCAL-SSP-metaschema">
@@ -2792,7 +3087,10 @@
    </xsl:template>
    <!-- 000 Handling field "asset-type" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* | *[@key='ssp-host-item']/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* | *[@key='ssp-host-item']/*/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* -->
+   <!--*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* | *[@key='ssp-host-item']/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* | *[@key='ssp-host-item']/*/*[@key='asset-type'] | *[@key='asset-types'] | array[@key='asset-types']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="asset-type" namespace="urn:OSCAL-SSP-metaschema">
@@ -2827,7 +3125,10 @@
    </xsl:template>
    <!-- 000 Handling field "hardware-model" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* | *[@key='ssp-host-item']/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* | *[@key='ssp-host-item']/*/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* -->
+   <!--*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* | *[@key='ssp-host-item']/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* | *[@key='ssp-host-item']/*/*[@key='hardware-model'] | *[@key='hardware-models'] | array[@key='hardware-models']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="hardware-model" namespace="urn:OSCAL-SSP-metaschema">
@@ -2862,7 +3163,10 @@
    </xsl:template>
    <!-- 000 Handling field "authenticated-scan" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* | *[@key='ssp-host-item']/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* | *[@key='ssp-host-item']/*/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* -->
+   <!--*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* | *[@key='ssp-host-item']/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* | *[@key='ssp-host-item']/*/*[@key='authenticated-scan'] | *[@key='authenticated-scans'] | array[@key='authenticated-scans']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="authenticated-scan" namespace="urn:OSCAL-SSP-metaschema">
@@ -2925,7 +3229,10 @@
    </xsl:template>
    <!-- 000 Handling field "software-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/*"
+   <!--software-item ssp-software-item-->
+   <!--*[@key='software-item']/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* | *[@key='ssp-software-item']/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* | *[@key='ssp-software-item']/*/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* -->
+   <!--*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/*-->
+   <xsl:template match="*[@key='software-item']/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* | *[@key='ssp-software-item']/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* | *[@key='ssp-software-item']/*/*[@key='software-name'] | *[@key='software-names'] | array[@key='software-names']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="software-name" namespace="urn:OSCAL-SSP-metaschema">
@@ -2960,7 +3267,10 @@
    </xsl:template>
    <!-- 000 Handling field "software-version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/*"
+   <!--software-item ssp-software-item-->
+   <!--*[@key='software-item']/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* | *[@key='ssp-software-item']/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* | *[@key='ssp-software-item']/*/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* -->
+   <!--*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/*-->
+   <xsl:template match="*[@key='software-item']/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* | *[@key='ssp-software-item']/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* | *[@key='ssp-software-item']/*/*[@key='software-version'] | *[@key='software-versions'] | array[@key='software-versions']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="software-version" namespace="urn:OSCAL-SSP-metaschema">
@@ -2995,7 +3305,10 @@
    </xsl:template>
    <!-- 000 Handling field "software-patch-level" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/*"
+   <!--software-item ssp-software-item-->
+   <!--*[@key='software-item']/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* | *[@key='ssp-software-item']/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* | *[@key='ssp-software-item']/*/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* -->
+   <!--*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/*-->
+   <xsl:template match="*[@key='software-item']/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* | *[@key='ssp-software-item']/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* | *[@key='ssp-software-item']/*/*[@key='software-patch-level'] | *[@key='software-patch-levels'] | array[@key='software-patch-levels']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="software-patch-level" namespace="urn:OSCAL-SSP-metaschema">
@@ -3030,7 +3343,10 @@
    </xsl:template>
    <!-- 000 Handling field "function" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='function'] | *[@key='functions'] | array[@key='functions']/*"
+   <!--software-item ssp-software-item-->
+   <!--*[@key='software-item']/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* | *[@key='ssp-software-item']/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* | *[@key='ssp-software-item']/*/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* -->
+   <!--*[@key='function'] | *[@key='functions'] | array[@key='functions']/*-->
+   <xsl:template match="*[@key='software-item']/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* | *[@key='ssp-software-item']/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* | *[@key='ssp-software-item']/*/*[@key='function'] | *[@key='functions'] | array[@key='functions']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="function" namespace="urn:OSCAL-SSP-metaschema">
@@ -3065,7 +3381,12 @@
    </xsl:template>
    <!-- 000 Handling field "comments" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='comments']" priority="5" mode="json2xml">
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='comments'] | *[@key='inventory-items']/*[@key='comments'] | *[@key='inventory-items']/*/*[@key='comments'] -->
+   <!--*[@key='comments']-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='comments'] | *[@key='inventory-items']/*[@key='comments'] | *[@key='inventory-items']/*/*[@key='comments'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="comments" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3076,7 +3397,12 @@
    </xsl:template>
    <!-- 000 Handling field "serial-no" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='serial-no']" priority="5" mode="json2xml">
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='serial-no'] | *[@key='inventory-items']/*[@key='serial-no'] | *[@key='inventory-items']/*/*[@key='serial-no'] -->
+   <!--*[@key='serial-no']-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='serial-no'] | *[@key='inventory-items']/*[@key='serial-no'] | *[@key='inventory-items']/*/*[@key='serial-no'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="serial-no" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3087,7 +3413,10 @@
    </xsl:template>
    <!-- 000 Handling field "network-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/*"
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* | *[@key='inventory-items']/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* | *[@key='inventory-items']/*/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* -->
+   <!--*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/*-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* | *[@key='inventory-items']/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* | *[@key='inventory-items']/*/*[@key='network-id'] | *[@key='network-ids'] | array[@key='network-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="network-id" namespace="urn:OSCAL-SSP-metaschema">
@@ -3122,7 +3451,10 @@
    </xsl:template>
    <!-- 000 Handling field "asset-owner" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/*"
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* | *[@key='inventory-items']/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* | *[@key='inventory-items']/*/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* -->
+   <!--*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/*-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* | *[@key='inventory-items']/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* | *[@key='inventory-items']/*/*[@key='asset-owner'] | *[@key='asset-owners'] | array[@key='asset-owners']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="asset-owner" namespace="urn:OSCAL-SSP-metaschema">
@@ -3157,7 +3489,10 @@
    </xsl:template>
    <!-- 000 Handling field "asset-administrator" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/*"
+   <!--inventory-item inventory-items-->
+   <!--*[@key='inventory-item']/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* | *[@key='inventory-items']/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* | *[@key='inventory-items']/*/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* -->
+   <!--*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/*-->
+   <xsl:template match="*[@key='inventory-item']/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* | *[@key='inventory-items']/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* | *[@key='inventory-items']/*/*[@key='asset-administrator'] | *[@key='asset-administrators'] | array[@key='asset-administrators']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="asset-administrator" namespace="urn:OSCAL-SSP-metaschema">
@@ -3236,7 +3571,10 @@
    </xsl:template>
    <!-- 000 Handling field "responsible-role" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/*"
+   <!--control controls-->
+   <!--*[@key='control']/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* | *[@key='controls']/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* | *[@key='controls']/*/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* -->
+   <!--*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/*-->
+   <xsl:template match="*[@key='control']/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* | *[@key='controls']/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* | *[@key='controls']/*/*[@key='responsible-role'] | *[@key='ssp-responsible-role'] | array[@key='ssp-responsible-role']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="responsible-role" namespace="urn:OSCAL-SSP-metaschema">
@@ -3287,7 +3625,12 @@
    </xsl:template>
    <!-- 000 Handling field "value" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='value']" priority="5" mode="json2xml">
+   <!--set-param parameter-settings-->
+   <!--*[@key='set-param']/*[@key='value'] | *[@key='parameter-settings']/*[@key='value'] | *[@key='parameter-settings']/*/*[@key='value'] -->
+   <!--*[@key='value']-->
+   <xsl:template match="*[@key='set-param']/*[@key='value'] | *[@key='parameter-settings']/*[@key='value'] | *[@key='parameter-settings']/*/*[@key='value'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="value" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3339,7 +3682,10 @@
    </xsl:template>
    <!-- 000 Handling field "citation" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='citation'] | *[@key='citations'] | array[@key='citations']/*"
+   <!--ref refs-->
+   <!--*[@key='ref']/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* | *[@key='refs']/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* | *[@key='refs']/*/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* -->
+   <!--*[@key='citation'] | *[@key='citations'] | array[@key='citations']/*-->
+   <xsl:template match="*[@key='ref']/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* | *[@key='refs']/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* | *[@key='refs']/*/*[@key='citation'] | *[@key='citations'] | array[@key='citations']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="citation" namespace="urn:OSCAL-SSP-metaschema">
@@ -3376,7 +3722,10 @@
    </xsl:template>
    <!-- 000 Handling field "link" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='link'] | *[@key='links'] | array[@key='links']/*"
+   <!--metadata references-->
+   <!--*[@key='metadata']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='references']/*[@key='link'] | *[@key='links'] | array[@key='links']/*-->
+   <!--*[@key='link'] | *[@key='links'] | array[@key='links']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='references']/*[@key='link'] | *[@key='links'] | array[@key='links']/*"
                  priority="5"
                  mode="json2xml">
       <xsl:element name="link" namespace="urn:OSCAL-SSP-metaschema">
@@ -3427,7 +3776,12 @@
    </xsl:template>
    <!-- 000 Handling field "format" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='format']" priority="5" mode="json2xml">
+   <!--attachment-->
+   <!--*[@key='attachment']/*[@key='format']-->
+   <!--*[@key='format']-->
+   <xsl:template match="*[@key='attachment']/*[@key='format']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="format" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3438,7 +3792,12 @@
    </xsl:template>
    <!-- 000 Handling field "date" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='date']" priority="5" mode="json2xml">
+   <!--attachment-->
+   <!--*[@key='attachment']/*[@key='date']-->
+   <!--*[@key='date']-->
+   <xsl:template match="*[@key='attachment']/*[@key='date']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="date" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3449,7 +3808,12 @@
    </xsl:template>
    <!-- 000 Handling field "attachment-type" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='attachment-type']" priority="5" mode="json2xml">
+   <!--attachment-->
+   <!--*[@key='attachment']/*[@key='attachment-type']-->
+   <!--*[@key='attachment-type']-->
+   <xsl:template match="*[@key='attachment']/*[@key='attachment-type']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="attachment-type" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3460,7 +3824,12 @@
    </xsl:template>
    <!-- 000 Handling field "base64" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='base64']" priority="5" mode="json2xml">
+   <!--resource resources attachment-->
+   <!--*[@key='resource']/*[@key='base64'] | *[@key='attachment']/*[@key='base64'] | *[@key='resources']/*[@key='base64'] | *[@key='resources']/*/*[@key='base64'] -->
+   <!--*[@key='base64']-->
+   <xsl:template match="*[@key='resource']/*[@key='base64'] | *[@key='attachment']/*[@key='base64'] | *[@key='resources']/*[@key='base64'] | *[@key='resources']/*/*[@key='base64'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="base64" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3710,7 +4079,10 @@
    </xsl:template>
    <!-- 000 Handling field "subcomponent" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/*"
+   <!--component components-->
+   <!--*[@key='component']/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* | *[@key='components']/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* | *[@key='components']/*/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* -->
+   <!--*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/*-->
+   <xsl:template match="*[@key='component']/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* | *[@key='components']/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* | *[@key='components']/*/*[@key='subcomponent'] | *[@key='subcomponents'] | array[@key='subcomponents']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="subcomponent" namespace="urn:OSCAL-SSP-metaschema">
@@ -3745,7 +4117,12 @@
    </xsl:template>
    <!-- 000 Handling field "organization" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='organization']" priority="5" mode="json2xml">
+   <!--origin ssp-origin-->
+   <!--*[@key='origin']/*[@key='organization'] | *[@key='ssp-origin']/*[@key='organization'] | *[@key='ssp-origin']/*/*[@key='organization'] -->
+   <!--*[@key='organization']-->
+   <xsl:template match="*[@key='origin']/*[@key='organization'] | *[@key='ssp-origin']/*[@key='organization'] | *[@key='ssp-origin']/*/*[@key='organization'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="organization" namespace="urn:OSCAL-SSP-metaschema">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -3756,7 +4133,10 @@
    </xsl:template>
    <!-- 000 Handling field "baseline-template" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* | *[@key='ssp-host-item']/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* | *[@key='ssp-host-item']/*/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* -->
+   <!--*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* | *[@key='ssp-host-item']/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* | *[@key='ssp-host-item']/*/*[@key='baseline-template'] | *[@key='baseline-templates'] | array[@key='baseline-templates']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="baseline-template" namespace="urn:OSCAL-SSP-metaschema">
@@ -3791,7 +4171,10 @@
    </xsl:template>
    <!-- 000 Handling field "scanned" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/*"
+   <!--host-item ssp-host-item-->
+   <!--*[@key='host-item']/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* | *[@key='ssp-host-item']/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* | *[@key='ssp-host-item']/*/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* -->
+   <!--*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/*-->
+   <xsl:template match="*[@key='host-item']/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* | *[@key='ssp-host-item']/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* | *[@key='ssp-host-item']/*/*[@key='scanned'] | *[@key='ssp-scanned'] | array[@key='ssp-scanned']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="scanned" namespace="urn:OSCAL-SSP-metaschema">

@@ -86,7 +86,10 @@
    </xsl:template>
    <!-- 000 Handling field "link" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='link'] | *[@key='links'] | array[@key='links']/*"
+   <!--metadata param parameters part parts set settings add additions-->
+   <!--*[@key='metadata']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='param']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='part']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='set']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='add']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parameters']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parameters']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='parts']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parts']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='settings']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='settings']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='additions']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='additions']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/* -->
+   <!--*[@key='link'] | *[@key='links'] | array[@key='links']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='param']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='part']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='set']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='add']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parameters']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parameters']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='parts']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='parts']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='settings']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='settings']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/*  | *[@key='additions']/*[@key='link'] | *[@key='links'] | array[@key='links']/* | *[@key='additions']/*/*[@key='link'] | *[@key='links'] | array[@key='links']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="link" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -123,7 +126,12 @@
    </xsl:template>
    <!-- 000 Handling field "last-modified-date" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='last-modified-date']" priority="5" mode="json2xml">
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='last-modified-date']-->
+   <!--*[@key='last-modified-date']-->
+   <xsl:template match="*[@key='metadata']/*[@key='last-modified-date']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="last-modified-date" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -134,7 +142,12 @@
    </xsl:template>
    <!-- 000 Handling field "version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='version']" priority="5" mode="json2xml">
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='version']-->
+   <!--*[@key='version']-->
+   <xsl:template match="*[@key='metadata']/*[@key='version']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -145,7 +158,12 @@
    </xsl:template>
    <!-- 000 Handling field "oscal-version" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='oscal-version']" priority="5" mode="json2xml">
+   <!--metadata-->
+   <!--*[@key='metadata']/*[@key='oscal-version']-->
+   <!--*[@key='oscal-version']-->
+   <xsl:template match="*[@key='metadata']/*[@key='oscal-version']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="oscal-version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -156,7 +174,10 @@
    </xsl:template>
    <!-- 000 Handling field "doc-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*"
+   <!--metadata citation citations-->
+   <!--*[@key='metadata']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citation']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citations']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citations']/*/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* -->
+   <!--*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citation']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citations']/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* | *[@key='citations']/*/*[@key='doc-id'] | *[@key='document-ids'] | array[@key='document-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="doc-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -200,7 +221,10 @@
    </xsl:template>
    <!-- 000 Handling field "prop" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*"
+   <!--metadata part parts add additions-->
+   <!--*[@key='metadata']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='part']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='add']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='parts']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='parts']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*  | *[@key='additions']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='additions']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* -->
+   <!--*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*-->
+   <xsl:template match="*[@key='metadata']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='part']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='add']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='parts']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='parts']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/*  | *[@key='additions']/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* | *[@key='additions']/*/*[@key='prop'] | *[@key='properties'] | array[@key='properties']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="prop" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -334,7 +358,10 @@
    </xsl:template>
    <!-- 000 Handling field "person-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/*"
+   <!--person persons-->
+   <!--*[@key='person']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* -->
+   <!--*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/*-->
+   <xsl:template match="*[@key='person']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* | *[@key='persons']/*/*[@key='person-id'] | *[@key='person-ids'] | array[@key='person-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="person-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -369,7 +396,10 @@
    </xsl:template>
    <!-- 000 Handling field "org-id" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='org']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* -->
+   <!--*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/*-->
+   <xsl:template match="*[@key='person']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='org']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* | *[@key='persons']/*/*[@key='org-id'] | *[@key='organization-ids'] | array[@key='organization-ids']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="org-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -438,7 +468,12 @@
    </xsl:template>
    <!-- 000 Handling field "person-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='person-name']" priority="5" mode="json2xml">
+   <!--person persons-->
+   <!--*[@key='person']/*[@key='person-name'] | *[@key='persons']/*[@key='person-name'] | *[@key='persons']/*/*[@key='person-name'] -->
+   <!--*[@key='person-name']-->
+   <xsl:template match="*[@key='person']/*[@key='person-name'] | *[@key='persons']/*[@key='person-name'] | *[@key='persons']/*/*[@key='person-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="person-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -449,7 +484,12 @@
    </xsl:template>
    <!-- 000 Handling field "org-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='org-name']" priority="5" mode="json2xml">
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='org-name'] | *[@key='org']/*[@key='org-name'] | *[@key='persons']/*[@key='org-name'] | *[@key='persons']/*/*[@key='org-name'] -->
+   <!--*[@key='org-name']-->
+   <xsl:template match="*[@key='person']/*[@key='org-name'] | *[@key='org']/*[@key='org-name'] | *[@key='persons']/*[@key='org-name'] | *[@key='persons']/*/*[@key='org-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="org-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -460,7 +500,12 @@
    </xsl:template>
    <!-- 000 Handling field "short-name" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='short-name']" priority="5" mode="json2xml">
+   <!--person persons org role roles-->
+   <!--*[@key='person']/*[@key='short-name'] | *[@key='org']/*[@key='short-name'] | *[@key='role']/*[@key='short-name'] | *[@key='persons']/*[@key='short-name'] | *[@key='persons']/*/*[@key='short-name']  | *[@key='roles']/*[@key='short-name'] | *[@key='roles']/*/*[@key='short-name'] -->
+   <!--*[@key='short-name']-->
+   <xsl:template match="*[@key='person']/*[@key='short-name'] | *[@key='org']/*[@key='short-name'] | *[@key='role']/*[@key='short-name'] | *[@key='persons']/*[@key='short-name'] | *[@key='persons']/*/*[@key='short-name']  | *[@key='roles']/*[@key='short-name'] | *[@key='roles']/*/*[@key='short-name'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="short-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -495,7 +540,10 @@
    </xsl:template>
    <!-- 000 Handling field "addr-line" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/*"
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* -->
+   <!--*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/*-->
+   <xsl:template match="*[@key='address']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* | *[@key='addresses']/*/*[@key='addr-line'] | *[@key='postal-address'] | array[@key='postal-address']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="addr-line" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -530,7 +578,12 @@
    </xsl:template>
    <!-- 000 Handling field "city" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='city']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='city'] | *[@key='addresses']/*[@key='city'] | *[@key='addresses']/*/*[@key='city'] -->
+   <!--*[@key='city']-->
+   <xsl:template match="*[@key='address']/*[@key='city'] | *[@key='addresses']/*[@key='city'] | *[@key='addresses']/*/*[@key='city'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="city" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -541,7 +594,12 @@
    </xsl:template>
    <!-- 000 Handling field "state" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='state']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='state'] | *[@key='addresses']/*[@key='state'] | *[@key='addresses']/*/*[@key='state'] -->
+   <!--*[@key='state']-->
+   <xsl:template match="*[@key='address']/*[@key='state'] | *[@key='addresses']/*[@key='state'] | *[@key='addresses']/*/*[@key='state'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="state" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -552,7 +610,12 @@
    </xsl:template>
    <!-- 000 Handling field "postal-code" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='postal-code']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='postal-code'] | *[@key='addresses']/*[@key='postal-code'] | *[@key='addresses']/*/*[@key='postal-code'] -->
+   <!--*[@key='postal-code']-->
+   <xsl:template match="*[@key='address']/*[@key='postal-code'] | *[@key='addresses']/*[@key='postal-code'] | *[@key='addresses']/*/*[@key='postal-code'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="postal-code" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -563,7 +626,12 @@
    </xsl:template>
    <!-- 000 Handling field "country" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='country']" priority="5" mode="json2xml">
+   <!--address addresses-->
+   <!--*[@key='address']/*[@key='country'] | *[@key='addresses']/*[@key='country'] | *[@key='addresses']/*/*[@key='country'] -->
+   <!--*[@key='country']-->
+   <xsl:template match="*[@key='address']/*[@key='country'] | *[@key='addresses']/*[@key='country'] | *[@key='addresses']/*/*[@key='country'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="country" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -574,7 +642,10 @@
    </xsl:template>
    <!-- 000 Handling field "email" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='org']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* -->
+   <!--*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/*-->
+   <xsl:template match="*[@key='person']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='org']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* | *[@key='persons']/*/*[@key='email'] | *[@key='email-addresses'] | array[@key='email-addresses']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="email" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -609,7 +680,10 @@
    </xsl:template>
    <!-- 000 Handling field "phone" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='org']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* -->
+   <!--*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/*-->
+   <xsl:template match="*[@key='person']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='org']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* | *[@key='persons']/*/*[@key='phone'] | *[@key='telephone-numbers'] | array[@key='telephone-numbers']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="phone" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -644,7 +718,10 @@
    </xsl:template>
    <!-- 000 Handling field "url" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/*"
+   <!--person persons org-->
+   <!--*[@key='person']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='org']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* -->
+   <!--*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/*-->
+   <xsl:template match="*[@key='person']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='org']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* | *[@key='persons']/*/*[@key='url'] | *[@key='URLs'] | array[@key='URLs']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="url" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -687,7 +764,12 @@
    </xsl:template>
    <!-- 000 Handling field "desc" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='desc']" priority="5" mode="json2xml">
+   <!--resource resources role roles citation citations-->
+   <!--*[@key='resource']/*[@key='desc'] | *[@key='role']/*[@key='desc'] | *[@key='citation']/*[@key='desc'] | *[@key='resources']/*[@key='desc'] | *[@key='resources']/*/*[@key='desc']  | *[@key='roles']/*[@key='desc'] | *[@key='roles']/*/*[@key='desc']  | *[@key='citations']/*[@key='desc'] | *[@key='citations']/*/*[@key='desc'] -->
+   <!--*[@key='desc']-->
+   <xsl:template match="*[@key='resource']/*[@key='desc'] | *[@key='role']/*[@key='desc'] | *[@key='citation']/*[@key='desc'] | *[@key='resources']/*[@key='desc'] | *[@key='resources']/*/*[@key='desc']  | *[@key='roles']/*[@key='desc'] | *[@key='roles']/*/*[@key='desc']  | *[@key='citations']/*[@key='desc'] | *[@key='citations']/*/*[@key='desc'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="desc" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -720,7 +802,10 @@
    </xsl:template>
    <!-- 000 Handling field "hash" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/*"
+   <!--rlink rlinks-->
+   <!--*[@key='rlink']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* -->
+   <!--*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/*-->
+   <xsl:template match="*[@key='rlink']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* | *[@key='rlinks']/*/*[@key='hash'] | *[@key='hashes'] | array[@key='hashes']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="hash" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -811,7 +896,12 @@
    </xsl:template>
    <!-- 000 Handling field "title" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='title']" priority="5" mode="json2xml">
+   <!--metadata role roles citation citations part parts add additions-->
+   <!--*[@key='metadata']/*[@key='title'] | *[@key='role']/*[@key='title'] | *[@key='citation']/*[@key='title'] | *[@key='part']/*[@key='title'] | *[@key='add']/*[@key='title'] | *[@key='roles']/*[@key='title'] | *[@key='roles']/*/*[@key='title']  | *[@key='citations']/*[@key='title'] | *[@key='citations']/*/*[@key='title']  | *[@key='parts']/*[@key='title'] | *[@key='parts']/*/*[@key='title']  | *[@key='additions']/*[@key='title'] | *[@key='additions']/*/*[@key='title'] -->
+   <!--*[@key='title']-->
+   <xsl:template match="*[@key='metadata']/*[@key='title'] | *[@key='role']/*[@key='title'] | *[@key='citation']/*[@key='title'] | *[@key='part']/*[@key='title'] | *[@key='add']/*[@key='title'] | *[@key='roles']/*[@key='title'] | *[@key='roles']/*/*[@key='title']  | *[@key='citations']/*[@key='title'] | *[@key='citations']/*/*[@key='title']  | *[@key='parts']/*[@key='title'] | *[@key='parts']/*/*[@key='title']  | *[@key='additions']/*[@key='title'] | *[@key='additions']/*/*[@key='title'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="title" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:for-each select="string[@key='RICHTEXT'], self::string">
@@ -824,7 +914,12 @@
    </xsl:template>
    <!-- 000 Handling field "base64" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='base64']" priority="5" mode="json2xml">
+   <!--resource resources-->
+   <!--*[@key='resource']/*[@key='base64'] | *[@key='resources']/*[@key='base64'] | *[@key='resources']/*/*[@key='base64'] -->
+   <!--*[@key='base64']-->
+   <xsl:template match="*[@key='resource']/*[@key='base64'] | *[@key='resources']/*[@key='base64'] | *[@key='resources']/*/*[@key='base64'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="base64" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -866,7 +961,10 @@
    </xsl:template>
    <!-- 000 Handling field "target" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='target'] | *[@key='targets'] | array[@key='targets']/*"
+   <!--citation citations-->
+   <!--*[@key='citation']/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* | *[@key='citations']/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* | *[@key='citations']/*/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* -->
+   <!--*[@key='target'] | *[@key='targets'] | array[@key='targets']/*-->
+   <xsl:template match="*[@key='citation']/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* | *[@key='citations']/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* | *[@key='citations']/*/*[@key='target'] | *[@key='targets'] | array[@key='targets']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="target" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -929,7 +1027,12 @@
    </xsl:template>
    <!-- 000 Handling field "label" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='label']" priority="5" mode="json2xml">
+   <!--param parameters set settings-->
+   <!--*[@key='param']/*[@key='label'] | *[@key='set']/*[@key='label'] | *[@key='parameters']/*[@key='label'] | *[@key='parameters']/*/*[@key='label']  | *[@key='settings']/*[@key='label'] | *[@key='settings']/*/*[@key='label'] -->
+   <!--*[@key='label']-->
+   <xsl:template match="*[@key='param']/*[@key='label'] | *[@key='set']/*[@key='label'] | *[@key='parameters']/*[@key='label'] | *[@key='parameters']/*/*[@key='label']  | *[@key='settings']/*[@key='label'] | *[@key='settings']/*/*[@key='label'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="label" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:for-each select="string[@key='RICHTEXT'], self::string">
@@ -942,7 +1045,10 @@
    </xsl:template>
    <!-- 000 Handling field "usage" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/*"
+   <!--param parameters set settings-->
+   <!--*[@key='param']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='set']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='parameters']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='parameters']/*/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/*  | *[@key='settings']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='settings']/*/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* -->
+   <!--*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/*-->
+   <xsl:template match="*[@key='param']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='set']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='parameters']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='parameters']/*/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/*  | *[@key='settings']/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* | *[@key='settings']/*/*[@key='usage'] | *[@key='descriptions'] | array[@key='descriptions']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="usage" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -979,7 +1085,10 @@
    </xsl:template>
    <!-- 000 Handling field "constraint" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/*"
+   <!--param parameters set settings-->
+   <!--*[@key='param']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='set']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='parameters']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='parameters']/*/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/*  | *[@key='settings']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='settings']/*/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* -->
+   <!--*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/*-->
+   <xsl:template match="*[@key='param']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='set']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='parameters']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='parameters']/*/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/*  | *[@key='settings']/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* | *[@key='settings']/*/*[@key='constraint'] | *[@key='constraints'] | array[@key='constraints']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="constraint" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1030,7 +1139,12 @@
    </xsl:template>
    <!-- 000 Handling field "value" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='value']" priority="5" mode="json2xml">
+   <!--param parameters set settings-->
+   <!--*[@key='param']/*[@key='value'] | *[@key='set']/*[@key='value'] | *[@key='parameters']/*[@key='value'] | *[@key='parameters']/*/*[@key='value']  | *[@key='settings']/*[@key='value'] | *[@key='settings']/*/*[@key='value'] -->
+   <!--*[@key='value']-->
+   <xsl:template match="*[@key='param']/*[@key='value'] | *[@key='set']/*[@key='value'] | *[@key='parameters']/*[@key='value'] | *[@key='parameters']/*/*[@key='value']  | *[@key='settings']/*[@key='value'] | *[@key='settings']/*/*[@key='value'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="value" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:for-each select="string[@key='RICHTEXT'], self::string">
@@ -1051,7 +1165,10 @@
    </xsl:template>
    <!-- 000 Handling field "choice" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='choice'] | *[@key='alternatives'] | array[@key='alternatives']/*"
+   <!--select-->
+   <!--*[@key='select']/*[@key='choice'] | *[@key='alternatives'] | array[@key='alternatives']/*-->
+   <!--*[@key='choice'] | *[@key='alternatives'] | array[@key='alternatives']/*-->
+   <xsl:template match="*[@key='select']/*[@key='choice'] | *[@key='alternatives'] | array[@key='alternatives']/*"
                  priority="5"
                  mode="json2xml">
       <xsl:element name="choice" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1191,7 +1308,12 @@
    </xsl:template>
    <!-- 000 Handling field "combine" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='combine']" priority="5" mode="json2xml">
+   <!--merge-->
+   <!--*[@key='merge']/*[@key='combine']-->
+   <!--*[@key='combine']-->
+   <xsl:template match="*[@key='merge']/*[@key='combine']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="combine" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1202,7 +1324,12 @@
    </xsl:template>
    <!-- 000 Handling field "as-is" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='as-is']" priority="5" mode="json2xml">
+   <!--merge-->
+   <!--*[@key='merge']/*[@key='as-is']-->
+   <!--*[@key='as-is']-->
+   <xsl:template match="*[@key='merge']/*[@key='as-is']"
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="as-is" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1300,7 +1427,12 @@
    </xsl:template>
    <!-- 000 Handling field "all" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='all']" priority="5" mode="json2xml">
+   <!--include includes-->
+   <!--*[@key='include']/*[@key='all'] | *[@key='includes']/*[@key='all'] | *[@key='includes']/*/*[@key='all'] -->
+   <!--*[@key='all']-->
+   <xsl:template match="*[@key='include']/*[@key='all'] | *[@key='includes']/*[@key='all'] | *[@key='includes']/*/*[@key='all'] "
+                 priority="5"
+                 mode="json2xml">
       <xsl:element name="all" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
@@ -1311,7 +1443,10 @@
    </xsl:template>
    <!-- 000 Handling field "call" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*"
+   <!--custom customs group groups include includes exclude excludes-->
+   <!--*[@key='custom']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='group']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='include']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='exclude']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='customs']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='customs']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='groups']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='groups']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='includes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='excludes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='excludes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* -->
+   <!--*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*-->
+   <xsl:template match="*[@key='custom']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='group']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='include']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='exclude']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='customs']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='customs']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='groups']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='groups']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='includes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='includes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/*  | *[@key='excludes']/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* | *[@key='excludes']/*/*[@key='call'] | *[@key='id-selectors'] | array[@key='id-selectors']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="call" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1346,7 +1481,10 @@
    </xsl:template>
    <!-- 000 Handling field "match" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*"
+   <!--custom customs group groups include includes exclude excludes-->
+   <!--*[@key='custom']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='group']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='include']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='exclude']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='customs']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='customs']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='groups']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='groups']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='includes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='excludes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='excludes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* -->
+   <!--*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*-->
+   <xsl:template match="*[@key='custom']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='group']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='include']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='exclude']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='customs']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='customs']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='groups']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='groups']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='includes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='includes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/*  | *[@key='excludes']/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* | *[@key='excludes']/*/*[@key='match'] | *[@key='pattern-selectors'] | array[@key='pattern-selectors']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="match" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1453,7 +1591,10 @@
    </xsl:template>
    <!-- 000 Handling field "remove" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='remove'] | *[@key='removals'] | array[@key='removals']/*"
+   <!--alter alterations-->
+   <!--*[@key='alter']/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* | *[@key='alterations']/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* | *[@key='alterations']/*/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* -->
+   <!--*[@key='remove'] | *[@key='removals'] | array[@key='removals']/*-->
+   <xsl:template match="*[@key='alter']/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* | *[@key='alterations']/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* | *[@key='alterations']/*/*[@key='remove'] | *[@key='removals'] | array[@key='removals']/* "
                  priority="5"
                  mode="json2xml">
       <xsl:element name="remove" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1543,6 +1684,15 @@
                  match="*[@key='call']/*[@key='subcontrol-id'] | *[@key='id-selectors']/*[@key='subcontrol-id'] | array[@key='id-selectors']/*/*[@key='subcontrol-id'] | *[@key='alter']/*[@key='subcontrol-id'] | *[@key='alterations']/*[@key='subcontrol-id'] | array[@key='alterations']/*/*[@key='subcontrol-id']"
                  mode="as-attribute">
       <xsl:attribute name="subcontrol-id">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "param-id" 000 -->
+   <xsl:template match="*[@key='param-id']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='set']/*[@key='param-id'] | *[@key='settings']/*[@key='param-id'] | array[@key='settings']/*/*[@key='param-id']"
+                 mode="as-attribute">
+      <xsl:attribute name="param-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>

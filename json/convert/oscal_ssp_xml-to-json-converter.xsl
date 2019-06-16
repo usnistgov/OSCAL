@@ -274,7 +274,9 @@
       </map>
    </xsl:template>
    <xsl:template match="prop" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
+      <xsl:variable name="text-key">
+         <xsl:value-of select="@name"/>
+      </xsl:variable>
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@name"/>
          <xsl:apply-templates mode="as-string" select="@id"/>
