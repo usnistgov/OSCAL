@@ -175,10 +175,19 @@
    </xsl:template>
 
    <xsl:template name="group-label">
-      <xsl:if test="matches(@group-as, '\S')">
-         <p>This object appears <i>unlabelled</i> in an array called <code xsl:expand-text="true"
+      <xsl:choose>
+         <xsl:when test="exists(child::key)">
+            <p>This object appears, with a label, as a property of an object called <code xsl:expand-text="true"
                >{ @group-as }</code>.</p>
-      </xsl:if>
+         </xsl:when>
+         <xsl:when test="matches(@group-as, '\S')">
+            <p>This object appears <i>unlabelled</i> in an array called <code xsl:expand-text="true"
+               >{ @group-as }</code>.</p>
+         </xsl:when>
+         <xsl:otherwise>
+            
+         </xsl:otherwise>
+      </xsl:choose>
    </xsl:template>
 
    <xsl:template match="define-assembly">

@@ -23,7 +23,8 @@
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
-    <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
+    <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name | key/@name"/>
+    <xsl:key name="callers-by-field" match="define-assembly" use="model//(field|fields)/@named"/>
     
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
@@ -128,7 +129,21 @@
             if (@name=../@root) then ' | /map[empty(@key)]' else ()}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
-        <XSLT:template match="{$field-match}" priority="5" mode="json2xml">
+        <xsl:variable name="callers" select="key('callers-by-field',@name,$composed-metaschema)"/>
+        <xsl:comment expand-text="yes">{ $callers/(@name, @group-as) }</xsl:comment>
+        <xsl:variable name="full-field-match">
+            <xsl:for-each select="$callers/@name">
+                <xsl:if test="not(position() eq 1)"> | </xsl:if>
+                <xsl:text expand-text="true">*[@key='{.}']/{ $field-match}</xsl:text>
+            </xsl:for-each>
+            <xsl:for-each select="$callers/@group-as">
+                <xsl:text expand-text="true"> | *[@key='{.}']/{ $field-match} | *[@key='{.}']/*/{ $field-match} </xsl:text>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:comment expand-text="yes">{ $full-field-match }</xsl:comment>
+        <xsl:comment expand-text="yes">{ $field-match }</xsl:comment>
+        
+        <XSLT:template match="{$full-field-match}" priority="5" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="key">
                     <XSLT:attribute name="{@name}" select="../@key"/>
