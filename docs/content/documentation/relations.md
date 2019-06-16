@@ -4,7 +4,7 @@ description: Relations
 permalink: /docs/relations/
 layout: post
 topnav: docs
-sidenav: docs
+sidenav: architecture
 sticky_sidenav: true
 ---
 

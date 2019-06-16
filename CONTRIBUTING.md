@@ -22,9 +22,9 @@ Contributions are welcome in any of these areas. For information on the project'
 ## Issue reporting and handling
 
 All requests for changes and enhancements to OSCAL are initiated through the project's [GitHub issue tracker](https://github.com/usnistgov/OSCAL/issues). To initiate a request, please [create a new issue](https://help.github.com/articles/creating-an-issue/). The following issue templates exist for creating a new issue:
-* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md): Use to describe a new feature or capability to be added to OSCAL.
-* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=bug_report.md): Use to report a problem with an existing OSCAL feature or capability.
-* [Question](https://github.com/usnistgov/OSCAL/issues/new?template=question_template.md&labels=question): Use to ask a question about OSCAL.
+* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story): Use to describe a new feature or capability to be added to OSCAL.
+* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=bug_report.md&labels=bug): Use to report a problem with an existing OSCAL feature or capability.
+* [Question](https://github.com/usnistgov/OSCAL/issues/new?labels=question&template=question.md): Use to ask a question about OSCAL.
 
 The core OSCAL project team regularly reviews the open issues, prioritizes their handling, and updates the issue statuses and comments as needed.
 
@@ -51,7 +51,7 @@ The NIST OSCAL team is using the GitHub [project cards](https://github.com/usnis
 
 ### User Stories
 
-Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=user-story_template.md&labels=User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
+Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
 
 The goals in a user story will be bulleted, indicating that each goal can be worked on in parallel, or numbered, indicating that each goal must be worked on sequentially. Each goal will be assigned to one or more individuals to accomplish.
 

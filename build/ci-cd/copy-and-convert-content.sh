@@ -60,15 +60,31 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         json)
           # translate path names, starting first with the xml directory, then the filename
           # cat  NIST_SP-800-53_rev4_LOW-baseline_profile.json | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json/' | perl -lpe 's/(\"(?:[^\/]+\/)*.+(?=\.xml\"))\.xml\"/\1.json\"/'
-          cat "$dest" | perl -lpe 's/\\\//\//g' | perl -lpe 's/(application\/oscal\.[a-z]+\+)xml\"/\1json\"/g' | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json\//g' | perl -lpe 's/(\"(?:[^"\/]+\/)*[^"]+(?=\.xml\"))\.xml\"/\1.json\"/g' > "$dest"
+          perl -pi -e 's,\\/,/,g' ${dest}
+          perl -pi -e 's,(application/oscal\.[a-z]+\+)xml",\1json",g' ${dest}
+          perl -pi -e 's,/xml/,/json/,g' ${dest}
+          perl -pi -e 's,("(?:[^"/]+/)*[^"]+(?=\.xml"))\.xml",\1.json",g' ${dest}
+             
+#          cp "${dest}.tmp" "${dest}"
 
           # validate generated file
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
           validate_json "$schema" "$dest"
+          cmd_exitcode=$?
+          if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}Validation of '${dest}' failed.${P_END}"
+            exitcode=1
+          fi
 
           # produce pretty JSON
           dest_pretty="$working_dir/${newpath}.${altformat}"
           jq . "$dest" > "$dest_pretty"
+          validate_json "$schema" "$dest_pretty"
+          cmd_exitcode=$?
+          if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}Validation of '${dest_pretty}' failed.${P_END}"
+            exitcode=1
+          fi
 
           # produce yaml
           newpath="${newpath/\/json\///yaml/}" # change path 

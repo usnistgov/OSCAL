@@ -8,82 +8,32 @@ sticky_sidenav: true
 layout: post
 ---
 
-## The problem solved by OSCAL
-
-The IT security domain is characterized by a growing number of regulatory guidelines and frameworks, such as NIST Special Publication (SP) 800-53, NIST Cybersecurity Framework, ISO/IEC 27001 and 27002, COBIT, PCI DSS, HIPAA, and so others. Within this context, the major challenge of IT systems security is developing, applying and coordinating consistent and appropriate policies, both within and across organizational boundaries. With the advent of cloud and the Internet of Things (IoT), the complexity of the IT landscape in general is increasing, with a broadening and dispersal of the attack surface and a proliferation of vulnerabilities: this too makes system security planning more complicated.
-
-A great deal of system security planning, auditing, and assessing is now done using spreadsheets and (page-oriented) word processors, supporting manual and paper-based compliance processes. This approach is not only labor intensive, it also takes time, sometimes resulting in documentation that is out of date soon after it is produced -- which can leave critical risks undiscovered or unaddressed. When a system plan and system description is unable to keep up with reality on the ground (a phenomenon sometimes referred to as "security drift"), it becomes a pointless exercise as well as a costly one.
-
-<img src="{{ site.baseurl }}/assets/img/oscal-components.png" alt="oscal components" width="800"/>
-
-### Why is OSCAL needed?
-
-OSCAL is designed to tackle these complicated challenges, to include the following issues:
-
-- Traceability from selection of security controls, to implementation of these controls, to their assessment is largely manual and proprietary producing widely varying unstructured artifacts
-- Multi-tenant architectures and mixed ownership of system components complicates assessment processes
-- Security control and system information is represented in different and proprietary ways
-- Profile mappings to catalogs are often imprecise, not machine-readable
-- A single system may be subject to multiple regulatory frameworks resulting in re-work and inconsistency across agencies and organizations to perform manual cross-walks
-- Systems with many components may require different profiles per component
-- Lack of a common language for software and service providers to express implementation guidance against security controls results in an unnecessary duplication of effort to Certify and Accredit (C&A) systems
-- System owners and Authorizing Officials (AOs) must review non-standard and inconsistent implementation and assessment results resulting in the need for large numbers of highly skilled professionals to manually review and certify documentation
-- Information Systems cannot easily or consistently attest to how security controls have been implemented
-- Assessments and their results are produced and evaluated using inconsistent, incomplete, and unstructured means resulting in largely manual, non-repeatable processes
-
-## What is OSCAL?
-
-NIST's Open Security Controls Assessment Language (OSCAL) serves as a "Standard of Standards" normalizing how system security controls and corresponding assessment information is represented:
-
-- *Standardized*: Provides security control, control implementation, and assessment information in an open, standardized way that can be used by both humans and machines
-
-- *Interoperable*: Ensures OSCAL is well-defined so tools using OSCAL information are interoperable and use information consistently
-
-- *Easy to Use*: Promotes developer adoption of OSCAL so tools are available for organizations to build, customize, and use OSCAL information
-
-## What are the goals addressed by OSCAL?
-
-- Improve the efficiency, accuracy, and consistency of system security assessments
-- Drive a large decrease in assessment-related labor
-- Share system information across communities decreasing assessment and authorization time
-- Normalize the representation of security control catalogs, regulatory frameworks, and system information using a machine-readable language
-- Ensure lossless transformation between machine- and human-readable content 
-- Assess a system's security state more often, ideally continuously, driving continuous assurance
-- Assess a system's compliance state against several sets of requirements simultaneously and ensure traceability between the requirements
-- Consistent performance of assessments, regardless of system type
-- Drive a large decrease in the paperwork burden for both information security professionals and vendors
-
-## The OSCAL approach
-
-OSCAL is being developed leveraging an incremental and agile approach. Through a series of development sprints, increased value is provided with a focus on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an open invitation to the community to participate in the framing and development of OSCAL. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD. To learn more, [contact us]({{ site.baseurl }}/contact/).
-<!-- Include link to CONTRIBUTING.MD -->
-
-### OSCAL Guiding Principles
-
-1. Produce a set of extensible formats through a community-focused effort that supports a broad range of control-based risk management processes.
-1. Support control-based risk assessment based on data collected using a continuous monitoring capability.
-1. Ensure security controls, implementation, and verification processes have full traceability and inherit at the baseline (software and service provider) and system interconnection levels
-1. Standardize the expression of artifacts driving crowd-sourced development and improvement across profile and implementation layers
-1. Support multiple, interoperable, and lossless machine-readable formats including XML and JSON; improve the Machine Experience (MX)
-1. Provide a common means to identify and version shared resources
-1. Align OSCAL models with current, practical information, and support advanced structures that provide for greater automation and verification. This principle provides a path for early adoption and ongoing evolution around how OSCAL will be used.
-
-## Development Timeline
+OSCAL is a community-driven, NIST-led project, with an [open invitation](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) to the community to participate in the framing and development of OSCAL. Feature requests can be [created and submitted](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2C+enhancement&template=feature_request.md) directly into the project's GitHub repository. Feedback in the form of [bug reports](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=bug&template=bug_report.md) are also encouraged and appreciated. If appropriate, we ask you add a comment to an [existing relevant issue](https://github.com/usnistgov/OSCAL/issues), and only create a new issue when no relevant issue exists. Before opening an issue, we ask that you review our [contributing guidelines](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md).
 
 ### Development Epics
 
-- Milestone 1: Catalog and Profile
-- Milestone 2: Implementation
-- Milestone 3: Assessment and Assessment Results
-- Milestone 4: Publish an OSCAL 1.0 Specification
+OSCAL is being designed and created over a series of development epics leveraging an incremental and agile approach. Each epic consists of a series of sprints focused on reaching a defined milestone. This approach allows the project team to provide increased value over time at an accelerated pace, by focusing on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time.
 
-## Phases
+Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in an incremental release of OSCAL resources.
 
-Phase | Milestone | Status | Description
-:---|:---|:--- |:---
-0 | M1 | Done | Prototype catalog
-1 | M1 | Done | Stabilize catalog; Prototype profile
-2 | M1 / M2 | Done | Stabilize profile format; Prototype implementation
-3 | M2 / M3 | In progress | Stabilize implementation; Start design of framework, assessment, and assessment results
-4 | M3 | Planned | Prototype and stabilize framework, assessment, and assessment results
-5 | M4 | Planned | Complete OSCAL 1.0
+- OSCAL 1.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1): Develop the OSCAL Catalog and Profile models
+
+  The initial OSCAL work encompasses the [catalog]({{ site.baseurl }}/docs/catalog/) and [profile]({{ site.baseurl }}/docs/profile/) concepts of the OSCAL [architecture]({{ site.baseurl }}/docs/). There are several types of users who will benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
+
+  - **Catalog maintainers:** publishing catalogs into OSCAL format (e.g., NIST, ISO, ISACA)
+  - **Standard profile maintainers:** profiles in OSCAL format used by many organizations consuming OSCAL catalogs (e.g., NIST, FedRAMP)
+  - **Custom profile maintainers:** developing new profiles or customizing existing profiles for organization-specific use (e.g., cloud service providers, integrators)
+  - **Tool vendors:** creating tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes
+
+  There are also several types of expected consumers of OSCAL catalogs, profiles, and/or tools, including the following:
+
+  - **Operations personnel:** rapidly verifying that systems comply with organizational security requirements
+  - **Security and privacy personnel:** automatically identifying problems and addressing them quickly before loss or damage occur
+  - **Auditors/assessors:** performing audits/assessments on demand with minimal effort
+  - **Policy personnel:** identifying systemic problems that necessitate changes to organizational security policies
+
+- OSCAL 1.0 [Milestone 2](https://github.com/usnistgov/OSCAL/milestone/2): Develop the OSCAL Implementation models
+- OSCAL 1.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3): Develop the OSCAL Assessment and Assessment Results models
+- OSCAL 1.0 [Final Release](https://github.com/usnistgov/OSCAL/milestone/4): Publish an OSCAL 1.0 Specification
+
+To accelerate development, we are not focused on developing a formal specification for OSCAL until the final milestone. Until then, the OSCAL models will be [documented]({{ site.baseurl }}/docs/schemas/) on this site. This will allow us to work on a formal specification once most of the major development of OSCAL is completed. Until that point, adopters of OSCAL will find all of the resources they need to develop content and tools on this site.

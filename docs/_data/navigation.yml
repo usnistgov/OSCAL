@@ -16,10 +16,12 @@ primary:
     href: /
   - text: Learn More
     href: /learnmore/
+  - text: Architecture
+    href: /docs/
+  - text: Downloads
+    href: /downloads/
   - text: Resources
     href: /resources/
-  - text: Concepts
-    href: /docs/
   - text: Schema Reference
     href: /docs/schemas/
   - text: Community
@@ -31,6 +33,33 @@ secondary:
   - text: Contact Us
     href: /contact/
 
+learnmore:
+  - text: Learn More
+    href: /learnmore/
+  - text: Challenges Addressed
+    href: /learnmore/challenges/
+  - text: Project Goals
+    href: /learnmore/goals/
+  - text: Case Studies
+    href: /learnmore/casestudies/
+  - text: Scenarios
+    href: /learnmore/scenarios/
+  - text: Development Roadmap
+    href: /learnmore/roadmap/
+
+architecture:
+  - text: Architecture
+    href: /docs/
+    subnav: true
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Relations to Documentary Encoding Standards
+    href: /docs/relations/
+
+downloads:
+  - text: Downloads
+    href: /downloads/
+
 resources:
   - text: Resources
     href: /resources/
@@ -40,17 +69,6 @@ resources:
   - text: GitHub Repo
     href: https://github.com/usnistgov/OSCAL
     external: true
-
-concepts:
-  - text: Concepts
-    href: /docs/
-  - text: Architecture
-    href: /docs/architecture/
-    subnav: true
-  - text: Schema Reference
-    href: /docs/schemas/
-  - text: Relations to Documentary Encoding Standards
-    href: /docs/relations/
 
 schemas:
   - text: Schema Reference
@@ -70,25 +88,6 @@ community:
   - text: Contribute on Github
     href: https://github.com/usnistgov/OSCAL
     external: true
-
-learnmore:
-  - text: Learn More
-    href: /learnmore/
-    subnav:
-    - text: For Security Professionals
-      href: /learnmore/securitypros/
-    - text: For Assessors
-      href: /learnmore/assessors/
-    - text: For Tool Developers
-      href: /learnmore/tooldevelopers/
-    - text: For Policy Authors
-      href: /learnmore/contentcreators/
-  - text: Roadmap
-    href: /learnmore/roadmap/
-  - text: Case Studies
-    href: /learnmore/casestudies/
-  - text: Scenarios
-    href: /learnmore/scenarios/
     
 footer:
   - text: Documentation
