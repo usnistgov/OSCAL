@@ -11,8 +11,8 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">json</xsl:param>
-    <xsl:param name="output-path"   as="xs:string">docs/content/documentation/schemas</xsl:param>
+    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+    <xsl:param name="output-path"   as="xs:string">../../../docs/content/documentation/schemas</xsl:param>
 
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     <xsl:variable name="source" select="$composed-metaschema"/>
@@ -56,7 +56,7 @@
     
     <xsl:template match="/">
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
-              
+            <xsl:message expand-text="yes">writing to {$result-path}/{ $metaschema-code }.html</xsl:message>
             <xsl:call-template name="yaml-header">
                 <xsl:with-param name="overview" select="true()"></xsl:with-param>
             </xsl:call-template>
@@ -66,6 +66,8 @@
         <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
             <xsl:result-document href="{$result-path}/{ $metaschema-code }_{@id}.html"
                method="xhtml">
+                <xsl:message expand-text="yes">{$result-path}/{ $metaschema-code }_{@id}.html</xsl:message>
+                
                 <xsl:call-template name="yaml-header">
                     <xsl:with-param name="tagname" select="string(@id)"/>
                     <xsl:with-param name="root"    select="starts-with(html:h5[1],(@id || ' is the root' ))"/>

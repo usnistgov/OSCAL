@@ -73,9 +73,13 @@
         
 
         <sch:rule context="m:key">
+            <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
             <sch:assert test="count(../*[@name = current()/@name]) eq 1">Only one flag (or key) may be named 
                 <sch:value-of select="@name"/>
             </sch:assert>
+            <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:name/></sch:assert>
+            <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
+            <sch:report test="@name=('RICHTEXT','STRVALUE')">Key should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
         </sch:rule>
         
         <sch:rule context="m:value-key">

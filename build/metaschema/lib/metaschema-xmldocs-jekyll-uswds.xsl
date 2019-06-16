@@ -144,7 +144,7 @@
                </xsl:when>
             </xsl:choose>
             <xsl:apply-templates select="formal-name | description"/>
-            <xsl:if test="exists(flag)">
+            <xsl:if test="exists(flag | key)">
                <xsl:variable name="modal">
                   <xsl:choose>
                      <xsl:when test="every $f in (flag) satisfies $f/@required='yes'">must</xsl:when>
@@ -153,7 +153,7 @@
                </xsl:variable>
                <xsl:variable name="noun">
                   <xsl:choose>
-                     <xsl:when test="count(flag) gt 1">attributes</xsl:when>
+                     <xsl:when test="count(flag|key) gt 1">attributes</xsl:when>
                      <xsl:otherwise>the attribute</xsl:otherwise>
                   </xsl:choose>
                </xsl:variable>
@@ -252,7 +252,7 @@
 
    <xsl:template match="flag"/>
 
-   <xsl:template match="flag" mode="model">
+   <xsl:template match="flag | key" mode="model">
       <li>
          <a href="#{@name}">
             <xsl:apply-templates select="@name"/>
@@ -260,7 +260,7 @@
          <xsl:text> attribute </xsl:text>
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
-         <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
+         <xsl:if test="not(@required) and self::flag"> (<i>optional</i>)</xsl:if>
          <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @named)/valid-values">
             <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
@@ -280,7 +280,7 @@
          <p>The <xsl:apply-templates select="../@name"/> element has the following contents<xsl:if
                test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
-            <xsl:apply-templates select="../flag" mode="model"/>
+            <xsl:apply-templates select="../flag | ../key" mode="model"/>
             <xsl:apply-templates/>
          </ul>
       </div>

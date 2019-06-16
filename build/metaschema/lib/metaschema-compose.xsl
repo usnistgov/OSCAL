@@ -221,7 +221,7 @@
     <xsl:template match="define-assembly" mode="collect-references">
         <xsl:param name="ref-stack" tunnel="yes" required="yes"/>
         <xsl:if test="not(@name = $ref-stack)">
-            <xsl:sequence select="(. | flag)/string(@name)"/>
+            <xsl:sequence select="(. | flag | key)/string(@name)"/>
             <xsl:apply-templates select="model" mode="#current">
                 <xsl:with-param tunnel="true" name="ref-stack" select="$ref-stack,@name"/>
             </xsl:apply-templates>

@@ -163,6 +163,10 @@
         <xsl:value-of select="value-key"/>
     </xsl:template>
     
+    <xsl:template priority="4" match="define-field[exists(flag/value-key)]" mode="text-key">
+        <XSLT:value-of select="@{flag[exists(value-key)]/@name}"/>
+    </xsl:template>
+    
     <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
         <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
     </xsl:template>-->
