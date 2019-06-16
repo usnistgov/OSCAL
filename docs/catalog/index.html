@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architecture | OSCAL</title>
+    <title>Catalog | OSCAL</title>
 
 
 
-<meta name="description" content="OSCAL Architecture">
+<meta name="description" content="Catalog">
 
 
 
@@ -177,18 +177,27 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
           
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -280,19 +289,6 @@
       <a href="/OSCAL/docs/"
          
           >
-         Concepts
-      </a>
-	  
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/architecture/"
-          class="usa-current" 
-          >
          Architecture
       </a>
 	  
@@ -303,21 +299,21 @@
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/control/" >Control </a>
+  <a href="/OSCAL/docs/control/" >Control </a>
 </li>
 
 
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/catalog/" >Catalog </a>
+  <a href="/OSCAL/docs/catalog/"  class="usa-current">Catalog </a>
 </li>
 
 
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/profile/" >Profile </a>
+  <a href="/OSCAL/docs/profile/" >Profile </a>
 </li>
 
 
@@ -360,31 +356,20 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Architecture</h1>
+    <h1>Catalog</h1>
     
   
-  <p>OSCAL, or any security documentation using current best practices, is all about <strong>controls</strong> and <strong>catalogs</strong>. A control represents a security requirement, guideline, procedure or activity. A catalog is an organized collection of controls.</p>
+  <p>In OSCAL, a catalog is:</p>
 
-<p>Typically, catalogs are represented in documentary form, in which controls (or representations of controls as configured and qualified in a system) are represented as parts of documents. Controls, as defined and described in catalogs, may also be referenced and configured in other documents; thus control information must be composed in a way to make it possible to migrate across different types of documents for different purposes, while maintaining “identity” and referential integrity for traceability. Consequently, OSCAL is designed as a <strong>documentary architecture</strong> comprising several related document models, arranged in <strong>layers</strong>.</p>
+<blockquote>
+  <p>A set of security and/or privacy <a href="/OSCAL/docs/control/">controls</a>. Examples of catalogs include NIST SP 800-53, ISO 27001, and COBIT. The <em>catalog model</em> in OSCAL refers to any data made available for processing in one of OSCAL’s formats for representing catalog information.</p>
+</blockquote>
 
-<p>In particular, the design of the OSCAL Profile layer, in relation to the Catalog layer, reflects the use of control catalogs as outlined in NIST SP800-53 – specifically the concept of <em>baselines</em> and <em>overlays</em> over a base catalog. (And then, as we see in the real world, overlays on the overlays.) In OSCAL, this idea is generalized to be applicable to any set of information presented in catalog form. Thus the idea of tailoring in application can be applied not only to security guidelines in general, but also in mixed environments that have to address requirements in more than one catalog at a time.</p>
+<p>An OSCAL catalog is a set of OSCAL controls published as a machine readable document. The catalog for NIST Special Publication (SP) 800-53 Revision 4 defines all NIST SP 800-53 controls. Other catalogs can represent controls of any kind, design or purpose.</p>
 
-<p>Together, these models address functional requirements as depicted in the following diagram:</p>
+<p>If your organization has a document or formal specification that would benefit from expression in OSCAL (to be used either separately in its own profile or implementation stack or along with NIST SP800-53 controls), the OSCAL team would like to  <a href="mailto:oscal@nist.gov">hear from you</a>.</p>
 
-<p><img src="/OSCAL/assets/img/oscal-components.png" alt="oscal components" width="800" /></p>
-
-<p>Starting from the left, the OSCAL layers are currently defined as:</p>
-
-<ul>
-  <li><strong>Catalog/Framework:</strong> In addition to defining a set of security controls, it may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.</li>
-  <li><strong>Profile:</strong> The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.</li>
-  <li><strong>Implementation:</strong> Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.</li>
-  <li><strong>Assessment:</strong> Describes how the system assessment is to be performed.</li>
-  <li><strong>Assessment Results:</strong> Records the findings of the assessment.</li>
-</ul>
-
-<p>As the project progresses, these definitions are expected to evolve; they are included here to indicate the current status within OSCAL and may not the represent the final definitions for each model.  The above is a high-level explanation of the basic constructs supported by OSCAL. These constructs exist in all OSCAL bindings (e.g., XML, JSON). At this time, the material covers OSCAL controls, catalogs, and profiles. Additional OSCAL constructs will be added as they are developed and matured.</p>
-
+<p>See <a href="/OSCAL/resources/examples/catalogs/">examples</a> of OSCAL catalogs.</p>
 
 
 </div>

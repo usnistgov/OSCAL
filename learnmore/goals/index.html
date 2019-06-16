@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control | OSCAL</title>
+    <title>Project Goals | OSCAL</title>
 
 
 
-<meta name="description" content="Control component description">
+<meta name="description" content="Project Goals and Design Principles">
 
 
 
@@ -168,7 +168,7 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
+          <a class=" usa-nav-link   usa-current"
             href="/OSCAL/learnmore/">
             <span>Learn More</span>
           </a>
@@ -178,17 +178,26 @@
               <li>
                 
           <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
           
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -277,10 +286,10 @@
       
       
     <li>
-      <a href="/OSCAL/docs/"
+      <a href="/OSCAL/learnmore/"
          
           >
-         Concepts
+         Learn More
       </a>
 	  
     </li>
@@ -290,50 +299,10 @@
       
       
     <li>
-      <a href="/OSCAL/docs/architecture/"
+      <a href="/OSCAL/learnmore/challenges/"
          
           >
-         Architecture
-      </a>
-	  
-      <ul class="usa-sidenav-sub_list">
-        
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/control/"  class="usa-current">Control </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/catalog/" >Catalog </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/profile/" >Profile </a>
-</li>
-
-
-      </ul>
-      
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/schemas/"
-         
-          >
-         Schema Reference
+         Challenges Addressed
       </a>
 	  
     </li>
@@ -343,10 +312,49 @@
       
       
     <li>
-      <a href="/OSCAL/docs/relations/"
+      <a href="/OSCAL/learnmore/goals/"
+          class="usa-current" 
+          >
+         Project Goals
+      </a>
+	  
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/learnmore/casestudies/"
          
           >
-         Relations to Documentary Encoding Standards
+         Case Studies
+      </a>
+	  
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/learnmore/scenarios/"
+         
+          >
+         Scenarios
+      </a>
+	  
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/learnmore/roadmap/"
+         
+          >
+         Development Roadmap
       </a>
 	  
     </li>
@@ -360,20 +368,51 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Control</h1>
+    <h1>Project Goals</h1>
     
   
-  <p>In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, “The organization has an access control policy and procedures”, but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:</p>
+  <p>The OSCAL project is working to address the following goals:</p>
 
-<p><img src="/OSCAL/assets/img/NIST-SP-800-53-Rev4-AC1.png" alt="800-53Rev4AC1" width="800" /></p>
+<ol>
+  <li>Drive a large decrease in the paperwork burden for both information security professionals and vendors.
+    <ul>
+      <li>Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine readable formats.</li>
+      <li>Allow the sharing of control implementation information across communities.</li>
+    </ul>
+  </li>
+  <li>Improve the efficiency, accuracy, and consistency of system security assessments.
+    <ul>
+      <li>Assess a system’s compliance state against several sets of requirements simultaneously and ensure traceability between the requirements.</li>
+      <li>Enable assessments to be performed consistently, regardless of system type.</li>
+    </ul>
+  </li>
+  <li>Allow a system’s security state to be assessed more often, ideally continuously, driving continuous assurance.
+    <ul>
+      <li>Drive a large decrease in assessment-related labor, decreasing assessment and authorization time.</li>
+      <li>Support the evaluation of control implementation effectiveness based on data collected using a continuous monitoring capability.</li>
+    </ul>
+  </li>
+</ol>
 
-<p>This control has seven high-level components, including a security control identifier (“AC-1”), a title (“ACCESS CONTROL POLICY AND PROCEDURES”), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. In contrast, the next control is from ISO 27002 on access control policy. It is even more detailed, with an identifier (“9.1.1”), a title (“Access control policy”), control text, lengthy implementation guidance, and other information (additional advice on access control policy).</p>
+<h2 id="oscal-design-principles">OSCAL Design Principles</h2>
 
-<p><img src="/OSCAL/assets/img/ISO-27002-Control-9.1.1.png" alt="ISO27002911" width="800" /></p>
+<p>To address these goals, the OSCAL project is guided by the following design principles:</p>
 
-<p>Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority that ISO 27002 does not. NIST SP 800-53’s statement of the control itself is also much more detailed and specific than ISO 27002 because it provides those details in its implementation guidance instead of the control text. There are other differences in terminology as well, such as NIST SP 800-53 using the term “supplemental guidance” for roughly what ISO 27002 calls “other information”.</p>
-
-<p>OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.</p>
+<ul>
+  <li>Produce a set of interoperable, extensible, machine-readable formats through a community-focused effort that supports a broad range of control-based risk management processes.
+    <ul>
+      <li>Provide XML-, JSON-, and YAML-based formats that allow for lossless translations between XML, JSON, and YAML representations.</li>
+      <li>Provide a common means to identify and version shared resources.</li>
+      <li>Standardize the expression of assessment artifacts, driving crowd-sourced development and improvement across profile and implementation layers.</li>
+    </ul>
+  </li>
+  <li>Align OSCAL models with current, practical information, and support advanced structures that provide for greater automation and verification.
+    <ul>
+      <li>Ensure security controls, implementation, and verification processes have full traceability and inherit at the baseline (software and service provider) and system interconnection levels.</li>
+      <li>Provides a path for early adoption and ongoing evolution around how OSCAL will be used.</li>
+    </ul>
+  </li>
+</ul>
 
 
 </div>

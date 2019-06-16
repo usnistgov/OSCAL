@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | OSCAL</title>
+    <title>Downloads | OSCAL</title>
 
 
 
-<meta name="description" content="Profile">
+<meta name="description" content="Downloads">
 
 
 
@@ -178,17 +178,26 @@
               <li>
                 
           <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
           
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+          <a class=" usa-nav-link   usa-current usa-current"
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -277,76 +286,10 @@
       
       
     <li>
-      <a href="/OSCAL/docs/"
-         
+      <a href="/OSCAL/downloads/"
+          class="usa-current" 
           >
-         Concepts
-      </a>
-	  
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/architecture/"
-         
-          >
-         Architecture
-      </a>
-	  
-      <ul class="usa-sidenav-sub_list">
-        
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/control/" >Control </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/catalog/" >Catalog </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/architecture/profile/"  class="usa-current">Profile </a>
-</li>
-
-
-      </ul>
-      
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/schemas/"
-         
-          >
-         Schema Reference
-      </a>
-	  
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/relations/"
-         
-          >
-         Relations to Documentary Encoding Standards
+         Downloads
       </a>
 	  
     </li>
@@ -360,32 +303,28 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Profile</h1>
+    <h1>Downloads</h1>
     
   
-  <p><a href="/OSCAL/resources/examples/profiles/">See examples of OSCAL profiles</a></p>
-
-<p>An OSCAL profile is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Commonly referred to as <em>baselines</em> or <em>overlays</em> (in order to indicate their relations to the catalogs from which their controls are drawn), examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.</p>
-
-<p>OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:</p>
+  <p>Official releases of the OSCAL Project are available on the project’s <a href="https://github.com/usnistgov/OSCAL/releases">GitHub repository</a>. These releases align with the project’s <a href="/OSCAL/learnmore/roadmap/">roadmap</a>.</p>
 
 <ul>
-  <li>Which controls are <em>selected</em> from the catalog and thereby considered to be in scope for the application;</li>
-  <li>How the control selection should be <em>organized</em> and represented, including whether and how competing control definitions are to be resolved and merged;</li>
-  <li>Whether and where any controls are to be <em>configured</em> or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls and subcontrols, to describe their application in the system.</li>
+  <li><a href="https://github.com/usnistgov/OSCAL/releases">OSCAL 1.0 Milestone 1</a>: Stable releases of the OSCAL Catalog and Profile layers, including XML and JSON schema, content examples, and content converters.</li>
 </ul>
 
-<p>These three functions are reflected in the organization of a profile document, which may contain (in addition to document metadata) any of three sections, <code class="highlighter-rouge">import</code>, <code class="highlighter-rouge">merge</code>, and <code class="highlighter-rouge">modify</code>:</p>
+<h1 id="future-oscal-compatibility-commitment">Future OSCAL Compatibility Commitment</h1>
+
+<p>The OSCAL Project team recognizes the impact of syntax changes on content and tool developers following an evolving language. As we develop OSCAL, the team will take care to minimize the impact of any necessary changes. Syntax changes to the OSCAL XML and JSON models will only occur where there is a compelling need to do so. To the greatest extend practical, OSCAL-based content produced today will be future compatible.</p>
+
+<p>The OSCAL team can not anticipate all issues raised or feedback received. In rare cases, changes to the OSCAL models will need to be made to address a compelling issue. In these instances, the OSCAL team will do everything practical to minimize the impact to early adopters, and document any changes where impacts are unavoidable in the <a href="https://github.com/usnistgov/OSCAL/tree/master/src/release/release-notes.txt">release notes</a>.</p>
+
+<p>NIST encourages early adoption of released OSCAL content, tools, and schema. In general early adopters can count on the following, from the first milestone release to the first official 1.0 release of OSCAL:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">import</code> (required) - indicates which controls to include or exclude from catalogs</li>
-  <li><code class="highlighter-rouge">merge</code> - what merge rules to follow and how to organize outputs</li>
-  <li><code class="highlighter-rouge">modify</code> - how to configure and/or modify parameters and control languages (statements, guidance etc.)</li>
+  <li>Any data element modeled in the milestone release will be modeled in the 1.0 release. Typically with the same syntax.</li>
+  <li>All features available in a milestone release will be available in the 1.0 release.</li>
+  <li>Deferred features, such as cryptographic validation, will be implemented while minimizing the impact to existing content. Most new features will be implemented as optional extensions with no impact to existing content.</li>
 </ul>
-
-<p>The figure below sketches how OSCAL relates profiles to catalogs. This example represents the NIST SP 800-53 low baseline. The profile indicates which controls from the NIST SP 800-53 catalog are required to for compliance with this baseline. Using OSCAL formats for these baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.</p>
-
-<p><img src="/OSCAL/assets/img/profile-catalog-mapping-trivial-example.png" alt="profile-catalog-mapping" width="800" /></p>
 
 
 </div>

@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies | OSCAL</title>
+    <title>Challenges Addressed | OSCAL</title>
 
 
 
-<meta name="description" content="Case Studies">
+<meta name="description" content="Challenges Addressed">
 
 
 
@@ -300,7 +300,7 @@
       
     <li>
       <a href="/OSCAL/learnmore/challenges/"
-         
+          class="usa-current" 
           >
          Challenges Addressed
       </a>
@@ -326,7 +326,7 @@
       
     <li>
       <a href="/OSCAL/learnmore/casestudies/"
-          class="usa-current" 
+         
           >
          Case Studies
       </a>
@@ -368,30 +368,26 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Case Studies</h1>
+    <h1>Challenges Addressed</h1>
     
   
-  <h2 id="general-services-administration-gsa-federal-risk-and-authorization-management-program-fedramp">General Services Administration (GSA) Federal Risk and Authorization Management Program (FedRAMP)</h2>
+  <p>OSCAL addresses a number of challenges around security controls and security control assessment.</p>
 
-<p><a href="https://gcn.com/articles/2018/06/14/fedramp-updates.aspx">Government Computer News Story - FedRAMP Updates</a></p>
+<h2 id="control-information-lacks-standardization">Control Information Lacks Standardization</h2>
 
-<p>“FedRAMP officials want to make it easier for agencies to get cloud service providers [authorized]. The National Institute of Standards and Technology’s Open Security Controls Assessment Language, which speeds up the security controls assessment process through standardization and automation, will be available for testing by the end of [the 2019] fiscal year”, Matt Goodrich said at the June 13th, 2018 Advanced Technology Academic Research Center (ATARC) Federal Cloud and Data Center Summit. He was FedRAMP Director at this time.</p>
+<p>The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in information systems in order for the tool to use the information.</p>
 
-<p>OSCAL enables automation of FedRAMP’s security control assessments, and tracking of associated risks.</p>
+<h2 id="assessing-control-implementations-across-multiple-components">Assessing Control Implementations Across Multiple Components</h2>
 
-<p>“We think OSCAL will really help agencies transform the way that they are doing their work by making sure that they can use whatever tool that they want to use and automate whatever they can in the process to do their authorizations,” Goodrich said.</p>
+<p>Organizations are also struggling with information systems that have many different components. Some components require the use of different profiles per component; this is commonly the case with cloud environments. Also, systems can be multi-tenant or have mixed ownership of components (often referred to as shared responsibility). Information system owners need to be able to assess the security of these systems against their specific requirements and to simultaneously provide these views to their stakeholders.</p>
 
-<p>“Agencies can partner with vendors for authorizations so vendors don’t need to have a third-party assessor or independent auditor,” Goodrich said. It allows agencies to “bring in new and innovative products from small businesses in a way that is cost affordable,” he said.</p>
+<h2 id="supporting-multiple-regulatory-frameworks-simultaneously">Supporting Multiple Regulatory Frameworks Simultaneously</h2>
 
-<h2 id="docker---automating-compliance-for-highly-regulated-industries-with-docker-enterprise-edition-and-oscal">Docker - Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL</h2>
+<p>In addition, there are situations where a single system needs to support multiple regulatory frameworks. For example, the U.S. Department of Veterans Affairs is a federal agency operating with multiple sets of regulatory frameworks together: the Federal Information Security Modernization Act (FISMA); the NIST Cybersecurity Risk Management Framework; requirements relating to the Health Insurance Portability and Accountability Act (HIPAA); and others relating to secure credit card transactions based on the Payment Card Industry Data Security Standard (PCI DSS). This situation can be complicated.</p>
 
-<p><a href="https://blog.docker.com/2018/05/automating-compliance-docker-ee-oscal/">Docker Blog</a></p>
+<h2 id="documentation-reviews-and-control-assessments-are-largely-manual-processes">Documentation Reviews and Control Assessments are Largely Manual Processes</h2>
 
-<p>“Highly-regulated industries like financial services, insurance, and government have their own set of complex and challenging regulatory IT requirements that must be constantly maintained. For this reason, the introduction of new technology can sometimes be difficult. <a href="https://blog.docker.com/2018/04/announcing-docker-enterprise-edition-2-0/">Docker Enterprise Edition</a> provides these types of organization with both a secure platform on which containers are the foundation for building compliant applications and a workflow for operational governance at scale.”</p>
-
-<p>“To address these requirements, Docker has collaborated with the National Institute of Standards and Technology (NIST), and today, we are excited to announce that Docker is fully embracing the Open Security Controls Assessment Language (OSCAL) standard and committing to its future development.”</p>
-
-<p>Docker has continued to collaborate with the OSCAL team on the development of OSCAL.</p>
+<p>Because the definition and assessment of all these security controls is so complex, it is largely a manual process today. The OSCAL project seeks to change this situation by offering standardized representations for controls and their implementation in a system, which can be used by both humans and machines for development, analysis, and reporting. We need formats that can be generated by machines for communicating with other machines, but can also be easily reformatted so humans can read the information. By standardizing the representation of this information with a well-defined specification, OSCAL information is interoperable. The goal is to keep OSCAL as simple as possible while enabling extensive automation in vendor tools.</p>
 
 
 </div>

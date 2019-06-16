@@ -3871,11 +3871,9 @@ input[type=search] {
     .usa-sidenav-sub_list .usa-sidenav-sub_list a:hover {
       padding-left: 3.8rem; }
 
-.usa-layout-docs-sidenav {
-  padding-top: 2.4rem; }
-  @media screen and (min-width: 1201px) {
-    .usa-layout-docs-sidenav {
-      padding-top: 0; } }
+@media screen and (min-width: 1201px) {
+  .usa-layout-docs-sidenav {
+    padding-top: 0; } }
 
 .usa-skipnav {
   background: transparent;
@@ -4224,8 +4222,7 @@ html.nist-footer-bottom .nist-footer {
   z-index: 10000; }
 
 .usa-sticky-sidenav {
-  position: sticky;
-  top: 1rem; }
+  position: sticky; }
 
 .usa-layout-docs {
   display: flex; }

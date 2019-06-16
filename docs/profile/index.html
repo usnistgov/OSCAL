@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog | OSCAL</title>
+    <title>Profile | OSCAL</title>
 
 
 
-<meta name="description" content="Catalog">
+<meta name="description" content="Profile">
 
 
 
@@ -177,18 +177,27 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
           
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -280,19 +289,6 @@
       <a href="/OSCAL/docs/"
          
           >
-         Concepts
-      </a>
-	  
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/architecture/"
-         
-          >
          Architecture
       </a>
 	  
@@ -303,21 +299,21 @@
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/control/" >Control </a>
+  <a href="/OSCAL/docs/control/" >Control </a>
 </li>
 
 
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/catalog/"  class="usa-current">Catalog </a>
+  <a href="/OSCAL/docs/catalog/" >Catalog </a>
 </li>
 
 
 
 
 <li>
-  <a href="/OSCAL/docs/architecture/profile/" >Profile </a>
+  <a href="/OSCAL/docs/profile/"  class="usa-current">Profile </a>
 </li>
 
 
@@ -360,13 +356,36 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Catalog</h1>
+    <h1>Profile</h1>
     
   
-  <p><a href="/OSCAL/resources/examples/catalogs/">See examples of OSCAL catalogs</a></p>
+  <p>In OSCAL a profile is:</p>
 
-<p>An OSCAL catalog is a set of OSCAL controls published as a body. The catalog for NIST Special Publication (SP) 800-53 Revision 4 defines all NIST SP 800-53 controls. Other catalogs can represent controls of any kind, design or purpose. If your organization has a document or formal specification that would benefit from expression in OSCAL (to be used either separately in its own profile or implementation stack or along with NIST SP800-53 controls), 
-<a href="mailto:oscal@nist.gov">the OSCAL team would like to hear from you</a>.</p>
+<blockquote>
+  <p>A specific set of security <a href="/OSCAL/docs/control/">control</a> requirements; also called a <em>baseline</em> or <em>overlay</em>. A profile represents a selection of controls from one or more <a href="/OSCAL/docs/catalog/">catalogs</a>, with configuration or qualification appropriate to the profile’s use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and NIST SP 800-171 (a controls baseline for CUI/NFO).  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.</p>
+</blockquote>
+
+<p>OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:</p>
+
+<ul>
+  <li>Which controls are <em>selected</em> from the catalog and thereby considered to be in scope for the application;</li>
+  <li>How the control selection should be <em>organized</em> and represented, including whether and how competing control definitions are to be resolved and merged;</li>
+  <li>Whether and where any controls are to be <em>configured</em> or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls and subcontrols, to describe their application in the system.</li>
+</ul>
+
+<p>See <a href="/OSCAL/resources/examples/profiles/">examples</a> of OSCAL profiles.</p>
+
+<p>These three functions are reflected in the organization of a profile document, which may contain (in addition to document metadata) any of three sections, <code class="highlighter-rouge">import</code>, <code class="highlighter-rouge">merge</code>, and <code class="highlighter-rouge">modify</code>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">import</code> (required) - indicates which controls to include or exclude from catalogs</li>
+  <li><code class="highlighter-rouge">merge</code> - what merge rules to follow and how to organize outputs</li>
+  <li><code class="highlighter-rouge">modify</code> - how to configure and/or modify parameters and control languages (statements, guidance etc.)</li>
+</ul>
+
+<p>The figure below sketches how OSCAL relates profiles to catalogs. This example represents the NIST SP 800-53 low baseline. The profile indicates which controls from the NIST SP 800-53 catalog are required to for compliance with this baseline. Using OSCAL formats for these baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.</p>
+
+<p><img src="/OSCAL/assets/img/profile-catalog-mapping-trivial-example.png" alt="profile-catalog-mapping" width="800" /></p>
 
 
 </div>

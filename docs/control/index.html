@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSCAL</title>
+    <title>Control | OSCAL</title>
 
 
 
-<meta name="description" content="OSCAL - more insight, less paper">
+<meta name="description" content="Control component description">
 
 
 
@@ -177,9 +177,9 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
@@ -187,8 +187,17 @@
               <li>
                 
           <a class=" usa-nav-link  "
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -268,103 +277,106 @@
     <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
         
 
+  <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
+    <nav>
+  <ul class="usa-sidenav-list">
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/"
+         
+          >
+         Architecture
+      </a>
+	  
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/control/"  class="usa-current">Control </a>
+</li>
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/catalog/" >Catalog </a>
+</li>
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/profile/" >Profile </a>
+</li>
+
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/"
+         
+          >
+         Schema Reference
+      </a>
+	  
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/relations/"
+         
+          >
+         Relations to Documentary Encoding Standards
+      </a>
+	  
+    </li>
+    
+  </ul>
+</nav>
+
+  </aside>
+
 
 <div class="usa-layout-docs-main_content">
   
-  <h1 id="links">Links</h1>
+    
+    <h1>Control</h1>
+    
+  
+  <p>In OSCAL, a control is:</p>
 
-<p><a href="javascript:void(0);">This</a> is a text link on a light background.</p>
+<blockquote>
+  <p>A description of a safeguard or countermeasure designed to satisfy a set of defined security requirements that may be implemented in a system to manage a security or privacy risk.</p>
+</blockquote>
 
-<p><a href="https://18f.gsa.gov" class="-visited">This</a> is a visited link.</p>
+<p>The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, “The organization has an access control policy and procedures”, but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:</p>
 
-<p>This is link that goes to an <a href="https://18f.gsa.gov" class="usa-external_link">external website</a>.</p>
+<p><img src="/OSCAL/assets/img/NIST-SP-800-53-Rev4-AC1.png" alt="800-53Rev4AC1" width="800" /></p>
 
-<div class="usa-background-dark">
-  <p><a href="javascript:void(0);">This</a> is a text link on a light background.</p>
-</div>
+<p>This control has seven high-level components, including a security control identifier (“AC-1”), a title (“ACCESS CONTROL POLICY AND PROCEDURES”), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. In contrast, the next control is from ISO 27002 on access control policy. It is even more detailed, with an identifier (“9.1.1”), a title (“Access control policy”), control text, lengthy implementation guidance, and other information (additional advice on access control policy).</p>
 
-<h1 id="buttons">Buttons</h1>
-<h2 id="default-or-primary">Default or primary</h2>
-<p><button class="">Default</button>
-<button class=" usa-button-hover">Hover</button>
-<button class=" usa-button-active">Active</button>
-<button class=" usa-focus">Focus</button>
-<button class="" disabled="">Disabled</button></p>
-<h2 id="secondary">Secondary</h2>
-<p><button class="usa-button-secondary">Default</button>
-<button class="usa-button-secondary usa-button-hover">Hover</button>
-<button class="usa-button-secondary usa-button-active">Active</button>
-<button class="usa-button-secondary usa-focus">Focus</button>
-<button class="usa-button-secondary" disabled="">Disabled</button></p>
+<p><img src="/OSCAL/assets/img/ISO-27002-Control-9.1.1.png" alt="ISO27002911" width="800" /></p>
 
-<h1 id="tables">Tables</h1>
-<h2 id="standard">Standard</h2>
+<p>Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority that ISO 27002 does not. NIST SP 800-53’s statement of the control itself is also much more detailed and specific than ISO 27002 because it provides those details in its implementation guidance instead of the control text. There are other differences in terminology as well, such as NIST SP 800-53 using the term “supplemental guidance” for roughly what ISO 27002 calls “other information”.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Document title</th>
-      <th>Description</th>
-      <th>Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Declaration of Independence</td>
-      <td>Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
-      <td>1776</td>
-    </tr>
-    <tr>
-      <td>Bill of Rights</td>
-      <td>The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
-      <td>1791</td>
-    </tr>
-    <tr>
-      <td>Declaration of Sentiments</td>
-      <td>A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.</td>
-      <td>1848</td>
-    </tr>
-    <tr>
-      <td>Emancipation Proclamation</td>
-      <td>An executive order granting freedom to slaves in designated southern states.</td>
-      <td>1863</td>
-    </tr>
-  </tbody>
-</table>
+<p>OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.</p>
 
-<h2 id="borderless">Borderless</h2>
-
-<table class="usa-table-borderless">
-  <thead>
-    <tr>
-      <th>Document title</th>
-      <th>Description</th>
-      <th>Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Declaration of Independence</td>
-      <td>Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
-      <td>1776</td>
-    </tr>
-    <tr>
-      <td>Bill of Rights</td>
-      <td>The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
-      <td>1791</td>
-    </tr>
-    <tr>
-      <td>Declaration of Sentiments</td>
-      <td>A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.</td>
-      <td>1848</td>
-    </tr>
-    <tr>
-      <td>Emancipation Proclamation</td>
-      <td>An executive order granting freedom to slaves in designated southern states.</td>
-      <td>1863</td>
-    </tr>
-  </tbody>
-</table>
 
 </div>
     </main>

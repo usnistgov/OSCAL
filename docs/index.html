@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concepts | OSCAL</title>
+    <title>The OSCAL Architecture | OSCAL</title>
 
 
 
-<meta name="description" content="Concepts">
+<meta name="description" content="The OSCAL Architecture">
 
 
 
@@ -177,18 +177,27 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
-            href="/OSCAL/resources/">
-            <span>Resources</span>
+          <a class=" usa-nav-link   usa-current usa-current"
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
           </a>
           
           </li>
           
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
-            href="/OSCAL/docs/">
-            <span>Concepts</span>
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
           </a>
           
           </li>
@@ -280,24 +289,32 @@
       <a href="/OSCAL/docs/"
           class="usa-current" 
           >
-         Concepts
-      </a>
-	  
-    </li>
-    
-      
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/architecture/"
-         
-          >
          Architecture
       </a>
 	  
       <ul class="usa-sidenav-sub_list">
         
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/control/" >Control </a>
+</li>
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/catalog/" >Catalog </a>
+</li>
+
+
+
+
+<li>
+  <a href="/OSCAL/docs/profile/" >Profile </a>
+</li>
 
 
       </ul>
@@ -339,53 +356,38 @@
 <div class="usa-layout-docs-main_content">
   
     
-    <h1>Concepts</h1>
+    <h1>The OSCAL Architecture</h1>
     
   
-  <p>Three key concepts underlie the <a href="/OSCAL/docs/architecture/">OSCAL architecture</a>:</p>
+  <p>The OSCAL architecture is organized in a series of <em>layers</em> depicted below from left to right. Each layer consists of a human-oriented documentation artifact depicted on the top, a statement of what organizations might do with this information in the middle, and a machine-oriented OSCAL <em>model</em> depicted along the bottom of the image that is capable of representing the information from the human-oriented documentation artifact on the top. Each model in OSCAL is intended to build on the information provided by the model in the previous layer. Consequently, OSCAL is designed as a <strong>documentary architecture</strong> comprising several related document models, arranged in <strong>layers</strong>. OSCAL models are represented in machine readable formats (e.g., XML, JSON).</p>
 
-<ol>
-  <li>
-    <p>A 
-<a href="/OSCAL/docs/architecture/control/">control</a> is a safeguard or countermeasure designed to satisfy a set of defined security requirements.</p>
-  </li>
-  <li>
-    <p>A <a href="/OSCAL/docs/architecture/catalog/">catalog</a> is a set of security control definitions. Examples include the controls in NIST SP 800-53, ISO 27001, HIPAA, and PCI. The <em>catalog layer</em> in OSCAL refers to any data made available for processing in this format.</p>
-  </li>
-  <li>
-    <p>A <a href="/OSCAL/docs/architecture/profile/">profile</a> is a specific set of security requirements; also called a <em>baseline</em> or <em>overlay</em>. A profile represents a selection of controls from one or more catalogs, with configuration or qualification appropriate to its use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, NIST SP800-171 (a controls baseline for CUI/NFO), and the PCI DSS requirements.  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.</p>
-  </li>
-</ol>
+<p>Together, these models (partially) address the functional requirements as depicted in the following diagram:</p>
 
-<h2 id="purpose">Purpose</h2>
+<p><img src="/OSCAL/assets/img/oscal-components.png" alt="oscal components" width="800" /></p>
 
-<p>OSCAL is attempting to address a number of challenges around security controls and security control assessment. The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to do manually implement the control in information systems in order for the tool to use the information.</p>
-
-<p>Organizations are also struggling with information systems that have many different components. Some components require the use of different profiles per component; this is commonly the case with cloud environments. Also, systems can be multi-tenant or have mixed ownership of components (often referred to as shared responsibility). Information system owners need to be able to assess the security of these systems against their specific requirements and to simultaneously provide these views to their stakeholders.</p>
-
-<p>In addition, there are situations where a single system needs to support multiple regulatory frameworks. For example, the U.S. Department of Veterans Affairs is a federal agency operating with multiple sets of regulatory frameworks together: the Federal Information Security Modernization Act (FISMA); the NIST Cybersecurity Risk Management Framework; requirements relating to the Health Insurance Portability and Accountability Act (HIPAA); and others relating to secure credit card transactions (Payment Card Industry Data Security Standard (PCI DSS)). This situation can be complicated.</p>
-
-<p>Because the definition and assessment of all these security controls is so complex, it is largely a manual process today. The OSCAL project seeks to change this situation by offering standardized representations for controls and their implementation in a system, which can be used by both humans and machines for development, analysis, and reporting. We need formats that can be generated by machines for communicating with other machines, but can also be easily reformatted so humans can read the information. By standardizing the representation of this information with a well-defined specification, OSCAL information can be interoperable. The goal is to keep OSCAL as simple as possible while enabling extensive automation in future vendor tools.</p>
-
-<h2 id="users">Users</h2>
-
-<p>The initial OSCAL work encompasses the catalog and profile concepts. There are several types of users who will benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:</p>
+<p>Starting from the left, the OSCAL layers are currently defined as:</p>
 
 <ul>
-  <li><strong>Catalog maintainers:</strong> publishing catalogs into OSCAL format (e.g., NIST, ISO, ISACA)</li>
-  <li><strong>Standard profile maintainers:</strong> profiles in OSCAL format used by many organizations consuming OSCAL catalogs (e.g., NIST, FedRAMP)</li>
-  <li><strong>Custom profile maintainers:</strong> developing new profiles or customizing existing profiles for organization-specific use (e.g., cloud service providers, integrators)</li>
-  <li><strong>Tool vendors:</strong> creating tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes</li>
+  <li>
+    <p><strong>Catalog:</strong> In OSCAL, or any security documentation using current best practices, is all about <strong>controls</strong> and <strong>catalogs</strong>. A <a href="control">control</a> represents a security requirement, guideline, procedure or activity. A <a href="catalog">catalog</a> is an organized collection of controls.</p>
+
+    <p>Typically, catalogs are represented in human readable documentary form, in which controls are represented as parts of a catalog document. Controls, as defined and described in catalogs, may also be referenced and configured in other documents; thus control information must be composed in a way to make it possible to migrate across different types of documents for different purposes, while maintaining “identity” and referential integrity for traceability.</p>
+
+    <p>Additionally, catalogs may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls is supported in OSCAL because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.</p>
+  </li>
+  <li>
+    <p><strong>Profile:</strong> The profile model allows for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.</p>
+
+    <p>In particular, the design of the OSCAL Profile layer, in relation to the Catalog layer, reflects the use of control catalogs as outlined in NIST SP800-53 – specifically the concept of <em>baselines</em> and <em>overlays</em> over a base catalog. And then, as we see in the real world, overlays on the overlays. In OSCAL, <a href="profile">profiles</a> are generalized to be applicable to any set of information presented in catalog form. Thus, the idea of tailoring in application can be applied not only to security guidelines in general, but also in mixed environments that have to address requirements in more than one catalog at a time.</p>
+  </li>
+  <li><strong>Implementation:</strong> Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.</li>
+  <li><strong>Assessment:</strong> Describes how the system assessment is to be performed.</li>
+  <li><strong>Assessment Results:</strong> Records the findings of the assessment.</li>
 </ul>
 
-<p>There are also several types of expected consumers of OSCAL catalogs, profiles, and/or tools, including the following:</p>
+<p>As the project <a href="/OSCAL/learnmore/roadmap/">progresses</a>, these definitions are expected to evolve; they are included here to indicate the current status within OSCAL and may not the represent the final definitions for each model.  The above is a high-level explanation of the basic constructs supported by OSCAL. These constructs exist in all OSCAL bindings (e.g., XML, JSON). At this time, the material covers OSCAL controls, catalogs, and profiles. Additional OSCAL constructs will be added as they are developed and matured.</p>
 
-<ul>
-  <li><strong>Operations personnel:</strong> rapidly verifying that systems comply with organizational security requirements</li>
-  <li><strong>Security and privacy personnel:</strong> automatically identifying problems and addressing them quickly before loss or damage occur</li>
-  <li><strong>Auditors/assessors:</strong> performing audits/assessments on demand with minimal effort</li>
-  <li><strong>Policy personnel:</strong> identifying systemic problems that necessitate changes to organizational security policies</li>
-</ul>
+
 
 </div>
     </main>

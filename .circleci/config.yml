@@ -362,7 +362,7 @@ jobs: # a collection of
       - *restore_gem_cache
       - install-bundler
       - run:
-          name: Build jekyll site
+          name: Build and Validate Jekyll site
           command: |
             cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
