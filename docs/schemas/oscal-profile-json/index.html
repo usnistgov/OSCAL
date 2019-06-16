@@ -453,6 +453,8 @@
 
 
 
+
+
 <li>
   <a href="#oscal-profile-json_profile"><code>profile (root element)</code></a>
 </li>
@@ -826,6 +828,12 @@
 
 
 <li>
+  <a href="#oscal-profile-json_param-id"><code>param-id</code></a>
+</li>
+
+
+
+<li>
   <a href="#oscal-profile-json_param"><code>param</code></a>
 </li>
 
@@ -1054,6 +1062,8 @@
     
   
   
+
+
 
 
 
@@ -1604,6 +1614,10 @@
 
 
 
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="param-id"><header><h4 id="oscal-profile-json_param-id" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Parameter ID</b>: <code>param-id</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_param-id"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NCName</code></p><p class="description">Value of the 'id' flag on a target parameter</p></div>
+
+
+
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="param"><header><h4 id="oscal-profile-json_param" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter</b>: <code>param</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_param"><button>XML</button></a><button disabled="disabled">JSON</button></div><p>This object appears <i>unlabelled</i> in an array called <code>parameters</code>.</p></header><p class="description">Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</p><div class="model"><p>The <code>param</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i>: Unique identifier of the containing object</li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>): Indicating the type or classification of the containing object</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>): Another parameter invoking this one</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>): A short name for the parameter.<br />The label value should be suitable for inline display in a rendered catalog.</li><li>An array labelled
          
          <b></b>, containing
@@ -1766,7 +1780,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set"><header><h4 id="oscal-profile-json_set" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_set"><button>XML</button></a><button disabled="disabled">JSON</button></div><p>This object appears <i>unlabelled</i> in an array called <code>settings</code>.</p></header><p class="description">A parameter setting, to be propagated to points of insertion</p><div class="model"><p>The <code>set</code> object has the following members (properties):</p><ul><li><a href="#class"><code>class</code></a> property  (<i>optional</i>): Indicating the type or classification of the containing object</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>): Another parameter invoking this one</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>): A placeholder for a missing value, in display.</li><li>An array labelled
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set"><header><h4 id="oscal-profile-json_set" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_set"><button>XML</button></a><button disabled="disabled">JSON</button></div><p>This object appears, with a label, as a property of an object called <code>settings</code>.</p></header><p class="description">A parameter setting, to be propagated to points of insertion</p><div class="model"><p>The <code>set</code> object has the following members (properties):</p><ul><li><a href="#class"><code>class</code></a> property  (<i>optional</i>): Indicating the type or classification of the containing object</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>): Another parameter invoking this one</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>): A placeholder for a missing value, in display.</li><li>An array labelled
          
          <b></b>, containing
          <a href="#usage"><code>usage</code></a> objects  (<i>optional</i>)</li><li>An array labelled
