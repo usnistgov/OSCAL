@@ -1233,6 +1233,8 @@
    </modify>
    <back-matter>
       <resource id="catalog">
+         <desc>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
+            Information Systems and Organizations</desc>
          <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
       </resource>
    </back-matter>
