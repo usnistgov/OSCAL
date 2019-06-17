@@ -1,5 +1,5 @@
 # OSCAL Implementation Layer - FedRAMP System Security Plan (SSP) Modeling
-This defines the data fields to express a FedRAMP SSP in machine redable format. The intent is to translate this to XML and JASON for adoption as part of the Open OSCAL Implementation Layer specification.
+This defines the data fields to express a FedRAMP SSP in machine redable format. The intent is to translate this to XML and JSON for adoption as part of the Open OSCAL Implementation Layer specification.
 This is part of the NIST OSCAL effort as covered by [Issue #246](https://github.com/usnistgov/OSCAL/issues/246).
 
 ---
