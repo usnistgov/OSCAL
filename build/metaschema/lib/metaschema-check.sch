@@ -31,27 +31,7 @@
     <xsl:import href="metaschema-compose.xsl"/>
         
     <sch:pattern>
-        <!--<sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
-            <sch:assert test="count(key('definition-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
-            <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
-            <sch:let name="this-name"   value="@name"/>
-            <sch:let name="target-name" value="@acquire-from"/>
-            <sch:let name="target"      value="/m:METASCHEMA/m:import[@name=$target-name]"/>
-            
-            <sch:let name="module" value="$target/document(@href,.)/m:METASCHEMA"/>
-            <sch:assert test="exists($target)">No metaschema is imported for acquisition '<sch:value-of select="$target-name"/>' </sch:assert>
-            <sch:assert test="empty($target) or exists($module)">No metaschema is found for metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
-            <sch:let name="acquired" value="$module/key('definition-by-name',$this-name,.)"/>
-            <sch:assert test="exists($acquired)">No definition is found for <sch:value-of select="substring-after(local-name(),'define-')"/>  <sch:value-of select="@name"/> in imported metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
-            <sch:assert test="empty($acquired/@acquire-from)">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' is also acquired (from module '<sch:value-of select="$acquired/@acquire-from"/>'); please import from the original metaschema</sch:assert>
-            
-            <sch:assert test="empty(@address) or exists($acquired/@address)">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' should have the same 'address' setting.</sch:assert>
-            <sch:assert test="empty((.|$acquired)/@address) or @address=$acquired/@address">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' is addressed by ''</sch:assert>
-            <sch:let name="acquired-refs" value="$acquired/m:model//(m:flag | m:field | m:assembly | m:fields | m:assemblies)"/>
-            <sch:let name="not-acquired"  value="$acquired-refs[empty(key('definition-by-name',@named,$home))]"/>
-            <sch:assert test="empty($not-acquired)">Failed to acquire a model for <sch:value-of select="string-join($not-acquired/(name() || '[@named=''' || @named || ''']'),', ')"/></sch:assert>
-            
-        </sch:rule>-->
+        
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
             <sch:assert role="warning" test="count(key('definition-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module (only the last one found will be used)</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
@@ -89,8 +69,12 @@
                 (serving to declare the flag as the value key)</sch:assert>
         </sch:rule>
         
+        <sch:rule context="m:valid-values/m:value">
+            <sch:assert test="not(@name = preceding-sibling::*/@name)">Value '<sch:value-of select="@name"/>' may only be
+            specified once for flag '<sch:value-of select="../../@name"/>'.</sch:assert>
+        </sch:rule>
         <sch:rule context="m:flag">
-            <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
+                <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
             <sch:assert test="empty(m:value-key) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
             <sch:assert test="empty(m:value-key) or empty(../m:value-key)">A flag may not be marked as a value key when its field has a (literal) value key.</sch:assert>
             <sch:assert test="empty(m:value-key) or (count(../m:flag/m:value-key) eq 1)">Only one flag may be marked as a value key on a field.</sch:assert>
