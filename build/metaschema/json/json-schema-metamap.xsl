@@ -234,10 +234,30 @@
     <xsl:template mode="declaration" match="flag[exists(value-key)]"/>
         
     <xsl:template mode="declaration" match="flag">
+        <!--<xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@name)/@datatype)[1]"/>-->
+        
         <map key="{@name}">
             <string key="type">string</string>
+            <xsl:apply-templates select="(valid-values,key('definition-by-name',@name)/valid-values)[1]"/>    
         </map>
     </xsl:template>
+    
+    <!-- No restriction is introduced when allow others is 'yes' -->
+    <xsl:template match="valid-values[@allow-other='yes']"/>
+    
+    <xsl:template match="valid-values">
+        <xsl:param name="datatype" as="xs:string">string</xsl:param>
+        <array key="enum">
+            <xsl:apply-templates/>
+        </array>
+    </xsl:template>
+    
+    <xsl:template match="valid-values/value">
+        <string>
+            <xsl:apply-templates select="@name"/>
+        </string>
+    </xsl:template>
+    
     
     <xsl:template mode="declaration" match="assemblies | fields">
         <map key="{ key('definition-by-name',@named)/@group-as }">

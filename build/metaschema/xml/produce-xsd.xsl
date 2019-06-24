@@ -18,6 +18,8 @@
 
     <xsl:output indent="yes"/>
     
+    <xsl:strip-space elements="METASCHEMA define-assembly define-field define-flag model choice valid-values remarks xs:*"/>
+    
     <!--<xsl:variable name="home"   select="/"/>
     <xsl:variable name="abroad" select="//import/@href/document(.)"/>-->
     
@@ -45,6 +47,10 @@
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
         <xsl:apply-templates select="$unwired" mode="wire-ns"/>
+    </xsl:template>
+
+    <xsl:template match="/" mode="debug">       
+            <xsl:apply-templates/>
     </xsl:template>
     
     <!--MAIN ACTION HERE -->
@@ -177,19 +183,52 @@
     
     <xsl:template match="flag | key">
         <xsl:variable name="name" select="@name"/>
-        <xs:attribute name="{ @name }" type="xs:string">
+        <xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@name)/@datatype)[1]"/>
+        <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@name)/valid-values)[1]"/>
+        <xs:attribute name="{ @name }">
             <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
             <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:if>
-            <xsl:for-each select="(@datatype,key('definition-by-name',@name)/@datatype)[1]">
+            <!-- annotate as datatype or string unless an exclusive value-list is given -->
+            <xsl:for-each select="($datatype,'string')[1][not($value-list/@allow-other='yes')]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>
-            
             <xsl:apply-templates select="/*/define-flag[@name=$name]" mode="annotated"/>
+            <xsl:apply-templates select="$value-list">
+                <xsl:with-param name="datatype" select="$datatype"/>
+            </xsl:apply-templates>
         </xs:attribute>
     </xsl:template>
 
+    <!-- No restriction is introduced when allow others is 'yes' -->
+    <xsl:template match="valid-values[@allow-other='yes']"/>
+        
+    <xsl:template match="valid-values">
+        <xsl:param name="datatype" as="xs:string">string</xsl:param>
+        <xs:simpleType>
+            <xs:restriction base="xs:{$datatype}">
+                <xsl:apply-templates/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xsl:template>
+    
+    <xsl:template match="valid-values/value">
+        <xs:enumeration value="{@name}">
+            <xsl:if test="matches(.,'\S')">
+                <xs:annotation>
+                    <xs:documentation>
+                        
+                    <p>
+                        <xsl:apply-templates/>
+                    </p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xsl:if>
+        </xs:enumeration>
+    </xsl:template>
+    
+    
     <xsl:mode name="acquire-prose" on-no-match="shallow-copy"/>
     
     <xsl:template match="comment() | processing-instruction()" mode="acquire-prose"/>
