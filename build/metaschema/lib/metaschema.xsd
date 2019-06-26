@@ -13,7 +13,6 @@
         structures.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      
       <xs:sequence>
         <xs:element ref="m:schema-name"/>
         <xs:element ref="m:schema-version" minOccurs="0"/>
@@ -32,6 +31,7 @@
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
+  
   <xs:element name="define-assembly">
     <xs:annotation>
       <xs:documentation>An element with structured element content in XML; in JSON, an object with
@@ -39,12 +39,10 @@
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
-
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element name="model" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
@@ -60,8 +58,8 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
+       <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
@@ -76,11 +74,15 @@
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+        <!--<xs:choice maxOccurs="unbounded" minOccurs="0">
+          <xs:element name="flag" type="m:local-flag-definition"/>
+          <xs:element name="flag" type="m:named-flag"/>
+        </xs:choice>-->
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
@@ -113,7 +115,8 @@
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>
       <!-- should Schematron check uniqueness among siblings irrespective of datatype -->
-      <xs:attribute name="name"     type="xs:NCName" use="required"/>
+      <xs:attribute name="name"     type="xs:NCName"/>
+      <xs:attribute name="ref"     type="xs:NCName"/>
       <!-- do not have to flag if required; it always will be <xs:attribute name="required" type="xs:NCName"/>-->
     </xs:complexType>
   </xs:element>
@@ -241,7 +244,7 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -251,7 +254,7 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -262,7 +265,7 @@
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -272,7 +275,7 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -307,17 +310,37 @@
   <xs:element name="flag">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+        <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:value"/>
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>
-      <xs:attribute name="name"     type="xs:NCName" use="required"/>
+      <xs:attribute name="name"     type="xs:NCName"/>
+      <xs:attribute name="ref"      type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
+  <!--<xs:complexType name="local-flag-definition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+      <xs:element minOccurs="0" ref="m:formal-name"/>
+      <xs:element minOccurs="0" ref="m:description"/>
+      <xs:element minOccurs="0" ref="m:remarks"/>
+      <xs:element minOccurs="0" ref="m:valid-values"/>
+    </xs:sequence>
+    <xs:attribute name="datatype" type="xs:NCName"/>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+    <xs:attribute name="required" type="xs:NCName"/>
+  </xs:complexType>
+  <xs:complexType name="flag-reference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+    </xs:sequence>
+          <xs:attribute name="ref"      type="xs:NCName" use="required"/>
+  </xs:complexType>-->
+  
   <xs:element name="choice">
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">

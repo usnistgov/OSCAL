@@ -3,9 +3,10 @@
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
-  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
-  root="profile">
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+            root="profile">
    <schema-name>OSCAL Profile Metaschema</schema-name>
    <schema-version>1.0-milestone1</schema-version>
    <short-name>oscal-profile</short-name>
@@ -18,9 +19,16 @@
    <import href="oscal_catalog_metaschema.xml"/>
    
    <define-assembly name="profile" group-as="profiles">
-      <flag name="id" datatype="ID" required="yes"/>
       <formal-name>Profile</formal-name>
       <description>Each OSCAL profile is defined by a Profile element</description>
+      <flag ref="id" datatype="ID" required="yes"/>
+      <model>
+            <assembly ref="metadata" required="yes"/>
+            <assemblies ref="import"/>
+            <assembly ref="merge"/>
+            <assembly ref="modify"/>
+            <assembly ref="back-matter"/>
+      </model>
       <remarks>
          <p>An OSCAL document that describes a selection with possible modification of multiple
           controls from multiple catalogs. It provides mechanisms by which controls may be selected
@@ -30,20 +38,17 @@
           subcontrols as given in and by a catalog. They may also serve as sources for further
           modification in and by other profiles, that import them.</p>
       </remarks>
-      <model>
-            <assembly   named="metadata" required="yes"/>
-            <assemblies named="import"/>
-            <assembly   named="merge"/>
-            <assembly   named="modify"/>
-            <assembly   named="back-matter"/>
-      </model>
    </define-assembly>
 
    <define-assembly name="import" group-as="imports">
-      <flag name="href" datatype="anyURI" required="yes"/>
       <formal-name>Import resource</formal-name>
       <description>An Import element designates a catalog, profile, or other resource to be
          included (referenced and potentially modified) by this profile.</description>
+      <flag ref="href" datatype="anyURI" required="yes"/>
+      <model>
+         <assembly ref="include"/>
+         <assembly ref="exclude"/>
+      </model>
       <remarks>
          <p>An <code>import</code> indicates a source whose controls are to be included (referenced
           and modified) in a profile. This source will either be a catalog whose controls are given
@@ -56,10 +61,6 @@
             an <code>include</code>/<code>all</code> is assumed (that is, all controls will be
             included by default).</p>
       </remarks>
-      <model>
-         <assembly named="include"/>
-         <assembly named="exclude"/>
-      </model>
       <example>
          <import xmlns="http://csrc.nist.gov/ns/oscal/example" href="catalog.xml">
             <include>
@@ -73,6 +74,13 @@
    <define-assembly name="merge">
       <formal-name>Merge controls</formal-name>
       <description>A Merge element merges controls in resolution.</description>
+      <model>
+            <field ref="combine"/>
+            <choice>
+               <field ref="as-is"/>
+               <assembly ref="custom"/>
+            </choice>
+      </model>
       <remarks>
          <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or
          <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
@@ -80,19 +88,12 @@
          profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element,
          will not be merged into (will be dropped) in the resulting resolution.</p>
       </remarks>
-      <model>
-            <field named="combine"/>
-            <choice>
-               <field    named="as-is"/>
-               <assembly named="custom"/>
-            </choice>
-      </model>
    </define-assembly>
    <define-field name="combine" as="empty">
-      <flag name="method"/>
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing)
         versions of the same control</description>
+      <flag ref="method"/>
       <remarks>
         <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with
            clashing invocations (multiple competing versions of a control or a subcontrol). </p>
@@ -109,8 +110,7 @@
    <define-flag name="method" datatype="string">
       <formal-name>Combination method</formal-name>
       <description>How clashing controls and subcontrols should be handled</description>
-     <!-- TODO: define these better -->
-       <valid-values>
+      <valid-values>
          <value name="use-first">Use the first definition.</value>
          <value name="merge">Merge</value>
          <value name="keep">keep</value>
@@ -119,28 +119,28 @@
    <define-assembly name="custom" group-as="customs">
       <formal-name>Custom grouping</formal-name>
       <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
+      <model>
+         <choice>
+            <assemblies ref="group"/>
+            <fields ref="call"/>
+            <fields ref="match"/>
+         </choice>
+      </model>
       <remarks>
         <p>The <code>custom</code> element represents a custom arrangement or organization of controls in
         the resolution of a catalog. </p>
         <p>While the <code>as-is</code> element provides for a restitution of a control set's organization
         (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
      </remarks>
-      <model>
-         <choice>
-            <assemblies named="group"/>
-            <fields named="call"/>
-            <fields named="match"/>
-         </choice>
-      </model>
    </define-assembly>
    <define-assembly name="group" group-as="groups">
       <formal-name>Control group</formal-name>
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
       <model>
          <choice>
-            <assemblies named="group"/>
-            <fields     named="call"/>
-            <fields     named="match"/>
+            <assemblies ref="group"/>
+            <fields ref="call"/>
+            <fields ref="match"/>
          </choice>
       </model>
    </define-assembly>
@@ -148,8 +148,8 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assemblies named="set"/>
-         <assemblies named="alter"/>
+         <assemblies ref="set"/>
+         <assemblies ref="alter"/>
       </model>
    </define-assembly>
    <!-- Can have either 'all' or (a set of) 'call' -->
@@ -157,6 +157,13 @@
       <formal-name>Include controls</formal-name>
       <description>Specifies which controls and subcontrols to include from the resource (source catalog) being
           imported</description>
+      <model>
+            <choice>
+               <field ref="all"/>
+               <fields ref="call"/>
+               <fields ref="match"/>
+            </choice>
+      </model>
       <remarks>
          <p>To be schema-valid, this element must contain either (but not both) a single
             <code>all</code> element, or a sequence of <code>call</code> elements.</p>
@@ -164,13 +171,6 @@
           (qv); i.e., all controls are included by default, unless the <code>include</code>
           instruction calls controls specifically.</p>
       </remarks>
-      <model>
-            <choice>
-               <field  named="all"/>
-               <fields named="call"/>
-               <fields named="match"/>
-            </choice>
-      </model>
    </define-assembly>
    <!--
     We are permitting include/call along with exclude/call to support tweaky with-subcontrol allowances
@@ -178,10 +178,9 @@
   -->
    <!-- Only 'yes' should have any effect; processors should assume 'no' when implicit -->
    <define-field name="all" as="empty">
-      <flag name="with-subcontrols"/>
-      
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
+      <flag ref="with-subcontrols"/>
       <remarks>
          <p>This element provides an alternative to calling controls and subcontrols individually
             from a catalog. But this is also the default behavior when no <code>include</code>
@@ -189,24 +188,6 @@
             unless it is for purposes of including its <code>@with-subcontrols='yes'</code>
          </p>
       </remarks>
-      <!--<example>
-         <import href="canonical-catalog-oscal.xml" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-            <include>
-               <all/>
-            </include>
-         </import>
-      </example>-->
-      <!--<example>
-         <import href="canonical-catalog-oscal.xml" xmlns="http://csrc.nist.gov/ns/oscal/1.0"/>
-      </example>-->
-      <!--<example>
-         <import href="canonical-catalog-oscal.xml" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-            <include>
-               <all with-subcontrols="yes"/>
-            </include>
-         </import>
-      </example>-->
-
    </define-field>
    <!--<define-assembly name="with-control" group-as="with-controls">
       <flag name="with-control">
@@ -221,15 +202,12 @@
     when @with-subcontrols is used, it must be @control-id
   -->
    <define-field name="call" group-as="id-selectors" as="empty">
-       <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
-      <flag name="control-id" datatype="NCName"/>
-      <flag name="subcontrol-id" datatype="NCName"/>
-      <!-- with-control has to be (un)settable for odd configurations of composite profiles -->
-      <flag name="with-control" datatype="NCName"/>
-      <flag name="with-subcontrols" datatype="NCName"/>
-
       <formal-name>Call (control or subcontrol)</formal-name>
       <description>Call a control or subcontrol by its ID</description>
+      <flag ref="control-id" datatype="NCName"/>
+      <flag ref="subcontrol-id" datatype="NCName"/>
+      <flag ref="with-control" datatype="NCName"/>
+      <flag ref="with-subcontrols" datatype="NCName"/>
       <remarks>
          <p>Inside <code>include</code>, If <code>@control-id</code> is used (to indicate the control
           being referenced), <code>@subcontrol-id</code> cannot be used, and vice versa. (A single
@@ -248,58 +226,59 @@
     nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
   -->
    <define-field name="match" group-as="pattern-selectors" as="empty">
-      <flag name="pattern"/>
-      <flag name="order"/>
-      <flag name="with-control" datatype="NCName"/>
-      <flag name="with-subcontrols" datatype="NCName"/>
       <formal-name>Match controls and subcontrols by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
+      <flag ref="pattern"/>
+      <flag ref="order"/>
+      <flag ref="with-control" datatype="NCName"/>
+      <flag ref="with-subcontrols" datatype="NCName"/>
    </define-field>
    <define-assembly name="exclude" group-as="excludes">
       <formal-name>Exclude controls</formal-name>
       <description>Which controls and subcontrols to exclude from the resource (source catalog) being
           imported</description>
+      <model>
+         <choice>
+            <fields ref="call"/>
+            <fields ref="match"/>
+         </choice>
+      </model>
       <remarks>
          <p>Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
          However, it also makes no sense to use exclude/call except with include/all; you would not want to
          include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
       </remarks>
-      <model>
-         <choice>
-            <fields named="call"/>
-            <fields named="match"/>
-         </choice>
-      </model>
    </define-assembly>
 
    <define-assembly name="set" group-as="settings">
-      <key name="param-id" datatype="NCName"/>
-      <flag name="class"/>
-      <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter Setting</formal-name>
       <description>A parameter setting, to be propagated to points of insertion</description>
+      <key  ref="param-id" datatype="NCName"/>
+      <flag ref="class"/>
+      <flag ref="depends-on" datatype="IDREF"/>
       <model>
          <!-- declarations tbf in the imported schema and to be aligned with it -->
-         <field named="label"/>
-         <fields named="usage"/>
-         <fields named="constraint"/>
+         <field ref="label"/>
+         <fields ref="usage"/>
+         <fields ref="constraint"/>
          <choice>
-            <field named="value"/>
-            <assembly named="select"/>
+            <field ref="value"/>
+            <assembly ref="select"/>
          </choice>
-         <fields named="link"/>
-         <assemblies named="part"/>
+         <fields ref="link"/>
+         <assemblies ref="part"/>
       </model>
-       <!--Not working only b/c SaxonHE does not support eval-->
-         <!--<example href="../../content/fedramp.gov/FedRAMP_HIGH-baseline_profile.xml"
-               path="//oscal:set-param[@param-id='au-8.1_prm_1']"/>-->
    </define-assembly>
 
    <define-assembly name="alter" group-as="alterations">
-      <flag name="control-id" datatype="NCName"/>
-      <flag name="subcontrol-id" datatype="NCName"/>
       <formal-name>Alteration</formal-name>
       <description>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</description>
+      <flag ref="control-id" datatype="NCName"/>
+      <flag ref="subcontrol-id" datatype="NCName"/>
+      <model>
+               <fields ref="remove"/>
+               <assemblies ref="add"/>
+      </model>
       <remarks>
          <p>Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of alteration.</p>
          <p>It is an error for two <code>alter</code> elements to apply to the same control or subcontrol.
@@ -308,18 +287,14 @@
             remove properties or add global properties); extending this element to match multiple control
             IDs could provide for this.</p>
       </remarks>
-      <model>
-               <fields     named="remove"/>
-               <assemblies named="add"/>
-      </model>
    </define-assembly>
 
    <define-field as="empty" name="remove" group-as="removals">
-      <flag name="class-ref" datatype="NMTOKENS"/>
-      <flag name="id-ref"    datatype="NCName"/>
-      <flag name="item-name" datatype="NMTOKENS"/>
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control or subcontrol, in resolution</description>
+      <flag ref="class-ref" datatype="NMTOKENS"/>
+      <flag ref="id-ref" datatype="NCName"/>
+      <flag ref="item-name" datatype="NMTOKENS"/>
       <remarks>
          <p>Use <code>@class-ref</code>, <code>@id-ref</code> or <code>@item-name</code> to indicate
           class tokens or ID reference, or the formal name, of the component to be removed or erased
@@ -331,15 +306,15 @@
       </remarks>
    </define-field>
    <define-assembly name="add" group-as="additions">
-      <flag name="position"/>
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls or subcontrols, in resolution</description>
+      <flag ref="position"/>
       <model>
-         <field named="title"/>
-         <assemblies named="param"/>
-         <fields named="prop"/>
-         <fields named="link"/>
-         <assemblies named="part"/>
+         <field ref="title"/>
+         <assemblies ref="param"/>
+         <fields ref="prop"/>
+         <fields ref="link"/>
+         <assemblies ref="part"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">
@@ -349,17 +324,17 @@
    <define-flag datatype="NCName" name="with-control">
       <formal-name>Include control with subcontrol</formal-name>
       <description>Whether a control should be implicitly included, if not called.</description>
-     <valid-values>
-       <value name="yes">Include the parent control when a subcontrol is imported.</value>
-       <value name="no">Exclude the parent control when a subcontrol is imported.</value>
+      <valid-values>
+         <value name="yes">Include the parent control when a subcontrol is imported.</value>
+         <value name="no">Exclude the parent control when a subcontrol is imported.</value>
      </valid-values>
    </define-flag>
    <define-flag datatype="NCName" name="with-subcontrols">
       <formal-name>Include subcontrols with control</formal-name>
       <description>Whether subcontrols should be implicitly included, if not called.</description>
-     <valid-values>
-       <value name="yes">Include all subcontrols for a control during the import.</value>
-       <value name="no">Exclude all subcontrols for a control during the import.</value>
+      <valid-values>
+         <value name="yes">Include all subcontrols for a control during the import.</value>
+         <value name="no">Exclude all subcontrols for a control during the import.</value>
      </valid-values>
    </define-flag>
 
@@ -378,11 +353,10 @@
    <define-flag datatype="NCName" name="order">
       <formal-name>Order</formal-name>
       <description>A designation of how a selection of controls in a profile is to be ordered.</description>
-     <!-- TODO: define these -->
-     <valid-values>
-       <value name="keep"/>
-       <value name="ascending"/>
-       <value name="descending"/>
+      <valid-values>
+         <value name="keep"/>
+         <value name="ascending"/>
+         <value name="descending"/>
      </valid-values>
    </define-flag>
    <define-flag datatype="NCName" name="position">
@@ -407,6 +381,20 @@
    <define-flag datatype="NMTOKENS" name="item-name">
       <formal-name>References by name</formal-name>
       <description>Items to remove, by item type (name), e.g. title or prop</description>
+   </define-flag>
+  <!-- <define-flag name="test" datatype="string">
+      <formal-name>Constraint test</formal-name>
+      <description>A formal (executable) expression of a constraint</description>
+   </define-flag>-->
+
+  <!--<define-flag name="how-many" datatype="string">
+      <formal-name>Cardinality</formal-name>
+      <description>When selecting, a requirement such as one or more</description>
+   </define-flag>-->
+  
+  <define-flag name="depends-on" datatype="IDREF">
+      <formal-name>Depends on</formal-name>
+      <description>Another parameter invoking this one</description>
    </define-flag>
 
 </METASCHEMA>

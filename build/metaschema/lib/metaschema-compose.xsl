@@ -221,7 +221,7 @@
     <xsl:template match="define-assembly" mode="collect-references">
         <xsl:param name="ref-stack" tunnel="yes" required="yes"/>
         <xsl:if test="not(@name = $ref-stack)">
-            <xsl:sequence select="(. | flag | key)/string(@name)"/>
+            <xsl:sequence select="@name, (flag|key)/@ref"/>
             <xsl:apply-templates select="model" mode="#current">
                 <xsl:with-param tunnel="true" name="ref-stack" select="$ref-stack,@name"/>
             </xsl:apply-templates>
@@ -229,7 +229,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" mode="collect-references">
-        <xsl:sequence select="(. | flag)/string(@name)"/>
+        <xsl:sequence select="@name, (flag|key)/@ref"/>
     </xsl:template>
     
     <xsl:template match="model | model//*" mode="collect-references">
@@ -238,7 +238,7 @@
     
     <!-- Matching inside the $distinct-definitions variable, so traversing only applicable definitions -->
     <xsl:template priority="10" match="field | fields | assembly | assemblies" mode="collect-references">
-        <xsl:apply-templates select="key('definition-by-name',@named,root())" mode="#current"/>
+        <xsl:apply-templates select="key('definition-by-name',@ref,root())" mode="#current"/>
     </xsl:template>
         
     <!--hitting anything but a define-assembly, we are done collecting references-->

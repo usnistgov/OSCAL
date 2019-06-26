@@ -23,8 +23,8 @@
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
-    <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name | key/@name"/>
-    <xsl:key name="callers-by-field" match="define-assembly" use="model//(field|fields)/@named"/>
+    <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@ref | key/@ref"/>
+    <xsl:key name="callers-by-field" match="define-assembly" use="model//(field|fields)/@ref"/>
     
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
@@ -62,9 +62,37 @@
     
     <xsl:template match="/METASCHEMA/*" priority="-0.2"/>
     
+    
+    <xsl:template match="flag[@ref]" mode="make-template"/>
+        
+     <xsl:template match="flag[@name]" mode="make-template" expand-text="true">
+        <!-- Making a template to match a flag in context of its parent -->
+        <xsl:comment> 000 Handling flag "{ ../@name}/@{ @name }" 000 </xsl:comment>
+        
+        <xsl:comment> suppressing when matched in json2xml traversal</xsl:comment>
+        <XSLT:template match="*[@key='{@name}']" priority="7" mode="json2xml"/>
+        <xsl:variable name="match-step" expand-text="yes" as="xs:string">*[@key='{@name}']</xsl:variable>
+        <xsl:variable name="match-patterns" as="xs:string*">
+            <xsl:for-each select="..">
+                <xsl:value-of>
+                    <xsl:text>*[@key='{@name}']/{$match-step}</xsl:text>
+                    <xsl:if test="matches(@group-as, '\i\c*')">
+                        <xsl:text> | *[@key='{@group-as}']/{$match-step}</xsl:text>
+                        <xsl:text> | array[@key='{@group-as}']/*/{$match-step}</xsl:text>
+                    </xsl:if>
+                </xsl:value-of>
+            </xsl:for-each>
+        </xsl:variable>
+        <XSLT:template priority="3" match="{string-join($match-patterns,' | ')}" mode="as-attribute">
+            <XSLT:attribute name="{@name}">
+                <XSLT:apply-templates mode="#current"/>
+            </XSLT:attribute>
+        </XSLT:template>
+    </xsl:template>
+    
     <xsl:template match="define-flag" expand-text="true">
         <!-- Flags won't be producing elements in the regular traversal -->
-        <xsl:comment> 000 Handling flag "{ @name }" 000 </xsl:comment>
+        <xsl:comment> 000 Handling flag @{ @name } 000 </xsl:comment>
         
         <XSLT:template match="*[@key='{@name}']" priority="6" mode="json2xml"/>
         <xsl:variable name="match-step" expand-text="yes" as="xs:string">*[@key='{@name}']</xsl:variable>
@@ -85,7 +113,7 @@
             </XSLT:attribute>
         </XSLT:template>
     </xsl:template>
-
+    
     <xsl:template match="define-flag/* | define-field/* | define-assembly/*"/>
             
     <!-- 'any' keyword not handled  -->
@@ -96,8 +124,8 @@
     </xsl:template>
     
     <xsl:template match="model//*">
-        <xsl:variable name="definition" select="key('definition-by-name',@named)"/>
-        <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@named/('''' ||. || ''''),$definition/@group-as/('''' || . || '''')),', ')})]"/>    
+        <xsl:variable name="definition" select="key('definition-by-name',@ref)"/>
+        <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@ref/('''' ||. || ''''),$definition/@group-as/('''' || . || '''')),', ')})]"/>    
     </xsl:template>
     
     <xsl:template match="model/prose" priority="2">
@@ -117,7 +145,7 @@
     </xsl:template>
     
     <xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
-        <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
+        <XSLT:value-of select="string[@key='{ flag[value-key]/(@name,@ref)[1] }']"/>
     </xsl:template>
     
     <xsl:template match="define-field" expand-text="true">
@@ -130,7 +158,7 @@
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <xsl:variable name="callers" select="key('callers-by-field',@name,$composed-metaschema)"/>
-        <xsl:comment expand-text="yes">{ $callers/(@name, @group-as) }</xsl:comment>
+        <!--<xsl:comment expand-text="yes">{ $callers/(@name, @group-as) }</xsl:comment>-->
         <xsl:variable name="full-field-match">
             <xsl:for-each select="$callers/@name">
                 <xsl:if test="not(position() eq 1)"> | </xsl:if>
@@ -145,7 +173,7 @@
         
         <XSLT:template match="{$full-field-match}" priority="5" mode="json2xml">
             <XSLT:element name="{@name}" namespace="{$target-namespace}">
-                <xsl:for-each select="key">
+                <xsl:for-each select="key | flag[exists(key)]">
                     <XSLT:attribute name="{@name}" select="../@key"/>
                 </xsl:for-each>
                 <XSLT:apply-templates select="*" mode="as-attribute"/>
@@ -157,12 +185,12 @@
              to match the field with the value key and make an
              attribute for it, {name}={label} -->
         <xsl:if test="exists(flag/value-key)">
-            <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
+            <xsl:variable name="flag-names" select="flag[empty(value-key)]/(@name,@ref)[1]"/>
             <xsl:variable name="reserved-names" select="$flag-names/string(), $string-value-label,$markdown-value-label"/>
             <XSLT:template
                 match="({$field-match})/string[not(@key=({string-join($reserved-names ! ('''' || . || ''''),',')}))]"
                 mode="as-attribute">
-                <XSLT:attribute name="{flag/value-key/../@name}">
+                <XSLT:attribute name="{flag/value-key/../(@name,@ref)[1]}">
                     <XSLT:value-of select="@key"/>
                 </XSLT:attribute>
             </XSLT:template>
@@ -195,6 +223,9 @@
                </XSLT:for-each>
             </XSLT:template>
         </xsl:if>
+        
+        <!-- finally we make templates to match locally declared flags -->
+        <xsl:apply-templates mode="make-template" select="flag"/>
         <!--<xsl:call-template name="drop-address"/>-->
     </xsl:template>
     
@@ -215,7 +246,7 @@
     </xsl:template>
     
     <xsl:template match="define-field[exists(flag/value-key)]" mode="field-text">
-        <xsl:variable name="flag-names" select="flag[empty(value-key)]/@name"/>
+        <xsl:variable name="flag-names" select="flag[empty(child::key|value-key)]/(@name,@ref)[1]"/>
         <!--<xsl:variable name="reserved-names" select="$flag-names/string(), $string-value-label,$markdown-value-label"/>-->
         <XSLT:apply-templates select="string[not(@key=({
             string-join($flag-names ! ('''' || . || ''''),',')}))]" mode="json2xml"/>

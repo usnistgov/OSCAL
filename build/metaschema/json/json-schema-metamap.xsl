@@ -80,6 +80,7 @@
 
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks | METASCHEMA/namespace | METASCHEMA/schema-version"/>
   
+    <!-- Flag declarations are all handled at the point of invocation -->
     <xsl:template match="define-flag"/>
     
     <xsl:template match="define-assembly | define-field">
@@ -90,13 +91,14 @@
             <map key="properties">
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
-            <xsl:for-each-group select="(flag[@required='yes'][empty(value-key)] | model/*[@required='yes'])" group-by="true()">
+            <xsl:for-each-group select="(flag[@required='yes'][empty(value-key)] | model//*[@required='yes'])" group-by="true()">
                 <array key="required">
-                    <xsl:for-each select="current-group()">
+                    <xsl:apply-templates select="current-group()" mode="property-name"/>
+                    <!--<xsl:for-each select="current-group()">
                         <string>
-                            <xsl:value-of select="@name | @named"/>
+                            <xsl:value-of select="(@name,@ref)[1]"/>
                         </string>
-                    </xsl:for-each>
+                    </xsl:for-each>-->
                 </array>
             </xsl:for-each-group>
             <xsl:choose>
@@ -179,10 +181,9 @@
         </map>
     </xsl:template>
 
-    <!-- Supervene key here when declaration has label="id"?       -->
-
     <xsl:template match="define-assembly" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag, model"/>
+        <!-- to be excluded, flags assigned to be keys -->
+        <xsl:apply-templates mode="declaration" select="flag[empty(key)], model"/>
     </xsl:template>
 
     <xsl:template match="formal-name">
@@ -199,13 +200,19 @@
 
     <xsl:template match="remarks | example"/>
     
-    <xsl:template match="*" mode="property-name">
+    <xsl:template match="*[exists(@ref)]" mode="property-name">
         <string>
-            <xsl:value-of select="(key('definition-by-name',@named)/@group-as,@named,@name)[1]"/>
+            <xsl:value-of select="key('definition-by-name',@ref)/(@group-as,@name)[1]"/>
         </string>
     </xsl:template>
     
-<!-- Note yet implemented -->
+    <xsl:template match="flag[exists(@name)]" mode="property-name">
+        <string>
+            <xsl:value-of select="@name"/>
+        </string>
+    </xsl:template>
+    
+<!-- Not yet implemented -->
     <xsl:template match="any" mode="property-name"/>
     
     <xsl:template match="prose" mode="property-name">
@@ -217,7 +224,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag"/>
+        <xsl:apply-templates mode="declaration" select="flag[empty(key)]"/>
         <xsl:variable name="this-key" as="xs:string?">
             <xsl:apply-templates select="." mode="text-key"/>
         </xsl:variable>
@@ -228,17 +235,19 @@
         </xsl:if>
     </xsl:template>
 
-    <!--A flag declared as a value key gets no declaration since it
-    will not show up in the JSON -->
+    <!--A flag declared as a key or value key gets no declaration since it
+    will not show up in the JSON as a separate property -->
     
-    <xsl:template mode="declaration" match="flag[exists(value-key)]"/>
+    <xsl:template mode="declaration" match="flag[exists(value-key|key)]"/>
         
     <xsl:template mode="declaration" match="flag">
-        <!--<xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@name)/@datatype)[1]"/>-->
-        
-        <map key="{@name}">
+        <map key="{(@name,@ref)[1]}">
             <string key="type">string</string>
-            <xsl:apply-templates select="(valid-values,key('definition-by-name',@name)/valid-values)[1]"/>    
+            <xsl:apply-templates select="formal-name | description"/>
+            <xsl:if test="empty(formal-name | description)">
+                <xsl:apply-templates select="key('definition-by-name',@ref)/(formal-name | description)"/>
+            </xsl:if>
+            <xsl:apply-templates select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>    
         </map>
     </xsl:template>
     
@@ -260,24 +269,24 @@
     
     
     <xsl:template mode="declaration" match="assemblies | fields">
-        <map key="{ key('definition-by-name',@named)/@group-as }">
+        <map key="{ key('definition-by-name',@ref)/@group-as }">
             <array key="anyOf">
                 <map>
                     <string key="type">object</string>
-                    <string key="$ref">#/definitions/{ @named }</string>
+                    <string key="$ref">#/definitions/{ @ref }</string>
                 </map>
                 <map>
                     <string key="type">array</string>
                     <map key="items">
-                        <string key="$ref">#/definitions/{ @named }</string>
+                        <string key="$ref">#/definitions/{ @ref }</string>
                     </map>
                 </map>
             </array>
         </map>
     </xsl:template>
 
-    <xsl:template mode="declaration" match="assemblies[exists(key('definition-by-name',@named)/key)] | fields[exists(key('definition-by-name',@named)/key)]">
-        <xsl:variable name="group-name" select="key('definition-by-name',@named)/@group-as"/>
+    <xsl:template mode="declaration" match="assemblies[exists(key('definition-by-name',@ref)/key)] | fields[exists(key('definition-by-name',@ref)/key)]">
+        <xsl:variable name="group-name" select="key('definition-by-name',@ref)/@group-as"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
             <string key="$ref">#/definitions/{ $group-name }</string>
@@ -297,9 +306,9 @@
     </xsl:template>
     
     <xsl:template mode="declaration" match="assembly | field">
-        <map key="{@named}">
-            <xsl:apply-templates select="key('definition-by-name', @named)" mode="object-type"/>
-            <string key="$ref">#/definitions/{ @named }</string>
+        <map key="{@ref}">
+            <xsl:apply-templates select="key('definition-by-name', @ref)" mode="object-type"/>
+            <string key="$ref">#/definitions/{ @ref }</string>
         </map>
     </xsl:template>
 
