@@ -267,7 +267,8 @@
         <XSLT:apply-templates select="{@ref}" mode="#current"/>
     </xsl:template>
     
-    <xsl:template match="fields | assemblies">
+    <xsl:template match="field[number(@max-occurs) &gt; 1 or @max-occurs='unbounded'] |
+        assembly[number(@max-occurs) &gt; 1 or @max-occurs='unbounded']">
             <XSLT:if test="exists({@ref})">
                 <array key="{ key('definition-by-name',@ref)/@group-as }">
                     <XSLT:apply-templates select="{@ref}" mode="#current"/>
@@ -279,8 +280,9 @@
         </XSLT:call-template>-->
     </xsl:template>
     
-    <xsl:template match="fields[exists(key('definition-by-name',@ref)/key)] |
-        assemblies[exists(key('definition-by-name',@ref)/key)]">
+    <xsl:template priority="3"
+        match="field[exists(key('definition-by-name',@ref)/key)] |
+               assembly[exists(key('definition-by-name',@ref)/key)]">
         <xsl:variable name="key" select="exists(key('definition-by-name',@ref)/key)"/>
             <XSLT:for-each-group select="{@ref}" group-by="local-name()">
                 <map key="{  key('definition-by-name',@ref)/@group-as }">

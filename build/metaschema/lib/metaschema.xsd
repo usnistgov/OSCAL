@@ -48,9 +48,7 @@
             <xs:sequence>
               <xs:choice minOccurs="0" maxOccurs="unbounded">
                 <xs:element ref="m:assembly"/>
-                <xs:element ref="m:assemblies"/>
                 <xs:element ref="m:field"/>
-                <xs:element ref="m:fields"/>
                 <xs:element ref="m:choice"/>
                 <xs:element ref="m:prose"/>
               </xs:choice>
@@ -150,8 +148,10 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
-      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <!-- datatype should default to 'string' -->
+      <xs:attribute name="datatype" type="xs:NCName"/>
+      <!-- defined for composed (compiled) metaschemas -->
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
@@ -245,17 +245,8 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="assemblies">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
-      </xs:sequence>
-      <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="max-occurs" type="m:natural-number-or-unbounded"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="field">
@@ -266,19 +257,19 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="max-occurs" type="m:natural-number-or-unbounded"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="fields">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
-      </xs:sequence>
-      <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:simpleType name="natural-number-or-unbounded">
+    <xs:union memberTypes="xs:positiveInteger">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="unbounded"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
   <xs:element name="valid-values">
     <xs:complexType>
       <xs:sequence>
@@ -345,9 +336,7 @@
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">
         <xs:element ref="m:field"/>
-        <xs:element ref="m:fields"/>
         <xs:element ref="m:assembly"/>
-        <xs:element ref="m:assemblies"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>
