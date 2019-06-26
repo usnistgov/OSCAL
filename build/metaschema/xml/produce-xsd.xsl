@@ -14,16 +14,13 @@
 <!-- Input:   A Metaschema -->
 <!-- Output:  An XSD, with embedded documentation -->
 
-<!-- nb A schema and Schematron for the metaschema format should be found nearby. -->
+<!-- nb The schema and Schematron for the metaschema format is essential
+        for validating constraints assumed by this transformation. -->
 
     <xsl:output indent="yes"/>
-    
+
+<!-- Including XSD namespace for post process -->
     <xsl:strip-space elements="METASCHEMA define-assembly define-field define-flag model choice valid-values remarks xs:*"/>
-    
-    <!--<xsl:variable name="home"   select="/"/>
-    <xsl:variable name="abroad" select="//import/@href/document(.)"/>-->
-    
-    <!--<xsl:variable name="home" select="/"/>-->
     
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
@@ -37,12 +34,11 @@
     <!-- Produces $composed-metaschema -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
-    
     <!-- entry template -->
     <xsl:template match="/">       
         <!-- $unwired has the schema with no namespaces -->
         <xsl:variable name="unwired">
-            <xsl:apply-templates/>
+            <xsl:call-template name="build-schema"/>
         </xsl:variable>
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
@@ -55,7 +51,7 @@
     
     <!--MAIN ACTION HERE -->
     
-    <xsl:template match="/METASCHEMA">
+    <xsl:template name="build-schema">
         <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
             <xsl:for-each select="$composed-metaschema/METASCHEMA/schema-version">
                 <xsl:attribute name="version" select="normalize-space(.)"/>
@@ -79,8 +75,7 @@
                         <xs:element ref="oscal-prose:table"/>
                     </xs:choice>
                 </xs:group>
-                <xsl:apply-templates mode="acquire-prose"
-                    select="document('oscal-prose-module.xsd')"/>
+                <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
             </xsl:if>
         </xs:schema>
     </xsl:template>
@@ -91,25 +86,32 @@
         <xsl:comment>
             <xsl:apply-templates/>
         </xsl:comment>
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="/METASCHEMA/short-name">
         <xsl:comment>short name: <xsl:apply-templates/></xsl:comment>
+        <xsl:text>&#xA;</xsl:text>
+    </xsl:template>
+    
+    <xsl:template match="/METASCHEMA/schema-version">
+        <xsl:comment>oscal-version: <xsl:apply-templates/></xsl:comment>
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="/METASCHEMA/remarks/*">
         <xsl:comment>
             <xsl:apply-templates/>
         </xsl:comment>
+        <xsl:text>&#xA;</xsl:text>
     </xsl:template>
     
     <xsl:template match="field | assembly">
-        <xs:element minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
+        <xs:element minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@ref}"/>
     </xsl:template>
     
-<!-- Will not match declaration elements, which do not have @named -->
     <xsl:template priority="5" match="fields | assemblies">
-        <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
+        <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@ref}"/>
     </xsl:template>
 
     
@@ -134,6 +136,9 @@
     
     <xsl:template match="define-assembly">
         <xs:element name="{@name}">
+            <xsl:if test="@name = /*/@root">
+                <xsl:attribute name="m:root" namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0">yes</xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
                 <xsl:apply-templates select="model"/>
@@ -142,16 +147,20 @@
         </xs:element>
     </xsl:template>
 
+    <!-- Flags become attributes; this schema defines them all locally.
+         (Some day: global declarations for flags invoked by reference?) -->
     <xsl:template match="define-flag"/>
 
+    <!-- Extra coverage -->
     <xsl:template mode="annotated" priority="5"
         match="define-flag[empty(formal-name | description)] |
         define-field[empty(formal-name | description)] |
-        define-assembly[empty(formal-name | description)]"/>
+        define-assembly[empty(formal-name | description)] |
+        flag[empty(formal-name | description)]"/>
 
     <xsl:template mode="annotated" match="*"/>
     
-    <xsl:template match="define-flag | define-field | define-assembly" mode="annotated">
+    <xsl:template match="define-flag | define-field | define-assembly | flag[exists(formal-name| description)]" mode="annotated">
         <xs:annotation>
             <xs:documentation>
                 <xsl:apply-templates select="formal-name, description"/>
@@ -160,9 +169,9 @@
     </xsl:template>
     
     <xsl:template match="formal-name">
-        <b><xsl:apply-templates/>: </b>
+        <b><xsl:apply-templates/></b>
+        <xsl:for-each select="../description">: </xsl:for-each>
     </xsl:template>
-    
     
     <xsl:template match="model">
         <xs:sequence>
@@ -182,28 +191,38 @@
     
     
     <xsl:template match="flag | key">
-        <xsl:variable name="name" select="@name"/>
-        <xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@name)/@datatype)[1]"/>
-        <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@name)/valid-values)[1]"/>
-        <xs:attribute name="{ @name }">
+        <xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@ref)/@datatype)[1]"/>
+        <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
+        <xs:attribute name="{ (@name,@ref)[1] }">
             <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
             <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:if>
             <!-- annotate as datatype or string unless an exclusive value-list is given -->
-            <xsl:for-each select="($datatype,'string')[1][not($value-list/@allow-other='yes')]">
+            <xsl:for-each select="($datatype,'string')[1][empty($value-list)]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>
-            <xsl:apply-templates select="/*/define-flag[@name=$name]" mode="annotated"/>
+            <xsl:apply-templates select=".| key('definition-by-name',@ref)" mode="annotated"/>
             <xsl:apply-templates select="$value-list">
                 <xsl:with-param name="datatype" select="$datatype"/>
             </xsl:apply-templates>
         </xs:attribute>
     </xsl:template>
 
-    <!-- No restriction is introduced when allow others is 'yes' -->
-    <xsl:template match="valid-values[@allow-other='yes']"/>
-        
+    <!-- When allow-other=yes, we union the enumeration with the declared datatype -->        
+    <xsl:template match="valid-values[@allow-other='yes']">
+        <xsl:param name="datatype" as="xs:string">string</xsl:param>
+        <xs:simpleType>
+            <xs:union memberTypes="xs:{$datatype}">
+                <xs:simpleType>
+                    <xs:restriction base="xs:{$datatype}">
+                        <xsl:apply-templates/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xsl:template>
+    
     <xsl:template match="valid-values">
         <xsl:param name="datatype" as="xs:string">string</xsl:param>
         <xs:simpleType>
@@ -218,10 +237,9 @@
             <xsl:if test="matches(.,'\S')">
                 <xs:annotation>
                     <xs:documentation>
-                        
-                    <p>
-                        <xsl:apply-templates/>
-                    </p>
+                        <p>
+                            <xsl:apply-templates/>
+                        </p>
                     </xs:documentation>
                 </xs:annotation>
             </xsl:if>

@@ -164,7 +164,7 @@
     </xsl:template>
     
     <xsl:template priority="4" match="define-field[exists(flag/value-key)]" mode="text-key">
-        <XSLT:value-of select="@{flag[exists(value-key)]/@name}"/>
+        <XSLT:value-of select="@{flag[exists(value-key)]/(@name,@ref)[1]}"/>
     </xsl:template>
     
     <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
@@ -196,7 +196,7 @@
                 </XSLT:variable>
                 <xsl:variable name="group-properties">
                     <xsl:variable name="flag-names" as="xs:string*">
-                        <xsl:perform-sort select="flag/@name/normalize-space(.)">
+                        <xsl:perform-sort select="flag/(@name,@ref)[1]/normalize-space(.)">
                             <xsl:sort select="."/>
                         </xsl:perform-sort>
                     </xsl:variable>
@@ -252,7 +252,7 @@
     
     <xsl:template match="flag">
         <!-- no datatyping support yet -->
-        <XSLT:apply-templates mode="as-string" select="@{@name}"/>
+        <XSLT:apply-templates mode="as-string" select="@{(@name,@ref)[1]}"/>
     </xsl:template>
     
     <xsl:template match="model">
@@ -264,26 +264,26 @@
     </xsl:template>
     
     <xsl:template match="field | assembly">
-        <XSLT:apply-templates select="{@named}" mode="#current"/>
+        <XSLT:apply-templates select="{@ref}" mode="#current"/>
     </xsl:template>
     
     <xsl:template match="fields | assemblies">
-            <XSLT:if test="exists({@named})">
-                <array key="{ key('definition-by-name',@named)/@group-as }">
-                    <XSLT:apply-templates select="{@named}" mode="#current"/>
+            <XSLT:if test="exists({@ref})">
+                <array key="{ key('definition-by-name',@ref)/@group-as }">
+                    <XSLT:apply-templates select="{@ref}" mode="#current"/>
                 </array>
             </XSLT:if>
         <!--<XSLT:call-template name="elems-arrayed">
-            <XSLT:with-param name="elems" select="{@named}"/>
+            <XSLT:with-param name="elems" select="{@ref}"/>
             <XSLT:with-param name="group-as" select="'{@group-as}'"/>
         </XSLT:call-template>-->
     </xsl:template>
     
-    <xsl:template match="fields[exists(key('definition-by-name',@named)/key)] |
-        assemblies[exists(key('definition-by-name',@named)/key)]">
-        <xsl:variable name="key" select="exists(key('definition-by-name',@named)/key)"/>
-            <XSLT:for-each-group select="{@named}" group-by="local-name()">
-                <map key="{  key('definition-by-name',@named)/@group-as }">
+    <xsl:template match="fields[exists(key('definition-by-name',@ref)/key)] |
+        assemblies[exists(key('definition-by-name',@ref)/key)]">
+        <xsl:variable name="key" select="exists(key('definition-by-name',@ref)/key)"/>
+            <XSLT:for-each-group select="{@ref}" group-by="local-name()">
+                <map key="{  key('definition-by-name',@ref)/@group-as }">
                     <XSLT:apply-templates select="current-group()" mode="#current"/>
                 </map>
             </XSLT:for-each-group>

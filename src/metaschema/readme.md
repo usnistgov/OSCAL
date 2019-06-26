@@ -20,8 +20,12 @@ An OSCAL Metaschema defines the *information model* of a given OSCAL model. A Me
       - [Fields](#fields)
       - [Assemblies](#assemblies)
       - [Flags](#flags)
+        - [Data types](#datatypes)  
+        - [Enumerating flag values](#enumerated-values)
     - [Metaschema modeling](#metaschema-modeling)
-    - [Use of @address](#use-of--address)
+    - JSON ENHANCEMENT FEATURES
+      - [Designating a JSON key](#use-of-key)
+      - [Designating a JSON value key](#use-of-valuekey)
 
 # OSCAL Metaschema Usage
     
@@ -175,8 +179,32 @@ An assembly is just like a field, except it contains structured content (objects
 
 While data of arbitrary complexity is represented by assemblies (which may contain assemblies), at the other extreme, flags are available for the most granular bits of qualifying information. Since data already appears as text values of fields, flags might not be necessary. But they are extremely useful both for enabling more economical expression of data and especially process-oriented or "semantic" metadata such as controlled values, formal or informal taxonomic classifications etc. etc.
 
+#### Data types
+
 In order to facilitate this, flags also support a feature not supported on fields, namely rudimentary data typing (via XSD datatypes). Use `define-flag/@datatype` and `flag/@datatype` (again, with tactical redundancy, the same value at both ends) to assign its datatype.
 
+#### Enumerated values
+
+Additionally, flags may be constrained to a set of known values listed in advance.
+
+This restriction can be either strict (values must be in the list for document validity) or loose (i.e. for documentation only, no effect in schemas).
+
+Use the `valid-values` element to restrict the permissible values for a flag. Set its attribute `allow-other='yes'` if the list is not exclusive.
+
+Within it `valid-values`, a `value` element's `@name` attribute assigns the permissible value, while its data content provides documentation. For example:
+
+```xml
+<define-flag name="algorithm" datatype="string">
+    <formal-name>Hash algorithm</formal-name>
+    <description>Method by which a hash is derived</description>
+    <valid-values allow-other="yes">
+      <value name="SHA-224"/>
+      <value name="SHA-256"/>
+      <value name="SHA-384"/>
+      <value name="SHA-512"/>
+      <value name="RIPEMD-160"/>
+    </valid-values> ...
+```
 ## Metaschema modeling
 
 In the case of field and flag objects, the modeling constraints to be imposed by the result schemas (either XSD or JSON Schema) over the data set, can be determined on the basis of how they are described. Assembly definitions, however, permit not only flags to be assigned to assemblies of the defined type; additionally, they contain a `model` element for a *mode declaration*. This declaration names the subcomponents to be permitted (in documents valid to the target schemas) within any assembly of the type being defined.
@@ -194,7 +222,10 @@ With these limitations, a model may be defined to contain any mix of fields and 
 * `assemblies` - same as `fields`, but for assemblies. In JSON, this construct is also presented as an array unless there is an `@address`
 * `prose` refers to a "region of prose", that is, a section of prose text of unspecified length. In XML, prose is represented in conventional fashion as (a sequence of) `<p>` and list elements (`<ul>` or `<ol>`) perhaps with inline markup (indicating further formatting). For consistency across metaschema applications, the permitted tagging will always be conformant to the same model for prose, managed to reflect (echo) a clean HTML subset. This specification also permits the markup vocabulary to be mapped to a text-based markdown syntax, suitable for use within JSON expressions of the same or similar data. 
 
-## Use of @address
+
+## JSON Enhancement features
+
+### Use of `key`
 
 One problem with zero-or-more cardinality as supported by `fields` and `assemblies` is that in JSON, no suitable structure is available for the inclusion of truly arbitrary but repeatable properties or 'contents' (as to its structural type) on an object. The closest thing is an array, which can be pulled into use for this -- at the cost of not permitting a JSON property label on items in the array. In order to capture the same information as is transparently available on the XML, it is therefore necessary to 'finesse' the JSON object type: Metaschema does this by mapping each field or assembly in a zero-or-many set, to an array with the corresponding number of items. The name of the objects can thus be captured implicitly, by naming (labeling) their containing array.
 
