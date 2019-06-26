@@ -107,13 +107,10 @@
     </xsl:template>
     
     <xsl:template match="field | assembly">
-        <xs:element minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@ref}"/>
+        <xs:element ref="{$declaration-prefix}:{@ref}"
+            minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
+            maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
     </xsl:template>
-    
-    <xsl:template priority="5" match="fields | assemblies">
-        <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@ref}"/>
-    </xsl:template>
-
     
     <xsl:template match="define-field">
         <xs:element name="{@name }">
@@ -202,7 +199,7 @@
             <xsl:for-each select="($datatype,'string')[1][empty($value-list)]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>
-            <xsl:apply-templates select=".| key('definition-by-name',@ref)" mode="annotated"/>
+            <xsl:apply-templates select=".[exists(@name)] | key('definition-by-name',@ref)" mode="annotated"/>
             <xsl:apply-templates select="$value-list">
                 <xsl:with-param name="datatype" select="$datatype"/>
             </xsl:apply-templates>

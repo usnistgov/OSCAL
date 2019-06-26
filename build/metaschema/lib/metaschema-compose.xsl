@@ -237,7 +237,7 @@
     </xsl:template>
     
     <!-- Matching inside the $distinct-definitions variable, so traversing only applicable definitions -->
-    <xsl:template priority="10" match="field | fields | assembly | assemblies" mode="collect-references">
+    <xsl:template priority="10" match="field | assembly" mode="collect-references">
         <xsl:apply-templates select="key('definition-by-name',@ref,root())" mode="#current"/>
     </xsl:template>
         
