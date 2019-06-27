@@ -56,8 +56,12 @@
             <xsl:for-each select="$composed-metaschema/METASCHEMA/schema-version">
                 <xsl:attribute name="version" select="normalize-space(.)"/>
             </xsl:for-each>
+            <xs:annotation>
+                <xs:appinfo>
+                    <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*" mode="header-documentation"/>
+                </xs:appinfo>
+            </xs:annotation>
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
-            <!--<xsl:apply-templates select="*"/>-->
             
             <xsl:if test="exists($composed-metaschema//prose)">
                 <xs:group name="prose">
@@ -82,10 +86,15 @@
     
     <xsl:template match="namespace"/>
         
-    <xsl:template match="/METASCHEMA/schema-name | /METASCHEMA/short-name |
-        /METASCHEMA/schema-version | /METASCHEMA/remarks/*">
+    <xsl:template mode="header-documentation" match="*"/>
+    
+    <xsl:template mode="header-documentation" match="/METASCHEMA/schema-name | /METASCHEMA/short-name |
+        /METASCHEMA/schema-version | /METASCHEMA/remarks">
         <xsl:copy-of select="."/>
     </xsl:template>
+    
+    <xsl:template match="/METASCHEMA/schema-name | /METASCHEMA/short-name |
+        /METASCHEMA/schema-version | /METASCHEMA/remarks"/>
     
     <xsl:template match="field | assembly">
         <xs:element ref="{$declaration-prefix}:{@ref}"
@@ -140,9 +149,9 @@
     
     <xsl:template match="define-flag | define-field | define-assembly | flag[exists(formal-name| description)]" mode="annotated">
         <xs:annotation>
-            <xs:appInfo>
+            <xs:appinfo>
                 <xsl:copy-of select="formal-name, description"/>
-            </xs:appInfo>
+            </xs:appinfo>
             <xs:documentation>
                 <xsl:apply-templates select="formal-name, description"/>
             </xs:documentation>
