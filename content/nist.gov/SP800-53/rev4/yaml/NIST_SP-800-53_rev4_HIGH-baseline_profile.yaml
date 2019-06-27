@@ -1910,6 +1910,11 @@ profile:
   back-matter: 
     resources: 
       id:     catalog
+      desc: 
+        """
+          NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
+                      Information Systems and Organizations
+        """
       rlinks: 
         href:       NIST_SP-800-53_rev4_catalog.json
         media-type: application/oscal.catalog+json
