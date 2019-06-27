@@ -59,6 +59,9 @@
             <xs:annotation>
                 <xs:appinfo>
                     <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*" mode="header-documentation"/>
+                    <m:root>
+                        <xsl:value-of select="/METASCHEMA/@root"/>
+                    </m:root>
                 </xs:appinfo>
             </xs:annotation>
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
