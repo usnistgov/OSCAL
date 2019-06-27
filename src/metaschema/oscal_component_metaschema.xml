@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+  root="component-definition">
+  
+  <schema-name>OSCAL Implementation Component Format</schema-name>
+  <schema-version>1.0-milestone2</schema-version>
+  <short-name>oscal-component</short-name>
+  <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+
+
+  <remarks>
+    <p>The OSCAL Implementation Component format can be used to describe TBD. The root of this format is <code>component</code>.</p>
+  </remarks>
+  
+  <import href="oscal_metadata_metaschema.xml"/>
+  
+  <define-assembly name="component-definition">
+    <formal-name>Component Definition</formal-name>
+    <description>.</description>
+    <model>
+      <assembly named="metadata" required="yes"/>
+      <assemblies named="component"/>
+      <assemblies named="capability"/>
+      <assembly named="back-matter">
+        <description>Back matter including references and resources.</description>
+      </assembly>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="component" group-as="components">
+    <flag name="id" datatype="ID" required="true"/>
+    <flag name="name" required="true"/>
+    <flag name="type" datatype="string">
+      <valid-values>
+        <value name="software">Any software or firmware</value>
+        <value name="hardware"></value>
+        <value name="service">A service that may provide APIs.</value>
+        <value name="policy"></value>
+        <value name="process"></value>
+        <value name="proceedure"></value>
+        <value name="plans"></value>
+        <value name="guidance"></value>
+        <value name="standard"></value>
+        <value name="standard"></value>
+        <value name="validation"></value>
+      </valid-values>
+    </flag>
+    <formal-name>Component</formal-name>
+    <description>.</description>
+    <remarks>
+      <p>Components may be products, services, APIs, policies, processes, plans, guidance,
+        standards, or other tangible items that enable security.</p>
+      <p>The @type attribute indicates which of these component types is represented.</p>
+      <p>A group of components may be aggregated into a "capability", such as an account
+        management capability that consists of an account management process, and an active
+        directory product.</p>
+      <p>Capabilities are expressed using the same component structure, with the @type
+        attribute indicating "capability", and the child-element "sub-component".</p>
+    </remarks>
+    <model>
+      <assemblies named="provider"/>
+<!--      <assemblies named="satisfaction"/> -->
+      <assemblies named="validation"/>
+<!--      <assemblies named="provisioning"/>-->
+      <choice>
+        <assemblies named="configuration"/>
+        <assemblies named="artifact"/>
+        <assemblies named="control-implementation"/>
+      </choice>
+      <fields named="link">
+        <!-- TODO: Model specific link relationships for:
+          depends-on: component has a dependency on another component
+          validated-by:, etc.
+        -->
+      </fields>
+    </model>
+    <example/>
+  </define-assembly>
+
+  <define-flag name="component-id" datatype="IDREFS">
+    <formal-name>Component Reference</formal-name>
+    <description>A reference to a component by its identifier</description>
+  </define-flag>
+    
+  <define-assembly name="capability" group-as="capabilities">
+    <flag name="id" datatype="ID" required="true"/>
+    <flag name="name" required="true"/>
+    <formal-name>Capability</formal-name>
+    <description>.</description>
+    <model>
+      <assemblies named="has-component" />
+      <fields named="link">
+        <!-- TODO: Model specific link relationships for:
+          depends-on: component has a dependency on another component
+          validated-by:, etc.
+        -->
+      </fields>
+    </model>    
+  </define-assembly>
+
+  <define-assembly name="has-component" group-as="has-components">
+    <flag name="component-id" required="true"/>
+    <formal-name>Has Component</formal-name>
+    <description>.</description>
+    <model></model>
+  </define-assembly>
+  
+
+  <define-assembly name="provider" group-as="providers">
+    <flag name="id" datatype="ID"/>
+    <flag name="party-id"/>
+    <flag name="role-id"/><!-- TODO: define standard roles -->
+    <formal-name>Origin</formal-name>
+    <description>.</description>
+    <remarks>
+      <p>For products, services, and APIs, this is vendor information, model, version number
+        and other product-related information, such as support details.</p>
+      <p>For policies, processes, plans, standards, and guidance, this is the authoring
+        organization, document details (title, publication date, version), and related
+        details.</p>
+      <p>For capabilities, this is the organization that defines and maintains the
+        capability.</p>
+    </remarks>
+    <model>
+      <field named="version"/>
+      <field named="release-date"/>
+      <field named="model"/>
+      <prose/>
+    </model>
+    <example/>
+  </define-assembly>
+
+  <define-field name="release-date">
+    <formal-name>Release Date</formal-name>
+    <description>.</description>
+    <remarks>
+      <p>To be validated as a natural number (integer &gt;= 1)</p>
+    </remarks>
+  </define-field>
+  
+  <define-field name="model" as="string">
+    <formal-name>Model</formal-name>
+    <description>.</description>
+  </define-field>
+  
+  <define-assembly name="validation" group-as="validations">
+    <formal-name>validation</formal-name>
+    <description>.</description>
+    <model>
+      <fields named="link">
+        <!-- TODO: Model specific link relationships for:
+          validated-by: pointer to validation cert.
+        -->
+      </fields>
+      <prose/>
+    </model>
+  </define-assembly>
+<!--  <define-assembly name="provisioning" group-as="ssp-provisioning">
+    <formal-name>provisioning</formal-name>
+    <description>.</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+-->  
+  <define-assembly name="description">
+    <formal-name>description</formal-name>
+    <description>.</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="guidance" group-as="guidances">
+    <formal-name>guidance</formal-name>
+    <description>.</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="configuration" group-as="configurations">
+    <flag name="id" datatype="ID"/>
+    <formal-name>configuration</formal-name>
+    <description>.</description>
+    <model>
+      <!-- TODO: add link for citation and references -->
+      <assembly named="description" required="yes"/>
+      <assembly named="guidance"/>
+      <assemblies named="mechanism"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="mechanism" group-as="mechanisms">
+    <flag name="id" datatype="ID"/>
+    <formal-name>mechanism</formal-name>
+    <description>.</description>
+    <model>
+      <assemblies named="argument"/>
+      <field named="configuration-method"/>
+      <field named="verification-method"/>
+    </model>
+  </define-assembly>
+  
+  <define-flag name="system" datatype="string">
+    <formal-name>system</formal-name>
+    <description>A configure or verify system type</description>
+  </define-flag>
+
+  <define-field name="configuration-method">
+    <flag name="system" required="yes"/>
+    <formal-name>configure</formal-name>
+    <description>.</description>
+  </define-field>
+  
+  <define-field name="verification-method">
+    <flag name="system" required="yes"/>
+    <formal-name>verify</formal-name>
+    <description>.</description>
+  </define-field>
+
+  <define-assembly name="argument" group-as="arguments">
+    <formal-name>argument</formal-name>
+    <description>.</description>
+    <model>
+    <!-- Need to model the argument
+    <argument name="argument_1">
+      <constraints>
+        <enum>on</enum>
+        <enum>off</enum>
+        <range><min>1</min><max>24</max></range>
+      </constraints>
+      <param source="#catalog" param-id="ac-10_prm_1">
+        <mapping>
+          <map from="enabled" to="1"/>
+          <map from="disabled" to="0"/>
+        </mapping>
+        <same/>
+      </param>
+    </argument>
+
+      -->
+    </model>
+  </define-assembly>
+
+  <!-- TODO: add schematron check for duplicate group-as -->
+  <define-assembly name="artifact" group-as="artifacts">
+    <flag name="id" datatype="ID"/>
+    <formal-name>configuration</formal-name>
+    <description>.</description>
+    <model>
+      <!-- TODO: add link for citation and references -->
+      <assembly named="description" required="yes"/>
+      <assembly named="guidance"/>
+      <assembly named="implementation-source"/>
+      <field named="verification-process"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="implementation-source">
+    <flag name="system" required="yes"/>
+    <formal-name>configure</formal-name>
+    <description>.</description>
+    <model>
+      <field named="link">
+        <!-- define valid-values for rel="source" -->
+      </field>
+      <field named="context"/>
+    </model>
+  </define-assembly>
+
+  <define-field name="context">
+    <formal-name>context</formal-name>
+    <description>.</description>
+  </define-field>
+  
+  <define-field name="verification-process">
+    <formal-name>verification-process</formal-name>
+    <description>.</description>
+  </define-field>
+
+  <define-assembly name="control-implementation" group-as="control-implementations">
+    <formal-name>control-implementation</formal-name>
+    <description>.</description>
+    <model>
+      <assembly named="can-meet"/>
+      <assembly named="using"/>
+      <prose/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="can-meet">
+    <formal-name>can-meet</formal-name>
+    <description>.</description>
+    <model>
+      <assemblies named="requirement"/>
+      <prose/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="requirement" group-as="requirements">
+    <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+    <flag name="source"/>
+    <flag name="control-id"/>
+    <flag name="subcontrol-id"/>
+    <formal-name>requirement</formal-name>
+    <description>.</description>
+    <model>
+      <!-- TODO need to model part -->
+      <prose/>
+    </model>      
+  </define-assembly>
+
+  <define-flag name="control-id" datatype="NCName" >
+    <formal-name>Control ID</formal-name>
+    <description>Value of the 'id' flag on a target control</description>
+  </define-flag>
+  <define-flag name="subcontrol-id" datatype="NCName">
+    <formal-name>Control ID</formal-name>
+    <description>Value of the 'id' flag on a target subcontrol</description>
+  </define-flag>
+  <define-flag name="source" datatype="IDREF" >
+    <formal-name>Source ID</formal-name>
+    <description>Value of the 'id' flag on a target resource</description>
+  </define-flag>
+
+
+  <define-assembly name="using">
+    <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+    <formal-name>using</formal-name>
+    <description>.</description>
+    <model>
+      <!-- MUST provide at least one of the following -->
+      <fields named="configuration-id" />
+      <fields named="artifact-id" />
+      <prose/>
+    </model>      
+  </define-assembly>
+
+  <define-field name="configuration-id" as="string" group-as="configuration-ids">
+    <!-- TODO: datatype should be IDREF -->
+    <formal-name>Configuration ID</formal-name>
+    <description>Value of the 'id' flag on a target configuration</description>
+  </define-field>
+  
+  <define-field name="artifact-id" as="string" group-as="artifact-ids">
+    <!-- TODO: datatype should be IDREF -->
+    <formal-name>Artifact ID</formal-name>
+    <description>Value of the 'id' flag on a target artifact</description>
+  </define-field>
+  
+</METASCHEMA>

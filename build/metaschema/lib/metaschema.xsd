@@ -147,9 +147,13 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
-      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      <xs:attribute name="datatype" use="required" type="xs:NCName">
+        <!-- TODO: Enumerate the valid data types -->
+      </xs:attribute>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="module" type="xs:anyURI"/>
+      <xs:attribute name="module" type="xs:anyURI">
+        <!-- QUESTION: What is this for? Document it please. -->
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string">

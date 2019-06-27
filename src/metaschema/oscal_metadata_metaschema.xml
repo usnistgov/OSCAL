@@ -15,6 +15,7 @@
   <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
   
   <define-assembly name="VALIDATION_root">
+    <flag name="party-id"/>
     <formal-name>(nominal root)</formal-name>
     <description>NOT TO BE USED IN A METASCHEMA</description>
     <remarks>
@@ -230,7 +231,12 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
+
+  <define-flag name="party-id" datatype="IDREFS">
+    <formal-name>Party Reference</formal-name>
+    <description>A reference to a party by the party's identifier</description>
+  </define-flag>
+
   <define-assembly name="person" group-as="persons">
     <formal-name>Person</formal-name>
     <description>A person, with contact information</description>
