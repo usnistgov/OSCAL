@@ -65,20 +65,23 @@
 			security impact level.</description>
 
 		<model>
-			<field named="system-id"/>
+		  <field named="system-id" required="yes"/>
 			<field named="system-name" required="yes"/>
 			<field named="system-name-short"/>
-			<assembly named="description"/>
+		  <assembly named="description" required="yes"/>
 			<field named="security-sensitivity-level" required="yes"/>
-			<assembly named="system-information"/>
-			<assembly named="security-impact-level"/>
-			<assembly named="security-eauth"/>
-			<field named="status"/>
+		  <assembly named="system-information" required="yes"/>
+		  <assembly named="security-impact-level" required="yes"/>
+		  <assembly named="security-eauth" required="yes"/>
+		  <field named="status" required="yes"/>
+		  <!-- TODO: consider other (below) as a child of "status" -->
 			<field named="status-other-description"/>
-			<field named="deployment-model"/>
-			<field named="deployment-model-other-description"/>
-			<fields named="service-model"/>
-			<fields named="service-model-other-description"/>
+		  <field named="deployment-model" required="yes"/>
+		  <!-- TODO: consider other (below) as a child of "status" -->
+		  <field named="deployment-model-other-description"/>
+		  <fields named="service-model" required="yes"/>
+		  <!-- TODO: consider other (below) as a child of "status" -->
+		  <fields named="service-model-other-description"/>
 			<assembly named="leveraged-authorizations"/>
 			<assembly named="authorization-boundary"/>
 			<assembly named="network-architecture"/>
@@ -124,8 +127,8 @@
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
 		<model>
-			<assemblies named="information-type"/>
-			<assemblies named="designations"/>
+		  <assemblies named="information-type" required="yes"/>
+		  <assemblies named="designations" required="yes"/>
 		</model>
 		<example/>
 	</define-assembly>
@@ -346,7 +349,7 @@
 	</define-field>
 
 	<define-assembly name="security-eauth" group-as="ssp-security-eauth">
-		<formal-name>Security Electronic Authetication Level</formal-name>
+		<formal-name>Security Electronic Authentication Level</formal-name>
 		<description/>
 		<model>
 			<field named="security-auth-ial"/>
@@ -637,7 +640,6 @@
 
 	<!-- SYSTEM IMPLEMENTATION -->
 	<define-assembly name="system-implementation" group-as="ssp-system-implementation">
-		<flag name="interconnected" datatype="boolean"/>
 		<formal-name>System Implementation</formal-name>
 		<description>Provides information as to how the system is implemented.</description>
 
@@ -769,60 +771,6 @@
 		<description>Date of the Interconnection Security Agreement (ISA).</description>
 	</define-field>
 
-	<define-assembly name="component" group-as="components">
-		<flag name="type" datatype="string"/>
-		<flag name="id" datatype="ID"/>
-		<formal-name>Component</formal-name>
-		<description>.</description>
-		<remarks>
-			<p>Components may be products, services, APIs, policies, processes, plans, guidance,
-				standards, or other tangible items that enable security.</p>
-			<p>The @type attribute indicates which of these component types is represented.</p>
-			<p>A group of components may be aggregated into a "capability", such as an account
-				management capability that consists of an account management process, and an active
-				directory product.</p>
-			<p>Capabilities are expressed using the same component structure, with the @type
-				attribute indicating "capability", and the child-element "sub-component".</p>
-		</remarks>
-		<model>
-			<assemblies named="origin"/>
-			<assemblies named="characteristics"/>
-			<assemblies named="satisfaction"/>
-			<assemblies named="validation"/>
-			<assemblies named="provisioning"/>
-			<fields named="subcomponent"/>
-		</model>
-		<example/>
-	</define-assembly>
-
-	<define-assembly name="origin" group-as="ssp-origin">
-		<flag name="id" datatype="ID"/>
-		<formal-name>Origin</formal-name>
-		<description>.</description>
-		<remarks>
-			<p>For products, services, and APIs, this is vendor information, model, version number
-				and other product-related information, such as support details.</p>
-			<p>For policies, processes, plans, standards, and guidance, this is the authoring
-				organization, document details (title, publication date, version), and related
-				details.</p>
-			<p>For capabilities, this is the organization that defines and maintains the
-				capability.</p>
-		</remarks>
-		<model>
-			<field named="organization"/>
-			<field named="title"/>
-			<field named="version"/>
-			<field named="release-date"/>
-			<field named="model"/>
-			<assemblies named="part"/>
-		</model>
-		<example/>
-	</define-assembly>
-
-	<define-flag name="id" datatype="ID">
-		<formal-name>Component identification number.</formal-name>
-		<description>.</description>
-	</define-flag>
 
 	<define-field name="vendor" as="string" group-as="vendors">
 		<flag name="id" datatype="ID"/>
@@ -832,79 +780,51 @@
 	</define-field>
 
 
-	<define-field name="release-date">
-		<formal-name>Release Date</formal-name>
-		<description>.</description>
-		<remarks>
-			<p>To be validated as a natural number (integer &gt;= 1)</p>
-		</remarks>
-	</define-field>
-
-	<define-field name="model" as="string">
-		<formal-name>Model</formal-name>
-		<description>.</description>
-	</define-field>
-
-	<define-assembly name="part" group-as="ssp-part">
-		<flag name="class" datatype="NMTOKEN"/>
-		<flag name="href" datatype="anyURI"/>
-		<formal-name>Part</formal-name>
-		<description>.</description>
-		<remarks>
-			<p>???</p>
-		</remarks>
-		<model>
-			<fields named="phone"/>
-			<fields named="email"/>
-		</model>
-	</define-assembly>
-
-	<define-assembly name="characteristics" group-as="ssp-characteristics">
-		<flag name="context" datatype="string"/>
-		<formal-name>Characteristics</formal-name>
-		<description>Component characteristics, assets and configuration information</description>
-		<remarks>
-			<p>When context="specification", this describes all security relevant settings in the
-				component.</p>
-			<p>When context="standard", this describes how to configure the component to meet a
-				specific goal, such as compliance with FISMA Moderate, PCI, or GPRD.</p>
-			<p>When context="actual", or when no type is listed, this describes the actual
-				configuration of the component within a specific system.</p>
-		</remarks>
-		<model>
-			<fields named="ip-address"/>
-			<assemblies named="service"/>
-			<assemblies named="part"/>
-		</model>
-		<example/>
-	</define-assembly>
-
+  <define-assembly name="characteristics" group-as="ssp-characteristics">
+    <flag name="context" datatype="string"/>
+    <formal-name>Characteristics</formal-name>
+    <description>Component characteristics, assets and configuration information</description>
+    <remarks>
+      <p>When context="specification", this describes all security relevant settings in the
+        component.</p>
+      <p>When context="standard", this describes how to configure the component to meet a
+        specific goal, such as compliance with FISMA Moderate, PCI, or GPRD.</p>
+      <p>When context="actual", or when no type is listed, this describes the actual
+        configuration of the component within a specific system.</p>
+    </remarks>
+    <model>
+      <fields named="ip-address"/>
+      <assemblies named="service"/>
+      <prose/>
+    </model>
+    <example/>
+  </define-assembly>
+  
+  <define-assembly name="satisfaction" group-as="ssp-satisfaction">
+    <flag name="id" datatype="ID"/>
+    <flag name="context" datatype="string"/>
+    <formal-name>Satisfaction</formal-name>
+    <description>Describes how the indicated control is satisfied by this
+      component</description>
+    <remarks>
+      <p>When context="specification", this describes how the control could be satisfied by
+        the component.</p>
+      <p>When context="standard", this describes how the security control would be satisfied
+        if the component was configured in accordance with the associated characteristics
+        provisioning information.</p>
+      <p>When context="actual", or when no type is listed, this describes how the control is
+        satisfied based on the component's actual deployment within a given system.</p>
+    </remarks>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+  
 	<define-field name="ip-address" group-as="ip-addresses" as="string">
 		<flag name="type" datatype="string"/>
 		<formal-name>Internet Protocol Address</formal-name>
 		<description>Use the @type flag to deisgnate IPv4 or IPv6.</description>
 	</define-field>
-
-	<define-assembly name="satisfaction" group-as="ssp-satisfaction">
-		<flag name="id" datatype="ID"/>
-		<flag name="context" datatype="string"/>
-		<formal-name>Satisfaction</formal-name>
-		<description>Describes how the indicated control is satisfied by this
-			component</description>
-		<remarks>
-			<p>When context="specification", this describes how the control could be satisfied by
-				the component.</p>
-			<p>When context="standard", this describes how the security control would be satisfied
-				if the component was configured in accordance with the associted characteristics
-				provisioning information.</p>
-			<p>When context="actual", or when no type is listed, this describes how the control is
-				satisfied based on the component's actual deployment within a given system.</p>
-		</remarks>
-		<model>
-			<prose/>
-		</model>
-	</define-assembly>
-
 	<define-assembly name="system-inventory" group-as="ssp-system-inventory">
 		<formal-name>System Inventory</formal-name>
 		<description>.</description>
@@ -1484,24 +1404,6 @@
 		<description>.</description>
 	</define-flag>
 	
-	<define-assembly name="validation" group-as="validations">
-		<formal-name>validation</formal-name>
-		<description>.</description>
-		<model>
-			<prose/>
-		</model>
-	</define-assembly>
-	<define-assembly name="provisioning" group-as="ssp-provisioning">
-		<formal-name>provisioning</formal-name>
-		<description>.</description>
-		<model>
-			<prose/>
-		</model>
-	</define-assembly>
-	<define-field name="subcomponent" group-as="subcomponents">
-		<formal-name>sub-component</formal-name>
-		<description>.</description>
-	</define-field>
 	<define-field name="organization">
 		<formal-name>organization</formal-name>
 		<description>.</description>
