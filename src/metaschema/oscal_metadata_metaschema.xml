@@ -31,15 +31,15 @@
       <formal-name>Publication metadata</formal-name>
       <description>Provides information about the publication and availability of the containing document.</description>
       <model>
-         <field ref="title" required="yes"/>
+         <field ref="title" min-occurs="1"/>
          <field ref="last-modified-date"/>
          <field ref="version"/>
-         <field ref="oscal-version" required="yes"/>
-         <fields ref="doc-id"/>
-         <fields ref="prop"/>
-         <fields ref="link"/>
-         <assemblies ref="role"/>
-         <assemblies ref="party"/>
+         <field ref="oscal-version" min-occurs="1"/>
+         <field ref="doc-id" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded"/>
+         <assembly ref="role" max-occurs="unbounded"/>
+         <assembly ref="party" max-occurs="unbounded"/>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
@@ -49,8 +49,8 @@
       <description>A collection of citations and resource references.</description>
       <model>
       <!--<assemblies named="section"/>-->
-         <assemblies ref="citation"/>
-         <assemblies ref="resource"/>
+         <assembly ref="citation" max-occurs="unbounded"/>
+         <assembly ref="resource" max-occurs="unbounded"/>
       </model>
       <remarks>
          <p>Provides a collection of identified <code>citation</code> and <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a citation identifier. A <code>citation</code> can reference a <code>resource</code> by specifying a local target value using the same fragment-identifier approach.</p>
@@ -229,7 +229,7 @@
       <flag ref="id" datatype="ID"/>
       <flag ref="role-id"/>
       <model>
-         <assemblies ref="person"/>
+         <assembly ref="person" max-occurs="unbounded"/>
          <assembly ref="org"/>
          <assembly ref="notes"/>
       </model>
@@ -251,12 +251,12 @@
          <field ref="org-name">
             <description>Affiliated organization</description>
          </field>
-         <fields ref="person-id"/>
-         <fields ref="org-id"/>
-         <assemblies ref="address"/>
-         <fields ref="email"/>
-         <fields ref="phone"/>
-         <fields ref="url"/>
+         <field ref="person-id" max-occurs="unbounded"/>
+         <field ref="org-id" max-occurs="unbounded"/>
+         <assembly ref="address" max-occurs="unbounded"/>
+         <field ref="email" max-occurs="unbounded"/>
+         <field ref="phone" max-occurs="unbounded"/>
+         <field ref="url" max-occurs="unbounded"/>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
@@ -267,11 +267,11 @@
       <model>
          <field ref="org-name"/>
          <field ref="short-name"/>
-         <fields ref="org-id"/>
-         <assemblies ref="address"/>
-         <fields ref="email"/>
-         <fields ref="phone"/>
-         <fields ref="url"/>
+         <field ref="org-id" max-occurs="unbounded"/>
+         <assembly ref="address" max-occurs="unbounded"/>
+         <field ref="email" max-occurs="unbounded"/>
+         <field ref="phone" max-occurs="unbounded"/>
+         <field ref="url" max-occurs="unbounded"/>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
@@ -353,7 +353,7 @@
          </valid-values>
       </flag>
       <model>
-         <fields ref="addr-line"/>
+         <field ref="addr-line" max-occurs="unbounded"/>
          <field ref="city"/>
          <field ref="state"/>
          <field ref="postal-code"/>
@@ -434,7 +434,7 @@
       <model>
          <field ref="desc"/>
          <choice>
-            <assemblies ref="rlink"/>
+            <assembly ref="rlink" max-occurs="unbounded"/>
             <field ref="base64"/>
          </choice>
          <assembly ref="notes"/>
@@ -543,10 +543,10 @@
       <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
       <flag ref="id" datatype="ID" required="yes"/>
       <model>
-         <fields ref="target"/>
+         <field ref="target" max-occurs="unbounded"/>
          <field ref="title"/>
          <field ref="desc"/>
-         <fields ref="doc-id"/>
+         <field ref="doc-id" max-occurs="unbounded"/>
          <any/>
       </model>
       <remarks>

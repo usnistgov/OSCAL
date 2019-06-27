@@ -24,14 +24,14 @@
   <define-assembly name="catalog" group-as="control-catalog">
       <formal-name>Catalog</formal-name>
       <description>A collection of controls.</description>
-      <flag datatype="ID" required="yes" ref="id"/>
+      <flag ref="id" datatype="ID" required="yes"/>
       <model>
-         <assembly ref="metadata" required="yes"/>
+         <assembly ref="metadata" min-occurs="1"/>
          <!--<field named="declarations"/>-->
          <!--<assemblies named="section"/>-->
          <choice>
-            <assemblies ref="group"/>
-            <assemblies ref="control"/>
+            <assembly ref="group" max-occurs="unbounded"/>
+            <assembly ref="control" max-occurs="unbounded"/>
          </choice>
          <assembly ref="back-matter">
             <description>Back matter including references and resources.</description>
@@ -88,16 +88,16 @@
   <define-assembly name="group" group-as="groups">
       <formal-name>Control Group</formal-name>
       <description>A group of controls, or of groups of controls.</description>
-      <flag datatype="ID" ref="id"/>
+      <flag ref="id" datatype="ID"/>
       <flag ref="class"/>
       <model>
-         <field ref="title" required="yes"/>
-         <assemblies ref="param"/>
-         <fields ref="prop"/>
-         <assemblies ref="part"/>
+         <field ref="title" min-occurs="1"/>
+         <assembly ref="param" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded"/>
+         <assembly ref="part" max-occurs="unbounded"/>
          <choice>
-            <assemblies ref="group"/>
-            <assemblies ref="control"/>
+            <assembly ref="group" max-occurs="unbounded"/>
+            <assembly ref="control" max-occurs="unbounded"/>
          </choice>
          <!--<assembly named="ref-list"/>-->
          <any/>
@@ -120,16 +120,16 @@
   <define-assembly name="control" group-as="controls">
       <formal-name>Control</formal-name>
       <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
-      <flag datatype="ID" required="yes" ref="id"/>
+      <flag ref="id" datatype="ID" required="yes"/>
       <flag ref="class"/>
       <model>
-         <field ref="title" required="yes"/>
-         <assemblies ref="param"/>
+         <field ref="title" min-occurs="1"/>
+         <assembly ref="param" max-occurs="unbounded"/>
          <!-- TODO: Need to be able to add valid values in context -->
-         <fields ref="prop"/>
-         <fields ref="link"/>
-         <assemblies ref="part"/>
-         <assemblies ref="subcontrol"/>
+         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded"/>
+         <assembly ref="part" max-occurs="unbounded"/>
+         <assembly ref="subcontrol" max-occurs="unbounded"/>
          <!--<assembly named="ref-list"/>-->
          <any/>
       </model>
@@ -147,16 +147,14 @@
   <define-assembly name="subcontrol" group-as="subcontrols">
       <formal-name>Sub-Control</formal-name>
       <description>A control extension or enhancement</description>
-      <flag datatype="ID" required="yes" ref="id"/>
+      <flag ref="id" datatype="ID" required="yes"/>
       <flag ref="class"/>
       <model>
-         <field ref="title" required="yes">
-            <description>The subcontrol's human-readable name.</description>
-         </field>
-         <assemblies ref="param"/>
-         <fields ref="prop"/>
-         <fields ref="link"/>
-         <assemblies ref="part"/>
+         <field ref="title" min-occurs="1"/>
+         <assembly ref="param" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded"/>
+         <assembly ref="part" max-occurs="unbounded"/>
          <!--<assembly named="ref-list"/>-->
          <any/>
       </model>
@@ -170,9 +168,9 @@
   <define-assembly name="param" group-as="parameters">
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
-      <flag datatype="ID" required="yes" ref="id"/>
+      <flag ref="id" datatype="ID" required="yes"/>
       <flag ref="class"/>
-      <flag datatype="IDREF" ref="depends-on"/>
+      <flag ref="depends-on" datatype="IDREF"/>
       <model>
          <field ref="label">
             <description>A short name for the parameter.</description>
@@ -180,21 +178,9 @@
                <p>The label value should be suitable for inline display in a rendered catalog.</p>
             </remarks>
          </field>
-         <fields ref="usage">
-            <description>A short summary of the parameter's intended use.</description>
-            <remarks>
-               <p> A label is optional, but should be provided unless a <code>select</code> (selection) is provided.</p>
-            </remarks>
-         </fields>
-         <fields ref="constraint">
-            <description>A rule describing the permissible parameter values.</description>
-            <remarks>
-               <p>Currently, OSCAL does not standardize any formal rules language for value constraints. A <code>test</code> option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is <a href="https://github.com/usnistgov/OSCAL/issues/206">needed</a> to support the declaration of a rule language and value.</p>
-            </remarks>
-         </fields>
-         <assemblies ref="guideline">
-            <description>Additional recommendations for the use of the parameter, or around what values should be provided.</description>
-         </assemblies>
+         <field ref="usage" max-occurs="unbounded"/>
+         <field ref="constraint" max-occurs="unbounded"/>
+         <assembly ref="guideline" max-occurs="unbounded"/>
          <choice>
             <field ref="value">
                <description>A recommended parameter value or set of values.</description>
@@ -209,9 +195,7 @@
                </remarks>
             </assembly>
          </choice>
-         <fields ref="link">
-            <description/>
-         </fields>
+         <field ref="link" max-occurs="unbounded"/>
          <any/>
       </model>
       <remarks>
@@ -230,7 +214,7 @@
   <define-field name="usage" group-as="descriptions" as="mixed">
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
-      <flag datatype="ID" ref="id"/>
+      <flag ref="id" datatype="ID"/>
    </define-field>
 
   <define-field name="constraint" group-as="constraints">
@@ -267,7 +251,7 @@
       <description>Presenting a choice among alternatives</description>
       <flag ref="how-many"/>
       <model>
-         <fields ref="choice"/>
+         <field ref="choice" max-occurs="unbounded"/>
          <any/>
       </model>
    </define-assembly>
@@ -280,16 +264,16 @@
   <define-assembly name="part" group-as="parts">
       <formal-name>Part</formal-name>
       <description>A partition or component of a control, subcontrol or part</description>
-      <flag datatype="ID" ref="id"/>
-      <flag required="yes" ref="name"/>
+      <flag ref="id" datatype="ID"/>
+      <flag ref="name" required="yes"/>
       <flag ref="ns"/>
       <flag ref="class"/>
       <model>
          <field ref="title"/>
-         <fields ref="prop"/>
+         <field ref="prop" max-occurs="unbounded"/>
          <prose/>
-         <assemblies ref="part"/>
-         <fields ref="link"/>
+         <assembly ref="part" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded"/>
          <any/>
       </model>
       <remarks>
@@ -308,17 +292,17 @@
       </example>
    </define-assembly>
 
-   <define-flag name="test" datatype="string">
+  <define-flag name="test" datatype="string">
       <formal-name>Constraint test</formal-name>
       <description>A formal (executable) expression of a constraint</description>
    </define-flag>
-   
-   <define-flag name="how-many" datatype="string">
+
+  <define-flag name="how-many" datatype="string">
       <formal-name>Cardinality</formal-name>
       <description>When selecting, a requirement such as one or more</description>
    </define-flag>
-   
-   <define-flag name="depends-on" datatype="IDREF">
+  
+  <define-flag name="depends-on" datatype="IDREF">
       <formal-name>Depends on</formal-name>
       <description>Another parameter invoking this one</description>
    </define-flag>

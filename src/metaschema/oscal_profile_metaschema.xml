@@ -23,8 +23,8 @@
       <description>Each OSCAL profile is defined by a Profile element</description>
       <flag ref="id" datatype="ID" required="yes"/>
       <model>
-            <assembly ref="metadata" required="yes"/>
-            <assemblies ref="import"/>
+            <assembly ref="metadata" min-occurs="1"/>
+            <assembly ref="import" max-occurs="unbounded"/>
             <assembly ref="merge"/>
             <assembly ref="modify"/>
             <assembly ref="back-matter"/>
@@ -121,9 +121,9 @@
       <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
       <model>
          <choice>
-            <assemblies ref="group"/>
-            <fields ref="call"/>
-            <fields ref="match"/>
+            <assembly ref="group" max-occurs="unbounded"/>
+            <field ref="call" max-occurs="unbounded"/>
+            <field ref="match" max-occurs="unbounded"/>
          </choice>
       </model>
       <remarks>
@@ -138,9 +138,9 @@
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
       <model>
          <choice>
-            <assemblies ref="group"/>
-            <fields ref="call"/>
-            <fields ref="match"/>
+            <assembly ref="group" max-occurs="unbounded"/>
+            <field ref="call" max-occurs="unbounded"/>
+            <field ref="match" max-occurs="unbounded"/>
          </choice>
       </model>
    </define-assembly>
@@ -148,8 +148,8 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assemblies ref="set"/>
-         <assemblies ref="alter"/>
+         <assembly ref="set" max-occurs="unbounded"/>
+         <assembly ref="alter" max-occurs="unbounded"/>
       </model>
    </define-assembly>
    <!-- Can have either 'all' or (a set of) 'call' -->
@@ -160,8 +160,8 @@
       <model>
             <choice>
                <field ref="all"/>
-               <fields ref="call"/>
-               <fields ref="match"/>
+               <field ref="call" max-occurs="unbounded"/>
+               <field ref="match" max-occurs="unbounded"/>
             </choice>
       </model>
       <remarks>
@@ -239,8 +239,8 @@
           imported</description>
       <model>
          <choice>
-            <fields ref="call"/>
-            <fields ref="match"/>
+            <field ref="call" max-occurs="unbounded"/>
+            <field ref="match" max-occurs="unbounded"/>
          </choice>
       </model>
       <remarks>
@@ -253,20 +253,23 @@
    <define-assembly name="set" group-as="settings">
       <formal-name>Parameter Setting</formal-name>
       <description>A parameter setting, to be propagated to points of insertion</description>
-      <key  ref="param-id" datatype="NCName"/>
+      <key name="param-id" datatype="NCName">
+         <formal-name>Parameter ID</formal-name>
+         <description>Value of the 'id' flag on a target parameter</description>
+      </key>
       <flag ref="class"/>
       <flag ref="depends-on" datatype="IDREF"/>
       <model>
          <!-- declarations tbf in the imported schema and to be aligned with it -->
          <field ref="label"/>
-         <fields ref="usage"/>
-         <fields ref="constraint"/>
+         <field ref="usage" max-occurs="unbounded"/>
+         <field ref="constraint" max-occurs="unbounded"/>
          <choice>
             <field ref="value"/>
             <assembly ref="select"/>
          </choice>
-         <fields ref="link"/>
-         <assemblies ref="part"/>
+         <field ref="link" max-occurs="unbounded"/>
+         <assembly ref="part" max-occurs="unbounded"/>
       </model>
    </define-assembly>
 
@@ -276,8 +279,8 @@
       <flag ref="control-id" datatype="NCName"/>
       <flag ref="subcontrol-id" datatype="NCName"/>
       <model>
-               <fields ref="remove"/>
-               <assemblies ref="add"/>
+               <field ref="remove" max-occurs="unbounded"/>
+               <assembly ref="add" max-occurs="unbounded"/>
       </model>
       <remarks>
          <p>Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of alteration.</p>
@@ -311,10 +314,10 @@
       <flag ref="position"/>
       <model>
          <field ref="title"/>
-         <assemblies ref="param"/>
-         <fields ref="prop"/>
-         <fields ref="link"/>
-         <assemblies ref="part"/>
+         <assembly ref="param" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded"/>
+         <assembly ref="part" max-occurs="unbounded"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">
@@ -341,10 +344,6 @@
    <define-flag datatype="NCName" name="subcontrol-id">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target subcontrol</description>
-   </define-flag>
-   <define-flag datatype="NCName" name="param-id">
-      <formal-name>Parameter ID</formal-name>
-      <description>Value of the 'id' flag on a target parameter</description>
    </define-flag>
    <define-flag datatype="string" name="pattern">
       <formal-name>Pattern</formal-name>
@@ -381,20 +380,6 @@
    <define-flag datatype="NMTOKENS" name="item-name">
       <formal-name>References by name</formal-name>
       <description>Items to remove, by item type (name), e.g. title or prop</description>
-   </define-flag>
-  <!-- <define-flag name="test" datatype="string">
-      <formal-name>Constraint test</formal-name>
-      <description>A formal (executable) expression of a constraint</description>
-   </define-flag>-->
-
-  <!--<define-flag name="how-many" datatype="string">
-      <formal-name>Cardinality</formal-name>
-      <description>When selecting, a requirement such as one or more</description>
-   </define-flag>-->
-  
-  <define-flag name="depends-on" datatype="IDREF">
-      <formal-name>Depends on</formal-name>
-      <description>Another parameter invoking this one</description>
    </define-flag>
 
 </METASCHEMA>

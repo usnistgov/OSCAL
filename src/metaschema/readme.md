@@ -50,14 +50,17 @@ The following is the Mermaid notation for the chart above:
 
 ```
 graph TB
-  ms -- extract documentation --> xmldocsh[XML docs / HTML]
-  xmldocsh -- generic HTML to md --> xmldocmd[XML docs / md]
-  ms((Metaschema)) -- translate --> sch(XML Schema)
-  ms -- xdm::object map --> xj{xml to json XSLT}
-  ms -- object::xdm map --> jx{json to xml XSLT}
-  ms -- translate --> jsch(JSON Schema)
-  ms -- extract documentation --> jsondocsh[JSON docs / HTML]
-  jsondocsh -- generic HTML to md --> jsondocmd[JSON-flavored docs / md]
+  ms1[module] -- include --> ms
+  ms2[module] -- include --> ms
+  xmp1[example] -- cite --> ms
+  xmp2[example] -- cite --> ms
+  ms[main Metaschema] -- compile metaschema --> cms
+  cms -- extract documentation --> xmldocsh[XML docs / HTML]
+  cms((Compiled metaschema)) -- translate --> sch(XML Schema)
+  cms -- xdm::object map --> xj{xml to json XSLT}
+  cms -- object::xdm map --> jx{json to xml XSLT}
+  cms -- translate --> jsch(JSON Schema)
+  cms -- extract documentation --> jsondocsh[JSON docs / HTML]
 
 classDef metasch fill:skyblue,stroke:blue,stroke-width:12px,stroke-opacity:0.2
 classDef xml fill:gold,stroke:#333,stroke-width:2px;
@@ -65,7 +68,7 @@ classDef json fill:pink,stroke:#333,stroke-width:2px
 classDef html fill:lightgreen,stroke-width:2px
 classDef md fill:lightgreen,stroke-width:4px,stroke-dasharray:2,2
 
-class ms metasch
+class cms,ms,ms1,ms2,xmp1,xmp2 metasch
 class sch,xj xml
 class jsch,jx json
 class xmldocsh,jsondocsh html
@@ -89,15 +92,15 @@ Nonetheless and with this in mind, understanding the mechanism by which the Meta
 
 Terminology note: "metaschema" is a common noun and there are many metaschema technologies (indeed almost any mature XML tag set has one), with different purposes, feature sets and capabilities. "Metaschema" (capitalized) is our peculiar homegrown metaschema technology and application.
 
-## The Overall Approach
+## The Approach
 
 A reduced, lightweight modeling language with certain specially-enforced constraints can be sketched such that multiple schemas constraining disparate formats, such as XML and JSON, can be produced from a single metaschema instance (a document written in Metaschema) deterministically, and thus designed and coordinated in parallel.
 
 We begin by producing functioning schemas to describe OSCAL data in XML Schema Definition Language (XSD) 1.1 on the XML side and JSON Schema draft7 on the JSON side. As we do this, the constraints imposed by using the Metaschema modeling syntax enable us to do two things implicitly (that is, without any further effort or additional cost or planning):
 
-- Limit ourselves to schema constructs that map cleanly into features offered by both (target) schema technoologies, thus ensuring that all information can be preserved in (lossless bidirectional) conversion.
+- Limit ourselves to schema constructs that map cleanly into features offered by both (target) schema technologies, thus ensuring that all information can be preserved in (lossless bidirectional) conversion.
 
-- Mediate between the "structural imbalances" in the data formats by providing the extra information we need to introduce improvements to model and syntax on both sides. By "model and syntax" we mean everything bearing on both the information sets to be represented, and their (canonical or recognized) representations, including object structures, notations and data type bindings. Beyond the applicable metaschema, no further inputs and no reliance on arbitrary conventions or runtime settings should be necessary to produce, reliably, correspondent JSON from any (metaschema-described, schema-valid) XML, and vice-versa.
+- Mediate between the structural imbalances in the data formats by providing the extra information we need to introduce improvements to model and syntax on both sides. By "model and syntax" we mean everything bearing on both the information sets to be represented, and their (canonical or recognized) representations, including object structures, notations and declarations of data type bindings. Beyond the applicable metaschema, no further inputs and no reliance on arbitrary conventions or runtime settings should be necessary to produce, reliably, correspondent JSON from any (metaschema-described, schema-valid) XML, and vice-versa.
 
 - Additionally, (and this is crucial) produce specifications and running code supporting automated production of schemas and model-related artifacts, consistent with the circumscribed model defined (and documented) in the Metaschema. 
 
@@ -121,22 +124,27 @@ Top level documentation for the Metaschema instance appears in the header sectio
 
 The root element is `METASCHEMA` using all capitals. To name the root element in all capitals (unlike the general rule) and to give it a name somewhat peculiar to its application, retains and expresses the information that it is intended to be the document root. This is the only element named in all caps.
 
-`METASCHEMA` may take two attributes, `@use` and `@top`. `@use` must be equal to the `@name` assigned to an assembly definition in the schema. `@top` must be equal to the `@group-as` on the same definition. (This is the first instance of the Metaschema tactic of "strategic redundancy" in naming and managing its various components. While in principle, we would be able to infer each of these values from the other, we require both to be expressed in order to confirm the integrity of the binding.)
-
-Note the assembly definition indicated by @use will be expected to apply to the root or virtual root for the conformant XML or JSON data set.
+`METASCHEMA` indicates the root element or object for the schema with its `@root` attribute, which must correspond to the `@name` of one of the (assembly) definitions in the metaschema.
 
 ## Metaschema header
 
 In addition to the top-level attributes `@use` and `@top`, the top of the metaschema may include these elements, in order:
 
-
 ### schema-name
 
 Describing the scope of application of the data format, for example "OSCAL Catalog".
 
+### schema-version
+
+A literal value indicating the version to be assigned to schemas and tools produced from the Metaschema.
+
 ### short-name
 
 A coded version of the schema name, for use when a string-safe identifier is needed, for example on artifact file names. Expect this short name to be propagated anytime such a "handle" is needed. A short name for the OSCAL Catalog metaschema (and schemas) might be `oscal-catalog`.
+
+### namespace
+
+An XML namespace identifier (URI) to be used for the resulting XSD. All elements in the metaschema will be assigned to this namespace, including elements defined in metaschema modules, that are designated with their own namespaces. (In other words, this data value is operative only for the top-level metaschema, not for any of its imported modules. This makes it possible to use modules in metaschemas defined with different namespaces.)
 
 ### remarks
 
@@ -154,7 +162,7 @@ There are three kinds of definitions:
 
 ### Fields
 
-Fields can be thought of as simple text values, either scalars or sequences of scalars, or when appropriate, of "rich text", i.e. text permitting inline formatting. Depending on modeling requirements, fields may also be used for even simpler bits of data, such as objects that carry specialized flags but have no values or structures otherwise.
+Fields can be thought of as simple text values, either scalars or sequences of scalars, or when appropriate, of "rich text" or mixed content, i.e. text permitting inline formatting. Depending on modeling requirements, fields may also be used for even simpler bits of data, such as objects that carry specialized flags but have no values or structures otherwise.
 
 This means that fields can be more or less complex, depending on the need. This distinction is made by qualifying the `field` with an `@as` attribute, as follows:
 
