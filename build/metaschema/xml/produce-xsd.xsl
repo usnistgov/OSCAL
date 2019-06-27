@@ -82,28 +82,9 @@
     
     <xsl:template match="namespace"/>
         
-    <xsl:template match="/METASCHEMA/schema-name">
-        <xsl:comment>
-            <xsl:apply-templates/>
-        </xsl:comment>
-        <xsl:text>&#xA;</xsl:text>
-    </xsl:template>
-    
-    <xsl:template match="/METASCHEMA/short-name">
-        <xsl:comment>short name: <xsl:apply-templates/></xsl:comment>
-        <xsl:text>&#xA;</xsl:text>
-    </xsl:template>
-    
-    <xsl:template match="/METASCHEMA/schema-version">
-        <xsl:comment>oscal-version: <xsl:apply-templates/></xsl:comment>
-        <xsl:text>&#xA;</xsl:text>
-    </xsl:template>
-    
-    <xsl:template match="/METASCHEMA/remarks/*">
-        <xsl:comment>
-            <xsl:apply-templates/>
-        </xsl:comment>
-        <xsl:text>&#xA;</xsl:text>
+    <xsl:template match="/METASCHEMA/schema-name | /METASCHEMA/short-name |
+        /METASCHEMA/schema-version | /METASCHEMA/remarks/*">
+        <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="field | assembly">
@@ -159,6 +140,9 @@
     
     <xsl:template match="define-flag | define-field | define-assembly | flag[exists(formal-name| description)]" mode="annotated">
         <xs:annotation>
+            <xs:appInfo>
+                <xsl:copy-of select="formal-name, description"/>
+            </xs:appInfo>
             <xs:documentation>
                 <xsl:apply-templates select="formal-name, description"/>
             </xs:documentation>
@@ -252,15 +236,18 @@
             <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
-<!-- dropping top level (placeholder) 'prose' element declaration and its complexType -->
+    <!-- dropping top level (placeholder) 'prose' element declaration and its complexType -->
     <xsl:template match="xs:schema/xs:element[@name='prose'] | xs:schema/xs:complexType[@name='prose']" mode="acquire-prose"/>
     
+    <!-- Mode 'wire-ns' wires up namespaces, bringing the prose module into the same namespace as the main
+     schema, and cleaning up declarations and names as it goes. -->
     <xsl:template match="comment()" mode="wire-ns">
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="*" mode="wire-ns">
         <xsl:copy copy-namespaces="no"> 
+            <xsl:namespace name="m">http://csrc.nist.gov/ns/oscal/metaschema/1.0</xsl:namespace>
             <xsl:namespace name="{$declaration-prefix}" select="$target-namespace"/>
             <xsl:namespace name="oscal-prose" select="$target-namespace"/>
             <xsl:copy-of select="@*"/>
@@ -268,7 +255,17 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="xs:documentation//text()" mode="wire-ns">
+    <xsl:template match="m:*" mode="wire-ns" xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+        <xsl:element name="m:{local-name()}">
+            <xsl:namespace name="m">http://csrc.nist.gov/ns/oscal/metaschema/1.0</xsl:namespace>
+            <xsl:namespace name="{$declaration-prefix}" select="$target-namespace"/>
+            <xsl:namespace name="oscal-prose" select="$target-namespace"/>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates mode="#current"/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="xs:documentation//text() | m:*//text()" mode="wire-ns">
         <xsl:copy-of select="."/>
     </xsl:template>
     
