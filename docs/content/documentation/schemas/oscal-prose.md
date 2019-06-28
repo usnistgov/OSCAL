@@ -22,9 +22,9 @@ In addition, there are contexts in OSCAL where prose usage may be further constr
 
 ## Markdown compatibility
 
-OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as a JSON string) is our syntax of choice for representing unstructured prose in JSON, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is a requirement.
+OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as a JSON or YAML string) is our syntax of choice for representing unstructured prose in JSON and YAML, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is supported.
 
-When in doubt, we look to CommonMark for guidance on syntax, largely because it is more rigorously tested than many others.
+When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many others.
 
 ## Mapping between HTML and Markdown
 
@@ -54,7 +54,7 @@ The following HTML <-> Markdown mapping is supported by OSCAL.
 | Ordered List Item | &lt;ol&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ol&gt; | 1. *text*
 | Unordered List Item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | * *text*
 
-The use of &lt;p&gt; tags in HTML is handled in Markdown as a double newline within a JSON string to split text into paragraphs (i.e., "\\n\\n").
+The use of &lt;p&gt; tags in HTML is mapped to Markdown as two double, escaped newlines within a JSON or YAML string (i.e., "\\\\n\\\\n"). This allows Mardown text to be split into paragraphs.
 
 ### Table Markup
 
@@ -92,7 +92,20 @@ Is mapped to the Markdown table:
 
 ### Parameter Insertion
 
-TODO: Discuss param insertion.
+The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
+
+Parameter injection is handled in HTML as follows using the &lt;insert&gt; tag:
+
+```html
+Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/> or as required, to address organizational changes.
+```
+
+The same string in Markdown is represented as follows:
+
+```markdown
+Reviews and updates the risk management strategy {{ pm-9_prm_1 }} or as required, to address organizational changes.
+```
+
 
 ### Specialized Character Mapping
 
@@ -119,3 +132,5 @@ While the characters ```"'\*\`~^``` are valid for use unescaped in JSON strings,
 - Should &amp;#2A; be &amp;#42; or \* in HTML?
 - Should &amp;#60; be &amp;#96; or \` in HTML?
 - What about blockquote?
+- What about table alignment?
+- Looks like param insertion is not handled using double braces.
