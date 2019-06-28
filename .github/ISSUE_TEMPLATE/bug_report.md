@@ -8,26 +8,32 @@ assignees: ''
 ---
 
 # Describe the bug
-A clear and concise description of what the bug is.
+
+{A clear and concise description of what the bug is.}
 
 # Who is the bug affecting?
 
 # What is affected by this bug?
-Describe the impact the bug is having.
+
+{Describe the impact the bug is having.}
 
 # When does this occur?
-Describe the conditions under which the bug is occuring
+
+{Describe the conditions under which the bug is occurring.}
 
 # How do we replicate the issue?
-What are the steps to reproduce the behavior?
+
+{What are the steps to reproduce the behavior?
 1. Do this...
 1. Then this...
 1. See error
 
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain your problem.}
 
 # Expected behavior (i.e. solution)
-A clear and concise description of what you expected to happen.
+
+{A clear and concise description of what you expected to happen.}
 
 # Other Comments
-Add any other context about the problem here.
+
+{Add any other context about the problem here.}

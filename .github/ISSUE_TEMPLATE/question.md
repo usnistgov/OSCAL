@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-Please enter your question.
+{Please enter your question.}
