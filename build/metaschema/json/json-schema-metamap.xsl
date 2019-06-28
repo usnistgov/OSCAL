@@ -104,7 +104,7 @@
             <xsl:choose>
                 <xsl:when test="exists(flag/value-key)">
                     <xsl:variable name="all-properties"
-                        select="flag[empty(value-key)] | model//(field | fields | assembly | assemblies)"/>
+                        select="flag[empty(value-key)] | model//(field | assembly)"/>
                     <number key="minProperties">
                         <xsl:value-of select="count($all-properties[@required='yes' or @min-occurs &gt; 0] | self::define-field[not(@as='empty')])"/>
                     </number>
@@ -270,7 +270,9 @@
     <!-- irrespective of min-occurs and max-occurs, assemblies and fields designated
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
-    <xsl:template mode="declaration" priority="5" match="assembly[exists(key('definition-by-name',@ref)/flag/key)] | fields[exists(key('definition-by-name',@ref)/flag/key)]">
+    <xsl:template mode="declaration" priority="5"
+        match="assembly[exists(key('definition-by-name',@ref)/flag/key)] |
+               field[exists(key('definition-by-name',@ref)/flag/key)]">
         <xsl:variable name="group-name" select="key('definition-by-name',@ref)/@group-as"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
@@ -303,8 +305,8 @@
         </map>
     </xsl:template>
     
-    <!-- Now matching when min-occurs is zero or one -->
-    <xsl:template mode="declaration" match="assemblies | fields">
+    <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1 -->
+    <xsl:template mode="declaration" match="assembly | field">
         <map key="{ key('definition-by-name',@ref)/@group-as }">
             <array key="anyOf">
                 <map>
