@@ -149,7 +149,6 @@
     <xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>
     
     <xsl:template match="define-assembly[exists(key)] | define-field[exists(key)]">
-        <xsl:message expand-text="yes">matching { @name }</xsl:message>
         <xsl:if test="matches(@group-as,'\S')">
             <map key="{ @group-as }">
                 <string key="$id">#/definitions/{@group-as}</string>
