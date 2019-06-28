@@ -1,5 +1,5 @@
 /* Note this CSS hasn't been reviewed for tightness it is likely to contain obsolte (ordinarily no-op) code */
-
+/* Extra note - yes, although it works tolerably well it really ought to be stripped down */
 * { display: block } 
 
 catalog, framework { max-width: 48em }
@@ -104,20 +104,20 @@ desc:before {    font-style: normal; content: 'Description: ' }
 default:before { font-style: normal; content: 'Default: ' }
 param value:before {  font-style: normal; content: 'Value: ' }
 
-prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+prop:before { content: attr(name) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 prop { display:block; background-color: #FDDDE6; border: thin outset pink;
   padding: 2px; font-size: 90% }
 
 
 /* SP800-53
-part[class=supplemental-guidance]:before { content: "Supplemental guidance" }  */
+part[name=supplemental-guidance]:before { content: "Supplemental guidance" }  */
 
 /* ISO 27002
-purpose:before,part[class=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-guidance:before,[class=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-information:before,part[class=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-remarks:before,part[class=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+purpose:before,part[name=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+guidance:before,[name=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+information:before,part[name=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+remarks:before,part[name=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
  */
 
 
@@ -177,7 +177,7 @@ sub, sup { display: inline; font-size: .83em }
 sub      { vertical-align: sub }
 sup      { vertical-align: super }
 
-insert, select { display: inline; font-family: sans-serif; background-color: white;
+insert { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; font-weight: bold; border: thin solid pink;
    content: oxy_popup(
          edit, '@param-id',
