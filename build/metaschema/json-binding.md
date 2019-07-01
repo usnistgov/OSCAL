@@ -89,7 +89,7 @@ When `min-occurs="2"` or greater on the grouped property, the resulting JSON sch
     "properties": {
         "props": {
             "type": "array",
-            "items": {"$ref": "#/definitions/prop"}
+            "items": {"$ref": "#/definitions/prop"},
             "minItems": 1, # the min-occurs value
             "maxItems": 10 # the max-occurs value if not "unbounded"
         }
