@@ -26,13 +26,13 @@
 
    <xsl:variable name="home" select="/METASCHEMA"/>
 
-   <xsl:variable name="all-references" select="//flag/@name | //model//*/@named"/>
+   <xsl:variable name="all-references" select="//flag/@name | //model//*/@ref"/>
 
    <!--<xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>-->
 
    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
    <xsl:key name="references" match="flag"             use="@name"/>
-   <xsl:key name="references" match="field | assembly | fields | assemblies" use="@named"/>
+   <xsl:key name="references" match="field | assembly | fields | assemblies" use="@ref"/>
    
    <xsl:template match="/">
       <html>
@@ -218,7 +218,7 @@
       </div>
    </xsl:template>
 
-   <xsl:template match="@name | @named">
+   <xsl:template match="@name | @ref">
       <code>
          <xsl:value-of select="."/>
       </code>
@@ -264,8 +264,8 @@
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required) and self::flag"> (<i>optional</i>)</xsl:if>
          <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
-         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
-            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
+            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
          </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
@@ -291,17 +291,17 @@
    <xsl:template match="assembly | field | assemblies | fields">
       <li>
          <!--<xsl:text>A</xsl:text>
-         <xsl:if test="not(translate(substring(@named, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
+         <xsl:if test="not(translate(substring(@ref, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
          <xsl:text> </xsl:text>-->
-         <a href="#{@named}">
-            <xsl:apply-templates select="@named"/>
+         <a href="#{@ref}">
+            <xsl:apply-templates select="@ref"/>
          </a>
          <xsl:text expand-text="true"> element </xsl:text>
          <xsl:apply-templates select="." mode="cardinality"/>
 
-         <xsl:apply-templates select="if (description) then description else key('definitions', @named)/description" mode="model"/>
-         <xsl:if test="valid-values or key('definitions', @named)/valid-values">
-            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @named)/valid-values"/>
+         <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
+         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
+            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
          </xsl:if>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
@@ -463,7 +463,7 @@
                <tr>
                   <th scope="row">
                      <span>
-                        <xsl:for-each select="(@name | @named)">
+                        <xsl:for-each select="(@name | @ref)">
                            <a class="name" href="#{.}">
                               <xsl:value-of select="."/>
                            </a>
