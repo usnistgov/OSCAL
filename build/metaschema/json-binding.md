@@ -67,7 +67,7 @@ When `json-behavior="SINGLETON_OR_ARRAY"` is used, or no `json-behavior` is defi
                 },
                 {
                     "type": "array",
-                    "items": {"$ref": "#/definitions/prop"}
+                    "items": {"$ref": "#/definitions/prop"},
                     "minItems": 2,
                     "maxItems": 10 # the max-occurs value if not "unbounded"
                 }
