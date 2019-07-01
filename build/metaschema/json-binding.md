@@ -78,7 +78,7 @@ When `json-behavior="SINGLETON_OR_ARRAY"` is used, or no `json-behavior` is defi
 },
 ```
 
-When `min-occurs="1"` (or greater) on the grouped property, the resulting JSON schema will omit the singleton as follows:
+When `min-occurs="2"` or greater on the grouped property, the resulting JSON schema will omit the singleton as follows:
 
 ```json
 "parent": {
@@ -98,7 +98,8 @@ When `min-occurs="1"` (or greater) on the grouped property, the resulting JSON s
 },
 ```
 
-In such a case the use of `json-behavior="SINGLETON_OR_ARRAY"` should result in a Metaschema error.
+In the case where @min-occurs >= 2, the use of `json-behavior="SINGLETON_OR_ARRAY"` should result in a Metaschema error.
+
 
 Also, if `group-as` is selected for a cardinality of `max-occurs="1"`, then this should result in a Metaschema warning. In such a case, `group-as` is not needed.
 
@@ -146,6 +147,7 @@ In this case the resulting JSON schema will be defined as follows:
     "type": "object",
     "properties": {
         "children": {
+            "type": "object",
             "minProperties": 1, # the value of min-occurs
             "maxProperties": 1, # the value of max-occurs if not "unbounded"
             "additionalProperties": {
@@ -206,6 +208,9 @@ This case uses a globally defined flag as the key.
 </define0assembly>
 ```
 
+We should validate that when json-behavior=BY_KEY, the definitions line up accordingly.
+
+
 The resulting JSON schema is the same as above:
 
 ```json
@@ -216,8 +221,10 @@ The resulting JSON schema is the same as above:
     "type": "object",
     "properties": {
         "children": {
+            "type": "object",
+            "minProperties": 1, # the value of min-occurs
+            "maxProperties": 1, # the value of max-occurs if not "unbounded"
             "additionalProperties": {
-                "minProperties": 1, # not sure this is needed or works.
                 "type": "object",
                 "$ref": "#/definitions/child"
             }
@@ -262,7 +269,7 @@ The ```define-field``` construction will use `json-value-key` to customize this 
 ```xml
 <define-field name="prop" as-type="simple-markup">
     ... snip ...
-    <json-value-key flag-id="name"/>
+    <json-value-key flag-name="name"/>
     <flag name="name" required="yes">
 </define-field>
 ```

@@ -149,7 +149,7 @@
     <xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>
     
     <xsl:template match="define-assembly[exists(key)] | define-field[exists(key)]">
-        <xsl:if test="matches(@group-as,'\S')">
+        <!--<xsl:if test="matches(@group-as,'\S')">
             <map key="{ @group-as }">
                 <string key="$id">#/definitions/{@group-as}</string>
                 <string key="type">object</string>
@@ -159,7 +159,7 @@
                 </map>
                 <number key="minProperties">1</number>
             </map>
-        </xsl:if>
+        </xsl:if>-->
         <map key="{ @name }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
@@ -170,7 +170,6 @@
             <boolean key="additionalProperties">false</boolean>
         </map>
     </xsl:template>
-    
     
     <xsl:template match="define-field[empty(key|flag)]">
         <map key="{ @name (: @group-as | @name[empty(../@group-as)] :) }">
@@ -270,12 +269,16 @@
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
     <xsl:template mode="declaration" priority="5"
-        match="assembly[exists(key('definition-by-name',@ref)/flag/key)] |
-               field[exists(key('definition-by-name',@ref)/flag/key)]">
+        match="assembly[exists(key('definition-by-name',@ref)/key)] |
+               field[exists(key('definition-by-name',@ref)/key)]">
         <xsl:variable name="group-name" select="key('definition-by-name',@ref)/@group-as"/>
+        <xsl:message expand-text="yes">{ $group-name }</xsl:message>
         <map key="{ $group-name }">
             <string key="type">object</string>
-            <string key="$ref">#/definitions/{ $group-name }</string>
+            <map key="additionalProperties">
+                <string key="type">object</string>
+                <string key="$ref">#/definitions/{ @ref }</string>
+            </map>
         </map>
     </xsl:template>
     
@@ -294,9 +297,9 @@
         match="assembly[number(@min-occurs) &gt; 1 ] | field[number(@min-occurs) &gt; 1 ]">
         <map key="{ key('definition-by-name',@ref)/@group-as }">
             <string key="type">array</string>
-            <string key="minItems">{ @min-occurs }</string>
+            <number key="minItems">{ @min-occurs }</number>
             <xsl:if test="@max-occurs != 'unbounded'">
-                <string key="maxItems">{ @max-occurs }</string>
+                <number key="maxItems">{ @max-occurs }</number>
             </xsl:if>
             <map key="items">
                 <string key="$ref">#/definitions/{ @ref }</string>
@@ -305,6 +308,7 @@
     </xsl:template>
     
     <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1 -->
+    
     <xsl:template mode="declaration" match="assembly | field">
         <map key="{ key('definition-by-name',@ref)/@group-as }">
             <array key="anyOf">
