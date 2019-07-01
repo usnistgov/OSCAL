@@ -273,9 +273,10 @@
 
    <xsl:template match="flag" mode="model">
       <li>
-         <a href="#{@name}">
+         <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
+         <xsl:if test="empty(@ref)">
             <xsl:apply-templates select="@name"/>
-         </a>
+         </xsl:if>
          <xsl:text> property </xsl:text>
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
