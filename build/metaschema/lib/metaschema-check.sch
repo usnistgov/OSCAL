@@ -39,11 +39,11 @@
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
             <sch:report test="@name=$prose-names">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
             <!--<sch:assert test="count( key('definition-by-name',@name) | key('definition-by-name',@name,$imported-schemas) ) ge 1">Not a distinct definition</sch:assert>-->
-            <sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>
-            <sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>
+            <!--FIX:<sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>-->
+            <!--FIX:<sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>-->
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
-            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Assembly can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
-            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Field can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
+            <!--FIX:<sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Assembly can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>-->
+            <!--FIX:<sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Field can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>-->
             <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
         </sch:rule>
 
@@ -129,13 +129,13 @@
        
         <sch:rule context="m:define-assembly">
             <sch:assert role="warning" test="@name = ($composed-metaschema//m:assembly/@ref | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
-            <sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this assembly definition</sch:assert>
-            <sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>
+            <!--FIX:<sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this assembly definition</sch:assert>-->
+            <!--FIX:<sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>-->
         </sch:rule>
         <sch:rule context="m:define-field">
             <sch:assert role="warning" test="@name = $composed-metaschema//m:field/@ref">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
-            <sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this field definition</sch:assert>
-            <sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>
+            <!--FIX:<sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this field definition</sch:assert>-->
+            <!--FIX:<sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>-->
         </sch:rule>
         <sch:rule context="m:define-flag">
             <sch:assert role="warning" test="@name = ($composed-metaschema//m:flag/@ref | $composed-metaschema//m:key/@ref)">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>

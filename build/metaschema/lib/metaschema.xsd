@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
   targetNamespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
@@ -31,7 +32,7 @@
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="define-assembly">
     <xs:annotation>
       <xs:documentation>An element with structured element content in XML; in JSON, an object with
@@ -57,9 +58,9 @@
           </xs:complexType>
         </xs:element>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
-       <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
+        />
       </xs:sequence>
-      <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -83,20 +84,20 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
+        />
       </xs:sequence>
-      <xs:attribute name="as">
-          <xs:simpleType>
-            <xs:restriction base="xs:string">
-              <xs:enumeration value="boolean" />
-              <xs:enumeration value="empty" />
-              <xs:enumeration value="string" />
-              <xs:enumeration value="mixed" />
-            </xs:restriction>
-          </xs:simpleType>
+      <xs:attribute name="datatype">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="boolean"/>
+            <xs:enumeration value="empty"/>
+            <xs:enumeration value="string"/>
+            <xs:enumeration value="mixed"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="collapsible" type="xs:NCName"/>
-      <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -114,13 +115,57 @@
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>
       <!-- should Schematron check uniqueness among siblings irrespective of datatype -->
-      <xs:attribute name="name"     type="xs:NCName"/>
-      <xs:attribute name="ref"     type="xs:NCName"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attribute name="ref" type="xs:NCName"/>
       <!-- do not have to flag if required; it always will be <xs:attribute name="required" type="xs:NCName"/>-->
     </xs:complexType>
   </xs:element>
+
+  <xs:element name="group-as">
+    <xs:annotation>
+      <xs:documentation>Determines if a given referenced field or assembly should be wrapped in an outer grouping.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:NCName" use="required"/>
+      <xs:attribute name="json-behavior" type="m:json-group-behavior" use="optional" default="SINGLETON_OR_ARRAY"/>
+      <xs:attribute name="xml-behavior" type="m:xml-group-behavior" use="optional" default="UNGROUPED"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="json-group-behavior">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ARRAY">
+        <xs:annotation>
+          <xs:documentation>Always use an array.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SINGLETON_OR_ARRAY">
+        <xs:annotation>
+          <xs:documentation>Use a singleton for when a single value occurs or an array when multiple values occur.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BY_KEY">
+        <xs:annotation>
+          <xs:documentation>Use with a `json-key` in the referenced field or assembly.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="xml-group-behavior">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GROUPED">
+        <xs:annotation>
+          <xs:documentation>Use a wrapper element.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UNGROUPED">
+        <xs:annotation>
+          <xs:documentation>Do not use a wrapper element.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
   
-<!-- a value-key provides a literal to be used in JSON as a key for the field value;
+  <!-- a value-key provides a literal to be used in JSON as a key for the field value;
      when given as a child of a flag (reference), designates that flag's value to serve as
      the key (JSON property label) for the field's value. Inside flag this element
      must be empty.  -->
@@ -134,7 +179,7 @@
     </xs:annotation>
     <xs:complexType mixed="true"/>
   </xs:element>
-  
+
   <xs:element name="define-flag">
     <xs:annotation>
       <xs:documentation>A data point to be expressed as an attribute in the XML or a name/value pair
@@ -147,7 +192,8 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
+        />
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <!-- datatype should default to 'string' -->
@@ -203,7 +249,7 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="m:p"/>
       </xs:sequence>
-      <xs:attribute name="class"  type="xs:NMTOKENS"/>
+      <xs:attribute name="class" type="xs:NMTOKENS"/>
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
@@ -243,23 +289,27 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:group-as"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
-      <xs:attribute name="max-occurs" type="m:natural-number-or-unbounded"/>
+      <xs:attribute name="max-occurs"
+        type="m:natural-number-or-unbounded"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="field">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:group-as"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
       <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
-      <xs:attribute name="max-occurs" type="m:natural-number-or-unbounded"/>
+      <xs:attribute name="max-occurs"
+        type="m:natural-number-or-unbounded"/>
     </xs:complexType>
   </xs:element>
   <xs:simpleType name="natural-number-or-unbounded">
@@ -309,8 +359,8 @@
         <xs:element minOccurs="0" ref="m:valid-values"/>
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>
-      <xs:attribute name="name"     type="xs:NCName"/>
-      <xs:attribute name="ref"      type="xs:NCName"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attribute name="ref" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -332,7 +382,7 @@
     </xs:sequence>
           <xs:attribute name="ref"      type="xs:NCName" use="required"/>
   </xs:complexType>-->
-  
+
   <xs:element name="choice">
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">
@@ -346,12 +396,12 @@
   <xs:element name="example">
     <xs:complexType>
       <xs:sequence>
-      <xs:element minOccurs="0" ref="m:description"/>
-      <xs:element minOccurs="0" ref="m:remarks"/>
-      <xs:choice minOccurs="0">
-        <xs:any namespace="##other" processContents="lax"/>
-      </xs:choice>
-    </xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:choice minOccurs="0">
+          <xs:any namespace="##other" processContents="lax"/>
+        </xs:choice>
+      </xs:sequence>
       <xs:attribute name="href" type="xs:anyURI"/>
       <xs:attribute name="path" type="xs:string"/>
       <xs:attribute name="module" type="xs:anyURI"/>
@@ -363,7 +413,8 @@
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
+        />
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
     </xs:complexType>
