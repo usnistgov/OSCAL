@@ -42,7 +42,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:json-key"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element name="model" minOccurs="0">
           <xs:complexType>
@@ -75,8 +75,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:key"/>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:json-key"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="m:json-value-key"/>
         <!--<xs:choice maxOccurs="unbounded" minOccurs="0">
           <xs:element name="flag" type="m:local-flag-definition"/>
           <xs:element name="flag" type="m:named-flag"/>
@@ -103,7 +103,7 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:element name="key">
+  <xs:element name="json-key">
     <xs:annotation>
       <xs:documentation>In the XML, produces an attribute with the given name, whose value is used as a key value (aka object property name) in the JSON, enabling objects to be 'lifted' out of arrays when such values are distinct. Implies that siblings will never share values. Overloading with datatype 'ID' and naming the key 'id' is legitimate and useful. Even without ID validation, uniqueness of these values among siblings is validable.</xs:documentation>
     </xs:annotation>
@@ -169,15 +169,16 @@
      when given as a child of a flag (reference), designates that flag's value to serve as
      the key (JSON property label) for the field's value. Inside flag this element
      must be empty.  -->
-  <xs:element name="value-key">
+  <xs:element name="json-value-key">
     <xs:annotation>
-      <xs:documentation>Used inside a flag reference, designates
+      <xs:documentation>Used inside a define-field, designates
         the flag as a label (key) to be used for the field value in the JSON on
-        the field being defined. Used directly inside a field
-       definition with a literal value, indicates that the value of the field
-       is to be labeled in the JSON with this value.</xs:documentation>
+        the field being defined. When a flag-name is provided, indicates that the value of the field
+       is to be labeled in the JSON with the value of the flag.</xs:documentation>
     </xs:annotation>
-    <xs:complexType mixed="true"/>
+    <xs:complexType mixed="true">
+      <xs:attribute name="flag-name" type="xs:NCName"/>
+    </xs:complexType>
   </xs:element>
 
   <xs:element name="define-flag">
@@ -352,7 +353,6 @@
   <xs:element name="flag">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
