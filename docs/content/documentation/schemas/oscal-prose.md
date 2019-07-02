@@ -127,11 +127,6 @@ While the characters ```\*\`~^``` are valid for use unescaped in JSON strings an
 
 # Questions
 
-- Do &amp; and &lt; need to be encoded in JSON?
-- Do ' need to be escaped in JSON?
-- Should &amp;#2A; be &amp;#42; or \* in HTML?
-- Should &amp;#60; be &amp;#96; or \` in HTML?
 - What about blockquote?
 - What about table alignment?
-- Looks like param insertion is not handled using double braces.
 - Use hyphens instead of asterisks for bullets.
