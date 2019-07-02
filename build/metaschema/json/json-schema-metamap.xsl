@@ -272,7 +272,6 @@
         match="assembly[exists(key('definition-by-name',@ref)/key)] |
                field[exists(key('definition-by-name',@ref)/key)]">
         <xsl:variable name="group-name" select="key('definition-by-name',@ref)/@group-as"/>
-        <xsl:message expand-text="yes">{ $group-name }</xsl:message>
         <map key="{ $group-name }">
             <string key="type">object</string>
             <map key="additionalProperties">
