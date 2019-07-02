@@ -151,8 +151,13 @@ In this case the resulting JSON schema will be defined as follows:
             "minProperties": 1, # the value of min-occurs
             "maxProperties": 1, # the value of max-occurs if not "unbounded"
             "additionalProperties": {
-                "type": "object",
-                "$ref": "#/definitions/child"
+                "allOf": [
+                    {
+                        "type": "object",
+                        "$ref": "#/definitions/child"
+                    },
+                    { "not": { "type": "string" } }
+                ]
             }
         }
     },
