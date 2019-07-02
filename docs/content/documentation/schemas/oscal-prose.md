@@ -52,7 +52,7 @@ The following HTML <-> Markdown mapping is supported by OSCAL.
 | Code Blocks | &lt;code&gt;*text*&lt;/code&gt; | \`*text*\`
 | Preformatted Text | &lt;pre&gt;*text*&lt;/pre&gt; | \`\`\`*text*\`\`\`
 | Ordered List Item | &lt;ol&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ol&gt; | 1. *text*
-| Unordered List Item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | * *text*
+| Unordered List Item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | - *text*
 
 The use of &lt;p&gt; tags in HTML is mapped to Markdown as two double, escaped newlines within a JSON or YAML string (i.e., "\\\\n\\\\n"). This allows Mardown text to be split into paragraphs.
 
@@ -124,9 +124,3 @@ The following characters have special handling in their HTML and/or Markdown for
 | ^ | ^ | \\^ | \\^
 
 While the characters ```\*\`~^``` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear in HTML, they are escaped in the mapped Markdown to avoid them being parsed as Markdown markup. This allows these characters to be mapped back to HTML characters when the Markdown is mapped to HTML.
-
-# Questions
-
-- What about blockquote?
-- What about table alignment?
-- Use hyphens instead of asterisks for bullets.
