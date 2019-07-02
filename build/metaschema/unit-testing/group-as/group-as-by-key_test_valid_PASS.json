@@ -1,0 +1,8 @@
+{
+  "parent": {
+    "props": {
+      "id3": {"STRVALUE": "test3"},
+      "id1": {"STRVALUE": "test1"}
+    }
+  }
+}
