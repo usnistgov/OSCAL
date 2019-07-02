@@ -38,18 +38,18 @@ validate_with_schematron() {
     xsl_transform "$compiled_schematron" "$source_file" "$svrl_result"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Processing Schematron '$compiled_schematron' failed for target file '$source_file'${P_END}"
+        echo "Processing Schematron '$compiled_schematron' failed for target file '$source_file'"
         return 3
     fi
     # check if the SVRL result contains errors
     if grep --quiet "failed-assert" "$svrl_result"; then
-        echo "${P_ERROR}The file '$source_file' has the following Schematron errors:"
+        echo "The file '$source_file' has the following Schematron errors:"
         # display the errors
         xsl_transform "$OSCALDIR/build/ci-cd/svrl-to-plaintext.xsl" "$svrl_result"
-        echo -n "${P_END}"
+        echo ""
         return 1
     else
-        echo "${P_OK}File '$source_file' passed Schematron validation.${P_END}"
+        echo "File '$source_file' passed Schematron validation."
     fi
 }
 
