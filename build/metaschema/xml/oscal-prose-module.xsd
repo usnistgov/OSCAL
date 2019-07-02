@@ -263,13 +263,15 @@
     we used to distinguish btw @type and @name the latter for components
     now we overload 'class' every which way
   -->
-  <xs:attributeGroup name="requiredClass">
+  <xs:attributeGroup name="requiredClass"/>
+  <xs:attributeGroup name="optionalClass"/>
+  <!--<xs:attributeGroup name="requiredClass">
     <xs:attribute name="class" use="required"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="optionalClass">
     <xs:attribute name="class"/>
   </xs:attributeGroup>
-  <xs:attributeGroup name="hrefAttr">
+  --><xs:attributeGroup name="hrefAttr">
     <xs:attribute name="href"/>
   </xs:attributeGroup>
 </xs:schema>

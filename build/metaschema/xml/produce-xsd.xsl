@@ -34,19 +34,21 @@
     <!-- Produces $composed-metaschema -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
-    <!-- entry template -->
-    <xsl:template match="/">       
-        <!-- $unwired has the schema with no namespaces -->
-        <xsl:variable name="unwired">
+    <xsl:variable name="unwired">
             <xsl:call-template name="build-schema"/>
         </xsl:variable>
+    <!-- entry template -->
+    
+    <xsl:template match="/">       
+        <!-- $unwired has the schema with no namespaces -->
+        
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
         <xsl:apply-templates select="$unwired" mode="wire-ns"/>
     </xsl:template>
 
     <xsl:template match="/" mode="debug">       
-            <xsl:apply-templates/>
+            <xsl:copy-of select="$unwired"/>
     </xsl:template>
     
     <!--MAIN ACTION HERE -->
@@ -87,9 +89,22 @@
                 <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
             </xsl:if>
             <xsl:variable name="all-types" select="$composed-metaschema//@as-type"/>
-            <xsl:copy-of select="document('oscal-datatypes.xsd')/*/xs:simpleType[@name = $all-types]"/>
+            <xsl:message>as-type: <xsl:value-of select="$all-types" separator=", "/></xsl:message>
+            
+            <xsl:copy-of select="$available-custom-types[@name = $all-types]"/>
         </xs:schema>
     </xsl:template>
+    
+    <xsl:variable name="available-custom-types" select="document('oscal-datatypes.xsd')/*/xs:simpleType"/>
+    
+    <xsl:variable name="built-in-types" as="element()*">
+        <xs:simpleType name="boolean"/>
+        <xs:simpleType name="string"/>
+        <xs:simpleType name="NCName"/>
+        <xs:simpleType name="double"/>
+        <xs:simpleType name="integer"/>
+        <xs:simpleType name="IDREF"/>
+    </xsl:variable>
     
     <xsl:template match="namespace"/>
         
@@ -105,7 +120,7 @@
     
 <!-- Produces an element for markup-line and markup-multiline -->
     
-    <xsl:template match="define-field[@as-type='markup-multiline'][false() (: xml wrap is not on so we get no element :)]"/>
+    <!--<xsl:template match="define-field[@as-type='markup-multiline'][false() (: xml wrap is not on so we get no element :)]"/>-->
     
     <xsl:template match="define-field">
         <xs:element name="{@name }">
@@ -196,17 +211,24 @@
     
     
     <xsl:template match="flag | key">
-        <xsl:variable name="datatype" select="(@datatype,key('definition-by-name',@ref)/@datatype)[1]"/>
+        <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type)[1]"/>
         <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
         <xs:attribute name="{ (@name,@ref)[1] }">
-            <!-- required if declared as required, a key, or a value-key with no fallback (value) -->
+            <xsl:attribute name="type">xs:string</xsl:attribute>
             <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:if>
             <!-- annotate as datatype or string unless an exclusive value-list is given -->
-            <xsl:for-each select="($datatype,'string')[1][empty($value-list)]">
-                <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
-            </xsl:for-each>
+            <xsl:if test="empty($value-list)">
+                <!-- overriding string datatype on attribute -->
+                <xsl:for-each select="$datatype[.=$available-custom-types/@name]">
+                    <xsl:attribute name="type" expand-text="true" select="concat($declaration-prefix,':',.)"/>
+                </xsl:for-each>
+                <xsl:for-each select="$datatype[.=$built-in-types/@name]">
+                    <xsl:attribute name="type" expand-text="true" select="concat('xs:',.)"/>
+                </xsl:for-each>
+            </xsl:if>
+            
             <xsl:apply-templates select=".[exists(@name)] | key('definition-by-name',@ref)" mode="annotated"/>
             <xsl:apply-templates select="$value-list">
                 <xsl:with-param name="datatype" select="$datatype"/>
