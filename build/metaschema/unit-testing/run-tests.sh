@@ -91,7 +91,7 @@ while IFS= read -d $'\0' -r dir ; do
       fi
     fi
 
-    # diff the generated schema with the expected schema
+    # diff the generated JSON schema with the expected JSON schema
     expected_schema="$path/${base}_json-schema.json"
     # Only perform this check if an expected schema exists
     if [ -f "$expected_schema" ]; then
@@ -145,3 +145,5 @@ while IFS= read -d $'\0' -r dir ; do
     done < <(find "$dir" -name "${base}_test_*.json" -mindepth 1 -maxdepth 1 -type f -print0)
   done < <(find "$dir" -name "*_metaschema.xml" -mindepth 1 -maxdepth 1 -type f -print0)
 done < <(find "$TEST_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
+
+exit $exitcode

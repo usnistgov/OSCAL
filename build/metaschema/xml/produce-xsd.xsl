@@ -66,24 +66,28 @@
             </xs:annotation>
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
             
-            <xsl:if test="exists($composed-metaschema//prose)">
-                <xs:group name="prose">
-                    <xs:choice>
-                        <xs:element ref="oscal-prose:h1"/>
-                        <xs:element ref="oscal-prose:h2"/>
-                        <xs:element ref="oscal-prose:h3"/>
-                        <xs:element ref="oscal-prose:h4"/>
-                        <xs:element ref="oscal-prose:h5"/>
-                        <xs:element ref="oscal-prose:h6"/>
-                        <xs:element ref="oscal-prose:p"/>
-                        <xs:element ref="oscal-prose:ul"/>
-                        <xs:element ref="oscal-prose:ol"/>
-                        <xs:element ref="oscal-prose:pre"/>
-                        <xs:element ref="oscal-prose:table"/>
-                    </xs:choice>
-                </xs:group>
+            <xsl:if test="$composed-metaschema//@as-type = ('markup-line', 'markup-multiline')">
+                <xsl:if test="$composed-metaschema//@as-type = 'markup-multiline'">
+                    <xs:group name="prose">
+                        <xs:choice>
+                            <xs:element ref="oscal-prose:h1"/>
+                            <xs:element ref="oscal-prose:h2"/>
+                            <xs:element ref="oscal-prose:h3"/>
+                            <xs:element ref="oscal-prose:h4"/>
+                            <xs:element ref="oscal-prose:h5"/>
+                            <xs:element ref="oscal-prose:h6"/>
+                            <xs:element ref="oscal-prose:p"/>
+                            <xs:element ref="oscal-prose:ul"/>
+                            <xs:element ref="oscal-prose:ol"/>
+                            <xs:element ref="oscal-prose:pre"/>
+                            <xs:element ref="oscal-prose:table"/>
+                        </xs:choice>
+                    </xs:group>
+                </xsl:if>
                 <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
             </xsl:if>
+            <xsl:variable name="all-types" select="$composed-metaschema//@as-type"/>
+            <xsl:copy-of select="document('oscal-datatypes.xsd')/*/xs:simpleType[@name = $all-types]"/>
         </xs:schema>
     </xsl:template>
     
@@ -99,26 +103,27 @@
     <xsl:template match="/METASCHEMA/schema-name | /METASCHEMA/short-name |
         /METASCHEMA/schema-version | /METASCHEMA/remarks"/>
     
-    <xsl:template match="field | assembly">
-        <xs:element ref="{$declaration-prefix}:{@ref}"
-            minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
-            maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
-    </xsl:template>
+<!-- Produces an element for markup-line and markup-multiline -->
+    
+    <xsl:template match="define-field[@as-type='markup-multiline'][false() (: xml wrap is not on so we get no element :)]"/>
     
     <xsl:template match="define-field">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
-                <xsl:if test="@as='mixed'">
+                <xsl:if test="@as-type='markup-line'">
                     <xs:group ref="{$declaration-prefix}:everything-inline"/>
                 </xsl:if>
-                
+                <xsl:if test="@as-type='markup-multiline'">
+                    <xs:group ref="{$declaration-prefix}:prose"/>
+                </xsl:if>
                 <xsl:apply-templates select="key | flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='boolean']">
+    
+    <xsl:template match="define-field[@as-type='boolean']">
         <xs:element name="{@name }" type="xs:boolean">
             <xsl:apply-templates select="." mode="annotated"/>
         </xs:element>
@@ -137,8 +142,7 @@
         </xs:element>
     </xsl:template>
 
-    <!-- Flags become attributes; this schema defines them all locally.
-         (Some day: global declarations for flags invoked by reference?) -->
+    <!-- Flags become attributes; this schema defines them all locally. -->
     <xsl:template match="define-flag"/>
 
     <!-- Extra coverage -->
@@ -177,10 +181,18 @@
             <xsl:apply-templates/>
         </xs:choice>
     </xsl:template>
+
+    <xsl:template match="field | assembly">
+        <xs:element ref="{$declaration-prefix}:{@ref}"
+            minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
+            maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
+    </xsl:template>
     
-    <xsl:template match="prose">
+    <!-- Not yet producing wrapper -->
+    <xsl:template match="prose | field[@as-type='markup-multiline']">
         <xs:group ref="{$declaration-prefix}:prose" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
+    
     
     
     <xsl:template match="flag | key">

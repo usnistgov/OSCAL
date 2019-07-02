@@ -87,16 +87,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
         />
       </xs:sequence>
-      <xs:attribute name="datatype">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="boolean"/>
-            <xs:enumeration value="empty"/>
-            <xs:enumeration value="string"/>
-            <xs:enumeration value="mixed"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="as-type" type="m:field-types"/>
       <xs:attribute name="collapsible" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>
@@ -113,7 +104,7 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="datatype" type="xs:NCName"/>
+      <xs:attribute name="as-type" type="m:flag-types"/>
       <!-- should Schematron check uniqueness among siblings irrespective of datatype -->
       <xs:attribute name="name" type="xs:NCName"/>
       <xs:attribute name="ref" type="xs:NCName"/>
@@ -198,7 +189,7 @@
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <!-- datatype should default to 'string' -->
-      <xs:attribute name="datatype" type="xs:NCName"/>
+      <xs:attribute name="as-type" type="m:flag-types"/>
       <!-- defined for composed (compiled) metaschemas -->
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -358,31 +349,13 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
       </xs:sequence>
-      <xs:attribute name="datatype" type="xs:NCName"/>
+      <xs:attribute name="as-type" type="m:flag-types"/>
       <xs:attribute name="name" type="xs:NCName"/>
       <xs:attribute name="ref" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
-  <!--<xs:complexType name="local-flag-definition">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
-      <xs:element minOccurs="0" ref="m:formal-name"/>
-      <xs:element minOccurs="0" ref="m:description"/>
-      <xs:element minOccurs="0" ref="m:remarks"/>
-      <xs:element minOccurs="0" ref="m:valid-values"/>
-    </xs:sequence>
-    <xs:attribute name="datatype" type="xs:NCName"/>
-    <xs:attribute name="name" type="xs:NCName" use="required"/>
-    <xs:attribute name="required" type="xs:NCName"/>
-  </xs:complexType>
-  <xs:complexType name="flag-reference">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" ref="m:value-key"/>
-    </xs:sequence>
-          <xs:attribute name="ref"      type="xs:NCName" use="required"/>
-  </xs:complexType>-->
-
+ 
   <xs:element name="choice">
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">
@@ -419,4 +392,49 @@
       <xs:attribute name="name" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
+  
+  <xs:simpleType name="simple-datatypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="boolean" />
+      <xs:enumeration value="string" />
+      <xs:enumeration value="NCName" />
+      <xs:enumeration value="double" />
+      <xs:enumeration value="integer" />
+      <xs:enumeration value="IDREF"/>
+      
+      <!-- specialized datatypes -->
+      <xs:enumeration value="ip-v4-address"/>
+      <xs:enumeration value="ip-v6-address"/>
+      <xs:enumeration value="dateTime-with-timezone"/>
+      <xs:enumeration value="date-with-timezone"/>
+      <xs:enumeration value="percent"/>
+      <xs:enumeration value="email"/>
+      <xs:enumeration value="hostname"/>
+      <xs:enumeration value="uri"/>
+      <xs:enumeration value="uri-reference"/>
+    </xs:restriction>   
+  </xs:simpleType>
+  
+  <xs:simpleType name="flag-types">
+    <xs:union memberTypes="m:simple-datatypes">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ID" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  
+  <xs:simpleType name="field-types">
+    <xs:union memberTypes="m:simple-datatypes">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="empty" />
+          <xs:enumeration value="markup-line"/>
+          <xs:enumeration value="markup-multiline"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  
 </xs:schema>

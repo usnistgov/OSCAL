@@ -30,6 +30,8 @@
     
     <xsl:import href="metaschema-compose.xsl"/>
         
+<!--  grouping name can't be the same as the name
+      group-as is present whenever not(@max-occurs = 1) -->
     <sch:pattern>
         
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
@@ -38,25 +40,14 @@
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
             <sch:report test="@name=$prose-names">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
-            <!--<sch:assert test="count( key('definition-by-name',@name) | key('definition-by-name',@name,$imported-schemas) ) ge 1">Not a distinct definition</sch:assert>-->
-            <!--FIX:<sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>-->
-            <!--FIX:<sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>-->
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
-            <!--FIX:<sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Assembly can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:assembly[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>-->
-            <!--FIX:<sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name])">Field can appear multiply but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:field[exists(@max-occurs) and string(@max-occurs) != '0'][@ref=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>-->
-            <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
+            <sch:assert test="not(@as-type='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
         </sch:rule>
 
-        <!--<sch:rule context="define-field[@address-by='id']/*">
-            <sch:assert test="empty(*)">Line defined as string may not have attributes</sch:assert>
-        </sch:rule>-->
-        
-
-        <sch:rule context="m:key">
+        <sch:rule context="m:json-key">
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists(@name|@ref)">Flag declaration must have 'name' or 'ref'</sch:assert>
             <sch:assert test="count(@name|@ref) eq 1">Flag declaration may be by name or reference, not both (remove @name or @ref)</sch:assert>
-            
             <sch:assert test="count(../*[(@name|@ref) = current()/(@name|@ref)]) eq 1">Only one flag (or key) may be named 
                 <sch:value-of select="@name"/>
             </sch:assert>
@@ -76,6 +67,7 @@
             <sch:assert test="not(@name = preceding-sibling::*/@name)">Value '<sch:value-of select="@name"/>' may only be
             specified once for flag '<sch:value-of select="../../@name"/>'.</sch:assert>
         </sch:rule>
+
         <sch:rule context="m:flag">
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists(@name|@ref)">Flag declaration must have 'name' or 'ref'</sch:assert>
@@ -94,18 +86,25 @@
         <sch:rule context="m:prose">
             <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than once in a model</sch:assert>
         </sch:rule>
+
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
+
         <sch:rule context="m:field | m:assembly">
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@ref"/>', but their definition does not give a group name.</sch:assert>
             
             <sch:report test="@ref = ../(* except current())/@ref">Everything named the same must appear together</sch:report>
-            <sch:report test="@ref = ../*/@group-as">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>
-            <sch:report test="@group-as = ../*/@ref">Clashing group name with name: <sch:value-of select="@ref"/></sch:report>
+            <sch:report test="@ref = group-as/@name">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>
         </sch:rule>
-        
+
+        <sch:rule context="m:group-as">
+            <sch:let name="name" value="@name"/>
+            <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
+            <sch:report test="../@max-occurs/number() = 1">Grouping name is given but max-occurs is 1.</sch:report>
+        </sch:rule>
+
         <sch:rule context="m:example/m:description | m:example/m:remarks"/>
             
         <sch:rule context="m:example/*">
@@ -113,7 +112,6 @@
           <sch:assert test="empty($example-ns) or namespace-uri(.) eq $example-ns">Unexpected namespace: examples should use namespace '<sch:value-of select="$example-ns"/>'</sch:assert>
         </sch:rule>
     </sch:pattern>
-
 
     <sch:pattern>
         <sch:rule context="/m:METASCHEMA">
