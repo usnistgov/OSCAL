@@ -20,7 +20,7 @@ TEST_BUILD_DIR="$working_dir/metaschema/unit-testing"
 METASCHEMA_LIB_DIR="$OSCALDIR/build/metaschema/lib"
 METASCHEMA_SCHEMA="$METASCHEMA_LIB_DIR/metaschema.xsd"
 METASCHEMA_SCHEMATRON="$METASCHEMA_LIB_DIR/metaschema-check.sch"
-DEBUG="true"
+DEBUG="false"
 
 # Generate metaschema schematron
 compiled_schematron="$TEST_BUILD_DIR/metaschema-check-compiled.xsl"
@@ -43,7 +43,7 @@ while IFS= read -d $'\0' -r dir ; do
     base="${metaschema_file/_metaschema.xml/}"
     path=${metaschema%/*} # remove filename
 
-    if [ "$DEBUG" != "true" ]; then
+    if [ ! "$DEBUG" == "true" ]; then
       # first validate the metaschema
       echo "${P_INFO}Validating Metaschema '$metaschema'.${P_END}"
       xmllint --nowarning --noout --schema "$METASCHEMA_SCHEMA" "$metaschema"
