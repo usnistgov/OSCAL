@@ -46,18 +46,20 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
   for metaschema in $files_to_process
   do
     echo "${P_INFO}Validating metaschema '$metaschema'${P_END}"
-    xmllint --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema"
+    result=$(xmllint --nowarning --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
+      echo "${P_ERROR}${result}${P_END}"
       echo "${P_ERROR}Metaschema '$metaschema' is not valid.${P_END}"
       exitcode=1
     else
       svrl_result="$working_dir/svrl/${file/$OSCALDIR\/src\//}.svrl"
       svrl_result_dir=${svrl_result%/*}
       mkdir -p "$svrl_result_dir"
-      validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result"
+      result=$(validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result")
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
+          echo "${P_ERROR}${result}${P_END}"
           exitcode=1
       fi
     fi
