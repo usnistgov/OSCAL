@@ -31,7 +31,7 @@
 	<!-- IMPORT STATEMENTS -->
 
 	<import href="oscal_metadata_metaschema.xml" />
-  <import href="oscal_profile_metaschema.xml" />
+  <import href="oscal_component_metaschema.xml" />
 
 	<!-- TOP LEVEL ASSEMBLY -->
 
@@ -46,7 +46,7 @@
 			<field named="date" required="yes"/>
 			 -->
 			<assembly named="metadata"/>
-			<assemblies named="import"/>
+			<assembly named="import-profile"/>
 			<assembly named="system-characteristics"/>
 			<assembly named="system-implementation"/>
 			<assembly named="control-implementation"/>
@@ -56,7 +56,17 @@
 		</model>
 		<example> </example>
 	</define-assembly>
-
+  
+  <!-- Profile Import -->
+  <define-assembly name="import-profile">
+    <flag name="href"/>
+    <formal-name>Import profile</formal-name>
+    <description>Used to import the OSCAL profile representing the systems control baseline.</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+  
 	<!-- SYSTEM CHARACTERISTICS -->
 
 	<define-assembly name="system-characteristics" group-as="ssp-system-characteristics">
@@ -719,13 +729,6 @@
 		<example></example>
 	</define-assembly>
 	-->
-	<define-flag name="interconnected" datatype="boolean">
-		<formal-name>Interconnection status</formal-name>
-		<description>Are their system interconnections? (Yes/No)</description>
-		<remarks>
-			<p>If the answer is "yes", there must be at least one interconnection element.</p>
-		</remarks>
-	</define-flag>
 
 	<define-assembly name="interconnection" group-as="ssp-interconnection">
 		<flag name="id" datatype="ID"/>

@@ -37,15 +37,14 @@
     <flag name="name" required="true"/>
     <flag name="type" datatype="string">
       <valid-values>
-        <value name="software">Any software or firmware</value>
+        <value name="software">Any software, operating system, or firmware</value>
         <value name="hardware"></value>
         <value name="service">A service that may provide APIs.</value>
         <value name="policy"></value>
         <value name="process"></value>
         <value name="proceedure"></value>
-        <value name="plans"></value>
-        <value name="guidance"></value>
-        <value name="standard"></value>
+        <value name="plan"></value>
+        <value name="guidance">Any guideline or recommendation</value>
         <value name="standard"></value>
         <value name="validation"></value>
       </valid-values>
@@ -63,21 +62,24 @@
         attribute indicating "capability", and the child-element "sub-component".</p>
     </remarks>
     <model>
-      <assemblies named="provider"/>
+      <field named="version"/>
+      <field named="release-date"/>
+      <field named="model"/>
+      <assemblies named="supplier"/>
 <!--      <assemblies named="satisfaction"/> -->
-      <assemblies named="validation"/>
+      <assemblies named="proof-of-compliance"/>
 <!--      <assemblies named="provisioning"/>-->
-      <choice>
-        <assemblies named="configuration"/>
-        <assemblies named="artifact"/>
-        <assemblies named="control-implementation"/>
-      </choice>
+      <assemblies named="configuration"/>
+      <assemblies named="artifact"/>
+      <assemblies named="control-implementation"/>
+      <assemblies named="supported-profile" />
       <fields named="link">
-        <!-- TODO: Model specific link relationships for:
+          <!-- TODO: Model specific link relationships for:
           depends-on: component has a dependency on another component
           validated-by:, etc.
         -->
       </fields>
+      <fields named="prop"/>
     </model>
     <example/>
   </define-assembly>
@@ -93,25 +95,28 @@
     <formal-name>Capability</formal-name>
     <description>.</description>
     <model>
-      <assemblies named="has-component" />
+      <assemblies named="uses-component" />
       <fields named="link">
         <!-- TODO: Model specific link relationships for:
           depends-on: component has a dependency on another component
           validated-by:, etc.
         -->
       </fields>
+      <fields named="prop"/>
     </model>    
   </define-assembly>
 
-  <define-assembly name="has-component" group-as="has-components">
+  <define-assembly name="uses-component" group-as="uses-components">
     <flag name="component-id" required="true"/>
     <formal-name>Has Component</formal-name>
     <description>.</description>
-    <model></model>
+    <model>
+      <prose/>
+    </model>
   </define-assembly>
   
 
-  <define-assembly name="provider" group-as="providers">
+  <define-assembly name="supplier" group-as="providers">
     <flag name="id" datatype="ID"/>
     <flag name="party-id"/>
     <flag name="role-id"/><!-- TODO: define standard roles -->
@@ -127,9 +132,6 @@
         capability.</p>
     </remarks>
     <model>
-      <field named="version"/>
-      <field named="release-date"/>
-      <field named="model"/>
       <prose/>
     </model>
     <example/>
@@ -148,7 +150,7 @@
     <description>.</description>
   </define-field>
   
-  <define-assembly name="validation" group-as="validations">
+  <define-assembly name="proof-of-compliance" group-as="proofs-of-compliance">
     <formal-name>validation</formal-name>
     <description>.</description>
     <model>
@@ -176,7 +178,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="guidance" group-as="guidances">
+  <define-assembly name="remark" group-as="remarks">
     <formal-name>guidance</formal-name>
     <description>.</description>
     <model>
@@ -191,7 +193,7 @@
     <model>
       <!-- TODO: add link for citation and references -->
       <assembly named="description" required="yes"/>
-      <assembly named="guidance"/>
+      <assembly named="remark"/>
       <assemblies named="mechanism"/>
     </model>
   </define-assembly>
