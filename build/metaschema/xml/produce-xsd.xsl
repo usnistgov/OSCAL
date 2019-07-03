@@ -89,7 +89,6 @@
                 <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
             </xsl:if>
             <xsl:variable name="all-types" select="$composed-metaschema//@as-type"/>
-            <xsl:message>as-type: <xsl:value-of select="$all-types" separator=", "/></xsl:message>
             
             <xsl:copy-of select="$available-custom-types[@name = $all-types]"/>
         </xs:schema>

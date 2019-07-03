@@ -149,17 +149,6 @@
     <xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>
     
     <xsl:template match="define-assembly[exists(json-key)] | define-field[exists(json-key)]">
-        <!--<xsl:if test="matches(@group-as,'\S')">
-            <map key="{ @group-as }">
-                <string key="$id">#/definitions/{@group-as}</string>
-                <string key="type">object</string>
-                <map key="additionalProperties">
-                    <string key="type">object</string>
-                    <string key="$ref">#/definitions/{ @name }</string>
-                </map>
-                <number key="minProperties">1</number>
-            </map>
-        </xsl:if>-->
         <map key="{ @name }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
@@ -198,10 +187,10 @@
 
     <xsl:template match="remarks | example"/>
     
-    <xsl:template match="*[exists(@ref)]" mode="property-name">
+    <xsl:template match="assembly | field | flag" priority="2" mode="property-name">
         <string>
             <!--<xsl:value-of select="key('definition-by-name',@ref)/(@group-as,@name)[1]"/>-->
-            <xsl:value-of select="(group-as/@name,@name)[1]"/>
+            <xsl:value-of select="(group-as/@name,@name,@ref)[1]"/>
         </string>
     </xsl:template>
     
@@ -241,7 +230,7 @@
         
     <xsl:template mode="declaration" match="flag">
         <map key="{(@name,@ref)[1]}">
-            <string key="type">string</string>
+            <xsl:apply-templates select="." mode="object-type"/>
             <xsl:apply-templates select="formal-name | description"/>
             <xsl:if test="empty(formal-name | description)">
                 <xsl:apply-templates select="key('definition-by-name',@ref)/(formal-name | description)"/>
@@ -338,14 +327,40 @@
     
     <xsl:template match="*" mode="object-type">
         <string key="type">object</string>
-            </xsl:template>
+    </xsl:template>
 
-    <xsl:template match="define-field" mode="object-type">
+    <xsl:template match="define-field | define-flag" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='boolean']" mode="object-type">
+    <xsl:template match="field | flag" priority="3" mode="object-type">
+        <xsl:choose>
+            <xsl:when test="exists(@as-type)">
+                <xsl:next-match/>
+            </xsl:when>
+            <xsl:when test="exists(key('definition-by-name',@ref)/@as-type)">
+                <xsl:apply-templates mode="#current" select="key('definition-by-name',@ref)"/>
+            </xsl:when>
+            <xsl:otherwise>string</xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template priority="2" match="*[@as-type='boolean']" mode="object-type">
         <string key="type">boolean</string>
+    </xsl:template>
+    
+    <xsl:template priority="2" match="*[@as-type='integer']" mode="object-type">
+        <string key="type">integer</string>
+    </xsl:template>
+    
+    <!-- Types are listed in ../xml/produce-xsl.xsl and ../xml/oscal-datatypes -->
+    <xsl:variable name="numeric-types" as="element()*">
+        <type>double</type>
+        <type>percent</type>
+    </xsl:variable>        
+        
+    <xsl:template priority="2" match="*[@as-type=$numeric-types]" mode="object-type">
+        <string key="type">number</string>
     </xsl:template>
     
     
