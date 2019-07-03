@@ -1,0 +1,148 @@
+# Syntax
+
+assembly-name:as-type (flag:as-type)
+  child-field-or-assembly:as-type
+
+Where:
+
+For old Metaschema:
+- `child-field-or-assembly` is a field if it contains only flags, or an assembly otherwise
+- Cardinality is expressed as follows:
+  - ? (0 or 1) - on a `flag` required="no"; on a field or assembly use singular form.
+  - * (0 to many) - on a field or assembly use plural form.
+  - + (1 to many) - on a field or assembly use plural form with required="yes".
+  - otherwise (1) - no cardinality marker means the flag, field, or assembly is singular and required="yes"
+
+For new Metaschema:
+
+- `child-field-or-assembly` is a field if it contains only flags, or an assembly otherwise
+- Cardinality is expressed as follows:
+  - ? (0 or 1) - this is the default cardinality; no need to specify min-occurs or max-occurs.
+  - * (0 to many) - on a field or assembly use `max-occurs="unbounded"`.
+  - + (1 to many) - on a field or assembly use `min-occurs="1" max-occurs="unbounded"`.
+  - otherwise (1) - no cardinality marker means the flag is `required="yes", and field or assembly is `min-occurs="1"`"
+- The type is specified using the `as-type` marker. If no marker is present, the default `string` type will be used.
+- The marker `v` after the cardinality means that a valid-values list needs to be specified.
+
+# Component Definition
+
+component-definition
+  metadata
+  import-component-definition (href)
+  component* (id:ID, name:string, type:uri?v)
+    description:markup-multiline
+    prop* "version, model, release-date"
+    link*
+    supplier (id:ID, party-id:IDREF, role-id:NCName)
+    proof-of-compliance (id, type:uri)
+      supplier+ (id:ID, party-id:IDREF, role-id:NCName)
+      description:markup-multiline
+      prop*
+      link*
+    control-implementation* -- How the component supports a set of controls
+      can-meet+ -- What controls are supported by the component
+        requirement+ (source:uri "catalog or profile resource", control-id:NCName?, subcontrol-id:NCName?) -- The specific control implemented
+          description:markup-multiline?
+          prop*
+          link*
+          -- TODO: Handle parameters
+          remark:markup-multiline*
+        using? -- The implementation needed to support the control requirements
+          implemented-configuration* (configuration-id:IDREF)
+            description:markup-multiline?
+            prop*
+            link*
+            remark:markup-multiline*
+          implemented-artifact* (artifact-id:IDREF)
+            description:markup-multiline?
+            prop*
+            link*
+            remark:markup-multiline*
+    supported-profile* -- How the component supports a given baseline (source:uri "profile resource")
+      description:markup-multiline
+      meets+
+        requirement+ (control-id:NCName?, subcontrol-id:NCName?) -- The specific control implemented
+          description:markup-multiline?
+          prop*
+          link*
+          -- TODO: Handle parameters
+          remark:markup-multiline*
+        using? -- The implementation needed to support the control
+          implemented-configuration* (configuration-id:IDREF)
+            description:markup-multiline?
+            prop*
+            link*
+            remark:markup-multiline*
+          implemented-artifact* (artifact-id:IDREF)
+            description:markup-multiline?
+            prop*
+            link*
+            remark:markup-multiline*
+      remark:markup-multiline*
+    configuration* (id:ID) -- Information on how to configure the component  (for technical types of components)
+      description:markup-multiline
+      prop*
+      link*
+      remark:markup-multiline*
+      mechanism* (id:ID) -- Information on a mechanism used to configure the component
+        description:markup-multiline?
+        prop*
+        link*
+        argument* (name:NCName)
+          - TODO: complete this
+          constraints*
+            enum*
+            range* (min, max)
+            pattern*
+          parameter? (source:uri "catalog or profile resource", param-id:NCName)
+            <choice> -- used to map the value to the argument value
+              mapping -- a one-to-mapping
+                map* (from:string, to:string)
+              transform (name:NCName) -- a named transformation
+            </choice>
+        configuration-method -- How to deploy the configuration
+          description:markup-multiline?
+          - TODO: Handle arguments
+          script:string (system:uri)
+          remark:markup-multiline*
+        verification-method -- How to verify the configuration is properly deployed
+          description:markup-multiline?
+          - TODO: Handle arguments
+          script:string (system:uri)
+          remark:markup-multiline*
+        remark:markup-multiline*
+    artifact* -- Information on how to use the component (for documentary types of components)
+      description:markup-multiline
+      prop*
+      link*
+      remark:markup-multiline*
+      implementation-source (href:uri) -- Where to get the artifact
+        description:markup-multiline?
+        prop*
+        link*
+        remark:markup-multiline*
+      verification-process (href:uri) -- How to verify that the artifact is used properly
+        description:markup-multiline?
+        prop*
+        link*
+        remark:markup-multiline*
+  capability* (id:ID, name:string) - A grouping of
+    description:markup-multiline
+    prop*
+    link*
+    incorporates-capability* (capability-id:NCName)
+    incorporates-component* (component-id:NCName)
+    control-implementation* {{see component}}
+    supported-profile* {{see component}}
+    remark:markup-multiline*
+  back-matter
+
+
+
+  compliance
+  verification
+  testing
+  validation
+  proof-of-compliance
+  evidence/proof/
+  verification/validation
