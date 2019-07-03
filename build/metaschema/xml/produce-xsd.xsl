@@ -125,7 +125,10 @@
     <xsl:template match="define-field">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
-            <xs:complexType mixed="true">
+            <xs:complexType>
+                <xsl:if test="not(@as-type='empty')">
+                  <xsl:attribute name="mixed">true</xsl:attribute>
+                </xsl:if>
                 <xsl:if test="@as-type='markup-line'">
                     <xs:group ref="{$declaration-prefix}:everything-inline"/>
                 </xsl:if>
