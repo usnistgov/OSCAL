@@ -407,7 +407,7 @@
       <xs:enumeration value="ip-v6-address"/>
       <xs:enumeration value="dateTime-with-timezone"/>
       <xs:enumeration value="date-with-timezone"/>
-      <xs:enumeration value="percent"/>
+      <!--<xs:enumeration value="percent"/>-->
       <xs:enumeration value="email"/>
       <xs:enumeration value="hostname"/>
       <xs:enumeration value="uri"/>

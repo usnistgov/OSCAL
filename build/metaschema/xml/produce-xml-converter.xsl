@@ -26,6 +26,7 @@
     
     <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
     <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
+    <xsl:variable name="markdown-blocks-label">PROSE</xsl:variable>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
@@ -109,33 +110,6 @@
         </XSLT:template>
     </xsl:template>-->
     
-<!-- Handles define-field[@as='boolean']  -->
-    <xsl:template match="define-field[empty(flag)]" priority="2">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <XSLT:variable name="text-key">
-                <xsl:apply-templates select="." mode="text-key"/>
-            </XSLT:variable>
-            
-            <string key="{@name}">
-                <XSLT:apply-templates mode="md"/>
-            </string>
-        </XSLT:template>
-    </xsl:template>
-    
-    <xsl:template match="define-field[@as='boolean']" priority="3">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <boolean key="{@name}">
-                <xsl:for-each select="key">
-                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
-                </xsl:for-each>
-                <XSLT:apply-templates mode="#current"/>
-                <!--<XSLT:apply-templates mode="as-boolean" select=".">
-                    <XSLT:with-param name="key">boolean</XSLT:with-param>
-                </XSLT:apply-templates>-->
-            </boolean>
-        </XSLT:template>
-    </xsl:template>
-    
     <!--<xsl:template match="define-field[@as='mixed']">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
@@ -155,8 +129,12 @@
         <xsl:value-of select="$string-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='mixed']" mode="text-key">
+    <xsl:template match="define-field[@as='markup-line']" mode="text-key">
         <xsl:value-of select="$markdown-value-label"/>
+    </xsl:template>
+    
+    <xsl:template match="define-field[@as='markup-multiline']" mode="text-key">
+        <xsl:value-of select="$markdown-blocks-label"/>
     </xsl:template>
     
     <xsl:template priority="3" match="define-field[exists(value-key)]" mode="text-key">
@@ -165,6 +143,46 @@
     
     <xsl:template priority="4" match="define-field[exists(flag/value-key)]" mode="text-key">
         <XSLT:value-of select="@{flag[exists(value-key)]/(@name,@ref)[1]}"/>
+    </xsl:template>
+    
+    <xsl:variable name="numeric-types" as="element()*">
+        <type>integer</type>
+        <type>double</type>
+        <!--<type>percent</type>-->
+    </xsl:variable>        
+    
+    <xsl:template match="define-field[@as-type=$numeric-types]" priority="3">
+        <XSLT:template match="{@name}" mode="xml2json">
+            <number key="{@name}">
+                <xsl:for-each select="json-key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
+                <XSLT:apply-templates mode="#current"/>
+            </number>
+        </XSLT:template>
+    </xsl:template>
+    
+    <xsl:template match="define-field[@as-type='boolean']" priority="3">
+        <XSLT:template match="{@name}" mode="xml2json">
+            <boolean key="{@name}">
+                <xsl:for-each select="json-key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                </xsl:for-each>
+                <XSLT:apply-templates mode="#current"/>
+            </boolean>
+        </XSLT:template>
+    </xsl:template>
+    
+    <xsl:template match="define-field[empty(flag)]" priority="2">
+        <XSLT:template match="{@name}" mode="xml2json">
+            <XSLT:variable name="text-key">
+                <xsl:apply-templates select="." mode="text-key"/>
+            </XSLT:variable>
+            
+            <string key="{@name}">
+                <XSLT:apply-templates mode="md"/>
+            </string>
+        </XSLT:template>
     </xsl:template>
     
     <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
@@ -177,7 +195,7 @@
                 <xsl:apply-templates select="." mode="text-key"/>
             </XSLT:variable>
             <map key="{@name}">
-                <xsl:for-each select="key">
+                <xsl:for-each select="json-key">
                     <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
                 </xsl:for-each>
                 <xsl:apply-templates select="flag"/>
@@ -188,8 +206,10 @@
             </map>
         </XSLT:template>
         <!-- flagged, groupable fields marked as collapsible may be collapsed -->
-        <xsl:if test="matches(@group-as, '\S') and exists(flag) and @collapsible = ('yes','true')">
-            <XSLT:template match="array[@key = '{@group-as}'][count(map) gt 1]" mode="rectify"
+        <xsl:if test="exists(flag) and @collapsible = ('yes','true')">
+            <xsl:variable name="callers" select="distinct-values(key('reference-by-name',@name)/group-as/@name)"/>
+            <xsl:if test="exists($callers)">
+            <XSLT:template match="array[@key = ({ string-join($callers ! ('''' || . || ''''),', ') })][count(map) gt 1]" mode="rectify"
                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
                 <XSLT:variable name="text-key">
                     <xsl:apply-templates select="." mode="text-key"/>
@@ -231,6 +251,7 @@
                     </XSLT:otherwise>
                 </XSLT:choose>
             </XSLT:template>
+            </xsl:if>
         </xsl:if>
     </xsl:template>
    
@@ -251,15 +272,25 @@
     </xsl:template>
     
     <xsl:template match="flag">
-        <!-- no datatyping support yet -->
-        <XSLT:apply-templates mode="as-string" select="@{(@name,@ref)[1]}"/>
+        <xsl:variable name="datatype" select="(key('definition-by-name',@ref)/@as-type,@as-type,'string')[1]"/>
+        <xsl:variable name="type" as="xs:string">
+            <xsl:apply-templates mode="resolve-type" select="$datatype"/>
+        </xsl:variable>
+        <XSLT:apply-templates mode="as-{$type}" select="@{(@name,@ref)[1]}"/>
     </xsl:template>
+
+    <!-- mode 'resolve type' matches strings :-) -->
+    <xsl:template mode="resolve-type" match=".">string</xsl:template>
+    
+    <xsl:template mode="resolve-type" match=".[.='boolean']">boolean</xsl:template>
+    
+    <xsl:template mode="resolve-type" match=".[.=$numeric-types]">number</xsl:template>
     
     <xsl:template match="model">
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="prose">
+    <xsl:template match="field[@as-type='markup-multiline']">
         <XSLT:call-template name="prose"/>
     </xsl:template>
     
@@ -270,7 +301,7 @@
     <xsl:template match="field[number(@max-occurs) &gt; 1 or @max-occurs='unbounded'] |
         assembly[number(@max-occurs) &gt; 1 or @max-occurs='unbounded']">
             <XSLT:if test="exists({@ref})">
-                <array key="{ key('definition-by-name',@ref)/@group-as }">
+                <array key="{ group-as/@name }">
                     <XSLT:apply-templates select="{@ref}" mode="#current"/>
                 </array>
             </XSLT:if>
@@ -285,7 +316,7 @@
                assembly[exists(key('definition-by-name',@ref)/key)]">
         <xsl:variable name="key" select="exists(key('definition-by-name',@ref)/key)"/>
             <XSLT:for-each-group select="{@ref}" group-by="local-name()">
-                <map key="{  key('definition-by-name',@ref)/@group-as }">
+                <map key="{  group-as/@name }">
                     <XSLT:apply-templates select="current-group()" mode="#current"/>
                 </map>
             </XSLT:for-each-group>
@@ -353,7 +384,7 @@
                 <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
                 </XSLT:variable>
-                <string key="prose">
+                <string key="{ $markdown-blocks-label }">
                     <XSLT:value-of select="string-join($string-sequence,'\n')"/>
                 </string>
             </XSLT:if>
@@ -362,9 +393,36 @@
         <XSLT:template mode="as-string" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
             <XSLT:if test="matches(.,'\S')">
-                <string key="{{$key}}">
+                <string key="{{ $key }}">
                     <XSLT:value-of select="."/>
                 </string>
+            </XSLT:if>
+        </XSLT:template>
+        
+        <XSLT:template mode="as-boolean" match="@* | *">
+            <XSLT:param name="key" select="local-name()"/>
+            <XSLT:if test="matches(.,'\S')">
+                <boolean key="{{ $key }}">
+                  <XSLT:value-of select="."/>                    
+                </boolean>
+            </XSLT:if>
+        </XSLT:template>
+        
+        <XSLT:template mode="as-integer" match="@* | *">
+            <XSLT:param name="key" select="local-name()"/>
+            <XSLT:if test="matches(.,'\S')">
+                <integer key="{{ $key }}">
+                    <XSLT:value-of select="."/>                    
+                </integer>
+            </XSLT:if>
+        </XSLT:template>
+        
+        <XSLT:template mode="as-number" match="@* | *">
+            <XSLT:param name="key" select="local-name()"/>
+            <XSLT:if test="matches(.,'\S')">
+                <number key="{{ $key }}">
+                    <XSLT:value-of select="."/>                    
+                </number>
             </XSLT:if>
         </XSLT:template>
         
