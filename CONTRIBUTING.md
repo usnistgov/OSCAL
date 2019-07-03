@@ -11,11 +11,11 @@ We track our current work items using GitHub [project cards](https://github.com/
 ## Contribution options
 
 The OSCAL project is producing several types of deliverables, including the following:
-* *Schemas* for the OSCAL component models  
-* *Schematron definitions*, which are basically an extension of the XML schemas that provide more validation capabilities
-* *XSL templates* for production of human-readable versions of OSCAL XML content
-* *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface
-* *Documentation* to define the OSCAL component models, capture the operational model of how to use OSCAL, and explain how you can convert existing content (catalogs, profiles, etc.) into OSCAL formats
+- *Schemas* for the OSCAL component models  
+- *Schematron definitions*, which are basically an extension of the XML schemas that provide more validation capabilities
+- *XSL templates* for production of human-readable versions of OSCAL XML content
+- *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface
+- *Documentation* to define the OSCAL component models, capture the operational model of how to use OSCAL, and explain how you can convert existing content (catalogs, profiles, etc.) into OSCAL formats
 
 Contributions are welcome in any of these areas. For information on the project's current needs and priorities, see the project's GitHub issue tracker (discussed below). Please refer to the [guide on how to contribute to open source](https://opensource.guide/how-to-contribute/) for general information on contributing to an open source project.
 
@@ -31,8 +31,9 @@ The core OSCAL project team regularly reviews the open issues, prioritizes their
 ## Communications mechanisms
 
 There are two mailing lists for the project:
-* *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
-* *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
+
+- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
+- *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
 
 ## Contributing to the OSCAL repository
 
@@ -44,6 +45,23 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 1. Once you have staged your changes, you will need to commit them. When committing, you will need to include a commit message. The commit message should describe the nature of your changes (e.g., added new feature X which supports Y). You can also reference an issue from the OSCAL repository by using the hash symbol. For example, to reference issue #34, you would include the text "#34". The full command would be: ```git commit -m "added new feature X which supports Y addressing issue #34"```.
 1. Next, you must push your changes to your personal repo. You can do this with the command: ```git push```.
 1. Finally, you can [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+
+### Repository structure
+
+This repository consists of the following directories and files pertaining to the OSCAL project:
+
+- [.github](.github): Contains GitHub issue and pull request templates for the OSCAL project.
+- [content](content): Provides numerous OSCAL examples in both, XML and JSON formats. Some examples are considered provisional "completed" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+- [json](json): Provides OSCAL JavaScript Object Notation (JSON) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL JSON-based formats.
+- [xml](xml): Provides OSCAL Extensible Markup Language (XML) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL XML-based formats.
+- [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
+- [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
+- [src](src): Stores source artifacts used to produce the content, JSON, and XML resources provided in this repository.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
+- [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
+- [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
+- [USERS.md](USERS.md): This file explains which types of users are most likely to benefit from consuming available OSCAL tools and content.
+
 
 ## Contributing to a Development Sprint
 
