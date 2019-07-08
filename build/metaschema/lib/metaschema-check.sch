@@ -39,7 +39,6 @@
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
-            <sch:report test="@name=$prose-names">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
             <sch:assert test="not(@as-type='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
         </sch:rule>
@@ -53,7 +52,7 @@
             </sch:assert>
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:name/></sch:assert>
             <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
-            <sch:report test="@name=('RICHTEXT','STRVALUE')">Key should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
+            <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Key should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
         </sch:rule>
         
         <sch:rule context="m:value-key">
@@ -102,7 +101,7 @@
         <sch:rule context="m:group-as">
             <sch:let name="name" value="@name"/>
             <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
-            <sch:report test="../@max-occurs/number() = 1">Grouping name is given but max-occurs is 1.</sch:report>
+            <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@json-behavior)">Grouping name is given but max-occurs is 1.</sch:report>
         </sch:rule>
 
         <sch:rule context="m:example/m:description | m:example/m:remarks"/>

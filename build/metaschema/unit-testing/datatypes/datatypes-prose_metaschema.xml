@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: datatypes</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-datatypes</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes</namespace>
+  
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <model>
+      <field ref="date"/>
+      <field ref="plaintext"/>
+      <field ref="richtext"/>
+      <field ref="prose"/>
+    </model>
+  </define-assembly>
+
+  <define-field name="date" as-type="date-with-timezone">
+    <formal-name>Date</formal-name>
+    <description>With time zone</description>
+  </define-field>
+  
+  <define-field name="plaintext" as-type="string">
+    <formal-name>Plain text</formal-name>
+    <description>plain text, no markup</description>
+  </define-field>
+  
+  <define-field name="richtext" as-type="markup-line">
+    <formal-name>Rich text</formal-name>
+    <description>Rich text supports markup</description>
+  </define-field>
+  
+  <define-field name="prose" as-type="markup-multiline">
+    <formal-name>Prose</formal-name>
+    <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+    <flag name="length">
+      <formal-name>length</formal-name>
+      <description>Is there a lot of prose?</description>
+    </flag>
+  </define-field>
+  
+</METASCHEMA>

@@ -1,0 +1,64 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0-milestone1/metaschema-datatypes-schema.json",
+    "$comment" : "Metaschema Unit Test: datatypes: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "parent" : 
+      { "title" : "parent",
+        "description" : "parent assembly",
+        "$id" : "#/definitions/parent",
+        "type" : "object",
+        "properties" : 
+        { "date" : 
+          { "type" : "string",
+            "format" : "date",
+            "$ref" : "#/definitions/date" },
+          "plaintext" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/plaintext" },
+          "richtext" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/richtext" },
+          "prose" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false },
+      "date" : 
+      { "title" : "Date",
+        "description" : "With time zone",
+        "$id" : "#/definitions/date",
+        "type" : "string",
+        "format" : "date" },
+      "plaintext" : 
+      { "title" : "Plain text",
+        "description" : "plain text, no markup",
+        "$id" : "#/definitions/plaintext",
+        "type" : "string" },
+      "richtext" : 
+      { "title" : "Rich text",
+        "description" : "Rich text supports markup",
+        "$id" : "#/definitions/richtext",
+        "type" : "string" },
+      "prose" : 
+      { "title" : "Prose",
+        "description" : "Prose permits multiple paragraphs, lists, tables etc.",
+        "$id" : "#/definitions/prose",
+        "type" : "object",
+        "properties" : 
+        { "big" : 
+          { "type" : "string",
+            "title" : "length",
+            "description" : "Is it big?" },
+          "PROSE" : 
+          { "anyOf" : 
+            [ 
+              { "type" : "string" },
+              
+              { "type" : "array",
+                "items" : 
+                { "type" : "string" } } ] } },
+        "additionalProperties" : false } },
+    "properties" : 
+    { "parent" : 
+      { "$ref" : "#/definitions/parent" } } }
