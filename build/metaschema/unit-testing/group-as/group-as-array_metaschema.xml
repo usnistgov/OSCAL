@@ -23,7 +23,7 @@
     </model>
   </define-assembly>
 
-  <define-field name="prop" datatype="string">
+  <define-field name="prop" as-type="string">
     <formal-name>prop</formal-name>
     <description>prop field</description>
   </define-field>
