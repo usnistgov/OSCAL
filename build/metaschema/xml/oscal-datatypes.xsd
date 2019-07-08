@@ -45,16 +45,6 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:simpleType name="percent">
-    <xs:annotation>
-      <xs:documentation>The percent type specifies a percentage from 0 to 100.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:decimal">
-      <xs:minInclusive value="0"/>
-      <xs:maxInclusive value="100"/>
-    </xs:restriction>
-  </xs:simpleType>
-
   <xs:simpleType name="email">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -89,6 +79,11 @@
     </xs:annotation>
     <xs:restriction base="xs:anyURI">
       <xs:whiteSpace value="collapse"/>
+      <xs:pattern value="\p{L}[\p{L}\d+\-\.]*:.+">
+        <xs:annotation>
+          <xs:documentation>Requires a scheme with colon per RFC 3986</xs:documentation>
+        </xs:annotation>
+      </xs:pattern>
     </xs:restriction>
   </xs:simpleType>
   

@@ -100,9 +100,14 @@
         <xs:simpleType name="boolean"/>
         <xs:simpleType name="string"/>
         <xs:simpleType name="NCName"/>
+        <xs:simpleType name="decimal"/>
+        <xs:simpleType name="float"/>
         <xs:simpleType name="double"/>
         <xs:simpleType name="integer"/>
+        <xs:simpleType name="nonNegativeInteger"/>
+        <xs:simpleType name="positiveInteger"/>
         <xs:simpleType name="IDREF"/>
+        <xs:simpleType name="ID"/>
     </xsl:variable>
     
     <xsl:template match="namespace"/>
@@ -124,24 +129,46 @@
     <xsl:template match="define-field">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
-            <xs:complexType>
-                <xsl:if test="not(@as-type='empty')">
-                  <xsl:attribute name="mixed">true</xsl:attribute>
-                </xsl:if>
-                <xsl:if test="@as-type='markup-line'">
-                    <xs:group ref="{$declaration-prefix}:everything-inline"/>
-                </xsl:if>
-                <xsl:if test="@as-type='markup-multiline'">
-                    <xs:group ref="{$declaration-prefix}:prose"/>
-                </xsl:if>
+            <xs:complexType mixed="true">
                 <xsl:apply-templates select="key | flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
     
+    <xsl:template priority="5" match="define-field[@as-type='empty']">
+        <xs:element name="{@name }">
+            <xsl:apply-templates select="." mode="annotated"/>
+            <xs:complexType>
+                <xsl:apply-templates select="key | flag"/>
+            </xs:complexType>
+        </xs:element>
+    </xsl:template>
     
-    <xsl:template match="define-field[@as-type='boolean']">
-        <xs:element name="{@name }" type="xs:boolean">
+    <xsl:template priority="5" match="define-field[@as-type='markup-line']">
+        <xs:element name="{@name }">
+            <xsl:apply-templates select="." mode="annotated"/>
+            <xs:complexType mixed="true">
+                <xs:group ref="{$declaration-prefix}:everything-inline"/>
+                <xsl:apply-templates select="key | flag"/>
+            </xs:complexType>
+        </xs:element>
+    </xsl:template>
+    
+    <xsl:template priority="5" match="define-field[@as-type='markup-multiline']">
+        <xs:element name="{@name }">
+            <xsl:apply-templates select="." mode="annotated"/>
+            <xs:complexType mixed="true">
+                <xs:group ref="{$declaration-prefix}:prose"/>
+                <xsl:apply-templates select="key | flag"/>
+            </xs:complexType>
+        </xs:element>
+    </xsl:template>
+    
+    <xsl:template priority="3" match="define-field[exists(@as-type)]">
+        <xs:element name="{@name }">
+            <xsl:call-template name="assign-type">
+                <xsl:with-param name="datatype" select="@as-type"/>
+            </xsl:call-template>
             <xsl:apply-templates select="." mode="annotated"/>
         </xs:element>
     </xsl:template>
@@ -210,8 +237,6 @@
         <xs:group ref="{$declaration-prefix}:prose" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
-    
-    
     <xsl:template match="flag | key">
         <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type)[1]"/>
         <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
@@ -223,12 +248,9 @@
             <!-- annotate as datatype or string unless an exclusive value-list is given -->
             <xsl:if test="empty($value-list)">
                 <!-- overriding string datatype on attribute -->
-                <xsl:for-each select="$datatype[.=$available-custom-types/@name]">
-                    <xsl:attribute name="type" expand-text="true" select="concat($declaration-prefix,':',.)"/>
-                </xsl:for-each>
-                <xsl:for-each select="$datatype[.=$built-in-types/@name]">
-                    <xsl:attribute name="type" expand-text="true" select="concat('xs:',.)"/>
-                </xsl:for-each>
+                <xsl:call-template name="assign-type">
+                    <xsl:with-param name="datatype" select="$datatype"/>
+                </xsl:call-template>
             </xsl:if>
             
             <xsl:apply-templates select=".[exists(@name)] | key('definition-by-name',@ref)" mode="annotated"/>
@@ -236,6 +258,17 @@
                 <xsl:with-param name="datatype" select="$datatype"/>
             </xsl:apply-templates>
         </xs:attribute>
+    </xsl:template>
+    
+    <xsl:template name="assign-type">
+        <xsl:param name="datatype"/>
+        <xsl:for-each select="$datatype[. = $available-custom-types/@name]">
+            <xsl:attribute name="type" expand-text="true"
+                select="concat($declaration-prefix, ':', .)"/>
+        </xsl:for-each>
+        <xsl:for-each select="$datatype[. = $built-in-types/@name]">
+            <xsl:attribute name="type" expand-text="true" select="concat('xs:', .)"/>
+        </xsl:for-each>
     </xsl:template>
 
     <!-- When allow-other=yes, we union the enumeration with the declared datatype -->        
