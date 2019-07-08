@@ -26,6 +26,7 @@
     
     <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
     <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
+    <xsl:variable name="markdown-multiline-label">PROSE</xsl:variable>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
@@ -46,9 +47,9 @@
             <map key="definitions">
                 <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
 
-                <map key="prose">
+                <!--<map key="prose">
                     <xsl:call-template name="string-or-array-of-strings"/>
-                </map>
+                </map>-->
             </map>           
         <map key="properties">
             <!--<xsl:apply-templates mode="properties"/>-->
@@ -138,8 +139,12 @@
         <xsl:value-of select="$string-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='mixed']" mode="text-key">
+    <xsl:template match="define-field[@as-type='markup-line']" mode="text-key">
         <xsl:value-of select="$markdown-value-label"/>
+    </xsl:template>
+    
+    <xsl:template match="define-field[@as-type=('markup-multiline')]" mode="text-key">
+        <xsl:value-of select="$markdown-multiline-label"/>
     </xsl:template>
     
     <xsl:template priority="2" match="define-field[exists(value-key)]" mode="text-key">
@@ -384,8 +389,6 @@
         <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>
     </xsl:template>
     
-    <xsl:template match="prose" name="prose"/>
-
     <xsl:key name="datatypes-by-name" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
         match="map" use="@key"/>
     
@@ -394,7 +397,7 @@
             <string key="type">string</string>
             <string key="format">date</string>
             <!--The xs:date with a required timezone.-->
-            <string key="pattern">.+[:Z].*</string>
+            <!--<string key="pattern">.+[:Z].*</string>-->
         </map>
         <map key="dateTime-with-timezone">
             <string key="type">string</string>
