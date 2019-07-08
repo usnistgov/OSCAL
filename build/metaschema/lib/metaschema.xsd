@@ -398,20 +398,24 @@
       <xs:enumeration value="boolean" />
       <xs:enumeration value="string" />
       <xs:enumeration value="NCName" />
+      <xs:enumeration value="decimal" />
+      <xs:enumeration value="float" />
       <xs:enumeration value="double" />
       <xs:enumeration value="integer" />
-      <xs:enumeration value="IDREF"/>
+      <xs:enumeration value="nonNegativeInteger"/>
+      <xs:enumeration value="positiveInteger"/>
       
       <!-- specialized datatypes -->
-      <xs:enumeration value="ip-v4-address"/>
-      <xs:enumeration value="ip-v6-address"/>
       <xs:enumeration value="dateTime-with-timezone"/>
       <xs:enumeration value="date-with-timezone"/>
       <!--<xs:enumeration value="percent"/>-->
       <xs:enumeration value="email"/>
       <xs:enumeration value="hostname"/>
+      <xs:enumeration value="ip-v4-address"/>
+      <xs:enumeration value="ip-v6-address"/>
       <xs:enumeration value="uri"/>
       <xs:enumeration value="uri-reference"/>
+      <xs:enumeration value="base64"/>
     </xs:restriction>   
   </xs:simpleType>
   
@@ -420,6 +424,7 @@
       <xs:simpleType>
         <xs:restriction base="xs:string">
           <xs:enumeration value="ID" />
+          <xs:enumeration value="IDREF"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:union>

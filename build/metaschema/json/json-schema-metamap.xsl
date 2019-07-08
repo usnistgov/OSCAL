@@ -329,7 +329,7 @@
         <string key="type">object</string>
     </xsl:template>
 
-    <xsl:template match="define-field | define-flag" mode="object-type">
+    <xsl:template match="define-field[empty(flag)] | define-flag" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
     
@@ -341,7 +341,9 @@
             <xsl:when test="exists(key('definition-by-name',@ref)/@as-type)">
                 <xsl:apply-templates mode="#current" select="key('definition-by-name',@ref)"/>
             </xsl:when>
-            <xsl:otherwise>string</xsl:otherwise>
+            <xsl:otherwise>
+                <string key="type">string</string> 
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
@@ -351,20 +353,89 @@
     
     <xsl:template priority="2" match="*[@as-type='integer']" mode="object-type">
         <string key="type">integer</string>
+        <number key="multipleOf">1.0</number>
+    </xsl:template>
+
+    <xsl:template priority="2" match="*[@as-type='positiveInteger']" mode="object-type">
+        <string key="type">integer</string>
+        <number key="multipleOf">1.0</number>
+        <number key="minimum">1</number>
+    </xsl:template>    
+    
+    <xsl:template priority="2" match="*[@as-type='nonNegativeInteger']" mode="object-type">
+        <string key="type">integer</string>
+        <number key="multipleOf">1.0</number>
+        <number key="minimum">0</number>
     </xsl:template>
     
-    <!-- Types are listed in ../xml/produce-xsl.xsl and ../xml/oscal-datatypes -->
+    <!-- Types are listed in ../xml/produce-xsd.xsl and ../xml/oscal-datatypes.xsd -->
+    
     <xsl:variable name="numeric-types" as="element()*">
+        <type>decimal</type>
+        <type>float</type>
         <type>double</type>
-        <type>percent</type>
-    </xsl:variable>        
-        
+    </xsl:variable>
+    
     <xsl:template priority="2" match="*[@as-type=$numeric-types]" mode="object-type">
         <string key="type">number</string>
     </xsl:template>
     
+    <xsl:template priority="3" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
+        <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>
+    </xsl:template>
     
     <xsl:template match="prose" name="prose"/>
+
+    <xsl:key name="datatypes-by-name" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
+        match="map" use="@key"/>
     
+    <xsl:variable name="datatypes" expand-text="false">
+        <map key="date-with-timezone">
+            <string key="type">string</string>
+            <string key="format">date</string>
+            <!--The xs:date with a required timezone.-->
+            <string key="pattern">.+[:Z].*</string>
+        </map>
+        <map key="dateTime-with-timezone">
+            <string key="type">string</string>
+            <string key="format">date-time</string>
+            <!--The xs:dateTime with a required timezone.-->
+            <string key="pattern">.+T.+(Z|[+-].+)</string>
+        </map>
+        <map key="email">
+            <string key="type">string</string>
+            <string key="format">email</string>
+            <!---->
+            <string key="pattern">.+@.+</string>
+        </map>
+        <map key="ip-v4-address">
+            <string key="type">string</string>
+            <string key="format">ipv4</string>
+            <!--The ip-v4-address type specifies an IPv4 address in dot decimal notation.-->
+            <string key="pattern">((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])</string>
+        </map>
+        <map key="ip-v6-address">
+            <string key="type">string</string>
+            <string key="format">ipv6</string>
+            <!--The ip-v6-address type specifies an IPv6 address represented in 8 hextets separated by colons.This is based on the pattern provided here: https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses with some customizations.-->
+            <string key="pattern">(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))</string>
+        </map>
+        <map key="hostname">
+            <string key="type">string</string>
+            <string key="format">idn-hostname</string>
+            <!---->
+            <string key="pattern">.+</string>
+        </map>
+        <map key="uri">
+            <string key="type">string</string>
+            <string key="format">uri</string>
+            <!---->
+        </map>
+        <map key="uri-reference">
+            <string key="type">string</string>
+            <string key="format">uri-reference</string>
+            <!---->
+        </map>
+    </xsl:variable>
 
 </xsl:stylesheet>
