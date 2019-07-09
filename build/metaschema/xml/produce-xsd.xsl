@@ -100,14 +100,16 @@
         <xs:simpleType name="boolean"/>
         <xs:simpleType name="string"/>
         <xs:simpleType name="NCName"/>
+        <xs:simpleType name="NMTOKENS"/>
         <xs:simpleType name="decimal"/>
         <xs:simpleType name="float"/>
         <xs:simpleType name="double"/>
         <xs:simpleType name="integer"/>
         <xs:simpleType name="nonNegativeInteger"/>
         <xs:simpleType name="positiveInteger"/>
-        <xs:simpleType name="IDREF"/>
         <xs:simpleType name="ID"/>
+        <xs:simpleType name="IDREF"/>
+        <xs:simpleType name="IDREFS"/>
     </xsl:variable>
     
     <xsl:template match="namespace"/>
