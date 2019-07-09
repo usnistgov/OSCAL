@@ -264,8 +264,8 @@
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
     <xsl:template mode="declaration" priority="5"
-        match="assembly[exists(key('definition-by-name',@ref)/json-key)] |
-               field[exists(key('definition-by-name',@ref)/json-key)]">
+        match="assembly[group-as/@json-behavior='BY-KEY'][exists(key('definition-by-name',@ref)/json-key)] |
+        field[group-as/@json-behavior='BY-KEY'][exists(key('definition-by-name',@ref)/json-key)]">
         <xsl:variable name="group-name" select="group-as/@name"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
@@ -277,7 +277,7 @@
     </xsl:template>
     
     <!-- Always a map when max-occurs is 1 or implicit -->
-    <xsl:template mode="declaration" priority="3"
+    <xsl:template mode="declaration" priority="4"
         match="assembly[empty(@max-occurs) or number(@max-occurs) = 1 ] |
         field[empty(@max-occurs) or number(@max-occurs)= 1 ]">
         <map key="{@ref}">
@@ -286,23 +286,27 @@
         </map>
     </xsl:template>
     
-    <!-- Always an array when min-occurs is greater than 1 -->
+    <!-- Otherwise, always an array when min-occurs is greater than 1 or whenever so designated -->
     <xsl:template mode="declaration" priority="3" expand-text="yes"
-        match="assembly[number(@min-occurs) &gt; 1 ] | field[number(@min-occurs) &gt; 1 ]">
+        match="assembly[number(@min-occurs) &gt; 1 ]     | field[number(@min-occurs) &gt; 1 ] |
+               assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']">
         <map key="{ group-as/@name }">
             <string key="type">array</string>
-            <number key="minItems">{ @min-occurs }</number>
-            <xsl:if test="@max-occurs != 'unbounded'">
-                <number key="maxItems">{ @max-occurs }</number>
-            </xsl:if>
+            <xsl:for-each select="@min-occurs">
+                <number key="minItems">{ . }</number>
+            </xsl:for-each>
+            <!-- case for @max-occurs missing or 1 has matched the template above -->
+            <xsl:for-each select="@max-occurs[not(. = 'unbounded')]">
+                <number key="maxItems">{ . }</number>
+            </xsl:for-each>
             <map key="items">
                 <string key="$ref">#/definitions/{ @ref }</string>
             </map>
         </map>
     </xsl:template>
     
-    <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1 -->
-    
+    <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1,
+         and group-as/@json-behavior is not 'BY-KEY' or 'ARRAY' ... -->
     <xsl:template mode="declaration" match="assembly | field">
         <map key="{ group-as/@name }">
             <array key="anyOf">
@@ -323,11 +327,11 @@
         </map>
     </xsl:template>
 
-    <xsl:template mode="declaration" match="prose">
+   <!-- <xsl:template mode="declaration" match="prose">
         <map key="prose">
             <string key="$ref">#/definitions/prose</string>
         </map>
-    </xsl:template>
+    </xsl:template>-->
     
     
     <xsl:template match="*" mode="object-type">

@@ -2,6 +2,7 @@
 <xsl:stylesheet
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     version="3.0"
     
@@ -148,6 +149,12 @@
     <xsl:variable name="numeric-types" as="element()*">
         <type>integer</type>
         <type>double</type>
+        <type>decimal</type>
+        <type>float</type>
+        <type>double</type>
+        <type>integer</type>
+        <type>nonNegativeInteger</type>
+        <type>positiveInteger</type>
         <!--<type>percent</type>-->
     </xsl:variable>        
     
@@ -155,7 +162,7 @@
         <XSLT:template match="{@name}" mode="xml2json">
             <number key="{@name}">
                 <xsl:for-each select="json-key">
-                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                    <xsl:attribute name="key">{@<xsl:value-of select="@flag-name"/>}</xsl:attribute>
                 </xsl:for-each>
                 <XSLT:apply-templates mode="#current"/>
             </number>
@@ -166,7 +173,7 @@
         <XSLT:template match="{@name}" mode="xml2json">
             <boolean key="{@name}">
                 <xsl:for-each select="json-key">
-                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                    <xsl:attribute name="key">{@<xsl:value-of select="@flag-name"/>}</xsl:attribute>
                 </xsl:for-each>
                 <XSLT:apply-templates mode="#current"/>
             </boolean>
@@ -302,6 +309,9 @@
         assembly[number(@max-occurs) &gt; 1 or @max-occurs='unbounded']">
             <XSLT:if test="exists({@ref})">
                 <array key="{ group-as/@name }">
+                    <!-- copying @m:json-behavior to condition handling
+                         in the next 'rectify' mode -->
+                    <xsl:copy-of select="group-as/@json-behavior"/>
                     <XSLT:apply-templates select="{@ref}" mode="#current"/>
                 </array>
             </XSLT:if>
@@ -363,12 +373,19 @@
             </XSLT:choose>
         </XSLT:template>
         
-        <XSLT:mode name="rectify" on-no-match="shallow-copy"/>
+        <XSLT:template match="node() | @*" mode="rectify">
+           <XSLT:copy copy-namespaces="no">
+               <XSLT:apply-templates select="node() | @*"/>
+           </XSLT:copy>
+        </XSLT:template>
         
         <XSLT:template mode="rectify" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
             match="/*/@key | array/*/@key"/>
         
-        <XSLT:template mode="rectify" match="array[count(*) eq 1]"
+        <XSLT:template mode="rectify" match="@m:*"/>
+        
+<!--        don't squash arrays marked as @m:json-behavior="ARRAY" -->
+        <XSLT:template mode="rectify" match="array[count(*) eq 1][not(@m:json-behavior='ARRAY')]"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
             <XSLT:for-each select="*">
                 <XSLT:copy>
