@@ -99,15 +99,7 @@
       <xs:documentation>In the XML, produces an attribute with the given name, whose value is used as a key value (aka object property name) in the JSON, enabling objects to be 'lifted' out of arrays when such values are distinct. Implies that siblings will never share values. Overloading with datatype 'ID' and naming the key 'id' is legitimate and useful. Even without ID validation, uniqueness of these values among siblings is validable.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="m:formal-name"/>
-        <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
-      </xs:sequence>
-      <xs:attribute name="as-type" type="m:flag-types"/>
-      <!-- should Schematron check uniqueness among siblings irrespective of datatype -->
-      <xs:attribute name="name" type="xs:NCName"/>
-      <xs:attribute name="ref" type="xs:NCName"/>
+      <xs:attribute name="flag-name" type="xs:NCName"/>
       <!-- do not have to flag if required; it always will be <xs:attribute name="required" type="xs:NCName"/>-->
     </xs:complexType>
   </xs:element>

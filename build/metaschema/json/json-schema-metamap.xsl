@@ -65,7 +65,8 @@
             </map>-->
         </map>
     </xsl:template>
-    <xsl:template name="string-or-array-of-strings">
+    
+    <!--<xsl:template name="string-or-array-of-strings">
         <array key="anyOf">
             <map>
                 <string key="type">string</string>
@@ -77,7 +78,7 @@
                 </map>
             </map>
         </array>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks | METASCHEMA/namespace | METASCHEMA/schema-version"/>
   
@@ -92,20 +93,12 @@
             <map key="properties">
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
-            <xsl:for-each-group select="(flag[@required='yes'][empty(value-key)] | model//*[@min-occurs &gt; 0])" group-by="true()">
-                <array key="required">
-                    <xsl:apply-templates select="current-group()" mode="property-name"/>
-                    <!--<xsl:for-each select="current-group()">
-                        <string>
-                            <xsl:value-of select="(@name,@ref)[1]"/>
-                        </string>
-                    </xsl:for-each>-->
-                </array>
-            </xsl:for-each-group>
+            <xsl:call-template name="required-properties"/>
             <xsl:choose>
-                <xsl:when test="exists(flag/value-key)">
+                <xsl:when test="exists(json-value-key)">
+                    <xsl:variable name="value-key-name" select="json-value-key/@flag-name"/>
                     <xsl:variable name="all-properties"
-                        select="flag[empty(value-key)] | model//(field | assembly)"/>
+                        select="flag[not(@name = $value-key-name)] | model//(field | assembly)"/>
                     <number key="minProperties">
                         <xsl:value-of select="count($all-properties[@required='yes' or @min-occurs &gt; 0] | self::define-field[not(@as='empty')])"/>
                     </number>
@@ -127,31 +120,51 @@
         </map>
     </xsl:template>
     
+    <xsl:template name="required-properties">
+        <xsl:variable name="value-string" as="element()?">
+            <xsl:for-each select="self::define-field">
+                <string>
+                    <xsl:apply-templates select="." mode="value-key"/>
+                </string>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="requirements" as="element()*">
+            <xsl:apply-templates mode="property-name"
+                select="flag[@required = 'yes'][not(@name = ../(json-key | json-value-key)/@flag-name)] |
+                model//*[@min-occurs &gt; 0]"/>
+        </xsl:variable> 
+        <xsl:if test="exists( ($value-string, $requirements) )">
+            <array key="required">
+                <xsl:copy-of select="$value-string, $requirements"/>
+            </array>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template match="*" mode="text-property"/>
     
     <xsl:template match="define-field" mode="text-property">
         <string>
-          <xsl:apply-templates select="." mode="text-key"/>
+          <xsl:apply-templates select="." mode="value-key"/>
         </string>
     </xsl:template>
     
-    <xsl:template match="define-field" mode="text-key">
+    <xsl:template match="define-field" mode="value-key">
         <xsl:value-of select="$string-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as-type='markup-line']" mode="text-key">
+    <xsl:template match="define-field[@as-type='markup-line']" mode="value-key">
         <xsl:value-of select="$markdown-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as-type=('markup-multiline')]" mode="text-key">
+    <xsl:template match="define-field[@as-type=('markup-multiline')]" mode="value-key">
         <xsl:value-of select="$markdown-multiline-label"/>
     </xsl:template>
     
-    <xsl:template priority="2" match="define-field[exists(value-key)]" mode="text-key">
-        <xsl:value-of select="value-key"/>
+    <xsl:template priority="2" match="define-field[matches(json-value-key,'\S')]" mode="value-key">
+        <xsl:value-of select="json-value-key"/>
     </xsl:template>
     
-    <xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>
+    <!--<xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>-->
     
     <xsl:template match="define-assembly[exists(json-key)] | define-field[exists(json-key)]">
         <map key="{ @name }">
@@ -161,11 +174,12 @@
             <map key="properties">
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
+            <xsl:call-template name="required-properties"/>
             <boolean key="additionalProperties">false</boolean>
         </map>
     </xsl:template>
     
-    <xsl:template match="define-field[empty(key|flag)]">
+    <xsl:template match="define-field[empty(flag)]">
         <map key="{ @name }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
@@ -175,7 +189,7 @@
 
     <xsl:template match="define-assembly" mode="properties">
         <!-- to be excluded, flags assigned to be keys -->
-        <xsl:apply-templates mode="declaration" select="flag[empty(key)], model"/>
+        <xsl:apply-templates mode="declaration" select="flag[not((@name|@ref) = ../json-key/@flag-name)], model"/>
     </xsl:template>
 
     <xsl:template match="formal-name">
@@ -219,11 +233,13 @@
     <xsl:template match="define-field" mode="properties">
         <xsl:apply-templates mode="declaration" select="flag[empty(key)]"/>
         <xsl:variable name="this-key" as="xs:string?">
-            <xsl:apply-templates select="." mode="text-key"/>
+            <xsl:apply-templates select="." mode="value-key"/>
         </xsl:variable>
         <xsl:if test="matches($this-key, '\S')">
-            <map key="{$this-key}">                
-                <xsl:call-template name="string-or-array-of-strings"/>
+            <map key="{$this-key}">
+                <string key="type">string</string>
+                <!--                
+                <xsl:call-template name="string-or-array-of-strings"/>-->
             </map>
         </xsl:if>
     </xsl:template>
@@ -231,7 +247,7 @@
     <!--A flag declared as a key or value key gets no declaration since it
     will not show up in the JSON as a separate property -->
     
-    <xsl:template mode="declaration" match="flag[exists(value-key|key)]"/>
+    <xsl:template mode="declaration" match="flag[(@name|@ref)=../(json-value-key|json-key)/@flag-name]"/>
         
     <xsl:template mode="declaration" match="flag">
         <map key="{(@name,@ref)[1]}">
@@ -264,14 +280,24 @@
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
     <xsl:template mode="declaration" priority="5"
-        match="assembly[group-as/@json-behavior='BY-KEY'][exists(key('definition-by-name',@ref)/json-key)] |
-        field[group-as/@json-behavior='BY-KEY'][exists(key('definition-by-name',@ref)/json-key)]">
+        match="assembly[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)] |
+        field[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)]">
         <xsl:variable name="group-name" select="group-as/@name"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
+            <number key="minProperties">1</number>
             <map key="additionalProperties">
+                <array key="allOf">
+                    <map>
                 <string key="type">object</string>
                 <string key="$ref">#/definitions/{ @ref }</string>
+                    </map>
+                    <map>
+                        <map key="not">
+                            <string key="type">string</string>
+                        </map>
+                    </map>
+                </array>
             </map>
         </map>
     </xsl:template>
@@ -292,9 +318,8 @@
                assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']">
         <map key="{ group-as/@name }">
             <string key="type">array</string>
-            <xsl:for-each select="@min-occurs">
-                <number key="minItems">{ . }</number>
-            </xsl:for-each>
+            <!-- despite @min-occurs = 0, we have a minimum of 1 since the array itself is optional -->
+            <number key="minItems">{ max((@min-occurs/number(),1)) }</number>
             <!-- case for @max-occurs missing or 1 has matched the template above -->
             <xsl:for-each select="@max-occurs[not(. = 'unbounded')]">
                 <number key="maxItems">{ . }</number>
@@ -322,6 +347,7 @@
                     <map key="items">
                         <string key="$ref">#/definitions/{ @ref }</string>
                     </map>
+                    <number key="minItems">2</number>
                 </map>
             </array>
         </map>
