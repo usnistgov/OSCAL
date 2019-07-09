@@ -44,15 +44,17 @@
         </sch:rule>
 
         <sch:rule context="m:json-key">
-            <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
+            <!--<sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists(@name|@ref)">Flag declaration must have 'name' or 'ref'</sch:assert>
             <sch:assert test="count(@name|@ref) eq 1">Flag declaration may be by name or reference, not both (remove @name or @ref)</sch:assert>
             <sch:assert test="count(../*[(@name|@ref) = current()/(@name|@ref)]) eq 1">Only one flag (or key) may be named 
                 <sch:value-of select="@name"/>
             </sch:assert>
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:name/></sch:assert>
-            <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
-            <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Key should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
+            <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>-->
+            <!--<sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Key should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>-->
+            <sch:assert test="@flag-name = ../m:flag/@name">JSON key indicates no flag on this <sch:value-of select="substring-after(local-name(..),'define-')"/>
+            <xsl:if test="exists(../m:flag)">Should be (one of) <xsl:value-of select="../m:flag/(@name|@ref)" separator=", "/></xsl:if></sch:assert>
         </sch:rule>
         
         <sch:rule context="m:value-key">
@@ -102,6 +104,7 @@
             <sch:let name="name" value="@name"/>
             <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
             <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@json-behavior)">Grouping name is given but max-occurs is 1.</sch:report>
+            <sch:report test="../@max-occurs/number() = 1 and (@json-behavior='ARRAY')">JSON behavior cannot be 'ARRAY' when max-occurs is 1.</sch:report>
         </sch:rule>
 
         <sch:rule context="m:example/m:description | m:example/m:remarks"/>

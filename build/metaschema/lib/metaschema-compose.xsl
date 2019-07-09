@@ -159,12 +159,12 @@
             <xsl:copy>
                 <xsl:call-template name="mark-module"/>
                 <xsl:copy-of select="@*"/>
-                <xsl:apply-templates mode="#current" select="key, value-key, flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/formal-name"/>
                 <xsl:if test="$verbose and ($me-and-mine/formal-name != $me-and-mine/formal-name)">
                     <xsl:message expand-text="true">Formal name override for  { replace(local-name(),'^define-','')} '{ @name }': using "{ $me-and-mine[last()]/formal-name }"</xsl:message>
                 </xsl:if>
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
+                <xsl:apply-templates mode="#current" select="json-key, json-value-key, flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/valid-values"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
@@ -200,7 +200,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template mode="digest" match="flag | key | value-key">
+    <xsl:template mode="digest" match="flag | json-key | json-value-key">
         <xsl:copy>
             <xsl:attribute name="datatype">string</xsl:attribute>
             <xsl:copy-of select="key('definition-by-name',@name)/@datatype"/>
@@ -221,7 +221,7 @@
     <xsl:template match="define-assembly" mode="collect-references">
         <xsl:param name="ref-stack" tunnel="yes" required="yes"/>
         <xsl:if test="not(@name = $ref-stack)">
-            <xsl:sequence select="@name, (flag|key)/@ref"/>
+            <xsl:sequence select="@name, flag/@ref"/>
             <xsl:apply-templates select="model" mode="#current">
                 <xsl:with-param tunnel="true" name="ref-stack" select="$ref-stack,@name"/>
             </xsl:apply-templates>
@@ -229,7 +229,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" mode="collect-references">
-        <xsl:sequence select="@name, (flag|key)/@ref"/>
+        <xsl:sequence select="@name, flag/@ref"/>
     </xsl:template>
     
     <xsl:template match="model | model//*" mode="collect-references">
