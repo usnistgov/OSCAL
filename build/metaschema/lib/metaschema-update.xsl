@@ -19,12 +19,42 @@
     
     <xsl:key name="definition-by-name" match="define-assembly | define-field | define-flag" use="@name"/>
     
-    <xsl:template match="/comment() | /processing-instruction() | /*">
+    <xsl:template match="/*">
+        <xsl:text>&#xA;</xsl:text>
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+            
+            <xsl:if test="exists(//prose)">
+                <define-field name="prose" as-type="markup-multiline">
+                    <formal-name>Prose</formal-name>
+                    <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+                </define-field>
+            </xsl:if>
+        </xsl:copy>
+        
+    </xsl:template>
+    <xsl:template match="/comment() | /processing-instruction()">
         <xsl:text>&#xA;</xsl:text>
         <xsl:next-match/>
     </xsl:template>
     
-    <!--https://github.com/usnistgov/OSCAL/issues/442-->
+    <xsl:template match="@datatype | @as">
+        <xsl:attribute name="as-type">
+            <xsl:apply-templates select="." mode="cast-type"/>
+        </xsl:attribute>
+    </xsl:template>
+    
+    <xsl:template match="@*" mode="cast-type">
+        <xsl:value-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="@*[.='anyURI']" mode="cast-type">uri-reference</xsl:template>
+    
+    <xsl:template match="@as[.='mixed']">
+        <xsl:attribute name="as-type">markup-line</xsl:attribute>
+    </xsl:template>
+    
     <xsl:template match="@named">
         <xsl:attribute name="ref">
             <xsl:value-of select="."/>
@@ -62,6 +92,10 @@
         </xsl:for-each>
     </xsl:template>
     
+    <xsl:template match="prose">
+        <field ref="prose"/>
+    </xsl:template>
+    
     <xsl:template match="fields">
         <field>
             <xsl:apply-templates select="@*"/>
@@ -91,11 +125,35 @@
         <xsl:attribute name="min-occurs">1</xsl:attribute>
     </xsl:template>
     
+    <xsl:template match="flag">
+        <xsl:for-each select="value-key">
+            <json-value-key flag-name="{ ../(@name|@ref)}"/>
+        </xsl:for-each>
+        <xsl:next-match/>
+    </xsl:template>
+    
     <xsl:template match="key">
-        <json-key>
+        <json-key flag-name="{@name}"/>
+        <flag name="{@name}">
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
-        </json-key>
+        </flag>
     </xsl:template>
+    
+    <xsl:template match="define-field/value-key">
+        <json-value-key>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates/>
+        </json-value-key>
+    </xsl:template>
+    
+    <xsl:template match="flag/value-key"/>
+    
+    <xsl:template match="value-key/@name">
+        <xsl:attribute name="flag-name">
+            <xsl:value-of select="."/>
+        </xsl:attribute>
+    </xsl:template>
+    
     
 </xsl:stylesheet>

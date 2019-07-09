@@ -390,6 +390,7 @@
       <xs:enumeration value="boolean" />
       <xs:enumeration value="string" />
       <xs:enumeration value="NCName" />
+      <xs:enumeration value="NMTOKENS" />
       <xs:enumeration value="decimal" />
       <xs:enumeration value="float" />
       <xs:enumeration value="double" />
@@ -417,6 +418,7 @@
         <xs:restriction base="xs:string">
           <xs:enumeration value="ID" />
           <xs:enumeration value="IDREF"/>
+          <xs:enumeration value="IDREFS"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:union>

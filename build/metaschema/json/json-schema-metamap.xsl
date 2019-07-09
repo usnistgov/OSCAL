@@ -469,6 +469,7 @@
             <string key="format">uri-reference</string>
             <!---->
         </map>
+        <!-- Possibly add support for XSD types ID, IDREF, IDREFS, NCName, NMTOKENS ???        -->
     </xsl:variable>
 
 </xsl:stylesheet>
