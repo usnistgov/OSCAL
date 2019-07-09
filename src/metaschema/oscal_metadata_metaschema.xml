@@ -9,13 +9,11 @@
             xmlns:o="http://csrc.nist.gov/ns/oscal/example"
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
             root="VALIDATION_root">
-
-  <schema-name>OSCAL Document Metadata Description</schema-name>
-  <schema-version>1.0-milestone1</schema-version>
-  <short-name>oscal-metadata</short-name>
-  <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
-  
-  <define-assembly name="VALIDATION_root">
+   <schema-name>OSCAL Document Metadata Description</schema-name>
+   <schema-version>1.0-milestone1</schema-version>
+   <short-name>oscal-metadata</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
+   <define-assembly name="VALIDATION_root">
       <formal-name>(nominal root)</formal-name>
       <description>NOT TO BE USED IN A METASCHEMA</description>
       <model>
@@ -26,8 +24,7 @@
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
       </remarks>
    </define-assembly>
-  
-  <define-assembly name="metadata">
+   <define-assembly name="metadata">
       <formal-name>Publication metadata</formal-name>
       <description>Provides information about the publication and availability of the containing document.</description>
       <model>
@@ -35,22 +32,34 @@
          <field ref="last-modified-date"/>
          <field ref="version"/>
          <field ref="oscal-version" min-occurs="1"/>
-         <field ref="doc-id" max-occurs="unbounded"/>
-         <field ref="prop" max-occurs="unbounded"/>
-         <field ref="link" max-occurs="unbounded"/>
-         <assembly ref="role" max-occurs="unbounded"/>
-         <assembly ref="party" max-occurs="unbounded"/>
+         <field ref="doc-id" max-occurs="unbounded">
+            <group-as name="document-ids"/>
+         </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <assembly ref="role" max-occurs="unbounded">
+            <group-as name="roles"/>
+         </assembly>
+         <assembly ref="party" max-occurs="unbounded">
+            <group-as name="parties"/>
+         </assembly>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
-
-  <define-assembly name="back-matter">
+   <define-assembly name="back-matter">
       <formal-name>Back matter</formal-name>
       <description>A collection of citations and resource references.</description>
-      <model>
-      <!--<assemblies named="section"/>-->
-         <assembly ref="citation" max-occurs="unbounded"/>
-         <assembly ref="resource" max-occurs="unbounded"/>
+      <model><!--<assemblies named="section"/>-->
+         <assembly ref="citation" max-occurs="unbounded">
+            <group-as name="citations"/>
+         </assembly>
+         <assembly ref="resource" max-occurs="unbounded">
+            <group-as name="resources"/>
+         </assembly>
       </model>
       <remarks>
          <p>Provides a collection of identified <code>citation</code> and <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a citation identifier. A <code>citation</code> can reference a <code>resource</code> by specifying a local target value using the same fragment-identifier approach.</p>
@@ -74,14 +83,13 @@
          </o:oscal>
       </example>
    </define-assembly>
-
-  <define-field name="link" group-as="links" as="mixed">
+   <define-field name="link" as-type="markup-line">
       <formal-name>Link</formal-name>
       <description>A reference to a local or remote resource, with associated markup.</description>
-      <value-key>text</value-key>
-      <flag ref="href" datatype="anyURI" required="yes"/>
-      <flag ref="rel" datatype="NCName"/>
-      <flag ref="media-type" datatype="string"/>
+      <json-value-key>text</json-value-key>
+      <flag ref="href" as-type="uri-reference" required="yes"/>
+      <flag ref="rel" as-type="NCName"/>
+      <flag ref="media-type" as-type="string"/>
       <remarks>
          <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
         element.</p>
@@ -109,8 +117,7 @@
          </o:oscal>
       </example>
    </define-field>
-  
-  <define-field name="last-modified-date">
+   <define-field name="last-modified-date">
       <formal-name>Last modified date</formal-name>
       <description>Date of last modification.</description>
       <remarks>
@@ -118,16 +125,14 @@
          <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
       </remarks>
    </define-field>
-
-  <define-field name="version">
+   <define-field name="version">
       <formal-name>Document version</formal-name>
       <description>The version of the document content.</description>
       <remarks>
          <p>A string indicating the document's version, by release number, date, or other identifier. This version is typically set by the document owner or by the tool used to maintain the content.</p>
       </remarks>
    </define-field>
-  
-  <define-field name="oscal-version">
+   <define-field name="oscal-version">
       <formal-name>OSCAL version</formal-name>
       <description>OSCAL model version.</description>
       <remarks>
@@ -135,8 +140,7 @@
       <q>1.0-M1</q>.</p>
       </remarks>
    </define-field>
-  
-  <define-field name="doc-id" group-as="document-ids">
+   <define-field name="doc-id">
       <formal-name>Document Identifier</formal-name>
       <description>A document identifier qualified by an identifier <code>type</code>.</description>
       <flag ref="type" required="yes">
@@ -147,25 +151,22 @@
       </flag>
       <remarks>
          <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
-
          <p>Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p>
       </remarks>
    </define-field>
-
-  <define-flag name="type" datatype="string">
+   <define-flag name="type" as-type="string">
       <formal-name>Type</formal-name>
       <description>Indicating the type of identifier, address, email or other data item.</description>
       <remarks>
          <p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p>
       </remarks>
    </define-flag>
-
-  <define-field name="prop" group-as="properties">
+   <define-field name="prop">
       <formal-name>Property</formal-name>
       <description>A value with a name, attributed to the containing control, subcontrol, part,
       or group.</description>
+      <json-value-key flag-name="name"/>
       <flag ref="name" required="yes">
-         <value-key/>
          <valid-values allow-other="yes">
             <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
             <value name="label">A human-readable label for the parent context.</value>
@@ -173,7 +174,7 @@
             <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
          </valid-values>
       </flag>
-      <flag ref="id" datatype="ID"/>
+      <flag ref="id" as-type="ID"/>
       <flag ref="ns"/>
       <flag ref="class"/>
       <remarks>
@@ -193,8 +194,7 @@
         (which also supports other constraints over property values).</p>
       </remarks>
    </define-field>
-  
-  <define-flag name="name" datatype="string">
+   <define-flag name="name" as-type="string">
       <formal-name>Name</formal-name>
       <description>Identifying the purpose and intended use of the property, part or other object.</description>
       <remarks>
@@ -205,8 +205,7 @@
       in OSCAL.</p>
       </remarks>
    </define-flag>
-  
-  <define-flag name="ns" datatype="string">
+   <define-flag name="ns" as-type="string">
       <formal-name>Namespace</formal-name>
       <description>A namespace qualifying the name.</description>
       <remarks>
@@ -214,22 +213,22 @@
       an object. When this attribute is not given, its value should be assumed to be <code>oscal</code> and the name should be a name defined by this specification.</p>
       </remarks>
    </define-flag>
-  
-  <define-flag name="class" datatype="NMTOKENS">
+   <define-flag name="class" as-type="NMTOKENS">
       <formal-name>Class</formal-name>
       <description>Indicating the type or classification of the containing object</description>
       <remarks>
          <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
       </remarks>
    </define-flag>
-  
-  <define-assembly name="party" group-as="parties">
+   <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
-      <flag ref="id" datatype="ID"/>
+      <flag ref="id" as-type="ID"/>
       <flag ref="role-id"/>
       <model>
-         <assembly ref="person" max-occurs="unbounded"/>
+         <assembly ref="person" max-occurs="unbounded">
+            <group-as name="persons"/>
+         </assembly>
          <assembly ref="org"/>
          <assembly ref="notes"/>
       </model>
@@ -241,8 +240,7 @@
       organization as such serves as a documented party.</p>
       </remarks>
    </define-assembly>
-  
-  <define-assembly name="person" group-as="persons">
+   <define-assembly name="person">
       <formal-name>Person</formal-name>
       <description>A person, with contact information</description>
       <model>
@@ -251,78 +249,94 @@
          <field ref="org-name">
             <description>Affiliated organization</description>
          </field>
-         <field ref="person-id" max-occurs="unbounded"/>
-         <field ref="org-id" max-occurs="unbounded"/>
-         <assembly ref="address" max-occurs="unbounded"/>
-         <field ref="email" max-occurs="unbounded"/>
-         <field ref="phone" max-occurs="unbounded"/>
-         <field ref="url" max-occurs="unbounded"/>
+         <field ref="person-id" max-occurs="unbounded">
+            <group-as name="person-ids"/>
+         </field>
+         <field ref="org-id" max-occurs="unbounded">
+            <group-as name="organization-ids"/>
+         </field>
+         <assembly ref="address" max-occurs="unbounded">
+            <group-as name="addresses"/>
+         </assembly>
+         <field ref="email" max-occurs="unbounded">
+            <group-as name="email-addresses"/>
+         </field>
+         <field ref="phone" max-occurs="unbounded">
+            <group-as name="telephone-numbers"/>
+         </field>
+         <field ref="url" max-occurs="unbounded">
+            <group-as name="URLs"/>
+         </field>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
-  
-  <define-assembly name="org">
+   <define-assembly name="org">
       <formal-name>Organization</formal-name>
       <description>An organization or legal entity (not a person), with contact information</description>
       <model>
          <field ref="org-name"/>
          <field ref="short-name"/>
-         <field ref="org-id" max-occurs="unbounded"/>
-         <assembly ref="address" max-occurs="unbounded"/>
-         <field ref="email" max-occurs="unbounded"/>
-         <field ref="phone" max-occurs="unbounded"/>
-         <field ref="url" max-occurs="unbounded"/>
+         <field ref="org-id" max-occurs="unbounded">
+            <group-as name="organization-ids"/>
+         </field>
+         <assembly ref="address" max-occurs="unbounded">
+            <group-as name="addresses"/>
+         </assembly>
+         <field ref="email" max-occurs="unbounded">
+            <group-as name="email-addresses"/>
+         </field>
+         <field ref="phone" max-occurs="unbounded">
+            <group-as name="telephone-numbers"/>
+         </field>
+         <field ref="url" max-occurs="unbounded">
+            <group-as name="URLs"/>
+         </field>
          <assembly ref="notes"/>
       </model>
    </define-assembly>
-  
-  <define-field name="person-id" group-as="person-ids">
+   <define-field name="person-id">
       <formal-name>Personal Identifier</formal-name>
       <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
       <flag ref="type"/>
    </define-field>
-  
-  <define-field name="org-id" group-as="organization-ids">
+   <define-field name="org-id">
       <formal-name>Organization Identifier</formal-name>
       <description>An identifier for an organization using a designated scheme.</description>
       <flag ref="type"/>
    </define-field>
-  
-  <define-assembly name="rlink" group-as="rlinks">
+   <define-assembly name="rlink">
       <formal-name>Related link</formal-name>
       <description>A pointer to an external copy of a document with optional hash for verification</description>
-      <flag ref="href" datatype="anyURI" required="yes"/>
+      <flag ref="href" as-type="uri-reference" required="yes"/>
       <flag ref="media-type"/>
       <model>
-         <field ref="hash"/>
+         <field ref="hash">
+            <group-as name="hashes"/>
+         </field>
       </model>
       <remarks>
          <p>This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
       </remarks>
    </define-assembly>
-  
-  <define-flag name="rel" datatype="NCName">
+   <define-flag name="rel" as-type="NCName">
       <formal-name>Relation</formal-name>
       <description>Purpose of the link</description>
       <remarks>
          <p>TO DO: discuss IANA link relation registry.</p>
       </remarks>
    </define-flag>
-  
-  <define-flag name="media-type" datatype="string">
+   <define-flag name="media-type" as-type="string">
       <formal-name>Media type</formal-name>
       <description>Describes the media type of a linked resource</description>
       <remarks>
          <p>TO DO: discuss IANA media type registry.</p>
       </remarks>
    </define-flag>
-  
-  <define-field name="person-name">
+   <define-field name="person-name">
       <formal-name>Person Name</formal-name>
       <description>Full (legal) name of an individual</description>
    </define-field>
-  
-  <define-field name="org-name">
+   <define-field name="org-name">
       <formal-name>Organization Name</formal-name>
       <description>Full (legal) name of an organization</description>
       <remarks>
@@ -332,8 +346,7 @@
         (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p>
       </remarks>
    </define-field>
-  
-  <define-field name="short-name">
+   <define-field name="short-name">
       <formal-name>short-name</formal-name>
       <description>A common name, short name or acronym</description>
       <remarks>
@@ -341,8 +354,7 @@
         organization or system.</p>
       </remarks>
    </define-field>
-
-  <define-assembly name="address" group-as="addresses">
+   <define-assembly name="address">
       <formal-name>Address</formal-name>
       <description>A postal address.</description>
       <flag ref="type">
@@ -353,7 +365,9 @@
          </valid-values>
       </flag>
       <model>
-         <field ref="addr-line" max-occurs="unbounded"/>
+         <field ref="addr-line" max-occurs="unbounded">
+            <group-as name="postal-address"/>
+         </field>
          <field ref="city"/>
          <field ref="state"/>
          <field ref="postal-code"/>
@@ -361,39 +375,31 @@
          <!-- More address stuff -->
       </model>
    </define-assembly>
-
-
-  <define-field name="addr-line" group-as="postal-address">
+   <define-field name="addr-line">
       <formal-name>Address line</formal-name>
       <description>A single line of an address.</description>
    </define-field>
-
-  <define-field name="city">
+   <define-field name="city">
       <formal-name>City</formal-name>
       <description>City, town or geographical region for mailing address</description>
    </define-field>
-
-  <define-field name="state">
+   <define-field name="state">
       <formal-name>State</formal-name>
       <description>State, province or analogous geographical region for mailing address</description>
    </define-field>
-
-  <define-field name="postal-code">
+   <define-field name="postal-code">
       <formal-name>Postal Code</formal-name>
       <description>Postal or ZIP code for mailing address</description>
    </define-field>
-
-  <define-field name="country">
+   <define-field name="country">
       <formal-name>Country</formal-name>
       <description>Country for mailing address</description>
    </define-field>
-
-  <define-field name="email" group-as="email-addresses">
+   <define-field name="email">
       <formal-name>Email</formal-name>
       <description>Email address</description>
    </define-field>
-
-  <define-field name="phone" group-as="telephone-numbers">
+   <define-field name="phone">
       <formal-name>Telephone</formal-name>
       <description>Contact number by telephone</description>
       <flag ref="type">
@@ -405,36 +411,34 @@
          </valid-values>
       </flag>
    </define-field>
-
-  <define-field name="url" group-as="URLs">
+   <define-field name="url">
       <formal-name>URL</formal-name>
       <description>URL for web site or Internet presence</description>
    </define-field>
-
-  <define-assembly name="notes">
+   <define-assembly name="notes">
       <formal-name>Notes</formal-name>
       <description>Any notes with further information</description>
       <flag ref="type">
          <description>Indicates the type of note.</description>
       </flag>
       <model>
-         <prose/>
+         <field ref="prose"/>
       </model>
    </define-assembly>
-
-  <define-field name="desc">
+   <define-field name="desc">
       <formal-name>Description</formal-name>
       <description>A short textual description</description>
    </define-field>
-  
-  <define-assembly name="resource" group-as="resources">
+   <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document.</description>
-      <flag ref="id" datatype="ID" required="yes"/>
+      <flag ref="id" as-type="ID" required="yes"/>
       <model>
          <field ref="desc"/>
          <choice>
-            <assembly ref="rlink" max-occurs="unbounded"/>
+            <assembly ref="rlink" max-occurs="unbounded">
+               <group-as name="rlinks"/>
+            </assembly>
             <field ref="base64"/>
          </choice>
          <assembly ref="notes"/>
@@ -444,19 +448,17 @@
          <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource, or 2) be included as an attachment.</p>
       </remarks>
    </define-assembly>
-  
-  <define-field name="hash" group-as="hashes">
+   <define-field name="hash">
       <formal-name>Hash</formal-name>
       <description>A representation of a cryptographic digest generated over a resource using a hash algorithm.</description>
-      <value-key>value</value-key>
+      <json-value-key>value</json-value-key>
       <flag ref="algorithm" required="yes"/>
       <remarks>
          <p>A hash value can be used to authenticate that a referenced resource is the same resources as was pointed to by the author of the reference.</p>
          <p>When appearing as part of a resource (data object), the hash should apply to the referenced object.</p>
       </remarks>
    </define-field>
-
-  <define-flag name="algorithm" datatype="string">
+   <define-flag name="algorithm" as-type="string">
       <formal-name>Hash algorithm</formal-name>
       <description>Method by which a hash is derived</description>
       <valid-values allow-other="yes">
@@ -470,11 +472,10 @@
          <p>Valid values MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p>
       </remarks>
    </define-flag>
-  
-  <define-assembly name="role" group-as="roles">
+   <define-assembly name="role">
       <formal-name>Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
-      <flag ref="id" datatype="ID" required="yes"/>
+      <flag ref="id" as-type="ID" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="short-name"/>
@@ -485,8 +486,7 @@
         authority).</p>
       </remarks>
    </define-assembly>
-  
-  <define-flag name="href" datatype="anyURI">
+   <define-flag name="href" as-type="uri-reference">
       <formal-name>hypertext reference</formal-name>
       <description>A link to a document or document fragment (actual, nominal or projected)</description>
       <remarks>
@@ -495,8 +495,7 @@
         example) the results of profile resolution.</p>
       </remarks>
    </define-flag>
-
-  <define-flag name="id" datatype="ID">
+   <define-flag name="id" as-type="ID">
       <formal-name>Identifier</formal-name>
       <description>Unique identifier of the containing object</description>
       <remarks>
@@ -504,11 +503,10 @@
         different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
       </remarks>
       <example>
-        <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+         <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-  
-  <define-flag name="role-id" datatype="IDREFS">
+   <define-flag name="role-id" as-type="IDREFS">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <valid-values allow-other="yes">
@@ -517,36 +515,36 @@
          <!-- TODO: Need to add others -->
       </valid-values>
    </define-flag>
-  
-  <define-field name="title" as="mixed">
+   <define-field name="title" as-type="markup-line">
       <formal-name>Title</formal-name>
       <description>A title for display and navigation, exclusive of more specific properties</description>
       <remarks>
          <p>A title for the containing object as it should appear in a formatted document.</p>
       </remarks>
    </define-field>
-  
-  <define-field name="base64" as="string">
+   <define-field name="base64" as-type="string">
       <formal-name>Base64</formal-name>
       <description/>
-      <flag ref="filename" datatype="string"/>
+      <flag ref="filename" as-type="string"/>
       <flag ref="media-type"/>
    </define-field>
-  
-  <define-flag name="filename" datatype="string">
+   <define-flag name="filename" as-type="string">
       <formal-name>File Name</formal-name>
       <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
    </define-flag>
- 
-  <define-assembly name="citation" group-as="citations">
+   <define-assembly name="citation">
       <formal-name>Citation</formal-name>
       <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
-      <flag ref="id" datatype="ID" required="yes"/>
+      <flag ref="id" as-type="ID" required="yes"/>
       <model>
-         <field ref="target" max-occurs="unbounded"/>
+         <field ref="target" max-occurs="unbounded">
+            <group-as name="targets"/>
+         </field>
          <field ref="title"/>
          <field ref="desc"/>
-         <field ref="doc-id" max-occurs="unbounded"/>
+         <field ref="doc-id" max-occurs="unbounded">
+            <group-as name="document-ids"/>
+         </field>
          <any/>
       </model>
       <remarks>
@@ -554,8 +552,7 @@
          <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide a bibliographic entry.</p>
       </remarks>
    </define-assembly>
-  
-  <define-field name="target" group-as="targets">
+   <define-field name="target">
       <formal-name>Citation target</formal-name>
       <description>An address for retrieval of a citation</description>
       <remarks>
@@ -566,5 +563,8 @@
       of <code>title</code> inside this object.</p>
       </remarks>
    </define-field>
-  
+   <define-field name="prose" as-type="markup-multiline">
+      <formal-name>Prose</formal-name>
+      <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+   </define-field>
 </METASCHEMA>
