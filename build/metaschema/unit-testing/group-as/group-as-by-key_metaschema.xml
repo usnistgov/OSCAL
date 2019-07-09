@@ -26,7 +26,10 @@
   <define-field name="prop" as-type="string">
     <formal-name>prop</formal-name>
     <description>prop field</description>
-    <json-key flag="id"/>
-    <flag name="id" as-type="NCName"/>
+    <json-key flag-name="id"/>
+    <flag name="id" as-type="NCName">
+      <formal-name>ID</formal-name>
+      <description>Identifier</description>
+    </flag>
   </define-field>
 </METASCHEMA>
