@@ -291,14 +291,22 @@
       <flag ref="depends-on" as-type="IDREF"/>
       <model><!-- declarations tbf in the imported schema and to be aligned with it -->
          <field ref="label"/>
-         <field ref="usage" max-occurs="unbounded"/>
-         <field ref="constraint" max-occurs="unbounded"/>
+         <field ref="usage" max-occurs="unbounded">
+            <group-as name="usages"/>
+         </field>
+         <field ref="constraint" max-occurs="unbounded">
+            <group-as name="constraints"/>
+         </field>
          <choice>
             <field ref="value"/>
             <assembly ref="select"/>
          </choice>
-         <field ref="link" max-occurs="unbounded"/>
-         <assembly ref="part" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
       </model>
    </define-assembly>
    <define-assembly name="alter">
@@ -345,10 +353,18 @@
       <flag ref="position"/>
       <model>
          <field ref="title"/>
-         <assembly ref="param" max-occurs="unbounded"/>
-         <field ref="prop" max-occurs="unbounded"/>
-         <field ref="link" max-occurs="unbounded"/>
-         <assembly ref="part" max-occurs="unbounded"/>
+         <assembly ref="param" max-occurs="unbounded">
+            <group-as name="parameters"/>
+         </assembly>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
       </model>
    </define-assembly>
    <define-flag as-type="NCName" name="control-id">

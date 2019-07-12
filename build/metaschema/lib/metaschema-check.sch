@@ -96,9 +96,25 @@
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or (m:group-as/@json-behavior='BY_KEY') or empty($decl/m:json-key)">Target definition for { @ref} designates a json key, so
             the invocation should have group-as/@json-behavior='BY_KEY'</sch:assert>
-            
             <sch:report test="@ref = ../(* except current())/@ref">Everything named the same must appear together</sch:report>
             <sch:report test="@ref = group-as/@name">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>
+            
+            <sch:assert test="matches(m:group-as/@name,'\S') or not((@max-occurs/number() gt 1) or (@max-occurs='unbounded'))">Unless @max-occurs is 1,
+            a grouping name must be given</sch:assert>
+        
+            <!--<sqf:fix id="add-group-name">  sqf:fix="add-group-name"
+                <sqf:description>
+                    <sqf:title>Insert grouping directive</sqf:title>
+                </sqf:description>
+                <sqf:user-entry name="group-name">
+                    <sqf:description>
+                        <sqf:title>group name</sqf:title>
+                    </sqf:description>
+                </sqf:user-entry>
+                <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
+                
+            </sqf:fix>-->
+            
         </sch:rule>
 
         <sch:rule context="m:group-as">
