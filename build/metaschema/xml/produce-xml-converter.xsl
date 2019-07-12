@@ -138,12 +138,12 @@
         <xsl:value-of select="$markdown-blocks-label"/>
     </xsl:template>
     
-    <xsl:template priority="3" match="define-field[exists(value-key)]" mode="text-key">
-        <xsl:value-of select="value-key"/>
+    <xsl:template priority="3" match="define-field[matches(json-value-key,'\S')]" mode="text-key">
+        <xsl:value-of select="json-value-key"/>
     </xsl:template>
     
-    <xsl:template priority="4" match="define-field[exists(flag/value-key)]" mode="text-key">
-        <XSLT:value-of select="@{flag[exists(value-key)]/(@name,@ref)[1]}"/>
+    <xsl:template priority="4" match="define-field[exists(json-value-key/@flag-name)]" mode="text-key">
+        <XSLT:value-of select="@{ json-value-key/@flag-name }"/>
     </xsl:template>
     
     <xsl:variable name="numeric-types" as="element()*">
@@ -191,11 +191,7 @@
             </string>
         </XSLT:template>
     </xsl:template>
-    
-    <!--<xsl:template priority="2" match="define-field[exists(flag/value-key)]" mode="text-key">
-        <XSLT:value-of select="string[@key='{ flag/value-key/../@name }']"/>
-    </xsl:template>-->
-    
+        
     <xsl:template match="define-field">
         <XSLT:template match="{@name}" mode="xml2json">
             <XSLT:variable name="text-key">
@@ -285,7 +281,7 @@
     </xsl:template>
     
     <!--  A flag designated to be key is not picked up as a property -->
-    <xsl:template match="flag[@name=../json-key/@flag-name]"/>
+    <xsl:template match="flag[@name=../(json-key|json-value-key)/@flag-name]"/>
     
     <xsl:template match="flag">
         <xsl:variable name="datatype" select="(key('definition-by-name',@ref)/@as-type,@as-type,'string')[1]"/>

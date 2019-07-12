@@ -90,9 +90,14 @@
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
             <string key="type">object</string>
+            <xsl:variable name="properties" as="element()*">
+                <xsl:apply-templates select="." mode="properties"/>
+            </xsl:variable>
+            <xsl:if test="exists($properties)">
             <map key="properties">
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
+            </xsl:if>
             <xsl:call-template name="required-properties"/>
             <xsl:choose>
                 <xsl:when test="exists(json-value-key)">
@@ -122,7 +127,7 @@
     
     <xsl:template name="required-properties">
         <xsl:variable name="value-string" as="element()?">
-            <xsl:for-each select="self::define-field[not(@as-type='empty')]">
+            <xsl:for-each select="self::define-field[not(@as-type='empty') and not( matches(json-value-key/@flag-name,'\S') )]">
                 <string>
                     <xsl:apply-templates select="." mode="value-key"/>
                 </string>
@@ -168,6 +173,9 @@
         <xsl:value-of select="json-value-key"/>
     </xsl:template>
     
+<!-- No property is declared for a value whose key is assigned by a json-value-key   -->
+    <xsl:template priority="3" match="define-field[matches(json-value-key/@flag-name,'\S')]" mode="value-key"/>
+        
     <!--<xsl:template priority="3" match="define-field[exists(flag/value-key)]" mode="text-key"/>-->
     
     <xsl:template match="define-assembly[exists(json-key)] | define-field[exists(json-key)]">
