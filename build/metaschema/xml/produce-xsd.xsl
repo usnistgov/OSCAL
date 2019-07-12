@@ -34,22 +34,32 @@
     <!-- Produces $composed-metaschema -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
+    <!-- Produces intermediate results, w/o namespace alignment -->
     <xsl:variable name="unwired">
-            <xsl:call-template name="build-schema"/>
-        </xsl:variable>
+         <xsl:call-template name="build-schema"/>
+    </xsl:variable>
     <!-- entry template -->
     
-    <xsl:template match="/">       
+    <xsl:param name="debug" select="'no'"/>
+    
+    <xsl:template match="/">
+        <xsl:choose>
+            <xsl:when test="$debug='yes'">
+                <xsl:message>Running in 'debug' to show intermediate results</xsl:message>
+                <xsl:sequence select="$unwired"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="$unwired" mode="wire-ns"/>
+            </xsl:otherwise>
+        </xsl:choose>
         <!-- $unwired has the schema with no namespaces -->
         
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
-        <xsl:apply-templates select="$unwired" mode="wire-ns"/>
+        
     </xsl:template>
 
-    <xsl:template match="/" mode="debug">       
-            <xsl:copy-of select="$unwired"/>
-    </xsl:template>
+    
     
     <!--MAIN ACTION HERE -->
     
@@ -132,7 +142,7 @@
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
-                <xsl:apply-templates select="key | flag"/>
+                <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -141,7 +151,7 @@
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
-                <xsl:apply-templates select="key | flag"/>
+                <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -151,7 +161,7 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
                 <xs:group ref="{$declaration-prefix}:everything-inline"/>
-                <xsl:apply-templates select="key | flag"/>
+                <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -161,7 +171,7 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
                 <xs:group ref="{$declaration-prefix}:prose"/>
-                <xsl:apply-templates select="key | flag"/>
+                <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -176,6 +186,7 @@
     </xsl:template>
     
     <xsl:template match="define-assembly">
+        <xsl:variable name="whose" select="."/>
         <xs:element name="{@name}">
             <xsl:if test="@name = /*/@root">
                 <xsl:attribute name="m:root" namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0">yes</xsl:attribute>
@@ -183,11 +194,20 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
                 <xsl:apply-templates select="model"/>
-                <xsl:apply-templates select="key | flag"/>
+                <xsl:apply-templates select="flag"/>
             </xs:complexType>
+            <!-- producing xs:unique to govern attributes that will be promoted to keys -->
+            <!-- this works over and above XSD type validation e.g. ID -->
+            <xsl:for-each select="model//*[group-as/@json-behavior='BY_KEY']/key('definition-by-name',@ref)/json-key">
+                <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
+                    <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
+                    <xs:field xpath="@{ @flag-name }"></xs:field>
+                </xs:unique>
+            </xsl:for-each>
         </xs:element>
     </xsl:template>
 
+    
     <!-- Flags become attributes; this schema defines them all locally. -->
     <xsl:template match="define-flag"/>
 
@@ -239,12 +259,12 @@
         <xs:group ref="{$declaration-prefix}:prose" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
-    <xsl:template match="flag | key">
+    <xsl:template match="flag">
         <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type)[1]"/>
         <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
         <xs:attribute name="{ (@name,@ref)[1] }">
             <xsl:attribute name="type">xs:string</xsl:attribute>
-            <xsl:if test="(@required='yes') or exists(self::key|child::value-key)">
+            <xsl:if test="(@required='yes') or (@name=(../json-key/@flag-name,../json-value-key/@flag-name))">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:if>
             <!-- annotate as datatype or string unless an exclusive value-list is given -->

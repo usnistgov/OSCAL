@@ -210,7 +210,6 @@
         </xsl:copy>
     </xsl:template>
     
-    
     <xsl:template name="mark-module">
         <xsl:copy-of select="ancestor-or-self::METASCHEMA/@module"/>
     </xsl:template>

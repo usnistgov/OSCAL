@@ -214,27 +214,34 @@
         </XSLT:template>
         <!-- flagged, groupable fields marked as collapsible may be collapsed -->
         <xsl:if test="exists(flag) and @collapsible = ('yes','true')">
-            <xsl:variable name="callers" select="distinct-values(key('reference-by-name',@name)/group-as/@name)"/>
-            <xsl:if test="exists($callers)">
-            <XSLT:template match="array[@key = ({ string-join($callers ! ('''' || . || ''''),', ') })][count(map) gt 1]" mode="rectify"
-                xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-                <XSLT:variable name="text-key">
-                    <xsl:apply-templates select="." mode="text-key"/>
-                </XSLT:variable>
-                <xsl:variable name="group-properties">
-                    <xsl:variable name="flag-names" as="xs:string*">
-                        <xsl:perform-sort select="flag/(@name,@ref)[1]/normalize-space(.)">
-                            <xsl:sort select="."/>
-                        </xsl:perform-sort>
-                    </xsl:variable>
-                    <xsl:sequence select="string-join($flag-names ! ( '*[@key = ''' || . || ''']'),',')"/>
+            <xsl:variable name="group-names" select="distinct-values(key('reference-by-name',@name)/group-as/@name)"/>
+            <xsl:variable name="text-key">
+                <xsl:apply-templates select="." mode="text-key"/>
+            </xsl:variable>
+            <xsl:variable name="group-properties">
+                <xsl:variable name="flag-names" as="xs:string*">
+                    <xsl:perform-sort select="flag/(@name,@ref)[1]/normalize-space(.)">
+                        <xsl:sort select="."/>
+                    </xsl:perform-sort>
                 </xsl:variable>
+                <xsl:sequence select="string-join($flag-names ! ( '*[@key = ''' || . || ''']'),',')"/>
+            </xsl:variable>
+            
+            <xsl:for-each select="$group-names">
+                <!-- making it explicit -->
+                <xsl:variable name="group-name" select="."/>
+                <!--<XSLT:template match="array[@key = ({ string-join($callers ! ('''' || . || ''''),', ') })][count(map) gt 1]" mode="rectify"-->
+                <XSLT:template match="array[@key = '{ $group-name }'][count(map) gt 1]" mode="rectify"
+                        xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+                <XSLT:variable name="text-key">
+                    <xsl:copy-of select="$text-key"/>
+                </XSLT:variable>
                 
                 <XSLT:variable name="grouped-maps" as="element()*">
                     <XSLT:for-each-group select="map"
                         group-by="string-join( ({ $group-properties } ), '#' )">
                         <map>
-                            <XSLT:copy-of select="*[@key = ('days', 'baker')]"/>
+                            <!--<XSLT:copy-of select="*[@key = ('days', 'baker')]"/>-->
                             <array key="{{$text-key}}">
                                 <XSLT:for-each select="current-group()/string[@key = $text-key]">
                                     <string>
@@ -247,28 +254,27 @@
                 </XSLT:variable>
                 <XSLT:choose>
                     <XSLT:when test="count($grouped-maps) gt 1">
-                        <array key="{ @group-as}">
+                        <array key="{ $group-name }">
                             <XSLT:copy-of select="$grouped-maps"/>
                         </array>
                     </XSLT:when>
                     <XSLT:otherwise>
-                        <map key="{ @group-as}">
+                        <map key="{ $group-name }">
                             <XSLT:copy-of select="$grouped-maps/*"/>
                         </map>
                     </XSLT:otherwise>
                 </XSLT:choose>
             </XSLT:template>
-            </xsl:if>
+            </xsl:for-each>
         </xsl:if>
     </xsl:template>
-   
     
     <!-- no special provision made for addressing by @id that happens at the other end -->
     <xsl:template match="define-assembly">
         <XSLT:template match="{@name}" mode="xml2json">
             <map key="{@name}">
-                <xsl:for-each select="key">
-                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                <xsl:for-each select="json-key">
+                    <xsl:attribute name="key">{@<xsl:value-of select="@flag-name"/>}</xsl:attribute>
                 </xsl:for-each>
 
                 <xsl:apply-templates select="flag"/>
@@ -277,6 +283,9 @@
             </map>
         </XSLT:template>
     </xsl:template>
+    
+    <!--  A flag designated to be key is not picked up as a property -->
+    <xsl:template match="flag[@name=../json-key/@flag-name]"/>
     
     <xsl:template match="flag">
         <xsl:variable name="datatype" select="(key('definition-by-name',@ref)/@as-type,@as-type,'string')[1]"/>
@@ -322,14 +331,13 @@
     </xsl:template>
     
     <xsl:template priority="3"
-        match="field[exists(key('definition-by-name',@ref)/key)] |
-               assembly[exists(key('definition-by-name',@ref)/key)]">
-        <xsl:variable name="key" select="exists(key('definition-by-name',@ref)/key)"/>
-            <XSLT:for-each-group select="{@ref}" group-by="local-name()">
-                <map key="{  group-as/@name }">
-                    <XSLT:apply-templates select="current-group()" mode="#current"/>
-                </map>
-            </XSLT:for-each-group>
+        match="field[exists(key('definition-by-name',@ref)/json-key)] |
+               assembly[exists(key('definition-by-name',@ref)/json-key)]">
+        <XSLT:for-each-group select="{@ref}" group-by="local-name()">
+            <map key="{  group-as/@name }">
+                <XSLT:apply-templates select="current-group()" mode="#current"/>
+            </map>
+        </XSLT:for-each-group>
     </xsl:template>
     
     <xsl:template name="furniture">
@@ -375,7 +383,7 @@
         
         <XSLT:template match="node() | @*" mode="rectify">
            <XSLT:copy copy-namespaces="no">
-               <XSLT:apply-templates select="node() | @*"/>
+               <XSLT:apply-templates mode="#current" select="node() | @*"/>
            </XSLT:copy>
         </XSLT:template>
         
@@ -401,7 +409,7 @@
                 <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
                 </XSLT:variable>
-                <string key="{ $markdown-blocks-label }">
+                <string key="{ ( @name,$markdown-blocks-label )[1] }">
                     <XSLT:value-of select="string-join($string-sequence,'\n')"/>
                 </string>
             </XSLT:if>
