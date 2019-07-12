@@ -16,6 +16,7 @@
 -->
 
     <xsl:key name="definition-by-name" match="m:define-assembly | m:define-field | m:define-flag" use="@name"/>
+    <xsl:key name="invocation-by-ref" match="m:assembly[exists(@ref)] | m:field[exists(@ref)] | m:flag[exists(@ref)]" use="@ref"/>
     
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
@@ -41,6 +42,8 @@
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
             <sch:assert test="not(@as-type='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
+            <sch:assert test="not(key('invocation-by-ref',@name)/m:group-as/@json-behavior='BY_KEY') or exists(m:json-key)"><sch:value-of select="substring-after(local-name(),
+            'define-')"/> is assigned a json key, but no 'json-key' is given</sch:assert>
         </sch:rule>
 
         <sch:rule context="m:json-key">
@@ -94,7 +97,8 @@
         <sch:rule context="m:field | m:assembly">
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
-            <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@ref"/>', but their definition does not give a group name.</sch:assert>
+            <sch:assert test="empty($decl) or (m:group-as/@json-behavior='BY_KEY') or empty($decl/m:json-key)">Target definition for { @ref} designates a json key, so
+            the invocation should have group-as/@json-behavior='BY_KEY'</sch:assert>
             
             <sch:report test="@ref = ../(* except current())/@ref">Everything named the same must appear together</sch:report>
             <sch:report test="@ref = group-as/@name">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>

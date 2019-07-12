@@ -135,8 +135,7 @@
     <xsl:function name="m:is-table" as="xs:boolean">
         <xsl:param name="line" as="element(m:p)"/>
         <xsl:variable name="lines" select="tokenize($line,'\s*\n')[matches(.,'\S')]"/>
-        <xsl:sequence select="(every $l in $lines satisfies matches($l,'^\|'))
-            and (some $l in $lines satisfies m:is-table-row-demarcator($l))"/>
+        <xsl:sequence select="(every $l in $lines satisfies matches($l,'^\|')) and (some $l in $lines satisfies m:is-table-row-demarcator($l))"/>
     </xsl:function>
     
     <xsl:template mode="mark-structures" priority="5" match="m:p[m:is-table(.)]">

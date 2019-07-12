@@ -122,7 +122,7 @@
     
     <xsl:template name="required-properties">
         <xsl:variable name="value-string" as="element()?">
-            <xsl:for-each select="self::define-field">
+            <xsl:for-each select="self::define-field[not(@as-type='empty')]">
                 <string>
                     <xsl:apply-templates select="." mode="value-key"/>
                 </string>
@@ -156,10 +156,14 @@
         <xsl:value-of select="$markdown-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as-type=('markup-multiline')]" mode="value-key">
+    <xsl:template match="define-field[@as-type='markup-multiline']" mode="value-key">
         <xsl:value-of select="$markdown-multiline-label"/>
     </xsl:template>
     
+<!-- empty fields have no values, hence no value keys; by producing nothing
+        this template sees to it no declaration for it is produced either. -->
+    <xsl:template match="define-field[@as-type='empty']" mode="value-key"/>
+        
     <xsl:template priority="2" match="define-field[matches(json-value-key,'\S')]" mode="value-key">
         <xsl:value-of select="json-value-key"/>
     </xsl:template>
@@ -231,7 +235,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag[empty(key)]"/>
+        <xsl:apply-templates mode="declaration" select="flag"/>
         <xsl:variable name="this-key" as="xs:string?">
             <xsl:apply-templates select="." mode="value-key"/>
         </xsl:variable>
@@ -360,11 +364,12 @@
     </xsl:template>-->
     
     
+    <!--  elements that fall through are made objects in case they have properties  -->
     <xsl:template match="*" mode="object-type">
         <string key="type">object</string>
     </xsl:template>
 
-    <xsl:template match="define-field[empty(flag)] | define-flag" mode="object-type">
+    <xsl:template match="define-field[empty(flag)] | define-flag | flag" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
     
@@ -382,6 +387,7 @@
         </xsl:choose>
     </xsl:template>
 
+    <!-- currently working on flags but not on fields with flags? -->
     <xsl:template priority="2" match="*[@as-type='boolean']" mode="object-type">
         <string key="type">boolean</string>
     </xsl:template>
