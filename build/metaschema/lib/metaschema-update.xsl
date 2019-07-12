@@ -92,6 +92,13 @@
         </xsl:for-each>
     </xsl:template>
     
+    <xsl:template match="fields | assemblies" mode="group-as">
+        <xsl:next-match/>
+        <xsl:if test="empty(key('definition-by-name',(@named|@ref)))">
+            <xsl:message expand-text="true">WARNING: group-as not found in this module for { local-name() } named '{ @named|@ref }' </xsl:message>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template match="prose">
         <field ref="prose"/>
     </xsl:template>

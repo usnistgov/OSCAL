@@ -92,7 +92,9 @@
          <assembly ref="param" max-occurs="unbounded">
             <group-as name="parameters"/>
          </assembly>
-         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
@@ -132,8 +134,12 @@
             <group-as name="parameters"/>
          </assembly>
          <!-- TODO: Need to be able to add valid values in context -->
-         <field ref="prop" max-occurs="unbounded"/>
-         <field ref="link" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
@@ -163,8 +169,11 @@
          <assembly ref="param" max-occurs="unbounded">
             <group-as name="parameters"/>
          </assembly>
-         <field ref="prop" max-occurs="unbounded"/>
-         <field ref="link" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/></field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
@@ -212,7 +221,9 @@
                </remarks>
             </assembly>
          </choice>
-         <field ref="link" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
          <any/>
       </model>
       <remarks>
@@ -280,12 +291,15 @@
       <flag ref="class"/>
       <model>
          <field ref="title"/>
-         <field ref="prop" max-occurs="unbounded"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/></field>
          <field ref="prose"/>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded"/>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
          <any/>
       </model>
       <remarks>

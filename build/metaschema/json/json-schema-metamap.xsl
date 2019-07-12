@@ -429,7 +429,7 @@
         <string key="type">number</string>
     </xsl:template>
     
-    <xsl:template priority="3" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
+    <xsl:template priority="2.1" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
         <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>
     </xsl:template>
     
