@@ -60,11 +60,10 @@
             <xsl:if test="exists(../m:flag)">Should be (one of) <xsl:value-of select="../m:flag/(@name|@ref)" separator=", "/></xsl:if></sch:assert>
         </sch:rule>
         
-        <sch:rule context="m:value-key">
-            <sch:assert test="not(parent::define-field) or matches(.,'\S')">Inside a field definition, a value-key must be
-                given with a literal value</sch:assert>
-            <sch:assert test="not(parent::flag) or empty(node())">Inside a flag reference, a value-key must be empty
-                (serving to declare the flag as the value key)</sch:assert>
+        <sch:rule context="m:json-value-key">
+            <sch:report test="exists(@flag-name) and matches(.,'\S')">JSON value key may be set to a value
+            or a flag's value, but not both.</sch:report>
+            <sch:assert test="empty(@flag-name) or @flag-name=../m:flag/(@name|@ref)">flag '<sch:value-of select="@flag-name"/>' not found for JSON value key</sch:assert>
         </sch:rule>
         
         <sch:rule context="m:valid-values/m:value">
@@ -77,14 +76,12 @@
             <sch:assert test="exists(@name|@ref)">Flag declaration must have 'name' or 'ref'</sch:assert>
             <sch:assert test="count(@name|@ref) eq 1">Flag declaration may be by name or reference, not both (remove @name or @ref)</sch:assert>
             
-            <sch:assert test="empty(m:value-key) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
-            <sch:assert test="empty(m:value-key) or empty(../m:value-key)">A flag may not be marked as a value key when its field has a (literal) value key.</sch:assert>
-            <sch:assert test="empty(m:value-key) or (count(../m:flag/m:value-key) eq 1)">Only one flag may be marked as a value key on a field.</sch:assert>
-            <sch:assert test="count(../*[(@name|@ref) = current()/(@name|@ref)]) eq 1">Only one flag (or key or value-key) may be named 
+            <sch:assert test="not((@name|@ref)=../m:json-value-key/@flag-name) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
+            <sch:assert test="count(../*[(@name|@ref) = current()/(@name|@ref)]) eq 1">Only one flag may be named 
                 <sch:value-of select="(@name|@ref)"/></sch:assert>
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
-            <sch:report test="@name=('RICHTEXT','STRVALUE')">Flag should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
+            <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Flag should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
         </sch:rule>
         
         <sch:rule context="m:prose">
