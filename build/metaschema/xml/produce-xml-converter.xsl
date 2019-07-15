@@ -344,38 +344,38 @@
     </xsl:template>
     
     <xsl:template name="furniture">
-        
+
         <XSLT:character-map name="delimiters">
             <XSLT:output-character character="&lt;" string="\u003c"/>
             <XSLT:output-character character="&gt;" string="\u003e"/>
         </XSLT:character-map>
-        
+
         <XSLT:param name="json-indent" as="xs:string">no</XSLT:param>
         <xsl:comment> Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass </xsl:comment>
-        <XSLT:param name="diagnostic"  as="xs:string">no</XSLT:param>
-        
+        <XSLT:param name="diagnostic" as="xs:string">no</XSLT:param>
+
         <XSLT:variable name="write-options" as="map(*)" expand-text="true">
             <XSLT:map>
                 <XSLT:map-entry key="'indent'">{ $json-indent='yes' }</XSLT:map-entry>
             </XSLT:map>
         </XSLT:variable>
-        
+
         <XSLT:variable name="xpath-json">
             <map>
                 <XSLT:apply-templates select="/" mode="xml2json"/>
             </map>
         </XSLT:variable>
-        
+
         <XSLT:variable name="rectified">
             <XSLT:apply-templates select="$xpath-json" mode="rectify"/>
         </XSLT:variable>
-        
+
         <XSLT:template match="/">
             <XSLT:choose>
-                <XSLT:when test="$diagnostic='rough'">
+                <XSLT:when test="$diagnostic = 'rough'">
                     <XSLT:copy-of select="$xpath-json"/>
                 </XSLT:when>
-                <XSLT:when test="$diagnostic='rectified'">
+                <XSLT:when test="$diagnostic = 'rectified'">
                     <XSLT:copy-of select="$rectified"/>
                 </XSLT:when>
                 <XSLT:otherwise>
@@ -383,20 +383,21 @@
                 </XSLT:otherwise>
             </XSLT:choose>
         </XSLT:template>
-        
+
         <XSLT:template match="node() | @*" mode="rectify">
-           <XSLT:copy copy-namespaces="no">
-               <XSLT:apply-templates mode="#current" select="node() | @*"/>
-           </XSLT:copy>
+            <XSLT:copy copy-namespaces="no">
+                <XSLT:apply-templates mode="#current" select="node() | @*"/>
+            </XSLT:copy>
         </XSLT:template>
-        
-        <XSLT:template mode="rectify" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
+
+        <XSLT:template mode="rectify"
+            xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
             match="/*/@key | array/*/@key"/>
-        
+
         <XSLT:template mode="rectify" match="@m:*"/>
-        
-<!--        don't squash arrays marked as @m:json-behavior="ARRAY" -->
-        <XSLT:template mode="rectify" match="array[count(*) eq 1][not(@m:json-behavior='ARRAY')]"
+
+        <!--        don't squash arrays marked as @m:json-behavior="ARRAY" -->
+        <XSLT:template mode="rectify" match="array[count(*) eq 1][not(@m:json-behavior = 'ARRAY')]"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
             <XSLT:for-each select="*">
                 <XSLT:copy>
@@ -405,58 +406,51 @@
                 </XSLT:copy>
             </XSLT:for-each>
         </XSLT:template>
-        
+
         <XSLT:template name="prose">
             <XSLT:param name="key" select="'{ $markdown-blocks-label }'"/>
-            <XSLT:variable name="blocks" select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
+            <XSLT:variable name="blocks"
+                select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
             <XSLT:if test="exists($blocks)">
                 <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
                 </XSLT:variable>
                 <string key="{{$key}}">
-                    <XSLT:value-of select="string-join($string-sequence,'\n')"/>
+                    <XSLT:value-of select="string-join($string-sequence, '\n')"/>
                 </string>
             </XSLT:if>
         </XSLT:template>
-        
+
         <XSLT:template mode="as-string" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <XSLT:if test="matches(.,'\S')">
-                <string key="{{ $key }}">
-                    <XSLT:value-of select="."/>
-                </string>
-            </XSLT:if>
+            <string key="{{ $key }}">
+                <XSLT:value-of select="."/>
+            </string>
         </XSLT:template>
-        
+
         <XSLT:template mode="as-boolean" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <XSLT:if test="matches(.,'\S')">
-                <boolean key="{{ $key }}">
-                  <XSLT:value-of select="."/>                    
-                </boolean>
-            </XSLT:if>
+            <boolean key="{{ $key }}">
+                <XSLT:value-of select="."/>
+            </boolean>
         </XSLT:template>
-        
+
         <XSLT:template mode="as-integer" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <XSLT:if test="matches(.,'\S')">
-                <integer key="{{ $key }}">
-                    <XSLT:value-of select="."/>                    
-                </integer>
-            </XSLT:if>
+            <integer key="{{ $key }}">
+                <XSLT:value-of select="."/>
+            </integer>
         </XSLT:template>
-        
+
         <XSLT:template mode="as-number" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <XSLT:if test="matches(.,'\S')">
-                <number key="{{ $key }}">
-                    <XSLT:value-of select="."/>                    
-                </number>
-            </XSLT:if>
+            <number key="{{ $key }}">
+                <XSLT:value-of select="."/>
+            </number>
         </XSLT:template>
-        
+
         <!--<XSLT:key name="parameters" match="param" use="@id"/>-->
-        
+
         <XSLT:template name="conditional-lf">
             <XSLT:variable name="predecessor"
                 select="preceding-sibling::p | preceding-sibling::ul | preceding-sibling::ol | preceding-sibling::table | preceding-sibling::pre"/>
@@ -464,14 +458,14 @@
                 <string/>
             </XSLT:if>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="p | link | part/*">
             <XSLT:call-template name="conditional-lf"/>
             <string>
                 <XSLT:apply-templates mode="md"/>
             </string>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
             <XSLT:call-template name="conditional-lf"/>
             <string>
@@ -486,12 +480,12 @@
         <XSLT:template mode="mark" match="h4">#### </XSLT:template>
         <XSLT:template mode="mark" match="h5">##### </XSLT:template>
         <XSLT:template mode="mark" match="h6">###### </XSLT:template>
-        
+
         <XSLT:template mode="md" match="table">
             <XSLT:call-template name="conditional-lf"/>
-            <XSLT:apply-templates  select="*"  mode="md"/>
+            <XSLT:apply-templates select="*" mode="md"/>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="tr">
             <string>
                 <XSLT:apply-templates select="*" mode="md"/>
@@ -505,14 +499,16 @@
                 </string>
             </XSLT:if>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="th | td">
             <XSLT:if test="empty(preceding-sibling::*)">|</XSLT:if>
-            <XSLT:text><xsl:text> </xsl:text></XSLT:text>
+            <XSLT:text>
+                <xsl:text> </xsl:text>
+            </XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text> |</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" priority="1" match="pre">
             <XSLT:call-template name="conditional-lf"/>
             <string>```</string>
@@ -527,11 +523,11 @@
             <XSLT:apply-templates mode="md"/>
             <string/>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="ul//ul | ol//ol | ol//ul | ul//ol">
             <XSLT:apply-templates mode="md"/>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="li">
             <string>
                 <XSLT:for-each select="../ancestor::ul">
@@ -540,8 +536,9 @@
                 <XSLT:text>* </XSLT:text>
                 <XSLT:apply-templates mode="md"/>
             </string>
-        </XSLT:template><!-- Since XProc doesn't support character maps we do this in XSLT -   -->
-        
+        </XSLT:template>
+        <!-- Since XProc doesn't support character maps we do this in XSLT -   -->
+
         <XSLT:template mode="md" match="ol/li">
             <string/>
             <string>
@@ -551,43 +548,44 @@
                 <XSLT:text>1. </XSLT:text>
                 <XSLT:apply-templates mode="md"/>
             </string>
-        </XSLT:template><!-- Since XProc doesn't support character maps we do this in XSLT -   -->
-        
-        
-        
-        <XSLT:template mode="md" match="code | span[contains(@class,'code')]">
+        </XSLT:template>
+        <!-- Since XProc doesn't support character maps we do this in XSLT -   -->
+
+
+
+        <XSLT:template mode="md" match="code | span[contains(@class, 'code')]">
             <XSLT:text>`</XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text>`</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="em | i">
             <XSLT:text>*</XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text>*</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="strong | b">
             <XSLT:text>**</XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text>**</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:template mode="md" match="q">
             <XSLT:text>"</XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text>"</XSLT:text>
         </XSLT:template>
-        
+
         <!-- <insert param-id="ac-1_prm_1"/> -->
         <XSLT:template mode="md" match="insert">
             <XSLT:text>{ </XSLT:text>
             <XSLT:value-of select="@param-id"/>
             <XSLT:text> }</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
-        
+
         <XSLT:template mode="md" match="a">
             <XSLT:text>[</XSLT:text>
             <XSLT:value-of select="."/>
@@ -596,14 +594,14 @@
             <XSLT:value-of select="@href"/>
             <XSLT:text>)</XSLT:text>
         </XSLT:template>
-        
+
         <XSLT:template match="text()" mode="md">
             <!-- Escapes go here       -->
             <!--<XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>-->
-            <XSLT:value-of select="replace(.,'([`~\^\*''&quot;])','\\$1')"/>
+            <XSLT:value-of select="replace(., '([`~\^\*''&quot;])', '\\$1')"/>
         </XSLT:template>
-        
-        
+
+
     </xsl:template>
     
 </xsl:stylesheet>

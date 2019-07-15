@@ -103,9 +103,10 @@
                 <xsl:when test="exists(json-value-key)">
                     <xsl:variable name="value-key-name" select="json-value-key/@flag-name"/>
                     <xsl:variable name="all-properties"
-                        select="flag[not(@name = $value-key-name)] | model//(field | assembly)"/>
+                        select="flag[not((@name|@ref) = $value-key-name)] | model//(field | assembly)"/>
+                    <xsl:comment> we require an unspecified property, with any key, to carry the nominal value</xsl:comment>
                     <number key="minProperties">
-                        <xsl:value-of select="count($all-properties[@required='yes' or @min-occurs &gt; 0])"/>
+                        <xsl:value-of select="count(json-value-key[exists(@flag-name)] | $all-properties[@required='yes' or @min-occurs &gt; 0])"/>
                     </number>
                     <number key="maxProperties">
                         <xsl:value-of select="count($all-properties | self::define-field[not(@as='empty')])"/>
@@ -129,7 +130,7 @@
         <!-- A value string is never required even on elements not empty -->
         <xsl:variable name="requirements" as="element()*">
             <xsl:apply-templates mode="property-name"
-                select="flag[@required = 'yes'][not(@name = ../(json-key | json-value-key)/@flag-name)] |
+                select="flag[@required = 'yes'][not((@name|@ref) = ../(json-key | json-value-key)/@flag-name)] |
                 model//*[@min-occurs &gt; 0]"/>
         </xsl:variable> 
         <xsl:if test="exists( $requirements )">
