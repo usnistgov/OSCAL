@@ -130,12 +130,15 @@
         <xsl:value-of select="$string-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='markup-line']" mode="text-key">
+    <xsl:template match="define-field[@as-type='markup-line']" mode="text-key">
         <xsl:value-of select="$markdown-value-label"/>
     </xsl:template>
     
-    <xsl:template match="define-field[@as='markup-multiline']" mode="text-key">
-        <xsl:value-of select="$markdown-blocks-label"/>
+<!-- this should only apply as long as (a) xml-unwrap='yes' and (b) there
+    are no flags -->
+    <xsl:template match="define-field[@as-type='markup-multiline']" mode="text-key">
+        <!--<xsl:value-of select="$markdown-blocks-label"/>-->
+        <xsl:value-of select="@name"/>
     </xsl:template>
     
     <xsl:template priority="3" match="define-field[matches(json-value-key,'\S')]" mode="text-key">
@@ -302,8 +305,12 @@
         <xsl:apply-templates/>
     </xsl:template>
     
-    <xsl:template match="field[@as-type='markup-multiline']">
-        <XSLT:call-template name="prose"/>
+    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+        <XSLT:call-template name="prose">
+            <XSLT:with-param name="key">
+                <xsl:value-of select="@ref"/>
+            </XSLT:with-param>
+        </XSLT:call-template>
     </xsl:template>
     
     <xsl:template match="field | assembly">
@@ -400,12 +407,13 @@
         </XSLT:template>
         
         <XSLT:template name="prose">
+            <XSLT:param name="key" select="'{ $markdown-blocks-label }'"/>
             <XSLT:variable name="blocks" select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
             <XSLT:if test="exists($blocks)">
                 <XSLT:variable name="string-sequence" as="element()*">
                     <XSLT:apply-templates mode="md" select="$blocks"/>
                 </XSLT:variable>
-                <string key="{ ( @name,$markdown-blocks-label )[1] }">
+                <string key="{{$key}}">
                     <XSLT:value-of select="string-join($string-sequence,'\n')"/>
                 </string>
             </XSLT:if>

@@ -156,6 +156,21 @@
         <XSLT:value-of select="string[@key='{ json-value-key/@flag-name }']"/>
     </xsl:template>
     
+    <xsl:template match="define-field[@as-type='markup-multiline']">
+        <xsl:variable name="group-names" select="distinct-values(key('references-by-name',@name)/group-as/@name)"/>
+        <xsl:variable name="single-match" as="xs:string" expand-text="true">*[@key='{@name}']</xsl:variable>
+        <xsl:variable name="group-matches" as="xs:string*" select="$group-names ! ('*[@key=''' || . || ''']  | array[@key=''' || . || ''']/*')"/>
+        <xsl:variable name="field-match" select="string-join(($single-match,$group-matches),' | ')"/>
+        
+        <xsl:comment expand-text="yes">{ $field-match }</xsl:comment>
+        <XSLT:template match="{$field-match}" priority="5" mode="json2xml">
+            <xsl:apply-templates select="." mode="field-text"/>
+        </XSLT:template>
+        <xsl:for-each select="json-key | json-value-key">
+            <xsl:message expand-text="yes">{ local-name()} is ignored on field { ../@name } of type 'markup-multiline' </xsl:message>"
+        </xsl:for-each>
+    </xsl:template>
+        
     <xsl:template match="define-field" expand-text="true">
         <xsl:variable name="text-value-key" as="xs:string">
             <xsl:apply-templates select="." mode="text-key"/>
@@ -223,7 +238,6 @@
         
         <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
              (for a 'collapsible' field definition) -->
-                
         <xsl:for-each select="$group-names">
                 
             <XSLT:template priority="3" mode="json2xml"
