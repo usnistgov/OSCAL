@@ -35,15 +35,15 @@
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     <!-- Produces intermediate results, w/o namespace alignment -->
-    <xsl:variable name="unwired">
-         <xsl:call-template name="build-schema"/>
-    </xsl:variable>
     <!-- entry template -->
     
     <xsl:param name="debug" select="'no'"/>
     
     <xsl:template match="/">
-        <xsl:choose>
+        <xsl:variable name="unwired">
+         <xsl:call-template name="build-schema"/>
+    </xsl:variable>
+    <xsl:choose>
             <xsl:when test="$debug='yes'">
                 <xsl:message>Running in 'debug' to show intermediate results</xsl:message>
                 <xsl:sequence select="$unwired"/>
@@ -80,7 +80,7 @@
             
             <xsl:if test="$composed-metaschema//@as-type = ('markup-line', 'markup-multiline')">
                 <xsl:if test="$composed-metaschema//@as-type = 'markup-multiline'">
-                    <xs:group name="prose">
+                    <xs:group name="PROSE">
                         <xs:choice>
                             <xs:element ref="oscal-prose:h1"/>
                             <xs:element ref="oscal-prose:h2"/>
@@ -136,7 +136,7 @@
     
 <!-- Produces an element for markup-line and markup-multiline -->
     
-    <!--<xsl:template match="define-field[@as-type='markup-multiline'][false() (: xml wrap is not on so we get no element :)]"/>-->
+    <xsl:template priority="6" match="define-field[@as-type='markup-multiline']"/>
     
     <xsl:template match="define-field">
         <xs:element name="{@name }">
@@ -166,11 +166,11 @@
         </xs:element>
     </xsl:template>
     
-    <xsl:template priority="5" match="define-field[@as-type='markup-multiline']">
+    <xsl:template priority="5" match="define-field[@as-type='markup-multiline'][@unwrap-xml='no']">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
-                <xs:group ref="{$declaration-prefix}:prose"/>
+                <xs:group ref="{$declaration-prefix}:PROSE"/>
                 <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
@@ -254,16 +254,15 @@
             maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
     </xsl:template>
     
-    <!-- Not yet producing wrapper -->
-    <xsl:template match="prose | field[@as-type='markup-multiline']">
-        <xs:group ref="{$declaration-prefix}:prose" maxOccurs="unbounded" minOccurs="0"/>
+    <!-- No wrapper, just prose elements -->
+    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+        <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
     <xsl:template match="flag">
         <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type)[1]"/>
         <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
         <xs:attribute name="{ (@name,@ref)[1] }">
-            <xsl:attribute name="type">xs:string</xsl:attribute>
             <xsl:if test="(@required='yes') or (@name=(../json-key/@flag-name,../json-value-key/@flag-name))">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:if>
