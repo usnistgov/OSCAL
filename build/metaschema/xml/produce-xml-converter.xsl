@@ -579,9 +579,9 @@
 
         <!-- <insert param-id="ac-1_prm_1"/> -->
         <XSLT:template mode="md" match="insert">
-            <XSLT:text>{ </XSLT:text>
+            <XSLT:text>{{ </XSLT:text>
             <XSLT:value-of select="@param-id"/>
-            <XSLT:text> }</XSLT:text>
+            <XSLT:text> }}</XSLT:text>
         </XSLT:template>
 
         <XSLT:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
