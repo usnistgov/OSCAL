@@ -364,7 +364,7 @@
             <q>"<text/>"</q>
             
             <img         alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
-            <insert param-id="\{{{{$nws}}\}}"/>
+            <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
             
             <a href="\[{{$text}}\]">\(<text/>\)</a>
             <code>`<text/>`</code>
@@ -447,16 +447,16 @@ Paragraph, \n\nand new paragraph
 
 Bit of `code` here and there, such as one might have along with *italics*.
 
- { ac-4.4_prm_2 } 
+no insertion here: { ac-4.4_prm_2 } 
  
  
 Extra long x
             y and z
             
 
-Here's a text with a parameter insertion: { insert }
+Here's a text with a *parameter* insertion: {{ insert }}
 
-{insert-me}            
+{{insert-me}}            
 
 And interesting.
 

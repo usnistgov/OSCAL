@@ -313,39 +313,12 @@
         </XSLT:for-each>
     </xsl:template>
     
-   <!-- <XSLT:template match="array[@key='prose']" priority="11" mode="json2xml">
-        <XSLT:variable name="text-contents" select="string-join(string,'&#xA;')"/>
-        <XSLT:call-template name="parse">
-            <XSLT:with-param name="markdown-str" select="$text-contents"/>
-        </XSLT:call-template>
-    </XSLT:template>
-    
-    <XSLT:template match="string[@key='prose']" priority="11" mode="json2xml">
-        <XSLT:call-template name="parse">
-            <XSLT:with-param name="markdown-str" select="string(.)"/>
-        </XSLT:call-template>
-    </XSLT:template>-->
-    
     <xsl:template name="render-markdown-field">
         <XSLT:variable name="markup">
             <XSLT:apply-templates mode="infer-inlines"/>
         </XSLT:variable>
         <XSLT:apply-templates mode="cast-ns" select="$markup"/>
     </xsl:template>
-    
-    <!--<xsl:template priority="2" match="define-field[exists(flag)]" mode="field-text">
-        <!-\- XXX to do: fetch value for alternative label       -\->
-        <XSLT:apply-templates mode="json2xml" select="string[@key=('{$string-value-label}','{$markdown-value-label}')]"/>
-    </xsl:template>-->
-    
-    <!--<xsl:template match="define-assembly[exists(json-key) and matches(@group-as,'\S')]">
-        <XSLT:template match="map[@key='{@group-as}']" priority="4" mode="json2xml">
-            <XSLT:apply-templates mode="#current"/>
-        </XSLT:template>
-        
-        <xsl:next-match/>
-    </xsl:template>-->
-    
     
     <xsl:template match="define-assembly">
         <xsl:variable name="group-names" select="distinct-values(key('references-by-name',@name)/group-as/@name)"/>
@@ -426,16 +399,6 @@
             <XSLT:apply-templates mode="#current"/>
         </XSLT:template>
         
-        
-        
-        <!-- drops all strings except those expecting the inline markup -->
-        <!--<XSLT:template match="string" mode="handle-inlines">
-            <XSLT:variable name="markup">
-                <XSLT:apply-templates mode="infer-inlines"/>
-            </XSLT:variable>
-            <XSLT:apply-templates mode="cast-ns" select="$markup"/>
-        </XSLT:template>-->
-        
         <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
             <!--<XSLT:apply-templates select="." mode="handle-inlines"/>-->
             <XSLT:call-template name="parse">
@@ -448,10 +411,6 @@
         </XSLT:template>
         
         <XSLT:template mode="as-attribute" match="*"/>
-        
-        <!--<XSLT:template mode="as-attribute" match="map">
-            <XSLT:apply-templates mode="#current"/>
-        </XSLT:template>-->
         
         <XSLT:template mode="as-attribute"  match="string[@key='id']" priority="0.4">
             <XSLT:attribute name="id">
