@@ -105,7 +105,7 @@
                     <xsl:variable name="all-properties"
                         select="flag[not(@name = $value-key-name)] | model//(field | assembly)"/>
                     <number key="minProperties">
-                        <xsl:value-of select="count($all-properties[@required='yes' or @min-occurs &gt; 0] | self::define-field[not(@as='empty')])"/>
+                        <xsl:value-of select="count($all-properties[@required='yes' or @min-occurs &gt; 0])"/>
                     </number>
                     <number key="maxProperties">
                         <xsl:value-of select="count($all-properties | self::define-field[not(@as='empty')])"/>
@@ -126,21 +126,15 @@
     </xsl:template>
     
     <xsl:template name="required-properties">
-        <xsl:variable name="value-string" as="element()?">
-            <xsl:for-each select="self::define-field[not(@as-type='empty') and not( matches(json-value-key/@flag-name,'\S') )]">
-                <string>
-                    <xsl:apply-templates select="." mode="value-key"/>
-                </string>
-            </xsl:for-each>
-        </xsl:variable>
+        <!-- A value string is never required even on elements not empty -->
         <xsl:variable name="requirements" as="element()*">
             <xsl:apply-templates mode="property-name"
                 select="flag[@required = 'yes'][not(@name = ../(json-key | json-value-key)/@flag-name)] |
                 model//*[@min-occurs &gt; 0]"/>
         </xsl:variable> 
-        <xsl:if test="exists( ($value-string, $requirements) )">
+        <xsl:if test="exists( $requirements )">
             <array key="required">
-                <xsl:copy-of select="$value-string, $requirements"/>
+                <xsl:copy-of select="$requirements"/>
             </array>
         </xsl:if>
     </xsl:template>
