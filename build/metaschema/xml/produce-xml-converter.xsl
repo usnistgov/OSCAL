@@ -185,11 +185,8 @@
     
     <xsl:template match="define-field[empty(flag)]" priority="2">
         <XSLT:template match="{@name}" mode="xml2json">
-            <XSLT:variable name="text-key">
-                <xsl:apply-templates select="." mode="text-key"/>
-            </XSLT:variable>
-            
             <string key="{@name}">
+                <!-- When the input has no markup, no markdown  will be produced. -->
                 <XSLT:apply-templates mode="md"/>
             </string>
         </XSLT:template>
@@ -208,6 +205,9 @@
 
                 <XSLT:apply-templates mode="as-string" select=".">
                     <XSLT:with-param name="key" select="$text-key"/>
+                    <!-- even an empty string must be written when the value key is dynamic
+                         since the key tells us the value for the (implicit) flag -->
+                    <XSLT:with-param name="mandatory" select="{ exists(json-value-key/@flag-name) }()"/>
                 </XSLT:apply-templates>
             </map>
         </XSLT:template>
@@ -284,7 +284,7 @@
     </xsl:template>
     
     <!--  A flag designated to be key is not picked up as a property -->
-    <xsl:template match="flag[@name=../(json-key|json-value-key)/@flag-name]"/>
+    <xsl:template match="flag[(@name|@ref)=../(json-key|json-value-key)/@flag-name]"/>
     
     <xsl:template match="flag">
         <xsl:variable name="datatype" select="(key('definition-by-name',@ref)/@as-type,@as-type,'string')[1]"/>
@@ -423,30 +423,42 @@
 
         <XSLT:template mode="as-string" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <string key="{{ $key }}">
-                <XSLT:value-of select="."/>
-            </string>
+            <XSLT:param name="mandatory" select="false()"/>
+            <XSLT:if test="$mandatory or matches(., '\S')">
+                <string key="{{ $key }}">
+                    <XSLT:value-of select="."/>
+                </string>
+            </XSLT:if>
         </XSLT:template>
 
         <XSLT:template mode="as-boolean" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <boolean key="{{ $key }}">
-                <XSLT:value-of select="."/>
-            </boolean>
+            <XSLT:param name="mandatory" select="false()"/>
+            <XSLT:if test="$mandatory or matches(., '\S')">
+                <boolean key="{{ $key }}">
+                    <XSLT:value-of select="."/>
+                </boolean>
+            </XSLT:if>
         </XSLT:template>
 
         <XSLT:template mode="as-integer" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <integer key="{{ $key }}">
-                <XSLT:value-of select="."/>
-            </integer>
+            <XSLT:param name="mandatory" select="false()"/>
+            <XSLT:if test="$mandatory or matches(., '\S')">
+                <integer key="{{ $key }}">
+                    <XSLT:value-of select="."/>
+                </integer>
+            </XSLT:if>
         </XSLT:template>
 
         <XSLT:template mode="as-number" match="@* | *">
             <XSLT:param name="key" select="local-name()"/>
-            <number key="{{ $key }}">
-                <XSLT:value-of select="."/>
-            </number>
+            <XSLT:param name="mandatory" select="false()"/>
+            <XSLT:if test="$mandatory or matches(., '\S')">
+                <number key="{{ $key }}">
+                    <XSLT:value-of select="."/>
+                </number>
+            </XSLT:if>
         </XSLT:template>
 
         <!--<XSLT:key name="parameters" match="param" use="@id"/>-->
