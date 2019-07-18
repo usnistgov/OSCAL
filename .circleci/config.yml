@@ -128,7 +128,7 @@ commands:
 executors:
   java-executor:
     docker: # run the java jobs with Docker
-      - image: circleci/openjdk:8-jdk-node-browsers
+      - image: circleci/openjdk:11-jdk-node-browsers
     <<: *common_environment 
   ruby-node-executor:
     docker: # run the ruby jobs with Docker
