@@ -59,7 +59,7 @@ commands:
       - run:
           name: Get Saxon-HE
           command: | 
-            /opt/maven/bin/mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
       - run:
           name: Build JSON Validation CLI
           command: |
