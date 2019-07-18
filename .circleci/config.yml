@@ -63,6 +63,14 @@ commands:
       - run:
           name: Build JSON Validation CLI
           command: |
+            # update maven version
+            cd /opt
+            sudo wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+            sudo tar -xvzf apache-maven-3.6.0-bin.tar.gz
+            sudo mv apache-maven-3.6.0 maven
+            export M2_HOME=/opt/maven
+            export PATH=${M2_HOME}/bin:${PATH}
+            # now build
             cd "${OSCAL_TOOLS_DIR}/json-cli"
             /opt/maven/bin/mvn dependency:go-offline
             /opt/maven/bin/mvn install
@@ -77,12 +85,6 @@ commands:
           name: Get Maven
           command: |
             sudo apt-get install maven
-            cd /opt
-            sudo wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
-            sudo tar -xvzf apache-maven-3.6.0-bin.tar.gz
-            sudo mv apache-maven-3.6.0 maven
-            # export M2_HOME=/opt/maven
-            # export PATH=${M2_HOME}/bin:${PATH}
   install-lxml:
     description: "Installs Python lxml package"
     steps:
