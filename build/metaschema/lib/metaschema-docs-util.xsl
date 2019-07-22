@@ -17,6 +17,7 @@
     </xsl:template>
     
     <xsl:variable name="tests">
+        <field name="implicit-required" min-occurs="1"/>
         <field name="optional-one-only" min-occurs="0" max-occurs="1"/>
         <field name="optional-unbounded" min-occurs="0" max-occurs="unbounded"/>
         <field name="at-least-three-unbounded" min-occurs="3" max-occurs="unbounded"/>
@@ -31,37 +32,53 @@
         <li xsl:expand-text="true">{ @name } -- <xsl:apply-templates select="." mode="occurrence-requirements"/></li>
     </xsl:template>
     
+    <!-- Returns true when a field must become an object, not a string, due to having
+     flags that must be properties. -->
+    <xsl:function name="m:has-properties" as="xs:boolean">
+        <xsl:param name="who" as="element(m:field)"/>
+        <xsl:sequence select="exists($who/flag[not((@name|@ref)=../(json-key | json-value-key)/@flag-name)])"/>
+    </xsl:function>
+    
+    
     <xsl:template mode="occurrence-requirements" match="*">
-        <xsl:apply-templates select="@min-occurs" mode="#current"/>
-        <xsl:if test="empty(@min-occurs)">Optional</xsl:if>
-        <xsl:text>, </xsl:text>
-        <xsl:apply-templates select="@max-occurs" mode="#current"/>
-        <xsl:if test="empty(@min-occurs)"> one only</xsl:if>
+            <xsl:text>(</xsl:text>
+            <xsl:apply-templates select="@min-occurs" mode="#current"/>
+            <xsl:if test="empty(@min-occurs)">optional</xsl:if>
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="@max-occurs" mode="#current"/>
+            <xsl:if test="empty(@max-occurs)"> one only</xsl:if>
+            <xsl:text>)</xsl:text>
     </xsl:template>
     
     <xsl:template mode="occurrence-requirements" priority="2" match="*[@max-occurs='1' and @min-occurs='1']">
-        <xsl:text>Required, one (1) only.</xsl:text>
+        <xsl:text>required, one (1) only</xsl:text>
     </xsl:template>
     
     <xsl:template mode="occurrence-requirements" priority="1" match="*[@max-occurs=@min-occurs]">
-        <xsl:text expand-text="true">Required, exactly { m:spell-number(@min-occurs) }.</xsl:text>
+        <xsl:text expand-text="true">required, exactly { m:spell-number(@min-occurs) }</xsl:text>
     </xsl:template>
     
     <xsl:template mode="occurrence-requirements" match="@min-occurs[.='0']">
-        <xsl:text>Optional</xsl:text>
+        <xsl:text>optional</xsl:text>
+    </xsl:template>
+    
+    <xsl:template mode="occurrence-requirements" match="@min-occurs[empty(../@max-occurs) or ../@max-occurs='1']">
+        <xsl:text>required</xsl:text>
     </xsl:template>
     
     <xsl:template mode="occurrence-requirements" match="@min-occurs">
-        <xsl:text>Required: at least </xsl:text>
+        <xsl:text>required, at least </xsl:text>
         <xsl:value-of select="m:spell-number(.)"/>
     </xsl:template>
-
+    
     <xsl:template mode="occurrence-requirements" match="@max-occurs[.='unbounded']">
-        <xsl:text>as many as needed.</xsl:text>
+        <xsl:text>as many as needed</xsl:text>
     </xsl:template>
     
+    <xsl:template mode="occurrence-requirements" match="@max-occurs[.='1']"> one only</xsl:template>
+        
     <xsl:template mode="occurrence-requirements" match="@max-occurs">
-        <xsl:text expand-text="true">{ m:spell-number(.)} at most.</xsl:text>
+        <xsl:text expand-text="true">{ m:spell-number(.)} at most</xsl:text>
     </xsl:template>
 
     <xsl:function name="m:spell-number" as="xs:string">

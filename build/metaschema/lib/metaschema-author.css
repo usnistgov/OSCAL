@@ -28,11 +28,7 @@ define-field[group-as]:before,
 define-flag[group-as]:before      
  { content:
  oxy_name() 
- oxy_textfield(edit, '@name', columns, 12)
- ', group as '
- oxy_textfield(edit, '@group-as', columns, 12) 
-    }
-
+ oxy_textfield(edit, '@name', columns, 12) }
 define-assembly *,
 define-field    *,
 define-flag     *  { margin: 0em }
@@ -76,17 +72,22 @@ example *:after { content: '</' oxy_name() '>'; font-family: monospace; font-siz
 
 model { padding-left: 0.5em; border-left: medium solid blue; font-size: 80%; padding-right: 2em }
 
-flag:after { content:
+flag:before { content:
  oxy_name()
- oxy_textfield(edit, '@name', columns, 12) 
-   
- }
+  ' name: ' oxy_textfield(edit, '@name', columns, 12) 
+  ' ref: ' oxy_textfield(edit, '@name', columns, 12) 
+   }
 
-assembly:after, field:after, assemblies:after, fields:after { content:
- oxy_name() ' named '
- oxy_textfield(edit, '@named', columns, 12) 
-   
- }
+assembly:before, field:before {
+  content:
+    oxy_name() ' named '
+    oxy_textfield(edit, '@ref', columns, 12) }
+
+group-as { margin-left: 2em }
+
+group-as:before { content: 'group as '
+ oxy_textfield(edit, '@name', columns, 12) }
+
 
 choice:before { content:
  'a choice between'

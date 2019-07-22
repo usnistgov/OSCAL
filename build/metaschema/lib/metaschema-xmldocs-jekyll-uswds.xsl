@@ -16,6 +16,8 @@
    
    -->
    <xsl:import href="metaschema-common-html.xsl"/>
+   <xsl:import href="metaschema-docs-util.xsl"/>
+   
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
    
    <xsl:strip-space elements="*"/>
@@ -31,8 +33,8 @@
    <!--<xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>-->
 
    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
-   <xsl:key name="references" match="flag"             use="@name"/>
-   <xsl:key name="references" match="field | assembly | fields | assemblies" use="@ref"/>
+   <xsl:key name="references" match="flag"             use="@name | @ref"/>
+   <xsl:key name="references" match="field | assembly" use="@ref"/>
    
    <xsl:template match="/">
       <html>
@@ -94,16 +96,14 @@
 
 
    <xsl:template match="define-flag">
-      <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
-      <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-flag" id="{@name}">
          <header>
-           <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
-            <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
+            <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lightest">
+            <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> attribute</h4>
             <xsl:call-template name="cross-links"/>
          </header>
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
@@ -111,6 +111,7 @@
                   <xsl:apply-templates select="." mode="link-here"/>               
                </xsl:for-each>.</p>
          </xsl:for-each-group>
+         <xsl:apply-templates select="* except description"/>
       </div>
    </xsl:template>
 
@@ -125,96 +126,85 @@
    </xsl:template>
    
    <xsl:template match="define-field">
-      <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
-      <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-field" id="{@name}">
          <header>
-           <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
-            <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> element</h4>
+            <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lightest">
+               <xsl:apply-templates select="formal-name" mode="inline"/>:
+                  <xsl:apply-templates select="@name"/> element</h4>
             <xsl:call-template name="cross-links"/>
          </header>
-         <xsl:for-each select="$definition">
-            <xsl:choose>
-               <xsl:when test="@as = 'mixed'">
-                  <p>Supports inline encoding</p>
-               </xsl:when>
-               <xsl:when test="@as = 'boolean'">
-                  <p>True whenever given (presence signifies Boolean value)</p>
-               </xsl:when>
-            </xsl:choose>
-            <xsl:apply-templates select="formal-name | description"/>
-            <xsl:if test="exists(flag | key)">
-               <xsl:variable name="modal">
-                  <xsl:choose>
-                     <xsl:when test="every $f in (flag) satisfies $f/@required='yes'">must</xsl:when>
-                     <xsl:otherwise>may</xsl:otherwise>
-                  </xsl:choose>
-               </xsl:variable>
-               <xsl:variable name="noun">
-                  <xsl:choose>
-                     <xsl:when test="count(flag|key) gt 1">attributes</xsl:when>
-                     <xsl:otherwise>the attribute</xsl:otherwise>
-                  </xsl:choose>
-               </xsl:variable>
-               <div class="model">
-                  <p xsl:expand-text="true">The {@name} element { $modal } have { $noun }:</p>
-                  <ul>
-                     <xsl:apply-templates select="flag" mode="model"/>
-                  </ul>
-               </div>
-               <!--<xsl:call-template name="uswds-table">
+         <xsl:choose>
+            <xsl:when test="@as-type = 'markup-line'">
+               <p>Supports inline encoding</p>
+            </xsl:when>
+            <xsl:when test="@as-type = 'markup-multiline'">
+               <p>Appears as a sequence of markup elements (paragraphs, lists etc.)</p>
+            </xsl:when>
+         </xsl:choose>
+         <xsl:apply-templates select="formal-name | description"/>
+         <xsl:call-template name="appears-in"/>
+         <xsl:if test="exists(flag)">
+            <xsl:variable name="modal">
+               <xsl:choose>
+                  <xsl:when
+                     test="
+                        every $f in (flag)
+                           satisfies $f/@required = 'yes'"
+                     >must</xsl:when>
+                  <xsl:otherwise>may</xsl:otherwise>
+               </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="noun">
+               <xsl:choose>
+                  <xsl:when test="count(flag) gt 1">attributes</xsl:when>
+                  <xsl:otherwise>the attribute</xsl:otherwise>
+               </xsl:choose>
+            </xsl:variable>
+            <div class="model">
+               <p xsl:expand-text="true">The {@name} element { $modal } have { $noun }:</p>
+               <ul>
+                  <xsl:apply-templates select="flag" mode="model"/>
+               </ul>
+            </div>
+            <!--<xsl:call-template name="uswds-table">
                   <xsl:with-param name="property-set" select="flag"/>
                </xsl:call-template>-->
-            </xsl:if>
-            <xsl:apply-templates select="remarks"/>
-            <xsl:apply-templates select="example"/>
-            <xsl:for-each-group select="key('references',@name)/ancestor::model/parent::*" group-by="true()">
-               <p><xsl:text>This element appears inside: </xsl:text>
-                  <xsl:for-each select="current-group()">
-                     <xsl:if test="not(position() eq 1)">, </xsl:if>
-                     <xsl:apply-templates select="." mode="link-here"/>               
-                  </xsl:for-each>.</p>
-            </xsl:for-each-group>
-         </xsl:for-each>
+         </xsl:if>
+         <xsl:apply-templates select="remarks"/>
+         <xsl:apply-templates select="example"/>
       </div>
+   </xsl:template>
+   
+   <xsl:template name="appears-in">
+      <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
+         group-by="true()">
+         <p><xsl:text>This element appears inside: </xsl:text>
+            <xsl:for-each select="current-group()">
+               <xsl:if test="not(position() eq 1)">, </xsl:if>
+               <xsl:apply-templates select="." mode="link-here"/>
+            </xsl:for-each>.</p>
+      </xsl:for-each-group>
    </xsl:template>
 
    <xsl:template match="define-assembly">
-      <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
-      <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
-      
       <div class="definition define-assembly" id="{@name}">
-      <header>
-        <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
-            <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> element</h4>
-         <xsl:call-template name="cross-links"/>
-      </header>
-         <!-- No mention of @group-as on XML side       -->
-         <xsl:if test="@name =  $home/METASCHEMA/@root">
+         <header>
+            <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lightest">
+               <xsl:apply-templates select="formal-name" mode="inline"/>:
+                  <xsl:apply-templates select="@name"/> element</h4>
+            <xsl:call-template name="cross-links"/>
+         </header>
+         <xsl:if test="@name = $home/METASCHEMA/@root">
             <h5>
                <code xsl:expand-text="true">{ @name }</code> is the root (containing) element of
                this schema. </h5>
          </xsl:if>
-         <xsl:for-each select="$definition">
          <xsl:apply-templates select="formal-name | description"/>
+         <xsl:call-template name="appears-in"/>
          <xsl:apply-templates select="model"/>
          <xsl:apply-templates select="remarks"/>
          <xsl:apply-templates select="example"/>
-         <!--<xsl:call-template name="uswds-table">
-            <xsl:with-param name="property-set"
-               select="flag | (model//* except model//(choice | description/descendant-or-self::* | remarks/descendant-or-self::*))"
-            />
-         </xsl:call-template>-->
-            <xsl:for-each-group select="key('references',@name)/ancestor::model/parent::*" group-by="true()">
-               <p><xsl:text>This element appears inside: </xsl:text>
-                  <xsl:for-each select="current-group()">
-                     <xsl:if test="not(position() eq 1)">, </xsl:if>
-                     <xsl:apply-templates select="." mode="link-here"/>               
-                  </xsl:for-each>.</p>
-            </xsl:for-each-group>
-         </xsl:for-each>
+         
       </div>
    </xsl:template>
 
@@ -230,29 +220,9 @@
       </code>
    </xsl:template>
 
-   <xsl:template match="@group-as">
-      <xsl:text> (group as </xsl:text>
-      <code>
-         <xsl:value-of select="."/>
-      </code>)<xsl:text/>
-   </xsl:template>
-
-   <xsl:template match="@datatype"/>
-
-   <xsl:template match="@address">
-      <xsl:text> (addressable by </xsl:text>
-      <code>
-         <xsl:value-of select="."/>
-      </code>)<xsl:text/>
-   </xsl:template>
-
-   <xsl:template match="@required">
-      <i> (required)</i>
-   </xsl:template>
-
    <xsl:template match="flag"/>
 
-   <xsl:template match="flag | key" mode="model">
+   <xsl:template match="flag" mode="model">
       <li>
          <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          
@@ -271,7 +241,10 @@
       </li>
    </xsl:template>
 
-
+   <xsl:template match="@required">
+      <i> (required)</i>
+   </xsl:template>
+   
    <!-- Empty model elements (whether by accident or design) will be dropped.
      NB: at a later point, we may support model/@acquire-from
      at present we have @acquire-from only on definitions. -->
@@ -288,7 +261,7 @@
       </div>
    </xsl:template>
 
-   <xsl:template match="assembly | field | assemblies | fields">
+   <xsl:template match="assembly | field">
       <li>
          <!--<xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@ref, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
@@ -296,8 +269,8 @@
          <a href="#{@ref}">
             <xsl:apply-templates select="@ref"/>
          </a>
-         <xsl:text expand-text="true"> element </xsl:text>
-         <xsl:apply-templates select="." mode="cardinality"/>
+         <xsl:text expand-text="true"> element{ if (@max-occurs != '1') then 's' else '' } </xsl:text>
+         <xsl:apply-templates select="." mode="occurrence-requirements"/>
 
          <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
@@ -307,11 +280,16 @@
       </li>
    </xsl:template>
 
-   <xsl:template match="*" mode="cardinality"> (<i>zero or one</i>)</xsl:template>
-   <xsl:template match="assemblies | fields" mode="cardinality"> (<i>zero or more</i>)</xsl:template>   
-   <xsl:template match="*[@required = 'yes']" mode="cardinality"> (<i>one</i>)</xsl:template>
-   <!-- 'assemblies' and 'fields' may not be marked @required so no 'one or more' -->
+   <!-- remarks are kept if @class='xml' or no class is given -->
+   <xsl:template match="remarks[@class != 'xml']"/>
 
+   <xsl:template match="define-assembly/remarks | define-field/remarks | define-flag/remarks">
+      <xsl:if test="empty(preceding-sibling::remarks) or not(preceding-sibling::remarks/@class='xml')">
+         <h5>Remarks</h5>
+      </xsl:if>
+      <xsl:next-match/>
+   </xsl:template>
+   
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
@@ -328,29 +306,14 @@
             <div id="{ ../@name }_{ $example-no }_xml" class="usa-accordion-content">
                <!--<xsl:text>&#xA;{% highlight xml %}</xsl:text>-->
                <!--{{ <xsl:value-of select="$example-no"/> }}-->
+               <xsl:apply-templates select="remarks"/>
                <pre>
                  <xsl:apply-templates select="*" mode="as-example"/>
                   </pre>
                <!--<xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>-->
-               <xsl:apply-templates select="remarks"/>
             </div>
          </li>
      </ul>
-      <!--<div>
-         <h3>
-            <xsl:text>Example</xsl:text>
-            <xsl:for-each select="description">: <xsl:apply-templates/></xsl:for-each></h3>
-         <!-\-<button class="usa-accordion-button" aria-expanded="true"
-            aria-controls="{ ../@name }_{$example-no}_xml">XML</button>-\->
-         <!-\-{% capture <xsl:value-of select="$example-no" disable-output-escaping="yes"/> %}<xsl:apply-templates select="*" mode="as-example"/>{% endcapture %}-\->
-         <div id="{ ../@name }_{ $example-no }_xml">
-            <xsl:text>&#xA;{% highlight xml %}</xsl:text>
-            <!-\-{{ <xsl:value-of select="$example-no"/> }}-\->
-            <xsl:apply-templates select="*" mode="as-example"/>
-            <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
-            <xsl:apply-templates select="remarks"/>
-         </div>
-      </div>-->
    </xsl:template>
 
    <xsl:template match="*" mode="serialize">
@@ -438,60 +401,25 @@
    </xsl:template>
 
 
-   <xsl:template match="code[. = /*/*[@show-docs = 'xml' or @show-docs = 'xml json']/@name]">
+   <xsl:template match="code[. = (//@name except ancestor::*/@name)]">
       <a href="#{.}">
-         <xsl:apply-templates/>
+         <xsl:next-match/>
       </a>
    </xsl:template>
 
-   <!--<xsl:template name="uswds-table" expand-text="true">
-      <xsl:param name="property-set" select="()"/>
-      
-      <table>
-         <caption>Properties</caption>
-         <thead>
-            <tr>
-               <th scope="col">Name</th>
-               <th scope="col">Metaschema type</th>
-               <th scope="col">Cardinality</th>
-               <th scope="col">Description / Remarks</th>
-            </tr>
-         </thead>
-         <tbody>
-            <xsl:for-each select="$property-set">
-               <!-\-{% for prop in schema_element.properties %}-\->
-               <tr>
-                  <th scope="row">
-                     <span>
-                        <xsl:for-each select="(@name | @ref)">
-                           <a class="name" href="#{.}">
-                              <xsl:value-of select="."/>
-                           </a>
-                        </xsl:for-each>
-                     </span>
-                  </th>
-                  <td>
-                     <xsl:apply-templates select="." mode="metaschema-type"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="." mode="cardinality"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="description | remarks"/>
-                  </td>
-               </tr>
-            </xsl:for-each>
-            <!-\- {% endfor %}-\->
-         </tbody>
-      </table>
-      
-   </xsl:template>-->
+   <xsl:template mode="occurrence-requirements" match="*">
+      <i class="color-primary">
+         <xsl:next-match/>      
+      </i>
+   </xsl:template>
+   
+   
    
    <xsl:template mode="metaschema-type" match="flag">attribute</xsl:template>
-   <xsl:template mode="metaschema-type" match="field | fields">element (with text contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="field[@as='mixed'] | fields[@as='mixed']">element (with mixed text and element contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="assembly | assemblies">element (with element contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="prose">Reserved for prose</xsl:template>
+   <xsl:template mode="metaschema-type" match="field">element (with text contents)</xsl:template>
+   <xsl:template mode="metaschema-type" match="field[@as-type='markup-line']">element (with mixed text and element contents)</xsl:template>
+   <xsl:template mode="metaschema-type" match="field[@as-type='markup-multiline']">prose content: paragraphs, lists etc.</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly">element (with element contents)</xsl:template>
    <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
    <xsl:template mode="metaschema-type" match="description | remarks"/>
    
@@ -586,14 +514,8 @@
          
          .field {
          }
-         
-         .fields {
-         }
-         
+          
          .assembly {
-         }
-         
-         .assemblies {
          }
          
          .choice {

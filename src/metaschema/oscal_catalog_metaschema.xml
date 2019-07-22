@@ -39,7 +39,7 @@
       </model>
       <remarks>
          <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
-         <p>An OSCAL catalog model provides a structured representation of control information. Representing the other non-control propose contents of a source catalog is beyond the scope of the OSCAL catalog model. It is expected that <a href="https://pages.nist.gov/OSCAL/docs/relations">other document formats</a> will address this additional information.</p>
+         <p>An OSCAL catalog model provides a structured representation of control information.</p>
       </remarks>
       <example>
          <description>A small catalog with a single control</description>
@@ -58,30 +58,6 @@
     <formal-name>Declarations</formal-name>
     <description>Either a reference to a declarations file, or a set of declarations</description>
   </define-field>-->
-   <!--<define-assembly name="section" group-as="sections">
-    <flag name="id" datatype="ID"/>
-    <flag name="class"/>
-    <formal-name>Section</formal-name>
-    <description>Provides a means for the grouping of prose content and controls as a chapter within an OSCAL Catalog.</description>
-    <remarks>
-      <p>Sections are recursive; a given section can contain child (sub)-sections.</p>
-    </remarks>
-    <model>
-      <field named="title" required="yes">
-        <description>A meaningful human-readable name for the section.</description>
-      </field>
-      <prose>
-        <description>Prose content allows for the inclusion of human-readable text in the body of the section.</description>
-      </prose>
-      <assemblies named="section">
-        <description>A child sub-section.</description>
-      </assemblies>
-      <assembly named="citation-list">
-        <description>A list of supporting references for the section.</description>
-      </assembly>
-      <any/>
-    </model>
-  </define-assembly>-->
    <define-assembly name="group">
       <formal-name>Control Group</formal-name>
       <description>A group of controls, or of groups of controls.</description>
