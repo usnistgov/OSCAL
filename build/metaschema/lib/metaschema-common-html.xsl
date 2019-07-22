@@ -44,10 +44,10 @@
    <xsl:template match="m:valid-values">
       <xsl:choose>
         <xsl:when test="@allow-other and @allow-other='yes'">
-          <p>The value can be one of the following:</p>
+          <p>The value may be one of the following, or a locally defined value:</p>
         </xsl:when>
         <xsl:otherwise>
-          <p>The value can only be one of the following:</p>
+          <p>The value must be one of the following:</p>
         </xsl:otherwise>
       </xsl:choose>
       <ul>
@@ -175,6 +175,7 @@
          <xsl:value-of select="."/>
       </xsl:if>
    </xsl:template>
+   
    
    
 </xsl:stylesheet>

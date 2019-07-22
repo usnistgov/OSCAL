@@ -117,9 +117,9 @@
       <formal-name>Combination method</formal-name>
       <description>How clashing controls and subcontrols should be handled</description>
       <valid-values>
-         <value name="use-first">Use the first definition.</value>
-         <value name="merge">Merge</value>
-         <value name="keep">keep</value>
+         <value name="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</value>
+         <value name="merge">Merge - controls with the same ID are combined</value>
+         <value name="keep">Keep - controls with the same ID are kept, retaining the clash</value>
       </valid-values>
    </define-flag>
    <define-assembly name="custom">

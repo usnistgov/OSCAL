@@ -517,7 +517,7 @@
    </define-flag>
    <define-field name="title" as-type="markup-line">
       <formal-name>Title</formal-name>
-      <description>A title for display and navigation, exclusive of more specific properties</description>
+      <description>A title for display and navigation</description>
       <remarks>
          <p>A title for the containing object as it should appear in a formatted document.</p>
       </remarks>
@@ -548,8 +548,8 @@
          <any/>
       </model>
       <remarks>
-         <p>The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information (e.g., database) will be handled by use of a <code>doc-id</code>. Use of a canonical identifier such as a DOI is recommended for any citation.</p>
-         <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide a bibliographic entry.</p>
+         <p>The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information will be handled by use of a <code>doc-id</code>. Use of a canonical identifier such as a DOI is recommended for any citation.</p>
+         <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide it.</p>
       </remarks>
    </define-assembly>
    <define-field name="target">
