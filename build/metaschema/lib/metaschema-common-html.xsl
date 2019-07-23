@@ -12,13 +12,17 @@
    </xsl:template>
    
    <xsl:template match="m:description" mode="model">
-      <xsl:text>: </xsl:text>
-      <xsl:apply-templates/>
+      <br class="br"/>
+      <i style="font-size: smaller">
+         <xsl:apply-templates/>
+      </i>
    </xsl:template>
    
    <xsl:template match="m:remarks/m:p" mode="model">
-      <br/>
-        <xsl:apply-templates/>
+      <br class="br"/>
+      <span style="font-size: smaller">
+         <xsl:apply-templates/>
+      </span>
    </xsl:template>
    
    <xsl:template match="m:choice">
@@ -60,7 +64,7 @@
    </xsl:template>
 
   <xsl:template  match="m:remarks">
-      <div class="remarks">
+     <div class="remarks usa-color-gray-lightest" style="padding: 0.5em">
          <xsl:apply-templates/>
       </div>
    </xsl:template>

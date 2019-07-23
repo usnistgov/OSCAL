@@ -114,7 +114,7 @@
                 <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
                 
             </sqf:fix>-->
-            
+           
         </sch:rule>
 
         <sch:rule context="m:group-as">
@@ -129,6 +129,10 @@
         <sch:rule context="m:example/*">
             <sch:let name="ns" value="/m:METASCHEMA/m:namespace"/>
           <sch:assert test="empty($example-ns) or namespace-uri(.) eq $example-ns">Unexpected namespace: examples should use namespace '<sch:value-of select="$example-ns"/>'</sch:assert>
+        </sch:rule>
+        
+        <sch:rule context="m:p">
+            <sch:assert test="matches(.,'\S')">Empty paragraph (is likely to distort rendition)</sch:assert>
         </sch:rule>
     </sch:pattern>
 

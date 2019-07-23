@@ -166,10 +166,10 @@
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
                 <xsl:apply-templates mode="#current" select="json-key, json-value-key, flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/valid-values"/>
+                <xsl:copy-of select="model"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
                 </xsl:apply-templates>
-                <xsl:copy-of select="model"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/example">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
                 </xsl:apply-templates>
@@ -202,8 +202,7 @@
     
     <xsl:template mode="digest" match="flag | json-key | json-value-key">
         <xsl:copy>
-            <xsl:attribute name="datatype">string</xsl:attribute>
-            <xsl:copy-of select="key('definition-by-name',@name)/@datatype"/>
+            <xsl:copy-of select="key('definition-by-name',@name)/@as-type"/>
             <!-- Allowing local datatype to override the definition's datatype -->
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>

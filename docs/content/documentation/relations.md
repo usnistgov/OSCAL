@@ -1,5 +1,5 @@
 ---
-title: Relations to Industry Standards
+title: Relations to Documentary Encoding Standards
 description: Relations
 permalink: /docs/relations/
 layout: post
@@ -10,7 +10,9 @@ sticky_sidenav: true
 
 Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27001/2, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.
 
-However, there are other standard forms of document represention that might also be useful in certain contexts. Since OSCAL attempts not to replace any of these, but to complement them, developers of OSCAL-based systems may wish to be aware of them and of opportunities to take advantage of OSCAL in working with them.
+However, OSCAL is not the only text encoding technology available, and it is not always the most suitable, depending on the task at hand. Designed specifically to support operations related to security automation and assessment support, OSCAL may not be as optimal as other (standards-based, non-proprietary) formats for other applications including, notably, full text transcription, search and retrieval, or publication workflows. (OSCAL data may be shared among partners, even over networks including the Internet; but it is not necessarily suitable for publishing as such.)
+
+More importantly, since OSCAL shares its technical foundations with other documentary encoding standards that serve other horizontal or neighboring vertical domains, it is important to recognize a *high degree of compatibility* with other XML-based formats. Investing in OSCAL and OSCAL-related tooling is a way of developing capability that applies to these other formats as well; likewise investing in these can have beneficial side effects related to OSCAL and related technologies.
 
 ## How OSCAL relates to other document encoding formats
 

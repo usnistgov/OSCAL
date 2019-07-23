@@ -103,6 +103,7 @@
                select="@name"/> attribute</h4>
             <xsl:call-template name="cross-links"/>
          </header>
+         <xsl:apply-templates mode="state-type" select="."/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
@@ -133,14 +134,7 @@
                   <xsl:apply-templates select="@name"/> element</h4>
             <xsl:call-template name="cross-links"/>
          </header>
-         <xsl:choose>
-            <xsl:when test="@as-type = 'markup-line'">
-               <p>Supports inline encoding</p>
-            </xsl:when>
-            <xsl:when test="@as-type = 'markup-multiline'">
-               <p>Appears as a sequence of markup elements (paragraphs, lists etc.)</p>
-            </xsl:when>
-         </xsl:choose>
+         <xsl:apply-templates mode="state-type" select="."/>
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="appears-in"/>
          <xsl:if test="exists(flag)">
@@ -161,14 +155,11 @@
                </xsl:choose>
             </xsl:variable>
             <div class="model">
-               <p xsl:expand-text="true">The {@name} element { $modal } have { $noun }:</p>
+               <p xsl:expand-text="true">The <code>{@name}</code> element { $modal } have { $noun }:</p>
                <ul>
                   <xsl:apply-templates select="flag" mode="model"/>
                </ul>
             </div>
-            <!--<xsl:call-template name="uswds-table">
-                  <xsl:with-param name="property-set" select="flag"/>
-               </xsl:call-template>-->
          </xsl:if>
          <xsl:apply-templates select="remarks"/>
          <xsl:apply-templates select="example"/>
@@ -204,7 +195,6 @@
          <xsl:apply-templates select="model"/>
          <xsl:apply-templates select="remarks"/>
          <xsl:apply-templates select="example"/>
-         
       </div>
    </xsl:template>
 
@@ -224,15 +214,14 @@
 
    <xsl:template match="flag" mode="model">
       <li>
-         <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
-         
+         <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>        
          <xsl:if test="empty(@ref)">
             <xsl:apply-templates select="@name"/>
          </xsl:if>
          <xsl:text> attribute </xsl:text>
-         <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
-         <xsl:if test="not(@required) and self::flag"> (<i>optional</i>)</xsl:if>
+         <xsl:if test="empty(@required)"> (<i>optional</i>)</xsl:if>
+         <xsl:apply-templates select="." mode="metaschema-type"/>
          <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
             <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
@@ -245,9 +234,6 @@
       <i> (required)</i>
    </xsl:template>
    
-   <!-- Empty model elements (whether by accident or design) will be dropped.
-     NB: at a later point, we may support model/@acquire-from
-     at present we have @acquire-from only on definitions. -->
    <xsl:template match="model[not(*)]" priority="3"/>
 
    <xsl:template match="model">
@@ -255,12 +241,16 @@
          <p>The <xsl:apply-templates select="../@name"/> element has the following contents<xsl:if
                test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
-            <xsl:apply-templates select="../flag | ../key" mode="model"/>
+            <xsl:apply-templates select="../flag" mode="model"/>
             <xsl:apply-templates/>
          </ul>
       </div>
    </xsl:template>
 
+   <xsl:template match="any">
+      <li>Any element (in a foreign namespace)</li>
+   </xsl:template>
+         
    <xsl:template match="assembly | field">
       <li>
          <!--<xsl:text>A</xsl:text>
@@ -271,7 +261,7 @@
          </a>
          <xsl:text expand-text="true"> element{ if (@max-occurs != '1') then 's' else '' } </xsl:text>
          <xsl:apply-templates select="." mode="occurrence-requirements"/>
-
+         <xsl:apply-templates select="." mode="metaschema-type"/>
          <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
             <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
@@ -281,13 +271,21 @@
    </xsl:template>
 
    <!-- remarks are kept if @class='xml' or no class is given -->
-   <xsl:template match="remarks[@class != 'xml']"/>
+   <xsl:template match="remarks[@class != 'xml']" priority="2"/>
 
    <xsl:template match="define-assembly/remarks | define-field/remarks | define-flag/remarks">
-      <xsl:if test="empty(preceding-sibling::remarks) or not(preceding-sibling::remarks/@class='xml')">
+      <xsl:if test="empty(preceding-sibling::remarks[not(@class != 'xml')])">
          <h5>Remarks</h5>
       </xsl:if>
       <xsl:next-match/>
+   </xsl:template>
+   
+   <xsl:template match="remarks[@class = 'xml']/p[1]">
+      <p class="p">
+         <span class="usa-label">XML</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="example[empty(* except (description | remarks))]"/>
@@ -413,15 +411,31 @@
       </i>
    </xsl:template>
    
+   <xsl:template match="define-flag" mode="state-type">
+      <p>An attribute<xsl:apply-templates select="." mode="metaschema-type"/></p> 
+   </xsl:template>
+   
+   <xsl:template match="define-field" mode="state-type">
+      <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p> 
+   </xsl:template>
+   
+   <xsl:template match="field | assembly" mode="metaschema-type">
+      <xsl:apply-templates select="key('definitions',@ref)" mode="#current"/>
+   </xsl:template>
+   
+   <xsl:template mode="metaschema-type" match="flag | define-flag | define-field[exists(@as-type)]">
+      <xsl:text>, type </xsl:text>
+      <b>
+         <xsl:apply-templates mode="#current" select="@as-type"/>
+         <xsl:if test="empty(@as-type)">string</xsl:if>
+      </b>
+   </xsl:template>
    
    
-   <xsl:template mode="metaschema-type" match="flag">attribute</xsl:template>
-   <xsl:template mode="metaschema-type" match="field">element (with text contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="field[@as-type='markup-line']">element (with mixed text and element contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="field[@as-type='markup-multiline']">prose content: paragraphs, lists etc.</xsl:template>
-   <xsl:template mode="metaschema-type" match="assembly">element (with element contents)</xsl:template>
-   <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
-   <xsl:template mode="metaschema-type" match="description | remarks"/>
+   <xsl:template mode="metaschema-type" match="define-field">, with text contents</xsl:template>
+   <xsl:template mode="metaschema-type" match="*[@as-type='markup-line']"      priority="2">, with mixed text and (inline prose) element contents</xsl:template>
+   <xsl:template mode="metaschema-type" match="*[@as-type='markup-multiline']" priority="2">, as prose content: paragraphs, lists etc.</xsl:template>
+   <xsl:template mode="metaschema-type" match="define-assembly">, with its element contents</xsl:template>
    
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
