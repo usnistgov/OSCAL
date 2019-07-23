@@ -67,12 +67,13 @@
       <example>
          <description>Use of link, citation, and resource</description>
          <remarks>
-            <p>The following is a contrived example to show the use of link, citation, and resource.</p>
+            <p>The following is a contrived example to show the use of link, citation, and
+               resource.</p>
          </remarks>
          <o:oscal>
             <o:link rel="reference" href="#citation1">My citation</o:link>
-        ...snip...
-        <o:back-matter>
+            ...snip...
+            <o:back-matter>
                <o:citation id="citation1">
                   <o:target>#resource1</o:target>
                </o:citation>
@@ -85,7 +86,7 @@
    </define-assembly>
    <define-field name="link" as-type="markup-line">
       <formal-name>Link</formal-name>
-      <description>A reference to a local or remote resource, with associated markup.</description>
+      <description>A reference to a local or remote resource</description>
       <json-value-key>text</json-value-key>
       <flag ref="href" as-type="uri-reference" required="yes"/>
       <flag ref="rel" as-type="NCName"/>
@@ -411,7 +412,7 @@
          </valid-values>
       </flag>
    </define-field>
-   <define-field name="url">
+   <define-field name="url" as-type="uri">
       <formal-name>URL</formal-name>
       <description>URL for web site or Internet presence</description>
    </define-field>
@@ -522,10 +523,10 @@
          <p>A title for the containing object as it should appear in a formatted document.</p>
       </remarks>
    </define-field>
-   <define-field name="base64" as-type="string">
+   <define-field name="base64" as-type="base64">
       <formal-name>Base64</formal-name>
       <description/>
-      <flag ref="filename" as-type="string"/>
+      <flag ref="filename" as-type="uri-reference"/>
       <flag ref="media-type"/>
    </define-field>
    <define-flag name="filename" as-type="string">
