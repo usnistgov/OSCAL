@@ -379,6 +379,24 @@
       </li>
    </xsl:template>
    
+   <!-- remarks are kept if @class='xml' or no class is given -->
+   <xsl:template match="remarks[@class != 'json']" priority="2"/>
+   
+   <xsl:template match="define-assembly/remarks | define-field/remarks | define-flag/remarks">
+      <xsl:if test="empty(preceding-sibling::remarks[not(@class != 'xml')])">
+         <h5>Remarks</h5>
+      </xsl:if>
+      <xsl:next-match/>
+   </xsl:template>
+   
+   <xsl:template match="remarks[@class = 'json']/p[1]">
+      <p class="p">
+         <span class="usa-label">JSON</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
+   </xsl:template>
+   
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
