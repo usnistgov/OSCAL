@@ -11,6 +11,10 @@
          identifier is called for, and may appear in file names of schema artifacts.</p>
    </xsl:template>
    
+   <xsl:template match="m:METASCHEMA/m:schema-version">
+      <p>Version of this schema: <xsl:apply-templates/></p>
+   </xsl:template>
+   
    <xsl:template match="m:description" mode="model">
       <br class="br"/>
       <i style="font-size: smaller">
@@ -126,7 +130,7 @@
    </xsl:template>
     
    <xsl:template match="*" mode="serialize">
-      <xsl:call-template name="indent-for-pre"/>
+      <!--<xsl:call-template name="indent-for-pre"/>-->
       
       <code class="tag">&lt;<xsl:value-of select="name(.)"/>
          <xsl:for-each select="@*">
@@ -143,11 +147,11 @@
          <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
       </xsl:apply-templates>
       
-      <xsl:if test="not(text()[normalize-space(.)])">
+      <!--<xsl:if test="not(text()[normalize-space(.)])">
          <xsl:call-template name="indent-for-pre">
             <xsl:with-param name="endtag" select="true()"/>
          </xsl:call-template>
-      </xsl:if>
+      </xsl:if>-->
       <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
          <xsl:text>&gt;</xsl:text>
       </code>

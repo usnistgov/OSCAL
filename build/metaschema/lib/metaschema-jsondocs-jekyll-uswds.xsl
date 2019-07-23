@@ -21,9 +21,12 @@
    
    <xsl:import href="metaschema-common-html.xsl"/>
    <xsl:import href="metaschema-docs-util.xsl"/>
+
+   <xsl:param name="schema-path" select="document-uri(/)"/>
    
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
-   
+
+
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -56,18 +59,11 @@
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
+         <h5 xsl:expand-text="true">The JSON Schema for the { short-name } format can be found at
+            <a href="$schema-path">{ $schema-path }</a></h5>
          <xsl:apply-templates select="* except $definitions"/>
-         <xsl:for-each select="key('definitions', @root)">
-            <h5>
-               <xsl:text>The root object of this schema is </xsl:text>
-               <a href="#{@name}">
-                  <xsl:apply-templates select="@name"/>
-               </a>
-            </h5>
-           <!-- <xsl:call-template name="make-element-map"/>-->
-         </xsl:for-each>
-         <xsl:apply-templates select="$definitions"/>
       </div>
+      <xsl:apply-templates select="$definitions"/>
    </xsl:template>
 
    

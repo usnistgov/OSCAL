@@ -13,7 +13,26 @@
     <!--<xsl:param name="target-format" select="()"/>-->
     <xsl:param name="target-format" as="xs:string">xml</xsl:param>
     <xsl:param name="output-path"   as="xs:string">../../../docs/content/documentation/schemas</xsl:param>
-
+    <xsl:param name="schema-path">
+        <xsl:choose>
+            <xsl:when test="$target-format = 'xml'">
+                <xsl:choose>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-catalog'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_catalog_schema.xsd</xsl:when>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-profile'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_profile_schema.xsd</xsl:when>
+                    <xsl:otherwise expand-text="true">NO XML SCHEMA PATH GIVEN FOR SCHEMA { /METASCHEMA/short-name }</xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="$target-format = 'json'">
+                <xsl:choose>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-catalog'">https://github.com/usnistgov/OSCAL/blob/master/json/schema/oscal_catalog_schema.json</xsl:when>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-profile'">https://github.com/usnistgov/OSCAL/blob/master/json/schema/oscal_profile_schema.json</xsl:when>
+                    <xsl:otherwise expand-text="true">NO XML SCHEMA PATH GIVEN FOR SCHEMA { /METASCHEMA/short-name }</xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>NO SCHEMA PATH - FORMAT NOT RECOGNIZED</xsl:otherwise>
+        </xsl:choose>
+    </xsl:param>
+    
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     <xsl:variable name="source" select="$composed-metaschema"/>
     
@@ -31,7 +50,7 @@
             'stylesheet-location'        : 'produce-either-documentor.xsl',
             'source-node'                : $source,
             'stylesheet-params'          : map { xs:QName('target-format'): $target-format,
-                                                 xs:QName('schema-path'):   document-uri(/),
+                                                 xs:QName('schema-path'):   $schema-path,
                                                  xs:QName('example-converter-xslt'): $example-converter-xslt-path
                                                  } }" />
 
@@ -58,10 +77,11 @@
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
             <xsl:message expand-text="yes">writing to {$result-path}/{ $metaschema-code }.html</xsl:message>
             <xsl:call-template name="yaml-header">
-                <xsl:with-param name="overview" select="true()"></xsl:with-param>
+                <xsl:with-param name="overview" select="true()"/>
             </xsl:call-template>
             
             <xsl:sequence select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
+            
         </xsl:result-document>
         <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
             <xsl:result-document href="{$result-path}/{ $metaschema-code }_{@id}.html"
