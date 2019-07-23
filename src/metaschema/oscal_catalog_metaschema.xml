@@ -156,9 +156,6 @@
          <!--<assembly named="ref-list"/>-->
          <any/>
       </model>
-      <remarks>
-         <p/>
-      </remarks>
    </define-assembly>
    <!-- See metadata model for 'prop' element -->
    <define-assembly name="param">
