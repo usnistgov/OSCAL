@@ -18,6 +18,8 @@
    <xsl:import href="metaschema-common-html.xsl"/>
    <xsl:import href="metaschema-docs-util.xsl"/>
    
+   <xsl:param name="schema-path" select="document-uri(/)"/>
+   
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
    
    <xsl:strip-space elements="*"/>
@@ -47,26 +49,14 @@
       </html>
    </xsl:template>
 
-
-
-   <!-- only works when XML-to-JSON converter is in the import tree -->
-   <xsl:template match="description | remarks" mode="jsonize"/>
-
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
+         <h5 xsl:expand-text="true">The XML Schema for the { short-name } format can be found at
+         <a href="$schema-path">{ $schema-path }</a></h5>
          <xsl:apply-templates select="* except $definitions"/>
-         <xsl:for-each select="key('definitions', @root)">
-            <h5>
-               <xsl:text>The root object (element) of this schema is </xsl:text>
-               <a href="#{@name}">
-                  <xsl:apply-templates select="@name"/>
-               </a>
-            </h5>
-           <!-- <xsl:call-template name="make-element-map"/>-->
-         </xsl:for-each>
-         <xsl:apply-templates select="$definitions"/>
       </div>
+      <xsl:apply-templates select="$definitions"/>  
    </xsl:template>
 
    
@@ -81,14 +71,6 @@
       <p>The XML namespace for elements conformant to this schema:
             <code><xsl:apply-templates/></code></p>
    </xsl:template>
-
-  <!-- <xsl:template priority="5"
-      match="
-         define-flag[not(@show-docs = 'xml' or @show-docs = 'xml json')] |
-         define-field[not(@show-docs = 'xml' or @show-docs = 'xml json')] |
-         define-assembly[not(@show-docs = 'xml' or @show-docs = 'xml json')]"/>-->
-
-
    <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
       <a href="#{ @name }"><xsl:value-of select="@name"/></a>
    </xsl:template>
@@ -307,16 +289,26 @@
                <xsl:apply-templates select="remarks"/>
                <pre>
                  <xsl:apply-templates select="*" mode="as-example"/>
-                  </pre>
+                </pre>
                <!--<xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>-->
             </div>
          </li>
      </ul>
    </xsl:template>
 
+   <xsl:template match="text()[not(matches(.,'\S'))]" mode="serialize">
+      <xsl:param name="hot" select="false()"/>
+      <xsl:if test="$hot">
+         <xsl:value-of select="."/>
+      </xsl:if>
+   </xsl:template>
+   
    <xsl:template match="*" mode="serialize">
-      <!--<xsl:call-template name="indent-for-pre"/>-->
-      
+<!-- goes $hot when inline markup is found  -->
+      <xsl:param name="hot" select="false()"/>
+      <!--<xsl:if test="not($hot)">
+        <xsl:call-template name="indent-for-pre"/>
+      </xsl:if>-->
       <xsl:text>&#xA;&lt;</xsl:text>
       <xsl:value-of select="local-name(.)"/>
       <xsl:for-each select="@*">
@@ -329,9 +321,12 @@
       <xsl:text>&gt;</xsl:text>
       
       <xsl:apply-templates mode="serialize">
-         <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
+         <xsl:with-param name="hot" select="$hot or boolean(text()[normalize-space(.)])"/>
       </xsl:apply-templates>
       
+      <!--<xsl:if test="not($hot)">
+         <xsl:call-template name="indent-for-pre"/>
+      </xsl:if>-->
       <xsl:if test="not(text()[normalize-space(.)])">&#xA;</xsl:if>
       <xsl:text>&lt;/</xsl:text>
       <xsl:value-of select="local-name(.)"/>
@@ -339,46 +334,7 @@
    </xsl:template>
    
 
-   <xsl:output name="jsonish" indent="yes" method="text" use-character-maps="delimiters"/>
-
-   <xsl:character-map name="delimiters">
-      <xsl:output-character character="&lt;" string="\u003c"/>
-      <xsl:output-character character="&gt;" string="\u003e"/>
-   </xsl:character-map>
-
-   <xsl:param name="json-indent" as="xs:string">yes</xsl:param>
-
-   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
-
-   <xsl:template mode="rectify" xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
-      match="/*/@key | array/*/@key"/>
-
-   <xsl:variable name="write-options" as="map(*)" expand-text="true">
-      <xsl:map>
-         <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
-      </xsl:map>
-   </xsl:variable>
-
-   <!-- Modes xml2json and rectify are in the XML-to-JSON conversion XSLTs for the different formats respectively -->
-   <xsl:template match="*" mode="jsonize">
-      <xsl:variable name="xpath-json">
-         <xsl:apply-templates select="." mode="xml2json"/>
-      </xsl:variable>
-      <xsl:variable name="rectified">
-         <xsl:apply-templates select="$xpath-json" mode="rectify"/>
-      </xsl:variable>
-      <xsl:choose>
-         <!--  this test fails when the modes are not available, so a text brick comes back with no elements -->
-         <xsl:when test="exists($rectified/*) and empty($rectified/(node() except *))">
-            <xsl:value-of select="xml-to-json($rectified, $write-options)"/>
-         </xsl:when>
-         <xsl:otherwise>
-            <xsl:text expand-text="true">Example for '{ parent::example/../@name }' not JSONized -- </xsl:text>
-            <xsl:copy-of select="$xpath-json"/>
-         </xsl:otherwise>
-      </xsl:choose>
-   </xsl:template>
-
+   
    <!-- <xsl:template mode="get-example" match="example">
       <xsl:apply-templates select="*" mode="as-example"/>
    </xsl:template>-->
@@ -391,6 +347,7 @@
       <xsl:apply-templates select="$example/*" mode="as-example"/>
    </xsl:template>-->
 
+  <!-- mode as-example filters metaschema elements from elements representing examples -->
    <xsl:template match="m:*" xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
       mode="as-example"/>
 
@@ -435,7 +392,7 @@
    <xsl:template mode="metaschema-type" match="define-field">, with text contents</xsl:template>
    <xsl:template mode="metaschema-type" match="*[@as-type='markup-line']"      priority="2">, with mixed text and (inline prose) element contents</xsl:template>
    <xsl:template mode="metaschema-type" match="*[@as-type='markup-multiline']" priority="2">, as prose content: paragraphs, lists etc.</xsl:template>
-   <xsl:template mode="metaschema-type" match="define-assembly">, with its element contents</xsl:template>
+   <xsl:template mode="metaschema-type" match="define-assembly">, with element contents</xsl:template>
    
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
