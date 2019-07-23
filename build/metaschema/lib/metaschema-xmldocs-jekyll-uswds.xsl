@@ -53,7 +53,7 @@
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
          <h5 xsl:expand-text="true">The XML Schema for the { short-name } format can be found at
-         <a href="$schema-path">{ $schema-path }</a></h5>
+         <a href="{$schema-path}">{ $schema-path }</a></h5>
          <xsl:apply-templates select="* except $definitions"/>
       </div>
       <xsl:apply-templates select="$definitions"/>  
