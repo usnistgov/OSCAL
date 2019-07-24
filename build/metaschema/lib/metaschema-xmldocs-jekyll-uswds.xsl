@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/1999/xhtml" version="3.0"
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/1999/xhtml"
    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   exclude-result-prefixes="xs">
+   exclude-result-prefixes="#all">
 
    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
    <!-- Input:   Metaschema -->
@@ -51,7 +52,7 @@
 
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
-      <div class="METASCHEMA">
+      <div class="METASCHEMA usa-content">
          <h5 xsl:expand-text="true">The XML Schema for the { short-name } format can be found at
          <a href="{$schema-path}">{ $schema-path }</a></h5>
          <xsl:apply-templates select="* except $definitions"/>
@@ -94,8 +95,21 @@
                   <xsl:apply-templates select="." mode="link-here"/>               
                </xsl:for-each>.</p>
          </xsl:for-each-group>
-         <xsl:apply-templates select="* except description"/>
+         <xsl:call-template name="remarks-group"/>
+         <xsl:call-template name="report-module"/>
       </div>
+   </xsl:template>
+   
+   <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
+   
+   <xsl:template name="report-module">
+      <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
+      <xsl:for-each select="@module">
+         <p class="usa-color-gray-lightest usa-color-text usa-color-text-primary-darkest" xsl:expand-text="yes">
+            <xsl:text>Module defined: </xsl:text>
+            <a href="{ $github-base}/{ $metaschema-path}">{
+               replace(.,'.*/','') }</a></p>
+      </xsl:for-each>
    </xsl:template>
 
    <xsl:template name="cross-links">
@@ -143,10 +157,21 @@
                </ul>
             </div>
          </xsl:if>
-         <xsl:apply-templates select="remarks"/>
-         <xsl:apply-templates select="example"/>
+         <xsl:call-template name="remarks-group"/>
+         <xsl:apply-templates select="example"/>         
+         <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
+   
+   <xsl:template name="remarks-group">
+      <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
+         <div class="remarks-group usa-color-gray-cool-light" style="padding: 0.5em; margin-bottom: 0.5em">
+            <h5>Remarks</h5>
+            <xsl:apply-templates select="current-group()"/>
+         </div>
+      </xsl:for-each-group>
+   </xsl:template>
+   
    
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
@@ -175,8 +200,9 @@
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="appears-in"/>
          <xsl:apply-templates select="model"/>
-         <xsl:apply-templates select="remarks"/>
+         <xsl:call-template name="remarks-group"/>
          <xsl:apply-templates select="example"/>
+         <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
 
@@ -255,13 +281,6 @@
    <!-- remarks are kept if @class='xml' or no class is given -->
    <xsl:template match="remarks[@class != 'xml']" priority="2"/>
 
-   <xsl:template match="define-assembly/remarks | define-field/remarks | define-flag/remarks">
-      <xsl:if test="empty(preceding-sibling::remarks[not(@class != 'xml')])">
-         <h5>Remarks</h5>
-      </xsl:if>
-      <xsl:next-match/>
-   </xsl:template>
-   
    <xsl:template match="remarks[@class = 'xml']/p[1]">
       <p class="p">
          <span class="usa-label">XML</span>

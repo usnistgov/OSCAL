@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns="http://www.w3.org/1999/xhtml"
                 version="1.0"
                 xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   exclude-result-prefixes="xs m">
+                xmlns="http://www.w3.org/1999/xhtml"
+                exclude-result-prefixes="xs m">
    
    <xsl:template match="m:METASCHEMA/m:short-name">
       <p>The short name (file identifier) for this schema is <i><xsl:apply-templates/></i>. It is used internally when an
@@ -16,17 +16,15 @@
    </xsl:template>
    
    <xsl:template match="m:description" mode="model">
-      <br class="br"/>
-      <i style="font-size: smaller">
+      <p style="font-size: smaller">
          <xsl:apply-templates/>
-      </i>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:remarks/m:p" mode="model">
-      <br class="br"/>
-      <span style="font-size: smaller">
+      <p style="font-size: smaller">
          <xsl:apply-templates/>
-      </span>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:choice">
@@ -67,8 +65,8 @@
      <li><strong><xsl:value-of select="@name"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
    </xsl:template>
 
-  <xsl:template  match="m:remarks">
-     <div class="remarks usa-color-gray-lightest" style="padding: 0.5em">
+  <xsl:template match="m:remarks">
+     <div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em">
          <xsl:apply-templates/>
       </div>
    </xsl:template>
