@@ -285,7 +285,7 @@
       <json-key flag-name="param-id"/>
       <flag name="param-id" as-type="NCName">
          <formal-name>Parameter ID</formal-name>
-         <description>Value of the 'id' flag on a target parameter</description>
+         <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
       </flag>
       <flag ref="class"/>
       <flag ref="depends-on" as-type="IDREF"/>
