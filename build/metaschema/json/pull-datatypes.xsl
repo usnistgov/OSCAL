@@ -11,7 +11,7 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:preserve-space elements="documentation"/>
-    <!--Converts file:/C:/Users/wap1/Documents/OSCAL/build/metaschema/xml/oscal-datatypes.xsd in JSON Schema notation-->
+    <!-- converts XSD from ../xml/oscal-datatypes.xsd into JSON Schema notation-->
     
     <xsl:template match="schema">
         <map>
