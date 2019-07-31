@@ -514,7 +514,7 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-   <define-flag name="role-id" as-type="NCName">
+   <define-flag name="role-id" as-type="IDREFS">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <valid-values allow-other="yes">
