@@ -372,7 +372,6 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:element name="prose"/>
   <xs:element name="any"/>
   <xs:element name="example">
     <xs:complexType>

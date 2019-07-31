@@ -236,7 +236,6 @@
           validated-by: pointer to validation cert.
         -->
       </field>
-      <prose/>
     </model>
   </define-assembly>
   
@@ -248,7 +247,6 @@
       <assembly ref="can-meet-requirement-set" max-occurs="unbounded">
         <group-as name="can-meet-requirement-sets"/>
       </assembly>
-      <prose/>
     </model>
   </define-assembly>
   
@@ -260,7 +258,6 @@
         <group-as name="requirements"/>
       </assembly>
       <assembly ref="using"/>
-      <prose/>
     </model>
   </define-assembly>
   
@@ -368,7 +365,6 @@
         <group-as name="requirements"/>
       </assembly>
       <assembly ref="using"/>
-      <prose/>
     </model>
   </define-assembly>
   
