@@ -16,6 +16,7 @@
    <define-assembly name="VALIDATION_root">
       <formal-name>(nominal root)</formal-name>
       <description>NOT TO BE USED IN A METASCHEMA</description>
+      <flag ref="party-id"/>
       <model>
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
@@ -171,7 +172,9 @@
          <valid-values allow-other="yes">
             <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
             <value name="label">A human-readable label for the parent context.</value>
+            <!-- TODO: move this to a more specific context -->
             <value name="method">An assessment method.</value>
+            <!-- TODO: move this to a more specific context -->
             <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
          </valid-values>
       </flag>
@@ -241,6 +244,10 @@
       organization as such serves as a documented party.</p>
       </remarks>
    </define-assembly>
+   <define-flag name="party-id" as-type="IDREF">
+      <formal-name>Party Reference</formal-name>
+      <description>References a <code>party</code> defined in <code>metadata</code>.</description>
+   </define-flag>
    <define-assembly name="person">
       <formal-name>Person</formal-name>
       <description>A person, with contact information</description>
@@ -507,7 +514,7 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-   <define-flag name="role-id" as-type="IDREFS">
+   <define-flag name="role-id" as-type="NCName">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <valid-values allow-other="yes">
