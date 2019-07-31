@@ -51,7 +51,6 @@
                 <xs:element ref="m:assembly"/>
                 <xs:element ref="m:field"/>
                 <xs:element ref="m:choice"/>
-                <xs:element ref="m:prose"/>
               </xs:choice>
               <xs:element ref="m:any" minOccurs="0"/>
             </xs:sequence>
