@@ -87,8 +87,8 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"
         />
       </xs:sequence>
-      <xs:attribute name="as-type" type="m:field-types"/>
-      <xs:attribute name="collapsible" type="xs:NCName"/>
+      <xs:attribute name="as-type" type="m:field-types" default="string"/>
+      <xs:attribute name="collapsible" type="m:boolean" default="true"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -181,7 +181,7 @@
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <!-- datatype should default to 'string' -->
-      <xs:attribute name="as-type" type="m:flag-types"/>
+      <xs:attribute name="as-type" type="m:flag-types" default="string"/>
       <!-- defined for composed (compiled) metaschemas -->
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -277,9 +277,9 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
       <xs:attribute name="max-occurs"
-        type="m:natural-number-or-unbounded"/>
+        type="m:natural-number-or-unbounded" default="1"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="field">
@@ -288,12 +288,14 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:group-as"/>
         <xs:element minOccurs="0" ref="m:valid-values"/>
+        <!-- TODO: Allows for constraints on the referenced fields flags -->
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="flag" type="m:flag-constraint"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
       <xs:attribute name="max-occurs"
-        type="m:natural-number-or-unbounded"/>
+        type="m:natural-number-or-unbounded" default="1"/>
     </xs:complexType>
   </xs:element>
   <xs:simpleType name="natural-number-or-unbounded">
@@ -305,14 +307,13 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:element name="valid-values">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="m:value"/>
-      </xs:sequence>
-      <xs:attribute name="allow-other" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="valid-values" type="m:valid-values-type"/>
+  <xs:complexType name="valid-values-type">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="m:value"/>
+    </xs:sequence>
+    <xs:attribute name="allow-other" type="m:boolean" default="no"/>
+  </xs:complexType>
   <xs:element name="value">
     <xs:complexType mixed="true">
       <xs:group ref="m:markup-elements"/>
@@ -344,10 +345,25 @@
       <xs:attribute name="as-type" type="m:flag-types"/>
       <xs:attribute name="name" type="xs:NCName"/>
       <xs:attribute name="ref" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
+      <xs:attribute name="required" type="m:boolean" default="no"/>
     </xs:complexType>
   </xs:element>
- 
+  <xs:complexType name="flag-constraint">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="m:remarks"/>
+      <xs:element minOccurs="0" name="valid-values">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="m:valid-values-type">
+              <xs:attribute name="inherit" type="m:boolean" default="yes"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ref" type="xs:NCName"/>
+    <xs:attribute name="required" type="m:boolean" default="no"/>
+  </xs:complexType>
   <xs:element name="choice">
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">
@@ -435,5 +451,18 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  
+
+  <!-- TODO: check if both forms are handled. In some cases only 'yes' is handled, and 'true' is not. -->
+  <xs:simpleType name="boolean">
+    <xs:restriction base="xs:NCName">
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="yes">
+        <xs:annotation><xs:documentation>Synonym for 'true'.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation><xs:documentation>Synonym for 'false'.</xs:documentation></xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
