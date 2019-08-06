@@ -73,6 +73,16 @@ resources:
 schemas:
   - text: Schema Reference
     href: /docs/schemas/
+  - text: Model maps
+    addnav:
+    - text: Catalog XML
+      href: /docs/maps/oscal-catalog-xml/
+    - text: Catalog JSON
+      href: /docs/maps/oscal-catalog-json/
+    - text: Profile XML
+      href: /docs/maps/oscal-profile-xml/
+    - text: Profile JSON
+      href: /docs/maps/oscal-profile-json/
   - text: Catalog Schema
     href: /docs/schemas/oscal-catalog-xml/
     model: catalog

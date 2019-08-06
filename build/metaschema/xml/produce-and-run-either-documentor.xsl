@@ -46,18 +46,31 @@
     <!-- This template produces an XSLT dynamically by running an XSLT with a parameter set. -->
     <xsl:variable name="xslt">
         <xsl:variable name="runtime"   select="map {
-            'xslt-version'               : 3.0,
-            'stylesheet-location'        : 'produce-either-documentor.xsl',
-            'source-node'                : $source,
-            'stylesheet-params'          : map { xs:QName('target-format'): $target-format,
-                                                 xs:QName('schema-path'):   $schema-path,
-                                                 xs:QName('example-converter-xslt'): $example-converter-xslt-path
-                                                 } }" />
-
+            'xslt-version'                    : 3.0,
+            'stylesheet-location'             : 'produce-either-documentor.xsl',
+            'source-node'                     : $source,
+            'stylesheet-params'               : map { xs:QName('target-format'): $target-format,
+                                                      xs:QName('schema-path')           : $schema-path,
+                                                      xs:QName('example-converter-xslt'): $example-converter-xslt-path
+            } }" />
+        
         <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
          https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         
+        <xsl:sequence select="transform($runtime)?output"/>
+    </xsl:variable>
+    
+    <xsl:variable name="map-xslts" as="element()+">
+        <xslt target="xml"  href="../lib/metaschema-element-map.xsl"/>
+        <xslt target="json" href="../lib/metaschema-element-map.xsl"/>
+    </xsl:variable>
+        
+    <xsl:variable name="schema-map">
+        <xsl:variable name="runtime"   select="map {
+            'xslt-version'               : 3.0,
+            'stylesheet-location'        : $map-xslts[@target = $target-format]/@href,
+            'source-node'                : $source }" />
         <xsl:sequence select="transform($runtime)?output"/>
     </xsl:variable>
     
@@ -74,17 +87,28 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
+        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
             <xsl:message expand-text="yes">writing to {$result-path}/{ $metaschema-code }.html</xsl:message>
             <xsl:call-template name="yaml-header">
                 <xsl:with-param name="overview" select="true()"/>
             </xsl:call-template>
             
             <xsl:sequence select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
-            
         </xsl:result-document>
+
+        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/../../maps/{ $metaschema-code }-{ $target-format }-map.html" method="xhtml">
+            <xsl:message expand-text="yes">{$result-path}/../../maps/{ $metaschema-code }-map.html</xsl:message>
+            <xsl:call-template name="map-header"/>
+            
+            <xsl:for-each select="$schema-map/*/html:body/*">
+                <pre>
+                    <xsl:sequence select="."/>
+                </pre>
+            </xsl:for-each>
+        </xsl:result-document>
+        
         <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
-            <xsl:result-document href="{$result-path}/{ $metaschema-code }_{@id}.html"
+            <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }_{@id}.html"
                method="xhtml">
                 <xsl:message expand-text="yes">{$result-path}/{ $metaschema-code }_{@id}.html</xsl:message>
                 
@@ -105,17 +129,31 @@
         <xsl:text expand-text="true">title: Schema Documentation - { $metaschema-code }{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { $metaschema-code } schema documentation{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
         <xsl:if test="exists($tagname)">
-          <xsl:text expand-text="true">tagname: { $tagname }&#xA;</xsl:text>
+            <xsl:text expand-text="true">tagname: { $tagname }&#xA;</xsl:text>
         </xsl:if>
         <!--When $tagname is missing, the last step is omitted -->
-        <xsl:text expand-text="true">permalink: /docs/schemas/{ $metaschema-code }-{$target-format}/{ $tagname ! ($metaschema-code || '_' || .) }&#xA;</xsl:text>
+        <xsl:text expand-text="true">permalink: /docs/schemas/{ $metaschema-code }-{$target-format}/{ $tagname ! ($metaschema-code || '_' || .) }/&#xA;</xsl:text>
         <xsl:text expand-text="true">layout: schemas&#xA;</xsl:text>
         <xsl:text expand-text="true">model: { $metaschema-code }-{ $target-format }&#xA;</xsl:text>
         <xsl:if test="$root">root: true&#xA;</xsl:if>
         <xsl:if test="$overview">overview: true&#xA;</xsl:if>
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
-            
+    
+    <xsl:template name="map-header">
+        <xsl:text>---&#xA;</xsl:text>
+        <xsl:text expand-text="true">title: Schema Map - { $source/METASCHEMA/schema-name/string() }&#xA;</xsl:text>
+        <xsl:text expand-text="true">description: { $source/METASCHEMA/schema-name/string() } Map&#xA;</xsl:text>
+        <xsl:text expand-text="true">permalink: /docs/maps/{ $metaschema-code }-{$target-format}/&#xA;</xsl:text>
+        <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
+        <xsl:text expand-text="true">topnav: schemareference&#xA;</xsl:text>
+        <xsl:text expand-text="true">sidenav: schemas&#xA;</xsl:text>
+        <!--<xsl:text expand-text="true">stickysidenav: true&#xA;</xsl:text>-->
+        <xsl:text expand-text="true">subnav: true&#xA;</xsl:text>
+        <!--<xsl:text expand-text="true">model: { $metaschema-code }-{ $target-format }&#xA;</xsl:text>-->
+        <xsl:text>---&#xA;</xsl:text>
+    </xsl:template>
+    
     <xsl:mode name="unescape" on-no-match="shallow-copy"/>
     
     <!-- XML examples have to be written out live for Jekyll's macro -->
