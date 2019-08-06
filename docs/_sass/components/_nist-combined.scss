@@ -4,6 +4,19 @@
  *
  */
 
+/* Schema Model Map styles */
+div.OM-map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold; color: midnightblue } 
+
+div.OM-map p { margin: 0ex }
+
+span.OM-lit, .OM-cardinality { font-family: serif; font-weight: normal; color: $color-primary-alt-darkest }
+
+.OM-cardinality  { background-color: $color-primary-alt-lightest }
+
+.OM-map a { color: inherit; text-decoration: none }
+
+.OM-map a:hover { text-decoration: underline }
+
 
 /* Header Styles */
 

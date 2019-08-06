@@ -46,7 +46,7 @@
             <xsl:if test="empty(@min-occurs)">optional</xsl:if>
             <xsl:text>, </xsl:text>
             <xsl:apply-templates select="@max-occurs" mode="#current"/>
-            <xsl:if test="empty(@max-occurs)"> one only</xsl:if>
+            <xsl:if test="empty(@max-occurs)">one only</xsl:if>
             <xsl:text>)</xsl:text>
     </xsl:template>
     
@@ -62,9 +62,9 @@
         <xsl:text>optional</xsl:text>
     </xsl:template>
     
-    <xsl:template mode="occurrence-requirements" match="@min-occurs[empty(../@max-occurs) or ../@max-occurs='1']">
+    <!--<xsl:template mode="occurrence-requirements" match="@min-occurs[empty(../@max-occurs) or ../@max-occurs='1']">
         <xsl:text>required</xsl:text>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template mode="occurrence-requirements" match="@min-occurs">
         <xsl:text>required, at least </xsl:text>

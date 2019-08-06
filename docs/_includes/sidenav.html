@@ -17,11 +17,20 @@
       <ul class="usa-sidenav-sub_list">
         {% include subnav.html links=page.subnav title=page.title %}
       </ul>
-      {% elsif link.subnav %}
+
+      {% elsif link.addnav %}
+      <ul class="usa-sidenav-sub_list">
+	    {% for added in link.addnav %}
+          <li><a href="{{ added.href | relative_url }}"{% if added.href == page.permalink %} class="usa-current" {% endif %}>{{ added.text }}</a></li>
+        {% endfor %}
+      </ul>
+
+	  {% elsif link.subnav %}
       <ul class="usa-sidenav-sub_list">
         {% include subnav.html links=page.subnav title=page.title %}
       </ul>
-      {% endif %}
+
+	  {% endif %}
     </li>
     {% endfor %}
   </ul>
