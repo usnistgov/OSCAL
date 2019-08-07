@@ -1,11 +1,15 @@
 /**
- * @file
- * Header and Footer styles
+ * @file _nist-combined.scss
+ * Header and Footer styles 
  *
  */
 
 /* Schema Model Map styles */
-div.OM-map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold; color: midnightblue } 
+div.OM-map { margin-top: 0ex; margin-bottom: 0ex; font-family: monospace; font-weight: bold; color: midnightblue } 
+div.OM-map div.OM-map { margin-left: 2em } 
+
+.OM-entry { border: medium solid $color-cool-blue-lightest; background-color: $color-cool-blue-lightest; padding-right: 0.5rem }
+.OM-entry:hover { border: medium solid $color-focus }
 
 div.OM-map p { margin: 0ex }
 

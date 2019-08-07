@@ -41,42 +41,62 @@
    
    <xsl:template match="*" mode="html-render">
       <p class="OM-entry">
-         <xsl:text>{ '</xsl:text>
-         <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
+         <xsl:text>'</xsl:text>
+         <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ (@link,@name)[1] }">
             <xsl:value-of select="@name"/>
          </a>
          <xsl:text>': </xsl:text>
          <xsl:apply-templates select="." mode="contents"/>
-         <xsl:text> }</xsl:text>
          <xsl:if test="not(position() eq last())">, </xsl:if>
       </p>
    </xsl:template>
 
-   <xsl:template match="m:flag[@to-link='no']" mode="html-render">
-      <p class="OM-entry">
-         <xsl:text>{ '</xsl:text>
-         <span class="OM-name">
-            <xsl:value-of select="@name"/>
-         </span>
-         <xsl:text>': </xsl:text>
-         <xsl:apply-templates select="." mode="contents"/>
-         <xsl:text> }</xsl:text>
-         <xsl:if test="not(position() eq last())">, </xsl:if>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:assembly" mode="html-render">
+   <xsl:template match="*[@rule-json='BY-KEY']" mode="html-render">
       <div class="OM-entry">
          <p>
-            <xsl:text>{ '</xsl:text>
+            <xsl:text>'</xsl:text>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
                <xsl:value-of select="@name"/>
             </a>
-            <xsl:text>': </xsl:text>
+            <xsl:text>':  BY KEY {</xsl:text>
          </p>
          <xsl:apply-templates select="." mode="contents"/>
          <p>
-            <xsl:text>}</xsl:text>
+            <xsl:text> }</xsl:text>
+            <xsl:if test="not(position() eq last())">, </xsl:if>
+         </p>
+      </div>
+   </xsl:template>
+   
+   <xsl:template match="*[@rule-json='OBJECT']" mode="html-render">
+      <div class="OM-entry">
+         <p>
+            <xsl:text>'</xsl:text>
+            <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
+               <xsl:value-of select="@name"/>
+            </a>
+            <xsl:text>': {</xsl:text>
+         </p>
+         <xsl:apply-templates select="." mode="contents"/>
+         <p>
+            <xsl:text> }</xsl:text>
+            <xsl:if test="not(position() eq last())">, </xsl:if>
+         </p>
+      </div>
+   </xsl:template>
+   
+   <xsl:template match="*[@rule-json=('ARRAY','SINGLETON-OR-ARRAY')]" mode="html-render">
+      <div class="OM-entry">
+         <p>
+            <xsl:text>'</xsl:text>
+            <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
+               <xsl:value-of select="(@group-name,@name)[1]"/>
+            </a>
+            <xsl:text>': [</xsl:text>
+         </p>
+         <xsl:apply-templates select="." mode="contents"/>
+         <p>
+            <xsl:text> ]</xsl:text>
             <xsl:if test="not(position() eq last())">, </xsl:if>
          </p>
       </div>

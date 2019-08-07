@@ -86,6 +86,20 @@
       </div>
    </xsl:template>
    
+   <xsl:template match="m:flag" mode="html-render">
+      <xsl:text> </xsl:text>
+      <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @link }">
+         <xsl:value-of select="@name"/>
+      </a>
+      <xsl:text>="</xsl:text>
+      <span class="OM-lit">
+         <xsl:text>{</xsl:text>
+         <xsl:value-of select="(@as-type,'string')[1]"/>
+         <xsl:text>}</xsl:text>
+      </span>
+      <xsl:text>"</xsl:text>
+   </xsl:template>
+   
    <xsl:template mode="html-render" match="m:field[@as-type='markup-multiline'][not(@wrap-xml='yes')]">
       <p class="OM-entry"><a href="../../schemas/oscal-prose"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p>
    </xsl:template>
@@ -130,31 +144,5 @@
       </span>
    </xsl:template>
 
-   <xsl:template match="m:flag[@to-link='no']" mode="html-render">
-      <xsl:text> </xsl:text>
-      <span class="OM-name">
-         <xsl:value-of select="@name"/>
-      </span>
-      <xsl:text>="</xsl:text>
-      <span class="OM-lit">
-         <xsl:text>{</xsl:text>
-         <xsl:value-of select="(@as-type,'string')[1]"/>
-         <xsl:text>}</xsl:text>
-      </span>
-      <xsl:text>"</xsl:text>
-   </xsl:template>
    
-   <xsl:template match="m:flag" mode="html-render">
-      <xsl:text> </xsl:text>
-      <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
-         <xsl:value-of select="@name"/>
-      </a>
-      <xsl:text>="</xsl:text>
-      <span class="OM-lit">
-         <xsl:text>{</xsl:text>
-        <xsl:value-of select="(@as-type,'string')[1]"/>
-         <xsl:text>}</xsl:text>
-      </span>
-      <xsl:text>"</xsl:text>
-   </xsl:template>
 </xsl:stylesheet>
