@@ -12,7 +12,7 @@ The OSCAL project is modeling each OSCAL [layer](https://pages.nist.gov/OSCAL/do
 
 The OSCAL project is producing the following types of schemas:
 
-* XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) that describes an XML tag set for an OSCAL model
+* XML Schema based on the <a href="https://www.w3.org/TR/xmlschema11-1" data-proofer-ignore="yes">XML Schema Definition Language (XSD) 1.1</a> that describes an XML tag set for an OSCAL model
 * JSON Schema based on the [JSON Schema draft-07](https://json-schema.org/specification.html) that describes a JSON data object for an OSCAL model
 
 Using OSCAL converters, XML documents that are conforming (validate) to an OSCAL XSD can be converted without loss into the corresponding JSON, and vice versa. Accordingly we can produce not only the models and their documentation, but also tools for converting data sets in the respective formats into their "opposites".

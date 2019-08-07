@@ -17,6 +17,12 @@
     
     <xsl:key name="surrogates-by-name" match="*" use="@name"/>
     
+    <xsl:variable name="serialization-settings">
+        <output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+            <output:indent value="yes"/>
+        </output:serialization-parameters>
+    </xsl:variable>
+    
     <xsl:variable name="root-definition" select="/*/*[@name = /*/@root]"/>
     
     <xsl:variable name="surrogate-tree">
@@ -29,6 +35,10 @@
         <xsl:apply-templates select="$surrogate-tree" mode="prune"/>
     </xsl:variable>
     
+    <xsl:template match="/">
+        <xsl:sequence select="serialize($pruned-tree,$serialization-settings/*)"/>
+    </xsl:template>
+        
     <!-- Debugging entry point -->
     <xsl:template name="make-page">
         <html lang="en">
@@ -54,9 +64,9 @@
                 </style>
             </head>
             <body>
-                <!--<pre>
+                <pre>
                <xsl:value-of select="serialize($pruned-tree, $serialization-settings/* )"/>
-            </pre>-->
+            </pre>
                 <!--<pre>
                <xsl:value-of select="serialize($surrogate-tree, $serialization-settings/* )"/>
             </pre>-->
@@ -131,6 +141,9 @@
     <xsl:template match="define-assembly | define-field" mode="build">
         <xsl:param name="minOccurs" select="'0'"/>
         <xsl:param name="maxOccurs" select="'1'"/>
+        <xsl:param name="group-name" select="()"/>
+        <xsl:param name="rule-json" select="()"/>
+        <xsl:param name="rule-xml"  select="()"/>
         <xsl:param name="visited" select="()" tunnel="true"/>
         <xsl:variable name="type" select="replace(local-name(),'^define\-','')"/>
         
@@ -138,6 +151,17 @@
             <xsl:apply-templates select="@*" mode="build"/>
             <xsl:attribute name="min-occurs" select="$minOccurs"/>
             <xsl:attribute name="max-occurs" select="$maxOccurs"/>
+            <xsl:for-each select="$rule-json">
+                <xsl:attribute name="rule-json" select="."/>
+            </xsl:for-each>
+            
+            <xsl:apply-templates select="json-key, json-value-key" mode="build"/>
+            <xsl:for-each select="$rule-json">
+                <xsl:attribute name="rule-json" select="."/>
+            </xsl:for-each>
+            <xsl:for-each select="$rule-xml">
+                <xsl:attribute name="rule-xml" select="."/>
+            </xsl:for-each>
             <xsl:apply-templates select="flag" mode="build"/>
             <xsl:if test="not(@name = $visited)">
                 <xsl:apply-templates select="model" mode="build">
@@ -145,6 +169,14 @@
                 </xsl:apply-templates>
             </xsl:if>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template mode="build" match="json-value-key[matches(@flag-name,'\S')]">
+        <xsl:attribute name="json-value-flag" select="@flag-name"/>
+    </xsl:template>
+    
+    <xsl:template mode="build" match="json-value-key | json-key">
+        <xsl:attribute name="{ local-name() }" select="."/>
     </xsl:template>
     
     <xsl:template match="@module | @ref" mode="build"/>
@@ -156,6 +188,9 @@
     <xsl:template match="flag" mode="build">
         <m:flag>
             <xsl:attribute name="name" select="(@name,@ref)[1]"/>
+            <xsl:if test="empty(@name)">
+                <xsl:attribute name="to-link">no</xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates select="@*" mode="build"/>
         </m:flag>
     </xsl:template>
@@ -166,6 +201,9 @@
         <xsl:apply-templates mode="build" select="key('definitions', @ref)">
             <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
             <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"/>
+            <xsl:with-param name="group-name" select="group-as/@name"/>
+            <xsl:with-param name="rule-json" select="group-as/@json-behavior"/>
+            <xsl:with-param name="rule-xml"  select="group-as/@xml-behavior"/>
         </xsl:apply-templates>
     </xsl:template>
     

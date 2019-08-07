@@ -163,6 +163,15 @@
         </xsl:element>
     </xsl:template>
     
+    <!-- External links in the docs should not be link checked  -->
+    <xsl:template match="a[starts-with(@href,'https?:')]" mode="cleanup">
+        <xsl:element name="{ local-name() }">
+            <xsl:attribute name="data-proofer-ignore">yes</xsl:attribute>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates select="node() | @*" mode="cleanup"/>
+        </xsl:element>
+    </xsl:template>
+    
     <!-- XML examples have to be written out live for Jekyll's macro -->
     <xsl:template mode="cleanup" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
         <xsl:value-of disable-output-escaping="yes" select="."/>
