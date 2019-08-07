@@ -164,7 +164,7 @@
     </xsl:template>
     
     <!-- External links in the docs should not be link checked  -->
-    <xsl:template match="a[starts-with(@href,'https?:')]" mode="cleanup">
+    <xsl:template match="html:a[matches(@href,'^https?:')]" mode="cleanup">
         <xsl:element name="{ local-name() }">
             <xsl:attribute name="data-proofer-ignore">yes</xsl:attribute>
             <xsl:copy-of select="@*"/>
