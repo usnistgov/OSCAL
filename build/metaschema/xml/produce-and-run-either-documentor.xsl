@@ -63,14 +63,15 @@
     
     <xsl:variable name="map-xslts" as="element()+">
         <xslt target="xml"  href="../lib/metaschema-element-map.xsl"/>
-        <xslt target="json" href="../lib/metaschema-element-map.xsl"/>
+        <xslt target="json" href="../lib/metaschema-jsonobject-map.xsl"/>
     </xsl:variable>
         
     <xsl:variable name="schema-map">
         <xsl:variable name="runtime"   select="map {
             'xslt-version'               : 3.0,
             'stylesheet-location'        : $map-xslts[@target = $target-format]/@href,
-            'source-node'                : $source }" />
+            'source-node'                : $source,
+            'stylesheet-params'          : map { xs:QName('model-label'): ($metaschema-code || '-' || $target-format) } }" />
         <xsl:sequence select="transform($runtime)?output"/>
     </xsl:variable>
     
@@ -87,36 +88,34 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
+        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }.html" method="html">
             <xsl:message expand-text="yes">writing to {$result-path}/{ $metaschema-code }.html</xsl:message>
             <xsl:call-template name="yaml-header">
                 <xsl:with-param name="overview" select="true()"/>
             </xsl:call-template>
             
-            <xsl:sequence select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
+            <xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
         </xsl:result-document>
 
-        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/../../maps/{ $metaschema-code }-{ $target-format }-map.html" method="xhtml">
+        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/../../maps/{ $metaschema-code }-{ $target-format }-map.html" method="html">
             <xsl:message expand-text="yes">{$result-path}/../../maps/{ $metaschema-code }-map.html</xsl:message>
             <xsl:call-template name="map-header"/>
             
-            <xsl:for-each select="$schema-map/*/html:body/*">
-                <pre>
-                    <xsl:sequence select="."/>
-                </pre>
+            <xsl:for-each select="$schema-map">
+                <xsl:apply-templates mode="cleanup" select="."/>
             </xsl:for-each>
         </xsl:result-document>
         
         <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
             <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }_{@id}.html"
-               method="xhtml">
+               method="html">
                 <xsl:message expand-text="yes">{$result-path}/{ $metaschema-code }_{@id}.html</xsl:message>
                 
                 <xsl:call-template name="yaml-header">
                     <xsl:with-param name="tagname" select="string(@id)"/>
                     <xsl:with-param name="root"    select="starts-with(html:h5[1],(@id || ' is the root' ))"/>
                 </xsl:call-template>
-                <xsl:apply-templates select="." mode="unescape"/>
+                <xsl:apply-templates select="." mode="cleanup"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
@@ -142,7 +141,7 @@
     
     <xsl:template name="map-header">
         <xsl:text>---&#xA;</xsl:text>
-        <xsl:text expand-text="true">title: Schema Map - { $source/METASCHEMA/schema-name/string() }&#xA;</xsl:text>
+        <xsl:text expand-text="true">title: { upper-case($target-format) } model map - { $source/METASCHEMA/schema-name/string() }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { $source/METASCHEMA/schema-name/string() } Map&#xA;</xsl:text>
         <xsl:text expand-text="true">permalink: /docs/maps/{ $metaschema-code }-{$target-format}/&#xA;</xsl:text>
         <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
@@ -154,10 +153,18 @@
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
     
-    <xsl:mode name="unescape" on-no-match="shallow-copy"/>
+<!-- 'cleanup' mode strips namespaces and disables output escaping inside code blocks for HTMLish target  -->
+    <xsl:mode name="cleanup" on-no-match="shallow-copy"/>
+    
+    <xsl:template match="*" mode="cleanup">
+        <xsl:element name="{ local-name() }">
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates select="node() | @*" mode="cleanup"/>
+        </xsl:element>
+    </xsl:template>
     
     <!-- XML examples have to be written out live for Jekyll's macro -->
-    <xsl:template mode="unescape" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
+    <xsl:template mode="cleanup" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
         <xsl:value-of disable-output-escaping="yes" select="."/>
     </xsl:template>
     
