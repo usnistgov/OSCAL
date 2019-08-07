@@ -118,7 +118,7 @@
          </o:oscal>
       </example>
    </define-field>
-   <define-field name="last-modified-date">
+   <define-field name="last-modified-date" as-type="dateTime-with-timezone">
       <formal-name>Last modified date</formal-name>
       <description>Date of last modification.</description>
       <remarks>
