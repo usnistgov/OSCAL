@@ -35,7 +35,7 @@
       </output:serialization-parameters>
    </xsl:variable>
    
-<!-- For debugging, to produce standalone HTML, call template 'make-page' in metaschema-docs-util.xsl  -->
+   <!-- For debugging, to produce standalone HTML, call template 'make-page' in metaschema-docs-util.xsl  -->
    
    <xsl:template match="/">
       <div class="OM-map">
@@ -46,47 +46,31 @@
    <xsl:template mode="html-render" match="@m:*"/>
    
    <xsl:template match="*" mode="html-render">
-      <xsl:variable name="contents">
-         <xsl:apply-templates select="." mode="contents"/>
-      </xsl:variable>
       <p class="OM-entry">
-         <xsl:text>&lt;</xsl:text>
+         <xsl:text>{ '</xsl:text>
          <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
             <xsl:value-of select="@name"/>
          </a>
-         <xsl:apply-templates select="m:flag" mode="#current"/>
-         <xsl:if test="not(matches($contents,'\S'))">/</xsl:if>
-         <xsl:text>></xsl:text>
-         <xsl:if test="matches($contents,'\S')">
-            <xsl:sequence select="$contents"/>
-            <xsl:text>&lt;/</xsl:text>
-            <xsl:value-of select="@name"/>
-            <xsl:text>></xsl:text>
-         </xsl:if>
-         <xsl:call-template name="cardinality-note"/>
+         <xsl:text>': </xsl:text>
+         <xsl:apply-templates select="." mode="contents"/>
+         <xsl:text> }</xsl:text>
+         <xsl:if test="not(position() eq last())">, </xsl:if>
       </p>
    </xsl:template>
 
-   <!-- matching assemblies containing children other than flags after pruning -->
-   <xsl:template match="m:assembly[exists(* except m:flag)]" mode="html-render">
-      <xsl:variable name="contents">
-         <xsl:apply-templates select="." mode="contents"/>
-      </xsl:variable>
+   <xsl:template match="m:assembly" mode="html-render">
       <div class="OM-entry">
          <p>
-            <xsl:text>&lt;</xsl:text>
+            <xsl:text>{ '</xsl:text>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
                <xsl:value-of select="@name"/>
             </a>
-            <xsl:apply-templates select="m:flag" mode="#current"/>
-            <xsl:text>&gt;</xsl:text>
-            <xsl:call-template name="cardinality-note"/>
+            <xsl:text>': </xsl:text>
          </p>
-         <xsl:sequence select="$contents"/>
+         <xsl:apply-templates select="." mode="contents"/>
          <p>
-            <xsl:text>&lt;/</xsl:text>
-            <xsl:value-of select="@name"/>
-            <xsl:text>></xsl:text>
+            <xsl:text>}</xsl:text>
+            <xsl:if test="not(position() eq last())">, </xsl:if>
          </p>
       </div>
    </xsl:template>
@@ -95,12 +79,12 @@
       <p class="OM-entry"><a href="../../schemas/oscal-prose"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p>
    </xsl:template>
    
-   <xsl:template name="cardinality-note">
+   <!--<xsl:template name="cardinality-note">
       <xsl:text> </xsl:text>
       <i class="OM-cardinality">
          <xsl:apply-templates select="." mode="occurrence-requirements"/>
       </i>
-   </xsl:template>
+   </xsl:template>-->
    
    <!--<xsl:template name="cardinality-note">
       <xsl:variable name="note">
@@ -121,32 +105,19 @@
    
    <xsl:template mode="contents" match="m:assembly">
       <div class="OM-map">
-         <xsl:apply-templates select="* except m:flag" mode="html-render"/>
+         <xsl:apply-templates select="*" mode="html-render"/>
       </div>
    </xsl:template>
    
-   <xsl:template mode="contents" match="m:field">
+   <xsl:template mode="contents" match="m:field | m:flag">
       <span class="OM-lit">string value</span>
    </xsl:template>
    
-   <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')]">
+   <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')] | m:flag[matches(@as-type,'\S')]">
       <span class="OM-lit">
         <xsl:value-of select="@as-type"/>
       </span>
    </xsl:template>
    
-   <xsl:template match="m:flag" mode="html-render">
-      <xsl:text> </xsl:text>
-      <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
-         <xsl:value-of select="@name"/>
-      </a>
-      <xsl:text>="</xsl:text>
-      <span class="OM-lit">
-         <xsl:text>{</xsl:text>
-        <xsl:value-of select="(@as-type,'string')[1]"/>
-         <xsl:text>}</xsl:text>
-      </span>
-      <xsl:text>"</xsl:text>
-
-   </xsl:template>
+   
 </xsl:stylesheet>
