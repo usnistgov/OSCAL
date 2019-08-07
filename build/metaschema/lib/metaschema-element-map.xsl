@@ -29,12 +29,7 @@
       <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
    </xsl:template>-->
    
-   <xsl:variable name="serialization-settings">
-      <output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-         <output:indent value="yes"/>
-      </output:serialization-parameters>
-   </xsl:variable>
-   
+    
 <!-- For debugging, to produce standalone HTML, call template 'make-page' in metaschema-docs-util.xsl  -->
    
    <xsl:template match="/">
@@ -134,6 +129,20 @@
         <xsl:value-of select="@as-type"/>
       </span>
    </xsl:template>
+
+   <xsl:template match="m:flag[@to-link='no']" mode="html-render">
+      <xsl:text> </xsl:text>
+      <span class="OM-name">
+         <xsl:value-of select="@name"/>
+      </span>
+      <xsl:text>="</xsl:text>
+      <span class="OM-lit">
+         <xsl:text>{</xsl:text>
+         <xsl:value-of select="(@as-type,'string')[1]"/>
+         <xsl:text>}</xsl:text>
+      </span>
+      <xsl:text>"</xsl:text>
+   </xsl:template>
    
    <xsl:template match="m:flag" mode="html-render">
       <xsl:text> </xsl:text>
@@ -147,6 +156,5 @@
          <xsl:text>}</xsl:text>
       </span>
       <xsl:text>"</xsl:text>
-
    </xsl:template>
 </xsl:stylesheet>
