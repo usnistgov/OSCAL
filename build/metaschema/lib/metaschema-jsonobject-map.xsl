@@ -187,12 +187,11 @@
             <xsl:when test="@min-occurs = '1'">required</xsl:when>
             <xsl:otherwise>optional</xsl:otherwise>
          </xsl:choose>
-         <xsl:if test="not(@rule-json=('ARRAY','SINGLETON-OR-ARRAY'))">
-            
-         <xsl:call-template name="occurrences">
-            <xsl:with-param name="leader">, </xsl:with-param>
-         </xsl:call-template>
-         </xsl:if>
+<!--         <xsl:if test="../@rule-json = ('ARRAY', 'SINGLETON-OR-ARRAY')">
+            <xsl:call-template name="occurrences">
+               <xsl:with-param name="leader">, </xsl:with-param>
+            </xsl:call-template>
+         </xsl:if>-->
       </b>
    </xsl:template>
    
