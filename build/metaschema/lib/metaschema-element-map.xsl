@@ -106,9 +106,9 @@
    
    <xsl:template name="cardinality-note">
       <xsl:text> </xsl:text>
-      <i class="OM-cardinality">
+      <b class="OM-cardinality">
          <xsl:apply-templates select="." mode="occurrence-requirements"/>
-      </i>
+      </b>
    </xsl:template>
    
    <!--<xsl:template name="cardinality-note">
@@ -134,6 +134,7 @@
       </div>
    </xsl:template>
    
+   <!-- We don't have to do flags here since they are promoted into attribute syntax. -->
    <xsl:template mode="contents" match="m:field">
       <span class="OM-lit">string value</span>
    </xsl:template>
