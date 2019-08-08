@@ -64,13 +64,13 @@
                 </style>
             </head>
             <body>
-                <pre>
+                <pre style="float:left">
                <xsl:value-of select="serialize($pruned-tree, $serialization-settings/* )"/>
             </pre>
                 <!--<pre>
                <xsl:value-of select="serialize($surrogate-tree, $serialization-settings/* )"/>
             </pre>-->
-                <div class="OM-map">
+                <div class="OM-map" style="float:right">
                   <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
                 </div>
             </body>
@@ -192,8 +192,12 @@
         <xsl:attribute name="json-value-flag" select="@flag-name"/>
     </xsl:template>
     
-    <xsl:template mode="build" match="json-value-key | json-key">
+    <xsl:template mode="build" match="json-value-key">
         <xsl:attribute name="{ local-name() }" select="."/>
+    </xsl:template>
+    
+    <xsl:template mode="build" match="json-key">
+        <xsl:attribute name="json-key-flag" select="@flag-name"/>
     </xsl:template>
     
     <xsl:template match="@module | @ref" mode="build"/>
@@ -203,7 +207,7 @@
     </xsl:template>
     
     <xsl:template match="flag" mode="build">
-        <m:flag>
+        <m:flag max-occurs="1" min-occurs="{if (@required='yes') then 1 else 0}" rule-json="STRING">
             <xsl:attribute name="name" select="(@name,@ref)[1]"/>
             <xsl:attribute name="link" select="(@ref,../@name)[1]"/>
             <xsl:apply-templates select="@*" mode="build"/>
@@ -224,7 +228,7 @@
         </xsl:apply-templates>
     </xsl:template>
     
-    <xsl:template mode="build" match="model//field[matches(group-as/@json-behavior,'\S')]
+    <xsl:template mode="build" priority="2" match="model//field[matches(group-as/@json-behavior,'\S')]
                                     | model//assembly[matches(group-as/@json-behavior,'\S')]">
         <xsl:apply-templates mode="build" select="key('definitions', @ref)">
             <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
@@ -309,4 +313,12 @@
         </xsl:value-of>
     </xsl:function>
 
+    <xsl:function name="m:indefinite-article" as="xs:string">
+        <xsl:param name="noun"/>
+        <xsl:value-of>
+            <xsl:text>a</xsl:text>
+            <xsl:if test="matches($noun,'^[aeiouAEIOU]')"/>
+        </xsl:value-of>
+    </xsl:function>
+    
 </xsl:stylesheet>

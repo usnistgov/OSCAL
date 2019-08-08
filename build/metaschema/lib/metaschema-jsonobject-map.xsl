@@ -38,29 +38,31 @@
    </xsl:template>
 
    <xsl:template mode="html-render" match="@m:*"/>
-   
-   <xsl:template match="*" mode="html-render">
-      <p class="OM-entry">
-         <xsl:text>'</xsl:text>
-         <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ (@link,@name)[1] }">
-            <xsl:value-of select="@name"/>
-         </a>
-         <xsl:text>': </xsl:text>
-         <xsl:apply-templates select="." mode="contents"/>
-         <xsl:if test="not(position() eq last())">, </xsl:if>
-      </p>
-   </xsl:template>
 
-   <xsl:template match="*[@rule-json='BY-KEY']" mode="html-render">
+   <xsl:template mode="html-render" match="m:flag[(@name)= ../@json-key-flag]"/>
+   
+   <xsl:template match="*[@rule-json='BY_KEY']" mode="html-render">
       <div class="OM-entry">
          <p>
-            <xsl:text>'</xsl:text>
+            <xsl:call-template name="cardinality-note"/>
+            <xsl:text> </xsl:text>
+            <xsl:text>{{</xsl:text>
+            <xsl:value-of select="@name || '.' || @json-key-flag"/>
+            <xsl:text>}}</xsl:text>
+            <span class="OM-lit">
+               <xsl:text>, labeling </xsl:text>
+               <xsl:if test="@max-occurs='1'">
+                  <xsl:value-of select="m:indefinite-article(@name)"/>
+                  <xsl:text> </xsl:text>
+               </xsl:if>
+            </span>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
                <xsl:value-of select="@name"/>
             </a>
-            <xsl:text>':  BY KEY {</xsl:text>
+            <span class="OM-lit"> object<xsl:if test="not(@max-occurs='1')">s</xsl:if></span>
+            <xsl:text>: {</xsl:text>
          </p>
-         <xsl:apply-templates select="." mode="contents"/>
+         <xsl:apply-templates select="." mode="contents-as-block"/>
          <p>
             <xsl:text> }</xsl:text>
             <xsl:if test="not(position() eq last())">, </xsl:if>
@@ -68,16 +70,46 @@
       </div>
    </xsl:template>
    
-   <xsl:template match="*[@rule-json='OBJECT']" mode="html-render">
+   
+   <!--<xsl:template priority="2" match="m:field[@json-value-flag=m:flag/@name]" mode="html-render">
+      <!-\-<xsl:message expand-text="true">{ @name }:{ @json-value-flag}</xsl:message>-\->
       <div class="OM-entry">
          <p>
-            <xsl:text>'</xsl:text>
+            <xsl:call-template name="cardinality-note"/>
+            <xsl:text> {{</xsl:text>
+            <xsl:value-of select="@name || '.' || @json-value-flag"/>
+            <xsl:text>}}</xsl:text>
+            <span class="OM-lit">
+               <xsl:text>, labeling </xsl:text>
+               <xsl:if test="@max-occurs = '1'">
+                  <xsl:value-of select="m:indefinite-article(@name)"/>
+                  <xsl:text> </xsl:text>
+               </xsl:if>
+            </span>
+            <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
+               <xsl:value-of select="@name"/>
+            </a>
+            <span class="OM-lit"> object<xsl:if test="not(@max-occurs = '1')">s</xsl:if></span>
+            <xsl:text>: {</xsl:text>
+         </p>
+         <xsl:apply-templates select="." mode="contents"/>  
+         <p>
+            <xsl:text> }</xsl:text>
+            <xsl:if test="not(position() eq last())">, </xsl:if>
+         </p>
+      </div>
+   </xsl:template>-->
+   
+   <xsl:template match="*[@rule-json='OBJECT']" mode="html-render">
+      <div class="OM-entry">
+         <p><xsl:call-template name="cardinality-note"/>
+            <xsl:text> '</xsl:text>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
                <xsl:value-of select="@name"/>
             </a>
             <xsl:text>': {</xsl:text>
          </p>
-         <xsl:apply-templates select="." mode="contents"/>
+         <xsl:apply-templates select="." mode="contents-as-block"/>
          <p>
             <xsl:text> }</xsl:text>
             <xsl:if test="not(position() eq last())">, </xsl:if>
@@ -85,66 +117,166 @@
       </div>
    </xsl:template>
    
+   
    <xsl:template match="*[@rule-json=('ARRAY','SINGLETON-OR-ARRAY')]" mode="html-render">
       <div class="OM-entry">
-         <p>
-            <xsl:text>'</xsl:text>
+         <p><xsl:call-template name="cardinality-note"/>
+            <xsl:text> '</xsl:text>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
                <xsl:value-of select="(@group-name,@name)[1]"/>
             </a>
             <xsl:text>': [</xsl:text>
          </p>
-         <xsl:apply-templates select="." mode="contents"/>
+         <div class="OM-map">
+            <p><xsl:call-template name="array-cardinality"/> {</p>
+            <xsl:apply-templates select="." mode="contents-as-block"/>
+            <p>}</p>
+         </div>
          <p>
-            <xsl:text> ]</xsl:text>
+            <xsl:text>]</xsl:text>
             <xsl:if test="not(position() eq last())">, </xsl:if>
          </p>
       </div>
    </xsl:template>
    
-   <xsl:template mode="html-render" match="m:field[@as-type='markup-multiline'][not(@wrap-xml='yes')]">
+   <!--<xsl:template match="m:field[@as-type='markup-multiline'][not(@wrap-xml='yes')]" mode="html-render">
       <p class="OM-entry"><a href="../../schemas/oscal-prose"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p>
+   </xsl:template>-->
+   
+   
+   <xsl:template match="m:field[@rule-json=('STRING')]" mode="html-render">
+      <p class="OM-entry">
+         <xsl:call-template name="cardinality-note"/>
+         <xsl:text> '</xsl:text>
+         <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ (@link,@name)[1] }">
+            <xsl:value-of select="@name"/>
+         </a>
+         <xsl:text>': </xsl:text>
+         <xsl:apply-templates select="." mode="contents-inline"/>
+         <xsl:if test="not(position() eq last())">, </xsl:if>
+      </p>
    </xsl:template>
    
-   <!--<xsl:template name="cardinality-note">
-      <xsl:text> </xsl:text>
-      <i class="OM-cardinality">
-         <xsl:apply-templates select="." mode="occurrence-requirements"/>
-      </i>
-   </xsl:template>-->
+   <xsl:template mode="html-render" match="m:flag[@name= ../@json-value-flag]">
+      <p class="OM-entry">
+         <span class="OM-cardinality">optional</span>
+         <xsl:text> {{</xsl:text>
+         <xsl:value-of select="../@name || '.' || @name"/>
+         <xsl:text>}}: </xsl:text>
+         <xsl:apply-templates select="." mode="contents-inline"/>
+      </p>
+      
+   </xsl:template>
    
-   <!--<xsl:template name="cardinality-note">
-      <xsl:variable name="note">
-         <xsl:variable name="singleton" select="@m:maxOccurs = '1'"/>
-         <xsl:variable name="required" select="not(@m:minOccurs = '0')"/>
-         <xsl:if test="$singleton">one only</xsl:if>
-         <xsl:if test="$required">
-            <xsl:if test="$singleton">, </xsl:if>
-            <xsl:text>required</xsl:text>
+   <xsl:template match="*" mode="html-render">
+      <p class="OM-entry">
+         <xsl:call-template name="cardinality-note"/>
+         <xsl:text> '</xsl:text>
+         <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ (@link,@name)[1] }">
+            <xsl:value-of select="@name"/>
+         </a>
+         <xsl:text>': </xsl:text>
+         <xsl:apply-templates select="." mode="contents-inline"/>
+         <xsl:if test="not(position() eq last())">, </xsl:if>
+      </p>
+   </xsl:template>
+   
+   <xsl:template name="cardinality-note">
+      <b class="OM-cardinality">
+         <xsl:choose>
+            <xsl:when test="@min-occurs = '1'">required</xsl:when>
+            <xsl:otherwise>optional</xsl:otherwise>
+         </xsl:choose>
+         <xsl:if test="not(@rule-json=('ARRAY','SINGLETON-OR-ARRAY'))">
+            
+         <xsl:call-template name="occurrences">
+            <xsl:with-param name="leader">, </xsl:with-param>
+         </xsl:call-template>
          </xsl:if>
-         <xsl:if test="not(@m:minOccurs='1')">, at least <xs:value-of select="@minOccurs"/></xsl:if>
-         <xsl:if test="not(@m:maxOccurs=('unbounded','1'))">, at most <xs:value-of select="@maxOccurs"/></xsl:if>
-      </xsl:variable>
-      <xsl:if test="matches($note, '\S')" expand-text="true">
-         <span class="lit"> ({ $note })</span>
-      </xsl:if>
-   </xsl:template>-->
+      </b>
+   </xsl:template>
    
-   <xsl:template mode="contents" match="m:assembly">
+   <xsl:template name="array-cardinality">
+      <b class="OM-cardinality">
+         <xsl:call-template name="occurrences"/>
+      </b>
+   </xsl:template>
+   
+   <xsl:template name="occurrences">
+      <xsl:param name="leader" select="''"/>
+      <xsl:value-of select="$leader"/>
+      <xsl:choose>
+         <xsl:when test="@max-occurs = '1'">
+            <xsl:text>one only</xsl:text>
+         </xsl:when>
+         <xsl:when test="@min-occurs = @max-occurs">
+            <xsl:text>exactly </xsl:text>
+            <xsl:value-of select="m:spell-number(@min-occurs)"/>
+         </xsl:when>
+         <xsl:when test="number(@min-occurs) gt 1">
+            <xsl:text>at least </xsl:text>
+            <xsl:value-of select="m:spell-number(@min-occurs)"/>
+         </xsl:when>
+      </xsl:choose>
+      <xsl:if test="not(@max-occurs = '1' or (@min-occurs = @max-occurs))">
+         <xsl:choose>
+            <xsl:when test="@max-occurs = 'unbounded'">as many as needed</xsl:when>
+            <xsl:otherwise>
+               <xsl:text>at most </xsl:text>
+               <xsl:value-of select="m:spell-number(@max-occurs)"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:if>
+
+   </xsl:template>
+   
+   <xsl:template mode="contents-as-block" match="*">
       <div class="OM-map">
+         <xsl:apply-templates select="." mode="value"/>
          <xsl:apply-templates select="*" mode="html-render"/>
       </div>
    </xsl:template>
    
-   <xsl:template mode="contents" match="m:field | m:flag">
+   <xsl:template mode="contents-inline" match="*">
+      <xsl:apply-templates select="." mode="datatype"/>
+   </xsl:template>
+   
+   <xsl:template mode="value" match="m:assembly" priority="5"/>
+      
+   <xsl:template match="*" mode="value">
+      <p class="OM-entry">
+        <span class="OM-cardinality">optional</span>
+        <xsl:text> 'STRVALUE': </xsl:text>
+         <xsl:apply-templates select="." mode="datatype"/>
+        <xsl:if test="m:flag[not(@name=../(json-key | json-value-key)/@flag-name)]">, </xsl:if>
+      </p>
+   </xsl:template>
+   
+   <xsl:template match="*[@as-type='markup-line']" mode="value">
+      <span class="OM-cardinality">optional</span>
+      <xsl:text> 'RICHTEXT': </xsl:text>
+      <xsl:apply-templates select="." mode="datatype"/>
+      <xsl:if test="m:flag[not((@name|@ref)=../(json-key | json-value-key)/@flag-name)]">, </xsl:if>
+   </xsl:template>
+   
+   
+   <xsl:template match="*[@json-value-flag=m:flag/@name]" mode="value datatype"/>
+      
+   <xsl:template match="*" mode="datatype">
       <span class="OM-lit">string value</span>
    </xsl:template>
    
-   <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')] | m:flag[matches(@as-type,'\S')]">
+   <xsl:template priority="2" match="*[@as-type='markup-multiline']" mode="datatype">
+      <span class="OM-lit">text, parsed as Markdown (multiple lines)</span>
+   </xsl:template>
+   
+   <xsl:template match="*[exists(@as-type)]" mode="datatype">
       <span class="OM-lit">
-        <xsl:value-of select="@as-type"/>
+         <xsl:value-of select="@as-type"/>
       </span>
    </xsl:template>
+   
+   <xsl:template priority="2" match="*[@as-type='empty']" mode="value"/>
    
    
 </xsl:stylesheet>

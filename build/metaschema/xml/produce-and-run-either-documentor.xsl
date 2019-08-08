@@ -163,8 +163,12 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:variable name="suspend-link-checks" as="element()*">
+        <href>http://www.w3.org/TR/xmlsec-algorithms/#digest-method</href>
+    </xsl:variable>
+    
     <!-- External links in the docs should not be link checked  -->
-    <xsl:template match="html:a[matches(@href,'^https?:')]" mode="cleanup">
+    <xsl:template match="html:a[@href=$suspend-link-checks]" mode="cleanup">
         <xsl:element name="{ local-name() }">
             <xsl:attribute name="data-proofer-ignore">yes</xsl:attribute>
             <xsl:copy-of select="@*"/>
