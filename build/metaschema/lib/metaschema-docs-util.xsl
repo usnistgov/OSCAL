@@ -147,7 +147,6 @@
 <!-- Fields become scalars except when they have flags showing: in the JSON, flags for json-key are shown as labels not values;
      fields with flags for json values (json-value-key/@flag-name) are objects even if they could otherwise be reduced to scalars. -->
     <xsl:template mode="json-object" match="define-assembly |
-        define-field[exists(json-value-key)] |
         define-field[exists(flag[(@name|@ref) != ../json-key/@flag-name ])]">OBJECT</xsl:template>
     
    <xsl:template mode="json-object" match="*">
