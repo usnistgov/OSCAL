@@ -106,10 +106,16 @@
       this is the first of the nodes with the fewest ancestors -->
         <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:copy-of select="m:flag"/>
-            <xsl:if test="m:keep-me(.)">
-                <xsl:apply-templates mode="prune"/>
-            </xsl:if>
+            <xsl:choose>
+                <xsl:when test="m:keep-me(.)">
+                    <xsl:copy-of select="m:flag"/>
+                    <xsl:apply-templates mode="prune"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="echo">yes</xsl:attribute>
+                    <xsl:copy-of select="m:flag"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:copy>
     </xsl:template>
     
@@ -134,30 +140,38 @@
    </xsl:template>-->
     
     <xsl:template mode="keep-me" match="*" as="xs:boolean">
-        <xsl:variable name="depth" select="min(key('surrogates-by-name',@name)/count(ancestor-or-self::*))"/>
-        <xsl:sequence select=". is key('surrogates-by-name',@name)[count(ancestor-or-self::*)=$depth][1]"/>
+        <xsl:variable name="shallowest" select="min(key('surrogates-by-name',@name)/count(ancestor-or-self::*))"/>
+        <xsl:sequence select=". is key('surrogates-by-name',@name)[count(ancestor-or-self::*)=$shallowest][1]"/>
     </xsl:template>
     
-    <xsl:template mode="json-object" match="*">OBJECT</xsl:template>
+<!-- Fields become scalars except when they have flags showing: in the JSON, flags for json-key are shown as labels not values;
+     fields with flags for json values (json-value-key/@flag-name) are objects even if they could otherwise be reduced to scalars. -->
+    <xsl:template mode="json-object" match="define-assembly |
+        define-field[exists(json-value-key)] |
+        define-field[exists(flag[(@name|@ref) != ../json-key/@flag-name ])]">OBJECT</xsl:template>
     
-    <!-- matches model//field and model//assembly -->
-    <xsl:template mode="json-object" priority="1" match="*[@max-occurs != '1']">ARRAY</xsl:template>
-    
-    <xsl:template mode="json-object" match="model//field[empty(group-as)] | model//assembly[empty(group-as)]">
-        <xsl:apply-templates select="key('definitions', @ref)" mode="json-object"/>
+   <xsl:template mode="json-object" match="*">
+        <xsl:param name="maxOccurs" select="'1'"/>
+        <xsl:choose>
+            <xsl:when test="$maxOccurs = '1'">SCALAR</xsl:when>
+            <xsl:otherwise>ARRAY</xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
+    <!--<xsl:template mode="json-object" match="model//field[empty(group-as)] | model//assembly[empty(group-as)]">
+        <xsl:apply-templates select="key('definitions', @ref)" mode="json-object">
+            <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"></xsl:with-param>
+        </xsl:apply-templates>
+    </xsl:template>-->
     
-    <xsl:template mode="json-object" priority="1" match="define-field[empty(flag[not(@name|@ref=../json-key/@flag-name)])]">STRING</xsl:template>
+    
+    <!--<xsl:template mode="json-object" priority="1" match="define-field[empty(flag[not(@name|@ref=../json-key/@flag-name)])]">STRING</xsl:template>-->
     
     <xsl:template match="define-assembly | define-field" mode="build">
         <xsl:param name="minOccurs" select="'0'"/>
         <xsl:param name="maxOccurs" select="'1'"/>
         <xsl:param name="group-name" select="()"/>
-        <xsl:param name="rule-json">
-            <xsl:apply-templates select="." mode="json-object"/>
-        </xsl:param>
-        <xsl:param name="rule-xml"  select="()"/>
+        <xsl:param name="json-behavior" select="()"/>
         <xsl:param name="visited" select="()" tunnel="true"/>
         <xsl:variable name="type" select="replace(local-name(),'^define\-','')"/>
         
@@ -165,25 +179,24 @@
             <xsl:apply-templates select="@*" mode="build"/>
             <xsl:attribute name="min-occurs" select="$minOccurs"/>
             <xsl:attribute name="max-occurs" select="$maxOccurs"/>
-            <xsl:for-each select="$rule-json">
-                <xsl:attribute name="rule-json" select="."/>
+            <xsl:attribute name="json-type">
+                <xsl:apply-templates select="." mode="json-object">
+                    <xsl:with-param name="maxOccurs" select="$maxOccurs"/>
+                </xsl:apply-templates>
+            </xsl:attribute>
+            <xsl:for-each select="$json-behavior">
+                <xsl:attribute name="json-behavior" select="."/>
             </xsl:for-each>
             
             <xsl:apply-templates select="json-key, json-value-key" mode="build"/>
             <xsl:for-each select="$group-name">
                 <xsl:attribute name="group-name" select="."/>
             </xsl:for-each>
-            <xsl:for-each select="$rule-json">
-                <xsl:attribute name="rule-json" select="$rule-json"/>
-            </xsl:for-each>
-            <xsl:for-each select="$rule-xml">
-                <xsl:attribute name="rule-xml" select="."/>
-            </xsl:for-each>
-            <xsl:apply-templates select="flag" mode="build"/>
             <xsl:if test="not(@name = $visited)">
-                <xsl:apply-templates select="model" mode="build">
-                    <xsl:with-param name="visited" tunnel="true" select="$visited, string(@name)"/>
-                </xsl:apply-templates>
+                    <xsl:apply-templates select="flag" mode="build"/>
+                    <xsl:apply-templates select="model" mode="build">
+                        <xsl:with-param name="visited" tunnel="true" select="$visited, string(@name)"/>
+                    </xsl:apply-templates>
             </xsl:if>
         </xsl:element>
     </xsl:template>
@@ -207,7 +220,7 @@
     </xsl:template>
     
     <xsl:template match="flag" mode="build">
-        <m:flag max-occurs="1" min-occurs="{if (@required='yes') then 1 else 0}" rule-json="STRING">
+        <m:flag max-occurs="1" min-occurs="{if (@required='yes') then 1 else 0}" json-type="SCALAR">
             <xsl:attribute name="name" select="(@name,@ref)[1]"/>
             <xsl:attribute name="link" select="(@ref,../@name)[1]"/>
             <xsl:apply-templates select="@*" mode="build"/>
@@ -221,40 +234,17 @@
             <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
             <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"/>
             <xsl:with-param name="group-name" select="group-as/@name"/>
-            <xsl:with-param name="rule-xml"  select="group-as/@xml-behavior"/>
-            <xsl:with-param name="rule-json">
-              <xsl:apply-templates select="." mode="json-object"/>
-            </xsl:with-param>
+            <xsl:with-param name="json-behavior" select="group-as/@json-behavior"/>
         </xsl:apply-templates>
     </xsl:template>
     
-    <xsl:template mode="build" priority="2" match="model//field[matches(group-as/@json-behavior,'\S')]
-                                    | model//assembly[matches(group-as/@json-behavior,'\S')]">
-        <xsl:apply-templates mode="build" select="key('definitions', @ref)">
-            <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
-            <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"/>
-            <xsl:with-param name="group-name" select="group-as/@name"/>
-            <xsl:with-param name="rule-json" select="group-as/@json-behavior"/>
-            <!-- values are 'ARRAY' 'BY-KEY' or 'SINGLETON-OR-ARRAY' -->
-            <xsl:with-param name="rule-xml"  select="group-as/@xml-behavior"/>
-        </xsl:apply-templates>
-    </xsl:template>
-    
-    
-    
-    <!--<xsl:template mode="build" match="choice">
-      <m:choice>
-         <xsl:apply-templates mode="#current"/>
-      </m:choice>
-   </xsl:template>-->
-    
-    <xsl:template mode="build" match="description | remarks">
+    <!--<xsl:template mode="build" match="description | remarks">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
     <xsl:template mode="build" match="*">
         <xsl:apply-templates mode="#current"/>
-    </xsl:template>
+    </xsl:template>-->
     
     
     <!-- Returns true when a field must become an object, not a string, due to having
