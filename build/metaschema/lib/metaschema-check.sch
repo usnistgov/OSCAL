@@ -3,7 +3,8 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
-    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
+    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:of="http://csrc.nist.gov/ns/oscal/functions/1.0">
 
 
 <!--
@@ -160,24 +161,24 @@
             <!--FIX:<sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>-->
         </sch:rule>
         <sch:rule context="m:define-flag">
-            <sch:assert role="warning" test="@name = ($composed-metaschema//m:flag/@ref | $composed-metaschema//m:key/@ref)">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = $composed-metaschema//m:flag/@ref">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
-        <sch:rule context="m:assembly">
-            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.
-            We expect one of <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-assembly/@name" separator=", "/></sch:assert>
+        <sch:rule context="m:assembly[exists(@ref)]">
+            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly '<xsl:value-of select="@ref"/>' invocation does not point to an assembly definition.
+            We expect one of <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-assembly/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@ref"/>' is a field, not an assembly.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@ref"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
-        <sch:rule context="m:field">
-            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">Field invocation does not point to a field definition.
-                We expect one of <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-field/@name" separator=", "/></sch:assert>
+        <sch:rule context="m:field[exists(@ref)]">
+            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">Field invocation '<xsl:value-of select="@ref"/>' does not point to a field definition.
+                We expect one of <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-field/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@ref"/>' is an assembly, not a field.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@ref"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:flag[exists(@ref)]">
             <!--<sch:assert test="empty(@name)">Flag with 'ref' may not also have 'name'.</sch:assert>-->
-            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name and exists($composed-metaschema/m:METASCHEMA/m:define-flag)">Flag invocation does not point to a flag definition. 
-                <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-flag/@name" separator=", "/></sch:assert>
+            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">Flag invocation '<xsl:value-of select="@ref"/>' does not point to a flag definition. 
+                <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-flag/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
@@ -188,5 +189,13 @@
             <sch:assert test="exists(child::m:description)">Named flag expects a 'description'</sch:assert>
         </sch:rule>
     </sch:pattern>
-    
+
+    <xsl:function name="of:sort" as="item()*">
+        <xsl:param name="seq" as="item()*"/>
+        
+        <xsl:for-each select="$seq">
+            <xsl:sort select="."/>
+            <xsl:copy-of select="."/>
+        </xsl:for-each>
+    </xsl:function>
 </sch:schema>

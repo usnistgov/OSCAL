@@ -13,6 +13,7 @@
    <schema-version>1.0-milestone1</schema-version>
    <short-name>oscal-metadata</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
+
    <define-assembly name="VALIDATION_root">
       <formal-name>(nominal root)</formal-name>
       <description>NOT TO BE USED IN A METASCHEMA</description>
@@ -403,7 +404,7 @@
       <formal-name>Country</formal-name>
       <description>Country for mailing address</description>
    </define-field>
-   <define-field name="email">
+   <define-field name="email" as-type="email">
       <formal-name>Email</formal-name>
       <description>Email address</description>
    </define-field>
