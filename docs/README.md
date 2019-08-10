@@ -37,7 +37,7 @@ JEKYLL_ENV=production bundle exec jekyll build
 To serve the site, rebuilding on changes to contents or templates:
 
 ```
-jekyll serve
+JEKYLL_ENV=production bundle exec jekyll serve
 ```
 
 or even
