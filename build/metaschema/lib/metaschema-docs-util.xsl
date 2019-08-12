@@ -62,6 +62,19 @@
  .OM-map a:hover { text-decoration: underline }
  
                 </style>
+                <script type="text/javascript">
+                    <xsl:text xml:space="preserve">
+function switch_view(who,flag) {
+  var view          = document.getElementById(who);
+  var collapse_view = flasher.children[0];
+  var expanded_view = flasher.children[1];
+
+  collapsed_view.classList.toggle(flag);
+  expanded_view.classList.toggle(flag);
+}
+                    </xsl:text>
+                    
+                </script>
             </head>
             <body>
                 <pre style="float:left">
@@ -256,12 +269,13 @@
     <xsl:template mode="occurrence-code" match="*">
         <xsl:variable name="minOccurs" select="(@min-occurs,'0')[1]"/>
         <xsl:variable name="maxOccurs" select="(@max-occurs,'1')[1] ! (if (. eq 'unbounded') then '&#x221e;' else .)"/>
+        <xsl:text>[</xsl:text>
         <xsl:choose>
             <xsl:when test="$minOccurs = $maxOccurs" expand-text="true">{ $minOccurs } exactly</xsl:when>
             <xsl:when test="number($maxOccurs) = number($minOccurs) + 1" expand-text="true">{ $minOccurs } or { $maxOccurs }</xsl:when>
             <xsl:otherwise expand-text="true">{ $minOccurs } to { $maxOccurs }</xsl:otherwise>
         </xsl:choose>
-        <xsl:text expand-text="true">[{ $minOccurs} - { $maxOccurs}]</xsl:text>
+        <xsl:text>]</xsl:text>
     </xsl:template>
         
     
