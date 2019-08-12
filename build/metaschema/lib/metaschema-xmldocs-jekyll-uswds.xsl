@@ -268,7 +268,7 @@
             <xsl:apply-templates select="@ref"/>
          </a>
          <xsl:text expand-text="true"> element{ if (@max-occurs != '1') then 's' else '' } </xsl:text>
-         <xsl:apply-templates select="." mode="occurrence-requirements"/>
+         <xsl:apply-templates select="." mode="occurrence-code"/>
          <xsl:apply-templates select="." mode="metaschema-type"/>
          <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
@@ -381,7 +381,7 @@
       </a>
    </xsl:template>
 
-   <xsl:template mode="occurrence-requirements" match="*">
+   <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="color-primary">
          <xsl:next-match/>      
       </i>

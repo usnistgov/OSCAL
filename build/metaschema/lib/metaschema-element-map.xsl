@@ -136,7 +136,7 @@
    
    <!-- We don't have to do flags here since they are promoted into attribute syntax. -->
    <xsl:template mode="contents" match="m:field">
-      <span class="OM-lit">string value</span>
+      <span class="OM-lit">string</span>
    </xsl:template>
    
    <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')]">
