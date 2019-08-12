@@ -45,8 +45,7 @@
       <div class="OM-entry">
          <p>
             <xsl:call-template name="cardinality-note"/>
-            <xsl:text> </xsl:text>
-            <xsl:text>{{</xsl:text>
+            <xsl:text> {{ "{{" }}</xsl:text>
             <xsl:value-of select="@name || '.' || @json-key-flag"/>
             <xsl:text>}}</xsl:text>
             <span class="OM-lit">
@@ -87,8 +86,7 @@
    <xsl:template priority="2" match="*[@json-behavior='BY_KEY'][@json-type='SCALAR']" mode="html-render">
       <p class="OM-entry">
          <xsl:call-template name="cardinality-note"/>
-         <xsl:text> </xsl:text>
-         <xsl:text>{{</xsl:text>
+         <xsl:text> {{ "{{" }}</xsl:text>
          <xsl:value-of select="@name || '.' || @json-key-flag"/>
          <xsl:text>}}</xsl:text>
          <span class="OM-lit">
@@ -112,8 +110,7 @@
       <div class="OM-entry">
          <p>
             <xsl:call-template name="cardinality-note"/>
-            <xsl:text> </xsl:text>
-            <xsl:text>{{</xsl:text>
+            <xsl:text> {{ "{{" }}</xsl:text>
             <xsl:value-of select="@name || '.' || @json-key-flag"/>
             <xsl:text>}}</xsl:text>
             <span class="OM-lit">
@@ -201,7 +198,7 @@
    <xsl:template mode="html-render" match="m:flag[@name= ../@json-value-flag]">
       <p class="OM-entry">
          <span class="OM-cardinality">optional</span>
-         <xsl:text> {{</xsl:text>
+         <xsl:text> {{ "{{" }}</xsl:text>
          <xsl:value-of select="../@name || '.' || @name"/>
          <xsl:text>}}: </xsl:text>
          <xsl:apply-templates select="." mode="contents-inline"/>
@@ -288,17 +285,20 @@
    </xsl:template>
    
    <xsl:template match="*[@as-type='markup-line']" mode="value">
-      <span class="OM-cardinality">optional</span>
-      <xsl:text> 'RICHTEXT': </xsl:text>
-      <xsl:apply-templates select="." mode="datatype"/>
-      <xsl:if test="m:flag[not((@name|@ref)=../(json-key | json-value-key)/@flag-name)]">, </xsl:if>
+      <p class="OM-entry">
+         <span class="OM-cardinality">optional</span>
+         <xsl:text> 'RICHTEXT': </xsl:text>
+         <xsl:apply-templates select="." mode="datatype"/>
+         <xsl:if test="m:flag[not((@name | @ref) = ../(json-key | json-value-key)/@flag-name)]">,
+         </xsl:if>
+      </p>
    </xsl:template>
    
    
    <xsl:template match="*[@json-value-flag=m:flag/@name]" mode="value datatype"/>
       
    <xsl:template match="*" mode="datatype">
-      <span class="OM-lit">string value</span>
+      <span class="OM-lit">string</span>
    </xsl:template>
    
    <xsl:template priority="2" match="*[@as-type='markup-multiline']" mode="datatype">

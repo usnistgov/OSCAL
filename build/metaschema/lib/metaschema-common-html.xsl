@@ -50,7 +50,7 @@
    <xsl:template match="m:valid-values">
       <xsl:choose>
         <xsl:when test="@allow-other and @allow-other='yes'">
-          <p>The value may be one of the following, or a locally defined value:</p>
+          <p>The value may be locally defined, or one of the following:</p>
         </xsl:when>
         <xsl:otherwise>
           <p>The value must be one of the following:</p>

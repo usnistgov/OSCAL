@@ -253,6 +253,17 @@
         <xsl:sequence select="exists($who/flag[not((@name|@ref)=../(json-key | json-value-key)/@flag-name)])"/>
     </xsl:function>
     
+    <xsl:template mode="occurrence-code" match="*">
+        <xsl:variable name="minOccurs" select="(@min-occurs,'0')[1]"/>
+        <xsl:variable name="maxOccurs" select="(@max-occurs,'1')[1] ! (if (. eq 'unbounded') then '&#x221e;' else .)"/>
+        <xsl:choose>
+            <xsl:when test="$minOccurs = $maxOccurs" expand-text="true">{ $minOccurs } exactly</xsl:when>
+            <xsl:when test="number($maxOccurs) = number($minOccurs) + 1" expand-text="true">{ $minOccurs } or { $maxOccurs }</xsl:when>
+            <xsl:otherwise expand-text="true">{ $minOccurs } to { $maxOccurs }</xsl:otherwise>
+        </xsl:choose>
+        <xsl:text expand-text="true">[{ $minOccurs} - { $maxOccurs}]</xsl:text>
+    </xsl:template>
+        
     
     <xsl:template mode="occurrence-requirements" match="*">
             <xsl:apply-templates select="@min-occurs" mode="#current"/>

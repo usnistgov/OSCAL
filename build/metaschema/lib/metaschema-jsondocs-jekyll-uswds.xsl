@@ -434,7 +434,7 @@
                <xsl:apply-templates select="@ref"/>
             </a>
             <xsl:text expand-text="true"> object </xsl:text>
-            <xsl:apply-templates select="." mode="occurrence-requirements"/>
+            <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
          <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
@@ -456,7 +456,7 @@
                <xsl:apply-templates select="@ref"/>
             </a>
             <xsl:text expand-text="true"> object{ if (@max-occurs='1' or empty(@max-occurs)) then '' else 's' } </xsl:text>
-            <xsl:apply-templates select="." mode="occurrence-requirements"/>
+            <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
          
@@ -479,7 +479,7 @@
             <xsl:text> objects, labelled </xsl:text>
             <b><xsl:value-of select="group-as/@name"/></b>
          </p>
-         <xsl:apply-templates select="." mode="occurrence-requirements"/>
+         <xsl:apply-templates select="." mode="occurrence-code"/>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
          
          <xsl:apply-templates select="description" mode="model"/>
@@ -504,7 +504,7 @@
                <xsl:apply-templates select="@ref"/>
             </a>
             <xsl:text> object </xsl:text>
-            <xsl:apply-templates select="." mode="occurrence-requirements"/>
+            <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates
             select="
@@ -606,56 +606,13 @@
       </a>
    </xsl:template>
 
-   <xsl:template mode="occurrence-requirements" match="*">
+   <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="color-primary">
          <xsl:next-match/>      
       </i>
    </xsl:template>
    
-   <!--<xsl:template name="uswds-table" expand-text="true">
-      <xsl:param name="property-set" select="()"/>
-      
-      <table>
-         <caption>Properties</caption>
-         <thead>
-            <tr>
-               <th scope="col">Name</th>
-               <th scope="col">Metaschema type</th>
-               <th scope="col">Cardinality</th>
-               <th scope="col">Description / Remarks</th>
-            </tr>
-         </thead>
-         <tbody>
-            <xsl:for-each select="$property-set">
-               <!-\-{% for prop in schema_element.properties %}-\->
-               <tr>
-                  <th scope="row">
-                     <span>
-                        <xsl:for-each select="(@name | @ref)">
-                           <a class="name" href="#{.}">
-                              <xsl:value-of select="."/>
-                           </a>
-                        </xsl:for-each>
-                     </span>
-                  </th>
-                  <td>
-                     <xsl:apply-templates select="." mode="metaschema-type"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="." mode="cardinality"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="description | remarks"/>
-                  </td>
-               </tr>
-            </xsl:for-each>
-            <!-\- {% endfor %}-\->
-         </tbody>
-      </table>
-      
-   </xsl:template>-->
-
-  
+   
    <xsl:template mode="metaschema-type" match="flag">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
