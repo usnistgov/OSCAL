@@ -73,22 +73,39 @@ resources:
 schemas:
   - text: Schema Reference
     href: /docs/schemas/
-  - text: Model maps
-    addnav:
-    - text: Catalog XML
-      href: /docs/maps/oscal-catalog-xml/
-    - text: Catalog JSON
-      href: /docs/maps/oscal-catalog-json/
-    - text: Profile XML
-      href: /docs/maps/oscal-profile-xml/
-    - text: Profile JSON
-      href: /docs/maps/oscal-profile-json/
-  - text: Catalog Schema
-    href: /docs/schemas/oscal-catalog-xml/
+  - text: Catalog Model
     model: catalog
-  - text: Profile Schema
-    href: /docs/schemas/oscal-profile-xml/
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-catalog-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-catalog-xml/
+    - text: JSON Model Map
+      href: /docs/maps/oscal-catalog-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-catalog-json/
+  - text: Profile Model
     model: profile
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-profile-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-profile-xml/
+    - text: JSON Model Map
+      href: /docs/maps/oscal-profile-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-profile-json/
+  - text: Component Model
+    model: component
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-component-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-component-xml/
+    - text: JSON Model Map
+      href: /docs/maps/oscal-component-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-component-json/
   - text: OSCAL Prose Model
     href: /docs/schemas/oscal-prose/
 

@@ -31,6 +31,10 @@ collections:
     title: Profile XML
   oscal-profile-json:
     title: Profile JSON
+  oscal-component-xml:
+    title: Component XML
+  oscal-component-json:
+    title: Component JSON
 
 markdown: kramdown
 highlighter: rouge
