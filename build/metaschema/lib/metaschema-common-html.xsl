@@ -6,6 +6,7 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 exclude-result-prefixes="xs m">
    
+   
    <xsl:template match="m:METASCHEMA/m:short-name">
       <p>The short name (file identifier) for this schema is <i><xsl:apply-templates/></i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>

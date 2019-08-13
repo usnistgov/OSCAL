@@ -4,24 +4,49 @@
  *
  */
 
+/* Special button styles */
+button.button-xml-off  { background-color: $color-cool-blue-lightest }
+button.button-json-off { background-color: $color-green-lightest }
+
+button.button-xml-on  { background-color: $color-cool-blue }
+button.button-json-on { background-color: $color-green }
+
+
 /* Schema Model Map styles */
-div.OM-map { margin-top: 0ex; margin-bottom: 0ex; font-family: monospace; font-weight: bold; color: midnightblue } 
+div.OM-map { margin-top: 0ex; margin-bottom: 0ex; font-family: monospace; font-weight: bold; color: $color-base; }
+
+div.usa-layout-docs-main_content > div.OM-map {  border: medium solid $color-gray-lighter }
+
 div.OM-map div.OM-map { margin-left: 2em } 
 
-.OM-entry { border: medium solid $color-cool-blue-lightest; background-color: $color-cool-blue-lightest; padding-right: 0.5rem }
+.OM-entry { border: medium solid $color-gray-lightest; background-color: $color-gray-lightest; padding-right: 0.5rem }
+
 .OM-entry:hover { border: medium solid $color-focus }
+
+.OM-entry.hide_me:hover { border: medium solid $color-gray-lightest }
 
 div.OM-map p { margin: 0ex }
 
-span.OM-lit, .OM-cardinality { font-family: serif; font-weight: normal; color: $color-primary-alt-darkest }
+span.OM-lit { font-family: serif; font-weight: normal; font-style: normal }
 
-.OM-cardinality  { background-color: $color-primary-alt-lightest }
+span.OM-emph { font-family: serif; font-weight: normal; font-style: italic }
 
-.OM-map a { color: inherit; text-decoration: none }
+span.OM-cardinality { font-family: serif; font-weight: normal; font-style: normal; color: $color-primary-darker }
 
-.OM-map a:hover { text-decoration: underline }
+.OM-name { color: $color-primary }
 
+.OM-map a { text-decoration: none; color: $color-primary }
 
+OM-map a:visited { color: $color-primary }
+ 
+a.OM-name:hover { text-decoration: underline }
+
+.hide_me { display: none }
+
+a.expander-collapser { font-size: 120%; font-weight: normal; width: 2em; color: $color-base; font-weight: bold }
+a.expander-collapser:hover { text-decoration: none }
+
+ 
 /* Header Styles */
 
 .nist-header {

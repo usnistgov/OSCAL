@@ -4,6 +4,7 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     
     exclude-result-prefixes="xs math m"
     version="3.0">
@@ -48,43 +49,61 @@
  
  div.OM-map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold } 
  
- .OM-entry { border: medium solid lavender; background-color: lavender; padding-right: 0.5rem }
+ .OM-entry { border: medium solid white }
  .OM-entry:hover { border: medium solid steelblue }
+ .OM-entry.hide_me:hover { border: medium solid white }
  
  div.OM-map p { margin: 0ex }
  
  span.OM-lit, .OM-cardinality { font-family: serif; font-weight: normal; color: midnightblue }
  
- .OM-cardinality  { background-color: powderblue }
+ .OM-cardinality  { color: blue }
  
  .OM-map a { color: inherit; text-decoration: none }
  
  .OM-map a:hover { text-decoration: underline }
  
+ .hide_me { display: none }
                 </style>
                 <script type="text/javascript">
                     <xsl:text xml:space="preserve">
 function switch_view(who,flag) {
-  var view          = document.getElementById(who);
-  var collapse_view = flasher.children[0];
-  var expanded_view = flasher.children[1];
+  var view_here      = document.getElementById(who);
+  var collapsed_view = view_here.children[0];
+  var expanded_view  = view_here.children[1];
 
   collapsed_view.classList.toggle(flag);
   expanded_view.classList.toggle(flag);
 }
+
+<!--function switch_view(who,flag) {
+  var view_here     = document.getElementById(who);
+  var collapsed_view = view_here.children[0];
+  var expanded_view = view_here.children[1];
+
+  collapsed_view.classList.toggle(flag);
+  expanded_view.classList.toggle(flag); }-->
                     </xsl:text>
                     
                 </script>
             </head>
             <body>
-                <pre style="float:left">
+                <!--<pre style="float:left">
                <xsl:value-of select="serialize($pruned-tree, $serialization-settings/* )"/>
-            </pre>
+            </pre>-->
                 <!--<pre>
                <xsl:value-of select="serialize($surrogate-tree, $serialization-settings/* )"/>
             </pre>-->
-                <div class="OM-map" style="float:right">
-                  <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
+                
+                
+                <xsl:variable name="html-rendering">
+                    <xsl:apply-templates mode="html-render" select="$surrogate-tree"/>
+                </xsl:variable>
+                <div class="OM-map" style="float:left; width:40%">
+                    <xsl:copy-of select="$html-rendering"/>
+                </div>
+                <div class="OM-map" style="float:right; width:40%">
+                    <xsl:apply-templates select="$html-rendering/*" mode="elaborate"/>
                 </div>
             </body>
         </html>
@@ -271,7 +290,7 @@ function switch_view(who,flag) {
         <xsl:variable name="maxOccurs" select="(@max-occurs,'1')[1] ! (if (. eq 'unbounded') then '&#x221e;' else .)"/>
         <xsl:text>[</xsl:text>
         <xsl:choose>
-            <xsl:when test="$minOccurs = $maxOccurs" expand-text="true">{ $minOccurs } exactly</xsl:when>
+            <xsl:when test="$minOccurs = $maxOccurs" expand-text="true">{ $minOccurs }</xsl:when>
             <xsl:when test="number($maxOccurs) = number($minOccurs) + 1" expand-text="true">{ $minOccurs } or { $maxOccurs }</xsl:when>
             <xsl:otherwise expand-text="true">{ $minOccurs } to { $maxOccurs }</xsl:otherwise>
         </xsl:choose>
@@ -334,5 +353,70 @@ function switch_view(who,flag) {
             <xsl:if test="matches($noun,'^[aeiouAEIOU]')"/>
         </xsl:value-of>
     </xsl:function>
+    
+    <xsl:template match="node() | @*" mode="elaborate truncate">
+        <xsl:copy>
+            <xsl:apply-templates select="node() | @*" mode="elaborate"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    
+    <xsl:template mode="elaborate" match="html:div[contains-token(@class,'OM-entry')][exists(*[2])]" xmlns="http://www.w3.org/1999/xhtml">
+        <xsl:variable name="localID" select="generate-id(.)"/>
+        <xsl:variable name="open-me" select="contains-token(@class,'open')"/>
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="id" select="$localID"/>
+            <div class="collapsed{ ' hide_me'[$open-me] }">
+                <xsl:apply-templates mode="truncate">
+                    <xsl:with-param tunnel="true" name="whose" select="$localID"/>
+                    <xsl:with-param tunnel="true" name="state" as="xs:string">collapsed</xsl:with-param>
+                </xsl:apply-templates>
+            </div>
+            <div class="expanded{ ' hide_me'[not($open-me)] }">
+                <xsl:apply-templates mode="elaborate">
+                    <xsl:with-param tunnel="true" name="whose" select="$localID"/>
+                    <xsl:with-param tunnel="true" name="state" as="xs:string">expanded</xsl:with-param>
+                </xsl:apply-templates>
+            </div>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="html:div/*" mode="truncate">
+        <xsl:param tunnel="true" name="whose"/>
+        <xsl:if test="position() eq 1">
+            <xsl:variable name="two-ps" as="element()*">
+                <xsl:apply-templates select="." mode="elaborate"/>
+                <xsl:apply-templates select="../html:p[last()] except ." mode="elaborate"/>
+            </xsl:variable>
+            <xsl:for-each select="$two-ps[1]">
+                <xsl:copy>
+                    <xsl:copy-of select="@*"/>
+                    <xsl:for-each select="$two-ps">
+                        <xsl:apply-templates mode="elaborate"/>
+                        <xsl:if test="position() eq 1">
+                            <a class="expander-collapser" href="javascript:switch_view('{$whose}','hide_me')"> &#8230; </a>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:copy>
+            </xsl:for-each>
+            
+        </xsl:if>
+    </xsl:template>
+    
+<!-- span with class 'OM-view-switcher' is inserted upstream -->
+    <xsl:template mode="elaborate truncate" match="html:span[contains-token(@class,'OM-view_switcher')]">
+        <xsl:param tunnel="true" name="whose"/>
+        <xsl:param tunnel="true" name="state"/>
+        <a class="expander-collapser" href="javascript:switch_view('{$whose}','hide_me')">
+            <xsl:choose>
+                <xsl:when test="$state = 'collapsed'">+</xsl:when>
+                <xsl:when test="$state = 'expanded'">-</xsl:when>
+                <xsl:otherwise>.</xsl:otherwise>
+            </xsl:choose>
+        </a>
+        <xsl:text> </xsl:text>
+    </xsl:template>
+    
     
 </xsl:stylesheet>

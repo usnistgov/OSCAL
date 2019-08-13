@@ -86,7 +86,7 @@
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <header>
-         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest usa-color-text">
+         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-green-lighter usa-color-text">
             <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> object</h4>
             <xsl:call-template name="cross-links"/>
@@ -109,15 +109,16 @@
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-json$','-xml')"/>
       <div style="float:right">
          <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
-            <button>XML</button>
+            <button class="button-xml-on">XML</button>
          </a>
-         <button disabled="disabled">JSON</button>
+         <button  class="button-json-off" disabled="disabled">JSON</button>
       </div>
    </xsl:template>
 
    <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
    
-   <xsl:template name="report-module">
+   <xsl:template name="report-module"/>
+   <xsl:template name="report-module-really">
       <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
       <xsl:for-each select="@module">
          <p class="usa-color-gray-lightest usa-color-text usa-color-text-primary-darkest" xsl:expand-text="yes">
@@ -140,7 +141,7 @@
       <div class="definition define-field" id="{@name}">
          <header>
             <h4 id="{$metaschema-code}_{@name}"
-               class="usa-color-text usa-color-primary-alt-lightest">
+               class="usa-color-text usa-color-green-lighter">
                <xsl:apply-templates select="formal-name" mode="inline"/>:
                   <xsl:apply-templates select="@name"/> object</h4>
             <xsl:call-template name="cross-links"/>
@@ -268,7 +269,7 @@
       <div class="definition define-assembly" id="{@name}">
          <header>
             <h4 id="{$metaschema-code}_{@name}"
-               class="usa-color-text usa-color-primary-alt-lightest">
+               class="usa-color-text usa-color-green-lighter">
                <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
                   select="@name"/> object</h4>
             <xsl:call-template name="cross-links"/>
