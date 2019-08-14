@@ -1,5 +1,5 @@
 ---
-title: Schema Reference - XML Profile Model
+title: OSCAL Profile Model - XML Schema Reference
 description: OSCAL Profile Model XML Schema Reference
 permalink: /docs/schemas/oscal-profile-xml/
 layout: schemas
