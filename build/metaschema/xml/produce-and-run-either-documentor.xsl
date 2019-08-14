@@ -62,7 +62,7 @@
     </xsl:variable>
     
     <xsl:variable name="map-xslts" as="element()+">
-        <xslt target="xml"  href="../lib/metaschema-element-map.xsl"/>
+        <xslt target="xml"  href="../lib/metaschema-xmlelement-map.xsl"/>
         <xslt target="json" href="../lib/metaschema-jsonobject-map.xsl"/>
     </xsl:variable>
         
