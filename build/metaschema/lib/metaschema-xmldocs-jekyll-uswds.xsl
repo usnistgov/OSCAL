@@ -53,24 +53,27 @@
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA usa-content">
-         <h5 xsl:expand-text="true">The XML Schema for the { short-name } format can be found at
-         <a href="{$schema-path}">{ $schema-path }</a></h5>
+         <h5 xsl:expand-text="true">The XML Schema for the { short-name } format can be found at <a href="{$schema-path}">{ $schema-path }</a></h5>
          <xsl:apply-templates select="* except $definitions"/>
       </div>
       <xsl:apply-templates select="$definitions"/>  
    </xsl:template>
    
    <xsl:template match="METASCHEMA/schema-name">
-      <h2>
+      <!--<h2>
          <xsl:apply-templates/>
          <xsl:text>: Schema Reference</xsl:text>
-      </h2>
+      </h2>-->
    </xsl:template>
 
    <xsl:template match="METASCHEMA/namespace">
-      <p>The XML namespace for elements conformant to this schema:
-            <code><xsl:apply-templates/></code></p>
+      <p><span class="usa-label">XML namespace</span>
+         <xsl:text> </xsl:text>
+         <code>
+            <xsl:apply-templates/>
+         </code></p>
    </xsl:template>
+   
    <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
       <a href="#{ @name }"><xsl:value-of select="@name"/></a>
    </xsl:template>
