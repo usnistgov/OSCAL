@@ -80,3 +80,6 @@ search: true
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+gems:
+  - octopress-debugger

@@ -31,8 +31,7 @@
       "title": "prop",
       "description": "prop field",
       "$id": "#/definitions/prop",
-      "type": "string",
-      "additionalProperties": false
+      "type": "string"
     }
   },
   "properties": {

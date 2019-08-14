@@ -1,41 +1,6 @@
-{% if page.layout == 'schemas' %}
-{% assign collection = site.collections | where: "label", page.model | first %}
-		{% comment %}
-		{% for schema_element in collection.docs %}
-		{% if schema_element.overview %}
-		<li>
-		  <a href="{{ schema_element.permalink }}">Overview</a>
-		</li>
-		{% break %}
-		{% endif %}
-		{% endfor %}
-		{% endcomment %}
-
-{% for schema_element in collection.docs %}
-{% if schema_element.root %}
-<li>
-  <a href="#{{ schema_element.model }}_{{ schema_element.tagname }}"><code>{{ schema_element.tagname }} (root element)</code></a>
-</li>
-{% endif %}
-{% endfor %}
-
-{% for schema_element in collection.docs %}
-{% if schema_element.overview != true and schema_element.root != true %}
-<li>
-  <a href="#{{ schema_element.model }}_{{ schema_element.tagname }}"><code>{{ schema_element.tagname }}</code></a>
-</li>
-{% endif %}
-{% endfor %}
-{% else %}
 {% for link in include.links %}
-{% assign _current = false %}
-{% if link.href == page.url or link.href == page.permalink %}
-{% assign _current = true %}
-{% endif %}
-
-<li>
-  <a href="{% if link.external %}{{ link.href }}{% else %}{{ link.href | relative_url }}{% endif %}" {% if link.class %}
-    class="{{ link.class }}" {% elsif _current %} class="usa-current"{% endif %}>{{ link.text }} {{ link.class }}</a>
-</li>
+  <li>
+    <a href="{% if link.external %}{{ link.href }}{% else %}{{ link.href }}{% endif %}" {% if link.class %} class="{{ link.class }}" {% endif %}>{{ link.text }} {{ link.class }}</a>
+  </li>
 {% endfor %}
-{% endif %}
+

@@ -74,16 +74,17 @@ schemas:
   - text: Schema Reference
     href: /docs/schemas/
   - text: Catalog Model
-    model: catalog
     addnav:
     - text: XML Model Map
       href: /docs/maps/oscal-catalog-xml/
     - text: XML Schema
       href: /docs/schemas/oscal-catalog-xml/
+      model: oscal-catalog-xml
     - text: JSON Model Map
       href: /docs/maps/oscal-catalog-json/
     - text: JSON Schema
       href: /docs/schemas/oscal-catalog-json/
+      model: oscal-catalog-json
   - text: Profile Model
     model: profile
     addnav:
@@ -91,10 +92,12 @@ schemas:
       href: /docs/maps/oscal-profile-xml/
     - text: XML Schema
       href: /docs/schemas/oscal-profile-xml/
+      model: oscal-profile-xml
     - text: JSON Model Map
       href: /docs/maps/oscal-profile-json/
     - text: JSON Schema
       href: /docs/schemas/oscal-profile-json/
+      model: oscal-profile-json
   - text: Component Model
     model: component
     addnav:
@@ -102,10 +105,12 @@ schemas:
       href: /docs/maps/oscal-component-xml/
     - text: XML Schema
       href: /docs/schemas/oscal-component-xml/
+      model: oscal-component-xml
     - text: JSON Model Map
       href: /docs/maps/oscal-component-json/
     - text: JSON Schema
       href: /docs/schemas/oscal-component-json/
+      model: oscal-component-json
   - text: OSCAL Prose Model
     href: /docs/schemas/oscal-prose/
 

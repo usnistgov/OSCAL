@@ -2,5 +2,6 @@
 src/metaschema/oscal_catalog_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_profile_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_component_metaschema.xml|xml,json|xml,json|xml,json
-#src/metaschema/oscal_ssp_metaschema.xml|xml,json|xml,json|
+src/metaschema/oscal_ssp_metaschema.xml|xml,json|xml,json|xml,json
+
 

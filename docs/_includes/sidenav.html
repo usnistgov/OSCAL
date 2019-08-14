@@ -1,37 +1,5 @@
 <nav>
   <ul class="usa-sidenav-list">
-    {% for link in include.links %}
-      {% assign _href = link.href %}
-      {% assign _current = false %}
-      {% assign _parent = false %}
-      {% if link.href == page.url or link.href == page.permalink or page.model contains link.model %}
-        {% assign _current = true %}
-      {% endif %}
-    <li>
-      <a href="{% if link.external == true %}{{ link.href }}{% else %}{{ link.href | relative_url }}{% endif %}"
-         {% if _current %} class="usa-current" {% endif %}
-         {% if link.class %}class="{{ link.class }}" {% endif %} >
-         {{ link.text }}
-      </a>
-	  {% if _current and page.subnav %}
-      <ul class="usa-sidenav-sub_list">
-        {% include subnav.html links=page.subnav title=page.title %}
-      </ul>
-
-      {% elsif link.addnav %}
-      <ul class="usa-sidenav-sub_list">
-	    {% for added in link.addnav %}
-          <li><a href="{{ added.href | relative_url }}"{% if added.href == page.permalink %} class="usa-current" {% endif %}>{{ added.text }}</a></li>
-        {% endfor %}
-      </ul>
-
-	  {% elsif link.subnav %}
-      <ul class="usa-sidenav-sub_list">
-        {% include subnav.html links=page.subnav title=page.title %}
-      </ul>
-
-	  {% endif %}
-    </li>
-    {% endfor %}
+    {% include addnav.html links=include.links %}
   </ul>
 </nav>
