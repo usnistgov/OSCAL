@@ -60,8 +60,11 @@
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
-         <h5 xsl:expand-text="true">The JSON Schema for the { short-name } format can be found at
-            <a href="{$schema-path}">{ $schema-path }</a></h5>
+         <p><span class="usa-label">Link</span>
+            <xsl:text> </xsl:text>
+            <a href="{$schema-path}">
+               <xsl:value-of select="$schema-path"/></a>
+         </p>
          <xsl:apply-templates select="* except $definitions"/>
       </div>
       <xsl:apply-templates select="$definitions"/>
@@ -69,10 +72,10 @@
 
    
    <xsl:template match="METASCHEMA/schema-name">
-      <h2>
+      <!--<h2>
          <xsl:apply-templates/>
          <xsl:text>: Schema Reference</xsl:text>
-      </h2>
+      </h2>-->
    </xsl:template>
 
    <xsl:template match="METASCHEMA/namespace"/>
