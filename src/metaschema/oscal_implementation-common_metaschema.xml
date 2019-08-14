@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+    root="VALIDATION_root">
+    
+    <schema-name>OSCAL Implementation Common Information</schema-name>
+    <schema-version>1.0-milestone2</schema-version>
+    <short-name>oscal-implementation-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+
+    <import href="oscal_metadata_metaschema.xml"/>
+    
+    <define-assembly name="VALIDATION_root">
+        <formal-name>(nominal root)</formal-name>
+        <description>NOT TO BE USED IN A METASCHEMA</description>
+        <flag ref="component-id"/>
+        <flag ref="component-type"/>
+        <flag ref="capability-id"/>
+        <flag ref="source"/>
+        <model>
+            <field ref="description"/>
+            <field ref="remarks"/>
+            <assembly ref="proof-of-compliance"/>
+            <assembly ref="requirement"/>
+            <assembly ref="using"/>
+            <assembly ref="configuration">
+                <group-as name="configurations" json-behavior="BY_KEY"/>
+            </assembly>
+            <assembly ref="artifact">
+                <group-as name="artifacts" json-behavior="BY_KEY"/>
+            </assembly>
+            <assembly ref="incorporates-component">
+                <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+            </assembly>
+            <assembly ref="incorporates-capability">
+                <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+            </assembly>
+        </model>
+        <remarks>
+            <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
+        </remarks>
+    </define-assembly>
+
+    <define-flag name="component-type" as-type="string">
+        <formal-name>Component Type</formal-name>
+        <description>A category describing the purpose of the component.</description>
+        <valid-values>
+            <value name="software">Any software, operating system, or firmware</value>
+            <value name="hardware"></value>
+            <value name="service">A service that may provide APIs.</value>
+            <value name="policy"></value>
+            <value name="process"></value>
+            <value name="proceedure"></value>
+            <value name="plan"></value>
+            <value name="guidance">Any guideline or recommendation</value>
+            <value name="standard"></value>
+            <value name="validation"></value>
+        </valid-values>
+    </define-flag>
+    
+    <define-field name="description" as-type="markup-multiline">
+        <formal-name>Description</formal-name>
+        <description>.</description>
+    </define-field>
+    
+    <define-field name="remarks" as-type="markup-multiline">
+        <formal-name>Remarks</formal-name>
+        <description>.</description>
+    </define-field>
+    
+    <define-assembly name="supplier">
+        <formal-name>Supplier</formal-name>
+        <description>.</description>
+        <!--
+    <flag name="id" as-type="ID">
+      <formal-name>Supplier Identifier</formal-name>
+      <description>.</description>
+    </flag>
+-->
+        <flag ref="party-id" required="yes"/>
+        <flag ref="role-id" required="yes"/><!-- TODO: define standard roles -->
+        <model>
+            <field ref="remarks"/>
+        </model>
+        <remarks>
+            <p>For products, services, and APIs, this is the vendor information.</p>
+            <p>For policies, processes, plans, standards, and guidance, this is the authoring
+                organization.</p>
+            <p>For capabilities, this is the organization that defines and maintains the
+                capability.</p>
+        </remarks>
+    </define-assembly>
+    
+    <define-assembly name="proof-of-compliance">
+        <formal-name>validation</formal-name>
+        <description>.</description>
+        <model>
+            <assembly ref="supplier" min-occurs="1" max-occurs="unbounded">
+                <group-as name="suppliers"/>
+            </assembly>
+            <field ref="description"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships for:
+          validated-by: pointer to validation cert.
+        -->
+            </field>
+        </model>
+    </define-assembly>
+    
+    <define-flag name="source" as-type="uri">
+        <formal-name>Source Resource Reference</formal-name>
+        <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
+    </define-flag>
+
+    <define-assembly name="requirement">
+        <formal-name>Control-based Requirement</formal-name>
+        <description>.</description>
+        <!-- TODO: instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+        <flag ref="control-id"/>
+        <flag ref="subcontrol-id"/>
+        <model>
+            <field ref="description"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <!-- TODO: Implement parameters -->
+            <field ref="remarks"/>
+        </model>      
+    </define-assembly>
+    
+    <define-flag name="control-id" as-type="NCName">
+        <formal-name>Control Identifier Reference</formal-name>
+        <description>A reference to a control identifier.</description>
+    </define-flag>
+    <define-flag name="subcontrol-id" as-type="NCName">
+        <formal-name>Subcontrol Identifier Reference</formal-name>
+        <description>A reference to a subcontrol identifier.</description>
+    </define-flag>
+    
+    <define-assembly name="implementation-detail">
+        <formal-name>Control Response</formal-name>
+        <description>Describes how a control is implemented.</description>
+        <flag ref="statement-id" as-type="NCName" required="yes"/>
+        <model>
+            <field ref="description"/>
+        </model>
+        <example>
+            <o:implementation-detail statement-id="ac-2_smt.g">
+                <o:p>Detail relating to AC-2 part g.</o:p>
+            </o:implementation-detail>
+        </example>
+    </define-assembly>
+
+    <define-flag name="statement-id" as-type="NCName">
+        <formal-name>Statement Identifier</formal-name>
+        <description>Pointer to a speific requirement statement within a control or subcontrol.</description>
+    </define-flag>
+    
+    <define-assembly name="using">
+        <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+        <formal-name>Using</formal-name>
+        <description>The set of implementations needed to support the control requirements.</description>
+        <model>
+            <assembly ref="implementation" min-occurs="1" max-occurs="unbounded">
+                <group-as name="implementations"/>
+            </assembly>
+        </model>      
+    </define-assembly>
+    
+    <define-assembly name="implementation">
+        <formal-name>Implementation</formal-name>
+        <description>An implementation needed to support the control requirements.</description>
+        <!-- MUST provide at least one of the following -->
+        <flag ref="configuration-id"/>
+        <flag ref="artifact-id"/>
+        <model>
+            <field ref="description"/>
+            <assembly ref="implementation-detail" max-occurs="unbounded">
+                <group-as name="implementation-details"/>
+            </assembly>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-flag name="configuration-id" as-type="IDREF">
+        <formal-name>Configuration Identifier Reference</formal-name>
+        <description>A reference to a configuration defined on the component.</description>
+    </define-flag>
+    
+    <define-flag name="artifact-id" as-type="IDREF">
+        <formal-name>Artifact Identifier Reference</formal-name>
+        <description>A reference to an artifact defined on the component.</description>
+    </define-flag>
+    
+    <define-assembly name="configuration">
+        <formal-name>Configuration</formal-name>
+        <description>Information on how to configure the component (for technical types of components).</description>
+        <json-key flag-name="id"/>
+        <flag name="id" as-type="ID" required="true">
+            <formal-name>Configuration Identifier</formal-name>
+            <description>A unique identifier for the configuration.</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <assembly ref="mechanism" max-occurs="unbounded">
+                <group-as name="mechanisms"/>
+            </assembly>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="mechanism">
+        <formal-name>mechanism</formal-name>
+        <description>Information on a mechanism used to configure the component.</description>
+        <flag name="id" as-type="ID" required="true">
+            <formal-name>Mechanism Identifier</formal-name>
+            <description>A unique identifier for the configuration mechanism.</description>
+        </flag>
+        <model>
+            <field ref="description"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <assembly ref="argument" max-occurs="unbounded">
+                <group-as name="arguments" json-behavior="BY_KEY"/>
+            </assembly>
+            <assembly ref="configuration-method" min-occurs="1"/>
+            <assembly ref="verification-method" min-occurs="1"/>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    
+    <define-assembly name="configuration-method">
+        <formal-name>Configuration Method</formal-name>
+        <description>A mechanism used to deploy the configuration.</description>
+        <model>
+            <field ref="description"/>
+            <assembly ref="argument" max-occurs="unbounded">
+                <group-as name="arguments" json-behavior="BY_KEY"/>
+            </assembly>
+            <field ref="script" min-occurs="1"/>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="verification-method">
+        <formal-name>Verification Method</formal-name>
+        <description>A mechanism used to verify a previously deployed configuration.</description>
+        <model>
+            <field ref="description"/>
+            <assembly ref="argument" max-occurs="unbounded">
+                <group-as name="arguments" json-behavior="BY_KEY"/>
+            </assembly>
+            <field ref="script" min-occurs="1"/>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-field name="script">
+        <formal-name>Script</formal-name>
+        <description>An executable script.</description>
+        <flag ref="system" required="yes"/>
+    </define-field>
+    
+    <define-flag name="system" as-type="uri">
+        <formal-name>system</formal-name>
+        <description>A configure or verify system type described by a well-known URI</description>
+    </define-flag>
+    
+    <define-assembly name="argument">
+        <formal-name>argument</formal-name>
+        <description>.</description>
+        <json-key flag-name="name"/>
+        <flag name="name" as-type="NCName" required="yes">
+            <formal-name>Argument Name</formal-name>
+            <description>The name of an argument to be passed into a script.</description>
+        </flag>
+        <model>
+            <!-- Need to model the argument
+    <argument name="argument_1">
+      <constraints>
+        <enum>on</enum>
+        <enum>off</enum>
+        <range><min>1</min><max>24</max></range>
+      </constraints>
+      <param source="#catalog" param-id="ac-10_prm_1">
+        <mapping>
+          <map from="enabled" to="1"/>
+          <map from="disabled" to="0"/>
+        </mapping>
+        <same/>
+      </param>
+    </argument>
+      -->
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="artifact">
+        <formal-name>Configuration</formal-name>
+        <description>Information on how to use the component (for documentary types of components).</description>
+        <json-key flag-name="id"/>
+        <flag name="id" as-type="ID" required="true">
+            <formal-name>Artifact Identifier</formal-name>
+            <description>A unique identifier for the artifact.</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <assembly ref="implementation-source" min-occurs="1"/>
+            <assembly ref="verification-process" min-occurs="1"/>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="implementation-source">
+        <formal-name>Artifact Implementation Source</formal-name>
+        <description>.</description>
+        <flag name="href" as-type="uri" required="yes">
+            <formal-name>Source Resource Reference</formal-name>
+            <description>Where to get the artifact</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="verification-process">
+        <formal-name>Artifact Verification Process</formal-name>
+        <description>.</description>
+        <flag name="href" as-type="uri" required="yes">
+            <formal-name>Verification Process Resource Reference</formal-name>
+            <description>Where to get the process to verify the artifact is implemented.</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" json-behavior="BY_KEY"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+
+    <define-flag name="component-id" as-type="IDREF">
+        <formal-name>Component Reference</formal-name>
+        <description>A reference to a component by its identifier</description>
+    </define-flag>
+    
+    <define-flag name="capability-id" as-type="IDREF">
+        <formal-name>Capability Reference</formal-name>
+        <description>A reference to a capability by its identifier</description>
+    </define-flag>
+    <define-assembly name="incorporates-component">
+        <formal-name>Incorporates Component</formal-name>
+        <description>.</description>
+        <json-key flag-name="component-id"/>
+        <flag ref="component-id" required="true"/>
+        <model>
+            <field ref="description" min-occurs="1"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="incorporates-capability">
+        <formal-name>Incorporates Capability</formal-name>
+        <description>.</description>
+        <json-key flag-name="capability-id"/>
+        <flag name="capability-id" required="true" as-type="IDREF">
+            <formal-name>Capability Reference</formal-name>
+            <description>A reference to a capability by its identifier</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+        </model>
+    </define-assembly>
+    
+</METASCHEMA>
