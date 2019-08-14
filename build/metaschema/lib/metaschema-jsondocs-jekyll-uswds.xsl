@@ -60,10 +60,10 @@
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
-         <p><span class="usa-label">Link</span>
+         <p><span class="usa-label">Schema download</span>
             <xsl:text> </xsl:text>
             <a href="{$schema-path}">
-               <xsl:value-of select="$schema-path"/></a>
+               <xsl:value-of select="replace($schema-path,'^.*/','')"/></a>
          </p>
          <xsl:apply-templates select="* except $definitions"/>
       </div>
