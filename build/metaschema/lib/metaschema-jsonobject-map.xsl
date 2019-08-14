@@ -113,7 +113,8 @@
          <xsl:text>: </xsl:text>
          <xsl:apply-templates select="." mode="contents-inline"/>
          <xsl:call-template name="cardinality-note"/>
-         <xsl:if test="not(position() eq last())">, </xsl:if>
+         <xsl:if test="not(position() eq last())">
+            <span class="OM-lit">,</span></xsl:if>
       </p>
    </xsl:template>
    
@@ -213,12 +214,13 @@
          <xsl:text>: </xsl:text>
          <xsl:apply-templates select="." mode="contents-inline"/>
          <xsl:call-template name="cardinality-note"/>
-         <xsl:if test="not(position() eq last())">, </xsl:if>
+         <xsl:if test="not(position() eq last())">
+            <span class="OM-lit">,</span></xsl:if>
       </p>
    </xsl:template>
    
    <xsl:template priority="5" match="m:field[@json-type='SCALAR'][exists(m:flag[not(@name=../(json-key|json-value-key)/@flag-name)])]" mode="html-render">
-      <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
+       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <div class="OM-entry{ ' open'[$first] }">
          <p>
             <span class="OM-view_switcher"/>
@@ -229,18 +231,8 @@
             <xsl:call-template name="cardinality-note"/>
             <span class="OM-lit"> {</span>
          </p>
-         <div class="OM-map">
-            <p><xsl:call-template name="array-cardinality"/>
-               <!--<xsl:if test="@json-behavior='SINGLETON_OR_ARRAY'">
-                  <span class="OM-emph"> (when a singleton, an object not an array)</span>
-               </xsl:if>-->
-               <span class="OM-lit"> {</span></p>
-            <xsl:apply-templates select="." mode="contents-as-block"/>
-            <p>}</p>
-         </div>
-         <xsl:if test="not(position() eq last())">
-            <p><span class="OM-lit">, </span></p>
-         </xsl:if>
+         <xsl:apply-templates select="." mode="contents-as-block"/>
+         <p><span class="OM-lit">} <xsl:if test="not(position() eq last())">,</xsl:if></span></p>
       </div>
    </xsl:template>
    
@@ -254,7 +246,7 @@
          </span>
          <xsl:apply-templates select="." mode="contents-inline"/>
          <xsl:call-template name="cardinality-note"/>
-         <xsl:if test="not(position() eq last())"><span class="OM-lit">, </span></xsl:if>
+         <xsl:if test="not(position() eq last())"><span class="OM-lit">,</span></xsl:if>
       </p>
    </xsl:template>
    
@@ -267,7 +259,7 @@
          <xsl:text>: </xsl:text>
          <xsl:apply-templates select="." mode="contents-inline"/>
          <xsl:call-template name="cardinality-note"/>
-         <xsl:if test="not(position() eq last())"><span class="OM-lit">, </span></xsl:if>         
+         <xsl:if test="not(position() eq last())"><span class="OM-lit">,</span></xsl:if>         
       </p>
    </xsl:template>
    
@@ -345,7 +337,7 @@
          <xsl:apply-templates select="." mode="datatype"/>
          <span class="OM-cardinality"> [0 or 1]</span>
          
-         <xsl:if test="m:flag[not(@name=../(json-key | json-value-key)/@flag-name)]"><span class="OM-lit">, </span></xsl:if>
+         <xsl:if test="m:flag[not(@name=../(json-key | json-value-key)/@flag-name)]"><span class="OM-lit">,</span></xsl:if>
       </p>
    </xsl:template>
    
@@ -355,12 +347,12 @@
          <xsl:apply-templates select="." mode="datatype"/>
          <span class="OM-cardinality"> [0 or 1]</span>
          <xsl:if test="m:flag[not((@name | @ref) = ../(json-key | json-value-key)/@flag-name)]">
-            <span class="OM-lit">, </span>
+            <span class="OM-lit">,</span>
          </xsl:if>
       </p>
    </xsl:template>
    
-   
+
    <xsl:template match="*[@json-value-flag=m:flag/@name]" mode="value datatype"/>
       
    <xsl:template match="*" mode="datatype">
