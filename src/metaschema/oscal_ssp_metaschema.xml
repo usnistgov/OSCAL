@@ -10,7 +10,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
             root="system-security-plan">
    <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
@@ -25,7 +25,8 @@
    </remarks>
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
-   <import href="oscal_component_metaschema.xml"/>
+   <import href="oscal_implementation-common_metaschema.xml"/>
+
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
@@ -37,7 +38,7 @@
 			<field named="date" required="yes"/>
 			 -->
          <assembly ref="metadata"/>
-         <assembly ref="import-profile"/>
+         <assembly ref="import-profile" min-occurs="1"/>
          <assembly ref="system-characteristics">
             <group-as name="ssp-system-characteristics"/>
          </assembly>
@@ -47,8 +48,6 @@
          <assembly ref="control-implementation">
             <group-as name="ssp-control-implementation"/>
          </assembly>
-         <assembly ref="references"/>
-         <assembly ref="attachment"/>
          <assembly ref="back-matter"/>
       </model>
       <example/>
@@ -56,12 +55,13 @@
    <!-- Profile Import -->
    <define-assembly name="import-profile">
       <formal-name>Import profile</formal-name>
-      <description>Used to import the OSCAL profile representing the systems control baseline.</description>
-      <flag ref="href"/>
+      <description>Used to import the OSCAL profile representing the system's control baseline.</description>
+      <flag ref="href" required="yes"/>
       <model>
-         <field ref="prose"/>
+         <field ref="remarks"/>
       </model>
    </define-assembly>
+
    <!-- SYSTEM CHARACTERISTICS -->
    <define-assembly name="system-characteristics">
       <formal-name>System Characteristics</formal-name>
@@ -71,51 +71,44 @@
          <field ref="system-id" min-occurs="1"/>
          <field ref="system-name" min-occurs="1"/>
          <field ref="system-name-short"/>
-         <assembly ref="description" min-occurs="1"/>
+         <field ref="description" min-occurs="1">
+            <description>A free-text description of the system.</description>
+         </field>
          <field ref="security-sensitivity-level" min-occurs="1"/>
          <assembly ref="system-information" min-occurs="1">
             <group-as name="ssp-system-information"/>
          </assembly>
          <assembly ref="security-impact-level" min-occurs="1">
-            <group-as name="ssp-security-impact-level"/>
+            <!-- TODO: Is this needed, or can it be computed based on the high water mark of the information types? -->
          </assembly>
          <assembly ref="security-eauth" min-occurs="1">
-            <group-as name="ssp-security-eauth"/>
+            <group-as name="security-eauths"/>
          </assembly>
-         <field ref="status" min-occurs="1"/>
-         <!-- TODO: consider other (below) as a child of "status" -->
-         <field ref="status-other-description"/>
-         <field ref="deployment-model" min-occurs="1"/>
-         <!-- TODO: consider other (below) as a child of "status" -->
-         <field ref="deployment-model-other-description"/>
-         <field ref="service-model" min-occurs="1" max-occurs="unbounded">
+         <assembly ref="status" min-occurs="1"/>
+         <assembly ref="deployment-model"/>
+         <assembly ref="service-model" max-occurs="unbounded">
             <group-as name="service-models"/>
-         </field>
-         <!-- TODO: consider other (below) as a child of "status" -->
-         <field ref="service-model-other-description" max-occurs="unbounded">
-            <group-as name="service-model-descriptions"/>
-         </field>
-         <assembly ref="leveraged-authorizations">
-            <group-as name="ssp-leveraged-authorizations"/>
          </assembly>
-         <assembly ref="authorization-boundary">
-            <group-as name="ssp-authorization-boundary"/>
+         <assembly ref="leveraged-authorization" max-occurs="unbounded">
+            <description>All leveraged authorizations for this system.</description>
+            <group-as name="leveraged-authorizations"/>
          </assembly>
+         <assembly ref="authorization-boundary" min-occurs="1"/>
          <assembly ref="network-architecture">
             <group-as name="ssp-network-architecture"/>
          </assembly>
          <assembly ref="data-flow">
             <group-as name="ssp-data-flow"/>
          </assembly>
-         <assembly ref="users">
-            <group-as name="ssp-users"/>
+         <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
+            <group-as name="system-roles" json-behavior="BY_KEY"/>
          </assembly>
       </model>
-      <example/>
    </define-assembly>
    <define-field name="system-id" as-type="string">
       <formal-name>System Identification</formal-name>
       <description/>
+      <!-- TODO: What are the valid values? -->
       <flag ref="type" as-type="string"/>
    </define-field>
    <define-field name="system-name" as-type="string">
@@ -126,68 +119,67 @@
       <formal-name>System Name (Short)</formal-name>
       <description/>
    </define-field>
-   <define-assembly name="description">
-      <formal-name>Description</formal-name>
-      <description>A free-text description of the system.</description>
-      <model>
-         <field ref="prose"/>
-      </model>
-   </define-assembly>
-   <define-field name="security-sensitivity-level" as-type="string">
+
+   <define-field name="security-sensitivity-level">
+      <!-- TODO: Any constraints for the values? -->
       <formal-name/>
       <description/>
    </define-field>
+
+   <define-flag name="impact-level" as-type="string">
+      <formal-name/>
+      <description/>
+      <valid-values allow-other="yes">
+         <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+         <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+         <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+      </valid-values>
+   </define-flag>
+
    <define-assembly name="system-information">
       <formal-name>System Information</formal-name>
       <description>Contains details about all types of information stored, processed, or
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
       <model>
+         <!-- TODO: Why is designation not a child of information type? -->
          <assembly ref="information-type" min-occurs="1" max-occurs="unbounded">
             <group-as name="ssp-information-type"/>
          </assembly>
-         <assembly ref="designations" min-occurs="1" max-occurs="unbounded">
-            <group-as name="ssp-designations"/>
+         <assembly ref="designation" min-occurs="1" max-occurs="unbounded">
+            <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
+            <group-as name="designations" json-behavior="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
    </define-assembly>
-   <define-assembly name="designations">
-      <formal-name>System Information Designations</formal-name>
-      <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
-      <model>
-         <assembly ref="designation" max-occurs="unbounded">
-            <group-as name="ssp-designation"/>
-         </assembly>
-      </model>
-      <example>
-         <designations xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <designation id="pii">
-               <declaration>true</declaration>
-            </designation>
-            <designation id="pci">
-               <declaration>false</declaration>
-            </designation>
-            <designation id="hipaa">
-               <declaration>false</declaration>
-            </designation>
-            <designation id="sbu">
-               <declaration>false</declaration>
-            </designation>
-         </designations>
-      </example>
-   </define-assembly>
+
    <define-assembly name="designation">
       <formal-name>System Information Designation</formal-name>
       <description>Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="name" as-type="string"/>
       <model>
+         <!-- TODO: what are the following for? -->
          <field ref="title"/>
          <field ref="declaration"/>
          <assembly ref="qualifiers" max-occurs="unbounded">
             <group-as name="ssp-qualifiers"/>
          </assembly>
       </model>
+      <example>
+         <o:designation name="pii">
+            <o:declaration>true</o:declaration>
+         </o:designation>
+         <o:designation name="pci">
+            <o:declaration>false</o:declaration>
+         </o:designation>
+         <o:designation name="hipaa">
+            <o:declaration>false</o:declaration>
+         </o:designation>
+         <o:designation name="sbu">
+            <o:declaration>false</o:declaration>
+         </o:designation>
+      </example>
       <example>
          <designation xmlns="http://csrc.nist.gov/ns/oscal/example" id="pii">
             <title>A Privacy Sensitive System</title>
@@ -288,24 +280,23 @@
       <flag ref="id" as-type="ID"/>
       <flag ref="nist-id" as-type="string"/>
       <model>
-         <assembly ref="description"/>
-         <assembly ref="confidentiality-impact">
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="confidentiality-impact" min-occurs="1">
             <group-as name="ssp-confidentiality-impact"/>
          </assembly>
-         <assembly ref="integrity-impact">
+         <assembly ref="integrity-impact" min-occurs="1">
             <group-as name="ssp-integrity-impact"/>
          </assembly>
-         <assembly ref="availability-impact">
+         <assembly ref="availability-impact" min-occurs="1">
             <group-as name="ssp-availability-impact"/>
          </assembly>
       </model>
-      <example/>
    </define-assembly>
    <define-assembly name="confidentiality-impact">
       <formal-name>Confidentiality Impact Level</formal-name>
       <description/>
       <model>
-         <field ref="base"/>
+         <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
       </model>
@@ -315,7 +306,7 @@
       <formal-name>Integrity Impact Level</formal-name>
       <description/>
       <model>
-         <field ref="base"/>
+         <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
       </model>
@@ -325,23 +316,24 @@
       <formal-name>Availability Impact Level</formal-name>
       <description/>
       <model>
-         <field ref="base"/>
+         <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
       </model>
       <example/>
    </define-assembly>
-   <define-field name="base" as-type="string">
+   <define-field name="base" as-type="empty">
       <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The prescribed base (Confidentiality, Integrity, or Availability) security
 			impact level.</description>
+      <flag ref="impact-level"/>
    </define-field>
-   <define-field name="selected" as-type="string">
+   <define-field name="selected" as-type="empty">
       <formal-name>Selected Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The selected (Confidentiality, Integrity, or Availability) security impact
 			level.</description>
    </define-field>
-   <define-field name="adjustment-justification" as-type="string">
+   <define-field name="adjustment-justification" as-type="markup-multiline">
       <formal-name>Adjustment Justification</formal-name>
       <description>If the selected security level is different from the base security level, this
 			contains the justificaiton for the change.</description>
@@ -356,17 +348,20 @@
       </model>
       <example/>
    </define-assembly>
-   <define-field name="security-objective-confidentiality" as-type="string">
+   <define-field name="security-objective-confidentiality" as-type="empty">
       <formal-name>Security Objective (Confidentiality)</formal-name>
       <description/>
+      <flag ref="impact-level"/>
    </define-field>
-   <define-field name="security-objective-integrity" as-type="string">
+   <define-field name="security-objective-integrity" as-type="empty">
       <formal-name>Security Objective (Integrity)</formal-name>
       <description/>
+      <flag ref="impact-level"/>
    </define-field>
-   <define-field name="security-objective-availability" as-type="string">
+   <define-field name="security-objective-availability" as-type="empty">
       <formal-name>Security Objective (Availability)</formal-name>
       <description/>
+      <flag ref="impact-level"/>
    </define-field>
    <define-assembly name="security-eauth">
       <formal-name>Security Electronic Authentication Level</formal-name>
@@ -395,48 +390,76 @@
       <formal-name>Security eAuthentication Level</formal-name>
       <description/>
    </define-field>
-   <define-field name="status" as-type="string">
+   <define-assembly name="status">
       <formal-name>Status</formal-name>
       <description/>
-   </define-field>
-   <define-field name="status-other-description" as-type="string">
-      <formal-name>Status Description (if Other)</formal-name>
-      <description/>
-   </define-field>
-   <define-field name="deployment-model" as-type="string">
+      <flag name="state" required="yes">
+         <formal-name></formal-name>
+         <description/>
+         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
+         <valid-values>
+            <value name="operational">The system is currently operating and is in production.</value>
+            <value name="under-development">The system is being designed, developed, or implemented</value>
+            <value name="under-major-modification">The system is undergoing a major change, development, or transition.</value>
+            <value name="disposition">The system is no longer operational.</value>
+            <value name="other">Some other state.</value>
+         </valid-values>
+      </flag>
+      <model>
+         <field ref="remarks"/>
+      </model>
+      <remarks>
+         <p>If 'other' is selected, a remark must be included to describe the current state.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="deployment-model">
       <formal-name>Deployment Model</formal-name>
       <description/>
-   </define-field>
-   <define-field name="deployment-model-other-description" as-type="string">
-      <formal-name>Deployment Model Description (if Other)</formal-name>
-      <description/>
-   </define-field>
-   <define-field name="service-model" as-type="string">
+      <flag name="type" required="yes">
+         <formal-name></formal-name>
+         <description/>
+         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
+         <valid-values>
+            <value name="public"></value>
+            <value name="private"></value>
+            <value name="community"></value>
+            <value name="government-only"></value>
+            <value name="hybrid"></value>
+            <value name="other">Some other deployment model.</value>
+         </valid-values>
+      </flag>
+      <model>
+         <field ref="remarks"/>
+      </model>
+      <remarks>
+         <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="service-model">
       <formal-name>Service Model</formal-name>
       <description/>
-   </define-field>
-   <define-field name="service-model-other-description" as-type="string">
-      <formal-name>Service Model Description Other</formal-name>
-      <description/>
-   </define-field>
-   <define-assembly name="leveraged-authorizations">
-      <formal-name>Leveraged Authorizations</formal-name>
-      <description>All leveraged authorizations for this system.</description>
+      <flag name="type" required="yes">
+         <formal-name></formal-name>
+         <description/>
+         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
+      </flag>
       <model>
-         <assembly ref="leveraged-authorization" max-occurs="unbounded">
-            <group-as name="ssp-leveraged-authorization"/>
-         </assembly>
+         <field ref="remarks"/>
       </model>
-      <example/>
+      <remarks>
+         <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
+      </remarks>
    </define-assembly>
+
    <define-assembly name="leveraged-authorization">
       <formal-name>Leveraged Authorization</formal-name>
       <description>The details for a single leveraged authorization</description>
       <flag ref="id" as-type="ID"/>
       <model>
-         <field ref="leveraged-authorization-name"/>
-         <field ref="leveraged-authorization-service-provider"/>
-         <field ref="leveraged-authorization-date-granted"/>
+         <!-- TODO: Should this be able to reference another SSP? Is this the same as a common control? -->
+         <field ref="leveraged-authorization-name" min-occurs="1"/>
+         <field ref="leveraged-authorization-service-provider" min-occurs="1"/>
+         <field ref="leveraged-authorization-date-granted" min-occurs="1"/>
       </model>
       <example/>
    </define-assembly>
@@ -447,130 +470,93 @@
    <define-field name="leveraged-authorization-service-provider" as-type="string">
       <formal-name>Leveraged System Service Provider Name</formal-name>
       <description>Name of the service provider that manages the leveraged system.</description>
+      <!-- TODO: Should this map to a party by id? -->
    </define-field>
-   <define-field name="leveraged-authorization-date-granted">
+   <define-field name="leveraged-authorization-date-granted" as-type="date-with-timezone">
       <formal-name>Leveraged System Authorization Date</formal-name>
       <description>The date the leveraged system received its authorization.</description>
-      <remarks>
-         <p>Value needs to be validated as a date field.</p>
-      </remarks>
    </define-field>
+
    <define-assembly name="authorization-boundary">
       <formal-name>Authorization Boundary</formal-name>
       <description/>
       <model>
-         <assembly ref="boundary-diagram" max-occurs="unbounded">
-            <group-as name="ssp-boundary-diagram"/>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="diagram" max-occurs="unbounded">
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
+         <field ref="remarks"/>
       </model>
       <example/>
    </define-assembly>
-   <define-assembly name="boundary-diagram">
-      <formal-name>Boundary Diagram</formal-name>
+
+   <define-assembly name="diagram">
+      <formal-name>Diagram</formal-name>
       <description/>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="attachment-id" as-type="string"/>
+      <json-key flag-name="id"/>
+      <flag name="id" as-type="ID" required="yes">
+         <formal-name>Diagram ID</formal-name>
+         <description>An identifier for this diagram.</description>
+      </flag>
+      <flag ref="href" as-type="uri-reference" required="yes"/>
       <model>
-         <assembly ref="boundary-description"/>
+         <field ref="description">
+            <description>A description of the diagram (e.g., alternate text). this can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
+         </field>
       </model>
       <remarks>
-         <p>The @attachment-id flag references the attachment ID of the boundary diagram.</p>
+         <p>The href references a remote URI or an internal reference within this document containing the diagram.</p>
       </remarks>
-      <example/>
-   </define-assembly>
-   <define-assembly name="boundary-description">
-      <formal-name>Boundary Description</formal-name>
-      <description/>
-      <model>
-         <field ref="prose"/>
-      </model>
+      <example>
+         <o:diagram href="#attachmentA" id="boundary-diagram-1">
+            <o:description>A boudnary diagram - bad example text.</o:description>            
+         </o:diagram>
+      </example>
    </define-assembly>
    <define-assembly name="network-architecture">
       <formal-name>Network Architecture Diagrams</formal-name>
       <description/>
       <model>
-         <assembly ref="network-diagram" max-occurs="unbounded">
-            <group-as name="ssp-network-boundary"/>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="diagram" max-occurs="unbounded">
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
+         <field ref="remarks"/>
       </model>
       <example/>
-   </define-assembly>
-   <define-assembly name="network-diagram">
-      <formal-name>Network Diagram</formal-name>
-      <description/>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="attachment-id" as-type="string"/>
-      <model>
-         <assembly ref="network-description"/>
-      </model>
-      <remarks>
-         <p>The @attachment-id flag references the attachment ID of the nextwork diagram.</p>
-      </remarks>
-      <example/>
-   </define-assembly>
-   <define-assembly name="network-description">
-      <formal-name>Network Description</formal-name>
-      <description/>
-      <model>
-         <field ref="prose"/>
-      </model>
    </define-assembly>
    <define-assembly name="data-flow">
+      <!-- TODO: Should this relate to a system-interconnection? -->
       <formal-name>Data Flow</formal-name>
       <description/>
       <model>
-         <assembly ref="data-flow-diagram" max-occurs="unbounded">
-            <group-as name="ssp-data-flow-diagram"/>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="diagram" max-occurs="unbounded">
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
+         <field ref="remarks"/>
       </model>
       <example/>
    </define-assembly>
-   <define-assembly name="data-flow-diagram">
-      <formal-name>Data Flow Diagram</formal-name>
-      <description/>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="attachment-id" as-type="string"/>
-      <model>
-         <assembly ref="data-flow-description"/>
-      </model>
-      <remarks>
-         <p>The @attachment-id flag references the attachment ID of the data flow diagram.</p>
-      </remarks>
-      <example/>
-   </define-assembly>
-   <define-assembly name="data-flow-description">
-      <formal-name>Data Flow Description</formal-name>
-      <description/>
-      <model>
-         <field ref="prose"/>
-      </model>
-   </define-assembly>
-   <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
-   <define-assembly name="users">
-      <formal-name>Users</formal-name>
-      <description>Provides all user roles.</description>
-      <model>
-         <assembly ref="role" max-occurs="unbounded">
-            <group-as name="roles"/>
-         </assembly>
-         <assembly ref="statistics">
-            <group-as name="ssp-statistics"/>
-         </assembly>
-      </model>
-      <example/>
-   </define-assembly>
-   <define-assembly name="role">
+   <define-assembly name="system-role">
+      <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
       <formal-name>Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
-      <flag ref="id" as-type="ID" required="yes"/>
-      <flag ref="name" as-type="string"/>
-      <flag ref="external" as-type="boolean"/>
-      <flag ref="access" as-type="string"/>
-      <flag ref="sensitivity-level" as-type="string"/>
+      <json-key flag-name="id"/>
+      <flag name="id" as-type="ID" required="yes">
+         <formal-name>System Role ID</formal-name>
+         <description/>
+      </flag>
+      <flag ref="role-id" as-type="IDREF" required="yes"/>
+      <flag ref="name" as-type="string" required="yes"/>
+      <!-- TODO: provide valid values for these? -->
+      <flag ref="external" as-type="boolean" required="yes"/>
+      <flag ref="access" as-type="string" required="yes"/>
+      <flag ref="sensitivity-level" as-type="string" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="short-name"/>
-         <field ref="desc"/>
+         <field ref="description"/>
          <!-- The following fields appear in <users><roles>, but not in <metadata><roles> -->
          <field ref="privilege" max-occurs="unbounded">
             <group-as name="privileges"/>
@@ -578,10 +564,11 @@
          <field ref="responsibility" max-occurs="unbounded">
             <group-as name="responsibilities"/>
          </field>
+         <assembly ref="statistics" min-occurs="1"/>
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
-				authority).</p>
+            authority).</p>
       </remarks>
    </define-assembly>
    <define-field name="privilege" as-type="string">
@@ -604,66 +591,155 @@
       </model>
       <example/>
    </define-assembly>
-   <define-field name="internal-user-total-current">
+   <define-field name="internal-user-total-current" as-type="positiveInteger">
       <formal-name>Total Current Internal Users</formal-name>
       <description/>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
-   <define-field name="internal-user-total-future">
+   <define-field name="internal-user-total-future" as-type="positiveInteger">
       <formal-name>Total Future Internal Users</formal-name>
       <description/>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
-   <define-field name="external-user-total-current">
+   <define-field name="external-user-total-current" as-type="positiveInteger">
       <formal-name>Total Current External Users</formal-name>
       <description/>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
-   <define-field name="external-user-total-future">
+   <define-field name="external-user-total-future" as-type="positiveInteger">
       <formal-name>Total Future External Users</formal-name>
       <description/>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
+
    <!-- SYSTEM IMPLEMENTATION -->
    <define-assembly name="system-implementation">
       <formal-name>System Implementation</formal-name>
       <description>Provides information as to how the system is implemented.</description>
       <model>
-         <assembly ref="ports-protocols-services">
-            <group-as name="ssp-ports-protocols-services"/>
+         <assembly ref="component" max-occurs="unbounded">
+            <group-as name="components" json-behavior="BY_KEY"/>
+         </assembly>
+         <assembly ref="capability" max-occurs="unbounded">
+            <group-as name="capabilities" json-behavior="BY_KEY"/>
+         </assembly>
+         <assembly ref="service" max-occurs="unbounded">
+            <description>A collection of the ports, protocols, and services used within the
+               system.</description>
+            <group-as name="services"/>
          </assembly>
          <assembly ref="interconnection" max-occurs="unbounded">
             <group-as name="ssp-interconnection"/>
-         </assembly>
-         <assembly ref="component" max-occurs="unbounded">
-            <group-as name="components" json-behavior="BY_KEY"/>
          </assembly>
          <assembly ref="system-inventory"/>
       </model>
       <example/>
    </define-assembly>
-   <define-assembly name="ports-protocols-services">
-      <formal-name>Ports, Protocols, and Services</formal-name>
-      <description>A collection of the ports, protocols, and services used within the
-			system.</description>
+   <define-assembly name="component">
+      <formal-name>Component</formal-name>
+      <description>A defined component that can be part of an implemented system.</description>
+      <json-key flag-name="id"/>
+      <flag name="id" as-type="ID" required="true">
+         <formal-name>Component Identifier</formal-name>
+         <description>A unique identifier for a component.</description>
+      </flag>
+      <flag name="name" as-type="string" required="true">
+         <formal-name>Component Name</formal-name>
+         <description>The component's human-readable name.</description>
+      </flag>
+      <flag ref="component-type" as-type="string"/>
       <model>
-         <assembly ref="service" max-occurs="unbounded">
-            <group-as name="ssp-service"/>
+         <field ref="description" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name">
+               <valid-values allow-other="yes">
+                  <value name="version">The version of the component.</value>
+                  <value name="model">The model of the component.</value>
+                  <value name="release-date">The date the component was released.</value>
+               </valid-values>
+            </flag>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships for:
+          depends-on: component has a dependency on another component
+          validated-by:, etc.
+        -->
+         </field>
+         <assembly ref="supplier" min-occurs="1"/>
+         <assembly ref="proof-of-compliance" max-occurs="unbounded">
+            <group-as name="proofs-of-compliance" />
          </assembly>
+<!--         <assembly ref="control-implementation" max-occurs="unbounded">
+            <!-\- TODO; figure out if this should be here or later -\->
+            <group-as name="control-implementations" />
+         </assembly>
+-->         <assembly ref="configuration" max-occurs="unbounded">
+            <group-as name="configurations" json-behavior="BY_KEY" />
+         </assembly>
+         <assembly ref="artifact" max-occurs="unbounded">
+            <group-as name="artifacts" json-behavior="BY_KEY" />
+         </assembly>
+         <field ref="remarks"/>
       </model>
-      <example/>
+      <remarks>
+         <p>Components may be products, services, APIs, policies, processes, plans, guidance,
+            standards, or other tangible items that enable security and/or privacy.</p>
+         <p>The <code>type</code> indicates which of these component types is represented.</p>
+         <p>A group of components may be aggregated into a <code>capability</code>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+         <p>Capabilities are expressed by combining one or more components.</p>
+      </remarks>
    </define-assembly>
+   
+   <define-assembly name="capability">
+      <formal-name>Capability</formal-name>
+      <description>A grouping of other components and/or capabilities.</description>
+      <json-key flag-name="id"/>
+      <flag name="id" as-type="ID" required="true">
+         <formal-name>Capability Identifier</formal-name>
+         <description>A unique identifier for a capability.</description>
+      </flag>
+      <flag name="name" as-type="string" required="true">
+         <formal-name>Capability Name</formal-name>
+         <description>The capability's human-readable name.</description>
+      </flag>
+      <model>
+         <field ref="description" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" json-behavior="BY_KEY"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships for:
+          depends-on: component has a dependency on another component
+          validated-by:, etc.
+        -->
+         </field>
+         <assembly ref="incorporates-capability" max-occurs="unbounded">
+            <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+         </assembly>
+         <assembly ref="incorporates-component" max-occurs="unbounded">
+            <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+         </assembly>
+<!--         <assembly ref="control-implementation" max-occurs="unbounded">
+            <group-as name="control-implementations" />
+         </assembly>
+-->         <field ref="remarks"/>
+      </model>    
+   </define-assembly>
+   
    <define-assembly name="service">
       <formal-name>Service</formal-name>
-      <description>A collection of information about an individual service within the
+      <description>Information about an individual service within the
 			system.</description>
       <flag ref="id" as-type="ID"/>
       <flag ref="name" as-type="string"/>
@@ -672,9 +748,9 @@
             <group-as name="ssp-protocol"/>
          </assembly>
          <field ref="purpose"/>
-         <field ref="used-by" max-occurs="unbounded">
-            <group-as name="component-users"/>
-         </field>
+         <assembly ref="used-by-component" max-occurs="unbounded">
+            <group-as name="used-by-components" json-behavior="SINGLETON_OR_ARRAY"/>
+         </assembly>
       </model>
       <example/>
    </define-assembly>
@@ -703,23 +779,17 @@
       <formal-name>Purpose</formal-name>
       <description>Describes the purpose for the service within the system.</description>
    </define-field>
-   <define-field name="used-by" as-type="string">
+   <define-assembly name="used-by-component">
       <formal-name>Used By</formal-name>
-      <description>Identifies the types of system component that uses the service. One entry per
-		</description>
-   </define-field>
-   <!-- Removing this to flatten structure
-	<define-assembly name="system-interconnections" group-as="ssp-system-interconnections" show-docs="xml json" required="yes">
-		<formal-name>System Interconnections</formal-name>
-		<description>All system interconnections.</description>
-		<remarks></remarks>
-		<model>
-			<assemblies named="interconnection" />
-		</model>
-		<example></example>
-	</define-assembly>
-	-->
+      <description>Identifies a type of uses for the service. A component can be optionally identified.</description>
+      <flag ref="component-id"/>
+      <model>
+         <field ref="description" min-occurs="1"/>
+      </model>
+   </define-assembly>
    <define-assembly name="interconnection">
+      <!-- TODO: provide a mechanism to reference another OSCAL SSP or other documentation. -->
+      <!-- TODO: provide a mechanism to reference the ISA. -->
       <formal-name>Interconnection</formal-name>
       <description>Details on an individual system interconnection.</description>
       <flag ref="id" as-type="ID"/>
@@ -818,7 +888,7 @@
       <formal-name>System Inventory</formal-name>
       <description>.</description>
       <model>
-         <assembly ref="inventory-item" max-occurs="unbounded">
+         <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
          </assembly>
       </model>
@@ -849,9 +919,11 @@
          <field ref="network-id" max-occurs="unbounded">
             <group-as name="network-ids"/>
          </field>
+         <!-- TODO: use a role reference? -->
          <field ref="asset-owner" max-occurs="unbounded">
             <group-as name="asset-owners"/>
          </field>
+         <!-- TODO: use a role reference? -->
          <field ref="asset-administrator" max-occurs="unbounded">
             <group-as name="asset-administrators"/>
          </field>
@@ -867,6 +939,7 @@
       <formal-name>Host Item</formal-name>
       <description/>
       <model>
+         <!-- TODO: replace these with properties? -->
          <field ref="netbios-name" max-occurs="unbounded">
             <group-as name="netbios-names"/>
          </field>
@@ -891,6 +964,7 @@
          <field ref="asset-type" max-occurs="unbounded">
             <group-as name="asset-types"/>
          </field>
+         <!-- TODO: use supplier? -->
          <field ref="vendor" max-occurs="unbounded">
             <group-as name="vendors"/>
          </field>
@@ -963,6 +1037,7 @@
       <formal-name>Software Item</formal-name>
       <description/>
       <model>
+         <!-- TODO: replace these with properties? -->
          <field ref="vendor" max-occurs="unbounded">
             <group-as name="vendors"/>
          </field>
@@ -1033,31 +1108,60 @@
       <formal-name>Asset Owner</formal-name>
       <description>The individual, title, or role who "owns" the asset on behalf of the
 			organization.</description>
-      <flag ref="poc-id" as-type="NCName"/>
+      <flag ref="party-id" as-type="NCName"/>
    </define-field>
    <define-field name="asset-administrator" as-type="string">
       <formal-name>Asset Administrator</formal-name>
       <description>The individual, title, role, or team responsible for operating and maintaining
 			the asset.</description>
-      <flag ref="poc-id" as-type="NCName"/>
+      <flag ref="party-id" as-type="NCName"/>
    </define-field>
+   
+   
    <define-assembly name="control-implementation">
-      <formal-name>Implementation of Security Control</formal-name>
-      <description/>
+      <formal-name>Control Implementation</formal-name>
+      <description>Defines how the system (as a whole) supports a set of controls.</description>
       <model>
-         <assembly ref="control" max-occurs="unbounded">
-            <group-as name="controls"/>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="meets-requirement-set" max-occurs="unbounded">
+            <group-as name="meets-requirement-sets"/>
+         </assembly>
+         <assembly ref="by-component" max-occurs="unbounded">
+            <group-as name="by-components"/>
+         </assembly>
+         <assembly ref="by-capability" max-occurs="unbounded">
+            <group-as name="by-capabilities"/>
          </assembly>
       </model>
-      <example/>
    </define-assembly>
-   <define-assembly name="control">
-      <formal-name>Control Implementation</formal-name>
-      <description>Information related to the implementation of an individual
-			control.</description>
-      <flag ref="class" as-type="NCName"/>
-      <flag ref="control-id" as-type="NCName"/>
-      <flag ref="href" as-type="uri-reference"/>
+   
+   <define-assembly name="by-component">
+      <formal-name>Component Control Implementation</formal-name>
+      <description>Defines how the referenced component implements a set of controls.</description>
+      <flag ref="component-id" required="yes"/>
+      <model>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="meets-requirement-set" max-occurs="unbounded">
+            <group-as name="meets-requirement-sets"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="by-capability">
+      <formal-name>capability Control Implementation</formal-name>
+      <description>Defines how the referenced capability implements a set of controls.</description>
+      <flag ref="capability-id" required="yes"/>
+      <model>
+         <field ref="description" min-occurs="1"/>
+         <assembly ref="meets-requirement-set" max-occurs="unbounded">
+            <group-as name="meets-requirement-sets"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="meets-requirement-set">
+      <formal-name>Meets</formal-name>
+      <description>Defines what sets of controls are supported by the system (as a whole).</description>
       <model>
          <field ref="responsible-role" max-occurs="unbounded">
             <group-as name="ssp-responsible-role"/>
@@ -1068,24 +1172,34 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" json-behavior="BY_KEY"/>
          </field>
-         <assembly ref="control-response" max-occurs="unbounded">
-            <group-as name="control-responses"/>
+         <assembly ref="requirement" min-occurs="1" max-occurs="unbounded">
+            <group-as name="requirements"/>
          </assembly>
+         <assembly ref="using"/>
       </model>
-      <example/>
    </define-assembly>
-   <define-field name="responsible-role" as-type="string">
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <define-field name="responsible-role" as-type="empty">
       <formal-name>Responsible Role</formal-name>
       <description/>
-      <flag ref="role-id" as-type="NCName"/>
+      <flag ref="role-id" as-type="NCName" required="yes"/>
    </define-field>
    <define-assembly name="set-param">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value
 			element.</description>
-      <flag ref="param-id" as-type="NCName"/>
-      <flag ref="target" as-type="string"/>
-      <model>
+      <flag ref="param-id" as-type="NCName" required="yes"/>
+<!--      <flag ref="target" as-type="string"/>
+-->      <model>
          <field ref="value"/>
       </model>
       <example/>
@@ -1095,113 +1209,8 @@
       <description>The phrase or string that fills-in the parameter and completes the requirement
 			statement.</description>
    </define-field>
-   <define-assembly name="control-response">
-      <formal-name>Control Response</formal-name>
-      <description>Describes how a control is implemented.</description>
-      <flag ref="stmt-id" as-type="NCName"/>
-      <model>
-         <field ref="prose"/>
-      </model>
-      <example>
-         <response xmlns="http://csrc.nist.gov/ns/oscal/example" target="ac-2_smt.g">
-            <p>Response to AC-2 part g.</p>
-         </response>
-      </example>
-   </define-assembly>
-   <define-assembly name="references">
-      <formal-name>References</formal-name>
-      <description> A group of reference descriptions </description>
-      <flag ref="id" as-type="ID"/>
-      <model>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
-         </field>
-         <assembly ref="ref" max-occurs="unbounded">
-            <group-as name="refs"/>
-         </assembly>
-         <any/>
-      </model>
-   </define-assembly>
-   <define-assembly name="ref">
-      <formal-name>Reference</formal-name>
-      <description> A reference, with one or more citations to standards, related documents, or
-			other resources </description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="ref-type" as-type="string"/>
-      <model>
-         <field ref="citation" max-occurs="unbounded">
-            <group-as name="citations"/>
-         </field>
-         <field ref="prose"/>
-         <any/>
-      </model>
-   </define-assembly>
-   <define-field as-type="markup-line" name="citation">
-      <formal-name>Citation</formal-name>
-      <description>Citation of a resource</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="href" as-type="uri-reference"/>
-      <remarks>
-         <p>Semantics of any contents within citation are implicit, not encoded. To mitigate
-				problems establishin matches with bibliograpical databases, it is recommended a
-				canonical identifier such as a DOI be provided for any citation.</p>
-      </remarks>
-   </define-field>
-   <define-field name="link" as-type="markup-line">
-      <formal-name>Link</formal-name>
-      <description> A line or paragraph with a hypertext link </description>
-      <flag ref="href" as-type="uri-reference"/>
-      <flag ref="rel" as-type="NCName"/>
-      <remarks>
-         <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
-				element.</p>
-      </remarks>
-   </define-field>
-   <define-assembly name="attachment">
-      <formal-name>Attachments</formal-name>
-      <description>.</description>
-      <flag ref="id" as-type="ID"/>
-      <model>
-         <field ref="title"/>
-         <assembly ref="description"/>
-         <field ref="format"/>
-         <field ref="date"/>
-         <field ref="version"/>
-         <field ref="attachment-type"/>
-         <field ref="base64"/>
-      </model>
-   </define-assembly>
-   <define-field name="format" as-type="string">
-      <formal-name>Attachment Format</formal-name>
-      <description/>
-   </define-field>
-   <define-field name="date" as-type="string">
-      <formal-name>Date</formal-name>
-      <description/>
-   </define-field>
-   <define-field name="attachment-type" as-type="string">
-      <formal-name>Date</formal-name>
-      <description/>
-   </define-field>
-   <define-field name="base64" as-type="string">
-      <formal-name>Date</formal-name>
-      <description/>
-      <flag ref="filename" as-type="string"/>
-   </define-field>
    <!-- ===== FLAGS ===== -->
-   <define-flag name="attachment-id" as-type="string">
-      <formal-name>Attachment ID / identifier</formal-name>
-      <description>Unique attachment identifier.</description>
-      <remarks>
-         <p>No mechanism is proposed to ensure that <code>attachment-id</code> values do not
-				collide across different catalogs. Use profiling without <q>merge</q> to detect such
-				clashes.</p>
-      </remarks>
-      <example>
-         <boundary-diagram xmlns="http://csrc.nist.gov/ns/oscal/example" attachment-id="xyz2"/>
-      </example>
-   </define-flag>
-   <define-flag name="component-id" as-type="NCName">
+<!--   <define-flag name="component-id" as-type="NCName">
       <formal-name>Component ID / identifier</formal-name>
       <description>ID of a linked or imported component</description>
       <remarks>
@@ -1223,20 +1232,15 @@
          </import>
       </example>
    </define-flag>
-   <define-flag name="control-id" as-type="NCName">
+-->
+<!--   <define-flag name="control-id" as-type="NCName">
       <formal-name>Control ID / identifier</formal-name>
       <description>Pointer to a control, by its ID</description>
       <remarks>
          <p>May also address subcontrols.</p>
       </remarks>
    </define-flag>
-   <define-flag name="stmt-id" as-type="NCName">
-      <formal-name>Statement ID / identifier</formal-name>
-      <description>Pointer to a speific requirement statement within a control.</description>
-      <remarks>
-         <p>May also address subcontrols.</p>
-      </remarks>
-   </define-flag>
+-->
    <define-flag name="nist-id" as-type="string">
       <formal-name>NIST 800-60 Information Type Identifier</formal-name>
       <description>Pointer to the information type in NIST SP 800-60.</description>
@@ -1249,6 +1253,7 @@
          <asset-owner xmlns="http://csrc.nist.gov/ns/oscal/example" poc-id="xyz2"/>
       </example>
    </define-flag>
+
    <define-flag name="param-id" as-type="NCName">
       <formal-name>Parameter ID</formal-name>
       <description>Points to a parameter within a control, to which the contained value will be
@@ -1259,11 +1264,7 @@
          </set-param>
       </example>
    </define-flag>
-   <define-flag name="ref-type" as-type="string">
-      <formal-name>Reference Type</formal-name>
-      <description>Identifies the reference type, such as a law, standard, guidance.</description>
-   </define-flag>
-   <define-flag name="target" as-type="string">
+<!--   <define-flag name="target" as-type="string">
       <formal-name>Target label</formal-name>
       <description>Provides for an indication of a link target, by its label, when no ID is available</description>
    </define-flag>
@@ -1284,7 +1285,7 @@
          </group>
       </example>
    </define-flag>
-   <!--<define-flag name="target" datatype="NMTOKEN" show-docs="xml json">
+-->   <!--<define-flag name="target" datatype="NMTOKEN" show-docs="xml json">
 		<formal-name>Target Control ID</formal-name>
 		<description>Identifies the control answered by this response statement.</description>
 		<remarks>
@@ -1295,14 +1296,14 @@
 				g.</response>
 		</example>
 	</define-flag>-->
-   <define-flag name="class" as-type="NCName">
+<!--   <define-flag name="class" as-type="NCName">
       <formal-name>Class</formal-name>
       <description>Identifies the property or object within the control; a semantic hint</description>
       <remarks>
          <p>Overloading this attribute with more than one value is permitted, but not recommended.</p>
       </remarks>
    </define-flag>
-<!--   <define-flag name="context" as-type="string">
+--><!--   <define-flag name="context" as-type="string">
       <formal-name>Context</formal-name>
       <description>Context designates the context of information provided.</description>
       <remarks>
@@ -1311,7 +1312,8 @@
       </remarks>
       <example/>
    </define-flag>
--->   <define-flag name="name" as-type="string">
+-->
+<!--   <define-flag name="name" as-type="string">
       <formal-name>Name</formal-name>
       <description>Name allows the information to be named.</description>
       <remarks>
@@ -1319,7 +1321,8 @@
       </remarks>
       <example/>
    </define-flag>
-   <define-flag name="start" as-type="string">
+-->
+   <define-flag name="start" as-type="nonNegativeInteger">
       <formal-name>Start</formal-name>
       <description>Indicates the starting port number in a port range.</description>
       <remarks>
@@ -1335,7 +1338,7 @@
          </service>
       </example>
    </define-flag>
-   <define-flag name="end" as-type="string">
+   <define-flag name="end" as-type="nonNegativeInteger">
       <formal-name>End</formal-name>
       <description>Indicates the ending port number in a port range.</description>
       <remarks>
@@ -1364,7 +1367,7 @@
          </service>
       </example>
    </define-flag>
-   <define-flag name="type" as-type="string">
+<!--   <define-flag name="type" as-type="string">
       <formal-name>Type</formal-name>
       <description>Type designates the type of information provided.</description>
       <remarks>
@@ -1376,7 +1379,7 @@
       </remarks>
       <example/>
    </define-flag>
-   <define-flag name="public" as-type="boolean">
+-->   <define-flag name="public" as-type="boolean">
       <formal-name>Public</formal-name>
       <description>Designates an asset as either publicly accessible (="yes") or not
 			(="no").</description>

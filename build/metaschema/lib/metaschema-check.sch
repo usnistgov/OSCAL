@@ -57,7 +57,7 @@
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:name/></sch:assert>
             <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>-->
             <!--<sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Key should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>-->
-            <sch:assert test="@flag-name = ../m:flag/@name">JSON key indicates no flag on this <sch:value-of select="substring-after(local-name(..),'define-')"/>
+            <sch:assert test="@flag-name = ../m:flag/(@name | @ref)">JSON key indicates no flag on this <sch:value-of select="substring-after(local-name(..),'define-')"/>
             <xsl:if test="exists(../m:flag)">Should be (one of) <xsl:value-of select="../m:flag/(@name|@ref)" separator=", "/></xsl:if></sch:assert>
         </sch:rule>
         

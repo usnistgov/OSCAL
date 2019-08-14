@@ -377,7 +377,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
-        <xs:choice minOccurs="0">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:any namespace="##other" processContents="lax"/>
         </xs:choice>
       </xs:sequence>
