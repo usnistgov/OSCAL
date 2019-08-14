@@ -393,8 +393,9 @@
    <define-assembly name="status">
       <formal-name>Status</formal-name>
       <description/>
-      <flag name="state" required="yes">
-         <formal-name></formal-name>
+      <flag name="state" required="yes" as-type="string">
+         <!-- TODO: FIX: This will not build if no datatype is provided -->
+         <formal-name>State</formal-name>
          <description/>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
          <valid-values>
