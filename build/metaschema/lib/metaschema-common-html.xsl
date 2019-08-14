@@ -8,12 +8,19 @@
    
    
    <xsl:template match="m:METASCHEMA/m:short-name">
-      <p>The short name (file identifier) for this schema is <i><xsl:apply-templates/></i>. It is used internally when an
-         identifier is called for, and may appear in file names of schema artifacts.</p>
+      <p>
+         <span class="usa-label">Short name</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:METASCHEMA/m:schema-version">
-      <p>Version of this schema: <xsl:apply-templates/></p>
+      <p>
+         <span class="usa-label">Schema version</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:description" mode="model">
