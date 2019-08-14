@@ -42,10 +42,6 @@
   <define-field name="prose" as-type="markup-multiline">
     <formal-name>Prose</formal-name>
     <description>Prose permits multiple paragraphs, lists, tables etc.</description>
-    <flag name="length">
-      <formal-name>length</formal-name>
-      <description>Is there a lot of prose?</description>
-    </flag>
   </define-field>
   
 </METASCHEMA>

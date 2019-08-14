@@ -1245,7 +1245,7 @@
       <formal-name>NIST 800-60 Information Type Identifier</formal-name>
       <description>Pointer to the information type in NIST SP 800-60.</description>
    </define-flag>
-   <define-flag name="poc-id" as-type="NCName">
+<!--   <define-flag name="poc-id" as-type="NCName">
       <formal-name>Point of Contact ID / identifier</formal-name>
       <description>Identifies the unique identifier for an individual, title, role, or
 			team.</description>
@@ -1253,7 +1253,7 @@
          <asset-owner xmlns="http://csrc.nist.gov/ns/oscal/example" poc-id="xyz2"/>
       </example>
    </define-flag>
-
+-->
    <define-flag name="param-id" as-type="NCName">
       <formal-name>Parameter ID</formal-name>
       <description>Points to a parameter within a control, to which the contained value will be
