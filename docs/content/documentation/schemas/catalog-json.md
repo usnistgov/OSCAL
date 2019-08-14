@@ -1,5 +1,5 @@
 ---
-title: Schema Reference - JSON Catalog Model
+title: OSCAL Control Catalog Model - JSON Schema Reference
 description: OSCAL Catalog Model JSON Schema Reference
 permalink: /docs/schemas/oscal-catalog-json/
 layout: schemas
