@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ** NOTES ** 
-- Need to check latest FR SSP template for "Privacy Impact Designation". 
+<!-- ** NOTES **
+- Need to check latest FR SSP template for "Privacy Impact Designation".
   Was it dropped in latest template, or is it missing from schema?
 -->
 <!-- OSCAL Implementation Layer: System Security Plan (SSP) METASCHEMA -->
@@ -16,7 +16,7 @@
    <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
    <schema-version>1.0-milestone1</schema-version>
    <short-name>oscal-ssp</short-name>
-   <namespace>urn:OSCAL-SSP-metaschema</namespace>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
       <p>The OSCAL Control SSP format can be used to describe the information typically specified
 			in a FedRAMP system security plan. The root of the Control Catalog format is
@@ -32,7 +32,7 @@
       <formal-name>System Security Plan (SSP)</formal-name>
       <description/>
       <flag ref="id" required="yes"/>
-      <model><!-- 
+      <model><!--
 			<field named="title" required="yes"/>
 			<field named="version" required="yes"/>
 			<field named="date" required="yes"/>
@@ -247,7 +247,7 @@
       </example>
    </define-field>
    <define-field name="qual-response" as-type="string">
-      <!-- TODO: yes/no is not a valid boolean value --> 
+      <!-- TODO: yes/no is not a valid boolean value -->
       <formal-name>Qualifier Question Response</formal-name>
       <description>The response to the question.</description>
       <valid-values>
@@ -515,7 +515,7 @@
       </remarks>
       <example>
          <o:diagram href="#attachmentA" id="boundary-diagram-1">
-            <o:description>A boudnary diagram - bad example text.</o:description>            
+            <o:description>A boudnary diagram - bad example text.</o:description>
          </o:diagram>
       </example>
    </define-assembly>
@@ -579,7 +579,7 @@
    </define-assembly>
    <define-field name="privilege" as-type="string">
       <formal-name>Privilege</formal-name>
-      <description>Identifies the type/level of system privilege for the role. 
+      <description>Identifies the type/level of system privilege for the role.
 			For FedRAMP, the only valid values are "p" (Privileged), "np" (Non-Privileged), or "nla" (No Logical Access).</description>
    </define-field>
    <define-field name="responsibility" as-type="string">
@@ -705,7 +705,7 @@
          <p>Capabilities are expressed by combining one or more components.</p>
       </remarks>
    </define-assembly>
-   
+
    <define-assembly name="capability">
       <formal-name>Capability</formal-name>
       <description>A grouping of other components and/or capabilities.</description>
@@ -740,9 +740,9 @@
             <group-as name="control-implementations" />
          </assembly>
 -->         <field ref="remarks"/>
-      </model>    
+      </model>
    </define-assembly>
-   
+
    <define-assembly name="service">
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the
@@ -1122,8 +1122,8 @@
 			the asset.</description>
       <flag ref="party-id"/>
    </define-field>
-   
-   
+
+
    <define-assembly name="control-implementation">
       <formal-name>Control Implementation</formal-name>
       <description>Defines how the system (as a whole) supports a set of controls.</description>
@@ -1140,7 +1140,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="by-component">
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
@@ -1152,7 +1152,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="by-capability">
       <formal-name>capability Control Implementation</formal-name>
       <description>Defines how the referenced capability implements a set of controls.</description>
@@ -1164,7 +1164,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="meets-requirement-set">
       <formal-name>Meets</formal-name>
       <description>Defines what sets of controls are supported by the system (as a whole).</description>
@@ -1184,16 +1184,16 @@
          <assembly ref="using"/>
       </model>
    </define-assembly>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
    <define-field name="responsible-role" as-type="empty">
       <formal-name>Responsible Role</formal-name>
       <description/>
@@ -1422,8 +1422,8 @@
       <description>.</description>
    </define-field>
    <!--      IMPORTED METASCHEMA      -->
-   <!-- The following was copied in for now, and should later be 
-	referenced in its original location. 
+   <!-- The following was copied in for now, and should later be
+	referenced in its original location.
 	DO NOT MAKE CHANGES IN THE TEXT BELOW THIS COMMENT
 	IT WILL BE DELETED (REPLACED WITH REFERENCES) AND LOST.
 -->
@@ -1458,8 +1458,8 @@
     element with appropriate <code>role-id</code> flags, along with more a more complete structured
     listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
   </define-field>
-  
-  
+
+
   <define-field name="publication-date">
     <formal-name>Publication date</formal-name>
     <description>The official date of publication</description>
@@ -1470,7 +1470,7 @@
     <formal-name>version</formal-name>
     <description>Version information</description>
   </define-field>
-  
+
   <define-flag name="iso-date" datatype="date">
     <formal-name>ISO (standard) date</formal-name>
     <description>Please use YYYY-MM-DD syntax.</description>
@@ -1518,7 +1518,7 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="person" group-as="persons">
     <formal-name>Person</formal-name>
     <description>A person, with contact information</description>
@@ -1537,7 +1537,7 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="org">
     <formal-name>Organization</formal-name>
     <description>An organization or legal entity (not a person), with contact information</description>
@@ -1552,19 +1552,19 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
+
   <define-field name="person-id" group-as="person-ids">
     <flag name="type"/>
     <formal-name>Personal Identifier</formal-name>
     <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
   </define-field>
-  
+
   <define-field name="org-id" group-as="organization-ids">
     <flag name="type"/>
     <formal-name>Organization Identifier</formal-name>
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
-  
+
   <define-assembly name="hlink" group-as="hashed-links">
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
@@ -1579,22 +1579,22 @@
       <fields named="hash"/>
     </model>
   </define-assembly>
-  
+
   <define-flag name="rel" datatype="NCName">
     <formal-name>Relation</formal-name>
     <description>Purpose of the link</description>
   </define-flag>
-  
+
   <define-flag name="media-type" datatype="string">
     <formal-name>Media type</formal-name>
     <description>Describes the media or MIME type of a linked resource</description>
   </define-flag>
-  
+
   <define-field name="person-name">
     <formal-name>Person Name</formal-name>
     <description>Full (legal) name of an individual</description>
   </define-field>
-  
+
   <define-field name="org-name">
     <formal-name>Organization Name</formal-name>
     <description>Full (legal) name of an organization</description>
@@ -1604,7 +1604,7 @@
         (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p>
     </remarks>
   </define-field>
-  
+
   <define-field name="short-name">
     <formal-name>short-name</formal-name>
     <description>A common name, short name or acronym</description>
@@ -1680,7 +1680,7 @@
     <formal-name>Description</formal-name>
     <description>A short description</description>
   </define-field>
-  
+
   <define-assembly name="resource" group-as="resources">
     <flag name="type"/>
     <flag name="media-type"/>
@@ -1713,8 +1713,8 @@
       <p>When appearing as part of a resource (data object), the hash should apply to the referenced object.</p>
     </remarks>
   </define-field>
-  
-  
+
+
   <define-flag name="algorithm" datatype="string">
     <formal-name>Hash algorithm</formal-name>
     <description>Method by which a hash is derived</description>
@@ -1752,7 +1752,7 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="meta-group" group-as="metadata-groups">
     <flag name="term"/>
     <flag name="type"/>
@@ -1764,14 +1764,14 @@
       <assembly   named="notes"/>
     </model>
   </define-assembly>
-  
+
   <define-field name="meta" group-as="metadata-fields">
     <flag name="term"/>
     <flag name="type"/>
     <formal-name>Metadata field value</formal-name>
     <description>Any customized or specialized metadata value.</description>
   </define-field>
-  
+
   <define-flag name="term" datatype="string">
     <formal-name>Metadata term</formal-name>
     <description>A classification (according to any schema or taxonomy) of a metadata value or set of values.</description>
@@ -1822,7 +1822,7 @@
 			</choice>
 		</model>
 	</define-assembly>
-	
+
 	<define-field name="all" as="empty">
 		<flag name="with-subcontrols"/>
 		<formal-name>Include all</formal-name>
@@ -1835,7 +1835,7 @@
 			</p>
 		</remarks>
 	</define-field>
-	
+
 	<define-field name="call" group-as="calls" as="string">
 		<flag name="component-id" datatype="NMTOKEN"/>
 		<formal-name>Call</formal-name>
@@ -1855,7 +1855,7 @@
 			</import>
 		</example>
 	</define-field>
-	
+
 	<define-flag datatype="NCName" name="with-subcontrols">
 		<formal-name>Include subcontrols with control</formal-name>
 		<description>Whether subcontrols should be implicitly included, if not called.</description>

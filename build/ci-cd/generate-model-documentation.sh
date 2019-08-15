@@ -17,6 +17,9 @@ echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 # the stylesheet used to generate the documentation
 stylesheet="$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl"
 
+# the URL of the github repo where generated artifacts will be accessible
+github_url="https://github.com/usnistgov/OSCAL/tree/master"
+
 # the directory to generate the documentation in
 schema_doc_dir="${working_dir}/docs/content/documentation/schemas"
 mkdir -p "$schema_doc_dir" # ensure this directory exists
@@ -37,7 +40,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
 
   files_to_process="$OSCALDIR"/"$path"
 
-  IFS= # disable word splitting    
+  IFS= # disable word splitting
   for metaschema in $files_to_process
   do
     filename=$(basename -- "$metaschema")
@@ -61,12 +64,16 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         # skip blanks
         continue;
       fi
-    
+
       # Run the XSL template for the format
       case $format in
       xml)
+        # determine web location of schema
+        schema_url="${github_url}/xml/schema/${base}_schema.xsd"
         ;;
       json)
+        # determine web location of schema
+        schema_url="${github_url}/json/schema/${base}_schema.json"
         ;;
       *)
         echo "${P_WARN}Generating documentation for '${format^^}' is unsupported for '$metaschema'.${P_END}"
@@ -78,7 +85,8 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       xsl_transform "$stylesheet_path" "$metaschema_path" "" \
         "target-format=${format}" \
         "example-converter-xslt-path=${converter_path}" \
-        "output-path=${output_path}"
+        "output-path=${output_path}" \
+        "schema-path=${schema_url}"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
         echo "${P_ERROR}Generating ${format^^} model documentation failed for '${P_END}${metaschema_path}${P_ERROR}'.${P_END}"

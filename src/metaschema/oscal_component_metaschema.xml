@@ -6,7 +6,7 @@
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
   root="component-definition">
-  
+
   <schema-name>OSCAL Implementation Component Format</schema-name>
   <schema-version>1.0-milestone2</schema-version>
   <short-name>oscal-component</short-name>
@@ -16,9 +16,9 @@
   <remarks>
     <p>The OSCAL Implementation Component format can be used to describe TBD. The root of this format is <code>component</code>.</p>
   </remarks>
-  
+
   <import href="oscal_implementation-common_metaschema.xml"/>
-  
+
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
     <description>.</description>
@@ -142,9 +142,9 @@
         <group-as name="supported-profiles" />
       </assembly>
       <field ref="remarks"/>
-    </model>    
+    </model>
   </define-assembly>
-  
+
   <define-assembly name="control-implementation">
     <formal-name>Control Implementation</formal-name>
     <description>Defines how the component or capability supports a set of controls.</description>
@@ -155,7 +155,7 @@
       </assembly>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="can-meet-requirement-set">
     <formal-name>Can Meet</formal-name>
     <description>Defines what sets of controls are supported by the component.</description>
@@ -200,5 +200,5 @@
       <assembly ref="using"/>
     </model>
   </define-assembly>
-  
+
 </METASCHEMA>
