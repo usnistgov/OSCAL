@@ -9,7 +9,7 @@
 # `primary.links` to "primary":
 #
 # primary:
-#   links: primary  
+#   links: primary
 #
 primary:
   - text: Home
@@ -73,6 +73,8 @@ resources:
 schemas:
   - text: Schema Reference
     href: /docs/schemas/
+  - text: OSCAL Prose Model
+    href: /docs/schemas/oscal-prose/
   - text: Catalog Model
     addnav:
     - text: XML Model Map
@@ -86,7 +88,6 @@ schemas:
       href: /docs/schemas/oscal-catalog-json/
       model: oscal-catalog-json
   - text: Profile Model
-    model: profile
     addnav:
     - text: XML Model Map
       href: /docs/maps/oscal-profile-xml/
@@ -99,7 +100,6 @@ schemas:
       href: /docs/schemas/oscal-profile-json/
       model: oscal-profile-json
   - text: Component Model
-    model: component
     addnav:
     - text: XML Model Map
       href: /docs/maps/oscal-component-xml/
@@ -111,8 +111,18 @@ schemas:
     - text: JSON Schema
       href: /docs/schemas/oscal-component-json/
       model: oscal-component-json
-  - text: OSCAL Prose Model
-    href: /docs/schemas/oscal-prose/
+  - text: System Security Plan Model
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-ssp-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-ssp-xml/
+      model: oscal-ssp-xml
+    - text: JSON Model Map
+      href: /docs/maps/oscal-ssp-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-ssp-json/
+      model: oscal-ssp-json
 
 community:
   - text: Community
@@ -120,8 +130,7 @@ community:
   - text: Contribute on Github
     href: https://github.com/usnistgov/OSCAL
     external: true
-    
+
 footer:
   - text: Documentation
     href: /docs/
-

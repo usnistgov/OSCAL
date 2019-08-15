@@ -35,6 +35,10 @@ collections:
     title: Component XML
   oscal-component-json:
     title: Component JSON
+  oscal-ssp-xml:
+    title: System Security Plan XML
+  oscal-ssp-json:
+    title: System Security Plan JSON
 
 markdown: kramdown
 highlighter: rouge
