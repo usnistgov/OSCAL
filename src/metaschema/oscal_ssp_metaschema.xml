@@ -19,9 +19,8 @@
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
       <p>The OSCAL Control SSP format can be used to describe the information typically specified
-			in a FedRAMP system security plan. The root of the Control Catalog format is
-			<code>system_security_plan</code>.</p>
-      <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/schema/xml/oscal-ssp-schema.xsd">provided</a> for the OSCAL SSP XML model.</p>
+			in a system security plan, such as those defined in SP 800-18 or used by FedRAMP.</p>
+      <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
    </remarks>
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
@@ -837,7 +836,7 @@
    </define-field>
    <define-field name="vendor" as-type="string">
       <formal-name>Vendor</formal-name>
-      <description>.</description>
+      <description/>
       <flag ref="id"/>
       <flag ref="type"/>
    </define-field>
@@ -892,7 +891,7 @@
    </define-field>
    <define-assembly name="system-inventory">
       <formal-name>System Inventory</formal-name>
-      <description>.</description>
+      <description/>
       <model>
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
@@ -902,7 +901,7 @@
    </define-assembly>
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
-      <description>.</description>
+      <description/>
       <flag ref="id"/>
       <flag ref="component-id"/>
       <flag ref="virtual"/>
@@ -1002,7 +1001,7 @@
    </define-field>
    <define-field name="os-name" as-type="string">
       <formal-name>Operating System Name</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1010,7 +1009,7 @@
    </define-field>
    <define-field name="os-version" as-type="string">
       <formal-name>Operating System Version Number</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1067,7 +1066,7 @@
    </define-assembly>
    <define-field name="software-name" as-type="string">
       <formal-name>Software Product Name</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1075,7 +1074,7 @@
    </define-field>
    <define-field name="software-version" as-type="string">
       <formal-name>Software Version Number</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1083,7 +1082,7 @@
    </define-field>
    <define-field name="software-patch-level" as-type="string">
       <formal-name>Software Patch Level (If applicable)</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1091,7 +1090,7 @@
    </define-field>
    <define-field name="function" as-type="string">
       <formal-name>Function</formal-name>
-      <description>.</description>
+      <description/>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1399,27 +1398,27 @@
    </define-flag>
    <define-flag name="external" as-type="boolean">
       <formal-name>external</formal-name>
-      <description>.</description>
+      <description/>
    </define-flag>
    <define-flag name="access" as-type="string">
       <formal-name>access</formal-name>
-      <description>.</description>
+      <description/>
    </define-flag>
    <define-flag name="sensitivity-level" as-type="string">
       <formal-name>sensitivity-level</formal-name>
-      <description>.</description>
+      <description/>
    </define-flag>
 <!--   <define-field name="organization">
       <formal-name>organization</formal-name>
-      <description>.</description>
+      <description/>
    </define-field>
 -->   <define-field name="baseline-template">
       <formal-name>baseline-template</formal-name>
-      <description>.</description>
+      <description/>
    </define-field>
    <define-field name="scanned">
       <formal-name>scanned</formal-name>
-      <description>.</description>
+      <description/>
    </define-field>
    <!--      IMPORTED METASCHEMA      -->
    <!-- The following was copied in for now, and should later be

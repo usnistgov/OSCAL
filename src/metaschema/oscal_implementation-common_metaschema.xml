@@ -7,14 +7,14 @@
     xmlns:o="http://csrc.nist.gov/ns/oscal/example"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
     root="VALIDATION_root">
-    
+
     <schema-name>OSCAL Implementation Common Information</schema-name>
     <schema-version>1.0-milestone2</schema-version>
     <short-name>oscal-implementation-common</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 
     <import href="oscal_metadata_metaschema.xml"/>
-    
+
     <define-assembly name="VALIDATION_root">
         <formal-name>(nominal root)</formal-name>
         <description>NOT TO BE USED IN A METASCHEMA</description>
@@ -62,24 +62,24 @@
             <value name="validation"></value>
         </valid-values>
     </define-flag>
-    
+
     <define-field name="description" as-type="markup-multiline">
         <formal-name>Description</formal-name>
-        <description>.</description>
+        <description>TBD</description>
     </define-field>
-    
+
     <define-field name="remarks" as-type="markup-multiline">
         <formal-name>Remarks</formal-name>
-        <description>.</description>
+        <description>TBD</description>
     </define-field>
-    
+
     <define-assembly name="supplier">
         <formal-name>Supplier</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <!--
     <flag name="id" as-type="ID">
       <formal-name>Supplier Identifier</formal-name>
-      <description>.</description>
+      <description>TBD</description>
     </flag>
 -->
         <flag ref="party-id" required="yes"/>
@@ -95,10 +95,10 @@
                 capability.</p>
         </remarks>
     </define-assembly>
-    
+
     <define-assembly name="proof-of-compliance">
         <formal-name>validation</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <model>
             <assembly ref="supplier" min-occurs="1" max-occurs="unbounded">
                 <group-as name="suppliers"/>
@@ -115,7 +115,7 @@
             </field>
         </model>
     </define-assembly>
-    
+
     <define-flag name="source" as-type="uri">
         <formal-name>Source Resource Reference</formal-name>
         <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
@@ -123,7 +123,7 @@
 
     <define-assembly name="requirement">
         <formal-name>Control-based Requirement</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <!-- TODO: instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
         <flag ref="control-id"/>
         <flag ref="subcontrol-id"/>
@@ -138,9 +138,9 @@
             </field>
             <!-- TODO: Implement parameters -->
             <field ref="remarks"/>
-        </model>      
+        </model>
     </define-assembly>
-    
+
     <define-flag name="control-id" as-type="NCName">
         <formal-name>Control Identifier Reference</formal-name>
         <description>A reference to a control identifier.</description>
@@ -149,7 +149,7 @@
         <formal-name>Subcontrol Identifier Reference</formal-name>
         <description>A reference to a subcontrol identifier.</description>
     </define-flag>
-    
+
     <define-assembly name="implementation-detail">
         <formal-name>Control Response</formal-name>
         <description>Describes how a control is implemented.</description>
@@ -168,7 +168,7 @@
         <formal-name>Statement Identifier</formal-name>
         <description>Pointer to a speific requirement statement within a control or subcontrol.</description>
     </define-flag>
-    
+
     <define-assembly name="using">
         <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
         <formal-name>Using</formal-name>
@@ -177,9 +177,9 @@
             <assembly ref="implementation" min-occurs="1" max-occurs="unbounded">
                 <group-as name="implementations"/>
             </assembly>
-        </model>      
+        </model>
     </define-assembly>
-    
+
     <define-assembly name="implementation">
         <formal-name>Implementation</formal-name>
         <description>An implementation needed to support the control requirements.</description>
@@ -201,17 +201,17 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-flag name="configuration-id" as-type="IDREF">
         <formal-name>Configuration Identifier Reference</formal-name>
         <description>A reference to a configuration defined on the component.</description>
     </define-flag>
-    
+
     <define-flag name="artifact-id" as-type="IDREF">
         <formal-name>Artifact Identifier Reference</formal-name>
         <description>A reference to an artifact defined on the component.</description>
     </define-flag>
-    
+
     <define-assembly name="configuration">
         <formal-name>Configuration</formal-name>
         <description>Information on how to configure the component (for technical types of components).</description>
@@ -234,7 +234,7 @@
             </assembly>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="mechanism">
         <formal-name>mechanism</formal-name>
         <description>Information on a mechanism used to configure the component.</description>
@@ -259,8 +259,8 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
-    
+
+
     <define-assembly name="configuration-method">
         <formal-name>Configuration Method</formal-name>
         <description>A mechanism used to deploy the configuration.</description>
@@ -273,7 +273,7 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="verification-method">
         <formal-name>Verification Method</formal-name>
         <description>A mechanism used to verify a previously deployed configuration.</description>
@@ -286,21 +286,21 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-field name="script">
         <formal-name>Script</formal-name>
         <description>An executable script.</description>
         <flag ref="system" required="yes"/>
     </define-field>
-    
+
     <define-flag name="system" as-type="uri">
         <formal-name>system</formal-name>
         <description>A configure or verify system type described by a well-known URI</description>
     </define-flag>
-    
+
     <define-assembly name="argument">
         <formal-name>argument</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <json-key flag-name="name"/>
         <flag name="name" as-type="NCName" required="yes">
             <formal-name>Argument Name</formal-name>
@@ -326,7 +326,7 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="artifact">
         <formal-name>Configuration</formal-name>
         <description>Information on how to use the component (for documentary types of components).</description>
@@ -349,10 +349,10 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="implementation-source">
         <formal-name>Artifact Implementation Source</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <flag name="href" as-type="uri" required="yes">
             <formal-name>Source Resource Reference</formal-name>
             <description>Where to get the artifact</description>
@@ -369,10 +369,10 @@
             <field ref="remarks"/>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="verification-process">
         <formal-name>Artifact Verification Process</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <flag name="href" as-type="uri" required="yes">
             <formal-name>Verification Process Resource Reference</formal-name>
             <description>Where to get the process to verify the artifact is implemented.</description>
@@ -394,24 +394,24 @@
         <formal-name>Component Reference</formal-name>
         <description>A reference to a component by its identifier</description>
     </define-flag>
-    
+
     <define-flag name="capability-id" as-type="IDREF">
         <formal-name>Capability Reference</formal-name>
         <description>A reference to a capability by its identifier</description>
     </define-flag>
     <define-assembly name="incorporates-component">
         <formal-name>Incorporates Component</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <json-key flag-name="component-id"/>
         <flag ref="component-id" required="true"/>
         <model>
             <field ref="description" min-occurs="1"/>
         </model>
     </define-assembly>
-    
+
     <define-assembly name="incorporates-capability">
         <formal-name>Incorporates Capability</formal-name>
-        <description>.</description>
+        <description>TBD</description>
         <json-key flag-name="capability-id"/>
         <flag name="capability-id" required="true" as-type="IDREF">
             <formal-name>Capability Reference</formal-name>
@@ -421,5 +421,5 @@
             <field ref="description" min-occurs="1"/>
         </model>
     </define-assembly>
-    
+
 </METASCHEMA>
