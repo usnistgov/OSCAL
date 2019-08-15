@@ -18,6 +18,8 @@
 
     <xsl:key name="definition-by-name" match="m:define-assembly | m:define-field | m:define-flag" use="@name"/>
     <xsl:key name="invocation-by-ref" match="m:assembly[exists(@ref)] | m:field[exists(@ref)] | m:flag[exists(@ref)]" use="@ref"/>
+    <xsl:key name="flags-by-name" match="m:define-flag | m:flag[@name]" use="@name"/>
+    
     
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
@@ -41,10 +43,11 @@
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
-            <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
             <sch:assert test="not(@as-type='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
             <sch:assert test="not(key('invocation-by-ref',@name)/m:group-as/@json-behavior='BY_KEY') or exists(m:json-key)"><sch:value-of select="substring-after(local-name(),
             'define-')"/> is assigned a json key, but no 'json-key' is given</sch:assert>
+            <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Names "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
+            
         </sch:rule>
 
         <sch:rule context="m:json-key">
@@ -84,12 +87,10 @@
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Flag should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
+            <sch:report test="@as-type != key('flags-by-name',@name)/@as-type,$composed-metaschema">Flag is declared with datatype '<sch:value-of select="@as-type"/>' while other flags with that name show datatype
+                <sch:value-of select="string-join(((key('flags-by-name',@name) except .)/@as-type ! ('''' || . || '''')),', ')"/></sch:report>
         </sch:rule>
         
-        <sch:rule context="m:prose">
-            <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than once in a model</sch:assert>
-        </sch:rule>
-
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
 
@@ -118,7 +119,8 @@
                 <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
                 
             </sqf:fix>-->
-           
+            <sch:assert test="not(@as-type='markup-multiline') or not(preceding-sibling/*/@as-type='markup-multiline')">Only one field may be marked
+            as 'markup-multiline' (without xml wrapping) within a model.</sch:assert>
         </sch:rule>
 
         <sch:rule context="m:group-as">

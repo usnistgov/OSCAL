@@ -112,9 +112,9 @@
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-json$','-xml')"/>
       <div style="float:right">
          <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
-            <button class="button-xml-on">XML</button>
+            <button class="button-xml-on">Switch to XML</button>
          </a>
-         <button  class="button-json-off" disabled="disabled">JSON</button>
+         <!--<button  class="button-json-off" disabled="disabled">JSON</button>-->
       </div>
    </xsl:template>
 
@@ -339,7 +339,7 @@
       <li>
          <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          <xsl:if test="empty(@ref)">
-            <xsl:apply-templates select="@name"/>
+            <a id="{../@name}-{@name}"><xsl:apply-templates select="@name"/></a><xsl:apply-templates select="@name"/>
          </xsl:if>
          <xsl:text> property </xsl:text>
          <xsl:apply-templates select="@as-type"/>

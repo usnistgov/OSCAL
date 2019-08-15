@@ -117,6 +117,7 @@
                 <xsl:call-template name="yaml-header">
                     <xsl:with-param name="tagname" select="string(@id)"/>
                     <xsl:with-param name="root"    select="starts-with(html:h5[1],(@id || ' is the root' ))"/>
+                    <xsl:with-param name="model-type" select="tokenize(@class,'\s+')[starts-with(.,'define-')] ! replace(.,'^define-','')"/>
                 </xsl:call-template>
                 <xsl:apply-templates select="." mode="cleanup"/>
             </xsl:result-document>
@@ -127,6 +128,7 @@
         <xsl:param name="tagname"  select="()"/>
         <xsl:param name="root"     as="xs:boolean" select="false()"/>
         <xsl:param name="overview" as="xs:boolean" select="false()"/>
+        <xsl:param name="model-type" as="xs:string"/>
         <xsl:text>---&#xA;</xsl:text>
         <xsl:text expand-text="true">title: Schema Documentation - { $metaschema-code }{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { $metaschema-code } schema documentation{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
@@ -139,6 +141,7 @@
         <xsl:text expand-text="true">model: { $metaschema-code }-{ $target-format }&#xA;</xsl:text>
         <xsl:if test="$root">root: true&#xA;</xsl:if>
         <xsl:if test="$overview">overview: true&#xA;</xsl:if>
+        <xsl:if test="boolean($model-type)" expand-text="yes">model-type: { $model-type }</xsl:if>
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
     
