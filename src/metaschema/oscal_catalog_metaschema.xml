@@ -20,7 +20,7 @@
    <define-assembly name="catalog">
       <formal-name>Catalog</formal-name>
       <description>A collection of controls.</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <!--<field named="declarations"/>-->
@@ -61,7 +61,7 @@
    <define-assembly name="group">
       <formal-name>Control Group</formal-name>
       <description>A group of controls, or of groups of controls.</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <flag ref="class"/>
       <model>
          <field ref="title" min-occurs="1"/>
@@ -102,7 +102,7 @@
    <define-assembly name="control">
       <formal-name>Control</formal-name>
       <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <flag ref="class"/>
       <model>
          <field ref="title" min-occurs="1"/>
@@ -138,7 +138,7 @@
    <define-assembly name="subcontrol">
       <formal-name>Sub-Control</formal-name>
       <description>A control extension or enhancement</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <flag ref="class"/>
       <model>
          <field ref="title" min-occurs="1"/>
@@ -161,9 +161,9 @@
    <define-assembly name="param">
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <flag ref="class"/>
-      <flag ref="depends-on" as-type="IDREF"/>
+      <flag ref="depends-on"/>
       <model>
          <field ref="label">
             <description>A short name for the parameter.</description>
@@ -213,7 +213,7 @@
    <define-field name="usage" as-type="markup-line">
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
    </define-field>
    <define-field name="constraint">
       <formal-name>Constraint</formal-name>
@@ -258,7 +258,7 @@
    <define-assembly name="part">
       <formal-name>Part</formal-name>
       <description>A partition or component of a control, subcontrol or part</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <flag ref="name" required="yes"/>
       <flag ref="ns"/>
       <flag ref="class"/>

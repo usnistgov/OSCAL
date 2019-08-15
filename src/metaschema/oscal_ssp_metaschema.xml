@@ -31,7 +31,7 @@
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
       <description/>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model><!-- 
 			<field named="title" required="yes"/>
 			<field named="version" required="yes"/>
@@ -109,7 +109,7 @@
       <formal-name>System Identification</formal-name>
       <description/>
       <!-- TODO: What are the valid values? -->
-      <flag ref="type" as-type="string"/>
+      <flag ref="type"/>
    </define-field>
    <define-field name="system-name" as-type="string">
       <formal-name>System Name (Full)</formal-name>
@@ -157,7 +157,7 @@
    <define-assembly name="designation">
       <formal-name>System Information Designation</formal-name>
       <description>Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).</description>
-      <flag ref="name" as-type="string"/>
+      <flag ref="name"/>
       <model>
          <!-- TODO: what are the following for? -->
          <field ref="title"/>
@@ -217,7 +217,7 @@
    <define-assembly name="qualifier">
       <formal-name>Individual Information Designation Qualifier</formal-name>
       <description>An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <model>
          <field ref="qual-question"/>
          <field ref="qual-response"/>
@@ -246,9 +246,14 @@
          </qualifiers>
       </example>
    </define-field>
-   <define-field name="qual-response" as-type="boolean">
+   <define-field name="qual-response" as-type="string">
+      <!-- TODO: yes/no is not a valid boolean value --> 
       <formal-name>Qualifier Question Response</formal-name>
       <description>The response to the question.</description>
+      <valid-values>
+         <value name="yes">The answer is afirmative.</value>
+         <value name="no">The answer is negative.</value>
+      </valid-values>
       <example>
          <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
             <qualifier id="pta-01">
@@ -277,8 +282,8 @@
       <description>Contains details about one type of information stored, processed, or
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="nist-id" as-type="string"/>
+      <flag ref="id"/>
+      <flag ref="nist-id"/>
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="confidentiality-impact" min-occurs="1">
@@ -455,7 +460,7 @@
    <define-assembly name="leveraged-authorization">
       <formal-name>Leveraged Authorization</formal-name>
       <description>The details for a single leveraged authorization</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <model>
          <!-- TODO: Should this be able to reference another SSP? Is this the same as a common control? -->
          <field ref="leveraged-authorization-name" min-occurs="1"/>
@@ -499,7 +504,7 @@
          <formal-name>Diagram ID</formal-name>
          <description>An identifier for this diagram.</description>
       </flag>
-      <flag ref="href" as-type="uri-reference" required="yes"/>
+      <flag ref="href" required="yes"/>
       <model>
          <field ref="description">
             <description>A description of the diagram (e.g., alternate text). this can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
@@ -548,12 +553,12 @@
          <formal-name>System Role ID</formal-name>
          <description/>
       </flag>
-      <flag ref="role-id" as-type="IDREF" required="yes"/>
-      <flag ref="name" as-type="string" required="yes"/>
+      <flag ref="role-id" required="yes"/>
+      <flag ref="name" required="yes"/>
       <!-- TODO: provide valid values for these? -->
-      <flag ref="external" as-type="boolean" required="yes"/>
-      <flag ref="access" as-type="string" required="yes"/>
-      <flag ref="sensitivity-level" as-type="string" required="yes"/>
+      <flag ref="external" required="yes"/>
+      <flag ref="access" required="yes"/>
+      <flag ref="sensitivity-level" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="short-name"/>
@@ -656,7 +661,7 @@
          <formal-name>Component Name</formal-name>
          <description>The component's human-readable name.</description>
       </flag>
-      <flag ref="component-type" as-type="string"/>
+      <flag ref="component-type"/>
       <model>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
@@ -742,8 +747,8 @@
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the
 			system.</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="name" as-type="string"/>
+      <flag ref="id"/>
+      <flag ref="name"/>
       <model>
          <assembly ref="protocol" max-occurs="unbounded">
             <group-as name="ssp-protocol"/>
@@ -758,7 +763,7 @@
    <define-assembly name="protocol">
       <formal-name>Protocol</formal-name>
       <description>Information about the protocol used to provide a service.</description>
-      <flag ref="name" as-type="string"/>
+      <flag ref="name"/>
       <model>
          <field ref="port-range" max-occurs="unbounded">
             <group-as name="port-ranges"/>
@@ -769,9 +774,9 @@
    <define-field name="port-range">
       <formal-name>Port Range</formal-name>
       <description/>
-      <flag ref="start" as-type="string"/>
-      <flag ref="end" as-type="string"/>
-      <flag ref="transport" as-type="string"/>
+      <flag ref="start"/>
+      <flag ref="end"/>
+      <flag ref="transport"/>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
@@ -793,7 +798,7 @@
       <!-- TODO: provide a mechanism to reference the ISA. -->
       <formal-name>Interconnection</formal-name>
       <description>Details on an individual system interconnection.</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <model>
          <field ref="external-system-name"/>
          <field ref="external-system-org"/>
@@ -833,8 +838,8 @@
    <define-field name="vendor" as-type="string">
       <formal-name>Vendor</formal-name>
       <description>.</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="type" as-type="string"/>
+      <flag ref="id"/>
+      <flag ref="type"/>
    </define-field>
 <!--
    <define-assembly name="characteristics">
@@ -883,7 +888,7 @@
    <define-field name="ip-address" as-type="string">
       <formal-name>Internet Protocol Address</formal-name>
       <description>Use the @type flag to deisgnate IPv4 or IPv6.</description>
-      <flag ref="type" as-type="string"/>
+      <flag ref="type"/>
    </define-field>
    <define-assembly name="system-inventory">
       <formal-name>System Inventory</formal-name>
@@ -898,10 +903,10 @@
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>.</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="component-id" as-type="NCName"/>
-      <flag ref="virtual" as-type="boolean"/>
-      <flag ref="public" as-type="boolean"/>
+      <flag ref="id"/>
+      <flag ref="component-id"/>
+      <flag ref="virtual"/>
+      <flag ref="public"/>
       <model>
          <field ref="ip-address" max-occurs="unbounded">
             <group-as name="ip-addresses"/>
@@ -1109,13 +1114,13 @@
       <formal-name>Asset Owner</formal-name>
       <description>The individual, title, or role who "owns" the asset on behalf of the
 			organization.</description>
-      <flag ref="party-id" as-type="NCName"/>
+      <flag ref="party-id"/>
    </define-field>
    <define-field name="asset-administrator" as-type="string">
       <formal-name>Asset Administrator</formal-name>
       <description>The individual, title, role, or team responsible for operating and maintaining
 			the asset.</description>
-      <flag ref="party-id" as-type="NCName"/>
+      <flag ref="party-id"/>
    </define-field>
    
    
@@ -1192,13 +1197,13 @@
    <define-field name="responsible-role" as-type="empty">
       <formal-name>Responsible Role</formal-name>
       <description/>
-      <flag ref="role-id" as-type="NCName" required="yes"/>
+      <flag ref="role-id" required="yes"/>
    </define-field>
    <define-assembly name="set-param">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value
 			element.</description>
-      <flag ref="param-id" as-type="NCName" required="yes"/>
+      <flag ref="param-id" required="yes"/>
 <!--      <flag ref="target" as-type="string"/>
 -->      <model>
          <field ref="value"/>

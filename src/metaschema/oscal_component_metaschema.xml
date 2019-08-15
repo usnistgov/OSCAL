@@ -58,7 +58,7 @@
       <formal-name>Component Name</formal-name>
       <description>The component's human-readable name.</description>
     </flag>
-    <flag ref="component-type" as-type="string"/>
+    <flag ref="component-type"/>
     <model>
       <field ref="description" min-occurs="1"/>
       <field ref="prop" max-occurs="unbounded">

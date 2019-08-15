@@ -19,7 +19,7 @@
    <define-assembly name="profile">
       <formal-name>Profile</formal-name>
       <description>Each OSCAL profile is defined by a Profile element</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="import" max-occurs="unbounded">
@@ -45,7 +45,7 @@
       <formal-name>Import resource</formal-name>
       <description>An Import element designates a catalog, profile, or other resource to be
          included (referenced and potentially modified) by this profile.</description>
-      <flag ref="href" as-type="uri-reference" required="yes"/>
+      <flag ref="href" required="yes"/>
       <model>
          <assembly ref="include">
             <group-as name="includes"/>
@@ -230,10 +230,10 @@
    <define-field name="call" as-type="empty">
       <formal-name>Call (control or subcontrol)</formal-name>
       <description>Call a control or subcontrol by its ID</description>
-      <flag ref="control-id" as-type="NCName"/>
-      <flag ref="subcontrol-id" as-type="NCName"/>
-      <flag ref="with-control" as-type="NCName"/>
-      <flag ref="with-subcontrols" as-type="NCName"/>
+      <flag ref="control-id"/>
+      <flag ref="subcontrol-id" />
+      <flag ref="with-control"/>
+      <flag ref="with-subcontrols"/>
       <remarks>
          <p>Inside <code>include</code>, If <code>@control-id</code> is used (to indicate the control
           being referenced), <code>@subcontrol-id</code> cannot be used, and vice versa. (A single
@@ -256,8 +256,8 @@
       <description>Select controls by (regular expression) match on ID</description>
       <flag ref="pattern"/>
       <flag ref="order"/>
-      <flag ref="with-control" as-type="NCName"/>
-      <flag ref="with-subcontrols" as-type="NCName"/>
+      <flag ref="with-control"/>
+      <flag ref="with-subcontrols"/>
    </define-field>
    <define-assembly name="exclude">
       <formal-name>Exclude controls</formal-name>
@@ -288,7 +288,7 @@
          <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
       </flag>
       <flag ref="class"/>
-      <flag ref="depends-on" as-type="IDREF"/>
+      <flag ref="depends-on"/>
       <model><!-- declarations tbf in the imported schema and to be aligned with it -->
          <field ref="label"/>
          <field ref="usage" max-occurs="unbounded">
@@ -312,8 +312,8 @@
    <define-assembly name="alter">
       <formal-name>Alteration</formal-name>
       <description>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</description>
-      <flag ref="control-id" as-type="NCName"/>
-      <flag ref="subcontrol-id" as-type="NCName"/>
+      <flag ref="control-id"/>
+      <flag ref="subcontrol-id"/>
       <model>
          <field ref="remove" max-occurs="unbounded">
             <group-as name="removals"/>
@@ -334,9 +334,9 @@
    <define-field as-type="empty" name="remove">
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control or subcontrol, in resolution</description>
-      <flag ref="class-ref" as-type="NMTOKENS"/>
-      <flag ref="id-ref" as-type="NCName"/>
-      <flag ref="item-name" as-type="NMTOKENS"/>
+      <flag ref="class-ref"/>
+      <flag ref="id-ref"/>
+      <flag ref="item-name"/>
       <remarks>
          <p>Use <code>@class-ref</code>, <code>@id-ref</code> or <code>@item-name</code> to indicate
           class tokens or ID reference, or the formal name, of the component to be removed or erased

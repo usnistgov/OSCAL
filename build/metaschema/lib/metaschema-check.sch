@@ -76,6 +76,7 @@
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists(@name|@ref)">Flag declaration must have 'name' or 'ref'</sch:assert>
             <sch:assert test="count(@name|@ref) eq 1">Flag declaration may be by name or reference, not both (remove @name or @ref)</sch:assert>
+            <sch:assert test="exists(@name) or (exists(@ref) and not(exists(@as-type)))">A flag referencing an existing declaration must not specify a data type</sch:assert>
             
             <sch:assert test="not((@name|@ref)=../m:json-value-key/@flag-name) or @required='yes'">A flag declared as a value key must be required (@required='yes')</sch:assert>
             <sch:assert test="count(../*[(@name|@ref) = current()/(@name|@ref)]) eq 1">Only one flag may be named 
@@ -102,7 +103,9 @@
             
             <sch:assert test="matches(m:group-as/@name,'\S') or not((@max-occurs/number() gt 1) or (@max-occurs='unbounded'))">Unless @max-occurs is 1,
             a grouping name must be given</sch:assert>
-        
+
+            <sch:assert test="exists(@name) or (exists(@ref) and not(exists(@as-type)))">A field referencing an existing declaration must not specify a data type</sch:assert>
+            
             <!--<sqf:fix id="add-group-name">  sqf:fix="add-group-name"
                 <sqf:description>
                     <sqf:title>Insert grouping directive</sqf:title>

@@ -153,7 +153,7 @@
     <define-assembly name="implementation-detail">
         <formal-name>Control Response</formal-name>
         <description>Describes how a control is implemented.</description>
-        <flag ref="statement-id" as-type="NCName" required="yes"/>
+        <flag ref="statement-id" required="yes"/>
         <model>
             <field ref="description"/>
         </model>

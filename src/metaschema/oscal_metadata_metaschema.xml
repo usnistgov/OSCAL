@@ -90,9 +90,9 @@
       <formal-name>Link</formal-name>
       <description>A reference to a local or remote resource</description>
       <json-value-key>text</json-value-key>
-      <flag ref="href" as-type="uri-reference" required="yes"/>
-      <flag ref="rel" as-type="NCName"/>
-      <flag ref="media-type" as-type="string"/>
+      <flag ref="href" required="yes"/>
+      <flag ref="rel"/>
+      <flag ref="media-type"/>
       <remarks>
          <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
         element.</p>
@@ -179,7 +179,7 @@
             <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
          </valid-values>
       </flag>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <flag ref="ns"/>
       <flag ref="class"/>
       <remarks>
@@ -228,7 +228,7 @@
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
-      <flag ref="id" as-type="ID"/>
+      <flag ref="id"/>
       <flag ref="role-id"/>
       <model>
          <assembly ref="person" max-occurs="unbounded">
@@ -316,7 +316,7 @@
    <define-assembly name="rlink">
       <formal-name>Related link</formal-name>
       <description>A pointer to an external copy of a document with optional hash for verification</description>
-      <flag ref="href" as-type="uri-reference" required="yes"/>
+      <flag ref="href" required="yes"/>
       <flag ref="media-type"/>
       <model>
          <field ref="hash">
@@ -425,6 +425,7 @@
       <description>URL for web site or Internet presence</description>
    </define-field>
    <define-assembly name="notes">
+      <!-- TODO: Get rid of prose field -->
       <formal-name>Notes</formal-name>
       <description>Any notes with further information</description>
       <flag ref="type">
@@ -441,7 +442,7 @@
    <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document.</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model>
          <field ref="desc"/>
          <choice>
@@ -484,7 +485,7 @@
    <define-assembly name="role">
       <formal-name>Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="short-name"/>
@@ -534,17 +535,17 @@
    <define-field name="base64" as-type="base64">
       <formal-name>Base64</formal-name>
       <description/>
-      <flag ref="filename" as-type="uri-reference"/>
+      <flag ref="filename"/>
       <flag ref="media-type"/>
    </define-field>
-   <define-flag name="filename" as-type="string">
+   <define-flag name="filename" as-type="uri-reference">
       <formal-name>File Name</formal-name>
       <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
    </define-flag>
    <define-assembly name="citation">
       <formal-name>Citation</formal-name>
       <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
-      <flag ref="id" as-type="ID" required="yes"/>
+      <flag ref="id" required="yes"/>
       <model>
          <field ref="target" max-occurs="unbounded">
             <group-as name="targets"/>
