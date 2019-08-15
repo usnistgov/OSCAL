@@ -14,11 +14,13 @@
     <xsl:param name="target-format" as="xs:string">xml</xsl:param>
     <xsl:param name="output-path"   as="xs:string">../../../docs/content/documentation/schemas</xsl:param>
     <xsl:param name="schema-path">
+    <!-- TODO: confirm this value is passed from the calling script, then this can be ripped this out -->
         <xsl:choose>
             <xsl:when test="$target-format = 'xml'">
                 <xsl:choose>
                     <xsl:when test="/METASCHEMA/short-name='oscal-catalog'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_catalog_schema.xsd</xsl:when>
                     <xsl:when test="/METASCHEMA/short-name='oscal-profile'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_profile_schema.xsd</xsl:when>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-component'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_component_schema.xsd</xsl:when>
                     <xsl:otherwise expand-text="true">NO XML SCHEMA PATH GIVEN FOR SCHEMA { /METASCHEMA/short-name }</xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
@@ -26,6 +28,7 @@
                 <xsl:choose>
                     <xsl:when test="/METASCHEMA/short-name='oscal-catalog'">https://github.com/usnistgov/OSCAL/blob/master/json/schema/oscal_catalog_schema.json</xsl:when>
                     <xsl:when test="/METASCHEMA/short-name='oscal-profile'">https://github.com/usnistgov/OSCAL/blob/master/json/schema/oscal_profile_schema.json</xsl:when>
+                    <xsl:when test="/METASCHEMA/short-name='oscal-component'">https://github.com/usnistgov/OSCAL/blob/master/xml/schema/oscal_component_schema.json</xsl:when>
                     <xsl:otherwise expand-text="true">NO XML SCHEMA PATH GIVEN FOR SCHEMA { /METASCHEMA/short-name }</xsl:otherwise>
                 </xsl:choose>
             </xsl:when>

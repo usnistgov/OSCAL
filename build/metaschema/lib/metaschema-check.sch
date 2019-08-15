@@ -64,7 +64,7 @@
         <sch:rule context="m:json-value-key">
             <sch:report test="exists(@flag-name) and matches(.,'\S')">JSON value key may be set to a value or a flag's value, but not both.</sch:report>
             <sch:assert test="empty(@flag-name) or @flag-name=../m:flag/(@name|@ref)">flag '<sch:value-of select="@flag-name"/>' not found for JSON value key</sch:assert>
-            <sch:report test="../m:flag/(@name|@ref) != @flag-name" role="warning">json-value-key flag is unnecessary here as without it, the field maps to a JSON scalar not an object</sch:report>
+            <sch:assert test="empty(@flag-name) or @flag-name != ../m:flag/(@name|@ref)" role="warning">json-value-key flag is unnecessary here as without it, the field maps to a JSON scalar not an object</sch:assert>
         </sch:rule>
         
         <sch:rule context="m:valid-values/m:value">
@@ -122,10 +122,14 @@
         </sch:rule>
 
         <sch:rule context="m:group-as">
+            <sch:let name="decl" value="key('definition-by-name',../@ref,$composed-metaschema)"/>
             <sch:let name="name" value="@name"/>
             <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
             <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@json-behavior)">Grouping name is given but max-occurs is 1.</sch:report>
             <sch:report test="../@max-occurs/number() = 1 and (@json-behavior='ARRAY')">JSON behavior cannot be 'ARRAY' when max-occurs is 1.</sch:report>
+            <sch:assert test="not(@json-behavior='BY_KEY') or $decl/m:json-key/@flag-name=$decl/m:flag/(@name|@ref)">Cannot group by key since the definition of <sch:value-of select="name(..)"/>
+                '<sch:value-of select="../@ref"/>' has no json-key specified. Consider adding a json-key to the '<sch:value-of select="../@ref"/>' definition, or using a different json-behavior.</sch:assert>
+            <!--<sch:assert test="not(@json-behavior='BY_KEY')">BOO</sch:assert>-->
         </sch:rule>
 
         <sch:rule context="m:example/m:description | m:example/m:remarks"/>

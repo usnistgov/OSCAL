@@ -720,7 +720,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" json-behavior="BY_KEY"/>
+            <group-as name="properties"/>
          </field>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
@@ -980,7 +980,7 @@
             <group-as name="ssp-scanned"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" json-behavior="BY_KEY"/>
+            <group-as name="properties"/>
          </field>
       </model>
       <remarks>
@@ -1175,7 +1175,7 @@
             <group-as name="parameter-settings"/>
          </assembly>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" json-behavior="BY_KEY"/>
+            <group-as name="properties"/>
          </field>
          <assembly ref="requirement" min-occurs="1" max-occurs="unbounded">
             <group-as name="requirements"/>
