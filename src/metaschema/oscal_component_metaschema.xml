@@ -121,7 +121,7 @@
     <model>
       <field ref="description" min-occurs="1"/>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties" json-behavior="BY_KEY"/>
+        <group-as name="properties"/>
       </field>
       <field ref="link" max-occurs="unbounded">
         <group-as name="links"/>
@@ -179,7 +179,7 @@
         <group-as name="meets-requirement-sets"/>
       </assembly>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties" json-behavior="BY_KEY"/>
+        <group-as name="properties"/>
       </field>
       <field ref="link" max-occurs="unbounded">
         <group-as name="links"/>
