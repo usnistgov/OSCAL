@@ -123,9 +123,9 @@
    <xsl:template name="cross-links">
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-xml$','-json')"/>
       <div style="float:right">
-         <button disabled="disabled" class="button-xml-off">XML</button>
+         <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
          <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
-            <button class="button-json-on">JSON</button>
+            <button class="button-json-on">Switch to JSON</button>
          </a>
       </div>
    </xsl:template>
@@ -232,8 +232,7 @@
       <li>
          <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          <xsl:if test="empty(@ref)">
-            <xsl:apply-templates select="@name"/>
-         </xsl:if>
+           <a id="{../@name}-{@name}"><xsl:apply-templates select="@name"/></a><xsl:apply-templates select="@name"/>
          <xsl:text> attribute </xsl:text>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="empty(@required)"> (<i>optional</i>)</xsl:if>

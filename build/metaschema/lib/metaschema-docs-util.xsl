@@ -91,17 +91,17 @@ function switch_view(who,flag) {
                 <!--<pre style="float:left">
                <xsl:value-of select="serialize($pruned-tree, $serialization-settings/* )"/>
             </pre>-->
-                <!--<pre>
+                <pre>
                <xsl:value-of select="serialize($surrogate-tree, $serialization-settings/* )"/>
-            </pre>-->
+            </pre>
                 
                 
                 <xsl:variable name="html-rendering">
                     <xsl:apply-templates mode="html-render" select="$surrogate-tree"/>
                 </xsl:variable>
-                <div class="OM-map" style="float:left; width:40%">
+                <!--<div class="OM-map" style="float:left; width:40%">
                     <xsl:copy-of select="$html-rendering"/>
-                </div>
+                </div>-->
                 <div class="OM-map" style="float:right; width:40%">
                     <xsl:apply-templates select="$html-rendering/*" mode="elaborate"/>
                 </div>

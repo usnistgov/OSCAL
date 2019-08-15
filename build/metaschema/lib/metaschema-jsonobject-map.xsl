@@ -22,7 +22,6 @@
    
    <!--<xsl:variable name="home" select="/"/>-->
    
-   
    <!--<xsl:template name="jekyll-template">
       <xsl:text>-\-\-&#xA;</xsl:text>
       <xsl:text>title: Schema map test&#xA;</xsl:text>
