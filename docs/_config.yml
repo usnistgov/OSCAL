@@ -49,6 +49,7 @@ kramdown:
 theme: uswds-jekyll
 plugins:
   - jekyll-feed
+  - octopress-debugger
 
 exclude:
   - Gemfile
@@ -80,6 +81,3 @@ search: true
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-gems:
-  - octopress-debugger
