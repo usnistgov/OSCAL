@@ -22,7 +22,7 @@
 
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
-    <description>.</description>
+    <description>TBD</description>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
       <field ref="import-component-definition" max-occurs="unbounded">

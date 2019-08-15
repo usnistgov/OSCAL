@@ -18,7 +18,7 @@ echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 stylesheet="$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl"
 
 # the URL of the github repo where generated artifacts will be accessible
-github_url="https://github.com/usnistgov/OSCAL/tree/master"
+github_url="https://raw.githubusercontent.com/usnistgov/OSCAL/master"
 
 # the directory to generate the documentation in
 schema_doc_dir="${working_dir}/docs/content/documentation/schemas"

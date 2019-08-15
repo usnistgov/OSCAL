@@ -29,7 +29,7 @@
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="id" required="yes"/>
       <model><!--
 			<field named="title" required="yes"/>
@@ -106,28 +106,28 @@
    </define-assembly>
    <define-field name="system-id" as-type="string">
       <formal-name>System Identification</formal-name>
-      <description/>
+      <description>TBD</description>
       <!-- TODO: What are the valid values? -->
       <flag ref="type"/>
    </define-field>
    <define-field name="system-name" as-type="string">
       <formal-name>System Name (Full)</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="system-name-short" as-type="string">
       <formal-name>System Name (Short)</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
 
    <define-field name="security-sensitivity-level">
       <!-- TODO: Any constraints for the values? -->
       <formal-name/>
-      <description/>
+      <description>TBD</description>
    </define-field>
 
    <define-flag name="impact-level" as-type="string">
       <formal-name/>
-      <description/>
+      <description>TBD</description>
       <valid-values allow-other="yes">
          <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
          <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
@@ -298,7 +298,7 @@
    </define-assembly>
    <define-assembly name="confidentiality-impact">
       <formal-name>Confidentiality Impact Level</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -308,7 +308,7 @@
    </define-assembly>
    <define-assembly name="integrity-impact">
       <formal-name>Integrity Impact Level</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -318,7 +318,7 @@
    </define-assembly>
    <define-assembly name="availability-impact">
       <formal-name>Availability Impact Level</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -344,7 +344,7 @@
    </define-field>
    <define-assembly name="security-impact-level">
       <formal-name>Security Impact Level</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="security-objective-confidentiality"/>
          <field ref="security-objective-integrity"/>
@@ -354,22 +354,22 @@
    </define-assembly>
    <define-field name="security-objective-confidentiality" as-type="empty">
       <formal-name>Security Objective (Confidentiality)</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="impact-level"/>
    </define-field>
    <define-field name="security-objective-integrity" as-type="empty">
       <formal-name>Security Objective (Integrity)</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="impact-level"/>
    </define-field>
    <define-field name="security-objective-availability" as-type="empty">
       <formal-name>Security Objective (Availability)</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="impact-level"/>
    </define-field>
    <define-assembly name="security-eauth">
       <formal-name>Security Electronic Authentication Level</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="security-auth-ial"/>
          <field ref="security-auth-aal"/>
@@ -380,27 +380,27 @@
    </define-assembly>
    <define-field name="security-auth-ial" as-type="string">
       <formal-name>Security Authentication (Identity Assurance Level)</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="security-auth-aal" as-type="string">
       <formal-name>Security Authentication (Authenticator Assurance Level)</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="security-auth-fal" as-type="string">
       <formal-name>Security Authentication (Federation Assurance Level)</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="security-eauth-level" as-type="string">
       <formal-name>Security eAuthentication Level</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-assembly name="status">
       <formal-name>Status</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag name="state" required="yes" as-type="string">
          <!-- TODO: FIX: This will not build if no datatype is provided -->
          <formal-name>State</formal-name>
-         <description/>
+         <description>TBD</description>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
          <valid-values>
             <value name="operational">The system is currently operating and is in production.</value>
@@ -419,10 +419,10 @@
    </define-assembly>
    <define-assembly name="deployment-model">
       <formal-name>Deployment Model</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag name="type" required="yes">
          <formal-name></formal-name>
-         <description/>
+         <description>TBD</description>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
          <valid-values>
             <value name="public"></value>
@@ -442,10 +442,10 @@
    </define-assembly>
    <define-assembly name="service-model">
       <formal-name>Service Model</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag name="type" required="yes">
          <formal-name></formal-name>
-         <description/>
+         <description>TBD</description>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
       </flag>
       <model>
@@ -484,7 +484,7 @@
 
    <define-assembly name="authorization-boundary">
       <formal-name>Authorization Boundary</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -497,7 +497,7 @@
 
    <define-assembly name="diagram">
       <formal-name>Diagram</formal-name>
-      <description/>
+      <description>TBD</description>
       <json-key flag-name="id"/>
       <flag name="id" as-type="ID" required="yes">
          <formal-name>Diagram ID</formal-name>
@@ -520,7 +520,7 @@
    </define-assembly>
    <define-assembly name="network-architecture">
       <formal-name>Network Architecture Diagrams</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -533,7 +533,7 @@
    <define-assembly name="data-flow">
       <!-- TODO: Should this relate to a system-interconnection? -->
       <formal-name>Data Flow</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -550,7 +550,7 @@
       <json-key flag-name="id"/>
       <flag name="id" as-type="ID" required="yes">
          <formal-name>System Role ID</formal-name>
-         <description/>
+         <description>TBD</description>
       </flag>
       <flag ref="role-id" required="yes"/>
       <flag ref="name" required="yes"/>
@@ -598,28 +598,28 @@
    </define-assembly>
    <define-field name="internal-user-total-current" as-type="positiveInteger">
       <formal-name>Total Current Internal Users</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
    <define-field name="internal-user-total-future" as-type="positiveInteger">
       <formal-name>Total Future Internal Users</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
    <define-field name="external-user-total-current" as-type="positiveInteger">
       <formal-name>Total Current External Users</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
    <define-field name="external-user-total-future" as-type="positiveInteger">
       <formal-name>Total Future External Users</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
@@ -772,7 +772,7 @@
    </define-assembly>
    <define-field name="port-range">
       <formal-name>Port Range</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="start"/>
       <flag ref="end"/>
       <flag ref="transport"/>
@@ -815,11 +815,11 @@
    </define-assembly>
    <define-field name="external-system-name" as-type="string">
       <formal-name>External System Name</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="external-system-org" as-type="string">
       <formal-name>External System Organization</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="isa-authorization">
       <formal-name>ISA Authorization</formal-name>
@@ -836,7 +836,7 @@
    </define-field>
    <define-field name="vendor" as-type="string">
       <formal-name>Vendor</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="id"/>
       <flag ref="type"/>
    </define-field>
@@ -891,7 +891,7 @@
    </define-field>
    <define-assembly name="system-inventory">
       <formal-name>System Inventory</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
@@ -901,7 +901,7 @@
    </define-assembly>
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="id"/>
       <flag ref="component-id"/>
       <flag ref="virtual"/>
@@ -942,7 +942,7 @@
    </define-field>
    <define-assembly name="host-item">
       <formal-name>Host Item</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <!-- TODO: replace these with properties? -->
          <field ref="netbios-name" max-occurs="unbounded">
@@ -1001,7 +1001,7 @@
    </define-field>
    <define-field name="os-name" as-type="string">
       <formal-name>Operating System Name</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1009,7 +1009,7 @@
    </define-field>
    <define-field name="os-version" as-type="string">
       <formal-name>Operating System Version Number</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1040,7 +1040,7 @@
    </define-field>
    <define-assembly name="software-item">
       <formal-name>Software Item</formal-name>
-      <description/>
+      <description>TBD</description>
       <model>
          <!-- TODO: replace these with properties? -->
          <field ref="vendor" max-occurs="unbounded">
@@ -1066,7 +1066,7 @@
    </define-assembly>
    <define-field name="software-name" as-type="string">
       <formal-name>Software Product Name</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1074,7 +1074,7 @@
    </define-field>
    <define-field name="software-version" as-type="string">
       <formal-name>Software Version Number</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1082,7 +1082,7 @@
    </define-field>
    <define-field name="software-patch-level" as-type="string">
       <formal-name>Software Patch Level (If applicable)</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1090,7 +1090,7 @@
    </define-field>
    <define-field name="function" as-type="string">
       <formal-name>Function</formal-name>
-      <description/>
+      <description>TBD</description>
       <remarks>
          <p>If the @component-id flag is provided in the inventory-item element, this can be
 				derived from the component information.</p>
@@ -1195,7 +1195,7 @@
 
    <define-field name="responsible-role" as-type="empty">
       <formal-name>Responsible Role</formal-name>
-      <description/>
+      <description>TBD</description>
       <flag ref="role-id" required="yes"/>
    </define-field>
    <define-assembly name="set-param">
@@ -1398,27 +1398,27 @@
    </define-flag>
    <define-flag name="external" as-type="boolean">
       <formal-name>external</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-flag>
    <define-flag name="access" as-type="string">
       <formal-name>access</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-flag>
    <define-flag name="sensitivity-level" as-type="string">
       <formal-name>sensitivity-level</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-flag>
 <!--   <define-field name="organization">
       <formal-name>organization</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
 -->   <define-field name="baseline-template">
       <formal-name>baseline-template</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <define-field name="scanned">
       <formal-name>scanned</formal-name>
-      <description/>
+      <description>TBD</description>
    </define-field>
    <!--      IMPORTED METASCHEMA      -->
    <!-- The following was copied in for now, and should later be
