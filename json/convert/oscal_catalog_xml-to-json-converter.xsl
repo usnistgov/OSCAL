@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
                 xmlns="http://www.w3.org/2005/xpath-functions"
                 version="3.0"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
@@ -45,17 +44,12 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-   <xsl:template match="node() | @*" mode="rectify">
-      <xsl:copy copy-namespaces="no">
-         <xsl:apply-templates mode="#current" select="node() | @*"/>
-      </xsl:copy>
-   </xsl:template>
+   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
    <xsl:template mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                  match="/*/@key | array/*/@key"/>
-   <xsl:template mode="rectify" match="@m:*"/>
    <xsl:template mode="rectify"
-                 match="array[count(*) eq 1][not(@m:json-behavior='ARRAY')]"
+                 match="array[count(*) eq 1]"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
       <xsl:for-each select="*">
          <xsl:copy>
@@ -65,14 +59,13 @@
       </xsl:for-each>
    </xsl:template>
    <xsl:template name="prose">
-      <xsl:param name="key" select="'PROSE'"/>
       <xsl:variable name="blocks"
                     select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
       <xsl:if test="exists($blocks)">
          <xsl:variable name="string-sequence" as="element()*">
             <xsl:apply-templates mode="md" select="$blocks"/>
          </xsl:variable>
-         <string key="{$key}">
+         <string key="prose">
             <xsl:value-of select="string-join($string-sequence,'\n')"/>
          </string>
       </xsl:if>
@@ -80,33 +73,9 @@
    <xsl:template mode="as-string" match="@* | *">
       <xsl:param name="key" select="local-name()"/>
       <xsl:if test="matches(.,'\S')">
-         <string key="{ $key }">
+         <string key="{$key}">
             <xsl:value-of select="."/>
          </string>
-      </xsl:if>
-   </xsl:template>
-   <xsl:template mode="as-boolean" match="@* | *">
-      <xsl:param name="key" select="local-name()"/>
-      <xsl:if test="matches(.,'\S')">
-         <boolean key="{ $key }">
-            <xsl:value-of select="."/>
-         </boolean>
-      </xsl:if>
-   </xsl:template>
-   <xsl:template mode="as-integer" match="@* | *">
-      <xsl:param name="key" select="local-name()"/>
-      <xsl:if test="matches(.,'\S')">
-         <integer key="{ $key }">
-            <xsl:value-of select="."/>
-         </integer>
-      </xsl:if>
-   </xsl:template>
-   <xsl:template mode="as-number" match="@* | *">
-      <xsl:param name="key" select="local-name()"/>
-      <xsl:if test="matches(.,'\S')">
-         <number key="{ $key }">
-            <xsl:value-of select="."/>
-         </number>
       </xsl:if>
    </xsl:template>
    <xsl:template name="conditional-lf">
@@ -523,9 +492,7 @@
    <xsl:template match="notes" mode="xml2json">
       <map key="notes">
          <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:call-template name="prose">
-            <xsl:with-param name="key">prose</xsl:with-param>
-         </xsl:call-template>
+         <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
    <xsl:template match="desc" mode="xml2json">
@@ -767,9 +734,7 @@
    </xsl:template>
    <xsl:template match="guideline" mode="xml2json">
       <map key="guideline">
-         <xsl:call-template name="prose">
-            <xsl:with-param name="key">prose</xsl:with-param>
-         </xsl:call-template>
+         <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
    <xsl:template match="value" mode="xml2json">
@@ -806,9 +771,7 @@
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:call-template name="prose">
-            <xsl:with-param name="key">prose</xsl:with-param>
-         </xsl:call-template>
+         <xsl:call-template name="prose"/>
          <xsl:if test="exists(part)">
             <array key="parts">
                <xsl:apply-templates select="part" mode="#current"/>
@@ -820,11 +783,5 @@
             </array>
          </xsl:if>
       </map>
-   </xsl:template>
-   <xsl:template match="prose" mode="xml2json">
-      <xsl:variable name="text-key">prose</xsl:variable>
-      <string key="prose">
-         <xsl:apply-templates mode="md"/>
-      </string>
    </xsl:template>
 </xsl:stylesheet>
