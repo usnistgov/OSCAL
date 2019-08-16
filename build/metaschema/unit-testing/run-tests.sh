@@ -7,33 +7,64 @@ fi
 source $OSCALDIR/build/ci-cd/init-validate-json.sh
 source $OSCALDIR/build/ci-cd/schematron-init.sh
 
-if [ -z "$1" ]; then
-  working_dir="$OSCALDIR"
-else
-  working_dir="$1"
-fi
-echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
-
 # configuration
-TEST_DIR="$OSCALDIR/build/metaschema/unit-testing"
-TEST_BUILD_DIR="$working_dir/metaschema/unit-testing"
+DEFAULT_TEST_DIR="$OSCALDIR/build/metaschema/unit-testing"
+TEST_BUILD_DIR="$OSCALDIR/build/metaschema/unit-testing"
 METASCHEMA_LIB_DIR="$OSCALDIR/build/metaschema/lib"
 METASCHEMA_SCHEMA="$METASCHEMA_LIB_DIR/metaschema.xsd"
 METASCHEMA_SCHEMATRON="$METASCHEMA_LIB_DIR/metaschema-check.sch"
 DEBUG="false"
 
+# Process arguments
+OTHER_ARGS=()
+while [ $# -gt 0 ]; do
+    arg="$1"
+    case "$arg" in
+        -d|--test-dir)
+        TEST_DIR="$(realpath "$2")"
+        shift # argument
+        shift # value
+        ;;
+        --scratch-dir)
+        SCRATCH_DIR="$(realpath "$2")"
+        shift # argument
+        shift # value
+        ;;
+        *)    # unknown option
+        OTHER_ARGS+=("$1") # save the arg
+        shift # past argument
+        ;;
+    esac
+done
+
+if [ -z "${SCRATCH_DIR}" ]; then
+    SCRATCH_DIR=$(mktemp -d)
+fi
+echo "${P_INFO}Using scratch dir '${P_END}${SCRATCH_DIR}${P_INFO}'.${P_END}"
+
+test_dirs=()
+if [ -n "${TEST_DIR}" ]; then
+    test_dirs+=("${TEST_DIR}")
+else
+    while IFS= read -r -d $'\0'; do 
+        test_dirs+=("$REPLY")
+    done < <(find "$DEFAULT_TEST_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
+fi
+echo "${P_INFO}Executing tests in '${P_END}${test_dirs[@]}${P_INFO}'.${P_END}"
+
 # Generate metaschema schematron
-compiled_schematron="$TEST_BUILD_DIR/metaschema-check-compiled.xsl"
+compiled_schematron="$SCRATCH_DIR/metaschema-check-compiled.xsl"
 build_schematron "$METASCHEMA_SCHEMATRON" "$compiled_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
   echo "${P_ERROR}Compilation of Schematron '$METASCHEMA_SCHEMATRON' failed.${P_END}"
   exit 1
 fi
-cp "$METASCHEMA_LIB_DIR/metaschema-compose.xsl" "$TEST_BUILD_DIR"
+cp "$METASCHEMA_LIB_DIR/metaschema-compose.xsl" "$SCRATCH_DIR"
 
 exitcode=0
-while IFS= read -d $'\0' -r dir ; do 
+for dir in "${test_dirs[@]}"
+do
   echo "$dir"
   unit_test_dir=$(basename -- "$dir")
   echo "${P_INFO}Processing unit test collection: ${unit_test_dir}.${P_END}"
@@ -52,7 +83,7 @@ while IFS= read -d $'\0' -r dir ; do
         echo "${P_ERROR}Metaschema '$metaschema' is not schema valid.${P_END}"
         exitcode=1
       else
-        svrl_result="$TEST_BUILD_DIR/$unit_test_dir/${metaschema_file}.svrl"
+        svrl_result="$SCRATCH_DIR/$unit_test_dir/${metaschema_file}.svrl"
         svrl_result_dir=${svrl_result%/*}
         mkdir -p "$svrl_result_dir"
         result=$(validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result")
@@ -72,7 +103,7 @@ while IFS= read -d $'\0' -r dir ; do
 
       # Now generate the JSON schema
       transform="$OSCALDIR/build/metaschema/json/produce-json-schema.xsl"
-      schema="$TEST_BUILD_DIR/$unit_test_dir/${base}_schema.json"
+      schema="$SCRATCH_DIR/$unit_test_dir/${base}_-generated-json-schema.json"
 
       echo "${P_INFO}Generating JSON schema for '$metaschema' as '$schema'.${P_END}"
       xsl_transform "$transform" "$metaschema" "$schema"
@@ -142,8 +173,8 @@ while IFS= read -d $'\0' -r dir ; do
           exitcode=1
           ;;
       esac
-    done < <(find "$dir" -name "${base}_test_*.json" -mindepth 1 -maxdepth 1 -type f -print0)
-  done < <(find "$dir" -name "*_metaschema.xml" -mindepth 1 -maxdepth 1 -type f -print0)
-done < <(find "$TEST_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
+    done < <(find "$dir" -maxdepth 1 -name "${base}_test_*.json" -type f -print0)
+  done < <(find "$dir" -maxdepth 1 -name "*_metaschema.xml" -type f -print0)
+done
 
 exit $exitcode

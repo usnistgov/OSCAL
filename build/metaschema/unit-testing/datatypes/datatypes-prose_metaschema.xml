@@ -11,37 +11,47 @@
   <schema-name>Metaschema Unit Test: datatypes</schema-name>
   <schema-version>1.0-milestone1</schema-version>
   <short-name>metaschema-datatypes</short-name>
-  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes</namespace>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypesXXX</namespace>
   
   <define-assembly name="parent">
     <formal-name>parent</formal-name>
     <description>parent assembly</description>
     <model>
-      <field ref="date"/>
-      <field ref="plaintext"/>
-      <field ref="richtext"/>
-      <field ref="prose"/>
+      <field ref="field-date"/>
+      <field ref="field-plaintext"/>
+      <field ref="field-richtext"/>
+      <field ref="field-prose"/>
+      <field ref="field-flag-prose"/>
     </model>
   </define-assembly>
 
-  <define-field name="date" as-type="date-with-timezone">
+  <define-field name="field-date" as-type="date-with-timezone">
     <formal-name>Date</formal-name>
     <description>With time zone</description>
   </define-field>
   
-  <define-field name="plaintext" as-type="string">
+  <define-field name="field-plaintext" as-type="string">
     <formal-name>Plain text</formal-name>
     <description>plain text, no markup</description>
   </define-field>
   
-  <define-field name="richtext" as-type="markup-line">
+  <define-field name="field-richtext" as-type="markup-line">
     <formal-name>Rich text</formal-name>
     <description>Rich text supports markup</description>
   </define-field>
   
-  <define-field name="prose" as-type="markup-multiline">
+  <define-field name="field-prose" as-type="markup-multiline">
     <formal-name>Prose</formal-name>
     <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+  </define-field>
+  
+  <define-field name="field-flag-prose" as-type="markup-multiline">
+    <formal-name>Prose</formal-name>
+    <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+    <flag name="length" as-type="positiveInteger">
+      <formal-name>Length</formal-name>
+      <description>The length.</description>
+    </flag>
   </define-field>
   
 </METASCHEMA>

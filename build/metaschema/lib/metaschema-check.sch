@@ -163,8 +163,8 @@
         </sch:rule>
         <sch:rule context="m:define-field">
             <sch:assert role="warning" test="@name = $composed-metaschema//m:field/@ref">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
-            <sch:assert test="not(@as-type='markup-multiline') or (@unwrap-xml='no') or empty(m:flag)">Multiline markup fields must have no flags, unless unwrap-xml='yes' - use an assembly with an unwrapped multiline field</sch:assert>
-            <!--FIX:<sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this field definition</sch:assert>-->
+<!--            <sch:assert role="info" test="not(@as-type='markup-multiline') or (@unwrap-xml='no') or empty(m:flag)">Multiline markup fields must have no flags, unless unwrap-xml='yes' - use an assembly with an unwrapped multiline field</sch:assert>
+-->            <!--FIX:<sch:assert test="empty(@group-as) or count($composed-metaschema//*[@group-as=current()/@group-as]) eq 1">Group name (@group-as) assignment is not unique to this field definition</sch:assert>-->
             <!--FIX:<sch:report test="$composed-metaschema//*/@name = current()/@group-as">Group name (@group-as) assignment clashes with a name in this metaschema</sch:report>-->
         </sch:rule>
         <sch:rule context="m:define-flag">
