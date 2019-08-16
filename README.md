@@ -17,7 +17,7 @@ OSCAL is comprised of multiple components which have been highlighted in the arc
 
 ## Project Status
 
-OSCAL 1.0.0 Milestone 1 was released on June 15, 2019. The full announcement can be find below:
+OSCAL 1.0.0 Milestone 1 was released on June 15, 2019. The full announcement can be found below:
 
 <blockquote>
 We are pleased to announce the release of OSCAL 1.0.0 Milestone 1. This release marks an important milestone for the OSCAL project, as this represents the first official release of OSCAL.
