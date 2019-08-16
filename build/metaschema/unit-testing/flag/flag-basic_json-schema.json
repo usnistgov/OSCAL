@@ -13,13 +13,11 @@
                 "flag": {
                   "title": "Flag",
                   "description": "A basic flag",
-                  "$id": "#/definitions/parent/flag",
                   "type": "string"
                 },
                 "flag-required": {
                   "title": "Required Flag",
                   "description": "A basic required flag",
-                  "$id": "#/definitions/parent/flag-required",
                   "type": "string"
                 }
             },

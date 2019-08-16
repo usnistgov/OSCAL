@@ -36,11 +36,13 @@
         "field-flag-plaintext": {
             "title": "Plain text",
             "description": "plain text, no markup",
-            "$id": "#/definitions/field-plaintext",
+            "$id": "#/definitions/field-flag-plaintext",
             "properties": {
                 "length": {
                     "title": "Length",
-                    "description": "The length."
+                    "description": "The length.",
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "STRVALUE": {
                    "type": "string"
@@ -60,7 +62,9 @@
             "properties": {
                 "length": {
                     "title": "Length",
-                    "description": "The length."
+                    "description": "The length.",
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "RICHTEXT": {
                    "type": "string"
@@ -87,7 +91,9 @@
             "properties": {
                 "length": {
                     "title": "Length",
-                    "description": "The length."
+                    "description": "The length.",
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "PROSE": {
                     "oneOf": [

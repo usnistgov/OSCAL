@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://csrc.nist.gov/ns/oscal/1.0-milestone1/metaschema-group-as-schema.json",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/group-as-singleton-or-array-optional-schema.json",
   "$comment": "Metaschema Unit Test: group-as: JSON Schema",
   "type": "object",
   "definitions": {
