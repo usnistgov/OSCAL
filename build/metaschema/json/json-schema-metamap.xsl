@@ -37,7 +37,7 @@
     <xsl:template match="/METASCHEMA" expand-text="true">
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
-            <string key="$id">http://csrc.nist.gov/ns/oscal/{ $composed-metaschema/METASCHEMA/schema-version }/{ short-name }-schema.json</string>
+            <string key="$id">{ $composed-metaschema/METASCHEMA/namespace }-schema.json</string>
             <xsl:for-each select="schema-name">
               <string key="$comment">{ . }: JSON Schema</string>
             </xsl:for-each>
@@ -58,6 +58,39 @@
             </map>
         </map>
         <!--<map key="propertyNames">
+                <array key="enum">
+                    <string>
+                        <xsl:apply-templates mode="property-names"/></string>
+                </array>
+            </map>-->
+        </map>
+    </xsl:template>
+    
+<!-- Template entry point skipping the Metaschema composition step   -->
+    <xsl:template mode="debug" match="/METASCHEMA" expand-text="true">
+        <map>
+            <string key="$schema">http://json-schema.org/draft-07/schema#</string>
+            <string key="$id">{ namespace }-schema.json</string>
+            <xsl:for-each select="schema-name">
+                <string key="$comment">{ . }: JSON Schema</string>
+            </xsl:for-each>
+            
+            <xsl:apply-templates select="schema-version"/>
+            <string key="type">object</string>
+            <map key="definitions">
+                <xsl:apply-templates select="*"/>
+                
+                <!--<map key="prose">
+                    <xsl:call-template name="string-or-array-of-strings"/>
+                </map>-->
+            </map>           
+            <map key="properties">
+                <!--<xsl:apply-templates mode="properties"/>-->
+                <map key="{@root}">
+                    <string key="$ref">#/definitions/{ @root }</string>
+                </map>
+            </map>
+            <!--<map key="propertyNames">
                 <array key="enum">
                     <string>
                         <xsl:apply-templates mode="property-names"/></string>
@@ -127,8 +160,16 @@
     </xsl:template>
     
     <xsl:template name="required-properties">
-        <!-- A value string is never required even on elements not empty -->
         <xsl:variable name="requirements" as="element()*">
+            <!-- A value string is always required except on empty fields -->
+            <xsl:variable name="value-property">
+              <xsl:apply-templates select="self::define-field" mode="value-key"/>
+            </xsl:variable>
+            <xsl:for-each select="$value-property[matches(.,'\S')]">
+                <string>
+                    <xsl:apply-templates/>
+                </string>
+            </xsl:for-each>
             <xsl:apply-templates mode="property-name"
                 select="flag[@required = 'yes'][not((@name|@ref) = ../(json-key | json-value-key)/@flag-name)] |
                 model//*[@min-occurs &gt; 0]"/>
@@ -220,18 +261,18 @@
         </string>
     </xsl:template>
     
-    <xsl:template match="flag[exists(@name)]" mode="property-name">
+    <!--<xsl:template match="flag[exists(@name)]" mode="property-name">
         <string>
             <xsl:value-of select="@name"/>
         </string>
-    </xsl:template>
+    </xsl:template>-->
     
 <!-- Not yet implemented -->
     <xsl:template match="any" mode="property-name"/>
     
-    <xsl:template match="prose" mode="property-name">
+    <!--<xsl:template match="prose" mode="property-name">
         <string>prose</string>
-    </xsl:template>
+    </xsl:template>-->
     
     <xsl:template match="model | choice" priority="2" mode="property-name">
         <xsl:apply-templates mode="#current"/>
@@ -245,8 +286,6 @@
         <xsl:if test="matches($this-key, '\S')">
             <map key="{$this-key}">
                 <string key="type">string</string>
-                <!--                
-                <xsl:call-template name="string-or-array-of-strings"/>-->
             </map>
         </xsl:if>
     </xsl:template>
@@ -314,7 +353,7 @@
         match="assembly[empty(@max-occurs) or number(@max-occurs) = 1 ] |
         field[empty(@max-occurs) or number(@max-occurs)= 1 ]">
         <map key="{@ref}">
-            <xsl:apply-templates select="key('definition-by-name', @ref)" mode="object-type"/>
+            <!--<xsl:apply-templates select="key('definition-by-name', @ref)" mode="object-type"/>-->
             <string key="$ref">#/definitions/{ @ref }</string>
         </map>
     </xsl:template>
@@ -376,6 +415,23 @@
         <string key="type">string</string>
     </xsl:template>
     
+    <xsl:template name="string-or-array-of-strings">
+        <array key="oneOf">
+            <map>
+            <string key="type">string</string>
+            </map>
+            <map>
+            <string key="type">array</string>
+                <array key="items">
+                    <map>
+                      <string key="type">string</string>
+                    </map>
+                </array>
+                <string key="minItems">2</string>
+            </map>
+        </array>
+    </xsl:template>
+    
     <xsl:template match="field | flag" priority="3" mode="object-type">
         <xsl:choose>
             <xsl:when test="exists(@as-type)">
@@ -397,7 +453,7 @@
     
     <xsl:template priority="2" match="*[@as-type='integer']" mode="object-type">
         <string key="type">integer</string>
-        <number key="multipleOf">1.0</number>
+        <!--<number key="multipleOf">1.0</number>-->
     </xsl:template>
 
     <xsl:template priority="2" match="*[@as-type='positiveInteger']" mode="object-type">
@@ -434,9 +490,9 @@
     <xsl:variable name="datatypes" expand-text="false">
         <map key="date-with-timezone">
             <string key="type">string</string>
-            <string key="format">date</string>
+            <!--<string key="format">date</string>-->
             <!--The xs:date with a required timezone.-->
-            <!--<string key="pattern">.+[:Z].*</string>-->
+            <string key="pattern">((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})</string>
         </map>
         <map key="dateTime-with-timezone">
             <string key="type">string</string>
