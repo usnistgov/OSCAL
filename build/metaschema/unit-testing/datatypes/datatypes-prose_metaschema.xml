@@ -19,7 +19,9 @@
     <model>
       <field ref="field-date"/>
       <field ref="field-plaintext"/>
+      <field ref="field-flag-plaintext"/>
       <field ref="field-richtext"/>
+      <field ref="field-flag-richtext"/>
       <field ref="field-prose"/>
       <field ref="field-flag-prose"/>
     </model>
@@ -35,9 +37,27 @@
     <description>plain text, no markup</description>
   </define-field>
   
+  <define-field name="field-flag-plaintext" as-type="string">
+    <formal-name>Plain text</formal-name>
+    <description>plain text, no markup</description>
+    <flag name="length" as-type="positiveInteger">
+      <formal-name>Length</formal-name>
+      <description>The length.</description>
+    </flag>
+  </define-field>
+  
   <define-field name="field-richtext" as-type="markup-line">
     <formal-name>Rich text</formal-name>
     <description>Rich text supports markup</description>
+  </define-field>
+  
+  <define-field name="field-flag-richtext" as-type="markup-line">
+    <formal-name>Rich text</formal-name>
+    <description>Rich text supports markup</description>
+    <flag name="length" as-type="positiveInteger">
+      <formal-name>Length</formal-name>
+      <description>The length.</description>
+    </flag>
   </define-field>
   
   <define-field name="field-prose" as-type="markup-multiline">

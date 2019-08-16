@@ -10,21 +10,13 @@
             "$id": "#/definitions/parent",
             "type": "object",
             "properties": {
-                "field-date": {
-                    "$ref": "#/definitions/field-date"
-                },
-                "field-plaintext": {
-                    "$ref": "#/definitions/field-plaintext"
-                },
-                "field-richtext": {
-                    "$ref": "#/definitions/field-richtext"
-                },
-                "field-prose": {
-                    "$ref": "#/definitions/field-prose"
-                },
-                "field-flag-prose": {
-                    "$ref": "#/definitions/field-flag-prose"
-                }
+                "field-date": {"$ref": "#/definitions/field-date"},
+                "field-plaintext": {"$ref": "#/definitions/field-plaintext"},
+                "field-flag-plaintext": {"$ref": "#/definitions/field-flag-plaintext"},
+                "field-richtext": {"$ref": "#/definitions/field-richtext"},
+                "field-flag-richtext": {"$ref": "#/definitions/field-flag-richtext"},
+                "field-prose": {"$ref": "#/definitions/field-prose"},
+                "field-flag-prose": {"$ref": "#/definitions/field-flag-prose"}
             },
             "additionalProperties": false
         },
@@ -33,9 +25,23 @@
             "description": "With time zone",
             "$id": "#/definitions/field-date",
             "type": "string",
-            "pattern" : "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})"
+            "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})"
         },
         "field-plaintext": {
+            "title": "Plain text",
+            "description": "plain text, no markup",
+            "$id": "#/definitions/field-plaintext",
+            "properties": {
+                "length": {
+                    "title": "Length",
+                    "description": "The length."
+                },
+                "STRVALUE": {
+                   "type": "string"
+                }
+            }
+        },
+        "field-flag-plaintext": {
             "title": "Plain text",
             "description": "plain text, no markup",
             "$id": "#/definitions/field-plaintext",
@@ -46,6 +52,20 @@
             "description": "Rich text supports markup",
             "$id": "#/definitions/field-richtext",
             "type": "string"
+        },
+        "field-flag-richtext": {
+            "title": "Rich text",
+            "description": "Rich text supports markup",
+            "$id": "#/definitions/field-flag-richtext",
+            "properties": {
+                "length": {
+                    "title": "Length",
+                    "description": "The length."
+                },
+                "RICHTEXT": {
+                   "type": "string"
+                }
+            }
         },
         "field-prose": {
             "title": "Prose",
@@ -65,22 +85,22 @@
             "description": "Prose permits multiple paragraphs, lists, tables etc.",
             "$id": "#/definitions/field-flag-prose",
             "properties": {
-              "length": {
-                  "title": "Length",
-                  "description": "The length."
-              },
-              "PROSE": {
-            "oneOf": [
-                {"type": "string"},
-                {
-                    "type": "array",
-                    "items": {"type": "string"},
-                    "minItems": 2
+                "length": {
+                    "title": "Length",
+                    "description": "The length."
+                },
+                "PROSE": {
+                    "oneOf": [
+                        {"type": "string"},
+                        {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "minItems": 2
+                        }
+                    ]
                 }
-            ]
-              }
             }
-         }
+        }
     },
     "properties": {
         "parent": {"$ref": "#/definitions/parent"}
