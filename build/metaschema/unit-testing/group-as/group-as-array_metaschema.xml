@@ -11,8 +11,8 @@
   <schema-name>Metaschema Unit Test: group-as</schema-name>
   <schema-version>1.0-milestone1</schema-version>
   <short-name>metaschema-group-as</short-name>
-  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/group-as</namespace>
-  
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/group-as-array</namespace>
+
   <define-assembly name="parent">
     <formal-name>parent</formal-name>
     <description>parent assembly</description>
