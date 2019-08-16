@@ -31,6 +31,12 @@
             "title": "Plain text",
             "description": "plain text, no markup",
             "$id": "#/definitions/field-plaintext",
+            "type": "string"
+        },
+        "field-flag-plaintext": {
+            "title": "Plain text",
+            "description": "plain text, no markup",
+            "$id": "#/definitions/field-plaintext",
             "properties": {
                 "length": {
                     "title": "Length",
@@ -40,12 +46,6 @@
                    "type": "string"
                 }
             }
-        },
-        "field-flag-plaintext": {
-            "title": "Plain text",
-            "description": "plain text, no markup",
-            "$id": "#/definitions/field-plaintext",
-            "type": "string"
         },
         "field-richtext": {
             "title": "Rich text",
