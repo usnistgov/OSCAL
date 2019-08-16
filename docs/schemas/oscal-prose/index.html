@@ -349,9 +349,9 @@
 
 <p>Prose in OSCAL is designed to map cleanly to an HTML subset. Note that this element set is not maintained in the HTML namespace. It is intended not to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed.</p>
 
-<p>OSCAL prose supports paragraphs (<code class="highlighter-rouge">p</code>), headers (<code class="highlighter-rouge">h1</code>-<code class="highlighter-rouge">h6</code>), tables (<code class="highlighter-rouge">table</code>), preformatted text (<code class="highlighter-rouge">pre</code>), and ordered and unordered lists (<code class="highlighter-rouge">ul</code> and <code class="highlighter-rouge">ol</code>).</p>
+<p>OSCAL prose supports paragraphs (<code class="highlighter-rouge">p</code>), headers (<code class="highlighter-rouge">h1</code>-<code class="highlighter-rouge">h6</code>), tables (<code class="highlighter-rouge">table</code>), preformatted text (<code class="highlighter-rouge">pre</code>), code blocks (<code class="highlighter-rouge">code</code>), and ordered and unordered lists (<code class="highlighter-rouge">ol</code> and <code class="highlighter-rouge">ul</code>.)</p>
 
-<p>Within paragraphs or text content (inline) the following elements are permitted: <code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">strong</code>, <code class="highlighter-rouge">em</code>, <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">i</code>, <code class="highlighter-rouge">sup</code>, <code class="highlighter-rouge">sub</code>.</p>
+<p>Within paragraphs or text content (inline) the following elements are permitted: <code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">img</code>, <code class="highlighter-rouge">strong</code>, <code class="highlighter-rouge">em</code>, <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">i</code>, <code class="highlighter-rouge">sup</code>, <code class="highlighter-rouge">sub</code>.</p>
 
 <p>In particular, note that elements such as <code class="highlighter-rouge">div</code>, <code class="highlighter-rouge">blockquote</code>, <code class="highlighter-rouge">section</code> or <code class="highlighter-rouge">aside</code>, used in HTML to provide structure, are <em>not permitted in OSCAL</em>. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as <code class="highlighter-rouge">part</code>, which can include prose.</p>
 
@@ -359,10 +359,257 @@
 
 <h2 id="markdown-compatibility">Markdown compatibility</h2>
 
-<p>OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as an array of string objects) is our syntax of choice for representing unstructured prose in JSON, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is a requirement.</p>
+<p>OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as a JSON or YAML string) is our syntax of choice for representing unstructured prose in JSON and YAML, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is supported.</p>
 
-<p>When in doubt, we look to CommonMark for guidance on syntax, largely because it is more rigorously tested than many others.</p>
+<p>When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many others.</p>
 
+<h2 id="mapping-between-html-and-markdown">Mapping between HTML and Markdown</h2>
+
+<p>The following HTML &lt;-&gt; Markdown mapping is supported by OSCAL.</p>
+
+<h3 id="inline-and-block-markup">Inline and Block Markup</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Markup Type</th>
+      <th style="text-align: left">HTML</th>
+      <th style="text-align: left">Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Emphasis (preferred)</td>
+      <td style="text-align: left">&lt;em&gt;<em>text</em>&lt;/em&gt;</td>
+      <td style="text-align: left">*<em>text</em>*</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Emphasis</td>
+      <td style="text-align: left">&lt;i&gt;<em>text</em>&lt;/i&gt;</td>
+      <td style="text-align: left">*<em>text</em>*</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Important Text (preferred)</td>
+      <td style="text-align: left">&lt;strong&gt;<em>text</em>&lt;/strong&gt;</td>
+      <td style="text-align: left">**<em>text</em>**</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Important Text</td>
+      <td style="text-align: left">&lt;b&gt;<em>text</em>&lt;/b&gt;</td>
+      <td style="text-align: left">**<em>text</em>**</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Quoted Text</td>
+      <td style="text-align: left">&lt;q&gt;<em>text</em>&lt;/q&gt;</td>
+      <td style="text-align: left">“<em>text</em>”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Subscript Text</td>
+      <td style="text-align: left">&lt;sub&gt;<em>text</em>&lt;/sub&gt;</td>
+      <td style="text-align: left">~<em>text</em>~</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Superscript Text</td>
+      <td style="text-align: left">&lt;sup&gt;<em>text</em>&lt;/sup&gt;</td>
+      <td style="text-align: left">\^<em>text</em>\^</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Image</td>
+      <td style="text-align: left">&lt;img alt=”<em>alt text</em>” src=”<em>url</em>” title=”<em>title text</em>”/&gt;</td>
+      <td style="text-align: left">![<em>alt text</em>](<em>url</em> “<em>title text</em>”)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Link</td>
+      <td style="text-align: left">&lt;a <em>href</em>=”<em>url</em>“&gt;<em>text</em>&lt;/a&gt;</td>
+      <td style="text-align: left">[<em>text</em>](<em>url</em>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 1</td>
+      <td style="text-align: left">&lt;h1&gt;<em>text</em>&lt;/h1&gt;</td>
+      <td style="text-align: left"># <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 2</td>
+      <td style="text-align: left">&lt;h2&gt;<em>text</em>&lt;/h2&gt;</td>
+      <td style="text-align: left">## <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 3</td>
+      <td style="text-align: left">&lt;h3&gt;<em>text</em>&lt;/h3&gt;</td>
+      <td style="text-align: left">### <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 4</td>
+      <td style="text-align: left">&lt;h4&gt;<em>text</em>&lt;/h4&gt;</td>
+      <td style="text-align: left">#### <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 5</td>
+      <td style="text-align: left">&lt;h5&gt;<em>text</em>&lt;/h5&gt;</td>
+      <td style="text-align: left">##### <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Heading: Level 6</td>
+      <td style="text-align: left">&lt;h6&gt;<em>text</em>&lt;/h6&gt;</td>
+      <td style="text-align: left">###### <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Code Blocks</td>
+      <td style="text-align: left">&lt;code&gt;<em>text</em>&lt;/code&gt;</td>
+      <td style="text-align: left">`<em>text</em>`</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Preformatted Text</td>
+      <td style="text-align: left">&lt;pre&gt;<em>text</em>&lt;/pre&gt;</td>
+      <td style="text-align: left">```<em>text</em>```</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ordered List Item</td>
+      <td style="text-align: left">&lt;ol&gt;&lt;li&gt;<em>text</em>&lt;/li&gt;&lt;/ol&gt;</td>
+      <td style="text-align: left">1. <em>text</em></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Unordered List Item</td>
+      <td style="text-align: left">&lt;ul&gt;&lt;li&gt;<em>text</em>&lt;/li&gt;&lt;/ul&gt;</td>
+      <td style="text-align: left">- <em>text</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The use of &lt;p&gt; tags in HTML is mapped to Markdown as two double, escaped newlines within a JSON or YAML string (i.e., “\\n\\n”). This allows Mardown text to be split into paragraphs.</p>
+
+<h3 id="table-markup">Table Markup</h3>
+
+<p>Tables are mapped from Markdown to HTML as follows:</p>
+
+<ul>
+  <li>The first row in a Markdown table is considered a header row, with each cell mapped as a &lt;th&gt;.</li>
+  <li>The alignment formatting (second) row of the Markdown table is not converted to HTML. Formatting is currently ignored.</li>
+  <li>Each remaining row is mapped as a cell using the &lt;td&gt; tag.</li>
+  <li>colspan and rowspan is not supported by Markdown.</li>
+</ul>
+
+<p>Tables are mapped from HTML to Markdown as follows:</p>
+
+<ul>
+  <li>Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by <code class="highlighter-rouge">|</code>.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>The second, alignment formatting row, is produced with centered alignment (i.e.,</td>
+          <td>—</td>
+          <td>) used for each cell. Other alignments are not currently supported.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by <code class="highlighter-rouge">|</code>.</li>
+</ul>
+
+<p>For example:</p>
+
+<p>The following HTML table:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;&lt;th&gt;</span>Col A<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Col B<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;&lt;td&gt;</span>Have some of<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Try all of<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<p>Is mapped to the Markdown table:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Col A | Col B |
+| --- | --- |
+| Have some of | Try all of |
+</code></pre></div></div>
+
+<h3 id="parameter-insertion">Parameter Insertion</h3>
+
+<p>The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.</p>
+
+<p>Parameter injection is handled in HTML as follows using the &lt;insert&gt; tag:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Reviews and updates the risk management strategy <span class="nt">&lt;insert</span> <span class="na">param-id=</span><span class="s">"pm-9_prm_1"</span><span class="nt">/&gt;</span> or as required, to address organizational changes.
+</code></pre></div></div>
+
+<p>The same string in Markdown is represented as follows:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Reviews and updates the risk management strategy  or as required, to address organizational changes.
+</code></pre></div></div>
+
+<h3 id="specialized-character-mapping">Specialized Character Mapping</h3>
+
+<p>The following characters have special handling in their HTML and/or Markdown forms.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Character</th>
+      <th>XML HTML</th>
+      <th>JSON Markdown</th>
+      <th>YAML Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&amp;</td>
+      <td>&amp;amp;</td>
+      <td>&amp;</td>
+      <td>&amp;</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>&amp;lt;</td>
+      <td>&lt;</td>
+      <td>&lt;</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>&amp;gt;</td>
+      <td>&gt;</td>
+      <td>&gt;</td>
+    </tr>
+    <tr>
+      <td>”</td>
+      <td>&amp;quot;</td>
+      <td>\”</td>
+      <td>\”</td>
+    </tr>
+    <tr>
+      <td>’</td>
+      <td>&amp;apos;</td>
+      <td>’</td>
+      <td>’</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>*</td>
+      <td>\*</td>
+      <td>\*</td>
+    </tr>
+    <tr>
+      <td>` | `</td>
+      <td>\` | \`</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>~</td>
+      <td>~</td>
+      <td>\~</td>
+      <td>\~</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>^</td>
+      <td>\^</td>
+      <td>\^</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>While the characters <code class="highlighter-rouge">\*\`~^</code> are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear in HTML, they are escaped in the mapped Markdown to avoid them being parsed as Markdown markup. This allows these characters to be mapped back to HTML characters when the Markdown is mapped to HTML.</p>
 
 
 </div>
