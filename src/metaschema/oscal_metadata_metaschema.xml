@@ -10,7 +10,7 @@
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
             root="VALIDATION_root">
    <schema-name>OSCAL Document Metadata Description</schema-name>
-   <schema-version>1.0-milestone1</schema-version>
+   <schema-version>1.0.0-milestone2</schema-version>
    <short-name>oscal-metadata</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
 
@@ -97,7 +97,7 @@
          <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
         element.</p>
          <p>The <code>href</code> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>citation</code> or <code>resource</code> in the document's <code>back-matter</code>. If a remote resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document conatining the link.</p>
-         <p>To provide a cryptographic hash for a remote target resource, a local reference to a <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink</code> 
+         <p>To provide a cryptographic hash for a remote target resource, a local reference to a <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink</code>
             <code>hash</code> object.</p>
          <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a>
          </p>

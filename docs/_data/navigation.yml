@@ -36,6 +36,15 @@ secondary:
 learnmore:
   - text: Learn More
     href: /learnmore/
+    addnav:
+      - text: For Security Professionals
+        href: /learnmore/securitypros/
+      - text: For Assessors
+        href: /learnmore/assessors/
+      - text: For Tool Developers
+        href: /learnmore/tooldevelopers/
+      - text: For Policy Authors
+        href: /learnmore/contentcreators/
   - text: Challenges Addressed
     href: /learnmore/challenges/
   - text: Project Goals
@@ -51,8 +60,6 @@ architecture:
   - text: Architecture
     href: /docs/
     subnav: true
-  - text: Schema Reference
-    href: /docs/schemas/
   - text: Relations to Documentary Encoding Standards
     href: /docs/relations/
 

@@ -9,7 +9,7 @@
     root="VALIDATION_root">
 
     <schema-name>OSCAL Implementation Common Information</schema-name>
-    <schema-version>1.0-milestone2</schema-version>
+    <schema-version>1.0.0-milestone2</schema-version>
     <short-name>oscal-implementation-common</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 

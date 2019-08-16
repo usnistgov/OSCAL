@@ -14,12 +14,13 @@
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
             root="system-security-plan">
    <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
-   <schema-version>1.0-milestone1</schema-version>
+   <schema-version>1.0.0-milestone2</schema-version>
    <short-name>oscal-ssp</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
       <p>The OSCAL Control SSP format can be used to describe the information typically specified
 			in a system security plan, such as those defined in SP 800-18 or used by FedRAMP.</p>
+      <p>The root of the OSCAL System Security Plan (SSP) format is <code>system-security-plan</code>.</p>
       <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
    </remarks>
    <!-- IMPORT STATEMENTS -->
@@ -121,12 +122,12 @@
 
    <define-field name="security-sensitivity-level">
       <!-- TODO: Any constraints for the values? -->
-      <formal-name/>
+      <formal-name>Security Sensitivity Level</formal-name>
       <description>TBD</description>
    </define-field>
 
    <define-flag name="impact-level" as-type="string">
-      <formal-name/>
+      <formal-name>Impact level</formal-name>
       <description>TBD</description>
       <valid-values allow-other="yes">
          <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
