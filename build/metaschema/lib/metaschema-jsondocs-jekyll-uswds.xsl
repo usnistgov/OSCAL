@@ -7,24 +7,24 @@
    exclude-result-prefixes="#all"
    xmlns:fn="http://www.example.com/fn">
 
-   
+
    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
    <!-- Input:   Metaschema -->
    <!-- Output:  HTML  -->
    <!-- The XML version translates metaschema jargon into XML terminology. Another module does the same for JSON/object terminology.  -->
 
-   <!-- Planning: 
+   <!-- Planning:
        Stand up to run
        Develop to AW's Liquid template
        Header/metadata info?
-   
+
    -->
-   
+
    <xsl:import href="metaschema-common-html.xsl"/>
    <xsl:import href="metaschema-docs-util.xsl"/>
 
    <xsl:param name="schema-path" select="document-uri(/)"/>
-   
+
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
 
 
@@ -41,7 +41,7 @@
    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
    <xsl:key name="references" match="flag"             use="@name | @ref"/>
    <xsl:key name="references" match="field | assembly" use="@ref"/>
-   
+
    <xsl:template match="/">
       <html>
          <head>
@@ -70,7 +70,7 @@
       <xsl:apply-templates select="$definitions"/>
    </xsl:template>
 
-   
+
    <xsl:template match="METASCHEMA/schema-name">
       <!--<h2>
          <xsl:apply-templates/>
@@ -100,14 +100,14 @@
             <p><xsl:text>Appears as a property on: </xsl:text>
                <xsl:for-each select="current-group()">
                   <xsl:if test="not(position() eq 1)">, </xsl:if>
-                  <xsl:apply-templates select="." mode="link-here"/>               
+                  <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
          </xsl:for-each-group>
          <xsl:call-template name="remarks-group"/>
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:template name="cross-links">
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-json$','-xml')"/>
       <div style="float:right">
@@ -119,7 +119,7 @@
    </xsl:template>
 
    <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
-   
+
    <xsl:template name="report-module"/>
    <xsl:template name="report-module-really">
       <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
@@ -130,16 +130,16 @@
                replace(.,'.*/','') }</a></p>
       </xsl:for-each>
    </xsl:template>
-   
+
    <xsl:template name="remarks-group">
       <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
-         <div class="remarks-group usa-color-gray-cool-light" style="padding: 0.5em; margin-bottom: 0.5em">
-            <h5>Remarks</h5>
+         <div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em">
+            <h5 style="margin-top: 0.5em">Remarks</h5>
             <xsl:apply-templates select="current-group()"/>
          </div>
       </xsl:for-each-group>
    </xsl:template>
-   
+
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <header>
@@ -210,7 +210,7 @@
    <xsl:template match="define-field[@as-type = 'markup-multiline']" mode="json-value-property">
       <li><p>a string property to be processed as a Markdown page, labeled <code>PROSE</code></p></li>
    </xsl:template>
-   
+
    <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="json-value-property">
       <li>
          <p>
@@ -220,7 +220,7 @@
          </p>
       </li>
    </xsl:template>
-   
+
    <xsl:template priority="3" match="define-field[exists(json-value-key/@flag-name)]" mode="json-value-property">
       <xsl:variable name="other-flags" select="flag[not((@name|@ref)=../json-value-key/@flag-name)]/(@name|@ref)/string()"/>
       <xsl:text>a string property</xsl:text>
@@ -238,11 +238,11 @@
       </code>
       <xsl:apply-templates select="flag[(@name|@ref)=../json-value-key/@flag-name]/@as-type" mode="metaschema-type"/>
    </xsl:template>
-   
+
    <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
    <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
    <xsl:variable name="markdown-multiline-label">PROSE</xsl:variable>
-   
+
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
          group-by="true()">
@@ -296,7 +296,7 @@
    <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
       <a href="#{ @name }"><xsl:value-of select="@name"/></a>
    </xsl:template>
-   
+
    <xsl:template match="@name | @ref">
       <code>
          <xsl:value-of select="."/>
@@ -317,11 +317,11 @@
    </xsl:template>
 
    <xsl:template match="@as-type"/>
-   
+
    <xsl:template match="define-flag/@as-type">
       <p>A string conforming to constraints of type <code><xsl:value-of select="."/></code></p>
    </xsl:template>
-   
+
    <xsl:template match="@address">
       <xsl:text> (addressable by </xsl:text>
       <code>
@@ -352,7 +352,7 @@
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <xsl:template match="flag[(@name|@ref)=../json-value-key/@flag-name]" mode="model">
       <xsl:variable name="other-flags" select="../(flag except current())/(@name|@ref)/string()"/>
       <li>
@@ -387,7 +387,7 @@
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <xsl:template match="flag[(@name|@ref)=../json-key/@flag-name]" mode="model">
       <xsl:message expand-text="true">{ ../@name }</xsl:message>
       <li>
@@ -411,8 +411,8 @@
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
-   
+
+
    <!-- Empty model elements (whether by accident or design) will be dropped.
      NB: at a later point, we may support model/@acquire-from
      at present we have @acquire-from only on definitions. -->
@@ -447,7 +447,7 @@
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <xsl:template match="assembly[group-as/@json-behavior='BY_KEY'] | field[group-as/@json-behavior='BY_KEY']" priority="2">
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
@@ -463,12 +463,12 @@
             <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
-         
+
          <xsl:apply-templates select="description" mode="model"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <xsl:template match="assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']" priority="2">
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
@@ -485,12 +485,12 @@
          </p>
          <xsl:apply-templates select="." mode="occurrence-code"/>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
-         
+
          <xsl:apply-templates select="description" mode="model"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <xsl:template match="assembly[exists(group-as)] | field[exists(group-as)]">
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
@@ -522,10 +522,10 @@
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
-   
+
    <!-- remarks are kept if @class='xml' or no class is given -->
    <xsl:template match="remarks[@class != 'json']" priority="2"/>
-   
+
    <xsl:template match="remarks[@class = 'json']/p[1]">
       <p class="p">
          <span class="usa-label">JSON</span>
@@ -533,7 +533,7 @@
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
@@ -603,7 +603,7 @@
       </xsl:choose>
    </xsl:template>
 
-   
+
    <xsl:template match="code[. = (//@name except ancestor::*/@name)]">
       <a href="#{.}">
          <xsl:next-match/>
@@ -612,43 +612,43 @@
 
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="color-primary">
-         <xsl:next-match/>      
+         <xsl:next-match/>
       </i>
    </xsl:template>
-   
-   
+
+
    <xsl:template mode="metaschema-type" match="flag">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
-   
+
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='ARRAY']" expand-text="true">array of { if ( m:has-properties(.)) then 'objects' else 'strings' }.</xsl:template>
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='SINGLETON_OR_ARRAY']">{ if ( m:has-properties(.)) then 'object' else 'string' } (when a singleton) or array { if ( m:has-properties(.)) then 'objects' else 'strings' } (when multiple)</xsl:template>
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='BY_KEY']">object (with label)</xsl:template>
-   
+
    <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='ARRAY']">array</xsl:template>
    <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='SINGLETON_OR_ARRAY']">object (when a singleton) or array (when multiple)</xsl:template>
    <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='BY_KEY']">object (with label)</xsl:template>
    <xsl:template mode="metaschema-type" match="assembly">object (with object properties)</xsl:template>
    <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
    <xsl:template mode="metaschema-type" match="description | remarks"/>
-   
+
    <xsl:template mode="metaschema-type" match="@as-type"> (type <xsl:value-of select="."/>)</xsl:template>
    <xsl:template mode="metaschema-type" match="@as-type[.='markdown-line']"> (may contain inline Markdown)</xsl:template>
    <xsl:template mode="metaschema-type" match="@as-type[.='markdown-multiline']"> (may contain Markdown paragraphs)</xsl:template>
    <xsl:template mode="metaschema-type" match="@as-type[.='empty']"> (with no value given)</xsl:template>
-   
-   
+
+
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
    </xsl:template>
-   
-   
+
+
    <xsl:template name="css">
       <style type="text/css">
          html,
          body {
          }
-         
+
          pre {
              color: darkgrey
          }
@@ -658,17 +658,17 @@
              font-size: 80%;
              font-weight: bold
          }
-         
+
          pre.json {
              color: darkblue
          }
-         
+
          .METASCHEMA {
          }
-         
+
          .title {
          }
-         
+
          .define-assembly,
          .define-field,
          .define-flag {
@@ -677,82 +677,82 @@
              border: thin inset black;
              padding: 0.5em
          }
-         
+
          .define-assembly *,
          .define-field *,
          .define-flag * {
              margin: 0em
          }
-         
-         
+
+
          pre {
              padding: 0.5em;
              background-color: gainsboro
          }
-         
+
          .define-assembly {
          }
-         
+
          .define-field {
          }
-         
+
          .define-flag {
          }
-         
+
          .flag {
          }
-         
+
          .formal-name {
              font-size: 120%;
              font-weight: bold;
              font-family: sans-serif;
              margin: 0.5em 0em
          }
-         
+
          .description {
              font-size: 90%;
              font-family: sans-serif;
              margin: 0.5em 0em
          }
-         
+
          .remarks {
          }
-         
+
          .remarks p {
              margin-top: 0.5em
          }
          // .remarks > p:first-child { margin-top: 0em }
-         
+
          .model {
              margin-top: 1em
          }
-         
+
          .field {
          }
-         
+
          .fields {
          }
-         
+
          .assembly {
          }
-         
+
          .assemblies {
          }
-         
+
          .choice {
          }
-         
+
          .example {
              margin-top: 1em
          }
-         
+
          .prose {
          }
-         
-         
+
+
          .p {
          }
-         
+
          .code {
              display: inline;
          }
@@ -765,21 +765,21 @@
          .strong {
              display: inline;
          }
-         
+
          .name {
              color: midnightblue;
              background-color: lavender;
              font-family: monospace;
              font-size: 90%
          }
-         
+
          a {
              text-decoration: none
          }
          a:hover {
              text-decoration: underline
          }
-         
+
          ul.e_map {
              font-family: monospace;
              list-style-type: none

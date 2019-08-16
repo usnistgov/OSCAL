@@ -10,19 +10,19 @@
    <!-- Output:  HTML  -->
    <!-- The XML version translates metaschema jargon into XML terminology. Another module does the same for JSON/object terminology.  -->
 
-   <!-- Planning: 
+   <!-- Planning:
        Stand up to run
        Develop to AW's Liquid template
        Header/metadata info?
-   
+
    -->
    <xsl:import href="metaschema-common-html.xsl"/>
    <xsl:import href="metaschema-docs-util.xsl"/>
-   
+
    <xsl:param name="schema-path" select="document-uri(/)"/>
-   
+
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
-   
+
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -38,7 +38,7 @@
    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
    <xsl:key name="references" match="flag"             use="@name | @ref"/>
    <xsl:key name="references" match="field | assembly" use="@ref"/>
-   
+
    <xsl:template match="/">
       <html>
          <head>
@@ -60,9 +60,9 @@
          </p>
          <xsl:apply-templates select="* except $definitions"/>
       </div>
-      <xsl:apply-templates select="$definitions"/>  
+      <xsl:apply-templates select="$definitions"/>
    </xsl:template>
-   
+
    <xsl:template match="METASCHEMA/schema-name">
       <!--<h2>
          <xsl:apply-templates/>
@@ -77,11 +77,11 @@
             <xsl:apply-templates/>
          </code></p>
    </xsl:template>
-   
+
    <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
       <a href="#{ @name }"><xsl:value-of select="@name"/></a>
    </xsl:template>
-   
+
 
 
    <xsl:template match="define-flag">
@@ -98,18 +98,18 @@
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
                   <xsl:if test="not(position() eq 1)">, </xsl:if>
-                  <xsl:apply-templates select="." mode="link-here"/>               
+                  <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
          </xsl:for-each-group>
          <xsl:call-template name="remarks-group"/>
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
-   
+
    <xsl:template name="report-module"/>
-   
+
    <xsl:template name="report-module-really">
          <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
       <xsl:for-each select="@module">
@@ -129,7 +129,7 @@
          </a>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <header>
@@ -166,21 +166,21 @@
             </div>
          </xsl:if>
          <xsl:call-template name="remarks-group"/>
-         <xsl:apply-templates select="example"/>         
+         <xsl:apply-templates select="example"/>
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:template name="remarks-group">
       <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
-         <div class="remarks-group usa-color-gray-cool-light" style="padding: 0.5em; margin-bottom: 0.5em">
-            <h5>Remarks</h5>
+         <div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em">
+            <h5 style="margin-top: 0.5em">Remarks</h5>
             <xsl:apply-templates select="current-group()"/>
          </div>
       </xsl:for-each-group>
    </xsl:template>
-   
-   
+
+
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
          group-by="true()">
@@ -230,7 +230,7 @@
 
    <xsl:template match="flag" mode="model">
       <li>
-         <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>        
+         <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          <xsl:if test="empty(@ref)">
             <xsl:apply-templates select="@name"/>
          </xsl:if>
@@ -249,7 +249,7 @@
    <xsl:template match="@required">
       <i> (required)</i>
    </xsl:template>
-   
+
    <xsl:template match="model[not(*)]" priority="3"/>
 
    <xsl:template match="model">
@@ -266,7 +266,7 @@
    <xsl:template match="any">
       <li>Any element (in a foreign namespace)</li>
    </xsl:template>
-         
+
    <xsl:template match="assembly | field">
       <li>
          <!--<xsl:text>A</xsl:text>
@@ -296,7 +296,7 @@
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
@@ -329,7 +329,7 @@
          <xsl:value-of select="."/>
       </xsl:if>
    </xsl:template>
-   
+
    <xsl:template match="*" mode="serialize">
 <!-- goes $hot when inline markup is found  -->
       <xsl:param name="hot" select="false()"/>
@@ -346,11 +346,11 @@
          <xsl:text>"</xsl:text>
       </xsl:for-each>
       <xsl:text>&gt;</xsl:text>
-      
+
       <xsl:apply-templates mode="serialize">
          <xsl:with-param name="hot" select="$hot or boolean(text()[normalize-space(.)])"/>
       </xsl:apply-templates>
-      
+
       <!--<xsl:if test="not($hot)">
          <xsl:call-template name="indent-for-pre"/>
       </xsl:if>-->
@@ -359,9 +359,9 @@
       <xsl:value-of select="local-name(.)"/>
       <xsl:text>&gt;</xsl:text>
    </xsl:template>
-   
 
-   
+
+
    <!-- <xsl:template mode="get-example" match="example">
       <xsl:apply-templates select="*" mode="as-example"/>
    </xsl:template>-->
@@ -391,22 +391,22 @@
 
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="color-primary">
-         <xsl:next-match/>      
+         <xsl:next-match/>
       </i>
    </xsl:template>
-   
+
    <xsl:template match="define-flag" mode="state-type">
-      <p>An attribute<xsl:apply-templates select="." mode="metaschema-type"/></p> 
+      <p>An attribute<xsl:apply-templates select="." mode="metaschema-type"/></p>
    </xsl:template>
-   
+
    <xsl:template match="define-field" mode="state-type">
-      <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p> 
+      <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p>
    </xsl:template>
-   
+
    <xsl:template match="field | assembly" mode="metaschema-type">
       <xsl:apply-templates select="key('definitions',@ref)" mode="#current"/>
    </xsl:template>
-   
+
    <xsl:template mode="metaschema-type" match="flag | define-flag | define-field[exists(@as-type)]">
       <xsl:text>, type </xsl:text>
       <b>
@@ -414,24 +414,24 @@
          <xsl:if test="empty(@as-type)">string</xsl:if>
       </b>
    </xsl:template>
-   
-   
+
+
    <xsl:template mode="metaschema-type" match="define-field">, with text contents</xsl:template>
    <xsl:template mode="metaschema-type" match="*[@as-type='markup-line']"      priority="2">, with mixed text and (inline prose) element contents</xsl:template>
    <xsl:template mode="metaschema-type" match="*[@as-type='markup-multiline']" priority="2">, as prose content: paragraphs, lists etc.</xsl:template>
    <xsl:template mode="metaschema-type" match="define-assembly">, with element contents</xsl:template>
-   
+
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
    </xsl:template>
-   
-   
+
+
    <xsl:template name="css">
       <style type="text/css">
          html,
          body {
          }
-         
+
          pre {
              color: darkgrey
          }
@@ -441,17 +441,17 @@
              font-size: 80%;
              font-weight: bold
          }
-         
+
          pre.json {
              color: darkblue
          }
-         
+
          .METASCHEMA {
          }
-         
+
          .title {
          }
-         
+
          .define-assembly,
          .define-field,
          .define-flag {
@@ -460,76 +460,76 @@
              border: thin inset black;
              padding: 0.5em
          }
-         
+
          .define-assembly *,
          .define-field *,
          .define-flag * {
              margin: 0em
          }
-         
-         
+
+
          pre {
              padding: 0.5em;
              background-color: gainsboro
          }
-         
+
          .define-assembly {
          }
-         
+
          .define-field {
          }
-         
+
          .define-flag {
          }
-         
+
          .flag {
          }
-         
+
          .formal-name {
              font-size: 120%;
              font-weight: bold;
              font-family: sans-serif;
              margin: 0.5em 0em
          }
-         
+
          .description {
              font-size: 90%;
              font-family: sans-serif;
              margin: 0.5em 0em
          }
-         
+
          .remarks {
          }
-         
+
          .remarks p {
              margin-top: 0.5em
          }
          // .remarks > p:first-child { margin-top: 0em }
-         
+
          .model {
              margin-top: 1em
          }
-         
+
          .field {
          }
-          
+
          .assembly {
          }
-         
+
          .choice {
          }
-         
+
          .example {
              margin-top: 1em
          }
-         
+
          .prose {
          }
-         
-         
+
+
          .p {
          }
-         
+
          .code {
              display: inline;
          }
@@ -542,21 +542,21 @@
          .strong {
              display: inline;
          }
-         
+
          .name {
              color: midnightblue;
              background-color: lavender;
              font-family: monospace;
              font-size: 90%
          }
-         
+
          a {
              text-decoration: none
          }
          a:hover {
              text-decoration: underline
          }
-         
+
          ul.e_map {
              font-family: monospace;
              list-style-type: none

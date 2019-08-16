@@ -1,8 +1,22 @@
 The OSCAL Project has made the following releases:
 
 OSCAL 1.0.0 Milestone 1
----------------------
+-----------------------
 - The first official OSCAL release
 - Provides stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.
 - Includes draft versions of the NIST SP 800-53 revision 4 OSCAL content and FedRAMP baselines in OSCAL XML, JSON, and YAML formats.
 - Provides content converters that are capable of accurately converting between OSCAL catalog and profile content in OSCAL XML to OSCAL JSON format and vice versa.
+
+OSCAL 1.0.0 Milestone 2
+-----------------------
+
+- The following content model changes have been made that may break content compatibility:
+
+  Catalog:
+
+  - /catalog/metadata/last-modified-date - The data type has been changed from string to dateTime-with-timezone.
+  - link
+    - The data type of the href property/attribute on the link object/element has been changed from string to uri-reference.
+    - The text content of link can now be XML/HTML or JSON/Markdown content.
+  - rlinks - The data type of the href property/attribute on the rlink object/element has been changed from string to uri-reference.
+  - email - The data type has been changed from string to email.
