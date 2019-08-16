@@ -80,8 +80,8 @@ resources:
 schemas:
   - text: Schema Reference
     href: /docs/schemas/
-  - text: OSCAL Prose Model
-    href: /docs/schemas/oscal-prose/
+  - text: OSCAL Data Types
+    href: /docs/schemas/datatypes/
   - text: Catalog Model
     addnav:
     - text: XML Model Map
