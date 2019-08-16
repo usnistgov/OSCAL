@@ -37,17 +37,19 @@
             "title": "Plain text",
             "description": "plain text, no markup",
             "$id": "#/definitions/field-flag-plaintext",
+            "type": "object",
             "properties": {
                 "length": {
                     "title": "Length",
                     "description": "The length.",
                     "type": "integer",
-                    "minimum": 1
+                    "minimum": 1,
+                    "multipleOf": 1.0
                 },
-                "STRVALUE": {
-                   "type": "string"
-                }
-            }
+                "STRVALUE": {"type": "string"}
+            },
+            "required": ["STRVALUE"],
+            "additionalProperties": false
         },
         "field-richtext": {
             "title": "Rich text",
@@ -59,53 +61,43 @@
             "title": "Rich text",
             "description": "Rich text supports markup",
             "$id": "#/definitions/field-flag-richtext",
+            "type": "object",
             "properties": {
                 "length": {
                     "title": "Length",
                     "description": "The length.",
                     "type": "integer",
+                    "multipleOf": 1.0,
                     "minimum": 1
                 },
-                "RICHTEXT": {
-                   "type": "string"
-                }
-            }
+                "RICHTEXT": {"type": "string"}
+            },
+            "required": ["RICHTEXT"],
+            "additionalProperties": false
         },
         "field-prose": {
             "title": "Prose",
             "description": "Prose permits multiple paragraphs, lists, tables etc.",
             "$id": "#/definitions/field-prose",
-            "oneOf": [
-                {"type": "string"},
-                {
-                    "type": "array",
-                    "items": {"type": "string"},
-                    "minItems": 2
-                }
-            ]
+            "type": "string"
         },
         "field-flag-prose": {
             "title": "Prose",
             "description": "Prose permits multiple paragraphs, lists, tables etc.",
             "$id": "#/definitions/field-flag-prose",
+            "type" : "object",
             "properties": {
                 "length": {
                     "title": "Length",
                     "description": "The length.",
                     "type": "integer",
+                    "multipleOf": 1.0,
                     "minimum": 1
                 },
-                "PROSE": {
-                    "oneOf": [
-                        {"type": "string"},
-                        {
-                            "type": "array",
-                            "items": {"type": "string"},
-                            "minItems": 2
-                        }
-                    ]
-                }
-            }
+                "PROSE": {"type": "string"}                
+            },
+            "required": ["PROSE"],
+            "additionalProperties": false
         }
     },
     "properties": {
