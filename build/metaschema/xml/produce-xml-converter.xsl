@@ -202,15 +202,16 @@
                     <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
                 </xsl:for-each>
                 <xsl:apply-templates select="flag"/>
-
-                <XSLT:apply-templates mode="as-string" select=".">
-                    <XSLT:with-param name="key" select="$text-key"/>
-                    <!-- Always write the value key even when empty, as required by the JSON Schema -->
-                    <XSLT:with-param name="mandatory" select="true()"/>
-                    <!-- write an empty string when the value key is dynamic
+                <xsl:if test="not(@as-type = 'empty')">
+                    <XSLT:apply-templates mode="as-string" select=".">
+                        <XSLT:with-param name="key" select="$text-key"/>
+                        <!-- Always write the value key even when empty, as required by the JSON Schema -->
+                        <XSLT:with-param name="mandatory" select="true()"/>
+                        <!-- write an empty string when the value key is dynamic
                          since the key tells us the value for the (implicit) flag:
                          <XSLT:with-param name="mandatory" select="{ exists(json-value-key/@flag-name) }()"/> -->
-                </XSLT:apply-templates>
+                    </XSLT:apply-templates>
+                </xsl:if>
             </map>
         </XSLT:template>
         <!-- flagged, groupable fields marked as collapsible may be collapsed -->
