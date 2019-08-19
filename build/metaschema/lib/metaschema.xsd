@@ -407,8 +407,9 @@
       <!-- TODO: Evaluate how to replace this DTD-based datatypes -->
       <xs:enumeration value="NMTOKENS" />
       <xs:enumeration value="decimal" />
-      <xs:enumeration value="float" />
-      <xs:enumeration value="double" />
+      <!-- Not supporting float or double -->
+      <!--<xs:enumeration value="float" />
+      <xs:enumeration value="double" />-->
       <xs:enumeration value="integer" />
       <xs:enumeration value="nonNegativeInteger"/>
       <xs:enumeration value="positiveInteger"/>
