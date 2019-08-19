@@ -468,18 +468,8 @@
         <number key="minimum">0</number>
     </xsl:template>
     
-    <!-- Types are listed in ../xml/produce-xsd.xsl and ../xml/oscal-datatypes.xsd -->
-    
-    <xsl:variable name="numeric-types" as="element()*">
-        <type>decimal</type>
-        <type>float</type>
-        <type>double</type>
-    </xsl:variable>
-    
-    <xsl:template priority="2" match="*[@as-type=$numeric-types]" mode="object-type">
-        <string key="type">number</string>
-    </xsl:template>
-    
+    <!--Not supporting float and double--> 
+
     <xsl:template priority="2.1" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
         <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>
     </xsl:template>
@@ -488,6 +478,11 @@
         match="map" use="@key"/>
     
     <xsl:variable name="datatypes" expand-text="false">
+        <map key="decimal">
+            <string key="type">number</string>
+            <string key="pattern">(\+|-)?([0-9]+(\.[0-9]*)?|\.[0-9]+)</string>
+        </map>
+        
         <map key="date-with-timezone">
             <string key="type">string</string>
             <!--<string key="format">date</string>-->

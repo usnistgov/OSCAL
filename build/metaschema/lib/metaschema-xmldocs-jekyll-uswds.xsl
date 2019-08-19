@@ -233,7 +233,6 @@
          <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          <xsl:if test="empty(@ref)">
            <a id="{../@name}-{@name}"><xsl:apply-templates select="@name"/></a><xsl:apply-templates select="@name"/>
-         </xsl:if>
          <xsl:text> attribute </xsl:text>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="empty(@required)"> (<i>optional</i>)</xsl:if>

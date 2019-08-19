@@ -205,9 +205,11 @@
 
                 <XSLT:apply-templates mode="as-string" select=".">
                     <XSLT:with-param name="key" select="$text-key"/>
-                    <!-- even an empty string must be written when the value key is dynamic
-                         since the key tells us the value for the (implicit) flag -->
-                    <XSLT:with-param name="mandatory" select="{ exists(json-value-key/@flag-name) }()"/>
+                    <!-- Always write the value key even when empty, as required by the JSON Schema -->
+                    <XSLT:with-param name="mandatory" select="true()"/>
+                    <!-- write an empty string when the value key is dynamic
+                         since the key tells us the value for the (implicit) flag:
+                         <XSLT:with-param name="mandatory" select="{ exists(json-value-key/@flag-name) }()"/> -->
                 </XSLT:apply-templates>
             </map>
         </XSLT:template>

@@ -112,8 +112,9 @@
         <xs:simpleType name="NCName"/>
         <xs:simpleType name="NMTOKENS"/>
         <xs:simpleType name="decimal"/>
-        <xs:simpleType name="float"/>
-        <xs:simpleType name="double"/>
+        <!-- Not supporting float or double -->
+        <!--<xs:simpleType name="float"/>
+        <xs:simpleType name="double"/>-->
         <xs:simpleType name="integer"/>
         <xs:simpleType name="nonNegativeInteger"/>
         <xs:simpleType name="positiveInteger"/>
