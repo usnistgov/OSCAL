@@ -16,10 +16,25 @@
   <define-assembly name="parent">
     <formal-name>parent</formal-name>
     <description>parent assembly</description>
+    <flag name="flag-datetime" as-type="dateTime-with-timezone" required="yes">
+      <formal-name>Date and Time Flag</formal-name>
+      <description>datetime flag</description>
+    </flag>
     <model>
       <field ref="field-datetime" max-occurs="unbounded">
         <group-as name="field-datetimes"/>
       </field>
+      <assembly ref="child" max-occurs="unbounded">
+        <group-as name="children"/>
+      </assembly>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="child">
+    <formal-name>child</formal-name>
+    <description>child assembly</description>
+    <model>
+      <field ref="field-datetime" min-occurs="1"/>
     </model>
   </define-assembly>
 

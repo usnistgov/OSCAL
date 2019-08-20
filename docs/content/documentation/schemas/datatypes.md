@@ -40,7 +40,11 @@ The OSCAL models are based on structures that use a specific set of data types. 
 
 ### empty
 
-This data type indicates that the model information element contains no content.
+This data type indicates that the model information element contains no value content, but may contain other structured information elements.
+
+In XML, this may represent an element without text content.
+
+In JSON, this may represent an object with labels corrisponding to other child information elements, but no label corresponding to a text value.
 
 ### boolean
 
@@ -85,6 +89,21 @@ In XML Schema, [positiveInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativ
 
 In JSON Schema, this becomes an `integer` value with an additional `minimum` constraint of `1`. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
 
+### decimal
+
+A real number expressed using decimal numerals.
+
+In XML Schema this is represented as the built in typ [decimal](https://www.w3.org/TR/xmlschema11-2/#decimal).
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "number",
+  "pattern": "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)"
+}
+```
+
 ## Formatted String Data types
 
 ### dateTime-with-timezone
@@ -107,7 +126,7 @@ In XML Schema this is represented as a restriction on the built in type [dateTim
     <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
   </xs:annotation>
   <xs:restriction base="xs:dateTime">
-    <xs:pattern value=".+T.+(Z|[+-].+)"/>
+    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"/>
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -118,7 +137,7 @@ In JSON Schema, this is represented as:
 {
   "type": "string",
   "format": "date-time",
-  "pattern": ".+T.+(Z|[+-].+)"
+  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"
 }
 ```
 
@@ -151,7 +170,7 @@ In JSON Schema, this is represented as:
 ```JSON
 {
   "type": "string",
-  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})"
+  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"
 }
 ```
 
