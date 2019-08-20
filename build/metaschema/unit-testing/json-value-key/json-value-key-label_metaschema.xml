@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: json-value-key-label</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>json-value-key-label</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/json-value-key-label</namespace>
+
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <model>
+      <field ref="link" max-occurs="unbounded">
+         <group-as name="links"/>
+      </field>
+    </model>
+  </define-assembly>
+
+  <define-field name="link" as-type="string">
+     <formal-name>Link</formal-name>
+     <description>A reference to a local or remote resource</description>
+     <json-value-key>text</json-value-key>
+     <flag ref="href" required="yes"/>
+     <flag ref="rel"/>
+     <flag ref="media-type"/>
+  </define-field>
+
+  <define-flag name="href" as-type="uri-reference">
+     <formal-name>hypertext reference</formal-name>
+     <description>A link to a document or document fragment (actual, nominal or projected)</description>
+  </define-flag>
+
+  <define-flag name="rel" as-type="NCName">
+     <formal-name>Relation</formal-name>
+     <description>Purpose of the link</description>
+  </define-flag>
+  <define-flag name="media-type" as-type="string">
+     <formal-name>Media type</formal-name>
+     <description>Describes the media type of a linked resource</description>
+  </define-flag>
+</METASCHEMA>

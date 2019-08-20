@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime-schema.json",
+  "$comment": "Metaschema Unit Test: datatypes-dateTime: JSON Schema",
+  "type": "object",
+  "definitions": {
+    "parent": {
+      "title": "parent",
+      "description": "parent assembly",
+      "$id": "#/definitions/parent",
+      "type": "object",
+      "properties": {
+        "field-datetimes": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/field-datetime"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/field-datetime"
+              },
+              "minItems": 2
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "field-datetime": {
+      "title": "Date and Time",
+      "description": "With time zone",
+      "$id": "#/definitions/field-datetime",
+      "type": "string",
+      "format": "date-time",
+      "pattern": ".+T.+(Z|[+-].+)"
+    }
+  },
+  "properties": {
+    "parent": {
+      "$ref": "#/definitions/parent"
+    }
+  }
+}

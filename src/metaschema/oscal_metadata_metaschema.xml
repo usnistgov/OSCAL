@@ -329,14 +329,14 @@
    </define-assembly>
    <define-flag name="rel" as-type="NCName">
       <formal-name>Relation</formal-name>
-      <description>Purpose of the link</description>
+      <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
       <remarks>
          <p>TO DO: discuss IANA link relation registry.</p>
       </remarks>
    </define-flag>
    <define-flag name="media-type" as-type="string">
       <formal-name>Media type</formal-name>
-      <description>Describes the media type of a linked resource</description>
+      <description>Describes the media type of the linked resource</description>
       <remarks>
          <p>TO DO: discuss IANA media type registry.</p>
       </remarks>

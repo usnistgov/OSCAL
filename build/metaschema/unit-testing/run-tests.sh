@@ -46,7 +46,7 @@ test_dirs=()
 if [ -n "${TEST_DIR}" ]; then
     test_dirs+=("${TEST_DIR}")
 else
-    while IFS= read -r -d $'\0'; do 
+    while IFS= read -r -d $'\0'; do
         test_dirs+=("$REPLY")
     done < <(find "$DEFAULT_TEST_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
 fi
@@ -103,7 +103,7 @@ do
 
       # Now generate the JSON schema
       transform="$OSCALDIR/build/metaschema/json/produce-json-schema.xsl"
-      schema="$SCRATCH_DIR/$unit_test_dir/${base}_-generated-json-schema.json"
+      schema="$SCRATCH_DIR/$unit_test_dir/${base}_generated-json-schema.json"
 
       echo "${P_INFO}Generating JSON schema for '$metaschema' as '$schema'.${P_END}"
       xsl_transform "$transform" "$metaschema" "$schema"
