@@ -283,7 +283,7 @@
       <formal-name>Organization</formal-name>
       <description>An organization or legal entity (not a person), with contact information</description>
       <model>
-         <field ref="org-name"/>
+         <field ref="org-name" min-occurs="1"/>
          <field ref="short-name"/>
          <field ref="org-id" max-occurs="unbounded">
             <group-as name="organization-ids"/>
@@ -425,14 +425,14 @@
       <description>URL for web site or Internet presence</description>
    </define-field>
    <define-assembly name="notes">
-      <!-- TODO: Get rid of prose field -->
+      <!-- TODO: Get rid of note field -->
       <formal-name>Notes</formal-name>
       <description>Any notes with further information</description>
       <flag ref="type">
          <description>Indicates the type of note.</description>
       </flag>
       <model>
-         <field ref="prose"/>
+         <field ref="note"/>
       </model>
    </define-assembly>
    <define-field name="desc">
@@ -573,8 +573,8 @@
       of <code>title</code> inside this object.</p>
       </remarks>
    </define-field>
-   <define-field name="prose" as-type="markup-multiline">
-      <formal-name>Prose</formal-name>
-      <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+   <define-field name="note" as-type="markup-multiline">
+      <formal-name>Note</formal-name>
+      <description>Permits multiple paragraphs, lists, tables etc.</description>
    </define-field>
 </METASCHEMA>

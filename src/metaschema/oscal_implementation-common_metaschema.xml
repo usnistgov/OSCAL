@@ -25,8 +25,10 @@
         <model>
             <field ref="description"/>
             <field ref="remarks"/>
-            <assembly ref="proof-of-compliance"/>
-            <assembly ref="requirement"/>
+<!--            <assembly ref="proof-of-compliance"/>
+-->
+            <assembly ref="supplier"/>
+            <assembly ref="implemented-requirement"/>
             <assembly ref="using"/>
             <assembly ref="configuration">
                 <group-as name="configurations" json-behavior="BY_KEY"/>
@@ -49,7 +51,7 @@
     <define-flag name="component-type" as-type="string">
         <formal-name>Component Type</formal-name>
         <description>A category describing the purpose of the component.</description>
-        <valid-values>
+        <valid-values allow-other="yes">
             <value name="software">Any software, operating system, or firmware</value>
             <value name="hardware"></value>
             <value name="service">A service that may provide APIs.</value>
@@ -83,7 +85,9 @@
     </flag>
 -->
         <flag ref="party-id" required="yes"/>
-        <flag ref="role-id" required="yes"/><!-- TODO: define standard roles -->
+        <flag ref="role-id" required="yes">
+            <!-- TODO: define standard roles -->
+        </flag>
         <model>
             <field ref="remarks"/>
         </model>
@@ -95,7 +99,7 @@
                 capability.</p>
         </remarks>
     </define-assembly>
-
+<!--
     <define-assembly name="proof-of-compliance">
         <formal-name>validation</formal-name>
         <description>TBD</description>
@@ -109,22 +113,27 @@
             </field>
             <field ref="link" max-occurs="unbounded">
                 <group-as name="links"/>
-                <!-- TODO: Model specific link relationships for:
+                <!-\- TODO: Model specific link relationships for:
           validated-by: pointer to validation cert.
-        -->
+        -\->
             </field>
         </model>
     </define-assembly>
-
-    <define-flag name="source" as-type="uri">
+-->
+    <define-flag name="source" as-type="uri-reference">
         <formal-name>Source Resource Reference</formal-name>
         <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
     </define-flag>
 
-    <define-assembly name="requirement">
+    <define-assembly name="implemented-requirement">
         <formal-name>Control-based Requirement</formal-name>
         <description>TBD</description>
+        <flag name="requirement-id" as-type="NCName">
+            <formal-name>Requirement Identifier Reference</formal-name>
+            <description>A reference to a requirement defined on another requirement set that should be included here.</description>
+        </flag>
         <!-- TODO: instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+        <flag ref="id"/>
         <flag ref="control-id"/>
         <flag ref="subcontrol-id"/>
         <model>
@@ -136,6 +145,7 @@
                 <group-as name="links"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
+            <assembly ref="using"/>
             <!-- TODO: Implement parameters -->
             <field ref="remarks"/>
         </model>
@@ -149,20 +159,6 @@
         <formal-name>Subcontrol Identifier Reference</formal-name>
         <description>A reference to a subcontrol identifier.</description>
     </define-flag>
-
-    <define-assembly name="implementation-detail">
-        <formal-name>Control Response</formal-name>
-        <description>Describes how a control is implemented.</description>
-        <flag ref="statement-id" required="yes"/>
-        <model>
-            <field ref="description"/>
-        </model>
-        <example>
-            <o:implementation-detail statement-id="ac-2_smt.g">
-                <o:p>Detail relating to AC-2 part g.</o:p>
-            </o:implementation-detail>
-        </example>
-    </define-assembly>
 
     <define-flag name="statement-id" as-type="NCName">
         <formal-name>Statement Identifier</formal-name>
@@ -186,11 +182,9 @@
         <!-- MUST provide at least one of the following -->
         <flag ref="configuration-id"/>
         <flag ref="artifact-id"/>
+        <flag ref="statement-id"/>
         <model>
             <field ref="description"/>
-            <assembly ref="implementation-detail" max-occurs="unbounded">
-                <group-as name="implementation-details"/>
-            </assembly>
             <field ref="prop" max-occurs="unbounded">
                 <group-as name="properties"/>
             </field>
@@ -198,10 +192,31 @@
                 <group-as name="links"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
+            <assembly ref="with-argument" max-occurs="unbounded">
+                <group-as name="with-arguments" json-behavior="BY_KEY"/>
+            </assembly>
             <field ref="remarks"/>
         </model>
     </define-assembly>
 
+    <define-assembly name="with-argument">
+        <formal-name>With Argument</formal-name>
+        <description>An argument to pass to the referenced configuration.</description>
+        <json-key flag-name="name"/>
+        <flag name="name" as-type="NCName">
+            <formal-name>Argument Name</formal-name>
+            <description>The name of the argument.</description>
+        </flag>
+        <model>
+            <field ref="use-param"/>
+        </model>
+    </define-assembly>
+
+    <define-field name="use-param" as-type="NCName">
+        <formal-name>Using Parameter</formal-name>
+        <description>An identified parameter from the catalog or profile who's value is assigned to the argument.</description>
+    </define-field>
+    
     <define-flag name="configuration-id" as-type="IDREF">
         <formal-name>Configuration Identifier Reference</formal-name>
         <description>A reference to a configuration defined on the component.</description>
@@ -229,6 +244,9 @@
                 <group-as name="links"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
+            <assembly ref="argument" max-occurs="unbounded">
+                <group-as name="arguments" json-behavior="BY_KEY"/>
+            </assembly>
             <assembly ref="mechanism" max-occurs="unbounded">
                 <group-as name="mechanisms"/>
             </assembly>
@@ -251,9 +269,6 @@
                 <group-as name="links"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
-            <assembly ref="argument" max-occurs="unbounded">
-                <group-as name="arguments" json-behavior="BY_KEY"/>
-            </assembly>
             <assembly ref="configuration-method" min-occurs="1"/>
             <assembly ref="verification-method" min-occurs="1"/>
             <field ref="remarks"/>
@@ -266,9 +281,6 @@
         <description>A mechanism used to deploy the configuration.</description>
         <model>
             <field ref="description"/>
-            <assembly ref="argument" max-occurs="unbounded">
-                <group-as name="arguments" json-behavior="BY_KEY"/>
-            </assembly>
             <field ref="script" min-occurs="1"/>
             <field ref="remarks"/>
         </model>
@@ -279,15 +291,12 @@
         <description>A mechanism used to verify a previously deployed configuration.</description>
         <model>
             <field ref="description"/>
-            <assembly ref="argument" max-occurs="unbounded">
-                <group-as name="arguments" json-behavior="BY_KEY"/>
-            </assembly>
             <field ref="script" min-occurs="1"/>
             <field ref="remarks"/>
         </model>
     </define-assembly>
 
-    <define-field name="script">
+    <define-field name="script" as-type="string">
         <formal-name>Script</formal-name>
         <description>An executable script.</description>
         <flag ref="system" required="yes"/>
@@ -306,23 +315,21 @@
             <formal-name>Argument Name</formal-name>
             <description>The name of an argument to be passed into a script.</description>
         </flag>
+        <flag name="type" as-type="NCName" required="yes">
+            <formal-name>Argument Data Type</formal-name>
+            <description>The data type of the argument.</description>
+            <valid-values>
+                <value name="duration-seconds"></value>
+                <value name="duration-minutes"></value>
+                <value name="duration-hours"></value>
+                <value name="duration-days"></value>
+                <value name="integer"></value>
+                <value name="decimal"></value>
+                <value name="string"></value>
+            </valid-values>
+        </flag>
         <model>
-            <!-- Need to model the argument
-    <argument name="argument_1">
-      <constraints>
-        <enum>on</enum>
-        <enum>off</enum>
-        <range><min>1</min><max>24</max></range>
-      </constraints>
-      <param source="#catalog" param-id="ac-10_prm_1">
-        <mapping>
-          <map from="enabled" to="1"/>
-          <map from="disabled" to="0"/>
-        </mapping>
-        <same/>
-      </param>
-    </argument>
-      -->
+            <!-- Need to model the argument -->
             <field ref="remarks"/>
         </model>
     </define-assembly>

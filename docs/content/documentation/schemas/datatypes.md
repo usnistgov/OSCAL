@@ -160,7 +160,7 @@ In XML Schema this is represented as a restriction on the built in type [date](h
     <xs:documentation>The xs:date with a required timezone.</xs:documentation>
   </xs:annotation>
   <xs:restriction base="xs:date">
-    <xs:pattern value=".+[:Z].*"/>
+    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"/>
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -185,7 +185,7 @@ In JSON Schema, this is represented as:
 ```JSON
 {
   "type": "string",
-  "format": "email",
+  "format": "idn-email",
   "pattern": ".+@.+"
 }
 ```

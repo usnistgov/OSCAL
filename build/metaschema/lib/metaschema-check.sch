@@ -87,8 +87,9 @@
             <sch:assert test="empty(@ref) or exists($decl)" role="warning">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty(@ref) or empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Flag should not be named "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
-            <sch:report test="@as-type != key('flags-by-name',@name,$composed-metaschema)/@as-type">Flag is declared with datatype '<sch:value-of select="@as-type"/>' while other flags with that name show datatype
+        <!--    <sch:report test="@as-type != key('flags-by-name',@name,$composed-metaschema)/@as-type">Flag is declared with datatype '<sch:value-of select="@as-type"/>' while other flags with that name show datatype
                 <sch:value-of select="string-join(((key('flags-by-name',@name) except .)/@as-type ! ('''' || . || '''')),', ')"/></sch:report>
+        -->
         </sch:rule>
         
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
