@@ -13,7 +13,6 @@
         "links": {
           "anyOf": [
             {
-              "type": "object",
               "$ref": "#/definitions/link"
             },
             {

@@ -13,7 +13,6 @@
         "props": {
           "anyOf": [
             {
-              "type": "object",
               "$ref": "#/definitions/prop"
             },
             {
