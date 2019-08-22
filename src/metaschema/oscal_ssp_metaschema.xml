@@ -676,16 +676,19 @@
          </field>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
-            <!-- TODO: Model specific link relationships for:
-          depends-on: component has a dependency on another component
-          validated-by:, etc.
-        -->
+            <flag ref="rel">
+               <valid-values allow-other="yes">
+                  <value name="depends-on">A reference to another component that this component has a dependency on.</value>
+                  <value name="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</value>
+                  <value name="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</value>
+               </valid-values>
+            </flag>
          </field>
          <assembly ref="supplier" min-occurs="1"/>
-         <assembly ref="proof-of-compliance" max-occurs="unbounded">
+<!--         <assembly ref="proof-of-compliance" max-occurs="unbounded">
             <group-as name="proofs-of-compliance" />
          </assembly>
-<!--         <assembly ref="control-implementation" max-occurs="unbounded">
+--><!--         <assembly ref="control-implementation" max-occurs="unbounded">
             <!-\- TODO; figure out if this should be here or later -\->
             <group-as name="control-implementations" />
          </assembly>
@@ -1175,13 +1178,17 @@
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="parameter-settings"/>
          </assembly>
+         <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="requirement" min-occurs="1" max-occurs="unbounded">
-            <group-as name="requirements"/>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
+         <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
+            <group-as name="implemented-requirements"/>
          </assembly>
-         <assembly ref="using"/>
       </model>
    </define-assembly>
 
@@ -1861,8 +1868,8 @@
 		<description>Whether subcontrols should be implicitly included, if not called.</description>
 	</define-flag>
 -->
-   <define-field name="prose" as-type="markup-multiline">
+<!--   <define-field name="prose" as-type="markup-multiline">
       <formal-name>Prose</formal-name>
       <description>Prose permits multiple paragraphs, lists, tables etc.</description>
    </define-field>
-</METASCHEMA>
+--></METASCHEMA>
