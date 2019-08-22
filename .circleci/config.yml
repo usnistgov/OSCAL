@@ -58,7 +58,7 @@ commands:
             - mvn-m2-cache-V2
       - run:
           name: Get Saxon-HE
-          command: | 
+          command: |
             mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
       - run:
           name: Build JSON Validation CLI
@@ -158,20 +158,20 @@ executors:
   java-executor:
     docker: # run the java jobs with Docker
       - image: circleci/openjdk:11-jdk-node-browsers
-    <<: *common_environment 
+    <<: *common_environment
   ruby-node-executor:
     docker: # run the ruby jobs with Docker
       - image: circleci/ruby:2.4.6-node-browsers
-    <<: *common_environment 
+    <<: *common_environment
   python-executor:
     docker: #run the python jobs with Docker
       - image: circleci/python:3.7.3-node-browsers
-    <<: *common_environment 
+    <<: *common_environment
   go-executor:
     docker: # run the steps with Docker
       - image: circleci/golang:1.12.5
-    <<: *common_environment 
-jobs: # a collection of 
+    <<: *common_environment
+jobs: # a collection of
   job-ci-skip-check:
     executor: java-executor
     steps:
@@ -287,7 +287,7 @@ jobs: # a collection of
             bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
   job-roundtrip-conversions:
     executor: python-executor
-    steps: 
+    steps:
       - *checkout
       - *attach_build_workspace
       - check-skip-build
@@ -347,7 +347,7 @@ jobs: # a collection of
             git add -f --all content
             # check for changes
             echo "Changed files:"
-            
+
             if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
               # Only deploy if something relevant has changed
               # Setup deployment
@@ -376,7 +376,7 @@ jobs: # a collection of
             cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             bundle exec jekyll build -d _site/OSCAL
-            htmlproofer --assume-extension ./_site
+            htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/" --assume-extension --log-level :debug ./_site
           environment:
             JEKYLL_ENV: production
       - *save_gem_cache
