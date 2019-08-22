@@ -380,6 +380,11 @@ jobs: # a collection of
           environment:
             JEKYLL_ENV: production
       - *save_gem_cache
+      - run:
+          name: Compress build docs
+          command: |
+            tar -zcvf "${OSCAL_BUILD_DIR}/docs.tar.gz" "${OSCAL_BUILD_DIR}/docs"
+            rm -rf "${OSCAL_BUILD_DIR}/docs"
       - *publish_artifacts
   job-build-and-deploy-website:
     executor: ruby-node-executor
