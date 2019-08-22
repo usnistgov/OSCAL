@@ -376,7 +376,7 @@ jobs: # a collection of
             cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             bundle exec jekyll build -d _site/OSCAL
-            htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/" --assume-extension --log-level :debug ./_site
+            htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/" --assume-extension --log-level :debug ./_site
           environment:
             JEKYLL_ENV: production
       - *save_gem_cache

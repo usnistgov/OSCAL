@@ -176,7 +176,7 @@ In JSON Schema, this is represented as:
 
 ### email
 
-An email address string formatted acording to [section 3.4.1](https://tools.ietf.org/html/rfc5322#section-3.4.1) of RFC 5322.
+An email address string formatted acording to [RFC 6531](https://tools.ietf.org/html/rfc6531).
 
 In XML Schema this is represented as the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) until a suitable pattern can be developed.
 
