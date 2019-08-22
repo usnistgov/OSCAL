@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/group-as-singleton-or-array-optional-schema.json",
+  "$comment": "Metaschema Unit Test: group-as: JSON Schema",
+  "type": "object",
+  "definitions": {
+    "parent": {
+      "title": "parent",
+      "description": "parent assembly",
+      "$id": "#/definitions/parent",
+      "type": "object",
+      "properties": {
+        "props": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/prop"
+            },
+            {
+              "type": "array",
+              "items": {"$ref": "#/definitions/prop"},
+              "minItems": 2
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "prop": {
+      "title": "prop",
+      "description": "prop field",
+      "$id": "#/definitions/prop",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "parent": {"$ref": "#/definitions/parent"}
+  }
+}

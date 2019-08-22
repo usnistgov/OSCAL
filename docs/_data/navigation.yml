@@ -9,7 +9,7 @@
 # `primary.links` to "primary":
 #
 # primary:
-#   links: primary  
+#   links: primary
 #
 primary:
   - text: Home
@@ -36,6 +36,15 @@ secondary:
 learnmore:
   - text: Learn More
     href: /learnmore/
+    addnav:
+      - text: For Security Professionals
+        href: /learnmore/securitypros/
+      - text: For Assessors
+        href: /learnmore/assessors/
+      - text: For Tool Developers
+        href: /learnmore/tooldevelopers/
+      - text: For Policy Authors
+        href: /learnmore/contentcreators/
   - text: Challenges Addressed
     href: /learnmore/challenges/
   - text: Project Goals
@@ -51,8 +60,6 @@ architecture:
   - text: Architecture
     href: /docs/
     subnav: true
-  - text: Schema Reference
-    href: /docs/schemas/
   - text: Relations to Documentary Encoding Standards
     href: /docs/relations/
 
@@ -73,14 +80,56 @@ resources:
 schemas:
   - text: Schema Reference
     href: /docs/schemas/
-  - text: Catalog Schema
-    href: /docs/schemas/oscal-catalog-xml/
-    model: catalog
-  - text: Profile Schema
-    href: /docs/schemas/oscal-profile-xml/
-    model: profile
-  - text: OSCAL Prose Model
-    href: /docs/schemas/oscal-prose/
+  - text: OSCAL Data Types
+    href: /docs/schemas/datatypes/
+  - text: Catalog Model
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-catalog-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-catalog-xml/
+      model: oscal-catalog-xml
+    - text: JSON Model Map
+      href: /docs/maps/oscal-catalog-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-catalog-json/
+      model: oscal-catalog-json
+  - text: Profile Model
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-profile-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-profile-xml/
+      model: oscal-profile-xml
+    - text: JSON Model Map
+      href: /docs/maps/oscal-profile-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-profile-json/
+      model: oscal-profile-json
+  - text: Component Model
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-component-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-component-xml/
+      model: oscal-component-xml
+    - text: JSON Model Map
+      href: /docs/maps/oscal-component-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-component-json/
+      model: oscal-component-json
+  - text: System Security Plan Model
+    addnav:
+    - text: XML Model Map
+      href: /docs/maps/oscal-ssp-xml/
+    - text: XML Schema
+      href: /docs/schemas/oscal-ssp-xml/
+      model: oscal-ssp-xml
+    - text: JSON Model Map
+      href: /docs/maps/oscal-ssp-json/
+    - text: JSON Schema
+      href: /docs/schemas/oscal-ssp-json/
+      model: oscal-ssp-json
 
 community:
   - text: Community
@@ -88,8 +137,7 @@ community:
   - text: Contribute on Github
     href: https://github.com/usnistgov/OSCAL
     external: true
-    
+
 footer:
   - text: Documentation
     href: /docs/
-

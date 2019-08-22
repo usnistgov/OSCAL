@@ -75,7 +75,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       # xml)
         # TODO: Add support for XML schema validation
       json)
-        validate_json "$OSCALDIR/build/ci-cd/json-schema-schema.json" "$schema"
+        result=$(validate_json "$OSCALDIR/build/ci-cd/json-schema-schema.json" "$schema")
         cmd_exitcode=$?
         ;;
       *)
@@ -85,6 +85,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       esac
       
       if [ $cmd_exitcode -ne 0 ]; then
+        echo "${P_ERROR}${result}${P_END}"
         echo "${P_ERROR}Invalid ${format^^} schema '$schema'.${P_END}"
         exitcode=1
       fi

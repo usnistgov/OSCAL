@@ -69,9 +69,10 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
           # validate generated file
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
-          validate_json "$schema" "$dest"
+          result=$(validate_json "$schema" "$dest")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}${result}${P_END}"
             echo "${P_ERROR}Validation of '${dest}' failed.${P_END}"
             exitcode=1
           fi
@@ -79,9 +80,10 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           # produce pretty JSON
           dest_pretty="$working_dir/${newpath}.${altformat}"
           jq . "$dest" > "$dest_pretty"
-          validate_json "$schema" "$dest_pretty"
+          result=$(validate_json "$schema" "$dest_pretty")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}${result}${P_END}"
             echo "${P_ERROR}Validation of '${dest_pretty}' failed.${P_END}"
             exitcode=1
           fi

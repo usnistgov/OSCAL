@@ -74,3 +74,4 @@ echo WORKING DIR        = "${WORKING_DIR}"
 [[ "$PERFORM_GENERATION" == "YES" ]] && ("$CIDIR/generate-content-converters.sh" "$WORKING_DIR" "$@" || ("Failed to generate content converters" && exit 4) )
 [[ "$PERFORM_CONVERSION" == "YES" ]] && ("$CIDIR/copy-and-convert-content.sh" "$WORKING_DIR" "$@" || ("Failed to convert content" && exit 5) )
 [[ "$PERFORM_VALIDATION" == "YES" ]] && ("$CIDIR/validate-round-trips.sh" "$WORKING_DIR" "$@" || ("Failed to validate XML->JSON->XML round-trips" && exit 6) )
+[[ "$PERFORM_GENERATION" == "YES" ]] && ("$CIDIR/generate-model-documentation.sh" "$WORKING_DIR" "$@" || ("Failed to generate website schema model content" && exit 7) )

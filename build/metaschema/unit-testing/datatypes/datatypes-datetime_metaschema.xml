@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: datatypes-dateTime</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-datatypes-dateTime</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime</namespace>
+
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <flag name="flag-datetime" as-type="dateTime-with-timezone" required="yes">
+      <formal-name>Date and Time Flag</formal-name>
+      <description>datetime flag</description>
+    </flag>
+    <model>
+      <field ref="field-datetime" max-occurs="unbounded">
+        <group-as name="field-datetimes"/>
+      </field>
+      <assembly ref="child" max-occurs="unbounded">
+        <group-as name="children"/>
+      </assembly>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="child">
+    <formal-name>child</formal-name>
+    <description>child assembly</description>
+    <model>
+      <field ref="field-datetime" min-occurs="1"/>
+    </model>
+  </define-assembly>
+
+  <define-field name="field-datetime" as-type="dateTime-with-timezone">
+    <formal-name>Date and Time</formal-name>
+    <description>With time zone</description>
+  </define-field>
+
+</METASCHEMA>

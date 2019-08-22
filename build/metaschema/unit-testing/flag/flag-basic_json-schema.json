@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://csrc.nist.gov/ns/oscal/unit-testing/flag-basic-schema.json",
+    "$comment": "Metaschema Unit Test: flag: basic flag: JSON Schema",
+    "type": "object",
+    "definitions": {
+        "parent": {
+            "title": "parent",
+            "description": "parent assembly",
+            "$id": "#/definitions/parent",
+            "type": "object",
+            "properties": {
+                "flag": {
+                  "title": "Flag",
+                  "description": "A basic flag",
+                  "type": "string"
+                },
+                "flag-required": {
+                  "title": "Required Flag",
+                  "description": "A basic required flag",
+                  "type": "string"
+                }
+            },
+            "required": [ "flag-required" ],
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "parent": {"$ref": "#/definitions/parent"}
+    }
+}

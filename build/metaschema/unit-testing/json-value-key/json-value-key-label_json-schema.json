@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/json-value-key-label-schema.json",
+  "$comment": "Metaschema Unit Test: json-value-key-label: JSON Schema",
+  "type": "object",
+  "definitions": {
+    "parent": {
+      "title": "parent",
+      "description": "parent assembly",
+      "$id": "#/definitions/parent",
+      "type": "object",
+      "properties": {
+        "links": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/link"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/link"
+              },
+              "minItems": 2
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "link": {
+      "title": "Link",
+      "description": "A reference to a local or remote resource",
+      "$id": "#/definitions/link",
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri-reference",
+          "title": "hypertext reference",
+          "description": "A link to a document or document fragment (actual, nominal or projected)"
+        },
+        "rel": {
+          "type": "string",
+          "title": "Relation",
+          "description": "Purpose of the link"
+        },
+        "media-type": {
+          "type": "string",
+          "title": "Media type",
+          "description": "Describes the media type of a linked resource"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "href"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "parent": {
+      "$ref": "#/definitions/parent"
+    }
+  }
+}

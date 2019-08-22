@@ -20,6 +20,7 @@ gem 'uswds-jekyll', :git => 'https://github.com/18F/uswds-jekyll.git'
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
+  gem 'octopress-debugger'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

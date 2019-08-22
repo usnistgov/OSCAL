@@ -2,21 +2,26 @@
 
 This subdirectory contains source code for the OSCAL Pages web site. For development you may need to know how to run it.
 
-## Developing with Ruby
+## Developing with Jekyll
 
-Jekyll, a Ruby application, is documented with a Quickstart here: https://jekyllrb.com/docs/
+Jekyll, a static web site generator implemented in Ruby, is documented with a Quickstart here: https://jekyllrb.com/docs/ 
 
 The USWDS framework, a Jekyll customization we are using, is documented here: https://designsystem.digital.gov/
 
+
 On Windows 10, for best results, install a Linux subsystem (LSW) such as an Ubuntu VM. This avoids Windows-related Jekyll configuration madness.
 
-The first time you run the installation, Ruby sources must be acquired and compiled:
+```
+sudo gem install bundler -v 1.17.3
+```
+
+Next after you have installed the bundler gem, Ruby sources for Jekyll (as configured in the Gemfile) must be acquired and compiled:
 
 ```
 bundle install
 ```
 
-To build a site for preview, open a command line in the  `docs` subdirectory (where the file you are reading is located):
+Now you can run Jekyll. To build a site for preview (from the `docs` subdirectory):
 
 ```
 bundle exec jekyll build
@@ -32,7 +37,7 @@ JEKYLL_ENV=production bundle exec jekyll build
 To serve the site, rebuilding on changes to contents or templates:
 
 ```
-jekyll serve
+JEKYLL_ENV=production bundle exec jekyll serve
 ```
 
 or even

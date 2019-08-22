@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/json-value-key-field-schema.json",
+  "$comment": "Metaschema Unit Test: json-value-key-field: JSON Schema",
+  "type": "object",
+  "definitions": {
+    "parent": {
+      "title": "parent",
+      "description": "parent assembly",
+      "$id": "#/definitions/parent",
+      "type": "object",
+      "properties": {
+        "props": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/prop"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/prop"
+              },
+              "minItems": 2
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "prop": {
+      "title": "Property",
+      "description": "A value with a name, attributed to the containing control, subcontrol, part, or group.",
+      "$id": "#/definitions/prop",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Identifier",
+          "description": "Unique identifier of the containing object"
+        },
+        "ns": {
+          "type": "string",
+          "title": "Namespace",
+          "description": "A namespace qualifying the name."
+        },
+        "class": {
+          "type": "string",
+          "title": "Class",
+          "description": "Indicating the type or classification of the containing object"
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 4
+    }
+  },
+  "properties": {
+    "parent": {
+      "$ref": "#/definitions/parent"
+    }
+  }
+}

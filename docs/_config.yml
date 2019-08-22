@@ -31,6 +31,14 @@ collections:
     title: Profile XML
   oscal-profile-json:
     title: Profile JSON
+  oscal-component-xml:
+    title: Component XML
+  oscal-component-json:
+    title: Component JSON
+  oscal-ssp-xml:
+    title: System Security Plan XML
+  oscal-ssp-json:
+    title: System Security Plan JSON
 
 markdown: kramdown
 highlighter: rouge
@@ -45,6 +53,7 @@ kramdown:
 theme: uswds-jekyll
 plugins:
   - jekyll-feed
+  - octopress-debugger
 
 exclude:
   - Gemfile

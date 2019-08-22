@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://csrc.nist.gov/ns/metaschema/unit-test/group-as-array-schema.json",
+  "$comment": "Metaschema Unit Test: group-as: JSON Schema",
+  "type": "object",
+  "definitions": {
+    "parent": {
+      "title": "parent",
+      "description": "parent assembly",
+      "$id": "#/definitions/parent",
+      "type": "object",
+      "properties": {
+        "props": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/prop"},
+          "minItems": 1
+        }
+      },
+      "required": ["props"],
+      "additionalProperties": false
+    },
+    "prop": {
+      "title": "prop",
+      "description": "prop field",
+      "$id": "#/definitions/prop",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "parent": {"$ref": "#/definitions/parent"}
+  }
+}

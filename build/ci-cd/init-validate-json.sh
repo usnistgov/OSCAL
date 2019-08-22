@@ -36,10 +36,14 @@ validate_json() {
     fi
 
     java -cp "$classpath" gov.nist.oscal.json.JsonCLI "$@" "${extra_params[@]}"
-
-    if [ "$?" -ne 0 ]; then
-        echo "${P_ERROR}Error running JsonCLI.${P_END}"
-        return 3
+    exitcode=$?
+    if [ "$exitcode" -ne 0 ]; then
+        if [ "$exitcode" -gt 1 ]; then
+            echo "${P_ERROR}Error running JsonCLI.${P_END}"
+        else
+            echo "${json_file} is invalid."
+        fi
+        return $exitcode
     fi
     return 0
 }

@@ -27,6 +27,7 @@ xspec/*.html
 /xml
 /json
 /svrl
+/metaschema/unit-testing
 /.skipbuild
 /.runbuild
 

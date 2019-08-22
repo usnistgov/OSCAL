@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns="http://www.w3.org/1999/xhtml"
                 version="1.0"
                 xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   exclude-result-prefixes="xs m">
+                xmlns="http://www.w3.org/1999/xhtml"
+                exclude-result-prefixes="xs m">
+   
    
    <xsl:template match="m:METASCHEMA/m:short-name">
-      <p>The short name (file identifier) for this schema is <i><xsl:apply-templates/></i>. It is used internally when an
-         identifier is called for, and may appear in file names of schema artifacts.</p>
+      <p>
+         <span class="usa-label">Short name</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
+   </xsl:template>
+   
+   <xsl:template match="m:METASCHEMA/m:schema-version">
+      <p>
+         <span class="usa-label">Schema version</span>
+         <xsl:text> </xsl:text>
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:description" mode="model">
-      <xsl:text>: </xsl:text>
-      <xsl:apply-templates/>
+      <p style="font-size: smaller">
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:remarks/m:p" mode="model">
-      <br/>
-        <xsl:apply-templates/>
+      <p style="font-size: smaller">
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:choice">
@@ -44,10 +58,10 @@
    <xsl:template match="m:valid-values">
       <xsl:choose>
         <xsl:when test="@allow-other and @allow-other='yes'">
-          <p>The value can be one of the following:</p>
+          <p>The value may be locally defined, or one of the following:</p>
         </xsl:when>
         <xsl:otherwise>
-          <p>The value can only be one of the following:</p>
+          <p>The value must be one of the following:</p>
         </xsl:otherwise>
       </xsl:choose>
       <ul>
@@ -59,8 +73,8 @@
      <li><strong><xsl:value-of select="@name"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
    </xsl:template>
 
-  <xsl:template  match="m:remarks">
-      <div class="remarks">
+  <xsl:template match="m:remarks">
+     <div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em">
          <xsl:apply-templates/>
       </div>
    </xsl:template>
@@ -122,7 +136,7 @@
    </xsl:template>
     
    <xsl:template match="*" mode="serialize">
-      <xsl:call-template name="indent-for-pre"/>
+      <!--<xsl:call-template name="indent-for-pre"/>-->
       
       <code class="tag">&lt;<xsl:value-of select="name(.)"/>
          <xsl:for-each select="@*">
@@ -139,11 +153,11 @@
          <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
       </xsl:apply-templates>
       
-      <xsl:if test="not(text()[normalize-space(.)])">
+      <!--<xsl:if test="not(text()[normalize-space(.)])">
          <xsl:call-template name="indent-for-pre">
             <xsl:with-param name="endtag" select="true()"/>
          </xsl:call-template>
-      </xsl:if>
+      </xsl:if>-->
       <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
          <xsl:text>&gt;</xsl:text>
       </code>
@@ -175,6 +189,7 @@
          <xsl:value-of select="."/>
       </xsl:if>
    </xsl:template>
+   
    
    
 </xsl:stylesheet>

@@ -36,18 +36,20 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
       case $format in
       xml)
           schema="$working_dir/xml/schema/oscal_${model}_schema.xsd"
-          xmllint --noout --schema "$schema" "$file"
+          result=$(xmllint --noout --schema "$schema" "$file")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}${result}${P_END}"
             echo "${P_ERROR}XML schema validation failed for '$file'.${P_END}"
             exitcode=1
           fi
         ;;
       json)
           schema="$working_dir/json/schema/oscal_${model}_schema.json"
-          validate_json "$schema" "$file"
+          result=$(validate_json "$schema" "$file")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}${result}${P_END}"
             echo "${P_ERROR}JSON schema validation failed for '$file'.${P_END}"
             exitcode=1
           fi

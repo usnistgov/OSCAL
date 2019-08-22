@@ -16,7 +16,7 @@ OSCAL is being designed and created over a series of development epics leveragin
 
 Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in an incremental release of OSCAL resources.
 
-- OSCAL 1.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1): Develop the OSCAL Catalog and Profile models
+- OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1): Develop the OSCAL Catalog and Profile models
 
   The initial OSCAL work encompasses the [catalog]({{ site.baseurl }}/docs/catalog/) and [profile]({{ site.baseurl }}/docs/profile/) concepts of the OSCAL [architecture]({{ site.baseurl }}/docs/). There are several types of users who will benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
 
@@ -32,8 +32,8 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
   - **Auditors/assessors:** performing audits/assessments on demand with minimal effort
   - **Policy personnel:** identifying systemic problems that necessitate changes to organizational security policies
 
-- OSCAL 1.0 [Milestone 2](https://github.com/usnistgov/OSCAL/milestone/2): Develop the OSCAL Implementation models
-- OSCAL 1.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3): Develop the OSCAL Assessment and Assessment Results models
-- OSCAL 1.0 [Final Release](https://github.com/usnistgov/OSCAL/milestone/4): Publish an OSCAL 1.0 Specification
+- OSCAL 1.0.0 [Milestone 2](https://github.com/usnistgov/OSCAL/milestone/2): Develop the OSCAL Implementation models
+- OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3): Develop the OSCAL Assessment and Assessment Results models
+- OSCAL 1.0.0 [Final Release](https://github.com/usnistgov/OSCAL/milestone/4): Publish an OSCAL 1.0 Specification
 
 To accelerate development, we are not focused on developing a formal specification for OSCAL until the final milestone. Until then, the OSCAL models will be [documented]({{ site.baseurl }}/docs/schemas/) on this site. This will allow us to work on a formal specification once most of the major development of OSCAL is completed. Until that point, adopters of OSCAL will find all of the resources they need to develop content and tools on this site.

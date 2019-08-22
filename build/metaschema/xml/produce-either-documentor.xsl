@@ -57,6 +57,8 @@
             <xsl:call-template  name="furniture"/>
             <xsl:comment> XHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHX </xsl:comment>
             <xsl:text>&#xA;</xsl:text>
+            
+             
             <xsl:apply-templates/>
 
 
@@ -98,14 +100,16 @@
         <XSLT:import href="../lib/metaschema-{$target-format}docs-jekyll-uswds.xsl"/>
         <XSLT:preserve-space elements="*"/>
         
+        <XSLT:param name="schema-path" select="'{ $schema-path }'"/>
+        
         <XSLT:variable name="home" select="/"/>
-        <XSLT:key name="declarations-by-name"
-            match="define-field | define-assembly | define-flag" use="@name"/>
+        <!--<XSLT:key name="declarations-by-name"
+            match="define-field | define-assembly | define-flag" use="@name"/>-->
         
         <!-- output method must be text for good markdown including unescaped code snips   -->
-        <XSLT:output method="text"/>
+        <!--<XSLT:output method="text"/>-->
         
-        <XSLT:template priority="5"
+        <!--<XSLT:template priority="5"
             match="define-assembly[exists(@acquire-from)] |
             define-field[exists(@acquire-from)] |
             define-flag[exists(@acquire-from)]"
@@ -118,7 +122,7 @@
             <XSLT:if test="empty($definition)">
                 <XSLT:comment expand-text="true"> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</XSLT:comment>
                     </XSLT:if>
-        </XSLT:template>
+        </XSLT:template>-->
         
         <XSLT:template match="node() | @*" mode="expand-example">
             <XSLT:copy copy-namespaces="no">
@@ -132,7 +136,7 @@
         
         <XSLT:template match="/">
             <XSLT:variable name="html">
-                <XSLT:for-each select="$expanded/*">
+                <XSLT:for-each select="$expanded">
                     <html xmlns="http://www.w3.org/1999/xhtml">
                         <head>
                             <XSLT:call-template name="css"/>

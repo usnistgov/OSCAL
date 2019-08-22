@@ -24,7 +24,7 @@ layout: post
 
 ## News
 
-* [FedRAMP Looks to NIST for Security Control Refinements](https://gcn.com/articles/2018/06/14/fedramp-updates.aspx)
+* <a href="https://gcn.com/articles/2018/06/14/fedramp-updates.aspx" data-proofer-ignore="yes">FedRAMP Looks to NIST for Security Control Refinements</a>
 * [Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL](https://blog.docker.com/2018/05/automating-compliance-docker-ee-oscal/) 
 * [Federal Business Council Presentation](https://www.fbcinc.com/e/FITSC/presentations/Iorga-FITSC-CSAT_with_RMFOSCAL.pdf)
 * [What's Next for FedRAMP? Automation, new authorizations later this year](https://federalnewsnetwork.com/federal-cloud-report/2018/06/whats-next-for-fedramp-automation-new-authorizations-and-more-later-this-year/)

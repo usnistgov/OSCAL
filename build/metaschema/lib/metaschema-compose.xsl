@@ -159,17 +159,17 @@
             <xsl:copy>
                 <xsl:call-template name="mark-module"/>
                 <xsl:copy-of select="@*"/>
-                <xsl:apply-templates mode="#current" select="key, value-key, flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/formal-name"/>
                 <xsl:if test="$verbose and ($me-and-mine/formal-name != $me-and-mine/formal-name)">
                     <xsl:message expand-text="true">Formal name override for  { replace(local-name(),'^define-','')} '{ @name }': using "{ $me-and-mine[last()]/formal-name }"</xsl:message>
                 </xsl:if>
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
+                <xsl:apply-templates mode="#current" select="json-key, json-value-key, flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/valid-values"/>
+                <xsl:copy-of select="model"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
                 </xsl:apply-templates>
-                <xsl:copy-of select="model"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/example">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
                 </xsl:apply-templates>
@@ -200,16 +200,14 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template mode="digest" match="flag | key | value-key">
+    <xsl:template mode="digest" match="flag | json-key | json-value-key">
         <xsl:copy>
-            <xsl:attribute name="datatype">string</xsl:attribute>
-            <xsl:copy-of select="key('definition-by-name',@name)/@datatype"/>
+            <xsl:copy-of select="key('definition-by-name',@name)/@as-type"/>
             <!-- Allowing local datatype to override the definition's datatype -->
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
     
     <xsl:template name="mark-module">
         <xsl:copy-of select="ancestor-or-self::METASCHEMA/@module"/>
@@ -221,7 +219,7 @@
     <xsl:template match="define-assembly" mode="collect-references">
         <xsl:param name="ref-stack" tunnel="yes" required="yes"/>
         <xsl:if test="not(@name = $ref-stack)">
-            <xsl:sequence select="(. | flag | key)/string(@name)"/>
+            <xsl:sequence select="@name, flag/@ref"/>
             <xsl:apply-templates select="model" mode="#current">
                 <xsl:with-param tunnel="true" name="ref-stack" select="$ref-stack,@name"/>
             </xsl:apply-templates>
@@ -229,7 +227,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" mode="collect-references">
-        <xsl:sequence select="(. | flag)/string(@name)"/>
+        <xsl:sequence select="@name, flag/@ref"/>
     </xsl:template>
     
     <xsl:template match="model | model//*" mode="collect-references">
@@ -237,8 +235,8 @@
     </xsl:template>
     
     <!-- Matching inside the $distinct-definitions variable, so traversing only applicable definitions -->
-    <xsl:template priority="10" match="field | fields | assembly | assemblies" mode="collect-references">
-        <xsl:apply-templates select="key('definition-by-name',@named,root())" mode="#current"/>
+    <xsl:template priority="10" match="field | assembly" mode="collect-references">
+        <xsl:apply-templates select="key('definition-by-name',@ref,root())" mode="#current"/>
     </xsl:template>
         
     <!--hitting anything but a define-assembly, we are done collecting references-->
