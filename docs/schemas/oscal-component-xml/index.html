@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Basic Page Needs
+================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific Metas
+================================================== -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Reference - XML Component Model | OSCAL</title>
+
+
+
+<meta name="description" content="OSCAL Component Model XML Schema Reference">
+
+
+
+<link rel="shortcut icon" type="image/ico"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="icon" type="image/png"
+  href="/OSCAL/assets/img/oscal-gears-icon-140.png">
+
+<link rel="icon" type="image/png"
+  sizes="192x192"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="72x72"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="114x114"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="144x144"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+
+ 
+
+
+
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="/OSCAL/assets/css/main.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42404149-54', 'auto');
+
+  // anonymize user IPs (chops off the last IP triplet)
+  ga('set', 'anonymizeIp', true);
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+
+
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
+    <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
+</head>
+
+<body class="  site-wide">
+
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+ 
+
+
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner"> <img src="/OSCAL/assets/uswds/img/favicons/favicon-57.png" alt="U.S. flag">
+        <p>An official website of the United States government</p> <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner"> <span class="usa-banner-button-text">Here's how you know</span> </button> </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p> <strong>The .gov means it’s official.</strong> <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p> <strong>The site is secure.</strong> <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    <header class="usa-header usa-header-extended" role="banner">
+      
+
+      <div class="nist-header" id="nist-header" role="banner">
+
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-header__logo-link"
+          rel="home" style="text-decoration: none">
+          <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="32" viewBox="0 0 24 32">
+            <path d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z"></path>
+          </svg>
+          <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-237 385.7 109.7 29.3">
+            <title>National Institute of Standards and Technology</title>
+            <g>
+              <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+          c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z" />
+              <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+          c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+          c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+          C-194.9,386.1-195,386.1-195,386.1z" />
+            </g>
+          </svg>
+        </a>
+
+      </div>
+
+      
+        <div class="usa-navbar">
+          <button class="usa-menu-btn">Menu</button>
+          <div class="usa-logo" id="extended-mega-logo">
+            <em class="usa-logo-text">
+              <a href="/OSCAL/" title="Home">
+                OSCAL: the Open Security Controls Assessment Language
+              </a>
+            </em>
+          </div>
+        </div>
+
+        <nav role="navigation" class="usa-nav">
+          <div class="usa-nav-inner">
+            <button class="usa-nav-close">
+              <img src="/OSCAL/assets/uswds/img/close.svg" alt="close">
+            </button>
+
+            
+            
+            
+            <ul class="usa-nav-primary usa-accordion">
+              
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/">
+            <span>Home</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/learnmore/">
+            <span>Learn More</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/schemas/">
+            <span>Schema Reference</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/community/">
+            <span>Community</span>
+          </a>
+          
+          </li>
+          
+          </ul>
+          
+
+          
+
+          
+          
+          <div class="usa-nav-secondary">
+            <ul class="usa-unstyled-list usa-nav-secondary-links">
+              
+              
+              <li>
+                <a href="/OSCAL/community/"
+                  >
+                  Get Involved
+                </a>
+              </li>
+              
+              <li>
+                <a href="/OSCAL/contact/"
+                  >
+                  Contact Us
+                </a>
+              </li>
+              
+              
+              <li>
+                <div role="search" style="margin: 0.4rem 0 0 0">
+                  <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small">
+                    <input id="affiliate" name="affiliate" type="hidden" value="oscal" />
+                    <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                    <button type="submit" name="commit" />
+                  </form>
+                </div>
+              </li>
+              
+            </ul>
+          </div>
+          
+
+
+      </div>
+      </div>
+      </nav>
+      
+    </header>
+    <div class="usa-overlay"></div>
+      
+     
+
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav ">
+    <nav>
+  <ul class="usa-sidenav-list">
+        
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/"
+        
+         >
+        Schema Reference
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/datatypes/"
+        
+         >
+        OSCAL Data Types
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Catalog Model
+      </a>
+      
+
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Profile Model
+      </a>
+      
+
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Component Model
+      </a>
+      
+
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-xml/"
+         class="usa-current" 
+         >
+        XML Schema
+      </a>
+      
+      <!-- _current = true and page.subnav = true -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+      </ul>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+  
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_component-definition"><code>component-definition (root element)</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_address"><code>address</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_argument"><code>argument</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_artifact"><code>artifact</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_back-matter"><code>back-matter</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_can-meet-requirement-set"><code>can-meet-requirement-set</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_capability"><code>capability</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_citation"><code>citation</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_component"><code>component</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_configuration-method"><code>configuration-method</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_configuration"><code>configuration</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_control-implementation"><code>control-implementation</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_implementation-source"><code>implementation-source</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_implementation"><code>implementation</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_implemented-requirement"><code>implemented-requirement</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_incorporates-capability"><code>incorporates-capability</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_incorporates-component"><code>incorporates-component</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_mechanism"><code>mechanism</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_metadata"><code>metadata</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_notes"><code>notes</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_org"><code>org</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_party"><code>party</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_person"><code>person</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_resource"><code>resource</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_rlink"><code>rlink</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_role"><code>role</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_supplier"><code>supplier</code></a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_using"><code>using</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_verification-method"><code>verification-method</code></a>
+      </li>
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_verification-process"><code>verification-process</code></a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="#oscal-component-xml_with-argument"><code>with-argument</code></a>
+      </li>
+    
+  
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        System Security Plan Model
+      </a>
+      
+
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
+  
+    <h1>Schema Reference - XML Component Model</h1>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="METASCHEMA usa-content"><p><span class="usa-label">Schema download</span> <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd">oscal_component_schema.xsd</a></p><p><span class="usa-label">Schema version</span> 1.0.0-milestone2</p><p><span class="usa-label">Short name</span> oscal-component</p><p><span class="usa-label">XML namespace</span> <code>http://csrc.nist.gov/ns/oscal/1.0</code></p><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">The OSCAL Implementation Component format can be used to describe the implementation of controls in a <a href="#component"><code>component</code></a> or a set of components grouped as a <code>capabiity</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, proceedure, or policy.</p><p class="p">The root of the OSCAL Implementation Component format is <a href="#component-definition"><code>component-definition</code></a>.</p><p class="p">NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p></div></div>
+
+
+
+<div class="definition define-field" id="addr-line"><header><h4 id="oscal-component-xml_addr-line" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Address line</b>:
+                  <code>addr-line</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_addr-line"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A single line of an address.</p><p>This element appears inside: <a href="#address">address</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="address"><header><h4 id="oscal-component-xml_address" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Address</b>:
+                  <code>address</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_address"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A postal address.</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p><div class="model"><p>The <code>address</code> element has the following contents (in order):</p><ul><li><a href="#type">type</a> attribute  (<i>optional</i>), type <b>string</b><p style="font-size: smaller">Indicates the type of address.</p><p>The value may be locally defined, or one of the following:</p><ul>
+            <li><strong>home</strong>: A home address.</li>
+            <li><strong>work</strong>: A work address.</li>
+         </ul></li><li><a href="#addr-line"><code>addr-line</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A single line of an address.</p></li><li><a href="#city"><code>city</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">City, town or geographical region for mailing address</p></li><li><a href="#state"><code>state</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">State, province or analogous geographical region for mailing address</p></li><li><a href="#postal-code"><code>postal-code</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">Postal or ZIP code for mailing address</p></li><li><a href="#country"><code>country</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">Country for mailing address</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="algorithm"><header><h4 id="oscal-component-xml_algorithm" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Hash algorithm</b>: <code>algorithm</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_algorithm"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">Method by which a hash is derived</p><p>This attribute appears on: <a href="#hash">hash</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Valid values MUST be a value defined in the W3C <a data-proofer-ignore="yes" href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="argument"><header><h4 id="oscal-component-xml_argument" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">argument</b>:
+                  <code>argument</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_argument"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#configuration">configuration</a>.</p><div class="model"><p>The <code>argument</code> element has the following contents:</p><ul><li><a id="argument-name"><code>name</code></a><code>name</code> attribute <i> (required)</i>, type <b>NCName</b><p style="font-size: smaller">The name of an argument to be passed into a script.</p></li><li><a id="argument-type"><code>type</code></a><code>type</code> attribute <i> (required)</i>, type <b>NCName</b><p style="font-size: smaller">The data type of the argument.</p><p>The value must be one of the following:</p><ul>
+                <li><strong>duration-seconds</strong></li>
+                <li><strong>duration-minutes</strong></li>
+                <li><strong>duration-hours</strong></li>
+                <li><strong>duration-days</strong></li>
+                <li><strong>integer</strong></li>
+                <li><strong>decimal</strong></li>
+                <li><strong>string</strong></li>
+            </ul></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="artifact-id"><header><h4 id="oscal-component-xml_artifact-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Artifact Identifier Reference</b>: <code>artifact-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_artifact-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>IDREF</b></p><p class="description">A reference to an artifact defined on the component.</p><p>This attribute appears on: <a href="#implementation">implementation</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="artifact"><header><h4 id="oscal-component-xml_artifact" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Configuration</b>:
+                  <code>artifact</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_artifact"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Information on how to use the component (for documentary types of components).</p><p>This element appears inside: <a href="#component">component</a>.</p><div class="model"><p>The <code>artifact</code> element has the following contents (in order):</p><ul><li><a id="artifact-id"><code>id</code></a><code>id</code> attribute <i> (required)</i>, type <b>ID</b><p style="font-size: smaller">A unique identifier for the artifact.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#implementation-source"><code>implementation-source</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#verification-process"><code>verification-process</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="back-matter"><header><h4 id="oscal-component-xml_back-matter" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Back matter</b>:
+                  <code>back-matter</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_back-matter"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A collection of citations and resource references.</p><p>This element appears inside: <a href="#component-definition">component-definition</a>.</p><div class="model"><p>The <code>back-matter</code> element has the following contents (in order):</p><ul><li><a href="#citation"><code>citation</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A citation to resources, either external or internal (by means of internal cross-reference).</p></li><li><a href="#resource"><code>resource</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A resource associated with the present document.</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Provides a collection of identified <a href="#citation"><code>citation</code></a> and <a href="#resource"><code>resource</code></a> objects that can be referenced by a <a href="#link"><code>link</code></a> with a <a href="#rel"><code>rel</code></a> value of "reference" and an <a href="#href"><code>href</code></a> value that is a fragment "#" followed by a reference to a citation identifier. A <a href="#citation"><code>citation</code></a> can reference a <a href="#resource"><code>resource</code></a> by specifying a local target value using the same fragment-identifier approach.</p></div></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="back-matter_example1_xml">Example: Use of link, citation, and resource</button><div id="back-matter_example1_xml" class="usa-accordion-content"><div class="remarks"><p class="p">The following is a contrived example to show the use of link, citation, and
+               resource.</p></div><pre>
+&lt;oscal&gt;
+            
+&lt;link rel="reference" href="#citation1"&gt;My citation&lt;/link&gt;
+            ...snip...
+            
+&lt;back-matter&gt;
+               
+&lt;citation id="citation1"&gt;
+                  
+&lt;target&gt;#resource1&lt;/target&gt;
+               &lt;/citation&gt;
+               
+&lt;resource id="resource1"&gt;
+                  
+&lt;rlink href="https://example.org/some-resource"&gt;&lt;/rlink&gt;
+               &lt;/resource&gt;
+            &lt;/back-matter&gt;
+         &lt;/oscal&gt;</pre></div></li></ul></div>
+
+
+
+<div class="definition define-field" id="base64"><header><h4 id="oscal-component-xml_base64" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Base64</b>:
+                  <code>base64</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_base64"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>base64</b></p><p class="description"></p><p>This element appears inside: <a href="#resource">resource</a>.</p><div class="model"><p>The <code>base64</code> element may have attributes:</p><ul><li><a href="#filename">filename</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#media-type">media-type</a> attribute  (<i>optional</i>), type <b>string</b></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="can-meet-requirement-set"><header><h4 id="oscal-component-xml_can-meet-requirement-set" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Can Meet</b>:
+                  <code>can-meet-requirement-set</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_can-meet-requirement-set"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Defines what sets of controls are supported by the component.</p><p>This element appears inside: <a href="#control-implementation">control-implementation</a>.</p><div class="model"><p>The <code>can-meet-requirement-set</code> element has the following contents (in order):</p><ul><li><a href="#source">source</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#implemented-requirement"><code>implemented-requirement</code></a> elements <i class="color-primary">[1 to ∞]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="capability"><header><h4 id="oscal-component-xml_capability" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Capability</b>:
+                  <code>capability</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_capability"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A grouping of other components and/or capabilities.</p><p>This element appears inside: <a href="#component-definition">component-definition</a>.</p><div class="model"><p>The <code>capability</code> element has the following contents (in order):</p><ul><li><a id="capability-id"><code>id</code></a><code>id</code> attribute <i> (required)</i>, type <b>ID</b><p style="font-size: smaller">A unique identifier for a capability.</p></li><li><a id="capability-name"><code>name</code></a><code>name</code> attribute <i> (required)</i>, type <b>string</b><p style="font-size: smaller">The capability's human-readable name.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#incorporates-capability"><code>incorporates-capability</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#incorporates-component"><code>incorporates-component</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#control-implementation"><code>control-implementation</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Defines how the component or capability supports a set of controls.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="citation"><header><h4 id="oscal-component-xml_citation" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Citation</b>:
+                  <code>citation</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_citation"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A citation to resources, either external or internal (by means of internal cross-reference).</p><p>This element appears inside: <a href="#back-matter">back-matter</a>.</p><div class="model"><p>The <code>citation</code> element has the following contents (in order):</p><ul><li><a href="#id">id</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#target"><code>target</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">An address for retrieval of a citation</p></li><li><a href="#title"><code>title</code></a> element <i class="color-primary">[0 or 1]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A title for display and navigation</p></li><li><a href="#desc"><code>desc</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A short textual description</p></li><li><a href="#doc-id"><code>doc-id</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A document identifier qualified by an identifier <a href="#type"><code>type</code></a>.</p></li><li>Any element (in a foreign namespace)</li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information will be handled by use of a <a href="#doc-id"><code>doc-id</code></a>. Use of a canonical identifier such as a DOI is recommended for any citation.</p><p class="p">Within this element, a generic <a href="#title"><code>title</code></a> can cite a title. If citation information takes the form of a bibliographic entry, then <a href="#desc"><code>desc</code></a> can be used to provide it.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="city"><header><h4 id="oscal-component-xml_city" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">City</b>:
+                  <code>city</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_city"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">City, town or geographical region for mailing address</p><p>This element appears inside: <a href="#address">address</a>.</p></div>
+
+
+
+<div class="definition define-flag" id="class"><header><h4 id="oscal-component-xml_class" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Class</b>: <code>class</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_class"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>NMTOKENS</b></p><p class="description">Indicating the type or classification of the containing object</p><p>This attribute appears on: <a href="#prop">prop</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <a href="#name"><code>name</code></a> and a <a href="#ns"><code>ns</code></a> to be assigned, which can provide for more rigor in validation.</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="component-definition"><header><h4 id="oscal-component-xml_component-definition" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Component Definition</b>:
+                  <code>component-definition</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_component-definition"><button class="button-json-on">Switch to JSON</button></a></div></header><h5><code>component-definition</code> is the root (containing) element of
+               this schema. </h5><p class="description">TBD</p><div class="model"><p>The <code>component-definition</code> element has the following contents (in order):</p><ul><li><a href="#metadata"><code>metadata</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">Provides information about the publication and availability of the containing document.</p></li><li><a href="#import-component-definition"><code>import-component-definition</code></a> elements <i class="color-primary">[0 to ∞]</i>, type <b>empty</b><p style="font-size: smaller">Loads a component definition from another resource.</p></li><li><a href="#component"><code>component</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A defined component that can be part of an implemented system.</p></li><li><a href="#capability"><code>capability</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A grouping of other components and/or capabilities.</p></li><li><a href="#back-matter"><code>back-matter</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">A collection of citations and resource references.</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="component-id"><header><h4 id="oscal-component-xml_component-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Component Reference</b>: <code>component-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_component-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>IDREF</b></p><p class="description">A reference to a component by its identifier</p><p>This attribute appears on: <a href="#incorporates-component">incorporates-component</a>.</p></div>
+
+
+
+<div class="definition define-flag" id="component-type"><header><h4 id="oscal-component-xml_component-type" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Component Type</b>: <code>component-type</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_component-type"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">A category describing the purpose of the component.</p><p>This attribute appears on: <a href="#component">component</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="component"><header><h4 id="oscal-component-xml_component" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Component</b>:
+                  <code>component</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_component"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A defined component that can be part of an implemented system.</p><p>This element appears inside: <a href="#component-definition">component-definition</a>.</p><div class="model"><p>The <code>component</code> element has the following contents (in order):</p><ul><li><a id="component-id"><code>id</code></a><code>id</code> attribute <i> (required)</i>, type <b>ID</b><p style="font-size: smaller">A unique identifier for a component.</p></li><li><a id="component-name"><code>name</code></a><code>name</code> attribute <i> (required)</i>, type <b>string</b><p style="font-size: smaller">The component's short, human-readable name.</p></li><li><a href="#component-type">component-type</a> attribute <i> (required)</i>, type <b>string</b><p>The value may be locally defined, or one of the following:</p><ul>
+            <li><strong>software</strong>: Any software, operating system, or firmware</li>
+            <li><strong>hardware</strong></li>
+            <li><strong>service</strong>: A service that may provide APIs.</li>
+            <li><strong>policy</strong></li>
+            <li><strong>process</strong></li>
+            <li><strong>proceedure</strong></li>
+            <li><strong>plan</strong></li>
+            <li><strong>guidance</strong>: Any guideline or recommendation</li>
+            <li><strong>standard</strong></li>
+            <li><strong>validation</strong></li>
+        </ul></li><li><a href="#title"><code>title</code></a> element <i class="color-primary">[1]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A longer name for the component.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#supplier"><code>supplier</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#control-implementation"><code>control-implementation</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Defines how the component or capability supports a set of controls.</p></li><li><a href="#configuration"><code>configuration</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Information on how to configure the component (for technical types of components).</p></li><li><a href="#artifact"><code>artifact</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Information on how to use the component (for documentary types of components).</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Components may be products, services, APIs, policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p><p class="p">The <a href="#type"><code>type</code></a> indicates which of these component types is represented.</p><p class="p">A group of components may be aggregated into a <a href="#capability"><code>capability</code></a>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p><p class="p">Capabilities are expressed by combining one or more components.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="configuration-id"><header><h4 id="oscal-component-xml_configuration-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Configuration Identifier Reference</b>: <code>configuration-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_configuration-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>IDREF</b></p><p class="description">A reference to a configuration defined on the component.</p><p>This attribute appears on: <a href="#implementation">implementation</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="configuration-method"><header><h4 id="oscal-component-xml_configuration-method" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Configuration Method</b>:
+                  <code>configuration-method</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_configuration-method"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A mechanism used to deploy the configuration.</p><p>This element appears inside: <a href="#mechanism">mechanism</a>.</p><div class="model"><p>The <code>configuration-method</code> element has the following contents (in order):</p><ul><li><a href="#description"><code>description</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#script"><code>script</code></a> element <i class="color-primary">[1]</i>, type <b>string</b><p style="font-size: smaller">An executable script.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="configuration"><header><h4 id="oscal-component-xml_configuration" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Configuration</b>:
+                  <code>configuration</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_configuration"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Information on how to configure the component (for technical types of components).</p><p>This element appears inside: <a href="#component">component</a>.</p><div class="model"><p>The <code>configuration</code> element has the following contents (in order):</p><ul><li><a id="configuration-id"><code>id</code></a><code>id</code> attribute <i> (required)</i>, type <b>ID</b><p style="font-size: smaller">A unique identifier for the configuration.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#argument"><code>argument</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">TBD</p></li><li><a href="#mechanism"><code>mechanism</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Information on a mechanism used to configure the component.</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="control-id"><header><h4 id="oscal-component-xml_control-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Control Identifier Reference</b>: <code>control-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_control-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>NCName</b></p><p class="description">A reference to a control identifier.</p><p>This attribute appears on: <a href="#implemented-requirement">implemented-requirement</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="control-implementation"><header><h4 id="oscal-component-xml_control-implementation" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Control Implementation</b>:
+                  <code>control-implementation</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_control-implementation"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Defines how the component or capability supports a set of controls.</p><p>This element appears inside: <a href="#component">component</a>, <a href="#capability">capability</a>.</p><div class="model"><p>The <code>control-implementation</code> element has the following contents (in order):</p><ul><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#can-meet-requirement-set"><code>can-meet-requirement-set</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Defines what sets of controls are supported by the component.</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="country"><header><h4 id="oscal-component-xml_country" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Country</b>:
+                  <code>country</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_country"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">Country for mailing address</p><p>This element appears inside: <a href="#address">address</a>.</p></div>
+
+
+
+<div class="definition define-field" id="desc"><header><h4 id="oscal-component-xml_desc" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Description</b>:
+                  <code>desc</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_desc"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A short textual description</p><p>This element appears inside: <a href="#resource">resource</a>, <a href="#role">role</a>, <a href="#citation">citation</a>.</p></div>
+
+
+
+<div class="definition define-field" id="description"><header><h4 id="oscal-component-xml_description" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Description</b>:
+                  <code>description</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_description"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, as prose content: paragraphs, lists etc.</p><p class="description">TBD</p><p>This element appears inside: <a href="#implemented-requirement">implemented-requirement</a>, <a href="#implementation">implementation</a>, <a href="#configuration">configuration</a>, <a href="#mechanism">mechanism</a>, <a href="#configuration-method">configuration-method</a>, <a href="#verification-method">verification-method</a>, <a href="#artifact">artifact</a>, <a href="#implementation-source">implementation-source</a>, <a href="#verification-process">verification-process</a>, <a href="#incorporates-component">incorporates-component</a>, <a href="#incorporates-capability">incorporates-capability</a>, <a href="#component">component</a>, <a href="#capability">capability</a>, <a href="#control-implementation">control-implementation</a>, <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p></div>
+
+
+
+<div class="definition define-field" id="doc-id"><header><h4 id="oscal-component-xml_doc-id" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Document Identifier</b>:
+                  <code>doc-id</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_doc-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A document identifier qualified by an identifier <a href="#type"><code>type</code></a>.</p><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#citation">citation</a>.</p><div class="model"><p>The <code>doc-id</code> element must have the attribute:</p><ul><li><a href="#type">type</a> attribute <i> (required)</i>, type <b>string</b><p style="font-size: smaller">Qualifies the kind of document identifier.</p><p>The value may be locally defined, or one of the following:</p><ul>
+            <li><strong>doi</strong>: A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</li>
+         </ul></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">A document identifier or name, qualified by a <a href="#type"><code>type</code></a> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p><p class="p">Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="email"><header><h4 id="oscal-component-xml_email" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Email</b>:
+                  <code>email</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_email"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>email</b></p><p class="description">Email address</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
+
+
+
+<div class="definition define-flag" id="filename"><header><h4 id="oscal-component-xml_filename" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">File Name</b>: <code>filename</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_filename"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>uri-reference</b></p><p class="description">Name of the file before it was encoded as Base64 to be embedded in a <a href="#resource"><code>resource</code></a>. This is the name that will be assigned to the file when the file is decoded.</p><p>This attribute appears on: <a href="#base64">base64</a>.</p></div>
+
+
+
+<div class="definition define-field" id="hash"><header><h4 id="oscal-component-xml_hash" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Hash</b>:
+                  <code>hash</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_hash"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A representation of a cryptographic digest generated over a resource using a hash algorithm.</p><p>This element appears inside: <a href="#rlink">rlink</a>.</p><div class="model"><p>The <code>hash</code> element must have the attribute:</p><ul><li><a href="#algorithm">algorithm</a> attribute <i> (required)</i>, type <b>string</b><p>The value may be locally defined, or one of the following:</p><ul>
+         <li><strong>SHA-224</strong></li>
+         <li><strong>SHA-256</strong></li>
+         <li><strong>SHA-384</strong></li>
+         <li><strong>SHA-512</strong></li>
+         <li><strong>RIPEMD-160</strong></li>
+      </ul></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">A hash value can be used to authenticate that a referenced resource is the same resources as was pointed to by the author of the reference.</p><p class="p">When appearing as part of a resource (data object), the hash should apply to the referenced object.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="href"><header><h4 id="oscal-component-xml_href" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">hypertext reference</b>: <code>href</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_href"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>uri-reference</b></p><p class="description">A link to a document or document fragment (actual, nominal or projected)</p><p>This attribute appears on: <a href="#link">link</a>, <a href="#rlink">rlink</a>, <a href="#implementation-source">implementation-source</a>, <a href="#verification-process">verification-process</a>, <a href="#import-component-definition">import-component-definition</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Note in particular that <a href="#href"><code>href</code></a> targets include elements (locations) in representations of documents that exist only by virtue of dynamic application, such as (for example) the results of profile resolution.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="id"><header><h4 id="oscal-component-xml_id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Identifier</b>: <code>id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>ID</b></p><p class="description">Unique identifier of the containing object</p><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#party">party</a>, <a href="#resource">resource</a>, <a href="#role">role</a>, <a href="#citation">citation</a>, <a href="#implemented-requirement">implemented-requirement</a>, <a href="#configuration">configuration</a>, <a href="#mechanism">mechanism</a>, <a href="#artifact">artifact</a>, <a href="#component">component</a>, <a href="#capability">capability</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">No mechanism is proposed to ensure that <a href="#id"><code>id</code></a> values do not collide across different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="implementation-source"><header><h4 id="oscal-component-xml_implementation-source" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Artifact Implementation Source</b>:
+                  <code>implementation-source</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_implementation-source"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#artifact">artifact</a>.</p><div class="model"><p>The <code>implementation-source</code> element has the following contents (in order):</p><ul><li><a id="implementation-source-href"><code>href</code></a><code>href</code> attribute <i> (required)</i>, type <b>uri</b><p style="font-size: smaller">Where to get the artifact</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="implementation"><header><h4 id="oscal-component-xml_implementation" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Implementation</b>:
+                  <code>implementation</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_implementation"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">An implementation needed to support the control requirements.</p><p>This element appears inside: <a href="#using">using</a>.</p><div class="model"><p>The <code>implementation</code> element has the following contents (in order):</p><ul><li><a href="#configuration-id">configuration-id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#artifact-id">artifact-id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#statement-id">statement-id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#with-argument"><code>with-argument</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">An argument to pass to the referenced configuration.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="implemented-requirement"><header><h4 id="oscal-component-xml_implemented-requirement" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Control-based Requirement</b>:
+                  <code>implemented-requirement</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_implemented-requirement"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p><div class="model"><p>The <code>implemented-requirement</code> element has the following contents (in order):</p><ul><li><a id="implemented-requirement-requirement-id"><code>requirement-id</code></a><code>requirement-id</code> attribute  (<i>optional</i>), type <b>NCName</b><p style="font-size: smaller">A reference to a requirement defined on another requirement set that should be included here.</p></li><li><a href="#id">id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#control-id">control-id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#subcontrol-id">subcontrol-id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#using"><code>using</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">The set of implementations needed to support the control requirements.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="import-component-definition"><header><h4 id="oscal-component-xml_import-component-definition" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Import Component Definition</b>:
+                  <code>import-component-definition</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_import-component-definition"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>empty</b></p><p class="description">Loads a component definition from another resource.</p><p>This element appears inside: <a href="#component-definition">component-definition</a>.</p><div class="model"><p>The <code>import-component-definition</code> element must have the attribute:</p><ul><li><a id="import-component-definition-href"><code>href</code></a><code>href</code> attribute <i> (required)</i>, type <b>uri</b><p style="font-size: smaller">A link to a resource that defines a set of components and/or capabilities to import into this collection.</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="incorporates-capability"><header><h4 id="oscal-component-xml_incorporates-capability" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Incorporates Capability</b>:
+                  <code>incorporates-capability</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_incorporates-capability"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#capability">capability</a>.</p><div class="model"><p>The <code>incorporates-capability</code> element has the following contents:</p><ul><li><a id="incorporates-capability-capability-id"><code>capability-id</code></a><code>capability-id</code> attribute <i> (required)</i>, type <b>IDREF</b><p style="font-size: smaller">A reference to a capability by its identifier</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="incorporates-component"><header><h4 id="oscal-component-xml_incorporates-component" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Incorporates Component</b>:
+                  <code>incorporates-component</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_incorporates-component"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#capability">capability</a>.</p><div class="model"><p>The <code>incorporates-component</code> element has the following contents:</p><ul><li><a href="#component-id">component-id</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="last-modified-date"><header><h4 id="oscal-component-xml_last-modified-date" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Last modified date</b>:
+                  <code>last-modified-date</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_last-modified-date"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>dateTime-with-timezone</b></p><p class="description">Date of last modification.</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p><p class="p">In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="link"><header><h4 id="oscal-component-xml_link" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Link</b>:
+                  <code>link</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_link"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with mixed text and (inline prose) element contents</p><p class="description">A reference to a local or remote resource</p><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#implemented-requirement">implemented-requirement</a>, <a href="#implementation">implementation</a>, <a href="#configuration">configuration</a>, <a href="#mechanism">mechanism</a>, <a href="#artifact">artifact</a>, <a href="#implementation-source">implementation-source</a>, <a href="#verification-process">verification-process</a>, <a href="#component">component</a>, <a href="#capability">capability</a>, <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p><div class="model"><p>The <code>link</code> element may have attributes:</p><ul><li><a href="#href">href</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#rel">rel</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#media-type">media-type</a> attribute  (<i>optional</i>), type <b>string</b></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block) element.</p><p class="p">The <a href="#href"><code>href</code></a> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <a href="#citation"><code>citation</code></a> or <a href="#resource"><code>resource</code></a> in the document's <a href="#back-matter"><code>back-matter</code></a>. If a remote resource is used, the <a href="#href"><code>href</code></a> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document conatining the link.</p><p class="p">To provide a cryptographic hash for a remote target resource, a local reference to a <a href="#resource"><code>resource</code></a> is needed. The resource allows one or more hash values to be provided using the <a href="#rlink"><code>rlink</code></a> <a href="#hash"><code>hash</code></a> object.</p><p class="p">The <a href="#media-type"><code>media-type</code></a> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> </p></div></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="link_example1_xml">Example: Providing for link integrity</button><div id="link_example1_xml" class="usa-accordion-content"><div class="remarks"><p class="p">The following is a contrived example to show the use of link, citation, and resource.</p></div><pre>
+&lt;oscal&gt;
+            
+&lt;link rel="reference" href="#resource1"&gt;My Hashed Resource&lt;/link&gt;
+        ...snip...
+        
+&lt;back-matter&gt;
+               
+&lt;resource id="resource1"&gt;
+                  
+&lt;rlink href="https://example.org/some-resource"&gt;
+                     
+&lt;hash algorithm="sha512"&gt;C2E9C1..snip..F88D2E&lt;/hash&gt;
+                  &lt;/rlink&gt;
+               &lt;/resource&gt;
+            &lt;/back-matter&gt;
+         &lt;/oscal&gt;</pre></div></li></ul></div>
+
+
+
+<div class="definition define-assembly" id="mechanism"><header><h4 id="oscal-component-xml_mechanism" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">mechanism</b>:
+                  <code>mechanism</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_mechanism"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Information on a mechanism used to configure the component.</p><p>This element appears inside: <a href="#configuration">configuration</a>.</p><div class="model"><p>The <code>mechanism</code> element has the following contents (in order):</p><ul><li><a id="mechanism-id"><code>id</code></a><code>id</code> attribute <i> (required)</i>, type <b>ID</b><p style="font-size: smaller">A unique identifier for the configuration mechanism.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#configuration-method"><code>configuration-method</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">A mechanism used to deploy the configuration.</p></li><li><a href="#verification-method"><code>verification-method</code></a> element <i class="color-primary">[1]</i>, with element contents<p style="font-size: smaller">A mechanism used to verify a previously deployed configuration.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="media-type"><header><h4 id="oscal-component-xml_media-type" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Media type</b>: <code>media-type</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_media-type"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">Describes the media type of the linked resource</p><p>This attribute appears on: <a href="#link">link</a>, <a href="#rlink">rlink</a>, <a href="#base64">base64</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">TO DO: discuss IANA media type registry.</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="metadata"><header><h4 id="oscal-component-xml_metadata" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Publication metadata</b>:
+                  <code>metadata</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_metadata"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Provides information about the publication and availability of the containing document.</p><p>This element appears inside: <a href="#component-definition">component-definition</a>.</p><div class="model"><p>The <code>metadata</code> element has the following contents (in order):</p><ul><li><a href="#title"><code>title</code></a> element <i class="color-primary">[1]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A title for display and navigation</p></li><li><a href="#last-modified-date"><code>last-modified-date</code></a> element <i class="color-primary">[0 or 1]</i>, type <b>dateTime-with-timezone</b><p style="font-size: smaller">Date of last modification.</p></li><li><a href="#version"><code>version</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">The version of the document content.</p></li><li><a href="#oscal-version"><code>oscal-version</code></a> element <i class="color-primary">[1]</i>, with text contents<p style="font-size: smaller">OSCAL model version.</p></li><li><a href="#doc-id"><code>doc-id</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A document identifier qualified by an identifier <a href="#type"><code>type</code></a>.</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#role"><code>role</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">Defining a role to be assigned to a party or agent</p></li><li><a href="#party"><code>party</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A responsible entity, either singular (an organization or person) or collective (multiple persons)</p></li><li><a href="#notes"><code>notes</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">Any notes with further information</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="name"><header><h4 id="oscal-component-xml_name" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Name</b>: <code>name</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_name"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">Identifying the purpose and intended use of the property, part or other object.</p><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#with-argument">with-argument</a>, <a href="#argument">argument</a>, <a href="#component">component</a>, 
+        
+        
+          
+            The version of the component.
+            The model of the component. Useful for 'software', 'hardware', and 'service' components.
+            The date the component was released.
+          
+        
+      , <a href="#capability">capability</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">This flag is intended to be used as a control point for validation of properties and parts with respect to constraints related to local semantics. A name is not necessarily expected to be unique, even within the scope of the parent (containing) structure. In some local applications, it is possible for a name to be unique and uniqueness of a name can be validated in such cases.</p><p class="p">The definition of a name is subject to its namespace, offered by an <a href="#ns"><code>ns</code></a> flag (q.v.). When <a href="#ns"><code>ns</code></a> is not given, the namespace is assumed to be <q>oscal</q> and the name should be one of the recognized values for names in OSCAL.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="note"><header><h4 id="oscal-component-xml_note" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Note</b>:
+                  <code>note</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_note"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, as prose content: paragraphs, lists etc.</p><p class="description">Permits multiple paragraphs, lists, tables etc.</p><p>This element appears inside: <a href="#notes">notes</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="notes"><header><h4 id="oscal-component-xml_notes" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Notes</b>:
+                  <code>notes</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_notes"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Any notes with further information</p><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#party">party</a>, <a href="#person">person</a>, <a href="#org">org</a>, <a href="#resource">resource</a>.</p><div class="model"><p>The <code>notes</code> element has the following contents:</p><ul><li><a href="#type">type</a> attribute  (<i>optional</i>), type <b>string</b><p style="font-size: smaller">Indicates the type of note.</p></li><li><a href="#note"><code>note</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">Permits multiple paragraphs, lists, tables etc.</p></li></ul></div></div>
+
+
+
+<div class="definition define-flag" id="ns"><header><h4 id="oscal-component-xml_ns" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Namespace</b>: <code>ns</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_ns"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">A namespace qualifying the name.</p><p>This attribute appears on: <a href="#prop">prop</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Identifies an organization or compliance regime defining the information needs (requirements) addressed by an object. When this attribute is not given, its value should be assumed to be <code>oscal</code> and the name should be a name defined by this specification.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="org-id"><header><h4 id="oscal-component-xml_org-id" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Organization Identifier</b>:
+                  <code>org-id</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_org-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">An identifier for an organization using a designated scheme.</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p><div class="model"><p>The <code>org-id</code> element may have the attribute:</p><ul><li><a href="#type">type</a> attribute  (<i>optional</i>), type <b>string</b></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="org-name"><header><h4 id="oscal-component-xml_org-name" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Organization Name</b>:
+                  <code>org-name</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_org-name"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">Full (legal) name of an organization</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Only when this element is used directly within <a href="#org"><code>org</code></a> can it be accepted of the name of the thing to which it is attached. This element may also be used directly on <a href="#person"><code>person</code></a> to name an affiliated organization.</p><p class="p"> <a href="#href"><code>href</code></a> can be used to provide external links or internal links to other elements. The sibling <a href="#org-id"><code>org-id</code></a> element (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="org"><header><h4 id="oscal-component-xml_org" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Organization</b>:
+                  <code>org</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_org"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">An organization or legal entity (not a person), with contact information</p><p>This element appears inside: <a href="#party">party</a>.</p><div class="model"><p>The <code>org</code> element has the following contents (in order):</p><ul><li><a href="#org-name"><code>org-name</code></a> element <i class="color-primary">[1]</i>, with text contents<p style="font-size: smaller">Full (legal) name of an organization</p></li><li><a href="#short-name"><code>short-name</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A common name, short name or acronym</p></li><li><a href="#org-id"><code>org-id</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">An identifier for an organization using a designated scheme.</p></li><li><a href="#address"><code>address</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A postal address.</p></li><li><a href="#email"><code>email</code></a> elements <i class="color-primary">[0 to ∞]</i>, type <b>email</b><p style="font-size: smaller">Email address</p></li><li><a href="#phone"><code>phone</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">Contact number by telephone</p></li><li><a href="#url"><code>url</code></a> elements <i class="color-primary">[0 to ∞]</i>, type <b>uri</b><p style="font-size: smaller">URL for web site or Internet presence</p></li><li><a href="#notes"><code>notes</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">Any notes with further information</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="oscal-version"><header><h4 id="oscal-component-xml_oscal-version" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">OSCAL version</b>:
+                  <code>oscal-version</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_oscal-version"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">OSCAL model version.</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Indicates the version of the OSCAL model to which this data set conforms, for example <q>1.0-M1</q>.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="party-id"><header><h4 id="oscal-component-xml_party-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Party Reference</b>: <code>party-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_party-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>IDREF</b></p><p class="description">References a <a href="#party"><code>party</code></a> defined in <a href="#metadata"><code>metadata</code></a>.</p><p>This attribute appears on: <a href="#supplier">supplier</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="party"><header><h4 id="oscal-component-xml_party" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Party (organization or person)</b>:
+                  <code>party</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_party"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A responsible entity, either singular (an organization or person) or collective (multiple persons)</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p><div class="model"><p>The <code>party</code> element has the following contents (in order):</p><ul><li><a href="#id">id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#role-id">role-id</a> attribute  (<i>optional</i>), type <b>string</b><p>The value may be locally defined, or one of the following:</p><ul>
+         <li><strong>content-creator</strong>: Identifies a party responsible for creating the content.</li>
+         <li><strong>content-maintainer</strong>: Identifies a party responsible for maintainer the content on an ongoing basis.</li>
+         
+      </ul></li><li><a href="#person"><code>person</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A person, with contact information</p></li><li><a href="#org"><code>org</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">An organization or legal entity (not a person), with contact information</p></li><li><a href="#notes"><code>notes</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">Any notes with further information</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">As contents one of <a href="#org"><code>org</code></a> or <a href="#person"><code>person</code></a> is required, or both; there may be only one <a href="#org"><code>org</code></a>, but many <a href="#person"><code>person</code></a>s.</p><p class="p">Note that persons can also be indicated with organizational affiliations by using <code>orgname</code> inside <a href="#person"><code>person</code></a>. Contact information in that case belongs to the person, not the organization: use <a href="#org"><code>org</code></a> when an organization as such serves as a documented party.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="person-id"><header><h4 id="oscal-component-xml_person-id" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Personal Identifier</b>:
+                  <code>person-id</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_person-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">An identifier for a person (such as an ORCID) using a designated scheme.</p><p>This element appears inside: <a href="#person">person</a>.</p><div class="model"><p>The <code>person-id</code> element may have the attribute:</p><ul><li><a href="#type">type</a> attribute  (<i>optional</i>), type <b>string</b></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="person-name"><header><h4 id="oscal-component-xml_person-name" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Person Name</b>:
+                  <code>person-name</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_person-name"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">Full (legal) name of an individual</p><p>This element appears inside: <a href="#person">person</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="person"><header><h4 id="oscal-component-xml_person" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Person</b>:
+                  <code>person</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_person"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A person, with contact information</p><p>This element appears inside: <a href="#party">party</a>.</p><div class="model"><p>The <code>person</code> element has the following contents (in order):</p><ul><li><a href="#person-name"><code>person-name</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">Full (legal) name of an individual</p></li><li><a href="#short-name"><code>short-name</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A common name, short name or acronym</p></li><li><a href="#org-name"><code>org-name</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">Affiliated organization</p></li><li><a href="#person-id"><code>person-id</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">An identifier for a person (such as an ORCID) using a designated scheme.</p></li><li><a href="#org-id"><code>org-id</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">An identifier for an organization using a designated scheme.</p></li><li><a href="#address"><code>address</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A postal address.</p></li><li><a href="#email"><code>email</code></a> elements <i class="color-primary">[0 to ∞]</i>, type <b>email</b><p style="font-size: smaller">Email address</p></li><li><a href="#phone"><code>phone</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">Contact number by telephone</p></li><li><a href="#url"><code>url</code></a> elements <i class="color-primary">[0 to ∞]</i>, type <b>uri</b><p style="font-size: smaller">URL for web site or Internet presence</p></li><li><a href="#notes"><code>notes</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">Any notes with further information</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="phone"><header><h4 id="oscal-component-xml_phone" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Telephone</b>:
+                  <code>phone</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_phone"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">Contact number by telephone</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p><div class="model"><p>The <code>phone</code> element may have the attribute:</p><ul><li><a href="#type">type</a> attribute  (<i>optional</i>), type <b>string</b><p style="font-size: smaller">Indicates the type of phone number.</p><p>The value may be locally defined, or one of the following:</p><ul>
+            <li><strong>home</strong>: A home phone number.</li>
+            <li><strong>office</strong>: An office phone number.</li>
+            <li><strong>mobibe</strong>: A mobile phone number.</li>
+         </ul></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="postal-code"><header><h4 id="oscal-component-xml_postal-code" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Postal Code</b>:
+                  <code>postal-code</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_postal-code"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">Postal or ZIP code for mailing address</p><p>This element appears inside: <a href="#address">address</a>.</p></div>
+
+
+
+<div class="definition define-field" id="prop"><header><h4 id="oscal-component-xml_prop" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Property</b>:
+                  <code>prop</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_prop"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#implemented-requirement">implemented-requirement</a>, <a href="#implementation">implementation</a>, <a href="#configuration">configuration</a>, <a href="#mechanism">mechanism</a>, <a href="#artifact">artifact</a>, <a href="#implementation-source">implementation-source</a>, <a href="#verification-process">verification-process</a>, <a href="#component">component</a>, <a href="#capability">capability</a>, <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p><div class="model"><p>The <code>prop</code> element may have attributes:</p><ul><li><a href="#name">name</a> attribute <i> (required)</i>, type <b>string</b><p>The value may be locally defined, or one of the following:</p><ul>
+            <li><strong>keywords</strong>: Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <a href="#metadata"><code>metadata</code></a> to provide keywords for the document.</li>
+            <li><strong>label</strong>: A human-readable label for the parent context.</li>
+            
+            <li><strong>method</strong>: An assessment method.</li>
+            
+            <li><strong>status</strong>: The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</li>
+         </ul></li><li><a href="#id">id</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#ns">ns</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#class">class</a> attribute  (<i>optional</i>), type <b>string</b></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p><p class="p">The value of a property is a simple scalar value or list of values.</p><p class="p">The lexical composition of properties may be constrained by declarations including matching to regular expressions or by declaring a known datatype.</p><p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be normalized (e.g., with respect to whitespace) in use; however, this is application defined.</p><p class="p">For singletons (that is, the only element among siblings with its <a href="#class"><code>class</code></a>), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf <code>declare-prop</code> in the declarations model (which also supports other constraints over property values).</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="rel"><header><h4 id="oscal-component-xml_rel" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Relation</b>: <code>rel</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_rel"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>NCName</b></p><p class="description">Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</p><p>This attribute appears on: <a href="#link">link</a>, 
+        
+        
+          
+            A reference to another component that this component has a dependency on.
+            A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component
+            A pointer to a validation record (e.g., FIPS 140-2) or other authorization.
+          
+        
+      .</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">TO DO: discuss IANA link relation registry.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="remarks"><header><h4 id="oscal-component-xml_remarks" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Remarks</b>:
+                  <code>remarks</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_remarks"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, as prose content: paragraphs, lists etc.</p><p class="description">TBD</p><p>This element appears inside: <a href="#supplier">supplier</a>, <a href="#implemented-requirement">implemented-requirement</a>, <a href="#implementation">implementation</a>, <a href="#mechanism">mechanism</a>, <a href="#configuration-method">configuration-method</a>, <a href="#verification-method">verification-method</a>, <a href="#argument">argument</a>, <a href="#artifact">artifact</a>, <a href="#implementation-source">implementation-source</a>, <a href="#verification-process">verification-process</a>, <a href="#component">component</a>, <a href="#capability">capability</a>, <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="resource"><header><h4 id="oscal-component-xml_resource" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Resource</b>:
+                  <code>resource</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_resource"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A resource associated with the present document.</p><p>This element appears inside: <a href="#back-matter">back-matter</a>.</p><div class="model"><p>The <code>resource</code> element has the following contents (in order):</p><ul><li><a href="#id">id</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#desc"><code>desc</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A short textual description</p></li><li class="choice">A choice between:
+         <ul><li><a href="#rlink"><code>rlink</code></a> elements <i class="color-primary">[0 to ∞]</i>, with element contents<p style="font-size: smaller">A pointer to an external copy of a document with optional hash for verification</p></li><li><a href="#base64"><code>base64</code></a> element <i class="color-primary">[0 or 1]</i>, type <b>base64</b><p style="font-size: smaller"></p></li></ul></li><li><a href="#notes"><code>notes</code></a> element <i class="color-primary">[0 or 1]</i>, with element contents<p style="font-size: smaller">Any notes with further information</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p><p class="p">A resource can be used in two ways. 1) it may point to an specific retrievable network resource, or 2) be included as an attachment.</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="rlink"><header><h4 id="oscal-component-xml_rlink" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Related link</b>:
+                  <code>rlink</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_rlink"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A pointer to an external copy of a document with optional hash for verification</p><p>This element appears inside: <a href="#resource">resource</a>.</p><div class="model"><p>The <code>rlink</code> element has the following contents:</p><ul><li><a href="#href">href</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#media-type">media-type</a> attribute  (<i>optional</i>), type <b>string</b></li><li><a href="#hash"><code>hash</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A representation of a cryptographic digest generated over a resource using a hash algorithm.</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">This is different from unstructured <a href="#link"><code>link</code></a>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="role-id"><header><h4 id="oscal-component-xml_role-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Role identifier</b>: <code>role-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_role-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>IDREFS</b></p><p class="description">References a <a href="#role"><code>role</code></a> element defined in metadata.</p><p>This attribute appears on: <a href="#party">party</a>, <a href="#supplier">supplier</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="role"><header><h4 id="oscal-component-xml_role" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Role</b>:
+                  <code>role</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_role"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">Defining a role to be assigned to a party or agent</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p><div class="model"><p>The <code>role</code> element has the following contents (in order):</p><ul><li><a href="#id">id</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#title"><code>title</code></a> element <i class="color-primary">[0 or 1]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A title for display and navigation</p></li><li><a href="#short-name"><code>short-name</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A common name, short name or acronym</p></li><li><a href="#desc"><code>desc</code></a> element <i class="color-primary">[0 or 1]</i>, with text contents<p style="font-size: smaller">A short textual description</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Permissible values to be determined closer to the application (e.g. by a receiving authority).</p></div></div></div>
+
+
+
+<div class="definition define-field" id="script"><header><h4 id="oscal-component-xml_script" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Script</b>:
+                  <code>script</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_script"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>string</b></p><p class="description">An executable script.</p><p>This element appears inside: <a href="#configuration-method">configuration-method</a>, <a href="#verification-method">verification-method</a>.</p><div class="model"><p>The <code>script</code> element must have the attribute:</p><ul><li><a href="#system">system</a> attribute <i> (required)</i>, type <b>string</b></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="short-name"><header><h4 id="oscal-component-xml_short-name" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">short-name</b>:
+                  <code>short-name</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_short-name"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">A common name, short name or acronym</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>, <a href="#role">role</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">This element is not expected to be used to identify individual persons, but rather an organization or system.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="source"><header><h4 id="oscal-component-xml_source" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Source Resource Reference</b>: <code>source</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_source"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>uri-reference</b></p><p class="description">A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</p><p>This attribute appears on: <a href="#can-meet-requirement-set">can-meet-requirement-set</a>.</p></div>
+
+
+
+<div class="definition define-field" id="state"><header><h4 id="oscal-component-xml_state" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">State</b>:
+                  <code>state</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_state"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">State, province or analogous geographical region for mailing address</p><p>This element appears inside: <a href="#address">address</a>.</p></div>
+
+
+
+<div class="definition define-flag" id="statement-id"><header><h4 id="oscal-component-xml_statement-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Statement Identifier</b>: <code>statement-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_statement-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>NCName</b></p><p class="description">Pointer to a speific requirement statement within a control or subcontrol.</p><p>This attribute appears on: <a href="#implementation">implementation</a>.</p></div>
+
+
+
+<div class="definition define-flag" id="subcontrol-id"><header><h4 id="oscal-component-xml_subcontrol-id" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Subcontrol Identifier Reference</b>: <code>subcontrol-id</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_subcontrol-id"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>NCName</b></p><p class="description">A reference to a subcontrol identifier.</p><p>This attribute appears on: <a href="#implemented-requirement">implemented-requirement</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="supplier"><header><h4 id="oscal-component-xml_supplier" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Supplier</b>:
+                  <code>supplier</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_supplier"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#component">component</a>.</p><div class="model"><p>The <code>supplier</code> element has the following contents:</p><ul><li><a href="#party-id">party-id</a> attribute <i> (required)</i>, type <b>string</b></li><li><a href="#role-id">role-id</a> attribute <i> (required)</i>, type <b>string</b><p>The value may be locally defined, or one of the following:</p><ul>
+         <li><strong>content-creator</strong>: Identifies a party responsible for creating the content.</li>
+         <li><strong>content-maintainer</strong>: Identifies a party responsible for maintainer the content on an ongoing basis.</li>
+         
+      </ul></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">For products, services, and APIs, this is the vendor information.</p><p class="p">For policies, processes, plans, standards, and guidance, this is the authoring organization.</p><p class="p">For capabilities, this is the organization that defines and maintains the capability.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="system"><header><h4 id="oscal-component-xml_system" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">system</b>: <code>system</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_system"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>uri</b></p><p class="description">A configure or verify system type described by a well-known URI</p><p>This attribute appears on: <a href="#script">script</a>.</p></div>
+
+
+
+<div class="definition define-field" id="target"><header><h4 id="oscal-component-xml_target" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Citation target</b>:
+                  <code>target</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_target"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">An address for retrieval of a citation</p><p>This element appears inside: <a href="#citation">citation</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Semantically equivalent to an <a href="#href"><code>href</code></a> (flag), this is represented as a field in order to permit citations to carry an extra target (for cross-check or fallback) and to permit further qualification (with flags of its own) in future.</p><p class="p">This value is expected to be a URI, and may be an internal link to another object such as a <a href="#resource"><code>resource</code></a> documented in back matter.</p><p class="p">When a citation is given as a full (but unparsed) bibliographic citation, use <a href="#desc"><code>desc</code></a> instead of <a href="#title"><code>title</code></a> inside this object.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="title"><header><h4 id="oscal-component-xml_title" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Title</b>:
+                  <code>title</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_title"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with mixed text and (inline prose) element contents</p><p class="description">A title for display and navigation</p><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#role">role</a>, <a href="#citation">citation</a>, <a href="#component">component</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">A title for the containing object as it should appear in a formatted document.</p></div></div></div>
+
+
+
+<div class="definition define-flag" id="type"><header><h4 id="oscal-component-xml_type" class="usa-color-text usa-color-cool-blue-lightest"><b class="formal-name">Type</b>: <code>type</code> attribute</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_type"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An attribute, type <b>string</b></p><p class="description">Indicating the type of identifier, address, email or other data item.</p><p>This attribute appears on: <a href="#doc-id">doc-id</a>, <a href="#person-id">person-id</a>, <a href="#org-id">org-id</a>, <a href="#address">address</a>, <a href="#phone">phone</a>, <a href="#notes">notes</a>, <a href="#argument">argument</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></div></div></div>
+
+
+
+<div class="definition define-field" id="url"><header><h4 id="oscal-component-xml_url" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">URL</b>:
+                  <code>url</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_url"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>uri</b></p><p class="description">URL for web site or Internet presence</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
+
+
+
+<div class="definition define-field" id="use-param"><header><h4 id="oscal-component-xml_use-param" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Using Parameter</b>:
+                  <code>use-param</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_use-param"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, type <b>NCName</b></p><p class="description">An identified parameter from the catalog or profile who's value is assigned to the argument.</p><p>This element appears inside: <a href="#with-argument">with-argument</a>.</p></div>
+
+
+
+<div class="definition define-assembly" id="using"><header><h4 id="oscal-component-xml_using" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Using</b>:
+                  <code>using</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_using"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">The set of implementations needed to support the control requirements.</p><p>This element appears inside: <a href="#implemented-requirement">implemented-requirement</a>.</p><div class="model"><p>The <code>using</code> element has the following contents:</p><ul><li><a href="#implementation"><code>implementation</code></a> elements <i class="color-primary">[1 to ∞]</i>, with element contents<p style="font-size: smaller">An implementation needed to support the control requirements.</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="verification-method"><header><h4 id="oscal-component-xml_verification-method" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Verification Method</b>:
+                  <code>verification-method</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_verification-method"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">A mechanism used to verify a previously deployed configuration.</p><p>This element appears inside: <a href="#mechanism">mechanism</a>.</p><div class="model"><p>The <code>verification-method</code> element has the following contents (in order):</p><ul><li><a href="#description"><code>description</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#script"><code>script</code></a> element <i class="color-primary">[1]</i>, type <b>string</b><p style="font-size: smaller">An executable script.</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-assembly" id="verification-process"><header><h4 id="oscal-component-xml_verification-process" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Artifact Verification Process</b>:
+                  <code>verification-process</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_verification-process"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">TBD</p><p>This element appears inside: <a href="#artifact">artifact</a>.</p><div class="model"><p>The <code>verification-process</code> element has the following contents (in order):</p><ul><li><a id="verification-process-href"><code>href</code></a><code>href</code> attribute <i> (required)</i>, type <b>uri</b><p style="font-size: smaller">Where to get the process to verify the artifact is implemented.</p></li><li><a href="#description"><code>description</code></a> element <i class="color-primary">[1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li><li><a href="#prop"><code>prop</code></a> elements <i class="color-primary">[0 to ∞]</i>, with text contents<p style="font-size: smaller">A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</p></li><li><a href="#link"><code>link</code></a> elements <i class="color-primary">[0 to ∞]</i>, with mixed text and (inline prose) element contents<p style="font-size: smaller">A reference to a local or remote resource</p></li><li><a href="#remarks"><code>remarks</code></a> element <i class="color-primary">[0 or 1]</i>, as prose content: paragraphs, lists etc.<p style="font-size: smaller">TBD</p></li></ul></div></div>
+
+
+
+<div class="definition define-field" id="version"><header><h4 id="oscal-component-xml_version" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">Document version</b>:
+                  <code>version</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_version"><button class="button-json-on">Switch to JSON</button></a></div></header><p>An element, with text contents</p><p class="description">The version of the document content.</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p><div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em"><h5 style="margin-top: 0.5em">Remarks</h5><div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em"><p class="p">A string indicating the document's version, by release number, date, or other identifier. This version is typically set by the document owner or by the tool used to maintain the content.</p></div></div></div>
+
+
+
+<div class="definition define-assembly" id="with-argument"><header><h4 id="oscal-component-xml_with-argument" class="usa-color-text usa-color-cool-blue-lighter"><b class="formal-name">With Argument</b>:
+                  <code>with-argument</code> element</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-component-json/#oscal-component-json_with-argument"><button class="button-json-on">Switch to JSON</button></a></div></header><p class="description">An argument to pass to the referenced configuration.</p><p>This element appears inside: <a href="#implementation">implementation</a>.</p><div class="model"><p>The <code>with-argument</code> element has the following contents:</p><ul><li><a id="with-argument-name"><code>name</code></a><code>name</code> attribute  (<i>optional</i>), type <b>NCName</b><p style="font-size: smaller">The name of the argument.</p></li><li><a href="#use-param"><code>use-param</code></a> element <i class="color-primary">[0 or 1]</i>, type <b>NCName</b><p style="font-size: smaller">An identified parameter from the catalog or profile who's value is assigned to the argument.</p></li></ul></div></div>
+
+
+
+
+
+</div>
+
+    </main>
+
+     <!-- 
+
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+  
+
+  
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+  
+
+
+
+  
+    
+    
+    
+    
+  <div class="usa-footer-primary-section">
+    <div class="usa-grid">
+      <nav class="usa-footer-nav">
+        <ul class="usa-unstyled-list">
+          
+          <li class="usa-width-one-whole usa-footer-primary-content">
+            <a class="usa-footer-primary-link" href="/OSCAL/docs/">
+              Documentation
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="usa-footer-logo usa-width-one-half">
+        
+          
+              <a href="https://nist.gov">
+            
+            <img class="usa-footer-logo-img" src="/OSCAL/assets/img/NIST_logo.svg" alt="NIST">
+            
+              </a>
+            
+          
+        
+
+        
+        <h3 class="usa-footer-logo-heading" style="margin-top: 0;">National Institute of Standards and Technology</h3>
+        
+      </div>
+
+      
+      <div class="usa-footer-contact-links usa-width-one-half">
+        
+        
+          
+            <a class="usa-link-github" href="https://github.com/usnistgov">
+              <span>GitHub</span>
+            </a>
+          
+        
+        
+          <h3 class="usa-footer-contact-heading">Information Technology Laboratory (ITL)<br />Computer Security Division (CSD)<br />Applied Cybersecurity Division (ACD)</h3>
+          
+          
+            <address>
+              
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="tel:1-301-975-8443">
+                      (301) 975-8443
+                    </a>
+                  </p>
+                </div>
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="mailto:webmaster-csrc@nist.gov">
+                      webmaster-csrc@nist.gov
+                    </a>
+                  </p>
+                </div>
+              
+            </address>
+        
+      
+      
+      </div>
+    </div>
+  </div>
+  
+
+</footer>
+
+
+ -->
+
+
+<footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Privacy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#privpolicy">Privacy Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#secnot">Security Notice</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#accesstate">Accessibility Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">NIST Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/disclaimer">Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/office-director/freedom-information-act">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#cookie">Cookie Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity Summary</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">NIST Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://business.usa.gov/">Business USA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.healthcare.gov/">Healthcare.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.usa.gov/">USA.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link"
+      rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_centered_rev.svg" alt="National Institute of Standards and Technology logo" />
+    </a>
+  </div>
+</footer> 
+
+
+
+
+
+
+<script src="/OSCAL/assets/uswds/js/uswds.min.js"
+   async></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  var usasearch_config = { siteHandle: "" };
+
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "//search.usa.gov/javascripts/remote.loader.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+
+//]]>
+</script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    // Mark external (non-nist.gov) A tags with class "external"
+    //If the adress starts with https and ends with nist.gov
+    var re_nist = new RegExp('^https?:\/\/((^\/).)nist\.gov(\/|$)');
+    //Regex to find address that start with https
+    var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+    $("a").each(function () {
+      var url = $(this).attr('href');
+      if (re_nist.test(url) || !re_absolute_address.test(url)) {
+        $(this).attr('rel', 'local');
+      } else {
+        $(this).attr('rel', 'external');
+      }
+    });
+    // Add leaveNotice to external A elements
+    $('a[rel=external]').leaveNotice();
+  });
+</script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+
+</body>
+
+</html>

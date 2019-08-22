@@ -12,7 +12,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relations to Industry Standards | OSCAL</title>
+    <title>Relations to Documentary Encoding Standards | OSCAL</title>
 
 
 
@@ -74,6 +74,7 @@
     <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
     <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
     <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
 </head>
 
 <body class="  site-wide">
@@ -280,37 +281,29 @@
   <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
     <nav>
   <ul class="usa-sidenav-list">
-    
+        
       
       
       
       
     <li>
       <a href="/OSCAL/docs/"
-         
-          >
-         Architecture
+        
+         >
+        Architecture
       </a>
-	  
+      
+
+      
+      <!-- page.model == link.model -->
       <ul class="usa-sidenav-sub_list">
         
 
 
       </ul>
       
-    </li>
-    
+
       
-      
-      
-      
-    <li>
-      <a href="/OSCAL/docs/schemas/"
-         
-          >
-         Schema Reference
-      </a>
-	  
     </li>
     
       
@@ -319,13 +312,25 @@
       
     <li>
       <a href="/OSCAL/docs/relations/"
-          class="usa-current" 
-          >
-         Relations to Documentary Encoding Standards
+         class="usa-current" 
+         >
+        Relations to Documentary Encoding Standards
       </a>
-	  
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
     </li>
     
+
   </ul>
 </nav>
 
@@ -334,13 +339,13 @@
 
 <div class="usa-layout-docs-main_content">
   
-    
-    <h1>Relations to Industry Standards</h1>
-    
+    <h1>Relations to Documentary Encoding Standards</h1>
   
   <p>Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27001/2, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL’s models are designed to capture the full range of these.</p>
 
-<p>However, there are other standard forms of document represention that might also be useful in certain contexts. Since OSCAL attempts not to replace any of these, but to complement them, developers of OSCAL-based systems may wish to be aware of them and of opportunities to take advantage of OSCAL in working with them.</p>
+<p>However, OSCAL is not the only text encoding technology available, and it is not always the most suitable, depending on the task at hand. Designed specifically to support operations related to security automation and assessment support, OSCAL may not be as optimal as other (standards-based, non-proprietary) formats for other applications including, notably, full text transcription, search and retrieval, or publication workflows. (OSCAL data may be shared among partners, even over networks including the Internet; but it is not necessarily suitable for publishing as such.)</p>
+
+<p>More importantly, since OSCAL shares its technical foundations with other documentary encoding standards that serve other horizontal or neighboring vertical domains, it is important to recognize a <em>high degree of compatibility</em> with other XML-based formats. Investing in OSCAL and OSCAL-related tooling is a way of developing capability that applies to these other formats as well; likewise investing in these can have beneficial side effects related to OSCAL and related technologies.</p>
 
 <h2 id="how-oscal-relates-to-other-document-encoding-formats">How OSCAL relates to other document encoding formats</h2>
 
@@ -400,21 +405,20 @@
     <p>NISO STS is an XML-based document model being adopted within the community of
         Standards Development Organizations (SDOs) for encoding technical standards.
         Since OSCAL has XML foundations, and STS is also XML-based and designed to use the
-        same or a similar stack of standards-conformant tools, they are highly
-        compatible.</p>
+        same or a similar stack of standards-conformant tools, they are compatible in
+        many respects and share many characteristics.</p>
     <p>However, the two data models are designed to cater to the needs of very different
-        data professionals. While STS documents are published for a specific audience or market,
-        OSCAL data (with the exception of public catalogs) is not likely to ever be "published",
-        while at the same time it will be exchanged among parties for purposes of analysis,
-        integration, and assessment, all of which are activities with semantics
-        the encoding should support. Consequently, the design of the OSCAL data models,
-        and of applications based on them, must enable different work than traditional
-        editorial and publishing workflows aimed at document production.</p>
+        data professionals. STS is focused on the formal publication of technical standards,
+        while OSCAL is focused on presenting a subset of (relatively) highly structured
+        data from those standards and from other documents, for the purposes of integration
+        with security automation and assessment support.</p>
     <p>Due to their commonalities and potential overlap, however, STS and OSCAL (whether
         catalog, implementation- or assessment-related or other exchangeable data) can be
         used together. For example, dropping OSCAL data into an STS-based system, to support
         editing and production in a published form, would be a simple exercise in XML
-        transformation pipelining.</p>
+        transformation pipelining. Or it may be found useful to author and edit documents
+        in STS for purposes of their publication, and then produce an OSCAL version of
+        those documents or parts of them, to expose to systems that can use OSCAL.</p>
 </div>
     </div>
   </li>
@@ -460,7 +464,7 @@
         OSCAL-based format is possible.</p>
     <p>However, XML is only one vehicle. To the extent that relevant data sets exist
         (whether in standardized or non-standardized form), OSCAL can provide translation
-        and serialization services such as JSON or YAML to expose this data in a
+        and serialization services, leveraging formats including JSON or YAML, to expose this data in a
         standards-compliant way to downstream applications and services.</p>
 </div>
     </div>
@@ -469,6 +473,7 @@
 
 
 </div>
+
     </main>
 
      <!-- 

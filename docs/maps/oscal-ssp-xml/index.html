@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Basic Page Needs
+================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific Metas
+================================================== -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML model map - OSCAL System Security Plan (SSP) Format | OSCAL</title>
+
+
+
+<meta name="description" content="OSCAL System Security Plan (SSP) Format Map">
+
+
+
+<link rel="shortcut icon" type="image/ico"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="icon" type="image/png"
+  href="/OSCAL/assets/img/oscal-gears-icon-140.png">
+
+<link rel="icon" type="image/png"
+  sizes="192x192"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="72x72"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="114x114"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="144x144"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+
+ 
+
+
+
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="/OSCAL/assets/css/main.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42404149-54', 'auto');
+
+  // anonymize user IPs (chops off the last IP triplet)
+  ga('set', 'anonymizeIp', true);
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+
+
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
+    <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
+</head>
+
+<body class="  site-wide">
+
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+ 
+
+
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner"> <img src="/OSCAL/assets/uswds/img/favicons/favicon-57.png" alt="U.S. flag">
+        <p>An official website of the United States government</p> <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner"> <span class="usa-banner-button-text">Here's how you know</span> </button> </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p> <strong>The .gov means it’s official.</strong> <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p> <strong>The site is secure.</strong> <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    <header class="usa-header usa-header-extended" role="banner">
+      
+
+      <div class="nist-header" id="nist-header" role="banner">
+
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-header__logo-link"
+          rel="home" style="text-decoration: none">
+          <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="32" viewBox="0 0 24 32">
+            <path d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z"></path>
+          </svg>
+          <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-237 385.7 109.7 29.3">
+            <title>National Institute of Standards and Technology</title>
+            <g>
+              <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+          c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z" />
+              <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+          c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+          c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+          C-194.9,386.1-195,386.1-195,386.1z" />
+            </g>
+          </svg>
+        </a>
+
+      </div>
+
+      
+        <div class="usa-navbar">
+          <button class="usa-menu-btn">Menu</button>
+          <div class="usa-logo" id="extended-mega-logo">
+            <em class="usa-logo-text">
+              <a href="/OSCAL/" title="Home">
+                OSCAL: the Open Security Controls Assessment Language
+              </a>
+            </em>
+          </div>
+        </div>
+
+        <nav role="navigation" class="usa-nav">
+          <div class="usa-nav-inner">
+            <button class="usa-nav-close">
+              <img src="/OSCAL/assets/uswds/img/close.svg" alt="close">
+            </button>
+
+            
+            
+            
+            <ul class="usa-nav-primary usa-accordion">
+              
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/">
+            <span>Home</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/learnmore/">
+            <span>Learn More</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/schemas/">
+            <span>Schema Reference</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/community/">
+            <span>Community</span>
+          </a>
+          
+          </li>
+          
+          </ul>
+          
+
+          
+
+          
+          
+          <div class="usa-nav-secondary">
+            <ul class="usa-unstyled-list usa-nav-secondary-links">
+              
+              
+              <li>
+                <a href="/OSCAL/community/"
+                  >
+                  Get Involved
+                </a>
+              </li>
+              
+              <li>
+                <a href="/OSCAL/contact/"
+                  >
+                  Contact Us
+                </a>
+              </li>
+              
+              
+              <li>
+                <div role="search" style="margin: 0.4rem 0 0 0">
+                  <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small">
+                    <input id="affiliate" name="affiliate" type="hidden" value="oscal" />
+                    <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                    <button type="submit" name="commit" />
+                  </form>
+                </div>
+              </li>
+              
+            </ul>
+          </div>
+          
+
+
+      </div>
+      </div>
+      </nav>
+      
+    </header>
+    <div class="usa-overlay"></div>
+      
+     
+
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav ">
+    <nav>
+  <ul class="usa-sidenav-list">
+        
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/"
+        
+         >
+        Schema Reference
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/datatypes/"
+        
+         >
+        OSCAL Data Types
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Catalog Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Profile Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Component Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        System Security Plan Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-xml/"
+         class="usa-current" 
+         >
+        XML Model Map
+      </a>
+      
+      <!-- _current = true and page.subnav = true -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+      </ul>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
+  
+    <h1>XML model map - OSCAL System Security Plan (SSP) Format</h1>
+  
+  <div class="OM-map"><div class="OM-entry open" id="d27e1"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-security-plan">system-security-plan</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1','hide_me')"> … </a>&lt;/system-security-plan&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-security-plan">system-security-plan</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e17"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e17','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_metadata">metadata</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e17','hide_me')"> … </a>&lt;/metadata&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e17','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_metadata">metadata</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_title">title</a>&gt;<span class="OM-emph">markup-line</span>&lt;/title&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_last-modified-date">last-modified-date</a>&gt;<span class="OM-emph">dateTime-with-timezone</span>&lt;/last-modified-date&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_version">version</a>&gt;<span class="OM-emph">string</span>&lt;/version&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_oscal-version">oscal-version</a>&gt;<span class="OM-emph">string</span>&lt;/oscal-version&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_doc-id">doc-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/doc-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e147"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e147','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role">role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e147','hide_me')"> … </a>&lt;/role&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e147','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role">role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_title">title</a>&gt;<span class="OM-emph">markup-line</span>&lt;/title&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_short-name">short-name</a>&gt;<span class="OM-emph">string</span>&lt;/short-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_desc">desc</a>&gt;<span class="OM-emph">string</span>&lt;/desc&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/role&gt;</p></div></div><div class="OM-entry open" id="d27e194"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e194','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party">party</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e194','hide_me')"> … </a>&lt;/party&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e194','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party">party</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e217"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e217','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_person">person</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e217','hide_me')"> … </a>&lt;/person&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e217','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_person">person</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_person-name">person-name</a>&gt;<span class="OM-emph">string</span>&lt;/person-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_short-name">short-name</a>&gt;<span class="OM-emph">string</span>&lt;/short-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org-name">org-name</a>&gt;<span class="OM-emph">string</span>&lt;/org-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_person-id">person-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/person-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org-id">org-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/org-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e289"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e289','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_address">address</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e289','hide_me')"> … </a>&lt;/address&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e289','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_address">address</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_addr-line">addr-line</a>&gt;<span class="OM-emph">string</span>&lt;/addr-line&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_city">city</a>&gt;<span class="OM-emph">string</span>&lt;/city&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_state">state</a>&gt;<span class="OM-emph">string</span>&lt;/state&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_postal-code">postal-code</a>&gt;<span class="OM-emph">string</span>&lt;/postal-code&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_country">country</a>&gt;<span class="OM-emph">string</span>&lt;/country&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/address&gt;</p></div></div><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_email">email</a>&gt;<span class="OM-emph">email</span>&lt;/email&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_phone">phone</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/phone&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_url">url</a>&gt;<span class="OM-emph">uri</span>&lt;/url&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e392"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e392','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e392','hide_me')"> … </a>&lt;/notes&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e392','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry open"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/notes&gt;</p></div></div></div><p>&lt;/person&gt;</p></div></div><div class="OM-entry open" id="d27e413"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e413','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org">org</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e413','hide_me')"> … </a>&lt;/org&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e413','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org">org</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org-name">org-name</a>&gt;<span class="OM-emph">string</span>&lt;/org-name&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_short-name">short-name</a>&gt;<span class="OM-emph">string</span>&lt;/short-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_org-id">org-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/org-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e459"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e459','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_address">address</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e459','hide_me')"> … </a>&lt;/address&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e459','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_address">address</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_addr-line">addr-line</a>&gt;<span class="OM-emph">string</span>&lt;/addr-line&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_city">city</a>&gt;<span class="OM-emph">string</span>&lt;/city&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_state">state</a>&gt;<span class="OM-emph">string</span>&lt;/state&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_postal-code">postal-code</a>&gt;<span class="OM-emph">string</span>&lt;/postal-code&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_country">country</a>&gt;<span class="OM-emph">string</span>&lt;/country&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/address&gt;</p></div></div><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_email">email</a>&gt;<span class="OM-emph">email</span>&lt;/email&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_phone">phone</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/phone&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_url">url</a>&gt;<span class="OM-emph">uri</span>&lt;/url&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e562"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e562','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e562','hide_me')"> … </a>&lt;/notes&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e562','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/notes&gt;</p></div></div></div><p>&lt;/org&gt;</p></div></div><div class="OM-entry" id="d27e583"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e583','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e583','hide_me')"> … </a>&lt;/notes&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e583','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/notes&gt;</p></div></div></div><p>&lt;/party&gt;</p></div></div><div class="OM-entry" id="d27e604"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e604','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e604','hide_me')"> … </a>&lt;/notes&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e604','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/notes&gt;</p></div></div></div><p>&lt;/metadata&gt;</p></div></div><div class="OM-entry open" id="d27e625"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e625','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_import-profile">import-profile</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e625','hide_me')"> … </a>&lt;/import-profile&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e625','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_import-profile">import-profile</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry open"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/import-profile&gt;</p></div></div><div class="OM-entry open" id="d27e645"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e645','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-characteristics">system-characteristics</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e645','hide_me')"> … </a>&lt;/system-characteristics&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e645','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-characteristics">system-characteristics</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-id">system-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/system-id&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-name">system-name</a>&gt;<span class="OM-emph">string</span>&lt;/system-name&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-name-short">system-name-short</a>&gt;<span class="OM-emph">string</span>&lt;/system-name-short&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-sensitivity-level">security-sensitivity-level</a>&gt;<span class="OM-emph">string</span>&lt;/security-sensitivity-level&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-entry open" id="d27e704"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e704','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-information">system-information</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e704','hide_me')"> … </a>&lt;/system-information&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e704','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-information">system-information</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e714"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e714','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_information-type">information-type</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_nist-id">nist-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e714','hide_me')"> … </a>&lt;/information-type&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e714','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_information-type">information-type</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_nist-id">nist-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry open" id="d27e740"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e740','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_confidentiality-impact">confidentiality-impact</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e740','hide_me')"> … </a>&lt;/confidentiality-impact&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e740','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_confidentiality-impact">confidentiality-impact</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_base">base</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/base&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_selected">selected</a>&gt;<span class="OM-emph">empty</span>&lt;/selected&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/confidentiality-impact&gt;</p></div></div><div class="OM-entry open" id="d27e780"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e780','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_integrity-impact">integrity-impact</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e780','hide_me')"> … </a>&lt;/integrity-impact&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e780','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_integrity-impact">integrity-impact</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_base">base</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/base&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_selected">selected</a>&gt;<span class="OM-emph">empty</span>&lt;/selected&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/integrity-impact&gt;</p></div></div><div class="OM-entry open" id="d27e820"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e820','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_availability-impact">availability-impact</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e820','hide_me')"> … </a>&lt;/availability-impact&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e820','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_availability-impact">availability-impact</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_base">base</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/base&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_selected">selected</a>&gt;<span class="OM-emph">empty</span>&lt;/selected&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/availability-impact&gt;</p></div></div></div><p>&lt;/information-type&gt;</p></div></div><div class="OM-entry open" id="d27e861"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e861','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_designation">designation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e861','hide_me')"> … </a>&lt;/designation&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e861','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_designation">designation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_title">title</a>&gt;<span class="OM-emph">markup-line</span>&lt;/title&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_declaration">declaration</a>&gt;<span class="OM-emph">boolean</span>&lt;/declaration&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-entry open" id="d27e897"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e897','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qualifiers">qualifiers</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e897','hide_me')"> … </a>&lt;/qualifiers&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e897','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qualifiers">qualifiers</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e907"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e907','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qualifier">qualifier</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e907','hide_me')"> … </a>&lt;/qualifier&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e907','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qualifier">qualifier</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qual-question">qual-question</a>&gt;<span class="OM-emph">string</span>&lt;/qual-question&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qual-response">qual-response</a>&gt;<span class="OM-emph">string</span>&lt;/qual-response&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_qual-notes">qual-notes</a>&gt;<span class="OM-emph">string</span>&lt;/qual-notes&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/qualifier&gt;</p></div></div></div><p>&lt;/qualifiers&gt;</p></div></div></div><p>&lt;/designation&gt;</p></div></div></div><p>&lt;/system-information&gt;</p></div></div><div class="OM-entry open" id="d27e957"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e957','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-impact-level">security-impact-level</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e957','hide_me')"> … </a>&lt;/security-impact-level&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e957','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-impact-level">security-impact-level</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-objective-confidentiality">security-objective-confidentiality</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/security-objective-confidentiality&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-objective-integrity">security-objective-integrity</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/security-objective-integrity&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-objective-availability">security-objective-availability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_impact-level">impact-level</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/security-objective-availability&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/security-impact-level&gt;</p></div></div><div class="OM-entry open" id="d27e1016"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1016','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-eauth">security-eauth</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1016','hide_me')"> … </a>&lt;/security-eauth&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1016','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-eauth">security-eauth</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-auth-ial">security-auth-ial</a>&gt;<span class="OM-emph">string</span>&lt;/security-auth-ial&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-auth-aal">security-auth-aal</a>&gt;<span class="OM-emph">string</span>&lt;/security-auth-aal&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-auth-fal">security-auth-fal</a>&gt;<span class="OM-emph">string</span>&lt;/security-auth-fal&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_security-eauth-level">security-eauth-level</a>&gt;<span class="OM-emph">string</span>&lt;/security-eauth-level&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/security-eauth&gt;</p></div></div><div class="OM-entry open" id="d27e1067"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1067','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_status">status</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_status">state</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1067','hide_me')"> … </a>&lt;/status&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1067','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_status">status</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_status">state</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/status&gt;</p></div></div><div class="OM-entry open" id="d27e1087"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1087','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_deployment-model">deployment-model</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_deployment-model">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1087','hide_me')"> … </a>&lt;/deployment-model&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1087','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_deployment-model">deployment-model</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_deployment-model">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/deployment-model&gt;</p></div></div><div class="OM-entry open" id="d27e1107"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1107','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service-model">service-model</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service-model">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1107','hide_me')"> … </a>&lt;/service-model&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1107','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service-model">service-model</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service-model">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/service-model&gt;</p></div></div><div class="OM-entry open" id="d27e1128"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1128','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_leveraged-authorization">leveraged-authorization</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1128','hide_me')"> … </a>&lt;/leveraged-authorization&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1128','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_leveraged-authorization">leveraged-authorization</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_leveraged-authorization-name">leveraged-authorization-name</a>&gt;<span class="OM-emph">string</span>&lt;/leveraged-authorization-name&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_leveraged-authorization-service-provider">leveraged-authorization-service-provider</a>&gt;<span class="OM-emph">string</span>&lt;/leveraged-authorization-service-provider&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_leveraged-authorization-date-granted">leveraged-authorization-date-granted</a>&gt;<span class="OM-emph">date-with-timezone</span>&lt;/leveraged-authorization-date-granted&gt; <span class="OM-cardinality">[1]</span></p></div><p>&lt;/leveraged-authorization&gt;</p></div></div><div class="OM-entry open" id="d27e1175"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1175','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_authorization-boundary">authorization-boundary</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1175','hide_me')"> … </a>&lt;/authorization-boundary&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1175','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_authorization-boundary">authorization-boundary</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry open" id="d27e1188"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1188','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1188','hide_me')"> … </a>&lt;/diagram&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1188','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/diagram&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/authorization-boundary&gt;</p></div></div><div class="OM-entry open" id="d27e1219"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1219','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_network-architecture">network-architecture</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1219','hide_me')"> … </a>&lt;/network-architecture&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1219','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_network-architecture">network-architecture</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry" id="d27e1232"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e1232','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1232','hide_me')"> … </a>&lt;/diagram&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1232','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/diagram&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/network-architecture&gt;</p></div></div><div class="OM-entry open" id="d27e1263"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1263','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_data-flow">data-flow</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1263','hide_me')"> … </a>&lt;/data-flow&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1263','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_data-flow">data-flow</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry" id="d27e1276"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e1276','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1276','hide_me')"> … </a>&lt;/diagram&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1276','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">diagram</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_diagram">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/diagram&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/data-flow&gt;</p></div></div><div class="OM-entry open" id="d27e1307"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1307','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-role">system-role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-role">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external">external</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_access">access</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_sensitivity-level">sensitivity-level</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1307','hide_me')"> … </a>&lt;/system-role&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1307','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-role">system-role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-role">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external">external</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_access">access</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_sensitivity-level">sensitivity-level</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_title">title</a>&gt;<span class="OM-emph">markup-line</span>&lt;/title&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_short-name">short-name</a>&gt;<span class="OM-emph">string</span>&lt;/short-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_privilege">privilege</a>&gt;<span class="OM-emph">string</span>&lt;/privilege&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_responsibility">responsibility</a>&gt;<span class="OM-emph">string</span>&lt;/responsibility&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e1398"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1398','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statistics">statistics</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1398','hide_me')"> … </a>&lt;/statistics&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1398','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statistics">statistics</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_internal-user-total-current">internal-user-total-current</a>&gt;<span class="OM-emph">positiveInteger</span>&lt;/internal-user-total-current&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_internal-user-total-future">internal-user-total-future</a>&gt;<span class="OM-emph">positiveInteger</span>&lt;/internal-user-total-future&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external-user-total-current">external-user-total-current</a>&gt;<span class="OM-emph">positiveInteger</span>&lt;/external-user-total-current&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external-user-total-future">external-user-total-future</a>&gt;<span class="OM-emph">positiveInteger</span>&lt;/external-user-total-future&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/statistics&gt;</p></div></div></div><p>&lt;/system-role&gt;</p></div></div></div><p>&lt;/system-characteristics&gt;</p></div></div><div class="OM-entry open" id="d27e1451"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1451','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-implementation">system-implementation</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1451','hide_me')"> … </a>&lt;/system-implementation&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1451','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-implementation">system-implementation</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e1461"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1461','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-type">component-type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1461','hide_me')"> … </a>&lt;/component&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1461','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-type">component-type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e1557"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1557','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_supplier">supplier</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party-id">party-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1557','hide_me')"> … </a>&lt;/supplier&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1557','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_supplier">supplier</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party-id">party-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/supplier&gt;</p></div></div><div class="OM-entry open" id="d27e1584"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1584','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration">configuration</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1584','hide_me')"> … </a>&lt;/configuration&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1584','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration">configuration</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e1667"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1667','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">name</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">type</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1667','hide_me')"> … </a>&lt;/argument&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1667','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">name</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_argument">type</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/argument&gt;</p></div></div><div class="OM-entry open" id="d27e1694"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1694','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_mechanism">mechanism</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_mechanism">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1694','hide_me')"> … </a>&lt;/mechanism&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1694','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_mechanism">mechanism</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_mechanism">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e1777"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1777','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-method">configuration-method</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1777','hide_me')"> … </a>&lt;/configuration-method&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1777','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-method">configuration-method</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_script">script</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system">system</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/script&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/configuration-method&gt;</p></div></div><div class="OM-entry open" id="d27e1810"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1810','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-method">verification-method</a>&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1810','hide_me')"> … </a>&lt;/verification-method&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1810','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-method">verification-method</a>&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_script">script</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system">system</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/script&gt; <span class="OM-cardinality">[1]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/verification-method&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/mechanism&gt;</p></div></div></div><p>&lt;/configuration&gt;</p></div></div><div class="OM-entry open" id="d27e1848"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1848','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact">artifact</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e1848','hide_me')"> … </a>&lt;/artifact&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1848','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact">artifact</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact">id</a>="<span class="OM-emph">ID</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e1931"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e1931','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation-source">implementation-source</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation-source">href</a>="<span class="OM-emph">uri</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e1931','hide_me')"> … </a>&lt;/implementation-source&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e1931','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation-source">implementation-source</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation-source">href</a>="<span class="OM-emph">uri</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implementation-source&gt;</p></div></div><div class="OM-entry open" id="d27e2018"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2018','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-process">verification-process</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-process">href</a>="<span class="OM-emph">uri</span>"&gt; <span class="OM-cardinality">[1]</span><a class="expander-collapser" href="javascript:switch_view('d27e2018','hide_me')"> … </a>&lt;/verification-process&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2018','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-process">verification-process</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_verification-process">href</a>="<span class="OM-emph">uri</span>"&gt; <span class="OM-cardinality">[1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/verification-process&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/artifact&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/component&gt;</p></div></div><div class="OM-entry open" id="d27e2113"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2113','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2113','hide_me')"> … </a>&lt;/capability&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2113','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">id</a>="<span class="OM-emph">ID</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e2203"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2203','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-capability">incorporates-capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-capability">capability-id</a>="<span class="OM-emph">IDREF</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2203','hide_me')"> … </a>&lt;/incorporates-capability&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2203','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-capability">incorporates-capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-capability">capability-id</a>="<span class="OM-emph">IDREF</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/incorporates-capability&gt;</p></div></div><div class="OM-entry open" id="d27e2223"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2223','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-component">incorporates-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2223','hide_me')"> … </a>&lt;/incorporates-component&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2223','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_incorporates-component">incorporates-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/incorporates-component&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/capability&gt;</p></div></div><div class="OM-entry open" id="d27e2247"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2247','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service">service</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2247','hide_me')"> … </a>&lt;/service&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2247','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_service">service</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e2270"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2270','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_protocol">protocol</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2270','hide_me')"> … </a>&lt;/protocol&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2270','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_protocol">protocol</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_port-range">port-range</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_start">start</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_end">end</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_transport">transport</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/port-range&gt; <span class="OM-cardinality">[0 to ∞]</span></p></div><p>&lt;/protocol&gt;</p></div></div><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_purpose">purpose</a>&gt;<span class="OM-emph">markup-line</span>&lt;/purpose&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-entry open" id="d27e2326"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2326','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_used-by-component">used-by-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2326','hide_me')"> … </a>&lt;/used-by-component&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2326','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_used-by-component">used-by-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/used-by-component&gt;</p></div></div></div><p>&lt;/service&gt;</p></div></div><div class="OM-entry open" id="d27e2347"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2347','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_interconnection">interconnection</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2347','hide_me')"> … </a>&lt;/interconnection&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2347','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_interconnection">interconnection</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external-system-name">external-system-name</a>&gt;<span class="OM-emph">string</span>&lt;/external-system-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_external-system-org">external-system-org</a>&gt;<span class="OM-emph">string</span>&lt;/external-system-org&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_isa-authorization">isa-authorization</a>&gt;<span class="OM-emph">string</span>&lt;/isa-authorization&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_isa-name">isa-name</a>&gt;<span class="OM-emph">string</span>&lt;/isa-name&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_isa-date">isa-date</a>&gt;<span class="OM-emph">string</span>&lt;/isa-date&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/interconnection&gt;</p></div></div><div class="OM-entry open" id="d27e2414"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2414','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-inventory">system-inventory</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e2414','hide_me')"> … </a>&lt;/system-inventory&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2414','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_system-inventory">system-inventory</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e2424"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2424','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_inventory-item">inventory-item</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_virtual">virtual</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_public">public</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2424','hide_me')"> … </a>&lt;/inventory-item&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2424','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_inventory-item">inventory-item</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_virtual">virtual</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_public">public</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ip-address">ip-address</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/ip-address&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_dns-name">dns-name</a>&gt;<span class="OM-emph">string</span>&lt;/dns-name&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e2485"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2485','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_host-item">host-item</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2485','hide_me')"> … </a>&lt;/host-item&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2485','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_host-item">host-item</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_netbios-name">netbios-name</a>&gt;<span class="OM-emph">string</span>&lt;/netbios-name&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_mac-address">mac-address</a>&gt;<span class="OM-emph">string</span>&lt;/mac-address&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_authenticated-scan">authenticated-scan</a>&gt;<span class="OM-emph">boolean</span>&lt;/authenticated-scan&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_baseline-template">baseline-template</a>&gt;<span class="OM-emph">string</span>&lt;/baseline-template&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_os-name">os-name</a>&gt;<span class="OM-emph">string</span>&lt;/os-name&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_os-version">os-version</a>&gt;<span class="OM-emph">string</span>&lt;/os-version&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_location">location</a>&gt;<span class="OM-emph">string</span>&lt;/location&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_asset-type">asset-type</a>&gt;<span class="OM-emph">string</span>&lt;/asset-type&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_vendor">vendor</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/vendor&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_hardware-model">hardware-model</a>&gt;<span class="OM-emph">string</span>&lt;/hardware-model&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_scanned">scanned</a>&gt;<span class="OM-emph">string</span>&lt;/scanned&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p></div><p>&lt;/host-item&gt;</p></div></div><div class="OM-entry open" id="d27e2655"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2655','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_software-item">software-item</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2655','hide_me')"> … </a>&lt;/software-item&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2655','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_software-item">software-item</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_vendor">vendor</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/vendor&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_software-name">software-name</a>&gt;<span class="OM-emph">string</span>&lt;/software-name&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_software-version">software-version</a>&gt;<span class="OM-emph">string</span>&lt;/software-version&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_software-patch-level">software-patch-level</a>&gt;<span class="OM-emph">string</span>&lt;/software-patch-level&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_function">function</a>&gt;<span class="OM-emph">string</span>&lt;/function&gt; <span class="OM-cardinality">[0 to ∞]</span></p></div><p>&lt;/software-item&gt;</p></div></div><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_comments">comments</a>&gt;<span class="OM-emph">string</span>&lt;/comments&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_serial-no">serial-no</a>&gt;<span class="OM-emph">string</span>&lt;/serial-no&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_network-id">network-id</a>&gt;<span class="OM-emph">string</span>&lt;/network-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_asset-owner">asset-owner</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party-id">party-id</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/asset-owner&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_asset-administrator">asset-administrator</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_party-id">party-id</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/asset-administrator&gt; <span class="OM-cardinality">[0 to ∞]</span></p></div><p>&lt;/inventory-item&gt;</p></div></div></div><p>&lt;/system-inventory&gt;</p></div></div></div><p>&lt;/system-implementation&gt;</p></div></div><div class="OM-entry open" id="d27e2794"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2794','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-implementation">control-implementation</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e2794','hide_me')"> … </a>&lt;/control-implementation&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2794','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-implementation">control-implementation</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry open" id="d27e2807"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2807','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2807','hide_me')"> … </a>&lt;/meets-requirement-set&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2807','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_responsible-role">responsible-role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/responsible-role&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e2833"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2833','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2833','hide_me')"> … </a>&lt;/set-param&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2833','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_value">value</a>&gt;<span class="OM-emph">string</span>&lt;/value&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/set-param&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e2927"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e2927','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e2927','hide_me')"> … </a>&lt;/implemented-requirement&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e2927','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e3029"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3029','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e3029','hide_me')"> … </a>&lt;/using&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3029','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e3039"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3039','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3039','hide_me')"> … </a>&lt;/implementation&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3039','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry open" id="d27e3135"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3135','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3135','hide_me')"> … </a>&lt;/with-argument&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3135','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_use-param">use-param</a>&gt;<span class="OM-emph">NCName</span>&lt;/use-param&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/with-argument&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implementation&gt;</p></div></div></div><p>&lt;/using&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implemented-requirement&gt;</p></div></div></div><p>&lt;/meets-requirement-set&gt;</p></div></div><div class="OM-entry open" id="d27e3172"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3172','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_by-component">by-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3172','hide_me')"> … </a>&lt;/by-component&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3172','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_by-component">by-component</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_component-id">component-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry" id="d27e3191"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3191','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3191','hide_me')"> … </a>&lt;/meets-requirement-set&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3191','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_responsible-role">responsible-role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/responsible-role&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3217"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3217','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3217','hide_me')"> … </a>&lt;/set-param&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3217','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_value">value</a>&gt;<span class="OM-emph">string</span>&lt;/value&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/set-param&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3311"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3311','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3311','hide_me')"> … </a>&lt;/implemented-requirement&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3311','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3413"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3413','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e3413','hide_me')"> … </a>&lt;/using&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3413','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry" id="d27e3423"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3423','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3423','hide_me')"> … </a>&lt;/implementation&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3423','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3519"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3519','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3519','hide_me')"> … </a>&lt;/with-argument&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3519','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_use-param">use-param</a>&gt;<span class="OM-emph">NCName</span>&lt;/use-param&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/with-argument&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implementation&gt;</p></div></div></div><p>&lt;/using&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implemented-requirement&gt;</p></div></div></div><p>&lt;/meets-requirement-set&gt;</p></div></div></div><p>&lt;/by-component&gt;</p></div></div><div class="OM-entry open" id="d27e3557"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3557','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_by-capability">by-capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability-id">capability-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3557','hide_me')"> … </a>&lt;/by-capability&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3557','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_by-capability">by-capability</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_capability-id">capability-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><div class="OM-entry" id="d27e3576"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3576','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3576','hide_me')"> … </a>&lt;/meets-requirement-set&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3576','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_meets-requirement-set">meets-requirement-set</a>&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_responsible-role">responsible-role</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_role-id">role-id</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">empty</span>&lt;/responsible-role&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3602"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3602','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3602','hide_me')"> … </a>&lt;/set-param&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3602','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_set-param">set-param</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_param-id">param-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_value">value</a>&gt;<span class="OM-emph">string</span>&lt;/value&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/set-param&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3696"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3696','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3696','hide_me')"> … </a>&lt;/implemented-requirement&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3696','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">implemented-requirement</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implemented-requirement">requirement-id</a>="<span class="OM-emph">NCName</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_control-id">control-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_subcontrol-id">subcontrol-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3798"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3798','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e3798','hide_me')"> … </a>&lt;/using&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3798','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_using">using</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry" id="d27e3808"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3808','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3808','hide_me')"> … </a>&lt;/implementation&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3808','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_implementation">implementation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_configuration-id">configuration-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_artifact-id">artifact-id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_statement-id">statement-id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[1 to ∞]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_prop">prop</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_name">name</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_ns">ns</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_class">class</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/prop&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_link">link</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rel">rel</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">markup-line</span>&lt;/link&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-entry" id="d27e3904"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e3904','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3904','hide_me')"> … </a>&lt;/with-argument&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3904','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">with-argument</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_with-argument">name</a>="<span class="OM-emph">NCName</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_use-param">use-param</a>&gt;<span class="OM-emph">NCName</span>&lt;/use-param&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/with-argument&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implementation&gt;</p></div></div></div><p>&lt;/using&gt;</p></div></div><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/implemented-requirement&gt;</p></div></div></div><p>&lt;/meets-requirement-set&gt;</p></div></div></div><p>&lt;/by-capability&gt;</p></div></div></div><p>&lt;/control-implementation&gt;</p></div></div><div class="OM-entry open" id="d27e3943"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3943','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_back-matter">back-matter</a>&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e3943','hide_me')"> … </a>&lt;/back-matter&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3943','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_back-matter">back-matter</a>&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><div class="OM-entry open" id="d27e3953"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e3953','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_citation">citation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e3953','hide_me')"> … </a>&lt;/citation&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e3953','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_citation">citation</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_target">target</a>&gt;<span class="OM-emph">string</span>&lt;/target&gt; <span class="OM-cardinality">[0 to ∞]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_title">title</a>&gt;<span class="OM-emph">markup-line</span>&lt;/title&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_desc">desc</a>&gt;<span class="OM-emph">string</span>&lt;/desc&gt; <span class="OM-cardinality">[0 or 1]</span></p><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_doc-id">doc-id</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/doc-id&gt; <span class="OM-cardinality">[0 to ∞]</span></p></div><p>&lt;/citation&gt;</p></div></div><div class="OM-entry open" id="d27e4016"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e4016','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_resource">resource</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e4016','hide_me')"> … </a>&lt;/resource&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e4016','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_resource">resource</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_id">id</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_desc">desc</a>&gt;<span class="OM-emph">string</span>&lt;/desc&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-entry open" id="d27e4042"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e4042','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rlink">rlink</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span><a class="expander-collapser" href="javascript:switch_view('d27e4042','hide_me')"> … </a>&lt;/rlink&gt;</p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d27e4042','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_rlink">rlink</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_href">href</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 to ∞]</span></p><div class="OM-map"><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_hash">hash</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_algorithm">algorithm</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">string</span>&lt;/hash&gt; <span class="OM-cardinality">[0 or 1]</span></p></div><p>&lt;/rlink&gt;</p></div></div><p class="OM-entry open">&lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_base64">base64</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_filename">filename</a>="<span class="OM-emph">string</span>" <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_media-type">media-type</a>="<span class="OM-emph">string</span>"&gt;<span class="OM-emph">base64</span>&lt;/base64&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-entry" id="d27e4105"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d27e4105','hide_me')">+</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span><a class="expander-collapser" href="javascript:switch_view('d27e4105','hide_me')"> … </a>&lt;/notes&gt;</p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d27e4105','hide_me')">-</a> &lt;<a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_notes">notes</a> <a class="OM-name" href="../../schemas/oscal-ssp-xml#oscal-ssp-xml_type">type</a>="<span class="OM-emph">string</span>"&gt; <span class="OM-cardinality">[0 or 1]</span></p><div class="OM-map"><p class="OM-entry"><a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a></p></div><p>&lt;/notes&gt;</p></div></div></div><p>&lt;/resource&gt;</p></div></div></div><p>&lt;/back-matter&gt;</p></div></div></div><p>&lt;/system-security-plan&gt;</p></div></div></div>
+
+</div>
+
+    </main>
+
+     <!-- 
+
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+  
+
+  
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+  
+
+
+
+  
+    
+    
+    
+    
+  <div class="usa-footer-primary-section">
+    <div class="usa-grid">
+      <nav class="usa-footer-nav">
+        <ul class="usa-unstyled-list">
+          
+          <li class="usa-width-one-whole usa-footer-primary-content">
+            <a class="usa-footer-primary-link" href="/OSCAL/docs/">
+              Documentation
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="usa-footer-logo usa-width-one-half">
+        
+          
+              <a href="https://nist.gov">
+            
+            <img class="usa-footer-logo-img" src="/OSCAL/assets/img/NIST_logo.svg" alt="NIST">
+            
+              </a>
+            
+          
+        
+
+        
+        <h3 class="usa-footer-logo-heading" style="margin-top: 0;">National Institute of Standards and Technology</h3>
+        
+      </div>
+
+      
+      <div class="usa-footer-contact-links usa-width-one-half">
+        
+        
+          
+            <a class="usa-link-github" href="https://github.com/usnistgov">
+              <span>GitHub</span>
+            </a>
+          
+        
+        
+          <h3 class="usa-footer-contact-heading">Information Technology Laboratory (ITL)<br />Computer Security Division (CSD)<br />Applied Cybersecurity Division (ACD)</h3>
+          
+          
+            <address>
+              
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="tel:1-301-975-8443">
+                      (301) 975-8443
+                    </a>
+                  </p>
+                </div>
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="mailto:webmaster-csrc@nist.gov">
+                      webmaster-csrc@nist.gov
+                    </a>
+                  </p>
+                </div>
+              
+            </address>
+        
+      
+      
+      </div>
+    </div>
+  </div>
+  
+
+</footer>
+
+
+ -->
+
+
+<footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Privacy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#privpolicy">Privacy Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#secnot">Security Notice</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#accesstate">Accessibility Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">NIST Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/disclaimer">Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/office-director/freedom-information-act">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#cookie">Cookie Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity Summary</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">NIST Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://business.usa.gov/">Business USA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.healthcare.gov/">Healthcare.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.usa.gov/">USA.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link"
+      rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_centered_rev.svg" alt="National Institute of Standards and Technology logo" />
+    </a>
+  </div>
+</footer> 
+
+
+
+
+
+
+<script src="/OSCAL/assets/uswds/js/uswds.min.js"
+   async></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  var usasearch_config = { siteHandle: "" };
+
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "//search.usa.gov/javascripts/remote.loader.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+
+//]]>
+</script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    // Mark external (non-nist.gov) A tags with class "external"
+    //If the adress starts with https and ends with nist.gov
+    var re_nist = new RegExp('^https?:\/\/((^\/).)nist\.gov(\/|$)');
+    //Regex to find address that start with https
+    var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+    $("a").each(function () {
+      var url = $(this).attr('href');
+      if (re_nist.test(url) || !re_absolute_address.test(url)) {
+        $(this).attr('rel', 'local');
+      } else {
+        $(this).attr('rel', 'external');
+      }
+    });
+    // Add leaveNotice to external A elements
+    $('a[rel=external]').leaveNotice();
+  });
+</script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+
+</body>
+
+</html>

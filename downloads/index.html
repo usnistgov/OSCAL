@@ -74,6 +74,7 @@
     <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
     <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
     <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
 </head>
 
 <body class="  site-wide">
@@ -280,20 +281,32 @@
   <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
     <nav>
   <ul class="usa-sidenav-list">
-    
+        
       
       
       
       
     <li>
       <a href="/OSCAL/downloads/"
-          class="usa-current" 
-          >
-         Downloads
+         class="usa-current" 
+         >
+        Downloads
       </a>
-	  
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
     </li>
     
+
   </ul>
 </nav>
 
@@ -302,15 +315,15 @@
 
 <div class="usa-layout-docs-main_content">
   
-    
     <h1>Downloads</h1>
-    
   
   <p>Official releases of the OSCAL Project are available on the project’s <a href="https://github.com/usnistgov/OSCAL/releases">GitHub repository</a>. These releases align with the project’s <a href="/OSCAL/learnmore/roadmap/">roadmap</a>.</p>
 
 <ul>
-  <li><a href="https://github.com/usnistgov/OSCAL/releases">OSCAL 1.0 Milestone 1</a>: Stable releases of the OSCAL Catalog and Profile layers, including XML and JSON schema, content examples, and content converters.</li>
+  <li><a href="https://github.com/usnistgov/OSCAL/releases">OSCAL 1.0.0 Milestone 1</a>: Stable releases of the OSCAL Catalog and Profile layers, including XML and JSON schema, content examples, and content converters.</li>
 </ul>
+
+<p>OSCAL uses version strings for releases based on the <a href="https://semver.org/spec/v2.0.0.html">semantic versioning v2.0.0</a> specification.</p>
 
 <h1 id="future-oscal-compatibility-commitment">Future OSCAL Compatibility Commitment</h1>
 
@@ -318,16 +331,17 @@
 
 <p>The OSCAL team can not anticipate all issues raised or feedback received. In rare cases, changes to the OSCAL models will need to be made to address a compelling issue. In these instances, the OSCAL team will do everything practical to minimize the impact to early adopters, and document any changes where impacts are unavoidable in the <a href="https://github.com/usnistgov/OSCAL/tree/master/src/release/release-notes.txt">release notes</a>.</p>
 
-<p>NIST encourages early adoption of released OSCAL content, tools, and schema. In general early adopters can count on the following, from the first milestone release to the first official 1.0 release of OSCAL:</p>
+<p>NIST encourages early adoption of released OSCAL content, tools, and schema. In general early adopters can count on the following, from the first milestone release to the first official 1.0.0 release of OSCAL:</p>
 
 <ul>
-  <li>Any data element modeled in the milestone release will be modeled in the 1.0 release. Typically with the same syntax.</li>
-  <li>All features available in a milestone release will be available in the 1.0 release.</li>
+  <li>Any data element modeled in the milestone release will be modeled in the 1.0.0 release. Typically with the same syntax.</li>
+  <li>All features available in a milestone release will be available in the 1.0.0 release.</li>
   <li>Deferred features, such as cryptographic validation, will be implemented while minimizing the impact to existing content. Most new features will be implemented as optional extensions with no impact to existing content.</li>
 </ul>
 
 
 </div>
+
     </main>
 
      <!-- 

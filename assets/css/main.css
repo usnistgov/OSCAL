@@ -4078,10 +4078,93 @@ input[type=search] {
   margin: 1rem 0; }
 
 /**
- * @file
- * Header and Footer styles
+ * @file _nist-combined.scss
+ * Header and Footer styles 
  *
  */
+/* Special button styles */
+button.button-xml-off {
+  background-color: #dce4ef; }
+
+button.button-json-off {
+  background-color: #e7f4e4; }
+
+button.button-xml-on {
+  background-color: #205493; }
+
+button.button-json-on {
+  background-color: #2e8540; }
+
+/* Schema Model Map styles */
+div.OM-map {
+  margin-top: 0ex;
+  margin-bottom: 0ex;
+  font-family: monospace;
+  font-weight: bold;
+  color: #212121; }
+
+div.usa-layout-docs-main_content > div.OM-map {
+  border: medium solid #d6d7d9; }
+
+div.OM-map div.OM-map {
+  margin-left: 2em; }
+
+.OM-entry {
+  border: medium solid #f1f1f1;
+  background-color: #f1f1f1;
+  padding-right: 0.5rem; }
+
+.OM-entry:hover {
+  border: medium solid #aeb0b5; }
+
+.OM-entry.hide_me:hover {
+  border: medium solid #f1f1f1; }
+
+div.OM-map p {
+  margin: 0ex; }
+
+span.OM-lit {
+  font-family: serif;
+  font-weight: normal;
+  font-style: normal; }
+
+span.OM-emph {
+  font-family: serif;
+  font-weight: normal;
+  font-style: italic; }
+
+span.OM-cardinality {
+  font-family: serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #205493; }
+
+.OM-name {
+  color: #0071bc; }
+
+.OM-map a {
+  text-decoration: none;
+  color: #0071bc; }
+
+OM-map a:visited {
+  color: #0071bc; }
+
+a.OM-name:hover {
+  text-decoration: underline; }
+
+.hide_me {
+  display: none; }
+
+a.expander-collapser {
+  font-size: 120%;
+  font-weight: normal;
+  width: 2em;
+  color: #212121;
+  font-weight: bold; }
+
+a.expander-collapser:hover {
+  text-decoration: none; }
+
 /* Header Styles */
 .nist-header {
   background: #000;

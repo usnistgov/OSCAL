@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Basic Page Needs
+================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific Metas
+================================================== -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON model map - OSCAL Implementation Component Format | OSCAL</title>
+
+
+
+<meta name="description" content="OSCAL Implementation Component Format Map">
+
+
+
+<link rel="shortcut icon" type="image/ico"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="icon" type="image/png"
+  href="/OSCAL/assets/img/oscal-gears-icon-140.png">
+
+<link rel="icon" type="image/png"
+  sizes="192x192"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="72x72"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="114x114"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="144x144"
+  href="/OSCAL/assets/img/oscal-page-icon-180.png">
+
+
+ 
+
+
+
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="/OSCAL/assets/css/main.css">
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42404149-54', 'auto');
+
+  // anonymize user IPs (chops off the last IP triplet)
+  ga('set', 'anonymizeIp', true);
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+
+
+
+ 
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
+    <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
+</head>
+
+<body class="  site-wide">
+
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+ 
+
+
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner"> <img src="/OSCAL/assets/uswds/img/favicons/favicon-57.png" alt="U.S. flag">
+        <p>An official website of the United States government</p> <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner"> <span class="usa-banner-button-text">Here's how you know</span> </button> </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p> <strong>The .gov means it’s official.</strong> <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/OSCAL/assets/uswds/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p> <strong>The site is secure.</strong> <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    <header class="usa-header usa-header-extended" role="banner">
+      
+
+      <div class="nist-header" id="nist-header" role="banner">
+
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-header__logo-link"
+          rel="home" style="text-decoration: none">
+          <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="32" viewBox="0 0 24 32">
+            <path d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z"></path>
+          </svg>
+          <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-237 385.7 109.7 29.3">
+            <title>National Institute of Standards and Technology</title>
+            <g>
+              <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+          c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z" />
+              <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+          c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+          c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+          C-194.9,386.1-195,386.1-195,386.1z" />
+            </g>
+          </svg>
+        </a>
+
+      </div>
+
+      
+        <div class="usa-navbar">
+          <button class="usa-menu-btn">Menu</button>
+          <div class="usa-logo" id="extended-mega-logo">
+            <em class="usa-logo-text">
+              <a href="/OSCAL/" title="Home">
+                OSCAL: the Open Security Controls Assessment Language
+              </a>
+            </em>
+          </div>
+        </div>
+
+        <nav role="navigation" class="usa-nav">
+          <div class="usa-nav-inner">
+            <button class="usa-nav-close">
+              <img src="/OSCAL/assets/uswds/img/close.svg" alt="close">
+            </button>
+
+            
+            
+            
+            <ul class="usa-nav-primary usa-accordion">
+              
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/">
+            <span>Home</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/learnmore/">
+            <span>Learn More</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/docs/">
+            <span>Architecture</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/downloads/">
+            <span>Downloads</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/resources/">
+            <span>Resources</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link   usa-current"
+            href="/OSCAL/docs/schemas/">
+            <span>Schema Reference</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/OSCAL/community/">
+            <span>Community</span>
+          </a>
+          
+          </li>
+          
+          </ul>
+          
+
+          
+
+          
+          
+          <div class="usa-nav-secondary">
+            <ul class="usa-unstyled-list usa-nav-secondary-links">
+              
+              
+              <li>
+                <a href="/OSCAL/community/"
+                  >
+                  Get Involved
+                </a>
+              </li>
+              
+              <li>
+                <a href="/OSCAL/contact/"
+                  >
+                  Contact Us
+                </a>
+              </li>
+              
+              
+              <li>
+                <div role="search" style="margin: 0.4rem 0 0 0">
+                  <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small">
+                    <input id="affiliate" name="affiliate" type="hidden" value="oscal" />
+                    <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                    <button type="submit" name="commit" />
+                  </form>
+                </div>
+              </li>
+              
+            </ul>
+          </div>
+          
+
+
+      </div>
+      </div>
+      </nav>
+      
+    </header>
+    <div class="usa-overlay"></div>
+      
+     
+
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav ">
+    <nav>
+  <ul class="usa-sidenav-list">
+        
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/"
+        
+         >
+        Schema Reference
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/datatypes/"
+        
+         >
+        OSCAL Data Types
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Catalog Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-catalog-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-catalog-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Profile Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-profile-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-profile-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        Component Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-component-json/"
+         class="usa-current" 
+         >
+        JSON Model Map
+      </a>
+      
+      <!-- _current = true and page.subnav = true -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+      </ul>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-component-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href=""
+        
+         >
+        System Security Plan Model
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+      <ul class="usa-sidenav-sub_list">
+            
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-xml/"
+        
+         >
+        XML Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-xml/"
+        
+         >
+        XML Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/maps/oscal-ssp-json/"
+        
+         >
+        JSON Model Map
+      </a>
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
+    </li>
+    
+      
+      
+      
+      
+    <li>
+      <a href="/OSCAL/docs/schemas/oscal-ssp-json/"
+        
+         >
+        JSON Schema
+      </a>
+      
+
+      
+
+      
+    </li>
+    
+
+      </ul>
+      
+    </li>
+    
+
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
+  
+    <h1>JSON model map - OSCAL Implementation Component Format</h1>
+  
+  <div class="OM-map"><div class="OM-entry open" id="d32e1"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component-definition">component-definition</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component-definition">component-definition</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><div class="OM-entry open" id="d32e12"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e12','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_metadata">metadata</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e12','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e12','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_metadata">metadata</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_title">title</a>: <span class="OM-emph">markup-line</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_last-modified-date">last-modified-date</a>: <span class="OM-emph">dateTime-with-timezone</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_version">version</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_oscal-version">oscal-version</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e67"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e67','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_doc-id">document-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e67','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e67','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_doc-id">document-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e99"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e99','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e99','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e99','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry open"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e154"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e154','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e154','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e154','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e208"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e208','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_role">role</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e208','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e208','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_role">role</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_title">title</a>: <span class="OM-emph">markup-line</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_short-name">short-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_desc">desc</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e264"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e264','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_party">party</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e264','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e264','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_party">party</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_role-id">role-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e297"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e297','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_person">person</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e297','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e297','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_person">person</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_person-name">person-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_short-name">short-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-name">org-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e341"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e341','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_person-id">person-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e341','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e341','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_person-id">person-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e373"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e373','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-id">organization-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e373','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e373','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-id">organization-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e405"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e405','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_address">address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e405','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e405','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_address">address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e427"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e427','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_addr-line">postal-address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e427','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e427','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_addr-line">postal-address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_city">city</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_state">state</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_postal-code">postal-code</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_country">country</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e493"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e493','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_email">email-addresses</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e493','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e493','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_email">email-addresses</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">email</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e514"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e514','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_phone">telephone-numbers</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e514','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e514','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_phone">telephone-numbers</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e546"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e546','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_url">URLs</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e546','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e546','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_url">URLs</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">uri</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e567"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e567','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e567','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e567','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_note">note</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e604"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e604','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org">org</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e604','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e604','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org">org</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-name">org-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_short-name">short-name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e637"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e637','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-id">organization-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e637','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e637','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_org-id">organization-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e669"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e669','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_address">address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e669','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e669','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_address">address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e691"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e691','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_addr-line">postal-address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e691','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e691','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_addr-line">postal-address</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_city">city</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_state">state</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_postal-code">postal-code</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_country">country</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry" id="d32e757"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e757','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_email">email-addresses</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e757','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e757','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_email">email-addresses</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">email</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e778"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e778','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_phone">telephone-numbers</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e778','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e778','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_phone">telephone-numbers</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e810"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e810','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_url">URLs</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e810','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e810','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_url">URLs</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">uri</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e831"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e831','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e831','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e831','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_note">note</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry" id="d32e868"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e868','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e868','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e868','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_note">note</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry" id="d32e905"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e905','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e905','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e905','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_note">note</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e942"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e942','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_import-component-definition">import-component-definitions</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e942','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e942','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_import-component-definition">import-component-definitions</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_import-component-definition">href</a>: <span class="OM-emph">uri</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e965"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e965','hide_me')">+</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component">component</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e965','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e965','hide_me')">-</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component">component</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component">name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_component-type">component-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_title">title</a>: <span class="OM-emph">markup-line</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1026"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1026','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1026','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1026','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e1081"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1081','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1081','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1081','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e1135"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1135','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_supplier">supplier</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1135','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1135','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_supplier">supplier</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_party-id">party-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_role-id">role-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e1180"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1180','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-implementation">control-implementation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1180','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1180','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-implementation">control-implementation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e1202"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1202','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_can-meet-requirement-set">can-meet-requirement-set</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1202','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1202','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_can-meet-requirement-set">can-meet-requirement-set</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_source">source</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1235"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1235','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1235','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1235','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e1290"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1290','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1290','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1290','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e1344"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1344','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">implemented-requirement</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1344','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1344','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">implemented-requirement</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">requirement-id</a>: <span class="OM-emph">NCName</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-id">control-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_subcontrol-id">subcontrol-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1410"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1410','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1410','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1410','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e1465"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1465','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1465','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1465','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e1519"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1519','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_using">using</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1519','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1519','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_using">using</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><div class="OM-entry open" id="d32e1530"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1530','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation">implementation</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1530','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1530','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation">implementation</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration-id">configuration-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_artifact-id">artifact-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_statement-id">statement-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1585"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1585','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1585','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1585','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e1640"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1640','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1640','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1640','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e1694"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1694','hide_me')">+</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_with-argument">with-argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1694','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1694','hide_me')">-</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_with-argument">with-argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_use-param">use-param</a>: <span class="OM-emph">NCName</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e1765"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1765','hide_me')">+</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration">configuration</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1765','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1765','hide_me')">-</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration">configuration</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1793"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1793','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1793','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1793','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e1848"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1848','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1848','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1848','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e1902"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1902','hide_me')">+</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_argument">argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1902','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1902','hide_me')">-</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_argument">argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_argument">type</a>: <span class="OM-emph">NCName</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e1942"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1942','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_mechanism">mechanism</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e1942','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e1942','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_mechanism">mechanism</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_mechanism">id</a>: <span class="OM-emph">ID</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e1975"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e1975','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e1975','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e1975','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e2030"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2030','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2030','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2030','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e2084"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2084','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration-method">configuration-method</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2084','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2084','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration-method">configuration-method</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e2106"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2106','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_script">script</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2106','hide_me')"> … </a><span class="OM-lit">} ,</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2106','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_script">script</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_system">system</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} ,</span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e2150"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2150','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_verification-method">verification-method</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2150','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2150','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_verification-method">verification-method</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2172"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2172','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_script">script</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2172','hide_me')"> … </a><span class="OM-lit">} ,</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2172','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_script">script</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_system">system</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} ,</span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e2231"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2231','hide_me')">+</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_artifact">artifact</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2231','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2231','hide_me')">-</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_artifact">artifact</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2259"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2259','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2259','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2259','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e2314"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2314','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2314','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2314','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e2368"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2368','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation-source">implementation-source</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2368','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2368','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation-source">implementation-source</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation-source">href</a>: <span class="OM-emph">uri</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2401"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2401','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2401','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2401','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e2456"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2456','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2456','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2456','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e2522"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2522','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_verification-process">verification-process</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2522','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2522','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_verification-process">verification-process</a>:  <span class="OM-cardinality">[1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_verification-process">href</a>: <span class="OM-emph">uri</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2555"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2555','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2555','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2555','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e2610"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2610','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2610','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2610','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e2700"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2700','hide_me')">+</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_capability">capability</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2700','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2700','hide_me')">-</a> <span class="OM-name">{{id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_capability">capability</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_capability">name</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2739"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2739','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2739','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2739','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e2794"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2794','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2794','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2794','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry open" id="d32e2848"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2848','hide_me')">+</a> <span class="OM-name">{{capability-id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_incorporates-capability">incorporates-capability</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2848','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2848','hide_me')">-</a> <span class="OM-name">{{capability-id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_incorporates-capability">incorporates-capability</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e2877"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2877','hide_me')">+</a> <span class="OM-name">{{component-id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_incorporates-component">incorporates-component</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2877','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e2877','hide_me')">-</a> <span class="OM-name">{{component-id}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_incorporates-component">incorporates-component</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry" id="d32e2906"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2906','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-implementation">control-implementation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2906','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2906','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-implementation">control-implementation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2928"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2928','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_can-meet-requirement-set">can-meet-requirement-set</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e2928','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2928','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_can-meet-requirement-set">can-meet-requirement-set</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_source">source</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e2961"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e2961','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e2961','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e2961','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3016"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3016','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3016','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3016','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3070"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3070','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">implemented-requirement</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3070','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3070','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">implemented-requirement</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implemented-requirement">requirement-id</a>: <span class="OM-emph">NCName</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_control-id">control-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_subcontrol-id">subcontrol-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e3136"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3136','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3136','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3136','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3191"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3191','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3191','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3191','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3245"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3245','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_using">using</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3245','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3245','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_using">using</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><div class="OM-entry" id="d32e3256"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3256','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation">implementation</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3256','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3256','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_implementation">implementation</a>:  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_configuration-id">configuration-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_artifact-id">artifact-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_statement-id">statement-id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_description">description</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e3311"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3311','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3311','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3311','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_prop">properties</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">{{name}}: </span><span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_ns">ns</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_class">class</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3366"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3366','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3366','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3366','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_link">links</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">RICHTEXT: </span><span class="OM-emph">markup-line</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rel">rel</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><div class="OM-entry" id="d32e3420"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3420','hide_me')">+</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_with-argument">with-argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3420','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3420','hide_me')">-</a> <span class="OM-name">{{name}}</span><span class="OM-lit">, labeling </span><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_with-argument">with-argument</a><span class="OM-lit"> objects: </span> <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_use-param">use-param</a>: <span class="OM-emph">NCName</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_remarks">remarks</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e3503"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3503','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_back-matter">back-matter</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3503','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3503','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_back-matter">back-matter</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><div class="OM-entry open" id="d32e3514"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3514','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_citation">citation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3514','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3514','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_citation">citation</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e3536"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3536','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_target">targets</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3536','hide_me')"> … </a><span class="OM-lit">} ], </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3536','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_target">targets</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span></p></div><p><span class="OM-lit">} ], </span></p></div></div><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_title">title</a>: <span class="OM-emph">markup-line</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_desc">desc</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry" id="d32e3579"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3579','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_doc-id">document-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span><a class="expander-collapser" href="javascript:switch_view('d32e3579','hide_me')"> … </a><span class="OM-lit">} ]</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3579','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_doc-id">document-ids</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> [ {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} ]</span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e3614"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3614','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_resource">resource</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3614','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3614','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_resource">resource</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_id">id</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_desc">desc</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e3647"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3647','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rlink">rlink</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3647','hide_me')"> … </a><span class="OM-lit"> }, </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3647','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_rlink">rlink</a>:  <span class="OM-cardinality">[0 to ∞]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_href">href</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><div class="OM-entry open" id="d32e3680"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3680','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_hash">hash</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3680','hide_me')"> … </a><span class="OM-lit">} </span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3680','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_hash">hash</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">string</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_algorithm">algorithm</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[1]</span></p></div><p><span class="OM-lit">} </span></p></div></div></div><p><span class="OM-lit"> }, </span></p></div></div><div class="OM-entry open" id="d32e3715"><div class="collapsed hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3715','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_base64">base64</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3715','hide_me')"> … </a><span class="OM-lit">} ,</span></p></div><div class="expanded"><p><a class="expander-collapser" href="javascript:switch_view('d32e3715','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_base64">base64</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><span class="OM-name">STRVALUE: </span><span class="OM-emph">base64</span><span class="OM-cardinality"> [0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry open"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_filename">filename</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_media-type">media-type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit">} ,</span></p></div></div><div class="OM-entry" id="d32e3758"><div class="collapsed"><p><a class="expander-collapser" href="javascript:switch_view('d32e3758','hide_me')">+</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span><a class="expander-collapser" href="javascript:switch_view('d32e3758','hide_me')"> … </a><span class="OM-lit"> }</span></p></div><div class="expanded hide_me"><p><a class="expander-collapser" href="javascript:switch_view('d32e3758','hide_me')">-</a> <a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_notes">notes</a>:  <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit"> {</span></p><div class="OM-map"><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_type">type</a>: <span class="OM-emph">string</span> <span class="OM-cardinality">[0 or 1]</span><span class="OM-lit">,</span></p><p class="OM-entry"><a class="OM-name" href="../../schemas/oscal-component-json#oscal-component-json_note">note</a>: <span class="OM-emph">text, parsed as Markdown (multiple lines)</span> <span class="OM-cardinality">[0 or 1]</span></p></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }</span></p></div></div></div><p><span class="OM-lit"> }</span></p></div></div></div>
+
+</div>
+
+    </main>
+
+     <!-- 
+
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+  
+
+  
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+  
+
+
+
+  
+    
+    
+    
+    
+  <div class="usa-footer-primary-section">
+    <div class="usa-grid">
+      <nav class="usa-footer-nav">
+        <ul class="usa-unstyled-list">
+          
+          <li class="usa-width-one-whole usa-footer-primary-content">
+            <a class="usa-footer-primary-link" href="/OSCAL/docs/">
+              Documentation
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="usa-footer-logo usa-width-one-half">
+        
+          
+              <a href="https://nist.gov">
+            
+            <img class="usa-footer-logo-img" src="/OSCAL/assets/img/NIST_logo.svg" alt="NIST">
+            
+              </a>
+            
+          
+        
+
+        
+        <h3 class="usa-footer-logo-heading" style="margin-top: 0;">National Institute of Standards and Technology</h3>
+        
+      </div>
+
+      
+      <div class="usa-footer-contact-links usa-width-one-half">
+        
+        
+          
+            <a class="usa-link-github" href="https://github.com/usnistgov">
+              <span>GitHub</span>
+            </a>
+          
+        
+        
+          <h3 class="usa-footer-contact-heading">Information Technology Laboratory (ITL)<br />Computer Security Division (CSD)<br />Applied Cybersecurity Division (ACD)</h3>
+          
+          
+            <address>
+              
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="tel:1-301-975-8443">
+                      (301) 975-8443
+                    </a>
+                  </p>
+                </div>
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="mailto:webmaster-csrc@nist.gov">
+                      webmaster-csrc@nist.gov
+                    </a>
+                  </p>
+                </div>
+              
+            </address>
+        
+      
+      
+      </div>
+    </div>
+  </div>
+  
+
+</footer>
+
+
+ -->
+
+
+<footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Privacy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#privpolicy">Privacy Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#secnot">Security Notice</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#accesstate">Accessibility Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">NIST Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/disclaimer">Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/office-director/freedom-information-act">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#cookie">Cookie Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity Summary</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">NIST Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://business.usa.gov/">Business USA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.healthcare.gov/">Healthcare.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.usa.gov/">USA.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link"
+      rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_centered_rev.svg" alt="National Institute of Standards and Technology logo" />
+    </a>
+  </div>
+</footer> 
+
+
+
+
+
+
+<script src="/OSCAL/assets/uswds/js/uswds.min.js"
+   async></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  var usasearch_config = { siteHandle: "" };
+
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "//search.usa.gov/javascripts/remote.loader.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+
+//]]>
+</script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    // Mark external (non-nist.gov) A tags with class "external"
+    //If the adress starts with https and ends with nist.gov
+    var re_nist = new RegExp('^https?:\/\/((^\/).)nist\.gov(\/|$)');
+    //Regex to find address that start with https
+    var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+    $("a").each(function () {
+      var url = $(this).attr('href');
+      if (re_nist.test(url) || !re_absolute_address.test(url)) {
+        $(this).attr('rel', 'local');
+      } else {
+        $(this).attr('rel', 'external');
+      }
+    });
+    // Add leaveNotice to external A elements
+    $('a[rel=external]').leaveNotice();
+  });
+</script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+
+</body>
+
+</html>

@@ -74,6 +74,7 @@
     <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
     <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
     <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+	<script type="text/javascript" src="/OSCAL/assets/js/oscal-metaschema-map-expander.js"> </script>
 </head>
 
 <body class="  site-wide">
@@ -280,58 +281,47 @@
   <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
     <nav>
   <ul class="usa-sidenav-list">
-    
+        
       
       
       
       
     <li>
       <a href="/OSCAL/docs/"
-          class="usa-current" 
-          >
-         Architecture
+         class="usa-current" 
+         >
+        Architecture
       </a>
-	  
+      
+      <!-- _current = true and page.subnav = {"text"=>"Control", "href"=>"/docs/control/"}{"text"=>"Catalog", "href"=>"/docs/catalog/"}{"text"=>"Profile", "href"=>"/docs/profile/"} -->
       <ul class="usa-sidenav-sub_list">
         
+  <li>
+    <a href="/OSCAL/docs/control/" >Control </a>
+  </li>
 
+  <li>
+    <a href="/OSCAL/docs/catalog/" >Catalog </a>
+  </li>
 
-
-
-<li>
-  <a href="/OSCAL/docs/control/" >Control </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/catalog/" >Catalog </a>
-</li>
-
-
-
-
-<li>
-  <a href="/OSCAL/docs/profile/" >Profile </a>
-</li>
+  <li>
+    <a href="/OSCAL/docs/profile/" >Profile </a>
+  </li>
 
 
       </ul>
       
-    </li>
-    
+
       
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
       
+
       
-      
-    <li>
-      <a href="/OSCAL/docs/schemas/"
-         
-          >
-         Schema Reference
-      </a>
-	  
     </li>
     
       
@@ -340,13 +330,25 @@
       
     <li>
       <a href="/OSCAL/docs/relations/"
-         
-          >
-         Relations to Documentary Encoding Standards
+        
+         >
+        Relations to Documentary Encoding Standards
       </a>
-	  
+      
+
+      
+      <!-- page.model == link.model -->
+      <ul class="usa-sidenav-sub_list">
+        
+
+
+      </ul>
+      
+
+      
     </li>
     
+
   </ul>
 </nav>
 
@@ -355,9 +357,7 @@
 
 <div class="usa-layout-docs-main_content">
   
-    
     <h1>The OSCAL Architecture</h1>
-    
   
   <p>The OSCAL architecture is organized in a series of <em>layers</em> depicted below from left to right. Each layer consists of a human-oriented documentation artifact depicted on the top, a statement of what organizations might do with this information in the middle, and a machine-oriented OSCAL <em>model</em> depicted along the bottom of the image that is capable of representing the information from the human-oriented documentation artifact on the top. Each model in OSCAL is intended to build on the information provided by the model in the previous layer. Consequently, OSCAL is designed as a <strong>documentary architecture</strong> comprising several related document models, arranged in <strong>layers</strong>. OSCAL models are represented in machine readable formats (e.g., XML, JSON).</p>
 
@@ -390,6 +390,7 @@
 
 
 </div>
+
     </main>
 
      <!-- 
