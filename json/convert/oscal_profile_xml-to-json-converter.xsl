@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
                 xmlns="http://www.w3.org/2005/xpath-functions"
                 version="3.0"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
@@ -33,10 +34,10 @@
    </xsl:variable>
    <xsl:template match="/">
       <xsl:choose>
-         <xsl:when test="$diagnostic='rough'">
+         <xsl:when test="$diagnostic = 'rough'">
             <xsl:copy-of select="$xpath-json"/>
          </xsl:when>
-         <xsl:when test="$diagnostic='rectified'">
+         <xsl:when test="$diagnostic = 'rectified'">
             <xsl:copy-of select="$rectified"/>
          </xsl:when>
          <xsl:otherwise>
@@ -44,12 +45,17 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
+   <xsl:template match="node() | @*" mode="rectify">
+      <xsl:copy copy-namespaces="no">
+         <xsl:apply-templates mode="#current" select="node() | @*"/>
+      </xsl:copy>
+   </xsl:template>
    <xsl:template mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                  match="/*/@key | array/*/@key"/>
+   <xsl:template mode="rectify" match="@m:*"/>
    <xsl:template mode="rectify"
-                 match="array[count(*) eq 1]"
+                 match="array[count(*) eq 1][not(@m:json-behavior = 'ARRAY')]"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
       <xsl:for-each select="*">
          <xsl:copy>
@@ -59,23 +65,52 @@
       </xsl:for-each>
    </xsl:template>
    <xsl:template name="prose">
+      <xsl:param name="key" select="'PROSE'"/>
       <xsl:variable name="blocks"
                     select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
       <xsl:if test="exists($blocks)">
          <xsl:variable name="string-sequence" as="element()*">
             <xsl:apply-templates mode="md" select="$blocks"/>
          </xsl:variable>
-         <string key="prose">
-            <xsl:value-of select="string-join($string-sequence,'\n')"/>
+         <string key="{$key}">
+            <xsl:value-of select="string-join($string-sequence, '\n')"/>
          </string>
       </xsl:if>
    </xsl:template>
    <xsl:template mode="as-string" match="@* | *">
       <xsl:param name="key" select="local-name()"/>
-      <xsl:if test="matches(.,'\S')">
-         <string key="{$key}">
+      <xsl:param name="mandatory" select="false()"/>
+      <xsl:if test="$mandatory or matches(., '\S')">
+         <string key="{ $key }">
             <xsl:value-of select="."/>
          </string>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="as-boolean" match="@* | *">
+      <xsl:param name="key" select="local-name()"/>
+      <xsl:param name="mandatory" select="false()"/>
+      <xsl:if test="$mandatory or matches(., '\S')">
+         <boolean key="{ $key }">
+            <xsl:value-of select="."/>
+         </boolean>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="as-integer" match="@* | *">
+      <xsl:param name="key" select="local-name()"/>
+      <xsl:param name="mandatory" select="false()"/>
+      <xsl:if test="$mandatory or matches(., '\S')">
+         <integer key="{ $key }">
+            <xsl:value-of select="."/>
+         </integer>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="as-number" match="@* | *">
+      <xsl:param name="key" select="local-name()"/>
+      <xsl:param name="mandatory" select="false()"/>
+      <xsl:if test="$mandatory or matches(., '\S')">
+         <number key="{ $key }">
+            <xsl:value-of select="."/>
+         </number>
       </xsl:if>
    </xsl:template>
    <xsl:template name="conditional-lf">
@@ -160,7 +195,7 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template mode="md" match="code | span[contains(@class,'code')]">
+   <xsl:template mode="md" match="code | span[contains(@class, 'code')]">
       <xsl:text>`</xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text>`</xsl:text>
@@ -181,9 +216,9 @@
       <xsl:text>"</xsl:text>
    </xsl:template>
    <xsl:template mode="md" match="insert">
-      <xsl:text>{ </xsl:text>
+      <xsl:text>{{ </xsl:text>
       <xsl:value-of select="@param-id"/>
-      <xsl:text> }</xsl:text>
+      <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
    <xsl:template mode="md" match="a">
@@ -195,7 +230,7 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template match="text()" mode="md">
-      <xsl:value-of select="replace(.,'([`~\^\*''&#34;])','\\$1')"/>
+      <xsl:value-of select="replace(., '([`~\^\*''&#34;])', '\\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
    <xsl:template match="metadata" mode="xml2json">
@@ -254,23 +289,21 @@
          <xsl:apply-templates mode="as-string" select="@media-type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="last-modified-date" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="last-modified-date">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="version" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="oscal-version" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="oscal-version">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -281,6 +314,7 @@
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -289,12 +323,12 @@
          <xsl:value-of select="@name"/>
       </xsl:variable>
       <map key="prop">
-         <xsl:apply-templates mode="as-string" select="@name"/>
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -387,6 +421,7 @@
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -396,6 +431,7 @@
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -407,19 +443,16 @@
       </map>
    </xsl:template>
    <xsl:template match="person-name" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="person-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="org-name" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="org-name">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="short-name" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="short-name">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -439,37 +472,31 @@
       </map>
    </xsl:template>
    <xsl:template match="addr-line" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="addr-line">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="city" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="city">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="state" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="state">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="postal-code" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="postal-code">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="country" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="country">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template match="email" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="email">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -480,11 +507,11 @@
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="url" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="url">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -492,11 +519,12 @@
    <xsl:template match="notes" mode="xml2json">
       <map key="notes">
          <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:call-template name="prose"/>
+         <xsl:call-template name="prose">
+            <xsl:with-param name="key">note</xsl:with-param>
+         </xsl:call-template>
       </map>
    </xsl:template>
    <xsl:template match="desc" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="desc">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -520,6 +548,7 @@
          <xsl:apply-templates mode="as-string" select="@algorithm"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -532,7 +561,6 @@
       </map>
    </xsl:template>
    <xsl:template match="title" mode="xml2json">
-      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="title">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -544,6 +572,7 @@
          <xsl:apply-templates mode="as-string" select="@media-type"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -565,8 +594,12 @@
       </map>
    </xsl:template>
    <xsl:template match="target" mode="xml2json">
-      <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <string key="target">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="note" mode="xml2json">
+      <string key="note">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
@@ -601,7 +634,6 @@
       </map>
    </xsl:template>
    <xsl:template match="label" mode="xml2json">
-      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="label">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -612,6 +644,7 @@
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
@@ -621,16 +654,18 @@
          <xsl:apply-templates mode="as-string" select="@test"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key" select="$text-key"/>
+            <xsl:with-param name="mandatory" select="true()"/>
          </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="guideline" mode="xml2json">
       <map key="guideline">
-         <xsl:call-template name="prose"/>
+         <xsl:call-template name="prose">
+            <xsl:with-param name="key">prose</xsl:with-param>
+         </xsl:call-template>
       </map>
    </xsl:template>
    <xsl:template match="value" mode="xml2json">
-      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="value">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -646,7 +681,6 @@
       </map>
    </xsl:template>
    <xsl:template match="choice" mode="xml2json">
-      <xsl:variable name="text-key">RICHTEXT</xsl:variable>
       <string key="choice">
          <xsl:apply-templates mode="md"/>
       </string>
@@ -663,7 +697,9 @@
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:call-template name="prose"/>
+         <xsl:call-template name="prose">
+            <xsl:with-param name="key">prose</xsl:with-param>
+         </xsl:call-template>
          <xsl:if test="exists(part)">
             <array key="parts">
                <xsl:apply-templates select="part" mode="#current"/>
@@ -675,6 +711,11 @@
             </array>
          </xsl:if>
       </map>
+   </xsl:template>
+   <xsl:template match="prose" mode="xml2json">
+      <string key="prose">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="profile" mode="xml2json">
       <map key="profile">
@@ -708,9 +749,6 @@
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="combine">
          <xsl:apply-templates mode="as-string" select="@method"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
-         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="as-is" mode="xml2json">
@@ -789,9 +827,6 @@
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="all">
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
-         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="call" mode="xml2json">
@@ -801,9 +836,6 @@
          <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
-         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="match" mode="xml2json">
@@ -813,9 +845,6 @@
          <xsl:apply-templates mode="as-string" select="@order"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
-         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="exclude" mode="xml2json">
@@ -838,7 +867,7 @@
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
          <xsl:if test="exists(usage)">
-            <array key="descriptions">
+            <array key="usages">
                <xsl:apply-templates select="usage" mode="#current"/>
             </array>
          </xsl:if>
@@ -883,9 +912,6 @@
          <xsl:apply-templates mode="as-string" select="@class-ref"/>
          <xsl:apply-templates mode="as-string" select="@id-ref"/>
          <xsl:apply-templates mode="as-string" select="@item-name"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key" select="$text-key"/>
-         </xsl:apply-templates>
       </map>
    </xsl:template>
    <xsl:template match="add" mode="xml2json">
