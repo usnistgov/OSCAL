@@ -113,7 +113,7 @@
    <xsl:template mode="html-render" match="m:field[@as-type='markup-multiline'][not(@wrap-xml='yes')]">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <p class="OM-entry{ ' open'[$first] }">
-         <a href="../../schemas/oscal-prose"><i>Prose contents (paragraphs, lists, headers and tables)</i></a>
+         <a href="../../schemas/datatype"><i>Prose contents (paragraphs, lists, headers and tables)</i></a>
       </p>
    </xsl:template>
    
