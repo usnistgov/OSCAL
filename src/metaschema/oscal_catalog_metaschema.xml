@@ -119,8 +119,8 @@
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
-         <assembly ref="subcontrol" max-occurs="unbounded">
-            <group-as name="subcontrols"/>
+         <assembly ref="control" max-occurs="unbounded">
+            <group-as name="controls"/>
          </assembly>
          <!--<assembly named="ref-list"/>-->
          <any/>
@@ -134,28 +134,6 @@
             <title>Control 1</title>
          </control>
       </example>
-   </define-assembly>
-   <define-assembly name="subcontrol">
-      <formal-name>Sub-Control</formal-name>
-      <description>A control extension or enhancement</description>
-      <flag ref="id" required="yes"/>
-      <flag ref="class"/>
-      <model>
-         <field ref="title" min-occurs="1"/>
-         <assembly ref="param" max-occurs="unbounded">
-            <group-as name="parameters"/>
-         </assembly>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/></field>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
-         </field>
-         <assembly ref="part" max-occurs="unbounded">
-            <group-as name="parts"/>
-         </assembly>
-         <!--<assembly named="ref-list"/>-->
-         <any/>
-      </model>
    </define-assembly>
    <!-- See metadata model for 'prop' element -->
    <define-assembly name="param">
