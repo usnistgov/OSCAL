@@ -39,7 +39,8 @@
     <sch:pattern>
         
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
-            <sch:assert role="warning" test="count(key('definition-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module (only the last one found will be used)</sch:assert>
+            <!-- $compleat assembles all definitions from all modules (in metaschema-compose.xsl)  -->
+            <sch:assert test="count(key('definition-by-name',@name,$compleat)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module.</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
