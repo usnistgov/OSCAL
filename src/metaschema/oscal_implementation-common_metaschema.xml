@@ -6,7 +6,7 @@
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xmlns:o="http://csrc.nist.gov/ns/oscal/example"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
-    root="VALIDATION_root">
+    root="VALIDATION_common_root">
 
     <schema-name>OSCAL Implementation Common Information</schema-name>
     <schema-version>1.0.0-milestone2</schema-version>
@@ -15,7 +15,7 @@
 
     <import href="oscal_metadata_metaschema.xml"/>
 
-    <define-assembly name="VALIDATION_root">
+    <define-assembly name="VALIDATION_common_root">
         <formal-name>(nominal root)</formal-name>
         <description>NOT TO BE USED IN A METASCHEMA</description>
         <flag ref="component-id"/>

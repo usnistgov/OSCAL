@@ -20,7 +20,6 @@
     <xsl:key name="invocation-by-ref" match="m:assembly[exists(@ref)] | m:field[exists(@ref)] | m:flag[exists(@ref)]" use="@ref"/>
     <xsl:key name="flags-by-name" match="m:define-flag | m:flag[@name]" use="@name"/>
     
-    
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
     <xsl:variable name="example-ns" select="'http://csrc.nist.gov/ns/oscal/example'"/>
@@ -37,10 +36,12 @@
 <!--  grouping name can't be the same as the name
       group-as is present whenever not(@max-occurs = 1) -->
     <sch:pattern>
-        
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
             <!-- $compleat assembles all definitions from all modules (in metaschema-compose.xsl)  -->
-            <sch:assert test="count(key('definition-by-name',@name,$compleat)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module.</sch:assert>
+            <sch:let name="contenders" value="key('definition-by-name',@name,$compleat)"/>
+            <sch:let name="overrides" value="$contenders[. >> current()]"/>
+            <sch:assert role="warning" test="count( $contenders ) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema;  cf <xsl:value-of select="$contenders/../@module[not(.=current()/document-uri(/))]" separator=", "/>.</sch:assert>
+            <sch:assert test="empty( $overrides )">Definition for '<sch:value-of select="@name"/>' is non-operative; cf <xsl:value-of select="$overrides/../@module" separator=", "/>.</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
@@ -48,7 +49,6 @@
             <sch:assert test="not(key('invocation-by-ref',@name)/m:group-as/@json-behavior='BY_KEY') or exists(m:json-key)"><sch:value-of select="substring-after(local-name(),
             'define-')"/> is assigned a json key, but no 'json-key' is given</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Names "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
-            
         </sch:rule>
 
         <sch:rule context="m:json-key">
