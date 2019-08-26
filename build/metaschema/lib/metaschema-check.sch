@@ -39,9 +39,7 @@
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
             <!-- $compleat assembles all definitions from all modules (in metaschema-compose.xsl)  -->
             <sch:let name="contenders" value="key('definition-by-name',@name,$compleat)"/>
-            <sch:let name="overrides" value="$contenders[. >> current()]"/>
-            <sch:assert role="warning" test="count( $contenders ) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema;  cf <xsl:value-of select="$contenders/../@module[not(.=current()/document-uri(/))]" separator=", "/>.</sch:assert>
-            <sch:assert test="empty( $overrides )">Definition for '<sch:value-of select="@name"/>' is non-operative; cf <xsl:value-of select="$overrides/../@module" separator=", "/>.</sch:assert>
+            <sch:assert role="warning" test="count( $contenders ) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema;  cf <xsl:value-of select="$contenders/../@module" separator=", "/>.</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
