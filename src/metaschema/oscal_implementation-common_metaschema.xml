@@ -74,7 +74,7 @@
         <formal-name>Remarks</formal-name>
         <description>TBD</description>
     </define-field>
-
+    
     <define-assembly name="supplier">
         <formal-name>Supplier</formal-name>
         <description>TBD</description>

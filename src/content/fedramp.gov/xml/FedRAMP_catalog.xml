@@ -27,8 +27,8 @@
    <group class="family" id="ac">
       <title>Access Control</title>
       <control class="SP800-53" id="ac-8">
-         <title></title>
-         <subcontrol class="SP800-53" id="ac-8.fr">
+         <title>System Use Notification</title>
+         <control class="SP800-53" id="ac-8.fr">
             <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
             <prop name="label">AC-8 Req</prop>
             <part id="ac-8.fr_smt.1" name="item">
@@ -43,14 +43,14 @@
                <prop name="label">Requirement:</prop>
                <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
             </part>
-         </subcontrol>
+         </control>
       </control>
    </group>
    <group class="family" id="ca">
       <title>CA-7 Security Assessment and Authorization</title>
       <control class="SP800-53" id="ca-7">
-         <title></title>
-         <subcontrol class="SP800-53-enhancement" id="ca-7.fr">
+         <title>Continuous Monitoring</title>
+         <control class="SP800-53-enhancement" id="ca-7.fr">
             <title>Additional FedRAMP Requirements and Guidance</title>
             <prop name="label">CA-7 Req</prop>
             <part id="ca-7.fr_smt.1" name="item">
@@ -71,21 +71,21 @@
             <part id="ca-7.fr_gdn.2" name="guidance">
                <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
             </part>
-         </subcontrol>
+         </control>
       </control>
    </group>
    <group class="family" id="sc">
       <title>System and Communications Protection</title>
       <control class="SP800-53" id="sc-15">
          <title></title>
-         <subcontrol class="SP800-53-enhancement" id="sc-15.fr">
+         <control class="SP800-53-enhancement" id="sc-15.fr">
             <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
             <prop name="label">SC-15 Req</prop>
             <part id="sc-15.fr_smt" name="item">
                <prop name="label">Requirement</prop>
                <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
             </part>
-         </subcontrol>
+         </control>
      </control>
    </group>
    <back-matter>

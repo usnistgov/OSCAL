@@ -16,236 +16,236 @@
 			</org>
 		</party>
 	</metadata>
-	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
-			<call subcontrol-id="ac-2.1"/>
-			<call subcontrol-id="ac-2.2"/>
-			<call subcontrol-id="ac-2.3"/>
-			<call subcontrol-id="ac-2.4"/>
-			<call subcontrol-id="ac-2.5"/>
-			<call subcontrol-id="ac-2.7"/>
-			<call subcontrol-id="ac-2.9"/>
-			<call subcontrol-id="ac-2.10"/>
-			<call subcontrol-id="ac-2.12"/>
+			<call control-id="ac-2.1"/>
+			<call control-id="ac-2.2"/>
+			<call control-id="ac-2.3"/>
+			<call control-id="ac-2.4"/>
+			<call control-id="ac-2.5"/>
+			<call control-id="ac-2.7"/>
+			<call control-id="ac-2.9"/>
+			<call control-id="ac-2.10"/>
+			<call control-id="ac-2.12"/>
 			<call control-id="ac-3"/>
 			<call control-id="ac-4"/>
-			<call subcontrol-id="ac-4.21"/>
+			<call control-id="ac-4.21"/>
 			<call control-id="ac-5"/>
 			<call control-id="ac-6"/>
-			<call subcontrol-id="ac-6.1"/>
-			<call subcontrol-id="ac-6.2"/>
-			<call subcontrol-id="ac-6.5"/>
-			<call subcontrol-id="ac-6.9"/>
-			<call subcontrol-id="ac-6.10"/>
+			<call control-id="ac-6.1"/>
+			<call control-id="ac-6.2"/>
+			<call control-id="ac-6.5"/>
+			<call control-id="ac-6.9"/>
+			<call control-id="ac-6.10"/>
 			<call control-id="ac-7"/>
 			<call control-id="ac-8"/>
 			<call control-id="ac-10"/>
 			<call control-id="ac-11"/>
-			<call subcontrol-id="ac-11.1"/>
+			<call control-id="ac-11.1"/>
 			<call control-id="ac-12"/>
 			<call control-id="ac-14"/>
 			<call control-id="ac-17"/>
-			<call subcontrol-id="ac-17.1"/>
-			<call subcontrol-id="ac-17.2"/>
-			<call subcontrol-id="ac-17.3"/>
-			<call subcontrol-id="ac-17.4"/>
-			<call subcontrol-id="ac-17.9"/>
+			<call control-id="ac-17.1"/>
+			<call control-id="ac-17.2"/>
+			<call control-id="ac-17.3"/>
+			<call control-id="ac-17.4"/>
+			<call control-id="ac-17.9"/>
 			<call control-id="ac-18"/>
-			<call subcontrol-id="ac-18.1"/>
+			<call control-id="ac-18.1"/>
 			<call control-id="ac-19"/>
-			<call subcontrol-id="ac-19.5"/>
+			<call control-id="ac-19.5"/>
 			<call control-id="ac-20"/>
-			<call subcontrol-id="ac-20.1"/>
-			<call subcontrol-id="ac-20.2"/>
+			<call control-id="ac-20.1"/>
+			<call control-id="ac-20.2"/>
 			<call control-id="ac-21"/>
 			<call control-id="ac-22"/>
 			<call control-id="at-1"/>
 			<call control-id="at-2"/>
-			<call subcontrol-id="at-2.2"/>
+			<call control-id="at-2.2"/>
 			<call control-id="at-3"/>
 			<call control-id="at-4"/>
 			<call control-id="au-1"/>
 			<call control-id="au-2"/>
-			<call subcontrol-id="au-2.3"/>
+			<call control-id="au-2.3"/>
 			<call control-id="au-3"/>
-			<call subcontrol-id="au-3.1"/>
+			<call control-id="au-3.1"/>
 			<call control-id="au-4"/>
 			<call control-id="au-5"/>
 			<call control-id="au-6"/>
-			<call subcontrol-id="au-6.1"/>
-			<call subcontrol-id="au-6.3"/>
+			<call control-id="au-6.1"/>
+			<call control-id="au-6.3"/>
 			<call control-id="au-7"/>
-			<call subcontrol-id="au-7.1"/>
+			<call control-id="au-7.1"/>
 			<call control-id="au-8"/>
-			<call subcontrol-id="au-8.1"/>
+			<call control-id="au-8.1"/>
 			<call control-id="au-9"/>
-			<call subcontrol-id="au-9.2"/>
-			<call subcontrol-id="au-9.4"/>
+			<call control-id="au-9.2"/>
+			<call control-id="au-9.4"/>
 			<call control-id="au-11"/>
 			<call control-id="au-12"/>
 			<call control-id="ca-1"/>
 			<call control-id="ca-2"/>
-			<call subcontrol-id="ca-2.1"/>
-			<call subcontrol-id="ca-2.2"/>
-			<call subcontrol-id="ca-2.3"/>
+			<call control-id="ca-2.1"/>
+			<call control-id="ca-2.2"/>
+			<call control-id="ca-2.3"/>
 			<call control-id="ca-3"/>
-			<call subcontrol-id="ca-3.3"/>
-			<call subcontrol-id="ca-3.5"/>
+			<call control-id="ca-3.3"/>
+			<call control-id="ca-3.5"/>
 			<call control-id="ca-5"/>
 			<call control-id="ca-6"/>
 			<call control-id="ca-7"/>
-			<call subcontrol-id="ca-7.1"/>
+			<call control-id="ca-7.1"/>
 			<call control-id="ca-8"/>
-			<call subcontrol-id="ca-8.1"/>
+			<call control-id="ca-8.1"/>
 			<call control-id="ca-9"/>
 			<call control-id="cm-1"/>
 			<call control-id="cm-2"/>
-			<call subcontrol-id="cm-2.1"/>
-			<call subcontrol-id="cm-2.2"/>
-			<call subcontrol-id="cm-2.3"/>
-			<call subcontrol-id="cm-2.7"/>
+			<call control-id="cm-2.1"/>
+			<call control-id="cm-2.2"/>
+			<call control-id="cm-2.3"/>
+			<call control-id="cm-2.7"/>
 			<call control-id="cm-3"/>
 			<call control-id="cm-4"/>
 			<call control-id="cm-5"/>
-			<call subcontrol-id="cm-5.1"/>
-			<call subcontrol-id="cm-5.3"/>
-			<call subcontrol-id="cm-5.5"/>
+			<call control-id="cm-5.1"/>
+			<call control-id="cm-5.3"/>
+			<call control-id="cm-5.5"/>
 			<call control-id="cm-6"/>
-			<call subcontrol-id="cm-6.1"/>
+			<call control-id="cm-6.1"/>
 			<call control-id="cm-7"/>
-			<call subcontrol-id="cm-7.1"/>
-			<call subcontrol-id="cm-7.2"/>
-			<call subcontrol-id="cm-7.5"/>
+			<call control-id="cm-7.1"/>
+			<call control-id="cm-7.2"/>
+			<call control-id="cm-7.5"/>
 			<call control-id="cm-8"/>
-			<call subcontrol-id="cm-8.1"/>
-			<call subcontrol-id="cm-8.3"/>
-			<call subcontrol-id="cm-8.5"/>
+			<call control-id="cm-8.1"/>
+			<call control-id="cm-8.3"/>
+			<call control-id="cm-8.5"/>
 			<call control-id="cm-9"/>
 			<call control-id="cm-10"/>
-			<call subcontrol-id="cm-10.1"/>
+			<call control-id="cm-10.1"/>
 			<call control-id="cm-11"/>
 			<call control-id="cp-1"/>
 			<call control-id="cp-2"/>
-			<call subcontrol-id="cp-2.1"/>
-			<call subcontrol-id="cp-2.2"/>
-			<call subcontrol-id="cp-2.3"/>
-			<call subcontrol-id="cp-2.8"/>
+			<call control-id="cp-2.1"/>
+			<call control-id="cp-2.2"/>
+			<call control-id="cp-2.3"/>
+			<call control-id="cp-2.8"/>
 			<call control-id="cp-3"/>
 			<call control-id="cp-4"/>
-			<call subcontrol-id="cp-4.1"/>
+			<call control-id="cp-4.1"/>
 			<call control-id="cp-6"/>
-			<call subcontrol-id="cp-6.1"/>
-			<call subcontrol-id="cp-6.3"/>
+			<call control-id="cp-6.1"/>
+			<call control-id="cp-6.3"/>
 			<call control-id="cp-7"/>
-			<call subcontrol-id="cp-7.1"/>
-			<call subcontrol-id="cp-7.2"/>
-			<call subcontrol-id="cp-7.3"/>
+			<call control-id="cp-7.1"/>
+			<call control-id="cp-7.2"/>
+			<call control-id="cp-7.3"/>
 			<call control-id="cp-8"/>
-			<call subcontrol-id="cp-8.1"/>
-			<call subcontrol-id="cp-8.2"/>
+			<call control-id="cp-8.1"/>
+			<call control-id="cp-8.2"/>
 			<call control-id="cp-9"/>
-			<call subcontrol-id="cp-9.1"/>
-			<call subcontrol-id="cp-9.3"/>
+			<call control-id="cp-9.1"/>
+			<call control-id="cp-9.3"/>
 			<call control-id="cp-10"/>
-			<call subcontrol-id="cp-10.2"/>
+			<call control-id="cp-10.2"/>
 			<call control-id="ia-1"/>
 			<call control-id="ia-2"/>
-			<call subcontrol-id="ia-2.1"/>
-			<call subcontrol-id="ia-2.2"/>
-			<call subcontrol-id="ia-2.3"/>
-			<call subcontrol-id="ia-2.5"/>
-			<call subcontrol-id="ia-2.8"/>
-			<call subcontrol-id="ia-2.11"/>
-			<call subcontrol-id="ia-2.12"/>
+			<call control-id="ia-2.1"/>
+			<call control-id="ia-2.2"/>
+			<call control-id="ia-2.3"/>
+			<call control-id="ia-2.5"/>
+			<call control-id="ia-2.8"/>
+			<call control-id="ia-2.11"/>
+			<call control-id="ia-2.12"/>
 			<call control-id="ia-3"/>
 			<call control-id="ia-4"/>
-			<call subcontrol-id="ia-4.4"/>
+			<call control-id="ia-4.4"/>
 			<call control-id="ia-5"/>
-			<call subcontrol-id="ia-5.1"/>
-			<call subcontrol-id="ia-5.2"/>
-			<call subcontrol-id="ia-5.3"/>
-			<call subcontrol-id="ia-5.4"/>
-			<call subcontrol-id="ia-5.6"/>
-			<call subcontrol-id="ia-5.7"/>
-			<call subcontrol-id="ia-5.11"/>
+			<call control-id="ia-5.1"/>
+			<call control-id="ia-5.2"/>
+			<call control-id="ia-5.3"/>
+			<call control-id="ia-5.4"/>
+			<call control-id="ia-5.6"/>
+			<call control-id="ia-5.7"/>
+			<call control-id="ia-5.11"/>
 			<call control-id="ia-6"/>
 			<call control-id="ia-7"/>
 			<call control-id="ia-8"/>
-			<call subcontrol-id="ia-8.1"/>
-			<call subcontrol-id="ia-8.2"/>
-			<call subcontrol-id="ia-8.3"/>
-			<call subcontrol-id="ia-8.4"/>
+			<call control-id="ia-8.1"/>
+			<call control-id="ia-8.2"/>
+			<call control-id="ia-8.3"/>
+			<call control-id="ia-8.4"/>
 			<call control-id="ir-1"/>
 			<call control-id="ir-2"/>
 			<call control-id="ir-3"/>
-			<call subcontrol-id="ir-3.2"/>
+			<call control-id="ir-3.2"/>
 			<call control-id="ir-4"/>
-			<call subcontrol-id="ir-4.1"/>
+			<call control-id="ir-4.1"/>
 			<call control-id="ir-5"/>
 			<call control-id="ir-6"/>
-			<call subcontrol-id="ir-6.1"/>
+			<call control-id="ir-6.1"/>
 			<call control-id="ir-7"/>
-			<call subcontrol-id="ir-7.1"/>
-			<call subcontrol-id="ir-7.2"/>
+			<call control-id="ir-7.1"/>
+			<call control-id="ir-7.2"/>
 			<call control-id="ir-8"/>
 			<call control-id="ir-9"/>
-			<call subcontrol-id="ir-9.1"/>
-			<call subcontrol-id="ir-9.2"/>
-			<call subcontrol-id="ir-9.3"/>
-			<call subcontrol-id="ir-9.4"/>
+			<call control-id="ir-9.1"/>
+			<call control-id="ir-9.2"/>
+			<call control-id="ir-9.3"/>
+			<call control-id="ir-9.4"/>
 			<call control-id="ma-1"/>
 			<call control-id="ma-2"/>
 			<call control-id="ma-3"/>
-			<call subcontrol-id="ma-3.1"/>
-			<call subcontrol-id="ma-3.2"/>
-			<call subcontrol-id="ma-3.3"/>
+			<call control-id="ma-3.1"/>
+			<call control-id="ma-3.2"/>
+			<call control-id="ma-3.3"/>
 			<call control-id="ma-4"/>
-			<call subcontrol-id="ma-4.2"/>
+			<call control-id="ma-4.2"/>
 			<call control-id="ma-5"/>
-			<call subcontrol-id="ma-5.1"/>
+			<call control-id="ma-5.1"/>
 			<call control-id="ma-6"/>
 			<call control-id="mp-1"/>
 			<call control-id="mp-2"/>
 			<call control-id="mp-3"/>
 			<call control-id="mp-4"/>
 			<call control-id="mp-5"/>
-			<call subcontrol-id="mp-5.4"/>
+			<call control-id="mp-5.4"/>
 			<call control-id="mp-6"/>
-			<call subcontrol-id="mp-6.2"/>
+			<call control-id="mp-6.2"/>
 			<call control-id="mp-7"/>
-			<call subcontrol-id="mp-7.1"/>
+			<call control-id="mp-7.1"/>
 			<call control-id="pe-1"/>
 			<call control-id="pe-2"/>
 			<call control-id="pe-3"/>
 			<call control-id="pe-4"/>
 			<call control-id="pe-5"/>
 			<call control-id="pe-6"/>
-			<call subcontrol-id="pe-6.1"/>
+			<call control-id="pe-6.1"/>
 			<call control-id="pe-8"/>
 			<call control-id="pe-9"/>
 			<call control-id="pe-10"/>
 			<call control-id="pe-11"/>
 			<call control-id="pe-12"/>
 			<call control-id="pe-13"/>
-			<call subcontrol-id="pe-13.2"/>
-			<call subcontrol-id="pe-13.3"/>
+			<call control-id="pe-13.2"/>
+			<call control-id="pe-13.3"/>
 			<call control-id="pe-14"/>
-			<call subcontrol-id="pe-14.2"/>
+			<call control-id="pe-14.2"/>
 			<call control-id="pe-15"/>
 			<call control-id="pe-16"/>
 			<call control-id="pe-17"/>
 			<call control-id="pl-1"/>
 			<call control-id="pl-2"/>
-			<call subcontrol-id="pl-2.3"/>
+			<call control-id="pl-2.3"/>
 			<call control-id="pl-4"/>
-			<call subcontrol-id="pl-4.1"/>
+			<call control-id="pl-4.1"/>
 			<call control-id="pl-8"/>
 			<call control-id="ps-1"/>
 			<call control-id="ps-2"/>
 			<call control-id="ps-3"/>
-			<call subcontrol-id="ps-3.3"/>
+			<call control-id="ps-3.3"/>
 			<call control-id="ps-4"/>
 			<call control-id="ps-5"/>
 			<call control-id="ps-6"/>
@@ -255,54 +255,54 @@
 			<call control-id="ra-2"/>
 			<call control-id="ra-3"/>
 			<call control-id="ra-5"/>
-			<call subcontrol-id="ra-5.1"/>
-			<call subcontrol-id="ra-5.2"/>
-			<call subcontrol-id="ra-5.3"/>
-			<call subcontrol-id="ra-5.5"/>
-			<call subcontrol-id="ra-5.6"/>
-			<call subcontrol-id="ra-5.8"/>
+			<call control-id="ra-5.1"/>
+			<call control-id="ra-5.2"/>
+			<call control-id="ra-5.3"/>
+			<call control-id="ra-5.5"/>
+			<call control-id="ra-5.6"/>
+			<call control-id="ra-5.8"/>
 			<call control-id="sa-1"/>
 			<call control-id="sa-2"/>
 			<call control-id="sa-3"/>
 			<call control-id="sa-4"/>
-			<call subcontrol-id="sa-4.1"/>
-			<call subcontrol-id="sa-4.2"/>
-			<call subcontrol-id="sa-4.8"/>
-			<call subcontrol-id="sa-4.9"/>
-			<call subcontrol-id="sa-4.10"/>
+			<call control-id="sa-4.1"/>
+			<call control-id="sa-4.2"/>
+			<call control-id="sa-4.8"/>
+			<call control-id="sa-4.9"/>
+			<call control-id="sa-4.10"/>
 			<call control-id="sa-5"/>
 			<call control-id="sa-8"/>
 			<call control-id="sa-9"/>
-			<call subcontrol-id="sa-9.1"/>
-			<call subcontrol-id="sa-9.2"/>
-			<call subcontrol-id="sa-9.4"/>
-			<call subcontrol-id="sa-9.5"/>
+			<call control-id="sa-9.1"/>
+			<call control-id="sa-9.2"/>
+			<call control-id="sa-9.4"/>
+			<call control-id="sa-9.5"/>
 			<call control-id="sa-10"/>
-			<call subcontrol-id="sa-10.1"/>
+			<call control-id="sa-10.1"/>
 			<call control-id="sa-11"/>
-			<call subcontrol-id="sa-11.1"/>
-			<call subcontrol-id="sa-11.2"/>
-			<call subcontrol-id="sa-11.8"/>
+			<call control-id="sa-11.1"/>
+			<call control-id="sa-11.2"/>
+			<call control-id="sa-11.8"/>
 			<call control-id="sc-1"/>
 			<call control-id="sc-2"/>
 			<call control-id="sc-4"/>
 			<call control-id="sc-5"/>
 			<call control-id="sc-6"/>
 			<call control-id="sc-7"/>
-			<call subcontrol-id="sc-7.3"/>
-			<call subcontrol-id="sc-7.4"/>
-			<call subcontrol-id="sc-7.5"/>
-			<call subcontrol-id="sc-7.7"/>
-			<call subcontrol-id="sc-7.8"/>
-			<call subcontrol-id="sc-7.12"/>
-			<call subcontrol-id="sc-7.13"/>
-			<call subcontrol-id="sc-7.18"/>
+			<call control-id="sc-7.3"/>
+			<call control-id="sc-7.4"/>
+			<call control-id="sc-7.5"/>
+			<call control-id="sc-7.7"/>
+			<call control-id="sc-7.8"/>
+			<call control-id="sc-7.12"/>
+			<call control-id="sc-7.13"/>
+			<call control-id="sc-7.18"/>
 			<call control-id="sc-8"/>
-			<call subcontrol-id="sc-8.1"/>
+			<call control-id="sc-8.1"/>
 			<call control-id="sc-10"/>
 			<call control-id="sc-12"/>
-			<call subcontrol-id="sc-12.2"/>
-			<call subcontrol-id="sc-12.3"/>
+			<call control-id="sc-12.2"/>
+			<call control-id="sc-12.3"/>
 			<call control-id="sc-13"/>
 			<call control-id="sc-15"/>
 			<call control-id="sc-17"/>
@@ -313,39 +313,39 @@
 			<call control-id="sc-22"/>
 			<call control-id="sc-23"/>
 			<call control-id="sc-28"/>
-			<call subcontrol-id="sc-28.1"/>
+			<call control-id="sc-28.1"/>
 			<call control-id="sc-39"/>
 			<call control-id="si-1"/>
 			<call control-id="si-2"/>
-			<call subcontrol-id="si-2.2"/>
-			<call subcontrol-id="si-2.3"/>
+			<call control-id="si-2.2"/>
+			<call control-id="si-2.3"/>
 			<call control-id="si-3"/>
-			<call subcontrol-id="si-3.1"/>
-			<call subcontrol-id="si-3.2"/>
-			<call subcontrol-id="si-3.7"/>
+			<call control-id="si-3.1"/>
+			<call control-id="si-3.2"/>
+			<call control-id="si-3.7"/>
 			<call control-id="si-4"/>
-			<call subcontrol-id="si-4.1"/>
-			<call subcontrol-id="si-4.2"/>
-			<call subcontrol-id="si-4.4"/>
-			<call subcontrol-id="si-4.5"/>
-			<call subcontrol-id="si-4.14"/>
-			<call subcontrol-id="si-4.16"/>
-			<call subcontrol-id="si-4.23"/>
+			<call control-id="si-4.1"/>
+			<call control-id="si-4.2"/>
+			<call control-id="si-4.4"/>
+			<call control-id="si-4.5"/>
+			<call control-id="si-4.14"/>
+			<call control-id="si-4.16"/>
+			<call control-id="si-4.23"/>
 			<call control-id="si-5"/>
 			<call control-id="si-6"/>
 			<call control-id="si-7"/>
-			<call subcontrol-id="si-7.1"/>
-			<call subcontrol-id="si-7.7"/>
+			<call control-id="si-7.1"/>
+			<call control-id="si-7.7"/>
 			<call control-id="si-8"/>
-			<call subcontrol-id="si-8.1"/>
-			<call subcontrol-id="si-8.2"/>
+			<call control-id="si-8.1"/>
+			<call control-id="si-8.2"/>
 			<call control-id="si-10"/>
 			<call control-id="si-11"/>
 			<call control-id="si-12"/>
 			<call control-id="si-16"/>
 		</include>
 	</import>
-	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/fedramp.gov/xml/FedRAMP_catalog.xml">
+	<import href="FedRAMP_catalog.xml">
 		<include>
 			<call control-id="ac-8-fr"/>
 			<call control-id="ca-7-fr"/>
@@ -1220,7 +1220,7 @@
 		<!-- - - AC-2 (3) - -  -->
 		<!-- - - AC-2 (4) - -  -->
 		<!-- - - AC-2 (5) - -  -->
-		<alter subcontrol-id="ac-2.5">
+		<alter control-id="ac-2.5">
 			<add position="ending">
 				<part id="ac-2.5_fr" name="item" ns="fedramp">
 					<title>AC-2 (5) Additional FedRAMP Requirements and Guidance</title>
@@ -1233,7 +1233,7 @@
 		</alter>
 		<!-- - - AC-2 (7) - -  -->
 		<!-- - - AC-2 (9) - -  -->
-		<alter subcontrol-id="ac-2.9">
+		<alter control-id="ac-2.9">
 			<add position="ending">
 				<part id="ac-2.9_fr" name="item" ns="fedramp">
 					<title>AC-2 (9) Additional FedRAMP Requirements and Guidance</title>
@@ -1245,7 +1245,7 @@
 			</add>
 		</alter>
 		<!-- - - AC-2 (10) - -  -->
-		<alter subcontrol-id="ac-2.10">
+		<alter control-id="ac-2.10">
 			<add position="ending">
 				<part id="ac-2.10_fr" name="item" ns="fedramp">
 					<title>AC-2 (10) Additional FedRAMP Requirements and Guidance</title>
@@ -1257,7 +1257,7 @@
 			</add>
 		</alter>
 		<!-- - - AC-2 (12) - -  -->
-		<alter subcontrol-id="ac-2.12">
+		<alter control-id="ac-2.12">
 			<add position="ending">
 				<part id="ac-2.12_fr" name="item" ns="fedramp">
 					<title>AC-2 (12) Additional FedRAMP Requirements and Guidance</title>
@@ -1290,7 +1290,7 @@
 		<!-- - - AC-6 - -  -->
 		<!-- - - AC-6 (1) - -  -->
 		<!-- - - AC-6 (2) - -  -->
-		<alter subcontrol-id="ac-6.2">
+		<alter control-id="ac-6.2">
 			<add position="ending">
 				<part id="ac-6.2_fr" name="item" ns="fedramp">
 					<title>AC-6 (2) Additional FedRAMP Requirements and Guidance</title>
@@ -1364,7 +1364,7 @@
 			</add>
 		</alter>
 		<!-- - - AU-2 (3) - -  -->
-		<alter subcontrol-id="au-2.3">
+		<alter control-id="au-2.3">
 			<add position="ending">
 				<part id="au-2.3_fr" name="item" ns="fedramp">
 				<title>AU-2 (3) Additional FedRAMP Requirements and Guidance</title>
@@ -1377,7 +1377,7 @@
 		</alter>
 		<!-- - - AU-3 - -  -->
 		<!-- - - AU-3 (1) - -  -->
-		<alter subcontrol-id="au-3.1">
+		<alter control-id="au-3.1">
 			<add position="ending">
 				<part id="au-3.1_fr" name="item" ns="fedramp">
 					<title>AU-3 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -1412,7 +1412,7 @@
 		<!-- - - AU-7 (1) - -  -->
 		<!-- - - AU-8 - -  -->
 		<!-- - - AU-8 (1) - -  -->
-		<alter subcontrol-id="au-8.1">
+		<alter control-id="au-8.1">
 			<add position="ending">
 				<part id="au-8.1_fr" name="item" ns="fedramp">
 					<title>AU-8 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -1461,7 +1461,7 @@
 			</add>
 		</alter>
 		<!-- - - CA-2 (1) - -  -->
-		<alter subcontrol-id="ca-2.1">
+		<alter control-id="ca-2.1">
 			<add position="ending">
 				<part id="ca-2.1_fr" name="item" ns="fedramp">
 					<title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -1473,7 +1473,7 @@
 			</add>
 		</alter>
 		<!-- - - CA-2 (2) - -  -->
-		<alter subcontrol-id="ca-2.2">
+		<alter control-id="ca-2.2">
 			<add position="ending">
 				<part id="ca-2.2_fr" name="item" ns="fedramp">
 					<title>CA-2 (2) Additional FedRAMP Requirements and Guidance</title>
@@ -1487,7 +1487,7 @@
 		<!-- - - CA-2 (3) - -  -->
 		<!-- - - CA-3 - -  -->
 		<!-- - - CA-3 (3) - -  -->
-		<alter subcontrol-id="ca-3.3">
+		<alter control-id="ca-3.3">
 			<add position="ending">
 				<part id="ca-3.3_fr" name="item" ns="fedramp">
 					<title>CA-3 (3) Additional FedRAMP Requirements and Guidance</title>
@@ -1499,7 +1499,7 @@
 			</add>
 		</alter>
 		<!-- - - CA-3 (5) - -  -->
-		<alter subcontrol-id="ca-3.5">
+		<alter control-id="ca-3.5">
 			<add position="ending">
 				<part id="ca-3.5_fr" name="item" ns="fedramp">
 					<title>CA-3 (5) Additional FedRAMP Requirements and Guidance</title>
@@ -1599,7 +1599,7 @@
 		<!-- - - CM-5 - -  -->
 		<!-- - - CM-5 (1) - -  -->
 		<!-- - - CM-5 (3) - -  -->
-		<alter subcontrol-id="cm-5.3">
+		<alter control-id="cm-5.3">
 			<add position="ending">
 				<part id="cm-5.3_fr" name="item" ns="fedramp">
 					<title>CM-5 (3) Additional FedRAMP Requirements and Guidance</title>
@@ -1650,7 +1650,7 @@
 		</alter>
 		<!-- - - CM-7 (1) - -  -->
 		<!-- - - CM-7 (2) - -  -->
-		<alter subcontrol-id="cm-7.2">
+		<alter control-id="cm-7.2">
 			<add position="ending">
 				<part id="cm-7.2_fr" name="item" ns="fedramp">
 					<title>CM-7 (2) Additional FedRAMP Requirements and Guidance</title>
@@ -1728,7 +1728,7 @@
 			</add>
 		</alter>
 		<!-- - - CP-7 (1) - -  -->
-		<alter subcontrol-id="cp-7.1">
+		<alter control-id="cp-7.1">
 			<add position="ending">
 				<part id="cp-7.1_fr" name="item" ns="fedramp">
 					<title>CP-7 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -1791,7 +1791,7 @@
 		<!-- - - IA-2 (5) - -  -->
 		<!-- - - IA-2 (8) - -  -->
 		<!-- - - IA-2 (11) - -  -->
-		<alter subcontrol-id="ia-2.11">
+		<alter control-id="ia-2.11">
 			<add position="ending">
 				<part id="ia-2.11_fr" name="item" ns="fedramp">
 					<title>IA-2 (11) Additional FedRAMP Requirements and Guidance</title>
@@ -1803,7 +1803,7 @@
 			</add>
 		</alter>
 		<!-- - - IA-2 (12) - -  -->
-		<alter subcontrol-id="ia-2.12">
+		<alter control-id="ia-2.12">
 			<add position="ending">
 				<part id="ia-2.12_fr" name="item" ns="fedramp">
 					<title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
@@ -1845,7 +1845,7 @@
 			</add>
 		</alter>
 		<!-- - - IA-5 (1) - -  -->
-		<alter subcontrol-id="ia-5.1">
+		<alter control-id="ia-5.1">
 			<add position="ending">
 				<part id="ia-5.1_fr" name="item" ns="fedramp">
 					<title>IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance</title>
@@ -1859,7 +1859,7 @@
 		<!-- - - IA-5 (2) - -  -->
 		<!-- - - IA-5 (3) - -  -->
 		<!-- - - IA-5 (4) - -  -->
-		<alter subcontrol-id="ia-5.4">
+		<alter control-id="ia-5.4">
 			<add position="ending">
 				<part id="ia-5.4_fr" name="item" ns="fedramp">
 					<title>IA-5 (4) Additional FedRAMP Requirements and Guidance</title>
@@ -1957,7 +1957,7 @@
 		<!-- - - MA-4 (2) - -  -->
 		<!-- - - MA-5 - -  -->
 		<!-- - - MA-5 (1) - -  -->
-		<alter subcontrol-id="ma-5.1">
+		<alter control-id="ma-5.1">
 			<add position="ending">
 				<part id="ma-5.1_fr" name="item" ns="fedramp">
 					<title>MA-5 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -2010,7 +2010,7 @@
 		<!-- - - MP-5 (4) - -  -->
 		<!-- - - MP-6 - -  -->
 		<!-- - - MP-6 (2) - -  -->
-		<alter subcontrol-id="mp-6.2">
+		<alter control-id="mp-6.2">
 			<add position="ending">
 				<part id="mp-6.2_fr" name="item" ns="fedramp">
 					<title>MP-6 (2) Additional FedRAMP Requirements and Guidance</title>
@@ -2125,7 +2125,7 @@
 		<!-- - - RA-5 (3) - -  -->
 		<!-- - - RA-5 (5) - -  -->
 		<!-- - - RA-5 (6) - -  -->
-		<alter subcontrol-id="ra-5.6">
+		<alter control-id="ra-5.6">
 			<add position="ending">
 				<part id="ra-5.6_fr" name="item" ns="fedramp">
 					<title>RA-5 (6) Additional FedRAMP Requirements and Guidance</title>
@@ -2137,7 +2137,7 @@
 			</add>
 		</alter>
 		<!-- - - RA-5 (8) - -  -->
-		<alter subcontrol-id="ra-5.8">
+		<alter control-id="ra-5.8">
 			<add position="ending">
 				<part id="ra-5.8_fr" name="item" ns="fedramp">
 					<title>RA-5 (8) Additional FedRAMP Requirements and Guidance</title>
@@ -2170,7 +2170,7 @@
 		<!-- - - SA-4 (1) - -  -->
 		<!-- - - SA-4 (2) - -  -->
 		<!-- - - SA-4 (8) - -  -->
-		<alter subcontrol-id="sa-4.8">
+		<alter control-id="sa-4.8">
 			<add position="ending">
 				<part id="sa-4.8_fr" name="item" ns="fedramp">
 					<title>SA-4 (8) Additional FedRAMP Requirements and Guidance</title>
@@ -2205,7 +2205,7 @@
 		<!-- - - SA-10 (1) - -  -->
 		<!-- - - SA-11 - -  -->
 		<!-- - - SA-11 (1) - -  -->
-		<alter subcontrol-id="sa-11.1">
+		<alter control-id="sa-11.1">
 			<add position="ending">
 				<part id="sa-11.1_fr" name="item" ns="fedramp">
 					<title>SA-11 (1) Additional FedRAMP Requirements and Guidance</title>
@@ -2218,7 +2218,7 @@
 		</alter>
 		<!-- - - SA-11 (2) - -  -->
 		<!-- - - SA-11 (8) - -  -->
-		<alter subcontrol-id="sa-11.8">
+		<alter control-id="sa-11.8">
 			<add position="ending">
 				<part id="sa-11.8_fr" name="item" ns="fedramp">
 					<title>SA-11 (8) Additional FedRAMP Requirements and Guidance</title>
@@ -2242,7 +2242,7 @@
 		<!-- - - SC-7 (8) - -  -->
 		<!-- - - SC-7 (12) - -  -->
 		<!-- - - SC-7 (13) - -  -->
-		<alter subcontrol-id="sc-7.13">
+		<alter control-id="sc-7.13">
 			<add position="ending">
 				<part id="sc-7.13_fr" name="item" ns="fedramp">
 					<title>SC-7 (13) Additional FedRAMP Requirements and Guidance</title>
@@ -2329,7 +2329,7 @@
 		<!-- - - SI-4 (2) - -  -->
 		<!-- - - SI-4 (4) - -  -->
 		<!-- - - SI-4 (5) - -  -->
-		<alter subcontrol-id="si-4.5">
+		<alter control-id="si-4.5">
 			<add position="ending">
 				<part id="si-4.5_fr" name="item" ns="fedramp">
 					<title>SI-4 (5) Additional FedRAMP Requirements and Guidance</title>
