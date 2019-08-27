@@ -11,7 +11,7 @@
     <xsl:param name="target-ns" as="xs:string?">http://csrc.nist.gov/ns/oscal/1.0</xsl:param>
 
     <xsl:template name="xsl:initial-template" match="/">
-        <!--<xsl:copy-of select="$tag-replacements"/>-->
+        <xsl:copy-of select="$tag-replacements"/>
         <!--<xsl:copy-of select="$examples"/>-->
         <xsl:call-template name="parse">
             <xsl:with-param name="markdown-str" select="string($examples)"/>
@@ -367,7 +367,7 @@
             
             <q>"<text/>"</q>
             
-            <img         alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+            <img         alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
             <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
             
             <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
@@ -408,6 +408,10 @@
     
     <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
         <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+    </xsl:template>
+    
+    <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
+        <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
     </xsl:template>
     
     <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match">
