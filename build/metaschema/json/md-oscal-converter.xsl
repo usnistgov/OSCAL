@@ -11,7 +11,7 @@
     <xsl:param name="target-ns" as="xs:string?">http://csrc.nist.gov/ns/oscal/1.0</xsl:param>
 
     <xsl:template name="xsl:initial-template" match="/">
-        <xsl:copy-of select="$tag-replacements"/>
+        <!--<xsl:copy-of select="$tag-replacements"/>-->
         <!--<xsl:copy-of select="$examples"/>-->
         <xsl:call-template name="parse">
             <xsl:with-param name="markdown-str" select="string($examples)"/>
@@ -496,6 +496,8 @@ And many paragraphs!
 
 ... select ...>
 ```
+
+Some paragraphs have ![images](http://www.links.com) in them, sometimes ![many](../many/links)
 
 And Prose!
 
