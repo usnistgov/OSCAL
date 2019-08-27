@@ -4,7 +4,205 @@
     "$comment" : "OSCAL Control Catalog Format: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "metadata" : 
+    { "param" : 
+      { "title" : "Parameter",
+        "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
+        "$id" : "#/definitions/param",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string",
+            "title" : "Identifier",
+            "description" : "Unique identifier of the containing object" },
+          "class" : 
+          { "type" : "string",
+            "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object" },
+          "depends-on" : 
+          { "type" : "string",
+            "title" : "Depends on",
+            "description" : "Another parameter invoking this one" },
+          "label" : 
+          { "$ref" : "#/definitions/label" },
+          "descriptions" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/usage" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/usage" },
+                "minItems" : 2 } ] },
+          "constraints" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/constraint" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/constraint" },
+                "minItems" : 2 } ] },
+          "guidance" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/guideline" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/guideline" },
+                "minItems" : 2 } ] },
+          "value" : 
+          { "$ref" : "#/definitions/value" },
+          "select" : 
+          { "$ref" : "#/definitions/select" },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] } },
+        "required" : 
+        [ "id" ],
+        "additionalProperties" : false },
+      "label" : 
+      { "title" : "Parameter label",
+        "description" : "A placeholder for a missing value, in display.",
+        "$id" : "#/definitions/label",
+        "type" : "string" },
+      "usage" : 
+      { "title" : "Parameter description",
+        "description" : "Indicates and explains the purpose and use of a parameter",
+        "$id" : "#/definitions/usage",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string",
+            "title" : "Identifier",
+            "description" : "Unique identifier of the containing object" },
+          "RICHTEXT" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "RICHTEXT" ],
+        "additionalProperties" : false },
+      "constraint" : 
+      { "title" : "Constraint",
+        "description" : "A formal or informal expression of a constraint or test",
+        "$id" : "#/definitions/constraint",
+        "type" : "object",
+        "properties" : 
+        { "test" : 
+          { "type" : "string",
+            "title" : "Constraint test",
+            "description" : "A formal (executable) expression of a constraint" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "STRVALUE" ],
+        "additionalProperties" : false },
+      "guideline" : 
+      { "title" : "Guideline",
+        "description" : "A prose statement that provides a recommendation for the use of a parameter.",
+        "$id" : "#/definitions/guideline",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false },
+      "value" : 
+      { "title" : "Value constraint",
+        "description" : "Indicates a permissible value for a parameter or property",
+        "$id" : "#/definitions/value",
+        "type" : "string" },
+      "select" : 
+      { "title" : "Selection",
+        "description" : "Presenting a choice among alternatives",
+        "$id" : "#/definitions/select",
+        "type" : "object",
+        "properties" : 
+        { "how-many" : 
+          { "type" : "string",
+            "title" : "Cardinality",
+            "description" : "When selecting, a requirement such as one or more" },
+          "alternatives" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/choice" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/choice" },
+                "minItems" : 2 } ] } },
+        "additionalProperties" : false },
+      "choice" : 
+      { "title" : "Choice",
+        "description" : "A value selection among several such options",
+        "$id" : "#/definitions/choice",
+        "type" : "string" },
+      "part" : 
+      { "title" : "Part",
+        "description" : "A partition or component of a control or part",
+        "$id" : "#/definitions/part",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string",
+            "title" : "Identifier",
+            "description" : "Unique identifier of the containing object" },
+          "name" : 
+          { "type" : "string",
+            "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object." },
+          "ns" : 
+          { "type" : "string",
+            "title" : "Namespace",
+            "description" : "A namespace qualifying the name." },
+          "class" : 
+          { "type" : "string",
+            "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" },
+          "parts" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/part" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/part" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] } },
+        "required" : 
+        [ "name" ],
+        "additionalProperties" : false },
+      "prose" : 
+      { "title" : "Prose",
+        "description" : "Prose permits multiple paragraphs, lists, tables etc.",
+        "$id" : "#/definitions/prose",
+        "type" : "string" },
+      "metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -774,273 +972,19 @@
                 "items" : 
                 { "$ref" : "#/definitions/part" },
                 "minItems" : 2 } ] },
-          "subcontrols" : 
+          "controls" : 
           { "anyOf" : 
             [ 
-              { "$ref" : "#/definitions/subcontrol" },
+              { "$ref" : "#/definitions/control" },
               
               { "type" : "array",
                 "items" : 
-                { "$ref" : "#/definitions/subcontrol" },
+                { "$ref" : "#/definitions/control" },
                 "minItems" : 2 } ] } },
         "required" : 
         [ "id",
           "title" ],
-        "additionalProperties" : false },
-      "subcontrol" : 
-      { "title" : "Sub-Control",
-        "description" : "A control extension or enhancement",
-        "$id" : "#/definitions/subcontrol",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "parameters" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/param" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/param" },
-                "minItems" : 2 } ] },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "parts" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/part" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/part" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "id",
-          "title" ],
-        "additionalProperties" : false },
-      "param" : 
-      { "title" : "Parameter",
-        "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
-        "$id" : "#/definitions/param",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
-          "depends-on" : 
-          { "type" : "string",
-            "title" : "Depends on",
-            "description" : "Another parameter invoking this one" },
-          "label" : 
-          { "$ref" : "#/definitions/label" },
-          "descriptions" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/usage" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/usage" },
-                "minItems" : 2 } ] },
-          "constraints" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/constraint" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/constraint" },
-                "minItems" : 2 } ] },
-          "guidance" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/guideline" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/guideline" },
-                "minItems" : 2 } ] },
-          "value" : 
-          { "$ref" : "#/definitions/value" },
-          "select" : 
-          { "$ref" : "#/definitions/select" },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "id" ],
-        "additionalProperties" : false },
-      "label" : 
-      { "title" : "Parameter label",
-        "description" : "A placeholder for a missing value, in display.",
-        "$id" : "#/definitions/label",
-        "type" : "string" },
-      "usage" : 
-      { "title" : "Parameter description",
-        "description" : "Indicates and explains the purpose and use of a parameter",
-        "$id" : "#/definitions/usage",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "RICHTEXT" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "RICHTEXT" ],
-        "additionalProperties" : false },
-      "constraint" : 
-      { "title" : "Constraint",
-        "description" : "A formal or informal expression of a constraint or test",
-        "$id" : "#/definitions/constraint",
-        "type" : "object",
-        "properties" : 
-        { "test" : 
-          { "type" : "string",
-            "title" : "Constraint test",
-            "description" : "A formal (executable) expression of a constraint" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
-        "additionalProperties" : false },
-      "guideline" : 
-      { "title" : "Guideline",
-        "description" : "A prose statement that provides a recommendation for the use of a parameter.",
-        "$id" : "#/definitions/guideline",
-        "type" : "object",
-        "properties" : 
-        { "prose" : 
-          { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false },
-      "value" : 
-      { "title" : "Value constraint",
-        "description" : "Indicates a permissible value for a parameter or property",
-        "$id" : "#/definitions/value",
-        "type" : "string" },
-      "select" : 
-      { "title" : "Selection",
-        "description" : "Presenting a choice among alternatives",
-        "$id" : "#/definitions/select",
-        "type" : "object",
-        "properties" : 
-        { "how-many" : 
-          { "type" : "string",
-            "title" : "Cardinality",
-            "description" : "When selecting, a requirement such as one or more" },
-          "alternatives" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/choice" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/choice" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "choice" : 
-      { "title" : "Choice",
-        "description" : "A value selection among several such options",
-        "$id" : "#/definitions/choice",
-        "type" : "string" },
-      "part" : 
-      { "title" : "Part",
-        "description" : "A partition or component of a control, subcontrol or part",
-        "$id" : "#/definitions/part",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
-          "ns" : 
-          { "type" : "string",
-            "title" : "Namespace",
-            "description" : "A namespace qualifying the name." },
-          "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "prose" : 
-          { "$ref" : "#/definitions/prose" },
-          "parts" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/part" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/part" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "name" ],
-        "additionalProperties" : false },
-      "prose" : 
-      { "title" : "Prose",
-        "description" : "Prose permits multiple paragraphs, lists, tables etc.",
-        "$id" : "#/definitions/prose",
-        "type" : "string" } },
+        "additionalProperties" : false } },
     "properties" : 
     { "catalog" : 
       { "$ref" : "#/definitions/catalog" } } }

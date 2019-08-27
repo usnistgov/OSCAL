@@ -826,16 +826,14 @@
    <xsl:template match="all" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="all">
-         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
+         <xsl:apply-templates mode="as-string" select="@with-child-controls"/>
       </map>
    </xsl:template>
    <xsl:template match="call" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="call">
          <xsl:apply-templates mode="as-string" select="@control-id"/>
-         <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
-         <xsl:apply-templates mode="as-string" select="@with-control"/>
-         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
+         <xsl:apply-templates mode="as-string" select="@with-child-controls"/>
       </map>
    </xsl:template>
    <xsl:template match="match" mode="xml2json">
@@ -843,8 +841,7 @@
       <map key="match">
          <xsl:apply-templates mode="as-string" select="@pattern"/>
          <xsl:apply-templates mode="as-string" select="@order"/>
-         <xsl:apply-templates mode="as-string" select="@with-control"/>
-         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
+         <xsl:apply-templates mode="as-string" select="@with-child-controls"/>
       </map>
    </xsl:template>
    <xsl:template match="exclude" mode="xml2json">
@@ -893,7 +890,6 @@
    <xsl:template match="alter" mode="xml2json">
       <map key="alter">
          <xsl:apply-templates mode="as-string" select="@control-id"/>
-         <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
          <xsl:if test="exists(remove)">
             <array key="removals">
                <xsl:apply-templates select="remove" mode="#current"/>
@@ -909,6 +905,7 @@
    <xsl:template match="remove" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
       <map key="remove">
+         <xsl:apply-templates mode="as-string" select="@name-ref"/>
          <xsl:apply-templates mode="as-string" select="@class-ref"/>
          <xsl:apply-templates mode="as-string" select="@id-ref"/>
          <xsl:apply-templates mode="as-string" select="@item-name"/>

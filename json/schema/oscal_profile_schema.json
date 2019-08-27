@@ -761,7 +761,7 @@
         "type" : "string" },
       "part" : 
       { "title" : "Part",
-        "description" : "A partition or component of a control, subcontrol or part",
+        "description" : "A partition or component of a control or part",
         "$id" : "#/definitions/part",
         "type" : "object",
         "properties" : 
@@ -891,7 +891,7 @@
         { "method" : 
           { "type" : "string",
             "title" : "Combination method",
-            "description" : "How clashing controls and subcontrols should be handled",
+            "description" : "How clashing controls should be handled",
             "enum" : 
             [ "use-first",
               "merge",
@@ -999,7 +999,7 @@
         "additionalProperties" : false },
       "include" : 
       { "title" : "Include controls",
-        "description" : "Specifies which controls and subcontrols to include from the resource (source catalog) being imported",
+        "description" : "Specifies which controls to include from the resource (source catalog) being imported",
         "$id" : "#/definitions/include",
         "type" : "object",
         "properties" : 
@@ -1030,16 +1030,16 @@
         "$id" : "#/definitions/all",
         "type" : "object",
         "properties" : 
-        { "with-subcontrols" : 
+        { "with-child-controls" : 
           { "type" : "string",
-            "title" : "Include subcontrols with control",
-            "description" : "Whether subcontrols should be implicitly included, if not called.",
+            "title" : "Include contained controls with control",
+            "description" : "When a control is included, whether its child (dependent) controls are also included.",
             "enum" : 
             [ "yes",
               "no" ] } },
         "additionalProperties" : false },
       "call" : 
-      { "title" : "Call (control or subcontrol)",
+      { "title" : "Call",
         "description" : "Call a control or subcontrol by its ID",
         "$id" : "#/definitions/call",
         "type" : "object",
@@ -1048,27 +1048,16 @@
           { "type" : "string",
             "title" : "Control ID",
             "description" : "Value of the 'id' flag on a target control" },
-          "subcontrol-id" : 
+          "with-child-controls" : 
           { "type" : "string",
-            "title" : "Control ID",
-            "description" : "Value of the 'id' flag on a target subcontrol" },
-          "with-control" : 
-          { "type" : "string",
-            "title" : "Include control with subcontrol",
-            "description" : "Whether a control should be implicitly included, if not called.",
-            "enum" : 
-            [ "yes",
-              "no" ] },
-          "with-subcontrols" : 
-          { "type" : "string",
-            "title" : "Include subcontrols with control",
-            "description" : "Whether subcontrols should be implicitly included, if not called.",
+            "title" : "Include contained controls with control",
+            "description" : "When a control is included, whether its child (dependent) controls are also included.",
             "enum" : 
             [ "yes",
               "no" ] } },
         "additionalProperties" : false },
       "match" : 
-      { "title" : "Match controls and subcontrols by identifier",
+      { "title" : "Match controls by identifier",
         "description" : "Select controls by (regular expression) match on ID",
         "$id" : "#/definitions/match",
         "type" : "object",
@@ -1076,7 +1065,7 @@
         { "pattern" : 
           { "type" : "string",
             "title" : "Pattern",
-            "description" : "A regular expression matching the IDs of one or more controls or subcontrols to be selected" },
+            "description" : "A regular expression matching the IDs of one or more controls to be selected" },
           "order" : 
           { "type" : "string",
             "title" : "Order",
@@ -1085,24 +1074,17 @@
             [ "keep",
               "ascending",
               "descending" ] },
-          "with-control" : 
+          "with-child-controls" : 
           { "type" : "string",
-            "title" : "Include control with subcontrol",
-            "description" : "Whether a control should be implicitly included, if not called.",
-            "enum" : 
-            [ "yes",
-              "no" ] },
-          "with-subcontrols" : 
-          { "type" : "string",
-            "title" : "Include subcontrols with control",
-            "description" : "Whether subcontrols should be implicitly included, if not called.",
+            "title" : "Include contained controls with control",
+            "description" : "When a control is included, whether its child (dependent) controls are also included.",
             "enum" : 
             [ "yes",
               "no" ] } },
         "additionalProperties" : false },
       "exclude" : 
       { "title" : "Exclude controls",
-        "description" : "Which controls and subcontrols to exclude from the resource (source catalog) being imported",
+        "description" : "Which controls to exclude from the resource (source catalog) being imported",
         "$id" : "#/definitions/exclude",
         "type" : "object",
         "properties" : 
@@ -1184,7 +1166,7 @@
         "additionalProperties" : false },
       "alter" : 
       { "title" : "Alteration",
-        "description" : "An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.",
+        "description" : "An Alter element specifies changes to be made to an included control when a profile is resolved.",
         "$id" : "#/definitions/alter",
         "type" : "object",
         "properties" : 
@@ -1192,10 +1174,6 @@
           { "type" : "string",
             "title" : "Control ID",
             "description" : "Value of the 'id' flag on a target control" },
-          "subcontrol-id" : 
-          { "type" : "string",
-            "title" : "Control ID",
-            "description" : "Value of the 'id' flag on a target subcontrol" },
           "removals" : 
           { "anyOf" : 
             [ 
@@ -1217,26 +1195,30 @@
         "additionalProperties" : false },
       "remove" : 
       { "title" : "Removal",
-        "description" : "Specifies elements to be removed from a control or subcontrol, in resolution",
+        "description" : "Specifies elements to be removed from a control, in resolution",
         "$id" : "#/definitions/remove",
         "type" : "object",
         "properties" : 
-        { "class-ref" : 
+        { "name-ref" : 
+          { "type" : "string",
+            "title" : "References by (assigned) name",
+            "description" : "Items to remove, by assigned name" },
+          "class-ref" : 
           { "type" : "string",
             "title" : "References by class",
-            "description" : "Items to remove, by class" },
+            "description" : "Items to remove, by class. A token match." },
           "id-ref" : 
           { "type" : "string",
             "title" : "References by ID",
             "description" : "Items to remove, indicated by their IDs" },
           "item-name" : 
           { "type" : "string",
-            "title" : "References by name",
-            "description" : "Items to remove, by item type (name), e.g. title or prop" } },
+            "title" : "References by item name or generic identifier",
+            "description" : "Items to remove, by the name of the item's type, or generic identifier, e.g. title or prop" } },
         "additionalProperties" : false },
       "add" : 
       { "title" : "Addition",
-        "description" : "Specifies contents to be added into controls or subcontrols, in resolution",
+        "description" : "Specifies contents to be added into controls, in resolution",
         "$id" : "#/definitions/add",
         "type" : "object",
         "properties" : 

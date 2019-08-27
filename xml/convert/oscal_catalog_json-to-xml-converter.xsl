@@ -49,6 +49,229 @@
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
    <!-- 000 Handling assembly "{ @name }" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='param'] | array[@key='parameters']/* | map[@key='parameters']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="param" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('usage', 'descriptions')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('constraint', 'constraints')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('guideline', 'guidance')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling field "label" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <!--*[@key='label']-->
+   <xsl:template match="*[@key='label']" priority="5" mode="json2xml">
+      <xsl:element name="label" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling field "usage" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <!--*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*-->
+   <xsl:template match="*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*"
+                 priority="5"
+                 mode="json2xml">
+      <xsl:element name="usage" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template priority="3"
+                 mode="json2xml"
+                 match="map[@key = 'descriptions']/array[@key = 'RICHTEXT'] | array[@key = 'descriptions']/map/array[@key = 'RICHTEXT']">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="descriptions">
+            <xsl:apply-templates mode="expand" select="array[@key = 'RICHTEXT']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key = 'descriptions']/array[@key = 'RICHTEXT']/string | array[@key = 'descriptions']/map/array[@key = 'RICHTEXT']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key = 'RICHTEXT']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
+   <!-- 000 Handling field "constraint" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <!--*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*-->
+   <xsl:template match="*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*"
+                 priority="5"
+                 mode="json2xml">
+      <xsl:element name="constraint" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template priority="3"
+                 mode="json2xml"
+                 match="map[@key = 'constraints']/array[@key = 'STRVALUE'] | array[@key = 'constraints']/map/array[@key = 'STRVALUE']">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="constraints">
+            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key = 'constraints']/array[@key = 'STRVALUE']/string | array[@key = 'constraints']/map/array[@key = 'STRVALUE']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
+   <!-- 000 Handling assembly "{ @name }" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='guideline'] | array[@key='guidance']/* | map[@key='guidance']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="guideline" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling field "value" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <!--*[@key='value']-->
+   <xsl:template match="*[@key='value']" priority="5" mode="json2xml">
+      <xsl:element name="value" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling assembly "{ @name }" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='select']" priority="4" mode="json2xml">
+      <xsl:element name="select" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('choice', 'alternatives')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling field "choice" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <!--*[@key='choice'] | *[@key='alternatives']  | array[@key='alternatives']/*-->
+   <xsl:template match="*[@key='choice'] | *[@key='alternatives']  | array[@key='alternatives']/*"
+                 priority="5"
+                 mode="json2xml">
+      <xsl:element name="choice" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="*" mode="as-attribute"/>
+         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
+            <xsl:variable name="markup">
+               <xsl:apply-templates mode="infer-inlines"/>
+            </xsl:variable>
+            <xsl:apply-templates mode="cast-ns" select="$markup"/>
+         </xsl:for-each>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template priority="3"
+                 mode="json2xml"
+                 match="map[@key = 'alternatives']/array[@key = 'RICHTEXT'] | array[@key = 'alternatives']/map/array[@key = 'RICHTEXT']">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="alternatives">
+            <xsl:apply-templates mode="expand" select="array[@key = 'RICHTEXT']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key = 'alternatives']/array[@key = 'RICHTEXT']/string | array[@key = 'alternatives']/map/array[@key = 'RICHTEXT']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key = 'RICHTEXT']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
+   </xsl:template>
+   <!-- 000 Handling assembly "{ @name }" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
+   <xsl:template match="*[@key='part'] | array[@key='parts']/* | map[@key='parts']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling flag @test 000 -->
+   <xsl:template match="*[@key='test']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='constraint']/*[@key='test'] | *[@key='constraints']/*[@key='test'] | array[@key='constraints']/*/*[@key='test']"
+                 mode="as-attribute">
+      <xsl:attribute name="test">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag @how-many 000 -->
+   <xsl:template match="*[@key='how-many']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='select']/*[@key='how-many']"
+                 mode="as-attribute">
+      <xsl:attribute name="how-many">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag @depends-on 000 -->
+   <xsl:template match="*[@key='depends-on']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='param']/*[@key='depends-on'] | *[@key='parameters']/*[@key='depends-on'] | array[@key='parameters']/*/*[@key='depends-on']"
+                 mode="as-attribute">
+      <xsl:attribute name="depends-on">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!--*[@key='prose']-->
+   <xsl:template match="*[@key='prose']" priority="5" mode="json2xml">
+      <xsl:for-each select="string[@key='prose'], self::string">
+         <xsl:call-template name="parse">
+            <xsl:with-param name="markdown-str" select="string(.)"/>
+         </xsl:call-template>
+      </xsl:for-each>
+   </xsl:template>
+   <!-- 000 Handling assembly "{ @name }" 000 -->
+   <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='metadata']" priority="4" mode="json2xml">
       <xsl:element name="metadata" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
@@ -226,7 +449,7 @@
    <!-- 000 Handling flag @ns 000 -->
    <xsl:template match="*[@key='ns']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns'] | *[@key='part']/*[@key='ns'] | *[@key='parts']/*[@key='ns'] | array[@key='parts']/*/*[@key='ns']"
+                 match="*[@key='part']/*[@key='ns'] | *[@key='parts']/*[@key='ns'] | array[@key='parts']/*/*[@key='ns'] | *[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns']"
                  mode="as-attribute">
       <xsl:attribute name="ns">
          <xsl:apply-templates mode="#current"/>
@@ -235,7 +458,7 @@
    <!-- 000 Handling flag @class 000 -->
    <xsl:template match="*[@key='class']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | *[@key='group']/*[@key='class'] | *[@key='groups']/*[@key='class'] | array[@key='groups']/*/*[@key='class'] | *[@key='control']/*[@key='class'] | *[@key='controls']/*[@key='class'] | array[@key='controls']/*/*[@key='class'] | *[@key='subcontrol']/*[@key='class'] | *[@key='subcontrols']/*[@key='class'] | array[@key='subcontrols']/*/*[@key='class'] | *[@key='param']/*[@key='class'] | *[@key='parameters']/*[@key='class'] | array[@key='parameters']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class']"
+                 match="*[@key='param']/*[@key='class'] | *[@key='parameters']/*[@key='class'] | array[@key='parameters']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class'] | *[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | *[@key='group']/*[@key='class'] | *[@key='groups']/*[@key='class'] | array[@key='groups']/*/*[@key='class'] | *[@key='control']/*[@key='class'] | *[@key='controls']/*[@key='class'] | array[@key='controls']/*/*[@key='class']"
                  mode="as-attribute">
       <xsl:attribute name="class">
          <xsl:apply-templates mode="#current"/>
@@ -731,7 +954,7 @@
    <!-- 000 Handling flag @id 000 -->
    <xsl:template match="*[@key='id']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*[@key='id'] | array[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*[@key='id'] | array[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*[@key='id'] | array[@key='citations']/*/*[@key='id'] | *[@key='catalog']/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*[@key='id'] | array[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*[@key='id'] | array[@key='controls']/*/*[@key='id'] | *[@key='subcontrol']/*[@key='id'] | *[@key='subcontrols']/*[@key='id'] | array[@key='subcontrols']/*/*[@key='id'] | *[@key='param']/*[@key='id'] | *[@key='parameters']/*[@key='id'] | array[@key='parameters']/*/*[@key='id'] | *[@key='usage']/*[@key='id'] | *[@key='descriptions']/*[@key='id'] | array[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*[@key='id'] | array[@key='parts']/*/*[@key='id']"
+                 match="*[@key='param']/*[@key='id'] | *[@key='parameters']/*[@key='id'] | array[@key='parameters']/*/*[@key='id'] | *[@key='usage']/*[@key='id'] | *[@key='descriptions']/*[@key='id'] | array[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*[@key='id'] | array[@key='parts']/*/*[@key='id'] | *[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*[@key='id'] | array[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*[@key='id'] | array[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*[@key='id'] | array[@key='citations']/*/*[@key='id'] | *[@key='catalog']/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*[@key='id'] | array[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*[@key='id'] | array[@key='controls']/*/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
@@ -878,245 +1101,8 @@
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('subcontrol', 'subcontrols')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
       </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling assembly "{ @name }" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='subcontrol'] | array[@key='subcontrols']/* | map[@key='subcontrols']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="subcontrol" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling assembly "{ @name }" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='param'] | array[@key='parameters']/* | map[@key='parameters']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="param" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('usage', 'descriptions')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('constraint', 'constraints')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('guideline', 'guidance')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "label" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <!--*[@key='label']-->
-   <xsl:template match="*[@key='label']" priority="5" mode="json2xml">
-      <xsl:element name="label" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "usage" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <!--*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*-->
-   <xsl:template match="*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="usage" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'descriptions']/array[@key = 'RICHTEXT'] | array[@key = 'descriptions']/map/array[@key = 'RICHTEXT']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="descriptions">
-            <xsl:apply-templates mode="expand" select="array[@key = 'RICHTEXT']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'descriptions']/array[@key = 'RICHTEXT']/string | array[@key = 'descriptions']/map/array[@key = 'RICHTEXT']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'RICHTEXT']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- 000 Handling field "constraint" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <!--*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*-->
-   <xsl:template match="*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="constraint" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'constraints']/array[@key = 'STRVALUE'] | array[@key = 'constraints']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="constraints">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'constraints']/array[@key = 'STRVALUE']/string | array[@key = 'constraints']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- 000 Handling assembly "{ @name }" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='guideline'] | array[@key='guidance']/* | map[@key='guidance']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="guideline" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "value" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <!--*[@key='value']-->
-   <xsl:template match="*[@key='value']" priority="5" mode="json2xml">
-      <xsl:element name="value" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling assembly "{ @name }" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='select']" priority="4" mode="json2xml">
-      <xsl:element name="select" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('choice', 'alternatives')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling field "choice" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <!--*[@key='choice'] | *[@key='alternatives']  | array[@key='alternatives']/*-->
-   <xsl:template match="*[@key='choice'] | *[@key='alternatives']  | array[@key='alternatives']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="choice" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'alternatives']/array[@key = 'RICHTEXT'] | array[@key = 'alternatives']/map/array[@key = 'RICHTEXT']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="alternatives">
-            <xsl:apply-templates mode="expand" select="array[@key = 'RICHTEXT']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'alternatives']/array[@key = 'RICHTEXT']/string | array[@key = 'alternatives']/map/array[@key = 'RICHTEXT']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'RICHTEXT']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="RICHTEXT">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- 000 Handling assembly "{ @name }" 000 -->
-   <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='part'] | array[@key='parts']/* | map[@key='parts']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- 000 Handling flag @test 000 -->
-   <xsl:template match="*[@key='test']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='constraint']/*[@key='test'] | *[@key='constraints']/*[@key='test'] | array[@key='constraints']/*/*[@key='test']"
-                 mode="as-attribute">
-      <xsl:attribute name="test">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @how-many 000 -->
-   <xsl:template match="*[@key='how-many']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='select']/*[@key='how-many']"
-                 mode="as-attribute">
-      <xsl:attribute name="how-many">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @depends-on 000 -->
-   <xsl:template match="*[@key='depends-on']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='param']/*[@key='depends-on'] | *[@key='parameters']/*[@key='depends-on'] | array[@key='parameters']/*/*[@key='depends-on']"
-                 mode="as-attribute">
-      <xsl:attribute name="depends-on">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!--*[@key='prose']-->
-   <xsl:template match="*[@key='prose']" priority="5" mode="json2xml">
-      <xsl:for-each select="string[@key='prose'], self::string">
-         <xsl:call-template name="parse">
-            <xsl:with-param name="markdown-str" select="string(.)"/>
-         </xsl:call-template>
-      </xsl:for-each>
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
    <!-- Markdown converter-->
@@ -1152,10 +1138,11 @@
       <xsl:variable name="flat-structures">
          <xsl:apply-templates select="$rough-blocks" mode="mark-structures"/>
       </xsl:variable>
-      <!--<xsl:copy-of select="$flat-structures"/>-->
+      <!-- for debugging <xsl:copy-of select="$flat-structures"/>-->
       <xsl:variable name="nested-structures">
          <xsl:apply-templates select="$flat-structures" mode="build-structures"/>
       </xsl:variable>
+      <!-- for debugging <xsl:copy-of select="$nested-structures"/>-->
       <xsl:variable name="fully-marked">
          <xsl:apply-templates select="$nested-structures" mode="infer-inlines"/>
       </xsl:variable>
@@ -1263,36 +1250,37 @@
       <xsl:param name="level" select="0"/>
       <xsl:param name="group" select="m:li"/>
       <xsl:variable name="this-type" select="$group[1]/@type"/>
-      <!-- first, splitting ul from ol groups -->
-      <xsl:for-each-group select="$group"
-                          group-starting-with="*[@level = $level and not(@type = preceding-sibling::*/@type)]">
-         <xsl:element name="m:{ $group[1]/@type }"
-                      namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
-            <xsl:for-each-group select="current-group()" group-starting-with="li[@level = $level]">
-               <xsl:choose>
-                  <xsl:when test="@level = $level (: checking first item in group :)">
-                     <m:li><!--<xsl:copy-of select="@level"/>-->
-                        <xsl:apply-templates mode="copy"/>
-                        <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
-                           <xsl:call-template name="nest-lists">
-                              <xsl:with-param name="level" select="$level + 1"/>
-                              <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
-                           </xsl:call-template>
-                        </xsl:if>
-                     </m:li>
-                  </xsl:when>
-                  <xsl:otherwise><!-- fallback for skipping levels -->
-                     <m:li><!-- level="{$level}"-->
+      <!--first, splitting ul from ol groups -->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*[1]/@type)]">-->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level]">-->
+      <xsl:element name="m:{ $group[1]/@type }"
+                   namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+         <xsl:for-each-group select="$group"
+                             group-starting-with="m:li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
+            <xsl:choose>
+               <xsl:when test="@level = $level (: checking first item in group :)">
+                  <m:li><!--<xsl:copy-of select="@level"/>-->
+                     <xsl:apply-templates mode="copy"/>
+                     <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
                         <xsl:call-template name="nest-lists">
                            <xsl:with-param name="level" select="$level + 1"/>
-                           <xsl:with-param name="group" select="current-group()"/>
+                           <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
                         </xsl:call-template>
-                     </m:li>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </xsl:for-each-group>
-         </xsl:element>
-      </xsl:for-each-group>
+                     </xsl:if>
+                  </m:li>
+               </xsl:when>
+               <xsl:otherwise><!-- fallback for skipping levels -->
+                  <m:li><!-- level="{$level}"-->
+                     <xsl:call-template name="nest-lists">
+                        <xsl:with-param name="level" select="$level + 1"/>
+                        <xsl:with-param name="group" select="current-group()"/>
+                     </xsl:call-template>
+                  </m:li>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:for-each-group>
+      </xsl:element>
+      <!--</xsl:for-each-group>-->
    </xsl:template>
    <xsl:template match="m:pre//text()" mode="infer-inlines">
       <xsl:copy-of select="."/>
@@ -1365,9 +1353,9 @@
                  as="element(m:tag-spec)">
       <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
-         <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+         <img alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
          <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
-         <a href="\[{{$text}}\]">\(<text/>\)</a>
+         <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
          <code>`<text/>`</code>
          <strong>
             <em>\*\*\*<text/>\*\*\*</em>
@@ -1396,6 +1384,12 @@
    <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
    </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
+   </xsl:template>
    <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
       <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
    </xsl:template>
@@ -1419,6 +1413,9 @@
    </xsl:template>
    <xsl:template match="m:text" mode="write-match">
       <xsl:text>(.*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="m:text[@not]" mode="write-match">
+      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
    </xsl:template>
    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
 </xsl:stylesheet>

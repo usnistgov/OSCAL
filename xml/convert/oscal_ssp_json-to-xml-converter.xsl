@@ -3372,10 +3372,11 @@
       <xsl:variable name="flat-structures">
          <xsl:apply-templates select="$rough-blocks" mode="mark-structures"/>
       </xsl:variable>
-      <!--<xsl:copy-of select="$flat-structures"/>-->
+      <!-- for debugging <xsl:copy-of select="$flat-structures"/>-->
       <xsl:variable name="nested-structures">
          <xsl:apply-templates select="$flat-structures" mode="build-structures"/>
       </xsl:variable>
+      <!-- for debugging <xsl:copy-of select="$nested-structures"/>-->
       <xsl:variable name="fully-marked">
          <xsl:apply-templates select="$nested-structures" mode="infer-inlines"/>
       </xsl:variable>
@@ -3483,36 +3484,37 @@
       <xsl:param name="level" select="0"/>
       <xsl:param name="group" select="m:li"/>
       <xsl:variable name="this-type" select="$group[1]/@type"/>
-      <!-- first, splitting ul from ol groups -->
-      <xsl:for-each-group select="$group"
-                          group-starting-with="*[@level = $level and not(@type = preceding-sibling::*/@type)]">
-         <xsl:element name="m:{ $group[1]/@type }"
-                      namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
-            <xsl:for-each-group select="current-group()" group-starting-with="li[@level = $level]">
-               <xsl:choose>
-                  <xsl:when test="@level = $level (: checking first item in group :)">
-                     <m:li><!--<xsl:copy-of select="@level"/>-->
-                        <xsl:apply-templates mode="copy"/>
-                        <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
-                           <xsl:call-template name="nest-lists">
-                              <xsl:with-param name="level" select="$level + 1"/>
-                              <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
-                           </xsl:call-template>
-                        </xsl:if>
-                     </m:li>
-                  </xsl:when>
-                  <xsl:otherwise><!-- fallback for skipping levels -->
-                     <m:li><!-- level="{$level}"-->
+      <!--first, splitting ul from ol groups -->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*[1]/@type)]">-->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level]">-->
+      <xsl:element name="m:{ $group[1]/@type }"
+                   namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+         <xsl:for-each-group select="$group"
+                             group-starting-with="m:li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
+            <xsl:choose>
+               <xsl:when test="@level = $level (: checking first item in group :)">
+                  <m:li><!--<xsl:copy-of select="@level"/>-->
+                     <xsl:apply-templates mode="copy"/>
+                     <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
                         <xsl:call-template name="nest-lists">
                            <xsl:with-param name="level" select="$level + 1"/>
-                           <xsl:with-param name="group" select="current-group()"/>
+                           <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
                         </xsl:call-template>
-                     </m:li>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </xsl:for-each-group>
-         </xsl:element>
-      </xsl:for-each-group>
+                     </xsl:if>
+                  </m:li>
+               </xsl:when>
+               <xsl:otherwise><!-- fallback for skipping levels -->
+                  <m:li><!-- level="{$level}"-->
+                     <xsl:call-template name="nest-lists">
+                        <xsl:with-param name="level" select="$level + 1"/>
+                        <xsl:with-param name="group" select="current-group()"/>
+                     </xsl:call-template>
+                  </m:li>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:for-each-group>
+      </xsl:element>
+      <!--</xsl:for-each-group>-->
    </xsl:template>
    <xsl:template match="m:pre//text()" mode="infer-inlines">
       <xsl:copy-of select="."/>
@@ -3585,9 +3587,9 @@
                  as="element(m:tag-spec)">
       <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
-         <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+         <img alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
          <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
-         <a href="\[{{$text}}\]">\(<text/>\)</a>
+         <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
          <code>`<text/>`</code>
          <strong>
             <em>\*\*\*<text/>\*\*\*</em>
@@ -3616,6 +3618,12 @@
    <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
    </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
+   </xsl:template>
    <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
       <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
    </xsl:template>
@@ -3639,6 +3647,9 @@
    </xsl:template>
    <xsl:template match="m:text" mode="write-match">
       <xsl:text>(.*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="m:text[@not]" mode="write-match">
+      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
    </xsl:template>
    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
 </xsl:stylesheet>

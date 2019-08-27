@@ -12,7 +12,7 @@
          <m:schema-version>1.0.0-milestone2</m:schema-version>
          <m:short-name>oscal-profile</m:short-name>
          <m:remarks>
-            <m:p>A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <m:code>profile</m:code>.</m:p>
+            <m:p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <m:code>profile</m:code>.</m:p>
          </m:remarks>
          <m:root>profile</m:root>
       </xs:appinfo>
@@ -1024,10 +1024,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Part</m:formal-name>
-            <m:description>A partition or component of a control, subcontrol or part</m:description>
+            <m:description>A partition or component of a control or part</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Part</b>: A partition or component of a control, subcontrol or part</xs:documentation>
+            <b>Part</b>: A partition or component of a control or part</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1171,10 +1171,10 @@
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Combination method</m:formal-name>
-                  <m:description>How clashing controls and subcontrols should be handled</m:description>
+                  <m:description>How clashing controls should be handled</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Combination method</b>: How clashing controls and subcontrols should be handled</xs:documentation>
+                  <b>Combination method</b>: How clashing controls should be handled</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:restriction base="xs:string">
@@ -1278,11 +1278,11 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Include controls</m:formal-name>
-            <m:description>Specifies which controls and subcontrols to include from the resource (source catalog) being
+            <m:description>Specifies which controls to include from the resource (source catalog) being
           imported</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Include controls</b>: Specifies which controls and subcontrols to include from the resource (source catalog) being
+            <b>Include controls</b>: Specifies which controls to include from the resource (source catalog) being
           imported</xs:documentation>
       </xs:annotation>
       <xs:complexType>
@@ -1305,28 +1305,28 @@
             <b>Include all</b>: Include all controls from the imported resource (catalog)</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:attribute name="with-subcontrols">
+         <xs:attribute name="with-child-controls">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Include subcontrols with control</m:formal-name>
-                  <m:description>Whether subcontrols should be implicitly included, if not called.</m:description>
+                  <m:formal-name>Include contained controls with control</m:formal-name>
+                  <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Include subcontrols with control</b>: Whether subcontrols should be implicitly included, if not called.</xs:documentation>
+                  <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:restriction base="xs:NCName">
                   <xs:enumeration value="yes">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Include all subcontrols for a control during the import.</p>
+                           <p>Include child controls with an included control.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="no">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Exclude all subcontrols for a control during the import.</p>
+                           <p>When importing a control, only include child controls that are also explicitly called.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
@@ -1338,11 +1338,11 @@
    <xs:element name="call">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Call (control or subcontrol)</m:formal-name>
+            <m:formal-name>Call</m:formal-name>
             <m:description>Call a control or subcontrol by its ID</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Call (control or subcontrol)</b>: Call a control or subcontrol by its ID</xs:documentation>
+            <b>Call</b>: Call a control or subcontrol by its ID</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attribute name="control-id" type="xs:NCName">
@@ -1355,66 +1355,28 @@
                   <b>Control ID</b>: Value of the 'id' flag on a target control</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="subcontrol-id" type="xs:NCName">
+         <xs:attribute name="with-child-controls">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Control ID</m:formal-name>
-                  <m:description>Value of the 'id' flag on a target subcontrol</m:description>
+                  <m:formal-name>Include contained controls with control</m:formal-name>
+                  <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Control ID</b>: Value of the 'id' flag on a target subcontrol</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="with-control">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Include control with subcontrol</m:formal-name>
-                  <m:description>Whether a control should be implicitly included, if not called.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Include control with subcontrol</b>: Whether a control should be implicitly included, if not called.</xs:documentation>
+                  <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:restriction base="xs:NCName">
                   <xs:enumeration value="yes">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Include the parent control when a subcontrol is imported.</p>
+                           <p>Include child controls with an included control.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="no">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Exclude the parent control when a subcontrol is imported.</p>
-                        </xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="with-subcontrols">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Include subcontrols with control</m:formal-name>
-                  <m:description>Whether subcontrols should be implicitly included, if not called.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Include subcontrols with control</b>: Whether subcontrols should be implicitly included, if not called.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:NCName">
-                  <xs:enumeration value="yes">
-                     <xs:annotation>
-                        <xs:documentation>
-                           <p>Include all subcontrols for a control during the import.</p>
-                        </xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="no">
-                     <xs:annotation>
-                        <xs:documentation>
-                           <p>Exclude all subcontrols for a control during the import.</p>
+                           <p>When importing a control, only include child controls that are also explicitly called.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
@@ -1426,21 +1388,21 @@
    <xs:element name="match">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Match controls and subcontrols by identifier</m:formal-name>
+            <m:formal-name>Match controls by identifier</m:formal-name>
             <m:description>Select controls by (regular expression) match on ID</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Match controls and subcontrols by identifier</b>: Select controls by (regular expression) match on ID</xs:documentation>
+            <b>Match controls by identifier</b>: Select controls by (regular expression) match on ID</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attribute name="pattern" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Pattern</m:formal-name>
-                  <m:description>A regular expression matching the IDs of one or more controls or subcontrols to be selected</m:description>
+                  <m:description>A regular expression matching the IDs of one or more controls to be selected</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Pattern</b>: A regular expression matching the IDs of one or more controls or subcontrols to be selected</xs:documentation>
+                  <b>Pattern</b>: A regular expression matching the IDs of one or more controls to be selected</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="order">
@@ -1460,56 +1422,28 @@
                </xs:restriction>
             </xs:simpleType>
          </xs:attribute>
-         <xs:attribute name="with-control">
+         <xs:attribute name="with-child-controls">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Include control with subcontrol</m:formal-name>
-                  <m:description>Whether a control should be implicitly included, if not called.</m:description>
+                  <m:formal-name>Include contained controls with control</m:formal-name>
+                  <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Include control with subcontrol</b>: Whether a control should be implicitly included, if not called.</xs:documentation>
+                  <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:restriction base="xs:NCName">
                   <xs:enumeration value="yes">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Include the parent control when a subcontrol is imported.</p>
+                           <p>Include child controls with an included control.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="no">
                      <xs:annotation>
                         <xs:documentation>
-                           <p>Exclude the parent control when a subcontrol is imported.</p>
-                        </xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
-         <xs:attribute name="with-subcontrols">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Include subcontrols with control</m:formal-name>
-                  <m:description>Whether subcontrols should be implicitly included, if not called.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Include subcontrols with control</b>: Whether subcontrols should be implicitly included, if not called.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:restriction base="xs:NCName">
-                  <xs:enumeration value="yes">
-                     <xs:annotation>
-                        <xs:documentation>
-                           <p>Include all subcontrols for a control during the import.</p>
-                        </xs:documentation>
-                     </xs:annotation>
-                  </xs:enumeration>
-                  <xs:enumeration value="no">
-                     <xs:annotation>
-                        <xs:documentation>
-                           <p>Exclude all subcontrols for a control during the import.</p>
+                           <p>When importing a control, only include child controls that are also explicitly called.</p>
                         </xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
@@ -1522,11 +1456,11 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Exclude controls</m:formal-name>
-            <m:description>Which controls and subcontrols to exclude from the resource (source catalog) being
+            <m:description>Which controls to exclude from the resource (source catalog) being
           imported</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Exclude controls</b>: Which controls and subcontrols to exclude from the resource (source catalog) being
+            <b>Exclude controls</b>: Which controls to exclude from the resource (source catalog) being
           imported</xs:documentation>
       </xs:annotation>
       <xs:complexType>
@@ -1595,10 +1529,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Alteration</m:formal-name>
-            <m:description>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</m:description>
+            <m:description>An Alter element specifies changes to be made to an included control when a profile is resolved.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Alteration</b>: An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</xs:documentation>
+            <b>Alteration</b>: An Alter element specifies changes to be made to an included control when a profile is resolved.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1615,36 +1549,36 @@
                   <b>Control ID</b>: Value of the 'id' flag on a target control</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="subcontrol-id" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Control ID</m:formal-name>
-                  <m:description>Value of the 'id' flag on a target subcontrol</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Control ID</b>: Value of the 'id' flag on a target subcontrol</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="remove">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Removal</m:formal-name>
-            <m:description>Specifies elements to be removed from a control or subcontrol, in resolution</m:description>
+            <m:description>Specifies elements to be removed from a control, in resolution</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Removal</b>: Specifies elements to be removed from a control or subcontrol, in resolution</xs:documentation>
+            <b>Removal</b>: Specifies elements to be removed from a control, in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:attribute name="class-ref" type="xs:NMTOKENS">
+         <xs:attribute name="name-ref" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>References by (assigned) name</m:formal-name>
+                  <m:description>Items to remove, by assigned name</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>References by (assigned) name</b>: Items to remove, by assigned name</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class-ref" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>References by class</m:formal-name>
-                  <m:description>Items to remove, by class</m:description>
+                  <m:description>Items to remove, by class. A token match.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>References by class</b>: Items to remove, by class</xs:documentation>
+                  <b>References by class</b>: Items to remove, by class. A token match.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="id-ref" type="xs:NCName">
@@ -1657,14 +1591,15 @@
                   <b>References by ID</b>: Items to remove, indicated by their IDs</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="item-name" type="xs:NMTOKENS">
+         <xs:attribute name="item-name" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>References by name</m:formal-name>
-                  <m:description>Items to remove, by item type (name), e.g. title or prop</m:description>
+                  <m:formal-name>References by item name or generic identifier</m:formal-name>
+                  <m:description>Items to remove, by the name of the item's type, or generic identifier, e.g. <m:code>title</m:code> or <m:code>prop</m:code>
+                  </m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>References by name</b>: Items to remove, by item type (name), e.g. title or prop</xs:documentation>
+                  <b>References by item name or generic identifier</b>: Items to remove, by the name of the item's type, or generic identifier, e.g. title or prop</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -1673,10 +1608,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Addition</m:formal-name>
-            <m:description>Specifies contents to be added into controls or subcontrols, in resolution</m:description>
+            <m:description>Specifies contents to be added into controls, in resolution</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Addition</b>: Specifies contents to be added into controls or subcontrols, in resolution</xs:documentation>
+            <b>Addition</b>: Specifies contents to be added into controls, in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

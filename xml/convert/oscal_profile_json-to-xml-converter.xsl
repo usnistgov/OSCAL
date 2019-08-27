@@ -1381,6 +1381,46 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
+   <!-- 000 Handling flag "remove/@name-ref" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='name-ref']" priority="7" mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='remove']/*[@key='name-ref'] | *[@key='removals']/*[@key='name-ref'] | array[@key='removals']/*/*[@key='name-ref']"
+                 mode="as-attribute">
+      <xsl:attribute name="name-ref">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "remove/@class-ref" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='class-ref']" priority="7" mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='remove']/*[@key='class-ref'] | *[@key='removals']/*[@key='class-ref'] | array[@key='removals']/*/*[@key='class-ref']"
+                 mode="as-attribute">
+      <xsl:attribute name="class-ref">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "remove/@id-ref" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='id-ref']" priority="7" mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='remove']/*[@key='id-ref'] | *[@key='removals']/*[@key='id-ref'] | array[@key='removals']/*/*[@key='id-ref']"
+                 mode="as-attribute">
+      <xsl:attribute name="id-ref">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "remove/@item-name" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='item-name']" priority="7" mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='remove']/*[@key='item-name'] | *[@key='removals']/*[@key='item-name'] | array[@key='removals']/*/*[@key='item-name']"
+                 mode="as-attribute">
+      <xsl:attribute name="item-name">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
    <!-- 000 Handling assembly "{ @name }" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
    <xsl:template match="*[@key='add'] | array[@key='additions']/* | map[@key='additions']"
@@ -1404,30 +1444,12 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 000 Handling flag @with-control 000 -->
-   <xsl:template match="*[@key='with-control']" priority="6" mode="json2xml"/>
+   <!-- 000 Handling flag @with-child-controls 000 -->
+   <xsl:template match="*[@key='with-child-controls']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='call']/*[@key='with-control'] | *[@key='id-selectors']/*[@key='with-control'] | array[@key='id-selectors']/*/*[@key='with-control'] | *[@key='match']/*[@key='with-control'] | *[@key='pattern-selectors']/*[@key='with-control'] | array[@key='pattern-selectors']/*/*[@key='with-control']"
+                 match="*[@key='all']/*[@key='with-child-controls'] | *[@key='call']/*[@key='with-child-controls'] | *[@key='id-selectors']/*[@key='with-child-controls'] | array[@key='id-selectors']/*/*[@key='with-child-controls'] | *[@key='match']/*[@key='with-child-controls'] | *[@key='pattern-selectors']/*[@key='with-child-controls'] | array[@key='pattern-selectors']/*/*[@key='with-child-controls']"
                  mode="as-attribute">
-      <xsl:attribute name="with-control">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @with-subcontrols 000 -->
-   <xsl:template match="*[@key='with-subcontrols']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='all']/*[@key='with-subcontrols'] | *[@key='call']/*[@key='with-subcontrols'] | *[@key='id-selectors']/*[@key='with-subcontrols'] | array[@key='id-selectors']/*/*[@key='with-subcontrols'] | *[@key='match']/*[@key='with-subcontrols'] | *[@key='pattern-selectors']/*[@key='with-subcontrols'] | array[@key='pattern-selectors']/*/*[@key='with-subcontrols']"
-                 mode="as-attribute">
-      <xsl:attribute name="with-subcontrols">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @subcontrol-id 000 -->
-   <xsl:template match="*[@key='subcontrol-id']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='call']/*[@key='subcontrol-id'] | *[@key='id-selectors']/*[@key='subcontrol-id'] | array[@key='id-selectors']/*/*[@key='subcontrol-id'] | *[@key='alter']/*[@key='subcontrol-id'] | *[@key='alterations']/*[@key='subcontrol-id'] | array[@key='alterations']/*/*[@key='subcontrol-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="subcontrol-id">
+      <xsl:attribute name="with-child-controls">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -1455,33 +1477,6 @@
                  match="*[@key='add']/*[@key='position'] | *[@key='additions']/*[@key='position'] | array[@key='additions']/*/*[@key='position']"
                  mode="as-attribute">
       <xsl:attribute name="position">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @class-ref 000 -->
-   <xsl:template match="*[@key='class-ref']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='remove']/*[@key='class-ref'] | *[@key='removals']/*[@key='class-ref'] | array[@key='removals']/*/*[@key='class-ref']"
-                 mode="as-attribute">
-      <xsl:attribute name="class-ref">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @id-ref 000 -->
-   <xsl:template match="*[@key='id-ref']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='remove']/*[@key='id-ref'] | *[@key='removals']/*[@key='id-ref'] | array[@key='removals']/*/*[@key='id-ref']"
-                 mode="as-attribute">
-      <xsl:attribute name="id-ref">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @item-name 000 -->
-   <xsl:template match="*[@key='item-name']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='remove']/*[@key='item-name'] | *[@key='removals']/*[@key='item-name'] | array[@key='removals']/*/*[@key='item-name']"
-                 mode="as-attribute">
-      <xsl:attribute name="item-name">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -1519,10 +1514,11 @@
       <xsl:variable name="flat-structures">
          <xsl:apply-templates select="$rough-blocks" mode="mark-structures"/>
       </xsl:variable>
-      <!--<xsl:copy-of select="$flat-structures"/>-->
+      <!-- for debugging <xsl:copy-of select="$flat-structures"/>-->
       <xsl:variable name="nested-structures">
          <xsl:apply-templates select="$flat-structures" mode="build-structures"/>
       </xsl:variable>
+      <!-- for debugging <xsl:copy-of select="$nested-structures"/>-->
       <xsl:variable name="fully-marked">
          <xsl:apply-templates select="$nested-structures" mode="infer-inlines"/>
       </xsl:variable>
@@ -1630,36 +1626,37 @@
       <xsl:param name="level" select="0"/>
       <xsl:param name="group" select="m:li"/>
       <xsl:variable name="this-type" select="$group[1]/@type"/>
-      <!-- first, splitting ul from ol groups -->
-      <xsl:for-each-group select="$group"
-                          group-starting-with="*[@level = $level and not(@type = preceding-sibling::*/@type)]">
-         <xsl:element name="m:{ $group[1]/@type }"
-                      namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
-            <xsl:for-each-group select="current-group()" group-starting-with="li[@level = $level]">
-               <xsl:choose>
-                  <xsl:when test="@level = $level (: checking first item in group :)">
-                     <m:li><!--<xsl:copy-of select="@level"/>-->
-                        <xsl:apply-templates mode="copy"/>
-                        <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
-                           <xsl:call-template name="nest-lists">
-                              <xsl:with-param name="level" select="$level + 1"/>
-                              <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
-                           </xsl:call-template>
-                        </xsl:if>
-                     </m:li>
-                  </xsl:when>
-                  <xsl:otherwise><!-- fallback for skipping levels -->
-                     <m:li><!-- level="{$level}"-->
+      <!--first, splitting ul from ol groups -->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*[1]/@type)]">-->
+      <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level]">-->
+      <xsl:element name="m:{ $group[1]/@type }"
+                   namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+         <xsl:for-each-group select="$group"
+                             group-starting-with="m:li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
+            <xsl:choose>
+               <xsl:when test="@level = $level (: checking first item in group :)">
+                  <m:li><!--<xsl:copy-of select="@level"/>-->
+                     <xsl:apply-templates mode="copy"/>
+                     <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
                         <xsl:call-template name="nest-lists">
                            <xsl:with-param name="level" select="$level + 1"/>
-                           <xsl:with-param name="group" select="current-group()"/>
+                           <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
                         </xsl:call-template>
-                     </m:li>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </xsl:for-each-group>
-         </xsl:element>
-      </xsl:for-each-group>
+                     </xsl:if>
+                  </m:li>
+               </xsl:when>
+               <xsl:otherwise><!-- fallback for skipping levels -->
+                  <m:li><!-- level="{$level}"-->
+                     <xsl:call-template name="nest-lists">
+                        <xsl:with-param name="level" select="$level + 1"/>
+                        <xsl:with-param name="group" select="current-group()"/>
+                     </xsl:call-template>
+                  </m:li>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:for-each-group>
+      </xsl:element>
+      <!--</xsl:for-each-group>-->
    </xsl:template>
    <xsl:template match="m:pre//text()" mode="infer-inlines">
       <xsl:copy-of select="."/>
@@ -1732,9 +1729,9 @@
                  as="element(m:tag-spec)">
       <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
-         <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+         <img alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
          <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
-         <a href="\[{{$text}}\]">\(<text/>\)</a>
+         <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
          <code>`<text/>`</code>
          <strong>
             <em>\*\*\*<text/>\*\*\*</em>
@@ -1763,6 +1760,12 @@
    <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
    </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
+   </xsl:template>
    <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
       <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
    </xsl:template>
@@ -1786,6 +1789,9 @@
    </xsl:template>
    <xsl:template match="m:text" mode="write-match">
       <xsl:text>(.*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="m:text[@not]" mode="write-match">
+      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
    </xsl:template>
    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
 </xsl:stylesheet>

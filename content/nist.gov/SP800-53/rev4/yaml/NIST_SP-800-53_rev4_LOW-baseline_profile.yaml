@@ -124,17 +124,17 @@ profile:
         - 
           control-id: ia-2
         - 
-          subcontrol-id: ia-2.1
+          control-id: ia-2.1
         - 
-          subcontrol-id: ia-2.12
+          control-id: ia-2.12
         - 
           control-id: ia-4
         - 
           control-id: ia-5
         - 
-          subcontrol-id: ia-5.1
+          control-id: ia-5.1
         - 
-          subcontrol-id: ia-5.11
+          control-id: ia-5.11
         - 
           control-id: ia-6
         - 
@@ -142,13 +142,13 @@ profile:
         - 
           control-id: ia-8
         - 
-          subcontrol-id: ia-8.1
+          control-id: ia-8.1
         - 
-          subcontrol-id: ia-8.2
+          control-id: ia-8.2
         - 
-          subcontrol-id: ia-8.3
+          control-id: ia-8.3
         - 
-          subcontrol-id: ia-8.4
+          control-id: ia-8.4
         - 
           control-id: ir-1
         - 
@@ -238,7 +238,7 @@ profile:
         - 
           control-id: sa-4
         - 
-          subcontrol-id: sa-4.10
+          control-id: sa-4.10
         - 
           control-id: sa-5
         - 

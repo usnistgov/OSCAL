@@ -1,5 +1,5 @@
 catalog: 
-  id:          uuid-f3de8b2b-dc8e-4b17-9653-e83b708a6663
+  id:          uuid-164e503d-1a64-4373-8926-7c51b8ba2913
   metadata: 
     title:              NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations
     last-modified-date: 2019-08-17T11:39:39.05-04:00
@@ -276,9 +276,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with access control responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ac-2
-          class:       SP800-53
-          title:       Account Management
+          id:         ac-2
+          class:      SP800-53
+          title:      Account Management
           parameters: 
             - 
               id:    ac-2_prm_1
@@ -758,7 +758,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes account management on the information system\n\nautomated mechanisms for implementing account management
-          subcontrols: 
+          controls: 
             - 
               id:         ac-2.1
               class:      SP800-53-enhancement
@@ -1676,9 +1676,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing account management functions
         - 
-          id:          ac-3
-          class:       SP800-53
-          title:       Access Enforcement
+          id:         ac-3
+          class:      SP800-53
+          title:      Access Enforcement
           properties: 
             label: AC-3
           parts: 
@@ -1792,7 +1792,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing access control policy
-          subcontrols: 
+          controls: 
             - 
               id:         ac-3.1
               class:      SP800-53-enhancement
@@ -2676,9 +2676,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing access enforcement functions
         - 
-          id:          ac-4
-          class:       SP800-53
-          title:       Information Flow Enforcement
+          id:         ac-4
+          class:      SP800-53
+          title:      Information Flow Enforcement
           parameters: 
             id:    ac-4_prm_1
             label: organization-defined information flow control policies
@@ -2776,7 +2776,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing information flow enforcement policy
-          subcontrols: 
+          controls: 
             - 
               id:         ac-4.1
               class:      SP800-53-enhancement
@@ -4264,9 +4264,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms implementing separation of duties policy
         - 
-          id:          ac-6
-          class:       SP800-53
-          title:       Least Privilege
+          id:         ac-6
+          class:      SP800-53
+          title:      Least Privilege
           properties: 
             label: AC-6
           parts: 
@@ -4328,7 +4328,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing least privilege functions
-          subcontrols: 
+          controls: 
             - 
               id:         ac-6.1
               class:      SP800-53-enhancement
@@ -4995,9 +4995,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing least privilege functions for non-privileged users
         - 
-          id:          ac-7
-          class:       SP800-53
-          title:       Unsuccessful Logon Attempts
+          id:         ac-7
+          class:      SP800-53
+          title:      Unsuccessful Logon Attempts
           parameters: 
             - 
               id:    ac-7_prm_1
@@ -5145,7 +5145,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing access control policy for unsuccessful logon attempts
-          subcontrols: 
+          controls: 
             - 
               id:         ac-7.1
               class:      SP800-53-enhancement
@@ -5449,9 +5449,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms implementing system use notification
         - 
-          id:          ac-9
-          class:       SP800-53
-          title:       Previous Logon (access) Notification
+          id:         ac-9
+          class:      SP800-53
+          title:      Previous Logon (access) Notification
           properties: 
             label: AC-9
           parts: 
@@ -5497,7 +5497,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing access control policy for previous logon notification
-          subcontrols: 
+          controls: 
             - 
               id:         ac-9.1
               class:      SP800-53-enhancement
@@ -5802,9 +5802,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms implementing access control policy for concurrent session control
         - 
-          id:          ac-11
-          class:       SP800-53
-          title:       Session Lock
+          id:         ac-11
+          class:      SP800-53
+          title:      Session Lock
           parameters: 
             id:    ac-11_prm_1
             label: organization-defined time period
@@ -5890,7 +5890,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing access control policy for session lock
-          subcontrols: 
+          controls: 
             id:         ac-11.1
             class:      SP800-53-enhancement
             title:      Pattern-hiding Displays
@@ -5931,9 +5931,9 @@ catalog:
                   name:  objects
                   prose: Information system session lock mechanisms
         - 
-          id:          ac-12
-          class:       SP800-53
-          title:       Session Termination
+          id:         ac-12
+          class:      SP800-53
+          title:      Session Termination
           parameters: 
             id:    ac-12_prm_1
             label: organization-defined conditions or trigger events requiring session disconnect
@@ -5995,7 +5995,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing user session termination
-          subcontrols: 
+          controls: 
             id:         ac-12.1
             class:      SP800-53-enhancement
             title:      User-initiated Logouts / Message Displays
@@ -6103,9 +6103,9 @@ catalog:
               rel:  incorporated-into
               text: AU-6
         - 
-          id:          ac-14
-          class:       SP800-53
-          title:       Permitted Actions Without Identification or Authentication
+          id:         ac-14
+          class:      SP800-53
+          title:      Permitted Actions Without Identification or Authentication
           parameters: 
             id:    ac-14_prm_1
             label: organization-defined user actions
@@ -6185,7 +6185,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: System/network administrators\n\norganizational personnel with information security responsibilities
-          subcontrols: 
+          controls: 
             id:         ac-14.1
             class:      SP800-53-enhancement
             title:      Necessary Uses
@@ -6212,9 +6212,9 @@ catalog:
             rel:  incorporated-into
             text: MP-3
         - 
-          id:          ac-16
-          class:       SP800-53
-          title:       Security Attributes
+          id:         ac-16
+          class:      SP800-53
+          title:      Security Attributes
           parameters: 
             - 
               id:    ac-16_prm_1
@@ -6436,7 +6436,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational capability supporting and maintaining the association of security attributes to information in storage, in process, and in transmission
-          subcontrols: 
+          controls: 
             - 
               id:         ac-16.1
               class:      SP800-53-enhancement
@@ -7032,9 +7032,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing capability for defining or changing security attributes
         - 
-          id:          ac-17
-          class:       SP800-53
-          title:       Remote Access
+          id:         ac-17
+          class:      SP800-53
+          title:      Remote Access
           properties: 
             label: AC-17
           links: 
@@ -7239,7 +7239,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Remote access management capability for the information system
-          subcontrols: 
+          controls: 
             - 
               id:         ac-17.1
               class:      SP800-53-enhancement
@@ -7635,9 +7635,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing capability to disconnect or disable remote access to information system
         - 
-          id:          ac-18
-          class:       SP800-53
-          title:       Wireless Access
+          id:         ac-18
+          class:      SP800-53
+          title:      Wireless Access
           properties: 
             label: AC-18
           links: 
@@ -7781,7 +7781,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Wireless access management capability for the information system
-          subcontrols: 
+          controls: 
             - 
               id:         ac-18.1
               class:      SP800-53-enhancement
@@ -8024,9 +8024,9 @@ catalog:
                     name:  objects
                     prose: Wireless access capability protecting usable signals from unauthorized access outside organization-controlled boundaries
         - 
-          id:          ac-19
-          class:       SP800-53
-          title:       Access Control for Mobile Devices
+          id:         ac-19
+          class:      SP800-53
+          title:      Access Control for Mobile Devices
           properties: 
             label: AC-19
           links: 
@@ -8190,7 +8190,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Access control capability authorizing mobile device connections to organizational information systems
-          subcontrols: 
+          controls: 
             - 
               id:         ac-19.1
               class:      SP800-53-enhancement
@@ -8506,9 +8506,9 @@ catalog:
                     name:  objects
                     prose: Encryption mechanisms protecting confidentiality and integrity of information on mobile devices
         - 
-          id:          ac-20
-          class:       SP800-53
-          title:       Use of External Information Systems
+          id:         ac-20
+          class:      SP800-53
+          title:      Use of External Information Systems
           properties: 
             label: AC-20
           links: 
@@ -8600,7 +8600,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing terms and conditions on use of external information systems
-          subcontrols: 
+          controls: 
             - 
               id:         ac-20.1
               class:      SP800-53-enhancement
@@ -8824,9 +8824,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms prohibiting the use of network accessible storage devices in external information systems
         - 
-          id:          ac-21
-          class:       SP800-53
-          title:       Information Sharing
+          id:         ac-21
+          class:      SP800-53
+          title:      Information Sharing
           parameters: 
             - 
               id:    ac-21_prm_1
@@ -8924,7 +8924,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms or manual process implementing access authorizations supporting information sharing/user collaboration decisions
-          subcontrols: 
+          controls: 
             - 
               id:         ac-21.1
               class:      SP800-53-enhancement
@@ -9225,9 +9225,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms implementing data mining prevention and detection
         - 
-          id:          ac-24
-          class:       SP800-53
-          title:       Access Control Decisions
+          id:         ac-24
+          class:      SP800-53
+          title:      Access Control Decisions
           parameters: 
             id:    ac-24_prm_1
             label: organization-defined access control decisions
@@ -9280,7 +9280,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms applying established access control decisions and procedures
-          subcontrols: 
+          controls: 
             - 
               id:         ac-24.1
               class:      SP800-53-enhancement
@@ -9734,9 +9734,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with security awareness and training responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          at-2
-          class:       SP800-53
-          title:       Security Awareness Training
+          id:         at-2
+          class:      SP800-53
+          title:      Security Awareness Training
           parameters: 
             id:    at-2_prm_1
             label: organization-defined frequency
@@ -9852,7 +9852,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms managing security awareness training
-          subcontrols: 
+          controls: 
             - 
               id:         at-2.1
               class:      SP800-53-enhancement
@@ -9961,9 +9961,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel that participate in security awareness training\n\norganizational personnel with responsibilities for basic security awareness training\n\norganizational personnel with information security responsibilities
         - 
-          id:          at-3
-          class:       SP800-53
-          title:       Role-based Security Training
+          id:         at-3
+          class:      SP800-53
+          title:      Role-based Security Training
           parameters: 
             id:    at-3_prm_1
             label: organization-defined frequency
@@ -10095,7 +10095,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms managing role-based security training
-          subcontrols: 
+          controls: 
             - 
               id:         at-3.1
               class:      SP800-53-enhancement
@@ -10728,9 +10728,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with audit and accountability responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          au-2
-          class:       SP800-53
-          title:       Audit Events
+          id:         au-2
+          class:      SP800-53
+          title:      Audit Events
           parameters: 
             - 
               id:    au-2_prm_1
@@ -10896,7 +10896,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing information system auditing
-          subcontrols: 
+          controls: 
             - 
               id:         au-2.1
               class:      SP800-53-enhancement
@@ -10993,9 +10993,9 @@ catalog:
                 rel:  incorporated-into
                 text: AC-6 (9)
         - 
-          id:          au-3
-          class:       SP800-53
-          title:       Content of Audit Records
+          id:         au-3
+          class:      SP800-53
+          title:      Content of Audit Records
           properties: 
             label: AU-3
           parts: 
@@ -11086,7 +11086,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing information system auditing of auditable events
-          subcontrols: 
+          controls: 
             - 
               id:         au-3.1
               class:      SP800-53-enhancement
@@ -11209,9 +11209,9 @@ catalog:
                     name:  objects
                     prose: Information system capability implementing centralized management and configuration of audit record content
         - 
-          id:          au-4
-          class:       SP800-53
-          title:       Audit Storage Capacity
+          id:         au-4
+          class:      SP800-53
+          title:      Audit Storage Capacity
           parameters: 
             id:    au-4_prm_1
             label: organization-defined audit record storage requirements
@@ -11289,7 +11289,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Audit record storage capacity and related configuration settings
-          subcontrols: 
+          controls: 
             id:         au-4.1
             class:      SP800-53-enhancement
             title:      Transfer to Alternate Storage
@@ -11346,9 +11346,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms supporting transfer of audit records onto a different system
         - 
-          id:          au-5
-          class:       SP800-53
-          title:       Response to Audit Processing Failures
+          id:         au-5
+          class:      SP800-53
+          title:      Response to Audit Processing Failures
           parameters: 
             - 
               id:    au-5_prm_1
@@ -11451,7 +11451,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing information system response to audit processing failures
-          subcontrols: 
+          controls: 
             - 
               id:         au-5.1
               class:      SP800-53-enhancement
@@ -11807,9 +11807,9 @@ catalog:
                     name:  objects
                     prose: Information system capability invoking system shutdown or degraded operational mode in the event of an audit processing failure
         - 
-          id:          au-6
-          class:       SP800-53
-          title:       Audit Review, Analysis, and Reporting
+          id:         au-6
+          class:      SP800-53
+          title:      Audit Review, Analysis, and Reporting
           parameters: 
             - 
               id:    au-6_prm_1
@@ -12018,7 +12018,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with audit review, analysis, and reporting responsibilities\n\norganizational personnel with information security responsibilities
-          subcontrols: 
+          controls: 
             - 
               id:         au-6.1
               class:      SP800-53-enhancement
@@ -12609,9 +12609,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting review, analysis, and reporting of audit information
         - 
-          id:          au-7
-          class:       SP800-53
-          title:       Audit Reduction and Report Generation
+          id:         au-7
+          class:      SP800-53
+          title:      Audit Reduction and Report Generation
           properties: 
             label: AU-7
           parts: 
@@ -12702,7 +12702,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Audit reduction and report generation capability
-          subcontrols: 
+          controls: 
             - 
               id:         au-7.1
               class:      SP800-53-enhancement
@@ -12825,9 +12825,9 @@ catalog:
                     name:  objects
                     prose: Audit reduction and report generation capability
         - 
-          id:          au-8
-          class:       SP800-53
-          title:       Time Stamps
+          id:         au-8
+          class:      SP800-53
+          title:      Time Stamps
           parameters: 
             id:    au-8_prm_1
             label: organization-defined granularity of time measurement
@@ -12920,7 +12920,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing time stamp generation
-          subcontrols: 
+          controls: 
             - 
               id:         au-8.1
               class:      SP800-53-enhancement
@@ -13072,9 +13072,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing internal information system clock authoritative time sources
         - 
-          id:          au-9
-          class:       SP800-53
-          title:       Protection of Audit Information
+          id:         au-9
+          class:      SP800-53
+          title:      Protection of Audit Information
           properties: 
             label: AU-9
           parts: 
@@ -13191,7 +13191,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing audit information protection
-          subcontrols: 
+          controls: 
             - 
               id:         au-9.1
               class:      SP800-53-enhancement
@@ -13583,9 +13583,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms managing access to audit information
         - 
-          id:          au-10
-          class:       SP800-53
-          title:       Non-repudiation
+          id:         au-10
+          class:      SP800-53
+          title:      Non-repudiation
           parameters: 
             id:    au-10_prm_1
             label: organization-defined actions to be covered by non-repudiation
@@ -13663,7 +13663,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing non-repudiation capability
-          subcontrols: 
+          controls: 
             - 
               id:         au-10.1
               class:      SP800-53-enhancement
@@ -14082,9 +14082,9 @@ catalog:
                 rel:  incorporated-into
                 text: SI-7
         - 
-          id:          au-11
-          class:       SP800-53
-          title:       Audit Record Retention
+          id:         au-11
+          class:      SP800-53
+          title:      Audit Record Retention
           parameters: 
             id:    au-11_prm_1
             label: organization-defined time period consistent with records retention policy
@@ -14160,7 +14160,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with audit record retention responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem/network administrators
-          subcontrols: 
+          controls: 
             id:         au-11.1
             class:      SP800-53-enhancement
             title:      Long-term Retrieval Capability
@@ -14217,9 +14217,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms implementing audit record retention capability
         - 
-          id:          au-12
-          class:       SP800-53
-          title:       Audit Generation
+          id:         au-12
+          class:      SP800-53
+          title:      Audit Generation
           parameters: 
             - 
               id:    au-12_prm_1
@@ -14346,7 +14346,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing audit record generation capability
-          subcontrols: 
+          controls: 
             - 
               id:         au-12.1
               class:      SP800-53-enhancement
@@ -14551,9 +14551,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing audit record generation capability
         - 
-          id:          au-13
-          class:       SP800-53
-          title:       Monitoring for Information Disclosure
+          id:         au-13
+          class:      SP800-53
+          title:      Monitoring for Information Disclosure
           parameters: 
             - 
               id:    au-13_prm_1
@@ -14625,7 +14625,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing monitoring for information disclosure
-          subcontrols: 
+          controls: 
             - 
               id:         au-13.1
               class:      SP800-53-enhancement
@@ -14719,9 +14719,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing monitoring for information disclosure
         - 
-          id:          au-14
-          class:       SP800-53
-          title:       Session Audit
+          id:         au-14
+          class:      SP800-53
+          title:      Session Audit
           properties: 
             label: AU-14
           parts: 
@@ -14792,7 +14792,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing user session auditing capability
-          subcontrols: 
+          controls: 
             - 
               id:         au-14.1
               class:      SP800-53-enhancement
@@ -14975,9 +14975,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms implementing alternative audit capability
         - 
-          id:          au-16
-          class:       SP800-53
-          title:       Cross-organizational Auditing
+          id:         au-16
+          class:      SP800-53
+          title:      Cross-organizational Auditing
           parameters: 
             - 
               id:    au-16_prm_1
@@ -15044,7 +15044,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing cross-organizational auditing (if applicable)
-          subcontrols: 
+          controls: 
             - 
               id:         au-16.1
               class:      SP800-53-enhancement
@@ -15393,9 +15393,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with security assessment and authorization responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ca-2
-          class:       SP800-53
-          title:       Security Assessments
+          id:         ca-2
+          class:      SP800-53
+          title:      Security Assessments
           parameters: 
             - 
               id:    ca-2_prm_1
@@ -15631,7 +15631,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting security assessment, security assessment plan development, and/or security assessment reporting
-          subcontrols: 
+          controls: 
             - 
               id:         ca-2.1
               class:      SP800-53-enhancement
@@ -15878,9 +15878,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with security assessment responsibilities\n\norganizational personnel with information security responsibilities\n\npersonnel performing security assessments for the specified external organization
         - 
-          id:          ca-3
-          class:       SP800-53
-          title:       System Interconnections
+          id:         ca-3
+          class:      SP800-53
+          title:      System Interconnections
           parameters: 
             id:    ca-3_prm_1
             label: organization-defined frequency
@@ -16036,7 +16036,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with responsibility for developing, implementing, or approving information system interconnection agreements\n\norganizational personnel with information security responsibilities\n\npersonnel managing the system(s) to which the Interconnection Security Agreement applies
-          subcontrols: 
+          controls: 
             - 
               id:         ca-3.1
               class:      SP800-53-enhancement
@@ -16385,9 +16385,9 @@ catalog:
             rel:  incorporated-into
             text: CA-2
         - 
-          id:          ca-5
-          class:       SP800-53
-          title:       Plan of Action and Milestones
+          id:         ca-5
+          class:      SP800-53
+          title:      Plan of Action and Milestones
           parameters: 
             id:    ca-5_prm_1
             label: organization-defined frequency
@@ -16523,7 +16523,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms for developing, implementing, and maintaining plan of action and milestones
-          subcontrols: 
+          controls: 
             id:         ca-5.1
             class:      SP800-53-enhancement
             title:      Automation Support for Accuracy / Currency
@@ -16706,9 +16706,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms that facilitate security authorizations and updates
         - 
-          id:          ca-7
-          class:       SP800-53
-          title:       Continuous Monitoring
+          id:         ca-7
+          class:      SP800-53
+          title:      Continuous Monitoring
           parameters: 
             - 
               id:    ca-7_prm_1
@@ -17043,7 +17043,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Mechanisms implementing continuous monitoring
-          subcontrols: 
+          controls: 
             - 
               id:         ca-7.1
               class:      SP800-53-enhancement
@@ -17159,9 +17159,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with continuous monitoring responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ca-8
-          class:       SP800-53
-          title:       Penetration Testing
+          id:         ca-8
+          class:      SP800-53
+          title:      Penetration Testing
           parameters: 
             - 
               id:    ca-8_prm_1
@@ -17228,7 +17228,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting penetration testing
-          subcontrols: 
+          controls: 
             - 
               id:         ca-8.1
               class:      SP800-53-enhancement
@@ -17333,9 +17333,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting employment of red team exercises
         - 
-          id:          ca-9
-          class:       SP800-53
-          title:       Internal System Connections
+          id:         ca-9
+          class:      SP800-53
+          title:      Internal System Connections
           parameters: 
             id:    ca-9_prm_1
             label: organization-defined information system components or classes of components
@@ -17470,7 +17470,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with responsibility for developing, implementing, or authorizing internal system connections\n\norganizational personnel with information security responsibilities
-          subcontrols: 
+          controls: 
             id:         ca-9.1
             class:      SP800-53-enhancement
             title:      Security Compliance Checks
@@ -17755,9 +17755,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with configuration management responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem/network administrators
         - 
-          id:          cm-2
-          class:       SP800-53
-          title:       Baseline Configuration
+          id:         cm-2
+          class:      SP800-53
+          title:      Baseline Configuration
           properties: 
             label: CM-2
           links: 
@@ -17840,7 +17840,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing baseline configurations\n\nautomated mechanisms supporting configuration control of the baseline configuration
-          subcontrols: 
+          controls: 
             - 
               id:         cm-2.1
               class:      SP800-53-enhancement
@@ -18289,9 +18289,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for managing baseline configurations
         - 
-          id:          cm-3
-          class:       SP800-53
-          title:       Configuration Change Control
+          id:         cm-3
+          class:      SP800-53
+          title:      Configuration Change Control
           parameters: 
             - 
               id:    cm-3_prm_1
@@ -18511,7 +18511,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for configuration change control\n\nautomated mechanisms that implement configuration change control
-          subcontrols: 
+          controls: 
             - 
               id:         cm-3.1
               class:      SP800-53-enhancement
@@ -18973,9 +18973,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for configuration change control\n\ncryptographic mechanisms implementing organizational security safeguards
         - 
-          id:          cm-4
-          class:       SP800-53
-          title:       Security Impact Analysis
+          id:         cm-4
+          class:      SP800-53
+          title:      Security Impact Analysis
           properties: 
             label: CM-4
           links: 
@@ -19049,7 +19049,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for security impact analysis
-          subcontrols: 
+          controls: 
             - 
               id:         cm-4.1
               class:      SP800-53-enhancement
@@ -19205,9 +19205,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for security impact analysis\n\nautomated mechanisms supporting and/or implementing verification of security functions
         - 
-          id:          cm-5
-          class:       SP800-53
-          title:       Access Restrictions for Change
+          id:         cm-5
+          class:      SP800-53
+          title:      Access Restrictions for Change
           properties: 
             label: CM-5
           parts: 
@@ -19306,7 +19306,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing access restrictions to change\n\nautomated mechanisms supporting/implementing/enforcing access restrictions associated with changes to the information system
-          subcontrols: 
+          controls: 
             - 
               id:         cm-5.1
               class:      SP800-53-enhancement
@@ -19762,9 +19762,9 @@ catalog:
                 rel:  incorporated-into
                 text: SI-7
         - 
-          id:          cm-6
-          class:       SP800-53
-          title:       Configuration Settings
+          id:         cm-6
+          class:      SP800-53
+          title:      Configuration Settings
           parameters: 
             - 
               id:    cm-6_prm_1
@@ -20013,7 +20013,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing configuration settings\n\nautomated mechanisms that implement, monitor, and/or control information system configuration settings\n\nautomated mechanisms that identify and/or document deviations from established configuration settings
-          subcontrols: 
+          controls: 
             - 
               id:         cm-6.1
               class:      SP800-53-enhancement
@@ -20218,9 +20218,9 @@ catalog:
                 rel:  incorporated-into
                 text: CM-4
         - 
-          id:          cm-7
-          class:       SP800-53
-          title:       Least Functionality
+          id:         cm-7
+          class:      SP800-53
+          title:      Least Functionality
           parameters: 
             id:    cm-7_prm_1
             label: organization-defined prohibited or restricted functions, ports, protocols, and/or services
@@ -20373,7 +20373,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes prohibiting or restricting functions, ports, protocols, and/or services\n\nautomated mechanisms implementing restrictions or prohibition of functions, ports, protocols, and/or services
-          subcontrols: 
+          controls: 
             - 
               id:         cm-7.1
               class:      SP800-53-enhancement
@@ -21043,9 +21043,9 @@ catalog:
                     name:  objects
                     prose: Organizational process for identifying, reviewing, and updating programs authorized to execute on the information system\n\norganizational process for implementing whitelisting\n\nautomated mechanisms implementing whitelisting
         - 
-          id:          cm-8
-          class:       SP800-53
-          title:       Information System Component Inventory
+          id:         cm-8
+          class:      SP800-53
+          title:      Information System Component Inventory
           parameters: 
             - 
               id:    cm-8_prm_1
@@ -21205,7 +21205,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developing and documenting an inventory of information system components\n\nautomated mechanisms supporting and/or implementing the information system component inventory
-          subcontrols: 
+          controls: 
             - 
               id:         cm-8.1
               class:      SP800-53-enhancement
@@ -21871,9 +21871,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for assigning components to systems\n\norganizational processes for acknowledging assignment of components to systems\n\nautomated mechanisms implementing assignment of acquired components to the information system\n\nautomated mechanisms implementing acknowledgment of assignment of acquired components to the information system
         - 
-          id:          cm-9
-          class:       SP800-53
-          title:       Configuration Management Plan
+          id:         cm-9
+          class:      SP800-53
+          title:      Configuration Management Plan
           properties: 
             label: CM-9
           links: 
@@ -22045,7 +22045,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developing and documenting the configuration management plan\n\norganizational processes for identifying and managing configuration items\n\norganizational processes for protecting the configuration management plan\n\nautomated mechanisms implementing the configuration management plan\n\nautomated mechanisms for managing configuration items\n\nautomated mechanisms for protecting the configuration management plan
-          subcontrols: 
+          controls: 
             id:         cm-9.1
             class:      SP800-53-enhancement
             title:      Assignment of Responsibility
@@ -22079,9 +22079,9 @@ catalog:
                   name:  objects
                   prose: Organizational personnel with responsibilities for configuration management process development\n\norganizational personnel with information security responsibilities
         - 
-          id:          cm-10
-          class:       SP800-53
-          title:       Software Usage Restrictions
+          id:         cm-10
+          class:      SP800-53
+          title:      Software Usage Restrictions
           properties: 
             label: CM-10
           parts: 
@@ -22169,7 +22169,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational process for tracking the use of software protected by quantity licenses\n\norganization process for controlling/documenting the use of peer-to-peer file sharing technology\n\nautomated mechanisms implementing software license tracking\n\nautomated mechanisms implementing and controlling the use of peer-to-peer files sharing technology
-          subcontrols: 
+          controls: 
             id:         cm-10.1
             class:      SP800-53-enhancement
             title:      Open Source Software
@@ -22226,9 +22226,9 @@ catalog:
                   name:  objects
                   prose: Organizational process for restricting the use of open source software\n\nautomated mechanisms implementing restrictions on the use of open source software
         - 
-          id:          cm-11
-          class:       SP800-53
-          title:       User-installed Software
+          id:         cm-11
+          class:      SP800-53
+          title:      User-installed Software
           parameters: 
             - 
               id:    cm-11_prm_1
@@ -22378,7 +22378,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes governing user-installed software on the information system\n\nautomated mechanisms enforcing rules/methods for governing the installation of software by users\n\nautomated mechanisms monitoring policy compliance
-          subcontrols: 
+          controls: 
             - 
               id:         cm-11.1
               class:      SP800-53-enhancement
@@ -22736,9 +22736,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with contingency planning responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          cp-2
-          class:       SP800-53
-          title:       Contingency Plan
+          id:         cp-2
+          class:      SP800-53
+          title:      Contingency Plan
           parameters: 
             - 
               id:    cp-2_prm_1
@@ -23107,7 +23107,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for contingency plan development, review, update, and protection\n\nautomated mechanisms for developing, reviewing, updating and/or protecting the contingency plan
-          subcontrols: 
+          controls: 
             - 
               id:         cp-2.1
               class:      SP800-53-enhancement
@@ -23507,9 +23507,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with contingency planning and plan implementation responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          cp-3
-          class:       SP800-53
-          title:       Contingency Training
+          id:         cp-3
+          class:      SP800-53
+          title:      Contingency Training
           parameters: 
             - 
               id:    cp-3_prm_1
@@ -23645,7 +23645,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for contingency training
-          subcontrols: 
+          controls: 
             - 
               id:         cp-3.1
               class:      SP800-53-enhancement
@@ -23719,9 +23719,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for contingency training\n\nautomated mechanisms for providing contingency training environments
         - 
-          id:          cp-4
-          class:       SP800-53
-          title:       Contingency Plan Testing
+          id:         cp-4
+          class:      SP800-53
+          title:      Contingency Plan Testing
           parameters: 
             - 
               id:    cp-4_prm_1
@@ -23851,7 +23851,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for contingency plan testing\n\nautomated mechanisms supporting the contingency plan and/or contingency plan testing
-          subcontrols: 
+          controls: 
             - 
               id:         cp-4.1
               class:      SP800-53-enhancement
@@ -24086,9 +24086,9 @@ catalog:
             rel:  incorporated-into
             text: CP-2
         - 
-          id:          cp-6
-          class:       SP800-53
-          title:       Alternate Storage Site
+          id:         cp-6
+          class:      SP800-53
+          title:      Alternate Storage Site
           properties: 
             label: CP-6
           links: 
@@ -24176,7 +24176,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for storing and retrieving information system backup information at the alternate storage site\n\nautomated mechanisms supporting and/or implementing storage and retrieval of information system backup information at the alternate storage site
-          subcontrols: 
+          controls: 
             - 
               id:         cp-6.1
               class:      SP800-53-enhancement
@@ -24301,9 +24301,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with contingency plan alternate storage site responsibilities\n\norganizational personnel with information system recovery responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          cp-7
-          class:       SP800-53
-          title:       Alternate Processing Site
+          id:         cp-7
+          class:      SP800-53
+          title:      Alternate Processing Site
           parameters: 
             - 
               id:    cp-7_prm_1
@@ -24444,7 +24444,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for recovery at the alternate site\n\nautomated mechanisms supporting and/or implementing recovery at the alternate processing site
-          subcontrols: 
+          controls: 
             - 
               id:         cp-7.1
               class:      SP800-53-enhancement
@@ -24657,9 +24657,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with information system reconstitution responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          cp-8
-          class:       SP800-53
-          title:       Telecommunications Services
+          id:         cp-8
+          class:      SP800-53
+          title:      Telecommunications Services
           parameters: 
             - 
               id:    cp-8_prm_1
@@ -24748,7 +24748,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting telecommunications
-          subcontrols: 
+          controls: 
             - 
               id:         cp-8.1
               class:      SP800-53-enhancement
@@ -25040,9 +25040,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting testing alternate telecommunications services
         - 
-          id:          cp-9
-          class:       SP800-53
-          title:       Information System Backup
+          id:         cp-9
+          class:      SP800-53
+          title:      Information System Backup
           parameters: 
             - 
               id:    cp-9_prm_1
@@ -25200,7 +25200,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for conducting information system backups\n\nautomated mechanisms supporting and/or implementing information system backups
-          subcontrols: 
+          controls: 
             - 
               id:         cp-9.1
               class:      SP800-53-enhancement
@@ -25575,9 +25575,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing dual authorization\n\nautomated mechanisms supporting and/or implementing deletion/destruction of backup information
         - 
-          id:          cp-10
-          class:       SP800-53
-          title:       Information System Recovery and Reconstitution
+          id:         cp-10
+          class:      SP800-53
+          title:      Information System Recovery and Reconstitution
           properties: 
             label: CP-10
           links: 
@@ -25707,7 +25707,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes implementing information system recovery and reconstitution operations\n\nautomated mechanisms supporting and/or implementing information system recovery and reconstitution operations
-          subcontrols: 
+          controls: 
             - 
               id:         cp-10.1
               class:      SP800-53-enhancement
@@ -26372,9 +26372,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with identification and authentication responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ia-2
-          class:       SP800-53
-          title:       Identification and Authentication (organizational Users)
+          id:         ia-2
+          class:      SP800-53
+          title:      Identification and Authentication (organizational Users)
           properties: 
             label: IA-2
           links: 
@@ -26489,7 +26489,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for uniquely identifying and authenticating users\n\nautomated mechanisms supporting and/or implementing identification and authentication capability
-          subcontrols: 
+          controls: 
             - 
               id:         ia-2.1
               class:      SP800-53-enhancement
@@ -27177,9 +27177,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing out-of-band authentication capability
         - 
-          id:          ia-3
-          class:       SP800-53
-          title:       Device Identification and Authentication
+          id:         ia-3
+          class:      SP800-53
+          title:      Device Identification and Authentication
           parameters: 
             - 
               id:    ia-3_prm_1
@@ -27301,7 +27301,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing device identification and authentication capability
-          subcontrols: 
+          controls: 
             - 
               id:         ia-3.1
               class:      SP800-53-enhancement
@@ -27603,9 +27603,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing device identification and authentication capability\n\nautomated mechanisms supporting and/or implementing configuration management\n\ncryptographic mechanisms supporting device attestation
         - 
-          id:          ia-4
-          class:       SP800-53
-          title:       Identifier Management
+          id:         ia-4
+          class:      SP800-53
+          title:      Identifier Management
           parameters: 
             - 
               id:    ia-4_prm_1
@@ -27892,7 +27892,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing identifier management
-          subcontrols: 
+          controls: 
             - 
               id:         ia-4.1
               class:      SP800-53-enhancement
@@ -28207,9 +28207,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with identifier management responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ia-5
-          class:       SP800-53
-          title:       Authenticator Management
+          id:         ia-5
+          class:      SP800-53
+          title:      Authenticator Management
           parameters: 
             id:    ia-5_prm_1
             label: organization-defined time period by authenticator type
@@ -28563,7 +28563,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing authenticator management capability
-          subcontrols: 
+          controls: 
             - 
               id:         ia-5.1
               class:      SP800-53-enhancement
@@ -29753,9 +29753,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing cryptographic module authentication
         - 
-          id:          ia-8
-          class:       SP800-53
-          title:       Identification and Authentication (non-organizational Users)
+          id:         ia-8
+          class:      SP800-53
+          title:      Identification and Authentication (non-organizational Users)
           properties: 
             label: IA-8
           links: 
@@ -29874,7 +29874,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing identification and authentication capability
-          subcontrols: 
+          controls: 
             - 
               id:         ia-8.1
               class:      SP800-53-enhancement
@@ -30147,9 +30147,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing identification and authentication capability\n\nautomated mechanisms that accept and verify PIV-I credentials
         - 
-          id:          ia-9
-          class:       SP800-53
-          title:       Service Identification and Authentication
+          id:         ia-9
+          class:      SP800-53
+          title:      Service Identification and Authentication
           parameters: 
             - 
               id:    ia-9_prm_1
@@ -30212,7 +30212,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Security safeguards implementing service identification and authentication capability
-          subcontrols: 
+          controls: 
             - 
               id:         ia-9.1
               class:      SP800-53-enhancement
@@ -30718,9 +30718,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with incident response responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ir-2
-          class:       SP800-53
-          title:       Incident Response Training
+          id:         ir-2
+          class:      SP800-53
+          title:      Incident Response Training
           parameters: 
             - 
               id:    ir-2_prm_1
@@ -30841,7 +30841,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with incident response training and operational responsibilities\n\norganizational personnel with information security responsibilities
-          subcontrols: 
+          controls: 
             - 
               id:         ir-2.1
               class:      SP800-53-enhancement
@@ -30915,9 +30915,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms that provide a thorough and realistic incident response training environment
         - 
-          id:          ir-3
-          class:       SP800-53
-          title:       Incident Response Testing
+          id:         ir-3
+          class:      SP800-53
+          title:      Incident Response Testing
           parameters: 
             - 
               id:    ir-3_prm_1
@@ -30991,7 +30991,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with incident response testing responsibilities\n\norganizational personnel with information security responsibilities
-          subcontrols: 
+          controls: 
             - 
               id:         ir-3.1
               class:      SP800-53-enhancement
@@ -31070,9 +31070,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with incident response testing responsibilities\n\norganizational personnel with responsibilities for testing organizational plans related to incident response testing\n\norganizational personnel with information security responsibilities
         - 
-          id:          ir-4
-          class:       SP800-53
-          title:       Incident Handling
+          id:         ir-4
+          class:      SP800-53
+          title:      Incident Handling
           properties: 
             label: IR-4
           links: 
@@ -31290,7 +31290,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Incident handling capability for the organization
-          subcontrols: 
+          controls: 
             - 
               id:         ir-4.1
               class:      SP800-53-enhancement
@@ -31826,9 +31826,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with incident handling responsibilities\n\norganizational personnel with information security responsibilities\n\norganizational personnel with supply chain responsibilities
         - 
-          id:          ir-5
-          class:       SP800-53
-          title:       Incident Monitoring
+          id:         ir-5
+          class:      SP800-53
+          title:      Incident Monitoring
           properties: 
             label: IR-5
           links: 
@@ -31915,7 +31915,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Incident monitoring capability for the organization\n\nautomated mechanisms supporting and/or implementing tracking and documenting of system security incidents
-          subcontrols: 
+          controls: 
             id:         ir-5.1
             class:      SP800-53-enhancement
             title:      Automated Tracking / Data Collection / Analysis
@@ -31984,9 +31984,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms assisting in tracking of security incidents and in the collection and analysis of incident information
         - 
-          id:          ir-6
-          class:       SP800-53
-          title:       Incident Reporting
+          id:         ir-6
+          class:      SP800-53
+          title:      Incident Reporting
           parameters: 
             - 
               id:    ir-6_prm_1
@@ -32102,7 +32102,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for incident reporting\n\nautomated mechanisms supporting and/or implementing incident reporting
-          subcontrols: 
+          controls: 
             - 
               id:         ir-6.1
               class:      SP800-53-enhancement
@@ -32239,9 +32239,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for incident reporting\n\nautomated mechanisms supporting and/or implementing reporting of incident information involved in the supply chain
         - 
-          id:          ir-7
-          class:       SP800-53
-          title:       Incident Response Assistance
+          id:         ir-7
+          class:      SP800-53
+          title:      Incident Response Assistance
           properties: 
             label: IR-7
           parts: 
@@ -32312,7 +32312,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for incident response assistance\n\nautomated mechanisms supporting and/or implementing incident response assistance
-          subcontrols: 
+          controls: 
             - 
               id:         ir-7.1
               class:      SP800-53-enhancement
@@ -32779,9 +32779,9 @@ catalog:
                 name:  objects
                 prose: Organizational incident response plan and related organizational processes
         - 
-          id:          ir-9
-          class:       SP800-53
-          title:       Information Spillage Response
+          id:         ir-9
+          class:      SP800-53
+          title:      Information Spillage Response
           parameters: 
             - 
               id:    ir-9_prm_1
@@ -32929,7 +32929,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for information spillage response\n\nautomated mechanisms supporting and/or implementing information spillage response actions and related communications
-          subcontrols: 
+          controls: 
             - 
               id:         ir-9.1
               class:      SP800-53-enhancement
@@ -33406,9 +33406,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with maintenance responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ma-2
-          class:       SP800-53
-          title:       Controlled Maintenance
+          id:         ma-2
+          class:      SP800-53
+          title:      Controlled Maintenance
           parameters: 
             - 
               id:    ma-2_prm_1
@@ -33667,7 +33667,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for scheduling, performing, documenting, reviewing, approving, and monitoring maintenance and repairs for the information system\n\norganizational processes for sanitizing information system components\n\nautomated mechanisms supporting and/or implementing controlled maintenance\n\nautomated mechanisms implementing sanitization of information system components
-          subcontrols: 
+          controls: 
             - 
               id:         ma-2.1
               class:      SP800-53-enhancement
@@ -33808,9 +33808,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing controlled maintenance\n\nautomated mechanisms supporting and/or implementing production of records of maintenance and repair actions
         - 
-          id:          ma-3
-          class:       SP800-53
-          title:       Maintenance Tools
+          id:         ma-3
+          class:      SP800-53
+          title:      Maintenance Tools
           properties: 
             label: MA-3
           links: 
@@ -33883,7 +33883,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for approving, controlling, and monitoring maintenance tools\n\nautomated mechanisms supporting and/or implementing approval, control, and/or monitoring of maintenance tools
-          subcontrols: 
+          controls: 
             - 
               id:         ma-3.1
               class:      SP800-53-enhancement
@@ -34151,9 +34151,9 @@ catalog:
                     name:  objects
                     prose: Organizational process for restricting use of maintenance tools\n\nautomated mechanisms supporting and/or implementing restricted use of maintenance tools
         - 
-          id:          ma-4
-          class:       SP800-53
-          title:       Nonlocal Maintenance
+          id:         ma-4
+          class:      SP800-53
+          title:      Nonlocal Maintenance
           properties: 
             label: MA-4
           links: 
@@ -34383,7 +34383,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing nonlocal maintenance\n\nautomated mechanisms implementing, supporting, and/or managing nonlocal maintenance\n\nautomated mechanisms for strong authentication of nonlocal maintenance diagnostic sessions\n\nautomated mechanisms for terminating nonlocal maintenance sessions and network connections
-          subcontrols: 
+          controls: 
             - 
               id:         ma-4.1
               class:      SP800-53-enhancement
@@ -34960,9 +34960,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms implementing remote disconnect verifications of terminated nonlocal maintenance and diagnostic sessions
         - 
-          id:          ma-5
-          class:       SP800-53
-          title:       Maintenance Personnel
+          id:         ma-5
+          class:      SP800-53
+          title:      Maintenance Personnel
           properties: 
             label: MA-5
           parts: 
@@ -35078,7 +35078,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for authorizing and managing maintenance personnel\n\nautomated mechanisms supporting and/or implementing authorization of maintenance personnel
-          subcontrols: 
+          controls: 
             - 
               id:         ma-5.1
               class:      SP800-53-enhancement
@@ -35462,9 +35462,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with information system maintenance responsibilities\n\norganizational personnel with personnel security responsibilities\n\norganizational personnel with physical access control responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          ma-6
-          class:       SP800-53
-          title:       Timely Maintenance
+          id:         ma-6
+          class:      SP800-53
+          title:      Timely Maintenance
           parameters: 
             - 
               id:    ma-6_prm_1
@@ -35560,7 +35560,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for ensuring timely maintenance
-          subcontrols: 
+          controls: 
             - 
               id:         ma-6.1
               class:      SP800-53-enhancement
@@ -35974,9 +35974,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with media protection responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          mp-2
-          class:       SP800-53
-          title:       Media Access
+          id:         mp-2
+          class:      SP800-53
+          title:      Media Access
           parameters: 
             - 
               id:    mp-2_prm_1
@@ -36073,7 +36073,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for restricting information media\n\nautomated mechanisms supporting and/or implementing media access restrictions
-          subcontrols: 
+          controls: 
             - 
               id:         mp-2.1
               class:      SP800-53-enhancement
@@ -36228,9 +36228,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for marking information media\n\nautomated mechanisms supporting and/or implementing media marking
         - 
-          id:          mp-4
-          class:       SP800-53
-          title:       Media Storage
+          id:         mp-4
+          class:      SP800-53
+          title:      Media Storage
           parameters: 
             - 
               id:    mp-4_prm_1
@@ -36362,7 +36362,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for storing information media\n\nautomated mechanisms supporting and/or implementing secure media storage/media protection
-          subcontrols: 
+          controls: 
             - 
               id:         mp-4.1
               class:      SP800-53-enhancement
@@ -36453,9 +36453,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms restricting access to media storage areas\n\nautomated mechanisms auditing access attempts and access granted to media storage areas
         - 
-          id:          mp-5
-          class:       SP800-53
-          title:       Media Transport
+          id:         mp-5
+          class:      SP800-53
+          title:      Media Transport
           parameters: 
             - 
               id:    mp-5_prm_1
@@ -36609,7 +36609,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for storing information media\n\nautomated mechanisms supporting and/or implementing media storage/media protection
-          subcontrols: 
+          controls: 
             - 
               id:         mp-5.1
               class:      SP800-53-enhancement
@@ -36714,9 +36714,9 @@ catalog:
                     name:  objects
                     prose: Cryptographic mechanisms protecting information on digital media during transportation outside controlled areas
         - 
-          id:          mp-6
-          class:       SP800-53
-          title:       Media Sanitization
+          id:         mp-6
+          class:      SP800-53
+          title:      Media Sanitization
           parameters: 
             - 
               id:    mp-6_prm_1
@@ -36876,7 +36876,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for media sanitization\n\nautomated mechanisms supporting and/or implementing media sanitization
-          subcontrols: 
+          controls: 
             - 
               id:         mp-6.1
               class:      SP800-53-enhancement
@@ -37252,9 +37252,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for purging/wiping media\n\nautomated mechanisms supporting and/or implementing purge/wipe capabilities
         - 
-          id:          mp-7
-          class:       SP800-53
-          title:       Media Use
+          id:         mp-7
+          class:      SP800-53
+          title:      Media Use
           parameters: 
             - 
               id:     mp-7_prm_1
@@ -37374,7 +37374,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for media use\n\nautomated mechanisms restricting or prohibiting use of information system media on information systems or system components
-          subcontrols: 
+          controls: 
             - 
               id:         mp-7.1
               class:      SP800-53-enhancement
@@ -37464,9 +37464,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for media use\n\nautomated mechanisms prohibiting use of media on information systems or system components
         - 
-          id:          mp-8
-          class:       SP800-53
-          title:       Media Downgrading
+          id:         mp-8
+          class:      SP800-53
+          title:      Media Downgrading
           parameters: 
             - 
               id:    mp-8_prm_1
@@ -37594,7 +37594,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for media downgrading\n\nautomated mechanisms supporting and/or implementing media downgrading
-          subcontrols: 
+          controls: 
             - 
               id:         mp-8.1
               class:      SP800-53-enhancement
@@ -38042,9 +38042,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with physical and environmental protection responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          pe-2
-          class:       SP800-53
-          title:       Physical Access Authorizations
+          id:         pe-2
+          class:      SP800-53
+          title:      Physical Access Authorizations
           parameters: 
             id:    pe-2_prm_1
             label: organization-defined frequency
@@ -38177,7 +38177,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for physical access authorizations\n\nautomated mechanisms supporting and/or implementing physical access authorizations
-          subcontrols: 
+          controls: 
             - 
               id:         pe-2.1
               class:      SP800-53-enhancement
@@ -38397,9 +38397,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for physical access authorizations\n\nautomated mechanisms supporting and/or implementing physical access authorizations
         - 
-          id:          pe-3
-          class:       SP800-53
-          title:       Physical Access Control
+          id:         pe-3
+          class:      SP800-53
+          title:      Physical Access Control
           parameters: 
             - 
               id:    pe-3_prm_1
@@ -38827,7 +38827,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for physical access control\n\nautomated mechanisms supporting and/or implementing physical access control\n\nphysical access control devices
-          subcontrols: 
+          controls: 
             - 
               id:         pe-3.1
               class:      SP800-53-enhancement
@@ -39344,9 +39344,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for access control to distribution and transmission lines\n\nautomated mechanisms/security safeguards supporting and/or implementing access control to distribution and transmission lines
         - 
-          id:          pe-5
-          class:       SP800-53
-          title:       Access Control for Output Devices
+          id:         pe-5
+          class:      SP800-53
+          title:      Access Control for Output Devices
           properties: 
             label: PE-5
           parts: 
@@ -39400,7 +39400,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for access control to output devices\n\nautomated mechanisms supporting and/or implementing access control to output devices
-          subcontrols: 
+          controls: 
             - 
               id:         pe-5.1
               class:      SP800-53-enhancement
@@ -39636,9 +39636,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for marking output devices
         - 
-          id:          pe-6
-          class:       SP800-53
-          title:       Monitoring Physical Access
+          id:         pe-6
+          class:      SP800-53
+          title:      Monitoring Physical Access
           parameters: 
             - 
               id:    pe-6_prm_1
@@ -39751,7 +39751,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for monitoring physical access\n\nautomated mechanisms supporting and/or implementing physical access monitoring\n\nautomated mechanisms supporting and/or implementing reviewing of physical access logs
-          subcontrols: 
+          controls: 
             - 
               id:         pe-6.1
               class:      SP800-53-enhancement
@@ -40019,9 +40019,9 @@ catalog:
               rel:  incorporated-into
               text: PE-3
         - 
-          id:          pe-8
-          class:       SP800-53
-          title:       Visitor Access Records
+          id:         pe-8
+          class:      SP800-53
+          title:      Visitor Access Records
           parameters: 
             - 
               id:    pe-8_prm_1
@@ -40115,7 +40115,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for maintaining and reviewing visitor access records\n\nautomated mechanisms supporting and/or implementing maintenance and review of visitor access records
-          subcontrols: 
+          controls: 
             - 
               id:         pe-8.1
               class:      SP800-53-enhancement
@@ -40166,9 +40166,9 @@ catalog:
                 rel:  incorporated-into
                 text: PE-2
         - 
-          id:          pe-9
-          class:       SP800-53
-          title:       Power Equipment and Cabling
+          id:         pe-9
+          class:      SP800-53
+          title:      Power Equipment and Cabling
           properties: 
             label: PE-9
           parts: 
@@ -40209,7 +40209,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing protection of power equipment/cabling
-          subcontrols: 
+          controls: 
             - 
               id:         pe-9.1
               class:      SP800-53-enhancement
@@ -40319,9 +40319,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing automatic voltage controls
         - 
-          id:          pe-10
-          class:       SP800-53
-          title:       Emergency Shutoff
+          id:         pe-10
+          class:      SP800-53
+          title:      Emergency Shutoff
           parameters: 
             id:    pe-10_prm_1
             label: organization-defined location by information system or system component
@@ -40415,7 +40415,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing emergency power shutoff
-          subcontrols: 
+          controls: 
             id:         pe-10.1
             class:      SP800-53-enhancement
             title:      Accidental / Unauthorized Activation
@@ -40429,9 +40429,9 @@ catalog:
               rel:  incorporated-into
               text: PE-10
         - 
-          id:          pe-11
-          class:       SP800-53
-          title:       Emergency Power
+          id:         pe-11
+          class:      SP800-53
+          title:      Emergency Power
           parameters: 
             id:     pe-11_prm_1
             select: 
@@ -40498,7 +40498,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing uninterruptible power supply\n\nthe uninterruptable power supply
-          subcontrols: 
+          controls: 
             - 
               id:         pe-11.1
               class:      SP800-53-enhancement
@@ -40647,9 +40647,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing alternate power supply\n\nthe alternate power supply
         - 
-          id:          pe-12
-          class:       SP800-53
-          title:       Emergency Lighting
+          id:         pe-12
+          class:      SP800-53
+          title:      Emergency Lighting
           properties: 
             label: PE-12
           parts: 
@@ -40708,7 +40708,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing emergency lighting capability
-          subcontrols: 
+          controls: 
             id:         pe-12.1
             class:      SP800-53-enhancement
             title:      Essential Missions / Business Functions
@@ -40745,9 +40745,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms supporting and/or implementing emergency lighting capability
         - 
-          id:          pe-13
-          class:       SP800-53
-          title:       Fire Protection
+          id:         pe-13
+          class:      SP800-53
+          title:      Fire Protection
           properties: 
             label: PE-13
           parts: 
@@ -40797,7 +40797,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing fire suppression/detection devices/systems
-          subcontrols: 
+          controls: 
             - 
               id:         pe-13.1
               class:      SP800-53-enhancement
@@ -41060,9 +41060,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with responsibilities for planning, approving, and executing fire inspections\n\norganizational personnel with information security responsibilities
         - 
-          id:          pe-14
-          class:       SP800-53
-          title:       Temperature and Humidity Controls
+          id:         pe-14
+          class:      SP800-53
+          title:      Temperature and Humidity Controls
           parameters: 
             - 
               id:    pe-14_prm_1
@@ -41184,7 +41184,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing maintenance and monitoring of temperature and humidity levels
-          subcontrols: 
+          controls: 
             - 
               id:         pe-14.1
               class:      SP800-53-enhancement
@@ -41296,9 +41296,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing temperature and humidity monitoring
         - 
-          id:          pe-15
-          class:       SP800-53
-          title:       Water Damage Protection
+          id:         pe-15
+          class:      SP800-53
+          title:      Water Damage Protection
           properties: 
             label: PE-15
           parts: 
@@ -41358,7 +41358,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Master water-shutoff valves\n\norganizational process for activating master water-shutoff
-          subcontrols: 
+          controls: 
             id:         pe-15.1
             class:      SP800-53-enhancement
             title:      Automation Support
@@ -41646,9 +41646,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for security at alternate work sites\n\nautomated mechanisms supporting alternate work sites\n\nsecurity controls employed at alternate work sites\n\nmeans of communications between personnel at alternate work sites and security personnel
         - 
-          id:          pe-18
-          class:       SP800-53
-          title:       Location of Information System Components
+          id:         pe-18
+          class:      SP800-53
+          title:      Location of Information System Components
           parameters: 
             id:    pe-18_prm_1
             label: organization-defined physical and environmental hazards
@@ -41726,7 +41726,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for positioning information system components
-          subcontrols: 
+          controls: 
             id:         pe-18.1
             class:      SP800-53-enhancement
             title:      Facility Site
@@ -41795,9 +41795,9 @@ catalog:
                   name:  objects
                   prose: Organizational processes for site planning
         - 
-          id:          pe-19
-          class:       SP800-53
-          title:       Information Leakage
+          id:         pe-19
+          class:      SP800-53
+          title:      Information Leakage
           properties: 
             label: PE-19
           links: 
@@ -41838,7 +41838,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing protection from information leakage due to electromagnetic signals emanations
-          subcontrols: 
+          controls: 
             id:         pe-19.1
             class:      SP800-53-enhancement
             title:      National Emissions / Tempest Policies and Procedures
@@ -42242,9 +42242,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with planning responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          pl-2
-          class:       SP800-53
-          title:       System Security Plan
+          id:         pl-2
+          class:      SP800-53
+          title:      System Security Plan
           parameters: 
             - 
               id:    pl-2_prm_1
@@ -42617,7 +42617,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for security plan development/review/update/approval\n\nautomated mechanisms supporting the information system security plan
-          subcontrols: 
+          controls: 
             - 
               id:         pl-2.1
               class:      SP800-53-enhancement
@@ -42716,9 +42716,9 @@ catalog:
             rel:  incorporated-into
             text: PL-2
         - 
-          id:          pl-4
-          class:       SP800-53
-          title:       Rules of Behavior
+          id:         pl-4
+          class:      SP800-53
+          title:      Rules of Behavior
           parameters: 
             id:    pl-4_prm_1
             label: organization-defined frequency
@@ -42909,7 +42909,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for establishing, reviewing, disseminating, and updating rules of behavior\n\nautomated mechanisms supporting and/or implementing the establishment, review, dissemination, and update of rules of behavior
-          subcontrols: 
+          controls: 
             id:         pl-4.1
             class:      SP800-53-enhancement
             title:      Social Media and Networking Restrictions
@@ -43079,9 +43079,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for developing, reviewing, and updating the security CONOPS\n\nautomated mechanisms supporting and/or implementing the development, review, and update of the security CONOPS
         - 
-          id:          pl-8
-          class:       SP800-53
-          title:       Information Security Architecture
+          id:         pl-8
+          class:      SP800-53
+          title:      Information Security Architecture
           parameters: 
             id:    pl-8_prm_1
             label: organization-defined frequency
@@ -43257,7 +43257,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developing, reviewing, and updating the information security architecture\n\nautomated mechanisms supporting and/or implementing the development, review, and update of the information security architecture
-          subcontrols: 
+          controls: 
             - 
               id:         pl-8.1
               class:      SP800-53-enhancement
@@ -43847,9 +43847,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for assigning, reviewing, and updating position risk designations\n\norganizational processes for establishing screening criteria
         - 
-          id:          ps-3
-          class:       SP800-53
-          title:       Personnel Screening
+          id:         ps-3
+          class:      SP800-53
+          title:      Personnel Screening
           parameters: 
             id:    ps-3_prm_1
             label: organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening
@@ -43983,7 +43983,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for personnel screening
-          subcontrols: 
+          controls: 
             - 
               id:         ps-3.1
               class:      SP800-53-enhancement
@@ -44184,9 +44184,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for ensuring valid access authorizations for information requiring special protection\n\norganizational process for additional personnel screening for information requiring special protection
         - 
-          id:          ps-4
-          class:       SP800-53
-          title:       Personnel Termination
+          id:         ps-4
+          class:      SP800-53
+          title:      Personnel Termination
           parameters: 
             - 
               id:    ps-4_prm_1
@@ -44373,7 +44373,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for personnel termination\n\nautomated mechanisms supporting and/or implementing personnel termination notifications\n\nautomated mechanisms for disabling information system access/revoking authenticators
-          subcontrols: 
+          controls: 
             - 
               id:         ps-4.1
               class:      SP800-53-enhancement
@@ -44674,9 +44674,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for personnel transfer\n\nautomated mechanisms supporting and/or implementing personnel transfer notifications\n\nautomated mechanisms for disabling information system access/revoking authenticators
         - 
-          id:          ps-6
-          class:       SP800-53
-          title:       Access Agreements
+          id:         ps-6
+          class:      SP800-53
+          title:      Access Agreements
           parameters: 
             - 
               id:    ps-6_prm_1
@@ -44828,7 +44828,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for access agreements\n\nautomated mechanisms supporting access agreements
-          subcontrols: 
+          controls: 
             - 
               id:         ps-6.1
               class:      SP800-53-enhancement
@@ -45881,9 +45881,9 @@ catalog:
             rel:  incorporated-into
             text: RA-3
         - 
-          id:          ra-5
-          class:       SP800-53
-          title:       Vulnerability Scanning
+          id:         ra-5
+          class:      SP800-53
+          title:      Vulnerability Scanning
           parameters: 
             - 
               id:    ra-5_prm_1
@@ -46212,7 +46212,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for vulnerability scanning, analysis, remediation, and information sharing\n\nautomated mechanisms supporting and/or implementing vulnerability scanning, analysis, remediation, and information sharing
-          subcontrols: 
+          controls: 
             - 
               id:         ra-5.1
               class:      SP800-53-enhancement
@@ -47263,9 +47263,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for defining and documenting the SDLC\n\norganizational processes for identifying SDLC roles and responsibilities\n\norganizational process for integrating information security risk management into the SDLC\n\nautomated mechanisms supporting and/or implementing the SDLC
         - 
-          id:          sa-4
-          class:       SP800-53
-          title:       Acquisition Process
+          id:         sa-4
+          class:      SP800-53
+          title:      Acquisition Process
           properties: 
             label: SA-4
           links: 
@@ -47495,7 +47495,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for determining information system security functional, strength, and assurance requirements\n\norganizational processes for developing acquisition contracts\n\nautomated mechanisms supporting and/or implementing acquisitions and inclusion of security requirements in contracts
-          subcontrols: 
+          controls: 
             - 
               id:         sa-4.1
               class:      SP800-53-enhancement
@@ -48207,9 +48207,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for selecting and employing FIPS 201-approved products
         - 
-          id:          sa-5
-          class:       SP800-53
-          title:       Information System Documentation
+          id:         sa-5
+          class:      SP800-53
+          title:      Information System Documentation
           parameters: 
             - 
               id:    sa-5_prm_1
@@ -48492,7 +48492,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for obtaining, protecting, and distributing information system administrator and user documentation
-          subcontrols: 
+          controls: 
             - 
               id:         sa-5.1
               class:      SP800-53-enhancement
@@ -48695,9 +48695,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for applying security engineering principles in information system specification, design, development, implementation, and modification\n\nautomated mechanisms supporting the application of security engineering principles in information system specification, design, development, implementation, and modification
         - 
-          id:          sa-9
-          class:       SP800-53
-          title:       External Information System Services
+          id:         sa-9
+          class:      SP800-53
+          title:      External Information System Services
           parameters: 
             - 
               id:    sa-9_prm_1
@@ -48838,7 +48838,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for monitoring security control compliance by external service providers on an ongoing basis\n\nautomated mechanisms for monitoring security control compliance by external service providers on an ongoing basis
-          subcontrols: 
+          controls: 
             - 
               id:         sa-9.1
               class:      SP800-53-enhancement
@@ -49240,9 +49240,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for defining requirements to restrict locations of information processing, information/data, or information services\n\norganizational processes for ensuring the location is restricted in accordance with requirements or conditions
         - 
-          id:          sa-10
-          class:       SP800-53
-          title:       Developer Configuration Management
+          id:         sa-10
+          class:      SP800-53
+          title:      Developer Configuration Management
           parameters: 
             - 
               id:     sa-10_prm_1
@@ -49478,7 +49478,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for monitoring developer configuration management\n\nautomated mechanisms supporting and/or implementing the monitoring of developer configuration management
-          subcontrols: 
+          controls: 
             - 
               id:         sa-10.1
               class:      SP800-53-enhancement
@@ -49741,9 +49741,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for monitoring developer configuration management\n\nautomated mechanisms supporting and/or implementing the monitoring of developer configuration management
         - 
-          id:          sa-11
-          class:       SP800-53
-          title:       Developer Security Testing and Evaluation
+          id:         sa-11
+          class:      SP800-53
+          title:      Developer Security Testing and Evaluation
           parameters: 
             - 
               id:     sa-11_prm_1
@@ -49957,7 +49957,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for monitoring developer security testing and evaluation\n\nautomated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation
-          subcontrols: 
+          controls: 
             - 
               id:         sa-11.1
               class:      SP800-53-enhancement
@@ -50480,9 +50480,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for monitoring developer security testing and evaluation\n\nautomated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation
         - 
-          id:          sa-12
-          class:       SP800-53
-          title:       Supply Chain Protection
+          id:         sa-12
+          class:      SP800-53
+          title:      Supply Chain Protection
           parameters: 
             id:    sa-12_prm_1
             label: organization-defined security safeguards
@@ -50613,7 +50613,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for defining safeguards for and protecting against supply chain threats\n\nautomated mechanisms supporting and/or implementing safeguards for supply chain threats
-          subcontrols: 
+          controls: 
             - 
               id:         sa-12.1
               class:      SP800-53-enhancement
@@ -51546,9 +51546,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information security responsibilities\n\nauthorizing official
         - 
-          id:          sa-14
-          class:       SP800-53
-          title:       Criticality Analysis
+          id:         sa-14
+          class:      SP800-53
+          title:      Criticality Analysis
           parameters: 
             - 
               id:    sa-14_prm_1
@@ -51641,7 +51641,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information security responsibilities\n\norganizational personnel with responsibilities for performing criticality analysis for the information system
-          subcontrols: 
+          controls: 
             id:         sa-14.1
             class:      SP800-53-enhancement
             title:      Critical Components with No Viable Alternative Sourcing
@@ -51655,9 +51655,9 @@ catalog:
               rel:  incorporated-into
               text: SA-20
         - 
-          id:          sa-15
-          class:       SP800-53
-          title:       Development Process, Standards, and Tools
+          id:         sa-15
+          class:      SP800-53
+          title:      Development Process, Standards, and Tools
           parameters: 
             - 
               id:    sa-15_prm_1
@@ -51851,7 +51851,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem developer
-          subcontrols: 
+          controls: 
             - 
               id:         sa-15.1
               class:      SP800-53-enhancement
@@ -52685,9 +52685,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information system security responsibilities\n\nsystem developer\n\norganizational or third-party developers with training responsibilities for the information system, system component, or information system service
         - 
-          id:          sa-17
-          class:       SP800-53
-          title:       Developer Security Architecture and Design
+          id:         sa-17
+          class:      SP800-53
+          title:      Developer Security Architecture and Design
           properties: 
             label: SA-17
           parts: 
@@ -52785,7 +52785,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem developer\n\norganizational personnel with security architecture and design responsibilities
-          subcontrols: 
+          controls: 
             - 
               id:         sa-17.1
               class:      SP800-53-enhancement
@@ -53385,9 +53385,9 @@ catalog:
                     name:  objects
                     prose: Organizational personnel with system and services acquisition responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem developer\n\norganizational personnel with security architecture and design responsibilities
         - 
-          id:          sa-18
-          class:       SP800-53
-          title:       Tamper Resistance and Detection
+          id:         sa-18
+          class:      SP800-53
+          title:      Tamper Resistance and Detection
           properties: 
             label: SA-18
           parts: 
@@ -53437,7 +53437,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for implementation of the tamper protection program\n\nautomated mechanisms supporting and/or implementing the tamper protection program
-          subcontrols: 
+          controls: 
             - 
               id:         sa-18.1
               class:      SP800-53-enhancement
@@ -53619,9 +53619,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for inspecting information systems, system components, or devices to detect tampering\n\nautomated mechanisms supporting and/or implementing tampering detection
         - 
-          id:          sa-19
-          class:       SP800-53
-          title:       Component Authenticity
+          id:         sa-19
+          class:      SP800-53
+          title:      Component Authenticity
           parameters: 
             - 
               id:     sa-19_prm_1
@@ -53748,7 +53748,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for anti-counterfeit detection, prevention, and reporting\n\nautomated mechanisms supporting and/or implementing anti-counterfeit detection, prevention, and reporting
-          subcontrols: 
+          controls: 
             - 
               id:         sa-19.1
               class:      SP800-53-enhancement
@@ -54037,9 +54037,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for re-implementing or customized development of critical information system components\n\nautomated mechanisms supporting and/or implementing re-implementation or customized development of critical information system components
         - 
-          id:          sa-21
-          class:       SP800-53
-          title:       Developer Screening
+          id:         sa-21
+          class:      SP800-53
+          title:      Developer Screening
           parameters: 
             - 
               id:    sa-21_prm_1
@@ -54145,7 +54145,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developer screening\n\nautomated mechanisms supporting developer screening
-          subcontrols: 
+          controls: 
             id:         sa-21.1
             class:      SP800-53-enhancement
             title:      Validation of Screening
@@ -54202,9 +54202,9 @@ catalog:
                   name:  objects
                   prose: Organizational processes for developer screening\n\nautomated mechanisms supporting developer screening
         - 
-          id:          sa-22
-          class:       SP800-53
-          title:       Unsupported System Components
+          id:         sa-22
+          class:      SP800-53
+          title:      Unsupported System Components
           properties: 
             label: SA-22
           parts: 
@@ -54288,7 +54288,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for replacing unsupported system components\n\nautomated mechanisms supporting and/or implementing replacement of unsupported system components
-          subcontrols: 
+          controls: 
             id:         sa-22.1
             class:      SP800-53-enhancement
             title:      Alternative Sources for Continued Support
@@ -54605,9 +54605,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with system and communications protection responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          sc-2
-          class:       SP800-53
-          title:       Application Partitioning
+          id:         sc-2
+          class:      SP800-53
+          title:      Application Partitioning
           properties: 
             label: SC-2
           parts: 
@@ -54657,7 +54657,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Separation of user functionality from information system management functionality
-          subcontrols: 
+          controls: 
             id:         sc-2.1
             class:      SP800-53-enhancement
             title:      Interfaces for Non-privileged Users
@@ -54702,9 +54702,9 @@ catalog:
                   name:  objects
                   prose: Separation of user functionality from information system management functionality
         - 
-          id:          sc-3
-          class:       SP800-53
-          title:       Security Function Isolation
+          id:         sc-3
+          class:      SP800-53
+          title:      Security Function Isolation
           properties: 
             label: SC-3
           parts: 
@@ -54778,7 +54778,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Separation of security functions from nonsecurity functions within the information system
-          subcontrols: 
+          controls: 
             - 
               id:         sc-3.1
               class:      SP800-53-enhancement
@@ -55031,9 +55031,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for implementing security functions as a layered structure that minimizes interactions between layers and avoids dependence by lower layers on functionality/correctness of higher layers\n\nautomated mechanisms supporting and/or implementing security functions as a layered structure
         - 
-          id:          sc-4
-          class:       SP800-53
-          title:       Information in Shared Resources
+          id:         sc-4
+          class:      SP800-53
+          title:      Information in Shared Resources
           properties: 
             label: SC-4
           parts: 
@@ -55083,7 +55083,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms preventing unauthorized and unintended transfer of information via shared system resources
-          subcontrols: 
+          controls: 
             - 
               id:         sc-4.1
               class:      SP800-53-enhancement
@@ -55154,9 +55154,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms preventing unauthorized transfer of information via shared system resources
         - 
-          id:          sc-5
-          class:       SP800-53
-          title:       Denial of Service Protection
+          id:         sc-5
+          class:      SP800-53
+          title:      Denial of Service Protection
           parameters: 
             - 
               id:    sc-5_prm_1
@@ -55228,7 +55228,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms protecting against or limiting the effects of denial of service attacks
-          subcontrols: 
+          controls: 
             - 
               id:         sc-5.1
               class:      SP800-53-enhancement
@@ -55550,9 +55550,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing resource allocation capability\n\nsafeguards employed to protect availability of resources
         - 
-          id:          sc-7
-          class:       SP800-53
-          title:       Boundary Protection
+          id:         sc-7
+          class:      SP800-53
+          title:      Boundary Protection
           parameters: 
             id:     sc-7_prm_1
             select: 
@@ -55718,7 +55718,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing boundary protection capability
-          subcontrols: 
+          controls: 
             - 
               id:         sc-7.1
               class:      SP800-53-enhancement
@@ -57033,9 +57033,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing the disabling of feedback to senders on protocol format validation failure
         - 
-          id:          sc-8
-          class:       SP800-53
-          title:       Transmission Confidentiality and Integrity
+          id:         sc-8
+          class:      SP800-53
+          title:      Transmission Confidentiality and Integrity
           parameters: 
             id:     sc-8_prm_1
             select: 
@@ -57132,7 +57132,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing transmission confidentiality and/or integrity
-          subcontrols: 
+          controls: 
             - 
               id:         sc-8.1
               class:      SP800-53-enhancement
@@ -57499,9 +57499,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing network disconnect capability
         - 
-          id:          sc-11
-          class:       SP800-53
-          title:       Trusted Path
+          id:         sc-11
+          class:      SP800-53
+          title:      Trusted Path
           parameters: 
             id:    sc-11_prm_1
             label: organization-defined security functions to include at a minimum, information system authentication and re-authentication
@@ -57569,7 +57569,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing trusted communications paths
-          subcontrols: 
+          controls: 
             id:         sc-11.1
             class:      SP800-53-enhancement
             title:      Logical Isolation
@@ -57619,9 +57619,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms supporting and/or implementing trusted communications paths
         - 
-          id:          sc-12
-          class:       SP800-53
-          title:       Cryptographic Key Establishment and Management
+          id:         sc-12
+          class:      SP800-53
+          title:      Cryptographic Key Establishment and Management
           parameters: 
             id:    sc-12_prm_1
             label: organization-defined requirements for key generation, distribution, storage, access, and destruction
@@ -57723,7 +57723,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing cryptographic key establishment and management
-          subcontrols: 
+          controls: 
             - 
               id:         sc-12.1
               class:      SP800-53-enhancement
@@ -57903,9 +57903,9 @@ catalog:
                 rel:  incorporated-into
                 text: SC-12
         - 
-          id:          sc-13
-          class:       SP800-53
-          title:       Cryptographic Protection
+          id:         sc-13
+          class:      SP800-53
+          title:      Cryptographic Protection
           parameters: 
             id:    sc-13_prm_1
             label: organization-defined cryptographic uses and type of cryptography required for each use
@@ -58058,7 +58058,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing cryptographic protection
-          subcontrols: 
+          controls: 
             - 
               id:         sc-13.1
               class:      SP800-53-enhancement
@@ -58158,9 +58158,9 @@ catalog:
               rel:  incorporated-into
               text: SI-10
         - 
-          id:          sc-15
-          class:       SP800-53
-          title:       Collaborative Computing Devices
+          id:         sc-15
+          class:      SP800-53
+          title:      Collaborative Computing Devices
           parameters: 
             id:    sc-15_prm_1
             label: organization-defined exceptions where remote activation is to be allowed
@@ -58242,7 +58242,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing management of remote activation of collaborative computing devices\n\nautomated mechanisms providing an indication of use of collaborative computing devices
-          subcontrols: 
+          controls: 
             - 
               id:         sc-15.1
               class:      SP800-53-enhancement
@@ -58419,9 +58419,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing the capability to indicate participants on collaborative computing devices
         - 
-          id:          sc-16
-          class:       SP800-53
-          title:       Transmission of Security Attributes
+          id:         sc-16
+          class:      SP800-53
+          title:      Transmission of Security Attributes
           parameters: 
             id:    sc-16_prm_1
             label: organization-defined security attributes
@@ -58513,7 +58513,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing transmission of security attributes between information systems
-          subcontrols: 
+          controls: 
             id:         sc-16.1
             class:      SP800-53-enhancement
             title:      Integrity Validation
@@ -58649,9 +58649,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing the management of public key infrastructure certificates
         - 
-          id:          sc-18
-          class:       SP800-53
-          title:       Mobile Code
+          id:         sc-18
+          class:      SP800-53
+          title:      Mobile Code
           properties: 
             label: SC-18
           links: 
@@ -58786,7 +58786,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational process for controlling, authorizing, monitoring, and restricting mobile code\n\nautomated mechanisms supporting and/or implementing the management of mobile code\n\nautomated mechanisms supporting and/or implementing the monitoring of mobile code
-          subcontrols: 
+          controls: 
             - 
               id:         sc-18.1
               class:      SP800-53-enhancement
@@ -59223,9 +59223,9 @@ catalog:
                 name:  objects
                 prose: Organizational process for authorizing, monitoring, and controlling VoIP\n\nautomated mechanisms supporting and/or implementing authorizing, monitoring, and controlling VoIP
         - 
-          id:          sc-20
-          class:       SP800-53
-          title:       Secure Name / Address Resolution Service (authoritative Source)
+          id:         sc-20
+          class:      SP800-53
+          title:      Secure Name / Address Resolution Service (authoritative Source)
           properties: 
             label: SC-20
           links: 
@@ -59335,7 +59335,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing secure name/address resolution service
-          subcontrols: 
+          controls: 
             - 
               id:         sc-20.1
               class:      SP800-53-enhancement
@@ -59386,9 +59386,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing data origin and integrity protection for internal name/address resolution service queries
         - 
-          id:          sc-21
-          class:       SP800-53
-          title:       Secure Name / Address Resolution Service (recursive or Caching Resolver)
+          id:         sc-21
+          class:      SP800-53
+          title:      Secure Name / Address Resolution Service (recursive or Caching Resolver)
           properties: 
             label: SC-21
           links: 
@@ -59463,7 +59463,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing data origin authentication and data integrity verification for name/address resolution services
-          subcontrols: 
+          controls: 
             id:         sc-21.1
             class:      SP800-53-enhancement
             title:      Data Origin / Integrity
@@ -59551,9 +59551,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing name/address resolution service for fault tolerance and role separation
         - 
-          id:          sc-23
-          class:       SP800-53
-          title:       Session Authenticity
+          id:         sc-23
+          class:      SP800-53
+          title:      Session Authenticity
           properties: 
             label: SC-23
           links: 
@@ -59616,7 +59616,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing session authenticity
-          subcontrols: 
+          controls: 
             - 
               id:         sc-23.1
               class:      SP800-53-enhancement
@@ -59972,9 +59972,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing thin nodes
         - 
-          id:          sc-26
-          class:       SP800-53
-          title:       Honeypots
+          id:         sc-26
+          class:      SP800-53
+          title:      Honeypots
           properties: 
             label: SC-26
           parts: 
@@ -60028,7 +60028,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing honey pots
-          subcontrols: 
+          controls: 
             id:         sc-26.1
             class:      SP800-53-enhancement
             title:      Detection of Malicious Code
@@ -60102,9 +60102,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing platform-independent applications
         - 
-          id:          sc-28
-          class:       SP800-53
-          title:       Protection of Information at Rest
+          id:         sc-28
+          class:      SP800-53
+          title:      Protection of Information at Rest
           parameters: 
             - 
               id:     sc-28_prm_1
@@ -60247,7 +60247,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing confidentiality and integrity protections for information at rest
-          subcontrols: 
+          controls: 
             - 
               id:         sc-28.1
               class:      SP800-53-enhancement
@@ -60386,9 +60386,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing removal of information from online storage\n\nautomated mechanisms supporting and/or implementing storage of information off-line
         - 
-          id:          sc-29
-          class:       SP800-53
-          title:       Heterogeneity
+          id:         sc-29
+          class:      SP800-53
+          title:      Heterogeneity
           parameters: 
             id:    sc-29_prm_1
             label: organization-defined information system components
@@ -60454,7 +60454,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing employment of a diverse set of information technologies
-          subcontrols: 
+          controls: 
             id:         sc-29.1
             class:      SP800-53-enhancement
             title:      Virtualization Techniques
@@ -60511,9 +60511,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms supporting and/or implementing employment of a diverse set of information technologies\n\nautomated mechanisms supporting and/or implementing virtualization techniques
         - 
-          id:          sc-30
-          class:       SP800-53
-          title:       Concealment and Misdirection
+          id:         sc-30
+          class:      SP800-53
+          title:      Concealment and Misdirection
           parameters: 
             - 
               id:    sc-30_prm_1
@@ -60598,7 +60598,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing concealment and misdirection techniques
-          subcontrols: 
+          controls: 
             - 
               id:         sc-30.1
               class:      SP800-53-enhancement
@@ -60875,9 +60875,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing techniques for concealment of system components
         - 
-          id:          sc-31
-          class:       SP800-53
-          title:       Covert Channel Analysis
+          id:         sc-31
+          class:      SP800-53
+          title:      Covert Channel Analysis
           parameters: 
             id:     sc-31_prm_1
             select: 
@@ -60971,7 +60971,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational process for conducting covert channel analysis\n\nautomated mechanisms supporting and/or implementing covert channel analysis\n\nautomated mechanisms supporting and/or implementing the capability to estimate the bandwidth of covert channels
-          subcontrols: 
+          controls: 
             - 
               id:         sc-31.1
               class:      SP800-53-enhancement
@@ -61244,9 +61244,9 @@ catalog:
             rel:  incorporated-into
             text: SC-8
         - 
-          id:          sc-34
-          class:       SP800-53
-          title:       Non-modifiable Executable Programs
+          id:         sc-34
+          class:      SP800-53
+          title:      Non-modifiable Executable Programs
           parameters: 
             - 
               id:    sc-34_prm_1
@@ -61344,7 +61344,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing loading and executing the operating environment from hardware-enforced, read-only media\n\nautomated mechanisms supporting and/or implementing loading and executing applications from hardware-enforced, read-only media
-          subcontrols: 
+          controls: 
             - 
               id:         sc-34.1
               class:      SP800-53-enhancement
@@ -61663,9 +61663,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing honeyclients
         - 
-          id:          sc-36
-          class:       SP800-53
-          title:       Distributed Processing and Storage
+          id:         sc-36
+          class:      SP800-53
+          title:      Distributed Processing and Storage
           parameters: 
             id:    sc-36_prm_1
             label: organization-defined processing and storage
@@ -61727,7 +61727,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for distributing processing and storage across multiple physical locations\n\nautomated mechanisms supporting and/or implementing capability for distributing processing and storage across multiple physical locations
-          subcontrols: 
+          controls: 
             id:         sc-36.1
             class:      SP800-53-enhancement
             title:      Polling Techniques
@@ -61788,9 +61788,9 @@ catalog:
                   name:  objects
                   prose: Automated mechanisms supporting and/or implementing polling techniques
         - 
-          id:          sc-37
-          class:       SP800-53
-          title:       Out-of-band Channels
+          id:         sc-37
+          class:      SP800-53
+          title:      Out-of-band Channels
           parameters: 
             - 
               id:    sc-37_prm_1
@@ -61907,7 +61907,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for use of out-of-band channels\n\nautomated mechanisms supporting and/or implementing use of out-of-band channels
-          subcontrols: 
+          controls: 
             id:         sc-37.1
             class:      SP800-53-enhancement
             title:      Ensure Delivery / Transmission
@@ -62052,9 +62052,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for protecting organizational information throughout the SDLC\n\nautomated mechanisms supporting and/or implementing safeguards to protect organizational information throughout the SDLC
         - 
-          id:          sc-39
-          class:       SP800-53
-          title:       Process Isolation
+          id:         sc-39
+          class:      SP800-53
+          title:      Process Isolation
           properties: 
             label: SC-39
           parts: 
@@ -62124,7 +62124,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing separate execution domains for each executing process
-          subcontrols: 
+          controls: 
             - 
               id:         sc-39.1
               class:      SP800-53-enhancement
@@ -62218,9 +62218,9 @@ catalog:
                     name:  objects
                     prose: Information system capability implementing a separate execution domain for each thread in multi-threaded processing
         - 
-          id:          sc-40
-          class:       SP800-53
-          title:       Wireless Link Protection
+          id:         sc-40
+          class:      SP800-53
+          title:      Wireless Link Protection
           parameters: 
             - 
               id:    sc-40_prm_1
@@ -62305,7 +62305,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing protection of wireless links
-          subcontrols: 
+          controls: 
             - 
               id:         sc-40.1
               class:      SP800-53-enhancement
@@ -62630,9 +62630,9 @@ catalog:
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing disabling of connection ports or input/output devices
         - 
-          id:          sc-42
-          class:       SP800-53
-          title:       Sensor Capability and Data
+          id:         sc-42
+          class:      SP800-53
+          title:      Sensor Capability and Data
           parameters: 
             - 
               id:    sc-42_prm_1
@@ -62726,7 +62726,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing access controls for remote activation of information system sensor capabilities\n\nautomated mechanisms implementing capability to indicate sensor use
-          subcontrols: 
+          controls: 
             - 
               id:         sc-42.1
               class:      SP800-53-enhancement
@@ -63343,9 +63343,9 @@ catalog:
                 name:  objects
                 prose: Organizational personnel with system and information integrity responsibilities\n\norganizational personnel with information security responsibilities
         - 
-          id:          si-2
-          class:       SP800-53
-          title:       Flaw Remediation
+          id:         si-2
+          class:      SP800-53
+          title:      Flaw Remediation
           parameters: 
             id:    si-2_prm_1
             label: organization-defined time period
@@ -63543,7 +63543,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for identifying, reporting, and correcting information system flaws\n\norganizational process for installing software and firmware updates\n\nautomated mechanisms supporting and/or implementing reporting, and correcting information system flaws\n\nautomated mechanisms supporting and/or implementing testing software and firmware updates
-          subcontrols: 
+          controls: 
             - 
               id:         si-2.1
               class:      SP800-53-enhancement
@@ -63933,9 +63933,9 @@ catalog:
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing removal of previous versions of software/firmware
         - 
-          id:          si-3
-          class:       SP800-53
-          title:       Malicious Code Protection
+          id:         si-3
+          class:      SP800-53
+          title:      Malicious Code Protection
           parameters: 
             - 
               id:    si-3_prm_1
@@ -64199,7 +64199,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for employing, updating, and configuring malicious code protection mechanisms\n\norganizational process for addressing false positives and resulting potential impact\n\nautomated mechanisms supporting and/or implementing employing, updating, and configuring malicious code protection mechanisms\n\nautomated mechanisms supporting and/or implementing malicious code scanning and subsequent actions
-          subcontrols: 
+          controls: 
             - 
               id:         si-3.1
               class:      SP800-53-enhancement
@@ -64784,9 +64784,9 @@ catalog:
                     name:  objects
                     prose: Organizational process for incident response\n\norganizational process for flaw remediation\n\nautomated mechanisms supporting and/or implementing malicious code protection capability\n\ntools and techniques for analysis of malicious code characteristics and behavior
         - 
-          id:          si-4
-          class:       SP800-53
-          title:       Information System Monitoring
+          id:         si-4
+          class:      SP800-53
+          title:      Information System Monitoring
           parameters: 
             - 
               id:    si-4_prm_1
@@ -65188,7 +65188,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for information system monitoring\n\nautomated mechanisms supporting and/or implementing information system monitoring capability
-          subcontrols: 
+          controls: 
             - 
               id:         si-4.1
               class:      SP800-53-enhancement
@@ -66629,9 +66629,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for information system monitoring\n\norganizational processes for discovery, collection, distribution, and use of indicators of compromise\n\nautomated mechanisms supporting and/or implementing system monitoring capability\n\nautomated mechanisms supporting and/or implementing the discovery, collection, distribution, and use of indicators of compromise
         - 
-          id:          si-5
-          class:       SP800-53
-          title:       Security Alerts, Advisories, and Directives
+          id:         si-5
+          class:      SP800-53
+          title:      Security Alerts, Advisories, and Directives
           parameters: 
             - 
               id:    si-5_prm_1
@@ -66814,7 +66814,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for defining, receiving, generating, disseminating, and complying with security alerts, advisories, and directives\n\nautomated mechanisms supporting and/or implementing definition, receipt, generation, and dissemination of security alerts, advisories, and directives\n\nautomated mechanisms supporting and/or implementing security directives
-          subcontrols: 
+          controls: 
             id:         si-5.1
             class:      SP800-53-enhancement
             title:      Automated Alerts and Advisories
@@ -66855,9 +66855,9 @@ catalog:
                   name:  objects
                   prose: Organizational processes for defining, receiving, generating, and disseminating security alerts and advisories\n\nautomated mechanisms supporting and/or implementing dissemination of security alerts and advisories
         - 
-          id:          si-6
-          class:       SP800-53
-          title:       Security Function Verification
+          id:         si-6
+          class:      SP800-53
+          title:      Security Function Verification
           parameters: 
             - 
               id:    si-6_prm_1
@@ -67074,7 +67074,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for security function verification\n\nautomated mechanisms supporting and/or implementing security function verification capability
-          subcontrols: 
+          controls: 
             - 
               id:         si-6.1
               class:      SP800-53-enhancement
@@ -67201,9 +67201,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for reporting security function verification results\n\nautomated mechanisms supporting and/or implementing the reporting of security function verification results
         - 
-          id:          si-7
-          class:       SP800-53
-          title:       Software, Firmware, and Information Integrity
+          id:         si-7
+          class:      SP800-53
+          title:      Software, Firmware, and Information Integrity
           parameters: 
             id:    si-7_prm_1
             label: organization-defined software, firmware, and information
@@ -67319,7 +67319,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Software, firmware, and information integrity verification tools
-          subcontrols: 
+          controls: 
             - 
               id:         si-7.1
               class:      SP800-53-enhancement
@@ -68477,9 +68477,9 @@ catalog:
                     name:  objects
                     prose: Software, firmware, and information integrity verification tools\n\nautomated mechanisms supporting and/or implementing time limits on process execution without supervision
         - 
-          id:          si-8
-          class:       SP800-53
-          title:       Spam Protection
+          id:         si-8
+          class:      SP800-53
+          title:      Spam Protection
           properties: 
             label: SI-8
           links: 
@@ -68592,7 +68592,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for implementing spam protection\n\nautomated mechanisms supporting and/or implementing spam protection
-          subcontrols: 
+          controls: 
             - 
               id:         si-8.1
               class:      SP800-53-enhancement
@@ -68749,9 +68749,9 @@ catalog:
               rel:  incorporated-into
               text: AC-6
         - 
-          id:          si-10
-          class:       SP800-53
-          title:       Information Input Validation
+          id:         si-10
+          class:      SP800-53
+          title:      Information Input Validation
           parameters: 
             id:    si-10_prm_1
             label: organization-defined information inputs
@@ -68804,7 +68804,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing validity checks on information inputs
-          subcontrols: 
+          controls: 
             - 
               id:         si-10.1
               class:      SP800-53-enhancement
@@ -69330,9 +69330,9 @@ catalog:
                 name:  objects
                 prose: Organizational processes for information handling and retention\n\nautomated mechanisms supporting and/or implementing information handling and retention
         - 
-          id:          si-13
-          class:       SP800-53
-          title:       Predictable Failure Prevention
+          id:         si-13
+          class:      SP800-53
+          title:      Predictable Failure Prevention
           parameters: 
             - 
               id:    si-13_prm_1
@@ -69445,7 +69445,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing MTTF
-          subcontrols: 
+          controls: 
             - 
               id:         si-13.1
               class:      SP800-53-enhancement
@@ -69772,9 +69772,9 @@ catalog:
                     name:  objects
                     prose: Organizational processes for managing failover capability\n\nautomated mechanisms supporting and/or implementing failover capability
         - 
-          id:          si-14
-          class:       SP800-53
-          title:       Non-persistence
+          id:         si-14
+          class:      SP800-53
+          title:      Non-persistence
           parameters: 
             - 
               id:    si-14_prm_1
@@ -69871,7 +69871,7 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing initiation and termination of non-persistent components
-          subcontrols: 
+          controls: 
             id:         si-14.1
             class:      SP800-53-enhancement
             title:      Refresh from Trusted Sources
