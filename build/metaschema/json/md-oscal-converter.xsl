@@ -11,6 +11,7 @@
     <xsl:param name="target-ns" as="xs:string?">http://csrc.nist.gov/ns/oscal/1.0</xsl:param>
 
     <xsl:template name="xsl:initial-template" match="/">
+        <!--<xsl:copy-of select="$tag-replacements"/>-->
         <!--<xsl:copy-of select="$examples"/>-->
         <xsl:call-template name="parse">
             <xsl:with-param name="markdown-str" select="string($examples)"/>
@@ -85,10 +86,12 @@
         <xsl:variable name="flat-structures">
             <xsl:apply-templates select="$rough-blocks" mode="mark-structures"/>
         </xsl:variable>
-        <!--<xsl:copy-of select="$flat-structures"/>-->
+        <!-- for debugging <xsl:copy-of select="$flat-structures"/>-->
+        
         <xsl:variable name="nested-structures">
             <xsl:apply-templates select="$flat-structures" mode="build-structures"/>
         </xsl:variable>
+        <!-- for debugging <xsl:copy-of select="$nested-structures"/>-->
         
         <xsl:variable name="fully-marked">
             <xsl:apply-templates select="$nested-structures" mode="infer-inlines"/>
@@ -239,10 +242,11 @@
         <xsl:param name="group" select="m:li"/>
 
         <xsl:variable name="this-type" select="$group[1]/@type"/>
-        <!-- first, splitting ul from ol groups -->
-        <xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*/@type)]">    
-            <xsl:element name="m:{ $group[1]/@type }" namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
-            <xsl:for-each-group select="current-group()" group-starting-with="li[@level = $level]">
+         <!--first, splitting ul from ol groups -->
+        <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*[1]/@type)]">-->    
+        <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level]">-->    
+        <xsl:element name="m:{ $group[1]/@type }" namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+            <xsl:for-each-group select="$group" group-starting-with="m:li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
                 <xsl:choose>
                     <xsl:when test="@level = $level (: checking first item in group :)">
                         <m:li>
@@ -269,7 +273,7 @@
                 </xsl:choose>
             </xsl:for-each-group>
         </xsl:element>
-        </xsl:for-each-group>
+        <!--</xsl:for-each-group>-->
     </xsl:template>
 
     <xsl:template match="m:pre//text()" mode="infer-inlines">
@@ -366,7 +370,7 @@
             <img         alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
             <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
             
-            <a href="\[{{$text}}\]">\(<text/>\)</a>
+            <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
             <code>`<text/>`</code>
             <strong>
                 <em>\*\*\*<text/>\*\*\*</em>
@@ -402,6 +406,10 @@
         <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
     </xsl:template>
     
+    <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
+        <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+    </xsl:template>
+    
     <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match">
         <!--<xsl:value-of select="."/>-->
         <!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
@@ -435,6 +443,16 @@
         <xsl:text>(.*?)</xsl:text>
     </xsl:template>
     
+    <xsl:template match="m:text[@not]" mode="write-match">
+        <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
+    </xsl:template>
+    
+    <!--<xsl:template match="m:text" mode="write-match">
+        <xsl:variable name="match-char"
+            select="if (matches(@not,'\S')) then ('[' || @not || ']') else '.'"/>
+        <xsl:text expand-text="true">({ $match-char }*?)</xsl:text>
+    </xsl:template>-->
+    
     <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
     
      <xsl:variable name="examples" xml:space="preserve">
@@ -448,10 +466,11 @@ Paragraph, \n\nand new paragraph
 Bit of `code` here and there, such as one might have along with *italics*.
 
 no insertion here: { ac-4.4_prm_2 } 
- 
+
+An anchor looks like [this](this.file) or  [that](that.file)
  
 Extra long x
-            y and z
+            y and z **strong** and **bold**
             
 
 Here's a text with a *parameter* insertion: {{ insert }}
@@ -465,7 +484,7 @@ And many paragraphs!
 * One item in a list, with "quoted text"
 * Another item in a list
   * Sublist
-   * subsublist
+    * subsublist
 * Item three
 
 ```xml
@@ -496,10 +515,14 @@ And stuff.
 
         </p>
         <p>Here's a markdown string.</p>
-        <p>This `string should *break` (overlap)*</p>
-        <p>`code` may occasionally turn up `in the middle`.</p>
-        <p>Here's a ***really interesting*** markdown string.</p>
-        <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
+
+         <p>This `string should *break` (overlap)*</p>
+        
+         <p>`code` may occasionally turn up `in the middle`.</p>
+        
+         <p>Here's a ***really interesting*** markdown string.</p>
+        
+         <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
     </xsl:variable>
     
 </xsl:stylesheet>
