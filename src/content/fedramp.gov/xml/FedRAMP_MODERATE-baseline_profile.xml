@@ -1383,7 +1383,7 @@
 					<title>AU-3 (1) Additional FedRAMP Requirements and Guidance</title>
 					<part id="au-3.1_fr_smt.1" name="item">
 						<prop name="label">Requirement:</prop>
-						<p>The service provider defines audit record types <i>[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</i>.  The audit record types are approved and accepted by the JAB/AO.</p>
+						<p>The service provider defines audit record types <em>[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</em>.  The audit record types are approved and accepted by the JAB/AO.</p>
 					</part>
 					<part id="au-3.1_fr_gdn.1" name="guidance">
 						<prop name="label">Guidance:</prop>
@@ -2115,7 +2115,7 @@
 					<title>RA-5 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ra-5_fr_gdn.1" name="guidance">
 						<prop name="label">Guidance:</prop>
-						<p><b>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</b> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
+						<p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
 					</part>
 				</part>
 			</add>

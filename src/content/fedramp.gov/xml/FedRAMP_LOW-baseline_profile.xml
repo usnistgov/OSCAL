@@ -1063,7 +1063,7 @@
 					<title>RA-5 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ra-5_fr_gdn.1" name="guidance">
 						<prop name="label">Guidance:</prop>
-						<p><b>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</b> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
+						<p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
 					</part>
 				</part>
 			</add>
