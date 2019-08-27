@@ -358,6 +358,8 @@ The following table describes the equavalent constructs in HTML and Markdown use
 | Ordered List Item | &lt;ol&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ol&gt; | 1. *text*
 | Unordered List Item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | - *text*
 
+Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; tags, which indicate italics and bold respectively. These concepts are mapped in OSCAL markup text to &lt;em&gt; and &lt;strong&gt; [common mark](https://spec.commonmark.org/0.29/#emphasis-and-strong-emphasis), which render equivalently in browsers, but do not have exactly the same semantics. While this mapping is imperfect, it represents the common uses of these HTML tags.
+
 #### Parameter Insertion
 
 The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
