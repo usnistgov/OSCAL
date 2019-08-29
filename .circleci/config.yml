@@ -23,11 +23,11 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - gem-cache-v6-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
-        - gem-cache-v6-{{ arch }}-
+        - gem-cache-v7-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v7-{{ arch }}-
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: gem-cache-v6-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: gem-cache-v7-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
         - ~/.bundle
 commands:
