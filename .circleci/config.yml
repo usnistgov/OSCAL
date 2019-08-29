@@ -23,10 +23,11 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - gem-cache-v3-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v4-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v4-{{ arch }}-
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: gem-cache-v3-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: gem-cache-v4-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
         - jekyll-bundle
 commands:
@@ -144,7 +145,7 @@ commands:
             cd "$OSCAL_REPO_DIR/docs"
             echo gem install bundler
             gem install html-proofer
-            bundle check --path=jekyll-bundle || bundle install --path=jekyll-bundle --jobs=4 --retry=3
+            bundle install --path=jekyll-bundle --jobs=4 --retry=3 && bundle clean --path=jekyll-bundle
   check-skip-build:
     steps:
       - run:
