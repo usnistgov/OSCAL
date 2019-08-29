@@ -64,6 +64,7 @@ exclude:
   - package.json
   - package-lock.json
   - README.md
+  - vendor
 # To enable search, uncomment the search section
 # You will need to setup a search account with search.gov
 # https://search.usa.gov/signup

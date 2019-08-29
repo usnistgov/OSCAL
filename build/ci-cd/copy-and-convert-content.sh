@@ -2,18 +2,76 @@
 
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
+fi
+source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
+source "$OSCALDIR/build/ci-cd/include/init-validate-json.sh"
+
+# Option defaults
+WORKING_DIR="${OSCALDIR}"
+VERBOSE=false
+HELP=false
+
+usage() {                                      # Function: Print a help message.
+  cat << EOF
+Usage: $0 [options]
+Run all build scripts
+
+-h, -help,                        Display help
+-w DIR, --working-dir DIR         Generate artifacts in DIR
+-v                                Provide verbose output
+--keep-temp-scratch-dir           If a scratch directory is automatically
+                                  created, it will not be automatically removed.
+EOF
+}
+
+OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+
+# Process arguments
+eval set -- "$OPTS"
+while [ $# -gt 0 ]; do
+  arg="$1"
+  case "$arg" in
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -v)
+      VERBOSE=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --) # end of options
+      shift
+      break;
+      ;;
+    *)    # unknown option
+      echo "Unhandled option: $1"
+      exit 1
+      ;;
+  esac
+  shift # past argument
+done
+
+OTHER_ARGS=$@ # save the remaining args
+
+echo ""
+echo "${P_INFO}Generating XML and JSON Schema${P_END}"
+echo "${P_INFO}==============================${P_END}"
+
+if [ "$VERBOSE" = "true" ]; then
+  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
-source $OSCALDIR/build/ci-cd/saxon-init.sh
-source $OSCALDIR/build/ci-cd/init-validate-json.sh
-
-if [ -z "$1" ]; then
-  working_dir="$OSCALDIR"
-else
-  working_dir="$1"
+# check for perl
+result=$(which perl 2>&1)
+if [ $? -ne 0 ]; then
+  echo "${P_ERROR}Perl is not installed. Perl is needed by this script.${P_END}"
+  exit 1
 fi
-echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 exitcode=0
 shopt -s nullglob
@@ -29,14 +87,23 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
   if [[ ! -z "$path" ]]; then
     files_to_process="$OSCALDIR"/"$path"
-    IFS= # disable word splitting    
+    IFS= # disable word splitting
     for file in $files_to_process
     do
-      dest="$working_dir/${file/$OSCALDIR\/src\//}"
+      file_relative=$(realpath --relative-to="${OSCALDIR}" "$file")
+      dest="$WORKING_DIR/${file/$OSCALDIR\/src\//}"
       dest_dir=${dest%/*} # remove filename
-      echo "${P_INFO}Copying '$file' to '$dest'.${P_END}"
+      dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
+
       mkdir -p "$dest_dir"
-      cp "$file" "$dest"
+      result=$(cp "$file" "$dest" 2>&1)
+      cmd_exitcode=$?
+      if [ $cmd_exitcode -ne 0 ]; then
+        echo "${P_ERROR}Unable to copy '${P_END}${file_relative}${P_ERROR}' to '${P_END}${dest_relative}${P_ERROR}'.${P_END}"
+        echo "${P_ERROR}${result}${P_END}"
+      else
+        echo "${P_OK}Copied '${P_END}${file_relative}${P_OK}' to '${P_END}${dest_relative}${P_OK}'.${P_END}"
+      fi
 
       IFS=","
       for altformat in "$converttoformats"; do
@@ -44,15 +111,25 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         newpath="${newpath/\/$format\///$altformat/}" # change path from old to new format dir
         newpath="${newpath%.*}" # strip extension
 
-        dest="$working_dir/${newpath}-min.${altformat}"
-        converter="$working_dir/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
+        dest="$WORKING_DIR/${newpath}-min.${altformat}"
+        dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
+        converter="$WORKING_DIR/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
+        converter_relative=$(realpath --relative-to="${WORKING_DIR}" "$converter")
 
-        echo "${P_INFO}Generating ${altformat^^} file '$dest' from '$file' using converter '$converter'.${P_END}"
-        xsl_transform "$converter" "$file" "$dest"
+        if [ "$VERBOSE" = "true" ]; then
+          echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+        fi
+        result=$(xsl_transform "$converter" "$file" "$dest" 2>&1)
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          echo "${P_ERROR}Content conversion to ${altformat^^} failed for '$file'.${P_END}"
+          echo "${P_ERROR}Content conversion to ${altformat^^} failed for '${P_END}${file_relative}${P_ERROR}' using converter '${P_END}${converter_relative}${P_ERROR}'.${P_END}"
+          echo "${P_ERROR}${result}${P_END}"
           exitcode=1
+          continue
+        else
+          if [ "$VERBOSE" = "true" ]; then
+            echo "${P_OK}Content conversion to ${altformat^^} succeeded for '${P_END}${file_relative}${P_OK}'.${P_END}"
+          fi
         fi
 
         # Format specific post-processing
@@ -64,39 +141,70 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           perl -pi -e 's,(application/oscal\.[a-z]+\+)xml",\1json",g' ${dest}
           perl -pi -e 's,/xml/,/json/,g' ${dest}
           perl -pi -e 's,("(?:[^"/]+/)*[^"]+(?=\.xml"))\.xml",\1.json",g' ${dest}
-             
+
 #          cp "${dest}.tmp" "${dest}"
 
           # validate generated file
-          schema="$working_dir/json/schema/oscal_${model}_schema.json"
+          schema="$WORKING_DIR/json/schema/oscal_${model}_schema.json"
+          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
           result=$(validate_json "$schema" "$dest")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
             echo "${P_ERROR}${result}${P_END}"
-            echo "${P_ERROR}Validation of '${dest}' failed.${P_END}"
             exitcode=1
+            continue
+          else
+            echo "${P_OK}JSON Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
 
           # produce pretty JSON
-          dest_pretty="$working_dir/${newpath}.${altformat}"
-          jq . "$dest" > "$dest_pretty"
-          result=$(validate_json "$schema" "$dest_pretty")
+          dest_pretty="$WORKING_DIR/${newpath}.${altformat}"
+          dest_pretty_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest_pretty")
+          result=$(jq . "$dest" > "$dest_pretty" 2>&1)
+          if [ $? -ne 0 ]; then
+            echo "${P_ERROR}Unable to execute jq on '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo "${P_ERROR}${result}${P_END}"
+            exitcode=1
+            continue
+          fi
+
+          result=$(validate_json "$schema" "$dest_pretty" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
             echo "${P_ERROR}${result}${P_END}"
-            echo "${P_ERROR}Validation of '${dest_pretty}' failed.${P_END}"
             exitcode=1
+            continue
+          else
+            echo "${P_OK}JSON Schema validation passed for '${P_END}${dest_pretty_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
 
           # produce yaml
-          newpath="${newpath/\/json\///yaml/}" # change path 
-          dest_pretty="$working_dir/${newpath}.yaml"
+          newpath="${newpath/\/json\///yaml/}" # change path
+          dest_pretty="$WORKING_DIR/${newpath}.yaml"
           dest_pretty_dir=${dest_pretty%/*} # remove filename
           mkdir -p "$dest_pretty_dir"
           prettyjson --nocolor=1 --indent=2 --inline-arrays=1 "$dest" > "$dest_pretty"
           ;;
+        xml)
+          # validate generated file
+          schema="$WORKING_DIR/xml/schema/oscal_${model}_schema.xsd"
+          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
+          result=$(xmllint --noout --schema "$schema" "$dest" 2>&1)
+          cmd_exitcode=$?
+          if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}XML Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo "${P_ERROR}${result}${P_END}"
+            exitcode=1
+          else
+            echo "${P_OK}XML Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+          fi
+          ;;
+        *)
+          echo "${P_WARN}Post processing of '${altformat^^}' is unsupported for '${P_END}${dest_relative}${P_OK}'.${P_END}"
+          continue;
         esac
-
       done
     done
   fi
