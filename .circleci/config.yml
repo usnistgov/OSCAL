@@ -217,6 +217,7 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
+      - install-xmllint
       - run:
           name: Generate OSCAL schemas
           command: |
