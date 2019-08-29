@@ -273,7 +273,8 @@ jobs: # a collection of
       - run:
           name: Validate content instances
           command: |
-            find "$OSCAL_REPO_DIR" -path ./docs -prune -o -name \*.md -exec markdown-link-check -q {} \;
+            # this command will filter out any docs Markdown files, which are checked in a different job
+            find "$OSCAL_REPO_DIR" -path "${OSCAL_REPO_DIR}/docs" -prune -o -name \*.md -print0 | xargs -0 -n1 markdown-link-check -q
   job-validate-content:
     executor: java-executor
     steps:
