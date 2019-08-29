@@ -137,10 +137,10 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         json)
           # translate path names, starting first with the xml directory, then the filename
           # cat  NIST_SP-800-53_rev4_LOW-baseline_profile.json | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json/' | perl -lpe 's/(\"(?:[^\/]+\/)*.+(?=\.xml\"))\.xml\"/\1.json\"/'
-          perl -pi -e 's,\\/,/,g' ${dest}
-          perl -pi -e 's,(application/oscal\.[a-z]+\+)xml",\1json",g' ${dest}
-          perl -pi -e 's,/xml/,/json/,g' ${dest}
-          perl -pi -e 's,("(?:[^"/]+/)*[^"]+(?=\.xml"))\.xml",\1.json",g' ${dest}
+          perl -pi -e 's,\\/,/,g' "${dest}"
+          perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${dest}"
+          perl -pi -e 's,/xml/,/json/,g' "${dest}"
+          perl -pi -e 's,("(?:[^"/]+/)*[^"]+(?=\.xml\"))\.xml\",\1.json",g' "${dest}"
 
 #          cp "${dest}.tmp" "${dest}"
 
@@ -168,6 +168,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
             exitcode=1
             continue
           fi
+		  # remove carriage returns
+		  perl -pi -e 's,\r,,g' "$dest_pretty"
 
           result=$(validate_json "$schema" "$dest_pretty" 2>&1)
           cmd_exitcode=$?

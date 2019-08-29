@@ -397,10 +397,12 @@
         
         <XSLT:param name="json-file" as="xs:string?"/>
         
-        <XSLT:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
+        <XSLT:variable name="using-json-file" select="replace($json-file,'^/','') ! ('file:///' || .)"/>
+        
+        <XSLT:variable name="json-xml" select="unparsed-text($using-json-file) ! json-to-xml(.)"/>
         
         <XSLT:template name="xsl:initial-template" match="/">
-                <XSLT:choose>
+            <XSLT:choose>
                 <XSLT:when test="matches($json-file,'\S') and exists($json-xml/map)">
                     <XSLT:apply-templates select="$json-xml" mode="json2xml"/>
                 </XSLT:when>

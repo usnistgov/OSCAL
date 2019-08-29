@@ -9,6 +9,7 @@ fi
 source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
 
 # Catalog round trip from XML -> JSON -> XML
+MSYS_NO_PATHCONV=1
 
 # Option defaults
 KEEP_TEMP_SCRATCH_DIR=false
@@ -159,14 +160,14 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
         # transformation of JSON back to XML
         converter="$WORKING_DIR/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
-        converter_path=$(realpath --relative-to="$PWD" "$converter")
-        back_to_xml_file_relative=$(realpath --relative-to="$PWD" "$back_to_xml_file")
+        converter_path="$(realpath "$converter")"
+        back_to_xml_file_relative="$(realpath --relative-to="$PWD" "$back_to_xml_file")"
 
         # Make the json file relative to the converter
-        converter_dir=$(dirname "$converter_path")
-        json_file_path=$(realpath --relative-to="$converter_dir" "$to_json_file")
+        converter_dir="$(dirname "$converter")"
+        json_file_path="$(realpath "$to_json_file")"
 
-        result=$(xsl_transform "$converter_path" "" "$back_to_xml_file_relative" "-it" "json-file=${json_file_path}" 2>&1)
+        result=$(xsl_transform "$converter_path" "" "$back_to_xml_file" "-it" "json-file=${json_file_path}" 2>&1)
 
         # check the exit code for the conversion
         cmd_exitcode=$?
@@ -183,8 +184,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
         # Validate the resulting XML
         schema="$WORKING_DIR/xml/schema/oscal_${model}_schema.xsd"
-        schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
-        result=$(xmllint --noout --schema "$schema" "$back_to_xml_file_relative" 2>&1)
+        schema_relative="$(realpath --relative-to="${WORKING_DIR}" "$schema")"
+        result="$(xmllint --noout --schema "$schema" "$back_to_xml_file" 2>&1)"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
           echo "${P_ERROR}XML Schema validation failed for '${P_END}${back_to_xml_file}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
