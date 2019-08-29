@@ -2,76 +2,183 @@
 # determines the OSCAL directory path
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
 fi
 
-# sets the CI-CD directory
-CIDIR=$OSCALDIR/build/ci-cd
-
-# defaults
+# Option defaults
 PERFORM_VALIDATION=YES
-PERFORM_GENERATION=YES
-PERFORM_CONVERSION=YES
+PERFORM_CONTENT_GENERATION=YES
+PERFORM_SITE_GENERATION=NO
+PERFORM_CONTENT_CONVERSION=YES
+KEEP_TEMP_SCRATCH_DIR=false
+WORKING_DIR="${OSCALDIR}"
+VERBOSE=false
+HELP=false
 
-WORKING_DIR="$OSCALDIR"
+usage() {                                      # Function: Print a help message.
+  cat << EOF
+Usage: $0 [options]
+Run all build scripts
+
+-h, -help,                        Display help
+-w DIR, --working-dir DIR         Generate artifacts in DIR
+-v                                Provide verbose output
+--scratch-dir DIR                 Generate temporary artifacts in DIR
+                                  If not provided a new directory will be
+                                  created under \$TMPDIR if set or in /tmp.
+--keep-temp-scratch-dir           If a scratch directory is automatically
+                                  created, it will not be automatically removed.
+--perform-validation              Validate all content and metaschema
+--no-validation                   Do not validate all content and metaschema
+--generate-content                Generate all content
+--no-generate-content             Do not generate all content
+--generate-site                   Generate all website content
+--no-generate-site                Do not generate all website content
+--convert-content                 Convert content to alternate formats
+--no-convert-content              Do not convert content to alterbate formats
+EOF
+}
+
+OPTS=`getopt -o w:vh --long scratch-dir:,keep-temp-scratch-dir,working-dir:,help,perform-validation,no-validation,generate-content,no-generate-content,generate-site,no-generate-site,convert-content,no-convert-content -n "$0" -- "$@"`
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
-OTHER_ARGS=()
+eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
-    arg="$1"
-    case "$arg" in
-        -v|--validate)
-        PERFORM_VALIDATION=YES
-        shift # argument
-        ;;
-        --no-validate)
-        PERFORM_VALIDATION=NO
-        shift # argument
-        ;;
-        -g|--generate)
-        PERFORM_GENERATION=YES
-        shift # argument
-        ;;
-        --no-generate)
-        PERFORM_GENERATION=NO
-        shift # argument
-        ;;
-        -c|--convert)
-        PERFORM_CONVERSION=YES
-        shift # argument
-        ;;
-        --no-convert)
-        PERFORM_CONVERSION=NO
-        shift # argument
-        ;;
-        -d|--working-dir)
-        WORKING_DIR="$2"
-        shift # argument
-        shift # value
-        ;;
-        *)    # unknown option
-        OTHER_ARGS+=("$1") # save the arg
-        shift # past argument
-        ;;
-    esac
+  arg="$1"
+  case "$arg" in
+    --perform-validation)
+      PERFORM_VALIDATION=YES
+      ;;
+    --no-validation)
+      PERFORM_VALIDATION=NO
+      ;;
+    --generate-content)
+      PERFORM_CONTENT_GENERATION=YES
+      ;;
+    --no-generate-content)
+      PERFORM_CONTENT_GENERATION=NO
+      ;;
+    --generate-site)
+      PERFORM_SITE_GENERATION=YES
+      ;;
+    --no-generate-site)
+      PERFORM_SITE_GENERATION=NO
+      ;;
+    --convert-content)
+      PERFORM_CONTENT_CONVERSION=YES
+      ;;
+    --no-convert-content)
+      PERFORM_CONTENT_CONVERSION=NO
+      ;;
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --scratch-dir)
+      SCRATCH_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --keep-temp-scratch-dir)
+      KEEP_TEMP_SCRATCH_DIR=true
+      ;;
+    -v)
+      VERBOSE=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --) # end of options
+      shift
+      break;
+      ;;
+    *)    # unknown option
+      echo "Unhandled option: $1"
+      exit 1
+      ;;
+  esac
+  shift # past argument
 done
 
-# restore remaining arguments
-set -- "$OTHER_ARGS[@]}"
+OTHER_ARGS=$@ # save the arg
 
-# get absolute path
-WORKING_DIR=$(realpath "$WORKING_DIR")
+echo "${OTHER_ARGS[@]}"
 
-echo PERFORM VALIDATION = "${PERFORM_VALIDATION}"
-echo PERFORM GENERATION = "${PERFORM_GENERATION}"
-echo PERFORM CONVERSION = "${PERFORM_CONVERSION}"
-echo WORKING DIR        = "${WORKING_DIR}"
+if [ -z "${SCRATCH_DIR+x}" ]; then
+  SCRATCH_DIR="$(mktemp -d)"
+  if [ "$KEEP_TEMP_SCRATCH_DIR" != "true" ]; then
+    function CleanupScratchDir() {
+      rc=$?
+      if [ "$VERBOSE" = "true" ]; then
+        echo ""
+        echo "${P_INFO}Cleanup${P_END}"
+        echo "${P_INFO}=======${P_END}"
+        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+      fi
+      rm -rf "${SCRATCH_DIR}"
+      exit $rc
+    }
+    trap CleanupScratchDir EXIT
+  fi
+fi
+
+extra_params=()
+
+if [ "$VERBOSE" = "true" ]; then
+  extra_params+=('-v')
+  echo "${P_INFO}Using scratch directory:${P_END}    ${SCRATCH_DIR}"
+  echo "${P_INFO}Using working directory:${P_END}    ${WORKING_DIR}"
+  echo "${P_INFO}Perform Validation:${P_END}         ${PERFORM_VALIDATION}"
+  echo "${P_INFO}Perform Content Generation:${P_END} ${PERFORM_CONTENT_GENERATION}"
+  echo "${P_INFO}Perform Content Conversion:${P_END} ${PERFORM_CONTENT_CONVERSION}"
+  echo "${P_INFO}Perform Site Generation:${P_END}    ${PERFORM_SITE_GENERATION}"
+fi
+
+extra_args=$( IFS=" "; echo "${extra_params[*]}" )
+
+script_path="${OSCALDIR}/build/ci-cd"
 
 # runs all of the scripts to test locally
-[[ "$PERFORM_VALIDATION" == "YES" ]] && ("$CIDIR/validate-metaschema.sh" "$WORKING_DIR" "$@" || ("Failed to validate Metaschema" && exit 1) )
-[[ "$PERFORM_GENERATION" == "YES" ]] && ("$CIDIR/generate-schema.sh" "$WORKING_DIR" "$@" || ("Failed to generate schema files" && exit 2) )
-[[ "$PERFORM_VALIDATION" == "YES" ]] && ("$CIDIR/validate-content.sh" "$WORKING_DIR" "$@" || ("Failed to validate content" && exit 3) )
-[[ "$PERFORM_GENERATION" == "YES" ]] && ("$CIDIR/generate-content-converters.sh" "$WORKING_DIR" "$@" || ("Failed to generate content converters" && exit 4) )
-[[ "$PERFORM_CONVERSION" == "YES" ]] && ("$CIDIR/copy-and-convert-content.sh" "$WORKING_DIR" "$@" || ("Failed to convert content" && exit 5) )
-[[ "$PERFORM_VALIDATION" == "YES" ]] && ("$CIDIR/validate-round-trips.sh" "$WORKING_DIR" "$@" || ("Failed to validate XML->JSON->XML round-trips" && exit 6) )
-[[ "$PERFORM_GENERATION" == "YES" ]] && ("$CIDIR/generate-model-documentation.sh" "$WORKING_DIR" "$@" || ("Failed to generate website schema model content" && exit 7) )
+if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-metaschema.sh" -w "$WORKING_DIR" --scratch-dir "$SCRATCH_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to validate all Metaschema${P_END}"
+    exit 1
+  fi
+fi
+if [ "$PERFORM_CONTENT_GENERATION" == "YES" ] && "${script_path}/generate-schema.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to generate schema files${P_END}"
+    exit 2
+  fi
+fi
+if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to validate all content${P_END}"
+    exit 3
+  fi
+fi
+if [ "$PERFORM_CONTENT_GENERATION" == "YES" ] && "${script_path}/generate-content-converters.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to generate content converters${P_END}"
+    exit 4
+  fi
+fi
+if [ "$PERFORM_CONTENT_CONVERSION" == "YES" ] && "${script_path}/copy-and-convert-content.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to convert content${P_END}"
+    exit 5
+  fi
+fi
+if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content-conversion-round-trips.sh" -w "$WORKING_DIR" --scratch-dir "$SCRATCH_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to validate all XML->JSON->XML round-trips${P_END}"
+    exit 6
+  fi
+fi
+if [ "$PERFORM_SITE_GENERATION" == "YES" ] && "${script_path}/generate-model-documentation.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to generate website schema model content${P_END}"
+    exit 7
+  fi
+fi

@@ -2,8 +2,7 @@ if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
-
-source $OSCALDIR/build/ci-cd/saxon-init.sh
+source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
 
 if [[ -z "$SCHEMATRON_HOME" ]]; then
     echo "${P_ERROR}SCHEMATRON_HOME is not set or is empty.${P_END} ${P_INFO}Please set SCHEMATRON_HOME to indicate the location of the schematron skeleton. The schematron skeleton can be cloned using git clone https://github.com/Schematron/schematron <schematron_home_dir>.${P_END}"
@@ -52,4 +51,3 @@ validate_with_schematron() {
         echo "File '$source_file' passed Schematron validation."
     fi
 }
-

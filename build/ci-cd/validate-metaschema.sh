@@ -2,29 +2,112 @@
 
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
+fi
+source "$OSCALDIR/build/ci-cd/include/schematron-init.sh"
+
+# Option defaults
+KEEP_TEMP_SCRATCH_DIR=false
+WORKING_DIR="${OSCALDIR}"
+VERBOSE=false
+HELP=false
+
+usage() {                                      # Function: Print a help message.
+  cat << EOF
+Usage: $0 [options]
+Run all build scripts
+
+-h, -help,                        Display help
+-w DIR, --working-dir DIR         Generate artifacts in DIR
+-v                                Provide verbose output
+--scratch-dir DIR                 Generate temporary artifacts in DIR
+                                  If not provided a new directory will be
+                                  created under \$TMPDIR if set or in /tmp.
+--keep-temp-scratch-dir           If a scratch directory is automatically
+                                  created, it will not be automatically removed.
+EOF
+}
+
+OPTS=`getopt -o w:vh --long scratch-dir:,keep-temp-scratch-dir,working-dir:,help -n "$0" -- "$@"`
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+
+# Process arguments
+eval set -- "$OPTS"
+while [ $# -gt 0 ]; do
+  arg="$1"
+  case "$arg" in
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --scratch-dir)
+      SCRATCH_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --keep-temp-scratch-dir)
+      KEEP_TEMP_SCRATCH_DIR=true
+      ;;
+    -v)
+      VERBOSE=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --) # end of options
+      shift
+      break;
+      ;;
+    *)    # unknown option
+      echo "Unhandled option: $1"
+      exit 1
+      ;;
+  esac
+  shift # past argument
+done
+
+OTHER_ARGS=$@ # save the arg
+
+if [ -z "${SCRATCH_DIR+x}" ]; then
+  SCRATCH_DIR="$(mktemp -d)"
+  if [ "$KEEP_TEMP_SCRATCH_DIR" != "true" ]; then
+    function CleanupScratchDir() {
+      rc=$?
+      if [ "$VERBOSE" = "true" ]; then
+        echo ""
+        echo "${P_INFO}Cleanup${P_END}"
+        echo "${P_INFO}=======${P_END}"
+        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+      fi
+      rm -rf "${SCRATCH_DIR}"
+      exit $rc
+    }
+    trap CleanupScratchDir EXIT
+  fi
 fi
 
-source $OSCALDIR/build/ci-cd/schematron-init.sh
+echo ""
+echo "${P_INFO}Validating Metaschema Defintions${P_END}"
+echo "${P_INFO}================================${P_END}"
 
-if [ -z "$1" ]; then
-  working_dir="$OSCALDIR"
-else
-  working_dir="$1"
+if [ "$VERBOSE" = "true" ]; then
+  echo "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
-echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 # compile the schematron
 metaschema_lib="$OSCALDIR/build/metaschema/lib"
 schematron="$metaschema_lib/metaschema-check.sch"
-compiled_schematron="${schematron}-compiled.xsl"
+compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
 
 build_schematron "$schematron" "$compiled_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
-  echo "${P_ERROR}Compilation of Schematron '$schematron' failed.${P_END}"
+  echo "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
+# the following is needed by the compiled template
+cp "${metaschema_lib}/metaschema-compose.xsl" "${SCRATCH_DIR}"
 
 exitcode=0
 shopt -s nullglob
@@ -39,28 +122,35 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
   shopt -u extglob
 
   [ -z "$path" ] && continue;
-  
+
   files_to_process="$OSCALDIR"/"$path"
 
-  IFS= # disable word splitting    
+  IFS= # disable word splitting
   for metaschema in $files_to_process
   do
-    echo "${P_INFO}Validating metaschema '$metaschema'${P_END}"
+    metaschema_relative=$(realpath --relative-to="$OSCALDIR" "$metaschema")
+    if [ "$VERBOSE" = "true" ]; then
+      echo "${P_INFO}Validating metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+    fi
+
     result=$(xmllint --nowarning --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
+      echo "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo "${P_ERROR}${result}${P_END}"
-      echo "${P_ERROR}Metaschema '$metaschema' is not valid.${P_END}"
       exitcode=1
     else
-      svrl_result="$working_dir/svrl/${file/$OSCALDIR\/src\//}.svrl"
+      svrl_result="$SCRATCH_DIR/svrl/${metaschema/$OSCALDIR\/src\//}.svrl"
       svrl_result_dir=${svrl_result%/*}
       mkdir -p "$svrl_result_dir"
       result=$(validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result")
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
+        echo "${P_ERROR}Schematron validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
           echo "${P_ERROR}${result}${P_END}"
           exitcode=1
+      else
+        echo "${P_OK}XML Schema and Schematron validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     fi
   done

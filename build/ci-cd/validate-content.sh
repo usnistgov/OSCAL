@@ -1,17 +1,70 @@
 #!/bin/bash
 
+# Setup OSCAL environment
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
 fi
-source $OSCALDIR/build/ci-cd/init-validate-json.sh
+source "$OSCALDIR/build/ci-cd/include/init-validate-json.sh"
 
-if [ -z "$1" ]; then
-  working_dir="$OSCALDIR"
-else
-  working_dir="$1"
+# Option defaults
+WORKING_DIR="${OSCALDIR}"
+VERBOSE=false
+HELP=false
+
+usage() {                                      # Function: Print a help message.
+  cat << EOF
+Usage: $0 [options]
+Run all build scripts
+
+-h, -help,                        Display help
+-w DIR, --working-dir DIR         Generate artifacts in DIR
+-v                                Provide verbose output
+--keep-temp-scratch-dir           If a scratch directory is automatically
+                                  created, it will not be automatically removed.
+EOF
+}
+
+OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+
+# Process arguments
+eval set -- "$OPTS"
+while [ $# -gt 0 ]; do
+  arg="$1"
+  case "$arg" in
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -v)
+      VERBOSE=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --) # end of options
+      shift
+      break;
+      ;;
+    *)    # unknown option
+      echo "Unhandled option: $1"
+      exit 1
+      ;;
+  esac
+  shift # past argument
+done
+
+OTHER_ARGS=$@ # save the remaining args
+
+echo ""
+echo "${P_INFO}Validating Content${P_END}"
+echo "${P_INFO}==================${P_END}"
+
+if [ "$VERBOSE" = "true" ]; then
+  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
-echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 exitcode=0
 shopt -s nullglob
@@ -27,37 +80,47 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
   shopt -u extglob
 
   if [[ ! -z "$path" ]]; then
-    files_to_process="$OSCALDIR/$path"
-    IFS= # disable word splitting    
+    files_to_process="${OSCALDIR}/${path}"
+
+    IFS= # disable word splitting
     for file in $files_to_process
     do
-      echo "${P_INFO}Validating $model $format file '$file'.${P_END}"
+      file_relative=$(realpath --relative-to="$OSCALDIR" "$file")
+      if [ "$VERBOSE" = "true" ]; then
+        echo "${P_INFO}Validating $model $format file '${P_END}${file_relative}${P_INFO}'.${P_END}"
+      fi
 
       case $format in
       xml)
-          schema="$working_dir/xml/schema/oscal_${model}_schema.xsd"
-          result=$(xmllint --noout --schema "$schema" "$file")
+          schema="$WORKING_DIR/xml/schema/oscal_${model}_schema.xsd"
+          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
+          result=$(xmllint --noout --schema "$schema" "$file" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}XML Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
             echo "${P_ERROR}${result}${P_END}"
-            echo "${P_ERROR}XML schema validation failed for '$file'.${P_END}"
             exitcode=1
+          else
+            echo "${P_OK}XML Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
         ;;
       json)
-          schema="$working_dir/json/schema/oscal_${model}_schema.json"
+          schema="$WORKING_DIR/json/schema/oscal_${model}_schema.json"
+          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
           result=$(validate_json "$schema" "$file")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
+            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
             echo "${P_ERROR}${result}${P_END}"
-            echo "${P_ERROR}JSON schema validation failed for '$file'.${P_END}"
             exitcode=1
+          else
+            echo "${P_OK}JSON Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
         ;;
       esac
     done
   fi
-done < "$OSCALDIR/build/ci-cd/config/content"
+done < "${OSCALDIR}/build/ci-cd/config/content"
 shopt -u nullglob
 shopt -u globstar
 

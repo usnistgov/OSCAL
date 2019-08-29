@@ -2,7 +2,7 @@
 
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
 fi
 
 if [[ -z "$JSON_CLI_HOME" ]]; then
@@ -18,17 +18,17 @@ validate_json() {
     local json_schema="$1"; shift
     local json_file="$1"; shift
     local extra_params=($@)
-    
+
     local classpath=$(JARS=("$JSON_CLI_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 
     set --
-    
+
     if [ -z "$json_schema" ]; then
         echo "${P_ERROR}The JSON schema must be provided as the first argument.${P_END}"
     else
       set -- "$@" "-s" "${json_schema}"
     fi
-    
+
     if [ -z "$json_file" ]; then
         echo "${P_ERROR}The JSON file must be provided as the second argument.${P_END}"
     else

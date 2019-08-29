@@ -19,15 +19,15 @@ xsl_transform() {
     local source_file="$1"; shift
     local output_file="$1"; shift
     local extra_params=($@)
-    
+
     local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 
     set -- "-warnings:silent" "-xsl:${stylesheet}"
-    
+
     if [ ! -z "$output_file" ]; then
       set -- "$@" "-o:${output_file}"
     fi
-    
+
     if [ ! -z "$source_file" ]; then
       set -- "$@" "-s:${source_file}"
     fi

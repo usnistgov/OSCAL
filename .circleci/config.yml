@@ -204,7 +204,7 @@ jobs: # a collection of
       - run:
           name: Validate metaschema instances
           command: |
-            bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/validate-metaschema.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -220,7 +220,7 @@ jobs: # a collection of
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash "$CICD_DIR/generate-schema.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/generate-schema.sh" -w "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -237,7 +237,7 @@ jobs: # a collection of
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash "$CICD_DIR/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/generate-content-converters.sh" -w "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -256,7 +256,7 @@ jobs: # a collection of
       - run:
           name: Generate OSCAL converters
           command: |
-            bash "$CICD_DIR/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -284,7 +284,7 @@ jobs: # a collection of
       - run:
           name: Validate content instances
           command: |
-            bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/validate-content.sh" -w "$OSCAL_BUILD_DIR"
   job-roundtrip-conversions:
     executor: python-executor
     steps:
@@ -298,7 +298,7 @@ jobs: # a collection of
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            bash "${CICD_DIR}/validate-round-trips.sh" "$OSCAL_BUILD_DIR"
+            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
       - *publish_artifacts
   job-generate-docs:
     executor: java-executor
@@ -311,7 +311,7 @@ jobs: # a collection of
           name: Generate schema documentation
           command: |
             #cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
-            bash -x "$CICD_DIR/generate-model-documentation.sh" "$OSCAL_BUILD_DIR"
+            bash -x "$CICD_DIR/generate-model-documentation.sh" -w "$OSCAL_BUILD_DIR"
             # echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
             # mv docs "$OSCAL_BUILD_DIR"/docs
       - *publish_artifacts
