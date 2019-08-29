@@ -271,7 +271,7 @@ jobs: # a collection of
       - check-skip-build
       - install-markdown-link-check
       - run:
-          name: Validate content instances
+          name: Validate repo Markdown content instances
           command: |
             # this command will filter out any docs Markdown files, which are checked in a different job
             find "$OSCAL_REPO_DIR" -path "${OSCAL_REPO_DIR}/docs" -prune -o -name \*.md -print0 | xargs -0 -n1 markdown-link-check -q
@@ -312,10 +312,11 @@ jobs: # a collection of
       - run:
           name: Generate schema documentation
           command: |
-            #cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             bash -x "$CICD_DIR/generate-model-documentation.sh" -w "$OSCAL_BUILD_DIR"
-            # echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
-            # mv docs "$OSCAL_BUILD_DIR"/docs
+      - run:
+          name: Compress built docs
+          command: |
+            tar -zcvf --remove-files "${OSCAL_BUILD_DIR}/docs.tar.gz" "${OSCAL_BUILD_DIR}/docs"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -373,9 +374,14 @@ jobs: # a collection of
       - *restore_gem_cache
       - install-bundler
       - run:
+          name: Restore generated site content
+          command: |
+            # restore docs from tar
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs"
+      - run:
           name: Build and Validate Jekyll site
           command: |
-            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             bundle exec jekyll build -d _site/OSCAL
             htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/" --assume-extension --log-level :debug ./_site
@@ -397,9 +403,14 @@ jobs: # a collection of
       - *restore_gem_cache
       - install-bundler
       - run:
+          name: Restore generated site content
+          command: |
+            # restore docs from tar
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs"
+      - run:
           name: Build jekyll site
           command: |
-            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             bundle exec jekyll build
             mkdir -p _site/.circleci
