@@ -316,7 +316,7 @@ jobs: # a collection of
       - run:
           name: Compress built docs
           command: |
-            tar -zcvf --remove-files "${OSCAL_BUILD_DIR}/docs.tar.gz" "${OSCAL_BUILD_DIR}/docs"
+            tar -zcvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --remove-files "${OSCAL_BUILD_DIR}/docs"
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
