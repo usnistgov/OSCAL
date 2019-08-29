@@ -23,13 +23,13 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - gem-cache-v5-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
-        - gem-cache-v5-{{ arch }}-
+        - gem-cache-v6-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v6-{{ arch }}-
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: gem-cache-v4-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: gem-cache-v6-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
-        - jekyll-bundle
+        - ~/.bundle
 commands:
   install-schematron:
     description: "Install the schematron skeleton"
@@ -145,7 +145,7 @@ commands:
             cd "$OSCAL_REPO_DIR/docs"
             echo gem install bundler
             gem install html-proofer
-            bundle install --path=jekyll-bundle --jobs=4 --retry=3 && bundle clean
+            bundle install --jobs=4 --retry=3 && bundle clean
   check-skip-build:
     steps:
       - run:
