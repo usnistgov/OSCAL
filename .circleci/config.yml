@@ -23,13 +23,13 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - gem-cache-v8-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
-        - gem-cache-v8-{{ arch }}-
+        - gem-cache-v9-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v9-{{ arch }}-
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: gem-cache-v8-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: gem-cache-v9-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
-        - ~/.bundle
+        - git-oscal/docs/vendor/bundle
 commands:
   install-schematron:
     description: "Install the schematron skeleton"
@@ -143,9 +143,9 @@ commands:
           name: Install Bundler
           command: |
             cd "$OSCAL_REPO_DIR/docs"
-            echo gem install bundler
-            gem install html-proofer
-            bundle install --jobs=4 --retry=3 && bundle clean
+            # gem install bundler
+            # gem install html-proofer
+            bundle install --path vendor/bundle --jobs=4 --retry=3 && bundle clean
   check-skip-build:
     steps:
       - run:
@@ -385,7 +385,7 @@ jobs: # a collection of
             # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             bundle exec jekyll build -d _site/OSCAL
-            htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/" --assume-extension --log-level :debug ./_site
+            bundle exec htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/" --assume-extension --log-level :debug ./_site
           environment:
             JEKYLL_ENV: production
       - *save_gem_cache
@@ -430,7 +430,7 @@ jobs: # a collection of
       - run:
           name: Package Release
           command: |
-            bash -x "$CICD_DIR/package-release.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/package-release.sh" "$OSCAL_BUILD_DIR"
 workflows:
   version: 2
   build:
