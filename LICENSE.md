@@ -14,7 +14,7 @@ This project includes a mix of the following:
 
 Portions of this software were developed by employees of the National Institute
 of Standards and Technology (NIST), an agency of the Federal Government.
-Pursuant to [title 17 section 105 of the United States Code](https://www.gpo.gov/fdsys/granule/USCODE-2010-title17/USCODE-2010-title17-chap1-sec105), works of NIST employees are
+Pursuant to [title 17 section 105 of the United States Code](https://www.govinfo.gov/content/pkg/USCODE-2010-title17/html/USCODE-2010-title17-chap1-sec105.htm), works of NIST employees are
 not subject to copyright protection in the United States and are considered to
 be in the public domain. Permission to freely use, copy, modify, and distribute
 this software and its documentation without fee is hereby granted, provided that
