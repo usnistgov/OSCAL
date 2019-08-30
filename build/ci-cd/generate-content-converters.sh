@@ -14,13 +14,10 @@ HELP=false
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options]
-Run all build scripts
 
--h, -help,                        Display help
+-h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
---keep-temp-scratch-dir           If a scratch directory is automatically
-                                  created, it will not be automatically removed.
 EOF
 }
 
@@ -58,8 +55,8 @@ done
 OTHER_ARGS=$@ # save the remaining args
 
 echo ""
-echo "${P_INFO}Generating XML and JSON Schema${P_END}"
-echo "${P_INFO}==============================${P_END}"
+echo "${P_INFO}Generating XML <-> JSON Content Converters${P_END}"
+echo "${P_INFO}==========================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
   echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"

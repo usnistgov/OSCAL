@@ -20,9 +20,8 @@ HELP=false
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options]
-Run all build scripts
 
--h, -help,                        Display help
+-h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
 --scratch-dir DIR                 Generate temporary artifacts in DIR

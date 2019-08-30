@@ -2,7 +2,7 @@
 
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/common-environment.sh"
+    source "$DIR/include/common-environment.sh"
 fi
 
 if [ -z "$1" ]; then
@@ -34,7 +34,7 @@ while IFS="|" read path dest_path || [[ -n "$path" ]]; do
 
   if [[ ! -z "$path" ]]; then
     files_to_process="$OSCALDIR"/"$path"
-    IFS= # disable word splitting    
+    IFS= # disable word splitting
     for file in $files_to_process
     do
       src="$OSCALDIR/$file"
