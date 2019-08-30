@@ -17,7 +17,7 @@ usage() {                                      # Function: Print a help message.
 Usage: $0 [options]
 Run all build scripts
 
--h, -help,                        Display help
+-h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
 --scratch-dir DIR                 Generate temporary artifacts in DIR
@@ -87,8 +87,8 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
 fi
 
 echo ""
-echo "${P_INFO}Validating Metaschema Defintions${P_END}"
-echo "${P_INFO}================================${P_END}"
+echo "${P_INFO}Validating Metaschema Definitions${P_END}"
+echo "${P_INFO}=================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
   echo "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"

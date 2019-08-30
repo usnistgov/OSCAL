@@ -15,10 +15,13 @@ backup*
 working/
 __pycache__
 
-# Production outputs
+## Production outputs
 pub/
 target/
 xspec/*.html
+# Bundler
+docs/.bundle
+docs/vendor
 
 # ignore generated content
 /archive

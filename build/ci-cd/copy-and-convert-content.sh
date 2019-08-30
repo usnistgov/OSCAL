@@ -15,9 +15,8 @@ HELP=false
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options]
-Run all build scripts
 
--h, -help,                        Display help
+-h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
 --keep-temp-scratch-dir           If a scratch directory is automatically
@@ -59,7 +58,7 @@ done
 OTHER_ARGS=$@ # save the remaining args
 
 echo ""
-echo "${P_INFO}Generating XML and JSON Schema${P_END}"
+echo "${P_INFO}Copying and Converting Content${P_END}"
 echo "${P_INFO}==============================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
@@ -135,12 +134,15 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         # Format specific post-processing
         case $altformat in
         json)
+          # Remove extra slashes
+          perl -pi -e 's,\\/,/,g' "${dest}"
+          # translate OSCAL mime types
+          perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${dest}"
+          # relative content paths
           # translate path names, starting first with the xml directory, then the filename
-          # cat  NIST_SP-800-53_rev4_LOW-baseline_profile.json | perl -lpe 's/(\"(?:(?!xml)[^\/]+\/)*)xml\//\1json/' | perl -lpe 's/(\"(?:[^\/]+\/)*.+(?=\.xml\"))\.xml\"/\1.json\"/'
-          perl -pi -e 's,\\/,/,g' ${dest}
-          perl -pi -e 's,(application/oscal\.[a-z]+\+)xml",\1json",g' ${dest}
-          perl -pi -e 's,/xml/,/json/,g' ${dest}
-          perl -pi -e 's,("(?:[^"/]+/)*[^"]+(?=\.xml"))\.xml",\1.json",g' ${dest}
+          perl -pi -e 's,(\.\./[^\"]+(?=/xml/))/xml/,\1/json/,g' "${dest}"
+          perl -pi -e 's,(\.\./[^\"]+(?=/json/)[^\"]+(?=.xml\")).xml\",\1.json\",g' "${dest}"
+          perl -pi -e 's,(\"[^/\"]+(?=\.xml\")).xml\",\1.json\",g' "${dest}"
 
 #          cp "${dest}.tmp" "${dest}"
 
@@ -168,6 +170,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
             exitcode=1
             continue
           fi
+		  # remove carriage returns
+		  perl -pi -e 's,\r,,g' "$dest_pretty"
 
           result=$(validate_json "$schema" "$dest_pretty" 2>&1)
           cmd_exitcode=$?
