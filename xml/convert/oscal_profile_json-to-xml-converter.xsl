@@ -15,7 +15,10 @@
    <xsl:strip-space elements="*"/>
    <xsl:preserve-space elements="string"/>
    <xsl:param name="json-file" as="xs:string?"/>
-   <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
+   <xsl:variable name="using-json-file"
+                 select="replace($json-file,'^/','') ! ('file:///' || .)"/>
+   <xsl:variable name="json-xml"
+                 select="unparsed-text($using-json-file) ! json-to-xml(.)"/>
    <xsl:template name="xsl:initial-template" match="/">
       <xsl:choose>
          <xsl:when test="matches($json-file,'\S') and exists($json-xml/map)">
