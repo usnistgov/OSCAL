@@ -307,8 +307,12 @@
     <xsl:template match="model">
         <xsl:apply-templates/>
     </xsl:template>
+
+    <xsl:template match="field | assembly">
+        <XSLT:apply-templates select="{@ref}" mode="#current"/>
+    </xsl:template>
     
-    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template priority="2" match="field[@in-xml='unwrapped'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <XSLT:call-template name="prose">
             <XSLT:with-param name="key">
                 <xsl:value-of select="@ref"/>
@@ -316,18 +320,25 @@
         </XSLT:call-template>
     </xsl:template>
     
-    <xsl:template match="field | assembly">
-        <XSLT:apply-templates select="{@ref}" mode="#current"/>
+    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+        <XSLT:for-each select="{ @ref }">
+            <XSLT:call-template name="prose">
+                <XSLT:with-param name="key">
+                    <xsl:value-of select="@ref"/>
+                </XSLT:with-param>
+            </XSLT:call-template>
+        </XSLT:for-each>
     </xsl:template>
     
-    <xsl:template match="field[number(@max-occurs) &gt; 1 or @max-occurs='unbounded'] |
+    <xsl:template priority="3" match="field[number(@max-occurs) &gt; 1 or @max-occurs='unbounded'] |
         assembly[number(@max-occurs) &gt; 1 or @max-occurs='unbounded']">
             <XSLT:if test="exists({@ref})">
                 <array key="{ group-as/@name }">
                     <!-- copying @m:json-behavior to condition handling
                          in the next 'rectify' mode -->
                     <xsl:copy-of select="group-as/@json-behavior"/>
-                    <XSLT:apply-templates select="{@ref}" mode="#current"/>
+                    <xsl:next-match/>
+                    <!--<XSLT:apply-templates select="{@ref}" mode="#current"/>-->
                 </array>
             </XSLT:if>
         <!--<XSLT:call-template name="elems-arrayed">
@@ -336,11 +347,12 @@
         </XSLT:call-template>-->
     </xsl:template>
     
-    <xsl:template priority="3"
+    <xsl:template priority="4"
         match="field[exists(key('definition-by-name',@ref)/json-key)] |
                assembly[exists(key('definition-by-name',@ref)/json-key)]">
         <XSLT:for-each-group select="{@ref}" group-by="local-name()">
             <map key="{  group-as/@name }">
+                
                 <XSLT:apply-templates select="current-group()" mode="#current"/>
             </map>
         </XSLT:for-each-group>

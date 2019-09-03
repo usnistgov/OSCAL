@@ -41,10 +41,10 @@
     
     <xsl:template match="/">
         <xsl:variable name="unwired">
-         <xsl:call-template name="build-schema"/>
-    </xsl:variable>
-    <xsl:choose>
-            <xsl:when test="$debug='yes'">
+            <xsl:call-template name="build-schema"/>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$debug = 'yes'">
                 <xsl:message>Running in 'debug' to show intermediate results</xsl:message>
                 <xsl:sequence select="$unwired"/>
             </xsl:when>
@@ -53,10 +53,10 @@
             </xsl:otherwise>
         </xsl:choose>
         <!-- $unwired has the schema with no namespaces -->
-        
+
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
-        
+
     </xsl:template>
 
     
@@ -255,9 +255,22 @@
             maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
     </xsl:template>
     
+    <!-- TODO XXX switch default behavior ...   -->
     <!-- No wrapper, just prose elements -->
-    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template match="field[not(@in-xml='with-wrapper')][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+    </xsl:template>
+    
+    <!-- With wrapper -->
+    <xsl:template match="field[@in-xml='with-wrapper'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
+        <xs:element name="{@ref}"
+            minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
+            maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }">
+          <xsl:apply-templates select="key('definition-by-name',@ref)" mode="annotated"/>
+            <xs:complexType>
+              <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+        </xs:element>
     </xsl:template>
     
     <xsl:template match="flag">

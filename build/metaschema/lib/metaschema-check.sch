@@ -118,7 +118,9 @@
                 <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
                 
             </sqf:fix>-->
-            <sch:assert test="not(@as-type='markup-multiline') or not(preceding-sibling/*/@as-type='markup-multiline')">Only one field may be marked
+            <sch:assert test="$decl/@as-type='markup-multiline' or not(@in-xml='unwrapped')">Only 'markup-multiline' fields may be unwrapped in XML.</sch:assert>
+            <sch:report test="key('invocation-by-ref',@ref)/@in-xml != key('invocation-by-ref',@ref)/@in-xml">All fields '<sch:value-of select="@ref"/>" should have @in-xml set the same.</sch:report>
+            <sch:assert test="not(@in-xml='unwrapped') or not($decl/@as-type='markup-multiline') or not(preceding-sibling::*[@in-xml='unwrapped']/key('definition-by-name',@ref)/@as-type='markup-multiline')">Only one field may be marked
             as 'markup-multiline' (without xml wrapping) within a model.</sch:assert>
         </sch:rule>
 
