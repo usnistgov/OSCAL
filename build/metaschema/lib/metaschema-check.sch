@@ -66,7 +66,6 @@
         <sch:rule context="m:json-value-key">
             <sch:report test="exists(@flag-name) and matches(.,'\S')">JSON value key may be set to a value or a flag's value, but not both.</sch:report>
             <sch:assert test="empty(@flag-name) or @flag-name=../m:flag/(@name|@ref)">flag '<sch:value-of select="@flag-name"/>' not found for JSON value key</sch:assert>
-            <sch:assert test="empty(@flag-name) or @flag-name != ../m:flag/(@name|@ref)" role="warning">json-value-key flag is unnecessary here as without it, the field maps to a JSON scalar not an object</sch:assert>
         </sch:rule>
         
         <sch:rule context="m:valid-values/m:value">
