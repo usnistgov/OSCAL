@@ -295,6 +295,14 @@
       <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
       <xs:attribute name="max-occurs"
         type="m:natural-number-or-unbounded" default="1"/>
+      <xs:attribute name="in-xml" default="with-wrapper">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="with-wrapper"/>
+            <xs:enumeration value="unwrapped"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:simpleType name="natural-number-or-unbounded">

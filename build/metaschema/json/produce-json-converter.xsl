@@ -168,7 +168,16 @@
         
         <xsl:comment expand-text="yes">{ $field-match }</xsl:comment>
         <XSLT:template match="{$field-match}" priority="5" mode="json2xml">
-            <xsl:apply-templates select="." mode="field-text"/>
+            <xsl:choose>
+                <xsl:when test="key('references-by-name',@name)/@in-xml='unwrapped'">
+                    <xsl:apply-templates select="." mode="field-text"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <XSLT:element name="{@name}" namespace="{$target-namespace}">
+                        <xsl:apply-templates select="." mode="field-text"/>            
+                    </XSLT:element>
+                </xsl:otherwise>
+            </xsl:choose>
         </XSLT:template>
         <xsl:for-each select="json-key | json-value-key">
             <xsl:message expand-text="yes">{ local-name()} is ignored on field { ../@name } of type 'markup-multiline' </xsl:message>"
