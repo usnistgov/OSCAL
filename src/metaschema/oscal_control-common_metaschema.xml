@@ -94,7 +94,7 @@
       <formal-name>Guideline</formal-name>
       <description>A prose statement that provides a recommendation for the use of a parameter.</description>
       <model>
-         <field ref="prose"/>
+         <field ref="prose" in-xml="unwrapped"/>
          <any/>
       </model>
    </define-assembly>
@@ -141,7 +141,7 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <field ref="prose"/>
+         <field ref="prose" in-xml="unwrapped"/>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
@@ -182,7 +182,6 @@
    </define-flag>
 
    <define-field name="prose" as-type="markup-multiline">
-      <!-- TODO: remove this field -->
       <formal-name>Prose</formal-name>
       <description>Prose permits multiple paragraphs, lists, tables etc.</description>
    </define-field>

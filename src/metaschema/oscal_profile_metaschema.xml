@@ -15,7 +15,7 @@
       <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
    </remarks>
    <import href="oscal_metadata_metaschema.xml"/>
-   <import href="oscal_control_common_metaschema.xml"/>
+   <import href="oscal_control-common_metaschema.xml"/>
    <define-assembly name="profile">
       <formal-name>Profile</formal-name>
       <description>Each OSCAL profile is defined by a Profile element</description>
