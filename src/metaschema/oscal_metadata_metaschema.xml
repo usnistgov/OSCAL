@@ -425,14 +425,13 @@
       <description>URL for web site or Internet presence</description>
    </define-field>
    <define-assembly name="notes">
-      <!-- TODO: Get rid of note field -->
       <formal-name>Notes</formal-name>
       <description>Any notes with further information</description>
       <flag ref="type">
          <description>Indicates the type of note.</description>
       </flag>
       <model>
-         <field ref="note"/>
+         <field ref="note" in-xml="unwrapped"/>
       </model>
    </define-assembly>
    <define-field name="desc">
