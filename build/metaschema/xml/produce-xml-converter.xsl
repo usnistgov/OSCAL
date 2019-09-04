@@ -349,13 +349,21 @@
     
     <xsl:template priority="4"
         match="field[exists(key('definition-by-name',@ref)/json-key)] |
-               assembly[exists(key('definition-by-name',@ref)/json-key)]">
+        assembly[exists(key('definition-by-name',@ref)/json-key)]">
         <XSLT:for-each-group select="{@ref}" group-by="local-name()">
             <map key="{  group-as/@name }">
                 
                 <XSLT:apply-templates select="current-group()" mode="#current"/>
             </map>
         </XSLT:for-each-group>
+    </xsl:template>
+    
+    <xsl:template priority="5"
+        match="field[group-as/@in-xml='GROUPED'] |
+        assembly[group-as/@in-xml='GROUPED']">
+        <XSLT:for-each select="{group-as/@name}">
+            <xsl:next-match/>
+        </XSLT:for-each>
     </xsl:template>
     
     <xsl:template name="furniture">

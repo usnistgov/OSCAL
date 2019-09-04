@@ -167,7 +167,7 @@
       <description>Set parameters or amend controls in resolution</description>
       <model>
          <assembly ref="set" max-occurs="unbounded">
-            <group-as name="settings" json-behavior="BY_KEY"/>
+            <group-as name="settings" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="alter" max-occurs="unbounded">
             <group-as name="alterations"/>

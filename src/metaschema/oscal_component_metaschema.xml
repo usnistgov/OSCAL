@@ -30,10 +30,10 @@
         <group-as name="import-component-definitions"/>
       </field>
       <assembly ref="component" max-occurs="unbounded">
-        <group-as name="components" json-behavior="BY_KEY"/>
+        <group-as name="components" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="capability" max-occurs="unbounded">
-        <group-as name="capabilities" json-behavior="BY_KEY"/>
+        <group-as name="capabilities" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="back-matter"/>
     </model>
@@ -99,10 +99,10 @@
       </assembly>
 -->
       <assembly ref="configuration" max-occurs="unbounded">
-        <group-as name="configurations" json-behavior="BY_KEY" />
+        <group-as name="configurations" in-json="BY_KEY" />
       </assembly>
       <assembly ref="artifact" max-occurs="unbounded">
-        <group-as name="artifacts" json-behavior="BY_KEY" />
+        <group-as name="artifacts" in-json="BY_KEY" />
       </assembly>
       <field ref="remarks"/>
     </model>
@@ -140,10 +140,10 @@
         -->
       </field>
       <assembly ref="incorporates-capability" max-occurs="unbounded">
-        <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+        <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="incorporates-component" max-occurs="unbounded">
-        <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+        <group-as name="incorporates-components" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" />

@@ -101,7 +101,7 @@
             <group-as name="ssp-data-flow"/>
          </assembly>
          <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
-            <group-as name="system-roles" json-behavior="BY_KEY"/>
+            <group-as name="system-roles" in-json="BY_KEY"/>
          </assembly>
       </model>
    </define-assembly>
@@ -148,7 +148,7 @@
          </assembly>
          <assembly ref="designation" min-occurs="1" max-occurs="unbounded">
             <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
-            <group-as name="designations" json-behavior="SINGLETON_OR_ARRAY"/>
+            <group-as name="designations" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
@@ -489,7 +489,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -525,7 +525,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -538,7 +538,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -632,10 +632,10 @@
       <description>Provides information as to how the system is implemented.</description>
       <model>
          <assembly ref="component" max-occurs="unbounded">
-            <group-as name="components" json-behavior="BY_KEY"/>
+            <group-as name="components" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="capability" max-occurs="unbounded">
-            <group-as name="capabilities" json-behavior="BY_KEY"/>
+            <group-as name="capabilities" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="service" max-occurs="unbounded">
             <description>A collection of the ports, protocols, and services used within the
@@ -693,10 +693,10 @@
             <group-as name="control-implementations" />
          </assembly>
 -->         <assembly ref="configuration" max-occurs="unbounded">
-            <group-as name="configurations" json-behavior="BY_KEY" />
+            <group-as name="configurations" in-json="BY_KEY" />
          </assembly>
          <assembly ref="artifact" max-occurs="unbounded">
-            <group-as name="artifacts" json-behavior="BY_KEY" />
+            <group-as name="artifacts" in-json="BY_KEY" />
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -734,10 +734,10 @@
         -->
          </field>
          <assembly ref="incorporates-capability" max-occurs="unbounded">
-            <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+            <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="incorporates-component" max-occurs="unbounded">
-            <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+            <group-as name="incorporates-components" in-json="BY_KEY"/>
          </assembly>
 <!--         <assembly ref="control-implementation" max-occurs="unbounded">
             <group-as name="control-implementations" />
@@ -758,7 +758,7 @@
          </assembly>
          <field ref="purpose"/>
          <assembly ref="used-by-component" max-occurs="unbounded">
-            <group-as name="used-by-components" json-behavior="SINGLETON_OR_ARRAY"/>
+            <group-as name="used-by-components" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>

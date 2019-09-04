@@ -199,16 +199,22 @@
             </xs:complexType>
             <!-- producing xs:unique to govern attributes that will be promoted to keys -->
             <!-- this works over and above XSD type validation e.g. ID -->
-            <xsl:for-each select="model//*[group-as/@in-json='BY_KEY']/key('definition-by-name',@ref)/json-key">
-                <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
-                    <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
-                    <xs:field xpath="@{ @flag-name }"></xs:field>
-                </xs:unique>
+            <xsl:for-each select="model//*[group-as/@in-json='BY_KEY'][not(group-as/@in-xml='GROUPED')]">
+                <xsl:apply-templates select="key('definition-by-name',@ref)/json-key" mode="uniqueness-constraint">
+                        <xsl:with-param name="whose" select="$whose"/>
+                </xsl:apply-templates>
             </xsl:for-each>
         </xs:element>
     </xsl:template>
-
     
+    <xsl:template match="json-key" mode="uniqueness-constraint">
+        <xsl:param name="whose"/>
+        <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
+            <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
+            <xs:field xpath="@{ @flag-name }"/>
+        </xs:unique>
+    </xsl:template>
+
     <!-- Flags become attributes; this schema defines them all locally. -->
     <xsl:template match="define-flag"/>
 
@@ -253,6 +259,23 @@
         <xs:element ref="{$declaration-prefix}:{@ref}"
             minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
             maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
+    </xsl:template>
+    
+    <xsl:template priority="5" match="field[group-as/@in-xml='GROUPED'] | assembly[group-as/@in-xml='GROUPED']">
+        <xs:element name="{group-as/@name}"
+            minOccurs="{ if (@min-occurs != '0') then 1 else 0 }"
+            maxOccurs="1">
+            <xsl:variable name="decl" select="key('definition-by-name',@ref)"/>
+            <xsl:apply-templates select="$decl" mode="annotated"/>
+            <xs:complexType>
+                <xs:sequence>
+                  <xsl:next-match/>
+                </xs:sequence>
+            </xs:complexType>
+            <xsl:apply-templates select="$decl/json-key" mode="uniqueness-constraint">
+                <xsl:with-param name="whose" select="ancestor::define-assembly"/>
+            </xsl:apply-templates>
+        </xs:element>
     </xsl:template>
     
     <!-- TODO XXX switch default behavior ...   -->
