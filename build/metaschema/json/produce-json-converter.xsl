@@ -31,7 +31,8 @@
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     <xsl:template match="/">
-        <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
+        <!--<xsl:apply-templates select="METASCHEMA"/>-->
+         XXX <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
     </xsl:template>
     
     <xsl:template match="METASCHEMA">
@@ -134,6 +135,14 @@
     
     <xsl:template match="model//*">
         <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@ref/('''' || . || ''''),group-as/@name/('''' || . || '''')),', ')})]"/>    
+    </xsl:template>
+    
+    <xsl:template priority="2" match="model//*[group-as/@in-xml='GROUPED']">
+        <XSLT:for-each-group group-by="true()" select="*[@key=({string-join((@ref/('''' || . || ''''),group-as/@name/('''' || . || '''')),', ')})]">
+            <XSLT:element name="{group-as/@name}" namespace="{$target-namespace}">
+                <XSLT:apply-templates mode="#current" select="current-group()"/>    
+            </XSLT:element>
+        </XSLT:for-each-group>
     </xsl:template>
     
     <!--<xsl:template match="model/prose" priority="2">
@@ -362,13 +371,7 @@
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
         <xsl:comment> 000 NB - template matching 'array' overrides this one 000 </xsl:comment>
         <xsl:variable name="assembly-construction">
-            <XSLT:element name="{@name}" namespace="{$target-namespace}">
-                <xsl:for-each select="child::json-key">
-                    <XSLT:apply-templates select="@key" mode="as-attribute"/>
-                </xsl:for-each>
-                <XSLT:apply-templates mode="as-attribute"/>
-                <xsl:apply-templates/>
-            </XSLT:element>
+            <xsl:apply-templates select="." mode="assembly-construction"/>
         </xsl:variable>
         <XSLT:template match="{$full-match}" priority="4" mode="json2xml">
             <xsl:copy-of select="$assembly-construction"/>
@@ -376,12 +379,14 @@
 
         <xsl:if test="exists($group-names)">
             <xsl:variable name="group-name-seq" select="string-join($group-names ! ('''' || . || ''''),', ')"/>
+            
+            
+            <XSLT:template match="map[@key=({ $group-name-seq })]" priority="5" mode="json2xml">
+                <XSLT:apply-templates mode="json2xml"/>
+            </XSLT:template>
+            
+                       
             <xsl:for-each select="child::json-key">
-                <xsl:comment> Mapping object with key to element with attribute </xsl:comment>
-                <XSLT:template match="map[@key=({ $group-name-seq })]" priority="5" mode="json2xml">
-                   <XSLT:apply-templates mode="json2xml"/>
-                </XSLT:template>
-                
                 <XSLT:template priority="2" match="map[@key=({ $group-name-seq })]/*/@key" mode="as-attribute">
                     <XSLT:attribute name="{@flag-name}">
                         <XSLT:value-of select="."/>
@@ -395,6 +400,16 @@
            
         </xsl:if>
         <!--<xsl:call-template name="drop-address"/>-->
+    </xsl:template>
+
+    <xsl:template match="define-assembly" mode="assembly-construction">
+            <XSLT:element name="{@name}" namespace="{$target-namespace}">
+            <xsl:for-each select="child::json-key">
+                <XSLT:apply-templates select="@key" mode="as-attribute"/>
+            </xsl:for-each>
+            <XSLT:apply-templates mode="as-attribute"/>
+            <xsl:apply-templates/>
+        </XSLT:element>
     </xsl:template>
     
     <xsl:template name="furniture">
