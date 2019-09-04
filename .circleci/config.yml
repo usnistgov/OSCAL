@@ -379,7 +379,7 @@ jobs: # a collection of
           name: Restore generated site content
           command: |
             # restore docs from tar
-            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs"
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
       - run:
           name: Build and Validate Jekyll site
           command: |
@@ -403,7 +403,7 @@ jobs: # a collection of
           name: Restore generated site content
           command: |
             # restore docs from tar
-            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs"
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
       - run:
           name: Build jekyll site
           command: |
