@@ -382,15 +382,11 @@
         </XSLT:template>
 
         <xsl:if test="exists($group-names)">
-            <xsl:variable name="group-name-seq" select="string-join($group-names ! ('''' || . || ''''),', ')"/>
-            
-            
-            <XSLT:template match="map[@key=({ $group-name-seq })]" priority="5" mode="json2xml">
-                <XSLT:apply-templates mode="json2xml"/>
-            </XSLT:template>
-            
-                       
             <xsl:for-each select="child::json-key">
+                <xsl:variable name="group-name-seq" select="string-join($group-names ! ('''' || . || ''''),', ')"/>
+                <XSLT:template match="map[@key=({ $group-name-seq })]" priority="5" mode="json2xml">
+                    <XSLT:apply-templates mode="json2xml"/>
+                </XSLT:template>
                 <XSLT:template priority="2" match="map[@key=({ $group-name-seq })]/*/@key" mode="as-attribute">
                     <XSLT:attribute name="{@flag-name}">
                         <XSLT:value-of select="."/>
