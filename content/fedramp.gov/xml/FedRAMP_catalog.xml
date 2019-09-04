@@ -77,7 +77,7 @@
    <group class="family" id="sc">
       <title>System and Communications Protection</title>
       <control class="SP800-53" id="sc-15">
-         <title>System and Communications Protection Policy and Procedures</title>
+         <title>Collaborative Computing Devices</title>
          <control class="SP800-53-enhancement" id="sc-15.fr">
             <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
             <prop name="label">SC-15 Req</prop>

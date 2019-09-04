@@ -105,7 +105,7 @@ catalog:
       controls: 
         id:       sc-15
         class:    SP800-53
-        title:    System and Communications Protection Policy and Procedures
+        title:    Collaborative Computing Devices
         controls: 
           id:         sc-15.fr
           class:      SP800-53-enhancement
