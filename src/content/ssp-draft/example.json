@@ -1,0 +1,27 @@
+{
+    "$schema": "file:/home/davidwal/github/david-waltermire-nist/OSCAL/json/schema/oscal_ssp_schema.json",
+    "system-security-plan": {
+        "id": "example-ssp",
+        "metadata": {
+            "title": "An example system security plan",
+            "oscal-version": "1.0.0-milestone2"
+        },
+        "system-implementation": {
+            "components": {
+                "component-id-splunk-server": {
+                    "name": "Splunk Server",
+                    "description": "",
+                    "component-type": "software",
+                    "suppliers": {
+                       "party-id": "supplier1",
+                       "role-id": "vendor"
+                    }
+                }
+            }
+        },
+        "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_LOW-baseline_profile.json"},
+        "control-implementation": {
+            "by-capabilities": []
+        }
+    }
+}
