@@ -52,46 +52,9 @@
 
    <xsl:template mode="html-render" match="m:flag[(@name)= ../@json-key-flag]"/>
    
-   <!--not using 'echo' functionality -->
-   <!--<xsl:template priority="4" match="*[@json-behavior='BY_KEY'][@echo='yes']" mode="html-render">
-      <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
-      <div class="OM-entry{ ' open'[$first] }">
-         <p>
-            <xsl:text>{{ "{{" }}</xsl:text>
-            <xsl:value-of select="@name || '.' || @json-key-flag"/>
-            <xsl:text>}}</xsl:text>
-            <span class="OM-emph">
-               <xsl:text>, labeling </xsl:text>
-               <xsl:if test="@max-occurs='1'">
-                  <xsl:value-of select="m:indefinite-article(@name)"/>
-                  <xsl:text> </xsl:text>
-               </xsl:if>
-            </span>
-            <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
-               <xsl:value-of select="@name"/>
-            </a>
-            <xsl:call-template name="cardinality-note"/>
-            <xsl:if test="not(position() eq last())">, </xsl:if>
-         </p>
-      </div>
-   </xsl:template>
    
-   <xsl:template priority="3" match="*[@echo='yes']" mode="html-render">
-      <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
-      <div class="OM-entry{ ' open'[$first] }">
-         <p>
-            <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
-               <xsl:value-of select="(@group-name,@name)[1]"/>
-            </a>
-            <xsl:call-template name="cardinality-note"/>
-            <xsl:if test="not(position() eq last())">
-               <span class="OM-lit">, </span>
-            </xsl:if>
-         </p>
-      </div>
-   </xsl:template>-->
    
-   <xsl:template priority="2" match="*[@json-behavior='BY_KEY'][@json-type='SCALAR']" mode="html-render">
+   <xsl:template priority="2" match="*[@in-json='BY_KEY'][@json-type='SCALAR']" mode="html-render">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <p class="OM-entry{ ' open'[$first] }">
          <span class="OM-name">
@@ -117,7 +80,7 @@
       </p>
    </xsl:template>
    
-   <xsl:template priority="2" match="*[@json-behavior='BY_KEY']" mode="html-render">
+   <xsl:template priority="2" match="*[@in-json='BY_KEY']" mode="html-render">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <div class="OM-entry{ ' open'[$first] }">
          <p>
@@ -321,13 +284,7 @@
       <xsl:apply-templates select="." mode="datatype"/>
    </xsl:template>
    
-   <!--<xsl:template mode="value" match="m:assembly" priority="5">
-      <p class="OM-entry">
-         <span class="OM-lit"><xsl:value-of select="@json-type || (@json-behavior ! ' ' || .)"/></span>
-         <xsl:apply-templates select="." mode="occurrence-code"/>
-      </p>
-   </xsl:template>-->
-   
+      
    <xsl:template mode="value" match="m:assembly"/>
    
    <xsl:template match="*" mode="value">

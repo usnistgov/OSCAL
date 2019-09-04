@@ -44,7 +44,7 @@
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
             <sch:assert test="not(@as-type='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
-            <sch:assert test="not(key('invocation-by-ref',@name)/m:group-as/@json-behavior='BY_KEY') or exists(m:json-key)"><sch:value-of select="substring-after(local-name(),
+            <sch:assert test="not(key('invocation-by-ref',@name)/m:group-as/@in-json='BY_KEY') or exists(m:json-key)"><sch:value-of select="substring-after(local-name(),
             'define-')"/> is assigned a json key, but no 'json-key' is given</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE','PROSE')">Names "STRVALUE", "RICHTEXT" or "PROSE" (reserved names)</sch:report>
         </sch:rule>
@@ -96,8 +96,8 @@
         <sch:rule context="m:field | m:assembly">
             <sch:let name="decl" value="key('definition-by-name',@ref,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@ref"/>' <sch:value-of select="local-name()"/></sch:assert>
-            <sch:assert test="empty($decl) or (m:group-as/@json-behavior='BY_KEY') or empty($decl/m:json-key)">Target definition for { @ref} designates a json key, so
-            the invocation should have group-as/@json-behavior='BY_KEY'</sch:assert>
+            <sch:assert test="empty($decl) or (m:group-as/@in-json='BY_KEY') or empty($decl/m:json-key)">Target definition for { @ref} designates a json key, so
+            the invocation should have group-as/@in-json='BY_KEY'</sch:assert>
             <sch:report test="@ref = ../(* except current())/@ref">Everything named the same must appear together</sch:report>
             <sch:report test="@ref = group-as/@name">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>
             
@@ -118,9 +118,9 @@
                 <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
                 
             </sqf:fix>-->
-            <sch:assert test="$decl/@as-type='markup-multiline' or not(@in-xml='unwrapped')">Only 'markup-multiline' fields may be unwrapped in XML.</sch:assert>
+            <sch:assert test="$decl/@as-type='markup-multiline' or not(@in-xml='UNWRAPPED')">Only 'markup-multiline' fields may be unwrapped in XML.</sch:assert>
             <sch:report test="key('invocation-by-ref',@ref)/@in-xml != key('invocation-by-ref',@ref)/@in-xml">All fields '<sch:value-of select="@ref"/>" should have @in-xml set the same.</sch:report>
-            <sch:assert test="not(@in-xml='unwrapped') or not($decl/@as-type='markup-multiline') or not(preceding-sibling::*[@in-xml='unwrapped']/key('definition-by-name',@ref)/@as-type='markup-multiline')">Only one field may be marked
+            <sch:assert test="not(@in-xml='UNWRAPPED') or not($decl/@as-type='markup-multiline') or not(preceding-sibling::*[@in-xml='UNWRAPPED']/key('definition-by-name',@ref)/@as-type='markup-multiline')">Only one field may be marked
             as 'markup-multiline' (without xml wrapping) within a model.</sch:assert>
         </sch:rule>
 
@@ -128,11 +128,11 @@
             <sch:let name="decl" value="key('definition-by-name',../@ref,$composed-metaschema)"/>
             <sch:let name="name" value="@name"/>
             <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
-            <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@json-behavior)">Grouping name is given but max-occurs is 1.</sch:report>
-            <sch:report test="../@max-occurs/number() = 1 and (@json-behavior='ARRAY')">JSON behavior cannot be 'ARRAY' when max-occurs is 1.</sch:report>
-            <sch:assert test="not(@json-behavior='BY_KEY') or $decl/m:json-key/@flag-name=$decl/m:flag/(@name|@ref)">Cannot group by key since the definition of <sch:value-of select="name(..)"/>
-                '<sch:value-of select="../@ref"/>' has no json-key specified. Consider adding a json-key to the '<sch:value-of select="../@ref"/>' definition, or using a different json-behavior.</sch:assert>
-            <!--<sch:assert test="not(@json-behavior='BY_KEY')">BOO</sch:assert>-->
+            <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@in-json)">Grouping name is given but max-occurs is 1.</sch:report>
+            <sch:report test="../@max-occurs/number() = 1 and (@in-json='ARRAY')">JSON behavior cannot be 'ARRAY' when max-occurs is 1.</sch:report>
+            <sch:assert test="not(@in-json='BY_KEY') or $decl/m:json-key/@flag-name=$decl/m:flag/(@name|@ref)">Cannot group by key since the definition of <sch:value-of select="name(..)"/>
+                '<sch:value-of select="../@ref"/>' has no json-key specified. Consider adding a json-key to the '<sch:value-of select="../@ref"/>' definition, or using a different 'in-json' setting.</sch:assert>
+            <!--<sch:assert test="not(@in-json='BY_KEY')">BOO</sch:assert>-->
         </sch:rule>
 
         <sch:rule context="m:example/m:description | m:example/m:remarks"/>

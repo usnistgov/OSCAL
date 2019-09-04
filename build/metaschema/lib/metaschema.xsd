@@ -109,10 +109,11 @@
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="name" type="xs:NCName" use="required"/>
-      <xs:attribute name="json-behavior" type="m:json-group-behavior" use="optional" default="SINGLETON_OR_ARRAY"/>
-      <xs:attribute name="xml-behavior" type="m:xml-group-behavior" use="optional" default="UNGROUPED"/>
+      <xs:attribute name="in-json" type="m:json-group-behavior" use="optional" default="SINGLETON_OR_ARRAY"/>
+      <xs:attribute name="in-xml" type="m:xml-group-behavior" use="optional" default="UNGROUPED"/>
     </xs:complexType>
   </xs:element>
+  
   <xs:simpleType name="json-group-behavior">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ARRAY">
@@ -295,11 +296,11 @@
       <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
       <xs:attribute name="max-occurs"
         type="m:natural-number-or-unbounded" default="1"/>
-      <xs:attribute name="in-xml" default="with-wrapper">
+      <xs:attribute name="in-xml" default="WITH-WRAPPER">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="with-wrapper"/>
-            <xs:enumeration value="unwrapped"/>
+            <xs:enumeration value="WITH-WRAPPER"/>
+            <xs:enumeration value="UNWRAPPED"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>

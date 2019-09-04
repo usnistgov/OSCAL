@@ -199,7 +199,7 @@
             </xs:complexType>
             <!-- producing xs:unique to govern attributes that will be promoted to keys -->
             <!-- this works over and above XSD type validation e.g. ID -->
-            <xsl:for-each select="model//*[group-as/@json-behavior='BY_KEY']/key('definition-by-name',@ref)/json-key">
+            <xsl:for-each select="model//*[group-as/@in-json='BY_KEY']/key('definition-by-name',@ref)/json-key">
                 <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
                     <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
                     <xs:field xpath="@{ @flag-name }"></xs:field>
@@ -257,12 +257,12 @@
     
     <!-- TODO XXX switch default behavior ...   -->
     <!-- No wrapper, just prose elements -->
-    <xsl:template match="field[not(@in-xml='with-wrapper')][key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template match="field[@in-xml='UNWRAPPED'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
     <!-- With wrapper -->
-    <xsl:template match="field[@in-xml='with-wrapper'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template match="field[not(@in-xml='UNWRAPPED')][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <xs:element name="{@ref}"
             minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
             maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }">
