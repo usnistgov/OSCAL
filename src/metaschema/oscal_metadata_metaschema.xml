@@ -21,6 +21,8 @@
       <model>
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
+         <field ref="description"/>
+         <field ref="remarks"/>
       </model>
       <remarks>
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -575,4 +577,15 @@
       <formal-name>Note</formal-name>
       <description>Permits multiple paragraphs, lists, tables etc.</description>
    </define-field>
+   
+   <define-field name="description" as-type="markup-multiline">
+      <formal-name>Description</formal-name>
+      <description>A description supporting the parent item.</description>
+   </define-field>
+   
+   <define-field name="remarks" as-type="markup-multiline">
+      <formal-name>Remarks</formal-name>
+      <description>Additional commentary on the parent item.</description>
+   </define-field>
+   
 </METASCHEMA>

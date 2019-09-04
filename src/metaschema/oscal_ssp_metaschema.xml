@@ -684,7 +684,12 @@
                </valid-values>
             </flag>
          </field>
-         <assembly ref="supplier" min-occurs="1"/>
+         <assembly ref="supplier" min-occurs="1" max-occurs="unbounded">
+            <group-as name="suppliers"/>
+            <remarks>
+               <p>Multiple suppliers can be used to show the original provider, plus any intermediaries (e.g., resellers).</p>
+            </remarks>
+         </assembly>
 <!--         <assembly ref="proof-of-compliance" max-occurs="unbounded">
             <group-as name="proofs-of-compliance" />
          </assembly>
