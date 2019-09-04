@@ -216,7 +216,7 @@ function switch_view(who,flag) {
                 </xsl:apply-templates>
             </xsl:attribute>
             <xsl:for-each select="$json-behavior">
-                <xsl:attribute name="json-behavior" select="."/>
+                <xsl:attribute name="in-json" select="."/>
             </xsl:for-each>
             
             <xsl:apply-templates select="json-key, json-value-key" mode="build"/>
@@ -265,7 +265,7 @@ function switch_view(who,flag) {
             <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
             <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"/>
             <xsl:with-param name="group-name" select="group-as/@name"/>
-            <xsl:with-param name="json-behavior" select="group-as/@json-behavior"/>
+            <xsl:with-param name="json-behavior" select="group-as/@in-json"/>
         </xsl:apply-templates>
     </xsl:template>
     

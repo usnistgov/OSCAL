@@ -18,7 +18,7 @@
     <description>parent assembly</description>
     <model>
       <field ref="prop" min-occurs="1" max-occurs="unbounded">
-        <group-as name="props" json-behavior="SINGLETON_OR_ARRAY"/>
+        <group-as name="props" in-json="SINGLETON_OR_ARRAY"/>
       </field>
     </model>
   </define-assembly>

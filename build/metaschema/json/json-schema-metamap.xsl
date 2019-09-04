@@ -326,8 +326,8 @@
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
     <xsl:template mode="declaration" priority="5"
-        match="assembly[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)] |
-        field[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)]">
+        match="assembly[group-as/@in-json='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)] |
+        field[group-as/@in-json='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)]">
         <xsl:variable name="group-name" select="group-as/@name"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
@@ -361,7 +361,7 @@
     <!-- Otherwise, always an array when min-occurs is greater than 1 or whenever so designated -->
     <xsl:template mode="declaration" priority="3" expand-text="yes"
         match="assembly[number(@min-occurs) &gt; 1 ]     | field[number(@min-occurs) &gt; 1 ] |
-               assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']">
+               assembly[group-as/@in-json='ARRAY'] | field[group-as/@in-json='ARRAY']">
         <map key="{ group-as/@name }">
             <string key="type">array</string>
             <!-- despite @min-occurs = 0, we have a minimum of 1 since the array itself is optional -->
@@ -377,7 +377,7 @@
     </xsl:template>
     
     <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1,
-         and group-as/@json-behavior is not 'BY-KEY' or 'ARRAY' ... -->
+         and group-as/@in-json is not 'BY-KEY' or 'ARRAY' ... -->
     <xsl:template mode="declaration" match="assembly | field">
         <map key="{ group-as/@name }">
             <array key="anyOf">

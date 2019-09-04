@@ -169,7 +169,7 @@
         <xsl:comment expand-text="yes">{ $field-match }</xsl:comment>
         <XSLT:template match="{$field-match}" priority="5" mode="json2xml">
             <xsl:choose>
-                <xsl:when test="key('references-by-name',@name)/@in-xml='unwrapped'">
+                <xsl:when test="key('references-by-name',@name)/@in-xml='UNWRAPPED'">
                     <xsl:apply-templates select="." mode="field-text"/>
                 </xsl:when>
                 <xsl:otherwise>

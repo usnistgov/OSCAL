@@ -312,7 +312,7 @@
         <XSLT:apply-templates select="{@ref}" mode="#current"/>
     </xsl:template>
     
-    <xsl:template priority="2" match="field[@in-xml='unwrapped'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template priority="2" match="field[@in-xml='UNWRAPPED'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <XSLT:call-template name="prose">
             <XSLT:with-param name="key">
                 <xsl:value-of select="@ref"/>
@@ -334,9 +334,9 @@
         assembly[number(@max-occurs) &gt; 1 or @max-occurs='unbounded']">
             <XSLT:if test="exists({@ref})">
                 <array key="{ group-as/@name }">
-                    <!-- copying @m:json-behavior to condition handling
+                    <!-- copying @m:in-json to condition handling
                          in the next 'rectify' mode -->
-                    <xsl:copy-of select="group-as/@json-behavior"/>
+                    <xsl:copy-of select="group-as/@in-json"/>
                     <xsl:next-match/>
                     <!--<XSLT:apply-templates select="{@ref}" mode="#current"/>-->
                 </array>
@@ -411,8 +411,8 @@
 
         <XSLT:template mode="rectify" match="@m:*"/>
 
-        <!--        don't squash arrays marked as @m:json-behavior="ARRAY" -->
-        <XSLT:template mode="rectify" match="array[count(*) eq 1][not(@m:json-behavior = 'ARRAY')]"
+        <!--        don't squash arrays marked as @m:in-json="ARRAY" -->
+        <XSLT:template mode="rectify" match="array[count(*) eq 1][not(@m:in-json = 'ARRAY')]"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
             <XSLT:for-each select="*">
                 <XSLT:copy>

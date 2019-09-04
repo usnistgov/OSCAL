@@ -448,7 +448,7 @@
       </li>
    </xsl:template>
 
-   <xsl:template match="assembly[group-as/@json-behavior='BY_KEY'] | field[group-as/@json-behavior='BY_KEY']" priority="2">
+   <xsl:template match="assembly[group-as/@in-json='BY_KEY'] | field[group-as/@in-json='BY_KEY']" priority="2">
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
          <p>
@@ -469,7 +469,7 @@
       </li>
    </xsl:template>
 
-   <xsl:template match="assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']" priority="2">
+   <xsl:template match="assembly[group-as/@in-json='ARRAY'] | field[group-as/@in-json='ARRAY']" priority="2">
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
          <p>
@@ -621,13 +621,13 @@
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
 
-   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='ARRAY']" expand-text="true">array of { if ( m:has-properties(.)) then 'objects' else 'strings' }.</xsl:template>
-   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='SINGLETON_OR_ARRAY']">{ if ( m:has-properties(.)) then 'object' else 'string' } (when a singleton) or array { if ( m:has-properties(.)) then 'objects' else 'strings' } (when multiple)</xsl:template>
-   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@json-behavior='BY_KEY']">object (with label)</xsl:template>
+   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='ARRAY']" expand-text="true">array of { if ( m:has-properties(.)) then 'objects' else 'strings' }.</xsl:template>
+   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='SINGLETON_OR_ARRAY']">{ if ( m:has-properties(.)) then 'object' else 'string' } (when a singleton) or array { if ( m:has-properties(.)) then 'objects' else 'strings' } (when multiple)</xsl:template>
+   <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='BY_KEY']">object (with label)</xsl:template>
 
-   <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='ARRAY']">array</xsl:template>
-   <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='SINGLETON_OR_ARRAY']">object (when a singleton) or array (when multiple)</xsl:template>
-   <xsl:template mode="metaschema-type" match="assembly[group-as/@json-behavior='BY_KEY']">object (with label)</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly[group-as/@in-json='ARRAY']">array</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly[group-as/@in-json='SINGLETON_OR_ARRAY']">object (when a singleton) or array (when multiple)</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly[group-as/@in-json='BY_KEY']">object (with label)</xsl:template>
    <xsl:template mode="metaschema-type" match="assembly">object (with object properties)</xsl:template>
    <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
    <xsl:template mode="metaschema-type" match="description | remarks"/>
