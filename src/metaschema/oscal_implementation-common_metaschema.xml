@@ -31,16 +31,16 @@
             <assembly ref="implemented-requirement"/>
             <assembly ref="using"/>
             <assembly ref="configuration">
-                <group-as name="configurations" json-behavior="BY_KEY"/>
+                <group-as name="configurations" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="artifact">
-                <group-as name="artifacts" json-behavior="BY_KEY"/>
+                <group-as name="artifacts" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="incorporates-component">
-                <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+                <group-as name="incorporates-components" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="incorporates-capability">
-                <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+                <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
             </assembly>
         </model>
         <remarks>
@@ -193,7 +193,7 @@
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="with-argument" max-occurs="unbounded">
-                <group-as name="with-arguments" json-behavior="BY_KEY"/>
+                <group-as name="with-arguments" in-json="BY_KEY"/>
             </assembly>
             <field ref="remarks"/>
         </model>
@@ -245,7 +245,7 @@
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="argument" max-occurs="unbounded">
-                <group-as name="arguments" json-behavior="BY_KEY"/>
+                <group-as name="arguments" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="mechanism" max-occurs="unbounded">
                 <group-as name="mechanisms"/>
