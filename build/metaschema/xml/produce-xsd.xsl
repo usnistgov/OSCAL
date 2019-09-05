@@ -121,6 +121,8 @@
         <xs:simpleType name="ID"/>
         <xs:simpleType name="IDREF"/>
         <xs:simpleType name="IDREFS"/>
+        <xs:simpleType name="date"/>
+        <xs:simpleType name="dateTime"/>
     </xsl:variable>
     
     <xsl:template match="namespace"/>
