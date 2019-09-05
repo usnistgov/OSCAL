@@ -71,7 +71,7 @@ OSCAL represents integers
 [as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
 
 In JSON Schema, the
-[`integer` type](https://www.w3.org/TR/xmlschema11-2/#integer) is used.
+[`integer` type](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1.1) is used.
 
 ### nonNegativeInteger
 
