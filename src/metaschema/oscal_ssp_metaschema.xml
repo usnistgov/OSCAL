@@ -39,7 +39,7 @@
 			 -->
          <assembly ref="metadata"/>
          <assembly ref="import-profile" min-occurs="1"/>
-         <assembly ref="system-characteristics">
+         <assembly ref="system-characteristics" min-occurs="1">
             <group-as name="ssp-system-characteristics"/>
          </assembly>
          <assembly ref="system-implementation">
@@ -81,7 +81,7 @@
          <assembly ref="security-impact-level" min-occurs="1">
             <!-- TODO: Is this needed, or can it be computed based on the high water mark of the information types? -->
          </assembly>
-         <assembly ref="security-eauth" min-occurs="1">
+         <assembly ref="security-eauth">
             <group-as name="security-eauths"/>
          </assembly>
          <assembly ref="status" min-occurs="1"/>
@@ -144,9 +144,9 @@
       <model>
          <!-- TODO: Why is designation not a child of information type? -->
          <assembly ref="information-type" min-occurs="1" max-occurs="unbounded">
-            <group-as name="ssp-information-type"/>
+            <group-as name="information-types"/>
          </assembly>
-         <assembly ref="designation" min-occurs="1" max-occurs="unbounded">
+         <assembly ref="designation" max-occurs="unbounded">
             <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
             <group-as name="designations" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
@@ -286,15 +286,9 @@
       <flag ref="nist-id"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <assembly ref="confidentiality-impact" min-occurs="1">
-            <group-as name="ssp-confidentiality-impact"/>
-         </assembly>
-         <assembly ref="integrity-impact" min-occurs="1">
-            <group-as name="ssp-integrity-impact"/>
-         </assembly>
-         <assembly ref="availability-impact" min-occurs="1">
-            <group-as name="ssp-availability-impact"/>
-         </assembly>
+         <assembly ref="confidentiality-impact" min-occurs="1"/>
+         <assembly ref="integrity-impact" min-occurs="1"/>
+         <assembly ref="availability-impact" min-occurs="1"/>
       </model>
    </define-assembly>
    <define-assembly name="confidentiality-impact">
@@ -327,16 +321,25 @@
       </model>
       <example/>
    </define-assembly>
-   <define-field name="base" as-type="empty">
+   <define-field name="base" as-type="string">
       <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The prescribed base (Confidentiality, Integrity, or Availability) security
 			impact level.</description>
-      <flag ref="impact-level"/>
+      <valid-values>
+         <value name="low"></value>
+         <value name="moderate"></value>
+         <value name="high"></value>
+      </valid-values>
    </define-field>
-   <define-field name="selected" as-type="empty">
+   <define-field name="selected" as-type="string">
       <formal-name>Selected Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The selected (Confidentiality, Integrity, or Availability) security impact
 			level.</description>
+      <valid-values>
+         <value name="low"></value>
+         <value name="moderate"></value>
+         <value name="high"></value>
+      </valid-values>
    </define-field>
    <define-field name="adjustment-justification" as-type="markup-multiline">
       <formal-name>Adjustment Justification</formal-name>
@@ -353,20 +356,32 @@
       </model>
       <example/>
    </define-assembly>
-   <define-field name="security-objective-confidentiality" as-type="empty">
+   <define-field name="security-objective-confidentiality" as-type="string">
       <formal-name>Security Objective (Confidentiality)</formal-name>
       <description>TBD</description>
-      <flag ref="impact-level"/>
+      <valid-values>
+         <value name="low"></value>
+         <value name="moderate"></value>
+         <value name="high"></value>
+      </valid-values>
    </define-field>
-   <define-field name="security-objective-integrity" as-type="empty">
+   <define-field name="security-objective-integrity" as-type="string">
       <formal-name>Security Objective (Integrity)</formal-name>
       <description>TBD</description>
-      <flag ref="impact-level"/>
+      <valid-values>
+         <value name="low"></value>
+         <value name="moderate"></value>
+         <value name="high"></value>
+      </valid-values>
    </define-field>
-   <define-field name="security-objective-availability" as-type="empty">
+   <define-field name="security-objective-availability" as-type="string">
       <formal-name>Security Objective (Availability)</formal-name>
       <description>TBD</description>
-      <flag ref="impact-level"/>
+      <valid-values>
+         <value name="low"></value>
+         <value name="moderate"></value>
+         <value name="high"></value>
+      </valid-values>
    </define-field>
    <define-assembly name="security-eauth">
       <formal-name>Security Electronic Authentication Level</formal-name>
@@ -553,7 +568,9 @@
          <formal-name>System Role ID</formal-name>
          <description>TBD</description>
       </flag>
-      <flag ref="role-id" required="yes"/>
+      <flag ref="role-id">
+         <description>Maps this role to one of OSCAL's predefined roles.</description>
+      </flag>
       <flag ref="name" required="yes"/>
       <!-- TODO: provide valid values for these? -->
       <flag ref="external" required="yes"/>
@@ -697,13 +714,14 @@
             <!-\- TODO; figure out if this should be here or later -\->
             <group-as name="control-implementations" />
          </assembly>
--->         <assembly ref="configuration" max-occurs="unbounded">
+-->
+<!--         <assembly ref="configuration" max-occurs="unbounded">
             <group-as name="configurations" in-json="BY_KEY" />
          </assembly>
          <assembly ref="artifact" max-occurs="unbounded">
             <group-as name="artifacts" in-json="BY_KEY" />
          </assembly>
-         <field ref="remarks"/>
+-->         <field ref="remarks"/>
       </model>
       <remarks>
          <p>Components may be products, services, APIs, policies, processes, plans, guidance,

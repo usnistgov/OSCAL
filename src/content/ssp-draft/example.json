@@ -3,8 +3,46 @@
     "system-security-plan": {
         "id": "example-ssp",
         "metadata": {
-            "title": "An example system security plan",
+            "title": "Enterprise Logging and Auditing System Security Plan",
+            "version": "1.0",
             "oscal-version": "1.0.0-milestone2"
+        },
+        "system-characteristics": {
+            "description": "",
+            "system-id": "example-logging-audit-system",
+            "system-name": "Enterprise Logging and Auditing System",
+            "security-sensitivity-level": "",
+            "system-information": {
+                "information-types": {
+                    "nist-id": "C,3,5,8",
+                    "description": "This systemn maintains historical logging and auditing information for all client devices connected to this system.",
+                    "confidentiality-impact": {
+                        "base": "moderate" },
+                    "integrity-impact": { "base": "moderate" },
+                    "availability-impact": { "base": "low" }
+                }
+            },
+            "security-impact-level": {
+                "security-objective-confidentiality":  "moderate",
+                "security-objective-integrity": "moderate",
+                "security-objective-availability":"low"
+            },
+            "status": {
+                "state": "other",
+                "remarks": "This is an example, and is not intended to be implemented as a system"
+            },
+            "deployment-model": { "type": "private" },
+            "service-models": {
+                "type": "TBD"
+            },
+            "authorization-boundary": {
+                "description": ""
+            },
+            "system-roles": {
+                "system-administrator" {
+                    "name": "System Administrator""
+                }
+            }
         },
         "system-implementation": {
             "components": {
@@ -19,9 +57,11 @@
                 }
             }
         },
-        "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_LOW-baseline_profile.json"},
+        "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_MODERATE-baseline_profile.json"},
         "control-implementation": {
-            "by-capabilities": []
+            "description": {
+                "by-capabilities": []
+            }
         }
     }
 }
