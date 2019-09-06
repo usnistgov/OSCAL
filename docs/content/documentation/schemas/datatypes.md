@@ -19,8 +19,10 @@ The OSCAL models are based on structures that use a specific set of data types. 
   * [nonNegativeInteger](#nonnegativeinteger)
   * [positiveInteger](#positiveinteger)
 - [Formatted String Data types](#formatted-string-data-types)
-  * [dateTime-with-timezone](#datetime-with-timezone)
+  * [dateTime-with-timezone](#dateTime-with-timezone)
   * [date-with-timezone](#date-with-timezone)
+  * [dateTime](#dateTime)
+  * [date](#date)
   * [email](#email)
   * [hostname](#hostname)
   * [ip-v4-address](#ip-v4-address)
@@ -44,7 +46,7 @@ This data type indicates that the model information element contains no value co
 
 In XML, this may represent an element without text content.
 
-In JSON, this may represent an object with labels corrisponding to other child information elements, but no label corresponding to a text value.
+In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.
 
 ### boolean
 
@@ -57,7 +59,7 @@ A boolean value mapped in XML, JSON, and YAML as follows:
 
 ### string
 
-A unicode string of characters.
+A string of Unicode characters.
 
 ### NCName
 
@@ -71,7 +73,7 @@ OSCAL represents integers
 [as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
 
 In JSON Schema, the
-[`integer` type](https://www.w3.org/TR/xmlschema11-2/#integer) is used.
+[`integer` type](https://www.w3.org/TR/xmlschema11-2/#integer) is used. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
 
 ### nonNegativeInteger
 
@@ -108,7 +110,7 @@ In JSON Schema, this is represented as:
 
 ### dateTime-with-timezone
 
-A string containing a date and time formatted acording to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
+A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
 
 For example:
 
@@ -173,6 +175,20 @@ In JSON Schema, this is represented as:
   "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"
 }
 ```
+
+### dateTime
+
+In XML, the [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) datatype is used. This is the same as 
+[dateTime-with-timezone](#dateTime-with-timezone), except the time zone portion is optional.
+
+In JSON, lexical conformance to date-times with optional time zones is provided by a regular expression, the same as given above for [dateTime-with-timezone](#dateTime-with-timezone), except as adjusted for the requirement.
+
+### date
+
+In XML, the [date](https://www.w3.org/TR/xmlschema11-2/#date) datatype is used. This is the same as 
+[date-with-timezone](#date-with-timezone), except the time zone portion is optional.
+
+In JSON, lexical conformance to dates with optional time zones is provided by a regular expression, the same as given above for [date-with-timezone](#date-with-timezone), except as adjusted for the requirement.
 
 ### email
 
@@ -364,7 +380,7 @@ Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; t
 
 The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
 
-Parameter injection is handled in HTML as follows using the &lt;insert&gt; tag:
+Parameter injection is handled in OSCAL as follows using the &lt;insert&gt; tag:
 
 ```html
 Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/> or as required, to address organizational changes.
@@ -373,7 +389,7 @@ Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/>
 The same string in Markdown is represented as follows:
 
 ```markdown
-Reviews and updates the risk management strategy {{ pm-9_prm_1 }} or as required, to address organizational changes.
+Reviews and updates the risk management strategy {% raw %}{{ pm-9_prm_1 }}{% endraw %} or as required, to address organizational changes.
 ```
 
 #### Specialized Character Mapping
@@ -411,7 +427,9 @@ Tables are also supported by `markup-multiline` which are mapped from Markdown t
 - The first row in a Markdown table is considered a header row, with each cell mapped as a &lt;th&gt;.
 - The alignment formatting (second) row of the Markdown table is not converted to HTML. Formatting is currently ignored.
 - Each remaining row is mapped as a cell using the &lt;td&gt; tag.
-- colspan and rowspan is not supported by Markdown.
+- HTML `colspan` and `rowspan` are not supported by Markdown, and so are excluded from OSCAL.
+
+Producers of OSCAL data sets should note that when they have tabular information, these are frequently semantic structures or matrices that should be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs.
 
 Tables are mapped from HTML to Markdown as follows:
 
