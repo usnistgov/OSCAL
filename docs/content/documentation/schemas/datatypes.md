@@ -429,13 +429,13 @@ Tables are also supported by `markup-multiline` which are mapped from Markdown t
 - Each remaining row is mapped as a cell using the &lt;td&gt; tag.
 - HTML `colspan` and `rowspan` are not supported by Markdown, and so are excluded from OSCAL.
 
-Producers of OSCAL data sets should note that when they have tabular information, these are frequently semantic structures or matrices that should be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs.
+OSCAL attempts to support simple tables mainly due to the prevalence of tables in legacy data sets. However, producers of OSCAL data should note that when they have tabular information, these are frequently semantic structures or matrices that can be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs. This ensures that their nominal or represented semantics are accessible for processing when this information would be lost in plain table cells. Table markup should be used only as a fallback option when stronger semantic labeling is not possible.
 
 Tables are mapped from HTML to Markdown as follows:
 
-- Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by `|`.
-- The second, alignment formatting row, is produced with centered alignment (i.e., | --- |) used for each cell. Other alignments are not currently supported.
-- Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by `|`.
+* Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by `|`.
+* The second row is given as a sequence of `---`, as many as the table has columns, delimited by single `|`. In Markdown, a simple syntax here can be used to indicate the alignment of cells; OSCAL HTML does not support this feature.
+* Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by `|`.
 
 For example:
 
