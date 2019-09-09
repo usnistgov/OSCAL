@@ -17,12 +17,12 @@
    <define-assembly name="VALIDATION_root">
       <formal-name>(nominal root)</formal-name>
       <description>NOT TO BE USED IN A METASCHEMA</description>
-      <flag ref="party-id"/>
       <model>
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
          <field ref="description"/>
          <field ref="remarks"/>
+         <field ref="party-id"/>
       </model>
       <remarks>
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -230,8 +230,8 @@
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
       <flag ref="id"/>
-      <flag ref="role-id"/>
       <model>
+         <field ref="role-id"/>
          <assembly ref="person" max-occurs="unbounded">
             <group-as name="persons"/>
          </assembly>
@@ -246,10 +246,10 @@
       organization as such serves as a documented party.</p>
       </remarks>
    </define-assembly>
-   <define-flag name="party-id" as-type="IDREF">
+   <define-field name="party-id" as-type="NCName">
       <formal-name>Party Reference</formal-name>
       <description>References a <code>party</code> defined in <code>metadata</code>.</description>
-   </define-flag>
+   </define-field>
    <define-assembly name="person">
       <formal-name>Person</formal-name>
       <description>A person, with contact information</description>
@@ -516,7 +516,7 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-   <define-flag name="role-id" as-type="IDREFS">
+   <define-field name="role-id" as-type="NCName">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <allowed-values allow-other="yes">
@@ -524,7 +524,7 @@
          <enum value="content-maintainer">Identifies a party responsible for maintaining the content on an ongoing basis.</enum>
          <!-- TODO: Need to add others -->
       </allowed-values>
-   </define-flag>
+   </define-field>
    <define-field name="title" as-type="markup-line">
       <formal-name>Title</formal-name>
       <description>A title for display and navigation</description>

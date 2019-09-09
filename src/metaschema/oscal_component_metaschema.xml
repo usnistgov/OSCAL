@@ -98,13 +98,13 @@
         <group-as name="supported-profiles" />
       </assembly>
 -->
-      <assembly ref="configuration" max-occurs="unbounded">
+<!--      <assembly ref="configuration" max-occurs="unbounded">
         <group-as name="configurations" in-json="BY_KEY" />
       </assembly>
       <assembly ref="artifact" max-occurs="unbounded">
         <group-as name="artifacts" in-json="BY_KEY" />
       </assembly>
-      <field ref="remarks"/>
+-->      <field ref="remarks"/>
     </model>
     <remarks>
       <p>Components may be products, services, APIs, policies, processes, plans, guidance,

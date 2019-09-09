@@ -39,15 +39,9 @@
 			 -->
          <assembly ref="metadata"/>
          <assembly ref="import-profile" min-occurs="1"/>
-         <assembly ref="system-characteristics" min-occurs="1">
-            <group-as name="ssp-system-characteristics"/>
-         </assembly>
-         <assembly ref="system-implementation">
-            <group-as name="ssp-system-implementation"/>
-         </assembly>
-         <assembly ref="control-implementation">
-            <group-as name="ssp-control-implementation"/>
-         </assembly>
+         <assembly ref="system-characteristics" min-occurs="1"/>
+         <assembly ref="system-implementation"/>
+         <assembly ref="control-implementation"/>
          <assembly ref="back-matter"/>
       </model>
       <example/>
@@ -75,15 +69,11 @@
             <description>A free-text description of the system.</description>
          </field>
          <field ref="security-sensitivity-level" min-occurs="1"/>
-         <assembly ref="system-information" min-occurs="1">
-            <group-as name="ssp-system-information"/>
-         </assembly>
+         <assembly ref="system-information" min-occurs="1"/>
          <assembly ref="security-impact-level" min-occurs="1">
             <!-- TODO: Is this needed, or can it be computed based on the high water mark of the information types? -->
          </assembly>
-         <assembly ref="security-eauth">
-            <group-as name="security-eauths"/>
-         </assembly>
+         <assembly ref="security-eauth"/>
          <assembly ref="status" min-occurs="1"/>
          <assembly ref="deployment-model"/>
          <assembly ref="service-model" max-occurs="unbounded">
@@ -99,9 +89,6 @@
          </assembly>
          <assembly ref="data-flow">
             <group-as name="ssp-data-flow"/>
-         </assembly>
-         <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
-            <group-as name="system-roles" in-json="BY_KEY"/>
          </assembly>
       </model>
    </define-assembly>
@@ -126,16 +113,6 @@
       <description>TBD</description>
    </define-field>
 
-   <define-flag name="impact-level" as-type="string">
-      <formal-name>Impact level</formal-name>
-      <description>TBD</description>
-      <valid-values allow-other="yes">
-         <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-         <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-         <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
-   </define-flag>
-
    <define-assembly name="system-information">
       <formal-name>System Information</formal-name>
       <description>Contains details about all types of information stored, processed, or
@@ -148,7 +125,7 @@
          </assembly>
          <assembly ref="designation" max-occurs="unbounded">
             <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
-            <group-as name="designations" in-json="SINGLETON_OR_ARRAY"/>
+            <group-as name="designations" json-behavior="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
@@ -326,9 +303,9 @@
       <description>The prescribed base (Confidentiality, Integrity, or Availability) security
 			impact level.</description>
       <valid-values>
-         <value name="low"></value>
-         <value name="moderate"></value>
-         <value name="high"></value>
+        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
       </valid-values>
    </define-field>
    <define-field name="selected" as-type="string">
@@ -336,9 +313,9 @@
       <description>The selected (Confidentiality, Integrity, or Availability) security impact
 			level.</description>
       <valid-values>
-         <value name="low"></value>
-         <value name="moderate"></value>
-         <value name="high"></value>
+        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
       </valid-values>
    </define-field>
    <define-field name="adjustment-justification" as-type="markup-multiline">
@@ -360,27 +337,27 @@
       <formal-name>Security Objective (Confidentiality)</formal-name>
       <description>TBD</description>
       <valid-values>
-         <value name="low"></value>
-         <value name="moderate"></value>
-         <value name="high"></value>
+        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
       </valid-values>
    </define-field>
    <define-field name="security-objective-integrity" as-type="string">
       <formal-name>Security Objective (Integrity)</formal-name>
       <description>TBD</description>
       <valid-values>
-         <value name="low"></value>
-         <value name="moderate"></value>
-         <value name="high"></value>
+        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
       </valid-values>
    </define-field>
    <define-field name="security-objective-availability" as-type="string">
       <formal-name>Security Objective (Availability)</formal-name>
       <description>TBD</description>
       <valid-values>
-         <value name="low"></value>
-         <value name="moderate"></value>
-         <value name="high"></value>
+        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
+        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
       </valid-values>
    </define-field>
    <define-assembly name="security-eauth">
@@ -504,7 +481,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" in-json="BY_KEY"/>
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -540,7 +517,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" in-json="BY_KEY"/>
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -553,12 +530,41 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" in-json="BY_KEY"/>
+            <group-as name="diagrams" json-behavior="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
       <example/>
    </define-assembly>
+ 
+   <!-- SYSTEM IMPLEMENTATION -->
+   <define-assembly name="system-implementation">
+      <formal-name>System Implementation</formal-name>
+      <description>Provides information as to how the system is implemented.</description>
+      <model>
+         <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
+            <group-as name="system-roles" json-behavior="BY_KEY"/>
+         </assembly>
+         
+         <assembly ref="component" max-occurs="unbounded">
+            <group-as name="components" json-behavior="BY_KEY"/>
+         </assembly>
+         <assembly ref="capability" max-occurs="unbounded">
+            <group-as name="capabilities" json-behavior="BY_KEY"/>
+         </assembly>
+         <assembly ref="service" max-occurs="unbounded">
+            <description>A collection of the ports, protocols, and services used within the
+               system.</description>
+            <group-as name="services"/>
+         </assembly>
+         <assembly ref="interconnection" max-occurs="unbounded">
+            <group-as name="ssp-interconnection"/>
+         </assembly>
+         <assembly ref="system-inventory"/>
+      </model>
+      <example/>
+   </define-assembly>
+   
    <define-assembly name="system-role">
       <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
       <formal-name>Role</formal-name>
@@ -568,12 +574,10 @@
          <formal-name>System Role ID</formal-name>
          <description>TBD</description>
       </flag>
-      <flag ref="role-id">
-         <description>Maps this role to one of OSCAL's predefined roles.</description>
-      </flag>
       <flag ref="name" required="yes"/>
       <!-- TODO: provide valid values for these? -->
-      <flag ref="external" required="yes"/>
+      <flag ref="external">
+      </flag>
       <flag ref="access" required="yes"/>
       <flag ref="sensitivity-level" required="yes"/>
       <model>
@@ -587,7 +591,7 @@
          <field ref="responsibility" max-occurs="unbounded">
             <group-as name="responsibilities"/>
          </field>
-         <assembly ref="statistics" min-occurs="1"/>
+         <assembly ref="statistics" />
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
@@ -597,7 +601,7 @@
    <define-field name="privilege" as-type="string">
       <formal-name>Privilege</formal-name>
       <description>Identifies the type/level of system privilege for the role.
-			For FedRAMP, the only valid values are "p" (Privileged), "np" (Non-Privileged), or "nla" (No Logical Access).</description>
+         For FedRAMP, the only valid values are "p" (Privileged), "np" (Non-Privileged), or "nla" (No Logical Access).</description>
    </define-field>
    <define-field name="responsibility" as-type="string">
       <formal-name>Responsibility</formal-name>
@@ -642,30 +646,6 @@
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
-
-   <!-- SYSTEM IMPLEMENTATION -->
-   <define-assembly name="system-implementation">
-      <formal-name>System Implementation</formal-name>
-      <description>Provides information as to how the system is implemented.</description>
-      <model>
-         <assembly ref="component" max-occurs="unbounded">
-            <group-as name="components" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="capability" max-occurs="unbounded">
-            <group-as name="capabilities" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="service" max-occurs="unbounded">
-            <description>A collection of the ports, protocols, and services used within the
-               system.</description>
-            <group-as name="services"/>
-         </assembly>
-         <assembly ref="interconnection" max-occurs="unbounded">
-            <group-as name="ssp-interconnection"/>
-         </assembly>
-         <assembly ref="system-inventory"/>
-      </model>
-      <example/>
-   </define-assembly>
    <define-assembly name="component">
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
@@ -707,6 +687,9 @@
                <p>Multiple suppliers can be used to show the original provider, plus any intermediaries (e.g., resellers).</p>
             </remarks>
          </assembly>
+         <assembly ref="component-relationship" max-occurs="unbounded">
+            <group-as name="component-relationships" json-behavior="BY_KEY"/>
+         </assembly>
 <!--         <assembly ref="proof-of-compliance" max-occurs="unbounded">
             <group-as name="proofs-of-compliance" />
          </assembly>
@@ -716,10 +699,10 @@
          </assembly>
 -->
 <!--         <assembly ref="configuration" max-occurs="unbounded">
-            <group-as name="configurations" in-json="BY_KEY" />
+            <group-as name="configurations" json-behavior="BY_KEY" />
          </assembly>
          <assembly ref="artifact" max-occurs="unbounded">
-            <group-as name="artifacts" in-json="BY_KEY" />
+            <group-as name="artifacts" json-behavior="BY_KEY" />
          </assembly>
 -->         <field ref="remarks"/>
       </model>
@@ -730,6 +713,21 @@
          <p>A group of components may be aggregated into a <code>capability</code>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>
       </remarks>
+   </define-assembly>
+
+   <define-assembly name="component-relationship">
+      <formal-name>Component Relationship</formal-name>
+      <description>Establishes a relationship of a specific type between this component and another.</description>
+      <json-key flag-name="component-id"/>
+      <flag ref="component-id" required="yes"/>
+      <flag name="type">
+         <formal-name>Component Relationship Type</formal-name>
+         <description>The type of relationship.</description>
+         <!-- TODO: enumer valid values -->
+      </flag>
+      <model>
+         <field ref="remarks"/>        
+      </model>
    </define-assembly>
 
    <define-assembly name="capability">
@@ -757,10 +755,10 @@
         -->
          </field>
          <assembly ref="incorporates-capability" max-occurs="unbounded">
-            <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
+            <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
          </assembly>
          <assembly ref="incorporates-component" max-occurs="unbounded">
-            <group-as name="incorporates-components" in-json="BY_KEY"/>
+            <group-as name="incorporates-components" json-behavior="BY_KEY"/>
          </assembly>
 <!--         <assembly ref="control-implementation" max-occurs="unbounded">
             <group-as name="control-implementations" />
@@ -781,7 +779,7 @@
          </assembly>
          <field ref="purpose"/>
          <assembly ref="used-by-component" max-occurs="unbounded">
-            <group-as name="used-by-components" in-json="SINGLETON_OR_ARRAY"/>
+            <group-as name="used-by-components" json-behavior="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
@@ -923,14 +921,14 @@
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
          </assembly>
+        <field ref="remarks"/>
       </model>
       <example/>
    </define-assembly>
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>TBD</description>
-      <flag ref="id"/>
-      <flag ref="component-id"/>
+      <flag ref="id" required="yes"/>
       <flag ref="virtual"/>
       <flag ref="public"/>
       <model>
@@ -946,22 +944,36 @@
          <assembly ref="software-item" max-occurs="unbounded">
             <group-as name="ssp-software-item"/>
          </assembly>
-         <field ref="comments"/>
          <field ref="serial-no"/>
          <field ref="network-id" max-occurs="unbounded">
             <group-as name="network-ids"/>
          </field>
-         <!-- TODO: use a role reference? -->
-         <field ref="asset-owner" max-occurs="unbounded">
-            <group-as name="asset-owners"/>
-         </field>
-         <!-- TODO: use a role reference? -->
-         <field ref="asset-administrator" max-occurs="unbounded">
-            <group-as name="asset-administrators"/>
-         </field>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties"/>
+         </assembly>
+         <assembly ref="implemented-component">
+            <group-as name="implemented-components" json-behavior="BY_KEY"/>
+         </assembly>
+         <field ref="remarks"/>
       </model>
       <example/>
    </define-assembly>
+   
+   <define-assembly name="responsible-party">
+      <formal-name>Responsible Party</formal-name>
+      <description>A reference to an organization or person assigned a referenced system role that is responsible for the containing inventory item.</description>
+      <model>
+         <field ref="role-id" min-occurs="1"/>
+         <field ref="system-role-id" min-occurs="1"/>
+         <field ref="party-id" min-occurs="1" max-occurs="unbounded">
+            <group-as name="party-ids"/>
+         </field>
+      </model>
+   </define-assembly>
+   <define-field name="system-role-id" as-type="NCName">
+      <formal-name>System Role Identifier Reference</formal-name>
+      <description>A reference to a system role defined within this document.</description>
+   </define-field>
    <define-field name="dns-name" as-type="string">
       <formal-name>Network Name</formal-name>
       <description>If available, state the DNS name or URL of the inventory item. This can be left
@@ -1123,11 +1135,6 @@
 				derived from the component information.</p>
       </remarks>
    </define-field>
-   <define-field name="comments" as-type="string">
-      <formal-name>Comments</formal-name>
-      <description>Any additional information that could be useful to an auditor or
-			reviewer.</description>
-   </define-field>
    <define-field name="serial-no" as-type="string">
       <formal-name>Serial Number</formal-name>
       <description>Product serial number or internal asset tag number.</description>
@@ -1136,19 +1143,24 @@
       <formal-name>Network ID</formal-name>
       <description>Virtual LAN or Network ID.</description>
    </define-field>
-   <define-field name="asset-owner" as-type="string">
-      <formal-name>Asset Owner</formal-name>
-      <description>The individual, title, or role who "owns" the asset on behalf of the
-			organization.</description>
-      <flag ref="party-id"/>
-   </define-field>
-   <define-field name="asset-administrator" as-type="string">
-      <formal-name>Asset Administrator</formal-name>
-      <description>The individual, title, role, or team responsible for operating and maintaining
-			the asset.</description>
-      <flag ref="party-id"/>
-   </define-field>
 
+   <define-assembly name="implemented-component">
+      <formal-name>Implemented Component</formal-name>
+      <description>The set of componenets that are implemented in a given system inventory item.</description>
+      <json-key flag-name="component-id"/>
+      <flag ref="component-id" required="yes"/>
+      <flag name="type">
+         <formal-name>Implementation Type</formal-name>
+         <description>The type of implementation</description>
+         <valid-values>
+            <value name="runs-software">The implemented component is a 'software' component that the inventory item has installed and uses.</value>
+            <value name="enforces-policy">The implemented component is a 'policy' component that the inventory item supports and enforces.</value>
+         </valid-values>
+      </flag>
+      <model>
+         <field ref="remarks"/>
+      </model>
+   </define-assembly>
 
    <define-assembly name="control-implementation">
       <formal-name>Control Implementation</formal-name>
@@ -1159,10 +1171,10 @@
             <group-as name="meets-requirement-sets"/>
          </assembly>
          <assembly ref="by-component" max-occurs="unbounded">
-            <group-as name="by-components"/>
+            <group-as name="by-components" json-behavior="BY_KEY"/>
          </assembly>
          <assembly ref="by-capability" max-occurs="unbounded">
-            <group-as name="by-capabilities"/>
+           <group-as name="by-capabilities" json-behavior="BY_KEY"/>
          </assembly>
       </model>
    </define-assembly>
@@ -1170,24 +1182,22 @@
    <define-assembly name="by-component">
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
+     <json-key flag-name="component-id"/>
       <flag ref="component-id" required="yes"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <assembly ref="meets-requirement-set" max-occurs="unbounded">
-            <group-as name="meets-requirement-sets"/>
-         </assembly>
+         <assembly ref="meets-requirement-set" min-occurs="1"/>
       </model>
    </define-assembly>
 
    <define-assembly name="by-capability">
       <formal-name>capability Control Implementation</formal-name>
       <description>Defines how the referenced capability implements a set of controls.</description>
+     <json-key flag-name="capability-id"/>
       <flag ref="capability-id" required="yes"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <assembly ref="meets-requirement-set" max-occurs="unbounded">
-            <group-as name="meets-requirement-sets"/>
-         </assembly>
+         <assembly ref="meets-requirement-set" min-occurs="1"/>
       </model>
    </define-assembly>
 
@@ -1195,11 +1205,12 @@
       <formal-name>Meets</formal-name>
       <description>Defines what sets of controls are supported by the system (as a whole).</description>
       <model>
-         <field ref="responsible-role" max-occurs="unbounded">
-            <group-as name="ssp-responsible-role"/>
+        <!-- TODO: Change to role-id -->
+         <field ref="responsible-role-id" max-occurs="unbounded">
+            <group-as name="responsible-role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="parameter-settings"/>
+            <group-as name="set-params" json-behavior="BY_KEY"/>
          </assembly>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
@@ -1224,19 +1235,19 @@
 
 
 
-   <define-field name="responsible-role" as-type="empty">
+   <define-field name="responsible-role-id" as-type="NCName">
       <formal-name>Responsible Role</formal-name>
       <description>TBD</description>
-      <flag ref="role-id" required="yes"/>
    </define-field>
    <define-assembly name="set-param">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value
 			element.</description>
+     <json-key flag-name="param-id"/>
       <flag ref="param-id" required="yes"/>
 <!--      <flag ref="target" as-type="string"/>
 -->      <model>
-         <field ref="value"/>
+         <field ref="value" min-occurs="1"/>
       </model>
       <example/>
    </define-assembly>
@@ -1429,7 +1440,7 @@
    </define-flag>
    <define-flag name="external" as-type="boolean">
       <formal-name>external</formal-name>
-      <description>TBD</description>
+      <description>TBD. If not provided, the default is 'false'.</description>
    </define-flag>
    <define-flag name="access" as-type="string">
       <formal-name>access</formal-name>

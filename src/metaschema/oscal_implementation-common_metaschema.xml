@@ -119,9 +119,9 @@
         <flag ref="id"/>
         <flag ref="control-id"/>
         <model>
-            <field ref="only-statement" max-occurs="unbounded">
-                <group-as name="only-statements"/>
-            </field>
+            <assembly ref="only-statement" max-occurs="unbounded">
+                <group-as name="only-statements" json-behavior="BY_KEY"/>
+            </assembly>
             <field ref="description"/>
             <field ref="prop" max-occurs="unbounded">
                 <group-as name="properties"/>
@@ -141,11 +141,33 @@
         <description>A reference to a control identifier.</description>
     </define-flag>
     
-    <define-field name="only-statement" as-type="NCName">
+    <define-assembly name="only-statement">
         <formal-name>Specific Statement</formal-name>
-        <description>Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control..</description>
-    </define-field>
-
+        <description>Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.</description>
+        <json-key flag-name="statement-id"/>
+        <flag ref="statement-id">
+            <description>A reference to the specific implemented statement.</description>
+        </flag>
+        <model>
+            <field ref="description"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <!--            <assembly ref="using"/>
+-->            <!-- TODO: Implement parameters -->
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    
+    <define-flag name="statement-id" as-type="IDREF">
+        <formal-name>Control Statement Reference</formal-name>
+        <description>A reference to a control statement by its identifier</description>
+    </define-flag>
+    
     <define-flag name="component-id" as-type="IDREF">
         <formal-name>Component Reference</formal-name>
         <description>A reference to a component by its identifier</description>
