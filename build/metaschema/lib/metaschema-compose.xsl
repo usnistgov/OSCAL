@@ -165,7 +165,7 @@
                 </xsl:if>
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
                 <xsl:apply-templates mode="#current" select="json-key, json-value-key, flag"/>
-                <xsl:copy-of select="$me-and-mine[last()]/valid-values"/>
+                <xsl:copy-of select="$me-and-mine[last()]/allowed-values"/>
                 <xsl:copy-of select="model"/>
                 <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->

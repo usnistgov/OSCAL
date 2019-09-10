@@ -43,7 +43,7 @@ while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
     --scratch-dir)
-      SCRATCH_DIR="$(realunit_test_dir "$2")"
+      SCRATCH_DIR="$(realpath "$2")"
       shift # past unit_test_dir
       ;;
     --keep-temp-scratch-dir)
@@ -119,6 +119,7 @@ if [ $cmd_exitcode -ne 0 ]; then
 fi
 # the following is needed by the compiled template
 cp "${METASCHEMA_LIB_DIR}/metaschema-compose.xsl" "${SCRATCH_DIR}"
+cp "${METASCHEMA_LIB_DIR}/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
 
 exitcode=0
 for unit_test_collection_dir in "${test_dirs[@]}"
@@ -243,6 +244,7 @@ do
         PASS)
           if [ $cmd_exitcode -ne 0 ]; then
             echo "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected PASS.${P_END}"
+            echo -E "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
             echo "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"
@@ -251,6 +253,7 @@ do
         FAIL)
           if [ $cmd_exitcode -eq 0 ]; then
             echo "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected FAIL.${P_END}"
+            echo -E "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
             echo "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"

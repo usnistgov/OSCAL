@@ -2,10 +2,39 @@
 <xs:schema
   xmlns="http://standards.iso.org/iso/19770/-2/2015/schema.xsd"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
   
   targetNamespace="http://csrc.nist.gov/ns/oscal/datatypes/1.0"
   elementFormDefault="qualified">
 
+<xs:annotation id="built-in-types">
+  <xs:documentation>Copies of simpleType declarations for querying by
+  routines that need to know about XSD simple types we may use. Any simpleType
+  we support should be listed here for propagation in tools e.g. Metaschema Schematron.</xs:documentation>
+  <xs:appinfo>
+    <xs:simpleType name="boolean"/>
+    <xs:simpleType name="string"/>
+    <xs:simpleType name="NCName"/>
+    <xs:simpleType name="NMTOKENS"/>
+    <xs:simpleType name="decimal"/>
+    <!-- Not supporting float or double -->
+    <!--<xs:simpleType name="float"/>
+        <xs:simpleType name="double"/>-->
+    <xs:simpleType name="integer"/>
+    <xs:simpleType name="nonNegativeInteger"/>
+    <xs:simpleType name="positiveInteger"/>
+    <xs:simpleType name="ID"/>
+    <xs:simpleType name="IDREF"/>
+    <xs:simpleType name="IDREFS"/>
+    <xs:simpleType name="date"/>
+    <xs:simpleType name="dateTime"/>
+    
+  </xs:appinfo>
+  
+  
+</xs:annotation>
+  
+  
   <xs:simpleType name="ip-v4-address">
     <xs:annotation>
       <xs:documentation>The ip-v4-address type specifies an IPv4 address in dot decimal notation.</xs:documentation>
@@ -47,7 +76,7 @@
   
   <xs:simpleType name="email">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>An email address</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:whiteSpace value="collapse"/>
@@ -61,7 +90,7 @@
   
   <xs:simpleType name="hostname">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>A host name</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:whiteSpace value="collapse"/>
@@ -75,7 +104,7 @@
   
   <xs:simpleType name="uri">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>A URI</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:anyURI">
       <xs:whiteSpace value="collapse"/>
@@ -89,7 +118,7 @@
   
   <xs:simpleType name="uri-reference">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>A URI reference, such as a relative URL</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:anyURI">
       <xs:whiteSpace value="collapse"/>

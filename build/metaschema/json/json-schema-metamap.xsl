@@ -302,24 +302,29 @@
             <xsl:if test="empty(formal-name | description)">
                 <xsl:apply-templates select="key('definition-by-name',@ref)/(formal-name | description)"/>
             </xsl:if>
-            <xsl:apply-templates select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>    
+            <xsl:apply-templates select="(allowed-values,key('definition-by-name',@ref)/allowed-values)[1]"/>    
         </map>
     </xsl:template>
     
     <!-- No restriction is introduced when allow others is 'yes' -->
-    <xsl:template match="valid-values[@allow-other='yes']"/>
+    <xsl:template match="allowed-values[@allow-other='yes']"/>
     
-    <xsl:template match="valid-values">
+    <xsl:template match="allowed-values">
         <xsl:param name="datatype" as="xs:string">string</xsl:param>
         <array key="enum">
             <xsl:apply-templates/>
         </array>
     </xsl:template>
     
-    <xsl:template match="valid-values/value">
-        <string>
-            <xsl:apply-templates select="@name"/>
-        </string>
+    <xsl:template match="allowed-values/enum">
+        <!-- since the JSON must show enumerated values consistent with the base type notation -->
+        <xsl:variable name="type-declaration">
+            <xsl:apply-templates select="../.." mode="object-type"/>
+        </xsl:variable>
+        <xsl:variable name="base-type" select="$type-declaration/*[@key='type']"/>
+        <xsl:element namespace="http://www.w3.org/2005/xpath-functions" name="{$base-type}">
+            <xsl:apply-templates select="@value"/>
+        </xsl:element>
     </xsl:template>
 
     <!-- irrespective of min-occurs and max-occurs, assemblies and fields designated
@@ -467,7 +472,7 @@
         <number key="minimum">0</number>
     </xsl:template>
     
-    <!--Not supporting float and double--> 
+    <!--Not supporting float or double--> 
 
     <xsl:template priority="2.1" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
         <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>

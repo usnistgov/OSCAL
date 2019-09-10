@@ -3,8 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
-    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:of="http://csrc.nist.gov/ns/oscal/functions/1.0">
+    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
 
 
 <!--
@@ -23,10 +22,12 @@
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
     <xsl:variable name="example-ns" select="'http://csrc.nist.gov/ns/oscal/example'"/>
+    
     <sch:let name="home" value="/m:METASCHEMA"/>
     
     <sch:let name="prose-names" value="document('../xml/oscal-prose-module.xsd')/*/xs:element/@name"/>
     
+    <!--<xsl:include href="oscal-datatypes-check.xsl"/>-->
     <!--<xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>-->
@@ -68,9 +69,11 @@
             <sch:assert test="empty(@flag-name) or @flag-name=../m:flag/(@name|@ref)">flag '<sch:value-of select="@flag-name"/>' not found for JSON value key</sch:assert>
         </sch:rule>
         
-        <sch:rule context="m:valid-values/m:value">
-            <sch:assert test="not(@name = preceding-sibling::*/@name)">Value '<sch:value-of select="@name"/>' may only be
+        <sch:rule context="m:allowed-values/m:enum">
+            <sch:assert test="not(@value = preceding-sibling::*/@value)">Value '<sch:value-of select="@value"/>' may only be
             specified once for flag '<sch:value-of select="../../@name"/>'.</sch:assert>
+            <!-- XXX <sch:assert test="empty(../../@as-type) or (@name castable as ../../@as-type)">Value proposed is not valid to the nominal type</sch:assert>-->
+            <sch:assert test="m:datatype-validate(@value,../../@as-type)">Value '<sch:value-of select="@value"/>' is not a valid token of type <sch:value-of select="../../@as-type"/></sch:assert>
         </sch:rule>
 
         <sch:rule context="m:flag">
@@ -102,22 +105,10 @@
             <sch:report test="@ref = group-as/@name">Clashing name with group name: <sch:value-of select="@ref"/></sch:report>
             
             <sch:assert test="matches(m:group-as/@name,'\S') or not((@max-occurs/number() gt 1) or (@max-occurs='unbounded'))">Unless @max-occurs is 1,
-            a grouping name must be given</sch:assert>
+            a grouping name (group-as/@name) must be given</sch:assert>
 
             <sch:assert test="exists(@name) or (exists(@ref) and not(exists(@as-type)))">A field referencing an existing declaration must not specify a data type</sch:assert>
             
-            <!--<sqf:fix id="add-group-name">  sqf:fix="add-group-name"
-                <sqf:description>
-                    <sqf:title>Insert grouping directive</sqf:title>
-                </sqf:description>
-                <sqf:user-entry name="group-name">
-                    <sqf:description>
-                        <sqf:title>group name</sqf:title>
-                    </sqf:description>
-                </sqf:user-entry>
-                <sqf:add target="group-as" node-type="element"><group-as name="{ $group-name }"/></sqf:add>
-                
-            </sqf:fix>-->
             <sch:assert test="$decl/@as-type='markup-multiline' or not(@in-xml='UNWRAPPED')">Only 'markup-multiline' fields may be unwrapped in XML.</sch:assert>
             <sch:report test="key('invocation-by-ref',@ref)/@in-xml != key('invocation-by-ref',@ref)/@in-xml">All fields '<sch:value-of select="@ref"/>" should have @in-xml set the same.</sch:report>
             <sch:assert test="not(@in-xml='UNWRAPPED') or not($decl/@as-type='markup-multiline') or not(preceding-sibling::*[@in-xml='UNWRAPPED']/key('definition-by-name',@ref)/@as-type='markup-multiline')">Only one field may be marked
@@ -128,8 +119,7 @@
             <sch:let name="decl" value="key('definition-by-name',../@ref,$composed-metaschema)"/>
             <sch:let name="name" value="@name"/>
             <sch:assert test="count(../../*/(. | m:group-as)[(@name|@ref) = $name]) eq 1">Name clash on '<sch:value-of select="@name"/>'</sch:assert>
-            <sch:report role="warning" test="../@max-occurs/number() = 1 and empty(@in-json)">Grouping name is given but max-occurs is 1.</sch:report>
-            <sch:report test="../@max-occurs/number() = 1 and (@in-json='ARRAY')">JSON behavior cannot be 'ARRAY' when max-occurs is 1.</sch:report>
+            <sch:report test="../@max-occurs/number() = 1">"group-as" should not be given when max-occurs is 1.</sch:report>
             <sch:assert test="not(@in-json='BY_KEY') or $decl/m:json-key/@flag-name=$decl/m:flag/(@name|@ref)">Cannot group by key since the definition of <sch:value-of select="name(..)"/>
                 '<sch:value-of select="../@ref"/>' has no json-key specified. Consider adding a json-key to the '<sch:value-of select="../@ref"/>' definition, or using a different 'in-json' setting.</sch:assert>
             <!--<sch:assert test="not(@in-json='BY_KEY')">BOO</sch:assert>-->
@@ -175,20 +165,20 @@
         </sch:rule>
         <sch:rule context="m:assembly[exists(@ref)]">
             <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly '<xsl:value-of select="@ref"/>' invocation does not point to an assembly definition.
-            We expect one of <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-assembly/@name)" separator=", "/></sch:assert>
+            We expect one of <xsl:value-of select="m:sort($composed-metaschema/m:METASCHEMA/m:define-assembly/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@ref"/>' is a field, not an assembly.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@ref"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:field[exists(@ref)]">
             <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">Field invocation '<xsl:value-of select="@ref"/>' does not point to a field definition.
-                We expect one of <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-field/@name)" separator=", "/></sch:assert>
+                We expect one of <xsl:value-of select="m:sort($composed-metaschema/m:METASCHEMA/m:define-field/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@ref"/>' is an assembly, not a field.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@ref"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:flag[exists(@ref)]">
             <!--<sch:assert test="empty(@name)">Flag with 'ref' may not also have 'name'.</sch:assert>-->
             <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">Flag invocation '<xsl:value-of select="@ref"/>' does not point to a flag definition. 
-                <xsl:value-of select="of:sort($composed-metaschema/m:METASCHEMA/m:define-flag/@name)" separator=", "/></sch:assert>
+                <xsl:value-of select="m:sort($composed-metaschema/m:METASCHEMA/m:define-flag/@name)" separator=", "/></sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
@@ -200,12 +190,112 @@
         </sch:rule>
     </sch:pattern>
 
-    <xsl:function name="of:sort" as="item()*">
+    <xsl:function name="m:sort" as="item()*">
         <xsl:param name="seq" as="item()*"/>
         
         <xsl:for-each select="$seq">
             <xsl:sort select="."/>
-            <xsl:copy-of select="."/>
+            <xsl:sequence select="."/>
         </xsl:for-each>
     </xsl:function>
+    
+    <xsl:include href="oscal-datatypes-check.xsl"/>
+    <!--<xsl:function name="m:datatype-validate" as="xs:boolean">
+        <xsl:param name="value" as="item()"/>
+        <xsl:param name="nominal-type" as="item()?"/>
+        <xsl:variable name="proxy" as="element()">
+            <xsl:element namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                name="{($nominal-type,'string')[1]}"
+                expand-text="true">{$value}</xsl:element>
+        </xsl:variable>
+        <xsl:apply-templates select="$proxy" mode="m:validate-type"/>
+    </xsl:function>
+    <xsl:template match="m:boolean" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:boolean"/>
+    </xsl:template>
+    <xsl:template match="m:string" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:string"/>
+    </xsl:template>
+    <xsl:template match="m:NCName" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:NCName"/>
+    </xsl:template>
+    <xsl:template match="m:NMTOKENS" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:NMTOKENS"/>
+    </xsl:template>
+    <xsl:template match="m:decimal" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:decimal"/>
+    </xsl:template>
+    <xsl:template match="m:integer" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:integer"/>
+    </xsl:template>
+    <xsl:template match="m:nonNegativeInteger" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:nonNegativeInteger"/>
+    </xsl:template>
+    <xsl:template match="m:positiveInteger" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:positiveInteger"/>
+    </xsl:template>
+    <xsl:template match="m:ID" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:ID"/>
+    </xsl:template>
+    <xsl:template match="m:IDREF" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:IDREF"/>
+    </xsl:template>
+    <xsl:template match="m:IDREFS" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:IDREFS"/>
+    </xsl:template>
+    <xsl:template match="m:date" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:date"/>
+    </xsl:template>
+    <xsl:template match="m:dateTime" mode="m:validate-type" as="xs:boolean">
+        <xsl:sequence select=". castable as xs:dateTime"/>
+    </xsl:template>
+    <xsl:template match="m:ip-v4-address" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:string) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:ip-v6-address" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:string) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:dateTime-with-timezone"
+        mode="m:validate-type"
+        as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^.+T.+(Z|[+-].+)$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:dateTime) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:date-with-timezone" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^.+[:Z].*$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:date) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:email" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^.+@.+$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:string) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:hostname" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^.+$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:string) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:uri" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra">
+            <xsl:sequence select="matches(.,'^\p{L}[\p{L}\d+\-\.]*:.+$')"/>
+        </xsl:variable>
+        <xsl:sequence select="(. castable as xs:anyURI) and $extra"/>
+    </xsl:template>
+    <xsl:template match="m:uri-reference" mode="m:validate-type" as="xs:boolean">
+        <xsl:variable name="extra"/>
+        <xsl:sequence select="(. castable as xs:anyURI) and $extra"/>
+    </xsl:template>-->
+    
 </sch:schema>

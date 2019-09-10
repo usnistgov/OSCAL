@@ -26,9 +26,7 @@
             <group-as name="imports"/>
          </assembly>
          <assembly ref="merge"/>
-         <assembly ref="modify">
-            <group-as name="modifys"/>
-         </assembly>
+         <assembly ref="modify"/>
          <assembly ref="back-matter"/>
       </model>
       <remarks>
@@ -47,12 +45,8 @@
          included (referenced and potentially modified) by this profile.</description>
       <flag ref="href" required="yes"/>
       <model>
-         <assembly ref="include">
-            <group-as name="includes"/>
-         </assembly>
-         <assembly ref="exclude">
-            <group-as name="excludes"/>
-         </assembly>
+         <assembly ref="include"/>
+         <assembly ref="exclude"/>
       </model>
       <remarks>
          <p>An <code>import</code> indicates a source whose controls are to be included (referenced
@@ -82,9 +76,7 @@
          <field ref="combine"/>
          <choice>
             <field ref="as-is"/>
-            <assembly ref="custom">
-               <group-as name="customs"/>
-            </assembly>
+            <assembly ref="custom"/>
          </choice>
       </model>
       <remarks>
@@ -116,11 +108,11 @@
    <define-flag name="method" as-type="string">
       <formal-name>Combination method</formal-name>
       <description>How clashing controls should be handled</description>
-      <valid-values>
-         <value name="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</value>
-         <value name="merge">Merge - controls with the same ID are combined</value>
-         <value name="keep">Keep - controls with the same ID are kept, retaining the clash</value>
-      </valid-values>
+      <allowed-values>
+         <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
+         <enum value="merge">Merge - controls with the same ID are combined</enum>
+         <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
+      </allowed-values>
    </define-flag>
    <define-assembly name="custom">
       <formal-name>Custom grouping</formal-name>
@@ -364,10 +356,10 @@
    <define-flag as-type="NCName" name="with-child-controls">
       <formal-name>Include contained controls with control</formal-name>
       <description>When a control is included, whether its child (dependent) controls are also included.</description>
-      <valid-values>
-         <value name="yes">Include child controls with an included control.</value>
-         <value name="no">When importing a control, only include child controls that are also explicitly called.</value>
-      </valid-values>
+      <allowed-values>
+         <enum value="yes">Include child controls with an included control.</enum>
+         <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
+      </allowed-values>
    </define-flag>
    
    <define-flag as-type="string" name="pattern">
@@ -378,22 +370,22 @@
    <define-flag as-type="NCName" name="order">
       <formal-name>Order</formal-name>
       <description>A designation of how a selection of controls in a profile is to be ordered.</description>
-      <valid-values>
-         <value name="keep"/>
-         <value name="ascending"/>
-         <value name="descending"/>
-      </valid-values>
+      <allowed-values>
+         <enum value="keep"/>
+         <enum value="ascending"/>
+         <enum value="descending"/>
+      </allowed-values>
    </define-flag>
    
    <define-flag as-type="NCName" name="position">
       <formal-name>Position</formal-name>
       <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
-      <valid-values><!-- TODO: define these -->
-         <value name="before"/>
-         <value name="after"/>
-         <value name="starting"/>
-         <value name="ending"/>
-      </valid-values>
+      <allowed-values><!-- TODO: define these -->
+         <enum value="before"/>
+         <enum value="after"/>
+         <enum value="starting"/>
+         <enum value="ending"/>
+      </allowed-values>
    </define-flag>
    
 </METASCHEMA>
