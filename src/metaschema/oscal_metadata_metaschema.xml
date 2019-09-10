@@ -319,7 +319,7 @@
       <flag ref="href" required="yes"/>
       <flag ref="media-type"/>
       <model>
-         <field ref="hash">
+         <field ref="hash" max-occurs="unbounded">
             <group-as name="hashes"/>
          </field>
       </model>
@@ -520,7 +520,7 @@
       <description>References a <code>role</code> element defined in metadata.</description>
       <allowed-values allow-other="yes">
          <enum value="content-creator">Identifies a party responsible for creating the content.</enum>
-         <enum value="content-maintainer">Identifies a party responsible for maintainer the content on an ongoing basis.</enum>
+         <enum value="content-maintainer">Identifies a party responsible for maintaining the content on an ongoing basis.</enum>
          <!-- TODO: Need to add others -->
       </allowed-values>
    </define-flag>

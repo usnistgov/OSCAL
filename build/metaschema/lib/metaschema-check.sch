@@ -199,13 +199,15 @@
         </xsl:for-each>
     </xsl:function>
     
-    <xsl:include href="oscal-datatypes-check.xsl"/>
-    <!--<xsl:function name="m:datatype-validate" as="xs:boolean">
+    <!--<xsl:include href="oscal-datatypes-check.xsl"/>-->
+    
+    <xsl:function name="m:datatype-validate" as="xs:boolean">
         <xsl:param name="value" as="item()"/>
         <xsl:param name="nominal-type" as="item()?"/>
+        <xsl:variable name="test-type" select="if (empty($nominal-type) or $nominal-type=('ID','IDREF','IDREFS')) then 'string' else $nominal-type"/>
         <xsl:variable name="proxy" as="element()">
             <xsl:element namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                name="{($nominal-type,'string')[1]}"
+                name="{$test-type}"
                 expand-text="true">{$value}</xsl:element>
         </xsl:variable>
         <xsl:apply-templates select="$proxy" mode="m:validate-type"/>
@@ -296,6 +298,6 @@
     <xsl:template match="m:uri-reference" mode="m:validate-type" as="xs:boolean">
         <xsl:variable name="extra"/>
         <xsl:sequence select="(. castable as xs:anyURI) and $extra"/>
-    </xsl:template>-->
+    </xsl:template>
     
 </sch:schema>
