@@ -7,9 +7,17 @@
    <xsl:function name="m:datatype-validate" as="xs:boolean">
       <xsl:param name="value" as="item()"/>
       <xsl:param name="nominal-type" as="item()?"/>
+      <xsl:variable name="test-type" as="xs:string">
+         <xsl:choose>
+            <xsl:when test="empty($nominal-type)">string</xsl:when>
+            <xsl:when test="$nominal-type = ('IDREFS', 'NMTOKENS')">string</xsl:when>
+            <xsl:when test="$nominal-type = ('ID', 'IDREF')">NCName</xsl:when>
+            <xsl:otherwise expand-text="yes">{ $nominal-type }</xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
       <xsl:variable name="proxy" as="element()">
          <xsl:element namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                      name="{($nominal-type,'string')[1]}"
+                      name="{$test-type}"
                       expand-text="true">{$value}</xsl:element>
       </xsl:variable>
       <xsl:apply-templates select="$proxy" mode="m:validate-type"/>
