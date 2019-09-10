@@ -148,9 +148,9 @@
       <description>A document identifier qualified by an identifier <code>type</code>.</description>
       <flag ref="type" required="yes">
          <description>Qualifies the kind of document identifier.</description>
-         <valid-values allow-other="yes">
-            <value name="doi">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</value>
-         </valid-values>
+         <allowed-values allow-other="yes">
+            <enum value="doi">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
+         </allowed-values>
       </flag>
       <remarks>
          <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
@@ -170,14 +170,14 @@
       or group.</description>
       <json-value-key flag-name="name"/>
       <flag ref="name" required="yes">
-         <valid-values allow-other="yes">
-            <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
-            <value name="label">A human-readable label for the parent context.</value>
+         <allowed-values allow-other="yes">
+            <enum value="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</enum>
+            <enum value="label">A human-readable label for the parent context.</enum>
             <!-- TODO: move this to a more specific context -->
-            <value name="method">An assessment method.</value>
+            <enum value="method">An assessment method.</enum>
             <!-- TODO: move this to a more specific context -->
-            <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
-         </valid-values>
+            <enum value="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</enum>
+         </allowed-values>
       </flag>
       <flag ref="id"/>
       <flag ref="ns"/>
@@ -368,10 +368,10 @@
       <description>A postal address.</description>
       <flag ref="type">
          <description>Indicates the type of address.</description>
-         <valid-values allow-other="yes">
-            <value name="home">A home address.</value>
-            <value name="work">A work address.</value>
-         </valid-values>
+         <allowed-values allow-other="yes">
+            <enum value="home">A home address.</enum>
+            <enum value="work">A work address.</enum>
+         </allowed-values>
       </flag>
       <model>
          <field ref="addr-line" max-occurs="unbounded">
@@ -413,11 +413,11 @@
       <description>Contact number by telephone</description>
       <flag ref="type">
          <description>Indicates the type of phone number.</description>
-         <valid-values allow-other="yes">
-            <value name="home">A home phone number.</value>
-            <value name="office">An office phone number.</value>
-            <value name="mobibe">A mobile phone number.</value>
-         </valid-values>
+         <allowed-values allow-other="yes">
+            <enum value="home">A home phone number.</enum>
+            <enum value="office">An office phone number.</enum>
+            <enum value="mobibe">A mobile phone number.</enum>
+         </allowed-values>
       </flag>
    </define-field>
    <define-field name="url" as-type="uri">
@@ -470,13 +470,13 @@
    <define-flag name="algorithm" as-type="string">
       <formal-name>Hash algorithm</formal-name>
       <description>Method by which a hash is derived</description>
-      <valid-values allow-other="yes">
-         <value name="SHA-224"/>
-         <value name="SHA-256"/>
-         <value name="SHA-384"/>
-         <value name="SHA-512"/>
-         <value name="RIPEMD-160"/>
-      </valid-values>
+      <allowed-values allow-other="yes">
+         <enum value="SHA-224"/>
+         <enum value="SHA-256"/>
+         <enum value="SHA-384"/>
+         <enum value="SHA-512"/>
+         <enum value="RIPEMD-160"/>
+      </allowed-values>
       <remarks>
          <p>Valid values MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p>
       </remarks>
@@ -518,11 +518,11 @@
    <define-flag name="role-id" as-type="IDREFS">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
-      <valid-values allow-other="yes">
-         <value name="content-creator">Identifies a party responsible for creating the content.</value>
-         <value name="content-maintainer">Identifies a party responsible for maintainer the content on an ongoing basis.</value>
+      <allowed-values allow-other="yes">
+         <enum value="content-creator">Identifies a party responsible for creating the content.</enum>
+         <enum value="content-maintainer">Identifies a party responsible for maintainer the content on an ongoing basis.</enum>
          <!-- TODO: Need to add others -->
-      </valid-values>
+      </allowed-values>
    </define-flag>
    <define-field name="title" as-type="markup-line">
       <formal-name>Title</formal-name>

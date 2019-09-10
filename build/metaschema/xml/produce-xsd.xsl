@@ -100,30 +100,11 @@
             </xsl:if>
             <xsl:variable name="all-types" select="$composed-metaschema//@as-type"/>
             
-            <xsl:copy-of select="$available-custom-types[@name = $all-types]"/>
+            <xsl:copy-of select="$types-library/xs:simpleType[@name = $all-types]"/>
         </xs:schema>
     </xsl:template>
     
-    <xsl:variable name="available-custom-types" select="document('oscal-datatypes.xsd')/*/xs:simpleType"/>
-    
-    <xsl:variable name="built-in-types" as="element()*">
-        <xs:simpleType name="boolean"/>
-        <xs:simpleType name="string"/>
-        <xs:simpleType name="NCName"/>
-        <xs:simpleType name="NMTOKENS"/>
-        <xs:simpleType name="decimal"/>
-        <!-- Not supporting float or double -->
-        <!--<xs:simpleType name="float"/>
-        <xs:simpleType name="double"/>-->
-        <xs:simpleType name="integer"/>
-        <xs:simpleType name="nonNegativeInteger"/>
-        <xs:simpleType name="positiveInteger"/>
-        <xs:simpleType name="ID"/>
-        <xs:simpleType name="IDREF"/>
-        <xs:simpleType name="IDREFS"/>
-        <xs:simpleType name="date"/>
-        <xs:simpleType name="dateTime"/>
-    </xsl:variable>
+    <xsl:variable name="types-library" select="document('oscal-datatypes.xsd')/*"/>
     
     <xsl:template match="namespace"/>
         
@@ -150,7 +131,7 @@
         </xs:element>
     </xsl:template>
     
-    <xsl:template priority="5" match="define-field[@as-type='empty']">
+    <xsl:template priority="5" match="define-field[@as-type='empty']">-
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
@@ -322,11 +303,11 @@
     
     <xsl:template name="assign-type">
         <xsl:param name="datatype"/>
-        <xsl:for-each select="$datatype[. = $available-custom-types/@name]">
+        <xsl:for-each select="$datatype[. = $types-library/xs:simpleType/@name]">
             <xsl:attribute name="type" expand-text="true"
                 select="concat($declaration-prefix, ':', .)"/>
         </xsl:for-each>
-        <xsl:for-each select="$datatype[. = $built-in-types/@name]">
+        <xsl:for-each select="$datatype[. = $types-library/xs:annotation[@id='built-in-types']/xs:appInfo/xs:simpleType]">
             <xsl:attribute name="type" expand-text="true" select="concat('xs:', .)"/>
         </xsl:for-each>
     </xsl:template>

@@ -18,6 +18,7 @@
     <description>parent assembly</description>
     <flag ref="flag"/>
     <flag ref="flag-required" required="yes"/>
+    <flag ref="flag-constrained"/>
     <model/>
   </define-assembly>
 
@@ -28,5 +29,13 @@
   <define-flag name="flag-required">
     <formal-name>Required Flag</formal-name>
     <description>A basic required flag</description>
+  </define-flag>
+  <define-flag name="flag-constrained" as-type="decimal">
+    <formal-name>Constrained Flag</formal-name>
+    <description>With decimal values</description>
+    <allowed-values>
+      <enum value="1.0">one-dot-oh</enum>
+      <enum value="1.1">one-dot-one</enum>
+    </allowed-values>
   </define-flag>
 </METASCHEMA>

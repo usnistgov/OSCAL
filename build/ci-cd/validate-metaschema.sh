@@ -108,6 +108,7 @@ if [ $cmd_exitcode -ne 0 ]; then
 fi
 # the following is needed by the compiled template
 cp "${metaschema_lib}/metaschema-compose.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_lib}/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
 
 exitcode=0
 shopt -s nullglob

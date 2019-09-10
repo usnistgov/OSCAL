@@ -346,9 +346,7 @@
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
          <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
-         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
-            <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
-         </xsl:if>
+         <xsl:apply-templates select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -380,10 +378,8 @@
          </p>
          <xsl:apply-templates mode="model"
             select="if (description) then description else key('definitions', @name)/description"/>
-         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
-            <xsl:apply-templates
-               select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
-         </xsl:if>
+         <xsl:apply-templates
+               select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -404,10 +400,8 @@
          </p>
          <xsl:apply-templates mode="model"
             select="if (description) then description else key('definitions', @name)/description"/>
-         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
-            <xsl:apply-templates
-               select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
-         </xsl:if>
+         <xsl:apply-templates
+               select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -441,9 +435,7 @@
             <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates select="if (description) then description else key('definitions', @ref)/description" mode="model"/>
-         <xsl:if test="valid-values or key('definitions', @ref)/valid-values">
-           <xsl:apply-templates select="if (valid-values) then valid-values else key('definitions', @ref)/valid-values"/>
-         </xsl:if>
+         <xsl:apply-templates select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
