@@ -23,22 +23,30 @@
     <xsl:variable name="type-definitions" select="document('../xml/oscal-datatypes.xsd')//xs:simpleType"/>
     
     <xsl:template match="/">
-        <XSLT:stylesheet
-            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        <XSLT:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            version="3.0">
-            
-    <XSLT:function name="m:datatype-validate" as="xs:boolean">
-        <XSLT:param name="value" as="item()"/>
-        <XSLT:param name="nominal-type" as="item()?"/>
-        <XSLT:variable name="proxy" as="element()">
-            <XSLT:element namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0" name="{{($nominal-type,'string')[1]}}" expand-text="true">{$value}</XSLT:element>
-        </XSLT:variable>
-        <XSLT:apply-templates select="$proxy" mode="m:validate-type"/>
-    </XSLT:function>
-        <xsl:apply-templates select="$type-definitions" mode="m:make-template"/>
-    
+            xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0" version="3.0">
+
+            <XSLT:function name="m:datatype-validate" as="xs:boolean">
+                <XSLT:param name="value" as="item()"/>
+                <XSLT:param name="nominal-type" as="item()?"/>
+                <XSLT:variable name="test-type" as="xs:string">
+                    <XSLT:choose>
+                        <XSLT:when test="empty($nominal-type)">string</XSLT:when>
+                        <XSLT:when test="$nominal-type = ('IDREFS', 'NMTOKENS')">string</XSLT:when>
+                        <XSLT:when test="$nominal-type = ('ID', 'IDREF')">NCName</XSLT:when>
+                        <XSLT:otherwise expand-text="yes">{ $nominal-type }</XSLT:otherwise>
+                    </XSLT:choose>
+                </XSLT:variable>
+                <XSLT:variable name="proxy" as="element()">
+                    <XSLT:element namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                        name="{{$test-type}}" expand-text="true">{$value}</XSLT:element>
+                </XSLT:variable>
+                <XSLT:apply-templates select="$proxy" mode="m:validate-type"/>
+            </XSLT:function>
+
+            <xsl:apply-templates select="$type-definitions" mode="m:make-template"/>
+
         </XSLT:stylesheet>
     </xsl:template>
     
