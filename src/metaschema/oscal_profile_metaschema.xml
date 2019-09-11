@@ -140,7 +140,10 @@
    <define-assembly name="group">
       <formal-name>Control group</formal-name>
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
+      <flag ref="id"/>
+      <flag ref="class"/>
       <model>
+         <field ref="title"/>
          <choice>
             <assembly ref="group" max-occurs="unbounded">
                <group-as name="groups"/>
