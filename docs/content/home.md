@@ -7,25 +7,25 @@ layout: home
 hero:
   image: /assets/img/automation-hero.png
   callout:
-     alt: "F.A.S.T."
-     text: Assessment
+     text: Automated
+     alt: Control-Based Assessment
   button:
-    href: /community/
-    text: Get Involved
-  link:
-    text: Learn more about OSCAL
     href: /learnmore/
-  content: "Fast, Accurate, Scalable, Traceable: Documentary Foundations for Systems Security"
+    text: Learn More
+  content: Harnessing control information to improve system security
 
-tagline: Automating Security Assessment & Continuous Monitoring
+tagline: Supporting<br/>Control-Based<br/>Risk Management<br/>with<br/>Standardized Formats
 
 intro: |
-  NIST is developing the Open Security Controls Assessment Language (OSCAL): a set of models expressed in standard notations (XML, JSON), offering machine-readable representations of information pertaining to the publication, implementation, and assessment of security and privacy controls. By promoting transparency and interoperability along with rigorous validation of data in context, OSCAL formats provide a foundation for automation and machine assistance of many tasks and activities related to systems security.
+  NIST, in collaboration with industry, is developing the Open Security Controls Assessment Language (OSCAL). OSCAL is a set of formats expressed in XML, JSON, and YAML. These formats provide machine-readable representations of control catalogs, control baselines, system security plans, and assessment plans and results.
 
-  OSCAL is being developed through a collaborative approach with the public. It is designed to improve system security planning, assessment, and monitoring, with a technology that is both user- and developer-friendly.
-  
-  The [OSCAL GitHub repository](https://github.com/usnistgov/OSCAL) holds the current OSCAL schemas, examples, documentation source files, and other resources.
-  They are free to inspect, experiment with and use. Our [Resources page](resources/) has links to off-site projects and toolkits relating to OSCAL. The NIST team welcomes public contributions to this project; if you are interested, please [contact us](contact/) to get started.
+  OSCAL allows organizations to:
+  - Easily access control information from security and privacy control catalogs
+  - Establish and share machine-readable control baselines
+  - Maintain and share actionable, up-to-date information about how controls are implemented in their systems
+  - Monitor and assess system control implementation effectiveness
+
+  If you are new to the OSCAL project, we provide [learning material](learnmore/) on the project.
 
 graphics:
   - image:
