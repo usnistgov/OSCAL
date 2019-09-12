@@ -117,7 +117,8 @@
             "component-logging-policy": {
               "type": "implements-policy"
             }
-          }
+          },
+          "remarks": "Ensures logs from components in new system are able to reach Splunk\n\nEnsures log monitoring capabilities recognize new system as authorized."
         },
         "inventory-management-process": {
           "name": "Inventory Management Process",
@@ -201,29 +202,44 @@
     },
     "control-implementation": {
       "description": "",
-      "by-components": {
-        "component-logging-policy": {
-          "description": "",
-          "meets-requirement-set": {
-            "description": "",
-            "set-params": {
-              "au-1_prm_1": {"value": "all staff and contractors within the organization"},
-              "au-1_prm_2": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
-            },
-            "implemented-requirements": {
-              "control-id": "au-1",
-              "only-statements": {
-                "au-1smt": {"description": "N/A"},
-                "au-1smt.a": {"description": "The legal deparment develops, documents, and disseminates this policy to all staff and contractors within the organization."},
-                "au-1smt.a.1": {"description": "This policy explicityly states the purpose and scope of the policy in Section 1. Roles and responsibilities are described in Section 2. This secton also describes responsiblities for organizational coordination. Management commitment and compliance statements are made in the board\u2019s directive memo dated January 1, 2012."},
-                "au-1_smt.b": {"description": "N/A"},
-                "au-1_smt.b.1": {"description": "The legal deparment reviews this policy annually, and other times as necessary in response to regulatory or organizational changes. The legal depatment updates the policy as needed based on these reviews."}
+      "meets-requirement-sets": {
+        "implemented-requirements": {
+          "control-id": "au-1",
+          "statements": {
+              "au-1smt": {"remarks": "N/A"},
+              "au-1smt.a": {
+                "by-components": {
+                  "component-logging-policy": {
+                    "set-params": {
+                      "au-1_prm_1": {"value": "all staff and contractors within the organization"}
+                    },
+                    "remarks": "The legal deparment develops, documents, and disseminates this policy to all staff and contractors within the organization."
+                  }
+                }
+              },
+              "au-1smt.a.1": {
+                "by-components": {
+                  "component-logging-policy": {
+                    "remarks": "This policy explicityly states the purpose and scope of the policy in Section 1. Roles and responsibilities are described in Section 2. This secton also describes responsiblities for organizational coordination. Management commitment and compliance statements are made in the board\u2019s directive memo dated January 1, 2012."
+                  }
+                }
+              },
+              "au-1_smt.b": {"remarks": "N/A"},
+              "au-1_smt.b.1": {
+                "by-components": {
+                  "component-logging-policy": {
+                    "set-params": {
+                      "au-1_prm_1": {"value": "all staff and contractors within the organization"},
+                      "au-1_prm_2": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
+                    },
+                    "remarks": "The legal deparment reviews this policy annually, and other times as necessary in response to regulatory or organizational changes. The legal depatment updates the policy as needed based on these reviews."
+                  }
+                }
               }
             }
-          }
-        },
+        }
+      }
         "system-integration-process": {
-          "description": "Ensures logs from components in new system are able to reach Splunk\n\nEnsures log monitoring capabilities recognize new system as authorized.",
           "meets-requirement-set": {
             "description": "",
             "set-params": {
