@@ -19,7 +19,7 @@
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
       <p>The OSCAL Control SSP format can be used to describe the information typically specified
-			in a system security plan, such as those defined in SP 800-18 or used by FedRAMP.</p>
+			in a system security plan, such as those defined in SP 800-18.</p>
       <p>The root of the OSCAL System Security Plan (SSP) format is <code>system-security-plan</code>.</p>
       <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
    </remarks>
@@ -30,7 +30,7 @@
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
-      <description>TBD</description>
+      <description>A system security plan, such as those defined in SP 800-18</description>
       <flag ref="id" required="yes"/>
       <model><!--
 			<field named="title" required="yes"/>
@@ -134,7 +134,7 @@
    <define-assembly name="designation">
       <formal-name>System Information Designation</formal-name>
       <description>Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).</description>
-      <flag ref="name"/>
+      <flag ref="name" required="yes"/>
       <model>
          <!-- TODO: what are the following for? -->
          <field ref="title"/>
@@ -158,7 +158,7 @@
          </o:designation>
       </example>
       <example>
-         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" id="pii">
+         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" name="pii">
             <title>A Privacy Sensitive System</title>
             <declaration>false</declaration>
          </designation>
@@ -168,7 +168,7 @@
       <formal-name>Declaration</formal-name>
       <description>Identifies whether a specific designation applies to this system.</description>
       <example>
-         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" id="pii">
+         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" name="pii">
             <title>A Privacy Sensitive System</title>
             <declaration>false</declaration>
          </designation>
@@ -1183,10 +1183,10 @@
       <flag ref="control-id"/>
       <model>
          <field ref="description"/>
-         <field ref="responsible-role-id" max-occurs="unbounded">
+<!--         <field ref="responsible-role-id" max-occurs="unbounded">
             <group-as name="responsible-role-ids"/>
          </field>
-         <field ref="prop" max-occurs="unbounded">
+-->         <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
          <field ref="link" max-occurs="unbounded">
@@ -1240,8 +1240,9 @@
       <flag ref="component-id" required="yes"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <field ref="responsible-role-id" max-occurs="unbounded">
-            <group-as name="responsible-role-ids"/>
+         <field ref="role-id" max-occurs="unbounded">
+            <description>The component role responsible for the control implementation.</description>
+            <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="set-params" json-behavior="BY_KEY"/>
@@ -1264,9 +1265,9 @@
       <formal-name>Meets</formal-name>
       <description>Defines what sets of controls are supported by the system (as a whole).</description>
       <model>
-        <!-- TODO: Change to role-id -->
-         <field ref="responsible-role-id" max-occurs="unbounded">
-            <group-as name="responsible-role-ids"/>
+         <field ref="role-id" max-occurs="unbounded">
+            <description>The component role responsible for the control implementation.</description>
+            <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="set-params" json-behavior="BY_KEY"/>
@@ -1282,19 +1283,6 @@
       </model>
    </define-assembly>
 
-
-
-
-
-
-
-
-
-
-   <define-field name="responsible-role-id" as-type="NCName">
-      <formal-name>Responsible Role</formal-name>
-      <description>TBD</description>
-   </define-field>
    <define-assembly name="set-param">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value
