@@ -84,12 +84,8 @@
             <group-as name="leveraged-authorizations"/>
          </assembly>
          <assembly ref="authorization-boundary" min-occurs="1"/>
-         <assembly ref="network-architecture">
-            <group-as name="ssp-network-architecture"/>
-         </assembly>
-         <assembly ref="data-flow">
-            <group-as name="ssp-data-flow"/>
-         </assembly>
+         <assembly ref="network-architecture"/>
+         <assembly ref="data-flow"/>
       </model>
    </define-assembly>
    <define-field name="system-id" as-type="string">
@@ -125,7 +121,7 @@
          </assembly>
          <assembly ref="designation" max-occurs="unbounded">
             <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
-            <group-as name="designations" json-behavior="SINGLETON_OR_ARRAY"/>
+            <group-as name="designations" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
@@ -227,10 +223,10 @@
       <!-- TODO: yes/no is not a valid boolean value -->
       <formal-name>Qualifier Question Response</formal-name>
       <description>The response to the question.</description>
-      <valid-values>
-         <value name="yes">The answer is afirmative.</value>
-         <value name="no">The answer is negative.</value>
-      </valid-values>
+      <allowed-values>
+         <enum value="yes">The answer is afirmative.</enum>
+         <enum value="no">The answer is negative.</enum>
+      </allowed-values>
       <example>
          <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
             <qualifier id="pta-01">
@@ -302,21 +298,21 @@
       <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The prescribed base (Confidentiality, Integrity, or Availability) security
 			impact level.</description>
-      <valid-values>
-        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
+      <allowed-values>
+        <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
    </define-field>
    <define-field name="selected" as-type="string">
       <formal-name>Selected Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The selected (Confidentiality, Integrity, or Availability) security impact
 			level.</description>
-      <valid-values>
-        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
+      <allowed-values>
+        <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
    </define-field>
    <define-field name="adjustment-justification" as-type="markup-multiline">
       <formal-name>Adjustment Justification</formal-name>
@@ -336,29 +332,29 @@
    <define-field name="security-objective-confidentiality" as-type="string">
       <formal-name>Security Objective (Confidentiality)</formal-name>
       <description>TBD</description>
-      <valid-values>
-        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
+      <allowed-values>
+        <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
    </define-field>
    <define-field name="security-objective-integrity" as-type="string">
       <formal-name>Security Objective (Integrity)</formal-name>
       <description>TBD</description>
-      <valid-values>
-        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
+      <allowed-values>
+        <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
    </define-field>
    <define-field name="security-objective-availability" as-type="string">
       <formal-name>Security Objective (Availability)</formal-name>
       <description>TBD</description>
-      <valid-values>
-        <value name="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-        <value name="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</value>
-      </valid-values>
+      <allowed-values>
+        <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+        <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
    </define-field>
    <define-assembly name="security-eauth">
       <formal-name>Security Electronic Authentication Level</formal-name>
@@ -395,13 +391,13 @@
          <formal-name>State</formal-name>
          <description>TBD</description>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
-         <valid-values>
-            <value name="operational">The system is currently operating and is in production.</value>
-            <value name="under-development">The system is being designed, developed, or implemented</value>
-            <value name="under-major-modification">The system is undergoing a major change, development, or transition.</value>
-            <value name="disposition">The system is no longer operational.</value>
-            <value name="other">Some other state.</value>
-         </valid-values>
+         <allowed-values>
+            <enum value="operational">The system is currently operating and is in production.</enum>
+            <enum value="under-development">The system is being designed, developed, or implemented</enum>
+            <enum value="under-major-modification">The system is undergoing a major change, development, or transition.</enum>
+            <enum value="disposition">The system is no longer operational.</enum>
+            <enum value="other">Some other state.</enum>
+         </allowed-values>
       </flag>
       <model>
          <field ref="remarks"/>
@@ -417,14 +413,14 @@
          <formal-name></formal-name>
          <description>TBD</description>
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
-         <valid-values>
-            <value name="public"></value>
-            <value name="private"></value>
-            <value name="community"></value>
-            <value name="government-only"></value>
-            <value name="hybrid"></value>
-            <value name="other">Some other deployment model.</value>
-         </valid-values>
+         <allowed-values>
+            <enum value="public"></enum>
+            <enum value="private"></enum>
+            <enum value="community"></enum>
+            <enum value="government-only"></enum>
+            <enum value="hybrid"></enum>
+            <enum value="other">Some other deployment model.</enum>
+         </allowed-values>
       </flag>
       <model>
          <field ref="remarks"/>
@@ -481,7 +477,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -517,7 +513,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -530,7 +526,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="diagram" max-occurs="unbounded">
-            <group-as name="diagrams" json-behavior="BY_KEY"/>
+            <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -543,14 +539,14 @@
       <description>Provides information as to how the system is implemented.</description>
       <model>
          <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
-            <group-as name="system-roles" json-behavior="BY_KEY"/>
+            <group-as name="system-roles" in-json="BY_KEY"/>
          </assembly>
          
          <assembly ref="component" max-occurs="unbounded">
-            <group-as name="components" json-behavior="BY_KEY"/>
+            <group-as name="components" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="capability" max-occurs="unbounded">
-            <group-as name="capabilities" json-behavior="BY_KEY"/>
+            <group-as name="capabilities" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="service" max-occurs="unbounded">
             <description>A collection of the ports, protocols, and services used within the
@@ -651,11 +647,11 @@
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="true">
+      <flag name="id" as-type="ID" required="yes">
          <formal-name>Component Identifier</formal-name>
          <description>A unique identifier for a component.</description>
       </flag>
-      <flag name="name" as-type="string" required="true">
+      <flag name="name" as-type="string" required="yes">
          <formal-name>Component Name</formal-name>
          <description>The component's human-readable name.</description>
       </flag>
@@ -665,21 +661,21 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <flag ref="name">
-               <valid-values allow-other="yes">
-                  <value name="version">The version of the component.</value>
-                  <value name="model">The model of the component.</value>
-                  <value name="release-date">The date the component was released.</value>
-               </valid-values>
+               <allowed-values allow-other="yes">
+                  <enum value="version">The version of the component.</enum>
+                  <enum value="model">The model of the component.</enum>
+                  <enum value="release-date">The date the component was released.</enum>
+               </allowed-values>
             </flag>
          </field>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
             <flag ref="rel">
-               <valid-values allow-other="yes">
-                  <value name="depends-on">A reference to another component that this component has a dependency on.</value>
-                  <value name="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</value>
-                  <value name="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</value>
-               </valid-values>
+               <allowed-values allow-other="yes">
+                  <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+                  <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+                  <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</enum>
+               </allowed-values>
             </flag>
          </field>
          <assembly ref="supplier" min-occurs="1" max-occurs="unbounded">
@@ -689,10 +685,10 @@
             </remarks>
          </assembly>
          <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" json-behavior="BY_KEY"/>
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="component-relationship" max-occurs="unbounded">
-            <group-as name="component-relationships" json-behavior="BY_KEY"/>
+            <group-as name="component-relationships" in-json="BY_KEY"/>
          </assembly>
 <!--         <assembly ref="proof-of-compliance" max-occurs="unbounded">
             <group-as name="proofs-of-compliance" />
@@ -738,11 +734,11 @@
       <formal-name>Capability</formal-name>
       <description>A grouping of other components and/or capabilities.</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="true">
+      <flag name="id" as-type="ID" required="yes">
          <formal-name>Capability Identifier</formal-name>
          <description>A unique identifier for a capability.</description>
       </flag>
-      <flag name="name" as-type="string" required="true">
+      <flag name="name" as-type="string" required="yes">
          <formal-name>Capability Name</formal-name>
          <description>The capability's human-readable name.</description>
       </flag>
@@ -759,10 +755,10 @@
         -->
          </field>
          <assembly ref="incorporates-capability" max-occurs="unbounded">
-            <group-as name="incorporates-capabilities" json-behavior="BY_KEY"/>
+            <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="incorporates-component" max-occurs="unbounded">
-            <group-as name="incorporates-components" json-behavior="BY_KEY"/>
+            <group-as name="incorporates-components" in-json="BY_KEY"/>
          </assembly>
 <!--         <assembly ref="control-implementation" max-occurs="unbounded">
             <group-as name="control-implementations" />
@@ -783,7 +779,7 @@
          </assembly>
          <field ref="purpose"/>
          <assembly ref="used-by-component" max-occurs="unbounded">
-            <group-as name="used-by-components" json-behavior="SINGLETON_OR_ARRAY"/>
+            <group-as name="used-by-components" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
@@ -953,10 +949,10 @@
             <group-as name="network-ids"/>
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" json-behavior="BY_KEY"/>
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="implemented-component">
-            <group-as name="implemented-components" json-behavior="BY_KEY"/>
+         <assembly ref="implemented-component" max-occurs="unbounded">
+            <group-as name="implemented-components" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -1159,10 +1155,10 @@
       <flag name="type">
          <formal-name>Implementation Type</formal-name>
          <description>The type of implementation</description>
-         <valid-values>
-            <value name="runs-software">The implemented component is a 'software' component that the inventory item has installed and uses.</value>
-            <value name="enforces-policy">The implemented component is a 'policy' component that the inventory item supports and enforces.</value>
-         </valid-values>
+         <allowed-values>
+            <enum value="runs-software">The implemented component is a 'software' component that the inventory item has installed and uses.</enum>
+            <enum value="enforces-policy">The implemented component is a 'policy' component that the inventory item supports and enforces.</enum>
+         </allowed-values>
       </flag>
       <model>
          <field ref="remarks"/>
@@ -1199,10 +1195,10 @@
             <!-- TODO: Model specific link relationships -->
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="set-params" json-behavior="BY_KEY"/>
+            <group-as name="set-params" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="statement" max-occurs="unbounded">
-            <group-as name="statements" json-behavior="BY_KEY"/>
+            <group-as name="statements" in-json="BY_KEY"/>
          </assembly>
          <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
@@ -1233,10 +1229,10 @@
          <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
          <assembly ref="by-component" max-occurs="unbounded">
-            <group-as name="by-components" json-behavior="BY_KEY"/>
+            <group-as name="by-components" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="by-capability" max-occurs="unbounded">
-            <group-as name="by-capabilities" json-behavior="BY_KEY"/>
+            <group-as name="by-capabilities" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -1254,7 +1250,7 @@
             <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="set-params" json-behavior="BY_KEY"/>
+            <group-as name="set-params" in-json="BY_KEY"/>
          </assembly>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
@@ -1278,7 +1274,7 @@
             <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="set-params" json-behavior="BY_KEY"/>
+            <group-as name="set-params" in-json="BY_KEY"/>
          </assembly>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
@@ -1358,7 +1354,7 @@
 			assigned.</description>
       <example>
          <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
-            <value>System ISSO</value>
+            <enum>System ISSO</enum>
          </set-param>
       </example>
    </define-flag>

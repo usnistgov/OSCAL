@@ -21,11 +21,11 @@
         
         <model>
             <assembly ref="using"/>
-            <assembly ref="configuration">
-                <group-as name="configurations" json-behavior="BY_KEY"/>
+            <assembly ref="configuration" max-occurs="unbounded">
+                <group-as name="configurations" in-json="BY_KEY"/>
             </assembly>
-            <assembly ref="artifact">
-                <group-as name="artifacts" json-behavior="BY_KEY"/>
+            <assembly ref="artifact" max-occurs="unbounded">
+                <group-as name="artifacts" in-json="BY_KEY"/>
             </assembly>
         </model>
     </define-assembly>
@@ -58,7 +58,7 @@
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="with-argument" max-occurs="unbounded">
-                <group-as name="with-arguments" json-behavior="BY_KEY"/>
+                <group-as name="with-arguments" in-json="BY_KEY"/>
             </assembly>
             <field ref="remarks"/>
         </model>
@@ -97,7 +97,7 @@
         <formal-name>Configuration</formal-name>
         <description>Information on how to configure the component (for technical types of components).</description>
         <json-key flag-name="id"/>
-        <flag name="id" as-type="ID" required="true">
+        <flag name="id" as-type="ID" required="yes">
             <formal-name>Configuration Identifier</formal-name>
             <description>A unique identifier for the configuration.</description>
         </flag>
@@ -111,7 +111,7 @@
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="argument" max-occurs="unbounded">
-                <group-as name="arguments" json-behavior="BY_KEY"/>
+                <group-as name="arguments" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="mechanism" max-occurs="unbounded">
                 <group-as name="mechanisms"/>
@@ -122,7 +122,7 @@
     <define-assembly name="mechanism">
         <formal-name>mechanism</formal-name>
         <description>Information on a mechanism used to configure the component.</description>
-        <flag name="id" as-type="ID" required="true">
+        <flag name="id" as-type="ID" required="yes">
             <formal-name>Mechanism Identifier</formal-name>
             <description>A unique identifier for the configuration mechanism.</description>
         </flag>
@@ -184,15 +184,15 @@
         <flag name="type" as-type="NCName" required="yes">
             <formal-name>Argument Data Type</formal-name>
             <description>The data type of the argument.</description>
-            <valid-values>
-                <value name="duration-seconds"></value>
-                <value name="duration-minutes"></value>
-                <value name="duration-hours"></value>
-                <value name="duration-days"></value>
-                <value name="integer"></value>
-                <value name="decimal"></value>
-                <value name="string"></value>
-            </valid-values>
+            <allowed-values>
+                <enum value="duration-seconds"></enum>
+                <enum value="duration-minutes"></enum>
+                <enum value="duration-hours"></enum>
+                <enum value="duration-days"></enum>
+                <enum value="integer"></enum>
+                <enum value="decimal"></enum>
+                <enum value="string"></enum>
+            </allowed-values>
         </flag>
         <model>
             <!-- Need to model the argument -->
@@ -204,7 +204,7 @@
         <formal-name>Configuration</formal-name>
         <description>Information on how to use the component (for documentary types of components).</description>
         <json-key flag-name="id"/>
-        <flag name="id" as-type="ID" required="true">
+        <flag name="id" as-type="ID" required="yes">
             <formal-name>Artifact Identifier</formal-name>
             <description>A unique identifier for the artifact.</description>
         </flag>
