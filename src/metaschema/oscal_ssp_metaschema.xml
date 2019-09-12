@@ -567,7 +567,7 @@
    
    <define-assembly name="system-role">
       <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
-      <formal-name>Role</formal-name>
+      <formal-name>System Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
       <json-key flag-name="id"/>
       <flag name="id" as-type="ID" required="yes">
@@ -581,6 +581,7 @@
       <flag ref="access" required="yes"/>
       <flag ref="sensitivity-level" required="yes"/>
       <model>
+         <field ref="role-id" min-occurs="1"/>
          <field ref="title"/>
          <field ref="short-name"/>
          <field ref="description"/>
@@ -686,6 +687,9 @@
             <remarks>
                <p>Multiple suppliers can be used to show the original provider, plus any intermediaries (e.g., resellers).</p>
             </remarks>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" json-behavior="BY_KEY"/>
          </assembly>
          <assembly ref="component-relationship" max-occurs="unbounded">
             <group-as name="component-relationships" json-behavior="BY_KEY"/>
@@ -949,7 +953,7 @@
             <group-as name="network-ids"/>
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties"/>
+            <group-as name="responsible-parties" json-behavior="BY_KEY"/>
          </assembly>
          <assembly ref="implemented-component">
             <group-as name="implemented-components" json-behavior="BY_KEY"/>
@@ -962,9 +966,12 @@
    <define-assembly name="responsible-party">
       <formal-name>Responsible Party</formal-name>
       <description>A reference to an organization or person assigned a referenced system role that is responsible for the containing inventory item.</description>
+      <json-key flag-name="system-role-id"/>
+      <flag name="system-role-id" required="yes" as-type="NCName">
+         <formal-name>Responsible System Role</formal-name>
+         <description>The system role that is responsible.</description>
+      </flag>
       <model>
-         <field ref="role-id" min-occurs="1"/>
-         <field ref="system-role-id" min-occurs="1"/>
          <field ref="party-id" min-occurs="1" max-occurs="unbounded">
             <group-as name="party-ids"/>
          </field>
@@ -1167,9 +1174,6 @@
       <description>Defines how the system (as a whole) supports a set of controls.</description>
       <model>
          <field ref="description" min-occurs="1"/>
-         <assembly ref="meets-requirement-set" max-occurs="unbounded">
-            <group-as name="meets-requirement-sets"/>
-         </assembly>
          <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
             <group-as name="implemented-requirements"/>
          </assembly>
@@ -1183,10 +1187,11 @@
       <flag ref="control-id"/>
       <model>
          <field ref="description"/>
-<!--         <field ref="responsible-role-id" max-occurs="unbounded">
-            <group-as name="responsible-role-ids"/>
+         <field ref="role-id" max-occurs="unbounded">
+            <description>The role responsible for the control implementation.</description>
+            <group-as name="system-role-ids"/>
          </field>
--->         <field ref="prop" max-occurs="unbounded">
+         <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
          <field ref="link" max-occurs="unbounded">
@@ -1214,6 +1219,10 @@
       </flag>
       <model>
          <field ref="description"/>
+         <field ref="system-role-id" max-occurs="unbounded">
+            <description>The system role responsible for the control implementation.</description>
+            <group-as name="role-ids"/>
+         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
@@ -1236,43 +1245,41 @@
    <define-assembly name="by-component">
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
-     <json-key flag-name="component-id"/>
+      <json-key flag-name="component-id"/>
       <flag ref="component-id" required="yes"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <field ref="role-id" max-occurs="unbounded">
-            <description>The component role responsible for the control implementation.</description>
+         <field ref="system-role-id" max-occurs="unbounded">
+            <description>The system role responsible for the control implementation.</description>
             <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="set-params" json-behavior="BY_KEY"/>
          </assembly>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
       </model>
    </define-assembly>
 
    <define-assembly name="by-capability">
       <formal-name>capability Control Implementation</formal-name>
       <description>Defines how the referenced capability implements a set of controls.</description>
-     <json-key flag-name="capability-id"/>
+      <json-key flag-name="capability-id"/>
       <flag ref="capability-id" required="yes"/>
       <model>
          <field ref="description" min-occurs="1"/>
-         <assembly ref="meets-requirement-set" min-occurs="1"/>
-      </model>
-   </define-assembly>
-
-   <define-assembly name="meets-requirement-set">
-      <formal-name>Meets</formal-name>
-      <description>Defines what sets of controls are supported by the system (as a whole).</description>
-      <model>
-         <field ref="role-id" max-occurs="unbounded">
-            <description>The component role responsible for the control implementation.</description>
+         <field ref="system-role-id" max-occurs="unbounded">
+            <description>The system role responsible for the control implementation.</description>
             <group-as name="role-ids"/>
          </field>
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="set-params" json-behavior="BY_KEY"/>
          </assembly>
-         <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>

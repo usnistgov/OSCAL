@@ -110,15 +110,31 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         newpath="${newpath/\/$format\///$altformat/}" # change path from old to new format dir
         newpath="${newpath%.*}" # strip extension
 
-        dest="$WORKING_DIR/${newpath}-min.${altformat}"
-        dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
         converter="$WORKING_DIR/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
         converter_relative=$(realpath --relative-to="${WORKING_DIR}" "$converter")
 
-        if [ "$VERBOSE" = "true" ]; then
-          echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
-        fi
-        result=$(xsl_transform "$converter" "$file" "$dest" 2>&1)
+
+        case $format in
+        xml)
+          dest="$WORKING_DIR/${newpath}-min.${altformat}"
+          dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
+          if [ "$VERBOSE" = "true" ]; then
+            echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+          fi
+          result=$(xsl_transform "$converter" "$file" "$dest" 2>&1)
+          ;;
+        json)
+          dest="$WORKING_DIR/${newpath}.${altformat}"
+          dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
+          if [ "$VERBOSE" = "true" ]; then
+            echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+          fi
+          result=$(xsl_transform "$converter" "" "$dest" "-it" "json-file=${file}" 2>&1)
+          ;;
+        *)
+          echo "${P_WARN}Conversion from '${format} to '${altformat^^}' is unsupported for '${P_END}${file_relative}${P_OK}'.${P_END}"
+          continue;
+        esac
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
           echo "${P_ERROR}Content conversion to ${altformat^^} failed for '${P_END}${file_relative}${P_ERROR}' using converter '${P_END}${converter_relative}${P_ERROR}'.${P_END}"
