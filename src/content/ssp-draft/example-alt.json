@@ -1,0 +1,280 @@
+{
+  "$schema": "file:/home/davidwal/github/david-waltermire-nist/OSCAL/json/schema/oscal_ssp_schema.json",
+  "system-security-plan": {
+    "id": "example-ssp",
+    "metadata": {
+      "title": "Enterprise Logging and Auditing System Security Plan",
+      "version": "1.0",
+      "oscal-version": "1.0.0-milestone2",
+      "roles": [
+        {"id": "asset-administrator"},
+        {"id": "asset-owner"},
+        {"id": "maintainer"},
+        {"id": "vendor"}
+      ],
+      "parties": [
+        {"id": "enterprise-asset-owners"},
+        {"id": "enterprise-asset-administrators"}
+      ]
+    },
+    "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_MODERATE-baseline_profile.json"},
+    "system-characteristics": {
+      "description": "",
+      "system-id": {
+        "STRVALUE": "example-logging-audit-system",
+        "type": ""
+      },
+      "system-name": "Enterprise Logging and Auditing System",
+      "security-sensitivity-level": "",
+      "system-information": {
+        "information-types": {
+          "nist-id": "C,3,5,8",
+          "description": "This systemn maintains historical logging and auditing information for all client devices connected to this system.",
+          "confidentiality-impact": {"base": "moderate"},
+          "integrity-impact": {"base": "moderate"},
+          "availability-impact": {"base": "low"}
+        }
+      },
+      "security-impact-level": {
+        "security-objective-confidentiality": "moderate",
+        "security-objective-integrity": "moderate",
+        "security-objective-availability": "low"
+      },
+      "status": {
+        "state": "other",
+        "remarks": "This is an example, and is not intended to be implemented as a system"
+      },
+      "deployment-model": {"type": "private"},
+      "service-models": {"type": "TBD"},
+      "authorization-boundary": {"description": ""}
+    },
+    "system-implementation": {
+      "system-roles": {
+        "system-administrator": {
+          "name": "System Administrator",
+          "access": "",
+          "sensitivity-level": ""
+        }
+      },
+      "system-inventory": {
+        "inventory-items": {
+          "id": "inventory-logging-server",
+          "responsible-parties": [
+            {
+              "role-id": "asset-administrator",
+              "system-role-id": "system-administrator",
+              "party-ids": "enterprise-asset-administrators"
+            },
+            {
+              "role-id": "asset-owner",
+              "system-role-id": "asset-owner",
+              "party-ids": "enterprise-asset-owners2"
+            }
+          ],
+          "implemented-components": {
+            "component-splunk-server": {"type": "runs-software"},
+            "component-logging-policy": {"type": "enforces-policy"}
+          }
+        }
+      },
+      "components": {
+        "component-splunk-server": {
+          "name": "Splunk Server",
+          "description": "",
+          "component-type": "software",
+          "suppliers": {
+            "party-id": "supplier1",
+            "role-id": "vendor"
+          }
+        },
+        "component-logging-policy": {
+          "name": "Enterprise Logging, Monitoring, and Alerting Policy",
+          "component-type": "policy",
+          "description": "Requires all components to send logs to the enterprise logging solution\n\u2014 Requires all components synchronize their time with the appropriate enterprise time service, and at what frequency.\n\u2014 Identifies the events that must be cpatured\n\u2014 Identifies who is responsible/accountable for performing these functions",
+          "properties": {
+            "version": "2.1",
+            "last-modified-date": "20181015"
+          },
+          "suppliers": {
+            "party-id": "legal-department",
+            "role-id": "maintainer"
+          }
+        },
+        "system-integration-process": {
+          "name": "System Integration Process",
+          "component-type": "process",
+          "description": "Ensures proper integration into the enterprise as new systems are brought into production.",
+          "properties": {"last-modified-date": "20181015"},
+          "suppliers": {
+            "party-id": "it-department",
+            "role-id": "maintainer"
+          },
+          "component-relationships": {
+            "component-logging-policy": {
+              "type": "implements-policy",
+              "remarks": "Ensures logs from components in new system are able to reach Splunk\n\nEnsures log monitoring capabilities recognize new system as authorized."
+            }
+          }
+        },
+        "inventory-management-process": {
+          "name": "Inventory Management Process",
+          "component-type": "process",
+          "description": "Describes how new components are introduced into the system - ensures monitoring teams know about every asset that should be producing logs, thus should be monitored.",
+          "properties": {"last-modified-date": "20181015"},
+          "suppliers": {
+            "party-id": "it-department",
+            "role-id": "maintainer"
+          },
+          "component-relationships": {
+            "component-logging-policy": {
+              "type": "implements-policy",
+              "remarks": "Describes how new components are introduced into the system - ensures monitoring teams know about every asset that should be producing logs, thus should be monitored."
+            }
+          }
+        },
+        "comfiguration-management-guidance": {
+          "name": "Configuration Management",
+          "component-type": "guidance",
+          "description": "Describes how to configure a component to ensure its logs are transmitted to Splunk in the appropriate format. Also describes how to configure time synchronization.",
+          "properties": {"last-modified-date": "20181015"},
+          "suppliers": {
+            "party-id": "it-department",
+            "role-id": "maintainer"
+          },
+          "component-relationships": {
+            "component-logging-policy": {
+              "type": "implements-policy",
+              "remarks": "Describes how to configure a component to ensure its logs are transmitted to Splunk in the appropriate format. Also describes how to configure time synchronization."
+            }
+          }
+        },
+        "log-review-process": {
+          "name": "Log Review Process",
+          "component-type": "process",
+          "description": "Describes how and when security administrators should review audit logs, and describes how to escalate suspected or actual issues discovred as a result of the review.",
+          "properties": {"last-modified-date": "20181015"},
+          "suppliers": {
+            "party-id": "soc-team",
+            "role-id": "maintainer"
+          },
+          "component-relationships": {
+            "component-logging-policy": {"type": "implements-policy"}
+          }
+        },
+        "monitoring-and-alerting-process": {
+          "name": "Monitoring and Alerting Process",
+          "component-type": "process",
+          "description": "Describes how security operations center (SOC) staff operates automated log analysis and alerting systems, including validaton of alerts received, and tuning of automated monitoring capabilities. This also describes how how to escalate suspected or actual issues discovred as a result of alerts received.",
+          "properties": {"last-modified-date": "20181015"},
+          "suppliers": {
+            "party-id": "soc-team",
+            "role-id": "maintainer"
+          },
+          "component-relationships": {
+            "component-logging-policy": {"type": "implements-policy"}
+          }
+        }
+      },
+      "capabilities": {
+        "capability-enterprise-logging-and-auditing": {
+          "name": "Enterprise Logging and Auditing Capability",
+          "description": "This capability provides an auditing and logging solution for an organization. Every system within the organization leverages this capability to satisfy auditing and logging requirements.",
+          "incorporates-capabilities": {
+            "capability-central-enterprise-logging": {"description": ""},
+            "capability-enterprise-monitoring-and-alerting": {"description": ""}
+          }
+        },
+        "capability-central-enterprise-logging": {
+          "name": "Centralized Enterprise Logging Capability",
+          "description": ""
+        },
+        "capability-enterprise-monitoring-and-alerting": {
+          "name": "Enterprise Monitoring and Alerting Capability",
+          "description": ""
+        }
+      }
+    },
+    "control-implementation": {
+      "description": "",
+      "implemented-requirements": {
+        "control-id": "au-1",
+        "statements": {
+          "au-1smt": {"description": "N/A"},
+          "au-1smt.a": {
+            "by-components": {
+              "component-logging-policy": {
+                "set-params": {
+                  "au-1_prm_1": {"value": "all staff and contractors within the organization"}
+                },
+                "description": "The legal deparment develops, documents, and disseminates this policy to all staff and contractors within the organization."
+              },
+              "system-integration-process": {
+                "set-params": {
+                  "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
+                },
+                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+              },
+              "inventory-management-process": {
+                "set-params": {
+                  "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
+                },
+                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+              },
+              "comfiguration-management-guidance": {
+                "set-params": {
+                  "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
+                },
+                  "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+              }
+            }
+          },
+          "au-1smt.a.1": {
+            "by-components": {
+              "component-logging-policy": {"description": "This policy explicityly states the purpose and scope of the policy in Section 1. Roles and responsibilities are described in Section 2. This secton also describes responsiblities for organizational coordination. Management commitment and compliance statements are made in the board\u2019s directive memo dated January 1, 2012."}
+            }
+          },
+          "au-1smt.a.2": {
+            "by-components": {
+              "system-integration-process": {"description": "This process aligns with the nterprise Logging, Monitoring, and Alerting Policy, Version 2.1, October 15, 2018. The following processes work together to fully implement the policy: System Integration Process, Inventory Management Process, Configuration Management, Log Review Process, and Monitoring and Alerting Process"},
+              "inventory-management-process": {"description": "This process aligns with the enterprise Logging, Monitoring, and Alerting Policy, Version 2.1, October 15, 2018. The following processes work together to fully implement the policy: System Integration Process, Inventory Management Process, Configuration Management, Log Review Process, and Monitoring and Alerting Process"},
+              "comfiguration-management-guidance": {"description": "This process aligns with the nterprise Logging, Monitoring, and Alerting Policy, Version 2.1, October 15, 2018. The following processes work together to fully implement the policy: System Integration Process, Inventory Management Process, Configuration Management, Log Review Process, and Monitoring and Alerting Process"}
+            }
+          },
+          "au-1_smt.b": {"remarks": "N/A"},
+          "au-1_smt.b.1": {
+            "by-components": {
+              "component-logging-policy": {
+                "set-params": {
+                  "au-1_prm_2": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
+                },
+                "description": "The legal deparment reviews this policy annually, and other times as necessary in response to regulatory or organizational changes. The legal depatment updates the policy as needed based on these reviews."
+              }
+            }
+          },
+          "au-1_smt.b.2": {
+            "by-components": {
+              "system-integration-process": {
+                "set-params": {
+                  "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
+                },
+                "description": "The IT deparment reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT depatment updates the policy as needed based on these reviews."
+              },
+              "inventory-management-process": {
+                "set-params": {
+                  "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
+                },
+                "description": "The IT deparment reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT depatment updates the policy as needed based on these reviews."
+              },
+              "comfiguration-management-guidance": {
+                "set-params": {
+                  "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
+                },
+                "description": "The IT deparment reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT depatment updates the policy as needed based on these reviews"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
