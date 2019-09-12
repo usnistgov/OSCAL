@@ -29,10 +29,10 @@
 -->
             <assembly ref="supplier"/>
             <assembly ref="implemented-requirement"/>
-            <assembly ref="incorporates-component">
+            <assembly ref="incorporates-component" max-occurs="unbounded">
                 <group-as name="incorporates-components" in-json="BY_KEY"/>
             </assembly>
-            <assembly ref="incorporates-capability">
+            <assembly ref="incorporates-capability" max-occurs="unbounded">
                 <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
             </assembly>
         </model>
@@ -44,18 +44,18 @@
     <define-flag name="component-type" as-type="string">
         <formal-name>Component Type</formal-name>
         <description>A category describing the purpose of the component.</description>
-        <valid-values allow-other="yes">
-            <value name="software">Any software, operating system, or firmware</value>
-            <value name="hardware"></value>
-            <value name="service">A service that may provide APIs.</value>
-            <value name="policy"></value>
-            <value name="process"></value>
-            <value name="proceedure"></value>
-            <value name="plan"></value>
-            <value name="guidance">Any guideline or recommendation</value>
-            <value name="standard"></value>
-            <value name="validation"></value>
-        </valid-values>
+        <allowed-values allow-other="yes">
+            <enum value="software">Any software, operating system, or firmware</enum>
+            <enum value="hardware"></enum>
+            <enum value="service">A service that may provide APIs.</enum>
+            <enum value="policy"></enum>
+            <enum value="process"></enum>
+            <enum value="proceedure"></enum>
+            <enum value="plan"></enum>
+            <enum value="guidance">Any guideline or recommendation</enum>
+            <enum value="standard"></enum>
+            <enum value="validation"></enum>
+        </allowed-values>
     </define-flag>
     
     <define-assembly name="supplier">
@@ -67,11 +67,11 @@
       <description>TBD</description>
     </flag>
 -->
-        <flag ref="party-id" required="yes"/>
-        <flag ref="role-id" required="yes">
-            <!-- TODO: define standard roles -->
-        </flag>
         <model>
+            <field ref="party-id" min-occurs="1"/>
+            <field ref="role-id" min-occurs="1">
+                <!-- TODO: define standard roles -->
+            </field>
             <field ref="remarks"/>
         </model>
         <remarks>
@@ -120,7 +120,7 @@
         <flag ref="control-id"/>
         <model>
             <assembly ref="only-statement" max-occurs="unbounded">
-                <group-as name="only-statements" json-behavior="BY_KEY"/>
+                <group-as name="only-statements" in-json="BY_KEY"/>
             </assembly>
             <field ref="description"/>
             <field ref="prop" max-occurs="unbounded">
@@ -181,7 +181,7 @@
         <formal-name>Incorporates Component</formal-name>
         <description>TBD</description>
         <json-key flag-name="component-id"/>
-        <flag ref="component-id" required="true"/>
+        <flag ref="component-id" required="yes"/>
         <model>
             <field ref="description" min-occurs="1"/>
         </model>
@@ -191,7 +191,7 @@
         <formal-name>Incorporates Capability</formal-name>
         <description>TBD</description>
         <json-key flag-name="capability-id"/>
-        <flag name="capability-id" required="true" as-type="IDREF">
+        <flag name="capability-id" required="yes" as-type="IDREF">
             <formal-name>Capability Reference</formal-name>
             <description>A reference to a capability by its identifier</description>
         </flag>

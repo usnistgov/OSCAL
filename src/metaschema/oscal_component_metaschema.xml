@@ -52,11 +52,11 @@
     <formal-name>Component</formal-name>
     <description>A defined component that can be part of an implemented system.</description>
     <json-key flag-name="id"/>
-    <flag name="id" as-type="ID" required="true">
+    <flag name="id" as-type="ID" required="yes">
       <formal-name>Component Identifier</formal-name>
       <description>A unique identifier for a component.</description>
     </flag>
-    <flag name="name" as-type="string" required="true">
+    <flag name="name" as-type="string" required="yes">
       <formal-name>Component Name</formal-name>
       <description>The component's short, human-readable name.</description>
     </flag>
@@ -69,21 +69,21 @@
       <field ref="prop" max-occurs="unbounded">
         <group-as name="properties"/>
         <flag ref="name">
-          <valid-values allow-other="yes">
-            <value name="version">The version of the component.</value>
-            <value name="model">The model of the component. Useful for 'software', 'hardware', and 'service' components.</value>
-            <value name="release-date">The date the component was released.</value>
-          </valid-values>
+          <allowed-values allow-other="yes">
+            <enum value="version">The version of the component.</enum>
+            <enum value="model">The model of the component. Useful for 'software', 'hardware', and 'service' components.</enum>
+            <enum value="release-date">The date the component was released.</enum>
+          </allowed-values>
         </flag>
       </field>
       <field ref="link" max-occurs="unbounded">
         <group-as name="links"/>
         <flag ref="rel">
-          <valid-values allow-other="yes">
-            <value name="depends-on">A reference to another component that this component has a dependency on.</value>
-            <value name="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</value>
-            <value name="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</value>
-          </valid-values>
+          <allowed-values allow-other="yes">
+            <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+            <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+            <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</enum>
+          </allowed-values>
         </flag>
       </field>
       <assembly ref="supplier" min-occurs="1"/>
@@ -119,11 +119,11 @@
     <formal-name>Capability</formal-name>
     <description>A grouping of other components and/or capabilities.</description>
     <json-key flag-name="id"/>
-    <flag name="id" as-type="ID" required="true">
+    <flag name="id" as-type="ID" required="yes">
       <formal-name>Capability Identifier</formal-name>
       <description>A unique identifier for a capability.</description>
     </flag>
-    <flag name="name" as-type="string" required="true">
+    <flag name="name" as-type="string" required="yes">
       <formal-name>Capability Name</formal-name>
       <description>The capability's human-readable name.</description>
     </flag>
