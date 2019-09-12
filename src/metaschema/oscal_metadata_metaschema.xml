@@ -166,8 +166,7 @@
    </define-flag>
    <define-field name="prop">
       <formal-name>Property</formal-name>
-      <description>A value with a name, attributed to the containing control, subcontrol, part,
-      or group.</description>
+      <description>A value with a name, attributed to the containing control, part, or group.</description>
       <json-value-key flag-name="name"/>
       <flag ref="name" required="yes">
          <allowed-values allow-other="yes">
@@ -176,7 +175,7 @@
             <!-- TODO: move this to a more specific context -->
             <enum value="method">An assessment method.</enum>
             <!-- TODO: move this to a more specific context -->
-            <enum value="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</enum>
+            <enum value="status">The status of a <code>control</code>. For example, a value of 'Withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
          </allowed-values>
       </flag>
       <flag ref="id"/>

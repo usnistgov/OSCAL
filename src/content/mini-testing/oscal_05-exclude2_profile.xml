@@ -6,7 +6,7 @@
    <title>Being More Exclusive</title>
    <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
-         <all with-subcontrols="yes"/>
+         <all with-child-controls="yes"/>
       </include>
       <exclude>
          <call control-id="ra.7"/>

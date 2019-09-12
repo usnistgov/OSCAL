@@ -17,18 +17,18 @@
             <sch:assert test="starts-with(.,$parent-label)">Label hierarchy issue</sch:assert>
         </sch:rule>
         
-        <sch:rule context="oscal:control | oscal:subcontrol">
+        <sch:rule context="oscal:control">
             <sch:let name="expected-id" value="o:reduce-label(oscal:prop[@class='label'])"/>
             <sch:assert test="@id = $expected-id">Expected id to be '<sch:value-of select="$expected-id"/>'</sch:assert>
         </sch:rule>
         
-        <sch:rule context="oscal:control/oscal:part[@class='statement'] | oscal:subcontrol/oscal:part[@class='statement']">
+        <sch:rule context="oscal:control/oscal:part[@class='statement']">
             <sch:let name="expected-id" value="../@id || '_smt'"/>
             <sch:assert test="@id = $expected-id">Expected id to be '<sch:value-of select="$expected-id"/>'</sch:assert>
         </sch:rule>
 
         <sch:rule context="oscal:part[@class='statement']/oscal:part[@class='statement']">
-            <sch:let name="owner" value="(ancestor::oscal:subcontrol, ancestor::oscal:control)[1]"/>
+            <sch:let name="owner" value="(ancestor::oscal:control)[1]"/>
             <xsl:variable name="reckoning">
                 <xsl:number count="oscal:part[@class='statement']/oscal:part[@class='statement']" level="multiple" format=".a.1"/>
             </xsl:variable>
@@ -36,7 +36,7 @@
             <sch:assert test="@id = $expected-id">Expected id to be '<sch:value-of select="$expected-id"/>'</sch:assert>
         </sch:rule>
         
-        <sch:rule context="oscal:control/oscal:part[@class='objective'] | oscal:subcontrol/oscal:part[@class='objective']">
+        <sch:rule context="oscal:control/oscal:part[@class='objective']">
             <sch:let name="expected-id" value="../@id || '_obj'"/>
             <sch:assert test="@id = $expected-id">Expected id to be '<sch:value-of select="$expected-id"/>'</sch:assert>
         </sch:rule>
@@ -53,12 +53,12 @@
        the head serves to match to 
      -->
 <!-- when the head is incremented, it should be calculable relative to other
-     front-incremented values (heads, numbered relative to the root of the control or subcontrol)
+     front-incremented values (heads, numbered relative to the root of the control)
      when the tail is incremented, similarly, within the scope of elements with the same head -->
 
         <sch:rule context="oscal:part[@class='objective']/oscal:part[@class='objective']">
          
-            <sch:let name="owner" value="(ancestor::oscal:subcontrol, ancestor::oscal:control)[1]"/>
+            <sch:let name="owner" value="ancestor::oscal:control[1]"/>
             
             <sch:let name="my-head" value="o:head(.)"/>
             <sch:let name="my-tail" value="o:tail(.)"/>

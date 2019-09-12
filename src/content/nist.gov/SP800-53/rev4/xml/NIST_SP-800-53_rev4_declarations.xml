@@ -35,6 +35,7 @@
   <declare-prop context="SP800-53-enhancement" class="label">
     <singleton/>
     <required/>
+    <!-- a child control's label must increment its parent control's label -->
     <calc xml:space="preserve"><inherit/><autonum>(1)</autonum></calc>
   </declare-prop>
   
