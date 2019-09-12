@@ -105,12 +105,20 @@
 
   <xs:element name="group-as">
     <xs:annotation>
-      <xs:documentation>Determines if a given referenced field or assembly should be wrapped in an outer grouping.</xs:documentation>
+      <xs:documentation>When a given referenced field or assembly must be wrapped in an outer grouping, these settings apply, including a name for the group, and how to express the grouping in the respective formats. Not necessary when a field or assembly has max-occurs='1'</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:attribute name="name" type="xs:NCName" use="required"/>
-      <xs:attribute name="in-json" type="m:json-group-behavior" use="optional" default="SINGLETON_OR_ARRAY"/>
-      <xs:attribute name="in-xml" type="m:xml-group-behavior" use="optional" default="UNGROUPED"/>
+      <xs:attribute name="in-json" type="m:json-group-behavior" use="optional" default="SINGLETON_OR_ARRAY">
+        <xs:annotation>
+          <xs:documentation>How to represent a grouping in JSON</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="in-xml" type="m:xml-group-behavior" use="optional" default="UNGROUPED">
+        <xs:annotation>
+          <xs:documentation>Whether to represent a grouping explicitly in XML</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   
@@ -118,17 +126,17 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="ARRAY">
         <xs:annotation>
-          <xs:documentation>Always use an array.</xs:documentation>
+          <xs:documentation>Always use an array</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="SINGLETON_OR_ARRAY">
         <xs:annotation>
-          <xs:documentation>Use a singleton for when a single value occurs or an array when multiple values occur.</xs:documentation>
+          <xs:documentation>Produce a singleton for a single member (field or assembly) or an array for multiple members</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="BY_KEY">
         <xs:annotation>
-          <xs:documentation>Use with a `json-key` in the referenced field or assembly.</xs:documentation>
+          <xs:documentation>For any group (one or more members) produce an object with properties for each member, using a designated flag for their key (label) values, which must be distinct</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -137,12 +145,12 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="GROUPED">
         <xs:annotation>
-          <xs:documentation>Use a wrapper element.</xs:documentation>
+          <xs:documentation>Use a wrapper element</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="UNGROUPED">
         <xs:annotation>
-          <xs:documentation>Do not use a wrapper element.</xs:documentation>
+          <xs:documentation>Do not use a wrapper element</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -154,8 +162,8 @@
      must be empty.  -->
   <xs:element name="json-value-key">
     <xs:annotation>
-      <xs:documentation>Used inside a define-field, designates
-        the flag as a label (key) to be used for the field value in the JSON on
+      <xs:documentation>Used inside a field definition, designates
+        a flag to be used as a label (key) to be used for the field value in the JSON on
         the field being defined. When a flag-name is provided, indicates that the value of the field
        is to be labeled in the JSON with the value of the flag.</xs:documentation>
     </xs:annotation>
@@ -167,8 +175,7 @@
   <xs:element name="define-flag">
     <xs:annotation>
       <xs:documentation>A data point to be expressed as an attribute in the XML or a name/value pair
-        in the JSON. TBD: make flag definitions optional and implicit from their
-        calls.</xs:documentation>
+        in the JSON. A flag may also be defined implicitly with the assembly or field to which it applies.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
@@ -191,7 +198,7 @@
       <xs:documentation>A formal name for the data construct, to be presented in documentation. It
         is permissible for a formal name to provide nothing but an expanson of what is already given
         by a tag (for example, this element could have formal name "Formal name") but it should at
-        the very least confirm, not confuse.</xs:documentation>
+        the very least confirm the intended semantics for the user, not confuse them.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="namespace" type="xs:anyURI">
@@ -201,9 +208,7 @@
         namespace, documents and document fragments used in mixed-format environments may be
         distinguished from neighbor XML formats using other namespaces. NB this is only for the
         convenience of XML users; this value is not reflected in OSCAL JSON, and OSCAL applications
-        should not rely on namespaces alone to disambiguate or resolve semantics – only for
-        something more important, namely to manage and expose the governance of relevant
-        specifications.</xs:documentation>
+        should not rely on namespaces alone to disambiguate or resolve semantics.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:group name="markup-elements">
@@ -221,7 +226,7 @@
     <xs:annotation>
       <xs:documentation>A short description of the data construct, to be inserted into
         documentation. Unlike 'formal-name' this should not simply repeat what is readily
-        discernable from a tag (element name or json label), but say a little more about
+        discernible from a tag (element name or JSON label), but say a little more about
         it.</xs:documentation>
     </xs:annotation>
     <xs:complexType mixed="true">
@@ -229,23 +234,26 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="remarks">
+    <xs:annotation>
+      <xs:documentation>Any explanatory or helpful information to be provided in the
+      documentation of an assembly, field or flag.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="m:p"/>
       </xs:sequence>
-      <xs:attribute name="class" type="xs:NMTOKENS"/>
+      <xs:attribute name="class" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>Mark as 'XML' for XML-only or 'JSON' for JSON-only remarks.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="title">
-    <xs:complexType mixed="true">
-      <xs:choice maxOccurs="unbounded">
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
-      </xs:choice>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="schema-name">
+    <xs:annotation>
+      <xs:documentation>The name of the information model to be represented by derived schemas.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
@@ -254,22 +262,34 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="schema-version">
+    <xs:annotation>
+      <xs:documentation>The version of the information model to be represented by derived schemas.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true"/>
   </xs:element>
   <xs:element name="short-name">
-    <xs:complexType mixed="true">
-      <xs:choice maxOccurs="unbounded">
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
-      </xs:choice>
-    </xs:complexType>
+    <xs:annotation>
+      <xs:documentation>A short (code) name to be used for the metaschema, for example as a constituent of names assigned to
+        derived artifacts such as schemas and conversion utilities.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true"/>
   </xs:element>
   <xs:element name="import">
+    <xs:annotation>
+      <xs:documentation>To import a set of declarations from an out-of-line schema, supporting reuse of common information structures.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true">
-      <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      <xs:attribute name="href" type="xs:anyURI" use="required">
+        <xs:annotation>
+          <xs:documentation>A relative or absolute URI for retrieving an out-of-line metaschema module.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="assembly">
+    <xs:annotation>
+      <xs:documentation>Referencing an assembly definition to include an assembly or assemblies of a given type in a model.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
@@ -277,12 +297,23 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0">
+        <xs:annotation>
+          <xs:documentation>Minimum occurrence of assemblies within a valid model. The default value is 0, for an optional occurrence.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="max-occurs"
-        type="m:natural-number-or-unbounded" default="1"/>
+        type="m:natural-number-or-unbounded" default="1">
+        <xs:annotation>
+          <xs:documentation>Maximum occurrence of assemblies within a valid model. The default value is 1, for a single occurrence. 'unbounded' permits any number of assemblies of the designated type.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="field">
+    <xs:annotation>
+      <xs:documentation>Referencing a field definition to include a field or fields of a given type in a model.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
@@ -293,14 +324,34 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
-      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0"/>
+      <xs:attribute name="min-occurs" type="xs:nonNegativeInteger" default="0">
+        <xs:annotation>
+          <xs:documentation>Minimum occurrence of assemblies within a valid model. The default value is 0, for an optional occurrence.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="max-occurs"
-        type="m:natural-number-or-unbounded" default="1"/>
+        type="m:natural-number-or-unbounded" default="1">
+        <xs:annotation>
+          <xs:documentation>Maximum occurrence of assemblies within a valid model. The default value is 1, for a single occurrence. 'unbounded' permits any number of assemblies of the designated type.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
       <xs:attribute name="in-xml" default="WITH-WRAPPER">
+        <xs:annotation>
+          <xs:documentation>A field with assigned datatype 'markup-multiline' may be designated for representation with or without a containing (wrapper) element
+            in XML.</xs:documentation>
+        </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="WITH-WRAPPER"/>
-            <xs:enumeration value="UNWRAPPED"/>
+            <xs:enumeration value="WITH-WRAPPER">
+              <xs:annotation>
+                <xs:documentation>Any paragraph or block contents of a markup-multiline field will be represented with a containing (wrapper) element in the XML.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="UNWRAPPED">
+              <xs:annotation>
+                <xs:documentation>With in-xml='UNWRAPPED', a field contents will be represented in the XML with no wrapper, so the field will be implicit. Among sibling fields in a given model, only one of them may be designated as UNWRAPPED.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -315,20 +366,41 @@
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:element name="allowed-values" type="m:allowed-values-type"/>
+  <xs:element name="allowed-values" type="m:allowed-values-type">
+    <xs:annotation>
+      <xs:documentation>With in-xml='UNWRAPPED', a field contents will be represented in the XML with no wrapper. The field itself will be implicit, to be inferred from the presence of the contents. Among sibling fields in a given model, only one of them may be designated as UNWRAPPED.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:complexType name="allowed-values-type">
+    <xs:annotation>
+      <xs:documentation>Indicates a set of values to be recognized for a flag or field, with semantics asserted by a metaschema enumeration (enum).</xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element maxOccurs="unbounded" ref="m:enum"/>
     </xs:sequence>
-    <xs:attribute name="allow-other" type="m:boolean" default="no"/>
+    <xs:attribute name="allow-other" type="m:boolean" default="no">
+      <xs:annotation>
+        <xs:documentation>The given enumerated value or values are inclusive of other values ('yes') or not ('no', the default)</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:element name="enum">
+    <xs:annotation>
+      <xs:documentation>An enumerated value for a flag or field. The value is indicated by the 'value' attribute while the element contents describe the intended semantics for documentation.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true">
       <xs:group ref="m:markup-elements"/>
-      <xs:attribute name="value" use="required" type="xs:string"/>
+      <xs:attribute name="value" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A value recognized for a flag or field.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="p">
+    <xs:annotation>
+      <xs:documentation>A paragraph or paragraph fragment, in documentation.</xs:documentation>
+    </xs:annotation>
     <xs:complexType mixed="true">
       <xs:group ref="m:markup-elements"/>
     </xs:complexType>
@@ -373,6 +445,9 @@
     <xs:attribute name="required" type="m:boolean" default="no"/>
   </xs:complexType>
   <xs:element name="choice">
+    <xs:annotation>
+      <xs:documentation>Within a model, indicates that only one of a set of fields or assemblies, referenced in the choice, may occur in valid instances.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">
         <xs:element ref="m:field"/>
@@ -380,7 +455,11 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:element name="any"/>
+  <xs:element name="any">
+    <xs:annotation>
+      <xs:documentation>Within a model, a foreign element may be permitted here..</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="example">
     <xs:complexType>
       <xs:sequence>
@@ -396,6 +475,9 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="augment">
+    <xs:annotation>
+      <xs:documentation>To augment a definition with localized documentation, when a definition from a separate metaschema module is used.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>

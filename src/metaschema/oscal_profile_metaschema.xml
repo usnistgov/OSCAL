@@ -202,19 +202,19 @@
          <p>This element provides an alternative to calling controls individually
             from a catalog. But this is also the default behavior when no <code>include</code>
             element is given in an <code>import</code>; so ordinarily one might not see this element
-            unless it is for purposes of including its <code>@with-subcontrols='yes'</code>
+            unless it is for purposes of including its <code>with-child-controls</code> flag.
          </p>
       </remarks>
    </define-field>
    <define-field name="call" as-type="empty">
       <formal-name>Call</formal-name>
-      <description>Call a control or subcontrol by its ID</description>
+      <description>Call a control by its ID</description>
       <flag ref="control-id"/>
       <flag ref="with-child-controls"/>
       <remarks>
-         <p>If <code>@with-subcontrols</code> is <q>yes</q> on the call to a control, no sibling
-            <code>call</code>elements need to be used to call any controls appearing within it
-            (<q>subcontrols</q>. Since generally, this is how control enhancements are represented
+         <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling
+            <code>call</code>elements need to be used to call any controls appearing within it.
+            Since generally, this is how control enhancements are represented
             (as controls within controls), this provides a way to include controls with all their
             dependent controls (enhancements) without having to call them individually.</p>
       </remarks>

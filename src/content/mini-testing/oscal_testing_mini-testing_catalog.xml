@@ -112,7 +112,7 @@
                     development, implementation, and operation of organizational systems.</p>
                 <!--<link href="#ac.2"/><link href="#ac.3"/><link href="#ac.5"/><link href="#ac.16"/><link href="#cm.5"/><link href="#cm.11"/><link href="#pl.2"/><link href="#pm.12"/><link href="#sa.15"/><link href="#sa.17"/><link href="#sc.38"/>-->
             </part>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.1">
+            <control class="SP800-53-enhancement" id="ac.6.1">
                 <title>AUTHORIZE ACCESS TO SECURITY FUNCTIONS</title>
                 <param id="ac-6_a">
                     <desc>organization-defined security functions (deployed in hardware, software,
@@ -137,8 +137,8 @@
                         personnel, system programmers, and other privileged users.</p>
                     <!--<link href="#ac.17"/><link href="#ac.18"/><link href="#ac.19"/><link href="#au.9"/><link href="#pe.2"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.2">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.2">
                 <title>NON-PRIVILEGED ACCESS FOR NONSECURITY FUNCTIONS</title>
                 <param id="ac-6_b">
                     <desc>organization-defined security functions or security-relevant
@@ -162,8 +162,8 @@
                         between a privileged and non-privileged account.</p>
                     <!--<link href="#ac.17"/><link href="#ac.18"/><link href="#ac.19"/><link href="#pl.4"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.3">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.3">
                 <title>NETWORK ACCESS TO PRIVILEGED COMMANDS</title>
                 <param id="ac-6_c">
                     <desc>organization-defined privileged commands</desc>
@@ -184,8 +184,8 @@
                         access (i.e., user being physically present at the device).</p>
                     <!--<link href="#ac.17"/><link href="#ac.18"/><link href="#ac.19"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.4">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.4">
                 <title>SEPARATE PROCESSING DOMAINS</title>
                 <prop class="name">AC-6 (4)</prop>
                 <part class="statement">
@@ -201,8 +201,8 @@
                         separate physical domains.</p>
                     <!--<link href="#ac.4"/><link href="#sc.2"/><link href="#sc.3"/><link href="#sc.30"/><link href="#sc.32"/><link href="#sc.39"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.5">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.5">
                 <title>PRIVILEGED ACCOUNTS</title>
                 <param id="ac-6_e">
                     <desc>organization-defined personnel or roles</desc>
@@ -225,8 +225,8 @@
                         sufficiently mitigate risk.</p>
                     <!--<link href="#ia.2"/><link href="#ma.3"/><link href="#ma.4"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.6">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.6">
                 <title>PRIVILEGED ACCESS BY NON-ORGANIZATIONAL USERS</title>
                 <prop class="name">AC-6 (6)</prop>
                 <part class="statement">
@@ -237,8 +237,8 @@
                     <p>None.</p>
                     <!--<link href="#ac.18"/><link href="#ac.19"/><link href="#ia.2"/><link href="#ia.8"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.7">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.7">
                 <title>REVIEW OF USER PRIVILEGES</title>
                 <param id="ac-6_f">
                     <desc>organization-defined frequency</desc>
@@ -271,8 +271,8 @@
                         take appropriate corrective actions.</p>
                     <!--<link href="#ca.7"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.8">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.8">
                 <title>PRIVILEGE LEVELS FOR CODE EXECUTION</title>
                 <param id="ac-6_h">
                     <desc>organization-defined software</desc>
@@ -292,8 +292,8 @@
                         users are indirectly provided with greater privileges than assigned by
                         organizations.</p>
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.9">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.9">
                 <title>AUDITING USE OF PRIVILEGED FUNCTIONS</title>
                 <prop class="name">AC-6 (9)</prop>
                 <part class="statement">
@@ -308,8 +308,8 @@
                         from insider threats and the advanced persistent threat.</p>
                     <!--<link href="#au.2"/><link href="#au.12"/>-->
                 </part>
-            </subcontrol>
-            <subcontrol class="SP800-53-enhancement" id="ac.6.10">
+            </control>
+            <control class="SP800-53-enhancement" id="ac.6.10">
                 <title>PROHIBIT NON-PRIVILEGED USERS FROM EXECUTING PRIVILEGED FUNCTIONS</title>
                 <prop class="name">AC-6 (10)</prop>
                 <part class="statement">
@@ -326,7 +326,7 @@
                         of privileged functions that require protection from non-privileged
                         users.</p>
                 </part>
-            </subcontrol>
+            </control>
         </control>
     </group>
     <group class="family">

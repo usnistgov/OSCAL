@@ -8,7 +8,7 @@
    <title>More exceptions profile example</title>
    
    <!-- This should error with 'CONTESTED CONTROLS' meaning it invokes controls
-        (or subcontrols) with the same ids as other controls invoked.
+        with the same ids as other controls invoked.
         The IDs should scope universally - perhaps by @id plus an identifier
           for the ur-source catalog (not a deriving profile)
         For now only @id is being examined; catalogs are expected to have exclusive (nonoverlapping) @id schemes.

@@ -14,9 +14,9 @@
         <title>Alphabetic</title>
         <group>
             <control id="A1">
-                <subcontrol id="A1a"/>
-                <subcontrol id="A1b"/>
-                <subcontrol id="A1c"/>
+                <control id="A1a"/>
+                <control id="A1b"/>
+                <control id="A1c"/>
             </control>
             <control id="A2"/>
             <control id="A3"/>
@@ -41,10 +41,10 @@
             <control id="tyrannosaur">
                 <title>Tyrannosaurus</title>
                 <prop class="trans">Tyrant Lizard</prop>
-                <subcontrol id="tyrannosaurus-rex">
+                <control id="tyrannosaurus-rex">
                     <title>Tyrannosaurus Rex</title>
                     <prop class="trans">King Tyrant Lizard</prop>
-                </subcontrol>
+                </control>
             </control>
             <control id="velociraptor">
                 <title>Velociraptor</title>

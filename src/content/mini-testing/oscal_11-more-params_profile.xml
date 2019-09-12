@@ -9,14 +9,14 @@
   <title>More Paramters, More</title>
    <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
-         <all with-subcontrols="yes"/>
+         <all with-child-controls="yes"/>
       </include>
 
       <!-- Excluding some subcontrols as well as a control. -->
       <exclude>
-         <call subcontrol-id="ac.6.7"/>
-         <call subcontrol-id="ac.6.8"/>
-         <call subcontrol-id="ac.6.9"/>
+         <call control-id="ac.6.7"/>
+         <call control-id="ac.6.8"/>
+         <call control-id="ac.6.9"/>
          <call control-id="ra.9"/>
       </exclude></import>
 <modify>

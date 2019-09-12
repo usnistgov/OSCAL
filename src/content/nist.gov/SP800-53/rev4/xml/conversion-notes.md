@@ -31,9 +31,9 @@ As a consequence of the second constraint, ids serve as robust targets for linki
 Additionally, in the OSCAL version of SP800-53 rev 4, the following ID conventions are followed:
 
 1. IDs of controls are derived from the name (label) of the Control. So control "AC-1" has id `ac-1` and "PM-15" has `pm-15`.
-1. IDs of control enhancements (subcontrols) are produced similarly, with the parenthetical expression cast to "dot notation". So control enhancement SI-14(1) has id `si-14.1`, etc.
+1. IDs of control enhancements (child controls) are produced similarly, with the parenthetical expression cast to "dot notation". So control enhancement SI-14(1) has id `si-14.1`, etc.
 1. The analogous rule is applied to groups. So "Risk Assessment" (with controls RA-1 through RA-6) has id `ra`.
-1. Within controls and subcontrols, components (parts) are given IDs whenever it is expected or anticipated to be targets of internal linking. This does not include all components, for example properties (`prop` fields) such as labels. But:
+1. Within controls, components (parts) are given IDs whenever it is expected or anticipated to be targets of internal linking. This does not include all components, for example properties (`prop` fields) such as labels. But:
   1. Statements for each control are suffixed `_smt`, so `si-14.1_smt` etc.
   1. A "Guidance" part ID is suffixed `_gdn`
   1. Parameter IDs suffixed `_prm` with a number representing their position among other parameters in the same control, so `ac-1_prm_2` for the second parameter defined in AC-1.
