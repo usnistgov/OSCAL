@@ -21,7 +21,7 @@ HELP=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
-Usage: $0 [options]
+Usage: $0 [options] [test dir]
 Run all build scripts
 
 -h, -help,                        Display help
