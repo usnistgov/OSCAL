@@ -10,11 +10,13 @@
         {"id": "asset-administrator"},
         {"id": "asset-owner"},
         {"id": "maintainer"},
+        {"id": "legal-officer"},
         {"id": "vendor"}
       ],
       "parties": [
         {"id": "enterprise-asset-owners"},
-        {"id": "enterprise-asset-administrators"}
+        {"id": "enterprise-asset-administrators"},
+        {"id": "legal-department"}
       ]
     },
     "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_MODERATE-baseline_profile.json"},
@@ -50,30 +52,43 @@
     },
     "system-implementation": {
       "system-roles": {
-        "system-administrator": {
+        "system-role-asset-administrator": {
           "name": "System Administrator",
+          "role-id": "system-administrator",
           "access": "",
           "sensitivity-level": ""
+        },
+        "system-role-service-owner": {
+          "name": "Legal Department",
+          "role-id": "legal-officer",
+          "access": "",
+          "sensitivity-level": ""
+          
+        },
+        "system-role-legal": {
+          "name": "Legal Department",
+          "role-id": "legal-officer",
+          "access": "",
+          "sensitivity-level": ""
+          
         }
       },
       "system-inventory": {
         "inventory-items": {
           "id": "inventory-logging-server",
-          "responsible-parties": [
-            {
-              "role-id": "asset-administrator",
-              "system-role-id": "system-administrator",
+          "responsible-parties": {
+            "system-role-asset-administrator": {
               "party-ids": "enterprise-asset-administrators"
             },
-            {
-              "role-id": "asset-owner",
-              "system-role-id": "asset-owner",
-              "party-ids": "enterprise-asset-owners2"
+            "asset-owner": {
+              "party-ids": "enterprise-asset-owners"
             }
-          ],
+          },
           "implemented-components": {
             "component-splunk-server": {"type": "runs-software"},
-            "component-logging-policy": {"type": "enforces-policy"}
+            "component-logging-policy": {
+              "type": "enforces-policy"
+            }
           }
         }
       },
@@ -98,6 +113,11 @@
           "suppliers": {
             "party-id": "legal-department",
             "role-id": "maintainer"
+          },
+          "responsible-parties": {
+            "system-role-legal": {
+              "party-ids": "legal-department"
+            }
           }
         },
         "system-integration-process": {
@@ -203,28 +223,32 @@
           "au-1smt.a": {
             "by-components": {
               "component-logging-policy": {
+                "description": "The legal deparment develops, documents, and disseminates this policy to all staff and contractors within the organization.",
+                "role-ids": "legal-officer",
                 "set-params": {
                   "au-1_prm_1": {"value": "all staff and contractors within the organization"}
-                },
-                "description": "The legal deparment develops, documents, and disseminates this policy to all staff and contractors within the organization."
+                }
               },
               "system-integration-process": {
+                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training.",
+                "role-ids": "it-officer",
                 "set-params": {
                   "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
-                },
-                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+                }
               },
               "inventory-management-process": {
+                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training.",
+                "role-ids": "it-officer",
                 "set-params": {
                   "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
-                },
-                "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+                }
               },
               "comfiguration-management-guidance": {
+                  "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training.",
+                "role-ids": "it-officer",
                 "set-params": {
                   "au-1_prm_1": {"value": "all IT staff who administer this sytem when the staff member is assigned and anually through training"}
-                },
-                  "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this sytem when the staff member is assigned and anually through training."
+                }
               }
             }
           },
