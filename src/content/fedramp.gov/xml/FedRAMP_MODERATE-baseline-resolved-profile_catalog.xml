@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="resolved-profile-2019-08-28--19-40-21">
+<catalog
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    id="resolved-profile-2019-08-28--19-40-21">
   <metadata>
     <title>FedRAMP Moderate Baseline</title>
     <last-modified-date>2019-06-03T11:40:38.576-04:00</last-modified-date>
@@ -8,7 +10,8 @@
     <role id="author">
       <title>Author</title>
     </role>
-    <party role-id="author">
+    <party>
+      <role-id>author</role-id>
       <org>
         <org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
         <email>info@fedramp.gov</email>

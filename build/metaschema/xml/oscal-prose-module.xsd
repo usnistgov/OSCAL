@@ -247,7 +247,7 @@
   -->
   <xs:element name="insert">
     <xs:complexType>
-      <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
+      <xs:attribute name="param-id" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <!--

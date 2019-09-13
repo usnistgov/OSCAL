@@ -1,7 +1,8 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='HIGH' -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-cc326dab-8a99-424a-b721-6cd9ad5a89df">
+<profile
+   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+   id="uuid-cc326dab-8a99-424a-b721-6cd9ad5a89df">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE</title>
       
@@ -12,7 +13,9 @@
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
       
-      <party id="IT-JTF" role-id="creator contact">
+      <party id="IT-JTF">
+         <role-id>creator</role-id>
+         <role-id>contact</role-id>
          <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>

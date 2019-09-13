@@ -1,13 +1,15 @@
 <!-- Created: 5/16/2019 9:05:15 PM -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-fedramp-high-20190605-164040">
+<profile
+		xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+		id="uuid-fedramp-high-20190605-164040">
 	<metadata>
 		<title>FedRAMP High Baseline</title>
 		<last-modified-date>2019-06-03T11:39:45.032-04:00</last-modified-date>
 		<version>1.1</version>
 		<oscal-version>1.0.0-milestone1</oscal-version>
 	  <role id="author"><title>Author</title></role>
-		<party role-id="author">
+		<party>
+			<role-id>author</role-id>
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>

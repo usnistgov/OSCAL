@@ -495,8 +495,6 @@
       <xs:enumeration value="boolean" />
       <xs:enumeration value="string" />
       <xs:enumeration value="NCName" />
-      <!-- TODO: Evaluate how to replace this DTD-based datatypes -->
-      <xs:enumeration value="NMTOKENS" />
       <xs:enumeration value="decimal" />
       <!-- Not supporting float or double -->
       <!--<xs:enumeration value="float" />
@@ -525,10 +523,6 @@
     <xs:union memberTypes="m:simple-datatypes">
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="ID" />
-          <!-- TODO: Evaluate how to replace these DTD-based datatypes -->
-          <xs:enumeration value="IDREF"/>
-          <xs:enumeration value="IDREFS"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:union>

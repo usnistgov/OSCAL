@@ -219,7 +219,7 @@
       an object. When this attribute is not given, its value should be assumed to be <code>oscal</code> and the name should be a name defined by this specification.</p>
       </remarks>
    </define-flag>
-   <define-flag name="class" as-type="NMTOKENS">
+   <define-flag name="class" as-type="NCName">
       <formal-name>Class</formal-name>
       <description>Indicating the type or classification of the containing object</description>
       <remarks>
@@ -231,7 +231,9 @@
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
       <flag ref="id"/>
       <model>
-         <field ref="role-id"/>
+         <field ref="role-id" max-occurs="unbounded">
+            <group-as name="role-ids"/>
+         </field>
          <assembly ref="person" max-occurs="unbounded">
             <group-as name="persons"/>
          </assembly>
@@ -505,7 +507,7 @@
         example) the results of profile resolution.</p>
       </remarks>
    </define-flag>
-   <define-flag name="id" as-type="ID">
+   <define-flag name="id" as-type="NCName">
       <formal-name>Identifier</formal-name>
       <description>Unique identifier of the containing object</description>
       <remarks>

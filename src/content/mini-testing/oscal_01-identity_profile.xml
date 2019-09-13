@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-f20ea163-0397-47d5-80fd-1cb9e7be7929">
-
-<title>Identity profile (an entire catalog, implicitly)</title>
+<profile
+      xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+      id="uuid-f20ea163-0397-47d5-80fd-1cb9e7be7929">
+   <metadata>
+      <title>Identity profile (an entire catalog, implicitly)</title>
+      <oscal-version>1.0.0-milestone2</oscal-version>
+   </metadata>
    <!-- Asking for all controls. -->
-   
    <import href="oscal_testing_mini-testing_catalog.xml"/>
 </profile>
