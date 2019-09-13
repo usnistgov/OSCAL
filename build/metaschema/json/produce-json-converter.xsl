@@ -30,6 +30,7 @@
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
+    
     <xsl:template match="/">
         <!--<xsl:apply-templates select="METASCHEMA"/>-->
         <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
@@ -46,11 +47,13 @@
             <xsl:comment expand-text="true"> OSCAL { @root} conversion stylesheet supports JSON->XML conversion </xsl:comment>
             
             <XSLT:param name="target-ns" as="xs:string?" select="'{$composed-metaschema/METASCHEMA/namespace/normalize-space(.)}'"/>
+            <!--<XSLT:param name="target-ns" as="xs:string?" select="'{namespace/normalize-space(.)}'"/>-->
             
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             
+            <!--<xsl:apply-templates select="*"/>-->
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
             
             <!-- copying in templates from md-oscal-converter.xsl - everything but top-level parameters -->
@@ -72,8 +75,6 @@
         <!-- Making a template to match a flag in context of its parent -->
         <xsl:comment> 000 Handling flag "{ ../@name}/@{ @name }" 000 </xsl:comment>
         
-        <xsl:comment> suppressing when matched in json2xml traversal</xsl:comment>
-        <XSLT:template match="*[@key='{@name}']" priority="7" mode="json2xml"/>
         <xsl:variable name="match-step" expand-text="yes" as="xs:string">*[@key='{@name}']</xsl:variable>
         <xsl:variable name="match-patterns" as="xs:string*">
             <xsl:for-each select="..">
@@ -87,6 +88,9 @@
                 </xsl:value-of>
             </xsl:for-each>
         </xsl:variable>
+         <xsl:comment> suppressing when matched in json2xml traversal</xsl:comment>
+         <XSLT:template match="{string-join($match-patterns,' | ')}" priority="7" mode="json2xml"/>
+         
         <XSLT:template priority="3" match="{string-join($match-patterns,' | ')}" mode="as-attribute">
             <XSLT:attribute name="{@name}">
                 <XSLT:apply-templates mode="#current"/>
@@ -110,6 +114,8 @@
                     <xsl:for-each select="$group-names">
                         <xsl:text> | *[@key='{ . }']/{$match-step}</xsl:text>
                         <xsl:text> | array[@key='{ . }']/*/{$match-step}</xsl:text>
+                        <!-- when json-key is set the grandparent is a map -->
+                        <xsl:text> | map[@key='{ . }']/*/{$match-step}</xsl:text>
                     </xsl:for-each>
                 </xsl:value-of>
             </xsl:for-each>
@@ -399,6 +405,8 @@
             </xsl:for-each>
            
         </xsl:if>
+        <!-- finally we make templates to match locally declared flags -->
+        <xsl:apply-templates mode="make-template" select="flag"/>
         <!--<xsl:call-template name="drop-address"/>-->
     </xsl:template>
  
