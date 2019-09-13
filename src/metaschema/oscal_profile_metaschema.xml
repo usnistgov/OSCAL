@@ -144,6 +144,12 @@
       <flag ref="class"/>
       <model>
          <field ref="title"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
          <choice>
             <assembly ref="group" max-occurs="unbounded">
                <group-as name="groups"/>
