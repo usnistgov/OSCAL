@@ -328,7 +328,7 @@
         <xsl:variable name="type-declaration">
             <xsl:apply-templates select="../.." mode="object-type"/>
         </xsl:variable>
-        <xsl:variable name="base-type" select="$type-declaration/*[@key='type']"/>
+        <xsl:variable name="base-type" select="$type-declaration/*[@key='type'] ! (if (. = 'integer') then 'number' else .)"/>
         <xsl:element namespace="http://www.w3.org/2005/xpath-functions" name="{$base-type}">
             <xsl:apply-templates select="@value"/>
         </xsl:element>
@@ -463,18 +463,18 @@
     </xsl:template>
     
     <xsl:template priority="2" match="*[@as-type='integer']" mode="object-type">
-        <string key="type">number</string>
+        <string key="type">integer</string>
         <!--<number key="multipleOf">1.0</number>-->
     </xsl:template>
 
     <xsl:template priority="2" match="*[@as-type='positiveInteger']" mode="object-type">
-        <string key="type">number</string>
+        <string key="type">integer</string>
         <number key="multipleOf">1.0</number>
         <number key="minimum">1</number>
     </xsl:template>    
     
     <xsl:template priority="2" match="*[@as-type='nonNegativeInteger']" mode="object-type">
-        <string key="type">number</string>
+        <string key="type">integer</string>
         <number key="multipleOf">1.0</number>
         <number key="minimum">0</number>
     </xsl:template>
