@@ -1,0 +1,19 @@
+{
+    "parent": {
+        "odd-flag": 11,
+        "field-dates": [
+            "2020-01-00",
+            "2020-02-30"
+        ],
+        "children": [
+            {
+                "even-flag": 10,
+                "field-date": "2020-01-02"
+            },
+            {
+                "even-flag": 2,
+                "field-date": "2020-04-31"
+            }
+        ]
+    }
+}

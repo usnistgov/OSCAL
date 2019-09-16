@@ -34,7 +34,12 @@
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
-    <xsl:template match="/METASCHEMA" expand-text="true">
+    <!-- bypasses composition to operate on the 'raw' metaschema for debugging -->
+    <!--<xsl:template mode="debug"  match="/METASCHEMA">
+        <xsl:apply-templates select="*"/>
+    </xsl:template>-->
+
+    <xsl:template  match="/METASCHEMA" expand-text="true">
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
             <string key="$id">{ $composed-metaschema/METASCHEMA/namespace }-schema.json</string>
@@ -149,6 +154,8 @@
                     <boolean key="additionalProperties">false</boolean>
                 </xsl:otherwise>
             </xsl:choose>
+            <!-- allowed-values only present on fields -->
+            <xsl:apply-templates select="allowed-values"/>
             
             <!--<map key="propertyNames">
                 <array key="enum">
@@ -232,6 +239,7 @@
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
             <xsl:apply-templates select="." mode="object-type"/>
+            <xsl:apply-templates select="allowed-values"/>
         </map>
     </xsl:template>
 
@@ -297,11 +305,11 @@
         
     <xsl:template mode="declaration" match="flag">
         <map key="{(@name,@ref)[1]}">
-            <xsl:apply-templates select="." mode="object-type"/>
             <xsl:apply-templates select="formal-name | description"/>
             <xsl:if test="empty(formal-name | description)">
                 <xsl:apply-templates select="key('definition-by-name',@ref)/(formal-name | description)"/>
             </xsl:if>
+            <xsl:apply-templates select="." mode="object-type"/>
             <xsl:apply-templates select="(allowed-values,key('definition-by-name',@ref)/allowed-values)[1]"/>    
         </map>
     </xsl:template>
@@ -310,7 +318,6 @@
     <xsl:template match="allowed-values[@allow-other='yes']"/>
     
     <xsl:template match="allowed-values">
-        <xsl:param name="datatype" as="xs:string">string</xsl:param>
         <array key="enum">
             <xsl:apply-templates/>
         </array>
@@ -456,18 +463,18 @@
     </xsl:template>
     
     <xsl:template priority="2" match="*[@as-type='integer']" mode="object-type">
-        <string key="type">integer</string>
+        <string key="type">number</string>
         <!--<number key="multipleOf">1.0</number>-->
     </xsl:template>
 
     <xsl:template priority="2" match="*[@as-type='positiveInteger']" mode="object-type">
-        <string key="type">integer</string>
+        <string key="type">number</string>
         <number key="multipleOf">1.0</number>
         <number key="minimum">1</number>
     </xsl:template>    
     
     <xsl:template priority="2" match="*[@as-type='nonNegativeInteger']" mode="object-type">
-        <string key="type">integer</string>
+        <string key="type">number</string>
         <number key="multipleOf">1.0</number>
         <number key="minimum">0</number>
     </xsl:template>
