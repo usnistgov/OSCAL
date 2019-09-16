@@ -8,10 +8,10 @@
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
  xmlns:o="http://csrc.nist.gov/ns/oscal/example"
  root="parent">
-  <schema-name>Metaschema Unit Test: datatypes-dateTime</schema-name>
+  <schema-name>Metaschema Unit Test: allowed values</schema-name>
   <schema-version>1.0-milestone1</schema-version>
-  <short-name>metaschema-datatypes-dateTime</short-name>
-  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime</namespace>
+  <short-name>metaschema-allowed-values</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/allowed-values</namespace>
 
   <define-assembly name="parent">
     <formal-name>parent</formal-name>
