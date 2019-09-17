@@ -17,7 +17,7 @@
    <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
    <xsl:param name="diagnostic" as="xs:string">no</xsl:param>
    <xsl:template match="text()" mode="md #default">
-      <xsl:value-of select="."/>
+      <xsl:value-of select="replace(., '([`~\^\*''&#34;])', '\\$1')"/>
    </xsl:template>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
