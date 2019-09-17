@@ -24,7 +24,7 @@
     <xsl:template match="text()">
         <!--<xsl:value-of select="."/>-->
         <xsl:call-template name="parse">
-            <xsl:with-param name="str" select="string(.)"/>
+            <xsl:with-param name="markdown-str" select="string(.)"/>
         </xsl:call-template><!--
         <xsl:apply-templates select="." mode="parse"/>-->
     </xsl:template>

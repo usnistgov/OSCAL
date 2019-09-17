@@ -44,12 +44,38 @@
             xpath-default-namespace="{ $target-namespace }"
             exclude-result-prefixes="#all">
             
-            <XSLT:output indent="yes" method="xml" omit-xml-declaration="yes" use-character-maps="delimiters"/>
+            <XSLT:output indent="yes" method="text" omit-xml-declaration="yes" use-character-maps="delimiters"/>
             
             <xsl:comment> METASCHEMA conversion stylesheet supports XML->JSON conversion </xsl:comment>
             <xsl:text>&#xA;</xsl:text>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
             <xsl:text>&#xA;</xsl:text>
+            
+            <XSLT:character-map name="delimiters">
+                <!--<XSLT:output-character character="&lt;" string="\u003c"/>
+                <XSLT:output-character character="&gt;" string="\u003e"/>-->
+            </XSLT:character-map>
+            
+            <XSLT:param name="json-indent" as="xs:string">no</XSLT:param>
+            <xsl:comment> Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass </xsl:comment>
+            <XSLT:param name="diagnostic" as="xs:string">no</XSLT:param>
+            
+            <!-- Note that Saxon's JSON serializer already escapes characters per
+                 https://www.w3.org/XML/Group/qtspecs/specifications/xpath-functions-31/html/Overview.html#func-xml-to-json 
+            -->
+            <XSLT:template match="text()" mode="md #default">
+                <!-- Escapes go here       -->
+                <!--<XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>-->
+                <!--<XSLT:value-of select="replace(., '([`~\^\*''&quot;])', '\\$1')"/>-->
+                <XSLT:value-of select="."/>
+            </XSLT:template>
+            
+            <XSLT:variable name="write-options" as="map(*)" expand-text="true">
+                <XSLT:map>
+                    <XSLT:map-entry key="'indent'">{ $json-indent='yes' }</XSLT:map-entry>
+                </XSLT:map>
+            </XSLT:variable>
+            
             <xsl:call-template name="furniture"/>
             <xsl:text>&#xA;</xsl:text>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
@@ -68,63 +94,6 @@
 <!-- Flags don't need templates since they are always handled
      with fields or assemblies. -->
     <xsl:template match="define-flag"/>
-    
-    <!--<xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <string key="{@address}">
-                <xsl:apply-templates mode="md"/>
-            </string>
-        </XSLT:template>
-    </xsl:template>-->
-    
-    <!--<xsl:template match="define-field[@address=flag/@name][empty(flag)]" priority="3">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <string key="{@address}">
-                <xsl:apply-templates mode="md"/>
-            </string>
-        </XSLT:template>
-    </xsl:template>-->
-    
-    <!--<xsl:template match="define-field[@address=flag/@name][@as='mixed']" priority="2">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <map key="{@address}">
-                <xsl:apply-templates select="flag"/>
-                
-                <XSLT:if test="matches(.,'\S')">
-                    <string key="TEXT">
-                        <XSLT:apply-templates mode="md"/>
-                    </string>
-                </XSLT:if>
-            </map>
-        </XSLT:template>
-    </xsl:template>-->
-    
-    
-<!-- Keys are added to everything and then removed from nodes in arrays, in mode 'rectify' -->
-
-    <!-- ignoring address in these cases -->
-   <!-- <xsl:template match="define-field[empty(flag)][@as='mixed']" priority="3">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <string key="{@name}">
-                <XSLT:apply-templates mode="md"/>
-            </string>
-        </XSLT:template>
-    </xsl:template>-->
-    
-    <!--<xsl:template match="define-field[@as='mixed']">
-        <XSLT:template match="{@name}" mode="xml2json">
-            <map key="{@name}">
-                <xsl:apply-templates select="flag"/>
-                
-                <XSLT:if test="matches(.,'\S')">
-                    <string key="RICHTEXT">
-                        <XSLT:apply-templates mode="md"/>
-                    </string>
-                </XSLT:if>
-            </map>
-        </XSLT:template>
-    </xsl:template>-->
-    
     
     <xsl:template match="define-field" mode="text-key">
         <xsl:value-of select="$string-value-label"/>
@@ -367,21 +336,6 @@
     </xsl:template>
     
     <xsl:template name="furniture">
-
-        <XSLT:character-map name="delimiters">
-            <XSLT:output-character character="&lt;" string="\u003c"/>
-            <XSLT:output-character character="&gt;" string="\u003e"/>
-        </XSLT:character-map>
-
-        <XSLT:param name="json-indent" as="xs:string">no</XSLT:param>
-        <xsl:comment> Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass </xsl:comment>
-        <XSLT:param name="diagnostic" as="xs:string">no</XSLT:param>
-
-        <XSLT:variable name="write-options" as="map(*)" expand-text="true">
-            <XSLT:map>
-                <XSLT:map-entry key="'indent'">{ $json-indent='yes' }</XSLT:map-entry>
-            </XSLT:map>
-        </XSLT:variable>
 
         <XSLT:variable name="xpath-json">
             <map>
@@ -630,13 +584,7 @@
             <XSLT:text>)</XSLT:text>
         </XSLT:template>
 
-        <XSLT:template match="text()" mode="md">
-            <!-- Escapes go here       -->
-            <!--<XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>-->
-            <XSLT:value-of select="replace(., '([`~\^\*''&quot;])', '\\$1')"/>
-        </XSLT:template>
-
-
+<!-- See top level template match="/" for XSLT:template match="text()" mode="md" -->
     </xsl:template>
     
 </xsl:stylesheet>
