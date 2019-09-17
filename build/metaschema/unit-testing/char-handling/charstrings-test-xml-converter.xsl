@@ -16,8 +16,8 @@
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
    <xsl:param name="diagnostic" as="xs:string">no</xsl:param>
-   <xsl:template match="text()" mode="md #default">
-      <xsl:value-of select="replace(., '([`~\^\*''&#34;])', '\\$1')"/>
+   <xsl:template match="text()" mode="md">
+      <xsl:value-of select="replace(., '([`~\^\*&#34;])', '\\$1')"/>
    </xsl:template>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
@@ -246,7 +246,7 @@
    </xsl:template>
    <xsl:template match="charstring" mode="xml2json">
       <string key="charstring">
-         <xsl:apply-templates mode="md"/>
+         <xsl:apply-templates mode="#current"/>
       </string>
    </xsl:template>
    <xsl:template match="markupline" mode="xml2json">

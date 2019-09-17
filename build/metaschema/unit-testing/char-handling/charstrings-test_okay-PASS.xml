@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<examples xmlns="http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime file:/C:/Users/wap1/Documents/OSCAL/build/metaschema/unit-testing/char-encoding/charstrings-test-schema.xsd">
+<examples xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime charstrings-test-schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime">
   <charstring>Here's a string including punctuation ' " \ . $</charstring>
   <charstring>Here's a string with an ampersand &amp;</charstring>
   <charstring>Less-than and greater-than, as &lt;delimiters> ...</charstring>

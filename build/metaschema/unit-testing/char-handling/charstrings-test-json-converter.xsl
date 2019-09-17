@@ -364,11 +364,11 @@
          <replace match="&lt;">&amp;lt;</replace>
          <!-- next, explicit escape sequences -->
          <replace match="\\&#34;">&amp;quot;</replace>
-         <replace match="\\'">&amp;apos;</replace>
-         <replace match="\\\*">&amp;#2A;</replace>
-         <replace match="\\`">&amp;#60;</replace>
-         <replace match="\\~">&amp;#7E;</replace>
-         <replace match="\\^">&amp;#5E;</replace>
+         <!--<replace match="\\&#39;">&amp;apos;</replace>-->
+         <replace match="\\\*">&amp;#x2A;</replace>
+         <replace match="\\`">&amp;#x60;</replace>
+         <replace match="\\~">&amp;#x7E;</replace>
+         <replace match="\\^">&amp;#x5E;</replace>
          <!-- then, replacements based on $tag-specification -->
          <xsl:for-each select="$tag-specification/*">
             <xsl:variable name="match-expr">

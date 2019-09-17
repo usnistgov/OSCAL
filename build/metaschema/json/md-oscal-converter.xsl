@@ -334,8 +334,8 @@
             <replace match="&amp;"  >&amp;amp;</replace>
             <replace match="&lt;"   >&amp;lt;</replace>
             <!-- next, explicit escape sequences -->
-            <replace match="\\&#34;">&amp;quot;</replace>
-            <replace match="\\&#39;">&amp;apos;</replace>
+            <replace match="\\&quot;">&amp;quot;</replace>
+            <!--<replace match="\\&#39;">&amp;apos;</replace>-->
             <replace match="\\\*"   >&amp;#x2A;</replace>
             <replace match="\\`"    >&amp;#x60;</replace>
             <replace match="\\~"    >&amp;#x7E;</replace>
