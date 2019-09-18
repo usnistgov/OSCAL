@@ -36,7 +36,7 @@
     <model>
       <field ref="name" min-occurs="1"/>
       <field ref="description" min-occurs="1"/>
-      <field ref="sku"/>
+      <field ref="model"/>
     </model>
   </define-assembly>
   
@@ -50,8 +50,8 @@
     <description>A description of a component used in a computer build.</description>
   </define-field>
   
-  <define-field name="sku">
-    <formal-name>Stock Keeping Unit</formal-name>
-    <description>The Stock Keeping Unit (SKU) of a computer component.</description>
+  <define-field name="model">
+    <formal-name>Model</formal-name>
+    <description>The model code of a computer component.</description>
   </define-field>
 </METASCHEMA>
