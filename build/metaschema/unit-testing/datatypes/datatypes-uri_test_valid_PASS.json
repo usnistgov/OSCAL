@@ -1,0 +1,12 @@
+{
+  "parent": {
+    "uri-flag": "http://pages.nist.gov/OSCAL",
+    "uri-reference-flag": "OSCAL",
+    "uri-fields": [
+      "gopher://loc.gov",
+      "https://www.w3.org",
+      "http://www.nist.gov"
+    ],
+    "uri-reference-fields": "myhomepage.html"
+  }
+}

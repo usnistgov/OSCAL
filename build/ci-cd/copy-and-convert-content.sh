@@ -151,7 +151,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         case $altformat in
         json)
           # Remove extra slashes
-          perl -pi -e 's,\\/,/,g' "${dest}"
+          # perl -pi -e 's,\\/,/,g' "${dest}"
           # translate OSCAL mime types
           perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${dest}"
           # relative content paths
