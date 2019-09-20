@@ -395,19 +395,23 @@ Reviews and updates the risk management strategy {% raw %}{{ pm-9_prm_1 }}{% end
 
 The following characters have special handling in their HTML and/or Markdown forms.
 
-| Character | XML HTML | JSON Markdown | YAML Markdown |
-| --- | --- | --- | --- |
-| &amp; | &amp;amp; | &amp; | &amp;
-| &lt; | &amp;lt; | &lt; | &lt;
-| &gt; | &amp;gt; | &gt; | &gt;
-| " | &amp;quot; | \\" | \\"
-| ' | &amp;apos; | ' | '
-| \* | \* | \\\* | \\\*
-| &#96; | &#96; | \\&#96; | \\&#96;
-| ~ | ~ | \\~ | \\~
-| ^ | ^ | \\^ | \\^
+| Character                                      | XML HTML                             | (plain) Markdown | Markdown in JSON | Markdown in YAML |
+| ---                                            | ---                                  | ---              | ---              | ---              |
+| &amp; (ampersand)                              | &amp;amp;                            | &amp;            | &amp;            | &amp;            |
+| &lt; (less-than sign or left angle bracket)    | &amp;lt;                             | &lt;             | &lt;             | &lt;             |
+| &gt; (greater-than sign or right angle bracket | &gt; **or** &amp;gt;                 | &gt;             | &gt;             | &gt;             |
+| &#34; (straight double quotation mark)         | &#34; **or** &amp;quot;              | \\&#34;          |  \\\\&#34;       | \\\\&#34;        |
+| &#39; (straight apostrophe)                    | &#39; **or** &amp;apos;              | \\&#39;          | \\\\&#39;        | \\\\&#39;        |
+| \* (asterisk)                                  | \*                                   | \\\*             | \\\\\*           | \\\\\*           |
+| &#96; (grave accent or back tick mark)         | &#96;                                | \\&#96;          | \\\\&#96;        | \\\\&#96;        |
+| ~ (tilde)                                      | ~                                    | \\~              | \\\\~            | \\\\~            |
+| ^ (caret)                                      | ^                                    | \\^              | \\\\^            | \\\\^            |
 
-While the characters `*`&#96;`~^` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear in HTML, they are escaped in the mapped Markdown to avoid them being parsed as Markdown markup. This allows these characters to be mapped back to HTML characters when the Markdown is mapped to HTML.
+While the characters `*`&#96;`~^` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear as literals in a Markdown representation, they must be escaped to avoid them being parsed as Markdown to indicate formatting. The escaped representation indicates these characters are to be represented as characters, not markup, when the Markdown is mapped to HTML.
+
+Because the character "\\" (back slash or reverse solidus) must be escaped in JSON, note that those characters that require a back slash to escape them in Markdown, such as "\*" (appearing as "\\\*"), must be *double escaped* (as "\\\\\*") to represent the escaped character in JSON or YAML. In conversion, the JSON or YAML processor reduces these to the simple escaped form, again permitting the Markdown processor to recognize them as character contents, not markup.
+
+Since these characters are not markup delimiters in XML, they are safe to use there without special handling. The XML open markup delimiters "&lt;" and "&amp;", when appearing in XML contents, must as always be escaped as named entities or numeric character references, if they are to be read as literal characters not markup.
 
 ### markup-multiline
 
@@ -454,3 +458,8 @@ Is mapped to the Markdown table:
 | --- | --- |
 | Have some of | Try all of |
 ```
+
+
+#### Line feeds in Markdown
+
+Additionally, line feed (LF) characters must be escaped as "\\n" when appearing in string contents in JSON and (depending on placement) in YAML. In Markdown, the line feed is used to delimit paragraphs and other block elements, represented using markup (tagging) in the XML version. When transcribed into JSON, these LF characters must also appear as "\\n".

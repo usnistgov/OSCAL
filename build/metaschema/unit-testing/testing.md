@@ -17,7 +17,7 @@ where
 
 `$TESTSET-$SCOPE_test_$KEYWORD_$EXPECT.json is` recognized as a JSON instance to be tested against the Schema produced for the `$TESTSET-$SCOPE` metaschema.
 
-Note that different keywords can be used to distinguish subsets of tests expected to be valid or invalid to the metaschema indicated by `$TESTSET-$SCOPE`.
+Note that different keywords can be used to distinguish tests expected to be valid or invalid to the metaschema indicated by `$TESTSET-$SCOPE`.
 
 Examples:
 
