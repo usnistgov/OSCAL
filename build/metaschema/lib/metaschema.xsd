@@ -188,7 +188,7 @@
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <!-- datatype should default to 'string' -->
-      <xs:attribute name="as-type" type="m:flag-types" default="string"/>
+      <xs:attribute name="as-type" type="m:simple-datatypes" default="string"/>
       <!-- defined for composed (compiled) metaschemas -->
       <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
@@ -422,7 +422,7 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
         <xs:element minOccurs="0" ref="m:allowed-values"/>
       </xs:sequence>
-      <xs:attribute name="as-type" type="m:flag-types"/>
+      <xs:attribute name="as-type" type="m:simple-datatypes"/>
       <xs:attribute name="name" type="xs:NCName"/>
       <xs:attribute name="ref" type="xs:NCName"/>
       <xs:attribute name="required" type="m:boolean" default="no"/>
@@ -517,15 +517,6 @@
       <xs:enumeration value="uri-reference"/>
       <xs:enumeration value="base64"/>
     </xs:restriction>   
-  </xs:simpleType>
-  
-  <xs:simpleType name="flag-types">
-    <xs:union memberTypes="m:simple-datatypes">
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
   </xs:simpleType>
   
   <xs:simpleType name="field-types">
