@@ -173,6 +173,6 @@ for i in "${!paths[@]}"; do
     fi
   done
   IFS=$IFS_OLD
-done < "$OSCALDIR/build/ci-cd/config/metaschema"
+done
 
 exit $exitcode
