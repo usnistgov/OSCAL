@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by extraction/mapping from NVD XML 2018-11-02T16:55:46.916-04:00 -->
-<!-- Subsequently updated by hand (2018-12-10, 2019-05-16, 2019-05-29, 2019-08-17, 2019-08-23, 2019-09-13) -->
+<!-- Subsequently updated by hand (2018-12-10, 2019-05-16, 2019-05-29, 2019-08-17, 2019-08-23, 2019-09-13, 2019-09-23) -->
 <!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-aa61058e-a372-4779-aeec-d8081119b0d1">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-47fdefdb-dc1a-4040-9f27-b517a16b06d2">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-      
-      <last-modified-date>2019-08-17T11:39:39.05-04:00</last-modified-date>
+      <last-modified>2019-09-23T14:19:17.649-04:00</last-modified>
       <version>2015-01-22</version>
       <oscal-version>1.0.0-milestone1</oscal-version>
       <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>

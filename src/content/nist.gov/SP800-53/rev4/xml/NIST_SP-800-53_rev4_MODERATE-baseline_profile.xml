@@ -2,11 +2,11 @@
         runtime parameter settings: $baseline='MODERATE'-->
 <profile
    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-1354e0ac-05e5-4143-b576-4b9ae1f4025f">
+   id="uuid-f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
 
-      <last-modified-date>2019-06-05T17:41:23.252-04:00</last-modified-date>
+      <last-modified>2019-09-23T14:25:40.027-04:00</last-modified>
       <version>2015-01-22</version>
       <oscal-version>1.0.0-milestone1</oscal-version>
       
