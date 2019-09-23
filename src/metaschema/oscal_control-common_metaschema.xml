@@ -176,7 +176,7 @@
       <description>When selecting, a requirement such as one or more</description>
    </define-flag>
 
-   <define-flag name="depends-on" as-type="IDREF">
+   <define-flag name="depends-on" as-type="NCName">
       <formal-name>Depends on</formal-name>
       <description>Another parameter invoking this one</description>
    </define-flag>

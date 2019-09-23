@@ -33,8 +33,9 @@
       <description>Provides information about the publication and availability of the containing document.</description>
       <model>
          <field ref="title" min-occurs="1"/>
-         <field ref="last-modified-date"/>
-         <field ref="version"/>
+         <field ref="publication-date"/>
+         <field ref="last-modified-date" min-occurs="1"/>
+         <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
          <field ref="doc-id" max-occurs="unbounded">
             <group-as name="document-ids"/>
@@ -121,6 +122,14 @@
             </o:back-matter>
          </o:oscal>
       </example>
+   </define-field>
+   <define-field name="publication-date" as-type="dateTime-with-timezone">
+      <formal-name>Publication Date</formal-name>
+      <description>The date this document was published.</description>
+      <remarks>
+         <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
+         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+      </remarks>
    </define-field>
    <define-field name="last-modified-date" as-type="dateTime-with-timezone">
       <formal-name>Last modified date</formal-name>

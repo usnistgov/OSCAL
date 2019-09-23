@@ -138,17 +138,17 @@
         </model>
     </define-assembly>
     
-    <define-flag name="statement-id" as-type="IDREF">
+    <define-flag name="statement-id" as-type="NCName">
         <formal-name>Control Statement Reference</formal-name>
         <description>A reference to a control statement by its identifier</description>
     </define-flag>
     
-    <define-flag name="component-id" as-type="IDREF">
+    <define-flag name="component-id" as-type="NCName">
         <formal-name>Component Reference</formal-name>
         <description>A reference to a component by its identifier</description>
     </define-flag>
 
-    <define-flag name="capability-id" as-type="IDREF">
+    <define-flag name="capability-id" as-type="NCName">
         <formal-name>Capability Reference</formal-name>
         <description>A reference to a capability by its identifier</description>
     </define-flag>
@@ -166,7 +166,7 @@
         <formal-name>Incorporates Capability</formal-name>
         <description>TBD</description>
         <json-key flag-name="capability-id"/>
-        <flag name="capability-id" required="yes" as-type="IDREF">
+        <flag name="capability-id" required="yes" as-type="NCName">
             <formal-name>Capability Reference</formal-name>
             <description>A reference to a capability by its identifier</description>
         </flag>

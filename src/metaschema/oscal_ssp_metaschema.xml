@@ -32,11 +32,7 @@
       <formal-name>System Security Plan (SSP)</formal-name>
       <description>A system security plan, such as those defined in SP 800-18</description>
       <flag ref="id" required="yes"/>
-      <model><!--
-			<field named="title" required="yes"/>
-			<field named="version" required="yes"/>
-			<field named="date" required="yes"/>
-			 -->
+      <model>
          <assembly ref="metadata"/>
          <assembly ref="import-profile" min-occurs="1"/>
          <assembly ref="system-characteristics" min-occurs="1"/>
@@ -488,7 +484,7 @@
       <formal-name>Diagram</formal-name>
       <description>TBD</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="yes">
+      <flag name="id" as-type="NCName" required="yes">
          <formal-name>Diagram ID</formal-name>
          <description>An identifier for this diagram.</description>
       </flag>
@@ -566,7 +562,7 @@
       <formal-name>System Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="yes">
+      <flag name="id" as-type="NCName" required="yes">
          <formal-name>System Role ID</formal-name>
          <description>TBD</description>
       </flag>
@@ -647,7 +643,7 @@
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="yes">
+      <flag name="id" as-type="NCName" required="yes">
          <formal-name>Component Identifier</formal-name>
          <description>A unique identifier for a component.</description>
       </flag>
@@ -690,21 +686,7 @@
          <assembly ref="component-relationship" max-occurs="unbounded">
             <group-as name="component-relationships" in-json="BY_KEY"/>
          </assembly>
-<!--         <assembly ref="proof-of-compliance" max-occurs="unbounded">
-            <group-as name="proofs-of-compliance" />
-         </assembly>
---><!--         <assembly ref="control-implementation" max-occurs="unbounded">
-            <!-\- TODO; figure out if this should be here or later -\->
-            <group-as name="control-implementations" />
-         </assembly>
--->
-<!--         <assembly ref="configuration" max-occurs="unbounded">
-            <group-as name="configurations" json-behavior="BY_KEY" />
-         </assembly>
-         <assembly ref="artifact" max-occurs="unbounded">
-            <group-as name="artifacts" json-behavior="BY_KEY" />
-         </assembly>
--->         <field ref="remarks"/>
+         <field ref="remarks"/>
       </model>
       <remarks>
          <p>Components may be products, services, APIs, policies, processes, plans, guidance,
@@ -734,7 +716,7 @@
       <formal-name>Capability</formal-name>
       <description>A grouping of other components and/or capabilities.</description>
       <json-key flag-name="id"/>
-      <flag name="id" as-type="ID" required="yes">
+      <flag name="id" as-type="NCName" required="yes">
          <formal-name>Capability Identifier</formal-name>
          <description>A unique identifier for a capability.</description>
       </flag>
@@ -760,10 +742,7 @@
          <assembly ref="incorporates-component" max-occurs="unbounded">
             <group-as name="incorporates-components" in-json="BY_KEY"/>
          </assembly>
-<!--         <assembly ref="control-implementation" max-occurs="unbounded">
-            <group-as name="control-implementations" />
-         </assembly>
--->         <field ref="remarks"/>
+         <field ref="remarks"/>
       </model>
    </define-assembly>
 
@@ -865,50 +844,7 @@
       <flag ref="id"/>
       <flag ref="type"/>
    </define-field>
-<!--
-   <define-assembly name="characteristics">
-      <formal-name>Characteristics</formal-name>
-      <description>Component characteristics, assets and configuration information</description>
-      <flag ref="context"/>
-      <model>
-         <field ref="ip-address" max-occurs="unbounded">
-            <group-as name="ip-addresses"/>
-         </field>
-         <assembly ref="service" max-occurs="unbounded">
-            <group-as name="ssp-service"/>
-         </assembly>
-         <field ref="prose"/>
-      </model>
-      <remarks>
-         <p>When context="specification", this describes all security relevant settings in the
-        component.</p>
-         <p>When context="standard", this describes how to configure the component to meet a
-        specific goal, such as compliance with FISMA Moderate, PCI, or GPRD.</p>
-         <p>When context="actual", or when no type is listed, this describes the actual
-        configuration of the component within a specific system.</p>
-      </remarks>
-      <example/>
-   </define-assembly>
-   <define-assembly name="satisfaction">
-      <formal-name>Satisfaction</formal-name>
-      <description>Describes how the indicated control is satisfied by this
-      component</description>
-      <flag ref="id" as-type="ID"/>
-      <flag ref="context"/>
-      <model>
-         <field ref="prose"/>
-      </model>
-      <remarks>
-         <p>When context="specification", this describes how the control could be satisfied by
-        the component.</p>
-         <p>When context="standard", this describes how the security control would be satisfied
-        if the component was configured in accordance with the associated characteristics
-        provisioning information.</p>
-         <p>When context="actual", or when no type is listed, this describes how the control is
-        satisfied based on the component's actual deployment within a given system.</p>
-      </remarks>
-   </define-assembly>
--->
+
    <define-field name="ip-address" as-type="string">
       <formal-name>Internet Protocol Address</formal-name>
       <description>Use the @type flag to deisgnate IPv4 or IPv6.</description>
@@ -1310,50 +1246,10 @@
 			statement.</description>
    </define-field>
    <!-- ===== FLAGS ===== -->
-<!--   <define-flag name="component-id" as-type="NCName">
-      <formal-name>Component ID / identifier</formal-name>
-      <description>ID of a linked or imported component</description>
-      <remarks>
-         <p>In the context of an import statement, this identifies the id of a component to
-				import, and is required.</p>
-         <p>In the context of an inventory item, this identifies a component related to the
-				inventory item, and is optional.</p>
-         <p>A component, such as a web server, may be duplicated within the system, such as a
-				cluster of web servers.</p>
-         <p>The web server component is defined once, but each instance of the web server must be
-				listed in the inventory. Each instance points to the same web server component.</p>
-      </remarks>
-      <example>
-         <import xmlns="http://csrc.nist.gov/ns/oscal/example"
-                 href="../vendor/components/component_file.xml">
-            <include>
-               <call component-id="comp02"/>
-            </include>
-         </import>
-      </example>
-   </define-flag>
--->
-<!--   <define-flag name="control-id" as-type="NCName">
-      <formal-name>Control ID / identifier</formal-name>
-      <description>Pointer to a control, by its ID</description>
-      <remarks>
-         <p>May also address subcontrols.</p>
-      </remarks>
-   </define-flag>
--->
    <define-flag name="nist-id" as-type="string">
       <formal-name>NIST 800-60 Information Type Identifier</formal-name>
       <description>Pointer to the information type in NIST SP 800-60.</description>
    </define-flag>
-<!--   <define-flag name="poc-id" as-type="NCName">
-      <formal-name>Point of Contact ID / identifier</formal-name>
-      <description>Identifies the unique identifier for an individual, title, role, or
-			team.</description>
-      <example>
-         <asset-owner xmlns="http://csrc.nist.gov/ns/oscal/example" poc-id="xyz2"/>
-      </example>
-   </define-flag>
--->
    <define-flag name="param-id" as-type="NCName">
       <formal-name>Parameter ID</formal-name>
       <description>Points to a parameter within a control, to which the contained value will be
@@ -1364,64 +1260,6 @@
          </set-param>
       </example>
    </define-flag>
-<!--   <define-flag name="target" as-type="string">
-      <formal-name>Target label</formal-name>
-      <description>Provides for an indication of a link target, by its label, when no ID is available</description>
-   </define-flag>
-   <define-flag name="filename" as-type="string">
-      <formal-name>File Name</formal-name>
-      <description>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</description>
-   </define-flag>
-   <define-flag name="role-id" as-type="NCName">
-      <formal-name>Role ID</formal-name>
-      <description>In the context of a responsibility element, this points to a role in the users element responsible for this control</description>
-      <example>
-         <group xmlns="http://csrc.nist.gov/ns/oscal/example" class="family" id="ac">
-            <implementation class="SP800-53 control" control-id="ac-2">
-               <responsibility role-id="isso"/>
-               <responsibility role-id="cloud_system_manager"/>
-               <responsibility role-id="hr"/>
-            </implementation>
-         </group>
-      </example>
-   </define-flag>
--->   <!--<define-flag name="target" datatype="NMTOKEN" show-docs="xml json">
-		<formal-name>Target Control ID</formal-name>
-		<description>Identifies the control answered by this response statement.</description>
-		<remarks>
-			<p>I'd like to call this control-id or subcontrol-id - wap</p>
-		</remarks>
-		<example>
-			<response xmlns="http://csrc.nist.gov/ns/oscal/example" target="ac-2_smt.g">Response to AC-2 part
-				g.</response>
-		</example>
-	</define-flag>-->
-<!--   <define-flag name="class" as-type="NCName">
-      <formal-name>Class</formal-name>
-      <description>Identifies the property or object within the control; a semantic hint</description>
-      <remarks>
-         <p>Overloading this attribute with more than one value is permitted, but not recommended.</p>
-      </remarks>
-   </define-flag>
---><!--   <define-flag name="context" as-type="string">
-      <formal-name>Context</formal-name>
-      <description>Context designates the context of information provided.</description>
-      <remarks>
-         <p>The @context flag indicates the component's "characteristics" and "satisfaction"
-				elements.</p>
-      </remarks>
-      <example/>
-   </define-flag>
--->
-<!--   <define-flag name="name" as-type="string">
-      <formal-name>Name</formal-name>
-      <description>Name allows the information to be named.</description>
-      <remarks>
-         <p>For service information, this is the name of the service.</p>
-      </remarks>
-      <example/>
-   </define-flag>
--->
    <define-flag name="start" as-type="nonNegativeInteger">
       <formal-name>Start</formal-name>
       <description>Indicates the starting port number in a port range.</description>
@@ -1467,19 +1305,7 @@
          </service>
       </example>
    </define-flag>
-<!--   <define-flag name="type" as-type="string">
-      <formal-name>Type</formal-name>
-      <description>Type designates the type of information provided.</description>
-      <remarks>
-         <p>For information system ID, the @type flag indicates the organizaiton who issue the
-				identifier.</p>
-         <p>For vendor, the @type flag indicates the type of ID provided in the @id flag, such as
-				a DUNS, CAGE, or similar.</p>
-         <p>For ip-address, the @type flag indicates either "ipv4" or "ipv6".</p>
-      </remarks>
-      <example/>
-   </define-flag>
--->   <define-flag name="public" as-type="boolean">
+   <define-flag name="public" as-type="boolean">
       <formal-name>Public</formal-name>
       <description>Designates an asset as either publicly accessible (="yes") or not
 			(="no").</description>
@@ -1503,11 +1329,7 @@
       <formal-name>sensitivity-level</formal-name>
       <description>TBD</description>
    </define-flag>
-<!--   <define-field name="organization">
-      <formal-name>organization</formal-name>
-      <description>TBD</description>
-   </define-field>
--->   <define-field name="baseline-template">
+   <define-field name="baseline-template">
       <formal-name>baseline-template</formal-name>
       <description>TBD</description>
    </define-field>
@@ -1515,448 +1337,4 @@
       <formal-name>scanned</formal-name>
       <description>TBD</description>
    </define-field>
-   <!--      IMPORTED METASCHEMA      -->
-   <!-- The following was copied in for now, and should later be
-	referenced in its original location.
-	DO NOT MAKE CHANGES IN THE TEXT BELOW THIS COMMENT
-	IT WILL BE DELETED (REPLACED WITH REFERENCES) AND LOST.
--->
-   <!--  <define-assembly name="metadata">
-    <formal-name>Publication metadata</formal-name>
-    <description>Information describing the publication or availability of this document</description>
-    <model>
-      <field      named="title"    required="yes"/>
-      <fields     named="author"/>
-      <field      named="publication-date"/>
-      <field      named="version"/>
-      <fields     named="doc-id"/>
-      <fields     named="prop"/>
-      <assemblies named="hlink"/>
-      <assemblies named="resource"/>
-      <assemblies named="role"/>
-      <assemblies named="party"/>
-      <assembly   named="notes"/>
-      <assembly   named="extra-meta"/>
-    </model>
-  </define-assembly>
-
-  <define-field name="title">
-    <formal-name>Title</formal-name>
-    <description>The title under which this document is formally published</description>
-  </define-field>
-
-  <define-field name="author" group-as="authors">
-    <formal-name>Author</formal-name>
-    <description>A named author</description>
-    <remarks><p>Note this information may be duplicative of information given in a <code>party</code>
-    element with appropriate <code>role-id</code> flags, along with more a more complete structured
-    listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
-  </define-field>
-
-
-  <define-field name="publication-date">
-    <formal-name>Publication date</formal-name>
-    <description>The official date of publication</description>
-  </define-field>
-
-  <define-field name="version">
-    <flag name="iso-date"/>
-    <formal-name>version</formal-name>
-    <description>Version information</description>
-  </define-field>
-
-  <define-flag name="iso-date" datatype="date">
-    <formal-name>ISO (standard) date</formal-name>
-    <description>Please use YYYY-MM-DD syntax.</description>
-    <remarks>
-      <p>The syntax may be validated in back. The date given should presumably be the same as the
-        (human-readable) <code>date</code> given above it (and such a discrepancy is also be
-        detectable).</p>
-    </remarks>
-  </define-flag>
-
-  <define-field name="doc-id" group-as="document-ids">
-    <flag name="type"/>
-    <formal-name>Document Identifier</formal-name>
-    <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
-      may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</description>
-    <remarks>
-      <p>Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
-      <p>Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc
-        etc., may be defined at application level. The value of this field may also be a hash or check sum.</p>
-    </remarks>
-  </define-field>
-
-  <define-field name="prop" group-as="properties">
-    <flag name="class"/>
-    <formal-name>Property</formal-name>
-    <description>A property associated with the document</description>
-    <remarks><p>Wherever permitted, a <code>doc-id</code> should be used in preference to this field when the property is a document identifer of any kind.</p></remarks>
-  </define-field>
-
-  <define-assembly name="party" group-as="parties">
-    <flag name="id" datatype="ID"/>
-    <flag name="role-id"/>
-    <formal-name>Party (organization or person)</formal-name>
-    <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
-    <remarks>
-      <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
-      <p>Note that persons can also be indicated with organizational affiliations by using
-        <code>orgname</code> inside <code>person</code>. Contact information in that
-        case belongs to the person, not the organization: use <code>org</code> when an
-      organization as such serves as a documented party.</p>
-    </remarks>
-    <model>
-      <assemblies named="person"/>
-      <assembly named="org"/>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="person" group-as="persons">
-    <formal-name>Person</formal-name>
-    <description>A person, with contact information</description>
-    <model>
-      <field    named="person-name"/>
-      <field    named="short-name"/>
-      <field    named="org-name">
-        <description>Affiliated organization</description>
-      </field>
-      <fields   named="person-id"/>
-      <fields   named="org-id"/>
-      <assembly named="address"/>
-      <fields   named="email"/>
-      <fields   named="phone"/>
-      <fields   named="url"/>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="org">
-    <formal-name>Organization</formal-name>
-    <description>An organization or legal entity (not a person), with contact information</description>
-    <model>
-      <field    named="org-name"/>
-      <field    named="short-name"/>
-      <fields   named="org-id"/>
-      <assembly named="address"/>
-      <fields   named="email"/>
-      <fields   named="phone"/>
-      <fields   named="url"/>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-field name="person-id" group-as="person-ids">
-    <flag name="type"/>
-    <formal-name>Personal Identifier</formal-name>
-    <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
-  </define-field>
-
-  <define-field name="org-id" group-as="organization-ids">
-    <flag name="type"/>
-    <formal-name>Organization Identifier</formal-name>
-    <description>An identifier for an organization using a designated scheme.</description>
-  </define-field>
-
-  <define-assembly name="hlink" group-as="hashed-links">
-    <flag name="href" datatype="anyURI" required="yes"/>
-    <flag name="rel"  datatype="NCName"/>
-    <flag name="media-type"/>
-    <formal-name>Hashed link</formal-name>
-    <description>A pointer to an external document with optional hash for verification</description>
-    <remarks>
-      <p>This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
-    </remarks>
-    <model>
-      <field  named="title"/>
-      <fields named="hash"/>
-    </model>
-  </define-assembly>
-
-  <define-flag name="rel" datatype="NCName">
-    <formal-name>Relation</formal-name>
-    <description>Purpose of the link</description>
-  </define-flag>
-
-  <define-flag name="media-type" datatype="string">
-    <formal-name>Media type</formal-name>
-    <description>Describes the media or MIME type of a linked resource</description>
-  </define-flag>
-
-  <define-field name="person-name">
-    <formal-name>Person Name</formal-name>
-    <description>Full (legal) name of an individual</description>
-  </define-field>
-
-  <define-field name="org-name">
-    <formal-name>Organization Name</formal-name>
-    <description>Full (legal) name of an organization</description>
-    <remarks>
-      <p>Only when this element is used directly within <code>org</code> can it be accepted of the name of the thing to which it is attached. This element may also be used directly on <code>person</code> to name an affiliated organization.</p>
-      <p><code>href</code> can be used to provide external links or internal links to other elements. The sibling <code>org-id</code> element
-        (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p>
-    </remarks>
-  </define-field>
-
-  <define-field name="short-name">
-    <formal-name>short-name</formal-name>
-    <description>A common name, short name or acronym</description>
-    <remarks>
-      <p>This element is not expected to be used to identify individual persons, but rather an
-        organization or system.</p>
-    </remarks>
-  </define-field>
-
-  <define-assembly name="address">
-    <formal-name>Address</formal-name>
-    <description>A postal address</description>
-    <model>
-      <fields named="addr-line"/>
-      <field  named="city"/>
-      <field  named="state"/>
-      <field  named="postal-code"/>
-      <field  named="country"/>
-      <!-\- More address stuff -\->
-    </model>
-  </define-assembly>
-
-
-  <define-field name="addr-line" group-as="postal-address">
-    <formal-name>Address line</formal-name>
-    <description>A single line of an address</description>
-  </define-field>
-
-  <define-field name="city">
-    <formal-name>City</formal-name>
-    <description>City, town or geographical region for mailing address</description>
-  </define-field>
-
-  <define-field name="state">
-    <formal-name>State</formal-name>
-    <description>State, province or analogous geographical region for mailing address</description>
-  </define-field>
-
-  <define-field name="postal-code">
-    <formal-name>Postal Code</formal-name>
-    <description>Postal or ZIP code for mailing address</description>
-  </define-field>
-
-  <define-field name="country">
-    <formal-name>Country</formal-name>
-    <description>Country for mailing address</description>
-  </define-field>
-
-  <define-field name="email" group-as="email-addresses">
-    <formal-name>Email</formal-name>
-    <description>Email address</description>
-  </define-field>
-
-  <define-field name="phone" group-as="telephone-numbers">
-    <formal-name>Telephone</formal-name>
-    <description>Contact number by telephone</description>
-  </define-field>
-
-  <define-field name="url" group-as="URLs">
-    <formal-name>URL</formal-name>
-    <description>URL for web site or Internet presence</description>
-  </define-field>
-
-  <define-assembly name="notes">
-    <formal-name>Notes</formal-name>
-    <description>Any notes with further information</description>
-    <model>
-      <prose/>
-    </model>
-  </define-assembly>
-
-  <define-field name="desc">
-    <formal-name>Description</formal-name>
-    <description>A short description</description>
-  </define-field>
-
-  <define-assembly name="resource" group-as="resources">
-    <flag name="type"/>
-    <flag name="media-type"/>
-    <formal-name>Resource</formal-name>
-    <description>A resource to inform or authenticate the present document.</description>
-    <remarks>
-      <p>Typically this information item describes and points to a mirror or other (authoritative or
-        informative) copy of a document, or of a resource helpful (necessary) for interpreting it,
-        such as its metaschema or documentation. It may offer a (persistent) link to a
-        <q>best available</q> version, or to an outdated version, as indicated by its
-        <code>rel</code>.</p>
-    </remarks>
-    <model>
-      <field    named="title"/>
-      <fields   named="author"/>
-      <field    named="publication-date"/>
-      <field    named="version"/>
-      <fields   named="doc-id"/>
-      <fields   named="prop"/>
-      <assemblies named="hlink"/>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-field name="hash" group-as="hashes">
-    <flag name="algorithm"/>
-    <formal-name>Hash</formal-name>
-    <description>A document hash or other value subject to cryptographic authentication</description>
-    <remarks>
-      <p>When appearing as part of a resource (data object), the hash should apply to the referenced object.</p>
-    </remarks>
-  </define-field>
-
-
-  <define-flag name="algorithm" datatype="string">
-    <formal-name>Hash algorithm</formal-name>
-    <description>Method by which a hash is derived</description>
-    <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
-  </define-flag>-->
-   <!-- previously removed
-	<define-assembly name="role" group-as="roles">
-    <flag name="id" datatype="ID" required="yes"/>
-    <formal-name>Role</formal-name>
-    <description>Defining a role to be assigned to a party or agent</description>
-    <remarks>
-      <p>Permissible values to be determined closer to the application (e.g. by a receiving
-        authority).</p>
-    </remarks>
-    <model>
-      <field named="title"/>
-      <field named="short-name"/>
-      <field named="desc"/>
-    </model>
-  </define-assembly>
- -->
-   <!--  <define-flag name="href" datatype="anyURI">
-    <formal-name>Hypertext reference</formal-name>
-    <description>A relative or absolute URI indicating a resource available on the Internet.</description>
-  </define-flag>
-
-  <define-assembly name="extra-meta">
-    <formal-name>Extra metadata</formal-name>
-    <description>Container for (system-defined) metadata</description>
-    <model>
-      <choice>
-        <assemblies named="meta-group"/>
-        <fields named="meta"/>
-      </choice>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="meta-group" group-as="metadata-groups">
-    <flag name="term"/>
-    <flag name="type"/>
-    <formal-name>Metadata group</formal-name>
-    <description>Custom- or application-defined annotated metadata.</description>
-    <model>
-      <fields     named="meta"/>
-      <assemblies named="meta-group"/>
-      <assembly   named="notes"/>
-    </model>
-  </define-assembly>
-
-  <define-field name="meta" group-as="metadata-fields">
-    <flag name="term"/>
-    <flag name="type"/>
-    <formal-name>Metadata field value</formal-name>
-    <description>Any customized or specialized metadata value.</description>
-  </define-field>
-
-  <define-flag name="term" datatype="string">
-    <formal-name>Metadata term</formal-name>
-    <description>A classification (according to any schema or taxonomy) of a metadata value or set of values.</description>
-  </define-flag>
--->
-   <!--      BORROWED FROM PROFILE METASCHEMA AND MODIFIED    -->
-   <!-- The following needs discussion/attention. It may not be the final solution. -->
-   <!--	<define-assembly name="import" group-as="imports">
-		<flag name="href" datatype="anyURI" required="yes"/>
-		<formal-name>Import resource</formal-name>
-		<description>Makes information from an external component file available to this component
-			file.</description>
-		<remarks>
-			<p>This is typically used when defining components of type="capability", to identify the
-				individual components the form the larger capabiity.</p>
-			<p>This is also used for definining provision information, involving components from
-				multiple sources. </p>
-		</remarks>
-		<model>
-			<assembly named="include"/>
-			<!-\- assembly named="exclude"/ -\->
-		</model>
-		<example>
-			<import href="../vendor/components/component_file.xml" xmlns="http://csrc.nist.gov/ns/oscal/example">
-				<include>
-					<call component-id="comp02"/>
-				</include>
-			</import>
-		</example>
-	</define-assembly>
-
-	<define-assembly name="include" group-as="includes">
-		<formal-name>Include controls</formal-name>
-		<description>Specifies which controls and subcontrols to include from the resource (source catalog) being
-			imported</description>
-		<remarks>
-			<p>To be schema-valid, this element must contain either (but not both) a single
-				<code>all</code> element, or a sequence of <code>call</code> elements.</p>
-			<p>If this element is not given, it is assumed to be present with contents <code>all</code>
-				(qv); i.e., all controls are included by default, unless the <code>include</code>
-				instruction calls controls specifically.</p>
-		</remarks>
-		<model>
-			<choice>
-				<field named="all"/>
-				<fields named="call"/>
-				<!-\- assemblies named="match" group-as="pattern-selectors"/-\->
-			</choice>
-		</model>
-	</define-assembly>
-
-	<define-field name="all" as="empty">
-		<flag name="with-subcontrols"/>
-		<formal-name>Include all</formal-name>
-		<description>Include all controls from the imported resource (catalog)</description>
-		<remarks>
-			<p>This element provides an alternative to calling controls and subcontrols individually
-				from a catalog. But this is also the default behavior when no <code>include</code>
-				element is given in an <code>import</code>; so ordinarily one might not see this element
-				unless it is for purposes of including its <code>@with-subcontrols='yes'</code>
-			</p>
-		</remarks>
-	</define-field>
-
-	<define-field name="call" group-as="calls" as="string">
-		<flag name="component-id" datatype="NMTOKEN"/>
-		<formal-name>Call</formal-name>
-		<description>The call element imports the component definition identified by the
-			@component-id attribute in the external component file.</description>
-		<remarks>
-			<p>This is typically used when defining components of type="capability", to identify the
-				individual components the form the larger capabiity.</p>
-			<p>This is also used for definining provision information, involving components from
-				multiple sources. </p>
-		</remarks>
-		<example>
-			<import href="../vendor/components/component_file.xml" xmlns="http://csrc.nist.gov/ns/oscal/example">
-				<include>
-					<call component-id="comp02"/>
-				</include>
-			</import>
-		</example>
-	</define-field>
-
-	<define-flag datatype="NCName" name="with-subcontrols">
-		<formal-name>Include subcontrols with control</formal-name>
-		<description>Whether subcontrols should be implicitly included, if not called.</description>
-	</define-flag>
--->
-<!--   <define-field name="prose" as-type="markup-multiline">
-      <formal-name>Prose</formal-name>
-      <description>Prose permits multiple paragraphs, lists, tables etc.</description>
-   </define-field>
---></METASCHEMA>
+</METASCHEMA>

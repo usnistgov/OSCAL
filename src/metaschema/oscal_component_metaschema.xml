@@ -52,7 +52,7 @@
     <formal-name>Component</formal-name>
     <description>A defined component that can be part of an implemented system.</description>
     <json-key flag-name="id"/>
-    <flag name="id" as-type="ID" required="yes">
+    <flag name="id" as-type="NCName" required="yes">
       <formal-name>Component Identifier</formal-name>
       <description>A unique identifier for a component.</description>
     </flag>
@@ -119,7 +119,7 @@
     <formal-name>Capability</formal-name>
     <description>A grouping of other components and/or capabilities.</description>
     <json-key flag-name="id"/>
-    <flag name="id" as-type="ID" required="yes">
+    <flag name="id" as-type="NCName" required="yes">
       <formal-name>Capability Identifier</formal-name>
       <description>A unique identifier for a capability.</description>
     </flag>
