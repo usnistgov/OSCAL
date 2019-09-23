@@ -1194,6 +1194,12 @@
             <group-as name="links"/>
             <!-- TODO: Model specific link relationships -->
          </field>
+         <assembly ref="by-component" max-occurs="unbounded">
+            <group-as name="by-components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="by-capability" max-occurs="unbounded">
+            <group-as name="by-capabilities" in-json="BY_KEY"/>
+         </assembly>
          <assembly ref="set-param" max-occurs="unbounded">
             <group-as name="set-params" in-json="BY_KEY"/>
          </assembly>
