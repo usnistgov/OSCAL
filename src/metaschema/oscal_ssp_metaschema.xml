@@ -253,6 +253,10 @@
 			types.</description>
       <flag ref="id"/>
       <flag ref="nist-id"/>
+      <flag name="name" required="yes">
+         <formal-name>Information Type Name</formal-name>
+         <description>The name of the information type.</description>
+      </flag>
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="confidentiality-impact" min-occurs="1"/>
