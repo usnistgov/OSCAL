@@ -25,7 +25,7 @@
         <flag ref="source"/>
         <model>
             <field ref="description"/>
-            <field ref="remarks"/>
+            <field ref="remarks" in-xml="WITH-WRAPPER"/>
 <!--            <assembly ref="proof-of-compliance"/>
 -->
             <assembly ref="supplier"/>
@@ -75,7 +75,7 @@
             <field ref="role-id" min-occurs="1">
                 <!-- TODO: define standard roles -->
             </field>
-            <field ref="remarks"/>
+            <field ref="remarks" in-xml="WITH-WRAPPER"/>
         </model>
         <remarks>
             <p>For products, services, and APIs, this is the vendor and/or retailer information.</p>
@@ -134,7 +134,7 @@
             </field>
             <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
-            <field ref="remarks"/>
+            <field ref="remarks" in-xml="WITH-WRAPPER"/>
         </model>
     </define-assembly>
     

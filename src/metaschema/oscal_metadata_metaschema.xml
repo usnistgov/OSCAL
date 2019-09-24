@@ -21,7 +21,7 @@
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
          <field ref="description"/>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
          <field ref="party-id"/>
       </model>
       <remarks>
@@ -498,7 +498,7 @@
       <description>Defining a role to be assigned to a party or agent</description>
       <flag ref="id" required="yes"/>
       <model>
-         <field ref="title"/>
+         <field ref="title" min-occurs="1"/>
          <field ref="short-name"/>
          <field ref="desc"/>
       </model>

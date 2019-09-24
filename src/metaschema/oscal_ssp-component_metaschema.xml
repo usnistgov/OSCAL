@@ -13,7 +13,7 @@
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <import href="oscal_metadata_metaschema.xml"/>
   <import href="oscal_implementation-common_metaschema.xml"/>
-  
+
   <define-assembly name="component_VALIDATION_root">
     <formal-name>(nominal root)</formal-name>
     <description>NOT TO BE USED IN A METASCHEMA</description>
@@ -35,8 +35,8 @@
       <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
     </remarks>
   </define-assembly>
-  
-  
+
+
   <define-assembly name="component-relationship">
     <formal-name>Component Relationship</formal-name>
     <description>Establishes a relationship of a specific type between this component and another.</description>
@@ -51,7 +51,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>        
     </model>
   </define-assembly>
-  
+
   <define-assembly name="capability">
     <formal-name>Capability</formal-name>
     <description>A grouping of other components and/or capabilities.</description>
@@ -85,7 +85,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="used-by-component">
     <formal-name>Used By</formal-name>
     <description>Identifies a type of uses for the service. A component can be optionally identified.</description>
@@ -94,7 +94,7 @@
       <field ref="description" min-occurs="1"/>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="implemented-component">
     <formal-name>Implemented Component</formal-name>
     <description>The set of componenets that are implemented in a given system inventory item.</description>
@@ -112,7 +112,30 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
   </define-assembly>
-  
+  <define-assembly name="by-component">
+    <formal-name>Component Control Implementation</formal-name>
+    <description>Defines how the referenced component implements a set of controls.</description>
+    <json-key flag-name="component-id"/>
+    <flag ref="component-id" required="yes"/>
+    <model>
+      <field ref="description" min-occurs="1"/>
+      <field ref="system-role-id" max-occurs="unbounded">
+        <description>The system role responsible for the control implementation.</description>
+        <group-as name="role-ids"/>
+      </field>
+      <assembly ref="set-param" max-occurs="unbounded">
+        <group-as name="set-params" in-json="BY_KEY"/>
+      </assembly>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <!-- TODO: Model specific link relationships -->
+      </field>
+    </model>
+  </define-assembly>
+
   <define-assembly name="by-capability">
     <formal-name>capability Control Implementation</formal-name>
     <description>Defines how the referenced capability implements a set of controls.</description>

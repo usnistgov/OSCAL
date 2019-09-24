@@ -48,7 +48,7 @@
       <description>Used to import the OSCAL profile representing the system's control baseline.</description>
       <flag ref="href" required="yes"/>
       <model>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -58,19 +58,45 @@
       <description>Contains the characteristics of the system, such as its name, purpose, and
 			security impact level.</description>
       <model>
-         <field ref="system-id" min-occurs="1"/>
+         <field ref="system-id" min-occurs="1" max-occurs="unbounded">
+            <group-as name="system-ids"/>
+         </field>
          <field ref="system-name" min-occurs="1"/>
          <field ref="system-name-short"/>
          <field ref="description" min-occurs="1">
             <description>A free-text description of the system.</description>
+         </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="identiy-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
+                  <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
+                  <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
+<!--                  <enum value="minimum-x-assurance-level">A value of 1, 2, or 3, which is the minimum value of identiy-assurance-level, authenticator-assurance-level, and federation-assurance-level.</enum>
+-->               </allowed-values>
+            </flag>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships -->
          </field>
          <field ref="security-sensitivity-level" min-occurs="1"/>
          <assembly ref="system-information" min-occurs="1"/>
          <assembly ref="security-impact-level" min-occurs="1">
             <!-- TODO: Is this needed, or can it be computed based on the high water mark of the information types? -->
          </assembly>
-         <assembly ref="security-eauth"/>
-         <assembly ref="status" min-occurs="1"/>
+         <field ref="status" min-occurs="1" in-xml="WITH-WRAPPER">
+            <flag ref="state">
+               <allowed-values>
+                  <enum value="operational">The system is currently operating and is in production.</enum>
+                  <enum value="under-development">The system is being designed, developed, or implemented</enum>
+                  <enum value="under-major-modification">The system is undergoing a major change, development, or transition.</enum>
+                  <enum value="disposition">The system is no longer operational.</enum>
+                  <enum value="other">Some other state.</enum>
+               </allowed-values>
+            </flag>
+         </field>
          <assembly ref="deployment-model"/>
          <assembly ref="service-model" max-occurs="unbounded">
             <group-as name="service-models"/>
@@ -86,23 +112,37 @@
    </define-assembly>
    <define-field name="system-id" as-type="string">
       <formal-name>System Identification</formal-name>
-      <description>TBD</description>
-      <!-- TODO: What are the valid values? -->
-      <flag ref="type"/>
+      <description>A unqiue identifier for the system described by this system security plan.</description>
+      <flag name="identifier-type" as-type="uri">
+         <formal-name>Identification System Type</formal-name>
+         <description>Defines the namespace or identifcation system from which the provided identifier was assigned from.</description>
+         <allowed-values allow-other="yes">
+            <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
+            <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique IDentifier (UUID) as defined by RFC4122.</enum>
+         </allowed-values>
+      </flag>
    </define-field>
    <define-field name="system-name" as-type="string">
       <formal-name>System Name (Full)</formal-name>
-      <description>TBD</description>
+      <description>The full name of the system.</description>
    </define-field>
    <define-field name="system-name-short" as-type="string">
       <formal-name>System Name (Short)</formal-name>
-      <description>TBD</description>
+      <description>A short name for the system that is suitable for display in a data table or summary list.</description>
    </define-field>
 
    <define-field name="security-sensitivity-level">
       <!-- TODO: Any constraints for the values? -->
       <formal-name>Security Sensitivity Level</formal-name>
-      <description>TBD</description>
+      <description>The overall information system sensitivity categorization, such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
+      <allowed-values>
+         <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+         <enum value="moderate">A 'moderate' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+         <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+      </allowed-values>
+      <remarks>
+         <p>In most typical cases, the security sensitivity level should correspond to the highest confidentiality, integrity, or availability value of the <code>security-impact-level</code>.</p>
+      </remarks>
    </define-field>
 
    <define-assembly name="system-information">
@@ -111,154 +151,48 @@
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
       <model>
-         <!-- TODO: Why is designation not a child of information type? -->
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="privacy-designation">Is the system a privacy sensitive system? yes or no</enum>
+                  <!-- TODO: Model specific property names -->
+               </allowed-values>
+            </flag>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <flag ref="rel">
+               <allowed-values allow-other="yes">
+                  <enum value="privacy-impact-assessment">A link to a privacy impact assessment.</enum>
+                  <!-- TODO: Model specific link relationships -->
+               </allowed-values>
+            </flag>
+         </field>
          <assembly ref="information-type" min-occurs="1" max-occurs="unbounded">
             <group-as name="information-types"/>
-         </assembly>
-         <assembly ref="designation" max-occurs="unbounded">
-            <description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
-            <group-as name="designations" in-json="SINGLETON_OR_ARRAY"/>
          </assembly>
       </model>
       <example/>
    </define-assembly>
-
-   <define-assembly name="designation">
-      <formal-name>System Information Designation</formal-name>
-      <description>Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).</description>
-      <flag ref="name" required="yes"/>
-      <model>
-         <!-- TODO: what are the following for? -->
-         <field ref="title"/>
-         <field ref="declaration"/>
-         <assembly ref="qualifiers" max-occurs="unbounded">
-            <group-as name="ssp-qualifiers"/>
-         </assembly>
-      </model>
-      <example>
-         <o:designation name="pii">
-            <o:declaration>true</o:declaration>
-         </o:designation>
-         <o:designation name="pci">
-            <o:declaration>false</o:declaration>
-         </o:designation>
-         <o:designation name="hipaa">
-            <o:declaration>false</o:declaration>
-         </o:designation>
-         <o:designation name="sbu">
-            <o:declaration>false</o:declaration>
-         </o:designation>
-      </example>
-      <example>
-         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" name="pii">
-            <title>A Privacy Sensitive System</title>
-            <declaration>false</declaration>
-         </designation>
-      </example>
-   </define-assembly>
-   <define-field name="declaration" as-type="boolean">
-      <formal-name>Declaration</formal-name>
-      <description>Identifies whether a specific designation applies to this system.</description>
-      <example>
-         <designation xmlns="http://csrc.nist.gov/ns/oscal/example" name="pii">
-            <title>A Privacy Sensitive System</title>
-            <declaration>false</declaration>
-         </designation>
-      </example>
-   </define-field>
-   <define-assembly name="qualifiers">
-      <formal-name>Information Designation Qualifiers</formal-name>
-      <description>A list of questions about the system that contribute to the establishment of a designation, such as the FedRAMP privacy threshold analysis questions.</description>
-      <model>
-         <assembly ref="qualifier" max-occurs="unbounded">
-            <group-as name="ssp-qualifiers"/>
-         </assembly>
-      </model>
-      <example>
-         <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <qualifier id="pta-01">
-               <question>Does the ISA collect, maintain, or share PII in any identifiable form?</question>
-               <response>no</response>
-            </qualifier>
-         </qualifiers>
-      </example>
-   </define-assembly>
-   <define-assembly name="qualifier">
-      <formal-name>Individual Information Designation Qualifier</formal-name>
-      <description>An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.</description>
-      <flag ref="id"/>
-      <model>
-         <field ref="qual-question"/>
-         <field ref="qual-response"/>
-         <field ref="qual-notes"/>
-      </model>
-      <example>
-         <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <qualifier id="pta-01">
-               <qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
-               <qual-response>yes</qual-response>
-               <qual-notes>[SORN ID#]</qual-notes>
-            </qualifier>
-         </qualifiers>
-      </example>
-   </define-assembly>
-   <define-field name="qual-question" as-type="string">
-      <formal-name>Qualifier Question</formal-name>
-      <description>A question that must be answered about this system.</description>
-      <example>
-         <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <qualifier id="pta-01">
-               <qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
-               <qual-response>yes</qual-response>
-               <qual-notes>[SORN ID#]</qual-notes>
-            </qualifier>
-         </qualifiers>
-      </example>
-   </define-field>
-   <define-field name="qual-response" as-type="string">
-      <!-- TODO: yes/no is not a valid boolean value -->
-      <formal-name>Qualifier Question Response</formal-name>
-      <description>The response to the question.</description>
-      <allowed-values>
-         <enum value="yes">The answer is afirmative.</enum>
-         <enum value="no">The answer is negative.</enum>
-      </allowed-values>
-      <example>
-         <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <qualifier id="pta-01">
-               <qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
-               <qual-response>yes</qual-response>
-               <qual-notes>[SORN ID#]</qual-notes>
-            </qualifier>
-         </qualifiers>
-      </example>
-   </define-field>
-   <define-field name="qual-notes" as-type="string">
-      <formal-name>Qualifier Question Response Notes</formal-name>
-      <description>Additional information about the response to the question.</description>
-      <example>
-         <qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
-            <qualifier id="pta-01">
-               <qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
-               <qual-response>yes</qual-response>
-               <qual-notes>[SORN ID#]</qual-notes>
-            </qualifier>
-         </qualifiers>
-      </example>
-   </define-field>
    <define-assembly name="information-type">
       <formal-name>Information Type</formal-name>
       <description>Contains details about one type of information stored, processed, or
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
       <flag ref="id"/>
-      <flag ref="nist-id"/>
+      <flag ref="nist-id">
+         <!-- TODO: Make id and identification system -->
+      </flag>
       <flag name="name" required="yes">
          <formal-name>Information Type Name</formal-name>
          <description>The name of the information type.</description>
       </flag>
       <model>
          <field ref="description" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <assembly ref="confidentiality-impact" min-occurs="1"/>
          <assembly ref="integrity-impact" min-occurs="1"/>
          <assembly ref="availability-impact" min-occurs="1"/>
@@ -268,6 +202,9 @@
       <formal-name>Confidentiality Impact Level</formal-name>
       <description>TBD</description>
       <model>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
@@ -278,6 +215,9 @@
       <formal-name>Integrity Impact Level</formal-name>
       <description>TBD</description>
       <model>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
@@ -288,6 +228,9 @@
       <formal-name>Availability Impact Level</formal-name>
       <description>TBD</description>
       <model>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
          <field ref="adjustment-justification"/>
@@ -330,7 +273,7 @@
       <example/>
    </define-assembly>
    <define-field name="security-objective-confidentiality" as-type="string">
-      <formal-name>Security Objective (Confidentiality)</formal-name>
+      <formal-name>Security Objective: Confidentiality</formal-name>
       <description>TBD</description>
       <allowed-values>
         <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
@@ -339,7 +282,7 @@
       </allowed-values>
    </define-field>
    <define-field name="security-objective-integrity" as-type="string">
-      <formal-name>Security Objective (Integrity)</formal-name>
+      <formal-name>Security Objective: Integrity</formal-name>
       <description>TBD</description>
       <allowed-values>
         <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
@@ -348,7 +291,7 @@
       </allowed-values>
    </define-field>
    <define-field name="security-objective-availability" as-type="string">
-      <formal-name>Security Objective (Availability)</formal-name>
+      <formal-name>Security Objective: Availability</formal-name>
       <description>TBD</description>
       <allowed-values>
         <enum value="low">A 'low' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
@@ -356,56 +299,17 @@
         <enum value="high">A 'high' sensitivity level such as what is defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
       </allowed-values>
    </define-field>
-   <define-assembly name="security-eauth">
-      <formal-name>Security Electronic Authentication Level</formal-name>
-      <description>TBD</description>
-      <model>
-         <field ref="security-auth-ial"/>
-         <field ref="security-auth-aal"/>
-         <field ref="security-auth-fal"/>
-         <field ref="security-eauth-level"/>
-      </model>
-      <example/>
-   </define-assembly>
-   <define-field name="security-auth-ial" as-type="string">
-      <formal-name>Security Authentication (Identity Assurance Level)</formal-name>
-      <description>TBD</description>
-   </define-field>
-   <define-field name="security-auth-aal" as-type="string">
-      <formal-name>Security Authentication (Authenticator Assurance Level)</formal-name>
-      <description>TBD</description>
-   </define-field>
-   <define-field name="security-auth-fal" as-type="string">
-      <formal-name>Security Authentication (Federation Assurance Level)</formal-name>
-      <description>TBD</description>
-   </define-field>
-   <define-field name="security-eauth-level" as-type="string">
-      <formal-name>Security eAuthentication Level</formal-name>
-      <description>TBD</description>
-   </define-field>
-   <define-assembly name="status">
+   <define-field name="status" as-type="markup-multiline">
       <formal-name>Status</formal-name>
-      <description>TBD</description>
+      <description>Describes the status of the parent system or component.</description>
       <flag name="state" required="yes" as-type="string">
-         <!-- TODO: FIX: This will not build if no datatype is provided -->
          <formal-name>State</formal-name>
          <description>TBD</description>
-         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
-         <allowed-values>
-            <enum value="operational">The system is currently operating and is in production.</enum>
-            <enum value="under-development">The system is being designed, developed, or implemented</enum>
-            <enum value="under-major-modification">The system is undergoing a major change, development, or transition.</enum>
-            <enum value="disposition">The system is no longer operational.</enum>
-            <enum value="other">Some other state.</enum>
-         </allowed-values>
       </flag>
-      <model>
-         <field ref="remarks"/>
-      </model>
       <remarks>
          <p>If 'other' is selected, a remark must be included to describe the current state.</p>
       </remarks>
-   </define-assembly>
+   </define-field>
    <define-assembly name="deployment-model">
       <formal-name>Deployment Model</formal-name>
       <description>TBD</description>
@@ -423,7 +327,7 @@
          </allowed-values>
       </flag>
       <model>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
          <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
@@ -438,7 +342,7 @@
          <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
       </flag>
       <model>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
          <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
@@ -479,7 +383,7 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <example/>
    </define-assembly>
@@ -515,7 +419,7 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <example/>
    </define-assembly>
@@ -528,11 +432,11 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <example/>
    </define-assembly>
- 
+
    <!-- SYSTEM IMPLEMENTATION -->
    <define-assembly name="system-implementation">
       <formal-name>System Implementation</formal-name>
@@ -541,13 +445,13 @@
          <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
             <group-as name="system-roles" in-json="BY_KEY"/>
          </assembly>
-         
+
          <assembly ref="component" max-occurs="unbounded">
             <group-as name="components" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="capability" max-occurs="unbounded">
+         <!--         <assembly ref="capability" max-occurs="unbounded">
             <group-as name="capabilities" in-json="BY_KEY"/>
-         </assembly>
+         </assembly>-->
          <assembly ref="service" max-occurs="unbounded">
             <description>A collection of the ports, protocols, and services used within the
                system.</description>
@@ -560,7 +464,7 @@
       </model>
       <example/>
    </define-assembly>
-   
+
    <define-assembly name="system-role">
       <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
       <formal-name>System Role</formal-name>
@@ -643,6 +547,7 @@
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
    </define-field>
+
    <define-assembly name="component">
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
@@ -658,6 +563,16 @@
       <flag ref="component-type"/>
       <model>
          <field ref="description" min-occurs="1"/>
+         <field ref="status" min-occurs="1" in-xml="WITH-WRAPPER">
+            <flag ref="state">
+               <allowed-values>
+                  <enum value="under-development">The component is being designed, developed, or implemented.</enum>
+                  <enum value="operational">The component is currently operational and is available for use in the system.</enum>
+                  <enum value="disposition">The component is no longer operational.</enum>
+                  <enum value="other">Some other state.</enum>
+               </allowed-values>
+            </flag>
+         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <flag ref="name">
@@ -687,10 +602,10 @@
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="component-relationship" max-occurs="unbounded">
+<!--         <assembly ref="component-relationship" max-occurs="unbounded">
             <group-as name="component-relationships" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+-->         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
          <p>Components may be products, services, APIs, policies, processes, plans, guidance,
@@ -699,55 +614,6 @@
          <p>A group of components may be aggregated into a <code>capability</code>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>
       </remarks>
-   </define-assembly>
-
-   <define-assembly name="component-relationship">
-      <formal-name>Component Relationship</formal-name>
-      <description>Establishes a relationship of a specific type between this component and another.</description>
-      <json-key flag-name="component-id"/>
-      <flag ref="component-id" required="yes"/>
-      <flag name="type">
-         <formal-name>Component Relationship Type</formal-name>
-         <description>The type of relationship.</description>
-         <!-- TODO: enumer valid values -->
-      </flag>
-      <model>
-         <field ref="remarks"/>        
-      </model>
-   </define-assembly>
-
-   <define-assembly name="capability">
-      <formal-name>Capability</formal-name>
-      <description>A grouping of other components and/or capabilities.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
-         <formal-name>Capability Identifier</formal-name>
-         <description>A unique identifier for a capability.</description>
-      </flag>
-      <flag name="name" as-type="string" required="yes">
-         <formal-name>Capability Name</formal-name>
-         <description>The capability's human-readable name.</description>
-      </flag>
-      <model>
-         <field ref="description" min-occurs="1"/>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
-         </field>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
-            <!-- TODO: Model specific link relationships for:
-          depends-on: component has a dependency on another component
-          validated-by:, etc.
-        -->
-         </field>
-         <assembly ref="incorporates-capability" max-occurs="unbounded">
-            <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="incorporates-component" max-occurs="unbounded">
-            <group-as name="incorporates-components" in-json="BY_KEY"/>
-         </assembly>
-         <field ref="remarks"/>
-      </model>
    </define-assembly>
 
    <define-assembly name="service">
@@ -861,7 +727,7 @@
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
          </assembly>
-        <field ref="remarks"/>
+        <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <example/>
    </define-assembly>
@@ -894,11 +760,11 @@
          <assembly ref="implemented-component" max-occurs="unbounded">
             <group-as name="implemented-components" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+-->         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <example/>
    </define-assembly>
-   
+
    <define-assembly name="responsible-party">
       <formal-name>Responsible Party</formal-name>
       <description>A reference to an organization or person assigned a referenced system role that is responsible for the containing inventory item.</description>
@@ -1115,7 +981,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="implemented-requirement">
       <formal-name>Control-based Requirement</formal-name>
       <description>TBD</description>
@@ -1148,10 +1014,10 @@
          </assembly>
          <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="statement">
       <formal-name>Specific Statement</formal-name>
       <description>Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.</description>
@@ -1180,10 +1046,10 @@
          <assembly ref="by-capability" max-occurs="unbounded">
             <group-as name="by-capabilities" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+-->         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="by-component">
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
