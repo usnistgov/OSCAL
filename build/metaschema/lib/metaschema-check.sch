@@ -110,6 +110,7 @@
             <sch:assert test="exists(@name) or (exists(@ref) and not(exists(@as-type)))">A field referencing an existing declaration must not specify a data type</sch:assert>
             
             <sch:assert test="$decl/@as-type='markup-multiline' or not(@in-xml='UNWRAPPED')">Only 'markup-multiline' fields may be unwrapped in XML.</sch:assert>
+            <sch:report test="(@in-xml='UNWRAPPED') and (@max-occurs!='1')">An 'unwrapped' field must have a max occurrence of 1</sch:report>
             <sch:report test="key('invocation-by-ref',@ref)/@in-xml != key('invocation-by-ref',@ref)/@in-xml">All fields '<sch:value-of select="@ref"/>" should have @in-xml set the same.</sch:report>
             <sch:assert test="not(@in-xml='UNWRAPPED') or not($decl/@as-type='markup-multiline') or not(preceding-sibling::*[@in-xml='UNWRAPPED']/key('definition-by-name',@ref)/@as-type='markup-multiline')">Only one field may be marked
             as 'markup-multiline' (without xml wrapping) within a model.</sch:assert>

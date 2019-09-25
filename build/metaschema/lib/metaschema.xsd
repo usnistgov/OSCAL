@@ -336,14 +336,14 @@
           <xs:documentation>Maximum occurrence of assemblies within a valid model. The default value is 1, for a single occurrence. 'unbounded' permits any number of assemblies of the designated type.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="in-xml" default="WITH-WRAPPER">
+      <xs:attribute name="in-xml" default="WITH_WRAPPER">
         <xs:annotation>
           <xs:documentation>A field with assigned datatype 'markup-multiline' may be designated for representation with or without a containing (wrapper) element
             in XML.</xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="WITH-WRAPPER">
+            <xs:enumeration value="WITH_WRAPPER">
               <xs:annotation>
                 <xs:documentation>Any paragraph or block contents of a markup-multiline field will be represented with a containing (wrapper) element in the XML.</xs:documentation>
               </xs:annotation>

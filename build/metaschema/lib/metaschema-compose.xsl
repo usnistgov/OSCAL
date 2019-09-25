@@ -202,7 +202,7 @@
     
     <xsl:template mode="digest" match="flag | json-key | json-value-key">
         <xsl:copy>
-            <xsl:copy-of select="key('definition-by-name',@name)/@as-type"/>
+            <xsl:copy-of select="key('definition-by-name',(@name|@ref))/@as-type"/>
             <!-- Allowing local datatype to override the definition's datatype -->
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>

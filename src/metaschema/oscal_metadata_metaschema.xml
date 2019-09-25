@@ -391,7 +391,7 @@
       <flag ref="type"/>
    </define-field>
    <define-assembly name="rlink">
-      <formal-name>Related link</formal-name>
+      <formal-name>Resource link</formal-name>
       <description>A pointer to an external copy of a document with optional hash for verification</description>
       <flag ref="href" required="yes"/>
       <flag ref="media-type"/>

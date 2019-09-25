@@ -54,7 +54,7 @@
    
    
    
-   <xsl:template priority="2" match="*[@in-json='BY_KEY'][@json-type='SCALAR']" mode="html-render">
+   <xsl:template priority="2" match="*[@group-json='BY_KEY'][@json-type='SCALAR']" mode="html-render">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <p class="OM-entry{ ' open'[$first] }">
          <span class="OM-name">
@@ -80,7 +80,7 @@
       </p>
    </xsl:template>
    
-   <xsl:template priority="2" match="*[@in-json='BY_KEY']" mode="html-render">
+   <xsl:template priority="2" match="*[@group-json='BY_KEY']" mode="html-render">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <div class="OM-entry{ ' open'[$first] }">
          <p>

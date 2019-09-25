@@ -97,7 +97,8 @@
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
-                  <xsl:if test="not(position() eq 1)">, </xsl:if>
+                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+                  <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
          </xsl:for-each-group>
@@ -144,10 +145,7 @@
          <xsl:if test="exists(flag)">
             <xsl:variable name="modal">
                <xsl:choose>
-                  <xsl:when
-                     test="
-                        every $f in (flag)
-                           satisfies $f/@required = 'yes'"
+                  <xsl:when test="every $f in (flag) satisfies $f/@required = 'yes'"
                      >must</xsl:when>
                   <xsl:otherwise>may</xsl:otherwise>
                </xsl:choose>
@@ -186,7 +184,8 @@
          group-by="true()">
          <p><xsl:text>This element appears inside: </xsl:text>
             <xsl:for-each select="current-group()">
-               <xsl:if test="not(position() eq 1)">, </xsl:if>
+               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+               <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                <xsl:apply-templates select="." mode="link-here"/>
             </xsl:for-each>.</p>
       </xsl:for-each-group>
@@ -396,7 +395,19 @@
    </xsl:template>
 
    <xsl:template match="define-field" mode="state-type">
+      <xsl:variable name="unwrapped-references" select="key('references',@name)[not(@in-xml='WITH-WRAPPER')]"/>
       <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p>
+      <p>
+         <xsl:text>When appearing in </xsl:text>
+         <xsl:for-each select="distinct-values($unwrapped-references/ancestor::model/../@name)">
+            <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+            <xsl:if test="position() gt 1 and position() eq last()"> or </xsl:if>
+            <a href="#{ . }" xsl:expand-text="true">{ . }</a>
+         </xsl:for-each>
+         <xsl:text> this element is </xsl:text>
+         <em>implicit</em>
+         <xsl:text>; only its contents appear.</xsl:text>
+      </p>
    </xsl:template>
 
    <xsl:template match="field | assembly" mode="metaschema-type">

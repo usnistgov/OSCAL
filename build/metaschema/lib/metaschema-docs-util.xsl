@@ -37,7 +37,11 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <xsl:sequence select="serialize($pruned-tree,$serialization-settings/*)"/>
+        <xsl:apply-templates select="$root-definition" mode="build">
+            <xsl:with-param name="minOccurs">1</xsl:with-param>
+        </xsl:apply-templates>
+        <!--<xsl:sequence select="$surrogate-tree"/>-->
+        <!--<xsl:sequence select="serialize($surrogate-tree,$serialization-settings/*)"/>-->
     </xsl:template>
         
     <!-- Debugging entry point -->
@@ -91,20 +95,25 @@ function switch_view(who,flag) {
                 <!--<pre style="float:left">
                <xsl:value-of select="serialize($pruned-tree, $serialization-settings/* )"/>
             </pre>-->
+                <details>
+                    <summary>Surrogate tree display</summary>
                 <pre>
                <xsl:value-of select="serialize($surrogate-tree, $serialization-settings/* )"/>
             </pre>
-                
-                
+                </details>
+                <details open="open">
+                    <summary>Display</summary>
                 <xsl:variable name="html-rendering">
                     <xsl:apply-templates mode="html-render" select="$surrogate-tree"/>
                 </xsl:variable>
                 <!--<div class="OM-map" style="float:left; width:40%">
                     <xsl:copy-of select="$html-rendering"/>
                 </div>-->
-                <div class="OM-map" style="float:right; width:40%">
+                <div class="OM-map">
                     <xsl:apply-templates select="$html-rendering/*" mode="elaborate"/>
                 </div>
+                </details>                
+                
             </body>
         </html>
     </xsl:template>
@@ -202,7 +211,9 @@ function switch_view(who,flag) {
         <xsl:param name="minOccurs" select="'0'"/>
         <xsl:param name="maxOccurs" select="'1'"/>
         <xsl:param name="group-name" select="()"/>
-        <xsl:param name="json-behavior" select="()"/>
+        <xsl:param name="group-json" select="()"/>
+        <xsl:param name="group-xml" select="()"/>
+        <xsl:param name="in-xml" select="()"/>
         <xsl:param name="visited" select="()" tunnel="true"/>
         <xsl:variable name="type" select="replace(local-name(),'^define\-','')"/>
         
@@ -215,8 +226,14 @@ function switch_view(who,flag) {
                     <xsl:with-param name="maxOccurs" select="$maxOccurs"/>
                 </xsl:apply-templates>
             </xsl:attribute>
-            <xsl:for-each select="$json-behavior">
-                <xsl:attribute name="in-json" select="."/>
+            <xsl:for-each select="$in-xml"><!-- UNWRAPPED or WITH_WRAPPER - supports unwrapped markup-multiline fields -->
+                <xsl:attribute name="in-xml" select="."/>
+            </xsl:for-each>
+            <xsl:for-each select="$group-xml"><!-- GROUPED or UNGROUPED - introduces a grouping element for the group -->
+                <xsl:attribute name="group-xml" select="."/>
+            </xsl:for-each>
+            <xsl:for-each select="$group-json"><!-- ARRAY (default), SINGLETON_OR_ARRAY, BY_KEY --> 
+                <xsl:attribute name="group-json" select="."/>
             </xsl:for-each>
             
             <xsl:apply-templates select="json-key, json-value-key" mode="build"/>
@@ -265,7 +282,9 @@ function switch_view(who,flag) {
             <xsl:with-param name="minOccurs" select="(@min-occurs,'0')[1]"/>
             <xsl:with-param name="maxOccurs" select="(@max-occurs,'1')[1]"/>
             <xsl:with-param name="group-name" select="group-as/@name"/>
-            <xsl:with-param name="json-behavior" select="group-as/@in-json"/>
+            <xsl:with-param name="group-json" select="group-as/@in-json"/>
+            <xsl:with-param name="group-xml" select="group-as/@in-xml"/>
+            <xsl:with-param name="in-xml" select="@in-xml"/>
         </xsl:apply-templates>
     </xsl:template>
     
