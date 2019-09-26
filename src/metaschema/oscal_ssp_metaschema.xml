@@ -733,20 +733,6 @@
       <example/>
    </define-assembly>
 
-   <define-assembly name="responsible-party">
-      <formal-name>Responsible Party</formal-name>
-      <description>A reference to an organization or person assigned a referenced system role that is responsible for the containing inventory item.</description>
-      <json-key flag-name="system-role-id"/>
-      <flag name="system-role-id" required="yes" as-type="NCName">
-         <formal-name>Responsible System Role</formal-name>
-         <description>The system role that is responsible.</description>
-      </flag>
-      <model>
-         <field ref="party-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="party-ids"/>
-         </field>
-      </model>
-   </define-assembly>
    <define-field name="system-role-id" as-type="NCName">
       <formal-name>System Role Identifier Reference</formal-name>
       <description>A reference to a system role defined within this document.</description>
@@ -1078,11 +1064,6 @@
       </model>
       <example/>
    </define-assembly>
-   <define-field name="value" as-type="string">
-      <formal-name>Value</formal-name>
-      <description>The phrase or string that fills-in the parameter and completes the requirement
-			statement.</description>
-   </define-field>
    <!-- ===== FLAGS ===== -->
    <define-flag name="nist-id" as-type="string">
       <formal-name>NIST 800-60 Information Type Identifier</formal-name>

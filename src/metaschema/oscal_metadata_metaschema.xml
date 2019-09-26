@@ -24,6 +24,10 @@
          <field ref="remarks" in-xml="WITH-WRAPPER"/>
          <field ref="party-id"/>
          <assembly ref="characteristic"/>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="role-id"/>
       </model>
       <remarks>
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -53,7 +57,10 @@
          <assembly ref="party" max-occurs="unbounded">
             <group-as name="parties"/>
          </assembly>
-         <assembly ref="notes"/>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="remarks"/>
       </model>
    </define-assembly>
    <define-assembly name="back-matter">
@@ -258,22 +265,28 @@
       </remarks>
    </define-flag>
    <define-field name="value">
-      <formal-name>Characteristic Value</formal-name>
-      <description>Indicates the value of the containing characteristic.</description>
+      <formal-name>Value</formal-name>
+      <description>Indicates the value of the containing context.</description>
    </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
       <flag ref="id"/>
       <model>
-         <field ref="role-id" max-occurs="unbounded">
-            <group-as name="role-ids"/>
-         </field>
          <assembly ref="person" max-occurs="unbounded">
             <group-as name="persons"/>
          </assembly>
          <assembly ref="org"/>
-         <assembly ref="notes"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks"/>
       </model>
       <remarks>
          <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
@@ -314,7 +327,16 @@
          <field ref="url" max-occurs="unbounded">
             <group-as name="URLs"/>
          </field>
-         <assembly ref="notes"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks"/>
       </model>
    </define-assembly>
    <define-assembly name="org">
@@ -338,7 +360,16 @@
          <field ref="url" max-occurs="unbounded">
             <group-as name="URLs"/>
          </field>
-         <assembly ref="notes"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks"/>
       </model>
    </define-assembly>
    <define-field name="person-id">
@@ -462,16 +493,6 @@
       <formal-name>URL</formal-name>
       <description>URL for web site or Internet presence</description>
    </define-field>
-   <define-assembly name="notes">
-      <formal-name>Notes</formal-name>
-      <description>Any notes with further information</description>
-      <flag ref="type">
-         <description>Indicates the type of note.</description>
-      </flag>
-      <model>
-         <field ref="note" in-xml="UNWRAPPED"/>
-      </model>
-   </define-assembly>
    <define-field name="desc">
       <formal-name>Description</formal-name>
       <description>A short textual description</description>
@@ -488,7 +509,7 @@
             </assembly>
             <field ref="base64"/>
          </choice>
-         <assembly ref="notes"/>
+         <field ref="remarks"/>
       </model>
       <remarks>
          <p>Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p>
@@ -521,18 +542,51 @@
    </define-flag>
    <define-assembly name="role">
       <formal-name>Role</formal-name>
-      <description>Defining a role to be assigned to a party or agent</description>
+      <description>Defining a role to be assigned to a party</description>
       <flag ref="id" required="yes"/>
       <model>
          <field ref="title" min-occurs="1"/>
          <field ref="short-name"/>
          <field ref="desc"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks"/>
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
         authority).</p>
       </remarks>
    </define-assembly>
+   <define-assembly name="responsible-party">
+      <formal-name>Responsible Party</formal-name>
+      <description>A reference to an organization or person that has responsibility for performing a referenced role relative to the parent context.</description>
+      <json-key flag-name="role-id"/>
+      <flag name="role-id" required="yes" as-type="NCName">
+         <formal-name>Responsible Role</formal-name>
+         <description>The role that the party is responsible for.</description>
+      </flag>
+      <model>
+         <field ref="party-id" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+      </model>
+   </define-assembly>
+   
    <define-flag name="href" as-type="uri-reference">
       <formal-name>hypertext reference</formal-name>
       <description>A link to a document or document fragment (actual, nominal or projected)</description>
@@ -609,10 +663,6 @@
          <p>When a citation is given as a full (but unparsed) bibliographic citation, use <code>desc</code> instead
       of <code>title</code> inside this object.</p>
       </remarks>
-   </define-field>
-   <define-field name="note" as-type="markup-multiline">
-      <formal-name>Note</formal-name>
-      <description>Permits multiple paragraphs, lists, tables etc.</description>
    </define-field>
    
    <define-field name="description" as-type="markup-multiline">
