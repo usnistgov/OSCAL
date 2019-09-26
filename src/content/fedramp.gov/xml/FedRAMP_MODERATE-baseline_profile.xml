@@ -613,7 +613,7 @@
 		</set>
 		<!-- - - CM-6 - -  -->
 		<set param-id="cm-6_prm_1">
-			<constraint>United States Government Configuration Baseline (USGCB)</constraint>
+			<guidline>See CM-6(a) Additional FedRAMP Requirements and Guidance</guidline>
 		</set>
 		<!-- - - CM-6 (1) - -  -->
 		<!-- - - CM-7 - -  -->
