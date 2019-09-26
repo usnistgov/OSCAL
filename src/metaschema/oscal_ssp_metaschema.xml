@@ -1064,6 +1064,11 @@
       </model>
       <example/>
    </define-assembly>
+   <define-field name="value" as-type="string">
+      <formal-name>Value</formal-name>
+      <description>The phrase or string that fills-in the parameter and completes the requirement
+         statement.</description>
+   </define-field>
    <!-- ===== FLAGS ===== -->
    <define-flag name="nist-id" as-type="string">
       <formal-name>NIST 800-60 Information Type Identifier</formal-name>

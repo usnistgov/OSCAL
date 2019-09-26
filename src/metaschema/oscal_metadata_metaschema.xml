@@ -223,8 +223,11 @@
       <flag ref="name" required="yes"/>
       <flag ref="id"/>
       <flag ref="ns"/>
+      <flag name="value">
+         <formal-name>Value</formal-name>
+         <description>Indicates the value of the characteristic.</description>
+      </flag>
       <model>
-         <field ref="value" min-occurs="1"/>
          <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
@@ -264,10 +267,6 @@
          <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
       </remarks>
    </define-flag>
-   <define-field name="value">
-      <formal-name>Value</formal-name>
-      <description>Indicates the value of the containing context.</description>
-   </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
