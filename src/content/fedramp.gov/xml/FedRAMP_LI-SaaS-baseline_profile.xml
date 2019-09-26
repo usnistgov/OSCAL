@@ -1,0 +1,1261 @@
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+	id="4a550bc9-0c9b-4711-a7c2-3054baf7841c">
+	<metadata>
+		<title>DRAFT FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
+		<last-modified>2019-09-19T18:20:00.00-04:00</last-modified>
+		<version>1.0</version>
+		<oscal-version>1.0.0-milestone1</oscal-version>
+		
+		<role id="author"><title>Author</title></role>
+		<party>
+			<role-id>author</role-id>
+			<org>
+				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
+				<email>info@fedramp.gov</email>
+				<url>https://fedramp.gov</url>
+			</org>
+		</party>
+		<notes><p>This is a DRAFT OSCAL profile intended to reflect the FedRAMP Tailored Baseline for Low Impact Software as a Service (LI-SaaS). Currently this reflects FedRAMP's parameters, additional requirements/guidance, and control designations (Fed, NSO, Attest, etc.) Assessment objectives and actions have not been vetted and may not align. This also has not been peer reviewed. Use with caution. FedRAMP is not responsible for inaccuracies resulting from the use of this draft profile.</p></notes>
+	</metadata>
+	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+		<include>
+			<call control-id="ac-1"/>
+			<call control-id="ac-2"/>
+			<call control-id="ac-3"/>
+			<call control-id="ac-7"/>
+			<call control-id="ac-8"/>
+			<call control-id="ac-14"/>
+			<call control-id="ac-17"/>
+			<call control-id="ac-18"/>
+			<call control-id="ac-19"/>
+			<call control-id="ac-20"/>
+			<call control-id="ac-22"/>
+			<call control-id="at-1"/>
+			<call control-id="at-2"/>
+			<call control-id="at-3"/>
+			<call control-id="at-4"/>
+			<call control-id="au-1"/>
+			<call control-id="au-2"/>
+			<call control-id="au-3"/>
+			<call control-id="au-4"/>
+			<call control-id="au-5"/>
+			<call control-id="au-6"/>
+			<call control-id="au-8"/>
+			<call control-id="au-9"/>
+			<call control-id="au-11"/>
+			<call control-id="au-12"/>
+			<call control-id="ca-1"/>
+			<call control-id="ca-2"/>
+			<call control-id="ca-2.1"/>
+			<call control-id="ca-3"/>
+			<call control-id="ca-5"/>
+			<call control-id="ca-6"/>
+			<call control-id="ca-7"/>
+			<call control-id="ca-9"/>
+			<call control-id="cm-1"/>
+			<call control-id="cm-2"/>
+			<call control-id="cm-4"/>
+			<call control-id="cm-6"/>
+			<call control-id="cm-7"/>
+			<call control-id="cm-8"/>
+			<call control-id="cm-10"/>
+			<call control-id="cm-11"/>
+			<call control-id="cp-1"/>
+			<call control-id="cp-2"/>
+			<call control-id="cp-3"/>
+			<call control-id="cp-4"/>
+			<call control-id="cp-9"/>
+			<call control-id="cp-10"/>
+			<call control-id="ia-1"/>
+			<call control-id="ia-2"/>
+			<call control-id="ia-2.1"/>
+			<call control-id="ia-2.12"/>
+			<call control-id="ia-4"/>
+			<call control-id="ia-5"/>
+			<call control-id="ia-5.1"/>
+			<call control-id="ia-5.11"/>
+			<call control-id="ia-6"/>
+			<call control-id="ia-7"/>
+			<call control-id="ia-8"/>
+			<call control-id="ia-8.1"/>
+			<call control-id="ia-8.2"/>
+			<call control-id="ia-8.3"/>
+			<call control-id="ia-8.4"/>
+			<call control-id="ir-1"/>
+			<call control-id="ir-2"/>
+			<call control-id="ir-4"/>
+			<call control-id="ir-5"/>
+			<call control-id="ir-6"/>
+			<call control-id="ir-7"/>
+			<call control-id="ir-8"/>
+			<call control-id="ir-9"/>
+			<call control-id="ma-1"/>
+			<call control-id="ma-2"/>
+			<call control-id="ma-4"/>
+			<call control-id="ma-5"/>
+			<call control-id="mp-1"/>
+			<call control-id="mp-2"/>
+			<call control-id="mp-6"/>
+			<call control-id="mp-7"/>
+			<call control-id="pe-1"/>
+			<call control-id="pe-2"/>
+			<call control-id="pe-3"/>
+			<call control-id="pe-6"/>
+			<call control-id="pe-8"/>
+			<call control-id="pe-12"/>
+			<call control-id="pe-13"/>
+			<call control-id="pe-14"/>
+			<call control-id="pe-15"/>
+			<call control-id="pe-16"/>
+			<call control-id="pl-1"/>
+			<call control-id="pl-2"/>
+			<call control-id="pl-4"/>
+			<call control-id="ps-1"/>
+			<call control-id="ps-2"/>
+			<call control-id="ps-3"/>
+			<call control-id="ps-4"/>
+			<call control-id="ps-5"/>
+			<call control-id="ps-6"/>
+			<call control-id="ps-7"/>
+			<call control-id="ps-8"/>
+			<call control-id="ra-1"/>
+			<call control-id="ra-2"/>
+			<call control-id="ra-3"/>
+			<call control-id="ra-5"/>
+			<call control-id="sa-1"/>
+			<call control-id="sa-2"/>
+			<call control-id="sa-3"/>
+			<call control-id="sa-4"/>
+			<call control-id="sa-4.10"/>
+			<call control-id="sa-5"/>
+			<call control-id="sa-9"/>
+			<call control-id="sc-1"/>
+			<call control-id="sc-5"/>
+			<call control-id="sc-7"/>
+			<call control-id="sc-12"/>
+			<call control-id="sc-13"/>
+			<call control-id="sc-15"/>
+			<call control-id="sc-20"/>
+			<call control-id="sc-21"/>
+			<call control-id="sc-22"/>
+			<call control-id="sc-39"/>
+			<call control-id="si-1"/>
+			<call control-id="si-2"/>
+			<call control-id="si-3"/>
+			<call control-id="si-4"/>
+			<call control-id="si-5"/>
+			<call control-id="si-12"/>
+		</include>
+	</import>
+	<merge>
+		<combine method="keep" />
+		<as-is>true</as-is>
+	</merge>
+	<modify>
+		<!-- - - AC-22 - -  -->
+		<set param-id="ac-22_prm_1">
+			<constraint>at least quarterly</constraint>
+		</set>
+		<!-- - - AU-5 - -  -->
+		<set param-id="au-5_prm_2">
+			<constraint>organization-defined actions to be taken (overwrite oldest record)</constraint>
+		</set>
+		<!-- - - AU-6 - -  -->
+		<set param-id="au-6_prm_1">
+			<constraint>at least weekly</constraint>
+		</set>
+		<!-- - - CA-2 - -  -->
+		<set param-id="ca-2_prm_1">
+			<constraint>at least annually</constraint>
+		</set>
+		<set param-id="ca-2_prm_2">
+			<constraint>individuals or roles to include FedRAMP PMO</constraint>
+		</set>
+		<!-- - - CA-2 (1) - -  -->
+		<!-- - - CA-3 - -  -->
+		<set param-id="ca-3_prm_1">
+			<constraint>at least annually and on input from FedRAMP</constraint>
+		</set>
+		<!-- - - CA-5 - -  -->
+		<set param-id="ca-5_prm_1">
+			<constraint>at least monthly</constraint>
+		</set>
+		<!-- - - CA-6 - -  -->
+		<set param-id="ca-6_prm_1">
+			<constraint>at least every three years or when a significant change occurs</constraint>
+		</set>
+		<!-- - - CA-7 - -  -->
+		<set param-id="ca-7_prm_4">
+			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
+		</set>
+		<set param-id="ca-7_prm_5">
+			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
+		</set>
+		<!-- - - CM-6 - -  -->
+		<set param-id="cm-6_prm_1">
+			<constraint>see CM-6(a) Additional FedRAMP Requirements and Guidance</constraint>
+		</set>
+		<!-- - - CM-8 - -  -->
+		<set param-id="cm-8_prm_2">
+			<constraint>at least monthly</constraint>
+		</set>
+		<!-- - - CP-9 - -  -->
+		<set param-id="cp-9_prm_1">
+			<constraint>daily incremental; weekly full</constraint>
+		</set>
+		<set param-id="cp-9_prm_2">
+			<constraint>daily incremental; weekly full</constraint>
+		</set>
+		<set param-id="cp-9_prm_3">
+			<constraint>daily incremental; weekly full</constraint>
+		</set>
+		<!-- - - IR-6 - -  -->
+		<set param-id="ir-6_prm_1">
+			<constraint>US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)</constraint>
+		</set>
+		<!-- - - PE-2 - -  -->
+		<set param-id="pe-2_prm_1">
+			<constraint>at least annually</constraint>
+		</set>
+		<!-- - - PE-3 - -  -->
+		<set param-id="pe-3_prm_2">
+			<constraint>CSP defined physical access control systems/devices AND guards</constraint>
+		</set>
+		<set param-id="pe-3_prm_6">
+			<constraint>in all circumstances within restricted access area where the information system resides</constraint>
+		</set>
+		<set param-id="pe-3_prm_8">
+			<constraint>at least annually</constraint>
+		</set>
+		<set param-id="pe-3_prm_9">
+			<constraint>at least annually</constraint>
+		</set>
+		<!-- - - PE-6 - -  -->
+		<set param-id="pe-6_prm_1">
+			<constraint>at least monthly</constraint>
+		</set>
+		<!-- - - PE-8 - -  -->
+		<set param-id="pe-8_prm_1">
+			<constraint>for a minimum of one (1) year</constraint>
+		</set>
+		<set param-id="pe-8_prm_2">
+			<constraint>at least monthly</constraint>
+		</set>
+		<!-- - - PE-14 - -  -->
+		<set param-id="pe-14_prm_1">
+			<constraint>consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments</constraint>
+		</set>
+		<set param-id="pe-14_prm_2">
+			<constraint>continuously</constraint>
+		</set>
+		<!-- - - PE-16 - -  -->
+		<set param-id="pe-16_prm_1">
+			<constraint>all information system components</constraint>
+		</set>
+		<!-- - - PL-2 - -  -->
+		<set param-id="pl-2_prm_2">
+			<constraint>at least annually</constraint>
+		</set>
+		<!-- - - PS-3 - -  -->
+		<set param-id="ps-3_prm_1">
+			<constraint>For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions.</constraint>
+		</set>
+		<!-- - - RA-3 - -  -->
+		<set param-id="ra-3_prm_2">
+			<constraint>security assessment report</constraint>
+		</set>
+		<set param-id="ra-3_prm_3">
+			<constraint>at least every three (3) years or when a significant change occurs</constraint>
+		</set>
+		<set param-id="ra-3_prm_5">
+			<constraint>at least every three (3) years or when a significant change occurs</constraint>
+		</set>
+		<!-- - - RA-5 - -  -->
+		<set param-id="ra-5_prm_1">
+			<constraint>monthly operating system/infrastructure; monthly web applications and databases</constraint>
+		</set>
+		<set param-id="ra-5_prm_2">
+			<constraint>[high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.</constraint>
+		</set>
+		<!-- - - SA-9 - -  -->
+		<set param-id="sa-9_prm_1">
+			<constraint>FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system</constraint>
+		</set>
+		<set param-id="sa-9_prm_2">
+			<constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
+		</set>
+		<!-- - - SC-13 - -  -->
+		<set param-id="sc-13_prm_1">
+			<constraint>FIPS-validated or NSA-approved cryptography</constraint>
+		</set>
+		<!-- - - SI-2 - -  -->
+		<set param-id="si-2_prm_1">
+			<constraint>within 30 days of release of updates</constraint>
+		</set>
+		<!-- - - SI-3 - -  -->
+		<set param-id="si-3_prm_1">
+			<constraint>at least weekly</constraint>
+		</set>
+		<set param-id="si-3_prm_2">
+			<constraint>to include endpoints</constraint>
+		</set>
+		<set param-id="si-3_prm_3">
+			<constraint>to include alerting administrator or defined security personnel</constraint>
+		</set>
+		<!-- - -     CONTROL MODIFICATIONS      - -  -->
+		<!-- - - AC-1 - -  -->
+		<alter control-id="ac-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AC-2 - -  -->
+		<alter control-id="ac-2">
+			<remove id-ref="ac-2_smt.b" />
+			<remove id-ref="ac-2_smt.c" />
+			<remove id-ref="ac-2_smt.d" />
+			<remove id-ref="ac-2_smt.e" />
+			<remove id-ref="ac-2_smt.i" />
+			<remove id-ref="ac-2_smt.j" />
+			<remove id-ref="ac-2_smt.k" />
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ac-2_fr" name="item" ns="fedramp">
+					<title>AC-2 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ac-2_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Parts (b), (c), (d), (e), (i), (j), and (k) are excluded from FedRAMP Tailored for LI-SaaS.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - AC-3 - -  -->
+		<alter control-id="ac-3">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AC-7 - -  -->
+		<alter control-id="ac-7">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication.</p></part>
+			</add>
+		</alter>
+		<!-- - - AC-8 - -  -->
+		<alter control-id="ac-8">
+			<add position="ending">
+				<prop name='fed' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>FED - This is related to agency data and agency policy solution.</p></part>
+			</add>
+		</alter>
+		<!-- - - AC-14 - -  -->
+		<alter control-id="ac-14">
+			<add position="ending">
+				<prop name='fed' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>FED - This is related to agency data and agency policy solution.</p></part>
+			</add>
+		</alter>
+		<!-- - - AC-17 - -  -->
+		<alter control-id="ac-17">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AC-18 - -  -->
+		<alter control-id="ac-18">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - All access to Cloud SaaS are via web services and/or API.  The device accessed from or whether via wired or wireless connection is out of scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2[1]).</p></part>
+			</add>
+		</alter>
+		<!-- - - AC-19 - -  -->
+		<alter control-id="ac-19">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - All access to Cloud SaaS are via web service and/or API.  The device accessed from is out of the scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2 [1]).</p></part>
+			</add>
+		</alter>
+		<!-- - - AC-20 - -  -->
+		<alter control-id="ac-20">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AC-22 - -  -->
+		<alter control-id="ac-22">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AT-1 - -  -->
+		<alter control-id="at-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AT-2 - -  -->
+		<alter control-id="at-2">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AT-3 - -  -->
+		<alter control-id="at-3">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AT-4 - -  -->
+		<alter control-id="at-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-1 - -  -->
+		<alter control-id="au-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-2 - -  -->
+		<alter control-id="au-2">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-3 - -  -->
+		<alter control-id="au-3">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-4 - -  -->
+		<alter control-id="au-4">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the audit data has been determined to have little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - AU-5 - -  -->
+		<alter control-id="au-5">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-6 - -  -->
+		<alter control-id="au-6">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-8 - -  -->
+		<alter control-id="au-8">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-9 - -  -->
+		<alter control-id="au-9">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - AU-11 - -  -->
+		<alter control-id="au-11">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the audit data has been determined as little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - AU-12 - -  -->
+		<alter control-id="au-12">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CA-1 - -  -->
+		<alter control-id="ca-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CA-2 - -  -->
+		<alter control-id="ca-2">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ca-2_fr" name="item" ns="fedramp">
+					<title>CA-2 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ca-2_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CA-2 (1) - -  -->
+		<alter control-id="ca-2.1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CA-3 - -  -->
+		<alter control-id="ca-3">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
+					1) Identify the interface/connection.
+					2) Detail what data is involved and its sensitivity.
+					3) Determine whether the connection is one-way or bi-directional.
+					4) Identify how the connection is secured.</p></part>
+			</add>
+		</alter>
+		<!-- - - CA-5 - -  -->
+		<alter control-id="ca-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - for compliance with FedRAMP Tailored LI-SaaS Continuous Monitoring Requirements.</p></part>
+			</add>
+		</alter>
+		<!-- - - CA-6 - -  -->
+		<alter control-id="ca-6">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ca-6_fr" name="item" ns="fedramp">
+					<title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
+					<part id="ca-6_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the Authorizing Official.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CA-7 - -  -->
+		<alter control-id="ca-7">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ca-7_fr" name="item" ns="fedramp">
+					<title>CA-7 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ca-7_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
+					</part>
+					<part id="ca-7_fr_gdn.2" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CA-9 - -  -->
+		<alter control-id="ca-9">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
+					1) Identify the interface/connection.
+					2) Detail what data is involved and its sensitivity.
+					3) Determine whether the connection is one-way or bi-directional.
+					4) Identify how the connection is secured.</p></part>
+			</add>
+		</alter>
+		<!-- - - CM-1 - -  -->
+		<alter control-id="cm-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CM-2 - -  -->
+		<alter control-id="cm-2">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CM-4 - -  -->
+		<alter control-id="cm-4">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CM-6 - -  -->
+		<alter control-id="cm-6">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Required - Specifically include details of least functionality.</p></part>
+				<part id="cm-6_fr" name="item" ns="fedramp">
+					<title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
+					<part id="cm-6_fr_smt.1" name="item">
+						<prop name="label">Requirement 1:</prop>
+						<p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. </p>
+					</part>
+					<part id="cm-6_fr_smt.2" name="item">
+						<prop name="label">Requirement 2:</prop>
+						<p>The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) (<a href="http://scap.nist.gov/">http://scap.nist.gov/</a>) validated or SCAP compatible (if validated checklists are not available).</p>
+					</part>
+					<part id="cm-6_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Information on the USGCB checklists can be found at: <a href="https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline">https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline</a>.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CM-7 - -  -->
+		<alter control-id="cm-7">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CM-8 - -  -->
+		<alter control-id="cm-8">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="cm-8_fr" name="item" ns="fedramp">
+					<title>CM-8 Additional FedRAMP Requirements and Guidance</title>
+					<part id="cm-8_fr_smt.1" name="item">
+						<prop name="label">Requirement:</prop>
+						<p>Must be provided at least monthly or when there is a change.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CM-10 - -  -->
+		<alter control-id="cm-10">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO- Not directly related to protection of the data.</p></part>
+			</add>
+		</alter>
+		<!-- - - CM-11 - -  -->
+		<alter control-id="cm-11">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Boundary is specific to SaaS environment; all access is via web services; users' machine or internal network are not contemplated.  External services (SA-9), internal connection (CA-9), remote access (AC-17), and secure access (SC-12 and SC-13), and privileged authentication (IA-2[1]) are considerations.</p></part>
+			</add>
+		</alter>
+		<!-- - - CP-1 - -  -->
+		<alter control-id="cp-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - CP-2 - -  -->
+		<alter control-id="cp-2">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - CP-3 - -  -->
+		<alter control-id="cp-3">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - CP-4 - -  -->
+		<alter control-id="cp-4">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - CP-9 - -  -->
+		<alter control-id="cp-9">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="cp-9_fr" name="item" ns="fedramp">
+					<title>CP-9 Additional FedRAMP Requirements and Guidance</title>
+					<part id="cp-9_fr_smt.1" name="item">
+						<prop name="label">Requirement:</prop>
+						<p>The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
+					</part>
+					<part id="cp-9_fr_smt.a" name="item">
+						<prop name="label">CP-9(a) Requirement:</prop>
+						<p>The service provider maintains at least three backup copies of user-level information (at least one of which is available online).</p>
+					</part>
+					<part id="cp-9_fr_smt.b" name="item">
+						<prop name="label">CP-9(b)Requirement:</prop>
+						<p>The service provider maintains at least three backup copies of system-level information (at least one of which is available online).</p>
+					</part>
+					<part id="cp-9_fr_smt.c" name="item">
+						<prop name="label">CP-9(c)Requirement:</prop>
+						<p>The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CP-10 - -  -->
+		<alter control-id="cp-10">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
+			</add>
+		</alter>
+		<!-- - - IA-1 - -  -->
+		<alter control-id="ia-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-2 - -  -->
+		<alter control-id="ia-2">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication - specifically include description of management of service accounts.</p></part>
+			</add>
+		</alter>
+		<!-- - - IA-2 (1) - -  -->
+		<alter control-id="ia-2.1">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-2 (12) - -  -->
+		<alter control-id="ia-2.12">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
+				<part id="ia-2.12_fr" name="item" ns="fedramp">
+					<title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
+					<part id="ia-2.12_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - IA-4 - -  -->
+		<alter control-id="ia-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-5 - -  -->
+		<alter control-id="ia-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-5 (1) - -  -->
+		<alter control-id="ia-5.1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-5 (11) - -  -->
+		<alter control-id="ia-5.11">
+			<add position="ending">
+				<prop name='fed' class='tailored-designation' ns='fedramp' />
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>FED - for Federal privileged users. Condition - Must document and assess for privileged users. May attest to this control for non-privileged users.</p></part>
+			</add>
+		</alter>
+		<!-- - - IA-6 - -  -->
+		<alter control-id="ia-6">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-7 - -  -->
+		<alter control-id="ia-7">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-8 - -  -->
+		<alter control-id="ia-8">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-8 (1) - -  -->
+		<alter control-id="ia-8.1">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
+			</add>
+		</alter>
+		<!-- - - IA-8 (2) - -  -->
+		<alter control-id="ia-8.2">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
+			</add>
+		</alter>
+		<!-- - - IA-8 (3) - -  -->
+		<alter control-id="ia-8.3">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IA-8 (4) - -  -->
+		<alter control-id="ia-8.4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IR-1 - -  -->
+		<alter control-id="ir-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IR-2 - -  -->
+		<alter control-id="ir-2">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IR-4 - -  -->
+		<alter control-id="ir-4">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ir-4_fr" name="item" ns="fedramp">
+					<title>IR-4 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ir-4_fr_smt.1" name="item">
+						<prop name="label">Requirement:</prop>
+						<p>The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - IR-5 - -  -->
+		<alter control-id="ir-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IR-6 - -  -->
+		<alter control-id="ir-6">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ir-6_fr" name="item" ns="fedramp">
+					<title>IR-6 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ir-6_fr_smt.1" name="item">
+						<prop name="label">Requirement:</prop>
+						<p>Report security incident information according to FedRAMP Incident Communications Procedure.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - IR-7 - -  -->
+		<alter control-id="ir-7">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - IR-8 - -  -->
+		<alter control-id="ir-8">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically attest to US-CERT compliance.</p></part>
+			</add>
+		</alter>
+		<!-- - - IR-9 - -  -->
+		<alter control-id="ir-9">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically describe information spillage response processes.</p></part>
+			</add>
+		</alter>
+		<!-- - - MA-1 - -  -->
+		<alter control-id="ma-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - MA-2 - -  -->
+		<alter control-id="ma-2">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - MA-4 - -  -->
+		<alter control-id="ma-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - MA-5 - -  -->
+		<alter control-id="ma-5">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - MP-1 - -  -->
+		<alter control-id="mp-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - MP-2 - -  -->
+		<alter control-id="mp-2">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - MP-6 - -  -->
+		<alter control-id="mp-6">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - MP-7 - -  -->
+		<alter control-id="mp-7">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-1 - -  -->
+		<alter control-id="pe-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PE-2 - -  -->
+		<alter control-id="pe-2">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-3 - -  -->
+		<alter control-id="pe-3">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-6 - -  -->
+		<alter control-id="pe-6">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-8 - -  -->
+		<alter control-id="pe-8">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-12 - -  -->
+		<alter control-id="pe-12">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-13 - -  -->
+		<alter control-id="pe-13">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-14 - -  -->
+		<alter control-id="pe-14">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+				<part id="pe-14_fr" name="item" ns="fedramp">
+					<title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
+					<part id="pe-14_fr_smt.a" name="item">
+						<prop name="label">(a) Requirement:</prop>
+						<p>The service provider measures temperature at server inlets and humidity levels by dew point.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - PE-15 - -  -->
+		<alter control-id="pe-15">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PE-16 - -  -->
+		<alter control-id="pe-16">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - PL-1 - -  -->
+		<alter control-id="pl-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PL-2 - -  -->
+		<alter control-id="pl-2">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PL-4 - -  -->
+		<alter control-id="pl-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-1 - -  -->
+		<alter control-id="ps-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-2 - -  -->
+		<alter control-id="ps-2">
+			<add position="ending">
+				<prop name='fed' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-3 - -  -->
+		<alter control-id="ps-3">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-4 - -  -->
+		<alter control-id="ps-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-5 - -  -->
+		<alter control-id="ps-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-6 - -  -->
+		<alter control-id="ps-6">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - PS-7 - -  -->
+		<alter control-id="ps-7">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically stating that any third-party security personnel are treated as CSP employees.</p></part>
+			</add>
+		</alter>
+		<!-- - - PS-8 - -  -->
+		<alter control-id="ps-8">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - RA-1 - -  -->
+		<alter control-id="ra-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - RA-2 - -  -->
+		<alter control-id="ra-2">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - RA-3 - -  -->
+		<alter control-id="ra-3">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ra-3_fr" name="item" ns="fedramp">
+					<title>RA-3 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ra-3_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F</p>
+					</part>
+					<part id="ra-3_fr_smt.d" name="item">
+						<prop name="label">RA-3 (d) Requirement:</prop>
+						<p>Include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - RA-5 - -  -->
+		<alter control-id="ra-5">
+			<add>
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="ra-5_fr_smt.a" name="item">
+					<title>RA-5(a) Additional FedRAMP Requirements and Guidance</title>
+					<prop name="label">RA-5 (a)Requirement:</prop>
+					<p>An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
+				</part>
+				<part id="ra-5_fr_smt.e" name="item">
+					<title>RA-5(e) Additional FedRAMP Requirements and Guidance</title>
+					<prop name="label">RA-5 (e)Requirement:</prop>
+					<p>To include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
+				</part>
+				<part id="ra-5_fr" name="item" ns="fedramp">
+					<title>RA-5 Additional FedRAMP Requirements and Guidance</title>
+					<part id="ra-5_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - SA-1 - -  -->
+		<alter control-id="sa-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-2 - -  -->
+		<alter control-id="sa-2">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-3 - -  -->
+		<alter control-id="sa-3">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-4 - -  -->
+		<alter control-id="sa-4">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-4(10) - -  -->
+		<alter control-id="sa-4.10">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-5 - -  -->
+		<alter control-id="sa-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SA-9 - -  -->
+		<alter control-id="sa-9">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-1 - -  -->
+		<alter control-id="sc-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-5 - -  -->
+		<alter control-id="sc-5">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: If availability is a requirement, define protections in place as per control requirement.</p></part>
+			</add>
+		</alter>
+		<!-- - - SC-7 - -  -->
+		<alter control-id="sc-7">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-12 - -  -->
+		<alter control-id="sc-12">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+				<part id="sc-12_fr" name="item" ns="fedramp">
+					<title>SC-12 Additional FedRAMP Requirements and Guidance</title>
+					<part id="sc-12_fr_gdn.1" name="guidance">
+						<prop name="label">Guidance:</prop>
+						<p>Federally approved cryptography.</p>
+					</part>
+				</part>
+			</add>
+		</alter>
+		<!-- - - SC-13 - -  -->
+		<alter control-id="sc-13">
+			<add position="ending">
+				<prop name='conditional' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: If implementing need to detail how they meet it or don't meet it.</p></part>
+			</add>
+		</alter>
+		<!-- - - SC-15 - -  -->
+		<alter control-id="sc-15">
+			<add position="ending">
+				<prop name='nso' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Not directly related to the security of the SaaS.</p></part>
+			</add>
+		</alter>
+		<!-- - - SC-20 - -  -->
+		<alter control-id="sc-20">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-21 - -  -->
+		<alter control-id="sc-21">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-22 - -  -->
+		<alter control-id="sc-22">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SC-39 - -  -->
+		<alter control-id="sc-39">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-1 - -  -->
+		<alter control-id="si-1">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-2 - -  -->
+		<alter control-id="si-2">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-3 - -  -->
+		<alter control-id="si-3">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-4 - -  -->
+		<alter control-id="si-4">
+			<add position="ending">
+				<prop name='assess' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-5 - -  -->
+		<alter control-id="si-5">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+			</add>
+		</alter>
+		<!-- - - SI-12 - -  -->
+		<alter control-id="si-12">
+			<add position="ending">
+				<prop name='attest' class='tailored-designation' ns='fedramp' />
+				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically related to US-CERT and FedRAMP communications procedures.</p></part>
+			</add>
+		</alter>
+		<!-- - - SI-16 - -  -->
+	</modify>
+</profile>

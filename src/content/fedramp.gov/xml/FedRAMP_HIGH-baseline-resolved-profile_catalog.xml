@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog
-    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    id="resolved-profile-2019-08-28--19-40-53">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="0a3b14b0-810e-4054-997d-05cd7dbde54e">
   <metadata>
     <title>FedRAMP High Baseline</title>
-    <last-modified-date>2019-06-03T11:39:45.032-04:00</last-modified-date>
+    <last-modified>2019-09-24T12:22:46.211-04:00</last-modified>
     <version>1.1</version>
     <oscal-version>1.0.0-milestone1</oscal-version>
     <role id="author">
@@ -35,6 +33,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">AC-1</prop>
+      <prop name="sort-id">ac-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ac-1_smt" name="statement">
@@ -188,6 +187,7 @@
         <constraint>monthly for privileged accessed, every six (6) months for non-privileged access</constraint>
       </param>
       <prop name="label">AC-2</prop>
+      <prop name="sort-id">ac-02</prop>
       <part id="ac-2_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-2_smt.a" name="item">
@@ -475,6 +475,7 @@
       <control class="SP800-53-enhancement" id="ac-2.1">
         <title>Automated System Account Management</title>
         <prop name="label">AC-2(1)</prop>
+        <prop name="sort-id">ac-02.01</prop>
         <part id="ac-2.1_smt" name="statement">
           <p>The organization employs automated mechanisms to support the management of information system accounts.</p>
         </part>
@@ -525,6 +526,7 @@
           <constraint>24 hours from last use</constraint>
         </param>
         <prop name="label">AC-2(2)</prop>
+        <prop name="sort-id">ac-02.02</prop>
         <part id="ac-2.2_smt" name="statement">
           <p>The information system automatically <insert param-id="ac-2.2_prm_1"/> temporary and emergency accounts after <insert param-id="ac-2.2_prm_2"/>.</p>
         </part>
@@ -579,6 +581,7 @@
           <constraint>35 days for user accounts</constraint>
         </param>
         <prop name="label">AC-2(3)</prop>
+        <prop name="sort-id">ac-02.03</prop>
         <part id="ac-2.3_smt" name="statement">
           <p>The information system automatically disables inactive accounts after <insert param-id="ac-2.3_prm_1"/>.</p>
         </part>
@@ -637,6 +640,7 @@
           <constraint>organization and/or service provider system owner</constraint>
         </param>
         <prop name="label">AC-2(4)</prop>
+        <prop name="sort-id">ac-02.04</prop>
         <part id="ac-2.4_smt" name="statement">
           <p>The information system automatically audits account creation, modification, enabling, disabling, and removal actions, and notifies <insert param-id="ac-2.4_prm_1"/>.</p>
         </part>
@@ -753,6 +757,7 @@
           <constraint>inactivity is anticipated to exceed Fifteen (15) minutes</constraint>
         </param>
         <prop name="label">AC-2(5)</prop>
+        <prop name="sort-id">ac-02.05</prop>
         <part id="ac-2.5_smt" name="statement">
           <p>The organization requires that users log out when <insert param-id="ac-2.5_prm_1"/>.</p>
         </part>
@@ -807,6 +812,7 @@
           <constraint>disables/revokes access within a organization-specified timeframe</constraint>
         </param>
         <prop name="label">AC-2(7)</prop>
+        <prop name="sort-id">ac-02.07</prop>
         <part id="ac-2.7_smt" name="statement">
           <p>The organization:</p>
           <part id="ac-2.7_smt.a" name="item">
@@ -888,6 +894,7 @@
           <constraint>organization-defined need with justification statement that explains why such accounts are necessary</constraint>
         </param>
         <prop name="label">AC-2(9)</prop>
+        <prop name="sort-id">ac-02.09</prop>
         <part id="ac-2.9_smt" name="statement">
           <p>The organization only permits the use of shared/group accounts that meet <insert param-id="ac-2.9_prm_1"/>.</p>
         </part>
@@ -939,6 +946,7 @@
       <control class="SP800-53-enhancement" id="ac-2.10">
         <title>Shared / Group Account Credential Termination</title>
         <prop name="label">AC-2(10)</prop>
+        <prop name="sort-id">ac-02.10</prop>
         <part id="ac-2.10_smt" name="statement">
           <p>The information system terminates shared/group account credentials when members leave the group.</p>
         </part>
@@ -989,6 +997,7 @@
           <label>organization-defined information system accounts</label>
         </param>
         <prop name="label">AC-2(11)</prop>
+        <prop name="sort-id">ac-02.11</prop>
         <part id="ac-2.11_smt" name="statement">
           <p>The information system enforces <insert param-id="ac-2.11_prm_1"/> for <insert param-id="ac-2.11_prm_2"/>.</p>
         </part>
@@ -1048,6 +1057,7 @@
           <constraint>at a minimum, the ISSO and/or similar role within the organization</constraint>
         </param>
         <prop name="label">AC-2(12)</prop>
+        <prop name="sort-id">ac-02.12</prop>
         <part id="ac-2.12_smt" name="statement">
           <p>The organization:</p>
           <part id="ac-2.12_smt.a" name="item">
@@ -1136,6 +1146,7 @@
           <constraint>one (1) hour</constraint>
         </param>
         <prop name="label">AC-2(13)</prop>
+        <prop name="sort-id">ac-02.13</prop>
         <part id="ac-2.13_smt" name="statement">
           <p>The organization disables accounts of users posing a significant risk within <insert param-id="ac-2.13_prm_1"/> of discovery of the risk.</p>
         </part>
@@ -1186,6 +1197,7 @@
     <control class="SP800-53" id="ac-3">
       <title>Access Enforcement</title>
       <prop name="label">AC-3</prop>
+      <prop name="sort-id">ac-03</prop>
       <part id="ac-3_smt" name="statement">
         <p>The information system enforces approved authorizations for logical access to information and system resources in accordance with applicable access control policies.</p>
       </part>
@@ -1248,6 +1260,7 @@
         <label>organization-defined information flow control policies</label>
       </param>
       <prop name="label">AC-4</prop>
+      <prop name="sort-id">ac-04</prop>
       <part id="ac-4_smt" name="statement">
         <p>The information system enforces approved authorizations for controlling the flow of information within the system and between interconnected systems based on <insert param-id="ac-4_prm_1"/>.</p>
       </part>
@@ -1313,6 +1326,7 @@
           <label>organization-defined information flows</label>
         </param>
         <prop name="label">AC-4(8)</prop>
+        <prop name="sort-id">ac-04.08</prop>
         <part id="ac-4.8_smt" name="statement">
           <p>The information system enforces information flow control using <insert param-id="ac-4.8_prm_1"/> as a basis for flow control decisions for <insert param-id="ac-4.8_prm_2"/>.</p>
         </part>
@@ -1371,6 +1385,7 @@
           <label>organization-defined required separations by types of information</label>
         </param>
         <prop name="label">AC-4(21)</prop>
+        <prop name="sort-id">ac-04.21</prop>
         <part id="ac-4.21_smt" name="statement">
           <p>The information system separates information flows logically or physically using <insert param-id="ac-4.21_prm_1"/> to accomplish <insert param-id="ac-4.21_prm_2"/>.</p>
         </part>
@@ -1429,6 +1444,7 @@
         <label>organization-defined duties of individuals</label>
       </param>
       <prop name="label">AC-5</prop>
+      <prop name="sort-id">ac-05</prop>
       <part id="ac-5_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-5_smt.a" name="item">
@@ -1511,6 +1527,7 @@
     <control class="SP800-53" id="ac-6">
       <title>Least Privilege</title>
       <prop name="label">AC-6</prop>
+      <prop name="sort-id">ac-06</prop>
       <part id="ac-6_smt" name="statement">
         <p>The organization employs the principle of least privilege, allowing only authorized accesses for users (or processes acting on behalf of users) which are necessary to accomplish assigned tasks in accordance with organizational missions and business functions.</p>
       </part>
@@ -1558,6 +1575,7 @@
           <constraint>all functions not publicly accessible and all security-relevant information not publicly available</constraint>
         </param>
         <prop name="label">AC-6(1)</prop>
+        <prop name="sort-id">ac-06.01</prop>
         <part id="ac-6.1_smt" name="statement">
           <p>The organization explicitly authorizes access to <insert param-id="ac-6.1_prm_1"/>.</p>
         </part>
@@ -1635,6 +1653,7 @@
           <constraint>all security functions</constraint>
         </param>
         <prop name="label">AC-6(2)</prop>
+        <prop name="sort-id">ac-06.02</prop>
         <part id="ac-6.2_smt" name="statement">
           <p>The organization requires that users of information system accounts, or roles, with access to <insert param-id="ac-6.2_prm_1"/>, use non-privileged accounts or roles, when accessing nonsecurity functions.</p>
         </part>
@@ -1696,6 +1715,7 @@
           <label>organization-defined compelling operational needs</label>
         </param>
         <prop name="label">AC-6(3)</prop>
+        <prop name="sort-id">ac-06.03</prop>
         <part id="ac-6.3_smt" name="statement">
           <p>The organization authorizes network access to <insert param-id="ac-6.3_prm_1"/> only for <insert param-id="ac-6.3_prm_2"/> and documents the rationale for such access in the security plan for the information system.</p>
         </part>
@@ -1754,6 +1774,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">AC-6(5)</prop>
+        <prop name="sort-id">ac-06.05</prop>
         <part id="ac-6.5_smt" name="statement">
           <p>The organization restricts privileged accounts on the information system to <insert param-id="ac-6.5_prm_1"/>.</p>
         </part>
@@ -1810,6 +1831,7 @@
           <constraint>all users with privileges</constraint>
         </param>
         <prop name="label">AC-6(7)</prop>
+        <prop name="sort-id">ac-06.07</prop>
         <part id="ac-6.7_smt" name="statement">
           <p>The organization:</p>
           <part id="ac-6.7_smt.a" name="item">
@@ -1885,6 +1907,7 @@
           <constraint>any software except software explicitly documented</constraint>
         </param>
         <prop name="label">AC-6(8)</prop>
+        <prop name="sort-id">ac-06.08</prop>
         <part id="ac-6.8_smt" name="statement">
           <p>The information system prevents <insert param-id="ac-6.8_prm_1"/> from executing at higher privilege levels than users executing the software.</p>
         </part>
@@ -1933,6 +1956,7 @@
       <control class="SP800-53-enhancement" id="ac-6.9">
         <title>Auditing Use of Privileged Functions</title>
         <prop name="label">AC-6(9)</prop>
+        <prop name="sort-id">ac-06.09</prop>
         <part id="ac-6.9_smt" name="statement">
           <p>The information system audits the execution of privileged functions.</p>
         </part>
@@ -1975,6 +1999,7 @@
       <control class="SP800-53-enhancement" id="ac-6.10">
         <title>Prohibit Non-privileged Users from Executing Privileged Functions</title>
         <prop name="label">AC-6(10)</prop>
+        <prop name="sort-id">ac-06.10</prop>
         <part id="ac-6.10_smt" name="statement">
           <p>The information system prevents non-privileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.</p>
         </part>
@@ -2049,6 +2074,7 @@
         <label>organization-defined delay algorithm</label>
       </param>
       <prop name="label">AC-7</prop>
+      <prop name="sort-id">ac-07</prop>
       <part id="ac-7_smt" name="statement">
         <p>The information system:</p>
         <part id="ac-7_smt.a" name="item">
@@ -2148,6 +2174,7 @@
           <constraint>three (3)</constraint>
         </param>
         <prop name="label">AC-7(2)</prop>
+        <prop name="sort-id">ac-07.02</prop>
         <part id="ac-7.2_smt" name="statement">
           <p>The information system purges/wipes information from <insert param-id="ac-7.2_prm_1"/> based on <insert param-id="ac-7.2_prm_2"/> after <insert param-id="ac-7.2_prm_3"/> consecutive, unsuccessful device logon attempts.</p>
         </part>
@@ -2216,6 +2243,7 @@
         <constraint>see additional Requirements and Guidance</constraint>
       </param>
       <prop name="label">AC-8</prop>
+      <prop name="sort-id">ac-08</prop>
       <part id="ac-8_smt" name="statement">
         <p>The information system:</p>
         <part id="ac-8_smt.a" name="item">
@@ -2374,6 +2402,7 @@
         <constraint>three (3) sessions for privileged access and two (2) sessions for non-privileged access</constraint>
       </param>
       <prop name="label">AC-10</prop>
+      <prop name="sort-id">ac-10</prop>
       <part id="ac-10_smt" name="statement">
         <p>The information system limits the number of concurrent sessions for each <insert param-id="ac-10_prm_1"/> to <insert param-id="ac-10_prm_2"/>.</p>
       </part>
@@ -2428,6 +2457,7 @@
         <constraint>fifteen (15) minutes</constraint>
       </param>
       <prop name="label">AC-11</prop>
+      <prop name="sort-id">ac-11</prop>
       <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
       <part id="ac-11_smt" name="statement">
         <p>The information system:</p>
@@ -2491,6 +2521,7 @@
       <control class="SP800-53-enhancement" id="ac-11.1">
         <title>Pattern-hiding Displays</title>
         <prop name="label">AC-11(1)</prop>
+        <prop name="sort-id">ac-11.01</prop>
         <part id="ac-11.1_smt" name="statement">
           <p>The information system conceals, via the session lock, information previously visible on the display with a publicly viewable image.</p>
         </part>
@@ -2533,6 +2564,7 @@
         <label>organization-defined conditions or trigger events requiring session disconnect</label>
       </param>
       <prop name="label">AC-12</prop>
+      <prop name="sort-id">ac-12</prop>
       <part id="ac-12_smt" name="statement">
         <p>The information system automatically terminates a user session after <insert param-id="ac-12_prm_1"/>.</p>
       </part>
@@ -2584,6 +2616,7 @@
           <label>organization-defined information resources</label>
         </param>
         <prop name="label">AC-12(1)</prop>
+        <prop name="sort-id">ac-12.01</prop>
         <part id="ac-12.1_smt" name="statement">
           <p>The information system:</p>
           <part id="ac-12.1_smt.a" name="item">
@@ -2659,6 +2692,7 @@
         <label>organization-defined user actions</label>
       </param>
       <prop name="label">AC-14</prop>
+      <prop name="sort-id">ac-14</prop>
       <part id="ac-14_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-14_smt.a" name="item">
@@ -2716,6 +2750,7 @@
     <control class="SP800-53" id="ac-17">
       <title>Remote Access</title>
       <prop name="label">AC-17</prop>
+      <prop name="sort-id">ac-17</prop>
       <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
       <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
       <link href="#ref046" rel="reference">NIST Special Publication 800-113</link>
@@ -2827,6 +2862,7 @@
       <control class="SP800-53-enhancement" id="ac-17.1">
         <title>Automated Monitoring / Control</title>
         <prop name="label">AC-17(1)</prop>
+        <prop name="sort-id">ac-17.01</prop>
         <part id="ac-17.1_smt" name="statement">
           <p>The information system monitors and controls remote access methods.</p>
         </part>
@@ -2868,6 +2904,7 @@
       <control class="SP800-53-enhancement" id="ac-17.2">
         <title>Protection of Confidentiality / Integrity Using Encryption</title>
         <prop name="label">AC-17(2)</prop>
+        <prop name="sort-id">ac-17.02</prop>
         <part id="ac-17.2_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.</p>
         </part>
@@ -2913,6 +2950,7 @@
           <label>organization-defined number</label>
         </param>
         <prop name="label">AC-17(3)</prop>
+        <prop name="sort-id">ac-17.03</prop>
         <part id="ac-17.3_smt" name="statement">
           <p>The information system routes all remote accesses through <insert param-id="ac-17.3_prm_1"/> managed network access control points.</p>
         </part>
@@ -2963,6 +3001,7 @@
           <label>organization-defined needs</label>
         </param>
         <prop name="label">AC-17(4)</prop>
+        <prop name="sort-id">ac-17.04</prop>
         <part id="ac-17.4_smt" name="statement">
           <p>The organization:</p>
           <part id="ac-17.4_smt.a" name="item">
@@ -3029,6 +3068,7 @@
           <constraint>fifteen (15) minutes</constraint>
         </param>
         <prop name="label">AC-17(9)</prop>
+        <prop name="sort-id">ac-17.09</prop>
         <part id="ac-17.9_smt" name="statement">
           <p>The organization provides the capability to expeditiously disconnect or disable remote access to the information system within <insert param-id="ac-17.9_prm_1"/>.</p>
         </part>
@@ -3076,6 +3116,7 @@
     <control class="SP800-53" id="ac-18">
       <title>Wireless Access</title>
       <prop name="label">AC-18</prop>
+      <prop name="sort-id">ac-18</prop>
       <link href="#ref076" rel="reference">NIST Special Publication 800-48</link>
       <link href="#ref100" rel="reference">NIST Special Publication 800-94</link>
       <link href="#ref102" rel="reference">NIST Special Publication 800-97</link>
@@ -3164,6 +3205,7 @@
           </select>
         </param>
         <prop name="label">AC-18(1)</prop>
+        <prop name="sort-id">ac-18.01</prop>
         <part id="ac-18.1_smt" name="statement">
           <p>The information system protects wireless access to the system using authentication of <insert param-id="ac-18.1_prm_1"/> and encryption.</p>
         </part>
@@ -3211,6 +3253,7 @@
       <control class="SP800-53-enhancement" id="ac-18.3">
         <title>Disable Wireless Networking</title>
         <prop name="label">AC-18(3)</prop>
+        <prop name="sort-id">ac-18.03</prop>
         <part id="ac-18.3_smt" name="statement">
           <p>The organization disables, when not intended for use, wireless networking capabilities internally embedded within information system components prior to issuance and deployment.</p>
         </part>
@@ -3248,6 +3291,7 @@
       <control class="SP800-53-enhancement" id="ac-18.4">
         <title>Restrict Configurations by Users</title>
         <prop name="label">AC-18(4)</prop>
+        <prop name="sort-id">ac-18.04</prop>
         <part id="ac-18.4_smt" name="statement">
           <p>The organization identifies and explicitly authorizes users allowed to independently configure wireless networking capabilities.</p>
         </part>
@@ -3295,6 +3339,7 @@
       <control class="SP800-53-enhancement" id="ac-18.5">
         <title>Antennas / Transmission Power Levels</title>
         <prop name="label">AC-18(5)</prop>
+        <prop name="sort-id">ac-18.05</prop>
         <part id="ac-18.5_smt" name="statement">
           <p>The organization selects radio antennas and calibrates transmission power levels to reduce the probability that usable signals can be received outside of organization-controlled boundaries.</p>
         </part>
@@ -3342,6 +3387,7 @@
     <control class="SP800-53" id="ac-19">
       <title>Access Control for Mobile Devices</title>
       <prop name="label">AC-19</prop>
+      <prop name="sort-id">ac-19</prop>
       <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
       <link href="#ref047" rel="reference">NIST Special Publication 800-114</link>
       <link href="#ref052" rel="reference">NIST Special Publication 800-124</link>
@@ -3439,6 +3485,7 @@
           <label>organization-defined mobile devices</label>
         </param>
         <prop name="label">AC-19(5)</prop>
+        <prop name="sort-id">ac-19.05</prop>
         <part id="ac-19.5_smt" name="statement">
           <p>The organization employs <insert param-id="ac-19.5_prm_1"/> to protect the confidentiality and integrity of information on <insert param-id="ac-19.5_prm_2"/>.</p>
         </part>
@@ -3490,6 +3537,7 @@
     <control class="SP800-53" id="ac-20">
       <title>Use of External Information Systems</title>
       <prop name="label">AC-20</prop>
+      <prop name="sort-id">ac-20</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <part id="ac-20_smt" name="statement">
         <p>The organization establishes terms and conditions, consistent with any trust relationships established with other organizations owning, operating, and/or maintaining external information systems, allowing authorized individuals to:</p>
@@ -3551,6 +3599,7 @@
       <control class="SP800-53-enhancement" id="ac-20.1">
         <title>Limits On Authorized Use</title>
         <prop name="label">AC-20(1)</prop>
+        <prop name="sort-id">ac-20.01</prop>
         <part id="ac-20.1_smt" name="statement">
           <p>The organization permits authorized individuals to use an external information system to access the information system or to process, store, or transmit organization-controlled information only when the organization:</p>
           <part id="ac-20.1_smt.a" name="item">
@@ -3613,6 +3662,7 @@
           </select>
         </param>
         <prop name="label">AC-20(2)</prop>
+        <prop name="sort-id">ac-20.02</prop>
         <part id="ac-20.2_smt" name="statement">
           <p>The organization <insert param-id="ac-20.2_prm_1"/> the use of organization-controlled portable storage devices by authorized individuals on external information systems.</p>
         </part>
@@ -3659,6 +3709,7 @@
         <label>organization-defined automated mechanisms or manual processes</label>
       </param>
       <prop name="label">AC-21</prop>
+      <prop name="sort-id">ac-21</prop>
       <part id="ac-21_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-21_smt.a" name="item">
@@ -3733,6 +3784,7 @@
         <constraint>at least quarterly</constraint>
       </param>
       <prop name="label">AC-22</prop>
+      <prop name="sort-id">ac-22</prop>
       <part id="ac-22_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-22_smt.a" name="item">
@@ -3835,6 +3887,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">AT-1</prop>
+      <prop name="sort-id">at-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -3981,6 +4034,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">AT-2</prop>
+      <prop name="sort-id">at-02</prop>
       <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -4057,6 +4111,7 @@
       <control class="SP800-53-enhancement" id="at-2.2">
         <title>Insider Threat</title>
         <prop name="label">AT-2(2)</prop>
+        <prop name="sort-id">at-02.02</prop>
         <part id="at-2.2_smt" name="statement">
           <p>The organization includes security awareness training on recognizing and reporting potential indicators of insider threat.</p>
         </part>
@@ -4098,6 +4153,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">AT-3</prop>
+      <prop name="sort-id">at-03</prop>
       <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -4177,6 +4233,7 @@
       <control class="SP800-53-enhancement" id="at-3.3">
         <title>Practical Exercises</title>
         <prop name="label">AT-3(3)</prop>
+        <prop name="sort-id">at-03.03</prop>
         <part id="at-3.3_smt" name="statement">
           <p>The organization includes practical exercises in security training that reinforce training objectives.</p>
         </part>
@@ -4212,6 +4269,7 @@
           <constraint>malicious code indicators as defined by organization incident policy/capability.</constraint>
         </param>
         <prop name="label">AT-3(4)</prop>
+        <prop name="sort-id">at-03.04</prop>
         <part id="at-3.4_smt" name="statement">
           <p>The organization provides training to its personnel on <insert param-id="at-3.4_prm_1"/> to recognize suspicious communications and anomalous behavior in organizational information systems.</p>
         </part>
@@ -4257,6 +4315,7 @@
         <constraint>five (5) years or 5 years after completion of a specific training program</constraint>
       </param>
       <prop name="label">AT-4</prop>
+      <prop name="sort-id">at-04</prop>
       <part id="at-4_smt" name="statement">
         <p>The organization:</p>
         <part id="at-4_smt.a" name="item">
@@ -4355,6 +4414,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">AU-1</prop>
+      <prop name="sort-id">au-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="au-1_smt" name="statement">
@@ -4503,6 +4563,7 @@
         <constraint>organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event</constraint>
       </param>
       <prop name="label">AU-2</prop>
+      <prop name="sort-id">au-02</prop>
       <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
       <link href="#ref027" rel="reference">http://idmanagement.gov</link>
       <part id="au-2_smt" name="statement">
@@ -4613,6 +4674,7 @@
           <constraint>annually or whenever there is a change in the threat environment</constraint>
         </param>
         <prop name="label">AU-2(3)</prop>
+        <prop name="sort-id">au-02.03</prop>
         <part id="au-2.3_smt" name="statement">
           <p>The organization reviews and updates the audited events <insert param-id="au-2.3_prm_1"/>.</p>
         </part>
@@ -4668,6 +4730,7 @@
     <control class="SP800-53" id="au-3">
       <title>Content of Audit Records</title>
       <prop name="label">AU-3</prop>
+      <prop name="sort-id">au-03</prop>
       <part id="au-3_smt" name="statement">
         <p>The information system generates audit records containing information that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.</p>
       </part>
@@ -4739,6 +4802,7 @@
           <constraint>session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands</constraint>
         </param>
         <prop name="label">AU-3(1)</prop>
+        <prop name="sort-id">au-03.01</prop>
         <part id="au-3.1_smt" name="statement">
           <p>The information system generates audit records containing the following additional information: <insert param-id="au-3.1_prm_1"/>.</p>
         </part>
@@ -4802,6 +4866,7 @@
           <constraint>all network, data storage, and computing devices</constraint>
         </param>
         <prop name="label">AU-3(2)</prop>
+        <prop name="sort-id">au-03.02</prop>
         <part id="au-3.2_smt" name="statement">
           <p>The information system provides centralized management and configuration of the content to be captured in audit records generated by <insert param-id="au-3.2_prm_1"/>.</p>
         </part>
@@ -4856,6 +4921,7 @@
         <label>organization-defined audit record storage requirements</label>
       </param>
       <prop name="label">AU-4</prop>
+      <prop name="sort-id">au-04</prop>
       <part id="au-4_smt" name="statement">
         <p>The organization allocates audit record storage capacity in accordance with <insert param-id="au-4_prm_1"/>.</p>
       </part>
@@ -4918,6 +4984,7 @@
         <constraint>organization-defined actions to be taken (overwrite oldest record)</constraint>
       </param>
       <prop name="label">AU-5</prop>
+      <prop name="sort-id">au-05</prop>
       <part id="au-5_smt" name="statement">
         <p>The information system:</p>
         <part id="au-5_smt.a" name="item">
@@ -4999,6 +5066,7 @@
           <label>organization-defined percentage</label>
         </param>
         <prop name="label">AU-5(1)</prop>
+        <prop name="sort-id">au-05.01</prop>
         <part id="au-5.1_smt" name="statement">
           <p>The information system provides a warning to <insert param-id="au-5.1_prm_1"/> within <insert param-id="au-5.1_prm_2"/> when allocated audit record storage volume reaches <insert param-id="au-5.1_prm_3"/> of repository maximum audit record storage capacity.</p>
         </part>
@@ -5079,6 +5147,7 @@
           <constraint>audit failure events requiring real-time alerts, as defined by organization audit policy</constraint>
         </param>
         <prop name="label">AU-5(2)</prop>
+        <prop name="sort-id">au-05.02</prop>
         <part id="au-5.2_smt" name="statement">
           <p>The information system provides an alert in <insert param-id="au-5.2_prm_1"/> to <insert param-id="au-5.2_prm_2"/> when the following audit failure events occur: <insert param-id="au-5.2_prm_3"/>.</p>
         </part>
@@ -5159,6 +5228,7 @@
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">AU-6</prop>
+      <prop name="sort-id">au-06</prop>
       <part id="au-6_smt" name="statement">
         <p>The organization:</p>
         <part id="au-6_smt.a" name="item">
@@ -5257,6 +5327,7 @@
       <control class="SP800-53-enhancement" id="au-6.1">
         <title>Process Integration</title>
         <prop name="label">AU-6(1)</prop>
+        <prop name="sort-id">au-06.01</prop>
         <part id="au-6.1_smt" name="statement">
           <p>The organization employs automated mechanisms to integrate audit review, analysis, and reporting processes to support organizational processes for investigation and response to suspicious activities.</p>
         </part>
@@ -5325,6 +5396,7 @@
       <control class="SP800-53-enhancement" id="au-6.3">
         <title>Correlate Audit Repositories</title>
         <prop name="label">AU-6(3)</prop>
+        <prop name="sort-id">au-06.03</prop>
         <part id="au-6.3_smt" name="statement">
           <p>The organization analyzes and correlates audit records across different repositories to gain organization-wide situational awareness.</p>
         </part>
@@ -5364,6 +5436,7 @@
       <control class="SP800-53-enhancement" id="au-6.4">
         <title>Central Review and Analysis</title>
         <prop name="label">AU-6(4)</prop>
+        <prop name="sort-id">au-06.04</prop>
         <part id="au-6.4_smt" name="statement">
           <p>The information system provides the capability to centrally review and analyze audit records from multiple components within the system.</p>
         </part>
@@ -5419,6 +5492,7 @@
           <constraint>Possibly to include penetration test data.</constraint>
         </param>
         <prop name="label">AU-6(5)</prop>
+        <prop name="sort-id">au-06.05</prop>
         <part id="au-6.5_smt" name="statement">
           <p>The organization integrates analysis of audit records with analysis of <insert param-id="au-6.5_prm_1"/> to further enhance the ability to identify inappropriate or unusual activity.</p>
         </part>
@@ -5487,6 +5561,7 @@
       <control class="SP800-53-enhancement" id="au-6.6">
         <title>Correlation with Physical Monitoring</title>
         <prop name="label">AU-6(6)</prop>
+        <prop name="sort-id">au-06.06</prop>
         <part id="au-6.6_smt" name="statement">
           <p>The organization correlates information from audit records with information obtained from monitoring physical access to further enhance the ability to identify suspicious, inappropriate, unusual, or malevolent activity.</p>
         </part>
@@ -5542,6 +5617,7 @@
           </select>
         </param>
         <prop name="label">AU-6(7)</prop>
+        <prop name="sort-id">au-06.07</prop>
         <part id="au-6.7_smt" name="statement">
           <p>The organization specifies the permitted actions for each <insert param-id="au-6.7_prm_1"/> associated with the review, analysis, and reporting of audit information.</p>
         </part>
@@ -5589,6 +5665,7 @@
       <control class="SP800-53-enhancement" id="au-6.10">
         <title>Audit Level Adjustment</title>
         <prop name="label">AU-6(10)</prop>
+        <prop name="sort-id">au-06.10</prop>
         <part id="au-6.10_smt" name="statement">
           <p>The organization adjusts the level of audit review, analysis, and reporting within the information system when there is a change in risk based on law enforcement information, intelligence information, or other credible sources of information.</p>
         </part>
@@ -5640,6 +5717,7 @@
     <control class="SP800-53" id="au-7">
       <title>Audit Reduction and Report Generation</title>
       <prop name="label">AU-7</prop>
+      <prop name="sort-id">au-07</prop>
       <part id="au-7_smt" name="statement">
         <p>The information system provides an audit reduction and report generation capability that:</p>
         <part id="au-7_smt.a" name="item">
@@ -5712,6 +5790,7 @@
           <label>organization-defined audit fields within audit records</label>
         </param>
         <prop name="label">AU-7(1)</prop>
+        <prop name="sort-id">au-07.01</prop>
         <part id="au-7.1_smt" name="statement">
           <p>The information system provides the capability to process audit records for events of interest based on <insert param-id="au-7.1_prm_1"/>.</p>
         </part>
@@ -5767,6 +5846,7 @@
         <constraint>one second granularity of time measurement</constraint>
       </param>
       <prop name="label">AU-8</prop>
+      <prop name="sort-id">au-08</prop>
       <part id="au-8_smt" name="statement">
         <p>The information system:</p>
         <part id="au-8_smt.a" name="item">
@@ -5844,6 +5924,7 @@
           <label>organization-defined time period</label>
         </param>
         <prop name="label">AU-8(1)</prop>
+        <prop name="sort-id">au-08.01</prop>
         <part id="au-8.1_smt" name="statement">
           <p>The information system:</p>
           <part id="au-8.1_smt.a" name="item">
@@ -5934,6 +6015,7 @@
     <control class="SP800-53" id="au-9">
       <title>Protection of Audit Information</title>
       <prop name="label">AU-9</prop>
+      <prop name="sort-id">au-09</prop>
       <part id="au-9_smt" name="statement">
         <p>The information system protects audit information and audit tools from unauthorized access, modification, and deletion.</p>
       </part>
@@ -6016,6 +6098,7 @@
           <constraint>at least weekly</constraint>
         </param>
         <prop name="label">AU-9(2)</prop>
+        <prop name="sort-id">au-09.02</prop>
         <part id="au-9.2_smt" name="statement">
           <p>The information system backs up audit records <insert param-id="au-9.2_prm_1"/> onto a physically different system or system component than the system or component being audited.</p>
         </part>
@@ -6066,6 +6149,7 @@
       <control class="SP800-53-enhancement" id="au-9.3">
         <title>Cryptographic Protection</title>
         <prop name="label">AU-9(3)</prop>
+        <prop name="sort-id">au-09.03</prop>
         <part id="au-9.3_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to protect the integrity of audit information and audit tools.</p>
         </part>
@@ -6120,6 +6204,7 @@
           <label>organization-defined subset of privileged users</label>
         </param>
         <prop name="label">AU-9(4)</prop>
+        <prop name="sort-id">au-09.04</prop>
         <part id="au-9.4_smt" name="statement">
           <p>The organization authorizes access to management of audit functionality to only <insert param-id="au-9.4_prm_1"/>.</p>
         </part>
@@ -6175,6 +6260,7 @@
         <constraint>minimum actions including the addition, modification, deletion, approval, sending, or receiving of data</constraint>
       </param>
       <prop name="label">AU-10</prop>
+      <prop name="sort-id">au-10</prop>
       <part id="au-10_smt" name="statement">
         <p>The information system protects against an individual (or process acting on behalf of an individual) falsely denying having performed <insert param-id="au-10_prm_1"/>.</p>
       </part>
@@ -6231,6 +6317,7 @@
         <constraint>at least one (1) year</constraint>
       </param>
       <prop name="label">AU-11</prop>
+      <prop name="sort-id">au-11</prop>
       <part id="au-11_smt" name="statement">
         <p>The organization retains audit records for <insert param-id="au-11_prm_1"/> to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.</p>
       </part>
@@ -6299,6 +6386,7 @@
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">AU-12</prop>
+      <prop name="sort-id">au-12</prop>
       <part id="au-12_smt" name="statement">
         <p>The information system:</p>
         <part id="au-12_smt.a" name="item">
@@ -6389,6 +6477,7 @@
           <label>organization-defined level of tolerance for the relationship between time stamps of individual records in the audit trail</label>
         </param>
         <prop name="label">AU-12(1)</prop>
+        <prop name="sort-id">au-12.01</prop>
         <part id="au-12.1_smt" name="statement">
           <p>The information system compiles audit records from <insert param-id="au-12.1_prm_1"/> into a system-wide (logical or physical) audit trail that is time-correlated to within <insert param-id="au-12.1_prm_2"/>.</p>
         </part>
@@ -6457,6 +6546,7 @@
           <label>organization-defined time thresholds</label>
         </param>
         <prop name="label">AU-12(3)</prop>
+        <prop name="sort-id">au-12.03</prop>
         <part id="au-12.3_smt" name="statement">
           <p>The information system provides the capability for <insert param-id="au-12.3_prm_1"/> to change the auditing to be performed on <insert param-id="au-12.3_prm_2"/> based on <insert param-id="au-12.3_prm_3"/> within <insert param-id="au-12.3_prm_4"/>.</p>
         </part>
@@ -6533,6 +6623,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">CA-1</prop>
+      <prop name="sort-id">ca-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
@@ -6683,6 +6774,7 @@
         <constraint>individuals or roles to include FedRAMP PMO</constraint>
       </param>
       <prop name="label">CA-2</prop>
+      <prop name="sort-id">ca-02</prop>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -6824,6 +6916,7 @@
           <label>organization-defined level of independence</label>
         </param>
         <prop name="label">CA-2(1)</prop>
+        <prop name="sort-id">ca-02.01</prop>
         <part id="ca-2.1_smt" name="statement">
           <p>The organization employs assessors or assessment teams with <insert param-id="ca-2.1_prm_1"/> to conduct security control assessments.</p>
         </part>
@@ -6893,6 +6986,7 @@
           <label>organization-defined other forms of security assessment</label>
         </param>
         <prop name="label">CA-2(2)</prop>
+        <prop name="sort-id">ca-02.02</prop>
         <part id="ca-2.2_smt" name="statement">
           <p>The organization includes as part of security control assessments, <insert param-id="ca-2.2_prm_1"/>, <insert param-id="ca-2.2_prm_2"/>, <insert param-id="ca-2.2_prm_3"/>.</p>
         </part>
@@ -6992,6 +7086,7 @@
           <constraint>the conditions of the JAB/AO in the FedRAMP Repository</constraint>
         </param>
         <prop name="label">CA-2(3)</prop>
+        <prop name="sort-id">ca-02.03</prop>
         <part id="ca-2.3_smt" name="statement">
           <p>The organization accepts the results of an assessment of <insert param-id="ca-2.3_prm_1"/> performed by <insert param-id="ca-2.3_prm_2"/> when the assessment meets <insert param-id="ca-2.3_prm_3"/>.</p>
         </part>
@@ -7048,6 +7143,7 @@
         <constraint>At least annually and on input from FedRAMP</constraint>
       </param>
       <prop name="label">CA-3</prop>
+      <prop name="sort-id">ca-03</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref075" rel="reference">NIST Special Publication 800-47</link>
       <part id="ca-3_smt" name="statement">
@@ -7144,6 +7240,7 @@
           <constraint>boundary protections which meet the Trusted Internet Connection (TIC) requirements</constraint>
         </param>
         <prop name="label">CA-3(3)</prop>
+        <prop name="sort-id">ca-03.03</prop>
         <part id="ca-3.3_smt" name="statement">
           <p>The organization prohibits the direct connection of an <insert param-id="ca-3.3_prm_1"/> to an external network without the use of <insert param-id="ca-3.3_prm_2"/>.</p>
         </part>
@@ -7217,6 +7314,7 @@
           <constraint>any systems</constraint>
         </param>
         <prop name="label">CA-3(5)</prop>
+        <prop name="sort-id">ca-03.05</prop>
         <part id="ca-3.5_smt" name="statement">
           <p>The organization employs <insert param-id="ca-3.5_prm_1"/> policy for allowing <insert param-id="ca-3.5_prm_2"/> to connect to external information systems.</p>
         </part>
@@ -7296,6 +7394,7 @@
         <constraint>at least monthly</constraint>
       </param>
       <prop name="label">CA-5</prop>
+      <prop name="sort-id">ca-05</prop>
       <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <part id="ca-5_smt" name="statement">
@@ -7399,6 +7498,7 @@
         <constraint>at least every three (3) years or when a significant change occurs</constraint>
       </param>
       <prop name="label">CA-6</prop>
+      <prop name="sort-id">ca-06</prop>
       <link href="#ref104" rel="reference">OMB Circular A-130</link>
       <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -7500,6 +7600,7 @@
         <constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
       </param>
       <prop name="label">CA-7</prop>
+      <prop name="sort-id">ca-07</prop>
       <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -7704,6 +7805,7 @@
           <label>organization-defined level of independence</label>
         </param>
         <prop name="label">CA-7(1)</prop>
+        <prop name="sort-id">ca-07.01</prop>
         <part id="ca-7.1_smt" name="statement">
           <p>The organization employs assessors or assessment teams with <insert param-id="ca-7.1_prm_1"/> to monitor the security controls in the information system on an ongoing basis.</p>
         </part>
@@ -7746,6 +7848,7 @@
       <control class="SP800-53-enhancement" id="ca-7.3">
         <title>Trend Analyses</title>
         <prop name="label">CA-7(3)</prop>
+        <prop name="sort-id">ca-07.03</prop>
         <part id="ca-7.3_smt" name="statement">
           <p>The organization employs trend analyses to determine if security control implementations, the frequency of continuous monitoring activities, and/or the types of activities used in the continuous monitoring process need to be modified based on empirical data.</p>
         </part>
@@ -7801,6 +7904,7 @@
         <label>organization-defined information systems or system components</label>
       </param>
       <prop name="label">CA-8</prop>
+      <prop name="sort-id">ca-08</prop>
       <part id="ca-8_smt" name="statement">
         <p>The organization conducts penetration testing <insert param-id="ca-8_prm_1"/> on <insert param-id="ca-8_prm_2"/>.</p>
       </part>
@@ -7859,6 +7963,7 @@
       <control class="SP800-53-enhancement" id="ca-8.1">
         <title>Independent Penetration Agent or Team</title>
         <prop name="label">CA-8(1)</prop>
+        <prop name="sort-id">ca-08.01</prop>
         <part id="ca-8.1_smt" name="statement">
           <p>The organization employs an independent penetration agent or penetration team to perform penetration testing on the information system or system components.</p>
         </part>
@@ -7897,6 +8002,7 @@
         <label>organization-defined information system components or classes of components</label>
       </param>
       <prop name="label">CA-9</prop>
+      <prop name="sort-id">ca-09</prop>
       <part id="ca-9_smt" name="statement">
         <p>The organization:</p>
         <part id="ca-9_smt.a" name="item">
@@ -7992,6 +8098,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">CM-1</prop>
+      <prop name="sort-id">cm-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="cm-1_smt" name="statement">
@@ -8133,6 +8240,7 @@
     <control class="SP800-53" id="cm-2">
       <title>Baseline Configuration</title>
       <prop name="label">CM-2</prop>
+      <prop name="sort-id">cm-02</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-2_smt" name="statement">
         <p>The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.</p>
@@ -8198,6 +8306,7 @@
           <constraint>to include when directed by the JAB</constraint>
         </param>
         <prop name="label">CM-2(1)</prop>
+        <prop name="sort-id">cm-02.01</prop>
         <part id="cm-2.1_smt" name="statement">
           <p>The organization reviews and updates the baseline configuration of the information system:</p>
           <part id="cm-2.1_smt.a" name="item">
@@ -8289,6 +8398,7 @@
       <control class="SP800-53-enhancement" id="cm-2.2">
         <title>Automation Support for Accuracy / Currency</title>
         <prop name="label">CM-2(2)</prop>
+        <prop name="sort-id">cm-02.02</prop>
         <part id="cm-2.2_smt" name="statement">
           <p>The organization employs automated mechanisms to maintain an up-to-date, complete, accurate, and readily available baseline configuration of the information system.</p>
         </part>
@@ -8352,6 +8462,7 @@
           <constraint>organization-defined previous versions of baseline configurations of the previously approved baseline configuration of IS components</constraint>
         </param>
         <prop name="label">CM-2(3)</prop>
+        <prop name="sort-id">cm-02.03</prop>
         <part id="cm-2.3_smt" name="statement">
           <p>The organization retains <insert param-id="cm-2.3_prm_1"/> to support rollback.</p>
         </part>
@@ -8408,6 +8519,7 @@
           <label>organization-defined security safeguards</label>
         </param>
         <prop name="label">CM-2(7)</prop>
+        <prop name="sort-id">cm-02.07</prop>
         <part id="cm-2.7_smt" name="statement">
           <p>The organization:</p>
           <part id="cm-2.7_smt.a" name="item">
@@ -8509,6 +8621,7 @@
         <label>organization-defined configuration change conditions</label>
       </param>
       <prop name="label">CM-3</prop>
+      <prop name="sort-id">cm-03</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-3_smt" name="statement">
         <p>The organization:</p>
@@ -8662,6 +8775,7 @@
           <constraint>organization defined configuration management approval authorities</constraint>
         </param>
         <prop name="label">CM-3(1)</prop>
+        <prop name="sort-id">cm-03.01</prop>
         <part id="cm-3.1_smt" name="statement">
           <p>The organization employs automated mechanisms to:</p>
           <part id="cm-3.1_smt.a" name="item">
@@ -8780,6 +8894,7 @@
       <control class="SP800-53-enhancement" id="cm-3.2">
         <title>Test / Validate / Document Changes</title>
         <prop name="label">CM-3(2)</prop>
+        <prop name="sort-id">cm-03.02</prop>
         <part id="cm-3.2_smt" name="statement">
           <p>The organization tests, validates, and documents changes to the information system before implementing the changes on the operational system.</p>
         </part>
@@ -8840,6 +8955,7 @@
           <constraint>Configuration control board (CCB) or similar (as defined in CM-3)</constraint>
         </param>
         <prop name="label">CM-3(4)</prop>
+        <prop name="sort-id">cm-03.04</prop>
         <part id="cm-3.4_smt" name="statement">
           <p>The organization requires an information security representative to be a member of the <insert param-id="cm-3.4_prm_1"/>.</p>
         </part>
@@ -8888,6 +9004,7 @@
           <constraint>All security safeguards that rely on cryptography</constraint>
         </param>
         <prop name="label">CM-3(6)</prop>
+        <prop name="sort-id">cm-03.06</prop>
         <part id="cm-3.6_smt" name="statement">
           <p>The organization ensures that cryptographic mechanisms used to provide <insert param-id="cm-3.6_prm_1"/> are under configuration management.</p>
         </part>
@@ -8939,6 +9056,7 @@
     <control class="SP800-53" id="cm-4">
       <title>Security Impact Analysis</title>
       <prop name="label">CM-4</prop>
+      <prop name="sort-id">cm-04</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-4_smt" name="statement">
         <p>The organization analyzes changes to the information system to determine potential security impacts prior to change implementation.</p>
@@ -8987,6 +9105,7 @@
       <control class="SP800-53-enhancement" id="cm-4.1">
         <title>Separate Test Environments</title>
         <prop name="label">CM-4(1)</prop>
+        <prop name="sort-id">cm-04.01</prop>
         <part id="cm-4.1_smt" name="statement">
           <p>The organization analyzes changes to the information system in a separate test environment before implementation in an operational environment, looking for security impacts due to flaws, weaknesses, incompatibility, or intentional malice.</p>
         </part>
@@ -9058,6 +9177,7 @@
     <control class="SP800-53" id="cm-5">
       <title>Access Restrictions for Change</title>
       <prop name="label">CM-5</prop>
+      <prop name="sort-id">cm-05</prop>
       <part id="cm-5_smt" name="statement">
         <p>The organization defines, documents, approves, and enforces physical and logical access restrictions associated with changes to the information system.</p>
       </part>
@@ -9138,6 +9258,7 @@
       <control class="SP800-53-enhancement" id="cm-5.1">
         <title>Automated Access Enforcement / Auditing</title>
         <prop name="label">CM-5(1)</prop>
+        <prop name="sort-id">cm-05.01</prop>
         <part id="cm-5.1_smt" name="statement">
           <p>The information system enforces access restrictions and supports auditing of the enforcement actions.</p>
         </part>
@@ -9199,6 +9320,7 @@
           <label>organization-defined circumstances</label>
         </param>
         <prop name="label">CM-5(2)</prop>
+        <prop name="sort-id">cm-05.02</prop>
         <part id="cm-5.2_smt" name="statement">
           <p>The organization reviews information system changes <insert param-id="cm-5.2_prm_1"/> and <insert param-id="cm-5.2_prm_2"/> to determine whether unauthorized changes have occurred.</p>
         </part>
@@ -9265,6 +9387,7 @@
           <label>organization-defined software and firmware components</label>
         </param>
         <prop name="label">CM-5(3)</prop>
+        <prop name="sort-id">cm-05.03</prop>
         <part id="cm-5.3_smt" name="statement">
           <p>The information system prevents the installation of <insert param-id="cm-5.3_prm_1"/> without verification that the component has been digitally signed using a certificate that is recognized and approved by the organization.</p>
         </part>
@@ -9331,6 +9454,7 @@
           <constraint>at least quarterly</constraint>
         </param>
         <prop name="label">CM-5(5)</prop>
+        <prop name="sort-id">cm-05.05</prop>
         <part id="cm-5.5_smt" name="statement">
           <p>The organization:</p>
           <part id="cm-5.5_smt.a" name="item">
@@ -9412,6 +9536,7 @@
         <label>organization-defined operational requirements</label>
       </param>
       <prop name="label">CM-6</prop>
+      <prop name="sort-id">cm-06</prop>
       <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
       <link href="#ref110" rel="reference">OMB Memorandum 07-18</link>
       <link href="#ref111" rel="reference">OMB Memorandum 08-22</link>
@@ -9580,6 +9705,7 @@
           <label>organization-defined information system components</label>
         </param>
         <prop name="label">CM-6(1)</prop>
+        <prop name="sort-id">cm-06.01</prop>
         <part id="cm-6.1_smt" name="statement">
           <p>The organization employs automated mechanisms to centrally manage, apply, and verify configuration settings for <insert param-id="cm-6.1_prm_1"/>.</p>
         </part>
@@ -9662,6 +9788,7 @@
           <label>organization-defined configuration settings</label>
         </param>
         <prop name="label">CM-6(2)</prop>
+        <prop name="sort-id">cm-06.02</prop>
         <part id="cm-6.2_smt" name="statement">
           <p>The organization employs <insert param-id="cm-6.2_prm_1"/> to respond to unauthorized changes to <insert param-id="cm-6.2_prm_2"/>.</p>
         </part>
@@ -9725,6 +9852,7 @@
         <constraint>United States Government Configuration Baseline (USGCB)</constraint>
       </param>
       <prop name="label">CM-7</prop>
+      <prop name="sort-id">cm-07</prop>
       <link href="#ref006" rel="reference">DoD Instruction 8551.01</link>
       <part id="cm-7_smt" name="statement">
         <p>The organization:</p>
@@ -9844,6 +9972,7 @@
           <label>organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure</label>
         </param>
         <prop name="label">CM-7(1)</prop>
+        <prop name="sort-id">cm-07.01</prop>
         <part id="cm-7.1_smt" name="statement">
           <p>The organization:</p>
           <part id="cm-7.1_smt.a" name="item">
@@ -9998,6 +10127,7 @@
           <label>organization-defined policies regarding software program usage and restrictions</label>
         </param>
         <prop name="label">CM-7(2)</prop>
+        <prop name="sort-id">cm-07.02</prop>
         <part id="cm-7.2_smt" name="statement">
           <p>The information system prevents program execution in accordance with <insert param-id="cm-7.2_prm_1"/>.</p>
         </part>
@@ -10074,6 +10204,7 @@
           <constraint>at least quarterly or when there is a change</constraint>
         </param>
         <prop name="label">CM-7(5)</prop>
+        <prop name="sort-id">cm-07.05</prop>
         <part id="cm-7.5_smt" name="statement">
           <p>The organization:</p>
           <part id="cm-7.5_smt.a" name="item">
@@ -10168,6 +10299,7 @@
         <constraint>at least monthly</constraint>
       </param>
       <prop name="label">CM-8</prop>
+      <prop name="sort-id">cm-08</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-8_smt" name="statement">
         <p>The organization:</p>
@@ -10279,6 +10411,7 @@
       <control class="SP800-53-enhancement" id="cm-8.1">
         <title>Updates During Installations / Removals</title>
         <prop name="label">CM-8(1)</prop>
+        <prop name="sort-id">cm-08.01</prop>
         <part id="cm-8.1_smt" name="statement">
           <p>The organization updates the inventory of information system components as an integral part of component installations, removals, and information system updates.</p>
         </part>
@@ -10330,6 +10463,7 @@
       <control class="SP800-53-enhancement" id="cm-8.2">
         <title>Automated Maintenance</title>
         <prop name="label">CM-8(2)</prop>
+        <prop name="sort-id">cm-08.02</prop>
         <part id="cm-8.2_smt" name="statement">
           <p>The organization employs automated mechanisms to help maintain an up-to-date, complete, accurate, and readily available inventory of information system components.</p>
         </part>
@@ -10405,6 +10539,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">CM-8(3)</prop>
+        <prop name="sort-id">cm-08.03</prop>
         <part id="cm-8.3_smt" name="statement">
           <p>The organization:</p>
           <part id="cm-8.3_smt.a" name="item">
@@ -10535,6 +10670,7 @@
           </select>
         </param>
         <prop name="label">CM-8(4)</prop>
+        <prop name="sort-id">cm-08.04</prop>
         <part id="cm-8.4_smt" name="statement">
           <p>The organization includes in the information system component inventory information, a means for identifying by <insert param-id="cm-8.4_prm_1"/>, individuals responsible/accountable for administering those components.</p>
         </part>
@@ -10586,6 +10722,7 @@
       <control class="SP800-53-enhancement" id="cm-8.5">
         <title>No Duplicate Accounting of Components</title>
         <prop name="label">CM-8(5)</prop>
+        <prop name="sort-id">cm-08.05</prop>
         <part id="cm-8.5_smt" name="statement">
           <p>The organization verifies that all components within the authorization boundary of the information system are not duplicated in other information system component inventories.</p>
         </part>
@@ -10627,6 +10764,7 @@
     <control class="SP800-53" id="cm-9">
       <title>Configuration Management Plan</title>
       <prop name="label">CM-9</prop>
+      <prop name="sort-id">cm-09</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-9_smt" name="statement">
         <p>The organization develops, documents, and implements a configuration management plan for the information system that:</p>
@@ -10744,6 +10882,7 @@
     <control class="SP800-53" id="cm-10">
       <title>Software Usage Restrictions</title>
       <prop name="label">CM-10</prop>
+      <prop name="sort-id">cm-10</prop>
       <part id="cm-10_smt" name="statement">
         <p>The organization:</p>
         <part id="cm-10_smt.a" name="item">
@@ -10818,6 +10957,7 @@
           <label>organization-defined restrictions</label>
         </param>
         <prop name="label">CM-10(1)</prop>
+        <prop name="sort-id">cm-10.01</prop>
         <part id="cm-10.1_smt" name="statement">
           <p>The organization establishes the following restrictions on the use of open source software: <insert param-id="cm-10.1_prm_1"/>.</p>
         </part>
@@ -10875,6 +11015,7 @@
         <constraint>Continuously (via CM-7 (5))</constraint>
       </param>
       <prop name="label">CM-11</prop>
+      <prop name="sort-id">cm-11</prop>
       <part id="cm-11_smt" name="statement">
         <p>The organization:</p>
         <part id="cm-11_smt.a" name="item">
@@ -10976,6 +11117,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">CM-11(1)</prop>
+        <prop name="sort-id">cm-11.01</prop>
         <part id="cm-11.1_smt" name="statement">
           <p>The information system alerts <insert param-id="cm-11.1_prm_1"/> when the unauthorized installation of software is detected.</p>
         </part>
@@ -11043,6 +11185,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">CP-1</prop>
+      <prop name="sort-id">cp-01</prop>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -11198,6 +11341,7 @@
         <label>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</label>
       </param>
       <prop name="label">CP-2</prop>
+      <prop name="sort-id">cp-02</prop>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-2_smt" name="statement">
@@ -11420,6 +11564,7 @@
       <control class="SP800-53-enhancement" id="cp-2.1">
         <title>Coordinate with Related Plans</title>
         <prop name="label">CP-2(1)</prop>
+        <prop name="sort-id">cp-02.01</prop>
         <part id="cp-2.1_smt" name="statement">
           <p>The organization coordinates contingency plan development with organizational elements responsible for related plans.</p>
         </part>
@@ -11459,6 +11604,7 @@
       <control class="SP800-53-enhancement" id="cp-2.2">
         <title>Capacity Planning</title>
         <prop name="label">CP-2(2)</prop>
+        <prop name="sort-id">cp-02.02</prop>
         <part id="cp-2.2_smt" name="statement">
           <p>The organization conducts capacity planning so that necessary capacity for information processing, telecommunications, and environmental support exists during contingency operations.</p>
         </part>
@@ -11504,6 +11650,7 @@
           <label>organization-defined time period</label>
         </param>
         <prop name="label">CP-2(3)</prop>
+        <prop name="sort-id">cp-02.03</prop>
         <part id="cp-2.3_smt" name="statement">
           <p>The organization plans for the resumption of essential missions and business functions within <insert param-id="cp-2.3_prm_1"/> of contingency plan activation.</p>
         </part>
@@ -11555,6 +11702,7 @@
           <constraint>time period defined in service provider and organization SLA</constraint>
         </param>
         <prop name="label">CP-2(4)</prop>
+        <prop name="sort-id">cp-02.04</prop>
         <part id="cp-2.4_smt" name="statement">
           <p>The organization plans for the resumption of all missions and business functions within <insert param-id="cp-2.4_prm_1"/> of contingency plan activation.</p>
         </part>
@@ -11602,6 +11750,7 @@
       <control class="SP800-53-enhancement" id="cp-2.5">
         <title>Continue Essential Missions / Business Functions</title>
         <prop name="label">CP-2(5)</prop>
+        <prop name="sort-id">cp-02.05</prop>
         <part id="cp-2.5_smt" name="statement">
           <p>The organization plans for the continuance of essential missions and business functions with little or no loss of operational continuity and sustains that continuity until full information system restoration at primary processing and/or storage sites.</p>
         </part>
@@ -11653,6 +11802,7 @@
       <control class="SP800-53-enhancement" id="cp-2.8">
         <title>Identify Critical Assets</title>
         <prop name="label">CP-2(8)</prop>
+        <prop name="sort-id">cp-02.08</prop>
         <part id="cp-2.8_smt" name="statement">
           <p>The organization identifies critical information system assets supporting essential missions and business functions.</p>
         </part>
@@ -11695,6 +11845,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">CP-3</prop>
+      <prop name="sort-id">cp-03</prop>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -11778,6 +11929,7 @@
       <control class="SP800-53-enhancement" id="cp-3.1">
         <title>Simulated Events</title>
         <prop name="label">CP-3(1)</prop>
+        <prop name="sort-id">cp-03.01</prop>
         <part id="cp-3.1_smt" name="statement">
           <p>The organization incorporates simulated events into contingency training to facilitate effective response by personnel in crisis situations.</p>
         </part>
@@ -11822,6 +11974,7 @@
         <constraint>functional exercises</constraint>
       </param>
       <prop name="label">CP-4</prop>
+      <prop name="sort-id">cp-04</prop>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -11909,6 +12062,7 @@
       <control class="SP800-53-enhancement" id="cp-4.1">
         <title>Coordinate with Related Plans</title>
         <prop name="label">CP-4(1)</prop>
+        <prop name="sort-id">cp-04.01</prop>
         <part id="cp-4.1_smt" name="statement">
           <p>The organization coordinates contingency plan testing with organizational elements responsible for related plans.</p>
         </part>
@@ -11952,6 +12106,7 @@
       <control class="SP800-53-enhancement" id="cp-4.2">
         <title>Alternate Processing Site</title>
         <prop name="label">CP-4(2)</prop>
+        <prop name="sort-id">cp-04.02</prop>
         <part id="cp-4.2_smt" name="statement">
           <p>The organization tests the contingency plan at the alternate processing site:</p>
           <part id="cp-4.2_smt.a" name="item">
@@ -12011,6 +12166,7 @@
     <control class="SP800-53" id="cp-6">
       <title>Alternate Storage Site</title>
       <prop name="label">CP-6</prop>
+      <prop name="sort-id">cp-06</prop>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-6_smt" name="statement">
         <p>The organization:</p>
@@ -12071,6 +12227,7 @@
       <control class="SP800-53-enhancement" id="cp-6.1">
         <title>Separation from Primary Site</title>
         <prop name="label">CP-6(1)</prop>
+        <prop name="sort-id">cp-06.01</prop>
         <part id="cp-6.1_smt" name="statement">
           <p>The organization identifies an alternate storage site that is separated from the primary storage site to reduce susceptibility to the same threats.</p>
         </part>
@@ -12105,6 +12262,7 @@
       <control class="SP800-53-enhancement" id="cp-6.2">
         <title>Recovery Time / Point Objectives</title>
         <prop name="label">CP-6(2)</prop>
+        <prop name="sort-id">cp-06.02</prop>
         <part id="cp-6.2_smt" name="statement">
           <p>The organization configures the alternate storage site to facilitate recovery operations in accordance with recovery time and recovery point objectives.</p>
         </part>
@@ -12142,6 +12300,7 @@
       <control class="SP800-53-enhancement" id="cp-6.3">
         <title>Accessibility</title>
         <prop name="label">CP-6(3)</prop>
+        <prop name="sort-id">cp-06.03</prop>
         <part id="cp-6.3_smt" name="statement">
           <p>The organization identifies potential accessibility problems to the alternate storage site in the event of an area-wide disruption or disaster and outlines explicit mitigation actions.</p>
         </part>
@@ -12192,6 +12351,7 @@
         <label>organization-defined time period consistent with recovery time and recovery point objectives</label>
       </param>
       <prop name="label">CP-7</prop>
+      <prop name="sort-id">cp-07</prop>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-7_smt" name="statement">
         <p>The organization:</p>
@@ -12288,6 +12448,7 @@
       <control class="SP800-53-enhancement" id="cp-7.1">
         <title>Separation from Primary Site</title>
         <prop name="label">CP-7(1)</prop>
+        <prop name="sort-id">cp-07.01</prop>
         <part id="cp-7.1_smt" name="statement">
           <p>The organization identifies an alternate processing site that is separated from the primary processing site to reduce susceptibility to the same threats.</p>
         </part>
@@ -12329,6 +12490,7 @@
       <control class="SP800-53-enhancement" id="cp-7.2">
         <title>Accessibility</title>
         <prop name="label">CP-7(2)</prop>
+        <prop name="sort-id">cp-07.02</prop>
         <part id="cp-7.2_smt" name="statement">
           <p>The organization identifies potential accessibility problems to the alternate processing site in the event of an area-wide disruption or disaster and outlines explicit mitigation actions.</p>
         </part>
@@ -12371,6 +12533,7 @@
       <control class="SP800-53-enhancement" id="cp-7.3">
         <title>Priority of Service</title>
         <prop name="label">CP-7(3)</prop>
+        <prop name="sort-id">cp-07.03</prop>
         <part id="cp-7.3_smt" name="statement">
           <p>The organization develops alternate processing site agreements that contain priority-of-service provisions in accordance with organizational availability requirements (including recovery time objectives).</p>
         </part>
@@ -12404,6 +12567,7 @@
       <control class="SP800-53-enhancement" id="cp-7.4">
         <title>Preparation for Use</title>
         <prop name="label">CP-7(4)</prop>
+        <prop name="sort-id">cp-07.04</prop>
         <part id="cp-7.4_smt" name="statement">
           <p>The organization prepares the alternate processing site so that the site is ready to be used as the operational site supporting essential missions and business functions.</p>
         </part>
@@ -12452,6 +12616,7 @@
         <label>organization-defined time period</label>
       </param>
       <prop name="label">CP-8</prop>
+      <prop name="sort-id">cp-08</prop>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <link href="#ref040" rel="reference">National Communications Systems Directive 3-10</link>
       <link href="#ref031" rel="reference">http://www.dhs.gov/telecommunications-service-priority-tsp</link>
@@ -12514,6 +12679,7 @@
       <control class="SP800-53-enhancement" id="cp-8.1">
         <title>Priority of Service Provisions</title>
         <prop name="label">CP-8(1)</prop>
+        <prop name="sort-id">cp-08.01</prop>
         <part id="cp-8.1_smt" name="statement">
           <p>The organization:</p>
           <part id="cp-8.1_smt.a" name="item">
@@ -12569,6 +12735,7 @@
       <control class="SP800-53-enhancement" id="cp-8.2">
         <title>Single Points of Failure</title>
         <prop name="label">CP-8(2)</prop>
+        <prop name="sort-id">cp-08.02</prop>
         <part id="cp-8.2_smt" name="statement">
           <p>The organization obtains alternate telecommunications services to reduce the likelihood of sharing a single point of failure with primary telecommunications services.</p>
         </part>
@@ -12598,6 +12765,7 @@
       <control class="SP800-53-enhancement" id="cp-8.3">
         <title>Separation of Primary / Alternate Providers</title>
         <prop name="label">CP-8(3)</prop>
+        <prop name="sort-id">cp-08.03</prop>
         <part id="cp-8.3_smt" name="statement">
           <p>The organization obtains alternate telecommunications services from providers that are separated from primary service providers to reduce susceptibility to the same threats.</p>
         </part>
@@ -12636,6 +12804,7 @@
           <constraint>annually</constraint>
         </param>
         <prop name="label">CP-8(4)</prop>
+        <prop name="sort-id">cp-08.04</prop>
         <part id="cp-8.4_smt" name="statement">
           <p>The organization:</p>
           <part id="cp-8.4_smt.a" name="item">
@@ -12724,6 +12893,7 @@
         <constraint>daily incremental; weekly full</constraint>
       </param>
       <prop name="label">CP-9</prop>
+      <prop name="sort-id">cp-09</prop>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-9_smt" name="statement">
         <p>The organization:</p>
@@ -12843,6 +13013,7 @@
           <constraint>at least monthly</constraint>
         </param>
         <prop name="label">CP-9(1)</prop>
+        <prop name="sort-id">cp-09.01</prop>
         <part id="cp-9.1_smt" name="statement">
           <p>The organization tests backup information <insert param-id="cp-9.1_prm_1"/> to verify media reliability and information integrity.</p>
         </part>
@@ -12890,6 +13061,7 @@
       <control class="SP800-53-enhancement" id="cp-9.2">
         <title>Test Restoration Using Sampling</title>
         <prop name="label">CP-9(2)</prop>
+        <prop name="sort-id">cp-09.02</prop>
         <part id="cp-9.2_smt" name="statement">
           <p>The organization uses a sample of backup information in the restoration of selected information system functions as part of contingency plan testing.</p>
         </part>
@@ -12933,6 +13105,7 @@
           <label>organization-defined critical information system software and other security-related information</label>
         </param>
         <prop name="label">CP-9(3)</prop>
+        <prop name="sort-id">cp-09.03</prop>
         <part id="cp-9.3_smt" name="statement">
           <p>The organization stores backup copies of <insert param-id="cp-9.3_prm_1"/> in a separate facility or in a fire-rated container that is not collocated with the operational system.</p>
         </part>
@@ -12987,6 +13160,7 @@
           <constraint>time period and transfer rate consistent with the recovery time and recovery point objectives defined in the service provider and organization SLA</constraint>
         </param>
         <prop name="label">CP-9(5)</prop>
+        <prop name="sort-id">cp-09.05</prop>
         <part id="cp-9.5_smt" name="statement">
           <p>The organization transfers information system backup information to the alternate storage site <insert param-id="cp-9.5_prm_1"/>.</p>
         </part>
@@ -13040,6 +13214,7 @@
     <control class="SP800-53" id="cp-10">
       <title>Information System Recovery and Reconstitution</title>
       <prop name="label">CP-10</prop>
+      <prop name="sort-id">cp-10</prop>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-10_smt" name="statement">
@@ -13122,6 +13297,7 @@
       <control class="SP800-53-enhancement" id="cp-10.2">
         <title>Transaction Recovery</title>
         <prop name="label">CP-10(2)</prop>
+        <prop name="sort-id">cp-10.02</prop>
         <part id="cp-10.2_smt" name="statement">
           <p>The information system implements transaction recovery for systems that are transaction-based.</p>
         </part>
@@ -13167,6 +13343,7 @@
           <constraint>time period consistent with the restoration time-periods defined in the service provider and organization SLA</constraint>
         </param>
         <prop name="label">CP-10(4)</prop>
+        <prop name="sort-id">cp-10.04</prop>
         <part id="cp-10.4_smt" name="statement">
           <p>The organization provides the capability to restore information system components within <insert param-id="cp-10.4_prm_1"/> from configuration-controlled and integrity-protected information representing a known, operational state for the components.</p>
         </part>
@@ -13231,6 +13408,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">IA-1</prop>
+      <prop name="sort-id">ia-01</prop>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref087" rel="reference">NIST Special Publication 800-63</link>
@@ -13376,6 +13554,7 @@
     <control class="SP800-53" id="ia-2">
       <title>Identification and Authentication (organizational Users)</title>
       <prop name="label">IA-2</prop>
+      <prop name="sort-id">ia-02</prop>
       <link href="#ref018" rel="reference">HSPD-12</link>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
@@ -13436,6 +13615,7 @@
       <control class="SP800-53-enhancement" id="ia-2.1">
         <title>Network Access to Privileged Accounts</title>
         <prop name="label">IA-2(1)</prop>
+        <prop name="sort-id">ia-02.01</prop>
         <part id="ia-2.1_smt" name="statement">
           <p>The information system implements multifactor authentication for network access to privileged accounts.</p>
         </part>
@@ -13477,6 +13657,7 @@
       <control class="SP800-53-enhancement" id="ia-2.2">
         <title>Network Access to Non-privileged Accounts</title>
         <prop name="label">IA-2(2)</prop>
+        <prop name="sort-id">ia-02.02</prop>
         <part id="ia-2.2_smt" name="statement">
           <p>The information system implements multifactor authentication for network access to non-privileged accounts.</p>
         </part>
@@ -13515,6 +13696,7 @@
       <control class="SP800-53-enhancement" id="ia-2.3">
         <title>Local Access to Privileged Accounts</title>
         <prop name="label">IA-2(3)</prop>
+        <prop name="sort-id">ia-02.03</prop>
         <part id="ia-2.3_smt" name="statement">
           <p>The information system implements multifactor authentication for local access to privileged accounts.</p>
         </part>
@@ -13556,6 +13738,7 @@
       <control class="SP800-53-enhancement" id="ia-2.4">
         <title>Local Access to Non-privileged Accounts</title>
         <prop name="label">IA-2(4)</prop>
+        <prop name="sort-id">ia-02.04</prop>
         <part id="ia-2.4_smt" name="statement">
           <p>The information system implements multifactor authentication for local access to non-privileged accounts.</p>
         </part>
@@ -13594,6 +13777,7 @@
       <control class="SP800-53-enhancement" id="ia-2.5">
         <title>Group Authentication</title>
         <prop name="label">IA-2(5)</prop>
+        <prop name="sort-id">ia-02.05</prop>
         <part id="ia-2.5_smt" name="statement">
           <p>The organization requires individuals to be authenticated with an individual authenticator when a group authenticator is employed.</p>
         </part>
@@ -13635,6 +13819,7 @@
       <control class="SP800-53-enhancement" id="ia-2.8">
         <title>Network Access to Privileged Accounts - Replay Resistant</title>
         <prop name="label">IA-2(8)</prop>
+        <prop name="sort-id">ia-02.08</prop>
         <part id="ia-2.8_smt" name="statement">
           <p>The information system implements replay-resistant authentication mechanisms for network access to privileged accounts.</p>
         </part>
@@ -13677,6 +13862,7 @@
       <control class="SP800-53-enhancement" id="ia-2.9">
         <title>Network Access to Non-privileged Accounts - Replay Resistant</title>
         <prop name="label">IA-2(9)</prop>
+        <prop name="sort-id">ia-02.09</prop>
         <part id="ia-2.9_smt" name="statement">
           <p>The information system implements replay-resistant authentication mechanisms for network access to non-privileged accounts.</p>
         </part>
@@ -13723,6 +13909,7 @@
           <constraint>FIPS 140-2, NIAP Certification, or NSA approval</constraint>
         </param>
         <prop name="label">IA-2(11)</prop>
+        <prop name="sort-id">ia-02.11</prop>
         <part id="ia-2.11_smt" name="statement">
           <p>The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets <insert param-id="ia-2.11_prm_1"/>.</p>
         </part>
@@ -13796,6 +13983,7 @@
       <control class="SP800-53-enhancement" id="ia-2.12">
         <title>Acceptance of PIV Credentials</title>
         <prop name="label">IA-2(12)</prop>
+        <prop name="sort-id">ia-02.12</prop>
         <part id="ia-2.12_smt" name="statement">
           <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.</p>
         </part>
@@ -13868,6 +14056,7 @@
         </select>
       </param>
       <prop name="label">IA-3</prop>
+      <prop name="sort-id">ia-03</prop>
       <part id="ia-3_smt" name="statement">
         <p>The information system uniquely identifies and authenticates <insert param-id="ia-3_prm_1"/> before establishing a <insert param-id="ia-3_prm_2"/> connection.</p>
       </part>
@@ -13958,6 +14147,7 @@
         <constraint>thirty-five (35) days (See additional requirements and guidance.)</constraint>
       </param>
       <prop name="label">IA-4</prop>
+      <prop name="sort-id">ia-04</prop>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
       <link href="#ref092" rel="reference">NIST Special Publication 800-76</link>
@@ -14149,6 +14339,7 @@
           <constraint>contractors; foreign nationals]</constraint>
         </param>
         <prop name="label">IA-4(4)</prop>
+        <prop name="sort-id">ia-04.04</prop>
         <part id="ia-4.4_smt" name="statement">
           <p>The organization manages individual identifiers by uniquely identifying each individual as <insert param-id="ia-4.4_prm_1"/>.</p>
         </part>
@@ -14199,6 +14390,7 @@
         <label>organization-defined time period by authenticator type</label>
       </param>
       <prop name="label">IA-5</prop>
+      <prop name="sort-id">ia-05</prop>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -14422,6 +14614,7 @@
           <constraint>twenty four (24)</constraint>
         </param>
         <prop name="label">IA-5(1)</prop>
+        <prop name="sort-id">ia-05.01</prop>
         <part id="ia-5.1_smt" name="statement">
           <p>The information system, for password-based authentication:</p>
           <part id="ia-5.1_smt.a" name="item">
@@ -14573,6 +14766,7 @@
       <control class="SP800-53-enhancement" id="ia-5.2">
         <title>Pki-based Authentication</title>
         <prop name="label">IA-5(2)</prop>
+        <prop name="sort-id">ia-05.02</prop>
         <part id="ia-5.2_smt" name="statement">
           <p>The information system, for PKI-based authentication:</p>
           <part id="ia-5.2_smt.a" name="item">
@@ -14679,6 +14873,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">IA-5(3)</prop>
+        <prop name="sort-id">ia-05.03</prop>
         <part id="ia-5.3_smt" name="statement">
           <p>The organization requires that the registration process to receive <insert param-id="ia-5.3_prm_1"/> be conducted <insert param-id="ia-5.3_prm_2"/> before <insert param-id="ia-5.3_prm_3"/> with authorization by <insert param-id="ia-5.3_prm_4"/>.</p>
         </part>
@@ -14741,6 +14936,7 @@
           <constraint>complexity as identified in IA-5 (1) Control Enhancement Part (a)</constraint>
         </param>
         <prop name="label">IA-5(4)</prop>
+        <prop name="sort-id">ia-05.04</prop>
         <part id="ia-5.4_smt" name="statement">
           <p>The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy <insert param-id="ia-5.4_prm_1"/>.</p>
         </part>
@@ -14799,6 +14995,7 @@
       <control class="SP800-53-enhancement" id="ia-5.6">
         <title>Protection of Authenticators</title>
         <prop name="label">IA-5(6)</prop>
+        <prop name="sort-id">ia-05.06</prop>
         <part id="ia-5.6_smt" name="statement">
           <p>The organization protects authenticators commensurate with the security category of the information to which use of the authenticator permits access.</p>
         </part>
@@ -14840,6 +15037,7 @@
       <control class="SP800-53-enhancement" id="ia-5.7">
         <title>No Embedded Unencrypted Static Authenticators</title>
         <prop name="label">IA-5(7)</prop>
+        <prop name="sort-id">ia-05.07</prop>
         <part id="ia-5.7_smt" name="statement">
           <p>The organization ensures that unencrypted static authenticators are not embedded in applications or access scripts or stored on function keys.</p>
         </part>
@@ -14897,6 +15095,7 @@
           <constraint>different authenticators on different systems</constraint>
         </param>
         <prop name="label">IA-5(8)</prop>
+        <prop name="sort-id">ia-05.08</prop>
         <part id="ia-5.8_smt" name="statement">
           <p>The organization implements <insert param-id="ia-5.8_prm_1"/> to manage the risk of compromise due to individuals having accounts on multiple information systems.</p>
         </part>
@@ -14946,6 +15145,7 @@
           <label>organization-defined token quality requirements</label>
         </param>
         <prop name="label">IA-5(11)</prop>
+        <prop name="sort-id">ia-05.11</prop>
         <part id="ia-5.11_smt" name="statement">
           <p>The information system, for hardware token-based authentication, employs mechanisms that satisfy <insert param-id="ia-5.11_prm_1"/>.</p>
         </part>
@@ -14999,6 +15199,7 @@
           <label>organization-defined time period</label>
         </param>
         <prop name="label">IA-5(13)</prop>
+        <prop name="sort-id">ia-05.13</prop>
         <part id="ia-5.13_smt" name="statement">
           <p>The information system prohibits the use of cached authenticators after <insert param-id="ia-5.13_prm_1"/>.</p>
         </part>
@@ -15045,6 +15246,7 @@
     <control class="SP800-53" id="ia-6">
       <title>Authenticator Feedback</title>
       <prop name="label">IA-6</prop>
+      <prop name="sort-id">ia-06</prop>
       <part id="ia-6_smt" name="statement">
         <p>The information system obscures feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.</p>
       </part>
@@ -15084,6 +15286,7 @@
     <control class="SP800-53" id="ia-7">
       <title>Cryptographic Module Authentication</title>
       <prop name="label">IA-7</prop>
+      <prop name="sort-id">ia-07</prop>
       <link href="#ref012" rel="reference">FIPS Publication 140</link>
       <link href="#ref023" rel="reference">http://csrc.nist.gov/groups/STM/cmvp/index.html</link>
       <part id="ia-7_smt" name="statement">
@@ -15127,6 +15330,7 @@
     <control class="SP800-53" id="ia-8">
       <title>Identification and Authentication (non-organizational Users)</title>
       <prop name="label">IA-8</prop>
+      <prop name="sort-id">ia-08</prop>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
       <link href="#ref113" rel="reference">OMB Memorandum 10-06-2011</link>
@@ -15186,6 +15390,7 @@
       <control class="SP800-53-enhancement" id="ia-8.1">
         <title>Acceptance of PIV Credentials from Other Agencies</title>
         <prop name="label">IA-8(1)</prop>
+        <prop name="sort-id">ia-08.01</prop>
         <part id="ia-8.1_smt" name="statement">
           <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials from other federal agencies.</p>
         </part>
@@ -15241,6 +15446,7 @@
       <control class="SP800-53-enhancement" id="ia-8.2">
         <title>Acceptance of Third-party Credentials</title>
         <prop name="label">IA-8(2)</prop>
+        <prop name="sort-id">ia-08.02</prop>
         <part id="ia-8.2_smt" name="statement">
           <p>The information system accepts only FICAM-approved third-party credentials.</p>
         </part>
@@ -15290,6 +15496,7 @@
           <label>organization-defined information systems</label>
         </param>
         <prop name="label">IA-8(3)</prop>
+        <prop name="sort-id">ia-08.03</prop>
         <part id="ia-8.3_smt" name="statement">
           <p>The organization employs only FICAM-approved information system components in <insert param-id="ia-8.3_prm_1"/> to accept third-party credentials.</p>
         </part>
@@ -15346,6 +15553,7 @@
       <control class="SP800-53-enhancement" id="ia-8.4">
         <title>Use of Ficam-issued Profiles</title>
         <prop name="label">IA-8(4)</prop>
+        <prop name="sort-id">ia-08.04</prop>
         <part id="ia-8.4_smt" name="statement">
           <p>The information system conforms to FICAM-issued profiles.</p>
         </part>
@@ -15408,6 +15616,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">IR-1</prop>
+      <prop name="sort-id">ir-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
@@ -15558,6 +15767,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">IR-2</prop>
+      <prop name="sort-id">ir-02</prop>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
       <part id="ir-2_smt" name="statement">
@@ -15634,6 +15844,7 @@
       <control class="SP800-53-enhancement" id="ir-2.1">
         <title>Simulated Events</title>
         <prop name="label">IR-2(1)</prop>
+        <prop name="sort-id">ir-02.01</prop>
         <part id="ir-2.1_smt" name="statement">
           <p>The organization incorporates simulated events into incident response training to facilitate effective response by personnel in crisis situations.</p>
         </part>
@@ -15669,6 +15880,7 @@
       <control class="SP800-53-enhancement" id="ir-2.2">
         <title>Automated Training Environments</title>
         <prop name="label">IR-2(2)</prop>
+        <prop name="sort-id">ir-02.02</prop>
         <part id="ir-2.2_smt" name="statement">
           <p>The organization employs automated mechanisms to provide a more thorough and realistic incident response training environment.</p>
         </part>
@@ -15713,6 +15925,7 @@
         <label>organization-defined tests</label>
       </param>
       <prop name="label">IR-3</prop>
+      <prop name="sort-id">ir-03</prop>
       <link href="#ref097" rel="reference">NIST Special Publication 800-84</link>
       <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
       <part id="ir-3_smt" name="statement">
@@ -15771,6 +15984,7 @@
       <control class="SP800-53-enhancement" id="ir-3.2">
         <title>Coordination with Related Plans</title>
         <prop name="label">IR-3(2)</prop>
+        <prop name="sort-id">ir-03.02</prop>
         <part id="ir-3.2_smt" name="statement">
           <p>The organization coordinates incident response testing with organizational elements responsible for related plans.</p>
         </part>
@@ -15812,6 +16026,7 @@
     <control class="SP800-53" id="ir-4">
       <title>Incident Handling</title>
       <prop name="label">IR-4</prop>
+      <prop name="sort-id">ir-04</prop>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-4_smt" name="statement">
@@ -15947,6 +16162,7 @@
       <control class="SP800-53-enhancement" id="ir-4.1">
         <title>Automated Incident Handling Processes</title>
         <prop name="label">IR-4(1)</prop>
+        <prop name="sort-id">ir-04.01</prop>
         <part id="ir-4.1_smt" name="statement">
           <p>The organization employs automated mechanisms to support the incident handling process.</p>
         </part>
@@ -15991,6 +16207,7 @@
           <constraint>all network, data storage, and computing devices</constraint>
         </param>
         <prop name="label">IR-4(2)</prop>
+        <prop name="sort-id">ir-04.02</prop>
         <part id="ir-4.2_smt" name="statement">
           <p>The organization includes dynamic reconfiguration of <insert param-id="ir-4.2_prm_1"/> as part of the incident response capability.</p>
         </part>
@@ -16052,6 +16269,7 @@
           <label>organization-defined actions to take in response to classes of incidents</label>
         </param>
         <prop name="label">IR-4(3)</prop>
+        <prop name="sort-id">ir-04.03</prop>
         <part id="ir-4.3_smt" name="statement">
           <p>The organization identifies <insert param-id="ir-4.3_prm_1"/> and <insert param-id="ir-4.3_prm_2"/> to ensure continuation of organizational missions and business functions.</p>
         </part>
@@ -16102,6 +16320,7 @@
       <control class="SP800-53-enhancement" id="ir-4.4">
         <title>Information Correlation</title>
         <prop name="label">IR-4(4)</prop>
+        <prop name="sort-id">ir-04.04</prop>
         <part id="ir-4.4_smt" name="statement">
           <p>The organization correlates incident information and individual incident responses to achieve an organization-wide perspective on incident awareness and response.</p>
         </part>
@@ -16150,6 +16369,7 @@
       <control class="SP800-53-enhancement" id="ir-4.6">
         <title>Insider Threats - Specific Capabilities</title>
         <prop name="label">IR-4(6)</prop>
+        <prop name="sort-id">ir-04.06</prop>
         <part id="ir-4.6_smt" name="statement">
           <p>The organization implements incident handling capability for insider threats.</p>
         </part>
@@ -16197,6 +16417,7 @@
           <label>organization-defined incident information</label>
         </param>
         <prop name="label">IR-4(8)</prop>
+        <prop name="sort-id">ir-04.08</prop>
         <part id="ir-4.8_smt" name="statement">
           <p>The organization coordinates with <insert param-id="ir-4.8_prm_1"/> to correlate and share <insert param-id="ir-4.8_prm_2"/> to achieve a cross-organization perspective on incident awareness and more effective incident responses.</p>
         </part>
@@ -16249,6 +16470,7 @@
     <control class="SP800-53" id="ir-5">
       <title>Incident Monitoring</title>
       <prop name="label">IR-5</prop>
+      <prop name="sort-id">ir-05</prop>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-5_smt" name="statement">
         <p>The organization tracks and documents information system security incidents.</p>
@@ -16303,6 +16525,7 @@
       <control class="SP800-53-enhancement" id="ir-5.1">
         <title>Automated Tracking / Data Collection / Analysis</title>
         <prop name="label">IR-5(1)</prop>
+        <prop name="sort-id">ir-05.01</prop>
         <part id="ir-5.1_smt" name="statement">
           <p>The organization employs automated mechanisms to assist in the tracking of security incidents and in the collection and analysis of incident information.</p>
         </part>
@@ -16365,6 +16588,7 @@
         <label>organization-defined authorities</label>
       </param>
       <prop name="label">IR-6</prop>
+      <prop name="sort-id">ir-06</prop>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref036" rel="reference">http://www.us-cert.gov</link>
       <part id="ir-6_smt" name="statement">
@@ -16446,6 +16670,7 @@
       <control class="SP800-53-enhancement" id="ir-6.1">
         <title>Automated Reporting</title>
         <prop name="label">IR-6(1)</prop>
+        <prop name="sort-id">ir-06.01</prop>
         <part id="ir-6.1_smt" name="statement">
           <p>The organization employs automated mechanisms to assist in the reporting of security incidents.</p>
         </part>
@@ -16487,6 +16712,7 @@
     <control class="SP800-53" id="ir-7">
       <title>Incident Response Assistance</title>
       <prop name="label">IR-7</prop>
+      <prop name="sort-id">ir-07</prop>
       <part id="ir-7_smt" name="statement">
         <p>The organization provides an incident response support resource, integral to the organizational incident response capability that offers advice and assistance to users of the information system for the handling and reporting of security incidents.</p>
       </part>
@@ -16537,6 +16763,7 @@
       <control class="SP800-53-enhancement" id="ir-7.1">
         <title>Automation Support for Availability of Information / Support</title>
         <prop name="label">IR-7(1)</prop>
+        <prop name="sort-id">ir-07.01</prop>
         <part id="ir-7.1_smt" name="statement">
           <p>The organization employs automated mechanisms to increase the availability of incident response-related information and support.</p>
         </part>
@@ -16578,6 +16805,7 @@
       <control class="SP800-53-enhancement" id="ir-7.2">
         <title>Coordination with External Providers</title>
         <prop name="label">IR-7(2)</prop>
+        <prop name="sort-id">ir-07.02</prop>
         <part id="ir-7.2_smt" name="statement">
           <p>The organization:</p>
           <part id="ir-7.2_smt.a" name="item">
@@ -16643,6 +16871,7 @@
         <constraint>see additional FedRAMP Requirements and Guidance</constraint>
       </param>
       <prop name="label">IR-8</prop>
+      <prop name="sort-id">ir-08</prop>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-8_smt" name="statement">
         <p>The organization:</p>
@@ -16882,6 +17111,7 @@
         <label>organization-defined actions</label>
       </param>
       <prop name="label">IR-9</prop>
+      <prop name="sort-id">ir-09</prop>
       <part id="ir-9_smt" name="statement">
         <p>The organization responds to information spills by:</p>
         <part id="ir-9_smt.a" name="item">
@@ -16988,6 +17218,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">IR-9(1)</prop>
+        <prop name="sort-id">ir-09.01</prop>
         <part id="ir-9.1_smt" name="statement">
           <p>The organization assigns <insert param-id="ir-9.1_prm_1"/> with responsibility for responding to information spills.</p>
         </part>
@@ -17027,6 +17258,7 @@
           <constraint>at least annually</constraint>
         </param>
         <prop name="label">IR-9(2)</prop>
+        <prop name="sort-id">ir-09.02</prop>
         <part id="ir-9.2_smt" name="statement">
           <p>The organization provides information spillage response training <insert param-id="ir-9.2_prm_1"/>.</p>
         </part>
@@ -17067,6 +17299,7 @@
           <label>organization-defined procedures</label>
         </param>
         <prop name="label">IR-9(3)</prop>
+        <prop name="sort-id">ir-09.03</prop>
         <part id="ir-9.3_smt" name="statement">
           <p>The organization implements <insert param-id="ir-9.3_prm_1"/> to ensure that organizational personnel impacted by information spills can continue to carry out assigned tasks while contaminated systems are undergoing corrective actions.</p>
         </part>
@@ -17114,6 +17347,7 @@
           <label>organization-defined security safeguards</label>
         </param>
         <prop name="label">IR-9(4)</prop>
+        <prop name="sort-id">ir-09.04</prop>
         <part id="ir-9.4_smt" name="statement">
           <p>The organization employs <insert param-id="ir-9.4_prm_1"/> for personnel exposed to information not within assigned access authorizations.</p>
         </part>
@@ -17175,6 +17409,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">MA-1</prop>
+      <prop name="sort-id">ma-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ma-1_smt" name="statement">
@@ -17321,6 +17556,7 @@
         <label>organization-defined maintenance-related information</label>
       </param>
       <prop name="label">MA-2</prop>
+      <prop name="sort-id">ma-02</prop>
       <part id="ma-2_smt" name="statement">
         <p>The organization:</p>
         <part id="ma-2_smt.a" name="item">
@@ -17486,6 +17722,7 @@
       <control class="SP800-53-enhancement" id="ma-2.2">
         <title>Automated Maintenance Activities</title>
         <prop name="label">MA-2(2)</prop>
+        <prop name="sort-id">ma-02.02</prop>
         <part id="ma-2.2_smt" name="statement">
           <p>The organization:</p>
           <part id="ma-2.2_smt.a" name="item">
@@ -17573,6 +17810,7 @@
     <control class="SP800-53" id="ma-3">
       <title>Maintenance Tools</title>
       <prop name="label">MA-3</prop>
+      <prop name="sort-id">ma-03</prop>
       <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
       <part id="ma-3_smt" name="statement">
         <p>The organization approves, controls, and monitors information system maintenance tools.</p>
@@ -17625,6 +17863,7 @@
       <control class="SP800-53-enhancement" id="ma-3.1">
         <title>Inspect Tools</title>
         <prop name="label">MA-3(1)</prop>
+        <prop name="sort-id">ma-03.01</prop>
         <part id="ma-3.1_smt" name="statement">
           <p>The organization inspects the maintenance tools carried into a facility by maintenance personnel for improper or unauthorized modifications.</p>
         </part>
@@ -17664,6 +17903,7 @@
       <control class="SP800-53-enhancement" id="ma-3.2">
         <title>Inspect Media</title>
         <prop name="label">MA-3(2)</prop>
+        <prop name="sort-id">ma-03.02</prop>
         <part id="ma-3.2_smt" name="statement">
           <p>The organization checks media containing diagnostic and test programs for malicious code before the media are used in the information system.</p>
         </part>
@@ -17706,6 +17946,7 @@
           <constraint>the information owner explicitly authorizing removal of the equipment from the facility</constraint>
         </param>
         <prop name="label">MA-3(3)</prop>
+        <prop name="sort-id">ma-03.03</prop>
         <part id="ma-3.3_smt" name="statement">
           <p>The organization prevents the unauthorized removal of maintenance equipment containing organizational information by:</p>
           <part id="ma-3.3_smt.a" name="item">
@@ -17792,6 +18033,7 @@
     <control class="SP800-53" id="ma-4">
       <title>Nonlocal Maintenance</title>
       <prop name="label">MA-4</prop>
+      <prop name="sort-id">ma-04</prop>
       <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
       <link href="#ref014" rel="reference">FIPS Publication 197</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -17919,6 +18161,7 @@
       <control class="SP800-53-enhancement" id="ma-4.2">
         <title>Document Nonlocal Maintenance</title>
         <prop name="label">MA-4(2)</prop>
+        <prop name="sort-id">ma-04.02</prop>
         <part id="ma-4.2_smt" name="statement">
           <p>The organization documents in the security plan for the information system, the policies and procedures for the establishment and use of nonlocal maintenance and diagnostic connections.</p>
         </part>
@@ -17956,6 +18199,7 @@
       <control class="SP800-53-enhancement" id="ma-4.3">
         <title>Comparable Security / Sanitization</title>
         <prop name="label">MA-4(3)</prop>
+        <prop name="sort-id">ma-04.03</prop>
         <part id="ma-4.3_smt" name="statement">
           <p>The organization:</p>
           <part id="ma-4.3_smt.a" name="item">
@@ -18034,6 +18278,7 @@
       <control class="SP800-53-enhancement" id="ma-4.6">
         <title>Cryptographic Protection</title>
         <prop name="label">MA-4(6)</prop>
+        <prop name="sort-id">ma-04.06</prop>
         <part id="ma-4.6_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to protect the integrity and confidentiality of nonlocal maintenance and diagnostic communications.</p>
         </part>
@@ -18078,6 +18323,7 @@
     <control class="SP800-53" id="ma-5">
       <title>Maintenance Personnel</title>
       <prop name="label">MA-5</prop>
+      <prop name="sort-id">ma-05</prop>
       <part id="ma-5_smt" name="statement">
         <p>The organization:</p>
         <part id="ma-5_smt.a" name="item">
@@ -18155,6 +18401,7 @@
       <control class="SP800-53-enhancement" id="ma-5.1">
         <title>Individuals Without Appropriate Access</title>
         <prop name="label">MA-5(1)</prop>
+        <prop name="sort-id">ma-05.01</prop>
         <part id="ma-5.1_smt" name="statement">
           <p>The organization:</p>
           <part id="ma-5.1_smt.a" name="item">
@@ -18270,6 +18517,7 @@
         <label>organization-defined time period</label>
       </param>
       <prop name="label">MA-6</prop>
+      <prop name="sort-id">ma-06</prop>
       <part id="ma-6_smt" name="statement">
         <p>The organization obtains maintenance support and/or spare parts for <insert param-id="ma-6_prm_1"/> within <insert param-id="ma-6_prm_2"/> of failure.</p>
       </part>
@@ -18348,6 +18596,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">MP-1</prop>
+      <prop name="sort-id">mp-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="mp-1_smt" name="statement">
@@ -18495,6 +18744,7 @@
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">MP-2</prop>
+      <prop name="sort-id">mp-02</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
       <part id="mp-2_smt" name="statement">
@@ -18563,6 +18813,7 @@
         <constraint>organization-defined security safeguards not applicable</constraint>
       </param>
       <prop name="label">MP-3</prop>
+      <prop name="sort-id">mp-03</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <part id="mp-3_smt" name="statement">
         <p>The organization:</p>
@@ -18660,6 +18911,7 @@
         <constraint>see additional FedRAMP requirements and guidance</constraint>
       </param>
       <prop name="label">MP-4</prop>
+      <prop name="sort-id">mp-04</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
       <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
@@ -18755,6 +19007,7 @@
         <constraint>prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container</constraint>
       </param>
       <prop name="label">MP-5</prop>
+      <prop name="sort-id">mp-05</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
       <part id="mp-5_smt" name="statement">
@@ -18855,6 +19108,7 @@
       <control class="SP800-53-enhancement" id="mp-5.4">
         <title>Cryptographic Protection</title>
         <prop name="label">MP-5(4)</prop>
+        <prop name="sort-id">mp-05.04</prop>
         <part id="mp-5.4_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to protect the confidentiality and integrity of information stored on digital media during transport outside of controlled areas.</p>
         </part>
@@ -18902,6 +19156,7 @@
         <constraint>techniques and procedures IAW NIST SP 800-88 R1, Appendix A - Minimum Sanitization Recommendations</constraint>
       </param>
       <prop name="label">MP-6</prop>
+      <prop name="sort-id">mp-06</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
       <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
@@ -19001,6 +19256,7 @@
       <control class="SP800-53-enhancement" id="mp-6.1">
         <title>Review / Approve / Track / Document / Verify</title>
         <prop name="label">MP-6(1)</prop>
+        <prop name="sort-id">mp-06.01</prop>
         <part id="mp-6.1_smt" name="statement">
           <p>The organization reviews, approves, tracks, documents, and verifies media sanitization and disposal actions.</p>
         </part>
@@ -19068,6 +19324,7 @@
           <constraint>at least every six (6) months</constraint>
         </param>
         <prop name="label">MP-6(2)</prop>
+        <prop name="sort-id">mp-06.02</prop>
         <part id="mp-6.2_smt" name="statement">
           <p>The organization tests sanitization equipment and procedures <insert param-id="mp-6.2_prm_1"/> to verify that the intended sanitization is being achieved.</p>
         </part>
@@ -19124,6 +19381,7 @@
           <label>organization-defined circumstances requiring sanitization of portable storage devices</label>
         </param>
         <prop name="label">MP-6(3)</prop>
+        <prop name="sort-id">mp-06.03</prop>
         <part id="mp-6.3_smt" name="statement">
           <p>The organization applies nondestructive sanitization techniques to portable storage devices prior to connecting such devices to the information system under the following circumstances: <insert param-id="mp-6.3_prm_1"/>.</p>
         </part>
@@ -19187,6 +19445,7 @@
         <label>organization-defined security safeguards</label>
       </param>
       <prop name="label">MP-7</prop>
+      <prop name="sort-id">mp-07</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
       <part id="mp-7_smt" name="statement">
@@ -19264,6 +19523,7 @@
       <control class="SP800-53-enhancement" id="mp-7.1">
         <title>Prohibit Use Without Owner</title>
         <prop name="label">MP-7(1)</prop>
+        <prop name="sort-id">mp-07.01</prop>
         <part id="mp-7.1_smt" name="statement">
           <p>The organization prohibits the use of portable storage devices in organizational information systems when such devices have no identifiable owner.</p>
         </part>
@@ -19322,6 +19582,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">PE-1</prop>
+      <prop name="sort-id">pe-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="pe-1_smt" name="statement">
@@ -19466,6 +19727,7 @@
         <constraint>at least every ninety (90) days</constraint>
       </param>
       <prop name="label">PE-2</prop>
+      <prop name="sort-id">pe-02</prop>
       <part id="pe-2_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-2_smt.a" name="item">
@@ -19597,6 +19859,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">PE-3</prop>
+      <prop name="sort-id">pe-03</prop>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
       <link href="#ref092" rel="reference">NIST Special Publication 800-76</link>
@@ -19835,6 +20098,7 @@
           <label>organization-defined physical spaces containing one or more components of the information system</label>
         </param>
         <prop name="label">PE-3(1)</prop>
+        <prop name="sort-id">pe-03.01</prop>
         <part id="pe-3.1_smt" name="statement">
           <p>The organization enforces physical access authorizations to the information system in addition to the physical access controls for the facility at <insert param-id="pe-3.1_prm_1"/>.</p>
         </part>
@@ -19892,6 +20156,7 @@
         <label>organization-defined security safeguards</label>
       </param>
       <prop name="label">PE-4</prop>
+      <prop name="sort-id">pe-04</prop>
       <link href="#ref103" rel="reference">NSTISSI No. 7003</link>
       <part id="pe-4_smt" name="statement">
         <p>The organization controls physical access to <insert param-id="pe-4_prm_1"/> within organizational facilities using <insert param-id="pe-4_prm_2"/>.</p>
@@ -19950,6 +20215,7 @@
     <control class="SP800-53" id="pe-5">
       <title>Access Control for Output Devices</title>
       <prop name="label">PE-5</prop>
+      <prop name="sort-id">pe-05</prop>
       <part id="pe-5_smt" name="statement">
         <p>The organization controls physical access to information system output devices to prevent unauthorized individuals from obtaining the output.</p>
       </part>
@@ -19998,6 +20264,7 @@
         <label>organization-defined events or potential indications of events</label>
       </param>
       <prop name="label">PE-6</prop>
+      <prop name="sort-id">pe-06</prop>
       <part id="pe-6_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-6_smt.a" name="item">
@@ -20076,6 +20343,7 @@
       <control class="SP800-53-enhancement" id="pe-6.1">
         <title>Intrusion Alarms / Surveillance Equipment</title>
         <prop name="label">PE-6(1)</prop>
+        <prop name="sort-id">pe-06.01</prop>
         <part id="pe-6.1_smt" name="statement">
           <p>The organization monitors physical intrusion alarms and surveillance equipment.</p>
         </part>
@@ -20117,6 +20385,7 @@
           <label>organization-defined physical spaces containing one or more components of the information system</label>
         </param>
         <prop name="label">PE-6(4)</prop>
+        <prop name="sort-id">pe-06.04</prop>
         <part id="pe-6.4_smt" name="statement">
           <p>The organization monitors physical access to the information system in addition to the physical access monitoring of the facility as <insert param-id="pe-6.4_prm_1"/>.</p>
         </part>
@@ -20176,6 +20445,7 @@
         <constraint>at least monthly</constraint>
       </param>
       <prop name="label">PE-8</prop>
+      <prop name="sort-id">pe-08</prop>
       <part id="pe-8_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-8_smt.a" name="item">
@@ -20243,6 +20513,7 @@
       <control class="SP800-53-enhancement" id="pe-8.1">
         <title>Automated Records Maintenance / Review</title>
         <prop name="label">PE-8(1)</prop>
+        <prop name="sort-id">pe-08.01</prop>
         <part id="pe-8.1_smt" name="statement">
           <p>The organization employs automated mechanisms to facilitate the maintenance and review of visitor access records.</p>
         </part>
@@ -20278,6 +20549,7 @@
     <control class="SP800-53" id="pe-9">
       <title>Power Equipment and Cabling</title>
       <prop name="label">PE-9</prop>
+      <prop name="sort-id">pe-09</prop>
       <part id="pe-9_smt" name="statement">
         <p>The organization protects power equipment and power cabling for the information system from damage and destruction.</p>
       </part>
@@ -20317,6 +20589,7 @@
         <label>organization-defined location by information system or system component</label>
       </param>
       <prop name="label">PE-10</prop>
+      <prop name="sort-id">pe-10</prop>
       <part id="pe-10_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-10_smt.a" name="item">
@@ -20393,6 +20666,7 @@
         </select>
       </param>
       <prop name="label">PE-11</prop>
+      <prop name="sort-id">pe-11</prop>
       <part id="pe-11_smt" name="statement">
         <p>The organization provides a short-term uninterruptible power supply to facilitate <insert param-id="pe-11_prm_1"/> in the event of a primary power source loss.</p>
       </part>
@@ -20440,6 +20714,7 @@
       <control class="SP800-53-enhancement" id="pe-11.1">
         <title>Long-term Alternate Power Supply - Minimal Operational Capability</title>
         <prop name="label">PE-11(1)</prop>
+        <prop name="sort-id">pe-11.01</prop>
         <part id="pe-11.1_smt" name="statement">
           <p>The organization provides a long-term alternate power supply for the information system that is capable of maintaining minimally required operational capability in the event of an extended loss of the primary power source.</p>
         </part>
@@ -20479,6 +20754,7 @@
     <control class="SP800-53" id="pe-12">
       <title>Emergency Lighting</title>
       <prop name="label">PE-12</prop>
+      <prop name="sort-id">pe-12</prop>
       <part id="pe-12_smt" name="statement">
         <p>The organization employs and maintains automatic emergency lighting for the information system that activates in the event of a power outage or disruption and that covers emergency exits and evacuation routes within the facility.</p>
       </part>
@@ -20526,6 +20802,7 @@
     <control class="SP800-53" id="pe-13">
       <title>Fire Protection</title>
       <prop name="label">PE-13</prop>
+      <prop name="sort-id">pe-13</prop>
       <part id="pe-13_smt" name="statement">
         <p>The organization employs and maintains fire suppression and detection devices/systems for the information system that are supported by an independent energy source.</p>
       </part>
@@ -20578,6 +20855,7 @@
           <constraint>service provider emergency responders with incident response responsibilities</constraint>
         </param>
         <prop name="label">PE-13(1)</prop>
+        <prop name="sort-id">pe-13.01</prop>
         <part id="pe-13.1_smt" name="statement">
           <p>The organization employs fire detection devices/systems for the information system that activate automatically and notify <insert param-id="pe-13.1_prm_1"/> and <insert param-id="pe-13.1_prm_2"/> in the event of a fire.</p>
         </part>
@@ -20650,6 +20928,7 @@
           <label>organization-defined emergency responders</label>
         </param>
         <prop name="label">PE-13(2)</prop>
+        <prop name="sort-id">pe-13.02</prop>
         <part id="pe-13.2_smt" name="statement">
           <p>The organization employs fire suppression devices/systems for the information system that provide automatic notification of any activation to <insert param-id="pe-13.2_prm_1"/> and <insert param-id="pe-13.2_prm_2"/>.</p>
         </part>
@@ -20711,6 +20990,7 @@
       <control class="SP800-53-enhancement" id="pe-13.3">
         <title>Automatic Fire Suppression</title>
         <prop name="label">PE-13(3)</prop>
+        <prop name="sort-id">pe-13.03</prop>
         <part id="pe-13.3_smt" name="statement">
           <p>The organization employs an automatic fire suppression capability for the information system when the facility is not staffed on a continuous basis.</p>
         </part>
@@ -20757,6 +21037,7 @@
         <constraint>continuously</constraint>
       </param>
       <prop name="label">PE-14</prop>
+      <prop name="sort-id">pe-14</prop>
       <part id="pe-14_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-14_smt.a" name="item">
@@ -20849,6 +21130,7 @@
       <control class="SP800-53-enhancement" id="pe-14.2">
         <title>Monitoring with Alarms / Notifications</title>
         <prop name="label">PE-14(2)</prop>
+        <prop name="sort-id">pe-14.02</prop>
         <part id="pe-14.2_smt" name="statement">
           <p>The organization employs temperature and humidity monitoring that provides an alarm or notification of changes potentially harmful to personnel or equipment.</p>
         </part>
@@ -20900,6 +21182,7 @@
     <control class="SP800-53" id="pe-15">
       <title>Water Damage Protection</title>
       <prop name="label">PE-15</prop>
+      <prop name="sort-id">pe-15</prop>
       <part id="pe-15_smt" name="statement">
         <p>The organization protects the information system from damage resulting from water leakage by providing master shutoff or isolation valves that are accessible, working properly, and known to key personnel.</p>
       </part>
@@ -20955,6 +21238,7 @@
           <constraint>service provider building maintenance/physical security personnel</constraint>
         </param>
         <prop name="label">PE-15(1)</prop>
+        <prop name="sort-id">pe-15.01</prop>
         <part id="pe-15.1_smt" name="statement">
           <p>The organization employs automated mechanisms to detect the presence of water in the vicinity of the information system and alerts <insert param-id="pe-15.1_prm_1"/>.</p>
         </part>
@@ -21010,6 +21294,7 @@
         <constraint>all information system components</constraint>
       </param>
       <prop name="label">PE-16</prop>
+      <prop name="sort-id">pe-16</prop>
       <part id="pe-16_smt" name="statement">
         <p>The organization authorizes, monitors, and controls <insert param-id="pe-16_prm_1"/> entering and exiting the facility and maintains records of those items.</p>
       </part>
@@ -21092,6 +21377,7 @@
         <label>organization-defined security controls</label>
       </param>
       <prop name="label">PE-17</prop>
+      <prop name="sort-id">pe-17</prop>
       <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
       <part id="pe-17_smt" name="statement">
         <p>The organization:</p>
@@ -21172,6 +21458,7 @@
         <constraint>physical and environmental hazards identified during threat assessment</constraint>
       </param>
       <prop name="label">PE-18</prop>
+      <prop name="sort-id">pe-18</prop>
       <part id="pe-18_smt" name="statement">
         <p>The organization positions information system components within the facility to minimize potential damage from <insert param-id="pe-18_prm_1"/> and to minimize the opportunity for unauthorized access.</p>
       </part>
@@ -21242,6 +21529,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">PL-1</prop>
+      <prop name="sort-id">pl-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
@@ -21390,6 +21678,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">PL-2</prop>
+      <prop name="sort-id">pl-02</prop>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <part id="pl-2_smt" name="statement">
         <p>The organization:</p>
@@ -21602,6 +21891,7 @@
           <label>organization-defined individuals or groups</label>
         </param>
         <prop name="label">PL-2(3)</prop>
+        <prop name="sort-id">pl-02.03</prop>
         <part id="pl-2.3_smt" name="statement">
           <p>The organization plans and coordinates security-related activities affecting the information system with <insert param-id="pl-2.3_prm_1"/> before conducting such activities in order to reduce the impact on other organizational entities.</p>
         </part>
@@ -21651,6 +21941,7 @@
         <constraint>annually</constraint>
       </param>
       <prop name="label">PL-4</prop>
+      <prop name="sort-id">pl-04</prop>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <part id="pl-4_smt" name="statement">
         <p>The organization:</p>
@@ -21754,6 +22045,7 @@
       <control class="SP800-53-enhancement" id="pl-4.1">
         <title>Social Media and Networking Restrictions</title>
         <prop name="label">PL-4(1)</prop>
+        <prop name="sort-id">pl-04.01</prop>
         <part id="pl-4.1_smt" name="statement">
           <p>The organization includes in the rules of behavior, explicit restrictions on the use of social media/networking sites and posting organizational information on public websites.</p>
         </part>
@@ -21804,6 +22096,7 @@
         <constraint>at least annually or when a significant change occurs</constraint>
       </param>
       <prop name="label">PL-8</prop>
+      <prop name="sort-id">pl-08</prop>
       <part id="pl-8_smt" name="statement">
         <p>The organization:</p>
         <part id="pl-8_smt.a" name="item">
@@ -21941,6 +22234,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">PS-1</prop>
+      <prop name="sort-id">ps-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ps-1_smt" name="statement">
@@ -22085,6 +22379,7 @@
         <constraint>at least annually</constraint>
       </param>
       <prop name="label">PS-2</prop>
+      <prop name="sort-id">ps-02</prop>
       <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
       <part id="ps-2_smt" name="statement">
         <p>The organization:</p>
@@ -22163,6 +22458,7 @@
         <constraint>for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions</constraint>
       </param>
       <prop name="label">PS-3</prop>
+      <prop name="sort-id">ps-03</prop>
       <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -22241,6 +22537,7 @@
           <constraint>personnel screening criteria - as required by specific information</constraint>
         </param>
         <prop name="label">PS-3(3)</prop>
+        <prop name="sort-id">ps-03.03</prop>
         <part id="ps-3.3_smt" name="statement">
           <p>The organization ensures that individuals accessing an information system processing, storing, or transmitting information requiring special protection:</p>
           <part id="ps-3.3_smt.a" name="item">
@@ -22318,6 +22615,7 @@
         <label>organization-defined time period</label>
       </param>
       <prop name="label">PS-4</prop>
+      <prop name="sort-id">ps-04</prop>
       <part id="ps-4_smt" name="statement">
         <p>The organization, upon termination of individual employment:</p>
         <part id="ps-4_smt.a" name="item">
@@ -22441,6 +22739,7 @@
           <constraint>access control personnel responsible for disabling access to the system</constraint>
         </param>
         <prop name="label">PS-4(2)</prop>
+        <prop name="sort-id">ps-04.02</prop>
         <part id="ps-4.2_smt" name="statement">
           <p>The organization employs automated mechanisms to notify <insert param-id="ps-4.2_prm_1"/> upon termination of an individual.</p>
         </part>
@@ -22503,6 +22802,7 @@
         <constraint>twenty-four (24) hours</constraint>
       </param>
       <prop name="label">PS-5</prop>
+      <prop name="sort-id">ps-05</prop>
       <part id="ps-5_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-5_smt.a" name="item">
@@ -22617,6 +22917,7 @@
         <constraint>at least annually and any time there is a change to the user's level of access</constraint>
       </param>
       <prop name="label">PS-6</prop>
+      <prop name="sort-id">ps-06</prop>
       <part id="ps-6_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-6_smt.a" name="item">
@@ -22721,6 +23022,7 @@
         <constraint>terminations: immediately; transfers: within twenty-four (24) hours</constraint>
       </param>
       <prop name="label">PS-7</prop>
+      <prop name="sort-id">ps-07</prop>
       <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
       <part id="ps-7_smt" name="statement">
         <p>The organization:</p>
@@ -22829,6 +23131,7 @@
         <label>organization-defined time period</label>
       </param>
       <prop name="label">PS-8</prop>
+      <prop name="sort-id">ps-08</prop>
       <part id="ps-8_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-8_smt.a" name="item">
@@ -22909,6 +23212,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">RA-1</prop>
+      <prop name="sort-id">ra-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
@@ -23050,6 +23354,7 @@
     <control class="SP800-53" id="ra-2">
       <title>Security Categorization</title>
       <prop name="label">RA-2</prop>
+      <prop name="sort-id">ra-02</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -23143,6 +23448,7 @@
         <constraint>annually</constraint>
       </param>
       <prop name="label">RA-3</prop>
+      <prop name="sort-id">ra-03</prop>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -23312,6 +23618,7 @@
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">RA-5</prop>
+      <prop name="sort-id">ra-05</prop>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <link href="#ref090" rel="reference">NIST Special Publication 800-70</link>
       <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
@@ -23526,6 +23833,7 @@
       <control class="SP800-53-enhancement" id="ra-5.1">
         <title>Update Tool Capability</title>
         <prop name="label">RA-5(1)</prop>
+        <prop name="sort-id">ra-05.01</prop>
         <part id="ra-5.1_smt" name="statement">
           <p>The organization employs vulnerability scanning tools that include the capability to readily update the information system vulnerabilities to be scanned.</p>
         </part>
@@ -23580,6 +23888,7 @@
           <label>organization-defined frequency</label>
         </param>
         <prop name="label">RA-5(2)</prop>
+        <prop name="sort-id">ra-05.02</prop>
         <part id="ra-5.2_smt" name="statement">
           <p>The organization updates the information system vulnerabilities scanned <insert param-id="ra-5.2_prm_1"/>.</p>
         </part>
@@ -23642,6 +23951,7 @@
       <control class="SP800-53-enhancement" id="ra-5.3">
         <title>Breadth / Depth of Coverage</title>
         <prop name="label">RA-5(3)</prop>
+        <prop name="sort-id">ra-05.03</prop>
         <part id="ra-5.3_smt" name="statement">
           <p>The organization employs vulnerability scanning procedures that can identify the breadth and depth of coverage (i.e., information system components scanned and vulnerabilities checked).</p>
         </part>
@@ -23691,6 +24001,7 @@
           <constraint>notify appropriate service provider personnel and follow procedures for organization and service provider-defined corrective actions</constraint>
         </param>
         <prop name="label">RA-5(4)</prop>
+        <prop name="sort-id">ra-05.04</prop>
         <part id="ra-5.4_smt" name="statement">
           <p>The organization determines what information about the information system is discoverable by adversaries and subsequently takes <insert param-id="ra-5.4_prm_1"/>.</p>
         </part>
@@ -23760,6 +24071,7 @@
           <constraint>all scans</constraint>
         </param>
         <prop name="label">RA-5(5)</prop>
+        <prop name="sort-id">ra-05.05</prop>
         <part id="ra-5.5_smt" name="statement">
           <p>The information system implements privileged access authorization to <insert param-id="ra-5.5_prm_1"/> for selected <insert param-id="ra-5.5_prm_2"/>.</p>
         </part>
@@ -23820,6 +24132,7 @@
       <control class="SP800-53-enhancement" id="ra-5.6">
         <title>Automated Trend Analyses</title>
         <prop name="label">RA-5(6)</prop>
+        <prop name="sort-id">ra-05.06</prop>
         <part id="ra-5.6_smt" name="statement">
           <p>The organization employs automated mechanisms to compare the results of vulnerability scans over time to determine trends in information system vulnerabilities.</p>
         </part>
@@ -23869,6 +24182,7 @@
       <control class="SP800-53-enhancement" id="ra-5.8">
         <title>Review Historic Audit Logs</title>
         <prop name="label">RA-5(8)</prop>
+        <prop name="sort-id">ra-05.08</prop>
         <part id="ra-5.8_smt" name="statement">
           <p>The organization reviews historic audit logs to determine if a vulnerability identified in the information system has been previously exploited.</p>
         </part>
@@ -23924,6 +24238,7 @@
       <control class="SP800-53-enhancement" id="ra-5.10">
         <title>Correlate Scanning Information</title>
         <prop name="label">RA-5(10)</prop>
+        <prop name="sort-id">ra-05.10</prop>
         <part id="ra-5.10_smt" name="statement">
           <p>The organization correlates the output from vulnerability scanning tools to determine the presence of multi-vulnerability/multi-hop attack vectors.</p>
         </part>
@@ -23987,6 +24302,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">SA-1</prop>
+      <prop name="sort-id">sa-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="sa-1_smt" name="statement">
@@ -24127,6 +24443,7 @@
     <control class="SP800-53" id="sa-2">
       <title>Allocation of Resources</title>
       <prop name="label">SA-2</prop>
+      <prop name="sort-id">sa-02</prop>
       <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
       <part id="sa-2_smt" name="statement">
         <p>The organization:</p>
@@ -24208,6 +24525,7 @@
         <label>organization-defined system development life cycle</label>
       </param>
       <prop name="label">SA-3</prop>
+      <prop name="sort-id">sa-03</prop>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref088" rel="reference">NIST Special Publication 800-64</link>
       <part id="sa-3_smt" name="statement">
@@ -24292,6 +24610,7 @@
     <control class="SP800-53" id="sa-4">
       <title>Acquisition Process</title>
       <prop name="label">SA-4</prop>
+      <prop name="sort-id">sa-04</prop>
       <link href="#ref018" rel="reference">HSPD-12</link>
       <link href="#ref039" rel="reference">ISO/IEC 15408</link>
       <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
@@ -24425,6 +24744,7 @@
       <control class="SP800-53-enhancement" id="sa-4.1">
         <title>Functional Properties of Security Controls</title>
         <prop name="label">SA-4(1)</prop>
+        <prop name="sort-id">sa-04.01</prop>
         <part id="sa-4.1_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to provide a description of the functional properties of the security controls to be employed.</p>
         </part>
@@ -24485,6 +24805,7 @@
           <label>organization-defined level of detail</label>
         </param>
         <prop name="label">SA-4(2)</prop>
+        <prop name="sort-id">sa-04.02</prop>
         <part id="sa-4.2_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to provide design and implementation information for the security controls to be employed that includes: <insert param-id="sa-4.2_prm_1"/> at <insert param-id="sa-4.2_prm_3"/>.</p>
         </part>
@@ -24568,6 +24889,7 @@
           <constraint>at least the minimum requirement as defined in control CA-7</constraint>
         </param>
         <prop name="label">SA-4(8)</prop>
+        <prop name="sort-id">sa-04.08</prop>
         <part id="sa-4.8_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to produce a plan for the continuous monitoring of security control effectiveness that contains <insert param-id="sa-4.8_prm_1"/>.</p>
         </part>
@@ -24628,6 +24950,7 @@
       <control class="SP800-53-enhancement" id="sa-4.9">
         <title>Functions / Ports / Protocols / Services in Use</title>
         <prop name="label">SA-4(9)</prop>
+        <prop name="sort-id">sa-04.09</prop>
         <part id="sa-4.9_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to identify early in the system development life cycle, the functions, ports, protocols, and services intended for organizational use.</p>
         </part>
@@ -24685,6 +25008,7 @@
       <control class="SP800-53-enhancement" id="sa-4.10">
         <title>Use of Approved PIV Products</title>
         <prop name="label">SA-4(10)</prop>
+        <prop name="sort-id">sa-04.10</prop>
         <part id="sa-4.10_smt" name="statement">
           <p>The organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems.</p>
         </part>
@@ -24734,6 +25058,7 @@
         <constraint>at a minimum, the ISSO (or similar role within the organization)</constraint>
       </param>
       <prop name="label">SA-5</prop>
+      <prop name="sort-id">sa-05</prop>
       <part id="sa-5_smt" name="statement">
         <p>The organization:</p>
         <part id="sa-5_smt.a" name="item">
@@ -24914,6 +25239,7 @@
     <control class="SP800-53" id="sa-8">
       <title>Security Engineering Principles</title>
       <prop name="label">SA-8</prop>
+      <prop name="sort-id">sa-08</prop>
       <link href="#ref062" rel="reference">NIST Special Publication 800-27</link>
       <part id="sa-8_smt" name="statement">
         <p>The organization applies information system security engineering principles in the specification, design, development, implementation, and modification of the information system.</p>
@@ -24989,6 +25315,7 @@
         <constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
       </param>
       <prop name="label">SA-9</prop>
+      <prop name="sort-id">sa-09</prop>
       <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
       <part id="sa-9_smt" name="statement">
         <p>The organization:</p>
@@ -25084,6 +25411,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">SA-9(1)</prop>
+        <prop name="sort-id">sa-09.01</prop>
         <part id="sa-9.1_smt" name="statement">
           <p>The organization:</p>
           <part id="sa-9.1_smt.a" name="item">
@@ -25158,6 +25486,7 @@
           <constraint>all external systems where Federal information is processed or stored</constraint>
         </param>
         <prop name="label">SA-9(2)</prop>
+        <prop name="sort-id">sa-09.02</prop>
         <part id="sa-9.2_smt" name="statement">
           <p>The organization requires providers of <insert param-id="sa-9.2_prm_1"/> to identify the functions, ports, protocols, and other services required for the use of such services.</p>
         </part>
@@ -25225,6 +25554,7 @@
           <constraint>all external systems where Federal information is processed or stored</constraint>
         </param>
         <prop name="label">SA-9(4)</prop>
+        <prop name="sort-id">sa-09.04</prop>
         <part id="sa-9.4_smt" name="statement">
           <p>The organization employs <insert param-id="sa-9.4_prm_1"/> to ensure that the interests of <insert param-id="sa-9.4_prm_2"/> are consistent with and reflect organizational interests.</p>
         </part>
@@ -25294,6 +25624,7 @@
           <label>organization-defined requirements or conditions</label>
         </param>
         <prop name="label">SA-9(5)</prop>
+        <prop name="sort-id">sa-09.05</prop>
         <part id="sa-9.5_smt" name="statement">
           <p>The organization restricts the location of <insert param-id="sa-9.5_prm_1"/> to <insert param-id="sa-9.5_prm_2"/> based on <insert param-id="sa-9.5_prm_3"/>.</p>
         </part>
@@ -25378,6 +25709,7 @@
         <label>organization-defined personnel</label>
       </param>
       <prop name="label">SA-10</prop>
+      <prop name="sort-id">sa-10</prop>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="sa-10_smt" name="statement">
         <p>The organization requires the developer of the information system, system component, or information system service to:</p>
@@ -25538,6 +25870,7 @@
       <control class="SP800-53-enhancement" id="sa-10.1">
         <title>Software / Firmware Integrity Verification</title>
         <prop name="label">SA-10(1)</prop>
+        <prop name="sort-id">sa-10.01</prop>
         <part id="sa-10.1_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to enable integrity verification of software and firmware components.</p>
         </part>
@@ -25598,6 +25931,7 @@
         <label>organization-defined depth and coverage</label>
       </param>
       <prop name="label">SA-11</prop>
+      <prop name="sort-id">sa-11</prop>
       <link href="#ref039" rel="reference">ISO/IEC 15408</link>
       <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
       <link href="#ref028" rel="reference">http://nvd.nist.gov</link>
@@ -25729,6 +26063,7 @@
       <control class="SP800-53-enhancement" id="sa-11.1">
         <title>Static Code Analysis</title>
         <prop name="label">SA-11(1)</prop>
+        <prop name="sort-id">sa-11.01</prop>
         <part id="sa-11.1_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to employ static code analysis tools to identify common flaws and document the results of the analysis.</p>
         </part>
@@ -25783,6 +26118,7 @@
       <control class="SP800-53-enhancement" id="sa-11.2">
         <title>Threat and Vulnerability Analyses</title>
         <prop name="label">SA-11(2)</prop>
+        <prop name="sort-id">sa-11.02</prop>
         <part id="sa-11.2_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to perform threat and vulnerability analyses and subsequent testing/evaluation of the as-built system, component, or service.</p>
         </part>
@@ -25843,6 +26179,7 @@
       <control class="SP800-53-enhancement" id="sa-11.8">
         <title>Dynamic Code Analysis</title>
         <prop name="label">SA-11(8)</prop>
+        <prop name="sort-id">sa-11.08</prop>
         <part id="sa-11.8_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to employ dynamic code analysis tools to identify common flaws and document the results of the analysis.</p>
         </part>
@@ -25901,6 +26238,7 @@
         <constraint>organization and service provider-defined personnel security requirements, approved HW/SW vendor list/process, and secure SDLC procedures</constraint>
       </param>
       <prop name="label">SA-12</prop>
+      <prop name="sort-id">sa-12</prop>
       <link href="#ref058" rel="reference">NIST Special Publication 800-161</link>
       <link href="#ref043" rel="reference">NIST Interagency Report 7622</link>
       <part id="sa-12_smt" name="statement">
@@ -25980,6 +26318,7 @@
         <constraint>organization and service provider- defined security requirements</constraint>
       </param>
       <prop name="label">SA-15</prop>
+      <prop name="sort-id">sa-15</prop>
       <part id="sa-15_smt" name="statement">
         <p>The organization:</p>
         <part id="sa-15_smt.a" name="item">
@@ -26115,6 +26454,7 @@
         <label>organization-defined training</label>
       </param>
       <prop name="label">SA-16</prop>
+      <prop name="sort-id">sa-16</prop>
       <part id="sa-16_smt" name="statement">
         <p>The organization requires the developer of the information system, system component, or information system service to provide <insert param-id="sa-16_prm_1"/> on the correct use and operation of the implemented security functions, controls, and/or mechanisms.</p>
       </part>
@@ -26162,6 +26502,7 @@
     <control class="SP800-53" id="sa-17">
       <title>Developer Security Architecture and Design</title>
       <prop name="label">SA-17</prop>
+      <prop name="sort-id">sa-17</prop>
       <part id="sa-17_smt" name="statement">
         <p>The organization requires the developer of the information system, system component, or information system service to produce a design specification and security architecture that:</p>
         <part id="sa-17_smt.a" name="item">
@@ -26250,6 +26591,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">SC-1</prop>
+      <prop name="sort-id">sc-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="sc-1_smt" name="statement">
@@ -26390,6 +26732,7 @@
     <control class="SP800-53" id="sc-2">
       <title>Application Partitioning</title>
       <prop name="label">SC-2</prop>
+      <prop name="sort-id">sc-02</prop>
       <part id="sc-2_smt" name="statement">
         <p>The information system separates user functionality (including user interface services) from information system management functionality.</p>
       </part>
@@ -26431,6 +26774,7 @@
     <control class="SP800-53" id="sc-3">
       <title>Security Function Isolation</title>
       <prop name="label">SC-3</prop>
+      <prop name="sort-id">sc-03</prop>
       <part id="sc-3_smt" name="statement">
         <p>The information system isolates security functions from nonsecurity functions.</p>
       </part>
@@ -26479,6 +26823,7 @@
     <control class="SP800-53" id="sc-4">
       <title>Information in Shared Resources</title>
       <prop name="label">SC-4</prop>
+      <prop name="sort-id">sc-04</prop>
       <part id="sc-4_smt" name="statement">
         <p>The information system prevents unauthorized and unintended information transfer via shared system resources.</p>
       </part>
@@ -26526,6 +26871,7 @@
         <label>organization-defined security safeguards</label>
       </param>
       <prop name="label">SC-5</prop>
+      <prop name="sort-id">sc-05</prop>
       <part id="sc-5_smt" name="statement">
         <p>The information system protects against or limits the effects of the following types of denial of service attacks: <insert param-id="sc-5_prm_1"/> by employing <insert param-id="sc-5_prm_2"/>.</p>
       </part>
@@ -26597,6 +26943,7 @@
         <label>organization-defined security safeguards</label>
       </param>
       <prop name="label">SC-6</prop>
+      <prop name="sort-id">sc-06</prop>
       <part id="sc-6_smt" name="statement">
         <p>The information system protects the availability of resources by allocating <insert param-id="sc-6_prm_1"/> by <insert param-id="sc-6_prm_2"/>.</p>
       </part>
@@ -26666,6 +27013,7 @@
         </select>
       </param>
       <prop name="label">SC-7</prop>
+      <prop name="sort-id">sc-07</prop>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref072" rel="reference">NIST Special Publication 800-41</link>
       <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
@@ -26766,6 +27114,7 @@
       <control class="SP800-53-enhancement" id="sc-7.3">
         <title>Access Points</title>
         <prop name="label">SC-7(3)</prop>
+        <prop name="sort-id">sc-07.03</prop>
         <part id="sc-7.3_smt" name="statement">
           <p>The organization limits the number of external network connections to the information system.</p>
         </part>
@@ -26812,6 +27161,7 @@
           <constraint>at least every ninety (90) days or whenever there is a change in the threat environment that warrants a review of the exceptions</constraint>
         </param>
         <prop name="label">SC-7(4)</prop>
+        <prop name="sort-id">sc-07.04</prop>
         <part id="sc-7.4_smt" name="statement">
           <p>The organization:</p>
           <part id="sc-7.4_smt.a" name="item">
@@ -26923,6 +27273,7 @@
       <control class="SP800-53-enhancement" id="sc-7.5">
         <title>Deny by Default / Allow by Exception</title>
         <prop name="label">SC-7(5)</prop>
+        <prop name="sort-id">sc-07.05</prop>
         <part id="sc-7.5_smt" name="statement">
           <p>The information system at managed interfaces denies network communications traffic by default and allows network communications traffic by exception (i.e., deny all, permit by exception).</p>
         </part>
@@ -26970,6 +27321,7 @@
       <control class="SP800-53-enhancement" id="sc-7.7">
         <title>Prevent Split Tunneling for Remote Devices</title>
         <prop name="label">SC-7(7)</prop>
+        <prop name="sort-id">sc-07.07</prop>
         <part id="sc-7.7_smt" name="statement">
           <p>The information system, in conjunction with a remote device, prevents the device from simultaneously establishing non-remote connections with the system and communicating via some other connection to resources in external networks.</p>
         </part>
@@ -27018,6 +27370,7 @@
           <label>organization-defined external networks</label>
         </param>
         <prop name="label">SC-7(8)</prop>
+        <prop name="sort-id">sc-07.08</prop>
         <part id="sc-7.8_smt" name="statement">
           <p>The information system routes <insert param-id="sc-7.8_prm_1"/> to <insert param-id="sc-7.8_prm_2"/> through authenticated proxy servers at managed interfaces.</p>
         </part>
@@ -27073,6 +27426,7 @@
       <control class="SP800-53-enhancement" id="sc-7.10">
         <title>Prevent Unauthorized Exfiltration</title>
         <prop name="label">SC-7(10)</prop>
+        <prop name="sort-id">sc-07.10</prop>
         <part id="sc-7.10_smt" name="statement">
           <p>The organization prevents the unauthorized exfiltration of information across managed interfaces.</p>
         </part>
@@ -27120,6 +27474,7 @@
           <label>organization-defined information system components</label>
         </param>
         <prop name="label">SC-7(12)</prop>
+        <prop name="sort-id">sc-07.12</prop>
         <part id="sc-7.12_smt" name="statement">
           <p>The organization implements <insert param-id="sc-7.12_prm_1"/> at <insert param-id="sc-7.12_prm_2"/>.</p>
         </part>
@@ -27175,6 +27530,7 @@
           <label>organization-defined information security tools, mechanisms, and support components</label>
         </param>
         <prop name="label">SC-7(13)</prop>
+        <prop name="sort-id">sc-07.13</prop>
         <part id="sc-7.13_smt" name="statement">
           <p>The organization isolates <insert param-id="sc-7.13_prm_1"/> from other internal information system components by implementing physically separate subnetworks with managed interfaces to other components of the system.</p>
         </part>
@@ -27238,6 +27594,7 @@
       <control class="SP800-53-enhancement" id="sc-7.18">
         <title>Fail Secure</title>
         <prop name="label">SC-7(18)</prop>
+        <prop name="sort-id">sc-07.18</prop>
         <part id="sc-7.18_smt" name="statement">
           <p>The information system fails securely in the event of an operational failure of a boundary protection device.</p>
         </part>
@@ -27283,6 +27640,7 @@
           <label>organization-defined information system components</label>
         </param>
         <prop name="label">SC-7(20)</prop>
+        <prop name="sort-id">sc-07.20</prop>
         <part id="sc-7.20_smt" name="statement">
           <p>The information system provides the capability to dynamically isolate/segregate <insert param-id="sc-7.20_prm_1"/> from other components of the system.</p>
         </part>
@@ -27339,6 +27697,7 @@
           <label>organization-defined missions and/or business functions</label>
         </param>
         <prop name="label">SC-7(21)</prop>
+        <prop name="sort-id">sc-07.21</prop>
         <part id="sc-7.21_smt" name="statement">
           <p>The organization employs boundary protection mechanisms to separate <insert param-id="sc-7.21_prm_1"/> supporting <insert param-id="sc-7.21_prm_2"/>.</p>
         </part>
@@ -27402,6 +27761,7 @@
         </select>
       </param>
       <prop name="label">SC-8</prop>
+      <prop name="sort-id">sc-08</prop>
       <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
       <link href="#ref014" rel="reference">FIPS Publication 197</link>
       <link href="#ref078" rel="reference">NIST Special Publication 800-52</link>
@@ -27468,6 +27828,7 @@
           <constraint>a hardened or alarmed carrier Protective Distribution System (PDS)</constraint>
         </param>
         <prop name="label">SC-8(1)</prop>
+        <prop name="sort-id">sc-08.01</prop>
         <part id="sc-8.1_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to <insert param-id="sc-8.1_prm_1"/> during transmission unless otherwise protected by <insert param-id="sc-8.1_prm_2"/>.</p>
         </part>
@@ -27530,6 +27891,7 @@
         <constraint>no longer than ten (10) minutes for privileged sessions and no longer than fifteen (15) minutes for user sessions</constraint>
       </param>
       <prop name="label">SC-10</prop>
+      <prop name="sort-id">sc-10</prop>
       <part id="sc-10_smt" name="statement">
         <p>The information system terminates the network connection associated with a communications session at the end of the session or after <insert param-id="sc-10_prm_1"/> of inactivity.</p>
       </part>
@@ -27580,6 +27942,7 @@
         <label>organization-defined requirements for key generation, distribution, storage, access, and destruction</label>
       </param>
       <prop name="label">SC-12</prop>
+      <prop name="sort-id">sc-12</prop>
       <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
       <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
       <part id="sc-12_smt" name="statement">
@@ -27657,6 +28020,7 @@
       <control class="SP800-53-enhancement" id="sc-12.1">
         <title>Availability</title>
         <prop name="label">SC-12(1)</prop>
+        <prop name="sort-id">sc-12.01</prop>
         <part id="sc-12.1_smt" name="statement">
           <p>The organization maintains availability of information in the event of the loss of cryptographic keys by users.</p>
         </part>
@@ -27702,6 +28066,7 @@
           </select>
         </param>
         <prop name="label">SC-12(2)</prop>
+        <prop name="sort-id">sc-12.02</prop>
         <part id="sc-12.2_smt" name="statement">
           <p>The organization produces, controls, and distributes symmetric cryptographic keys using <insert param-id="sc-12.2_prm_1"/> key management technology and processes.</p>
         </part>
@@ -27755,6 +28120,7 @@
           </select>
         </param>
         <prop name="label">SC-12(3)</prop>
+        <prop name="sort-id">sc-12.03</prop>
         <part id="sc-12.3_smt" name="statement">
           <p>The organization produces, controls, and distributes asymmetric cryptographic keys using <insert param-id="sc-12.3_prm_1"/>.</p>
         </part>
@@ -27811,6 +28177,7 @@
         <constraint>FIPS-validated or NSA-approved cryptography</constraint>
       </param>
       <prop name="label">SC-13</prop>
+      <prop name="sort-id">sc-13</prop>
       <link href="#ref012" rel="reference">FIPS Publication 140</link>
       <link href="#ref022" rel="reference">http://csrc.nist.gov/cryptval</link>
       <link href="#ref030" rel="reference">http://www.cnss.gov</link>
@@ -27891,6 +28258,7 @@
         <constraint>no exceptions</constraint>
       </param>
       <prop name="label">SC-15</prop>
+      <prop name="sort-id">sc-15</prop>
       <part id="sc-15_smt" name="statement">
         <p>The information system:</p>
         <part id="sc-15_smt.a" name="item">
@@ -27966,6 +28334,7 @@
         <label>organization-defined certificate policy</label>
       </param>
       <prop name="label">SC-17</prop>
+      <prop name="sort-id">sc-17</prop>
       <link href="#ref107" rel="reference">OMB Memorandum 05-24</link>
       <link href="#ref065" rel="reference">NIST Special Publication 800-32</link>
       <link href="#ref087" rel="reference">NIST Special Publication 800-63</link>
@@ -28024,6 +28393,7 @@
     <control class="SP800-53" id="sc-18">
       <title>Mobile Code</title>
       <prop name="label">SC-18</prop>
+      <prop name="sort-id">sc-18</prop>
       <link href="#ref063" rel="reference">NIST Special Publication 800-28</link>
       <link href="#ref007" rel="reference">DoD Instruction 8552.01</link>
       <part id="sc-18_smt" name="statement">
@@ -28116,6 +28486,7 @@
     <control class="SP800-53" id="sc-19">
       <title>Voice Over Internet Protocol</title>
       <prop name="label">SC-19</prop>
+      <prop name="sort-id">sc-19</prop>
       <link href="#ref084" rel="reference">NIST Special Publication 800-58</link>
       <part id="sc-19_smt" name="statement">
         <p>The organization:</p>
@@ -28195,6 +28566,7 @@
     <control class="SP800-53" id="sc-20">
       <title>Secure Name / Address Resolution Service (authoritative Source)</title>
       <prop name="label">SC-20</prop>
+      <prop name="sort-id">sc-20</prop>
       <link href="#ref112" rel="reference">OMB Memorandum 08-23</link>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-20_smt" name="statement">
@@ -28264,6 +28636,7 @@
     <control class="SP800-53" id="sc-21">
       <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
       <prop name="label">SC-21</prop>
+      <prop name="sort-id">sc-21</prop>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-21_smt" name="statement">
         <p>The information system requests and performs data origin authentication and data integrity verification on the name/address resolution responses the system receives from authoritative sources.</p>
@@ -28321,6 +28694,7 @@
     <control class="SP800-53" id="sc-22">
       <title>Architecture and Provisioning for Name / Address Resolution Service</title>
       <prop name="label">SC-22</prop>
+      <prop name="sort-id">sc-22</prop>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-22_smt" name="statement">
         <p>The information systems that collectively provide name/address resolution service for an organization are fault-tolerant and implement internal/external role separation.</p>
@@ -28374,6 +28748,7 @@
     <control class="SP800-53" id="sc-23">
       <title>Session Authenticity</title>
       <prop name="label">SC-23</prop>
+      <prop name="sort-id">sc-23</prop>
       <link href="#ref078" rel="reference">NIST Special Publication 800-52</link>
       <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
       <link href="#ref101" rel="reference">NIST Special Publication 800-95</link>
@@ -28416,6 +28791,7 @@
       <control class="SP800-53-enhancement" id="sc-23.1">
         <title>Invalidate Session Identifiers at Logout</title>
         <prop name="label">SC-23(1)</prop>
+        <prop name="sort-id">sc-23.01</prop>
         <part id="sc-23.1_smt" name="statement">
           <p>The information system invalidates session identifiers upon user logout or other session termination.</p>
         </part>
@@ -28463,6 +28839,7 @@
         <label>organization-defined system state information</label>
       </param>
       <prop name="label">SC-24</prop>
+      <prop name="sort-id">sc-24</prop>
       <part id="sc-24_smt" name="statement">
         <p>The information system fails to a <insert param-id="sc-24_prm_1"/> for <insert param-id="sc-24_prm_2"/> preserving <insert param-id="sc-24_prm_3"/> in failure.</p>
       </part>
@@ -28539,6 +28916,7 @@
         <label>organization-defined information at rest</label>
       </param>
       <prop name="label">SC-28</prop>
+      <prop name="sort-id">sc-28</prop>
       <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
       <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
@@ -28629,6 +29007,7 @@
           <constraint>all information system components storing customer data deemed sensitive</constraint>
         </param>
         <prop name="label">SC-28(1)</prop>
+        <prop name="sort-id">sc-28.01</prop>
         <part id="sc-28.1_smt" name="statement">
           <p>The information system implements cryptographic mechanisms to prevent unauthorized disclosure and modification of <insert param-id="sc-28.1_prm_1"/> on <insert param-id="sc-28.1_prm_2"/>.</p>
         </part>
@@ -28683,6 +29062,7 @@
     <control class="SP800-53" id="sc-39">
       <title>Process Isolation</title>
       <prop name="label">SC-39</prop>
+      <prop name="sort-id">sc-39</prop>
       <part id="sc-39_smt" name="statement">
         <p>The information system maintains a separate execution domain for each executing process.</p>
       </part>
@@ -28740,6 +29120,7 @@
         <constraint>at least annually or whenever a significant change occurs</constraint>
       </param>
       <prop name="label">SI-1</prop>
+      <prop name="sort-id">si-01</prop>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="si-1_smt" name="statement">
@@ -28884,6 +29265,7 @@
         <constraint>thirty (30) days of release of updates</constraint>
       </param>
       <prop name="label">SI-2</prop>
+      <prop name="sort-id">si-02</prop>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="si-2_smt" name="statement">
@@ -29006,6 +29388,7 @@
       <control class="SP800-53-enhancement" id="si-2.1">
         <title>Central Management</title>
         <prop name="label">SI-2(1)</prop>
+        <prop name="sort-id">si-02.01</prop>
         <part id="si-2.1_smt" name="statement">
           <p>The organization centrally manages the flaw remediation process.</p>
         </part>
@@ -29051,6 +29434,7 @@
           <constraint>at least monthly</constraint>
         </param>
         <prop name="label">SI-2(2)</prop>
+        <prop name="sort-id">si-02.02</prop>
         <part id="si-2.2_smt" name="statement">
           <p>The organization employs automated mechanisms <insert param-id="si-2.2_prm_1"/> to determine the state of information system components with regard to flaw remediation.</p>
         </part>
@@ -29103,6 +29487,7 @@
           <label>organization-defined benchmarks</label>
         </param>
         <prop name="label">SI-2(3)</prop>
+        <prop name="sort-id">si-02.03</prop>
         <part id="si-2.3_smt" name="statement">
           <p>The organization:</p>
           <part id="si-2.3_smt.a" name="item">
@@ -29195,6 +29580,7 @@
         <label>organization-defined action</label>
       </param>
       <prop name="label">SI-3</prop>
+      <prop name="sort-id">si-03</prop>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
       <part id="si-3_smt" name="statement">
         <p>The organization:</p>
@@ -29352,6 +29738,7 @@
       <control class="SP800-53-enhancement" id="si-3.1">
         <title>Central Management</title>
         <prop name="label">SI-3(1)</prop>
+        <prop name="sort-id">si-03.01</prop>
         <part id="si-3.1_smt" name="statement">
           <p>The organization centrally manages malicious code protection mechanisms.</p>
         </part>
@@ -29395,6 +29782,7 @@
       <control class="SP800-53-enhancement" id="si-3.2">
         <title>Automatic Updates</title>
         <prop name="label">SI-3(2)</prop>
+        <prop name="sort-id">si-03.02</prop>
         <part id="si-3.2_smt" name="statement">
           <p>The information system automatically updates malicious code protection mechanisms.</p>
         </part>
@@ -29437,6 +29825,7 @@
       <control class="SP800-53-enhancement" id="si-3.7">
         <title>Nonsignature-based Detection</title>
         <prop name="label">SI-3(7)</prop>
+        <prop name="sort-id">si-03.07</prop>
         <part id="si-3.7_smt" name="statement">
           <p>The information system implements nonsignature-based malicious code detection mechanisms.</p>
         </part>
@@ -29503,6 +29892,7 @@
         <label>organization-defined frequency</label>
       </param>
       <prop name="label">SI-4</prop>
+      <prop name="sort-id">si-04</prop>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
       <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
@@ -29731,6 +30121,7 @@
       <control class="SP800-53-enhancement" id="si-4.1">
         <title>System-wide Intrusion Detection System</title>
         <prop name="label">SI-4(1)</prop>
+        <prop name="sort-id">si-04.01</prop>
         <part id="si-4.1_smt" name="statement">
           <p>The organization connects and configures individual intrusion detection tools into an information system-wide intrusion detection system.</p>
         </part>
@@ -29778,6 +30169,7 @@
       <control class="SP800-53-enhancement" id="si-4.2">
         <title>Automated Tools for Real-time Analysis</title>
         <prop name="label">SI-4(2)</prop>
+        <prop name="sort-id">si-04.02</prop>
         <part id="si-4.2_smt" name="statement">
           <p>The organization employs automated tools to support near real-time analysis of events.</p>
         </part>
@@ -29826,6 +30218,7 @@
           <constraint>continuously</constraint>
         </param>
         <prop name="label">SI-4(4)</prop>
+        <prop name="sort-id">si-04.04</prop>
         <part id="si-4.4_smt" name="statement">
           <p>The information system monitors inbound and outbound communications traffic <insert param-id="si-4.4_prm_1"/> for unusual or unauthorized activities or conditions.</p>
         </part>
@@ -29900,6 +30293,7 @@
           <label>organization-defined compromise indicators</label>
         </param>
         <prop name="label">SI-4(5)</prop>
+        <prop name="sort-id">si-04.05</prop>
         <part id="si-4.5_smt" name="statement">
           <p>The information system alerts <insert param-id="si-4.5_prm_1"/> when the following indications of compromise or potential compromise occur: <insert param-id="si-4.5_prm_2"/>.</p>
         </part>
@@ -29968,6 +30362,7 @@
           <label>organization-defined interior points within the system (e.g., subnetworks, subsystems)</label>
         </param>
         <prop name="label">SI-4(11)</prop>
+        <prop name="sort-id">si-04.11</prop>
         <part id="si-4.11_smt" name="statement">
           <p>The organization analyzes outbound communications traffic at the external boundary of the information system and selected <insert param-id="si-4.11_prm_1"/> to discover anomalies.</p>
         </part>
@@ -30029,6 +30424,7 @@
       <control class="SP800-53-enhancement" id="si-4.14">
         <title>Wireless Intrusion Detection</title>
         <prop name="label">SI-4(14)</prop>
+        <prop name="sort-id">si-04.14</prop>
         <part id="si-4.14_smt" name="statement">
           <p>The organization employs a wireless intrusion detection system to identify rogue wireless devices and to detect attack attempts and potential compromises/breaches to the information system.</p>
         </part>
@@ -30086,6 +30482,7 @@
       <control class="SP800-53-enhancement" id="si-4.16">
         <title>Correlate Monitoring Information</title>
         <prop name="label">SI-4(16)</prop>
+        <prop name="sort-id">si-04.16</prop>
         <part id="si-4.16_smt" name="statement">
           <p>The organization correlates information from monitoring tools employed throughout the information system.</p>
         </part>
@@ -30134,6 +30531,7 @@
           <label>organization-defined interior points within the system (e.g., subsystems, subnetworks)</label>
         </param>
         <prop name="label">SI-4(18)</prop>
+        <prop name="sort-id">si-04.18</prop>
         <part id="si-4.18_smt" name="statement">
           <p>The organization analyzes outbound communications traffic at the external boundary of the information system (i.e., system perimeter) and at <insert param-id="si-4.18_prm_1"/> to detect covert exfiltration of information.</p>
         </part>
@@ -30201,6 +30599,7 @@
           <label>organization-defined sources</label>
         </param>
         <prop name="label">SI-4(19)</prop>
+        <prop name="sort-id">si-04.19</prop>
         <part id="si-4.19_smt" name="statement">
           <p>The organization implements <insert param-id="si-4.19_prm_1"/> of individuals who have been identified by <insert param-id="si-4.19_prm_2"/> as posing an increased level of risk.</p>
         </part>
@@ -30258,6 +30657,7 @@
           <label>organization-defined additional monitoring</label>
         </param>
         <prop name="label">SI-4(20)</prop>
+        <prop name="sort-id">si-04.20</prop>
         <part id="si-4.20_smt" name="statement">
           <p>The organization implements <insert param-id="si-4.20_prm_1"/> of privileged users.</p>
         </part>
@@ -30318,6 +30718,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">SI-4(22)</prop>
+        <prop name="sort-id">si-04.22</prop>
         <part id="si-4.22_smt" name="statement">
           <p>The information system detects network services that have not been authorized or approved by <insert param-id="si-4.22_prm_1"/> and <insert param-id="si-4.22_prm_2"/>.</p>
         </part>
@@ -30395,6 +30796,7 @@
           <label>organization-defined information system components</label>
         </param>
         <prop name="label">SI-4(23)</prop>
+        <prop name="sort-id">si-04.23</prop>
         <part id="si-4.23_smt" name="statement">
           <p>The organization implements <insert param-id="si-4.23_prm_1"/> at <insert param-id="si-4.23_prm_2"/>.</p>
         </part>
@@ -30451,6 +30853,7 @@
       <control class="SP800-53-enhancement" id="si-4.24">
         <title>Indicators of Compromise</title>
         <prop name="label">SI-4(24)</prop>
+        <prop name="sort-id">si-04.24</prop>
         <part id="si-4.24_smt" name="statement">
           <p>The information system discovers, collects, distributes, and uses indicators of compromise.</p>
         </part>
@@ -30540,6 +30943,7 @@
         <label>organization-defined external organizations</label>
       </param>
       <prop name="label">SI-5</prop>
+      <prop name="sort-id">si-05</prop>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <part id="si-5_smt" name="statement">
         <p>The organization:</p>
@@ -30654,6 +31058,7 @@
       <control class="SP800-53-enhancement" id="si-5.1">
         <title>Automated Alerts and Advisories</title>
         <prop name="label">SI-5(1)</prop>
+        <prop name="sort-id">si-05.01</prop>
         <part id="si-5.1_smt" name="statement">
           <p>The organization employs automated mechanisms to make security alert and advisory information available throughout the organization.</p>
         </part>
@@ -30737,6 +31142,7 @@
         <constraint>to include notification of system administrators and security personnel</constraint>
       </param>
       <prop name="label">SI-6</prop>
+      <prop name="sort-id">si-06</prop>
       <part id="si-6_smt" name="statement">
         <p>The information system:</p>
         <part id="si-6_smt.a" name="item">
@@ -30873,6 +31279,7 @@
         <label>organization-defined software, firmware, and information</label>
       </param>
       <prop name="label">SI-7</prop>
+      <prop name="sort-id">si-07</prop>
       <link href="#ref055" rel="reference">NIST Special Publication 800-147</link>
       <link href="#ref056" rel="reference">NIST Special Publication 800-155</link>
       <part id="si-7_smt" name="statement">
@@ -30969,6 +31376,7 @@
           <constraint>at least monthly</constraint>
         </param>
         <prop name="label">SI-7(1)</prop>
+        <prop name="sort-id">si-07.01</prop>
         <part id="si-7.1_smt" name="statement">
           <p>The information system performs an integrity check of <insert param-id="si-7.1_prm_1"/> <insert param-id="si-7.1_prm_2"/>.</p>
         </part>
@@ -31076,6 +31484,7 @@
           <label>organization-defined personnel or roles</label>
         </param>
         <prop name="label">SI-7(2)</prop>
+        <prop name="sort-id">si-07.02</prop>
         <part id="si-7.2_smt" name="statement">
           <p>The organization employs automated tools that provide notification to <insert param-id="si-7.2_prm_1"/> upon discovering discrepancies during integrity verification.</p>
         </part>
@@ -31136,6 +31545,7 @@
           <label>organization-defined security safeguards</label>
         </param>
         <prop name="label">SI-7(5)</prop>
+        <prop name="sort-id">si-07.05</prop>
         <part id="si-7.5_smt" name="statement">
           <p>The information system automatically <insert param-id="si-7.5_prm_1"/> when integrity violations are discovered.</p>
         </part>
@@ -31203,6 +31613,7 @@
           <label>organization-defined security-relevant changes to the information system</label>
         </param>
         <prop name="label">SI-7(7)</prop>
+        <prop name="sort-id">si-07.07</prop>
         <part id="si-7.7_smt" name="statement">
           <p>The organization incorporates the detection of unauthorized <insert param-id="si-7.7_prm_1"/> into the organizational incident response capability.</p>
         </part>
@@ -31256,6 +31667,7 @@
       <control class="SP800-53-enhancement" id="si-7.14">
         <title>Binary or Machine Executable Code</title>
         <prop name="label">SI-7(14)</prop>
+        <prop name="sort-id">si-07.14</prop>
         <part id="si-7.14_smt" name="statement">
           <p>The organization:</p>
           <part id="si-7.14_smt.a" name="item">
@@ -31331,6 +31743,7 @@
     <control class="SP800-53" id="si-8">
       <title>Spam Protection</title>
       <prop name="label">SI-8</prop>
+      <prop name="sort-id">si-08</prop>
       <link href="#ref073" rel="reference">NIST Special Publication 800-45</link>
       <part id="si-8_smt" name="statement">
         <p>The organization:</p>
@@ -31411,6 +31824,7 @@
       <control class="SP800-53-enhancement" id="si-8.1">
         <title>Central Management</title>
         <prop name="label">SI-8(1)</prop>
+        <prop name="sort-id">si-08.01</prop>
         <part id="si-8.1_smt" name="statement">
           <p>The organization centrally manages spam protection mechanisms.</p>
         </part>
@@ -31454,6 +31868,7 @@
       <control class="SP800-53-enhancement" id="si-8.2">
         <title>Automatic Updates</title>
         <prop name="label">SI-8(2)</prop>
+        <prop name="sort-id">si-08.02</prop>
         <part id="si-8.2_smt" name="statement">
           <p>The information system automatically updates spam protection mechanisms.</p>
         </part>
@@ -31497,6 +31912,7 @@
         <label>organization-defined information inputs</label>
       </param>
       <prop name="label">SI-10</prop>
+      <prop name="sort-id">si-10</prop>
       <part id="si-10_smt" name="statement">
         <p>The information system checks the validity of <insert param-id="si-10_prm_1"/>.</p>
       </part>
@@ -31551,6 +31967,7 @@
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">SI-11</prop>
+      <prop name="sort-id">si-11</prop>
       <part id="si-11_smt" name="statement">
         <p>The information system:</p>
         <part id="si-11_smt.a" name="item">
@@ -31619,6 +32036,7 @@
     <control class="SP800-53" id="si-12">
       <title>Information Handling and Retention</title>
       <prop name="label">SI-12</prop>
+      <prop name="sort-id">si-12</prop>
       <part id="si-12_smt" name="statement">
         <p>The organization handles and retains information within the information system and information output from the system in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and operational requirements.</p>
       </part>
@@ -31680,6 +32098,7 @@
         <label>organization-defined security safeguards</label>
       </param>
       <prop name="label">SI-16</prop>
+      <prop name="sort-id">si-16</prop>
       <part id="si-16_smt" name="statement">
         <p>The information system implements <insert param-id="si-16_prm_1"/> to protect its memory from unauthorized code execution.</p>
       </part>

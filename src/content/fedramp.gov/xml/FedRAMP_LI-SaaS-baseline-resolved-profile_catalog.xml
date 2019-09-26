@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="4688b4f5-c6f8-4ba4-b837-d9b87d065513">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="8523b2f0-426f-4828-ab1f-a291f0b31477">
   <metadata>
-    <title>FedRAMP Low Baseline</title>
-    <last-modified>2019-09-24T12:22:46.211-04:00</last-modified>
-    <version>1.1</version>
+    <title>DRAFT FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
+    <last-modified>2019-09-19T18:20:00.00-04:00</last-modified>
+    <version>1.0</version>
     <oscal-version>1.0.0-milestone1</oscal-version>
     <role id="author">
       <title>Author</title>
@@ -16,6 +16,9 @@
         <url>https://fedramp.gov</url>
       </org>
     </party>
+    <notes>
+      <p>This is a DRAFT OSCAL profile intended to reflect the FedRAMP Tailored Baseline for Low Impact Software as a Service (LI-SaaS). Currently this reflects FedRAMP's parameters, additional requirements/guidance, and control designations (Fed, NSO, Attest, etc.) Assessment objectives and actions have not been vetted and may not align. This also has not been peer reviewed. Use with caution. FedRAMP is not responsible for inaccuracies resulting from the use of this draft profile.</p>
+    </notes>
   </metadata>
   <group class="family" id="ac">
     <title>Access Control</title>
@@ -26,14 +29,13 @@
       </param>
       <param id="ac-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ac-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AC-1</prop>
       <prop name="sort-id">ac-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ac-1_smt" name="statement">
@@ -184,31 +186,15 @@
       </param>
       <param id="ac-2_prm_4">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AC-2</prop>
       <prop name="sort-id">ac-02</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="ac-2_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-2_smt.a" name="item">
           <prop name="label">a.</prop>
           <p>Identifies and selects the following types of information system accounts to support organizational missions/business functions: <insert param-id="ac-2_prm_1"/>;</p>
-        </part>
-        <part id="ac-2_smt.b" name="item">
-          <prop name="label">b.</prop>
-          <p>Assigns account managers for information system accounts;</p>
-        </part>
-        <part id="ac-2_smt.c" name="item">
-          <prop name="label">c.</prop>
-          <p>Establishes conditions for group and role membership;</p>
-        </part>
-        <part id="ac-2_smt.d" name="item">
-          <prop name="label">d.</prop>
-          <p>Specifies authorized users of the information system, group and role membership, and access authorizations (i.e., privileges) and other attributes (as required) for each account;</p>
-        </part>
-        <part id="ac-2_smt.e" name="item">
-          <prop name="label">e.</prop>
-          <p>Requires approvals by <insert param-id="ac-2_prm_2"/> for requests to create information system accounts;</p>
         </part>
         <part id="ac-2_smt.f" name="item">
           <prop name="label">f.</prop>
@@ -233,30 +219,6 @@
             <prop name="label">3.</prop>
             <p>When individual information system usage or need-to-know changes;</p>
           </part>
-        </part>
-        <part id="ac-2_smt.i" name="item">
-          <prop name="label">i.</prop>
-          <p>Authorizes access to the information system based on:</p>
-          <part id="ac-2_smt.i.1" name="item">
-            <prop name="label">1.</prop>
-            <p>A valid access authorization;</p>
-          </part>
-          <part id="ac-2_smt.i.2" name="item">
-            <prop name="label">2.</prop>
-            <p>Intended system usage; and</p>
-          </part>
-          <part id="ac-2_smt.i.3" name="item">
-            <prop name="label">3.</prop>
-            <p>Other attributes as required by the organization or associated missions/business functions;</p>
-          </part>
-        </part>
-        <part id="ac-2_smt.j" name="item">
-          <prop name="label">j.</prop>
-          <p>Reviews accounts for compliance with account management requirements <insert param-id="ac-2_prm_4"/>; and</p>
-        </part>
-        <part id="ac-2_smt.k" name="item">
-          <prop name="label">k.</prop>
-          <p>Establishes a process for reissuing shared/group account credentials (if deployed) when individuals are removed from the group.</p>
         </part>
       </part>
       <part id="ac-2_gdn" name="guidance">
@@ -472,11 +434,19 @@
           <p>automated mechanisms for implementing account management</p>
         </part>
       </part>
+      <part id="ac-2_fr" name="item" ns="fedramp">
+        <title>AC-2 Additional FedRAMP Requirements and Guidance</title>
+        <part id="ac-2_fr_gdn.1" name="guidance">
+          <prop name="label">Guidance:</prop>
+          <p>Parts (b), (c), (d), (e), (i), (j), and (k) are excluded from FedRAMP Tailored for LI-SaaS.</p>
+        </part>
+      </part>
     </control>
     <control class="SP800-53" id="ac-3">
       <title>Access Enforcement</title>
       <prop name="label">AC-3</prop>
       <prop name="sort-id">ac-03</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="ac-3_smt" name="statement">
         <p>The information system enforces approved authorizations for logical access to information and system resources in accordance with applicable access control policies.</p>
       </part>
@@ -537,11 +507,9 @@
       <title>Unsuccessful Logon Attempts</title>
       <param id="ac-7_prm_1">
         <label>organization-defined number</label>
-        <constraint>not more than three (3)</constraint>
       </param>
       <param id="ac-7_prm_2">
         <label>organization-defined time period</label>
-        <constraint>fifteen (15) minutes</constraint>
       </param>
       <param id="ac-7_prm_3">
         <select>
@@ -552,13 +520,14 @@
       </param>
       <param id="ac-7_prm_4" depends-on="ac-7_prm_3">
         <label>organization-defined time period</label>
-        <constraint>thirty (30) minutes</constraint>
       </param>
       <param id="ac-7_prm_5" depends-on="ac-7_prm_3">
         <label>organization-defined delay algorithm</label>
       </param>
       <prop name="label">AC-7</prop>
       <prop name="sort-id">ac-07</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ac-7_smt" name="statement">
         <p>The information system:</p>
         <part id="ac-7_smt.a" name="item">
@@ -644,19 +613,21 @@
           <p>Automated mechanisms implementing access control policy for unsuccessful logon attempts</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication.</p>
+      </part>
     </control>
     <control class="SP800-53" id="ac-8">
       <title>System Use Notification</title>
       <param id="ac-8_prm_1">
         <label>organization-defined system use notification message or banner</label>
-        <constraint>see additional Requirements and Guidance</constraint>
       </param>
       <param id="ac-8_prm_2">
         <label>organization-defined conditions</label>
-        <constraint>see additional Requirements and Guidance</constraint>
       </param>
       <prop name="label">AC-8</prop>
       <prop name="sort-id">ac-08</prop>
+      <prop name="fed" class="tailored-designation" ns="fedramp"/>
       <part id="ac-8_smt" name="statement">
         <p>The information system:</p>
         <part id="ac-8_smt.a" name="item">
@@ -789,37 +760,9 @@
           <p>Automated mechanisms implementing system use notification</p>
         </part>
       </part>
-      <part id="ac-8_fr" name="item" ns="fedramp">
-        <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ac-8_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
-        </part>
-        <part id="ac-8_fr_smt.2" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
-        </part>
-        <part id="ac-8_fr_smt.3" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>FED - This is related to agency data and agency policy solution.</p>
       </part>
-      <control class="SP800-53" id="ac-8.fr">
-        <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">AC-8 Req</prop>
-        <part id="ac-8.fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
-        </part>
-        <part id="ac-8.fr_smt.2" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
-        </part>
-        <part id="ac-8.fr_smt.3" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ac-14">
       <title>Permitted Actions Without Identification or Authentication</title>
@@ -828,6 +771,7 @@
       </param>
       <prop name="label">AC-14</prop>
       <prop name="sort-id">ac-14</prop>
+      <prop name="fed" class="tailored-designation" ns="fedramp"/>
       <part id="ac-14_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-14_smt.a" name="item">
@@ -881,11 +825,15 @@
           <p>organizational personnel with information security responsibilities</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>FED - This is related to agency data and agency policy solution.</p>
+      </part>
     </control>
     <control class="SP800-53" id="ac-17">
       <title>Remote Access</title>
       <prop name="label">AC-17</prop>
       <prop name="sort-id">ac-17</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
       <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
       <link href="#ref046" rel="reference">NIST Special Publication 800-113</link>
@@ -999,6 +947,7 @@
       <title>Wireless Access</title>
       <prop name="label">AC-18</prop>
       <prop name="sort-id">ac-18</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref076" rel="reference">NIST Special Publication 800-48</link>
       <link href="#ref100" rel="reference">NIST Special Publication 800-94</link>
       <link href="#ref102" rel="reference">NIST Special Publication 800-97</link>
@@ -1078,11 +1027,15 @@
           <p>Wireless access management capability for the information system</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - All access to Cloud SaaS are via web services and/or API.  The device accessed from or whether via wired or wireless connection is out of scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2[1]).</p>
+      </part>
     </control>
     <control class="SP800-53" id="ac-19">
       <title>Access Control for Mobile Devices</title>
       <prop name="label">AC-19</prop>
       <prop name="sort-id">ac-19</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
       <link href="#ref047" rel="reference">NIST Special Publication 800-114</link>
       <link href="#ref052" rel="reference">NIST Special Publication 800-124</link>
@@ -1168,11 +1121,15 @@
           <p>Access control capability authorizing mobile device connections to organizational information systems</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - All access to Cloud SaaS are via web service and/or API.  The device accessed from is out of the scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2 [1]).</p>
+      </part>
     </control>
     <control class="SP800-53" id="ac-20">
       <title>Use of External Information Systems</title>
       <prop name="label">AC-20</prop>
       <prop name="sort-id">ac-20</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <part id="ac-20_smt" name="statement">
         <p>The organization establishes terms and conditions, consistent with any trust relationships established with other organizations owning, operating, and/or maintaining external information systems, allowing authorized individuals to:</p>
@@ -1240,6 +1197,7 @@
       </param>
       <prop name="label">AC-22</prop>
       <prop name="sort-id">ac-22</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="ac-22_smt" name="statement">
         <p>The organization:</p>
         <part id="ac-22_smt.a" name="item">
@@ -1335,14 +1293,13 @@
       </param>
       <param id="at-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="at-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AT-1</prop>
       <prop name="sort-id">at-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -1486,10 +1443,10 @@
       <title>Security Awareness Training</title>
       <param id="at-2_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AT-2</prop>
       <prop name="sort-id">at-02</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -1568,10 +1525,10 @@
       <title>Role-based Security Training</title>
       <param id="at-3_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AT-3</prop>
       <prop name="sort-id">at-03</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -1653,10 +1610,10 @@
       <title>Security Training Records</title>
       <param id="at-4_prm_1">
         <label>organization-defined time period</label>
-        <constraint>At least one year</constraint>
       </param>
       <prop name="label">AT-4</prop>
       <prop name="sort-id">at-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="at-4_smt" name="statement">
         <p>The organization:</p>
         <part id="at-4_smt.a" name="item">
@@ -1748,14 +1705,13 @@
       </param>
       <param id="au-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="au-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">AU-1</prop>
       <prop name="sort-id">au-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="au-1_smt" name="statement">
@@ -1897,14 +1853,13 @@
       <title>Audit Events</title>
       <param id="au-2_prm_1">
         <label>organization-defined auditable events</label>
-        <constraint>Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes</constraint>
       </param>
       <param id="au-2_prm_2">
         <label>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</label>
-        <constraint>organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event</constraint>
       </param>
       <prop name="label">AU-2</prop>
       <prop name="sort-id">au-02</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
       <link href="#ref027" rel="reference">http://idmanagement.gov</link>
       <part id="au-2_smt" name="statement">
@@ -2001,18 +1956,12 @@
           <p>Automated mechanisms implementing information system auditing</p>
         </part>
       </part>
-      <part id="au-2_fr" name="item" ns="fedramp">
-        <title>AU-2 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-2_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="au-3">
       <title>Content of Audit Records</title>
       <prop name="label">AU-3</prop>
       <prop name="sort-id">au-03</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="au-3_smt" name="statement">
         <p>The information system generates audit records containing information that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.</p>
       </part>
@@ -2085,6 +2034,7 @@
       </param>
       <prop name="label">AU-4</prop>
       <prop name="sort-id">au-04</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <part id="au-4_smt" name="statement">
         <p>The organization allocates audit record storage capacity in accordance with <insert param-id="au-4_prm_1"/>.</p>
       </part>
@@ -2136,6 +2086,9 @@
           <p>Audit record storage capacity and related configuration settings</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the audit data has been determined to have little or no impact to government business/mission needs.</p>
+      </part>
     </control>
     <control class="SP800-53" id="au-5">
       <title>Response to Audit Processing Failures</title>
@@ -2148,6 +2101,7 @@
       </param>
       <prop name="label">AU-5</prop>
       <prop name="sort-id">au-05</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="au-5_smt" name="statement">
         <p>The information system:</p>
         <part id="au-5_smt.a" name="item">
@@ -2232,6 +2186,7 @@
       </param>
       <prop name="label">AU-6</prop>
       <prop name="sort-id">au-06</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="au-6_smt" name="statement">
         <p>The organization:</p>
         <part id="au-6_smt.a" name="item">
@@ -2320,13 +2275,6 @@
           <p>organizational personnel with information security responsibilities</p>
         </part>
       </part>
-      <part id="au-6_fr" name="item" ns="fedramp">
-        <title>AU-6 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-6_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="au-8">
       <title>Time Stamps</title>
@@ -2335,6 +2283,7 @@
       </param>
       <prop name="label">AU-8</prop>
       <prop name="sort-id">au-08</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="au-8_smt" name="statement">
         <p>The information system:</p>
         <part id="au-8_smt.a" name="item">
@@ -2403,6 +2352,7 @@
       <title>Protection of Audit Information</title>
       <prop name="label">AU-9</prop>
       <prop name="sort-id">au-09</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="au-9_smt" name="statement">
         <p>The information system protects audit information and audit tools from unauthorized access, modification, and deletion.</p>
       </part>
@@ -2483,10 +2433,10 @@
       <title>Audit Record Retention</title>
       <param id="au-11_prm_1">
         <label>organization-defined time period consistent with records retention policy</label>
-        <constraint>at least ninety days</constraint>
       </param>
       <prop name="label">AU-11</prop>
       <prop name="sort-id">au-11</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <part id="au-11_smt" name="statement">
         <p>The organization retains audit records for <insert param-id="au-11_prm_1"/> to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.</p>
       </part>
@@ -2537,25 +2487,21 @@
           <p>system/network administrators</p>
         </part>
       </part>
-      <part id="au-11_fr" name="item" ns="fedramp">
-        <title>AU-11 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-11_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the audit data has been determined as little or no impact to government business/mission needs.</p>
       </part>
     </control>
     <control class="SP800-53" id="au-12">
       <title>Audit Generation</title>
       <param id="au-12_prm_1">
         <label>organization-defined information system components</label>
-        <constraint>all information system and network components where audit capability is deployed/available</constraint>
       </param>
       <param id="au-12_prm_2">
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">AU-12</prop>
       <prop name="sort-id">au-12</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="au-12_smt" name="statement">
         <p>The information system:</p>
         <part id="au-12_smt.a" name="item">
@@ -2647,14 +2593,13 @@
       </param>
       <param id="ca-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ca-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">CA-1</prop>
       <prop name="sort-id">ca-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
@@ -2806,6 +2751,7 @@
       </param>
       <prop name="label">CA-2</prop>
       <prop name="sort-id">ca-02</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -2948,6 +2894,7 @@
         </param>
         <prop name="label">CA-2(1)</prop>
         <prop name="sort-id">ca-02.01</prop>
+        <prop name="attest" class="tailored-designation" ns="fedramp"/>
         <part id="ca-2.1_smt" name="statement">
           <p>The organization employs assessors or assessment teams with <insert param-id="ca-2.1_prm_1"/> to conduct security control assessments.</p>
         </part>
@@ -2981,13 +2928,6 @@
             <p>organizational personnel with information security responsibilities</p>
           </part>
         </part>
-        <part id="ca-2.1_fr" name="item" ns="fedramp">
-          <title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ca-2.1_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).</p>
-          </part>
-        </part>
       </control>
     </control>
     <control class="SP800-53" id="ca-3">
@@ -2998,6 +2938,7 @@
       </param>
       <prop name="label">CA-3</prop>
       <prop name="sort-id">ca-03</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref075" rel="reference">NIST Special Publication 800-47</link>
       <part id="ca-3_smt" name="statement">
@@ -3084,6 +3025,13 @@
           <p>personnel managing the system(s) to which the Interconnection Security Agreement applies</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
+					1) Identify the interface/connection.
+					2) Detail what data is involved and its sensitivity.
+					3) Determine whether the connection is one-way or bi-directional.
+					4) Identify how the connection is secured.</p>
+      </part>
     </control>
     <control class="SP800-53" id="ca-5">
       <title>Plan of Action and Milestones</title>
@@ -3093,6 +3041,7 @@
       </param>
       <prop name="label">CA-5</prop>
       <prop name="sort-id">ca-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <part id="ca-5_smt" name="statement">
@@ -3177,16 +3126,8 @@
           <p>Automated mechanisms for developing, implementing, and maintaining plan of action and milestones</p>
         </part>
       </part>
-      <part id="ca-5_fr" name="item" ns="fedramp">
-        <title>CA-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-5_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.</p>
-        </part>
-        <part id="ca-5_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Attestation - for compliance with FedRAMP Tailored LI-SaaS Continuous Monitoring Requirements.</p>
       </part>
     </control>
     <control class="SP800-53" id="ca-6">
@@ -3197,6 +3138,7 @@
       </param>
       <prop name="label">CA-6</prop>
       <prop name="sort-id">ca-06</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref104" rel="reference">OMB Circular A-130</link>
       <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -3274,7 +3216,7 @@
         <title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
         <part id="ca-6_fr_gdn.1" name="guidance">
           <prop name="label">Guidance:</prop>
-          <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
+          <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the Authorizing Official.</p>
         </part>
       </part>
     </control>
@@ -3299,6 +3241,7 @@
       </param>
       <prop name="label">CA-7</prop>
       <prop name="sort-id">ca-07</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -3484,10 +3427,6 @@
       </part>
       <part id="ca-7_fr" name="item" ns="fedramp">
         <title>CA-7 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-7_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.</p>
-        </part>
         <part id="ca-7_fr_gdn.1" name="guidance">
           <prop name="label">Guidance:</prop>
           <p>CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
@@ -3497,28 +3436,6 @@
           <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
         </part>
       </part>
-      <control class="SP800-53-enhancement" id="ca-7.fr">
-        <title>Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">CA-7 Req</prop>
-        <part id="ca-7.fr_smt.1" name="item">
-          <prop name="label">Requirement 1</prop>
-          <p>Operating System Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.2" name="item">
-          <prop name="label">Requirement 2</prop>
-          <p>Database and Web Application Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.3" name="item">
-          <prop name="label">Requirement 3</prop>
-          <p>All scans performed by Independent Assessor: at least annually</p>
-        </part>
-        <part id="ca-7.fr_gdn.1" name="guidance">
-          <p>CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates.</p>
-        </part>
-        <part id="ca-7.fr_gdn.2" name="guidance">
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ca-9">
       <title>Internal System Connections</title>
@@ -3527,6 +3444,7 @@
       </param>
       <prop name="label">CA-9</prop>
       <prop name="sort-id">ca-09</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="ca-9_smt" name="statement">
         <p>The organization:</p>
         <part id="ca-9_smt.a" name="item">
@@ -3604,6 +3522,13 @@
           <p>organizational personnel with information security responsibilities</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
+					1) Identify the interface/connection.
+					2) Detail what data is involved and its sensitivity.
+					3) Determine whether the connection is one-way or bi-directional.
+					4) Identify how the connection is secured.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="cm">
@@ -3615,14 +3540,13 @@
       </param>
       <param id="cm-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="cm-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">CM-1</prop>
       <prop name="sort-id">cm-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="cm-1_smt" name="statement">
@@ -3765,6 +3689,7 @@
       <title>Baseline Configuration</title>
       <prop name="label">CM-2</prop>
       <prop name="sort-id">cm-02</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-2_smt" name="statement">
         <p>The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.</p>
@@ -3824,6 +3749,7 @@
       <title>Security Impact Analysis</title>
       <prop name="label">CM-4</prop>
       <prop name="sort-id">cm-04</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-4_smt" name="statement">
         <p>The organization analyzes changes to the information system to determine potential security impacts prior to change implementation.</p>
@@ -3874,7 +3800,7 @@
       <title>Configuration Settings</title>
       <param id="cm-6_prm_1">
         <label>organization-defined security configuration checklists</label>
-        <constraint>United States Government Configuration Baseline (USGCB)</constraint>
+        <constraint>see CM-6(a) Additional FedRAMP Requirements and Guidance</constraint>
       </param>
       <param id="cm-6_prm_2">
         <label>organization-defined information system components</label>
@@ -3884,6 +3810,7 @@
       </param>
       <prop name="label">CM-6</prop>
       <prop name="sort-id">cm-06</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
       <link href="#ref110" rel="reference">OMB Memorandum 07-18</link>
       <link href="#ref111" rel="reference">OMB Memorandum 08-22</link>
@@ -4031,6 +3958,9 @@
           <p>automated mechanisms that identify and/or document deviations from established configuration settings</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Required - Specifically include details of least functionality.</p>
+      </part>
       <part id="cm-6_fr" name="item" ns="fedramp">
         <title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
         <part id="cm-6_fr_smt.1" name="item">
@@ -4051,10 +3981,10 @@
       <title>Least Functionality</title>
       <param id="cm-7_prm_1">
         <label>organization-defined prohibited or restricted functions, ports, protocols, and/or services</label>
-        <constraint>United States Government Configuration Baseline (USGCB)</constraint>
       </param>
       <prop name="label">CM-7</prop>
       <prop name="sort-id">cm-07</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref006" rel="reference">DoD Instruction 8551.01</link>
       <part id="cm-7_smt" name="statement">
         <p>The organization:</p>
@@ -4153,18 +4083,6 @@
           <p>automated mechanisms implementing restrictions or prohibition of functions, ports, protocols, and/or services</p>
         </part>
       </part>
-      <part id="cm-7_fr" name="item" ns="fedramp">
-        <title>CM-7 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cm-7_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
-        </part>
-        <part id="cm-7_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Information on the USGCB checklists can be found at: <a href="http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc">http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</a>
-							Partially derived from AC-17(8).</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="cm-8">
       <title>Information System Component Inventory</title>
@@ -4177,6 +4095,7 @@
       </param>
       <prop name="label">CM-8</prop>
       <prop name="sort-id">cm-08</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="cm-8_smt" name="statement">
         <p>The organization:</p>
@@ -4290,6 +4209,7 @@
       <title>Software Usage Restrictions</title>
       <prop name="label">CM-10</prop>
       <prop name="sort-id">cm-10</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <part id="cm-10_smt" name="statement">
         <p>The organization:</p>
         <part id="cm-10_smt.a" name="item">
@@ -4358,6 +4278,9 @@
           <p>automated mechanisms implementing and controlling the use of peer-to-peer files sharing technology</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO- Not directly related to protection of the data.</p>
+      </part>
     </control>
     <control class="SP800-53" id="cm-11">
       <title>User-installed Software</title>
@@ -4369,10 +4292,10 @@
       </param>
       <param id="cm-11_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>Continuously (via CM-7 (5))</constraint>
       </param>
       <prop name="label">CM-11</prop>
       <prop name="sort-id">cm-11</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <part id="cm-11_smt" name="statement">
         <p>The organization:</p>
         <part id="cm-11_smt.a" name="item">
@@ -4468,6 +4391,9 @@
           <p>automated mechanisms monitoring policy compliance</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Boundary is specific to SaaS environment; all access is via web services; users' machine or internal network are not contemplated.  External services (SA-9), internal connection (CA-9), remote access (AC-17), and secure access (SC-12 and SC-13), and privileged authentication (IA-2[1]) are considerations.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="cp">
@@ -4479,14 +4405,13 @@
       </param>
       <param id="cp-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="cp-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">CP-1</prop>
       <prop name="sort-id">cp-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -4636,13 +4561,13 @@
       </param>
       <param id="cp-2_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <param id="cp-2_prm_4">
         <label>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</label>
       </param>
       <prop name="label">CP-2</prop>
       <prop name="sort-id">cp-02</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-2_smt" name="statement">
@@ -4855,26 +4780,21 @@
           <p>automated mechanisms for developing, reviewing, updating and/or protecting the contingency plan</p>
         </part>
       </part>
-      <part id="cp-2_fr" name="item" ns="fedramp">
-        <title>CP-2 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-2_fr_smt.1" name="item">
-          <prop name="label">CP-2 Requirement:</prop>
-          <p>For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p>
       </part>
     </control>
     <control class="SP800-53" id="cp-3">
       <title>Contingency Training</title>
       <param id="cp-3_prm_1">
         <label>organization-defined time period</label>
-        <constraint>ten (10) days</constraint>
       </param>
       <param id="cp-3_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">CP-3</prop>
       <prop name="sort-id">cp-03</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
@@ -4955,19 +4875,21 @@
           <p>Organizational processes for contingency training</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p>
+      </part>
     </control>
     <control class="SP800-53" id="cp-4">
       <title>Contingency Plan Testing</title>
       <param id="cp-4_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>at least every three years</constraint>
       </param>
       <param id="cp-4_prm_2">
         <label>organization-defined tests</label>
-        <constraint>classroom exercises/table top written tests</constraint>
       </param>
       <prop name="label">CP-4</prop>
       <prop name="sort-id">cp-04</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -5045,12 +4967,8 @@
           <p>automated mechanisms supporting the contingency plan and/or contingency plan testing</p>
         </part>
       </part>
-      <part id="cp-4_fr" name="item" ns="fedramp">
-        <title>CP-4(a) Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-4_fr_smt.a" name="item">
-          <prop name="label">CP-4(a) Requirement:</prop>
-          <p>The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p>
       </part>
     </control>
     <control class="SP800-53" id="cp-9">
@@ -5069,6 +4987,7 @@
       </param>
       <prop name="label">CP-9</prop>
       <prop name="sort-id">cp-09</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-9_smt" name="statement">
         <p>The organization:</p>
@@ -5186,6 +5105,7 @@
       <title>Information System Recovery and Reconstitution</title>
       <prop name="label">CP-10</prop>
       <prop name="sort-id">cp-10</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
       <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
       <part id="cp-10_smt" name="statement">
@@ -5265,6 +5185,9 @@
           <p>automated mechanisms supporting and/or implementing information system recovery and reconstitution operations</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="ia">
@@ -5276,14 +5199,13 @@
       </param>
       <param id="ia-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ia-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">IA-1</prop>
       <prop name="sort-id">ia-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref087" rel="reference">NIST Special Publication 800-63</link>
@@ -5430,6 +5352,8 @@
       <title>Identification and Authentication (organizational Users)</title>
       <prop name="label">IA-2</prop>
       <prop name="sort-id">ia-02</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref018" rel="reference">HSPD-12</link>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
@@ -5487,10 +5411,14 @@
           <p>automated mechanisms supporting and/or implementing identification and authentication capability</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication - specifically include description of management of service accounts.</p>
+      </part>
       <control class="SP800-53-enhancement" id="ia-2.1">
         <title>Network Access to Privileged Accounts</title>
         <prop name="label">IA-2(1)</prop>
         <prop name="sort-id">ia-02.01</prop>
+        <prop name="assess" class="tailored-designation" ns="fedramp"/>
         <part id="ia-2.1_smt" name="statement">
           <p>The information system implements multifactor authentication for network access to privileged accounts.</p>
         </part>
@@ -5533,6 +5461,7 @@
         <title>Acceptance of PIV Credentials</title>
         <prop name="label">IA-2(12)</prop>
         <prop name="sort-id">ia-02.12</prop>
+        <prop name="conditional" class="tailored-designation" ns="fedramp"/>
         <part id="ia-2.12_smt" name="statement">
           <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.</p>
         </part>
@@ -5583,6 +5512,9 @@
             <p>Automated mechanisms supporting and/or implementing acceptance and verification of PIV credentials</p>
           </part>
         </part>
+        <part name="comment" class="tailored-designation" ns="fedramp">
+          <p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p>
+        </part>
         <part id="ia-2.12_fr" name="item" ns="fedramp">
           <title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
           <part id="ia-2.12_fr_gdn.1" name="guidance">
@@ -5599,14 +5531,13 @@
       </param>
       <param id="ia-4_prm_2">
         <label>organization-defined time period</label>
-        <constraint>IA-4 (d) [at least two years]</constraint>
       </param>
       <param id="ia-4_prm_3">
         <label>organization-defined time period of inactivity</label>
-        <constraint>ninety days for user identifiers (See additional requirements and guidance)</constraint>
       </param>
       <prop name="label">IA-4</prop>
       <prop name="sort-id">ia-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
       <link href="#ref092" rel="reference">NIST Special Publication 800-76</link>
@@ -5780,17 +5711,6 @@
           <p>Automated mechanisms supporting and/or implementing identifier management</p>
         </part>
       </part>
-      <part id="ia-4_fr" name="item" ns="fedramp">
-        <title>IA-4(e) Additional FedRAMP Requirements and Guidance</title>
-        <part id="ia-4_fr_smt.e" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider defines the time period of inactivity for device identifiers.</p>
-        </part>
-        <part id="ia-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP <a href="http://iase.disa.mil/cloud_security/Pages/index.aspx">http://iase.disa.mil/cloud_security/Pages/index.aspx</a>.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="ia-5">
       <title>Authenticator Management</title>
@@ -5799,6 +5719,7 @@
       </param>
       <prop name="label">IA-5</prop>
       <prop name="sort-id">ia-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -5998,13 +5919,6 @@
           <p>Automated mechanisms supporting and/or implementing authenticator management capability</p>
         </part>
       </part>
-      <part id="ia-5_fr" name="item" ns="fedramp">
-        <title>IA-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ia-5_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 1. Link <a href="https://pages.nist.gov/800-63-3">https://pages.nist.gov/800-63-3</a>.</p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="ia-5.1">
         <title>Password-based Authentication</title>
         <param id="ia-5.1_prm_1">
@@ -6012,17 +5926,16 @@
         </param>
         <param id="ia-5.1_prm_2">
           <label>organization-defined number</label>
-          <constraint>at least one</constraint>
         </param>
         <param id="ia-5.1_prm_3">
           <label>organization-defined numbers for lifetime minimum, lifetime maximum</label>
         </param>
         <param id="ia-5.1_prm_4">
           <label>organization-defined number</label>
-          <constraint>twenty four</constraint>
         </param>
         <prop name="label">IA-5(1)</prop>
         <prop name="sort-id">ia-05.01</prop>
+        <prop name="attest" class="tailored-designation" ns="fedramp"/>
         <part id="ia-5.1_smt" name="statement">
           <p>The information system, for password-based authentication:</p>
           <part id="ia-5.1_smt.a" name="item">
@@ -6163,13 +6076,6 @@
             <p>Automated mechanisms supporting and/or implementing password-based authenticator management capability</p>
           </part>
         </part>
-        <part id="ia-5.1_fr" name="item" ns="fedramp">
-          <title>IA-5 (1) (a) and (d) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ia-5.1_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance (a) (d):</prop>
-            <p>If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ia-5.11">
         <title>Hardware Token-based Authentication</title>
@@ -6178,6 +6084,8 @@
         </param>
         <prop name="label">IA-5(11)</prop>
         <prop name="sort-id">ia-05.11</prop>
+        <prop name="fed" class="tailored-designation" ns="fedramp"/>
+        <prop name="conditional" class="tailored-designation" ns="fedramp"/>
         <part id="ia-5.11_smt" name="statement">
           <p>The information system, for hardware token-based authentication, employs mechanisms that satisfy <insert param-id="ia-5.11_prm_1"/>.</p>
         </part>
@@ -6224,12 +6132,16 @@
             <p>Automated mechanisms supporting and/or implementing hardware token-based authenticator management capability</p>
           </part>
         </part>
+        <part name="comment" class="tailored-designation" ns="fedramp">
+          <p>FED - for Federal privileged users. Condition - Must document and assess for privileged users. May attest to this control for non-privileged users.</p>
+        </part>
       </control>
     </control>
     <control class="SP800-53" id="ia-6">
       <title>Authenticator Feedback</title>
       <prop name="label">IA-6</prop>
       <prop name="sort-id">ia-06</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <part id="ia-6_smt" name="statement">
         <p>The information system obscures feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.</p>
       </part>
@@ -6270,6 +6182,7 @@
       <title>Cryptographic Module Authentication</title>
       <prop name="label">IA-7</prop>
       <prop name="sort-id">ia-07</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref012" rel="reference">FIPS Publication 140</link>
       <link href="#ref023" rel="reference">http://csrc.nist.gov/groups/STM/cmvp/index.html</link>
       <part id="ia-7_smt" name="statement">
@@ -6314,6 +6227,7 @@
       <title>Identification and Authentication (non-organizational Users)</title>
       <prop name="label">IA-8</prop>
       <prop name="sort-id">ia-08</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
       <link href="#ref113" rel="reference">OMB Memorandum 10-06-2011</link>
@@ -6374,6 +6288,7 @@
         <title>Acceptance of PIV Credentials from Other Agencies</title>
         <prop name="label">IA-8(1)</prop>
         <prop name="sort-id">ia-08.01</prop>
+        <prop name="conditional" class="tailored-designation" ns="fedramp"/>
         <part id="ia-8.1_smt" name="statement">
           <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials from other federal agencies.</p>
         </part>
@@ -6425,11 +6340,15 @@
             <p>automated mechanisms that accept and verify PIV credentials</p>
           </part>
         </part>
+        <part name="comment" class="tailored-designation" ns="fedramp">
+          <p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p>
+        </part>
       </control>
       <control class="SP800-53-enhancement" id="ia-8.2">
         <title>Acceptance of Third-party Credentials</title>
         <prop name="label">IA-8(2)</prop>
         <prop name="sort-id">ia-08.02</prop>
+        <prop name="conditional" class="tailored-designation" ns="fedramp"/>
         <part id="ia-8.2_smt" name="statement">
           <p>The information system accepts only FICAM-approved third-party credentials.</p>
         </part>
@@ -6472,6 +6391,9 @@
             <p>automated mechanisms that accept FICAM-approved credentials</p>
           </part>
         </part>
+        <part name="comment" class="tailored-designation" ns="fedramp">
+          <p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p>
+        </part>
       </control>
       <control class="SP800-53-enhancement" id="ia-8.3">
         <title>Use of Ficam-approved Products</title>
@@ -6480,6 +6402,7 @@
         </param>
         <prop name="label">IA-8(3)</prop>
         <prop name="sort-id">ia-08.03</prop>
+        <prop name="attest" class="tailored-designation" ns="fedramp"/>
         <part id="ia-8.3_smt" name="statement">
           <p>The organization employs only FICAM-approved information system components in <insert param-id="ia-8.3_prm_1"/> to accept third-party credentials.</p>
         </part>
@@ -6537,6 +6460,7 @@
         <title>Use of Ficam-issued Profiles</title>
         <prop name="label">IA-8(4)</prop>
         <prop name="sort-id">ia-08.04</prop>
+        <prop name="attest" class="tailored-designation" ns="fedramp"/>
         <part id="ia-8.4_smt" name="statement">
           <p>The information system conforms to FICAM-issued profiles.</p>
         </part>
@@ -6592,14 +6516,13 @@
       </param>
       <param id="ir-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ir-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">IR-1</prop>
       <prop name="sort-id">ir-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
@@ -6746,10 +6669,10 @@
       </param>
       <param id="ir-2_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">IR-2</prop>
       <prop name="sort-id">ir-02</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
       <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
       <part id="ir-2_smt" name="statement">
@@ -6828,6 +6751,7 @@
       <title>Incident Handling</title>
       <prop name="label">IR-4</prop>
       <prop name="sort-id">ir-04</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref008" rel="reference">Executive Order 13587</link>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-4_smt" name="statement">
@@ -6965,6 +6889,7 @@
       <title>Incident Monitoring</title>
       <prop name="label">IR-5</prop>
       <prop name="sort-id">ir-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-5_smt" name="statement">
         <p>The organization tracks and documents information system security incidents.</p>
@@ -7028,6 +6953,7 @@
       </param>
       <prop name="label">IR-6</prop>
       <prop name="sort-id">ir-06</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref036" rel="reference">http://www.us-cert.gov</link>
       <part id="ir-6_smt" name="statement">
@@ -7111,6 +7037,7 @@
       <title>Incident Response Assistance</title>
       <prop name="label">IR-7</prop>
       <prop name="sort-id">ir-07</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ir-7_smt" name="statement">
         <p>The organization provides an incident response support resource, integral to the organizational incident response capability that offers advice and assistance to users of the information system for the handling and reporting of security incidents.</p>
       </part>
@@ -7166,18 +7093,16 @@
       </param>
       <param id="ir-8_prm_2">
         <label>organization-defined incident response personnel (identified by name and/or by role) and organizational elements</label>
-        <constraint>see additional FedRAMP Requirements and Guidance</constraint>
       </param>
       <param id="ir-8_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <param id="ir-8_prm_4">
         <label>organization-defined incident response personnel (identified by name and/or by role) and organizational elements</label>
-        <constraint>see additional FedRAMP Requirements and Guidance</constraint>
       </param>
       <prop name="label">IR-8</prop>
       <prop name="sort-id">ir-08</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <part id="ir-8_smt" name="statement">
         <p>The organization:</p>
@@ -7396,16 +7321,123 @@
           <p>Organizational incident response plan and related organizational processes</p>
         </part>
       </part>
-      <part id="ir-8_fr" name="item" ns="fedramp">
-        <title>IR-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ir-8_fr_smt.b" name="item">
-          <prop name="label">(b) Requirement:</prop>
-          <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Attestation - Specifically attest to US-CERT compliance.</p>
+      </part>
+    </control>
+    <control class="SP800-53" id="ir-9">
+      <title>Information Spillage Response</title>
+      <param id="ir-9_prm_1">
+        <label>organization-defined personnel or roles</label>
+      </param>
+      <param id="ir-9_prm_2">
+        <label>organization-defined actions</label>
+      </param>
+      <prop name="label">IR-9</prop>
+      <prop name="sort-id">ir-09</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
+      <part id="ir-9_smt" name="statement">
+        <p>The organization responds to information spills by:</p>
+        <part id="ir-9_smt.a" name="item">
+          <prop name="label">a.</prop>
+          <p>Identifying the specific information involved in the information system contamination;</p>
         </part>
-        <part id="ir-8_fr_smt.e" name="item">
-          <prop name="label">(e) Requirement:</prop>
-          <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
+        <part id="ir-9_smt.b" name="item">
+          <prop name="label">b.</prop>
+          <p>Alerting <insert param-id="ir-9_prm_1"/> of the information spill using a method of communication not associated with the spill;</p>
         </part>
+        <part id="ir-9_smt.c" name="item">
+          <prop name="label">c.</prop>
+          <p>Isolating the contaminated information system or system component;</p>
+        </part>
+        <part id="ir-9_smt.d" name="item">
+          <prop name="label">d.</prop>
+          <p>Eradicating the information from the contaminated information system or component;</p>
+        </part>
+        <part id="ir-9_smt.e" name="item">
+          <prop name="label">e.</prop>
+          <p>Identifying other information systems or system components that may have been subsequently contaminated; and</p>
+        </part>
+        <part id="ir-9_smt.f" name="item">
+          <prop name="label">f.</prop>
+          <p>Performing other <insert param-id="ir-9_prm_2"/>.</p>
+        </part>
+      </part>
+      <part id="ir-9_gdn" name="guidance">
+        <p>Information spillage refers to instances where either classified or sensitive information is inadvertently placed on information systems that are not authorized to process such information. Such information spills often occur when information that is initially thought to be of lower sensitivity is transmitted to an information system and then is subsequently determined to be of higher sensitivity. At that point, corrective action is required. The nature of the organizational response is generally based upon the degree of sensitivity of the spilled information (e.g., security category or classification level), the security capabilities of the information system, the specific nature of contaminated storage media, and the access authorizations (e.g., security clearances) of individuals with authorized access to the contaminated system. The methods used to communicate information about the spill after the fact do not involve methods directly associated with the actual spill to minimize the risk of further spreading the contamination before such contamination is isolated and eradicated.</p>
+      </part>
+      <part id="ir-9_obj" name="objective">
+        <p>Determine if the organization: </p>
+        <part id="ir-9.a_obj" name="objective">
+          <prop name="label">IR-9(a)</prop>
+          <p>responds to information spills by identifying the specific information causing the information system contamination;</p>
+        </part>
+        <part id="ir-9.b_obj" name="objective">
+          <prop name="label">IR-9(b)</prop>
+          <part id="ir-9.b_obj.1" name="objective">
+            <prop name="label">IR-9(b)[1]</prop>
+            <p>defines personnel to be alerted of the information spillage;</p>
+          </part>
+          <part id="ir-9.b_obj.2" name="objective">
+            <prop name="label">IR-9(b)[2]</prop>
+            <p>identifies a method of communication not associated with the information spill to use to alert organization-defined personnel of the spill;</p>
+          </part>
+          <part id="ir-9.b_obj.3" name="objective">
+            <prop name="label">IR-9(b)[3]</prop>
+            <p>responds to information spills by alerting organization-defined personnel of the information spill using a method of communication not associated with the spill;</p>
+          </part>
+        </part>
+        <part id="ir-9.c_obj" name="objective">
+          <prop name="label">IR-9(c)</prop>
+          <p>responds to information spills by isolating the contaminated information system;</p>
+        </part>
+        <part id="ir-9.d_obj" name="objective">
+          <prop name="label">IR-9(d)</prop>
+          <p>responds to information spills by eradicating the information from the contaminated information system;</p>
+        </part>
+        <part id="ir-9.e_obj" name="objective">
+          <prop name="label">IR-9(e)</prop>
+          <p>responds to information spills by identifying other information systems that may have been subsequently contaminated;</p>
+        </part>
+        <part id="ir-9.f_obj" name="objective">
+          <prop name="label">IR-9(f)</prop>
+          <part id="ir-9.f_obj.1" name="objective">
+            <prop name="label">IR-9(f)[1]</prop>
+            <p>defines other actions to be performed in response to information spills; and</p>
+          </part>
+          <part id="ir-9.f_obj.2" name="objective">
+            <prop name="label">IR-9(f)[2]</prop>
+            <p>responds to information spills by performing other organization-defined actions.</p>
+          </part>
+        </part>
+      </part>
+      <part name="assessment">
+        <prop name="method">EXAMINE</prop>
+        <part name="objects">
+          <p>Incident response policy</p>
+          <p>procedures addressing information spillage</p>
+          <p>incident response plan</p>
+          <p>records of information spillage alerts/notifications, list of personnel who should receive alerts of information spillage</p>
+          <p>list of actions to be performed regarding information spillage</p>
+          <p>other relevant documents or records</p>
+        </part>
+      </part>
+      <part name="assessment">
+        <prop name="method">INTERVIEW</prop>
+        <part name="objects">
+          <p>Organizational personnel with incident response responsibilities</p>
+          <p>organizational personnel with information security responsibilities</p>
+        </part>
+      </part>
+      <part name="assessment">
+        <prop name="method">TEST</prop>
+        <part name="objects">
+          <p>Organizational processes for information spillage response</p>
+          <p>automated mechanisms supporting and/or implementing information spillage response actions and related communications</p>
+        </part>
+      </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Attestation - Specifically describe information spillage response processes.</p>
       </part>
     </control>
   </group>
@@ -7418,14 +7450,13 @@
       </param>
       <param id="ma-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ma-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">MA-1</prop>
       <prop name="sort-id">ma-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ma-1_smt" name="statement">
@@ -7573,6 +7604,7 @@
       </param>
       <prop name="label">MA-2</prop>
       <prop name="sort-id">ma-02</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="ma-2_smt" name="statement">
         <p>The organization:</p>
         <part id="ma-2_smt.a" name="item">
@@ -7735,11 +7767,15 @@
           <p>automated mechanisms implementing sanitization of information system components</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="ma-4">
       <title>Nonlocal Maintenance</title>
       <prop name="label">MA-4</prop>
       <prop name="sort-id">ma-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
       <link href="#ref014" rel="reference">FIPS Publication 197</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -7869,6 +7905,7 @@
       <title>Maintenance Personnel</title>
       <prop name="label">MA-5</prop>
       <prop name="sort-id">ma-05</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="ma-5_smt" name="statement">
         <p>The organization:</p>
         <part id="ma-5_smt.a" name="item">
@@ -7943,6 +7980,9 @@
           <p>automated mechanisms supporting and/or implementing authorization of maintenance personnel</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="mp">
@@ -7954,14 +7994,13 @@
       </param>
       <param id="mp-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="mp-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">MP-1</prop>
       <prop name="sort-id">mp-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="mp-1_smt" name="statement">
@@ -8109,6 +8148,7 @@
       </param>
       <prop name="label">MP-2</prop>
       <prop name="sort-id">mp-02</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
       <part id="mp-2_smt" name="statement">
@@ -8165,6 +8205,9 @@
           <p>automated mechanisms supporting and/or implementing media access restrictions</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="mp-6">
       <title>Media Sanitization</title>
@@ -8176,6 +8219,7 @@
       </param>
       <prop name="label">MP-6</prop>
       <prop name="sort-id">mp-06</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
       <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
@@ -8272,6 +8316,9 @@
           <p>automated mechanisms supporting and/or implementing media sanitization</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="mp-7">
       <title>Media Use</title>
@@ -8292,6 +8339,7 @@
       </param>
       <prop name="label">MP-7</prop>
       <prop name="sort-id">mp-07</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
       <part id="mp-7_smt" name="statement">
@@ -8366,6 +8414,9 @@
           <p>automated mechanisms restricting or prohibiting use of information system media on information systems or system components</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="pe">
@@ -8377,14 +8428,13 @@
       </param>
       <param id="pe-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="pe-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">PE-1</prop>
       <prop name="sort-id">pe-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="pe-1_smt" name="statement">
@@ -8530,6 +8580,7 @@
       </param>
       <prop name="label">PE-2</prop>
       <prop name="sort-id">pe-02</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-2_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-2_smt.a" name="item">
@@ -8620,6 +8671,9 @@
           <p>automated mechanisms supporting and/or implementing physical access authorizations</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-3">
       <title>Physical Access Control</title>
@@ -8637,7 +8691,6 @@
       </param>
       <param id="pe-3_prm_3" depends-on="pe-3_prm_2">
         <label>organization-defined physical access control systems/devices</label>
-        <constraint>CSP defined physical access control systems/devices</constraint>
       </param>
       <param id="pe-3_prm_4">
         <label>organization-defined entry/exit points</label>
@@ -8662,6 +8715,7 @@
       </param>
       <prop name="label">PE-3</prop>
       <prop name="sort-id">pe-03</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
       <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
       <link href="#ref092" rel="reference">NIST Special Publication 800-76</link>
@@ -8894,6 +8948,9 @@
           <p>physical access control devices</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-6">
       <title>Monitoring Physical Access</title>
@@ -8906,6 +8963,7 @@
       </param>
       <prop name="label">PE-6</prop>
       <prop name="sort-id">pe-06</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-6_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-6_smt.a" name="item">
@@ -8981,6 +9039,9 @@
           <p>automated mechanisms supporting and/or implementing reviewing of physical access logs</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-8">
       <title>Visitor Access Records</title>
@@ -8994,6 +9055,7 @@
       </param>
       <prop name="label">PE-8</prop>
       <prop name="sort-id">pe-08</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-8_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-8_smt.a" name="item">
@@ -9058,11 +9120,15 @@
           <p>automated mechanisms supporting and/or implementing maintenance and review of visitor access records</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-12">
       <title>Emergency Lighting</title>
       <prop name="label">PE-12</prop>
       <prop name="sort-id">pe-12</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-12_smt" name="statement">
         <p>The organization employs and maintains automatic emergency lighting for the information system that activates in the event of a power outage or disruption and that covers emergency exits and evacuation routes within the facility.</p>
       </part>
@@ -9106,11 +9172,15 @@
           <p>Automated mechanisms supporting and/or implementing emergency lighting capability</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-13">
       <title>Fire Protection</title>
       <prop name="label">PE-13</prop>
       <prop name="sort-id">pe-13</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-13_smt" name="statement">
         <p>The organization employs and maintains fire suppression and detection devices/systems for the information system that are supported by an independent energy source.</p>
       </part>
@@ -9152,6 +9222,9 @@
           <p>Automated mechanisms supporting and/or implementing fire suppression/detection devices/systems</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-14">
       <title>Temperature and Humidity Controls</title>
@@ -9165,6 +9238,7 @@
       </param>
       <prop name="label">PE-14</prop>
       <prop name="sort-id">pe-14</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-14_smt" name="statement">
         <p>The organization:</p>
         <part id="pe-14_smt.a" name="item">
@@ -9247,6 +9321,9 @@
           <p>Automated mechanisms supporting and/or implementing maintenance and monitoring of temperature and humidity levels</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
       <part id="pe-14_fr" name="item" ns="fedramp">
         <title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
         <part id="pe-14_fr_smt.a" name="item">
@@ -9259,6 +9336,7 @@
       <title>Water Damage Protection</title>
       <prop name="label">PE-15</prop>
       <prop name="sort-id">pe-15</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-15_smt" name="statement">
         <p>The organization protects the information system from damage resulting from water leakage by providing master shutoff or isolation valves that are accessible, working properly, and known to key personnel.</p>
       </part>
@@ -9307,6 +9385,9 @@
           <p>organizational process for activating master water-shutoff</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
     <control class="SP800-53" id="pe-16">
       <title>Delivery and Removal</title>
@@ -9316,6 +9397,7 @@
       </param>
       <prop name="label">PE-16</prop>
       <prop name="sort-id">pe-16</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="pe-16_smt" name="statement">
         <p>The organization authorizes, monitors, and controls <insert param-id="pe-16_prm_1"/> entering and exiting the facility and maintains records of those items.</p>
       </part>
@@ -9391,6 +9473,9 @@
           <p>automated mechanisms supporting and/or implementing authorizing, monitoring, and controlling information system-related items entering and exiting the facility</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p>
+      </part>
     </control>
   </group>
   <group class="family" id="pl">
@@ -9402,14 +9487,13 @@
       </param>
       <param id="pl-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="pl-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">PL-1</prop>
       <prop name="sort-id">pl-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
@@ -9559,6 +9643,7 @@
       </param>
       <prop name="label">PL-2</prop>
       <prop name="sort-id">pl-02</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <part id="pl-2_smt" name="statement">
         <p>The organization:</p>
@@ -9770,10 +9855,10 @@
       <title>Rules of Behavior</title>
       <param id="pl-4_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>At least every 3 years</constraint>
       </param>
       <prop name="label">PL-4</prop>
       <prop name="sort-id">pl-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
       <part id="pl-4_smt" name="statement">
         <p>The organization:</p>
@@ -9885,14 +9970,13 @@
       </param>
       <param id="ps-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ps-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">PS-1</prop>
       <prop name="sort-id">ps-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="ps-1_smt" name="statement">
@@ -10034,10 +10118,10 @@
       <title>Position Risk Designation</title>
       <param id="ps-2_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>at least every three years</constraint>
       </param>
       <prop name="label">PS-2</prop>
       <prop name="sort-id">ps-02</prop>
+      <prop name="fed" class="tailored-designation" ns="fedramp"/>
       <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
       <part id="ps-2_smt" name="statement">
         <p>The organization:</p>
@@ -10117,6 +10201,7 @@
       </param>
       <prop name="label">PS-3</prop>
       <prop name="sort-id">ps-03</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -10193,7 +10278,6 @@
       <title>Personnel Termination</title>
       <param id="ps-4_prm_1">
         <label>organization-defined time period</label>
-        <constraint>same day</constraint>
       </param>
       <param id="ps-4_prm_2">
         <label>organization-defined information security topics</label>
@@ -10206,6 +10290,7 @@
       </param>
       <prop name="label">PS-4</prop>
       <prop name="sort-id">ps-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ps-4_smt" name="statement">
         <p>The organization, upon termination of individual employment:</p>
         <part id="ps-4_smt.a" name="item">
@@ -10336,10 +10421,10 @@
       </param>
       <param id="ps-5_prm_4">
         <label>organization-defined time period</label>
-        <constraint>five days of the time period following the formal transfer action (DoD 24 hours)</constraint>
       </param>
       <prop name="label">PS-5</prop>
       <prop name="sort-id">ps-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ps-5_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-5_smt.a" name="item">
@@ -10447,14 +10532,13 @@
       <title>Access Agreements</title>
       <param id="ps-6_prm_1">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <param id="ps-6_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">PS-6</prop>
       <prop name="sort-id">ps-06</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ps-6_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-6_smt.a" name="item">
@@ -10556,10 +10640,10 @@
       </param>
       <param id="ps-7_prm_2">
         <label>organization-defined time period</label>
-        <constraint>organization-defined time period - same day</constraint>
       </param>
       <prop name="label">PS-7</prop>
       <prop name="sort-id">ps-07</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
       <part id="ps-7_smt" name="statement">
         <p>The organization:</p>
@@ -10657,6 +10741,9 @@
           <p>automated mechanisms supporting and/or implementing monitoring of provider compliance</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Attestation - Specifically stating that any third-party security personnel are treated as CSP employees.</p>
+      </part>
     </control>
     <control class="SP800-53" id="ps-8">
       <title>Personnel Sanctions</title>
@@ -10668,6 +10755,7 @@
       </param>
       <prop name="label">PS-8</prop>
       <prop name="sort-id">ps-08</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="ps-8_smt" name="statement">
         <p>The organization:</p>
         <part id="ps-8_smt.a" name="item">
@@ -10741,14 +10829,13 @@
       </param>
       <param id="ra-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="ra-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">RA-1</prop>
       <prop name="sort-id">ra-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
@@ -10891,6 +10978,7 @@
       <title>Security Categorization</title>
       <prop name="label">RA-2</prop>
       <prop name="sort-id">ra-02</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -10985,6 +11073,7 @@
       </param>
       <prop name="label">RA-3</prop>
       <prop name="sort-id">ra-03</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
       <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
       <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
@@ -11148,13 +11237,14 @@
       </param>
       <param id="ra-5_prm_2">
         <label>organization-defined response times</label>
-        <constraint>[high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.</constraint>
+        <constraint>[high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.</constraint>
       </param>
       <param id="ra-5_prm_3">
         <label>organization-defined personnel or roles</label>
       </param>
       <prop name="label">RA-5</prop>
       <prop name="sort-id">ra-05</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <link href="#ref090" rel="reference">NIST Special Publication 800-70</link>
       <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
@@ -11377,14 +11467,13 @@
       </param>
       <param id="sa-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="sa-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">SA-1</prop>
       <prop name="sort-id">sa-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="sa-1_smt" name="statement">
@@ -11526,6 +11615,7 @@
       <title>Allocation of Resources</title>
       <prop name="label">SA-2</prop>
       <prop name="sort-id">sa-02</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
       <part id="sa-2_smt" name="statement">
         <p>The organization:</p>
@@ -11608,6 +11698,7 @@
       </param>
       <prop name="label">SA-3</prop>
       <prop name="sort-id">sa-03</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
       <link href="#ref088" rel="reference">NIST Special Publication 800-64</link>
       <part id="sa-3_smt" name="statement">
@@ -11693,6 +11784,7 @@
       <title>Acquisition Process</title>
       <prop name="label">SA-4</prop>
       <prop name="sort-id">sa-04</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref018" rel="reference">HSPD-12</link>
       <link href="#ref039" rel="reference">ISO/IEC 15408</link>
       <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
@@ -11816,13 +11908,49 @@
           <p>automated mechanisms supporting and/or implementing acquisitions and inclusion of security requirements in contracts</p>
         </part>
       </part>
-      <part id="sa-4_fr" name="item" ns="fedramp">
-        <title>SA-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sa-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See <a href="http://www.niap-ccevs.org/vpl">http://www.niap-ccevs.org/vpl</a> or <a href="http://www.commoncriteriaportal.org/products.html">http://www.commoncriteriaportal.org/products.html</a>.</p>
+      <control class="SP800-53-enhancement" id="sa-4.10">
+        <title>Use of Approved PIV Products</title>
+        <prop name="label">SA-4(10)</prop>
+        <prop name="sort-id">sa-04.10</prop>
+        <prop name="attest" class="tailored-designation" ns="fedramp"/>
+        <part id="sa-4.10_smt" name="statement">
+          <p>The organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems.</p>
         </part>
-      </part>
+        <part id="sa-4.10_gdn" name="guidance">
+          <link rel="related" href="#ia-2">IA-2</link>
+          <link rel="related" href="#ia-8">IA-8</link>
+        </part>
+        <part id="sa-4.10_obj" name="objective">
+          <p>Determine if the organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems. </p>
+        </part>
+        <part name="assessment">
+          <prop name="method">EXAMINE</prop>
+          <part name="objects">
+            <p>System and services acquisition policy</p>
+            <p>procedures addressing the integration of information security requirements, descriptions, and criteria into the acquisition process</p>
+            <p>solicitation documentation</p>
+            <p>acquisition documentation</p>
+            <p>acquisition contracts for the information system, system component, or information system service</p>
+            <p>service-level agreements</p>
+            <p>other relevant documents or records</p>
+          </part>
+        </part>
+        <part name="assessment">
+          <prop name="method">INTERVIEW</prop>
+          <part name="objects">
+            <p>Organizational personnel with acquisition/contracting responsibilities</p>
+            <p>organizational personnel with responsibility for determining information system security requirements</p>
+            <p>organizational personnel with responsibility for ensuring only FIPS 201-approved products are implemented</p>
+            <p>organizational personnel with information security responsibilities</p>
+          </part>
+        </part>
+        <part name="assessment">
+          <prop name="method">TEST</prop>
+          <part name="objects">
+            <p>Organizational processes for selecting and employing FIPS 201-approved products</p>
+          </part>
+        </part>
+      </control>
     </control>
     <control class="SP800-53" id="sa-5">
       <title>Information System Documentation</title>
@@ -11834,6 +11962,7 @@
       </param>
       <prop name="label">SA-5</prop>
       <prop name="sort-id">sa-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="sa-5_smt" name="statement">
         <p>The organization:</p>
         <part id="sa-5_smt.a" name="item">
@@ -12023,6 +12152,7 @@
       </param>
       <prop name="label">SA-9</prop>
       <prop name="sort-id">sa-09</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
       <part id="sa-9_smt" name="statement">
         <p>The organization:</p>
@@ -12112,17 +12242,6 @@
           <p>automated mechanisms for monitoring security control compliance by external service providers on an ongoing basis</p>
         </part>
       </part>
-      <part id="sa-9_fr" name="item" ns="fedramp">
-        <title>SA-9 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sa-9_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents">https://www.FedRAMP.gov/documents</a></p>
-        </part>
-        <part id="sa-9_fr_gdn.2" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Independent Assessors should assess the risk associated with the use of external services. See the FedRAMP page under Key Cloud Service Provider (CSP) Documents&gt;FedRAMP Authorization Boundary Guidance</p>
-        </part>
-      </part>
     </control>
   </group>
   <group class="family" id="sc">
@@ -12134,14 +12253,13 @@
       </param>
       <param id="sc-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="sc-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">SC-1</prop>
       <prop name="sort-id">sc-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="sc-1_smt" name="statement">
@@ -12289,6 +12407,7 @@
       </param>
       <prop name="label">SC-5</prop>
       <prop name="sort-id">sc-05</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <part id="sc-5_smt" name="statement">
         <p>The information system protects against or limits the effects of the following types of denial of service attacks: <insert param-id="sc-5_prm_1"/> by employing <insert param-id="sc-5_prm_2"/>.</p>
       </part>
@@ -12341,6 +12460,9 @@
           <p>Automated mechanisms protecting against or limiting the effects of denial of service attacks</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: If availability is a requirement, define protections in place as per control requirement.</p>
+      </part>
     </control>
     <control class="SP800-53" id="sc-7">
       <title>Boundary Protection</title>
@@ -12352,6 +12474,7 @@
       </param>
       <prop name="label">SC-7</prop>
       <prop name="sort-id">sc-07</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref015" rel="reference">FIPS Publication 199</link>
       <link href="#ref072" rel="reference">NIST Special Publication 800-41</link>
       <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
@@ -12457,6 +12580,7 @@
       </param>
       <prop name="label">SC-12</prop>
       <prop name="sort-id">sc-12</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
       <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
       <part id="sc-12_smt" name="statement">
@@ -12528,7 +12652,7 @@
         <title>SC-12 Additional FedRAMP Requirements and Guidance</title>
         <part id="sc-12_fr_gdn.1" name="guidance">
           <prop name="label">Guidance:</prop>
-          <p>Federally approved and validated cryptography.</p>
+          <p>Federally approved cryptography.</p>
         </part>
       </part>
     </control>
@@ -12540,6 +12664,7 @@
       </param>
       <prop name="label">SC-13</prop>
       <prop name="sort-id">sc-13</prop>
+      <prop name="conditional" class="tailored-designation" ns="fedramp"/>
       <link href="#ref012" rel="reference">FIPS Publication 140</link>
       <link href="#ref022" rel="reference">http://csrc.nist.gov/cryptval</link>
       <link href="#ref030" rel="reference">http://www.cnss.gov</link>
@@ -12612,15 +12737,18 @@
           <p>Automated mechanisms supporting and/or implementing cryptographic protection</p>
         </part>
       </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Condition: If implementing need to detail how they meet it or don't meet it.</p>
+      </part>
     </control>
     <control class="SP800-53" id="sc-15">
       <title>Collaborative Computing Devices</title>
       <param id="sc-15_prm_1">
         <label>organization-defined exceptions where remote activation is to be allowed</label>
-        <constraint>no exceptions</constraint>
       </param>
       <prop name="label">SC-15</prop>
       <prop name="sort-id">sc-15</prop>
+      <prop name="nso" class="tailored-designation" ns="fedramp"/>
       <part id="sc-15_smt" name="statement">
         <p>The information system:</p>
         <part id="sc-15_smt.a" name="item">
@@ -12682,26 +12810,15 @@
           <p>automated mechanisms providing an indication of use of collaborative computing devices</p>
         </part>
       </part>
-      <part id="sc-15_fr" name="item" ns="fedramp">
-        <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sc-15_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>NSO - Not directly related to the security of the SaaS.</p>
       </part>
-      <control class="SP800-53-enhancement" id="sc-15.fr">
-        <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">SC-15 Req</prop>
-        <part id="sc-15.fr_smt" name="item">
-          <prop name="label">Requirement</prop>
-          <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="sc-20">
       <title>Secure Name / Address Resolution Service (authoritative Source)</title>
       <prop name="label">SC-20</prop>
       <prop name="sort-id">sc-20</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref112" rel="reference">OMB Memorandum 08-23</link>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-20_smt" name="statement">
@@ -12772,6 +12889,7 @@
       <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
       <prop name="label">SC-21</prop>
       <prop name="sort-id">sc-21</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-21_smt" name="statement">
         <p>The information system requests and performs data origin authentication and data integrity verification on the name/address resolution responses the system receives from authoritative sources.</p>
@@ -12830,6 +12948,7 @@
       <title>Architecture and Provisioning for Name / Address Resolution Service</title>
       <prop name="label">SC-22</prop>
       <prop name="sort-id">sc-22</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
       <part id="sc-22_smt" name="statement">
         <p>The information systems that collectively provide name/address resolution service for an organization are fault-tolerant and implement internal/external role separation.</p>
@@ -12884,6 +13003,7 @@
       <title>Process Isolation</title>
       <prop name="label">SC-39</prop>
       <prop name="sort-id">sc-39</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="sc-39_smt" name="statement">
         <p>The information system maintains a separate execution domain for each executing process.</p>
       </part>
@@ -12934,14 +13054,13 @@
       </param>
       <param id="si-1_prm_2">
         <label>organization-defined frequency</label>
-        <constraint>at least every 3 years</constraint>
       </param>
       <param id="si-1_prm_3">
         <label>organization-defined frequency</label>
-        <constraint>at least annually</constraint>
       </param>
       <prop name="label">SI-1</prop>
       <prop name="sort-id">si-01</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
       <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
       <part id="si-1_smt" name="statement">
@@ -13087,6 +13206,7 @@
       </param>
       <prop name="label">SI-2</prop>
       <prop name="sort-id">si-02</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
       <part id="si-2_smt" name="statement">
@@ -13236,6 +13356,7 @@
       </param>
       <prop name="label">SI-3</prop>
       <prop name="sort-id">si-03</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
       <part id="si-3_smt" name="statement">
         <p>The organization:</p>
@@ -13418,6 +13539,7 @@
       </param>
       <prop name="label">SI-4</prop>
       <prop name="sort-id">si-04</prop>
+      <prop name="assess" class="tailored-designation" ns="fedramp"/>
       <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
       <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
       <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
@@ -13636,22 +13758,13 @@
           <p>automated mechanisms supporting and/or implementing information system monitoring capability</p>
         </part>
       </part>
-      <part id="si-4_fr" name="item" ns="fedramp">
-        <title>SI-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="si-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See US-CERT Incident Response Reporting Guidelines.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="si-5">
       <title>Security Alerts, Advisories, and Directives</title>
       <param id="si-5_prm_1">
         <label>organization-defined external organizations</label>
-        <constraint>to include US-CERT</constraint>
       </param>
       <param id="si-5_prm_2">
-        <constraint>to include system security personnel and administrators with configuration/patch-management responsibilities</constraint>
         <select how-many="one or more">
           <choice>
             <insert param-id="si-5_prm_3"/>
@@ -13675,6 +13788,7 @@
       </param>
       <prop name="label">SI-5</prop>
       <prop name="sort-id">si-05</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
       <part id="si-5_smt" name="statement">
         <p>The organization:</p>
@@ -13791,6 +13905,7 @@
       <title>Information Handling and Retention</title>
       <prop name="label">SI-12</prop>
       <prop name="sort-id">si-12</prop>
+      <prop name="attest" class="tailored-designation" ns="fedramp"/>
       <part id="si-12_smt" name="statement">
         <p>The organization handles and retains information within the information system and information output from the system in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and operational requirements.</p>
       </part>
@@ -13845,59 +13960,8 @@
           <p>automated mechanisms supporting and/or implementing information handling and retention</p>
         </part>
       </part>
-    </control>
-    <control class="SP800-53" id="si-16">
-      <title>Memory Protection</title>
-      <param id="si-16_prm_1">
-        <label>organization-defined security safeguards</label>
-      </param>
-      <prop name="label">SI-16</prop>
-      <prop name="sort-id">si-16</prop>
-      <part id="si-16_smt" name="statement">
-        <p>The information system implements <insert param-id="si-16_prm_1"/> to protect its memory from unauthorized code execution.</p>
-      </part>
-      <part id="si-16_gdn" name="guidance">
-        <p>Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.</p>
-        <link rel="related" href="#ac-25">AC-25</link>
-        <link rel="related" href="#sc-3">SC-3</link>
-      </part>
-      <part id="si-16_obj" name="objective">
-        <p>Determine if:</p>
-        <part id="si-16_obj.1" name="objective">
-          <prop name="label">SI-16[1]</prop>
-          <p>the organization defines security safeguards to be implemented to protect information system memory from unauthorized code execution; and</p>
-        </part>
-        <part id="si-16_obj.2" name="objective">
-          <prop name="label">SI-16[2]</prop>
-          <p>the information system implements organization-defined security safeguards to protect its memory from unauthorized code execution.</p>
-        </part>
-      </part>
-      <part name="assessment">
-        <prop name="method">EXAMINE</prop>
-        <part name="objects">
-          <p>System and information integrity policy</p>
-          <p>procedures addressing memory protection for the information system</p>
-          <p>information system design documentation</p>
-          <p>information system configuration settings and associated documentation</p>
-          <p>list of security safeguards protecting information system memory from unauthorized code execution</p>
-          <p>information system audit records</p>
-          <p>other relevant documents or records</p>
-        </part>
-      </part>
-      <part name="assessment">
-        <prop name="method">INTERVIEW</prop>
-        <part name="objects">
-          <p>Organizational personnel with responsibility for memory protection</p>
-          <p>organizational personnel with information security responsibilities</p>
-          <p>system/network administrators</p>
-          <p>system developer</p>
-        </part>
-      </part>
-      <part name="assessment">
-        <prop name="method">TEST</prop>
-        <part name="objects">
-          <p>Automated mechanisms supporting and/or implementing safeguards to protect information system memory from unauthorized code execution</p>
-        </part>
+      <part name="comment" class="tailored-designation" ns="fedramp">
+        <p>Attestation - Specifically related to US-CERT and FedRAMP communications procedures.</p>
       </part>
     </control>
   </group>
