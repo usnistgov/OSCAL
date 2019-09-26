@@ -122,6 +122,7 @@
    <define-field name="system-id" as-type="string">
       <formal-name>System Identification</formal-name>
       <description>A unqiue identifier for the system described by this system security plan.</description>
+      <json-value-key>id</json-value-key>
       <flag name="identifier-type" as-type="uri">
          <formal-name>Identification System Type</formal-name>
          <description>Defines the namespace or identifcation system from which the provided identifier was assigned from.</description>
@@ -776,15 +777,43 @@
       </model>
 
    </define-assembly>
-   <define-field name="port-range">
+   <define-field name="port-range" as-type="empty">
       <formal-name>Port Range</formal-name>
       <description>TBD</description>
-      <flag ref="start"/>
-      <flag ref="end"/>
-      <flag ref="transport"/>
+      <flag name="start" as-type="nonNegativeInteger">
+         <formal-name>Start</formal-name>
+         <description>Indicates the starting port number in a port range</description>
+         <remarks>
+            <p>Should be a number within a permitted range</p>
+         </remarks>
+      </flag>
+      <flag name="end" as-type="nonNegativeInteger">
+         <formal-name>End</formal-name>
+         <description>Indicates the ending port number in a port range</description>
+         <remarks>
+            <p>Should be a number within a permitted range</p>
+         </remarks>
+      </flag>
+      <flag name="transport" as-type="NCName">
+         <formal-name>Transport</formal-name>
+         <description>Indicates the transport type.</description>
+         <allowed-values>
+            <enum value="TCP">Transmission Control Protocol</enum>
+            <enum value="UDP">User Datagram Protocol</enum>
+         </allowed-values>
+      </flag>
       <remarks>
          <p>To be validated as a natural number (integer &gt;= 1)</p>
       </remarks>
+      <example>
+         <service xmlns="http://csrc.nist.gov/ns/oscal/example"
+            id="svc-01"
+            name="Domain Name Service (DNS) Lookup">
+            <protocol name="dns">
+               <port-range start="53" end="53" transport="tcp"/>
+            </protocol>
+         </service>
+      </example>
    </define-field>
    <define-field name="purpose" as-type="markup-line">
       <formal-name>Purpose</formal-name>
@@ -1232,51 +1261,6 @@
          <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
             <enum>System ISSO</enum>
          </set-param>
-      </example>
-   </define-flag>
-   <define-flag name="start" as-type="nonNegativeInteger">
-      <formal-name>Start</formal-name>
-      <description>Indicates the starting port number in a port range.</description>
-      <remarks>
-         <p>Should be a number within a permitted range</p>
-      </remarks>
-      <example>
-         <service xmlns="http://csrc.nist.gov/ns/oscal/example"
-                  id="svc-01"
-                  name="Domain Name Service (DNS) Lookup">
-            <protocol name="dns">
-               <port-range start="53" end="53" transport="tcp"/>
-            </protocol>
-         </service>
-      </example>
-   </define-flag>
-   <define-flag name="end" as-type="nonNegativeInteger">
-      <formal-name>End</formal-name>
-      <description>Indicates the ending port number in a port range.</description>
-      <remarks>
-         <p>Should be a number within a permitted range</p>
-      </remarks>
-      <example>
-         <service xmlns="http://csrc.nist.gov/ns/oscal/example"
-                  id="svc-01"
-                  name="Domain Name Service (DNS) Lookup">
-            <protocol name="dns">
-               <port-range start="53" end="53" transport="tcp"/>
-            </protocol>
-         </service>
-      </example>
-   </define-flag>
-   <define-flag name="transport" as-type="string">
-      <formal-name>Transport</formal-name>
-      <description>Indicates the transport type.</description>
-      <example>
-         <service xmlns="http://csrc.nist.gov/ns/oscal/example"
-                  id="svc-01"
-                  name="Domain Name Service (DNS) Lookup">
-            <protocol name="dns">
-               <port-range start="53" end="53" transport="tcp"/>
-            </protocol>
-         </service>
       </example>
    </define-flag>
 </METASCHEMA>

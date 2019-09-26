@@ -81,12 +81,14 @@
    <define-field name="usage" as-type="markup-line">
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
+      <json-value-key>summary</json-value-key>
       <flag ref="id"/>
    </define-field>
    
    <define-field name="constraint">
       <formal-name>Constraint</formal-name>
       <description>A formal or informal expression of a constraint or test</description>
+      <json-value-key>detail</json-value-key>
       <flag ref="test"/>
    </define-field>
    
