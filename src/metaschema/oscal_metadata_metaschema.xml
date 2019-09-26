@@ -23,6 +23,7 @@
          <field ref="description"/>
          <field ref="remarks" in-xml="WITH-WRAPPER"/>
          <field ref="party-id"/>
+         <assembly ref="characteristic"/>
       </model>
       <remarks>
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -209,7 +210,28 @@
         (which also supports other constraints over property values).</p>
       </remarks>
    </define-field>
-   <define-flag name="name" as-type="string">
+   <define-assembly name="characteristic">
+      <formal-name>Characteristic</formal-name>
+      <description>A named characteristic with an associated value and optional explanitory remarks.</description>
+      <flag ref="name" required="yes"/>
+      <flag ref="id"/>
+      <flag ref="ns"/>
+      <model>
+         <field ref="value" min-occurs="1"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+      </model>
+      <remarks>
+         <p>Characteristics permit the deployment and management of arbitrary controlled values for any purpose useful to an application or implementation scenario.</p>
+         <p>The value of a characteristic is a
+            simple scalar value or list of values.</p>
+         <p>The lexical composition of characteristics may be constrained by declarations including matching
+            to regular expressions or by declaring a known datatype.</p>
+         <p>Because characteristics are often used as selectors or identifiers for OSCAL operations, their
+            values can be expected frequently to be normalized (e.g., with respect to whitespace) in
+            use; however, this is application defined.</p>
+      </remarks>
+   </define-assembly>
+   <define-flag name="name" as-type="NCName">
       <formal-name>Name</formal-name>
       <description>Identifying the purpose and intended use of the property, part or other object.</description>
       <remarks>
@@ -235,6 +257,10 @@
          <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
       </remarks>
    </define-flag>
+   <define-field name="value">
+      <formal-name>Characteristic Value</formal-name>
+      <description>Indicates the value of the containing characteristic.</description>
+   </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>

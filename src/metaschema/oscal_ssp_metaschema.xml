@@ -66,6 +66,7 @@
          <field ref="description" min-occurs="1">
             <description>A free-text description of the system.</description>
          </field>
+         <field ref="date-authorized"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <flag ref="name">
@@ -77,6 +78,15 @@
 -->               </allowed-values>
             </flag>
          </field>
+         <assembly ref="characteristic" max-occurs="unbounded">
+            <group-as name="characteristics"/>
+            <flag ref="name">
+               <allowed-values>
+                  <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
+                  <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
+               </allowed-values>
+            </flag>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
             <!-- TODO: Model specific link relationships -->
@@ -97,12 +107,7 @@
                </allowed-values>
             </flag>
          </field>
-         <assembly ref="deployment-model"/>
-         <assembly ref="service-model" max-occurs="unbounded">
-            <group-as name="service-models"/>
-         </assembly>
          <assembly ref="leveraged-authorization" max-occurs="unbounded">
-            <description>All leveraged authorizations for this system.</description>
             <group-as name="leveraged-authorizations"/>
          </assembly>
          <assembly ref="authorization-boundary" min-occurs="1"/>
@@ -310,69 +315,32 @@
          <p>If 'other' is selected, a remark must be included to describe the current state.</p>
       </remarks>
    </define-field>
-   <define-assembly name="deployment-model">
-      <formal-name>Deployment Model</formal-name>
-      <description>TBD</description>
-      <flag name="type" required="yes">
-         <formal-name></formal-name>
-         <description>TBD</description>
-         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
-         <allowed-values>
-            <enum value="public"></enum>
-            <enum value="private"></enum>
-            <enum value="community"></enum>
-            <enum value="government-only"></enum>
-            <enum value="hybrid"></enum>
-            <enum value="other">Some other deployment model.</enum>
-         </allowed-values>
-      </flag>
-      <model>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
-      </model>
-      <remarks>
-         <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
-      </remarks>
-   </define-assembly>
-   <define-assembly name="service-model">
-      <formal-name>Service Model</formal-name>
-      <description>TBD</description>
-      <flag name="type" required="yes">
-         <formal-name></formal-name>
-         <description>TBD</description>
-         <!-- TODO: valid values? 'other' might be a valid value, or should any other value be allowed -->
-      </flag>
-      <model>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
-      </model>
-      <remarks>
-         <p>If 'other' is selected, a remark must be included to describe the type of deployment.</p>
-      </remarks>
-   </define-assembly>
 
    <define-assembly name="leveraged-authorization">
       <formal-name>Leveraged Authorization</formal-name>
-      <description>The details for a single leveraged authorization</description>
+      <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</description>
       <flag ref="id"/>
+      <flag ref="name" required="yes"/>
       <model>
-         <!-- TODO: Should this be able to reference another SSP? Is this the same as a common control? -->
-         <field ref="leveraged-authorization-name" min-occurs="1"/>
-         <field ref="leveraged-authorization-service-provider" min-occurs="1"/>
-         <field ref="leveraged-authorization-date-granted" min-occurs="1"/>
+         <field ref="party-id" min-occurs="1">
+            <description>A reference to the party that manages the leveraged system.</description>
+         </field>
+         <field ref="date-authorized" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <!-- TODO: Model specific prop relationships -->
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <!-- TODO: Model specific link relationships -->
+            <!-- TODO: Should this be able to reference another SSP? Which rel? -->
+         </field>
       </model>
       <example/>
    </define-assembly>
-   <define-field name="leveraged-authorization-name" as-type="string">
-      <formal-name>Leveraged system Name</formal-name>
-      <description>Name of the leveraged system.</description>
-   </define-field>
-   <define-field name="leveraged-authorization-service-provider" as-type="string">
-      <formal-name>Leveraged System Service Provider Name</formal-name>
-      <description>Name of the service provider that manages the leveraged system.</description>
-      <!-- TODO: Should this map to a party by id? -->
-   </define-field>
-   <define-field name="leveraged-authorization-date-granted" as-type="date-with-timezone">
-      <formal-name>Leveraged System Authorization Date</formal-name>
-      <description>The date the leveraged system received its authorization.</description>
+   <define-field name="date-authorized" as-type="date">
+      <formal-name>System Authorization Date</formal-name>
+      <description>The date the containing system received its authorization.</description>
    </define-field>
 
    <define-assembly name="authorization-boundary">
@@ -398,8 +366,8 @@
       </flag>
       <flag ref="href" required="yes"/>
       <model>
-         <field ref="description">
-            <description>A description of the diagram (e.g., alternate text). this can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
+         <field ref="description" in-xml="WITH-WRAPPER">
+            <description>A description of the diagram (e.g., alternate text). This can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
          </field>
       </model>
       <remarks>
@@ -407,7 +375,7 @@
       </remarks>
       <example>
          <o:diagram href="#attachmentA" id="boundary-diagram-1">
-            <o:description>A boudnary diagram - bad example text.</o:description>
+            <o:description>A boundary diagram - bad example text.</o:description>
          </o:diagram>
       </example>
    </define-assembly>
@@ -415,7 +383,7 @@
       <formal-name>Network Architecture Diagrams</formal-name>
       <description>TBD</description>
       <model>
-         <field ref="description" min-occurs="1"/>
+         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
@@ -428,7 +396,7 @@
       <formal-name>Data Flow</formal-name>
       <description>TBD</description>
       <model>
-         <field ref="description" min-occurs="1"/>
+         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
@@ -560,9 +528,9 @@
          <formal-name>Component Name</formal-name>
          <description>The component's human-readable name.</description>
       </flag>
-      <flag ref="component-type"/>
+      <flag ref="component-type" required="yes"/>
       <model>
-         <field ref="description" min-occurs="1"/>
+         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
          <field ref="status" min-occurs="1" in-xml="WITH-WRAPPER">
             <flag ref="state">
                <allowed-values>
@@ -579,7 +547,7 @@
                <allowed-values allow-other="yes">
                   <enum value="version">The version of the component.</enum>
                   <enum value="model">The model of the component.</enum>
-                  <enum value="release-date">The date the component was released.</enum>
+                  <enum value="date-released">The date the component was released.</enum>
                </allowed-values>
             </flag>
          </field>
@@ -589,7 +557,7 @@
                <allowed-values allow-other="yes">
                   <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
                   <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
-                  <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</enum>
+                  <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
                </allowed-values>
             </flag>
          </field>
@@ -599,6 +567,7 @@
                <p>Multiple suppliers can be used to show the original provider, plus any intermediaries (e.g., resellers).</p>
             </remarks>
          </assembly>
+         <!-- TODO: Need a way to always provide a role, but optionally provide a party. The party may be associated in the inventory item. -->
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
@@ -617,6 +586,9 @@
    </define-assembly>
 
    <define-assembly name="service">
+      <!-- TODO: This is an instantitation of a service component -->
+      <!-- TODO: Consider adding link relationships for used-by and provided-by -->
+      <!-- TODO: Add field for use -->
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the
 			system.</description>
@@ -624,6 +596,7 @@
       <flag ref="name"/>
       <model>
          <assembly ref="protocol" max-occurs="unbounded">
+            <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
             <group-as name="ssp-protocol"/>
          </assembly>
          <field ref="purpose"/>
@@ -658,15 +631,9 @@
       <formal-name>Purpose</formal-name>
       <description>Describes the purpose for the service within the system.</description>
    </define-field>
-   <define-assembly name="used-by-component">
-      <formal-name>Used By</formal-name>
-      <description>Identifies a type of uses for the service. A component can be optionally identified.</description>
-      <flag ref="component-id"/>
-      <model>
-         <field ref="description" min-occurs="1"/>
-      </model>
-   </define-assembly>
+
    <define-assembly name="interconnection">
+      <!-- TODO: NEED A PHONE CALL WITH BRIAN TO WORK OUT PROPERTIES -->
       <!-- TODO: provide a mechanism to reference another OSCAL SSP or other documentation. -->
       <!-- TODO: provide a mechanism to reference the ISA. -->
       <formal-name>Interconnection</formal-name>
@@ -732,6 +699,7 @@
       <example/>
    </define-assembly>
    <define-assembly name="inventory-item">
+      <!-- TODO: NEED A PHONE CALL WITH BRIAN TO WORK OUT PROPERTIES -->
       <formal-name>Inventory Item</formal-name>
       <description>TBD</description>
       <flag ref="id" required="yes"/>
@@ -986,7 +954,7 @@
       <formal-name>Control-based Requirement</formal-name>
       <description>TBD</description>
       <flag ref="id"/>
-      <flag ref="control-id"/>
+      <flag ref="control-id" required="yes"/>
       <model>
          <field ref="description"/>
          <field ref="role-id" max-occurs="unbounded">

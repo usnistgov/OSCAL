@@ -294,6 +294,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:group-as"/>
+        <xs:element minOccurs="0" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="ref" use="required" type="xs:NCName"/>
