@@ -21,7 +21,7 @@
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
          <field ref="description"/>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
          <field ref="party-id"/>
          <assembly ref="annotation"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
@@ -138,17 +138,18 @@
          </o:oscal>
       </example>
    </define-field>
-   <define-field name="publication-date" as-type="dateTime-with-timezone">
-      <formal-name>Publication Date</formal-name>
-      <description>The date this document was published.</description>
+   <define-field name="published" as-type="dateTime-with-timezone">
+      <formal-name>Publication Timestamp</formal-name>
+      <description>The date and time this document was published.</description>
       <remarks>
-         <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
-         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+         <p>This value represents the point in time when the OSCAL document was published. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
+         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material. (The nominal publication date of the original source material can be captured as a named property or custom metadata construct.)</p>
+         <p>A publisher of OSCAL content can use this data point along with its sibling <code>last-modified</code> to establish commonality across OSCAL instances that are intended to be considered as successive <q>current versions</q> of a given publication.</p>
       </remarks>
    </define-field>
-   <define-field name="last-modified-date" as-type="dateTime-with-timezone">
-      <formal-name>Last modified date</formal-name>
-      <description>Date of last modification.</description>
+   <define-field name="last-modified" as-type="dateTime-with-timezone">
+      <formal-name>Last modified timestamp</formal-name>
+      <description>Date and time of last modification.</description>
       <remarks>
          <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
          <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
@@ -172,7 +173,7 @@
    <define-field name="doc-id">
       <formal-name>Document Identifier</formal-name>
       <description>A document identifier qualified by an identifier <code>type</code>.</description>
-      <json-value-key>id</json-value-key>
+      <json-value-key>identifier</json-value-key>
       <flag ref="type" required="yes">
          <description>Qualifies the kind of document identifier.</description>
          <allowed-values allow-other="yes">
@@ -199,6 +200,7 @@
          <allowed-values allow-other="yes">
             <enum value="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</enum>
             <enum value="label">A human-readable label for the parent context.</enum>
+            <enum value="sort-id">An alternative identifier, whose value is easily sortable among other such values in the document.</enum>
             <!-- TODO: move this to a more specific context -->
             <enum value="method">An assessment method.</enum>
             <!-- TODO: move this to a more specific context -->
@@ -233,12 +235,12 @@
       <flag ref="name" required="yes"/>
       <flag ref="id"/>
       <flag ref="ns"/>
-      <flag name="value">
+      <flag name="value" as-type="string">
          <formal-name>Value</formal-name>
          <description>Indicates the value of the characteristic.</description>
       </flag>
       <model>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>Characteristics permit the deployment and management of arbitrary controlled values for any purpose useful to an application or implementation scenario.</p>
@@ -600,10 +602,10 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   
+
    <define-flag name="href" as-type="uri-reference">
       <formal-name>hypertext reference</formal-name>
       <description>A link to a document or document fragment (actual, nominal or projected)</description>
@@ -640,7 +642,7 @@
          <p>A title for the containing object as it should appear in a formatted document.</p>
       </remarks>
    </define-field>
-   <define-field name="base64" as-type="base64">
+   <define-field name="base64" as-type="base64Binary">
       <formal-name>Base64</formal-name>
       <description/>
       <json-value-key>value</json-value-key>
@@ -685,15 +687,15 @@
       of <code>title</code> inside this object.</p>
       </remarks>
    </define-field>
-   
+
    <define-field name="description" as-type="markup-multiline">
       <formal-name>Description</formal-name>
       <description>A description supporting the parent item.</description>
    </define-field>
-   
+
    <define-field name="remarks" as-type="markup-multiline">
       <formal-name>Remarks</formal-name>
       <description>Additional commentary on the parent item.</description>
    </define-field>
-   
+
 </METASCHEMA>
