@@ -505,6 +505,7 @@
       <xs:enumeration value="positiveInteger"/>
       <xs:enumeration value="dateTime"/>
       <xs:enumeration value="date"/>
+      <xs:enumeration value="base64Binary"/>
       
       <!-- specialized datatypes -->
       <xs:enumeration value="dateTime-with-timezone"/>
@@ -516,7 +517,6 @@
       <xs:enumeration value="ip-v6-address"/>
       <xs:enumeration value="uri"/>
       <xs:enumeration value="uri-reference"/>
-      <xs:enumeration value="base64"/>
     </xs:restriction>   
   </xs:simpleType>
   

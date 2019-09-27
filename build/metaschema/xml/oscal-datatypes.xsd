@@ -13,6 +13,7 @@
   we support should be listed here for propagation in tools e.g. Metaschema Schematron.</xs:documentation>
   <xs:appinfo>
     <xs:simpleType name="boolean"/>
+    <xs:simpleType name="base64Binary"/>
     <xs:simpleType name="string"/>
     <xs:simpleType name="NCName"/>
     <xs:simpleType name="NMTOKENS"/>
