@@ -410,8 +410,8 @@
       <formal-name>System Implementation</formal-name>
       <description>Provides information as to how the system is implemented.</description>
       <model>
-         <assembly ref="system-role" min-occurs="1" max-occurs="unbounded">
-            <group-as name="system-roles" in-json="BY_KEY"/>
+         <assembly ref="user" min-occurs="1" max-occurs="unbounded">
+            <group-as name="users" in-json="BY_KEY"/>
          </assembly>
 
          <assembly ref="component" max-occurs="unbounded">
@@ -433,7 +433,7 @@
       <example/>
    </define-assembly>
 
-   <define-assembly name="system-role">
+   <define-assembly name="user">
       <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
       <formal-name>System Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
