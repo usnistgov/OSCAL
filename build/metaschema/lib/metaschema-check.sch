@@ -178,10 +178,10 @@
         <sch:rule context="m:flag[exists(@ref)]">
             <!--<sch:assert test="empty(@name)">Flag with 'ref' may not also have 'name'.</sch:assert>-->
             <!-- TODO: make the following work for overriding allowed-values -->
-            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name or parent::m:field/@ref">Flag invocation '<xsl:value-of select="@ref"/>' does not point to a flag definition. 
+            <sch:assert test="@ref = $composed-metaschema/m:METASCHEMA/m:define-flag/@name or parent::m:field/@ref or parent::m:assembly/@ref">Flag invocation '<xsl:value-of select="@ref"/>' does not point to a flag definition. 
                 <xsl:value-of select="m:sort($composed-metaschema/m:METASCHEMA/m:define-flag/@name)" separator=", "/></sch:assert>
             <!-- TODO: make the following work for overriding allowed-values -->
-            <sch:assert test="@ref != $composed-metaschema/m:METASCHEMA/m:define-field/@name or parent::m:field/@ref">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:assert>
+            <sch:assert test="@ref != $composed-metaschema/m:METASCHEMA/m:define-field/@name or parent::m:field/@ref or parent::m:assembly/@ref">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:assert>
             <sch:report test="@ref = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
         <!-- The following rule is preempted by the last one and should fire only for flag[exists(@name)]

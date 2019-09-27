@@ -8,11 +8,16 @@
       "version": "1.0",
       "oscal-version": "1.0.0-milestone2",
       "roles": [
-        {"id": "asset-administrator"},
-        {"id": "asset-owner"},
-        {"id": "maintainer"},
-        {"id": "legal-officer"},
-        {"id": "vendor"}
+        {"id": "asset-administrator",
+        "title": "Asset Administrator"},
+        {"id": "asset-owner",
+        "title": "Asset Owner"},
+        {"id": "maintainer",
+        "title": "Maintainer"},
+        {"id": "legal-officer",
+        "title": "Legal Officer"},
+        {"id": "vendor",
+        "title": "Vendor"}
       ],
       "parties": [
         {"id": "enterprise-asset-owners"},
@@ -22,15 +27,13 @@
     },
     "import-profile": {"href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_MODERATE-baseline_profile.json"},
     "system-characteristics": {
-      "description": "",
-      "system-id": {
-        "STRVALUE": "example-logging-audit-system",
-        "type": ""
-      },
       "system-name": "Enterprise Logging and Auditing System",
-      "security-sensitivity-level": "",
+      "description": "",
+      "system-ids": {
+        "STRVALUE": "example-logging-audit-system"
+      },
+      "security-sensitivity-level": "moderate",
       "system-information": {
-      
         "information-types": {
           "name": "System and Network Monitoring",
           "nist-id": "C.3.5.8",
@@ -49,26 +52,34 @@
         "state": "other",
         "remarks": "This is an example, and is not intended to be implemented as a system"
       },
-      "deployment-model": {"type": "private"},
-      "service-models": {"type": "TBD"},
+      "characteristics": [
+        {
+          "name": "deployment-model",
+          "value": "private"
+        },
+        {
+          "name": "service-models",
+          "value": "iaas"
+        }
+      ],
       "authorization-boundary": {"description": ""}
     },
     "system-implementation": {
-      "system-roles": {
-        "system-role-asset-administrator": {
+      "users": {
+        "user-asset-administrator": {
           "name": "System Administrator",
           "role-id": "system-administrator",
           "access": "",
           "sensitivity-level": ""
         },
-        "system-role-service-owner": {
+        "user-service-owner": {
           "name": "Legal Department",
           "role-id": "legal-officer",
           "access": "",
           "sensitivity-level": ""
           
         },
-        "system-role-legal": {
+        "user-legal": {
           "name": "Legal Department",
           "role-id": "legal-officer",
           "access": "",
@@ -80,11 +91,11 @@
         "inventory-items": {
           "id": "inventory-logging-server",
           "responsible-parties": {
-            "system-role-asset-administrator": {
-              "party-ids": "enterprise-asset-administrators"
+            "asset-administrator": {
+              "party-id": "enterprise-asset-administrators"
             },
             "asset-owner": {
-              "party-ids": "enterprise-asset-owners"
+              "party-id": "enterprise-asset-owners"
             }
           }
         }

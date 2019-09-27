@@ -7,15 +7,17 @@
 		<version>1.1</version>
 		<oscal-version>1.0.0-milestone1</oscal-version>
 	  
-	  <role id="author"><title>Author</title></role>
-	  <party>
-	  	<role-id>author</role-id>
-	    <org>
+		<role id="author"><title>Author</title></role>
+		<party id="fedramp">
+			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>
 				<url>https://fedramp.gov</url>
 			</org>
 		</party>
+		<responsible-party role-id="author">
+			<party-id>fedramp</party-id>
+		</responsible-party>
 	</metadata>
 	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>

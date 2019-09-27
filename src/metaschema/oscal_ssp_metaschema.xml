@@ -307,6 +307,7 @@
    <define-field name="status" as-type="markup-multiline">
       <formal-name>Status</formal-name>
       <description>Describes the status of the parent system or component.</description>
+      <json-value-key>remarks</json-value-key>
       <flag name="state" required="yes" as-type="string">
          <formal-name>State</formal-name>
          <description>TBD</description>
@@ -435,8 +436,8 @@
 
    <define-assembly name="user">
       <!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
-      <formal-name>System Role</formal-name>
-      <description>Defining a role to be assigned to a party or agent</description>
+      <formal-name>System User Class</formal-name>
+      <description>A type of user that interacts with the system based on an associated role.</description>
       <json-key flag-name="id"/>
       <flag name="id" as-type="NCName" required="yes">
          <formal-name>System Role ID</formal-name>
@@ -444,8 +445,7 @@
       </flag>
       <flag ref="name" required="yes"/>
       <!-- TODO: provide valid values for these? -->
-      <flag ref="external">
-      </flag>
+      <flag ref="external"/>
       <flag ref="access" required="yes"/>
       <flag ref="sensitivity-level" required="yes"/>
       <model>
@@ -568,6 +568,7 @@
             </remarks>
          </assembly>
          <!-- TODO: Need a way to always provide a role, but optionally provide a party. The party may be associated in the inventory item. -->
+         <!-- TODO: Discussed with Brian. Create a responsible-role that allows an optional party. -->
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
@@ -587,8 +588,8 @@
 
    <define-assembly name="service">
       <!-- TODO: This is an instantitation of a service component -->
-      <!-- TODO: Consider adding link relationships for used-by and provided-by -->
-      <!-- TODO: Add field for use -->
+      <!-- TODO: Adding link relationships for used-by and provided-by -->
+      <!-- TODO: Add field for use (usage description) -->
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the
 			system.</description>
@@ -943,6 +944,7 @@
       <flag ref="control-id" required="yes"/>
       <model>
          <field ref="description"/>
+         <!-- TODO: change to responsible-role or party? -->
          <field ref="role-id" max-occurs="unbounded">
             <description>The role responsible for the control implementation.</description>
             <group-as name="system-role-ids"/>

@@ -7,15 +7,17 @@
 		<oscal-version>1.0.0-milestone1</oscal-version>
 		
 		<role id="author"><title>Author</title></role>
-		<party>
-			<role-id>author</role-id>
+		<party id="fedramp">
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>
 				<url>https://fedramp.gov</url>
 			</org>
 		</party>
-		<notes><p>This is a DRAFT OSCAL profile intended to reflect the FedRAMP Tailored Baseline for Low Impact Software as a Service (LI-SaaS). Currently this reflects FedRAMP's parameters, additional requirements/guidance, and control designations (Fed, NSO, Attest, etc.) Assessment objectives and actions have not been vetted and may not align. This also has not been peer reviewed. Use with caution. FedRAMP is not responsible for inaccuracies resulting from the use of this draft profile.</p></notes>
+		<responsible-party role-id="author">
+			<party-id>fedramp</party-id>
+		</responsible-party>
+		<remarks><p>This is a DRAFT OSCAL profile intended to reflect the FedRAMP Tailored Baseline for Low Impact Software as a Service (LI-SaaS). Currently this reflects FedRAMP's parameters, additional requirements/guidance, and control designations (Fed, NSO, Attest, etc.) Assessment objectives and actions have not been vetted and may not align. This also has not been peer reviewed. Use with caution. FedRAMP is not responsible for inaccuracies resulting from the use of this draft profile.</p></remarks>
 	</metadata>
 	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>

@@ -19,8 +19,6 @@
          <title>Contact</title>
       </role>
       <party id="IT-JTF">
-         <role-id>creator</role-id>
-         <role-id>contact</role-id>
          <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>
@@ -35,6 +33,12 @@
             <email>sec-cert@nist.gov</email>
          </org>
       </party>
+      <responsible-party role-id="creator">
+         <party-id>IT-JTF</party-id>
+      </responsible-party>
+      <responsible-party role-id="contact">
+         <party-id>IT-JTF</party-id>
+      </responsible-party>
    </metadata>
    <group class="family" id="ac">
       <title>Access Control</title>
