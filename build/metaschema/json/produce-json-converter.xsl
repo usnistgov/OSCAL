@@ -194,9 +194,9 @@
                 </xsl:otherwise>
             </xsl:choose>
         </XSLT:template>
-        <xsl:for-each select="json-key | json-value-key">
-            <xsl:message expand-text="yes">{ local-name()} is ignored on field { ../@name } of type 'markup-multiline' </xsl:message>"
-        </xsl:for-each>
+        <!--<xsl:for-each select="json-key | json-value-key">
+            <xsl:message expand-text="yes">{ local-name()} is ignored on field { ../@name } of type 'markup-multiline' </xsl:message>
+        </xsl:for-each>-->
     </xsl:template>
         
     <xsl:template match="define-field" expand-text="true">
