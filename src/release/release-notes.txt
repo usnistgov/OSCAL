@@ -12,11 +12,44 @@ OSCAL 1.0.0 Milestone 2
 
 - The following content model changes have been made that may break content compatibility:
 
-  Catalog:
+## Document metadata/
 
-  - /catalog/metadata/last-modified-date - The data type has been changed from string to dateTime-with-timezone.
-  - link
-    - The data type of the href property/attribute on the link object/element has been changed from string to uri-reference.
-    - The text content of link can now be XML/HTML or JSON/Markdown content.
-  - rlinks - The data type of the href property/attribute on the rlink object/element has been changed from string to uri-reference.
-  - email - The data type has been changed from string to email.
+  * `last-modified` is required. Its value must be a date-time with time zone (i.e., a timestamp).
+  * `published` is for a nominal publication date, as assigned by the owner or publisher of the catalog or resource. An electronic version of a previously published catalog should carry the publication date of the original resource (while it has a last-modified date reflecting its own version history).
+  * `role-id` is now assigned as an element in the XML, not an attribute. This permits it to be tokenized more explicitly.
+  
+## Parameters
+
+XXX see Issues #494, #288 (adding 'guideline' to profile model)
+
+## Control structures
+
+### New property in SP800-53 catalog data
+
+In the SP800-53 catalog, we have added a property called `sort-id` to controls and enhancements. Its string value represents the control's ID in a (zero-padded) notation that will sort gracefully against other sort-id values. This permits a robust reordering of controls in receiving systems without having to refer to an out-of-line document to restore the canonical order.
+
+### Controls inside controls, but no "subcontrols"
+
+Control enhancements are now represented using `control` not `subcontrol`. The constraints of restricting to two levels of hierarchy (even given groups and parts) became too unrewarding in view of the sacrifices so we have gone back to clean recursion.
+
+Developers should take note that this relaxation also permits much more flexible adaptation of control structures (or requirements statements considered both broadly and narrowly) to particular and specialized organizations.
+
+## Data type handling
+
+Data type handling has been extended in several respects. Datatypes for dates and times have been added. Several XML-peculiar datatypes have been removed.
+
+### Value enumeration on terminal nodes
+
+The schema has also been extended to support validation against enumerated values, either exclusively (only declared values may appear) or inclusively (enumerations are documented while other values are also permitted). This is not a breaking change as no new constraints over the data were introduced.
+
+Affected data points: `prop/name`, `address/type`, `phone/type`, `hash/algorithm`, `role-id`. The enumerated values provided for each are documented.
+
+### Lexical datatyping at points
+
+Supported for lexical datatyping has also been added to `link/href`, `rlink/href` (URI references), `published` and `last-modified` (timestamps), `email` (a nominal email address),`url` (a URI), `img/src`.
+
+## Profile
+
+* `subcontrol-id` and `with-subcontrols` have been dropped from call statements, since `subcontrol` has been dropped from the Catalog model.
+* Elements besides control references are permitted inside `group` within the `merge` construct. So profile authors can provide titles and introductory content to groups they define for their represented aggregate control structures.
+
