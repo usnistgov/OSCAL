@@ -28,7 +28,6 @@
             <field ref="remarks" in-xml="WITH-WRAPPER"/>
 <!--            <assembly ref="proof-of-compliance"/>
 -->
-            <assembly ref="supplier"/>
             <assembly ref="incorporates-component" max-occurs="unbounded">
                 <group-as name="incorporates-components" in-json="BY_KEY"/>
             </assembly>
@@ -60,52 +59,7 @@
             <enum value="validation"></enum>
         </allowed-values>
     </define-flag>
-    
-    <define-assembly name="supplier">
-        <formal-name>Supplier</formal-name>
-        <description>TBD</description>
-        <!--
-    <flag name="id" as-type="ID">
-      <formal-name>Supplier Identifier</formal-name>
-      <description>TBD</description>
-    </flag>
--->
-        <model>
-            <field ref="party-id" min-occurs="1"/>
-            <field ref="role-id" min-occurs="1">
-                <!-- TODO: define standard roles -->
-            </field>
-            <field ref="remarks" in-xml="WITH-WRAPPER"/>
-        </model>
-        <remarks>
-            <p>For products, services, and APIs, this is the vendor and/or retailer information.</p>
-            <p>For policies, processes, plans, standards, and guidance, this is the authoring
-                organization.</p>
-            <p>For capabilities, this is the organization that defines and maintains the
-                capability.</p>
-        </remarks>
-    </define-assembly>
-<!--
-    <define-assembly name="proof-of-compliance">
-        <formal-name>validation</formal-name>
-        <description>TBD</description>
-        <model>
-            <assembly ref="supplier" min-occurs="1" max-occurs="unbounded">
-                <group-as name="suppliers"/>
-            </assembly>
-            <field ref="description"/>
-            <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
-            </field>
-            <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
-                <!-\- TODO: Model specific link relationships for:
-          validated-by: pointer to validation cert.
-        -\->
-            </field>
-        </model>
-    </define-assembly>
--->
+
     <define-flag name="source" as-type="uri-reference">
         <formal-name>Source Resource Reference</formal-name>
         <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>

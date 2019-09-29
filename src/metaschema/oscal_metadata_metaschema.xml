@@ -23,7 +23,7 @@
          <field ref="description"/>
          <field ref="remarks" in-xml="WITH-WRAPPER"/>
          <field ref="party-id"/>
-         <assembly ref="characteristic"/>
+         <assembly ref="annotation"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
@@ -59,6 +59,13 @@
          </assembly>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <flag ref="role-id">
+               <allowed-values allow-other="yes">
+                  <enum value="prepared-by">Indicates the organization that created this content.</enum>
+                  <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
+                  <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
+               </allowed-values>
+            </flag>
          </assembly>
          <field ref="remarks"/>
       </model>
@@ -217,9 +224,11 @@
         (which also supports other constraints over property values).</p>
       </remarks>
    </define-field>
-   <define-assembly name="characteristic">
-      <formal-name>Characteristic</formal-name>
-      <description>A named characteristic with an associated value and optional explanitory remarks.</description>
+   <define-assembly name="annotation">
+      <formal-name>Annotation</formal-name>
+      <description>A name/value pair with optional explanitory remarks.</description>
+      <!-- TODO: Add support for this -->
+<!--      <json-value-key key-flag-name="name" value-flag-name="value" /> -->
       <flag ref="name" required="yes"/>
       <flag ref="id"/>
       <flag ref="ns"/>
@@ -279,13 +288,13 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="characteristic" max-occurs="unbounded">
-            <group-as name="characteristics"/>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
          <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
@@ -329,13 +338,13 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="characteristic" max-occurs="unbounded">
-            <group-as name="characteristics"/>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="org">
@@ -362,13 +371,13 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="characteristic" max-occurs="unbounded">
-            <group-as name="characteristics"/>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
    </define-assembly>
    <define-field name="person-id">
@@ -550,13 +559,13 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="characteristic" max-occurs="unbounded">
-            <group-as name="characteristics"/>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH-WRAPPER"/>
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
@@ -565,19 +574,21 @@
    </define-assembly>
    <define-assembly name="responsible-party">
       <formal-name>Responsible Party</formal-name>
-      <description>A reference to an organization or person that has responsibility for performing a referenced role relative to the parent context.</description>
+      <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.</description>
       <json-key flag-name="role-id"/>
       <flag name="role-id" required="yes" as-type="NCName">
          <formal-name>Responsible Role</formal-name>
          <description>The role that the party is responsible for.</description>
       </flag>
       <model>
-         <field ref="party-id" min-occurs="1"/>
+         <field ref="party-id" min-occurs="1" max-occurs="unbounded">
+            <group-as name="party-ids"/>
+         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <assembly ref="characteristic" max-occurs="unbounded">
-            <group-as name="characteristics"/>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
@@ -644,6 +655,9 @@
          <field ref="desc"/>
          <field ref="doc-id" max-occurs="unbounded">
             <group-as name="document-ids"/>
+         </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
          </field>
          <any/>
       </model>
