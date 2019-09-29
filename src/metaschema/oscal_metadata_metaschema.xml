@@ -511,6 +511,9 @@
       <flag ref="id" required="yes"/>
       <model>
          <field ref="desc"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
          <choice>
             <assembly ref="rlink" max-occurs="unbounded">
                <group-as name="rlinks"/>
