@@ -56,11 +56,11 @@ done
 OTHER_ARGS=$@ # save the remaining args
 
 echo ""
-echo "${P_INFO}Generating XML and JSON Schema${P_END}"
-echo "${P_INFO}==============================${P_END}"
+echo -e "${P_INFO}Generating XML and JSON Schema${P_END}"
+echo -e "${P_INFO}==============================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 declare -a paths
@@ -122,25 +122,27 @@ for i in "${!paths[@]}"; do
       schema="$WORKING_DIR/$format/schema/${base}_schema.json"
       ;;
     *)
-      echo "${P_WARN}Unsupported schema format '${format^^}' schema for '$metaschema'.${P_END}"
+      echo -e "${P_WARN}Unsupported schema format '${format^^}' schema for '$metaschema'.${P_END}"
       continue;
       ;;
     esac
+    # ensure the schema directory exists before calling realpath
+    mkdir -p "$(dirname "$schema")"
     schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
 
     if [ "$VERBOSE" = "true" ]; then
-      echo "${P_INFO}Generating ${format^^} schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${schema_relative}${P_INFO}'.${P_END}"
+      echo -e "${P_INFO}Generating ${format^^} schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${schema_relative}${P_INFO}'.${P_END}"
     fi
 
     result=$(xsl_transform "$transform" "$metaschema" "$schema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo "${P_ERROR}Generation of ${format^^} schema failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-      echo "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Generation of ${format^^} schema failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
     else
       if [ "$VERBOSE" = "true" ]; then
-        echo "${P_OK}Generation of ${format^^} schema passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+        echo -e "${P_OK}Generation of ${format^^} schema passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     fi
 
@@ -155,20 +157,20 @@ for i in "${!paths[@]}"; do
       cmd_exitcode=$?
       ;;
     *)
-      echo "${P_WARN}Unsupported validation of ${format^^} schema for '${P_END}${schema_relative}${P_WARN}'.${P_END}"
+      echo -e "${P_WARN}Unsupported validation of ${format^^} schema for '${P_END}${schema_relative}${P_WARN}'.${P_END}"
       cmd_exitcode=0
       ;;
     esac
 
     if [ $cmd_exitcode -ne 0 ]; then
-      echo "${P_ERROR}Schema validation failed for '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-      echo "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Schema validation failed for '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
     else
       if [ "$VERBOSE" = "true" ]; then
-        echo "${P_OK}Schema validation passed for '${P_END}${schema_relative}${P_OK}'.${P_END}"
+        echo -e "${P_OK}Schema validation passed for '${P_END}${schema_relative}${P_OK}'.${P_END}"
       else
-        echo "${P_OK}Schema generation passed for '${P_END}${metaschema_relative}${P_OK}' as '${P_END}${schema_relative}${P_OK}', which is valid.${P_END}"
+        echo -e "${P_OK}Schema generation passed for '${P_END}${metaschema_relative}${P_OK}' as '${P_END}${schema_relative}${P_OK}', which is valid.${P_END}"
       fi
     fi
   done
