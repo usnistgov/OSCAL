@@ -383,7 +383,7 @@
 
    <define-assembly name="authorization-boundary">
       <formal-name>Authorization Boundary</formal-name>
-      <description>One or more diagrams and a description of this system's authorization boundary.</description>
+      <description>A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.</description>
       <model>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
@@ -458,7 +458,7 @@
    </define-field>
    <define-assembly name="network-architecture">
       <formal-name>Network Architecture</formal-name>
-      <description>One or more diagrams and a description of the system's network architecture.</description>
+      <description>A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.</description>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
@@ -483,7 +483,7 @@
    <define-assembly name="data-flow">
       <!-- TODO: Should this relate to a system-interconnection? -->
       <formal-name>Data Flow</formal-name>
-      <description>One or more diagrams and a description depicting the logical flow of information within the system and across its boundaries.</description>
+      <description>A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.</description>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
@@ -599,6 +599,20 @@
          <p>Permissible values to be determined closer to the application, such as by a receiving authority.</p>
       </remarks>
    </define-assembly>
+   <define-field name="role-id">
+      <formal-name>Role Identifier Reference</formal-name>
+      <description>A reference to the roles served by the user.</description>
+      <allowed-values allow-other="yes">
+         <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+         <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+         <enum value="soc">Members of the security operations center (SOC).</enum>
+         <enum value="noc">Members of the network operations center (NOC).</enum>
+         <enum value="incident-response">Members of the incident response team.</enum>
+         <enum value="help-desk">Members of the help desk.</enum>
+         <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
+      </allowed-values>
+   </define-field>
+   
    <define-assembly name="authorized-privilege">
       <formal-name>Privilege</formal-name>
       <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
