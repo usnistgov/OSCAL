@@ -30,11 +30,11 @@ Control enhancements are now represented using `control` not `subcontrol`. The a
 
 ## Data type handling
 
-Data type handling has been extended in several respects. Datatypes for dates and times have been added. Several XML-peculiar datatypes have been removed.
+Data type handling has been extended in several respects to provide for the validating of lexical forms of nominal datatypes. Datatypes for dates and times have been added. Several XML-peculiar datatypes have been removed.
 
 ### Value enumeration on terminal nodes
 
-The schema has also been extended to support validation against enumerated values, either exclusively (only declared values may appear) or inclusively (enumerations are documented while other values are also permitted). All allowed values newly declared are inclusive, so this is not a breaking change.
+The schema has also been extended to support validation against enumerated values, either exclusively (only declared values may appear) or inclusively (enumerations are documented while other values are also permitted). All allowed values now being declared (Milestone 2) are inclusive of other values (user- or application-defined), so this is not a breaking change.
 
 Affected data points (in both models): `prop/name`, `address/type`, `phone/type`, `hash/algorithm`, `role-id`. The enumerated values provided for each are documented.
 
@@ -46,7 +46,7 @@ Supported for lexical datatyping has also been added to `link/href`, `rlink/href
 
 ### Calling control enhancements (old "subcontrols")
 
-From call statements, since `subcontrol` has been dropped from the Catalog model, `subcontrol-id` and `with-subcontrols` have been replaced with `control-id`, and `with-subcontrols` has been replaced by `with-child-controls`.
+From call statements, since `subcontrol` has been dropped from the catalog model, `subcontrol-id` has been replaced with `control-id`, and `with-subcontrols` has been replaced by `with-child-controls` (on `call`, `all` and `match`).
 
 ### Expanded model for new groups
 
