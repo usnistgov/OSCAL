@@ -25,7 +25,6 @@
         <flag ref="source"/>
         <model>
             <field ref="description"/>
-            <field ref="remarks" in-xml="WITH-WRAPPER"/>
 <!--            <assembly ref="proof-of-compliance"/>
 -->
             <assembly ref="incorporates-component" max-occurs="unbounded">
@@ -37,6 +36,7 @@
             <assembly ref="only-statement" max-occurs="unbounded">
                 <group-as name="only-statements" in-json="BY_KEY"/>
             </assembly>
+            <field ref="remarks" in-xml="WITH-WRAPPER"/>
         </model>
         <remarks>
             <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
