@@ -101,7 +101,9 @@
          <assembly ref="data-flow"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="authorizing-official">The authorizing official for this system.</enum>
                   <enum value="authorizing-official-poc">The authorizing official's designated point of contact (POC) for this system.</enum>
@@ -190,7 +192,7 @@
       <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
       <flag ref="id"/>
 
-      <flag name="name" required="yes">
+      <flag name="name" required="yes" as-type="string">
          <formal-name>Information Type Name</formal-name>
          <description>The name of the information type.</description>
       </flag>
@@ -553,7 +555,9 @@
          <formal-name>User Identifier</formal-name>
          <description>A unique identifier that references this user class.</description>
       </flag>
-      <flag ref="name" required="yes"/>
+     <!-- <flag name="name" required="yes" as-type="string">
+         <formal-name></formal-name>
+      </flag>-->
       <model>
          <field ref="title" in-xml="WITH_WRAPPER"/>
          <field ref="short-name"/>
@@ -578,17 +582,7 @@
             <!-- TODO: Model specific link relationships? -->
          </field>
          <field ref="role-id" min-occurs="1" max-occurs="unbounded">
-            <description>A reference to the roles served by the user.</description>
             <group-as name="role-ids"/>
-            <allowed-values allow-other="yes">
-               <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
-               <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
-               <enum value="soc">Members of the security operations center (SOC).</enum>
-               <enum value="noc">Members of the network operations center (NOC).</enum>
-               <enum value="incident-response">Members of the incident response team.</enum>
-               <enum value="help-desk">Members of the help desk.</enum>
-               <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
-            </allowed-values>
          </field>
          <assembly ref="authorized-privilege" max-occurs="unbounded">
             <group-as name="authorized-privileges"/>
@@ -612,11 +606,11 @@
          <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
       </allowed-values>
    </define-field>
-   
+
    <define-assembly name="authorized-privilege">
       <formal-name>Privilege</formal-name>
       <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
-      <flag name="name" required="yes">
+      <flag name="name" required="yes" as-type="string">
          <formal-name>Privilege Name</formal-name>
          <description>The name of the identified privilege.</description>
       </flag>
@@ -702,19 +696,24 @@
             </flag>
          </field>
          <assembly ref="status" min-occurs="1">
-            <flag ref="state">
-               <allowed-values>
+            <flag name="state">
+                  <formal-name>State</formal-name>
+                  <description>XXX</description>
+                  <allowed-values>
                   <enum value="under-development">The component is being designed, developed, or implemented.</enum>
                   <enum value="operational">The component is currently operational and is available for use in the system.</enum>
                   <enum value="disposition">The component is no longer operational.</enum>
                   <enum value="other">Some other state.</enum>
                </allowed-values>
             </flag>
+
          </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <description>Defines a role that has responsibility for the component.</description>
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -866,7 +865,9 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
                   <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
@@ -963,7 +964,9 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -1050,7 +1053,9 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -1112,7 +1117,9 @@
 -->
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -1160,7 +1167,9 @@
 -->            <!-- TODO: Implement parameters -->
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -1232,7 +1241,9 @@
          </field>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id">
+               <formal-name>Role identifier</formal-name>
+               <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>

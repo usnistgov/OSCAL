@@ -154,13 +154,16 @@
                            
             </xs:complexType>
         </xs:element>
-        <xsl:if test="exists(allowed-values)">
+        <xsl:apply-templates select="allowed-values">
+            <xsl:with-param name="simpletype-name" select="@name || '-enumeration'"/>
+        </xsl:apply-templates>
+        <!--<xsl:if test="exists(allowed-values)">
             <xs:simpleType name="{@name}-enumeration">
                 <xs:restriction base="xs:string">
                     <xsl:apply-templates select="allowed-values/*"/>
                 </xs:restriction>
             </xs:simpleType>
-        </xsl:if>
+        </xsl:if>-->
     </xsl:template>
 
     <!--<xsl:template priority="3" match="define-field[exists(@as-type)]">
@@ -359,7 +362,13 @@
     <!-- When allow-other=yes, we union the enumeration with the declared datatype -->        
     <xsl:template match="allowed-values[@allow-other='yes']">
         <xsl:param name="datatype" as="xs:string">string</xsl:param>
+        <xsl:param name="simpletype-name" as="xs:string?"/>
         <xs:simpleType>
+            <xsl:for-each select="$simpletype-name">
+                <xsl:attribute name="name">
+                    <xsl:value-of select="."/>
+                </xsl:attribute>
+            </xsl:for-each>
             <xs:union memberTypes="xs:{$datatype}">
                 <xsl:call-template name="assign-datatype">
                     <xsl:with-param name="datatype" select="$datatype"/>
@@ -380,7 +389,13 @@
     
     <xsl:template match="allowed-values">
         <xsl:param name="datatype" select="(../@as-type,'string')[1]"/>
+        <xsl:param name="simpletype-name" as="xs:string?"/>
         <xs:simpleType>
+            <xsl:for-each select="$simpletype-name">
+                <xsl:attribute name="name">
+                    <xsl:value-of select="."/>
+                </xsl:attribute>
+            </xsl:for-each>
             <xs:restriction base="xs:{$datatype}">
                 <xsl:apply-templates/>
             </xs:restriction>

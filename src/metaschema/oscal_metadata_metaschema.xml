@@ -58,7 +58,9 @@
          </assembly>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag ref="role-id">
+            <flag name="role-id" required="yes" as-type="NCName">
+               <formal-name>Responsible Role</formal-name>
+               <description>The role that the party is responsible for.</description>
                <allowed-values allow-other="yes">
                   <enum value="prepared-by">Indicates the organization that created this content.</enum>
                   <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
