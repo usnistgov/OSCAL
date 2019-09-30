@@ -27,7 +27,6 @@
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
          </assembly>
-         <field ref="role-id"/>
       </model>
       <remarks>
          <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -626,16 +625,16 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-   <define-field name="role-id" as-type="NCName">
+<!--   <define-field name="role-id" as-type="NCName">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <allowed-values allow-other="yes">
          <enum value="content-creator">Identifies a party responsible for creating the content.</enum>
          <enum value="content-maintainer">Identifies a party responsible for maintaining the content on an ongoing basis.</enum>
-         <!-- TODO: Need to add others -->
+         <!-\- TODO: Need to add others -\->
       </allowed-values>
    </define-field>
-   <define-field name="title" as-type="markup-line">
+-->   <define-field name="title" as-type="markup-line">
       <formal-name>Title</formal-name>
       <description>A title for display and navigation</description>
       <remarks>
