@@ -644,16 +644,8 @@
                   <enum value="software-identifier">If a "software" component-type, the identifier (e.g., SWID tag identifier) for the software component.</enum>
                   <enum value="public">Designates if the described asset is publicly accessible (yes/no)</enum>
                   <enum value="virtual">Designates if the described asset is virtualized (yes/no)</enum>
-                  <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
-                  <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
                   <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
-                  <enum value="network-id">The network identifier of the asset.</enum>
-                  <enum value="fqdn">The full-qualified domain name of the asset.</enum>
-                  <enum value="uri">A Uniform Resource Identifier for the asset.</enum>
-                  <enum value="serial-number">A serial number for the asset.</enum>
                   <enum value="asset-tag">An asset tag that is unique within the organization for the asset.</enum>
-                  <enum value="netbios-name">The netbios name for the asset.</enum>
-                  <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
                </allowed-values>
             </flag>
             <remarks>
@@ -667,7 +659,6 @@
                <allowed-values allow-other="yes">
                   <!-- names to also be allowed in implemented-component -->
                   <enum value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
-                  <enum value="is-scanned">Should the asset appear in network scans? (yes/no)</enum>
                   <enum value="allows-authenticated-scan">Is the asset planned for authenticated scans? (yes/no)</enum>
                   <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
                   <enum value="function">The function provided by the asset for the system.</enum>
