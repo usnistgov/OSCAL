@@ -18,7 +18,7 @@ The following content model changes have been made that may break content compat
   * `published` is permitted for a nominal publication date, as assigned by the owner or publisher of the catalog or resource. An electronic version of a previously published catalog should carry its own publication date, if any, not that of the original resource (which can be described elsewhere with its own metadata).
   * `role-id` is now assigned as an element in the XML, not an attribute. This permits it to be tokenized more explicitly.
   
-## Control structures
+## Control structures in the catalog model
 
 ### New property in SP800-53 catalog data
 
@@ -40,9 +40,9 @@ Affected data points (in both models): `prop/name`, `address/type`, `phone/type`
 
 ### Lexical datatyping at points
 
-Supported for lexical datatyping has also been added to `link/href`, `rlink/href` (URI references), `published` and `last-modified` (timestamps), `email` (a nominal email address),`url` (a URI), `img/src`.
+Supported for lexical datatyping has also been added to `link/href`, `rlink/href` (URI references), `published` and `last-modified` (timestamps), `email` (a nominal email address), `url` (a URI), `img/src`.
 
-## Profile
+## Profile model enhancements
 
 ### Calling control enhancements (old "subcontrols")
 
