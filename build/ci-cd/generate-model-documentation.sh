@@ -56,12 +56,12 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-echo ""
-echo "${P_INFO}Generating XML and JSON Model Documentation${P_END}"
-echo "${P_INFO}===========================================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Generating XML and JSON Model Documentation${P_END}"
+echo -e "${P_INFO}===========================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 # the stylesheet used to generate the documentation
@@ -127,13 +127,13 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         schema_url="${github_url}/json/schema/${base}_schema.json"
         ;;
       *)
-        echo "${P_WARN}Generating documentation for '${format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
+        echo -e "${P_WARN}Generating documentation for '${format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
         continue;
         ;;
       esac
 
       if [ "$VERBOSE" = "true" ]; then
-        echo "${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+        echo -e "${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
       fi
       result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
         "target-format=${format}" \
@@ -142,12 +142,12 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         "schema-path=${schema_url}" 2>&1)
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Generating ${format^^} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-        echo "${P_ERROR}${result}${P_END}"
+        echo -e "${P_ERROR}Generating ${format^^} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
         exitcode=1
         continue
       else
-        echo "${P_OK}Generated ${format^^} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+        echo -e "${P_OK}Generated ${format^^} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     done
   done

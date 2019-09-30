@@ -54,12 +54,12 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-echo ""
-echo "${P_INFO}Generating XML <-> JSON Content Converters${P_END}"
-echo "${P_INFO}==========================================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Generating XML <-> JSON Content Converters${P_END}"
+echo -e "${P_INFO}==========================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 declare -a paths
@@ -119,7 +119,7 @@ for i in "${!paths[@]}"; do
       source_format="xml"
       ;;
     *)
-      echo "${P_WARN}Generating converter from '${source_format^^}' to '${target_format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
+      echo -e "${P_WARN}Generating converter from '${source_format^^}' to '${target_format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
       continue;
       ;;
     esac
@@ -128,17 +128,17 @@ for i in "${!paths[@]}"; do
     converter_relative=$(realpath --relative-to="${WORKING_DIR}" "$converter")
 
     if [ "$VERBOSE" = "true" ]; then
-      echo "${P_INFO}Generating ${source_format^^} to ${target_format^^} converter for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+      echo -e "${P_INFO}Generating ${source_format^^} to ${target_format^^} converter for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${converter_relative}${P_INFO}'.${P_END}"
     fi
 
     result=$(xsl_transform "$OSCALDIR/build/metaschema/$source_format/produce-${source_format}-converter.xsl" "$metaschema" "$converter" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo "${P_ERROR}Generating ${source_format^^} to ${target_format^^} converter failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-      echo "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Generating ${source_format^^} to ${target_format^^} converter failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
     else
-      echo "${P_OK}Generating ${source_format^^} to ${target_format^^} converter passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+      echo -e "${P_OK}Generating ${source_format^^} to ${target_format^^} converter passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
     fi
   done
   IFS=$IFS_OLD

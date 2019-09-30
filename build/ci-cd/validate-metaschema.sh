@@ -74,10 +74,10 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
     function CleanupScratchDir() {
       rc=$?
       if [ "$VERBOSE" = "true" ]; then
-        echo ""
-        echo "${P_INFO}Cleanup${P_END}"
-        echo "${P_INFO}=======${P_END}"
-        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+        echo -e ""
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
       fi
       rm -rf "${SCRATCH_DIR}"
       exit $rc
@@ -86,13 +86,13 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
   fi
 fi
 
-echo ""
-echo "${P_INFO}Validating Metaschema Definitions${P_END}"
-echo "${P_INFO}=================================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Validating Metaschema Definitions${P_END}"
+echo -e "${P_INFO}=================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 # compile the schematron
@@ -103,7 +103,7 @@ compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
 build_schematron "$schematron" "$compiled_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
-  echo "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
+  echo -e "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
 # the following is needed by the compiled template
@@ -131,14 +131,14 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
   do
     metaschema_relative=$(realpath --relative-to="$OSCALDIR" "$metaschema")
     if [ "$VERBOSE" = "true" ]; then
-      echo "${P_INFO}Validating metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+      echo -e "${P_INFO}Validating metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
     fi
 
     result=$(xmllint --nowarning --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-      echo "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
     else
       svrl_result="$SCRATCH_DIR/svrl/${metaschema/$OSCALDIR\/src\//}.svrl"
@@ -147,11 +147,11 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       result=$(validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result")
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Schematron validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-          echo "${P_ERROR}${result}${P_END}"
+        echo -e "${P_ERROR}Schematron validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+          echo -e "${P_ERROR}${result}${P_END}"
           exitcode=1
       else
-        echo "${P_OK}XML Schema and Schematron validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+        echo -e "${P_OK}XML Schema and Schematron validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     fi
   done

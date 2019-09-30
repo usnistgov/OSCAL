@@ -55,7 +55,7 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-echo ""
+echo -e ""
 echo -e "${P_INFO}Generating XML and JSON Schema${P_END}"
 echo -e "${P_INFO}==============================${P_END}"
 

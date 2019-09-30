@@ -57,18 +57,18 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-echo ""
-echo "${P_INFO}Copying and Converting Content${P_END}"
-echo "${P_INFO}==============================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Copying and Converting Content${P_END}"
+echo -e "${P_INFO}==============================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 # check for perl
 result=$(which perl 2>&1)
 if [ $? -ne 0 ]; then
-  echo "${P_ERROR}Perl is not installed. Perl is needed by this script.${P_END}"
+  echo -e "${P_ERROR}Perl is not installed. Perl is needed by this script.${P_END}"
   exit 1
 fi
 
@@ -98,10 +98,10 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
       result=$(cp "$file" "$dest" 2>&1)
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Unable to copy '${P_END}${file_relative}${P_ERROR}' to '${P_END}${dest_relative}${P_ERROR}'.${P_END}"
-        echo "${P_ERROR}${result}${P_END}"
+        echo -e "${P_ERROR}Unable to copy '${P_END}${file_relative}${P_ERROR}' to '${P_END}${dest_relative}${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
       else
-        echo "${P_OK}Copied '${P_END}${file_relative}${P_OK}' to '${P_END}${dest_relative}${P_OK}'.${P_END}"
+        echo -e "${P_OK}Copied '${P_END}${file_relative}${P_OK}' to '${P_END}${dest_relative}${P_OK}'.${P_END}"
       fi
 
       IFS=","
@@ -119,7 +119,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           dest="$WORKING_DIR/${newpath}-min.${altformat}"
           dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+            echo -e "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
           fi
           result=$(xsl_transform "$converter" "$file" "$dest" 2>&1)
           ;;
@@ -127,23 +127,23 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           dest="$WORKING_DIR/${newpath}.${altformat}"
           dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
+            echo -e "${P_INFO}Generating ${altformat^^} file '${P_END}${dest_relative}${P_INFO}' from '${P_END}${file_relative}${P_INFO}' using converter '${P_END}${converter_relative}${P_INFO}'.${P_END}"
           fi
           result=$(xsl_transform "$converter" "" "$dest" "-it" "json-file=${file}" 2>&1)
           ;;
         *)
-          echo "${P_WARN}Conversion from '${format} to '${altformat^^}' is unsupported for '${P_END}${file_relative}${P_OK}'.${P_END}"
+          echo -e "${P_WARN}Conversion from '${format} to '${altformat^^}' is unsupported for '${P_END}${file_relative}${P_OK}'.${P_END}"
           continue;
         esac
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          echo "${P_ERROR}Content conversion to ${altformat^^} failed for '${P_END}${file_relative}${P_ERROR}' using converter '${P_END}${converter_relative}${P_ERROR}'.${P_END}"
-          echo "${P_ERROR}${result}${P_END}"
+          echo -e "${P_ERROR}Content conversion to ${altformat^^} failed for '${P_END}${file_relative}${P_ERROR}' using converter '${P_END}${converter_relative}${P_ERROR}'.${P_END}"
+          echo -e "${P_ERROR}${result}${P_END}"
           exitcode=1
           continue
         else
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_OK}Content conversion to ${altformat^^} succeeded for '${P_END}${file_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}Content conversion to ${altformat^^} succeeded for '${P_END}${file_relative}${P_OK}'.${P_END}"
           fi
         fi
 
@@ -168,12 +168,12 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           result=$(validate_json "$schema" "$dest")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue
           else
-            echo "${P_OK}JSON Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}JSON Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
 
           # produce pretty JSON
@@ -181,8 +181,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           dest_pretty_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest_pretty")
           result=$(jq . "$dest" > "$dest_pretty" 2>&1)
           if [ $? -ne 0 ]; then
-            echo "${P_ERROR}Unable to execute jq on '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}Unable to execute jq on '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue
           fi
@@ -192,12 +192,12 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           result=$(validate_json "$schema" "$dest_pretty" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}JSON Schema validation failed for '${P_END}${dest_pretty_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue
           else
-            echo "${P_OK}JSON Schema validation passed for '${P_END}${dest_pretty_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}JSON Schema validation passed for '${P_END}${dest_pretty_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
 
           # produce yaml
@@ -214,15 +214,15 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           result=$(xmllint --noout --schema "$schema" "$dest" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "${P_ERROR}XML Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}XML Schema validation failed for '${P_END}${dest_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
-            echo "${P_OK}XML Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}XML Schema validation passed for '${P_END}${dest_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
           ;;
         *)
-          echo "${P_WARN}Post processing of '${altformat^^}' is unsupported for '${P_END}${dest_relative}${P_OK}'.${P_END}"
+          echo -e "${P_WARN}Post processing of '${altformat^^}' is unsupported for '${P_END}${dest_relative}${P_OK}'.${P_END}"
           continue;
         esac
       done

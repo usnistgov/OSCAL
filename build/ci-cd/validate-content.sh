@@ -57,12 +57,12 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-echo ""
-echo "${P_INFO}Validating Content${P_END}"
-echo "${P_INFO}==================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Validating Content${P_END}"
+echo -e "${P_INFO}==================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 exitcode=0
@@ -86,7 +86,7 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
     do
       file_relative=$(realpath --relative-to="$OSCALDIR" "$file")
       if [ "$VERBOSE" = "true" ]; then
-        echo "${P_INFO}Validating $model $format file '${P_END}${file_relative}${P_INFO}'.${P_END}"
+        echo -e "${P_INFO}Validating $model $format file '${P_END}${file_relative}${P_INFO}'.${P_END}"
       fi
 
       case $format in
@@ -96,11 +96,11 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
           result=$(xmllint --noout --schema "$schema" "$file" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "${P_ERROR}XML Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}XML Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
-            echo "${P_OK}XML Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}XML Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
         ;;
       json)
@@ -109,11 +109,11 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
           result=$(validate_json "$schema" "$file")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "${P_ERROR}JSON Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}JSON Schema validation failed for '${P_END}${file_relative}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
-            echo "${P_OK}JSON Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}JSON Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
         ;;
       esac

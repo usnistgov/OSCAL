@@ -78,10 +78,10 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
     function CleanupScratchDir() {
       rc=$?
       if [ "$VERBOSE" = "true" ]; then
-        echo ""
-        echo "${P_INFO}Cleanup${P_END}"
-        echo "${P_INFO}=======${P_END}"
-        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+        echo -e ""
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
       fi
       rm -rf "${SCRATCH_DIR}"
       exit $rc
@@ -90,13 +90,13 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
   fi
 fi
 
-echo ""
-echo "${P_INFO}Validating Content Conversions Using Round-Trips${P_END}"
-echo "${P_INFO}================================================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Validating Content Conversions Using Round-Trips${P_END}"
+echo -e "${P_INFO}================================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
-  echo "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 ###################################################################################################################
@@ -145,13 +145,13 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         # check the exit code for the conversion
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
-            echo "${P_ERROR}XML->JSON conversion failed for '${P_END}${file_relative}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}XML->JSON conversion failed for '${P_END}${file_relative}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue;
         else
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_OK}Converted XML '${P_END}${file_relative}${P_OK}' to JSON '${P_END}${to_json_file}${P_OK}'.${P_END}"
+            echo -e "${P_OK}Converted XML '${P_END}${file_relative}${P_OK}' to JSON '${P_END}${to_json_file}${P_OK}'.${P_END}"
           fi
         fi
 
@@ -171,13 +171,13 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         # check the exit code for the conversion
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
-            echo "${P_ERROR}JSON->XML conversion failed for '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}JSON->XML conversion failed for '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue;
         else
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_OK}Converted JSON '${P_END}${to_json_file}${P_OK}' to XML for '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
+            echo -e "${P_OK}Converted JSON '${P_END}${to_json_file}${P_OK}' to XML for '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
           fi
         fi
 
@@ -187,32 +187,32 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         result="$(xmllint --noout --schema "$schema" "$back_to_xml_file" 2>&1)"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          echo "${P_ERROR}XML Schema validation failed for '${P_END}${back_to_xml_file}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-          echo "${P_ERROR}${result}${P_END}"
+          echo -e "${P_ERROR}XML Schema validation failed for '${P_END}${back_to_xml_file}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
+          echo -e "${P_ERROR}${result}${P_END}"
           exitcode=1
           continue;
         else
           if [ "$VERBOSE" = "true" ]; then
-            echo "${P_OK}XML Schema validation passed for '${P_END}${back_to_xml_file}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+            echo -e "${P_OK}XML Schema validation passed for '${P_END}${back_to_xml_file}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
           fi
         fi
 
         # compare the XML files to see if there is data loss
         if [ "$VERBOSE" = "true" ]; then
-          echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file_relative}${P_INFO}'.${P_END}"
+          echo -e "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file_relative}${P_INFO}'.${P_END}"
         fi
 
         result=$(python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$back_to_xml_file" "$file" 2>&1)
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
-            echo "${P_ERROR}XML round-trip comparison failed for '${P_END}${file_relative}${P_ERROR}' against '${P_END}${back_to_xml_file}${P_ERROR}'.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "${P_ERROR}XML round-trip comparison failed for '${P_END}${file_relative}${P_ERROR}' against '${P_END}${back_to_xml_file}${P_ERROR}'.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             if [ "$VERBOSE" != "true" ]; then
-              echo "  ${P_ERROR}Used interim JSON file '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
+              echo -e "  ${P_ERROR}Used interim JSON file '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
             fi
             exitcode=1
         else
-          echo "${P_OK}XML round-trip comparison succeeded for '${P_END}${file_relative}${P_OK}' against '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
+          echo -e "${P_OK}XML round-trip comparison succeeded for '${P_END}${file_relative}${P_OK}' against '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
         fi
       fi
     done

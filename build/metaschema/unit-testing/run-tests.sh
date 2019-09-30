@@ -35,7 +35,7 @@ EOF
 }
 
 OPTS=`getopt -o w:vh --long scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@"`
-if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+if [ $? != 0 ] ; then echo -e "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
 eval set -- "$OPTS"
@@ -61,7 +61,7 @@ while [ $# -gt 0 ]; do
       break;
       ;;
     *)    # unknown option
-      echo "Unhandled option: $1"
+      echo -e "Unhandled option: $1"
       exit 1
       ;;
   esac
@@ -76,10 +76,10 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
     function CleanupScratchDir() {
       rc=$?
       if [ "$VERBOSE" = "true" ]; then
-        echo ""
-        echo "${P_INFO}Cleanup${P_END}"
-        echo "${P_INFO}=======${P_END}"
-        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+        echo -e ""
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
       fi
       rm -rf "${SCRATCH_DIR}"
       exit $rc
@@ -88,12 +88,12 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
   fi
 fi
 
-echo ""
-echo "${P_INFO}Validating Content Conversions Using Round-Trips${P_END}"
-echo "${P_INFO}================================================${P_END}"
+echo -e ""
+echo -e "${P_INFO}Running Unit Tests${P_END}"
+echo -e "${P_INFO}==================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+  echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
 fi
 
 test_dirs=()
@@ -106,7 +106,7 @@ else
 fi
 
 if [ "$VERBOSE" = "true" ]; then
-  echo "${P_INFO}Executing tests in '${P_END}${test_dirs[@]}${P_INFO}'.${P_END}"
+  echo -e "${P_INFO}Executing tests in '${P_END}${test_dirs[@]}${P_INFO}'.${P_END}"
 fi
 
 # compile the schematron
@@ -114,7 +114,7 @@ compiled_schematron="${SCRATCH_DIR}/metaschema-check-schematron-compiled.xsl"
 build_schematron "$METASCHEMA_SCHEMATRON" "$compiled_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
-  echo "${P_ERROR}Compilation of Schematron '${P_END}${METASCHEMA_SCHEMATRON}${P_ERROR}' failed.${P_END}"
+  echo -e "${P_ERROR}Compilation of Schematron '${P_END}${METASCHEMA_SCHEMATRON}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
 # the following is needed by the compiled template
@@ -127,7 +127,7 @@ do
   # get absolute and relative paths of the unit test collection
   unit_test_collection_dir=$(realpath "$unit_test_collection_dir")
   unit_test_collection_name=$(basename -- "$unit_test_collection_dir")
-  echo "${P_INFO}Processing unit test collection:${P_END} ${unit_test_collection_name}"
+  echo -e "${P_INFO}Processing unit test collection:${P_END} ${unit_test_collection_name}"
 
   unit_test_collection_scratch_dir="$SCRATCH_DIR/$unit_test_collection_name"
   mkdir -p "$unit_test_collection_scratch_dir"
@@ -138,7 +138,7 @@ do
     unit_test_name="${unit_test_name/${unit_test_collection_name}-/}"
     unit_test_path_prefix="$unit_test_collection_dir/${unit_test_collection_name}-${unit_test_name}"
 
-    echo "${P_INFO}Processing unit test:${P_END} ${unit_test_name}"
+    echo -e "${P_INFO}Processing unit test:${P_END} ${unit_test_name}"
 
     unit_test_scratch_dir_prefix="$unit_test_collection_scratch_dir/$unit_test_name"
 
@@ -146,18 +146,18 @@ do
 
     # first validate the metaschema
     if [ "$VERBOSE" = "true" ]; then
-      echo "  ${P_INFO}Validating Metaschema:${P_END} ${metaschema_relative}"
+      echo -e "  ${P_INFO}Validating Metaschema:${P_END} ${metaschema_relative}"
     fi
     result=$(xmllint --nowarning --noout --schema "$METASCHEMA_SCHEMA" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo "  ${P_ERROR}Metaschema '${P_END}${metaschema_relative}${P_ERROR}' is not XML Schema valid.${P_END}"
-      echo "${P_ERROR}${result}${P_END}"
+      echo -e "  ${P_ERROR}Metaschema '${P_END}${metaschema_relative}${P_ERROR}' is not XML Schema valid.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
       continue
     else
       if [ "$VERBOSE" = "true" ]; then
-        echo "  ${P_OK}Metaschema '${P_END}${metaschema_relative}${P_OK}' is XML Schema valid.${P_END}"
+        echo -e "  ${P_OK}Metaschema '${P_END}${metaschema_relative}${P_OK}' is XML Schema valid.${P_END}"
       fi
 
       svrl_result="${unit_test_scratch_dir_prefix}.svrl"
@@ -166,12 +166,12 @@ do
       if [ $cmd_exitcode -ne 0 ]; then
           if [ -f "${unit_test_path_prefix}_validation-schematron-FAIL" ]; then
             if [ "$VERBOSE" = "true" ]; then
-              echo "  ${P_OK}Metaschema '${P_END}${metaschema_relative}${P_OK}' was expected to fail the schematron checks.${P_END}"
+              echo -e "  ${P_OK}Metaschema '${P_END}${metaschema_relative}${P_OK}' was expected to fail the schematron checks.${P_END}"
             fi
             continue;
           else
-            echo "  ${P_ERROR}Metaschema '${P_END}${metaschema_relative}${P_ERROR}' did not pass the schematron checks.${P_END}"
-            echo "${P_ERROR}${result}${P_END}"
+            echo -e "  ${P_ERROR}Metaschema '${P_END}${metaschema_relative}${P_ERROR}' did not pass the schematron checks.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
             continue;
           fi
@@ -182,25 +182,25 @@ do
       schema="${unit_test_scratch_dir_prefix}_generated-json-schema.json"
 
       if [ "$VERBOSE" = "true" ]; then
-        echo "  ${P_INFO}Generating JSON schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}$schema${P_INFO}'.${P_END}"
+        echo -e "  ${P_INFO}Generating JSON schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}$schema${P_INFO}'.${P_END}"
       fi
       result=$(xsl_transform "$transform" "$metaschema" "$schema" 2>&1)
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "  ${P_ERROR}Failed to generate JSON schema for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-        echo "${P_ERROR}${result}${P_END}"
+        echo -e "  ${P_ERROR}Failed to generate JSON schema for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
         exitcode=1
         continue;
       fi
       result=$(validate_json "$OSCALDIR/build/ci-cd/support/json-schema-schema.json" "$schema" 2>&1)
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "  ${P_ERROR}Failed to validate generated JSON schema '${P_END}$schema${P_ERROR}'.${P_END}"
-        echo "${P_ERROR}${result}${P_END}"
+        echo -e "  ${P_ERROR}Failed to validate generated JSON schema '${P_END}$schema${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
         exitcode=1
         continue;
       else
-        echo "  ${P_OK}Generated valid JSON schema for '${P_END}${metaschema_relative}${P_OK}' as '${P_END}$schema${P_OK}'.${P_END}"
+        echo -e "  ${P_OK}Generated valid JSON schema for '${P_END}${metaschema_relative}${P_OK}' as '${P_END}$schema${P_OK}'.${P_END}"
       fi
     fi
 
@@ -216,12 +216,12 @@ do
         diff=$(json-diff "$expected_schema" "$schema")
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          echo "  ${P_ERROR}Generated JSON schema '${P_END}${schema}${P_ERROR}' doesn't match expected schema '${P_END}${expected_schema_relative}${P_ERROR}'.${P_END}"
-          echo -E "${P_ERROR}${diff}${P_END}"
+          echo -e "  ${P_ERROR}Generated JSON schema '${P_END}${schema}${P_ERROR}' doesn't match expected schema '${P_END}${expected_schema_relative}${P_ERROR}'.${P_END}"
+          echo -e "${P_ERROR}${diff}${P_END}"
           exitcode=1
           continue;
         else
-          echo "  ${P_OK}Generated JSON schema matches expected schema '${P_END}${expected_schema_relative}${P_OK}'.${P_END}"
+          echo -e "  ${P_OK}Generated JSON schema matches expected schema '${P_END}${expected_schema_relative}${P_OK}'.${P_END}"
         fi
       fi
     fi
@@ -235,7 +235,7 @@ do
       test_instance_name="${test_instance_name%_*}"
 
       if [ "$VERBOSE" = "true" ]; then
-        echo "  ${P_INFO}Evaluating test instance:${P_END} ${test_instance_name} = ${condition}"
+        echo -e "  ${P_INFO}Evaluating test instance:${P_END} ${test_instance_name} = ${condition}"
       fi
 
       result=$(validate_json "$schema" "$test_instance")
@@ -243,24 +243,24 @@ do
       case "$condition" in
         PASS)
           if [ $cmd_exitcode -ne 0 ]; then
-            echo "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected PASS.${P_END}"
-            echo -E "${P_ERROR}${result}${P_END}"
+            echo -e "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected PASS.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
-            echo "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"
+            echo -e "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"
           fi
           ;;
         FAIL)
           if [ $cmd_exitcode -eq 0 ]; then
-            echo "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected FAIL.${P_END}"
-            echo -E "${P_ERROR}${result}${P_END}"
+            echo -e "  ${P_ERROR}Test instance '${P_END}${test_instance_name}${P_ERROR}' failed. Expected FAIL.${P_END}"
+            echo -e "${P_ERROR}${result}${P_END}"
             exitcode=1
           else
-            echo "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"
+            echo -e "  ${P_OK}Test instance '${P_END}${test_instance_name}${P_OK}' passed.${P_END}"
           fi
           ;;
         *)
-          echo "${P_ERROR}Unsupported condition '$condition' for test instance '$test_instance_name'.${P_END}"
+          echo -e "${P_ERROR}Unsupported condition '$condition' for test instance '$test_instance_name'.${P_END}"
           exitcode=1
           ;;
       esac

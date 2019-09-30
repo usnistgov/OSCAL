@@ -5,7 +5,7 @@ fi
 source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
 
 if [[ -z "$SCHEMATRON_HOME" ]]; then
-    echo "${P_ERROR}SCHEMATRON_HOME is not set or is empty.${P_END} ${P_INFO}Please set SCHEMATRON_HOME to indicate the location of the schematron skeleton. The schematron skeleton can be cloned using git clone https://github.com/Schematron/schematron <schematron_home_dir>.${P_END}"
+    echo -e "${P_ERROR}SCHEMATRON_HOME is not set or is empty.${P_END} ${P_INFO}Please set SCHEMATRON_HOME to indicate the location of the schematron skeleton. The schematron skeleton can be cloned using git clone https://github.com/Schematron/schematron <schematron_home_dir>.${P_END}"
 fi
 
 SCHEMATRON_DIR="$SCHEMATRON_HOME/trunk/schematron/code"
@@ -22,7 +22,7 @@ build_schematron() {
     xsl_transform "$SCHEMATRON_DIR/iso_svrl_for_xslt2.xsl" "-" "$compiled_schematron" "generate-paths=true diagnose=true allow-foreign=true"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Generating compiled Schematron failed for '$schematron'${P_END}"
+        echo -e "${P_ERROR}Generating compiled Schematron failed for '$schematron'${P_END}"
         return 1
     fi
     return 0
@@ -48,21 +48,21 @@ validate_with_schematron() {
     xsl_transform "$@" "${extra_params[@]}"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        echo "Processing Schematron '$compiled_schematron' failed for target file '$source_file'"
+        echo -e "Processing Schematron '$compiled_schematron' failed for target file '$source_file'"
         return 3
     fi
 
     # check if the SVRL result contains errors
     if [ ! -z "$svrl_result" ]; then
       if grep --quiet "failed-assert" "$svrl_result"; then
-        echo "The file '$source_file' has the following Schematron errors:"
+        echo -e "The file '$source_file' has the following Schematron errors:"
 
         # display the errors
         xsl_transform "$OSCALDIR/build/ci-cd/svrl-to-plaintext.xsl" "$svrl_result"
-        echo ""
+        echo -e ""
         return 1
       else
-        echo "File '$source_file' passed Schematron validation."
+        echo -e "File '$source_file' passed Schematron validation."
       fi
     fi
 }
