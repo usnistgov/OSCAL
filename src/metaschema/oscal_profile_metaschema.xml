@@ -271,11 +271,14 @@
       <model><!-- declarations tbf in the imported schema and to be aligned with it -->
          <field ref="label"/>
          <field ref="usage" max-occurs="unbounded">
-            <group-as name="usages"/>
+            <group-as name="descriptions"/>
          </field>
          <field ref="constraint" max-occurs="unbounded">
             <group-as name="constraints"/>
          </field>
+         <assembly ref="guideline" max-occurs="unbounded">
+            <group-as name="guidance"/>
+         </assembly>
          <choice>
             <field ref="value"/>
             <assembly ref="select"/>
