@@ -48,7 +48,7 @@
       <description>Used to import the OSCAL profile representing the system's control baseline.</description>
       <flag ref="href" required="yes"/>
       <model>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -63,7 +63,7 @@
          </field>
          <field ref="system-name" min-occurs="1"/>
          <field ref="system-name-short"/>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER">
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
             <description>A free-text description of the system.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
@@ -116,7 +116,7 @@
                </allowed-values>
             </flag>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-field name="system-id" as-type="string">
@@ -201,7 +201,7 @@
          <description>The name of the information type.</description>
       </flag>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="information-type-id" max-occurs="unbounded">
             <group-as name="information-type-ids" in-json="BY_KEY"/>
          </field>
@@ -236,7 +236,7 @@
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH-WRAPPER"/>
+         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -249,7 +249,7 @@
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH-WRAPPER"/>
+         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -262,7 +262,7 @@
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH-WRAPPER"/>
+         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -343,7 +343,7 @@
          </allowed-values>
       </flag>
       <model>
-         <field ref="remarks" in-xml="WITH-WRAPPER"></field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"></field>
       </model>
       <remarks>
          <p>If 'other' is selected, a remark must be included to describe the current state.</p>
@@ -377,7 +377,7 @@
             <description>A reference to the party that manages the leveraged system.</description>
          </field>
          <field ref="date-authorized" min-occurs="1"/>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -406,7 +406,7 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -420,7 +420,7 @@
          <description>An identifier for this diagram.</description>
       </flag>
       <model>
-         <field ref="description" in-xml="WITH-WRAPPER">
+         <field ref="description" in-xml="WITH_WRAPPER">
             <description>A description of the diagram (e.g., alternate text). This can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
@@ -454,7 +454,7 @@
       <formal-name>Network Architecture</formal-name>
       <description>A description of the system's network architecture.</description>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <!-- TODO: Model specific names? -->
@@ -470,7 +470,7 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -479,7 +479,7 @@
       <formal-name>Data Flow</formal-name>
       <description>TBD</description>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <!-- TODO: Model specific names? -->
@@ -495,7 +495,7 @@
          <assembly ref="diagram" max-occurs="unbounded">
             <group-as name="diagrams" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -535,7 +535,7 @@
             <group-as name="ssp-interconnection"/>
          </assembly>
          <assembly ref="system-inventory"/>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
 
    </define-assembly>
@@ -550,9 +550,9 @@
       </flag>
       <flag ref="name" required="yes"/>
       <model>
-         <field ref="title" in-xml="WITH-WRAPPER"/>
+         <field ref="title" in-xml="WITH_WRAPPER"/>
          <field ref="short-name"/>
-         <field ref="description" in-xml="WITH-WRAPPER"/>
+         <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <!-- TODO: Model specific names? -->
@@ -588,7 +588,7 @@
          <assembly ref="authorized-privilege" max-occurs="unbounded">
             <group-as name="authorized-privileges"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
@@ -603,7 +603,7 @@
          <description>The name that identifies the privilege.</description>
       </flag>
       <model>
-         <field ref="description" in-xml="WITH-WRAPPER"/>
+         <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="function-performed" min-occurs="1" max-occurs="unbounded">
             <group-as name="functions-performed"/>
          </field>
@@ -628,7 +628,7 @@
       </flag>
       <flag ref="component-type" required="yes"/>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER">
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
             <description>A description of the component, including information about its function.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
@@ -714,7 +714,7 @@
                <p>The roles "maintainer" or "provider" can be used to define the supplier. In such cases party-id(s) can be used to associate the providing organization. For products, services, and APIs, this is the vendor and/or retailer information. For policies, processes, plans, standards, and guidance, this is the authoring organization.</p>
             </remarks>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>Components may be products, services, APIs, policies, processes, plans, guidance,
@@ -732,7 +732,7 @@
       <flag ref="id"/>
       <flag ref="name"/>
       <model>
-         <field ref="description" in-xml="WITH-WRAPPER">
+         <field ref="description" in-xml="WITH_WRAPPER">
             <description>A description of what the service provides.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
@@ -760,7 +760,7 @@
          <field ref="purpose">
             <description>A summary of the technological or business purpose of the service.</description>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>When defining a service in an SSP where component details are also provided, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifer(s) that provide and use the service respectively.</p>
@@ -863,7 +863,7 @@
                <p>This construct allows the authorizing and managing parties on both sides of the interconnection to be defined.</p>
             </remarks>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-field name="external-system-name" as-type="string">
@@ -877,7 +877,7 @@
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="inventory-items"/>
          </assembly>
-        <field ref="remarks" in-xml="WITH-WRAPPER"/>
+        <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="inventory-item">
@@ -889,7 +889,7 @@
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.</description>
       </flag>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <flag ref="name">
@@ -964,7 +964,7 @@
          <assembly ref="implemented-component" max-occurs="unbounded">
             <group-as name="implemented-components" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1051,7 +1051,7 @@
             </remarks>
          </assembly>
 
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1118,7 +1118,7 @@
          </assembly>
          <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1164,7 +1164,7 @@
 <!--         <assembly ref="by-capability" max-occurs="unbounded">
             <group-as name="by-capabilities" in-json="BY_KEY"/>
          </assembly>
--->         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+-->         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1189,7 +1189,7 @@
          <field ref="party-id" max-occurs="unbounded">
             <group-as name="party-ids"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1202,7 +1202,7 @@
          <description>A reference to the component that is implementing a given control or control statement.</description>
       </flag>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH-WRAPPER"/>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>

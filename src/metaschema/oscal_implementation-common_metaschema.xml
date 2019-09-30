@@ -36,7 +36,7 @@
             <assembly ref="only-statement" max-occurs="unbounded">
                 <group-as name="only-statements" in-json="BY_KEY"/>
             </assembly>
-            <field ref="remarks" in-xml="WITH-WRAPPER"/>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
             <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
@@ -88,7 +88,7 @@
             </field>
             <!--            <assembly ref="using"/>
 -->            <!-- TODO: Implement parameters -->
-            <field ref="remarks" in-xml="WITH-WRAPPER"/>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
     </define-assembly>
     

@@ -297,7 +297,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
@@ -347,7 +347,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="org">
@@ -380,7 +380,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-field name="person-id">
@@ -574,7 +574,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <field ref="remarks" in-xml="WITH-WRAPPER"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>Permissible values to be determined closer to the application (e.g. by a receiving
