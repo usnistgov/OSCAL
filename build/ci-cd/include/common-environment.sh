@@ -20,11 +20,11 @@ fi
 
 if [ $colorize -eq 1 ]; then
     #setup print colors
-    P_ERROR=$(tput setaf 1)$(tput bold)
-    P_OK=$(tput setaf 2)$(tput bold)
-    P_WARN=$(tput setaf 3)$(tput bold)
-    P_INFO=$(tput bold)
-    P_END=$(tput sgr0)
+    P_ERROR="$(tput setaf 1)$(tput bold)"
+    P_OK="$(tput setaf 2)$(tput bold)"
+    P_WARN="$(tput setaf 3)$(tput bold)"
+    P_INFO="$(tput bold)"
+    P_END="$(tput sgr0)"
 else
     P_ERROR=""
     P_OK=""
