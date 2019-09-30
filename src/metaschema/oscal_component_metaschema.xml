@@ -86,7 +86,20 @@
           </allowed-values>
         </flag>
       </field>
-      <assembly ref="supplier" min-occurs="1"/>
+      <assembly ref="responsible-party" max-occurs="unbounded">
+        <description>Defines a role associated with a party or parties that has responsibility for the component.</description>
+        <group-as name="responsible-parties" in-json="BY_KEY"/>
+<!--        <flag ref="role-id">
+          <allowed-values allow-other="yes">
+            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
+            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+          </allowed-values>
+        </flag>
+-->        <remarks>
+          <p>A role defined in this way can be associated with a party or parties here, or where the component is referenced (e.g., <code>inventory-item</code>, <code>implemented-requirement</code>/<code>by-component</code>).</p>
+          <p>The roles "maintainer" or "provider" can be used to define the supplier. In such cases party-id(s) can be used to associate the providing organization. For products, services, and APIs, this is the vendor and/or retailer information. For policies, processes, plans, standards, and guidance, this is the authoring organization.</p>
+        </remarks>
+      </assembly>
 <!--      <assembly ref="proof-of-compliance" max-occurs="unbounded">
         <group-as name="proofs-of-compliance" />
       </assembly>
