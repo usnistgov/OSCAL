@@ -217,7 +217,7 @@
       <description>An identifier qualified by the given identification <code>system</code> used (e.g., NIST SP 800-60).</description>
       <json-key flag-name="system"/>
       <json-value-key>id</json-value-key>
-      <flag name="system">
+      <flag name="system" required="yes">
          <formal-name>Information Type Identification System</formal-name>
          <description>A qualifier of the identification system used.</description>
          <allowed-values allow-other="yes">
