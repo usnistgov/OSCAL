@@ -63,6 +63,7 @@
       "authorization-boundary": {"description": "The description of the authorization boundary would go here."}
     },
     "system-implementation": {
+      "remarks": "This is a partial implementation that addresses the logging server portion of the auditing system.",
       "users": {
         "user-asset-administrator": {
           "name": "System Administrator",
