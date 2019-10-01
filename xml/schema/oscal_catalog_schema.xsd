@@ -12,7 +12,7 @@
          <m:schema-version>1.0.0-milestone2</m:schema-version>
          <m:short-name>oscal-catalog</m:short-name>
          <m:remarks>
-            <m:p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is <m:code>catalog</m:code>.</m:p>
+            <m:p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <m:code>catalog</m:code>.</m:p>
          </m:remarks>
          <m:root>catalog</m:root>
       </xs:appinfo>
@@ -38,7 +38,7 @@
             </xs:choice>
             <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -48,7 +48,7 @@
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
+         <xs:attribute name="class" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Class</m:formal-name>
@@ -58,7 +58,7 @@
                   <b>Class</b>: Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="depends-on" type="xs:IDREF">
+         <xs:attribute name="depends-on" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Depends on</m:formal-name>
@@ -94,7 +94,7 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal-catalog:everything-inline"/>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -115,17 +115,21 @@
          <xs:documentation>
             <b>Constraint</b>: A formal or informal expression of a constraint or test</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="test" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Constraint test</m:formal-name>
-                  <m:description>A formal (executable) expression of a constraint</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Constraint test</b>: A formal (executable) expression of a constraint</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="test" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Constraint test</m:formal-name>
+                        <m:description>A formal (executable) expression of a constraint</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Constraint test</b>: A formal (executable) expression of a constraint</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="guideline">
@@ -211,7 +215,7 @@
             <xs:element ref="oscal-catalog:part" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -221,7 +225,7 @@
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="name" use="required" type="xs:string">
+         <xs:attribute name="name" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Name</m:formal-name>
@@ -241,7 +245,7 @@
                   <b>Namespace</b>: A namespace qualifying the name.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
+         <xs:attribute name="class" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Class</m:formal-name>
@@ -265,17 +269,37 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-catalog:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-catalog:last-modified-date" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-catalog:version" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:published" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:last-modified" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:version" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:oscal-version" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:doc-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:role" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:party" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-catalog:notes" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:responsible-party"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
+      <xs:unique name="metadata-responsible-party-keys">
+         <xs:selector xpath="oscal-catalog:responsible-party"/>
+         <xs:field xpath="@role-id"/>
+      </xs:unique>
    </xs:element>
    <xs:element name="back-matter">
       <xs:annotation>
@@ -336,15 +360,35 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="last-modified-date" type="oscal-catalog:dateTime-with-timezone">
+   <xs:element name="published">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Last modified date</m:formal-name>
-            <m:description>Date of last modification.</m:description>
+            <m:formal-name>Publication Timestamp</m:formal-name>
+            <m:description>The date and time this document was published.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Last modified date</b>: Date of last modification.</xs:documentation>
+            <b>Publication Timestamp</b>: The date and time this document was published.</xs:documentation>
       </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-catalog:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="last-modified">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Last modified timestamp</m:formal-name>
+            <m:description>Date and time of last modification.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Last modified timestamp</b>: Date and time of last modification.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-catalog:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="version">
       <xs:annotation>
@@ -355,7 +399,11 @@
          <xs:documentation>
             <b>Document version</b>: The version of the document content.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="oscal-version">
       <xs:annotation>
@@ -366,7 +414,11 @@
          <xs:documentation>
             <b>OSCAL version</b>: OSCAL model version.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="doc-id">
       <xs:annotation>
@@ -377,47 +429,163 @@
          <xs:documentation>
             <b>Document Identifier</b>: A document identifier qualified by an identifier type.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" use="required">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Type</m:formal-name>
-                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:string">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="type" use="required">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Type</m:formal-name>
+                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:restriction base="xs:string">
-                        <xs:enumeration value="doi">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
+                     <xs:union memberTypes="xs:string">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="doi">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
                   </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="prop">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
-            <m:description>A value with a name, attributed to the containing control, subcontrol, part,
-      or group.</m:description>
+            <m:description>A value with a name, attributed to the containing control, part, or group.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Property</b>: A value with a name, attributed to the containing control, subcontrol, part,
-      or group.</xs:documentation>
+            <b>Property</b>: A value with a name, attributed to the containing control, part, or group.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="name" use="required">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="name" use="required">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Name</m:formal-name>
+                        <m:description>Identifying the purpose and intended use of the property, part or other object.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:union memberTypes="xs:NCName">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:NCName">
+                              <xs:enumeration value="keywords">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Used to provide a listing of keywords. This is typically used on a prop in the metadata to provide keywords for the document.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="label">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>A human-readable label for the parent context.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="sort-id">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>An alternative identifier, whose value is easily sortable among other such values in the document.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="method">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>An assessment method.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="status">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>The status of a control. For example, a value of 'Withdrawn' can indicate that the control has been withdrawn and should no longer be used.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
+                  </xs:simpleType>
+               </xs:attribute>
+               <xs:attribute name="id" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Identifier</m:formal-name>
+                        <m:description>Unique identifier of the containing object</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="ns" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Namespace</m:formal-name>
+                        <m:description>A namespace qualifying the name.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Namespace</b>: A namespace qualifying the name.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="class" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Class</m:formal-name>
+                        <m:description>Indicating the type or classification of the containing object</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Class</b>: Indicating the type or classification of the containing object</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="annotation">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Annotation</m:formal-name>
+            <m:description>A name/value pair with optional explanitory remarks.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Annotation</b>: A name/value pair with optional explanitory remarks.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="name" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Name</m:formal-name>
@@ -426,44 +594,8 @@
                <xs:documentation>
                   <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
             </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:string">
-                  <xs:simpleType>
-                     <xs:restriction base="xs:string">
-                        <xs:enumeration value="keywords">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>Used to provide a listing of keywords. This is typically used on a prop in the metadata to provide keywords for the document.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="label">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>A human-readable label for the parent context.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="method">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>An assessment method.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="status">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>The status of a control or subcontrol. The value can be 'withdrawn' to indicate that the control or subcontrol has been withdrawn and should no longer be used.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
          </xs:attribute>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -483,14 +615,14 @@
                   <b>Namespace</b>: A namespace qualifying the name.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
+         <xs:attribute name="value" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Class</m:formal-name>
-                  <m:description>Indicating the type or classification of the containing object</m:description>
+                  <m:formal-name>Value</m:formal-name>
+                  <m:description>Indicates the value of the characteristic.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Class</b>: Indicating the type or classification of the containing object</xs:documentation>
+                  <b>Value</b>: Indicates the value of the characteristic.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -508,9 +640,24 @@
          <xs:sequence>
             <xs:element ref="oscal-catalog:person" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:org" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-catalog:notes" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -520,38 +667,21 @@
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="role-id">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Role identifier</m:formal-name>
-                  <m:description>References a <m:code>role</m:code> element defined in metadata.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Role identifier</b>: References a role element defined in metadata.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:IDREFS">
-                  <xs:simpleType>
-                     <xs:restriction base="xs:IDREFS">
-                        <xs:enumeration value="content-creator">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>Identifies a party responsible for creating the content.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="content-maintainer">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>Identifies a party responsible for maintainer the content on an ongoing basis.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
-                  </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="party-id">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Party Reference</m:formal-name>
+            <m:description>References a <m:code>party</m:code> defined in <m:code>metadata</m:code>.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Party Reference</b>: References a party defined in metadata.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:NCName"/>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="person">
@@ -574,7 +704,22 @@
             <xs:element ref="oscal-catalog:email" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:phone" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-catalog:notes" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -596,7 +741,22 @@
             <xs:element ref="oscal-catalog:email" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:phone" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-catalog:notes" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -609,17 +769,21 @@
          <xs:documentation>
             <b>Personal Identifier</b>: An identifier for a person (such as an ORCID) using a designated scheme.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Type</m:formal-name>
-                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="type" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Type</m:formal-name>
+                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="org-id">
@@ -631,31 +795,35 @@
          <xs:documentation>
             <b>Organization Identifier</b>: An identifier for an organization using a designated scheme.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Type</m:formal-name>
-                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="type" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Type</m:formal-name>
+                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="rlink">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Related link</m:formal-name>
+            <m:formal-name>Resource link</m:formal-name>
             <m:description>A pointer to an external copy of a document with optional hash for verification</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Related link</b>: A pointer to an external copy of a document with optional hash for verification</xs:documentation>
+            <b>Resource link</b>: A pointer to an external copy of a document with optional hash for verification</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-catalog:hash" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:hash" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
          <xs:attribute name="href" use="required" type="oscal-catalog:uri-reference">
             <xs:annotation>
@@ -688,7 +856,11 @@
          <xs:documentation>
             <b>Person Name</b>: Full (legal) name of an individual</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="org-name">
       <xs:annotation>
@@ -699,7 +871,11 @@
          <xs:documentation>
             <b>Organization Name</b>: Full (legal) name of an organization</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="short-name">
       <xs:annotation>
@@ -710,7 +886,11 @@
          <xs:documentation>
             <b>short-name</b>: A common name, short name or acronym</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="address">
       <xs:annotation>
@@ -772,7 +952,11 @@
          <xs:documentation>
             <b>Address line</b>: A single line of an address.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="city">
       <xs:annotation>
@@ -783,7 +967,11 @@
          <xs:documentation>
             <b>City</b>: City, town or geographical region for mailing address</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="state">
       <xs:annotation>
@@ -794,7 +982,11 @@
          <xs:documentation>
             <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="postal-code">
       <xs:annotation>
@@ -805,7 +997,11 @@
          <xs:documentation>
             <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="country">
       <xs:annotation>
@@ -816,9 +1012,13 @@
          <xs:documentation>
             <b>Country</b>: Country for mailing address</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
-   <xs:element name="email" type="oscal-catalog:email">
+   <xs:element name="email">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Email</m:formal-name>
@@ -827,6 +1027,11 @@
          <xs:documentation>
             <b>Email</b>: Email address</xs:documentation>
       </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-catalog:email"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="phone">
       <xs:annotation>
@@ -837,49 +1042,53 @@
          <xs:documentation>
             <b>Telephone</b>: Contact number by telephone</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Type</m:formal-name>
-                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:string">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="type">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Type</m:formal-name>
+                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:restriction base="xs:string">
-                        <xs:enumeration value="home">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>A home phone number.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="office">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>An office phone number.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="mobibe">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>A mobile phone number.</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
-                     </xs:restriction>
+                     <xs:union memberTypes="xs:string">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="home">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>A home phone number.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="office">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>An office phone number.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="mobibe">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>A mobile phone number.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
                   </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="url" type="oscal-catalog:uri">
+   <xs:element name="url">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>URL</m:formal-name>
@@ -888,30 +1097,10 @@
          <xs:documentation>
             <b>URL</b>: URL for web site or Internet presence</xs:documentation>
       </xs:annotation>
-   </xs:element>
-   <xs:element name="notes">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Notes</m:formal-name>
-            <m:description>Any notes with further information</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Notes</b>: Any notes with further information</xs:documentation>
-      </xs:annotation>
       <xs:complexType>
-         <xs:sequence>
-            <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Type</m:formal-name>
-                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:simpleContent>
+            <xs:extension base="oscal-catalog:uri"/>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="desc">
@@ -923,7 +1112,11 @@
          <xs:documentation>
             <b>Description</b>: A short textual description</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="resource">
       <xs:annotation>
@@ -937,13 +1130,26 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-catalog:desc" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:choice>
                <xs:element ref="oscal-catalog:rlink" minOccurs="0" maxOccurs="unbounded"/>
                <xs:element ref="oscal-catalog:base64" minOccurs="0" maxOccurs="1"/>
             </xs:choice>
-            <xs:element ref="oscal-catalog:notes" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -964,48 +1170,68 @@
          <xs:documentation>
             <b>Hash</b>: A representation of a cryptographic digest generated over a resource using a hash algorithm.</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="algorithm" use="required">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Hash algorithm</m:formal-name>
-                  <m:description>Method by which a hash is derived</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Hash algorithm</b>: Method by which a hash is derived</xs:documentation>
-            </xs:annotation>
-            <xs:simpleType>
-               <xs:union memberTypes="xs:string">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="algorithm" use="required">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Hash algorithm</m:formal-name>
+                        <m:description>Method by which a hash is derived</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Hash algorithm</b>: Method by which a hash is derived</xs:documentation>
+                  </xs:annotation>
                   <xs:simpleType>
-                     <xs:restriction base="xs:string">
-                        <xs:enumeration value="SHA-224"/>
-                        <xs:enumeration value="SHA-256"/>
-                        <xs:enumeration value="SHA-384"/>
-                        <xs:enumeration value="SHA-512"/>
-                        <xs:enumeration value="RIPEMD-160"/>
-                     </xs:restriction>
+                     <xs:union memberTypes="xs:string">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="SHA-224"/>
+                              <xs:enumeration value="SHA-256"/>
+                              <xs:enumeration value="SHA-384"/>
+                              <xs:enumeration value="SHA-512"/>
+                              <xs:enumeration value="RIPEMD-160"/>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
                   </xs:simpleType>
-               </xs:union>
-            </xs:simpleType>
-         </xs:attribute>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="role">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Role</m:formal-name>
-            <m:description>Defining a role to be assigned to a party or agent</m:description>
+            <m:description>Defining a role to be assigned to a party</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Role</b>: Defining a role to be assigned to a party or agent</xs:documentation>
+            <b>Role</b>: Defining a role to be assigned to a party</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-catalog:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:title" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:short-name" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:desc" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1013,6 +1239,47 @@
                </xs:appinfo>
                <xs:documentation>
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="responsible-party">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Responsible Party</m:formal-name>
+            <m:description>A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Responsible Party</b>: A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-catalog:party-id" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-catalog:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="role-id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Responsible Role</m:formal-name>
+                  <m:description>The role that the party is responsible for.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Responsible Role</b>: The role that the party is responsible for.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -1039,6 +1306,32 @@
          <xs:documentation>
             <b>Base64</b>: </xs:documentation>
       </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:base64Binary">
+               <xs:attribute name="filename" type="oscal-catalog:uri-reference">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>File Name</m:formal-name>
+                        <m:description>Name of the file before it was encoded as Base64 to be embedded in a <m:code>resource</m:code>. This is the name that will be assigned to the file when the file is decoded.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>File Name</b>: Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="media-type" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Media type</m:formal-name>
+                        <m:description>Describes the media type of the linked resource</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Media type</b>: Describes the media type of the linked resource</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="citation">
       <xs:annotation>
@@ -1055,8 +1348,9 @@
             <xs:element ref="oscal-catalog:title" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:desc" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:doc-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1077,7 +1371,11 @@
          <xs:documentation>
             <b>Citation target</b>: An address for retrieval of a citation</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
    </xs:element>
    <xs:element name="catalog" m:root="yes">
       <xs:annotation>
@@ -1097,7 +1395,7 @@
             </xs:choice>
             <xs:element ref="oscal-catalog:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1129,7 +1427,7 @@
                <xs:element ref="oscal-catalog:control" minOccurs="0" maxOccurs="unbounded"/>
             </xs:choice>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:ID">
+         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1139,7 +1437,7 @@
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
+         <xs:attribute name="class" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Class</m:formal-name>
@@ -1169,7 +1467,7 @@
             <xs:element ref="oscal-catalog:part" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:control" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:ID">
+         <xs:attribute name="id" use="required" type="xs:string">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1179,7 +1477,7 @@
                   <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
+         <xs:attribute name="class" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Class</m:formal-name>
@@ -1422,7 +1720,7 @@
    </xs:group>
    <xs:element name="insert">
       <xs:complexType>
-         <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
+         <xs:attribute name="param-id" use="required" type="xs:NCName"/>
       </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="requiredClass"/>
@@ -1440,7 +1738,7 @@
    </xs:simpleType>
    <xs:simpleType name="email">
       <xs:annotation>
-         <xs:documentation/>
+         <xs:documentation>An email address</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:string">
          <xs:whiteSpace value="collapse"/>
@@ -1453,7 +1751,7 @@
    </xs:simpleType>
    <xs:simpleType name="uri">
       <xs:annotation>
-         <xs:documentation/>
+         <xs:documentation>A URI</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:whiteSpace value="collapse"/>
@@ -1466,7 +1764,7 @@
    </xs:simpleType>
    <xs:simpleType name="uri-reference">
       <xs:annotation>
-         <xs:documentation/>
+         <xs:documentation>A URI reference, such as a relative URL</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:whiteSpace value="collapse"/>

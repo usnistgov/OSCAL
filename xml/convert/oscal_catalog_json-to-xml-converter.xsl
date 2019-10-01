@@ -96,6 +96,13 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="(*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*)/string[@key='summary']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='usage'] | *[@key='descriptions']  | array[@key='descriptions']/*)/string[@key='summary']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
                  match="map[@key = 'descriptions']/array[@key = 'summary'] | array[@key = 'descriptions']/map/array[@key = 'summary']">
@@ -131,6 +138,13 @@
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="(*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*)/string[@key='detail']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='constraint'] | *[@key='constraints']  | array[@key='constraints']/*)/string[@key='detail']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
@@ -318,6 +332,13 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="(*[@key='link'] | *[@key='links']  | array[@key='links']/*)/string[@key='text']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='link'] | *[@key='links']  | array[@key='links']/*)/string[@key='text']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
                  match="map[@key = 'links']/array[@key = 'text'] | array[@key = 'links']/map/array[@key = 'text']">
@@ -401,6 +422,13 @@
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="(*[@key='doc-id'] | *[@key='document-ids']  | array[@key='document-ids']/*)/string[@key='identifier']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='doc-id'] | *[@key='document-ids']  | array[@key='document-ids']/*)/string[@key='identifier']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
@@ -609,6 +637,13 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="(*[@key='person-id'] | *[@key='person-ids']  | array[@key='person-ids']/*)/string[@key='id']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='person-id'] | *[@key='person-ids']  | array[@key='person-ids']/*)/string[@key='id']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
                  match="map[@key = 'person-ids']/array[@key = 'id'] | array[@key = 'person-ids']/map/array[@key = 'id']">
@@ -644,6 +679,13 @@
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="(*[@key='org-id'] | *[@key='organization-ids']  | array[@key='organization-ids']/*)/string[@key='id']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='org-id'] | *[@key='organization-ids']  | array[@key='organization-ids']/*)/string[@key='id']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
@@ -879,6 +921,13 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
+   <xsl:template match="(*[@key='phone'] | *[@key='telephone-numbers']  | array[@key='telephone-numbers']/*)/string[@key='number']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='phone'] | *[@key='telephone-numbers']  | array[@key='telephone-numbers']/*)/string[@key='number']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
                  match="map[@key = 'telephone-numbers']/array[@key = 'number'] | array[@key = 'telephone-numbers']/map/array[@key = 'number']">
@@ -976,6 +1025,13 @@
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="(*[@key='hash'] | *[@key='hashes']  | array[@key='hashes']/*)/string[@key='value']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='hash'] | *[@key='hashes']  | array[@key='hashes']/*)/string[@key='value']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
@@ -1119,6 +1175,12 @@
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
+   </xsl:template>
+   <xsl:template match="(*[@key='base64'])/string[@key='value']" mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='base64'])/string[@key='value']"
+                 mode="json2xml">
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <!-- 000 Handling flag @filename 000 -->
    <xsl:template match="*[@key='filename']" priority="6" mode="json2xml"/>

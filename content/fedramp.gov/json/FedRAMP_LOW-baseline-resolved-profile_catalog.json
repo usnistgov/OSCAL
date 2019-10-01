@@ -1,21 +1,35 @@
 {
   "catalog": {
-    "id": "resolved-profile-2019-08-28--19-39-50",
+    "id": "3036c185-819f-4445-8624-dde14792ba30",
     "metadata": {
       "title": "FedRAMP Low Baseline",
-      "last-modified-date": "2019-06-03T11:41:23.26-04:00",
+      "last-modified": "2019-10-01T11:03:27.392-04:00",
       "version": "1.1",
       "oscal-version": "1.0.0-milestone1",
-      "roles": {
-        "id": "author",
-        "title": "Author"
-      },
+      "roles": [
+        {
+          "id": "creator",
+          "title": "Document creator"
+        },
+        {
+          "id": "contact",
+          "title": "Contact"
+        }
+      ],
       "parties": {
-        "role-id": "author",
+        "id": "fedramp",
         "org": {
           "org-name": "Federal Risk and Authorization Management Program (FedRAMP)",
           "email-addresses": "info@fedramp.gov",
           "URLs": "https://fedramp.gov"
+        }
+      },
+      "responsible-parties": {
+        "creator": {
+          "party-ids": "fedramp"
+        },
+        "contact": {
+          "party-ids": "fedramp"
         }
       }
     },
@@ -38,20 +52,25 @@
                 "id": "ac-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ac-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "AC-1"
-            },
+            "properties": [
+              {
+                "label": "AC-1"
+              },
+              {
+                "sort-id": "ac-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -376,13 +395,18 @@
                 "id": "ac-2_prm_4",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "AC-2"
-            },
+            "properties": [
+              {
+                "label": "AC-2"
+              },
+              {
+                "sort-id": "ac-02"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-2_smt",
@@ -1012,9 +1036,14 @@
             "id": "ac-3",
             "class": "SP800-53",
             "title": "Access Enforcement",
-            "properties": {
-              "label": "AC-3"
-            },
+            "properties": [
+              {
+                "label": "AC-3"
+              },
+              {
+                "sort-id": "ac-03"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-3_smt",
@@ -1169,14 +1198,14 @@
                 "id": "ac-7_prm_1",
                 "label": "organization-defined number",
                 "constraints": {
-                  "STRVALUE": "not more than three (3)"
+                  "detail": "not more than three (3)"
                 }
               },
               {
                 "id": "ac-7_prm_2",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "fifteen (15) minutes"
+                  "detail": "fifteen (15) minutes"
                 }
               },
               {
@@ -1194,7 +1223,7 @@
                 "depends-on": "ac-7_prm_3",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "thirty (30) minutes"
+                  "detail": "thirty (30) minutes"
                 }
               },
               {
@@ -1203,9 +1232,14 @@
                 "label": "organization-defined delay algorithm"
               }
             ],
-            "properties": {
-              "label": "AC-7"
-            },
+            "properties": [
+              {
+                "label": "AC-7"
+              },
+              {
+                "sort-id": "ac-07"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-7_smt",
@@ -1389,20 +1423,25 @@
                 "id": "ac-8_prm_1",
                 "label": "organization-defined system use notification message or banner",
                 "constraints": {
-                  "STRVALUE": "see additional Requirements and Guidance"
+                  "detail": "see additional Requirements and Guidance"
                 }
               },
               {
                 "id": "ac-8_prm_2",
                 "label": "organization-defined conditions",
                 "constraints": {
-                  "STRVALUE": "see additional Requirements and Guidance"
+                  "detail": "see additional Requirements and Guidance"
                 }
               }
             ],
-            "properties": {
-              "label": "AC-8"
-            },
+            "properties": [
+              {
+                "label": "AC-8"
+              },
+              {
+                "sort-id": "ac-08"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-8_smt",
@@ -1731,9 +1770,14 @@
               "id": "ac-14_prm_1",
               "label": "organization-defined user actions"
             },
-            "properties": {
-              "label": "AC-14"
-            },
+            "properties": [
+              {
+                "label": "AC-14"
+              },
+              {
+                "sort-id": "ac-14"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-14_smt",
@@ -1841,9 +1885,14 @@
             "id": "ac-17",
             "class": "SP800-53",
             "title": "Remote Access",
-            "properties": {
-              "label": "AC-17"
-            },
+            "properties": [
+              {
+                "label": "AC-17"
+              },
+              {
+                "sort-id": "ac-17"
+              }
+            ],
             "links": [
               {
                 "href": "#ref074",
@@ -2118,9 +2167,14 @@
             "id": "ac-18",
             "class": "SP800-53",
             "title": "Wireless Access",
-            "properties": {
-              "label": "AC-18"
-            },
+            "properties": [
+              {
+                "label": "AC-18"
+              },
+              {
+                "sort-id": "ac-18"
+              }
+            ],
             "links": [
               {
                 "href": "#ref076",
@@ -2314,9 +2368,14 @@
             "id": "ac-19",
             "class": "SP800-53",
             "title": "Access Control for Mobile Devices",
-            "properties": {
-              "label": "AC-19"
-            },
+            "properties": [
+              {
+                "label": "AC-19"
+              },
+              {
+                "sort-id": "ac-19"
+              }
+            ],
             "links": [
               {
                 "href": "#ref108",
@@ -2535,9 +2594,14 @@
             "id": "ac-20",
             "class": "SP800-53",
             "title": "Use of External Information Systems",
-            "properties": {
-              "label": "AC-20"
-            },
+            "properties": [
+              {
+                "label": "AC-20"
+              },
+              {
+                "sort-id": "ac-20"
+              }
+            ],
             "links": {
               "href": "#ref015",
               "rel": "reference",
@@ -2667,12 +2731,17 @@
               "id": "ac-22_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least quarterly"
+                "detail": "at least quarterly"
               }
             },
-            "properties": {
-              "label": "AC-22"
-            },
+            "properties": [
+              {
+                "label": "AC-22"
+              },
+              {
+                "sort-id": "ac-22"
+              }
+            ],
             "parts": [
               {
                 "id": "ac-22_smt",
@@ -2861,20 +2930,25 @@
                 "id": "at-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "at-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "AT-1"
-            },
+            "properties": [
+              {
+                "label": "AT-1"
+              },
+              {
+                "sort-id": "at-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -3196,12 +3270,17 @@
               "id": "at-2_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least annually"
+                "detail": "at least annually"
               }
             },
-            "properties": {
-              "label": "AT-2"
-            },
+            "properties": [
+              {
+                "label": "AT-2"
+              },
+              {
+                "sort-id": "at-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref002",
@@ -3361,12 +3440,17 @@
               "id": "at-3_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least annually"
+                "detail": "at least annually"
               }
             },
-            "properties": {
-              "label": "AT-3"
-            },
+            "properties": [
+              {
+                "label": "AT-3"
+              },
+              {
+                "sort-id": "at-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref002",
@@ -3546,12 +3630,17 @@
               "id": "at-4_prm_1",
               "label": "organization-defined time period",
               "constraints": {
-                "STRVALUE": "At least one year"
+                "detail": "At least one year"
               }
             },
-            "properties": {
-              "label": "AT-4"
-            },
+            "properties": [
+              {
+                "label": "AT-4"
+              },
+              {
+                "sort-id": "at-04"
+              }
+            ],
             "parts": [
               {
                 "id": "at-4_smt",
@@ -3743,20 +3832,25 @@
                 "id": "au-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "au-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "AU-1"
-            },
+            "properties": [
+              {
+                "label": "AU-1"
+              },
+              {
+                "sort-id": "au-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -4069,20 +4163,25 @@
                 "id": "au-2_prm_1",
                 "label": "organization-defined auditable events",
                 "constraints": {
-                  "STRVALUE": "Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes"
+                  "detail": "Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes"
                 }
               },
               {
                 "id": "au-2_prm_2",
                 "label": "organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event",
                 "constraints": {
-                  "STRVALUE": "organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event"
+                  "detail": "organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event"
                 }
               }
             ],
-            "properties": {
-              "label": "AU-2"
-            },
+            "properties": [
+              {
+                "label": "AU-2"
+              },
+              {
+                "sort-id": "au-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref099",
@@ -4313,9 +4412,14 @@
             "id": "au-3",
             "class": "SP800-53",
             "title": "Content of Audit Records",
-            "properties": {
-              "label": "AU-3"
-            },
+            "properties": [
+              {
+                "label": "AU-3"
+              },
+              {
+                "sort-id": "au-03"
+              }
+            ],
             "parts": [
               {
                 "id": "au-3_smt",
@@ -4444,9 +4548,14 @@
               "id": "au-4_prm_1",
               "label": "organization-defined audit record storage requirements"
             },
-            "properties": {
-              "label": "AU-4"
-            },
+            "properties": [
+              {
+                "label": "AU-4"
+              },
+              {
+                "sort-id": "au-04"
+              }
+            ],
             "parts": [
               {
                 "id": "au-4_smt",
@@ -4558,13 +4667,18 @@
                 "id": "au-5_prm_2",
                 "label": "organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)",
                 "constraints": {
-                  "STRVALUE": "organization-defined actions to be taken (overwrite oldest record)"
+                  "detail": "organization-defined actions to be taken (overwrite oldest record)"
                 }
               }
             ],
-            "properties": {
-              "label": "AU-5"
-            },
+            "properties": [
+              {
+                "label": "AU-5"
+              },
+              {
+                "sort-id": "au-05"
+              }
+            ],
             "parts": [
               {
                 "id": "au-5_smt",
@@ -4704,7 +4818,7 @@
                 "id": "au-6_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least weekly"
+                  "detail": "at least weekly"
                 }
               },
               {
@@ -4716,9 +4830,14 @@
                 "label": "organization-defined personnel or roles"
               }
             ],
-            "properties": {
-              "label": "AU-6"
-            },
+            "properties": [
+              {
+                "label": "AU-6"
+              },
+              {
+                "sort-id": "au-06"
+              }
+            ],
             "parts": [
               {
                 "id": "au-6_smt",
@@ -4999,9 +5118,14 @@
               "id": "au-8_prm_1",
               "label": "organization-defined granularity of time measurement"
             },
-            "properties": {
-              "label": "AU-8"
-            },
+            "properties": [
+              {
+                "label": "AU-8"
+              },
+              {
+                "sort-id": "au-08"
+              }
+            ],
             "parts": [
               {
                 "id": "au-8_smt",
@@ -5127,9 +5251,14 @@
             "id": "au-9",
             "class": "SP800-53",
             "title": "Protection of Audit Information",
-            "properties": {
-              "label": "AU-9"
-            },
+            "properties": [
+              {
+                "label": "AU-9"
+              },
+              {
+                "sort-id": "au-09"
+              }
+            ],
             "parts": [
               {
                 "id": "au-9_smt",
@@ -5293,12 +5422,17 @@
               "id": "au-11_prm_1",
               "label": "organization-defined time period consistent with records retention policy",
               "constraints": {
-                "STRVALUE": "at least ninety days"
+                "detail": "at least ninety days"
               }
             },
-            "properties": {
-              "label": "AU-11"
-            },
+            "properties": [
+              {
+                "label": "AU-11"
+              },
+              {
+                "sort-id": "au-11"
+              }
+            ],
             "parts": [
               {
                 "id": "au-11_smt",
@@ -5418,7 +5552,7 @@
                 "id": "au-12_prm_1",
                 "label": "organization-defined information system components",
                 "constraints": {
-                  "STRVALUE": "all information system and network components where audit capability is deployed/available"
+                  "detail": "all information system and network components where audit capability is deployed/available"
                 }
               },
               {
@@ -5426,9 +5560,14 @@
                 "label": "organization-defined personnel or roles"
               }
             ],
-            "properties": {
-              "label": "AU-12"
-            },
+            "properties": [
+              {
+                "label": "AU-12"
+              },
+              {
+                "sort-id": "au-12"
+              }
+            ],
             "parts": [
               {
                 "id": "au-12_smt",
@@ -5610,20 +5749,25 @@
                 "id": "ca-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ca-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "CA-1"
-            },
+            "properties": [
+              {
+                "label": "CA-1"
+              },
+              {
+                "sort-id": "ca-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -5946,20 +6090,25 @@
                 "id": "ca-2_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               },
               {
                 "id": "ca-2_prm_2",
                 "label": "organization-defined individuals or roles",
                 "constraints": {
-                  "STRVALUE": "individuals or roles to include FedRAMP PMO"
+                  "detail": "individuals or roles to include FedRAMP PMO"
                 }
               }
             ],
-            "properties": {
-              "label": "CA-2"
-            },
+            "properties": [
+              {
+                "label": "CA-2"
+              },
+              {
+                "sort-id": "ca-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref008",
@@ -6287,9 +6436,14 @@
                 "id": "ca-2.1_prm_1",
                 "label": "organization-defined level of independence"
               },
-              "properties": {
-                "label": "CA-2(1)"
-              },
+              "properties": [
+                {
+                  "label": "CA-2(1)"
+                },
+                {
+                  "sort-id": "ca-02.01"
+                }
+              ],
               "parts": [
                 {
                   "id": "ca-2.1_smt",
@@ -6369,12 +6523,17 @@
               "id": "ca-3_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least annually and on input from FedRAMP"
+                "detail": "at least annually and on input from FedRAMP"
               }
             },
-            "properties": {
-              "label": "CA-3"
-            },
+            "properties": [
+              {
+                "label": "CA-3"
+              },
+              {
+                "sort-id": "ca-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -6585,12 +6744,17 @@
               "id": "ca-5_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least monthly"
+                "detail": "at least monthly"
               }
             },
-            "properties": {
-              "label": "CA-5"
-            },
+            "properties": [
+              {
+                "label": "CA-5"
+              },
+              {
+                "sort-id": "ca-05"
+              }
+            ],
             "links": [
               {
                 "href": "#ref105",
@@ -6780,7 +6944,7 @@
                     "properties": {
                       "label": "Requirement:"
                     },
-                    "prose": "Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly."
+                    "prose": "Plan of Action & Milestones (POA&M) must be provided at least monthly."
                   },
                   {
                     "id": "ca-5_fr_gdn.1",
@@ -6788,7 +6952,7 @@
                     "properties": {
                       "label": "Guidance:"
                     },
-                    "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)"
+                    "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)"
                   }
                 ]
               }
@@ -6802,12 +6966,17 @@
               "id": "ca-6_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least every three years or when a significant change occurs"
+                "detail": "at least every three years or when a significant change occurs"
               }
             },
-            "properties": {
-              "label": "CA-6"
-            },
+            "properties": [
+              {
+                "label": "CA-6"
+              },
+              {
+                "sort-id": "ca-06"
+              }
+            ],
             "links": [
               {
                 "href": "#ref104",
@@ -7004,20 +7173,25 @@
                 "id": "ca-7_prm_4",
                 "label": "organization-defined personnel or roles",
                 "constraints": {
-                  "STRVALUE": "to meet Federal and FedRAMP requirements (See additional guidance)"
+                  "detail": "to meet Federal and FedRAMP requirements (See additional guidance)"
                 }
               },
               {
                 "id": "ca-7_prm_5",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "to meet Federal and FedRAMP requirements (See additional guidance)"
+                  "detail": "to meet Federal and FedRAMP requirements (See additional guidance)"
                 }
               }
             ],
-            "properties": {
-              "label": "CA-7"
-            },
+            "properties": [
+              {
+                "label": "CA-7"
+              },
+              {
+                "sort-id": "ca-07"
+              }
+            ],
             "links": [
               {
                 "href": "#ref115",
@@ -7463,7 +7637,7 @@
                     "properties": {
                       "label": "Guidance:"
                     },
-                    "prose": "CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates."
+                    "prose": "CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates."
                   },
                   {
                     "id": "ca-7_fr_gdn.2",
@@ -7511,7 +7685,7 @@
                 {
                   "id": "ca-7.fr_gdn.1",
                   "name": "guidance",
-                  "prose": "CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates."
+                  "prose": "CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&M updates."
                 },
                 {
                   "id": "ca-7.fr_gdn.2",
@@ -7529,9 +7703,14 @@
               "id": "ca-9_prm_1",
               "label": "organization-defined information system components or classes of components"
             },
-            "properties": {
-              "label": "CA-9"
-            },
+            "properties": [
+              {
+                "label": "CA-9"
+              },
+              {
+                "sort-id": "ca-09"
+              }
+            ],
             "parts": [
               {
                 "id": "ca-9_smt",
@@ -7726,20 +7905,25 @@
                 "id": "cm-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "cm-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "CM-1"
-            },
+            "properties": [
+              {
+                "label": "CM-1"
+              },
+              {
+                "sort-id": "cm-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -8047,9 +8231,14 @@
             "id": "cm-2",
             "class": "SP800-53",
             "title": "Baseline Configuration",
-            "properties": {
-              "label": "CM-2"
-            },
+            "properties": [
+              {
+                "label": "CM-2"
+              },
+              {
+                "sort-id": "cm-02"
+              }
+            ],
             "links": {
               "href": "#ref053",
               "rel": "reference",
@@ -8162,9 +8351,14 @@
             "id": "cm-4",
             "class": "SP800-53",
             "title": "Security Impact Analysis",
-            "properties": {
-              "label": "CM-4"
-            },
+            "properties": [
+              {
+                "label": "CM-4"
+              },
+              {
+                "sort-id": "cm-04"
+              }
+            ],
             "links": {
               "href": "#ref053",
               "rel": "reference",
@@ -8269,7 +8463,7 @@
                 "id": "cm-6_prm_1",
                 "label": "organization-defined security configuration checklists",
                 "constraints": {
-                  "STRVALUE": "United States Government Configuration Baseline (USGCB)"
+                  "detail": "United States Government Configuration Baseline (USGCB)"
                 }
               },
               {
@@ -8281,9 +8475,14 @@
                 "label": "organization-defined operational requirements"
               }
             ],
-            "properties": {
-              "label": "CM-6"
-            },
+            "properties": [
+              {
+                "label": "CM-6"
+              },
+              {
+                "sort-id": "cm-06"
+              }
+            ],
             "links": [
               {
                 "href": "#ref109",
@@ -8644,12 +8843,17 @@
               "id": "cm-7_prm_1",
               "label": "organization-defined prohibited or restricted functions, ports, protocols, and/or services",
               "constraints": {
-                "STRVALUE": "United States Government Configuration Baseline (USGCB)"
+                "detail": "United States Government Configuration Baseline (USGCB)"
               }
             },
-            "properties": {
-              "label": "CM-7"
-            },
+            "properties": [
+              {
+                "label": "CM-7"
+              },
+              {
+                "sort-id": "cm-07"
+              }
+            ],
             "links": {
               "href": "#ref006",
               "rel": "reference",
@@ -8888,13 +9092,18 @@
                 "id": "cm-8_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least monthly"
+                  "detail": "at least monthly"
                 }
               }
             ],
-            "properties": {
-              "label": "CM-8"
-            },
+            "properties": [
+              {
+                "label": "CM-8"
+              },
+              {
+                "sort-id": "cm-08"
+              }
+            ],
             "links": {
               "href": "#ref053",
               "rel": "reference",
@@ -9120,9 +9329,14 @@
             "id": "cm-10",
             "class": "SP800-53",
             "title": "Software Usage Restrictions",
-            "properties": {
-              "label": "CM-10"
-            },
+            "properties": [
+              {
+                "label": "CM-10"
+              },
+              {
+                "sort-id": "cm-10"
+              }
+            ],
             "parts": [
               {
                 "id": "cm-10_smt",
@@ -9257,13 +9471,18 @@
                 "id": "cm-11_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "Continuously (via CM-7 (5))"
+                  "detail": "Continuously (via CM-7 (5))"
                 }
               }
             ],
-            "properties": {
-              "label": "CM-11"
-            },
+            "properties": [
+              {
+                "label": "CM-11"
+              },
+              {
+                "sort-id": "cm-11"
+              }
+            ],
             "parts": [
               {
                 "id": "cm-11_smt",
@@ -9472,20 +9691,25 @@
                 "id": "cp-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "cp-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "CP-1"
-            },
+            "properties": [
+              {
+                "label": "CP-1"
+              },
+              {
+                "sort-id": "cp-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref010",
@@ -9816,7 +10040,7 @@
                 "id": "cp-2_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               },
               {
@@ -9824,9 +10048,14 @@
                 "label": "organization-defined key contingency personnel (identified by name and/or by role) and organizational elements"
               }
             ],
-            "properties": {
-              "label": "CP-2"
-            },
+            "properties": [
+              {
+                "label": "CP-2"
+              },
+              {
+                "sort-id": "cp-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref010",
@@ -10329,20 +10558,25 @@
                 "id": "cp-3_prm_1",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "ten (10) days"
+                  "detail": "ten (10) days"
                 }
               },
               {
                 "id": "cp-3_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "CP-3"
-            },
+            "properties": [
+              {
+                "label": "CP-3"
+              },
+              {
+                "sort-id": "cp-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref010",
@@ -10525,20 +10759,25 @@
                 "id": "cp-4_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every three years"
+                  "detail": "at least every three years"
                 }
               },
               {
                 "id": "cp-4_prm_2",
                 "label": "organization-defined tests",
                 "constraints": {
-                  "STRVALUE": "classroom exercises/table top written tests"
+                  "detail": "classroom exercises/table top written tests"
                 }
               }
             ],
-            "properties": {
-              "label": "CP-4"
-            },
+            "properties": [
+              {
+                "label": "CP-4"
+              },
+              {
+                "sort-id": "cp-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref010",
@@ -10726,27 +10965,32 @@
                 "id": "cp-9_prm_1",
                 "label": "organization-defined frequency consistent with recovery time and recovery point objectives",
                 "constraints": {
-                  "STRVALUE": "daily incremental; weekly full"
+                  "detail": "daily incremental; weekly full"
                 }
               },
               {
                 "id": "cp-9_prm_2",
                 "label": "organization-defined frequency consistent with recovery time and recovery point objectives",
                 "constraints": {
-                  "STRVALUE": "daily incremental; weekly full"
+                  "detail": "daily incremental; weekly full"
                 }
               },
               {
                 "id": "cp-9_prm_3",
                 "label": "organization-defined frequency consistent with recovery time and recovery point objectives",
                 "constraints": {
-                  "STRVALUE": "daily incremental; weekly full"
+                  "detail": "daily incremental; weekly full"
                 }
               }
             ],
-            "properties": {
-              "label": "CP-9"
-            },
+            "properties": [
+              {
+                "label": "CP-9"
+              },
+              {
+                "sort-id": "cp-09"
+              }
+            ],
             "links": {
               "href": "#ref066",
               "rel": "reference",
@@ -10990,9 +11234,14 @@
             "id": "cp-10",
             "class": "SP800-53",
             "title": "Information System Recovery and Reconstitution",
-            "properties": {
-              "label": "CP-10"
-            },
+            "properties": [
+              {
+                "label": "CP-10"
+              },
+              {
+                "sort-id": "cp-10"
+              }
+            ],
             "links": [
               {
                 "href": "#ref010",
@@ -11185,20 +11434,25 @@
                 "id": "ia-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ia-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "IA-1"
-            },
+            "properties": [
+              {
+                "label": "IA-1"
+              },
+              {
+                "sort-id": "ia-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref017",
@@ -11531,9 +11785,14 @@
             "id": "ia-2",
             "class": "SP800-53",
             "title": "Identification and Authentication (organizational Users)",
-            "properties": {
-              "label": "IA-2"
-            },
+            "properties": [
+              {
+                "label": "IA-2"
+              },
+              {
+                "sort-id": "ia-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref018",
@@ -11685,9 +11944,14 @@
                 "id": "ia-2.1",
                 "class": "SP800-53-enhancement",
                 "title": "Network Access to Privileged Accounts",
-                "properties": {
-                  "label": "IA-2(1)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-2(1)"
+                  },
+                  {
+                    "sort-id": "ia-02.01"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-2.1_smt",
@@ -11744,9 +12008,14 @@
                 "id": "ia-2.12",
                 "class": "SP800-53-enhancement",
                 "title": "Acceptance of PIV Credentials",
-                "properties": {
-                  "label": "IA-2(12)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-2(12)"
+                  },
+                  {
+                    "sort-id": "ia-02.12"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-2.12_smt",
@@ -11859,20 +12128,25 @@
                 "id": "ia-4_prm_2",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "IA-4 (d) [at least two years]"
+                  "detail": "IA-4 (d) [at least two years]"
                 }
               },
               {
                 "id": "ia-4_prm_3",
                 "label": "organization-defined time period of inactivity",
                 "constraints": {
-                  "STRVALUE": "ninety days for user identifiers (See additional requirements and guidance)"
+                  "detail": "ninety days for user identifiers (See additional requirements and guidance)"
                 }
               }
             ],
-            "properties": {
-              "label": "IA-4"
-            },
+            "properties": [
+              {
+                "label": "IA-4"
+              },
+              {
+                "sort-id": "ia-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref017",
@@ -12278,9 +12552,14 @@
               "id": "ia-5_prm_1",
               "label": "organization-defined time period by authenticator type"
             },
-            "properties": {
-              "label": "IA-5"
-            },
+            "properties": [
+              {
+                "label": "IA-5"
+              },
+              {
+                "sort-id": "ia-05"
+              }
+            ],
             "links": [
               {
                 "href": "#ref106",
@@ -12775,7 +13054,7 @@
                     "id": "ia-5.1_prm_2",
                     "label": "organization-defined number",
                     "constraints": {
-                      "STRVALUE": "at least one"
+                      "detail": "at least one"
                     }
                   },
                   {
@@ -12786,13 +13065,18 @@
                     "id": "ia-5.1_prm_4",
                     "label": "organization-defined number",
                     "constraints": {
-                      "STRVALUE": "twenty four"
+                      "detail": "twenty four"
                     }
                   }
                 ],
-                "properties": {
-                  "label": "IA-5(1)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-5(1)"
+                  },
+                  {
+                    "sort-id": "ia-05.01"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-5.1_smt",
@@ -13106,9 +13390,14 @@
                   "id": "ia-5.11_prm_1",
                   "label": "organization-defined token quality requirements"
                 },
-                "properties": {
-                  "label": "IA-5(11)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-5(11)"
+                  },
+                  {
+                    "sort-id": "ia-05.11"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-5.11_smt",
@@ -13181,9 +13470,14 @@
             "id": "ia-6",
             "class": "SP800-53",
             "title": "Authenticator Feedback",
-            "properties": {
-              "label": "IA-6"
-            },
+            "properties": [
+              {
+                "label": "IA-6"
+              },
+              {
+                "sort-id": "ia-06"
+              }
+            ],
             "parts": [
               {
                 "id": "ia-6_smt",
@@ -13241,9 +13535,14 @@
             "id": "ia-7",
             "class": "SP800-53",
             "title": "Cryptographic Module Authentication",
-            "properties": {
-              "label": "IA-7"
-            },
+            "properties": [
+              {
+                "label": "IA-7"
+              },
+              {
+                "sort-id": "ia-07"
+              }
+            ],
             "links": [
               {
                 "href": "#ref012",
@@ -13320,9 +13619,14 @@
             "id": "ia-8",
             "class": "SP800-53",
             "title": "Identification and Authentication (non-organizational Users)",
-            "properties": {
-              "label": "IA-8"
-            },
+            "properties": [
+              {
+                "label": "IA-8"
+              },
+              {
+                "sort-id": "ia-08"
+              }
+            ],
             "links": [
               {
                 "href": "#ref106",
@@ -13479,9 +13783,14 @@
                 "id": "ia-8.1",
                 "class": "SP800-53-enhancement",
                 "title": "Acceptance of PIV Credentials from Other Agencies",
-                "properties": {
-                  "label": "IA-8(1)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-8(1)"
+                  },
+                  {
+                    "sort-id": "ia-08.01"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-8.1_smt",
@@ -13569,9 +13878,14 @@
                 "id": "ia-8.2",
                 "class": "SP800-53-enhancement",
                 "title": "Acceptance of Third-party Credentials",
-                "properties": {
-                  "label": "IA-8(2)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-8(2)"
+                  },
+                  {
+                    "sort-id": "ia-08.02"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-8.2_smt",
@@ -13633,9 +13947,14 @@
                   "id": "ia-8.3_prm_1",
                   "label": "organization-defined information systems"
                 },
-                "properties": {
-                  "label": "IA-8(3)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-8(3)"
+                  },
+                  {
+                    "sort-id": "ia-08.03"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-8.3_smt",
@@ -13711,9 +14030,14 @@
                 "id": "ia-8.4",
                 "class": "SP800-53-enhancement",
                 "title": "Use of Ficam-issued Profiles",
-                "properties": {
-                  "label": "IA-8(4)"
-                },
+                "properties": [
+                  {
+                    "label": "IA-8(4)"
+                  },
+                  {
+                    "sort-id": "ia-08.04"
+                  }
+                ],
                 "parts": [
                   {
                     "id": "ia-8.4_smt",
@@ -13789,20 +14113,25 @@
                 "id": "ir-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ir-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "IR-1"
-            },
+            "properties": [
+              {
+                "label": "IR-1"
+              },
+              {
+                "sort-id": "ir-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -14129,13 +14458,18 @@
                 "id": "ir-2_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "IR-2"
-            },
+            "properties": [
+              {
+                "label": "IR-2"
+              },
+              {
+                "sort-id": "ir-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref057",
@@ -14293,9 +14627,14 @@
             "id": "ir-4",
             "class": "SP800-53",
             "title": "Incident Handling",
-            "properties": {
-              "label": "IR-4"
-            },
+            "properties": [
+              {
+                "label": "IR-4"
+              },
+              {
+                "sort-id": "ir-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref008",
@@ -14604,9 +14943,14 @@
             "id": "ir-5",
             "class": "SP800-53",
             "title": "Incident Monitoring",
-            "properties": {
-              "label": "IR-5"
-            },
+            "properties": [
+              {
+                "label": "IR-5"
+              },
+              {
+                "sort-id": "ir-05"
+              }
+            ],
             "links": {
               "href": "#ref086",
               "rel": "reference",
@@ -14729,7 +15073,7 @@
                 "id": "ir-6_prm_1",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)"
+                  "detail": "US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)"
                 }
               },
               {
@@ -14737,9 +15081,14 @@
                 "label": "organization-defined authorities"
               }
             ],
-            "properties": {
-              "label": "IR-6"
-            },
+            "properties": [
+              {
+                "label": "IR-6"
+              },
+              {
+                "sort-id": "ir-06"
+              }
+            ],
             "links": [
               {
                 "href": "#ref086",
@@ -14905,9 +15254,14 @@
             "id": "ir-7",
             "class": "SP800-53",
             "title": "Incident Response Assistance",
-            "properties": {
-              "label": "IR-7"
-            },
+            "properties": [
+              {
+                "label": "IR-7"
+              },
+              {
+                "sort-id": "ir-07"
+              }
+            ],
             "parts": [
               {
                 "id": "ir-7_smt",
@@ -15014,27 +15368,32 @@
                 "id": "ir-8_prm_2",
                 "label": "organization-defined incident response personnel (identified by name and/or by role) and organizational elements",
                 "constraints": {
-                  "STRVALUE": "see additional FedRAMP Requirements and Guidance"
+                  "detail": "see additional FedRAMP Requirements and Guidance"
                 }
               },
               {
                 "id": "ir-8_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               },
               {
                 "id": "ir-8_prm_4",
                 "label": "organization-defined incident response personnel (identified by name and/or by role) and organizational elements",
                 "constraints": {
-                  "STRVALUE": "see additional FedRAMP Requirements and Guidance"
+                  "detail": "see additional FedRAMP Requirements and Guidance"
                 }
               }
             ],
-            "properties": {
-              "label": "IR-8"
-            },
+            "properties": [
+              {
+                "label": "IR-8"
+              },
+              {
+                "sort-id": "ir-08"
+              }
+            ],
             "links": {
               "href": "#ref086",
               "rel": "reference",
@@ -15543,20 +15902,25 @@
                 "id": "ma-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ma-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "MA-1"
-            },
+            "properties": [
+              {
+                "label": "MA-1"
+              },
+              {
+                "sort-id": "ma-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -15874,9 +16238,14 @@
                 "label": "organization-defined maintenance-related information"
               }
             ],
-            "properties": {
-              "label": "MA-2"
-            },
+            "properties": [
+              {
+                "label": "MA-2"
+              },
+              {
+                "sort-id": "ma-02"
+              }
+            ],
             "parts": [
               {
                 "id": "ma-2_smt",
@@ -16222,9 +16591,14 @@
             "id": "ma-4",
             "class": "SP800-53",
             "title": "Nonlocal Maintenance",
-            "properties": {
-              "label": "MA-4"
-            },
+            "properties": [
+              {
+                "label": "MA-4"
+              },
+              {
+                "sort-id": "ma-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref013",
@@ -16532,9 +16906,14 @@
             "id": "ma-5",
             "class": "SP800-53",
             "title": "Maintenance Personnel",
-            "properties": {
-              "label": "MA-5"
-            },
+            "properties": [
+              {
+                "label": "MA-5"
+              },
+              {
+                "sort-id": "ma-05"
+              }
+            ],
             "parts": [
               {
                 "id": "ma-5_smt",
@@ -16709,20 +17088,25 @@
                 "id": "mp-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "mp-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "MP-1"
-            },
+            "properties": [
+              {
+                "label": "MP-1"
+              },
+              {
+                "sort-id": "mp-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -17040,9 +17424,14 @@
                 "label": "organization-defined personnel or roles"
               }
             ],
-            "properties": {
-              "label": "MP-2"
-            },
+            "properties": [
+              {
+                "label": "MP-2"
+              },
+              {
+                "sort-id": "mp-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -17175,9 +17564,14 @@
                 "label": "organization-defined sanitization techniques and procedures"
               }
             ],
-            "properties": {
-              "label": "MP-6"
-            },
+            "properties": [
+              {
+                "label": "MP-6"
+              },
+              {
+                "sort-id": "mp-06"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -17410,9 +17804,14 @@
                 "label": "organization-defined security safeguards"
               }
             ],
-            "properties": {
-              "label": "MP-7"
-            },
+            "properties": [
+              {
+                "label": "MP-7"
+              },
+              {
+                "sort-id": "mp-07"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -17575,20 +17974,25 @@
                 "id": "pe-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "pe-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PE-1"
-            },
+            "properties": [
+              {
+                "label": "PE-1"
+              },
+              {
+                "sort-id": "pe-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -17900,12 +18304,17 @@
               "id": "pe-2_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least annually"
+                "detail": "at least annually"
               }
             },
-            "properties": {
-              "label": "PE-2"
-            },
+            "properties": [
+              {
+                "label": "PE-2"
+              },
+              {
+                "sort-id": "pe-02"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-2_smt",
@@ -18093,7 +18502,7 @@
               {
                 "id": "pe-3_prm_2",
                 "constraints": {
-                  "STRVALUE": "CSP defined physical access control systems/devices AND guards"
+                  "detail": "CSP defined physical access control systems/devices AND guards"
                 },
                 "select": {
                   "how-many": "one or more",
@@ -18108,7 +18517,7 @@
                 "depends-on": "pe-3_prm_2",
                 "label": "organization-defined physical access control systems/devices",
                 "constraints": {
-                  "STRVALUE": "CSP defined physical access control systems/devices"
+                  "detail": "CSP defined physical access control systems/devices"
                 }
               },
               {
@@ -18123,7 +18532,7 @@
                 "id": "pe-3_prm_6",
                 "label": "organization-defined circumstances requiring visitor escorts and monitoring",
                 "constraints": {
-                  "STRVALUE": "in all circumstances within restricted access area where the information system resides"
+                  "detail": "in all circumstances within restricted access area where the information system resides"
                 }
               },
               {
@@ -18134,20 +18543,25 @@
                 "id": "pe-3_prm_8",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               },
               {
                 "id": "pe-3_prm_9",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PE-3"
-            },
+            "properties": [
+              {
+                "label": "PE-3"
+              },
+              {
+                "sort-id": "pe-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref017",
@@ -18693,7 +19107,7 @@
                 "id": "pe-6_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least monthly"
+                  "detail": "at least monthly"
                 }
               },
               {
@@ -18701,9 +19115,14 @@
                 "label": "organization-defined events or potential indications of events"
               }
             ],
-            "properties": {
-              "label": "PE-6"
-            },
+            "properties": [
+              {
+                "label": "PE-6"
+              },
+              {
+                "sort-id": "pe-06"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-6_smt",
@@ -18855,20 +19274,25 @@
                 "id": "pe-8_prm_1",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "for a minimum of one (1) year"
+                  "detail": "for a minimum of one (1) year"
                 }
               },
               {
                 "id": "pe-8_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least monthly"
+                  "detail": "at least monthly"
                 }
               }
             ],
-            "properties": {
-              "label": "PE-8"
-            },
+            "properties": [
+              {
+                "label": "PE-8"
+              },
+              {
+                "sort-id": "pe-08"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-8_smt",
@@ -18991,9 +19415,14 @@
             "id": "pe-12",
             "class": "SP800-53",
             "title": "Emergency Lighting",
-            "properties": {
-              "label": "PE-12"
-            },
+            "properties": [
+              {
+                "label": "PE-12"
+              },
+              {
+                "sort-id": "pe-12"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-12_smt",
@@ -19076,9 +19505,14 @@
             "id": "pe-13",
             "class": "SP800-53",
             "title": "Fire Protection",
-            "properties": {
-              "label": "PE-13"
-            },
+            "properties": [
+              {
+                "label": "PE-13"
+              },
+              {
+                "sort-id": "pe-13"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-13_smt",
@@ -19154,20 +19588,25 @@
                 "id": "pe-14_prm_1",
                 "label": "organization-defined acceptable levels",
                 "constraints": {
-                  "STRVALUE": "consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments"
+                  "detail": "consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments"
                 }
               },
               {
                 "id": "pe-14_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "continuously"
+                  "detail": "continuously"
                 }
               }
             ],
-            "properties": {
-              "label": "PE-14"
-            },
+            "properties": [
+              {
+                "label": "PE-14"
+              },
+              {
+                "sort-id": "pe-14"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-14_smt",
@@ -19341,9 +19780,14 @@
             "id": "pe-15",
             "class": "SP800-53",
             "title": "Water Damage Protection",
-            "properties": {
-              "label": "PE-15"
-            },
+            "properties": [
+              {
+                "label": "PE-15"
+              },
+              {
+                "sort-id": "pe-15"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-15_smt",
@@ -19431,12 +19875,17 @@
               "id": "pe-16_prm_1",
               "label": "organization-defined types of information system components",
               "constraints": {
-                "STRVALUE": "all information system components"
+                "detail": "all information system components"
               }
             },
-            "properties": {
-              "label": "PE-16"
-            },
+            "properties": [
+              {
+                "label": "PE-16"
+              },
+              {
+                "sort-id": "pe-16"
+              }
+            ],
             "parts": [
               {
                 "id": "pe-16_smt",
@@ -19606,20 +20055,25 @@
                 "id": "pl-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "pl-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PL-1"
-            },
+            "properties": [
+              {
+                "label": "PL-1"
+              },
+              {
+                "sort-id": "pl-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -19941,13 +20395,18 @@
                 "id": "pl-2_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PL-2"
-            },
+            "properties": [
+              {
+                "label": "PL-2"
+              },
+              {
+                "sort-id": "pl-02"
+              }
+            ],
             "links": {
               "href": "#ref060",
               "rel": "reference",
@@ -20441,12 +20900,17 @@
               "id": "pl-4_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "At least every 3 years"
+                "detail": "At least every 3 years"
               }
             },
-            "properties": {
-              "label": "PL-4"
-            },
+            "properties": [
+              {
+                "label": "PL-4"
+              },
+              {
+                "sort-id": "pl-04"
+              }
+            ],
             "links": {
               "href": "#ref060",
               "rel": "reference",
@@ -20714,20 +21178,25 @@
                 "id": "ps-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ps-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PS-1"
-            },
+            "properties": [
+              {
+                "label": "PS-1"
+              },
+              {
+                "sort-id": "ps-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -21039,12 +21508,17 @@
               "id": "ps-2_prm_1",
               "label": "organization-defined frequency",
               "constraints": {
-                "STRVALUE": "at least every three years"
+                "detail": "at least every three years"
               }
             },
-            "properties": {
-              "label": "PS-2"
-            },
+            "properties": [
+              {
+                "label": "PS-2"
+              },
+              {
+                "sort-id": "ps-02"
+              }
+            ],
             "links": {
               "href": "#ref001",
               "rel": "reference",
@@ -21192,12 +21666,17 @@
               "id": "ps-3_prm_1",
               "label": "organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening",
               "constraints": {
-                "STRVALUE": "For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions."
+                "detail": "For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions."
               }
             },
-            "properties": {
-              "label": "PS-3"
-            },
+            "properties": [
+              {
+                "label": "PS-3"
+              },
+              {
+                "sort-id": "ps-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref001",
@@ -21380,7 +21859,7 @@
                 "id": "ps-4_prm_1",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "same day"
+                  "detail": "same day"
                 }
               },
               {
@@ -21396,9 +21875,14 @@
                 "label": "organization-defined time period"
               }
             ],
-            "properties": {
-              "label": "PS-4"
-            },
+            "properties": [
+              {
+                "label": "PS-4"
+              },
+              {
+                "sort-id": "ps-04"
+              }
+            ],
             "parts": [
               {
                 "id": "ps-4_smt",
@@ -21654,13 +22138,18 @@
                 "id": "ps-5_prm_4",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "five days of the time period following the formal transfer action (DoD 24 hours)"
+                  "detail": "five days of the time period following the formal transfer action (DoD 24 hours)"
                 }
               }
             ],
-            "properties": {
-              "label": "PS-5"
-            },
+            "properties": [
+              {
+                "label": "PS-5"
+              },
+              {
+                "sort-id": "ps-05"
+              }
+            ],
             "parts": [
               {
                 "id": "ps-5_smt",
@@ -21876,20 +22365,25 @@
                 "id": "ps-6_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               },
               {
                 "id": "ps-6_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "PS-6"
-            },
+            "properties": [
+              {
+                "label": "PS-6"
+              },
+              {
+                "sort-id": "ps-06"
+              }
+            ],
             "parts": [
               {
                 "id": "ps-6_smt",
@@ -22099,13 +22593,18 @@
                 "id": "ps-7_prm_2",
                 "label": "organization-defined time period",
                 "constraints": {
-                  "STRVALUE": "organization-defined time period - same day"
+                  "detail": "organization-defined time period - same day"
                 }
               }
             ],
-            "properties": {
-              "label": "PS-7"
-            },
+            "properties": [
+              {
+                "label": "PS-7"
+              },
+              {
+                "sort-id": "ps-07"
+              }
+            ],
             "links": {
               "href": "#ref067",
               "rel": "reference",
@@ -22319,9 +22818,14 @@
                 "label": "organization-defined time period"
               }
             ],
-            "properties": {
-              "label": "PS-8"
-            },
+            "properties": [
+              {
+                "label": "PS-8"
+              },
+              {
+                "sort-id": "ps-08"
+              }
+            ],
             "parts": [
               {
                 "id": "ps-8_smt",
@@ -22463,20 +22967,25 @@
                 "id": "ra-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "ra-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "RA-1"
-            },
+            "properties": [
+              {
+                "label": "RA-1"
+              },
+              {
+                "sort-id": "ra-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -22789,9 +23298,14 @@
             "id": "ra-2",
             "class": "SP800-53",
             "title": "Security Categorization",
-            "properties": {
-              "label": "RA-2"
-            },
+            "properties": [
+              {
+                "label": "RA-2"
+              },
+              {
+                "sort-id": "ra-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -22956,14 +23470,14 @@
                 "depends-on": "ra-3_prm_1",
                 "label": "organization-defined document",
                 "constraints": {
-                  "STRVALUE": "security assessment report"
+                  "detail": "security assessment report"
                 }
               },
               {
                 "id": "ra-3_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every three (3) years or when a significant change occurs"
+                  "detail": "at least every three (3) years or when a significant change occurs"
                 }
               },
               {
@@ -22974,13 +23488,18 @@
                 "id": "ra-3_prm_5",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every three (3) years or when a significant change occurs"
+                  "detail": "at least every three (3) years or when a significant change occurs"
                 }
               }
             ],
-            "properties": {
-              "label": "RA-3"
-            },
+            "properties": [
+              {
+                "label": "RA-3"
+              },
+              {
+                "sort-id": "ra-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref106",
@@ -23318,14 +23837,14 @@
                 "id": "ra-5_prm_1",
                 "label": "organization-defined frequency and/or randomly in accordance with organization-defined process",
                 "constraints": {
-                  "STRVALUE": "monthly operating system/infrastructure; monthly web applications and databases"
+                  "detail": "monthly operating system/infrastructure; monthly web applications and databases"
                 }
               },
               {
                 "id": "ra-5_prm_2",
                 "label": "organization-defined response times",
                 "constraints": {
-                  "STRVALUE": "[high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery."
+                  "detail": "[high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery."
                 }
               },
               {
@@ -23333,9 +23852,14 @@
                 "label": "organization-defined personnel or roles"
               }
             ],
-            "properties": {
-              "label": "RA-5"
-            },
+            "properties": [
+              {
+                "label": "RA-5"
+              },
+              {
+                "sort-id": "ra-05"
+              }
+            ],
             "links": [
               {
                 "href": "#ref071",
@@ -23820,20 +24344,25 @@
                 "id": "sa-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "sa-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "SA-1"
-            },
+            "properties": [
+              {
+                "label": "SA-1"
+              },
+              {
+                "sort-id": "sa-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -24141,9 +24670,14 @@
             "id": "sa-2",
             "class": "SP800-53",
             "title": "Allocation of Resources",
-            "properties": {
-              "label": "SA-2"
-            },
+            "properties": [
+              {
+                "label": "SA-2"
+              },
+              {
+                "sort-id": "sa-02"
+              }
+            ],
             "links": {
               "href": "#ref089",
               "rel": "reference",
@@ -24295,9 +24829,14 @@
               "id": "sa-3_prm_1",
               "label": "organization-defined system development life cycle"
             },
-            "properties": {
-              "label": "SA-3"
-            },
+            "properties": [
+              {
+                "label": "SA-3"
+              },
+              {
+                "sort-id": "sa-03"
+              }
+            ],
             "links": [
               {
                 "href": "#ref069",
@@ -24464,9 +25003,14 @@
             "id": "sa-4",
             "class": "SP800-53",
             "title": "Acquisition Process",
-            "properties": {
-              "label": "SA-4"
-            },
+            "properties": [
+              {
+                "label": "SA-4"
+              },
+              {
+                "sort-id": "sa-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref018",
@@ -24796,9 +25340,14 @@
                 "label": "organization-defined personnel or roles"
               }
             ],
-            "properties": {
-              "label": "SA-5"
-            },
+            "properties": [
+              {
+                "label": "SA-5"
+              },
+              {
+                "sort-id": "sa-05"
+              }
+            ],
             "parts": [
               {
                 "id": "sa-5_smt",
@@ -25182,20 +25731,25 @@
                 "id": "sa-9_prm_1",
                 "label": "organization-defined security controls",
                 "constraints": {
-                  "STRVALUE": "FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system"
+                  "detail": "FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system"
                 }
               },
               {
                 "id": "sa-9_prm_2",
                 "label": "organization-defined processes, methods, and techniques",
                 "constraints": {
-                  "STRVALUE": "Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored"
+                  "detail": "Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored"
                 }
               }
             ],
-            "properties": {
-              "label": "SA-9"
-            },
+            "properties": [
+              {
+                "label": "SA-9"
+              },
+              {
+                "sort-id": "sa-09"
+              }
+            ],
             "links": {
               "href": "#ref067",
               "rel": "reference",
@@ -25421,20 +25975,25 @@
                 "id": "sc-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "sc-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "SC-1"
-            },
+            "properties": [
+              {
+                "label": "SC-1"
+              },
+              {
+                "sort-id": "sc-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -25752,9 +26311,14 @@
                 "label": "organization-defined security safeguards"
               }
             ],
-            "properties": {
-              "label": "SC-5"
-            },
+            "properties": [
+              {
+                "label": "SC-5"
+              },
+              {
+                "sort-id": "sc-05"
+              }
+            ],
             "parts": [
               {
                 "id": "sc-5_smt",
@@ -25854,9 +26418,14 @@
                 ]
               }
             },
-            "properties": {
-              "label": "SC-7"
-            },
+            "properties": [
+              {
+                "label": "SC-7"
+              },
+              {
+                "sort-id": "sc-07"
+              }
+            ],
             "links": [
               {
                 "href": "#ref015",
@@ -26080,9 +26649,14 @@
               "id": "sc-12_prm_1",
               "label": "organization-defined requirements for key generation, distribution, storage, access, and destruction"
             },
-            "properties": {
-              "label": "SC-12"
-            },
+            "properties": [
+              {
+                "label": "SC-12"
+              },
+              {
+                "sort-id": "sc-12"
+              }
+            ],
             "links": [
               {
                 "href": "#ref082",
@@ -26237,12 +26811,17 @@
               "id": "sc-13_prm_1",
               "label": "organization-defined cryptographic uses and type of cryptography required for each use",
               "constraints": {
-                "STRVALUE": "FIPS-validated or NSA-approved cryptography"
+                "detail": "FIPS-validated or NSA-approved cryptography"
               }
             },
-            "properties": {
-              "label": "SC-13"
-            },
+            "properties": [
+              {
+                "label": "SC-13"
+              },
+              {
+                "sort-id": "sc-13"
+              }
+            ],
             "links": [
               {
                 "href": "#ref012",
@@ -26444,12 +27023,17 @@
               "id": "sc-15_prm_1",
               "label": "organization-defined exceptions where remote activation is to be allowed",
               "constraints": {
-                "STRVALUE": "no exceptions"
+                "detail": "no exceptions"
               }
             },
-            "properties": {
-              "label": "SC-15"
-            },
+            "properties": [
+              {
+                "label": "SC-15"
+              },
+              {
+                "sort-id": "sc-15"
+              }
+            ],
             "parts": [
               {
                 "id": "sc-15_smt",
@@ -26590,9 +27174,14 @@
             "id": "sc-20",
             "class": "SP800-53",
             "title": "Secure Name / Address Resolution Service (authoritative Source)",
-            "properties": {
-              "label": "SC-20"
-            },
+            "properties": [
+              {
+                "label": "SC-20"
+              },
+              {
+                "sort-id": "sc-20"
+              }
+            ],
             "links": [
               {
                 "href": "#ref112",
@@ -26743,9 +27332,14 @@
             "id": "sc-21",
             "class": "SP800-53",
             "title": "Secure Name / Address Resolution Service (recursive or Caching Resolver)",
-            "properties": {
-              "label": "SC-21"
-            },
+            "properties": [
+              {
+                "label": "SC-21"
+              },
+              {
+                "sort-id": "sc-21"
+              }
+            ],
             "links": {
               "href": "#ref095",
               "rel": "reference",
@@ -26849,9 +27443,14 @@
             "id": "sc-22",
             "class": "SP800-53",
             "title": "Architecture and Provisioning for Name / Address Resolution Service",
-            "properties": {
-              "label": "SC-22"
-            },
+            "properties": [
+              {
+                "label": "SC-22"
+              },
+              {
+                "sort-id": "sc-22"
+              }
+            ],
             "links": {
               "href": "#ref095",
               "rel": "reference",
@@ -26949,9 +27548,14 @@
             "id": "sc-39",
             "class": "SP800-53",
             "title": "Process Isolation",
-            "properties": {
-              "label": "SC-39"
-            },
+            "properties": [
+              {
+                "label": "SC-39"
+              },
+              {
+                "sort-id": "sc-39"
+              }
+            ],
             "parts": [
               {
                 "id": "sc-39_smt",
@@ -27062,20 +27666,25 @@
                 "id": "si-1_prm_2",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least every 3 years"
+                  "detail": "at least every 3 years"
                 }
               },
               {
                 "id": "si-1_prm_3",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least annually"
+                  "detail": "at least annually"
                 }
               }
             ],
-            "properties": {
-              "label": "SI-1"
-            },
+            "properties": [
+              {
+                "label": "SI-1"
+              },
+              {
+                "sort-id": "si-01"
+              }
+            ],
             "links": [
               {
                 "href": "#ref050",
@@ -27387,12 +27996,17 @@
               "id": "si-2_prm_1",
               "label": "organization-defined time period",
               "constraints": {
-                "STRVALUE": "within 30 days of release of updates"
+                "detail": "within 30 days of release of updates"
               }
             },
-            "properties": {
-              "label": "SI-2"
-            },
+            "properties": [
+              {
+                "label": "SI-2"
+              },
+              {
+                "sort-id": "si-02"
+              }
+            ],
             "links": [
               {
                 "href": "#ref071",
@@ -27662,13 +28276,13 @@
                 "id": "si-3_prm_1",
                 "label": "organization-defined frequency",
                 "constraints": {
-                  "STRVALUE": "at least weekly"
+                  "detail": "at least weekly"
                 }
               },
               {
                 "id": "si-3_prm_2",
                 "constraints": {
-                  "STRVALUE": "to include endpoints"
+                  "detail": "to include endpoints"
                 },
                 "select": {
                   "how-many": "one or more",
@@ -27681,7 +28295,7 @@
               {
                 "id": "si-3_prm_3",
                 "constraints": {
-                  "STRVALUE": "to include alerting administrator or defined security personnel"
+                  "detail": "to include alerting administrator or defined security personnel"
                 },
                 "select": {
                   "how-many": "one or more",
@@ -27699,9 +28313,14 @@
                 "label": "organization-defined action"
               }
             ],
-            "properties": {
-              "label": "SI-3"
-            },
+            "properties": [
+              {
+                "label": "SI-3"
+              },
+              {
+                "sort-id": "si-03"
+              }
+            ],
             "links": {
               "href": "#ref096",
               "rel": "reference",
@@ -28069,9 +28688,14 @@
                 "label": "organization-defined frequency"
               }
             ],
-            "properties": {
-              "label": "SI-4"
-            },
+            "properties": [
+              {
+                "label": "SI-4"
+              },
+              {
+                "sort-id": "si-04"
+              }
+            ],
             "links": [
               {
                 "href": "#ref086",
@@ -28604,13 +29228,13 @@
                 "id": "si-5_prm_1",
                 "label": "organization-defined external organizations",
                 "constraints": {
-                  "STRVALUE": "to include US-CERT"
+                  "detail": "to include US-CERT"
                 }
               },
               {
                 "id": "si-5_prm_2",
                 "constraints": {
-                  "STRVALUE": "to include system security personnel and administrators with configuration/patch-management responsibilities"
+                  "detail": "to include system security personnel and administrators with configuration/patch-management responsibilities"
                 },
                 "select": {
                   "how-many": "one or more",
@@ -28637,9 +29261,14 @@
                 "label": "organization-defined external organizations"
               }
             ],
-            "properties": {
-              "label": "SI-5"
-            },
+            "properties": [
+              {
+                "label": "SI-5"
+              },
+              {
+                "sort-id": "si-05"
+              }
+            ],
             "links": {
               "href": "#ref071",
               "rel": "reference",
@@ -28863,9 +29492,14 @@
             "id": "si-12",
             "class": "SP800-53",
             "title": "Information Handling and Retention",
-            "properties": {
-              "label": "SI-12"
-            },
+            "properties": [
+              {
+                "label": "SI-12"
+              },
+              {
+                "sort-id": "si-12"
+              }
+            ],
             "parts": [
               {
                 "id": "si-12_smt",
@@ -28983,9 +29617,14 @@
               "id": "si-16_prm_1",
               "label": "organization-defined security safeguards"
             },
-            "properties": {
-              "label": "SI-16"
-            },
+            "properties": [
+              {
+                "label": "SI-16"
+              },
+              {
+                "sort-id": "si-16"
+              }
+            ],
             "parts": [
               {
                 "id": "si-16_smt",

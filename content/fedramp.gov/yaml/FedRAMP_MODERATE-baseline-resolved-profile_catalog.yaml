@@ -1,19 +1,28 @@
 catalog: 
-  id:       resolved-profile-2019-08-28--19-40-21
+  id:       52a92298-91b4-4bd6-b5fc-d8d27c45747c
   metadata: 
-    title:              FedRAMP Moderate Baseline
-    last-modified-date: 2019-06-03T11:40:38.576-04:00
-    version:            1.1
-    oscal-version:      1.0.0-milestone1
+    title:               FedRAMP Moderate Baseline
+    last-modified:       2019-10-01T11:02:23.819-04:00
+    version:             1.1
+    oscal-version:       1.0.0-milestone1
     roles: 
-      id:    author
-      title: Author
+      - 
+        id:    prepared-by
+        title: Document creator
+      - 
+        id:    contact
+        title: Contact
     parties: 
-      role-id: author
+      id:  fedramp
       org: 
         org-name:        Federal Risk and Authorization Management Program (FedRAMP)
         email-addresses: info@fedramp.gov
         URLs:            https://fedramp.gov
+    responsible-parties: 
+      prepared-by: 
+        party-ids: fedramp
+      contact: 
+        party-ids: fedramp
   groups: 
     - 
       id:       ac
@@ -32,14 +41,17 @@ catalog:
               id:          ac-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ac-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: AC-1
+            - 
+              label: AC-1
+            - 
+              sort-id: ac-01
           links: 
             - 
               href: #ref050
@@ -277,9 +289,12 @@ catalog:
               id:          ac-2_prm_4
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: AC-2
+            - 
+              label: AC-2
+            - 
+              sort-id: ac-02
           parts: 
             - 
               id:    ac-2_smt
@@ -750,7 +765,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automated System Account Management
               properties: 
-                label: AC-2(1)
+                - 
+                  label: AC-2(1)
+                - 
+                  sort-id: ac-02.01
               parts: 
                 - 
                   id:    ac-2.1_smt
@@ -798,9 +816,12 @@ catalog:
                   id:          ac-2.2_prm_2
                   label:       organization-defined time period for each type of account
                   constraints: 
-                    STRVALUE: no more than 30 days for temporary and emergency account types
+                    detail: no more than 30 days for temporary and emergency account types
               properties: 
-                label: AC-2(2)
+                - 
+                  label: AC-2(2)
+                - 
+                  sort-id: ac-02.02
               parts: 
                 - 
                   id:    ac-2.2_smt
@@ -856,9 +877,12 @@ catalog:
                 id:          ac-2.3_prm_1
                 label:       organization-defined time period
                 constraints: 
-                  STRVALUE: 90 days for user accounts
+                  detail: 90 days for user accounts
               properties: 
-                label: AC-2(3)
+                - 
+                  label: AC-2(3)
+                - 
+                  sort-id: ac-02.03
               parts: 
                 - 
                   id:    ac-2.3_smt
@@ -910,7 +934,10 @@ catalog:
                 id:    ac-2.4_prm_1
                 label: organization-defined personnel or roles
               properties: 
-                label: AC-2(4)
+                - 
+                  label: AC-2(4)
+                - 
+                  sort-id: ac-02.04
               parts: 
                 - 
                   id:    ac-2.4_smt
@@ -1073,7 +1100,10 @@ catalog:
                 id:    ac-2.5_prm_1
                 label: organization-defined time-period of expected inactivity or description of when to log out
               properties: 
-                label: AC-2(5)
+                - 
+                  label: AC-2(5)
+                - 
+                  sort-id: ac-02.05
               parts: 
                 - 
                   id:    ac-2.5_smt
@@ -1136,7 +1166,10 @@ catalog:
                 id:    ac-2.7_prm_1
                 label: organization-defined actions
               properties: 
-                label: AC-2(7)
+                - 
+                  label: AC-2(7)
+                - 
+                  sort-id: ac-02.07
               parts: 
                 - 
                   id:    ac-2.7_smt
@@ -1241,7 +1274,10 @@ catalog:
                 id:    ac-2.9_prm_1
                 label: organization-defined conditions for establishing shared/group accounts
               properties: 
-                label: AC-2(9)
+                - 
+                  label: AC-2(9)
+                - 
+                  sort-id: ac-02.09
               parts: 
                 - 
                   id:    ac-2.9_smt
@@ -1301,7 +1337,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Shared / Group Account Credential Termination
               properties: 
-                label: AC-2(10)
+                - 
+                  label: AC-2(10)
+                - 
+                  sort-id: ac-02.10
               parts: 
                 - 
                   id:    ac-2.10_smt
@@ -1355,7 +1394,10 @@ catalog:
                   id:    ac-2.12_prm_2
                   label: organization-defined personnel or roles
               properties: 
-                label: AC-2(12)
+                - 
+                  label: AC-2(12)
+                - 
+                  sort-id: ac-02.12
               parts: 
                 - 
                   id:    ac-2.12_smt
@@ -1475,7 +1517,10 @@ catalog:
           class:      SP800-53
           title:      Access Enforcement
           properties: 
-            label: AC-3
+            - 
+              label: AC-3
+            - 
+              sort-id: ac-03
           parts: 
             - 
               id:    ac-3_smt
@@ -1595,7 +1640,10 @@ catalog:
             id:    ac-4_prm_1
             label: organization-defined information flow control policies
           properties: 
-            label: AC-4
+            - 
+              label: AC-4
+            - 
+              sort-id: ac-04
           parts: 
             - 
               id:    ac-4_smt
@@ -1700,7 +1748,10 @@ catalog:
                 id:    ac-4.21_prm_2
                 label: organization-defined required separations by types of information
             properties: 
-              label: AC-4(21)
+              - 
+                label: AC-4(21)
+              - 
+                sort-id: ac-04.21
             parts: 
               - 
                 id:    ac-4.21_smt
@@ -1762,7 +1813,10 @@ catalog:
             id:    ac-5_prm_1
             label: organization-defined duties of individuals
           properties: 
-            label: AC-5
+            - 
+              label: AC-5
+            - 
+              sort-id: ac-05
           parts: 
             - 
               id:    ac-5_smt
@@ -1884,7 +1938,10 @@ catalog:
           class:      SP800-53
           title:      Least Privilege
           properties: 
-            label: AC-6
+            - 
+              label: AC-6
+            - 
+              sort-id: ac-06
           parts: 
             - 
               id:    ac-6_smt
@@ -1953,7 +2010,10 @@ catalog:
                 id:    ac-6.1_prm_1
                 label: organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information
               properties: 
-                label: AC-6(1)
+                - 
+                  label: AC-6(1)
+                - 
+                  sort-id: ac-06.01
               parts: 
                 - 
                   id:    ac-6.1_smt
@@ -2060,9 +2120,12 @@ catalog:
                 id:          ac-6.2_prm_1
                 label:       organization-defined security functions or security-relevant information
                 constraints: 
-                  STRVALUE: all security functions
+                  detail: all security functions
               properties: 
-                label: AC-6(2)
+                - 
+                  label: AC-6(2)
+                - 
+                  sort-id: ac-06.02
               parts: 
                 - 
                   id:    ac-6.2_smt
@@ -2133,7 +2196,10 @@ catalog:
                 id:    ac-6.5_prm_1
                 label: organization-defined personnel or roles
               properties: 
-                label: AC-6(5)
+                - 
+                  label: AC-6(5)
+                - 
+                  sort-id: ac-06.05
               parts: 
                 - 
                   id:    ac-6.5_smt
@@ -2190,7 +2256,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Auditing Use of Privileged Functions
               properties: 
-                label: AC-6(9)
+                - 
+                  label: AC-6(9)
+                - 
+                  sort-id: ac-06.09
               parts: 
                 - 
                   id:    ac-6.9_smt
@@ -2234,7 +2303,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Prohibit Non-privileged Users from Executing Privileged Functions
               properties: 
-                label: AC-6(10)
+                - 
+                  label: AC-6(10)
+                - 
+                  sort-id: ac-06.10
               parts: 
                 - 
                   id:    ac-6.10_smt
@@ -2297,12 +2369,12 @@ catalog:
               id:          ac-7_prm_1
               label:       organization-defined number
               constraints: 
-                STRVALUE: not more than three (3)
+                detail: not more than three (3)
             - 
               id:          ac-7_prm_2
               label:       organization-defined time period
               constraints: 
-                STRVALUE: fifteen (15) minutes
+                detail: fifteen (15) minutes
             - 
               id:     ac-7_prm_3
               select: 
@@ -2312,13 +2384,16 @@ catalog:
               depends-on:  ac-7_prm_3
               label:       organization-defined time period
               constraints: 
-                STRVALUE: locks the account/node for thirty minutes
+                detail: locks the account/node for thirty minutes
             - 
               id:         ac-7_prm_5
               depends-on: ac-7_prm_3
               label:      organization-defined delay algorithm
           properties: 
-            label: AC-7
+            - 
+              label: AC-7
+            - 
+              sort-id: ac-07
           parts: 
             - 
               id:    ac-7_smt
@@ -2454,14 +2529,17 @@ catalog:
               id:          ac-8_prm_1
               label:       organization-defined system use notification message or banner
               constraints: 
-                STRVALUE: see additional Requirements and Guidance
+                detail: see additional Requirements and Guidance
             - 
               id:          ac-8_prm_2
               label:       organization-defined conditions
               constraints: 
-                STRVALUE: see additional Requirements and Guidance]
+                detail: see additional Requirements and Guidance]
           properties: 
-            label: AC-8
+            - 
+              label: AC-8
+            - 
+              sort-id: ac-08
           parts: 
             - 
               id:    ac-8_smt
@@ -2682,9 +2760,12 @@ catalog:
               id:          ac-10_prm_2
               label:       organization-defined number
               constraints: 
-                STRVALUE: three (3) sessions for privileged access and two (2) sessions for non-privileged access
+                detail: three (3) sessions for privileged access and two (2) sessions for non-privileged access
           properties: 
-            label: AC-10
+            - 
+              label: AC-10
+            - 
+              sort-id: ac-10
           parts: 
             - 
               id:    ac-10_smt
@@ -2746,9 +2827,12 @@ catalog:
             id:          ac-11_prm_1
             label:       organization-defined time period
             constraints: 
-              STRVALUE: fifteen (15) minutes
+              detail: fifteen (15) minutes
           properties: 
-            label: AC-11
+            - 
+              label: AC-11
+            - 
+              sort-id: ac-11
           links: 
             href: #ref108
             rel:  reference
@@ -2834,7 +2918,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Pattern-hiding Displays
             properties: 
-              label: AC-11(1)
+              - 
+                label: AC-11(1)
+              - 
+                sort-id: ac-11.01
             parts: 
               - 
                 id:    ac-11.1_smt
@@ -2877,7 +2964,10 @@ catalog:
             id:    ac-12_prm_1
             label: organization-defined conditions or trigger events requiring session disconnect
           properties: 
-            label: AC-12
+            - 
+              label: AC-12
+            - 
+              sort-id: ac-12
           parts: 
             - 
               id:    ac-12_smt
@@ -2942,7 +3032,10 @@ catalog:
             id:    ac-14_prm_1
             label: organization-defined user actions
           properties: 
-            label: AC-14
+            - 
+              label: AC-14
+            - 
+              sort-id: ac-14
           parts: 
             - 
               id:    ac-14_smt
@@ -3022,7 +3115,10 @@ catalog:
           class:      SP800-53
           title:      Remote Access
           properties: 
-            label: AC-17
+            - 
+              label: AC-17
+            - 
+              sort-id: ac-17
           links: 
             - 
               href: #ref074
@@ -3231,7 +3327,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automated Monitoring / Control
               properties: 
-                label: AC-17(1)
+                - 
+                  label: AC-17(1)
+                - 
+                  sort-id: ac-17.01
               parts: 
                 - 
                   id:    ac-17.1_smt
@@ -3280,7 +3379,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Protection of Confidentiality / Integrity Using Encryption
               properties: 
-                label: AC-17(2)
+                - 
+                  label: AC-17(2)
+                - 
+                  sort-id: ac-17.02
               parts: 
                 - 
                   id:    ac-17.2_smt
@@ -3336,7 +3438,10 @@ catalog:
                 id:    ac-17.3_prm_1
                 label: organization-defined number
               properties: 
-                label: AC-17(3)
+                - 
+                  label: AC-17(3)
+                - 
+                  sort-id: ac-17.03
               parts: 
                 - 
                   id:    ac-17.3_smt
@@ -3396,7 +3501,10 @@ catalog:
                 id:    ac-17.4_prm_1
                 label: organization-defined needs
               properties: 
-                label: AC-17(4)
+                - 
+                  label: AC-17(4)
+                - 
+                  sort-id: ac-17.04
               parts: 
                 - 
                   id:    ac-17.4_smt
@@ -3488,9 +3596,12 @@ catalog:
                 id:          ac-17.9_prm_1
                 label:       organization-defined time period
                 constraints: 
-                  STRVALUE: fifteen 15 minutes
+                  detail: fifteen 15 minutes
               properties: 
-                label: AC-17(9)
+                - 
+                  label: AC-17(9)
+                - 
+                  sort-id: ac-17.09
               parts: 
                 - 
                   id:    ac-17.9_smt
@@ -3543,7 +3654,10 @@ catalog:
           class:      SP800-53
           title:      Wireless Access
           properties: 
-            label: AC-18
+            - 
+              label: AC-18
+            - 
+              sort-id: ac-18
           links: 
             - 
               href: #ref076
@@ -3695,7 +3809,10 @@ catalog:
                 how-many:     one or more
                 alternatives: users,devices
             properties: 
-              label: AC-18(1)
+              - 
+                label: AC-18(1)
+              - 
+                sort-id: ac-18.01
             parts: 
               - 
                 id:    ac-18.1_smt
@@ -3756,7 +3873,10 @@ catalog:
           class:      SP800-53
           title:      Access Control for Mobile Devices
           properties: 
-            label: AC-19
+            - 
+              label: AC-19
+            - 
+              sort-id: ac-19
           links: 
             - 
               href: #ref108
@@ -3931,7 +4051,10 @@ catalog:
                 id:    ac-19.5_prm_2
                 label: organization-defined mobile devices
             properties: 
-              label: AC-19(5)
+              - 
+                label: AC-19(5)
+              - 
+                sort-id: ac-19.05
             parts: 
               - 
                 id:    ac-19.5_smt
@@ -3997,7 +4120,10 @@ catalog:
           class:      SP800-53
           title:      Use of External Information Systems
           properties: 
-            label: AC-20
+            - 
+              label: AC-20
+            - 
+              sort-id: ac-20
           links: 
             href: #ref015
             rel:  reference
@@ -4093,7 +4219,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Limits On Authorized Use
               properties: 
-                label: AC-20(1)
+                - 
+                  label: AC-20(1)
+                - 
+                  sort-id: ac-20.01
               parts: 
                 - 
                   id:    ac-20.1_smt
@@ -4175,7 +4304,10 @@ catalog:
                 select: 
                   alternatives: restricts,prohibits
               properties: 
-                label: AC-20(2)
+                - 
+                  label: AC-20(2)
+                - 
+                  sort-id: ac-20.02
               parts: 
                 - 
                   id:    ac-20.2_smt
@@ -4222,7 +4354,10 @@ catalog:
               id:    ac-21_prm_2
               label: organization-defined automated mechanisms or manual processes
           properties: 
-            label: AC-21
+            - 
+              label: AC-21
+            - 
+              sort-id: ac-21
           parts: 
             - 
               id:    ac-21_smt
@@ -4319,9 +4454,12 @@ catalog:
             id:          ac-22_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least quarterly
+              detail: at least quarterly
           properties: 
-            label: AC-22
+            - 
+              label: AC-22
+            - 
+              sort-id: ac-22
           parts: 
             - 
               id:    ac-22_smt
@@ -4462,14 +4600,17 @@ catalog:
               id:          at-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          at-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: AT-1
+            - 
+              label: AT-1
+            - 
+              sort-id: at-01
           links: 
             - 
               href: #ref050
@@ -4705,9 +4846,12 @@ catalog:
             id:          at-2_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least annually
+              detail: at least annually
           properties: 
-            label: AT-2
+            - 
+              label: AT-2
+            - 
+              sort-id: at-02
           links: 
             - 
               href: #ref002
@@ -4823,7 +4967,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Insider Threat
             properties: 
-              label: AT-2(2)
+              - 
+                label: AT-2(2)
+              - 
+                sort-id: at-02.02
             parts: 
               - 
                 id:    at-2.2_smt
@@ -4876,9 +5023,12 @@ catalog:
             id:          at-3_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least annually
+              detail: at least annually
           properties: 
-            label: AT-3
+            - 
+              label: AT-3
+            - 
+              sort-id: at-03
           links: 
             - 
               href: #ref002
@@ -5013,9 +5163,12 @@ catalog:
             id:          at-4_prm_1
             label:       organization-defined time period
             constraints: 
-              STRVALUE: At least one year
+              detail: At least one year
           properties: 
-            label: AT-4
+            - 
+              label: AT-4
+            - 
+              sort-id: at-04
           parts: 
             - 
               id:    at-4_smt
@@ -5156,14 +5309,17 @@ catalog:
               id:          au-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          au-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: AU-1
+            - 
+              label: AU-1
+            - 
+              sort-id: au-01
           links: 
             - 
               href: #ref050
@@ -5392,14 +5548,17 @@ catalog:
               id:          au-2_prm_1
               label:       organization-defined auditable events
               constraints: 
-                STRVALUE: successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes
+                detail: successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes
             - 
               id:          au-2_prm_2
               label:       organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event
               constraints: 
-                STRVALUE: organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event
+                detail: organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event
           properties: 
-            label: AU-2
+            - 
+              label: AU-2
+            - 
+              sort-id: au-02
           links: 
             - 
               href: #ref099
@@ -5575,9 +5734,12 @@ catalog:
               id:          au-2.3_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: annually or whenever there is a change in the threat environment
+                detail: annually or whenever there is a change in the threat environment
             properties: 
-              label: AU-2(3)
+              - 
+                label: AU-2(3)
+              - 
+                sort-id: au-02.03
             parts: 
               - 
                 id:    au-2.3_smt
@@ -5641,7 +5803,10 @@ catalog:
           class:      SP800-53
           title:      Content of Audit Records
           properties: 
-            label: AU-3
+            - 
+              label: AU-3
+            - 
+              sort-id: au-03
           parts: 
             - 
               id:    au-3_smt
@@ -5738,9 +5903,12 @@ catalog:
               id:          au-3.1_prm_1
               label:       organization-defined additional, more detailed information
               constraints: 
-                STRVALUE: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon
+                detail: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon
             properties: 
-              label: AU-3(1)
+              - 
+                label: AU-3(1)
+              - 
+                sort-id: au-03.01
             parts: 
               - 
                 id:    au-3.1_smt
@@ -5814,7 +5982,10 @@ catalog:
             id:    au-4_prm_1
             label: organization-defined audit record storage requirements
           properties: 
-            label: AU-4
+            - 
+              label: AU-4
+            - 
+              sort-id: au-04
           parts: 
             - 
               id:    au-4_smt
@@ -5899,9 +6070,12 @@ catalog:
               id:          au-5_prm_2
               label:       organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)
               constraints: 
-                STRVALUE: organization-defined actions to be taken (overwrite oldest record)
+                detail: organization-defined actions to be taken (overwrite oldest record)
           properties: 
-            label: AU-5
+            - 
+              label: AU-5
+            - 
+              sort-id: au-05
           parts: 
             - 
               id:    au-5_smt
@@ -6004,7 +6178,7 @@ catalog:
               id:          au-6_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least weekly
+                detail: at least weekly
             - 
               id:    au-6_prm_2
               label: organization-defined inappropriate or unusual activity
@@ -6012,7 +6186,10 @@ catalog:
               id:    au-6_prm_3
               label: organization-defined personnel or roles
           properties: 
-            label: AU-6
+            - 
+              label: AU-6
+            - 
+              sort-id: au-06
           parts: 
             - 
               id:    au-6_smt
@@ -6226,7 +6403,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Process Integration
               properties: 
-                label: AU-6(1)
+                - 
+                  label: AU-6(1)
+                - 
+                  sort-id: au-06.01
               parts: 
                 - 
                   id:    au-6.1_smt
@@ -6320,7 +6500,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Correlate Audit Repositories
               properties: 
-                label: AU-6(3)
+                - 
+                  label: AU-6(3)
+                - 
+                  sort-id: au-06.03
               parts: 
                 - 
                   id:    au-6.3_smt
@@ -6369,7 +6552,10 @@ catalog:
           class:      SP800-53
           title:      Audit Reduction and Report Generation
           properties: 
-            label: AU-7
+            - 
+              label: AU-7
+            - 
+              sort-id: au-07
           parts: 
             - 
               id:    au-7_smt
@@ -6466,7 +6652,10 @@ catalog:
               id:    au-7.1_prm_1
               label: organization-defined audit fields within audit records
             properties: 
-              label: AU-7(1)
+              - 
+                label: AU-7(1)
+              - 
+                sort-id: au-07.01
             parts: 
               - 
                 id:    au-7.1_smt
@@ -6531,7 +6720,10 @@ catalog:
             id:    au-8_prm_1
             label: organization-defined granularity of time measurement
           properties: 
-            label: AU-8
+            - 
+              label: AU-8
+            - 
+              sort-id: au-08
           parts: 
             - 
               id:    au-8_smt
@@ -6628,17 +6820,20 @@ catalog:
                 id:          au-8.1_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: At least hourly
+                  detail: At least hourly
               - 
                 id:          au-8.1_prm_2
                 label:       organization-defined authoritative time source
                 constraints: 
-                  STRVALUE: http://tf.nist.gov/tf-cgi/servers.cgi
+                  detail: http://tf.nist.gov/tf-cgi/servers.cgi
               - 
                 id:    au-8.1_prm_3
                 label: organization-defined time period
             properties: 
-              label: AU-8(1)
+              - 
+                label: AU-8(1)
+              - 
+                sort-id: au-08.01
             parts: 
               - 
                 id:    au-8.1_smt
@@ -6766,7 +6961,10 @@ catalog:
           class:      SP800-53
           title:      Protection of Audit Information
           properties: 
-            label: AU-9
+            - 
+              label: AU-9
+            - 
+              sort-id: au-09
           parts: 
             - 
               id:    au-9_smt
@@ -6890,9 +7088,12 @@ catalog:
                 id:          au-9.2_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: at least weekly
+                  detail: at least weekly
               properties: 
-                label: AU-9(2)
+                - 
+                  label: AU-9(2)
+                - 
+                  sort-id: au-09.02
               parts: 
                 - 
                   id:    au-9.2_smt
@@ -6961,7 +7162,10 @@ catalog:
                 id:    au-9.4_prm_1
                 label: organization-defined subset of privileged users
               properties: 
-                label: AU-9(4)
+                - 
+                  label: AU-9(4)
+                - 
+                  sort-id: au-09.04
               parts: 
                 - 
                   id:    au-9.4_smt
@@ -7021,9 +7225,12 @@ catalog:
             id:          au-11_prm_1
             label:       organization-defined time period consistent with records retention policy
             constraints: 
-              STRVALUE: at least ninety days
+              detail: at least ninety days
           properties: 
-            label: AU-11
+            - 
+              label: AU-11
+            - 
+              sort-id: au-11
           parts: 
             - 
               id:    au-11_smt
@@ -7114,12 +7321,15 @@ catalog:
               id:          au-12_prm_1
               label:       organization-defined information system components
               constraints: 
-                STRVALUE: all information system and network components where audit capability is deployed/available
+                detail: all information system and network components where audit capability is deployed/available
             - 
               id:    au-12_prm_2
               label: organization-defined personnel or roles
           properties: 
-            label: AU-12
+            - 
+              label: AU-12
+            - 
+              sort-id: au-12
           parts: 
             - 
               id:    au-12_smt
@@ -7254,14 +7464,17 @@ catalog:
               id:          ca-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ca-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: CA-1
+            - 
+              label: CA-1
+            - 
+              sort-id: ca-01
           links: 
             - 
               href: #ref050
@@ -7498,14 +7711,17 @@ catalog:
               id:          ca-2_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          ca-2_prm_2
               label:       organization-defined individuals or roles
               constraints: 
-                STRVALUE: individuals or roles to include FedRAMP PMO
+                detail: individuals or roles to include FedRAMP PMO
           properties: 
-            label: CA-2
+            - 
+              label: CA-2
+            - 
+              sort-id: ca-02
           links: 
             - 
               href: #ref008
@@ -7752,7 +7968,10 @@ catalog:
                 id:    ca-2.1_prm_1
                 label: organization-defined level of independence
               properties: 
-                label: CA-2(1)
+                - 
+                  label: CA-2(1)
+                - 
+                  sort-id: ca-02.01
               parts: 
                 - 
                   id:    ca-2.1_smt
@@ -7813,7 +8032,7 @@ catalog:
                   id:          ca-2.2_prm_1
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: at least annually
+                    detail: at least annually
                 - 
                   id:     ca-2.2_prm_2
                   select: 
@@ -7830,7 +8049,10 @@ catalog:
                   depends-on: ca-2.2_prm_3
                   label:      organization-defined other forms of security assessment
               properties: 
-                label: CA-2(2)
+                - 
+                  label: CA-2(2)
+                - 
+                  sort-id: ca-02.02
               parts: 
                 - 
                   id:    ca-2.2_smt
@@ -7946,7 +8168,7 @@ catalog:
                     name:       item
                     properties: 
                       label: Requirement:
-                    prose:      To include \'announced\', \'vulnerability scanning\'
+                    prose:      To include 'announced', 'vulnerability scanning'
             - 
               id:         ca-2.3
               class:      SP800-53-enhancement
@@ -7956,19 +8178,22 @@ catalog:
                   id:          ca-2.3_prm_1
                   label:       organization-defined information system
                   constraints: 
-                    STRVALUE: any FedRAMP Accredited 3PAO
+                    detail: any FedRAMP Accredited 3PAO
                 - 
                   id:          ca-2.3_prm_2
                   label:       organization-defined external organization
                   constraints: 
-                    STRVALUE: any FedRAMP Accredited 3PAO
+                    detail: any FedRAMP Accredited 3PAO
                 - 
                   id:          ca-2.3_prm_3
                   label:       organization-defined requirements
                   constraints: 
-                    STRVALUE: the conditions of the JAB/AO in the FedRAMP Repository
+                    detail: the conditions of the JAB/AO in the FedRAMP Repository
               properties: 
-                label: CA-2(3)
+                - 
+                  label: CA-2(3)
+                - 
+                  sort-id: ca-02.03
               parts: 
                 - 
                   id:    ca-2.3_smt
@@ -8029,9 +8254,12 @@ catalog:
             id:          ca-3_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least annually and on input from FedRAMP
+              detail: at least annually and on input from FedRAMP
           properties: 
-            label: CA-3
+            - 
+              label: CA-3
+            - 
+              sort-id: ca-03
           links: 
             - 
               href: #ref015
@@ -8195,9 +8423,12 @@ catalog:
                   id:          ca-3.3_prm_2
                   label:       Assignment; organization-defined boundary protection device
                   constraints: 
-                    STRVALUE: Boundary Protections which meet the Trusted Internet Connection (TIC) requirements
+                    detail: Boundary Protections which meet the Trusted Internet Connection (TIC) requirements
               properties: 
-                label: CA-3(3)
+                - 
+                  label: CA-3(3)
+                - 
+                  sort-id: ca-03.03
               parts: 
                 - 
                   id:    ca-3.3_smt
@@ -8275,7 +8506,10 @@ catalog:
                   id:    ca-3.5_prm_2
                   label: organization-defined information systems
               properties: 
-                label: CA-3(5)
+                - 
+                  label: CA-3(5)
+                - 
+                  sort-id: ca-03.05
               parts: 
                 - 
                   id:    ca-3.5_smt
@@ -8371,9 +8605,12 @@ catalog:
             id:          ca-5_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least monthly
+              detail: at least monthly
           properties: 
-            label: CA-5
+            - 
+              label: CA-5
+            - 
+              sort-id: ca-05
           links: 
             - 
               href: #ref105
@@ -8515,13 +8752,13 @@ catalog:
                   name:       item
                   properties: 
                     label: Requirement:
-                  prose:      Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.
+                  prose:      Plan of Action & Milestones (POA&M) must be provided at least monthly.
                 - 
                   id:         ca-5_fr_gdn.1
                   name:       guidance
                   properties: 
                     label: Guidance:
-                  prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
+                  prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
         - 
           id:         ca-6
           class:      SP800-53
@@ -8530,9 +8767,12 @@ catalog:
             id:          ca-6_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least every three (3) years or when a significant change occurs
+              detail: at least every three (3) years or when a significant change occurs
           properties: 
-            label: CA-6
+            - 
+              label: CA-6
+            - 
+              sort-id: ca-06
           links: 
             - 
               href: #ref104
@@ -8680,14 +8920,17 @@ catalog:
               id:          ca-7_prm_4
               label:       organization-defined personnel or roles
               constraints: 
-                STRVALUE: to meet Federal and FedRAMP requirements (See additional guidance)
+                detail: to meet Federal and FedRAMP requirements (See additional guidance)
             - 
               id:          ca-7_prm_5
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: to meet Federal and FedRAMP requirements (See additional guidance)
+                detail: to meet Federal and FedRAMP requirements (See additional guidance)
           properties: 
-            label: CA-7
+            - 
+              label: CA-7
+            - 
+              sort-id: ca-07
           links: 
             - 
               href: #ref115
@@ -9021,7 +9264,7 @@ catalog:
                   name:       guidance
                   properties: 
                     label: Guidance:
-                  prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.
+                  prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.
                 - 
                   id:         ca-7_fr_gdn.2
                   name:       guidance
@@ -9036,7 +9279,10 @@ catalog:
               id:    ca-7.1_prm_1
               label: organization-defined level of independence
             properties: 
-              label: CA-7(1)
+              - 
+                label: CA-7(1)
+              - 
+                sort-id: ca-07.01
             parts: 
               - 
                 id:    ca-7.1_smt
@@ -9086,12 +9332,15 @@ catalog:
               id:          ca-8_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:    ca-8_prm_2
               label: organization-defined information systems or system components
           properties: 
-            label: CA-8
+            - 
+              label: CA-8
+            - 
+              sort-id: ca-08
           parts: 
             - 
               id:    ca-8_smt
@@ -9165,7 +9414,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Independent Penetration Agent or Team
             properties: 
-              label: CA-8(1)
+              - 
+                label: CA-8(1)
+              - 
+                sort-id: ca-08.01
             parts: 
               - 
                 id:    ca-8.1_smt
@@ -9205,7 +9457,10 @@ catalog:
             id:    ca-9_prm_1
             label: organization-defined information system components or classes of components
           properties: 
-            label: CA-9
+            - 
+              label: CA-9
+            - 
+              sort-id: ca-09
           parts: 
             - 
               id:    ca-9_smt
@@ -9352,14 +9607,17 @@ catalog:
               id:          cm-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          cm-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: CM-1
+            - 
+              label: CM-1
+            - 
+              sort-id: cm-01
           links: 
             - 
               href: #ref050
@@ -9584,7 +9842,10 @@ catalog:
           class:      SP800-53
           title:      Baseline Configuration
           properties: 
-            label: CM-2
+            - 
+              label: CM-2
+            - 
+              sort-id: cm-02
           links: 
             href: #ref053
             rel:  reference
@@ -9675,14 +9936,17 @@ catalog:
                   id:          cm-2.1_prm_1
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: at least annually or when a significant change occurs
+                    detail: at least annually or when a significant change occurs
                 - 
                   id:          cm-2.1_prm_2
                   label:       Assignment organization-defined circumstances
                   constraints: 
-                    STRVALUE: to include when directed by the JAB
+                    detail: to include when directed by the JAB
               properties: 
-                label: CM-2(1)
+                - 
+                  label: CM-2(1)
+                - 
+                  sort-id: cm-02.01
               parts: 
                 - 
                   id:    cm-2.1_smt
@@ -9799,7 +10063,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automation Support for Accuracy / Currency
               properties: 
-                label: CM-2(2)
+                - 
+                  label: CM-2(2)
+                - 
+                  sort-id: cm-02.02
               parts: 
                 - 
                   id:    cm-2.2_smt
@@ -9876,7 +10143,10 @@ catalog:
                 id:    cm-2.3_prm_1
                 label: organization-defined previous versions of baseline configurations of the information system
               properties: 
-                label: CM-2(3)
+                - 
+                  label: CM-2(3)
+                - 
+                  sort-id: cm-02.03
               parts: 
                 - 
                   id:    cm-2.3_smt
@@ -9939,7 +10209,10 @@ catalog:
                   id:    cm-2.7_prm_3
                   label: organization-defined security safeguards
               properties: 
-                label: CM-2(7)
+                - 
+                  label: CM-2(7)
+                - 
+                  sort-id: cm-02.07
               parts: 
                 - 
                   id:    cm-2.7_smt
@@ -10075,7 +10348,10 @@ catalog:
               depends-on: cm-3_prm_3
               label:      organization-defined configuration change conditions
           properties: 
-            label: CM-3
+            - 
+              label: CM-3
+            - 
+              sort-id: cm-03
           links: 
             href: #ref053
             rel:  reference
@@ -10296,7 +10572,10 @@ catalog:
           class:      SP800-53
           title:      Security Impact Analysis
           properties: 
-            label: CM-4
+            - 
+              label: CM-4
+            - 
+              sort-id: cm-04
           links: 
             href: #ref053
             rel:  reference
@@ -10373,7 +10652,10 @@ catalog:
           class:      SP800-53
           title:      Access Restrictions for Change
           properties: 
-            label: CM-5
+            - 
+              label: CM-5
+            - 
+              sort-id: cm-05
           parts: 
             - 
               id:    cm-5_smt
@@ -10476,7 +10758,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automated Access Enforcement / Auditing
               properties: 
-                label: CM-5(1)
+                - 
+                  label: CM-5(1)
+                - 
+                  sort-id: cm-05.01
               parts: 
                 - 
                   id:    cm-5.1_smt
@@ -10552,7 +10837,10 @@ catalog:
                 id:    cm-5.3_prm_1
                 label: organization-defined software and firmware components
               properties: 
-                label: CM-5(3)
+                - 
+                  label: CM-5(3)
+                - 
+                  sort-id: cm-05.03
               parts: 
                 - 
                   id:    cm-5.3_smt
@@ -10632,9 +10920,12 @@ catalog:
                 id:          cm-5.5_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: at least quarterly
+                  detail: at least quarterly
               properties: 
-                label: CM-5(5)
+                - 
+                  label: CM-5(5)
+                - 
+                  sort-id: cm-05.05
               parts: 
                 - 
                   id:    cm-5.5_smt
@@ -10725,10 +11016,10 @@ catalog:
           title:      Configuration Settings
           parameters: 
             - 
-              id:          cm-6_prm_1
-              label:       organization-defined security configuration checklists
-              constraints: 
-                STRVALUE: United States Government Configuration Baseline (USGCB)
+              id:       cm-6_prm_1
+              label:    organization-defined security configuration checklists
+              guidance: 
+                prose: See CM-6(a) Additional FedRAMP Requirements and Guidance
             - 
               id:    cm-6_prm_2
               label: organization-defined information system components
@@ -10736,7 +11027,10 @@ catalog:
               id:    cm-6_prm_3
               label: organization-defined operational requirements
           properties: 
-            label: CM-6
+            - 
+              label: CM-6
+            - 
+              sort-id: cm-06
           links: 
             - 
               href: #ref109
@@ -11005,7 +11299,10 @@ catalog:
               id:    cm-6.1_prm_1
               label: organization-defined information system components
             properties: 
-              label: CM-6(1)
+              - 
+                label: CM-6(1)
+              - 
+                sort-id: cm-06.01
             parts: 
               - 
                 id:    cm-6.1_smt
@@ -11107,9 +11404,12 @@ catalog:
             id:          cm-7_prm_1
             label:       organization-defined prohibited or restricted functions, ports, protocols, and/or services
             constraints: 
-              STRVALUE: United States Government Configuration Baseline (USGCB)
+              detail: United States Government Configuration Baseline (USGCB)
           properties: 
-            label: CM-7
+            - 
+              label: CM-7
+            - 
+              sort-id: cm-07
           links: 
             href: #ref006
             rel:  reference
@@ -11285,12 +11585,15 @@ catalog:
                   id:          cm-7.1_prm_1
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: at least monthly
+                    detail: at least monthly
                 - 
                   id:    cm-7.1_prm_2
                   label: organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure
               properties: 
-                label: CM-7(1)
+                - 
+                  label: CM-7(1)
+                - 
+                  sort-id: cm-07.01
               parts: 
                 - 
                   id:    cm-7.1_smt
@@ -11518,7 +11821,10 @@ catalog:
                   depends-on: cm-7.2_prm_1
                   label:      organization-defined policies regarding software program usage and restrictions
               properties: 
-                label: CM-7(2)
+                - 
+                  label: CM-7(2)
+                - 
+                  sort-id: cm-07.02
               parts: 
                 - 
                   id:    cm-7.2_smt
@@ -11610,9 +11916,12 @@ catalog:
                   id:          cm-7.5_prm_2
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: at least Annually or when there is a change
+                    detail: at least Annually or when there is a change
               properties: 
-                label: CM-7(5)
+                - 
+                  label: CM-7(5)
+                - 
+                  sort-id: cm-07.05
               parts: 
                 - 
                   id:    cm-7.5_smt
@@ -11750,9 +12059,12 @@ catalog:
               id:          cm-8_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least monthly
+                detail: at least monthly
           properties: 
-            label: CM-8
+            - 
+              label: CM-8
+            - 
+              sort-id: cm-08
           links: 
             href: #ref053
             rel:  reference
@@ -11920,7 +12232,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Updates During Installations / Removals
               properties: 
-                label: CM-8(1)
+                - 
+                  label: CM-8(1)
+                - 
+                  sort-id: cm-08.01
               parts: 
                 - 
                   id:    cm-8.1_smt
@@ -11979,7 +12294,7 @@ catalog:
                   id:          cm-8.3_prm_1
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: Continuously, using automated mechanisms with a maximum five-minute delay in detection
+                    detail: Continuously, using automated mechanisms with a maximum five-minute delay in detection
                 - 
                   id:     cm-8.3_prm_2
                   select: 
@@ -11990,7 +12305,10 @@ catalog:
                   depends-on: cm-8.3_prm_2
                   label:      organization-defined personnel or roles
               properties: 
-                label: CM-8(3)
+                - 
+                  label: CM-8(3)
+                - 
+                  sort-id: cm-08.03
               parts: 
                 - 
                   id:    cm-8.3_smt
@@ -12178,7 +12496,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      No Duplicate Accounting of Components
               properties: 
-                label: CM-8(5)
+                - 
+                  label: CM-8(5)
+                - 
+                  sort-id: cm-08.05
               parts: 
                 - 
                   id:    cm-8.5_smt
@@ -12218,7 +12539,10 @@ catalog:
           class:      SP800-53
           title:      Configuration Management Plan
           properties: 
-            label: CM-9
+            - 
+              label: CM-9
+            - 
+              sort-id: cm-09
           links: 
             href: #ref053
             rel:  reference
@@ -12393,7 +12717,10 @@ catalog:
           class:      SP800-53
           title:      Software Usage Restrictions
           properties: 
-            label: CM-10
+            - 
+              label: CM-10
+            - 
+              sort-id: cm-10
           parts: 
             - 
               id:    cm-10_smt
@@ -12487,7 +12814,10 @@ catalog:
               id:    cm-10.1_prm_1
               label: organization-defined restrictions
             properties: 
-              label: CM-10(1)
+              - 
+                label: CM-10(1)
+              - 
+                sort-id: cm-10.01
             parts: 
               - 
                 id:    cm-10.1_smt
@@ -12550,9 +12880,12 @@ catalog:
               id:          cm-11_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: Continuously (via CM-7 (5))
+                detail: Continuously (via CM-7 (5))
           properties: 
-            label: CM-11
+            - 
+              label: CM-11
+            - 
+              sort-id: cm-11
           parts: 
             - 
               id:    cm-11_smt
@@ -12707,14 +13040,17 @@ catalog:
               id:          cp-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          cp-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: CP-1
+            - 
+              label: CP-1
+            - 
+              sort-id: cp-01
           links: 
             - 
               href: #ref010
@@ -12957,12 +13293,15 @@ catalog:
               id:          cp-2_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:    cp-2_prm_4
               label: organization-defined key contingency personnel (identified by name and/or by role) and organizational elements
           properties: 
-            label: CP-2
+            - 
+              label: CP-2
+            - 
+              sort-id: cp-02
           links: 
             - 
               href: #ref010
@@ -13333,7 +13672,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Coordinate with Related Plans
               properties: 
-                label: CP-2(1)
+                - 
+                  label: CP-2(1)
+                - 
+                  sort-id: cp-02.01
               parts: 
                 - 
                   id:    cp-2.1_smt
@@ -13366,7 +13708,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Capacity Planning
               properties: 
-                label: CP-2(2)
+                - 
+                  label: CP-2(2)
+                - 
+                  sort-id: cp-02.02
               parts: 
                 - 
                   id:    cp-2.2_smt
@@ -13421,7 +13766,10 @@ catalog:
                 id:    cp-2.3_prm_1
                 label: organization-defined time period
               properties: 
-                label: CP-2(3)
+                - 
+                  label: CP-2(3)
+                - 
+                  sort-id: cp-02.03
               parts: 
                 - 
                   id:    cp-2.3_smt
@@ -13478,7 +13826,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Identify Critical Assets
               properties: 
-                label: CP-2(8)
+                - 
+                  label: CP-2(8)
+                - 
+                  sort-id: cp-02.08
               parts: 
                 - 
                   id:    cp-2.8_smt
@@ -13524,14 +13875,17 @@ catalog:
               id:          cp-3_prm_1
               label:       organization-defined time period
               constraints: 
-                STRVALUE: ten (10) days
+                detail: ten (10) days
             - 
               id:          cp-3_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: CP-3
+            - 
+              label: CP-3
+            - 
+              sort-id: cp-03
           links: 
             - 
               href: #ref010
@@ -13667,14 +14021,17 @@ catalog:
               id:          cp-4_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          cp-4_prm_2
               label:       organization-defined tests
               constraints: 
-                STRVALUE: functional exercises
+                detail: functional exercises
           properties: 
-            label: CP-4
+            - 
+              label: CP-4
+            - 
+              sort-id: cp-04
           links: 
             - 
               href: #ref010
@@ -13811,7 +14168,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Coordinate with Related Plans
             properties: 
-              label: CP-4(1)
+              - 
+                label: CP-4(1)
+              - 
+                sort-id: cp-04.01
             parts: 
               - 
                 id:    cp-4.1_smt
@@ -13853,7 +14213,10 @@ catalog:
           class:      SP800-53
           title:      Alternate Storage Site
           properties: 
-            label: CP-6
+            - 
+              label: CP-6
+            - 
+              sort-id: cp-06
           links: 
             href: #ref066
             rel:  reference
@@ -13945,7 +14308,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Separation from Primary Site
               properties: 
-                label: CP-6(1)
+                - 
+                  label: CP-6(1)
+                - 
+                  sort-id: cp-06.01
               parts: 
                 - 
                   id:    cp-6.1_smt
@@ -13982,7 +14348,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Accessibility
               properties: 
-                label: CP-6(3)
+                - 
+                  label: CP-6(3)
+                - 
+                  sort-id: cp-06.03
               parts: 
                 - 
                   id:    cp-6.3_smt
@@ -14039,7 +14408,10 @@ catalog:
               id:    cp-7_prm_2
               label: organization-defined time period consistent with recovery time and recovery point objectives
           properties: 
-            label: CP-7
+            - 
+              label: CP-7
+            - 
+              sort-id: cp-07
           links: 
             href: #ref066
             rel:  reference
@@ -14188,7 +14560,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Separation from Primary Site
               properties: 
-                label: CP-7(1)
+                - 
+                  label: CP-7(1)
+                - 
+                  sort-id: cp-07.01
               parts: 
                 - 
                   id:    cp-7.1_smt
@@ -14236,7 +14611,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Accessibility
               properties: 
-                label: CP-7(2)
+                - 
+                  label: CP-7(2)
+                - 
+                  sort-id: cp-07.02
               parts: 
                 - 
                   id:    cp-7.2_smt
@@ -14286,7 +14664,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Priority of Service
               properties: 
-                label: CP-7(3)
+                - 
+                  label: CP-7(3)
+                - 
+                  sort-id: cp-07.03
               parts: 
                 - 
                   id:    cp-7.3_smt
@@ -14326,7 +14707,10 @@ catalog:
               id:    cp-8_prm_2
               label: organization-defined time period
           properties: 
-            label: CP-8
+            - 
+              label: CP-8
+            - 
+              sort-id: cp-08
           links: 
             - 
               href: #ref066
@@ -14423,7 +14807,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Priority of Service Provisions
               properties: 
-                label: CP-8(1)
+                - 
+                  label: CP-8(1)
+                - 
+                  sort-id: cp-08.01
               parts: 
                 - 
                   id:    cp-8.1_smt
@@ -14489,7 +14876,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Single Points of Failure
               properties: 
-                label: CP-8(2)
+                - 
+                  label: CP-8(2)
+                - 
+                  sort-id: cp-08.02
               parts: 
                 - 
                   id:    cp-8.2_smt
@@ -14522,19 +14912,22 @@ catalog:
               id:          cp-9_prm_1
               label:       organization-defined frequency consistent with recovery time and recovery point objectives
               constraints: 
-                STRVALUE: daily incremental; weekly full
+                detail: daily incremental; weekly full
             - 
               id:          cp-9_prm_2
               label:       organization-defined frequency consistent with recovery time and recovery point objectives
               constraints: 
-                STRVALUE: daily incremental; weekly full
+                detail: daily incremental; weekly full
             - 
               id:          cp-9_prm_3
               label:       organization-defined frequency consistent with recovery time and recovery point objectives
               constraints: 
-                STRVALUE: daily incremental; weekly full
+                detail: daily incremental; weekly full
           properties: 
-            label: CP-9
+            - 
+              label: CP-9
+            - 
+              sort-id: cp-09
           links: 
             href: #ref066
             rel:  reference
@@ -14719,9 +15112,12 @@ catalog:
                 id:          cp-9.1_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: at least annually
+                  detail: at least annually
               properties: 
-                label: CP-9(1)
+                - 
+                  label: CP-9(1)
+                - 
+                  sort-id: cp-09.01
               parts: 
                 - 
                   id:    cp-9.1_smt
@@ -14780,7 +15176,10 @@ catalog:
                 id:    cp-9.3_prm_1
                 label: organization-defined critical information system software and other security-related information
               properties: 
-                label: CP-9(3)
+                - 
+                  label: CP-9(3)
+                - 
+                  sort-id: cp-09.03
               parts: 
                 - 
                   id:    cp-9.3_smt
@@ -14847,7 +15246,10 @@ catalog:
           class:      SP800-53
           title:      Information System Recovery and Reconstitution
           properties: 
-            label: CP-10
+            - 
+              label: CP-10
+            - 
+              sort-id: cp-10
           links: 
             - 
               href: #ref010
@@ -14980,7 +15382,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Transaction Recovery
             properties: 
-              label: CP-10(2)
+              - 
+                label: CP-10(2)
+              - 
+                sort-id: cp-10.02
             parts: 
               - 
                 id:    cp-10.2_smt
@@ -15032,14 +15437,17 @@ catalog:
               id:          ia-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ia-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: IA-1
+            - 
+              label: IA-1
+            - 
+              sort-id: ia-01
           links: 
             - 
               href: #ref017
@@ -15284,7 +15692,10 @@ catalog:
           class:      SP800-53
           title:      Identification and Authentication (organizational Users)
           properties: 
-            label: IA-2
+            - 
+              label: IA-2
+            - 
+              sort-id: ia-02
           links: 
             - 
               href: #ref018
@@ -15403,7 +15814,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Network Access to Privileged Accounts
               properties: 
-                label: IA-2(1)
+                - 
+                  label: IA-2(1)
+                - 
+                  sort-id: ia-02.01
               parts: 
                 - 
                   id:    ia-2.1_smt
@@ -15446,7 +15860,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Network Access to Non-privileged Accounts
               properties: 
-                label: IA-2(2)
+                - 
+                  label: IA-2(2)
+                - 
+                  sort-id: ia-02.02
               parts: 
                 - 
                   id:    ia-2.2_smt
@@ -15482,7 +15899,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Local Access to Privileged Accounts
               properties: 
-                label: IA-2(3)
+                - 
+                  label: IA-2(3)
+                - 
+                  sort-id: ia-02.03
               parts: 
                 - 
                   id:    ia-2.3_smt
@@ -15525,7 +15945,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Group Authentication
               properties: 
-                label: IA-2(5)
+                - 
+                  label: IA-2(5)
+                - 
+                  sort-id: ia-02.05
               parts: 
                 - 
                   id:    ia-2.5_smt
@@ -15565,7 +15988,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Network Access to Privileged Accounts - Replay Resistant
               properties: 
-                label: IA-2(8)
+                - 
+                  label: IA-2(8)
+                - 
+                  sort-id: ia-02.08
               parts: 
                 - 
                   id:    ia-2.8_smt
@@ -15608,9 +16034,12 @@ catalog:
                 id:          ia-2.11_prm_1
                 label:       organization-defined strength of mechanism requirements
                 constraints: 
-                  STRVALUE: FIPS 140-2, NIAP Certification, or NSA approval
+                  detail: FIPS 140-2, NIAP Certification, or NSA approval
               properties: 
-                label: IA-2(11)
+                - 
+                  label: IA-2(11)
+                - 
+                  sort-id: ia-02.11
               parts: 
                 - 
                   id:    ia-2.11_smt
@@ -15702,7 +16131,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Acceptance of PIV Credentials
               properties: 
-                label: IA-2(12)
+                - 
+                  label: IA-2(12)
+                - 
+                  sort-id: ia-02.12
               parts: 
                 - 
                   id:    ia-2.12_smt
@@ -15788,7 +16220,10 @@ catalog:
                 how-many:     one or more
                 alternatives: local,remote,network
           properties: 
-            label: IA-3
+            - 
+              label: IA-3
+            - 
+              sort-id: ia-03
           parts: 
             - 
               id:    ia-3_smt
@@ -15911,14 +16346,17 @@ catalog:
               id:          ia-4_prm_2
               label:       organization-defined time period
               constraints: 
-                STRVALUE: IA-4 (d) [at least two years]
+                detail: IA-4 (d) [at least two years]
             - 
               id:          ia-4_prm_3
               label:       organization-defined time period of inactivity
               constraints: 
-                STRVALUE: ninety days for user identifiers (See additional requirements and guidance)
+                detail: ninety days for user identifiers (See additional requirements and guidance)
           properties: 
-            label: IA-4
+            - 
+              label: IA-4
+            - 
+              sort-id: ia-04
           links: 
             - 
               href: #ref017
@@ -16219,9 +16657,12 @@ catalog:
               id:          ia-4.4_prm_1
               label:       organization-defined characteristic identifying individual status
               constraints: 
-                STRVALUE: contractors; foreign nationals
+                detail: contractors; foreign nationals
             properties: 
-              label: IA-4(4)
+              - 
+                label: IA-4(4)
+              - 
+                sort-id: ia-04.04
             parts: 
               - 
                 id:    ia-4.4_smt
@@ -16281,7 +16722,10 @@ catalog:
             id:    ia-5_prm_1
             label: organization-defined time period by authenticator type
           properties: 
-            label: IA-5
+            - 
+              label: IA-5
+            - 
+              sort-id: ia-05
           links: 
             - 
               href: #ref106
@@ -16654,7 +17098,7 @@ catalog:
                   id:          ia-5.1_prm_2
                   label:       organization-defined number
                   constraints: 
-                    STRVALUE: at least one
+                    detail: at least one
                 - 
                   id:    ia-5.1_prm_3
                   label: organization-defined numbers for lifetime minimum, lifetime maximum
@@ -16662,9 +17106,12 @@ catalog:
                   id:          ia-5.1_prm_4
                   label:       organization-defined number
                   constraints: 
-                    STRVALUE: twenty four (24)
+                    detail: twenty four (24)
               properties: 
-                label: IA-5(1)
+                - 
+                  label: IA-5(1)
+                - 
+                  sort-id: ia-05.01
               parts: 
                 - 
                   id:    ia-5.1_smt
@@ -16895,7 +17342,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Pki-based Authentication
               properties: 
-                label: IA-5(2)
+                - 
+                  label: IA-5(2)
+                - 
+                  sort-id: ia-05.02
               parts: 
                 - 
                   id:    ia-5.2_smt
@@ -17027,11 +17477,11 @@ catalog:
                   id:          ia-5.3_prm_1
                   label:       organization-defined types of and/or specific authenticators
                   constraints: 
-                    STRVALUE: All hardware/biometric (multifactor authenticators)
+                    detail: All hardware/biometric (multifactor authenticators)
                 - 
                   id:          ia-5.3_prm_2
                   constraints: 
-                    STRVALUE: in person
+                    detail: in person
                   select: 
                     alternatives: in person,by a trusted third party
                 - 
@@ -17041,7 +17491,10 @@ catalog:
                   id:    ia-5.3_prm_4
                   label: organization-defined personnel or roles
               properties: 
-                label: IA-5(3)
+                - 
+                  label: IA-5(3)
+                - 
+                  sort-id: ia-05.03
               parts: 
                 - 
                   id:    ia-5.3_smt
@@ -17117,7 +17570,10 @@ catalog:
                 id:    ia-5.4_prm_1
                 label: organization-defined requirements
               properties: 
-                label: IA-5(4)
+                - 
+                  label: IA-5(4)
+                - 
+                  sort-id: ia-05.04
               parts: 
                 - 
                   id:    ia-5.4_smt
@@ -17194,7 +17650,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Protection of Authenticators
               properties: 
-                label: IA-5(6)
+                - 
+                  label: IA-5(6)
+                - 
+                  sort-id: ia-05.06
               parts: 
                 - 
                   id:    ia-5.6_smt
@@ -17234,7 +17693,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      No Embedded Unencrypted Static Authenticators
               properties: 
-                label: IA-5(7)
+                - 
+                  label: IA-5(7)
+                - 
+                  sort-id: ia-05.07
               parts: 
                 - 
                   id:    ia-5.7_smt
@@ -17296,7 +17758,10 @@ catalog:
                 id:    ia-5.11_prm_1
                 label: organization-defined token quality requirements
               properties: 
-                label: IA-5(11)
+                - 
+                  label: IA-5(11)
+                - 
+                  sort-id: ia-05.11
               parts: 
                 - 
                   id:    ia-5.11_smt
@@ -17349,7 +17814,10 @@ catalog:
           class:      SP800-53
           title:      Authenticator Feedback
           properties: 
-            label: IA-6
+            - 
+              label: IA-6
+            - 
+              sort-id: ia-06
           parts: 
             - 
               id:    ia-6_smt
@@ -17393,7 +17861,10 @@ catalog:
           class:      SP800-53
           title:      Cryptographic Module Authentication
           properties: 
-            label: IA-7
+            - 
+              label: IA-7
+            - 
+              sort-id: ia-07
           links: 
             - 
               href: #ref012
@@ -17451,7 +17922,10 @@ catalog:
           class:      SP800-53
           title:      Identification and Authentication (non-organizational Users)
           properties: 
-            label: IA-8
+            - 
+              label: IA-8
+            - 
+              sort-id: ia-08
           links: 
             - 
               href: #ref106
@@ -17574,7 +18048,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Acceptance of PIV Credentials from Other Agencies
               properties: 
-                label: IA-8(1)
+                - 
+                  label: IA-8(1)
+                - 
+                  sort-id: ia-08.01
               parts: 
                 - 
                   id:    ia-8.1_smt
@@ -17640,7 +18117,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Acceptance of Third-party Credentials
               properties: 
-                label: IA-8(2)
+                - 
+                  label: IA-8(2)
+                - 
+                  sort-id: ia-08.02
               parts: 
                 - 
                   id:    ia-8.2_smt
@@ -17687,7 +18167,10 @@ catalog:
                 id:    ia-8.3_prm_1
                 label: organization-defined information systems
               properties: 
-                label: IA-8(3)
+                - 
+                  label: IA-8(3)
+                - 
+                  sort-id: ia-08.03
               parts: 
                 - 
                   id:    ia-8.3_smt
@@ -17744,7 +18227,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Use of Ficam-issued Profiles
               properties: 
-                label: IA-8(4)
+                - 
+                  label: IA-8(4)
+                - 
+                  sort-id: ia-08.04
               parts: 
                 - 
                   id:    ia-8.4_smt
@@ -17800,14 +18286,17 @@ catalog:
               id:          ir-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ir-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: IR-1
+            - 
+              label: IR-1
+            - 
+              sort-id: ir-01
           links: 
             - 
               href: #ref050
@@ -18047,9 +18536,12 @@ catalog:
               id:          ir-2_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: IR-2
+            - 
+              label: IR-2
+            - 
+              sort-id: ir-02
           links: 
             - 
               href: #ref057
@@ -18170,14 +18662,17 @@ catalog:
               id:          ir-3_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          ir-3_prm_2
               label:       organization-defined tests
               constraints: 
-                STRVALUE: see additional FedRAMP Requirements and Guidance
+                detail: see additional FedRAMP Requirements and Guidance
           properties: 
-            label: IR-3
+            - 
+              label: IR-3
+            - 
+              sort-id: ir-03
           links: 
             - 
               href: #ref097
@@ -18258,7 +18753,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Coordination with Related Plans
             properties: 
-              label: IR-3(2)
+              - 
+                label: IR-3(2)
+              - 
+                sort-id: ir-03.02
             parts: 
               - 
                 id:    ir-3.2_smt
@@ -18291,7 +18789,10 @@ catalog:
           class:      SP800-53
           title:      Incident Handling
           properties: 
-            label: IR-4
+            - 
+              label: IR-4
+            - 
+              sort-id: ir-04
           links: 
             - 
               href: #ref008
@@ -18523,7 +19024,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Automated Incident Handling Processes
             properties: 
-              label: IR-4(1)
+              - 
+                label: IR-4(1)
+              - 
+                sort-id: ir-04.01
             parts: 
               - 
                 id:    ir-4.1_smt
@@ -18563,7 +19067,10 @@ catalog:
           class:      SP800-53
           title:      Incident Monitoring
           properties: 
-            label: IR-5
+            - 
+              label: IR-5
+            - 
+              sort-id: ir-05
           links: 
             href: #ref086
             rel:  reference
@@ -18657,12 +19164,15 @@ catalog:
               id:          ir-6_prm_1
               label:       organization-defined time period
               constraints: 
-                STRVALUE: US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)
+                detail: US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)
             - 
               id:    ir-6_prm_2
               label: organization-defined authorities
           properties: 
-            label: IR-6
+            - 
+              label: IR-6
+            - 
+              sort-id: ir-06
           links: 
             - 
               href: #ref086
@@ -18785,7 +19295,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Automated Reporting
             properties: 
-              label: IR-6(1)
+              - 
+                label: IR-6(1)
+              - 
+                sort-id: ir-06.01
             parts: 
               - 
                 id:    ir-6.1_smt
@@ -18828,7 +19341,10 @@ catalog:
           class:      SP800-53
           title:      Incident Response Assistance
           properties: 
-            label: IR-7
+            - 
+              label: IR-7
+            - 
+              sort-id: ir-07
           parts: 
             - 
               id:    ir-7_smt
@@ -18903,7 +19419,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automation Support for Availability of Information / Support
               properties: 
-                label: IR-7(1)
+                - 
+                  label: IR-7(1)
+                - 
+                  sort-id: ir-07.01
               parts: 
                 - 
                   id:    ir-7.1_smt
@@ -18943,7 +19462,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Coordination with External Providers
               properties: 
-                label: IR-7(2)
+                - 
+                  label: IR-7(2)
+                - 
+                  sort-id: ir-07.02
               parts: 
                 - 
                   id:    ir-7.2_smt
@@ -19017,19 +19539,22 @@ catalog:
               id:          ir-8_prm_2
               label:       organization-defined incident response personnel (identified by name and/or by role) and organizational elements
               constraints: 
-                STRVALUE: see additional FedRAMP Requirements and Guidance
+                detail: see additional FedRAMP Requirements and Guidance
             - 
               id:          ir-8_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          ir-8_prm_4
               label:       organization-defined incident response personnel (identified by name and/or by role) and organizational elements
               constraints: 
-                STRVALUE: see additional FedRAMP Requirements and Guidance
+                detail: see additional FedRAMP Requirements and Guidance
           properties: 
-            label: IR-8
+            - 
+              label: IR-8
+            - 
+              sort-id: ir-08
           links: 
             href: #ref086
             rel:  reference
@@ -19399,7 +19924,10 @@ catalog:
               id:    ir-9_prm_2
               label: organization-defined actions
           properties: 
-            label: IR-9
+            - 
+              label: IR-9
+            - 
+              sort-id: ir-09
           parts: 
             - 
               id:    ir-9_smt
@@ -19547,7 +20075,10 @@ catalog:
                 id:    ir-9.1_prm_1
                 label: organization-defined personnel or roles
               properties: 
-                label: IR-9(1)
+                - 
+                  label: IR-9(1)
+                - 
+                  sort-id: ir-09.01
               parts: 
                 - 
                   id:    ir-9.1_smt
@@ -19592,7 +20123,10 @@ catalog:
                 id:    ir-9.2_prm_1
                 label: organization-defined frequency
               properties: 
-                label: IR-9(2)
+                - 
+                  label: IR-9(2)
+                - 
+                  sort-id: ir-09.02
               parts: 
                 - 
                   id:    ir-9.2_smt
@@ -19637,7 +20171,10 @@ catalog:
                 id:    ir-9.3_prm_1
                 label: organization-defined procedures
               properties: 
-                label: IR-9(3)
+                - 
+                  label: IR-9(3)
+                - 
+                  sort-id: ir-09.03
               parts: 
                 - 
                   id:    ir-9.3_smt
@@ -19693,7 +20230,10 @@ catalog:
                 id:    ir-9.4_prm_1
                 label: organization-defined security safeguards
               properties: 
-                label: IR-9(4)
+                - 
+                  label: IR-9(4)
+                - 
+                  sort-id: ir-09.04
               parts: 
                 - 
                   id:    ir-9.4_smt
@@ -19758,14 +20298,17 @@ catalog:
               id:          ma-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ma-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: MA-1
+            - 
+              label: MA-1
+            - 
+              sort-id: ma-01
           links: 
             - 
               href: #ref050
@@ -19997,7 +20540,10 @@ catalog:
               id:    ma-2_prm_2
               label: organization-defined maintenance-related information
           properties: 
-            label: MA-2
+            - 
+              label: MA-2
+            - 
+              sort-id: ma-02
           parts: 
             - 
               id:    ma-2_smt
@@ -20252,7 +20798,10 @@ catalog:
           class:      SP800-53
           title:      Maintenance Tools
           properties: 
-            label: MA-3
+            - 
+              label: MA-3
+            - 
+              sort-id: ma-03
           links: 
             href: #ref098
             rel:  reference
@@ -20329,7 +20878,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Inspect Tools
               properties: 
-                label: MA-3(1)
+                - 
+                  label: MA-3(1)
+                - 
+                  sort-id: ma-03.01
               parts: 
                 - 
                   id:    ma-3.1_smt
@@ -20373,7 +20925,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Inspect Media
               properties: 
-                label: MA-3(2)
+                - 
+                  label: MA-3(2)
+                - 
+                  sort-id: ma-03.02
               parts: 
                 - 
                   id:    ma-3.2_smt
@@ -20420,9 +20975,12 @@ catalog:
                 id:          ma-3.3_prm_1
                 label:       organization-defined personnel or roles
                 constraints: 
-                  STRVALUE: the information owner explicitly authorizing removal of the equipment from the facility
+                  detail: the information owner explicitly authorizing removal of the equipment from the facility
               properties: 
-                label: MA-3(3)
+                - 
+                  label: MA-3(3)
+                - 
+                  sort-id: ma-03.03
               parts: 
                 - 
                   id:    ma-3.3_smt
@@ -20540,7 +21098,10 @@ catalog:
           class:      SP800-53
           title:      Nonlocal Maintenance
           properties: 
-            label: MA-4
+            - 
+              label: MA-4
+            - 
+              sort-id: ma-04
           links: 
             - 
               href: #ref013
@@ -20773,7 +21334,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Document Nonlocal Maintenance
             properties: 
-              label: MA-4(2)
+              - 
+                label: MA-4(2)
+              - 
+                sort-id: ma-04.02
             parts: 
               - 
                 id:    ma-4.2_smt
@@ -20815,7 +21379,10 @@ catalog:
           class:      SP800-53
           title:      Maintenance Personnel
           properties: 
-            label: MA-5
+            - 
+              label: MA-5
+            - 
+              sort-id: ma-05
           parts: 
             - 
               id:    ma-5_smt
@@ -20934,7 +21501,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Individuals Without Appropriate Access
             properties: 
-              label: MA-5(1)
+              - 
+                label: MA-5(1)
+              - 
+                sort-id: ma-05.01
             parts: 
               - 
                 id:    ma-5.1_smt
@@ -21107,7 +21677,10 @@ catalog:
               id:    ma-6_prm_2
               label: organization-defined time period
           properties: 
-            label: MA-6
+            - 
+              label: MA-6
+            - 
+              sort-id: ma-06
           parts: 
             - 
               id:    ma-6_smt
@@ -21211,14 +21784,17 @@ catalog:
               id:          mp-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          mp-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: MP-1
+            - 
+              label: MP-1
+            - 
+              sort-id: mp-01
           links: 
             - 
               href: #ref050
@@ -21450,7 +22026,10 @@ catalog:
               id:    mp-2_prm_2
               label: organization-defined personnel or roles
           properties: 
-            label: MP-2
+            - 
+              label: MP-2
+            - 
+              sort-id: mp-02
           links: 
             - 
               href: #ref015
@@ -21547,12 +22126,15 @@ catalog:
               id:          mp-3_prm_1
               label:       organization-defined types of information system media
               constraints: 
-                STRVALUE: no removable media types
+                detail: no removable media types
             - 
               id:    mp-3_prm_2
               label: organization-defined controlled areas
           properties: 
-            label: MP-3
+            - 
+              label: MP-3
+            - 
+              sort-id: mp-03
           links: 
             href: #ref015
             rel:  reference
@@ -21687,14 +22269,17 @@ catalog:
               id:          mp-4_prm_1
               label:       organization-defined types of digital and/or non-digital media
               constraints: 
-                STRVALUE: all types of digital and non-digital media with sensitive information
+                detail: all types of digital and non-digital media with sensitive information
             - 
               id:          mp-4_prm_2
               label:       organization-defined controlled areas
               constraints: 
-                STRVALUE: see additional FedRAMP requirements and guidance
+                detail: see additional FedRAMP requirements and guidance
           properties: 
-            label: MP-4
+            - 
+              label: MP-4
+            - 
+              sort-id: mp-04
           links: 
             - 
               href: #ref015
@@ -21837,14 +22422,17 @@ catalog:
               id:          mp-5_prm_1
               label:       organization-defined types of information system media
               constraints: 
-                STRVALUE: all media with sensitive information
+                detail: all media with sensitive information
             - 
               id:          mp-5_prm_2
               label:       organization-defined security safeguards
               constraints: 
-                STRVALUE: prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digitital media, secured in locked container
+                detail: prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digitital media, secured in locked container
           properties: 
-            label: MP-5
+            - 
+              label: MP-5
+            - 
+              sort-id: mp-05
           links: 
             - 
               href: #ref015
@@ -22005,7 +22593,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Cryptographic Protection
             properties: 
-              label: MP-5(4)
+              - 
+                label: MP-5(4)
+              - 
+                sort-id: mp-05.04
             parts: 
               - 
                 id:    mp-5.4_smt
@@ -22056,7 +22647,10 @@ catalog:
               id:    mp-6_prm_2
               label: organization-defined sanitization techniques and procedures
           properties: 
-            label: MP-6
+            - 
+              label: MP-6
+            - 
+              sort-id: mp-06
           links: 
             - 
               href: #ref015
@@ -22215,9 +22809,12 @@ catalog:
               id:          mp-6.2_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             properties: 
-              label: MP-6(2)
+              - 
+                label: MP-6(2)
+              - 
+                sort-id: mp-06.02
             parts: 
               - 
                 id:    mp-6.2_smt
@@ -22295,7 +22892,10 @@ catalog:
               id:    mp-7_prm_4
               label: organization-defined security safeguards
           properties: 
-            label: MP-7
+            - 
+              label: MP-7
+            - 
+              sort-id: mp-07
           links: 
             - 
               href: #ref015
@@ -22404,7 +23004,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Prohibit Use Without Owner
             properties: 
-              label: MP-7(1)
+              - 
+                label: MP-7(1)
+              - 
+                sort-id: mp-07.01
             parts: 
               - 
                 id:    mp-7.1_smt
@@ -22460,14 +23063,17 @@ catalog:
               id:          pe-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          pe-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PE-1
+            - 
+              label: PE-1
+            - 
+              sort-id: pe-01
           links: 
             - 
               href: #ref050
@@ -22695,9 +23301,12 @@ catalog:
             id:          pe-2_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least annually
+              detail: at least annually
           properties: 
-            label: PE-2
+            - 
+              label: PE-2
+            - 
+              sort-id: pe-02
           parts: 
             - 
               id:    pe-2_smt
@@ -22836,7 +23445,7 @@ catalog:
             - 
               id:          pe-3_prm_2
               constraints: 
-                STRVALUE: CSP defined physical access control systems/devices AND guards
+                detail: CSP defined physical access control systems/devices AND guards
               select: 
                 how-many:     one or more
                 alternatives: 
@@ -22852,7 +23461,7 @@ catalog:
               depends-on:  pe-3_prm_2
               label:       organization-defined physical access control systems/devices
               constraints: 
-                STRVALUE: CSP defined physical access control systems/devices
+                detail: CSP defined physical access control systems/devices
             - 
               id:    pe-3_prm_4
               label: organization-defined entry/exit points
@@ -22863,7 +23472,7 @@ catalog:
               id:          pe-3_prm_6
               label:       organization-defined circumstances requiring visitor escorts and monitoring
               constraints: 
-                STRVALUE: in all circumstances within restricted access area where the information system resides
+                detail: in all circumstances within restricted access area where the information system resides
             - 
               id:    pe-3_prm_7
               label: organization-defined physical access devices
@@ -22871,14 +23480,17 @@ catalog:
               id:          pe-3_prm_8
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          pe-3_prm_9
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PE-3
+            - 
+              label: PE-3
+            - 
+              sort-id: pe-03
           links: 
             - 
               href: #ref017
@@ -23285,7 +23897,10 @@ catalog:
               id:    pe-4_prm_2
               label: organization-defined security safeguards
           properties: 
-            label: PE-4
+            - 
+              label: PE-4
+            - 
+              sort-id: pe-04
           links: 
             href: #ref103
             rel:  reference
@@ -23377,7 +23992,10 @@ catalog:
           class:      SP800-53
           title:      Access Control for Output Devices
           properties: 
-            label: PE-5
+            - 
+              label: PE-5
+            - 
+              sort-id: pe-05
           parts: 
             - 
               id:    pe-5_smt
@@ -23438,12 +24056,15 @@ catalog:
               id:          pe-6_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least monthly
+                detail: at least monthly
             - 
               id:    pe-6_prm_2
               label: organization-defined events or potential indications of events
           properties: 
-            label: PE-6
+            - 
+              label: PE-6
+            - 
+              sort-id: pe-06
           parts: 
             - 
               id:    pe-6_smt
@@ -23552,7 +24173,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Intrusion Alarms / Surveillance Equipment
             properties: 
-              label: PE-6(1)
+              - 
+                label: PE-6(1)
+              - 
+                sort-id: pe-06.01
             parts: 
               - 
                 id:    pe-6.1_smt
@@ -23592,14 +24216,17 @@ catalog:
               id:          pe-8_prm_1
               label:       organization-defined time period
               constraints: 
-                STRVALUE: for a minimum of one (1) year
+                detail: for a minimum of one (1) year
             - 
               id:          pe-8_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least monthly
+                detail: at least monthly
           properties: 
-            label: PE-8
+            - 
+              label: PE-8
+            - 
+              sort-id: pe-08
           parts: 
             - 
               id:    pe-8_smt
@@ -23689,7 +24316,10 @@ catalog:
           class:      SP800-53
           title:      Power Equipment and Cabling
           properties: 
-            label: PE-9
+            - 
+              label: PE-9
+            - 
+              sort-id: pe-09
           parts: 
             - 
               id:    pe-9_smt
@@ -23736,7 +24366,10 @@ catalog:
             id:    pe-10_prm_1
             label: organization-defined location by information system or system component
           properties: 
-            label: PE-10
+            - 
+              label: PE-10
+            - 
+              sort-id: pe-10
           parts: 
             - 
               id:    pe-10_smt
@@ -23835,7 +24468,10 @@ catalog:
               how-many:     one or more
               alternatives: an orderly shutdown of the information system,transition of the information system to long-term alternate power
           properties: 
-            label: PE-11
+            - 
+              label: PE-11
+            - 
+              sort-id: pe-11
           parts: 
             - 
               id:    pe-11_smt
@@ -23900,7 +24536,10 @@ catalog:
           class:      SP800-53
           title:      Emergency Lighting
           properties: 
-            label: PE-12
+            - 
+              label: PE-12
+            - 
+              sort-id: pe-12
           parts: 
             - 
               id:    pe-12_smt
@@ -23962,7 +24601,10 @@ catalog:
           class:      SP800-53
           title:      Fire Protection
           properties: 
-            label: PE-13
+            - 
+              label: PE-13
+            - 
+              sort-id: pe-13
           parts: 
             - 
               id:    pe-13_smt
@@ -24023,7 +24665,10 @@ catalog:
                   id:    pe-13.2_prm_2
                   label: organization-defined emergency responders
               properties: 
-                label: PE-13(2)
+                - 
+                  label: PE-13(2)
+                - 
+                  sort-id: pe-13.02
               parts: 
                 - 
                   id:    pe-13.2_smt
@@ -24095,7 +24740,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automatic Fire Suppression
               properties: 
-                label: PE-13(3)
+                - 
+                  label: PE-13(3)
+                - 
+                  sort-id: pe-13.03
               parts: 
                 - 
                   id:    pe-13.3_smt
@@ -24135,14 +24783,17 @@ catalog:
               id:          pe-14_prm_1
               label:       organization-defined acceptable levels
               constraints: 
-                STRVALUE: consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments
+                detail: consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments
             - 
               id:          pe-14_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: continuously
+                detail: continuously
           properties: 
-            label: PE-14
+            - 
+              label: PE-14
+            - 
+              sort-id: pe-14
           parts: 
             - 
               id:    pe-14_smt
@@ -24271,7 +24922,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Monitoring with Alarms / Notifications
             properties: 
-              label: PE-14(2)
+              - 
+                label: PE-14(2)
+              - 
+                sort-id: pe-14.02
             parts: 
               - 
                 id:    pe-14.2_smt
@@ -24332,7 +24986,10 @@ catalog:
           class:      SP800-53
           title:      Water Damage Protection
           properties: 
-            label: PE-15
+            - 
+              label: PE-15
+            - 
+              sort-id: pe-15
           parts: 
             - 
               id:    pe-15_smt
@@ -24398,9 +25055,12 @@ catalog:
             id:          pe-16_prm_1
             label:       organization-defined types of information system components
             constraints: 
-              STRVALUE: all information system components
+              detail: all information system components
           properties: 
-            label: PE-16
+            - 
+              label: PE-16
+            - 
+              sort-id: pe-16
           parts: 
             - 
               id:    pe-16_smt
@@ -24519,7 +25179,10 @@ catalog:
             id:    pe-17_prm_1
             label: organization-defined security controls
           properties: 
-            label: PE-17
+            - 
+              label: PE-17
+            - 
+              sort-id: pe-17
           links: 
             href: #ref074
             rel:  reference
@@ -24634,14 +25297,17 @@ catalog:
               id:          pl-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          pl-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PL-1
+            - 
+              label: PL-1
+            - 
+              sort-id: pl-01
           links: 
             - 
               href: #ref050
@@ -24877,9 +25543,12 @@ catalog:
               id:          pl-2_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PL-2
+            - 
+              label: PL-2
+            - 
+              sort-id: pl-02
           links: 
             href: #ref060
             rel:  reference
@@ -25251,7 +25920,10 @@ catalog:
               id:    pl-2.3_prm_1
               label: organization-defined individuals or groups
             properties: 
-              label: PL-2(3)
+              - 
+                label: PL-2(3)
+              - 
+                sort-id: pl-02.03
             parts: 
               - 
                 id:    pl-2.3_smt
@@ -25309,9 +25981,12 @@ catalog:
             id:          pl-4_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: At least every 3 years
+              detail: At least every 3 years
           properties: 
-            label: PL-4
+            - 
+              label: PL-4
+            - 
+              sort-id: pl-04
           links: 
             href: #ref060
             rel:  reference
@@ -25502,7 +26177,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Social Media and Networking Restrictions
             properties: 
-              label: PL-4(1)
+              - 
+                label: PL-4(1)
+              - 
+                sort-id: pl-04.01
             parts: 
               - 
                 id:    pl-4.1_smt
@@ -25558,9 +26236,12 @@ catalog:
             id:          pl-8_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: At least annually or when a significant change occurs
+              detail: At least annually or when a significant change occurs
           properties: 
-            label: PL-8
+            - 
+              label: PL-8
+            - 
+              sort-id: pl-08
           parts: 
             - 
               id:    pl-8_smt
@@ -25759,14 +26440,17 @@ catalog:
               id:          ps-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ps-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PS-1
+            - 
+              label: PS-1
+            - 
+              sort-id: ps-01
           links: 
             - 
               href: #ref050
@@ -25994,9 +26678,12 @@ catalog:
             id:          ps-2_prm_1
             label:       organization-defined frequency
             constraints: 
-              STRVALUE: at least every three years
+              detail: at least every three years
           properties: 
-            label: PS-2
+            - 
+              label: PS-2
+            - 
+              sort-id: ps-02
           links: 
             href: #ref001
             rel:  reference
@@ -26106,9 +26793,12 @@ catalog:
             id:          ps-3_prm_1
             label:       organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening
             constraints: 
-              STRVALUE: for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions
+              detail: for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions
           properties: 
-            label: PS-3
+            - 
+              label: PS-3
+            - 
+              sort-id: ps-03
           links: 
             - 
               href: #ref001
@@ -26245,9 +26935,12 @@ catalog:
               id:          ps-3.3_prm_1
               label:       organization-defined additional personnel screening criteria
               constraints: 
-                STRVALUE: personnel screening criteria - as required by specific information
+                detail: personnel screening criteria - as required by specific information
             properties: 
-              label: PS-3(3)
+              - 
+                label: PS-3(3)
+              - 
+                sort-id: ps-03.03
             parts: 
               - 
                 id:    ps-3.3_smt
@@ -26337,7 +27030,7 @@ catalog:
               id:          ps-4_prm_1
               label:       organization-defined time period
               constraints: 
-                STRVALUE: same day
+                detail: same day
             - 
               id:    ps-4_prm_2
               label: organization-defined information security topics
@@ -26348,7 +27041,10 @@ catalog:
               id:    ps-4_prm_4
               label: organization-defined time period
           properties: 
-            label: PS-4
+            - 
+              label: PS-4
+            - 
+              sort-id: ps-04
           parts: 
             - 
               id:    ps-4_smt
@@ -26538,9 +27234,12 @@ catalog:
               id:          ps-5_prm_4
               label:       organization-defined time period
               constraints: 
-                STRVALUE: five days of the time period following the formal transfer action (DoD 24 hours)
+                detail: five days of the time period following the formal transfer action (DoD 24 hours)
           properties: 
-            label: PS-5
+            - 
+              label: PS-5
+            - 
+              sort-id: ps-05
           parts: 
             - 
               id:    ps-5_smt
@@ -26700,14 +27399,17 @@ catalog:
               id:          ps-6_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
             - 
               id:          ps-6_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: PS-6
+            - 
+              label: PS-6
+            - 
+              sort-id: ps-06
           parts: 
             - 
               id:    ps-6_smt
@@ -26862,9 +27564,12 @@ catalog:
               id:          ps-7_prm_2
               label:       organization-defined time period
               constraints: 
-                STRVALUE: organization-defined time period - same day
+                detail: organization-defined time period - same day
           properties: 
-            label: PS-7
+            - 
+              label: PS-7
+            - 
+              sort-id: ps-07
           links: 
             href: #ref067
             rel:  reference
@@ -27024,7 +27729,10 @@ catalog:
               id:    ps-8_prm_2
               label: organization-defined time period
           properties: 
-            label: PS-8
+            - 
+              label: PS-8
+            - 
+              sort-id: ps-08
           parts: 
             - 
               id:    ps-8_smt
@@ -27129,14 +27837,17 @@ catalog:
               id:          ra-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          ra-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: RA-1
+            - 
+              label: RA-1
+            - 
+              sort-id: ra-01
           links: 
             - 
               href: #ref050
@@ -27365,7 +28076,10 @@ catalog:
           class:      SP800-53
           title:      Security Categorization
           properties: 
-            label: RA-2
+            - 
+              label: RA-2
+            - 
+              sort-id: ra-02
           links: 
             - 
               href: #ref015
@@ -27488,12 +28202,12 @@ catalog:
               depends-on:  ra-3_prm_1
               label:       organization-defined document
               constraints: 
-                STRVALUE: security assessment report
+                detail: security assessment report
             - 
               id:          ra-3_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every three (3) years or when a significant change occurs
+                detail: at least every three (3) years or when a significant change occurs
             - 
               id:    ra-3_prm_4
               label: organization-defined personnel or roles
@@ -27501,9 +28215,12 @@ catalog:
               id:          ra-3_prm_5
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every three (3) years or when a significant change occurs
+                detail: at least every three (3) years or when a significant change occurs
           properties: 
-            label: RA-3
+            - 
+              label: RA-3
+            - 
+              sort-id: ra-03
           links: 
             - 
               href: #ref106
@@ -27752,17 +28469,20 @@ catalog:
               id:          ra-5_prm_1
               label:       organization-defined frequency and/or randomly in accordance with organization-defined process
               constraints: 
-                STRVALUE: monthly operating system/infrastructure; monthly web applications and databases
+                detail: monthly operating system/infrastructure; monthly web applications and databases
             - 
               id:          ra-5_prm_2
               label:       organization-defined response times
               constraints: 
-                STRVALUE: high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery
+                detail: high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery
             - 
               id:    ra-5_prm_3
               label: organization-defined personnel or roles
           properties: 
-            label: RA-5
+            - 
+              label: RA-5
+            - 
+              sort-id: ra-05
           links: 
             - 
               href: #ref071
@@ -28110,7 +28830,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Update Tool Capability
               properties: 
-                label: RA-5(1)
+                - 
+                  label: RA-5(1)
+                - 
+                  sort-id: ra-05.01
               parts: 
                 - 
                   id:    ra-5.1_smt
@@ -28162,7 +28885,7 @@ catalog:
                 - 
                   id:          ra-5.2_prm_1
                   constraints: 
-                    STRVALUE: prior to a new scan
+                    detail: prior to a new scan
                   select: 
                     how-many:     one or more
                     alternatives: 
@@ -28179,7 +28902,10 @@ catalog:
                   depends-on: ra-5.2_prm_1
                   label:      organization-defined frequency
               properties: 
-                label: RA-5(2)
+                - 
+                  label: RA-5(2)
+                - 
+                  sort-id: ra-05.02
               parts: 
                 - 
                   id:    ra-5.2_smt
@@ -28259,7 +28985,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Breadth / Depth of Coverage
               properties: 
-                label: RA-5(3)
+                - 
+                  label: RA-5(3)
+                - 
+                  sort-id: ra-05.03
               parts: 
                 - 
                   id:    ra-5.3_smt
@@ -28312,14 +29041,17 @@ catalog:
                   id:          ra-5.5_prm_1
                   label:       organization-identified information system components
                   constraints: 
-                    STRVALUE: operating systems / web applications / databases
+                    detail: operating systems / web applications / databases
                 - 
                   id:          ra-5.5_prm_2
                   label:       organization-defined vulnerability scanning activities
                   constraints: 
-                    STRVALUE: all scans
+                    detail: all scans
               properties: 
-                label: RA-5(5)
+                - 
+                  label: RA-5(5)
+                - 
+                  sort-id: ra-05.05
               parts: 
                 - 
                   id:    ra-5.5_smt
@@ -28378,7 +29110,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automated Trend Analyses
               properties: 
-                label: RA-5(6)
+                - 
+                  label: RA-5(6)
+                - 
+                  sort-id: ra-05.06
               parts: 
                 - 
                   id:    ra-5.6_smt
@@ -28441,7 +29176,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Review Historic Audit Logs
               properties: 
-                label: RA-5(8)
+                - 
+                  label: RA-5(8)
+                - 
+                  sort-id: ra-05.08
               parts: 
                 - 
                   id:    ra-5.8_smt
@@ -28496,7 +29234,7 @@ catalog:
                       name:       guidance
                       properties: 
                         label: Guidance:
-                      prose:      While scanning tools may label findings as high or critical, the intent of the control is based around NIST\'s definition of high vulnerability.
+                      prose:      While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.
     - 
       id:       sa
       class:    family
@@ -28514,14 +29252,17 @@ catalog:
               id:          sa-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          sa-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: SA-1
+            - 
+              label: SA-1
+            - 
+              sort-id: sa-01
           links: 
             - 
               href: #ref050
@@ -28746,7 +29487,10 @@ catalog:
           class:      SP800-53
           title:      Allocation of Resources
           properties: 
-            label: SA-2
+            - 
+              label: SA-2
+            - 
+              sort-id: sa-02
           links: 
             href: #ref089
             rel:  reference
@@ -28859,7 +29603,10 @@ catalog:
             id:    sa-3_prm_1
             label: organization-defined system development life cycle
           properties: 
-            label: SA-3
+            - 
+              label: SA-3
+            - 
+              sort-id: sa-03
           links: 
             - 
               href: #ref069
@@ -28983,7 +29730,10 @@ catalog:
           class:      SP800-53
           title:      Acquisition Process
           properties: 
-            label: SA-4
+            - 
+              label: SA-4
+            - 
+              sort-id: sa-04
           links: 
             - 
               href: #ref018
@@ -29228,7 +29978,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Functional Properties of Security Controls
               properties: 
-                label: SA-4(1)
+                - 
+                  label: SA-4(1)
+                - 
+                  sort-id: sa-04.01
               parts: 
                 - 
                   id:    sa-4.1_smt
@@ -29275,7 +30028,7 @@ catalog:
                 - 
                   id:          sa-4.2_prm_1
                   constraints: 
-                    STRVALUE: to include security-relevant external system interfaces and high-level design
+                    detail: to include security-relevant external system interfaces and high-level design
                   select: 
                     how-many:     one or more
                     alternatives: security-relevant external system interfaces,high-level design,low-level design,source code or hardware schematics,
@@ -29289,7 +30042,10 @@ catalog:
                   id:    sa-4.2_prm_3
                   label: organization-defined level of detail
               properties: 
-                label: SA-4(2)
+                - 
+                  label: SA-4(2)
+                - 
+                  sort-id: sa-04.02
               parts: 
                 - 
                   id:    sa-4.2_smt
@@ -29392,9 +30148,12 @@ catalog:
                 id:          sa-4.8_prm_1
                 label:       organization-defined level of detail
                 constraints: 
-                  STRVALUE: at least the minimum requirement as defined in control CA-7
+                  detail: at least the minimum requirement as defined in control CA-7
               properties: 
-                label: SA-4(8)
+                - 
+                  label: SA-4(8)
+                - 
+                  sort-id: sa-04.08
               parts: 
                 - 
                   id:    sa-4.8_smt
@@ -29462,7 +30221,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Functions / Ports / Protocols / Services in Use
               properties: 
-                label: SA-4(9)
+                - 
+                  label: SA-4(9)
+                - 
+                  sort-id: sa-04.09
               parts: 
                 - 
                   id:    sa-4.9_smt
@@ -29529,7 +30291,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Use of Approved PIV Products
               properties: 
-                label: SA-4(10)
+                - 
+                  label: SA-4(10)
+                - 
+                  sort-id: sa-04.10
               parts: 
                 - 
                   id:    sa-4.10_smt
@@ -29584,7 +30349,10 @@ catalog:
               id:    sa-5_prm_2
               label: organization-defined personnel or roles
           properties: 
-            label: SA-5
+            - 
+              label: SA-5
+            - 
+              sort-id: sa-05
           parts: 
             - 
               id:    sa-5_smt
@@ -29863,7 +30631,10 @@ catalog:
           class:      SP800-53
           title:      Security Engineering Principles
           properties: 
-            label: SA-8
+            - 
+              label: SA-8
+            - 
+              sort-id: sa-08
           links: 
             href: #ref062
             rel:  reference
@@ -29967,14 +30738,17 @@ catalog:
               id:          sa-9_prm_1
               label:       organization-defined security controls
               constraints: 
-                STRVALUE: FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system
+                detail: FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system
             - 
               id:          sa-9_prm_2
               label:       organization-defined processes, methods, and techniques
               constraints: 
-                STRVALUE: Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored
+                detail: Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored
           properties: 
-            label: SA-9
+            - 
+              label: SA-9
+            - 
+              sort-id: sa-09
           links: 
             href: #ref067
             rel:  reference
@@ -30115,7 +30889,10 @@ catalog:
                 id:    sa-9.1_prm_1
                 label: organization-defined personnel or roles
               properties: 
-                label: SA-9(1)
+                - 
+                  label: SA-9(1)
+                - 
+                  sort-id: sa-09.01
               parts: 
                 - 
                   id:    sa-9.1_smt
@@ -30213,9 +30990,12 @@ catalog:
                 id:          sa-9.2_prm_1
                 label:       organization-defined external information system services
                 constraints: 
-                  STRVALUE: all external systems where Federal information is processed or stored
+                  detail: all external systems where Federal information is processed or stored
               properties: 
-                label: SA-9(2)
+                - 
+                  label: SA-9(2)
+                - 
+                  sort-id: sa-09.02
               parts: 
                 - 
                   id:    sa-9.2_smt
@@ -30297,9 +31077,12 @@ catalog:
                   id:          sa-9.4_prm_2
                   label:       organization-defined external service providers
                   constraints: 
-                    STRVALUE: all external systems where Federal information is processed or stored
+                    detail: all external systems where Federal information is processed or stored
               properties: 
-                label: SA-9(4)
+                - 
+                  label: SA-9(4)
+                - 
+                  sort-id: sa-09.04
               parts: 
                 - 
                   id:    sa-9.4_smt
@@ -30361,7 +31144,7 @@ catalog:
                 - 
                   id:          sa-9.5_prm_1
                   constraints: 
-                    STRVALUE: information processing, information data, AND information services
+                    detail: information processing, information data, AND information services
                   select: 
                     how-many:     one or more
                     alternatives: information processing,information/data,information system services
@@ -30372,7 +31155,10 @@ catalog:
                   id:    sa-9.5_prm_3
                   label: organization-defined requirements or conditions
               properties: 
-                label: SA-9(5)
+                - 
+                  label: SA-9(5)
+                - 
+                  sort-id: sa-09.05
               parts: 
                 - 
                   id:    sa-9.5_smt
@@ -30453,7 +31239,7 @@ catalog:
             - 
               id:          sa-10_prm_1
               constraints: 
-                STRVALUE: development, implementation, AND operation
+                detail: development, implementation, AND operation
               select: 
                 how-many:     one or more
                 alternatives: design,development,implementation,operation
@@ -30464,7 +31250,10 @@ catalog:
               id:    sa-10_prm_3
               label: organization-defined personnel
           properties: 
-            label: SA-10
+            - 
+              label: SA-10
+            - 
+              sort-id: sa-10
           links: 
             href: #ref053
             rel:  reference
@@ -30702,7 +31491,10 @@ catalog:
             class:      SP800-53-enhancement
             title:      Software / Firmware Integrity Verification
             properties: 
-              label: SA-10(1)
+              - 
+                label: SA-10(1)
+              - 
+                sort-id: sa-10.01
             parts: 
               - 
                 id:    sa-10.1_smt
@@ -30755,7 +31547,10 @@ catalog:
               id:    sa-11_prm_2
               label: organization-defined depth and coverage
           properties: 
-            label: SA-11
+            - 
+              label: SA-11
+            - 
+              sort-id: sa-11
           links: 
             - 
               href: #ref039
@@ -30964,7 +31759,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Static Code Analysis
               properties: 
-                label: SA-11(1)
+                - 
+                  label: SA-11(1)
+                - 
+                  sort-id: sa-11.01
               parts: 
                 - 
                   id:    sa-11.1_smt
@@ -31015,7 +31813,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Threat and Vulnerability Analyses
               properties: 
-                label: SA-11(2)
+                - 
+                  label: SA-11(2)
+                - 
+                  sort-id: sa-11.02
               parts: 
                 - 
                   id:    sa-11.2_smt
@@ -31083,7 +31884,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Dynamic Code Analysis
               properties: 
-                label: SA-11(8)
+                - 
+                  label: SA-11(8)
+                - 
+                  sort-id: sa-11.08
               parts: 
                 - 
                   id:    sa-11.8_smt
@@ -31146,14 +31950,17 @@ catalog:
               id:          sc-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          sc-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: SC-1
+            - 
+              label: SC-1
+            - 
+              sort-id: sc-01
           links: 
             - 
               href: #ref050
@@ -31378,7 +32185,10 @@ catalog:
           class:      SP800-53
           title:      Application Partitioning
           properties: 
-            label: SC-2
+            - 
+              label: SC-2
+            - 
+              sort-id: sc-02
           parts: 
             - 
               id:    sc-2_smt
@@ -31431,7 +32241,10 @@ catalog:
           class:      SP800-53
           title:      Information in Shared Resources
           properties: 
-            label: SC-4
+            - 
+              label: SC-4
+            - 
+              sort-id: sc-04
           parts: 
             - 
               id:    sc-4_smt
@@ -31491,7 +32304,10 @@ catalog:
               id:    sc-5_prm_2
               label: organization-defined security safeguards
           properties: 
-            label: SC-5
+            - 
+              label: SC-5
+            - 
+              sort-id: sc-05
           parts: 
             - 
               id:    sc-5_smt
@@ -31574,7 +32390,10 @@ catalog:
               depends-on: sc-6_prm_2
               label:      organization-defined security safeguards
           properties: 
-            label: SC-6
+            - 
+              label: SC-6
+            - 
+              sort-id: sc-06
           parts: 
             - 
               id:    sc-6_smt
@@ -31656,7 +32475,10 @@ catalog:
             select: 
               alternatives: physically,logically
           properties: 
-            label: SC-7
+            - 
+              label: SC-7
+            - 
+              sort-id: sc-07
           links: 
             - 
               href: #ref015
@@ -31822,7 +32644,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Access Points
               properties: 
-                label: SC-7(3)
+                - 
+                  label: SC-7(3)
+                - 
+                  sort-id: sc-07.03
               parts: 
                 - 
                   id:    sc-7.3_smt
@@ -31865,9 +32690,12 @@ catalog:
                 id:          sc-7.4_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: at least annually
+                  detail: at least annually
               properties: 
-                label: SC-7(4)
+                - 
+                  label: SC-7(4)
+                - 
+                  sort-id: sc-07.04
               parts: 
                 - 
                   id:    sc-7.4_smt
@@ -32023,7 +32851,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Deny by Default / Allow by Exception
               properties: 
-                label: SC-7(5)
+                - 
+                  label: SC-7(5)
+                - 
+                  sort-id: sc-07.05
               parts: 
                 - 
                   id:    sc-7.5_smt
@@ -32076,7 +32907,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Prevent Split Tunneling for Remote Devices
               properties: 
-                label: SC-7(7)
+                - 
+                  label: SC-7(7)
+                - 
+                  sort-id: sc-07.07
               parts: 
                 - 
                   id:    sc-7.7_smt
@@ -32123,7 +32957,10 @@ catalog:
                   id:    sc-7.8_prm_2
                   label: organization-defined external networks
               properties: 
-                label: SC-7(8)
+                - 
+                  label: SC-7(8)
+                - 
+                  sort-id: sc-07.08
               parts: 
                 - 
                   id:    sc-7.8_smt
@@ -32198,7 +33035,10 @@ catalog:
                   id:    sc-7.12_prm_2
                   label: organization-defined information system components
               properties: 
-                label: SC-7(12)
+                - 
+                  label: SC-7(12)
+                - 
+                  sort-id: sc-07.12
               parts: 
                 - 
                   id:    sc-7.12_smt
@@ -32260,7 +33100,10 @@ catalog:
                 id:    sc-7.13_prm_1
                 label: organization-defined information security tools, mechanisms, and support components
               properties: 
-                label: SC-7(13)
+                - 
+                  label: SC-7(13)
+                - 
+                  sort-id: sc-07.13
               parts: 
                 - 
                   id:    sc-7.13_smt
@@ -32337,7 +33180,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Fail Secure
               properties: 
-                label: SC-7(18)
+                - 
+                  label: SC-7(18)
+                - 
+                  sort-id: sc-07.18
               parts: 
                 - 
                   id:    sc-7.18_smt
@@ -32388,12 +33234,15 @@ catalog:
           parameters: 
             id:          sc-8_prm_1
             constraints: 
-              STRVALUE: confidentiality AND integrity
+              detail: confidentiality AND integrity
             select: 
               how-many:     one or more
               alternatives: confidentiality,integrity
           properties: 
-            label: SC-8
+            - 
+              label: SC-8
+            - 
+              sort-id: sc-08
           links: 
             - 
               href: #ref013
@@ -32491,7 +33340,7 @@ catalog:
               - 
                 id:          sc-8.1_prm_1
                 constraints: 
-                  STRVALUE: prevent unauthorized disclosure of information AND detect changes to information
+                  detail: prevent unauthorized disclosure of information AND detect changes to information
                 select: 
                   how-many:     one or more
                   alternatives: prevent unauthorized disclosure of information,detect changes to information
@@ -32499,9 +33348,12 @@ catalog:
                 id:          sc-8.1_prm_2
                 label:       organization-defined alternative physical safeguards
                 constraints: 
-                  STRVALUE: a hardened or alarmed carrier Protective Distribution System (PDS)
+                  detail: a hardened or alarmed carrier Protective Distribution System (PDS)
             properties: 
-              label: SC-8(1)
+              - 
+                label: SC-8(1)
+              - 
+                sort-id: sc-08.01
             parts: 
               - 
                 id:    sc-8.1_smt
@@ -32574,9 +33426,12 @@ catalog:
             id:          sc-10_prm_1
             label:       organization-defined time period
             constraints: 
-              STRVALUE: no longer than 30 minutes for RAS-based sessions or no longer than 60 minutes for non-interactive user sessions
+              detail: no longer than 30 minutes for RAS-based sessions or no longer than 60 minutes for non-interactive user sessions
           properties: 
-            label: SC-10
+            - 
+              label: SC-10
+            - 
+              sort-id: sc-10
           parts: 
             - 
               id:    sc-10_smt
@@ -32632,7 +33487,10 @@ catalog:
             id:    sc-12_prm_1
             label: organization-defined requirements for key generation, distribution, storage, access, and destruction
           properties: 
-            label: SC-12
+            - 
+              label: SC-12
+            - 
+              sort-id: sc-12
           links: 
             - 
               href: #ref082
@@ -32748,11 +33606,14 @@ catalog:
               parameters: 
                 id:          sc-12.2_prm_1
                 constraints: 
-                  STRVALUE: NIST FIPS-compliant
+                  detail: NIST FIPS-compliant
                 select: 
                   alternatives: NIST FIPS-compliant,NSA-approved
               properties: 
-                label: SC-12(2)
+                - 
+                  label: SC-12(2)
+                - 
+                  sort-id: sc-12.02
               parts: 
                 - 
                   id:    sc-12.2_smt
@@ -32805,7 +33666,10 @@ catalog:
                 select: 
                   alternatives: NSA-approved key management technology and processes,approved PKI Class 3 certificates or prepositioned keying material,approved PKI Class 3 or Class 4 certificates and hardware security tokens that protect the user’s private key
               properties: 
-                label: SC-12(3)
+                - 
+                  label: SC-12(3)
+                - 
+                  sort-id: sc-12.03
               parts: 
                 - 
                   id:    sc-12.3_smt
@@ -32863,9 +33727,12 @@ catalog:
             id:          sc-13_prm_1
             label:       organization-defined cryptographic uses and type of cryptography required for each use
             constraints: 
-              STRVALUE: FIPS-validated or NSA-approved cryptography
+              detail: FIPS-validated or NSA-approved cryptography
           properties: 
-            label: SC-13
+            - 
+              label: SC-13
+            - 
+              sort-id: sc-13
           links: 
             - 
               href: #ref012
@@ -33021,9 +33888,12 @@ catalog:
             id:          sc-15_prm_1
             label:       organization-defined exceptions where remote activation is to be allowed
             constraints: 
-              STRVALUE: no exceptions
+              detail: no exceptions
           properties: 
-            label: SC-15
+            - 
+              label: SC-15
+            - 
+              sort-id: sc-15
           parts: 
             - 
               id:    sc-15_smt
@@ -33119,7 +33989,10 @@ catalog:
             id:    sc-17_prm_1
             label: organization-defined certificate policy
           properties: 
-            label: SC-17
+            - 
+              label: SC-17
+            - 
+              sort-id: sc-17
           links: 
             - 
               href: #ref107
@@ -33202,7 +34075,10 @@ catalog:
           class:      SP800-53
           title:      Mobile Code
           properties: 
-            label: SC-18
+            - 
+              label: SC-18
+            - 
+              sort-id: sc-18
           links: 
             - 
               href: #ref063
@@ -33340,7 +34216,10 @@ catalog:
           class:      SP800-53
           title:      Voice Over Internet Protocol
           properties: 
-            label: SC-19
+            - 
+              label: SC-19
+            - 
+              sort-id: sc-19
           links: 
             href: #ref084
             rel:  reference
@@ -33452,7 +34331,10 @@ catalog:
           class:      SP800-53
           title:      Secure Name / Address Resolution Service (authoritative Source)
           properties: 
-            label: SC-20
+            - 
+              label: SC-20
+            - 
+              sort-id: sc-20
           links: 
             - 
               href: #ref112
@@ -33565,7 +34447,10 @@ catalog:
           class:      SP800-53
           title:      Secure Name / Address Resolution Service (recursive or Caching Resolver)
           properties: 
-            label: SC-21
+            - 
+              label: SC-21
+            - 
+              sort-id: sc-21
           links: 
             href: #ref095
             rel:  reference
@@ -33643,7 +34528,10 @@ catalog:
           class:      SP800-53
           title:      Architecture and Provisioning for Name / Address Resolution Service
           properties: 
-            label: SC-22
+            - 
+              label: SC-22
+            - 
+              sort-id: sc-22
           links: 
             href: #ref095
             rel:  reference
@@ -33717,7 +34605,10 @@ catalog:
           class:      SP800-53
           title:      Session Authenticity
           properties: 
-            label: SC-23
+            - 
+              label: SC-23
+            - 
+              sort-id: sc-23
           links: 
             - 
               href: #ref078
@@ -33786,7 +34677,7 @@ catalog:
             - 
               id:          sc-28_prm_1
               constraints: 
-                STRVALUE: confidentiality AND integrity
+                detail: confidentiality AND integrity
               select: 
                 how-many:     one or more
                 alternatives: confidentiality,integrity
@@ -33794,7 +34685,10 @@ catalog:
               id:    sc-28_prm_2
               label: organization-defined information at rest
           properties: 
-            label: SC-28
+            - 
+              label: SC-28
+            - 
+              sort-id: sc-28
           links: 
             - 
               href: #ref082
@@ -33949,7 +34843,10 @@ catalog:
                 id:    sc-28.1_prm_2
                 label: organization-defined information system components
             properties: 
-              label: SC-28(1)
+              - 
+                label: SC-28(1)
+              - 
+                sort-id: sc-28.01
             parts: 
               - 
                 id:    sc-28.1_smt
@@ -34017,7 +34914,10 @@ catalog:
           class:      SP800-53
           title:      Process Isolation
           properties: 
-            label: SC-39
+            - 
+              label: SC-39
+            - 
+              sort-id: sc-39
           parts: 
             - 
               id:    sc-39_smt
@@ -34102,14 +35002,17 @@ catalog:
               id:          si-1_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least every 3 years
+                detail: at least every 3 years
             - 
               id:          si-1_prm_3
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least annually
+                detail: at least annually
           properties: 
-            label: SI-1
+            - 
+              label: SI-1
+            - 
+              sort-id: si-01
           links: 
             - 
               href: #ref050
@@ -34337,9 +35240,12 @@ catalog:
             id:          si-2_prm_1
             label:       organization-defined time period
             constraints: 
-              STRVALUE: within 30 days of release of updates
+              detail: within 30 days of release of updates
           properties: 
-            label: SI-2
+            - 
+              label: SI-2
+            - 
+              sort-id: si-02
           links: 
             - 
               href: #ref071
@@ -34541,9 +35447,12 @@ catalog:
                 id:          si-2.2_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: at least monthly
+                  detail: at least monthly
               properties: 
-                label: SI-2(2)
+                - 
+                  label: SI-2(2)
+                - 
+                  sort-id: si-02.02
               parts: 
                 - 
                   id:    si-2.2_smt
@@ -34607,7 +35516,10 @@ catalog:
                 id:    si-2.3_prm_1
                 label: organization-defined benchmarks
               properties: 
-                label: SI-2(3)
+                - 
+                  label: SI-2(3)
+                - 
+                  sort-id: si-02.03
               parts: 
                 - 
                   id:    si-2.3_smt
@@ -34697,18 +35609,18 @@ catalog:
               id:          si-3_prm_1
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least weekly
+                detail: at least weekly
             - 
               id:          si-3_prm_2
               constraints: 
-                STRVALUE: to include endpoints
+                detail: to include endpoints
               select: 
                 how-many:     one or more
                 alternatives: endpoint,network entry/exit points
             - 
               id:          si-3_prm_3
               constraints: 
-                STRVALUE: to include alerting administrator or defined security personnel
+                detail: to include alerting administrator or defined security personnel
               select: 
                 how-many:     one or more
                 alternatives: block malicious code,quarantine malicious code,send alert to administrator,
@@ -34719,7 +35631,10 @@ catalog:
               depends-on: si-3_prm_3
               label:      organization-defined action
           properties: 
-            label: SI-3
+            - 
+              label: SI-3
+            - 
+              sort-id: si-03
           links: 
             href: #ref096
             rel:  reference
@@ -34969,7 +35884,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Central Management
               properties: 
-                label: SI-3(1)
+                - 
+                  label: SI-3(1)
+                - 
+                  sort-id: si-03.01
               parts: 
                 - 
                   id:    si-3.1_smt
@@ -35018,7 +35936,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automatic Updates
               properties: 
-                label: SI-3(2)
+                - 
+                  label: SI-3(2)
+                - 
+                  sort-id: si-03.02
               parts: 
                 - 
                   id:    si-3.2_smt
@@ -35062,7 +35983,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Nonsignature-based Detection
               properties: 
-                label: SI-3(7)
+                - 
+                  label: SI-3(7)
+                - 
+                  sort-id: si-03.07
               parts: 
                 - 
                   id:    si-3.7_smt
@@ -35126,7 +36050,10 @@ catalog:
               depends-on: si-4_prm_5
               label:      organization-defined frequency
           properties: 
-            label: SI-4
+            - 
+              label: SI-4
+            - 
+              sort-id: si-04
           links: 
             - 
               href: #ref086
@@ -35521,7 +36448,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      System-wide Intrusion Detection System
               properties: 
-                label: SI-4(1)
+                - 
+                  label: SI-4(1)
+                - 
+                  sort-id: si-04.01
               parts: 
                 - 
                   id:    si-4.1_smt
@@ -35570,7 +36500,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automated Tools for Real-time Analysis
               properties: 
-                label: SI-4(2)
+                - 
+                  label: SI-4(2)
+                - 
+                  sort-id: si-04.02
               parts: 
                 - 
                   id:    si-4.2_smt
@@ -35613,9 +36546,12 @@ catalog:
                 id:          si-4.4_prm_1
                 label:       organization-defined frequency
                 constraints: 
-                  STRVALUE: continuously
+                  detail: continuously
               properties: 
-                label: SI-4(4)
+                - 
+                  label: SI-4(4)
+                - 
+                  sort-id: si-04.04
               parts: 
                 - 
                   id:    si-4.4_smt
@@ -35701,7 +36637,10 @@ catalog:
                   id:    si-4.5_prm_2
                   label: organization-defined compromise indicators
               properties: 
-                label: SI-4(5)
+                - 
+                  label: SI-4(5)
+                - 
+                  sort-id: si-04.05
               parts: 
                 - 
                   id:    si-4.5_smt
@@ -35780,7 +36719,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Wireless Intrusion Detection
               properties: 
-                label: SI-4(14)
+                - 
+                  label: SI-4(14)
+                - 
+                  sort-id: si-04.14
               parts: 
                 - 
                   id:    si-4.14_smt
@@ -35848,7 +36790,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Correlate Monitoring Information
               properties: 
-                label: SI-4(16)
+                - 
+                  label: SI-4(16)
+                - 
+                  sort-id: si-04.16
               parts: 
                 - 
                   id:    si-4.16_smt
@@ -35899,7 +36844,10 @@ catalog:
                   id:    si-4.23_prm_2
                   label: organization-defined information system components
               properties: 
-                label: SI-4(23)
+                - 
+                  label: SI-4(23)
+                - 
+                  sort-id: si-04.23
               parts: 
                 - 
                   id:    si-4.23_smt
@@ -35962,11 +36910,11 @@ catalog:
               id:          si-5_prm_1
               label:       organization-defined external organizations
               constraints: 
-                STRVALUE: to include US-CERT
+                detail: to include US-CERT
             - 
               id:          si-5_prm_2
               constraints: 
-                STRVALUE: to include system security personnel and administrators with configuration/patch-management responsibilities
+                detail: to include system security personnel and administrators with configuration/patch-management responsibilities
               select: 
                 how-many:     one or more
                 alternatives: 
@@ -36001,7 +36949,10 @@ catalog:
               depends-on: si-5_prm_2
               label:      organization-defined external organizations
           properties: 
-            label: SI-5
+            - 
+              label: SI-5
+            - 
+              sort-id: si-05
           links: 
             href: #ref071
             rel:  reference
@@ -36192,18 +37143,18 @@ catalog:
               depends-on:  si-6_prm_2
               label:       organization-defined system transitional states
               constraints: 
-                STRVALUE: to include upon system startup and/or restart
+                detail: to include upon system startup and/or restart
             - 
               id:          si-6_prm_4
               depends-on:  si-6_prm_2
               label:       organization-defined frequency
               constraints: 
-                STRVALUE: at least monthly
+                detail: at least monthly
             - 
               id:          si-6_prm_5
               label:       organization-defined personnel or roles
               constraints: 
-                STRVALUE: to include system administrators and security personnel
+                detail: to include system administrators and security personnel
             - 
               id:     si-6_prm_6
               select: 
@@ -36216,9 +37167,12 @@ catalog:
               depends-on:  si-6_prm_6
               label:       organization-defined alternative action(s)
               constraints: 
-                STRVALUE: to include notification of system administrators and security personnel
+                detail: to include notification of system administrators and security personnel
           properties: 
-            label: SI-6
+            - 
+              label: SI-6
+            - 
+              sort-id: si-06
           parts: 
             - 
               id:    si-6_smt
@@ -36412,7 +37366,10 @@ catalog:
             id:    si-7_prm_1
             label: organization-defined software, firmware, and information
           properties: 
-            label: SI-7
+            - 
+              label: SI-7
+            - 
+              sort-id: si-07
           links: 
             - 
               href: #ref055
@@ -36544,15 +37501,18 @@ catalog:
                   depends-on:  si-7.1_prm_2
                   label:       organization-defined transitional states or security-relevant events
                   constraints: 
-                    STRVALUE: Selection to include security relevant events
+                    detail: Selection to include security relevant events
                 - 
                   id:          si-7.1_prm_4
                   depends-on:  si-7.1_prm_2
                   label:       organization-defined frequency
                   constraints: 
-                    STRVALUE: at least monthly
+                    detail: at least monthly
               properties: 
-                label: SI-7(1)
+                - 
+                  label: SI-7(1)
+                - 
+                  sort-id: si-07.01
               parts: 
                 - 
                   id:    si-7.1_smt
@@ -36696,7 +37656,10 @@ catalog:
                 id:    si-7.7_prm_1
                 label: organization-defined security-relevant changes to the information system
               properties: 
-                label: SI-7(7)
+                - 
+                  label: SI-7(7)
+                - 
+                  sort-id: si-07.07
               parts: 
                 - 
                   id:    si-7.7_smt
@@ -36762,7 +37725,10 @@ catalog:
           class:      SP800-53
           title:      Spam Protection
           properties: 
-            label: SI-8
+            - 
+              label: SI-8
+            - 
+              sort-id: si-08
           links: 
             href: #ref073
             rel:  reference
@@ -36879,7 +37845,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Central Management
               properties: 
-                label: SI-8(1)
+                - 
+                  label: SI-8(1)
+                - 
+                  sort-id: si-08.01
               parts: 
                 - 
                   id:    si-8.1_smt
@@ -36932,7 +37901,10 @@ catalog:
               class:      SP800-53-enhancement
               title:      Automatic Updates
               properties: 
-                label: SI-8(2)
+                - 
+                  label: SI-8(2)
+                - 
+                  sort-id: si-08.02
               parts: 
                 - 
                   id:    si-8.2_smt
@@ -36971,7 +37943,10 @@ catalog:
             id:    si-10_prm_1
             label: organization-defined information inputs
           properties: 
-            label: SI-10
+            - 
+              label: SI-10
+            - 
+              sort-id: si-10
           parts: 
             - 
               id:    si-10_smt
@@ -37027,7 +38002,10 @@ catalog:
             id:    si-11_prm_1
             label: organization-defined personnel or roles
           properties: 
-            label: SI-11
+            - 
+              label: SI-11
+            - 
+              sort-id: si-11
           parts: 
             - 
               id:    si-11_smt
@@ -37118,7 +38096,10 @@ catalog:
           class:      SP800-53
           title:      Information Handling and Retention
           properties: 
-            label: SI-12
+            - 
+              label: SI-12
+            - 
+              sort-id: si-12
           parts: 
             - 
               id:    si-12_smt
@@ -37207,7 +38188,10 @@ catalog:
             id:    si-16_prm_1
             label: organization-defined security safeguards
           properties: 
-            label: SI-16
+            - 
+              label: SI-16
+            - 
+              sort-id: si-16
           parts: 
             - 
               id:    si-16_smt

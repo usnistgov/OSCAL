@@ -1,9 +1,9 @@
 {
   "profile": {
-    "id": "uuid-cc326dab-8a99-424a-b721-6cd9ad5a89df",
+    "id": "uuid-9d0593f5-c6ed-44b8-9127-ad5c310f8e34",
     "metadata": {
       "title": "NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE",
-      "last-modified-date": "2019-06-05T17:42:25.71-04:00",
+      "last-modified": "2019-09-23T14:22:55.113-04:00",
       "version": "2015-01-22",
       "oscal-version": "1.0.0-milestone1",
       "roles": [
@@ -18,7 +18,6 @@
       ],
       "parties": {
         "id": "IT-JTF",
-        "role-id": "creator contact",
         "org": {
           "org-name": "Joint Task Force, Transformation Initiative",
           "addresses": {
@@ -33,6 +32,14 @@
             "postal-code": "20899-8930"
           },
           "email-addresses": "sec-cert@nist.gov"
+        }
+      },
+      "responsible-parties": {
+        "creator": {
+          "party-ids": "IT-JTF"
+        },
+        "contact": {
+          "party-ids": "IT-JTF"
         }
       }
     },
@@ -2615,7 +2622,7 @@
         "desc": "NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal\n            Information Systems and Organizations",
         "rlinks": {
           "href": "NIST_SP-800-53_rev4_catalog.json",
-          "media-type": "application/oscal.catalog+json"
+          "media-type": "application/oscal.catalog+xml"
         }
       }
     }

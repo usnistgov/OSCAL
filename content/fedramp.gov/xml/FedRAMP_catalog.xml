@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-20190723-133200-001">
+   id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46e2">
    <metadata>
       <title>FedRAMP Additional Controls</title>
-      <last-modified-date>2019-07-23T13:20:00.000-04:00</last-modified-date>
+      <last-modified>2019-10-01T11:01:04.736-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
       <prop name="keywords">FedRAMP, Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
@@ -13,16 +13,19 @@
       <role id="contact">
          <title>Contact</title>
       </role>
-      <party id="fedramp" role-id="creator contact">
+      <party id="fedramp">
          <org>
             <org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
             <email>info@fedramp.gov</email>
             <url>https://fedramp.gov</url>
          </org>
       </party>
-      <notes>
-         <p>No notes.</p>
-      </notes>
+      <responsible-party role-id="creator">
+         <party-id>fedramp</party-id>
+      </responsible-party>
+      <responsible-party role-id="contact">
+         <party-id>fedramp</party-id>
+      </responsible-party>
    </metadata>
    <group class="family" id="ac">
       <title>Access Control</title>

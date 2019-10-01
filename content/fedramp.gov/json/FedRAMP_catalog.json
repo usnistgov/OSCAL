@@ -1,9 +1,9 @@
 {
   "catalog": {
-    "id": "uuid-20190723-133200-001",
+    "id": "uuid-ed364452-47f8-4e70-b3a4-ef54de5f46e2",
     "metadata": {
       "title": "FedRAMP Additional Controls",
-      "last-modified-date": "2019-07-23T13:20:00.000-04:00",
+      "last-modified": "2019-10-01T11:01:04.736-04:00",
       "version": "1.0",
       "oscal-version": "1.0.0",
       "properties": {
@@ -21,15 +21,19 @@
       ],
       "parties": {
         "id": "fedramp",
-        "role-id": "creator contact",
         "org": {
           "org-name": "Federal Risk and Authorization Management Program (FedRAMP)",
           "email-addresses": "info@fedramp.gov",
           "URLs": "https://fedramp.gov"
         }
       },
-      "notes": {
-        "note": "No notes."
+      "responsible-parties": {
+        "creator": {
+          "party-ids": "fedramp"
+        },
+        "contact": {
+          "party-ids": "fedramp"
+        }
       }
     },
     "groups": [
@@ -120,7 +124,7 @@
               {
                 "id": "ca-7.fr_gdn.1",
                 "name": "guidance",
-                "prose": "CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates."
+                "prose": "CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&M updates."
               },
               {
                 "id": "ca-7.fr_gdn.2",

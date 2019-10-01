@@ -1,22 +1,31 @@
 profile: 
-  id:       uuid-fedramp-low-20190605-163838
+  id:       uuid-eda582b6-d61f-42a4-8165-9637ea1e8a32
   metadata: 
-    title:              FedRAMP Low Baseline
-    last-modified-date: 2019-06-03T11:41:23.26-04:00
-    version:            1.1
-    oscal-version:      1.0.0-milestone1
+    title:               FedRAMP Low Baseline
+    last-modified:       2019-10-01T11:03:27.392-04:00
+    version:             1.1
+    oscal-version:       1.0.0-milestone1
     roles: 
-      id:    author
-      title: Author
+      - 
+        id:    creator
+        title: Document creator
+      - 
+        id:    contact
+        title: Contact
     parties: 
-      role-id: author
+      id:  fedramp
       org: 
         org-name:        Federal Risk and Authorization Management Program (FedRAMP)
         email-addresses: info@fedramp.gov
         URLs:            https://fedramp.gov
+    responsible-parties: 
+      creator: 
+        party-ids: fedramp
+      contact: 
+        party-ids: fedramp
   imports: 
     - 
-      href:    ../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json
+      href:    ../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml
       include: 
         id-selectors: 
           - 
@@ -287,346 +296,346 @@ profile:
     settings: 
       ac-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ac-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ac-2_prm_4: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ac-7_prm_1: 
         constraints: 
-          STRVALUE: not more than three (3)
+          detail: not more than three (3)
       ac-7_prm_2: 
         constraints: 
-          STRVALUE: fifteen (15) minutes
+          detail: fifteen (15) minutes
       ac-7_prm_4: 
         constraints: 
-          STRVALUE: thirty (30) minutes
+          detail: thirty (30) minutes
       ac-8_prm_1: 
         constraints: 
-          STRVALUE: see additional Requirements and Guidance
+          detail: see additional Requirements and Guidance
       ac-8_prm_2: 
         constraints: 
-          STRVALUE: see additional Requirements and Guidance
+          detail: see additional Requirements and Guidance
       ac-22_prm_1: 
         constraints: 
-          STRVALUE: at least quarterly
+          detail: at least quarterly
       at-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       at-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       at-2_prm_1: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       at-3_prm_1: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       at-4_prm_1: 
         constraints: 
-          STRVALUE: At least one year
+          detail: At least one year
       au-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       au-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       au-2_prm_1: 
         constraints: 
-          STRVALUE: Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes
+          detail: Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes
       au-2_prm_2: 
         constraints: 
-          STRVALUE: organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event
+          detail: organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event
       au-5_prm_2: 
         constraints: 
-          STRVALUE: organization-defined actions to be taken (overwrite oldest record)
+          detail: organization-defined actions to be taken (overwrite oldest record)
       au-6_prm_1: 
         constraints: 
-          STRVALUE: at least weekly
+          detail: at least weekly
       au-11_prm_1: 
         constraints: 
-          STRVALUE: at least ninety days
+          detail: at least ninety days
       au-12_prm_1: 
         constraints: 
-          STRVALUE: all information system and network components where audit capability is deployed/available
+          detail: all information system and network components where audit capability is deployed/available
       ca-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ca-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ca-2_prm_1: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ca-2_prm_2: 
         constraints: 
-          STRVALUE: individuals or roles to include FedRAMP PMO
+          detail: individuals or roles to include FedRAMP PMO
       ca-3_prm_1: 
         constraints: 
-          STRVALUE: at least annually and on input from FedRAMP
+          detail: at least annually and on input from FedRAMP
       ca-5_prm_1: 
         constraints: 
-          STRVALUE: at least monthly
+          detail: at least monthly
       ca-6_prm_1: 
         constraints: 
-          STRVALUE: at least every three years or when a significant change occurs
+          detail: at least every three years or when a significant change occurs
       ca-7_prm_4: 
         constraints: 
-          STRVALUE: to meet Federal and FedRAMP requirements (See additional guidance)
+          detail: to meet Federal and FedRAMP requirements (See additional guidance)
       ca-7_prm_5: 
         constraints: 
-          STRVALUE: to meet Federal and FedRAMP requirements (See additional guidance)
+          detail: to meet Federal and FedRAMP requirements (See additional guidance)
       cm-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       cm-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       cm-6_prm_1: 
         constraints: 
-          STRVALUE: United States Government Configuration Baseline (USGCB)
+          detail: United States Government Configuration Baseline (USGCB)
       cm-7_prm_1: 
         constraints: 
-          STRVALUE: United States Government Configuration Baseline (USGCB)
+          detail: United States Government Configuration Baseline (USGCB)
       cm-8_prm_2: 
         constraints: 
-          STRVALUE: at least monthly
+          detail: at least monthly
       cm-11_prm_3: 
         constraints: 
-          STRVALUE: Continuously (via CM-7 (5))
+          detail: Continuously (via CM-7 (5))
       cp-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       cp-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       cp-2_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       cp-3_prm_1: 
         constraints: 
-          STRVALUE: ten (10) days
+          detail: ten (10) days
       cp-3_prm_2: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       cp-4_prm_1: 
         constraints: 
-          STRVALUE: at least every three years
+          detail: at least every three years
       cp-4_prm_2: 
         constraints: 
-          STRVALUE: classroom exercises/table top written tests
+          detail: classroom exercises/table top written tests
       cp-9_prm_1: 
         constraints: 
-          STRVALUE: daily incremental; weekly full
+          detail: daily incremental; weekly full
       cp-9_prm_2: 
         constraints: 
-          STRVALUE: daily incremental; weekly full
+          detail: daily incremental; weekly full
       cp-9_prm_3: 
         constraints: 
-          STRVALUE: daily incremental; weekly full
+          detail: daily incremental; weekly full
       ia-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ia-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ia-4_prm_2: 
         constraints: 
-          STRVALUE: IA-4 (d) [at least two years]
+          detail: IA-4 (d) [at least two years]
       ia-4_prm_3: 
         constraints: 
-          STRVALUE: ninety days for user identifiers (See additional requirements and guidance)
+          detail: ninety days for user identifiers (See additional requirements and guidance)
       ia-5.1_prm_2: 
         constraints: 
-          STRVALUE: at least one
+          detail: at least one
       ia-5.1_prm_4: 
         constraints: 
-          STRVALUE: twenty four
+          detail: twenty four
       ir-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ir-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ir-2_prm_2: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ir-6_prm_1: 
         constraints: 
-          STRVALUE: US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)
+          detail: US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)
       ir-8_prm_2: 
         constraints: 
-          STRVALUE: see additional FedRAMP Requirements and Guidance
+          detail: see additional FedRAMP Requirements and Guidance
       ir-8_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ir-8_prm_4: 
         constraints: 
-          STRVALUE: see additional FedRAMP Requirements and Guidance
+          detail: see additional FedRAMP Requirements and Guidance
       ma-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ma-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       mp-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       mp-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pe-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       pe-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pe-2_prm_1: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pe-3_prm_2: 
         constraints: 
-          STRVALUE: CSP defined physical access control systems/devices AND guards
+          detail: CSP defined physical access control systems/devices AND guards
       pe-3_prm_3: 
         constraints: 
-          STRVALUE: CSP defined physical access control systems/devices
+          detail: CSP defined physical access control systems/devices
       pe-3_prm_6: 
         constraints: 
-          STRVALUE: in all circumstances within restricted access area where the information system resides
+          detail: in all circumstances within restricted access area where the information system resides
       pe-3_prm_8: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pe-3_prm_9: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pe-6_prm_1: 
         constraints: 
-          STRVALUE: at least monthly
+          detail: at least monthly
       pe-8_prm_1: 
         constraints: 
-          STRVALUE: for a minimum of one (1) year
+          detail: for a minimum of one (1) year
       pe-8_prm_2: 
         constraints: 
-          STRVALUE: at least monthly
+          detail: at least monthly
       pe-14_prm_1: 
         constraints: 
-          STRVALUE: consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments
+          detail: consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments
       pe-14_prm_2: 
         constraints: 
-          STRVALUE: continuously
+          detail: continuously
       pe-16_prm_1: 
         constraints: 
-          STRVALUE: all information system components
+          detail: all information system components
       pl-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       pl-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pl-2_prm_2: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       pl-4_prm_1: 
         constraints: 
-          STRVALUE: At least every 3 years
+          detail: At least every 3 years
       ps-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ps-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ps-2_prm_1: 
         constraints: 
-          STRVALUE: at least every three years
+          detail: at least every three years
       ps-3_prm_1: 
         constraints: 
-          STRVALUE: For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions.
+          detail: For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions.
       ps-4_prm_1: 
         constraints: 
-          STRVALUE: same day
+          detail: same day
       ps-5_prm_4: 
         constraints: 
-          STRVALUE: five days of the time period following the formal transfer action (DoD 24 hours)
+          detail: five days of the time period following the formal transfer action (DoD 24 hours)
       ps-6_prm_1: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ps-6_prm_2: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ps-7_prm_2: 
         constraints: 
-          STRVALUE: organization-defined time period - same day
+          detail: organization-defined time period - same day
       ra-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       ra-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       ra-3_prm_2: 
         constraints: 
-          STRVALUE: security assessment report
+          detail: security assessment report
       ra-3_prm_3: 
         constraints: 
-          STRVALUE: at least every three (3) years or when a significant change occurs
+          detail: at least every three (3) years or when a significant change occurs
       ra-3_prm_5: 
         constraints: 
-          STRVALUE: at least every three (3) years or when a significant change occurs
+          detail: at least every three (3) years or when a significant change occurs
       ra-5_prm_1: 
         constraints: 
-          STRVALUE: monthly operating system/infrastructure; monthly web applications and databases
+          detail: monthly operating system/infrastructure; monthly web applications and databases
       ra-5_prm_2: 
         constraints: 
-          STRVALUE: [high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.
+          detail: [high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.
       sa-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       sa-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       sa-9_prm_1: 
         constraints: 
-          STRVALUE: FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system
+          detail: FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system
       sa-9_prm_2: 
         constraints: 
-          STRVALUE: Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored
+          detail: Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored
       sc-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       sc-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       sc-13_prm_1: 
         constraints: 
-          STRVALUE: FIPS-validated or NSA-approved cryptography
+          detail: FIPS-validated or NSA-approved cryptography
       sc-15_prm_1: 
         constraints: 
-          STRVALUE: no exceptions
+          detail: no exceptions
       si-1_prm_2: 
         constraints: 
-          STRVALUE: at least every 3 years
+          detail: at least every 3 years
       si-1_prm_3: 
         constraints: 
-          STRVALUE: at least annually
+          detail: at least annually
       si-2_prm_1: 
         constraints: 
-          STRVALUE: within 30 days of release of updates
+          detail: within 30 days of release of updates
       si-3_prm_1: 
         constraints: 
-          STRVALUE: at least weekly
+          detail: at least weekly
       si-3_prm_2: 
         constraints: 
-          STRVALUE: to include endpoints
+          detail: to include endpoints
       si-3_prm_3: 
         constraints: 
-          STRVALUE: to include alerting administrator or defined security personnel
+          detail: to include alerting administrator or defined security personnel
       si-5_prm_1: 
         constraints: 
-          STRVALUE: to include US-CERT
+          detail: to include US-CERT
       si-5_prm_2: 
         constraints: 
-          STRVALUE: to include system security personnel and administrators with configuration/patch-management responsibilities
+          detail: to include system security personnel and administrators with configuration/patch-management responsibilities
     alterations: 
       - 
         control-id: ac-8
@@ -746,13 +755,13 @@ profile:
                 name:       item
                 properties: 
                   label: Requirement:
-                prose:      Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.
+                prose:      Plan of Action & Milestones (POA&M) must be provided at least monthly.
               - 
                 id:         ca-5_fr_gdn.1
                 name:       guidance
                 properties: 
                   label: Guidance:
-                prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
+                prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
       - 
         control-id: ca-6
         additions: 
@@ -789,7 +798,7 @@ profile:
                 name:       guidance
                 properties: 
                   label: Guidance:
-                prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.
+                prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.
               - 
                 id:         ca-7_fr_gdn.2
                 name:       guidance

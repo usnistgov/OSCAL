@@ -12,8 +12,10 @@
         "properties" : 
         { "title" : 
           { "$ref" : "#/definitions/title" },
-          "last-modified-date" : 
-          { "$ref" : "#/definitions/last-modified-date" },
+          "published" : 
+          { "$ref" : "#/definitions/published" },
+          "last-modified" : 
+          { "$ref" : "#/definitions/last-modified" },
           "version" : 
           { "$ref" : "#/definitions/version" },
           "oscal-version" : 
@@ -63,10 +65,23 @@
                 "items" : 
                 { "$ref" : "#/definitions/party" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "title",
+          "last-modified",
+          "version",
           "oscal-version" ],
         "additionalProperties" : false },
       "back-matter" : 
@@ -101,31 +116,38 @@
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
+            "type" : "string",
+            "format" : "uri-reference" },
           "rel" : 
-          { "type" : "string",
-            "title" : "Relation",
-            "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose." },
+          { "title" : "Relation",
+            "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.",
+            "type" : "string" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
           "text" : 
           { "type" : "string" } },
         "required" : 
         [ "text",
           "href" ],
         "additionalProperties" : false },
-      "last-modified-date" : 
-      { "title" : "Last modified date",
-        "description" : "Date of last modification.",
-        "$id" : "#/definitions/last-modified-date",
+      "published" : 
+      { "title" : "Publication Timestamp",
+        "description" : "The date and time this document was published.",
+        "$id" : "#/definitions/published",
         "type" : "string",
         "format" : "date-time",
-        "pattern" : "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})" },
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "last-modified" : 
+      { "title" : "Last modified timestamp",
+        "description" : "Date and time of last modification.",
+        "$id" : "#/definitions/last-modified",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
       "version" : 
       { "title" : "Document version",
         "description" : "The version of the document content.",
@@ -143,34 +165,61 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Qualifies the kind of document identifier." },
-          "STRVALUE" : 
+          { "description" : "Qualifies the kind of document identifier.",
+            "type" : "string" },
+          "identifier" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE",
+        [ "identifier",
           "type" ],
         "additionalProperties" : false },
       "prop" : 
       { "title" : "Property",
-        "description" : "A value with a name, attributed to the containing control, subcontrol, part, or group.",
+        "description" : "A value with a name, attributed to the containing control, part, or group.",
         "$id" : "#/definitions/prop",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "ns" : 
-          { "type" : "string",
-            "title" : "Namespace",
-            "description" : "A namespace qualifying the name." },
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" } },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" } },
         "minProperties" : 1,
         "maxProperties" : 4 },
+      "annotation" : 
+      { "title" : "Annotation",
+        "description" : "A name/value pair with optional explanitory remarks.",
+        "$id" : "#/definitions/annotation",
+        "type" : "object",
+        "properties" : 
+        { "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "ns" : 
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
+          "value" : 
+          { "title" : "Value",
+            "description" : "Indicates the value of the characteristic.",
+            "type" : "string" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "name" ],
+        "additionalProperties" : false },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -178,13 +227,9 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "role-id" : 
-          { "type" : "string",
-            "title" : "Role identifier",
-            "description" : "References a role element defined in metadata." },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "persons" : 
           { "anyOf" : 
             [ 
@@ -196,9 +241,41 @@
                 "minItems" : 2 } ] },
           "org" : 
           { "$ref" : "#/definitions/org" },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
+      "party-id" : 
+      { "title" : "Party Reference",
+        "description" : "References a party defined in metadata.",
+        "$id" : "#/definitions/party-id",
+        "type" : "string" },
       "person" : 
       { "title" : "Person",
         "description" : "A person, with contact information",
@@ -265,8 +342,35 @@
                 "items" : 
                 { "$ref" : "#/definitions/url" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "org" : 
       { "title" : "Organization",
@@ -323,8 +427,35 @@
                 "items" : 
                 { "$ref" : "#/definitions/url" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "org-name" ],
         "additionalProperties" : false },
@@ -335,13 +466,13 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
+          { "title" : "Type",
+            "description" : "Indicating the type of identifier, address, email or other data item.",
+            "type" : "string" },
+          "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "id" ],
         "additionalProperties" : false },
       "org-id" : 
       { "title" : "Organization Identifier",
@@ -350,31 +481,38 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
+          { "title" : "Type",
+            "description" : "Indicating the type of identifier, address, email or other data item.",
+            "type" : "string" },
+          "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "id" ],
         "additionalProperties" : false },
       "rlink" : 
-      { "title" : "Related link",
+      { "title" : "Resource link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
         "$id" : "#/definitions/rlink",
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
+            "type" : "string",
+            "format" : "uri-reference" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
-          "hash" : 
-          { "$ref" : "#/definitions/hash" } },
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
+          "hashes" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/hash" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/hash" },
+                "minItems" : 2 } ] } },
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
@@ -400,8 +538,8 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of address." },
+          { "description" : "Indicates the type of address.",
+            "type" : "string" },
           "postal-address" : 
           { "anyOf" : 
             [ 
@@ -451,7 +589,7 @@
         "$id" : "#/definitions/email",
         "type" : "string",
         "format" : "email",
-        "pattern" : ".+@.+" },
+        "pattern" : "^.+@.+" },
       "phone" : 
       { "title" : "Telephone",
         "description" : "Contact number by telephone",
@@ -459,12 +597,12 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of phone number." },
-          "STRVALUE" : 
+          { "description" : "Indicates the type of phone number.",
+            "type" : "string" },
+          "number" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "number" ],
         "additionalProperties" : false },
       "url" : 
       { "title" : "URL",
@@ -472,18 +610,6 @@
         "$id" : "#/definitions/url",
         "type" : "string",
         "format" : "uri" },
-      "notes" : 
-      { "title" : "Notes",
-        "description" : "Any notes with further information",
-        "$id" : "#/definitions/notes",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of note." },
-          "note" : 
-          { "$ref" : "#/definitions/note" } },
-        "additionalProperties" : false },
       "desc" : 
       { "title" : "Description",
         "description" : "A short textual description",
@@ -496,11 +622,20 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "desc" : 
           { "$ref" : "#/definitions/desc" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
           "rlinks" : 
           { "anyOf" : 
             [ 
@@ -512,8 +647,8 @@
                 "minItems" : 2 } ] },
           "base64" : 
           { "$ref" : "#/definitions/base64" },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
@@ -524,9 +659,9 @@
         "type" : "object",
         "properties" : 
         { "algorithm" : 
-          { "type" : "string",
-            "title" : "Hash algorithm",
-            "description" : "Method by which a hash is derived" },
+          { "title" : "Hash algorithm",
+            "description" : "Method by which a hash is derived",
+            "type" : "string" },
           "value" : 
           { "type" : "string" } },
         "required" : 
@@ -535,22 +670,99 @@
         "additionalProperties" : false },
       "role" : 
       { "title" : "Role",
-        "description" : "Defining a role to be assigned to a party or agent",
+        "description" : "Defining a role to be assigned to a party",
         "$id" : "#/definitions/role",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "short-name" : 
           { "$ref" : "#/definitions/short-name" },
           "desc" : 
-          { "$ref" : "#/definitions/desc" } },
+          { "$ref" : "#/definitions/desc" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "id" ],
+        [ "id",
+          "title" ],
+        "additionalProperties" : false },
+      "responsible-party" : 
+      { "title" : "Responsible Party",
+        "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
+        "$id" : "#/definitions/responsible-party",
+        "type" : "object",
+        "properties" : 
+        { "party-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/party-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/party-id" },
+                "minItems" : 2 } ] },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "party-ids" ],
         "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
@@ -564,18 +776,18 @@
         "type" : "object",
         "properties" : 
         { "filename" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "File Name",
-            "description" : "Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded." },
+          { "title" : "File Name",
+            "description" : "Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.",
+            "type" : "string",
+            "format" : "uri-reference" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
-          "STRVALUE" : 
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
+          "value" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "value" ],
         "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
@@ -584,9 +796,9 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "targets" : 
           { "anyOf" : 
             [ 
@@ -608,6 +820,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/doc-id" },
+                "minItems" : 2 } ] },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] } },
         "required" : 
         [ "id" ],
@@ -617,474 +838,26 @@
         "description" : "An address for retrieval of a citation",
         "$id" : "#/definitions/target",
         "type" : "string" },
-      "note" : 
-      { "title" : "Note",
-        "description" : "Permits multiple paragraphs, lists, tables etc.",
-        "$id" : "#/definitions/note",
-        "type" : "string" },
       "description" : 
       { "title" : "Description",
-        "description" : "TBD",
+        "description" : "A description supporting the parent item.",
         "$id" : "#/definitions/description",
         "type" : "string" },
       "remarks" : 
       { "title" : "Remarks",
-        "description" : "TBD",
+        "description" : "Additional commentary on the parent item.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "supplier" : 
-      { "title" : "Supplier",
-        "description" : "TBD",
-        "$id" : "#/definitions/supplier",
-        "type" : "object",
-        "properties" : 
-        { "party-id" : 
-          { "type" : "string",
-            "title" : "Party Reference",
-            "description" : "References a party defined in metadata." },
-          "role-id" : 
-          { "type" : "string",
-            "title" : "Role identifier",
-            "description" : "References a role element defined in metadata." },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "party-id",
-          "role-id" ],
-        "additionalProperties" : false },
-      "implemented-requirement" : 
-      { "title" : "Control-based Requirement",
-        "description" : "TBD",
-        "$id" : "#/definitions/implemented-requirement",
-        "type" : "object",
-        "properties" : 
-        { "requirement-id" : 
-          { "type" : "string",
-            "title" : "Requirement Identifier Reference",
-            "description" : "A reference to a requirement defined on another requirement set that should be included here." },
-          "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "control-id" : 
-          { "type" : "string",
-            "title" : "Control Identifier Reference",
-            "description" : "A reference to a control identifier." },
-          "subcontrol-id" : 
-          { "type" : "string",
-            "title" : "Subcontrol Identifier Reference",
-            "description" : "A reference to a subcontrol identifier." },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "using" : 
-          { "$ref" : "#/definitions/using" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "using" : 
-      { "title" : "Using",
-        "description" : "The set of implementations needed to support the control requirements.",
-        "$id" : "#/definitions/using",
-        "type" : "object",
-        "properties" : 
-        { "implementations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/implementation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/implementation" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "implementations" ],
-        "additionalProperties" : false },
-      "implementation" : 
-      { "title" : "Implementation",
-        "description" : "An implementation needed to support the control requirements.",
-        "$id" : "#/definitions/implementation",
-        "type" : "object",
-        "properties" : 
-        { "configuration-id" : 
-          { "type" : "string",
-            "title" : "Configuration Identifier Reference",
-            "description" : "A reference to a configuration defined on the component." },
-          "artifact-id" : 
-          { "type" : "string",
-            "title" : "Artifact Identifier Reference",
-            "description" : "A reference to an artifact defined on the component." },
-          "statement-id" : 
-          { "type" : "string",
-            "title" : "Statement Identifier",
-            "description" : "Pointer to a speific requirement statement within a control or subcontrol." },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "with-arguments" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/with-argument" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "with-argument" : 
-      { "title" : "With Argument",
-        "description" : "An argument to pass to the referenced configuration.",
-        "$id" : "#/definitions/with-argument",
-        "type" : "object",
-        "properties" : 
-        { "use-param" : 
-          { "$ref" : "#/definitions/use-param" } },
-        "additionalProperties" : false },
-      "use-param" : 
-      { "title" : "Using Parameter",
-        "description" : "An identified parameter from the catalog or profile who's value is assigned to the argument.",
-        "$id" : "#/definitions/use-param",
-        "type" : "string" },
-      "configuration" : 
-      { "title" : "Configuration",
-        "description" : "Information on how to configure the component (for technical types of components).",
-        "$id" : "#/definitions/configuration",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "arguments" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/argument" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "mechanisms" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/mechanism" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/mechanism" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
-      "mechanism" : 
-      { "title" : "mechanism",
-        "description" : "Information on a mechanism used to configure the component.",
-        "$id" : "#/definitions/mechanism",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Mechanism Identifier",
-            "description" : "A unique identifier for the configuration mechanism." },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "configuration-method" : 
-          { "$ref" : "#/definitions/configuration-method" },
-          "verification-method" : 
-          { "$ref" : "#/definitions/verification-method" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "configuration-method",
-          "verification-method" ],
-        "additionalProperties" : false },
-      "configuration-method" : 
-      { "title" : "Configuration Method",
-        "description" : "A mechanism used to deploy the configuration.",
-        "$id" : "#/definitions/configuration-method",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" },
-          "script" : 
-          { "$ref" : "#/definitions/script" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "script" ],
-        "additionalProperties" : false },
-      "verification-method" : 
-      { "title" : "Verification Method",
-        "description" : "A mechanism used to verify a previously deployed configuration.",
-        "$id" : "#/definitions/verification-method",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" },
-          "script" : 
-          { "$ref" : "#/definitions/script" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "script" ],
-        "additionalProperties" : false },
-      "script" : 
-      { "title" : "Script",
-        "description" : "An executable script.",
-        "$id" : "#/definitions/script",
-        "type" : "object",
-        "properties" : 
-        { "system" : 
-          { "type" : "string",
-            "format" : "uri",
-            "title" : "system",
-            "description" : "A configure or verify system type described by a well-known URI" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE",
-          "system" ],
-        "additionalProperties" : false },
-      "argument" : 
-      { "title" : "argument",
-        "description" : "TBD",
-        "$id" : "#/definitions/argument",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "title" : "Argument Data Type",
-            "description" : "The data type of the argument.",
-            "enum" : 
-            [ "duration-seconds",
-              "duration-minutes",
-              "duration-hours",
-              "duration-days",
-              "integer",
-              "decimal",
-              "string" ] },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "type" ],
-        "additionalProperties" : false },
-      "artifact" : 
-      { "title" : "Configuration",
-        "description" : "Information on how to use the component (for documentary types of components).",
-        "$id" : "#/definitions/artifact",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "implementation-source" : 
-          { "$ref" : "#/definitions/implementation-source" },
-          "verification-process" : 
-          { "$ref" : "#/definitions/verification-process" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "description",
-          "implementation-source",
-          "verification-process" ],
-        "additionalProperties" : false },
-      "implementation-source" : 
-      { "title" : "Artifact Implementation Source",
-        "description" : "TBD",
-        "$id" : "#/definitions/implementation-source",
-        "type" : "object",
-        "properties" : 
-        { "href" : 
-          { "type" : "string",
-            "format" : "uri",
-            "title" : "Source Resource Reference",
-            "description" : "Where to get the artifact" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "href",
-          "description" ],
-        "additionalProperties" : false },
-      "verification-process" : 
-      { "title" : "Artifact Verification Process",
-        "description" : "TBD",
-        "$id" : "#/definitions/verification-process",
-        "type" : "object",
-        "properties" : 
-        { "href" : 
-          { "type" : "string",
-            "format" : "uri",
-            "title" : "Verification Process Resource Reference",
-            "description" : "Where to get the process to verify the artifact is implemented." },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
-          "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "href",
-          "description" ],
-        "additionalProperties" : false },
-      "incorporates-component" : 
-      { "title" : "Incorporates Component",
-        "description" : "TBD",
-        "$id" : "#/definitions/incorporates-component",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
-      "incorporates-capability" : 
-      { "title" : "Incorporates Capability",
-        "description" : "TBD",
-        "$id" : "#/definitions/incorporates-capability",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
       "system-security-plan" : 
       { "title" : "System Security Plan (SSP)",
-        "description" : "TBD",
+        "description" : "A system security plan, such as those described in NIST SP 800-18",
         "$id" : "#/definitions/system-security-plan",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "metadata" : 
           { "$ref" : "#/definitions/metadata" },
           "import-profile" : 
@@ -1099,19 +872,20 @@
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "id",
-          "import-profile" ],
+          "import-profile",
+          "system-characteristics" ],
         "additionalProperties" : false },
       "import-profile" : 
-      { "title" : "Import profile",
+      { "title" : "Import Profile",
         "description" : "Used to import the OSCAL profile representing the system's control baseline.",
         "$id" : "#/definitions/import-profile",
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
+            "type" : "string",
+            "format" : "uri-reference" },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1123,35 +897,58 @@
         "$id" : "#/definitions/system-characteristics",
         "type" : "object",
         "properties" : 
-        { "system-id" : 
-          { "$ref" : "#/definitions/system-id" },
+        { "system-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/system-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/system-id" },
+                "minItems" : 2 } ] },
           "system-name" : 
           { "$ref" : "#/definitions/system-name" },
           "system-name-short" : 
           { "$ref" : "#/definitions/system-name-short" },
           "description" : 
           { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "date-authorized" : 
+          { "$ref" : "#/definitions/date-authorized" },
           "security-sensitivity-level" : 
           { "$ref" : "#/definitions/security-sensitivity-level" },
           "system-information" : 
           { "$ref" : "#/definitions/system-information" },
           "security-impact-level" : 
           { "$ref" : "#/definitions/security-impact-level" },
-          "security-eauth" : 
-          { "$ref" : "#/definitions/security-eauth" },
           "status" : 
           { "$ref" : "#/definitions/status" },
-          "deployment-model" : 
-          { "$ref" : "#/definitions/deployment-model" },
-          "service-models" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/service-model" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/service-model" },
-                "minItems" : 2 } ] },
           "leveraged-authorizations" : 
           { "anyOf" : 
             [ 
@@ -1167,66 +964,98 @@
           { "$ref" : "#/definitions/network-architecture" },
           "data-flow" : 
           { "$ref" : "#/definitions/data-flow" },
-          "system-roles" : 
+          "responsible-parties" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/system-role" },
+                  "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
-                  { "type" : "string" } } ] } } },
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "system-id",
+        [ "system-ids",
           "system-name",
           "description",
           "security-sensitivity-level",
-          "ssp-system-information",
+          "system-information",
           "security-impact-level",
-          "security-eauths",
           "status",
-          "authorization-boundary",
-          "system-roles" ],
+          "authorization-boundary" ],
         "additionalProperties" : false },
       "system-id" : 
       { "title" : "System Identification",
-        "description" : "TBD",
+        "description" : "A unique identifier for the system described by this system security plan.",
         "$id" : "#/definitions/system-id",
         "type" : "object",
         "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
+        { "identifier-type" : 
+          { "title" : "Identification System Type",
+            "description" : "Identifies the identifcation system from which the provided identifier was assigned.",
+            "type" : "string",
+            "format" : "uri" },
+          "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "id" ],
         "additionalProperties" : false },
       "system-name" : 
       { "title" : "System Name (Full)",
-        "description" : "TBD",
+        "description" : "The full name of the system.",
         "$id" : "#/definitions/system-name",
         "type" : "string" },
       "system-name-short" : 
       { "title" : "System Name (Short)",
-        "description" : "TBD",
+        "description" : "A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.",
         "$id" : "#/definitions/system-name-short",
         "type" : "string" },
       "security-sensitivity-level" : 
       { "title" : "Security Sensitivity Level",
-        "description" : "TBD",
+        "description" : "The overall information system sensitivity categorization, such as defined by FIPS-199.",
         "$id" : "#/definitions/security-sensitivity-level",
-        "type" : "string" },
+        "type" : "string",
+        "enum" : 
+        [ "low",
+          "moderate",
+          "high" ] },
       "system-information" : 
       { "title" : "System Information",
-        "description" : "Contains details about all types of information stored, processed, or transmitted by the system, such as privacy information, and NIST 800-60 information types.",
+        "description" : "Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60.",
         "$id" : "#/definitions/system-information",
         "type" : "object",
         "properties" : 
-        { "ssp-information-type" : 
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "information-types" : 
           { "anyOf" : 
             [ 
               { "$ref" : "#/definitions/information-type" },
@@ -1234,113 +1063,46 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/information-type" },
-                "minItems" : 2 } ] },
-          "designations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/designation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/designation" },
                 "minItems" : 2 } ] } },
         "required" : 
-        [ "ssp-information-type",
-          "designations" ],
+        [ "information-types" ],
         "additionalProperties" : false },
-      "designation" : 
-      { "title" : "System Information Designation",
-        "description" : "Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).",
-        "$id" : "#/definitions/designation",
-        "type" : "object",
-        "properties" : 
-        { "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "declaration" : 
-          { "$ref" : "#/definitions/declaration" },
-          "ssp-qualifiers" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/qualifiers" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/qualifiers" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "declaration" : 
-      { "title" : "Declaration",
-        "description" : "Identifies whether a specific designation applies to this system.",
-        "$id" : "#/definitions/declaration",
-        "type" : "boolean" },
-      "qualifiers" : 
-      { "title" : "Information Designation Qualifiers",
-        "description" : "A list of questions about the system that contribute to the establishment of a designation, such as the FedRAMP privacy threshold analysis questions.",
-        "$id" : "#/definitions/qualifiers",
-        "type" : "object",
-        "properties" : 
-        { "ssp-qualifiers" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/qualifier" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/qualifier" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "qualifier" : 
-      { "title" : "Individual Information Designation Qualifier",
-        "description" : "An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.",
-        "$id" : "#/definitions/qualifier",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "qual-question" : 
-          { "$ref" : "#/definitions/qual-question" },
-          "qual-response" : 
-          { "$ref" : "#/definitions/qual-response" },
-          "qual-notes" : 
-          { "$ref" : "#/definitions/qual-notes" } },
-        "additionalProperties" : false },
-      "qual-question" : 
-      { "title" : "Qualifier Question",
-        "description" : "A question that must be answered about this system.",
-        "$id" : "#/definitions/qual-question",
-        "type" : "string" },
-      "qual-response" : 
-      { "title" : "Qualifier Question Response",
-        "description" : "The response to the question.",
-        "$id" : "#/definitions/qual-response",
-        "type" : "string" },
-      "qual-notes" : 
-      { "title" : "Qualifier Question Response Notes",
-        "description" : "Additional information about the response to the question.",
-        "$id" : "#/definitions/qual-notes",
-        "type" : "string" },
       "information-type" : 
       { "title" : "Information Type",
-        "description" : "Contains details about one type of information stored, processed, or transmitted by the system, such as privacy information, and NIST 800-60 information types.",
+        "description" : "Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60.",
         "$id" : "#/definitions/information-type",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "nist-id" : 
-          { "type" : "string",
-            "title" : "NIST 800-60 Information Type Identifier",
-            "description" : "Pointer to the information type in NIST SP 800-60." },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "name" : 
+          { "title" : "Information Type Name",
+            "description" : "The name of the information type.",
+            "type" : "string" },
           "description" : 
           { "$ref" : "#/definitions/description" },
+          "information-type-ids" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/information-type-id" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
           "confidentiality-impact" : 
           { "$ref" : "#/definitions/confidentiality-impact" },
           "integrity-impact" : 
@@ -1348,18 +1110,39 @@
           "availability-impact" : 
           { "$ref" : "#/definitions/availability-impact" } },
         "required" : 
-        [ "description",
-          "ssp-confidentiality-impact",
-          "ssp-integrity-impact",
-          "ssp-availability-impact" ],
+        [ "name",
+          "description",
+          "confidentiality-impact",
+          "integrity-impact",
+          "availability-impact" ],
+        "additionalProperties" : false },
+      "information-type-id" : 
+      { "title" : "Information Type Identifier",
+        "description" : "An identifier qualified by the given identification system used, such as NIST SP 800-60.",
+        "$id" : "#/definitions/information-type-id",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false },
       "confidentiality-impact" : 
       { "title" : "Confidentiality Impact Level",
-        "description" : "TBD",
+        "description" : "The expected level of impact resulting from the unauthorized disclosure of information.",
         "$id" : "#/definitions/confidentiality-impact",
         "type" : "object",
         "properties" : 
-        { "base" : 
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "base" : 
           { "$ref" : "#/definitions/base" },
           "selected" : 
           { "$ref" : "#/definitions/selected" },
@@ -1370,11 +1153,20 @@
         "additionalProperties" : false },
       "integrity-impact" : 
       { "title" : "Integrity Impact Level",
-        "description" : "TBD",
+        "description" : "The expected level of impact resulting from the unauthorized modification of information.",
         "$id" : "#/definitions/integrity-impact",
         "type" : "object",
         "properties" : 
-        { "base" : 
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "base" : 
           { "$ref" : "#/definitions/base" },
           "selected" : 
           { "$ref" : "#/definitions/selected" },
@@ -1385,11 +1177,20 @@
         "additionalProperties" : false },
       "availability-impact" : 
       { "title" : "Availability Impact Level",
-        "description" : "TBD",
+        "description" : "The expected level of impact resulting from the disruption of access to or use of information or the information system.",
         "$id" : "#/definitions/availability-impact",
         "type" : "object",
         "properties" : 
-        { "base" : 
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "base" : 
           { "$ref" : "#/definitions/base" },
           "selected" : 
           { "$ref" : "#/definitions/selected" },
@@ -1402,18 +1203,20 @@
       { "title" : "Base Level (Confidentiality, Integrity, or Availability)",
         "description" : "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#/definitions/base",
-        "type" : "object",
-        "properties" : 
-        { "impact-level" : 
-          { "type" : "string",
-            "title" : "Impact level",
-            "description" : "TBD" } },
-        "additionalProperties" : false },
+        "type" : "string",
+        "enum" : 
+        [ "fips-199-low",
+          "fips-199-moderate",
+          "fips-199-high" ] },
       "selected" : 
       { "title" : "Selected Level (Confidentiality, Integrity, or Availability)",
         "description" : "The selected (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#/definitions/selected",
-        "type" : "string" },
+        "type" : "string",
+        "enum" : 
+        [ "fips-199-low",
+          "fips-199-moderate",
+          "fips-199-high" ] },
       "adjustment-justification" : 
       { "title" : "Adjustment Justification",
         "description" : "If the selected security level is different from the base security level, this contains the justificaiton for the change.",
@@ -1421,7 +1224,7 @@
         "type" : "string" },
       "security-impact-level" : 
       { "title" : "Security Impact Level",
-        "description" : "TBD",
+        "description" : "The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.",
         "$id" : "#/definitions/security-impact-level",
         "type" : "object",
         "properties" : 
@@ -1433,83 +1236,42 @@
           { "$ref" : "#/definitions/security-objective-availability" } },
         "additionalProperties" : false },
       "security-objective-confidentiality" : 
-      { "title" : "Security Objective (Confidentiality)",
-        "description" : "TBD",
+      { "title" : "Security Objective: Confidentiality",
+        "description" : "A target-level of confidentiality for the system, based on the sensitivity of information within the system.",
         "$id" : "#/definitions/security-objective-confidentiality",
-        "type" : "object",
-        "properties" : 
-        { "impact-level" : 
-          { "type" : "string",
-            "title" : "Impact level",
-            "description" : "TBD" } },
-        "additionalProperties" : false },
+        "type" : "string",
+        "enum" : 
+        [ "fips-199-low",
+          "fips-199-moderate",
+          "fips-199-high" ] },
       "security-objective-integrity" : 
-      { "title" : "Security Objective (Integrity)",
-        "description" : "TBD",
+      { "title" : "Security Objective: Integrity",
+        "description" : "A target-level of integrity for the system, based on the sensitivity of information within the system.",
         "$id" : "#/definitions/security-objective-integrity",
-        "type" : "object",
-        "properties" : 
-        { "impact-level" : 
-          { "type" : "string",
-            "title" : "Impact level",
-            "description" : "TBD" } },
-        "additionalProperties" : false },
+        "type" : "string",
+        "enum" : 
+        [ "fips-199-low",
+          "fips-199-moderate",
+          "fips-199-high" ] },
       "security-objective-availability" : 
-      { "title" : "Security Objective (Availability)",
-        "description" : "TBD",
+      { "title" : "Security Objective: Availability",
+        "description" : "A target-level of availability for the system, based on the sensitivity of information within the system.",
         "$id" : "#/definitions/security-objective-availability",
-        "type" : "object",
-        "properties" : 
-        { "impact-level" : 
-          { "type" : "string",
-            "title" : "Impact level",
-            "description" : "TBD" } },
-        "additionalProperties" : false },
-      "security-eauth" : 
-      { "title" : "Security Electronic Authentication Level",
-        "description" : "TBD",
-        "$id" : "#/definitions/security-eauth",
-        "type" : "object",
-        "properties" : 
-        { "security-auth-ial" : 
-          { "$ref" : "#/definitions/security-auth-ial" },
-          "security-auth-aal" : 
-          { "$ref" : "#/definitions/security-auth-aal" },
-          "security-auth-fal" : 
-          { "$ref" : "#/definitions/security-auth-fal" },
-          "security-eauth-level" : 
-          { "$ref" : "#/definitions/security-eauth-level" } },
-        "additionalProperties" : false },
-      "security-auth-ial" : 
-      { "title" : "Security Authentication (Identity Assurance Level)",
-        "description" : "TBD",
-        "$id" : "#/definitions/security-auth-ial",
-        "type" : "string" },
-      "security-auth-aal" : 
-      { "title" : "Security Authentication (Authenticator Assurance Level)",
-        "description" : "TBD",
-        "$id" : "#/definitions/security-auth-aal",
-        "type" : "string" },
-      "security-auth-fal" : 
-      { "title" : "Security Authentication (Federation Assurance Level)",
-        "description" : "TBD",
-        "$id" : "#/definitions/security-auth-fal",
-        "type" : "string" },
-      "security-eauth-level" : 
-      { "title" : "Security eAuthentication Level",
-        "description" : "TBD",
-        "$id" : "#/definitions/security-eauth-level",
-        "type" : "string" },
+        "type" : "string",
+        "enum" : 
+        [ "fips-199-low",
+          "fips-199-moderate",
+          "fips-199-high" ] },
       "status" : 
       { "title" : "Status",
-        "description" : "TBD",
+        "description" : "Describes the operational status of the system.",
         "$id" : "#/definitions/status",
         "type" : "object",
         "properties" : 
         { "state" : 
-          { "type" : "string",
-            "title" : "State",
-            "description" : "TBD",
+          { "title" : "State",
+            "description" : "The current operating status.",
+            "type" : "string",
             "enum" : 
             [ "operational",
               "under-development",
@@ -1521,88 +1283,99 @@
         "required" : 
         [ "state" ],
         "additionalProperties" : false },
-      "deployment-model" : 
-      { "title" : "Deployment Model",
-        "description" : "TBD",
-        "$id" : "#/definitions/deployment-model",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "title" : "",
-            "description" : "TBD",
-            "enum" : 
-            [ "public",
-              "private",
-              "community",
-              "government-only",
-              "hybrid",
-              "other" ] },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "type" ],
-        "additionalProperties" : false },
-      "service-model" : 
-      { "title" : "Service Model",
-        "description" : "TBD",
-        "$id" : "#/definitions/service-model",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "title" : "",
-            "description" : "TBD" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "type" ],
-        "additionalProperties" : false },
       "leveraged-authorization" : 
       { "title" : "Leveraged Authorization",
-        "description" : "The details for a single leveraged authorization",
+        "description" : "A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.",
         "$id" : "#/definitions/leveraged-authorization",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "leveraged-authorization-name" : 
-          { "$ref" : "#/definitions/leveraged-authorization-name" },
-          "leveraged-authorization-service-provider" : 
-          { "$ref" : "#/definitions/leveraged-authorization-service-provider" },
-          "leveraged-authorization-date-granted" : 
-          { "$ref" : "#/definitions/leveraged-authorization-date-granted" } },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "party-id" : 
+          { "$ref" : "#/definitions/party-id" },
+          "date-authorized" : 
+          { "$ref" : "#/definitions/date-authorized" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "leveraged-authorization-name",
-          "leveraged-authorization-service-provider",
-          "leveraged-authorization-date-granted" ],
+        [ "name",
+          "party-id",
+          "date-authorized" ],
         "additionalProperties" : false },
-      "leveraged-authorization-name" : 
-      { "title" : "Leveraged system Name",
-        "description" : "Name of the leveraged system.",
-        "$id" : "#/definitions/leveraged-authorization-name",
-        "type" : "string" },
-      "leveraged-authorization-service-provider" : 
-      { "title" : "Leveraged System Service Provider Name",
-        "description" : "Name of the service provider that manages the leveraged system.",
-        "$id" : "#/definitions/leveraged-authorization-service-provider",
-        "type" : "string" },
-      "leveraged-authorization-date-granted" : 
-      { "title" : "Leveraged System Authorization Date",
-        "description" : "The date the leveraged system received its authorization.",
-        "$id" : "#/definitions/leveraged-authorization-date-granted",
+      "date-authorized" : 
+      { "title" : "System Authorization Date",
+        "description" : "The date this system received its authorization.",
+        "$id" : "#/definitions/date-authorized",
         "type" : "string",
-        "pattern" : "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})" },
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})?$" },
       "authorization-boundary" : 
       { "title" : "Authorization Boundary",
-        "description" : "TBD",
+        "description" : "A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.",
         "$id" : "#/definitions/authorization-boundary",
         "type" : "object",
         "properties" : 
         { "description" : 
           { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
           "diagrams" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1621,28 +1394,75 @@
         "additionalProperties" : false },
       "diagram" : 
       { "title" : "Diagram",
-        "description" : "TBD",
+        "description" : "A graphic that provides a visual represenation the system, or some aspect of it.",
         "$id" : "#/definitions/diagram",
         "type" : "object",
         "properties" : 
-        { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
-          "description" : 
-          { "$ref" : "#/definitions/description" } },
-        "required" : 
-        [ "href" ],
+        { "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "caption" : 
+          { "$ref" : "#/definitions/caption" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
+      "caption" : 
+      { "title" : "Caption",
+        "description" : "A brief caption to annotate the diagram.",
+        "$id" : "#/definitions/caption",
+        "type" : "string" },
       "network-architecture" : 
-      { "title" : "Network Architecture Diagrams",
-        "description" : "TBD",
+      { "title" : "Network Architecture",
+        "description" : "A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.",
         "$id" : "#/definitions/network-architecture",
         "type" : "object",
         "properties" : 
         { "description" : 
           { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
           "diagrams" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1661,12 +1481,39 @@
         "additionalProperties" : false },
       "data-flow" : 
       { "title" : "Data Flow",
-        "description" : "TBD",
+        "description" : "A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.",
         "$id" : "#/definitions/data-flow",
         "type" : "object",
         "properties" : 
         { "description" : 
           { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
           "diagrams" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1683,126 +1530,51 @@
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "system-role" : 
-      { "title" : "Role",
-        "description" : "Defining a role to be assigned to a party or agent",
-        "$id" : "#/definitions/system-role",
-        "type" : "object",
-        "properties" : 
-        { "role-id" : 
-          { "type" : "string",
-            "title" : "Role identifier",
-            "description" : "References a role element defined in metadata." },
-          "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
-          "external" : 
-          { "type" : "boolean",
-            "title" : "external",
-            "description" : "TBD" },
-          "access" : 
-          { "type" : "string",
-            "title" : "access",
-            "description" : "TBD" },
-          "sensitivity-level" : 
-          { "type" : "string",
-            "title" : "sensitivity-level",
-            "description" : "TBD" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "short-name" : 
-          { "$ref" : "#/definitions/short-name" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "privileges" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/privilege" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/privilege" },
-                "minItems" : 2 } ] },
-          "responsibilities" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/responsibility" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/responsibility" },
-                "minItems" : 2 } ] },
-          "statistics" : 
-          { "$ref" : "#/definitions/statistics" } },
-        "required" : 
-        [ "role-id",
-          "name",
-          "external",
-          "access",
-          "sensitivity-level",
-          "statistics" ],
-        "additionalProperties" : false },
-      "privilege" : 
-      { "title" : "Privilege",
-        "description" : "Identifies the type/level of system privilege for the role. For FedRAMP, the only valid values are \"p\" (Privileged), \"np\" (Non-Privileged), or \"nla\" (No Logical Access).",
-        "$id" : "#/definitions/privilege",
-        "type" : "string" },
-      "responsibility" : 
-      { "title" : "Responsibility",
-        "description" : "Identifies the functions performed by the user role.",
-        "$id" : "#/definitions/responsibility",
-        "type" : "string" },
-      "statistics" : 
-      { "title" : "Statistics",
-        "description" : "Provides a collection of statistics about users of the system.",
-        "$id" : "#/definitions/statistics",
-        "type" : "object",
-        "properties" : 
-        { "internal-user-total-current" : 
-          { "$ref" : "#/definitions/internal-user-total-current" },
-          "internal-user-total-future" : 
-          { "$ref" : "#/definitions/internal-user-total-future" },
-          "external-user-total-current" : 
-          { "$ref" : "#/definitions/external-user-total-current" },
-          "external-user-total-future" : 
-          { "$ref" : "#/definitions/external-user-total-future" } },
-        "additionalProperties" : false },
-      "internal-user-total-current" : 
-      { "title" : "Total Current Internal Users",
-        "description" : "TBD",
-        "$id" : "#/definitions/internal-user-total-current",
-        "type" : "integer",
-        "multipleOf" : 1,
-        "minimum" : 1 },
-      "internal-user-total-future" : 
-      { "title" : "Total Future Internal Users",
-        "description" : "TBD",
-        "$id" : "#/definitions/internal-user-total-future",
-        "type" : "integer",
-        "multipleOf" : 1,
-        "minimum" : 1 },
-      "external-user-total-current" : 
-      { "title" : "Total Current External Users",
-        "description" : "TBD",
-        "$id" : "#/definitions/external-user-total-current",
-        "type" : "integer",
-        "multipleOf" : 1,
-        "minimum" : 1 },
-      "external-user-total-future" : 
-      { "title" : "Total Future External Users",
-        "description" : "TBD",
-        "$id" : "#/definitions/external-user-total-future",
-        "type" : "integer",
-        "multipleOf" : 1,
-        "minimum" : 1 },
       "system-implementation" : 
       { "title" : "System Implementation",
         "description" : "Provides information as to how the system is implemented.",
         "$id" : "#/definitions/system-implementation",
         "type" : "object",
         "properties" : 
-        { "components" : 
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "users" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/user" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "components" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
@@ -1810,17 +1582,6 @@
               [ 
                 { "type" : "object",
                   "$ref" : "#/definitions/component" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "capabilities" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/capability" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1843,8 +1604,109 @@
                 { "$ref" : "#/definitions/interconnection" },
                 "minItems" : 2 } ] },
           "system-inventory" : 
-          { "$ref" : "#/definitions/system-inventory" } },
+          { "$ref" : "#/definitions/system-inventory" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "users" ],
         "additionalProperties" : false },
+      "user" : 
+      { "title" : "System User Class",
+        "description" : "A type of user that interacts with the system based on an associated role.",
+        "$id" : "#/definitions/user",
+        "type" : "object",
+        "properties" : 
+        { "title" : 
+          { "$ref" : "#/definitions/title" },
+          "short-name" : 
+          { "$ref" : "#/definitions/short-name" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "role-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/role-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/role-id" },
+                "minItems" : 2 } ] },
+          "authorized-privileges" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/authorized-privilege" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/authorized-privilege" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "role-ids" ],
+        "additionalProperties" : false },
+      "role-id" : 
+      { "title" : "Role Identifier Reference",
+        "description" : "A reference to the roles served by the user.",
+        "$id" : "#/definitions/role-id",
+        "type" : "string" },
+      "authorized-privilege" : 
+      { "title" : "Privilege",
+        "description" : "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.",
+        "$id" : "#/definitions/authorized-privilege",
+        "type" : "object",
+        "properties" : 
+        { "name" : 
+          { "title" : "Privilege Name",
+            "description" : "The name of the identified privilege.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "functions-performed" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/function-performed" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/function-performed" },
+                "minItems" : 2 } ] } },
+        "required" : 
+        [ "name",
+          "functions-performed" ],
+        "additionalProperties" : false },
+      "function-performed" : 
+      { "title" : "Functions Performed",
+        "description" : "Describes a function performed for a given authorized privilege by this user class.",
+        "$id" : "#/definitions/function-performed",
+        "type" : "string" },
       "component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
@@ -1852,13 +1714,13 @@
         "type" : "object",
         "properties" : 
         { "name" : 
-          { "type" : "string",
-            "title" : "Component Name",
-            "description" : "The component's human-readable name." },
+          { "title" : "Component Name",
+            "description" : "The component's human-readable name.",
+            "type" : "string" },
           "component-type" : 
-          { "type" : "string",
-            "title" : "Component Type",
-            "description" : "A category describing the purpose of the component." },
+          { "title" : "Component Type",
+            "description" : "A category describing the purpose of the component.",
+            "type" : "string" },
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
@@ -1870,65 +1732,14 @@
                 "items" : 
                 { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] },
-          "links" : 
+          "annotations" : 
           { "anyOf" : 
             [ 
-              { "$ref" : "#/definitions/link" },
+              { "$ref" : "#/definitions/annotation" },
               
               { "type" : "array",
                 "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "supplier" : 
-          { "$ref" : "#/definitions/supplier" },
-          "configurations" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/configuration" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "artifacts" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/artifact" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "description",
-          "supplier" ],
-        "additionalProperties" : false },
-      "capability" : 
-      { "title" : "Capability",
-        "description" : "A grouping of other components and/or capabilities.",
-        "$id" : "#/definitions/capability",
-        "type" : "object",
-        "properties" : 
-        { "name" : 
-          { "type" : "string",
-            "title" : "Capability Name",
-            "description" : "The capability's human-readable name." },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
+                { "$ref" : "#/definitions/annotation" },
                 "minItems" : 2 } ] },
           "links" : 
           { "anyOf" : 
@@ -1939,32 +1750,26 @@
                 "items" : 
                 { "$ref" : "#/definitions/link" },
                 "minItems" : 2 } ] },
-          "incorporates-capabilities" : 
+          "status" : 
+          { "$ref" : "#/definitions/status" },
+          "responsible-roles" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/incorporates-capability" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "incorporates-components" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/incorporates-component" },
+                  "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "description" ],
+        [ "name",
+          "component-type",
+          "description",
+          "status" ],
         "additionalProperties" : false },
       "service" : 
       { "title" : "Service",
@@ -1973,13 +1778,42 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
           "ssp-protocol" : 
           { "anyOf" : 
             [ 
@@ -1991,15 +1825,8 @@
                 "minItems" : 2 } ] },
           "purpose" : 
           { "$ref" : "#/definitions/purpose" },
-          "used-by-components" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/used-by-component" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/used-by-component" },
-                "minItems" : 2 } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "protocol" : 
       { "title" : "Protocol",
@@ -2008,9 +1835,9 @@
         "type" : "object",
         "properties" : 
         { "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
           "port-ranges" : 
           { "anyOf" : 
             [ 
@@ -2023,51 +1850,35 @@
         "additionalProperties" : false },
       "port-range" : 
       { "title" : "Port Range",
-        "description" : "TBD",
+        "description" : "Where applicable this is the IPv4 port range on which the service operates.",
         "$id" : "#/definitions/port-range",
         "type" : "object",
         "properties" : 
         { "start" : 
-          { "type" : "integer",
+          { "title" : "Start",
+            "description" : "Indicates the starting port number in a port range",
+            "type" : "integer",
             "multipleOf" : 1,
-            "minimum" : 0,
-            "title" : "Start",
-            "description" : "Indicates the starting port number in a port range." },
+            "minimum" : 0 },
           "end" : 
-          { "type" : "integer",
+          { "title" : "End",
+            "description" : "Indicates the ending port number in a port range",
+            "type" : "integer",
             "multipleOf" : 1,
-            "minimum" : 0,
-            "title" : "End",
-            "description" : "Indicates the ending port number in a port range." },
+            "minimum" : 0 },
           "transport" : 
-          { "type" : "string",
-            "title" : "Transport",
-            "description" : "Indicates the transport type." },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
+          { "title" : "Transport",
+            "description" : "Indicates the transport type.",
+            "type" : "string",
+            "enum" : 
+            [ "TCP",
+              "UDP" ] } },
         "additionalProperties" : false },
       "purpose" : 
       { "title" : "Purpose",
         "description" : "Describes the purpose for the service within the system.",
         "$id" : "#/definitions/purpose",
         "type" : "string" },
-      "used-by-component" : 
-      { "title" : "Used By",
-        "description" : "Identifies a type of uses for the service. A component can be optionally identified.",
-        "$id" : "#/definitions/used-by-component",
-        "type" : "object",
-        "properties" : 
-        { "component-id" : 
-          { "type" : "string",
-            "title" : "Component Reference",
-            "description" : "A reference to a component by its identifier" },
-          "description" : 
-          { "$ref" : "#/definitions/description" } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
       "interconnection" : 
       { "title" : "Interconnection",
         "description" : "Details on an individual system interconnection.",
@@ -2075,89 +1886,60 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "external-system-name" : 
-          { "$ref" : "#/definitions/external-system-name" },
-          "external-system-org" : 
-          { "$ref" : "#/definitions/external-system-org" },
-          "isa-authorizations" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "remote-system-name" : 
+          { "$ref" : "#/definitions/remote-system-name" },
+          "properties" : 
           { "anyOf" : 
             [ 
-              { "$ref" : "#/definitions/isa-authorization" },
+              { "$ref" : "#/definitions/prop" },
               
               { "type" : "array",
                 "items" : 
-                { "$ref" : "#/definitions/isa-authorization" },
+                { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] },
-          "isa-name" : 
-          { "$ref" : "#/definitions/isa-name" },
-          "isa-date" : 
-          { "$ref" : "#/definitions/isa-date" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "external-system-name" : 
-      { "title" : "External System Name",
-        "description" : "TBD",
-        "$id" : "#/definitions/external-system-name",
+      "remote-system-name" : 
+      { "title" : "Remote Interconnected System Name",
+        "description" : "The name of the remote interconnected system.",
+        "$id" : "#/definitions/remote-system-name",
         "type" : "string" },
-      "external-system-org" : 
-      { "title" : "External System Organization",
-        "description" : "TBD",
-        "$id" : "#/definitions/external-system-org",
-        "type" : "string" },
-      "isa-authorization" : 
-      { "title" : "ISA Authorization",
-        "description" : "Name of the individual who authorized the Interconnection Security Agreement (ISA).",
-        "$id" : "#/definitions/isa-authorization",
-        "type" : "string" },
-      "isa-name" : 
-      { "title" : "ISA Name",
-        "description" : "Title of the Interconnection Security Agreement (ISA).",
-        "$id" : "#/definitions/isa-name",
-        "type" : "string" },
-      "isa-date" : 
-      { "title" : "ISA Date",
-        "description" : "Date of the Interconnection Security Agreement (ISA).",
-        "$id" : "#/definitions/isa-date",
-        "type" : "string" },
-      "vendor" : 
-      { "title" : "Vendor",
-        "description" : "TBD",
-        "$id" : "#/definitions/vendor",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
-        "additionalProperties" : false },
-      "ip-address" : 
-      { "title" : "Internet Protocol Address",
-        "description" : "Use the @type flag to deisgnate IPv4 or IPv6.",
-        "$id" : "#/definitions/ip-address",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
-        "additionalProperties" : false },
       "system-inventory" : 
       { "title" : "System Inventory",
-        "description" : "TBD",
+        "description" : "A set of inventory-item entries that represent the managed inventory instances of the system.",
         "$id" : "#/definitions/system-inventory",
         "type" : "object",
         "properties" : 
@@ -2169,489 +1951,26 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/inventory-item" },
-                "minItems" : 2 } ] } },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "inventory-items" ],
         "additionalProperties" : false },
       "inventory-item" : 
       { "title" : "Inventory Item",
-        "description" : "TBD",
+        "description" : "A single managed inventory item within the system.",
         "$id" : "#/definitions/inventory-item",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "component-id" : 
-          { "type" : "string",
-            "title" : "Component Reference",
-            "description" : "A reference to a component by its identifier" },
-          "virtual" : 
-          { "type" : "boolean",
-            "title" : "Virtual",
-            "description" : "Designates an asset as either virtual (=\"yes\") or physical (=\"no\")." },
-          "public" : 
-          { "type" : "boolean",
-            "title" : "Public",
-            "description" : "Designates an asset as either publicly accessible (=\"yes\") or not (=\"no\")." },
-          "ip-addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/ip-address" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/ip-address" },
-                "minItems" : 2 } ] },
-          "dns-names" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/dns-name" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/dns-name" },
-                "minItems" : 2 } ] },
-          "ssp-host-item" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/host-item" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/host-item" },
-                "minItems" : 2 } ] },
-          "ssp-software-item" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/software-item" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/software-item" },
-                "minItems" : 2 } ] },
-          "comments" : 
-          { "$ref" : "#/definitions/comments" },
-          "serial-no" : 
-          { "$ref" : "#/definitions/serial-no" },
-          "network-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/network-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/network-id" },
-                "minItems" : 2 } ] },
-          "asset-owners" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/asset-owner" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/asset-owner" },
-                "minItems" : 2 } ] },
-          "asset-administrators" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/asset-administrator" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/asset-administrator" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "dns-name" : 
-      { "title" : "Network Name",
-        "description" : "If available, state the DNS name or URL of the inventory item. This can be left blank if one does not exist, or it is a dynamic field.",
-        "$id" : "#/definitions/dns-name",
-        "type" : "string" },
-      "host-item" : 
-      { "title" : "Host Item",
-        "description" : "TBD",
-        "$id" : "#/definitions/host-item",
-        "type" : "object",
-        "properties" : 
-        { "netbios-names" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/netbios-name" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/netbios-name" },
-                "minItems" : 2 } ] },
-          "mac-addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/mac-address" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/mac-address" },
-                "minItems" : 2 } ] },
-          "authenticated-scans" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/authenticated-scan" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/authenticated-scan" },
-                "minItems" : 2 } ] },
-          "baseline-templates" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/baseline-template" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/baseline-template" },
-                "minItems" : 2 } ] },
-          "os-names" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/os-name" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/os-name" },
-                "minItems" : 2 } ] },
-          "os-versions" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/os-version" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/os-version" },
-                "minItems" : 2 } ] },
-          "locations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/location" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/location" },
-                "minItems" : 2 } ] },
-          "asset-types" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/asset-type" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/asset-type" },
-                "minItems" : 2 } ] },
-          "vendors" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/vendor" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/vendor" },
-                "minItems" : 2 } ] },
-          "hardware-models" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/hardware-model" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/hardware-model" },
-                "minItems" : 2 } ] },
-          "ssp-scanned" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/scanned" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/scanned" },
-                "minItems" : 2 } ] },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "netbios-name" : 
-      { "title" : "NetBIOS Name",
-        "description" : "If available, state the NetBIOS name of the inventory item. This can be omitted if one does not exist, or it is a dynamic field.",
-        "$id" : "#/definitions/netbios-name",
-        "type" : "string" },
-      "mac-address" : 
-      { "title" : "Media Access Control (MAC) Address",
-        "description" : "If available, state the MAC Address of the inventory item. This can be left blank if one does not exist, or it is a dynamic field.",
-        "$id" : "#/definitions/mac-address",
-        "type" : "string" },
-      "os-name" : 
-      { "title" : "Operating System Name",
-        "description" : "TBD",
-        "$id" : "#/definitions/os-name",
-        "type" : "string" },
-      "os-version" : 
-      { "title" : "Operating System Version Number",
-        "description" : "TBD",
-        "$id" : "#/definitions/os-version",
-        "type" : "string" },
-      "location" : 
-      { "title" : "Location of the Asset",
-        "description" : "Physical location of hardware. Could include Data Center ID, Cage#, Rack# or other meaningful location identifiers.",
-        "$id" : "#/definitions/location",
-        "type" : "string" },
-      "asset-type" : 
-      { "title" : "Asset Type",
-        "description" : "Simple description of the asset's function (e.g., Router, Storage Array, DNS Server, etc.) Do not use vendor or product names here.",
-        "$id" : "#/definitions/asset-type",
-        "type" : "string" },
-      "hardware-model" : 
-      { "title" : "Hardware Model",
-        "description" : "Model number of the hardware.",
-        "$id" : "#/definitions/hardware-model",
-        "type" : "string" },
-      "authenticated-scan" : 
-      { "title" : "Authenticated Scan",
-        "description" : "Indicate whether this asset is planned for authenticated scanning.",
-        "$id" : "#/definitions/authenticated-scan",
-        "type" : "boolean" },
-      "software-item" : 
-      { "title" : "Software Item",
-        "description" : "TBD",
-        "$id" : "#/definitions/software-item",
-        "type" : "object",
-        "properties" : 
-        { "vendors" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/vendor" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/vendor" },
-                "minItems" : 2 } ] },
-          "software-names" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/software-name" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/software-name" },
-                "minItems" : 2 } ] },
-          "software-versions" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/software-version" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/software-version" },
-                "minItems" : 2 } ] },
-          "software-patch-levels" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/software-patch-level" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/software-patch-level" },
-                "minItems" : 2 } ] },
-          "functions" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/function" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/function" },
-                "minItems" : 2 } ] } },
-        "additionalProperties" : false },
-      "software-name" : 
-      { "title" : "Software Product Name",
-        "description" : "TBD",
-        "$id" : "#/definitions/software-name",
-        "type" : "string" },
-      "software-version" : 
-      { "title" : "Software Version Number",
-        "description" : "TBD",
-        "$id" : "#/definitions/software-version",
-        "type" : "string" },
-      "software-patch-level" : 
-      { "title" : "Software Patch Level (If applicable)",
-        "description" : "TBD",
-        "$id" : "#/definitions/software-patch-level",
-        "type" : "string" },
-      "function" : 
-      { "title" : "Function",
-        "description" : "TBD",
-        "$id" : "#/definitions/function",
-        "type" : "string" },
-      "comments" : 
-      { "title" : "Comments",
-        "description" : "Any additional information that could be useful to an auditor or reviewer.",
-        "$id" : "#/definitions/comments",
-        "type" : "string" },
-      "serial-no" : 
-      { "title" : "Serial Number",
-        "description" : "Product serial number or internal asset tag number.",
-        "$id" : "#/definitions/serial-no",
-        "type" : "string" },
-      "network-id" : 
-      { "title" : "Network ID",
-        "description" : "Virtual LAN or Network ID.",
-        "$id" : "#/definitions/network-id",
-        "type" : "string" },
-      "asset-owner" : 
-      { "title" : "Asset Owner",
-        "description" : "The individual, title, or role who \"owns\" the asset on behalf of the organization.",
-        "$id" : "#/definitions/asset-owner",
-        "type" : "object",
-        "properties" : 
-        { "party-id" : 
-          { "type" : "string",
-            "title" : "Party Reference",
-            "description" : "References a party defined in metadata." },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
-        "additionalProperties" : false },
-      "asset-administrator" : 
-      { "title" : "Asset Administrator",
-        "description" : "The individual, title, role, or team responsible for operating and maintaining the asset.",
-        "$id" : "#/definitions/asset-administrator",
-        "type" : "object",
-        "properties" : 
-        { "party-id" : 
-          { "type" : "string",
-            "title" : "Party Reference",
-            "description" : "References a party defined in metadata." },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE" ],
-        "additionalProperties" : false },
-      "control-implementation" : 
-      { "title" : "Control Implementation",
-        "description" : "Defines how the system (as a whole) supports a set of controls.",
-        "$id" : "#/definitions/control-implementation",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" },
-          "meets-requirement-sets" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/meets-requirement-set" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/meets-requirement-set" },
-                "minItems" : 2 } ] },
-          "by-components" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/by-component" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/by-component" },
-                "minItems" : 2 } ] },
-          "by-capabilities" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/by-capability" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/by-capability" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
-      "by-component" : 
-      { "title" : "Component Control Implementation",
-        "description" : "Defines how the referenced component implements a set of controls.",
-        "$id" : "#/definitions/by-component",
-        "type" : "object",
-        "properties" : 
-        { "component-id" : 
-          { "type" : "string",
-            "title" : "Component Reference",
-            "description" : "A reference to a component by its identifier" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "meets-requirement-sets" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/meets-requirement-set" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/meets-requirement-set" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "component-id",
-          "description" ],
-        "additionalProperties" : false },
-      "by-capability" : 
-      { "title" : "capability Control Implementation",
-        "description" : "Defines how the referenced capability implements a set of controls.",
-        "$id" : "#/definitions/by-capability",
-        "type" : "object",
-        "properties" : 
-        { "capability-id" : 
-          { "type" : "string",
-            "title" : "Capability Reference",
-            "description" : "A reference to a capability by its identifier" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "meets-requirement-sets" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/meets-requirement-set" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/meets-requirement-set" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "capability-id",
-          "description" ],
-        "additionalProperties" : false },
-      "meets-requirement-set" : 
-      { "title" : "Meets",
-        "description" : "Defines what sets of controls are supported by the system (as a whole).",
-        "$id" : "#/definitions/meets-requirement-set",
-        "type" : "object",
-        "properties" : 
-        { "ssp-responsible-role" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/responsible-role" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/responsible-role" },
-                "minItems" : 2 } ] },
-          "parameter-settings" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/set-param" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/set-param" },
-                "minItems" : 2 } ] },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "asset-id" : 
+          { "title" : "Asset Identifier",
+            "description" : "Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.",
+            "type" : "string" },
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
@@ -2662,6 +1981,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
                 "minItems" : 2 } ] },
           "links" : 
           { "anyOf" : 
@@ -2672,6 +2000,94 @@
                 "items" : 
                 { "$ref" : "#/definitions/link" },
                 "minItems" : 2 } ] },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "implemented-components" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/implemented-component" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "id",
+          "asset-id",
+          "description" ],
+        "additionalProperties" : false },
+      "implemented-component" : 
+      { "title" : "Implemented Component",
+        "description" : "The set of componenets that are implemented in a given system inventory item.",
+        "$id" : "#/definitions/implemented-component",
+        "type" : "object",
+        "properties" : 
+        { "use" : 
+          { "title" : "Implementation Use Type",
+            "description" : "The type of implementation",
+            "type" : "string" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
+      "control-implementation" : 
+      { "title" : "Control Implementation",
+        "description" : "Describes how the system satisfies a set of controls.",
+        "$id" : "#/definitions/control-implementation",
+        "type" : "object",
+        "properties" : 
+        { "description" : 
+          { "$ref" : "#/definitions/description" },
           "implemented-requirements" : 
           { "anyOf" : 
             [ 
@@ -2685,18 +2101,253 @@
         [ "description",
           "implemented-requirements" ],
         "additionalProperties" : false },
+      "implemented-requirement" : 
+      { "title" : "Control-based Requirement",
+        "description" : "Describes how the system satisfies an individual control.",
+        "$id" : "#/definitions/implemented-requirement",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "control-id" : 
+          { "title" : "Control Identifier Reference",
+            "description" : "A reference to a control identifier.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "by-components" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/by-component" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "set-params" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/set-param" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "statements" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/statement" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "control-id" ],
+        "additionalProperties" : false },
+      "statement" : 
+      { "title" : "Specific Statement",
+        "description" : "Identifies which statements within a control are addressed.",
+        "$id" : "#/definitions/statement",
+        "type" : "object",
+        "properties" : 
+        { "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "by-components" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/by-component" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
       "responsible-role" : 
       { "title" : "Responsible Role",
-        "description" : "TBD",
+        "description" : "A reference to one or more roles with responsibility for performing a function relative to the control.",
         "$id" : "#/definitions/responsible-role",
         "type" : "object",
         "properties" : 
-        { "role-id" : 
-          { "type" : "string",
-            "title" : "Role identifier",
-            "description" : "References a role element defined in metadata." } },
+        { "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "party-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/party-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/party-id" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
+      "by-component" : 
+      { "title" : "Component Control Implementation",
+        "description" : "Defines how the referenced component implements a set of controls.",
+        "$id" : "#/definitions/by-component",
+        "type" : "object",
+        "properties" : 
+        { "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "set-params" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/set-param" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } } },
         "required" : 
-        [ "role-id" ],
+        [ "description" ],
         "additionalProperties" : false },
       "set-param" : 
       { "title" : "Set Parameter Value",
@@ -2704,29 +2355,15 @@
         "$id" : "#/definitions/set-param",
         "type" : "object",
         "properties" : 
-        { "param-id" : 
-          { "type" : "string",
-            "title" : "Parameter ID",
-            "description" : "Points to a parameter within a control, to which the contained value will be assigned." },
-          "value" : 
+        { "value" : 
           { "$ref" : "#/definitions/value" } },
         "required" : 
-        [ "param-id" ],
+        [ "value" ],
         "additionalProperties" : false },
       "value" : 
       { "title" : "Value",
         "description" : "The phrase or string that fills-in the parameter and completes the requirement statement.",
         "$id" : "#/definitions/value",
-        "type" : "string" },
-      "baseline-template" : 
-      { "title" : "baseline-template",
-        "description" : "TBD",
-        "$id" : "#/definitions/baseline-template",
-        "type" : "string" },
-      "scanned" : 
-      { "title" : "scanned",
-        "description" : "TBD",
-        "$id" : "#/definitions/scanned",
         "type" : "string" } },
     "properties" : 
     { "system-security-plan" : 

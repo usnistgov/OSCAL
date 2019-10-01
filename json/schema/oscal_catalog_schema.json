@@ -11,17 +11,17 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
           "depends-on" : 
-          { "type" : "string",
-            "title" : "Depends on",
-            "description" : "Another parameter invoking this one" },
+          { "title" : "Depends on",
+            "description" : "Another parameter invoking this one",
+            "type" : "string" },
           "label" : 
           { "$ref" : "#/definitions/label" },
           "descriptions" : 
@@ -79,13 +79,13 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "RICHTEXT" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "summary" : 
           { "type" : "string" } },
         "required" : 
-        [ "RICHTEXT" ],
+        [ "summary" ],
         "additionalProperties" : false },
       "constraint" : 
       { "title" : "Constraint",
@@ -94,13 +94,13 @@
         "type" : "object",
         "properties" : 
         { "test" : 
-          { "type" : "string",
-            "title" : "Constraint test",
-            "description" : "A formal (executable) expression of a constraint" },
-          "STRVALUE" : 
+          { "title" : "Constraint test",
+            "description" : "A formal (executable) expression of a constraint",
+            "type" : "string" },
+          "detail" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "detail" ],
         "additionalProperties" : false },
       "guideline" : 
       { "title" : "Guideline",
@@ -123,9 +123,9 @@
         "type" : "object",
         "properties" : 
         { "how-many" : 
-          { "type" : "string",
-            "title" : "Cardinality",
-            "description" : "When selecting, a requirement such as one or more" },
+          { "title" : "Cardinality",
+            "description" : "When selecting, a requirement such as one or more",
+            "type" : "string" },
           "alternatives" : 
           { "anyOf" : 
             [ 
@@ -148,21 +148,21 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "name" : 
-          { "type" : "string",
-            "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object." },
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
           "ns" : 
-          { "type" : "string",
-            "title" : "Namespace",
-            "description" : "A namespace qualifying the name." },
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "properties" : 
@@ -210,8 +210,10 @@
         "properties" : 
         { "title" : 
           { "$ref" : "#/definitions/title" },
-          "last-modified-date" : 
-          { "$ref" : "#/definitions/last-modified-date" },
+          "published" : 
+          { "$ref" : "#/definitions/published" },
+          "last-modified" : 
+          { "$ref" : "#/definitions/last-modified" },
           "version" : 
           { "$ref" : "#/definitions/version" },
           "oscal-version" : 
@@ -261,10 +263,23 @@
                 "items" : 
                 { "$ref" : "#/definitions/party" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "title",
+          "last-modified",
+          "version",
           "oscal-version" ],
         "additionalProperties" : false },
       "back-matter" : 
@@ -299,31 +314,38 @@
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
+            "type" : "string",
+            "format" : "uri-reference" },
           "rel" : 
-          { "type" : "string",
-            "title" : "Relation",
-            "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose." },
+          { "title" : "Relation",
+            "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.",
+            "type" : "string" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
           "text" : 
           { "type" : "string" } },
         "required" : 
         [ "text",
           "href" ],
         "additionalProperties" : false },
-      "last-modified-date" : 
-      { "title" : "Last modified date",
-        "description" : "Date of last modification.",
-        "$id" : "#/definitions/last-modified-date",
+      "published" : 
+      { "title" : "Publication Timestamp",
+        "description" : "The date and time this document was published.",
+        "$id" : "#/definitions/published",
         "type" : "string",
         "format" : "date-time",
-        "pattern" : "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})" },
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "last-modified" : 
+      { "title" : "Last modified timestamp",
+        "description" : "Date and time of last modification.",
+        "$id" : "#/definitions/last-modified",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
       "version" : 
       { "title" : "Document version",
         "description" : "The version of the document content.",
@@ -341,34 +363,61 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Qualifies the kind of document identifier." },
-          "STRVALUE" : 
+          { "description" : "Qualifies the kind of document identifier.",
+            "type" : "string" },
+          "identifier" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE",
+        [ "identifier",
           "type" ],
         "additionalProperties" : false },
       "prop" : 
       { "title" : "Property",
-        "description" : "A value with a name, attributed to the containing control, subcontrol, part, or group.",
+        "description" : "A value with a name, attributed to the containing control, part, or group.",
         "$id" : "#/definitions/prop",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "ns" : 
-          { "type" : "string",
-            "title" : "Namespace",
-            "description" : "A namespace qualifying the name." },
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" } },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" } },
         "minProperties" : 1,
         "maxProperties" : 4 },
+      "annotation" : 
+      { "title" : "Annotation",
+        "description" : "A name/value pair with optional explanitory remarks.",
+        "$id" : "#/definitions/annotation",
+        "type" : "object",
+        "properties" : 
+        { "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "ns" : 
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
+          "value" : 
+          { "title" : "Value",
+            "description" : "Indicates the value of the characteristic.",
+            "type" : "string" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "name" ],
+        "additionalProperties" : false },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -376,13 +425,9 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
-          "role-id" : 
-          { "type" : "string",
-            "title" : "Role identifier",
-            "description" : "References a role element defined in metadata." },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "persons" : 
           { "anyOf" : 
             [ 
@@ -394,9 +439,41 @@
                 "minItems" : 2 } ] },
           "org" : 
           { "$ref" : "#/definitions/org" },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
+      "party-id" : 
+      { "title" : "Party Reference",
+        "description" : "References a party defined in metadata.",
+        "$id" : "#/definitions/party-id",
+        "type" : "string" },
       "person" : 
       { "title" : "Person",
         "description" : "A person, with contact information",
@@ -463,8 +540,35 @@
                 "items" : 
                 { "$ref" : "#/definitions/url" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "org" : 
       { "title" : "Organization",
@@ -521,8 +625,35 @@
                 "items" : 
                 { "$ref" : "#/definitions/url" },
                 "minItems" : 2 } ] },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "org-name" ],
         "additionalProperties" : false },
@@ -533,13 +664,13 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
+          { "title" : "Type",
+            "description" : "Indicating the type of identifier, address, email or other data item.",
+            "type" : "string" },
+          "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "id" ],
         "additionalProperties" : false },
       "org-id" : 
       { "title" : "Organization Identifier",
@@ -548,31 +679,38 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item." },
-          "STRVALUE" : 
+          { "title" : "Type",
+            "description" : "Indicating the type of identifier, address, email or other data item.",
+            "type" : "string" },
+          "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "id" ],
         "additionalProperties" : false },
       "rlink" : 
-      { "title" : "Related link",
+      { "title" : "Resource link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
         "$id" : "#/definitions/rlink",
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "hypertext reference",
-            "description" : "A link to a document or document fragment (actual, nominal or projected)" },
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
+            "type" : "string",
+            "format" : "uri-reference" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
-          "hash" : 
-          { "$ref" : "#/definitions/hash" } },
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
+          "hashes" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/hash" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/hash" },
+                "minItems" : 2 } ] } },
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
@@ -598,8 +736,8 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of address." },
+          { "description" : "Indicates the type of address.",
+            "type" : "string" },
           "postal-address" : 
           { "anyOf" : 
             [ 
@@ -649,7 +787,7 @@
         "$id" : "#/definitions/email",
         "type" : "string",
         "format" : "email",
-        "pattern" : ".+@.+" },
+        "pattern" : "^.+@.+" },
       "phone" : 
       { "title" : "Telephone",
         "description" : "Contact number by telephone",
@@ -657,12 +795,12 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of phone number." },
-          "STRVALUE" : 
+          { "description" : "Indicates the type of phone number.",
+            "type" : "string" },
+          "number" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "number" ],
         "additionalProperties" : false },
       "url" : 
       { "title" : "URL",
@@ -670,18 +808,6 @@
         "$id" : "#/definitions/url",
         "type" : "string",
         "format" : "uri" },
-      "notes" : 
-      { "title" : "Notes",
-        "description" : "Any notes with further information",
-        "$id" : "#/definitions/notes",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string",
-            "description" : "Indicates the type of note." },
-          "note" : 
-          { "$ref" : "#/definitions/note" } },
-        "additionalProperties" : false },
       "desc" : 
       { "title" : "Description",
         "description" : "A short textual description",
@@ -694,11 +820,20 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "desc" : 
           { "$ref" : "#/definitions/desc" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
           "rlinks" : 
           { "anyOf" : 
             [ 
@@ -710,8 +845,8 @@
                 "minItems" : 2 } ] },
           "base64" : 
           { "$ref" : "#/definitions/base64" },
-          "notes" : 
-          { "$ref" : "#/definitions/notes" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
@@ -722,9 +857,9 @@
         "type" : "object",
         "properties" : 
         { "algorithm" : 
-          { "type" : "string",
-            "title" : "Hash algorithm",
-            "description" : "Method by which a hash is derived" },
+          { "title" : "Hash algorithm",
+            "description" : "Method by which a hash is derived",
+            "type" : "string" },
           "value" : 
           { "type" : "string" } },
         "required" : 
@@ -733,22 +868,99 @@
         "additionalProperties" : false },
       "role" : 
       { "title" : "Role",
-        "description" : "Defining a role to be assigned to a party or agent",
+        "description" : "Defining a role to be assigned to a party",
         "$id" : "#/definitions/role",
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "short-name" : 
           { "$ref" : "#/definitions/short-name" },
           "desc" : 
-          { "$ref" : "#/definitions/desc" } },
+          { "$ref" : "#/definitions/desc" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "id" ],
+        [ "id",
+          "title" ],
+        "additionalProperties" : false },
+      "responsible-party" : 
+      { "title" : "Responsible Party",
+        "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
+        "$id" : "#/definitions/responsible-party",
+        "type" : "object",
+        "properties" : 
+        { "party-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/party-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/party-id" },
+                "minItems" : 2 } ] },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "party-ids" ],
         "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
@@ -762,18 +974,18 @@
         "type" : "object",
         "properties" : 
         { "filename" : 
-          { "type" : "string",
-            "format" : "uri-reference",
-            "title" : "File Name",
-            "description" : "Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded." },
+          { "title" : "File Name",
+            "description" : "Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.",
+            "type" : "string",
+            "format" : "uri-reference" },
           "media-type" : 
-          { "type" : "string",
-            "title" : "Media type",
-            "description" : "Describes the media type of the linked resource" },
-          "STRVALUE" : 
+          { "title" : "Media type",
+            "description" : "Describes the media type of the linked resource",
+            "type" : "string" },
+          "value" : 
           { "type" : "string" } },
         "required" : 
-        [ "STRVALUE" ],
+        [ "value" ],
         "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
@@ -782,9 +994,9 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "targets" : 
           { "anyOf" : 
             [ 
@@ -806,6 +1018,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/doc-id" },
+                "minItems" : 2 } ] },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] } },
         "required" : 
         [ "id" ],
@@ -815,10 +1036,10 @@
         "description" : "An address for retrieval of a citation",
         "$id" : "#/definitions/target",
         "type" : "string" },
-      "note" : 
-      { "title" : "Note",
-        "description" : "Permits multiple paragraphs, lists, tables etc.",
-        "$id" : "#/definitions/note",
+      "remarks" : 
+      { "title" : "Remarks",
+        "description" : "Additional commentary on the parent item.",
+        "$id" : "#/definitions/remarks",
         "type" : "string" },
       "catalog" : 
       { "title" : "Catalog",
@@ -827,9 +1048,9 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "metadata" : 
           { "$ref" : "#/definitions/metadata" },
           "groups" : 
@@ -863,13 +1084,13 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "parameters" : 
@@ -927,13 +1148,13 @@
         "type" : "object",
         "properties" : 
         { "id" : 
-          { "type" : "string",
-            "title" : "Identifier",
-            "description" : "Unique identifier of the containing object" },
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "class" : 
-          { "type" : "string",
-            "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object" },
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "parameters" : 
