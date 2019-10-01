@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="4688b4f5-c6f8-4ba4-b837-d9b87d065513">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="3036c185-819f-4445-8624-dde14792ba30">
   <metadata>
     <title>FedRAMP Low Baseline</title>
-    <last-modified>2019-09-24T12:22:46.211-04:00</last-modified>
+    <last-modified>2019-10-01T11:03:27.392-04:00</last-modified>
     <version>1.1</version>
     <oscal-version>1.0.0-milestone1</oscal-version>
-    <role id="author"><title>Author</title></role>
+    <role id="creator">
+      <title>Document creator</title>
+    </role>
+    <role id="contact">
+      <title>Contact</title>
+    </role>
     <party id="fedramp">
       <org>
         <org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
@@ -13,7 +18,10 @@
         <url>https://fedramp.gov</url>
       </org>
     </party>
-    <responsible-party role-id="author">
+    <responsible-party role-id="creator">
+      <party-id>fedramp</party-id>
+    </responsible-party>
+    <responsible-party role-id="contact">
       <party-id>fedramp</party-id>
     </responsible-party>
   </metadata>

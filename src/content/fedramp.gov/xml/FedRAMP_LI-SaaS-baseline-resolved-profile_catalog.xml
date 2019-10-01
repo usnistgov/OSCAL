@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="8523b2f0-426f-4828-ab1f-a291f0b31477">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="3b9109bc-6bf8-4f71-beb8-eb7b47f5ea89">
   <metadata>
-    <title>DRAFT FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
-    <last-modified>2019-09-19T18:20:00.00-04:00</last-modified>
+    <title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
+    <last-modified>2019-10-01T11:05:07.595-04:00</last-modified>
     <version>1.0</version>
     <oscal-version>1.0.0-milestone1</oscal-version>
-    <role id="author"><title>Author</title></role>
+    <role id="author">
+      <title>Author</title>
+    </role>
     <party id="fedramp">
       <org>
         <org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>

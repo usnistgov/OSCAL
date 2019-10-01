@@ -1,9 +1,8 @@
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
 	id="uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304">
 	<metadata>
-		<title>DRAFT FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
-		<last-modified>
-			2019-10-01T11:05:07.595-04:00</last-modified>
+		<title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
+		<last-modified>2019-10-01T11:05:07.595-04:00</last-modified>
 		<version>1.0</version>
 		<oscal-version>1.0.0-milestone1</oscal-version>
 		
