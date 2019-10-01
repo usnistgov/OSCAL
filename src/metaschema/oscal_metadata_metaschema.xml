@@ -37,8 +37,8 @@
       <description>Provides information about the publication and availability of the containing document.</description>
       <model>
          <field ref="title" min-occurs="1"/>
-         <field ref="publication-date"/>
-         <field ref="last-modified-date" min-occurs="1"/>
+         <field ref="published"/>
+         <field ref="last-modified" min-occurs="1"/>
          <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
          <field ref="doc-id" max-occurs="unbounded">
