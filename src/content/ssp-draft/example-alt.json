@@ -68,7 +68,7 @@
       "remarks": "This is a partial implementation that addresses the logging server portion of the auditing system.",
       "users": {
         "user-asset-administrator": {
-          "name": "System Administrator",
+          "title": "System Administrator",
           "role-ids": "asset-administrator",
           "annotations": {
             "name": "type",
@@ -76,7 +76,7 @@
           }
         },
         "user-service-owner": {
-          "name": "Audit Team",
+          "title": "Audit Team",
           "role-ids": "asset-owner",
           "annotations": {
             "name": "type",
@@ -84,7 +84,7 @@
           }
         },
         "user-legal": {
-          "name": "Legal Department",
+          "title": "Legal Department",
           "role-ids": "legal-officer",
           "annotations": {
             "name": "type",
