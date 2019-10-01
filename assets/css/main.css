@@ -4124,17 +4124,17 @@ div.OM-map p {
   margin: 0ex; }
 
 span.OM-lit {
-  font-family: serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
   font-style: normal; }
 
 span.OM-emph {
-  font-family: serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
   font-style: italic; }
 
 span.OM-cardinality {
-  font-family: serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #205493; }

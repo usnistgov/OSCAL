@@ -256,6 +256,7 @@ jobs: # a collection of
       - install-maven-dependencies
       - install-jq
       - install-prettyjson
+      - install-xmllint
       - run:
           name: Generate OSCAL converters
           command: |
