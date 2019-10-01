@@ -616,7 +616,7 @@
         example) the results of profile resolution.</p>
       </remarks>
    </define-flag>
-   <define-flag name="id" as-type="NCName">
+   <define-flag name="id" as-type="string">
       <formal-name>Identifier</formal-name>
       <description>Unique identifier of the containing object</description>
       <remarks>
