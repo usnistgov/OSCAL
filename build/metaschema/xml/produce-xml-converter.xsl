@@ -34,6 +34,7 @@
     
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
+    <!--<xsl:variable name="composed-metaschema" select="/"/>-->
     
     <xsl:template match="/">
         <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
@@ -179,7 +180,7 @@
             </XSLT:variable>
             <map key="{@name}">
                 <xsl:for-each select="json-key">
-                    <xsl:attribute name="key">{@<xsl:value-of select="@name"/>}</xsl:attribute>
+                    <xsl:attribute name="key">{@<xsl:value-of select="@flag-name"/>}</xsl:attribute>
                 </xsl:for-each>
                 <xsl:apply-templates select="flag"/>
                 <xsl:if test="not(@as-type = 'empty')">
