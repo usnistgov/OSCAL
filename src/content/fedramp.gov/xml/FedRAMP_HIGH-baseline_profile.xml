@@ -1,13 +1,18 @@
 <!-- Created: 5/16/2019 9:05:15 PM -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-	id="uuid-fedramp-high-20190924-122246">
+	id="uuid-2d9e9fd6-b9dd-4ed2-be21-79d7c779942b">
 	<metadata>
 		<title>FedRAMP High Baseline</title>
-		<last-modified>2019-09-24T12:22:46.211-04:00</last-modified>
+		<last-modified>2019-10-01T11:04:14.081-04:00</last-modified>
 		<version>1.1</version>
 		<oscal-version>1.0.0-milestone1</oscal-version>
-		
-		<role id="author"><title>Author</title></role>
+
+		<role id="creator">
+			<title>Document creator</title>
+		</role>
+		<role id="contact">
+			<title>Contact</title>
+		</role>
 		<party id="fedramp">
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
@@ -15,7 +20,10 @@
 				<url>https://fedramp.gov</url>
 			</org>
 		</party>
-		<responsible-party role-id="author">
+		<responsible-party role-id="creator">
+			<party-id>fedramp</party-id>
+		</responsible-party>
+		<responsible-party role-id="contact">
 			<party-id>fedramp</party-id>
 		</responsible-party>
 	</metadata>
@@ -847,7 +855,7 @@
 		</set>
 		<!-- - - CM-6 - -  -->
 		<set param-id="cm-6_prm_1">
-			<guidline>See CM-6(a) Additional FedRAMP Requirements and Guidance</guidline>
+			<guideline><p>See CM-6(a) Additional FedRAMP Requirements and Guidance</p></guideline>
 		</set>
 		<!-- - - CM-6 (1) - -  -->
 		<!-- - - CM-6 (2) - -  -->
