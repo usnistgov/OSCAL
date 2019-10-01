@@ -19,8 +19,10 @@ The OSCAL models are based on structures that use a specific set of data types. 
   * [nonNegativeInteger](#nonnegativeinteger)
   * [positiveInteger](#positiveinteger)
 - [Formatted String Data types](#formatted-string-data-types)
-  * [dateTime-with-timezone](#datetime-with-timezone)
+  * [dateTime-with-timezone](#dateTime-with-timezone)
   * [date-with-timezone](#date-with-timezone)
+  * [dateTime](#dateTime)
+  * [date](#date)
   * [email](#email)
   * [hostname](#hostname)
   * [ip-v4-address](#ip-v4-address)
@@ -44,7 +46,7 @@ This data type indicates that the model information element contains no value co
 
 In XML, this may represent an element without text content.
 
-In JSON, this may represent an object with labels corrisponding to other child information elements, but no label corresponding to a text value.
+In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.
 
 ### boolean
 
@@ -57,7 +59,7 @@ A boolean value mapped in XML, JSON, and YAML as follows:
 
 ### string
 
-A unicode string of characters.
+A string of Unicode characters.
 
 ### NCName
 
@@ -70,8 +72,7 @@ An integer value.
 OSCAL represents integers   
 [as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
 
-In JSON Schema, the
-[`integer` type](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1.1) is used.
+In JSON Schema, the [`integer` type](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1.1) is used. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
 
 ### nonNegativeInteger
 
@@ -108,7 +109,7 @@ In JSON Schema, this is represented as:
 
 ### dateTime-with-timezone
 
-A string containing a date and time formatted acording to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
+A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
 
 For example:
 
@@ -173,6 +174,20 @@ In JSON Schema, this is represented as:
   "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"
 }
 ```
+
+### dateTime
+
+In XML, the [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) datatype is used. This is the same as
+[dateTime-with-timezone](#dateTime-with-timezone), except the time zone portion is optional.
+
+In JSON, lexical conformance to date-times with optional time zones is provided by a regular expression, the same as given above for [dateTime-with-timezone](#dateTime-with-timezone), except as adjusted for the requirement.
+
+### date
+
+In XML, the [date](https://www.w3.org/TR/xmlschema11-2/#date) datatype is used. This is the same as
+[date-with-timezone](#date-with-timezone), except the time zone portion is optional.
+
+In JSON, lexical conformance to dates with optional time zones is provided by a regular expression, the same as given above for [date-with-timezone](#date-with-timezone), except as adjusted for the requirement.
 
 ### email
 
@@ -364,7 +379,7 @@ Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; t
 
 The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
 
-Parameter injection is handled in HTML as follows using the &lt;insert&gt; tag:
+Parameter injection is handled in OSCAL as follows using the &lt;insert&gt; tag:
 
 ```html
 Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/> or as required, to address organizational changes.
@@ -373,26 +388,30 @@ Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/>
 The same string in Markdown is represented as follows:
 
 ```markdown
-Reviews and updates the risk management strategy {{ pm-9_prm_1 }} or as required, to address organizational changes.
+Reviews and updates the risk management strategy {% raw %}{{ pm-9_prm_1 }}{% endraw %} or as required, to address organizational changes.
 ```
 
 #### Specialized Character Mapping
 
 The following characters have special handling in their HTML and/or Markdown forms.
 
-| Character | XML HTML | JSON Markdown | YAML Markdown |
-| --- | --- | --- | --- |
-| &amp; | &amp;amp; | &amp; | &amp;
-| &lt; | &amp;lt; | &lt; | &lt;
-| &gt; | &amp;gt; | &gt; | &gt;
-| " | &amp;quot; | \\" | \\"
-| ' | &amp;apos; | ' | '
-| \* | \* | \\\* | \\\*
-| &#96; | &#96; | \\&#96; | \\&#96;
-| ~ | ~ | \\~ | \\~
-| ^ | ^ | \\^ | \\^
+| Character                                      | XML HTML                             | (plain) Markdown | Markdown in JSON | Markdown in YAML |
+| ---                                            | ---                                  | ---              | ---              | ---              |
+| &amp; (ampersand)                              | &amp;amp;                            | &amp;            | &amp;            | &amp;            |
+| &lt; (less-than sign or left angle bracket)    | &amp;lt;                             | &lt;             | &lt;             | &lt;             |
+| &gt; (greater-than sign or right angle bracket | &gt; **or** &amp;gt;                 | &gt;             | &gt;             | &gt;             |
+| &#34; (straight double quotation mark)         | &#34; **or** &amp;quot;              | \\&#34;          |  \\\\&#34;       | \\\\&#34;        |
+| &#39; (straight apostrophe)                    | &#39; **or** &amp;apos;              | \\&#39;          | \\\\&#39;        | \\\\&#39;        |
+| \* (asterisk)                                  | \*                                   | \\\*             | \\\\\*           | \\\\\*           |
+| &#96; (grave accent or back tick mark)         | &#96;                                | \\&#96;          | \\\\&#96;        | \\\\&#96;        |
+| ~ (tilde)                                      | ~                                    | \\~              | \\\\~            | \\\\~            |
+| ^ (caret)                                      | ^                                    | \\^              | \\\\^            | \\\\^            |
 
-While the characters `*`&#96;`~^` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear in HTML, they are escaped in the mapped Markdown to avoid them being parsed as Markdown markup. This allows these characters to be mapped back to HTML characters when the Markdown is mapped to HTML.
+While the characters `*`&#96;`~^` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear as literals in a Markdown representation, they must be escaped to avoid them being parsed as Markdown to indicate formatting. The escaped representation indicates these characters are to be represented as characters, not markup, when the Markdown is mapped to HTML.
+
+Because the character "\\" (back slash or reverse solidus) must be escaped in JSON, note that those characters that require a back slash to escape them in Markdown, such as "\*" (appearing as "\\\*"), must be *double escaped* (as "\\\\\*") to represent the escaped character in JSON or YAML. In conversion, the JSON or YAML processor reduces these to the simple escaped form, again permitting the Markdown processor to recognize them as character contents, not markup.
+
+Since these characters are not markup delimiters in XML, they are safe to use there without special handling. The XML open markup delimiters "&lt;" and "&amp;", when appearing in XML contents, must as always be escaped as named entities or numeric character references, if they are to be read as literal characters not markup.
 
 ### markup-multiline
 
@@ -411,13 +430,15 @@ Tables are also supported by `markup-multiline` which are mapped from Markdown t
 - The first row in a Markdown table is considered a header row, with each cell mapped as a &lt;th&gt;.
 - The alignment formatting (second) row of the Markdown table is not converted to HTML. Formatting is currently ignored.
 - Each remaining row is mapped as a cell using the &lt;td&gt; tag.
-- colspan and rowspan is not supported by Markdown.
+- HTML `colspan` and `rowspan` are not supported by Markdown, and so are excluded from OSCAL.
+
+OSCAL attempts to support simple tables mainly due to the prevalence of tables in legacy data sets. However, producers of OSCAL data should note that when they have tabular information, these are frequently semantic structures or matrices that can be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs. This ensures that their nominal or represented semantics are accessible for processing when this information would be lost in plain table cells. Table markup should be used only as a fallback option when stronger semantic labeling is not possible.
 
 Tables are mapped from HTML to Markdown as follows:
 
-- Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by `|`.
-- The second, alignment formatting row, is produced with centered alignment (i.e., | --- |) used for each cell. Other alignments are not currently supported.
-- Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by `|`.
+* Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by `|`.
+* The second row is given as a sequence of `---`, as many as the table has columns, delimited by single `|`. In Markdown, a simple syntax here can be used to indicate the alignment of cells; OSCAL HTML does not support this feature.
+* Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by `|`.
 
 For example:
 
@@ -437,3 +458,8 @@ Is mapped to the Markdown table:
 | --- | --- |
 | Have some of | Try all of |
 ```
+
+
+#### Line feeds in Markdown
+
+Additionally, line feed (LF) characters must be escaped as "\\n" when appearing in string contents in JSON and (depending on placement) in YAML. In Markdown, the line feed is used to delimit paragraphs and other block elements, represented using markup (tagging) in the XML version. When transcribed into JSON, these LF characters must also appear as "\\n".

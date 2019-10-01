@@ -38,7 +38,7 @@
      <formal-name>Name</formal-name>
      <description>Identifying the purpose and intended use of the property, part or other object.</description>
   </define-flag>
-  <define-flag name="id" as-type="ID">
+  <define-flag name="id" as-type="NCName">
      <formal-name>Identifier</formal-name>
      <description>Unique identifier of the containing object</description>
   </define-flag>
@@ -46,7 +46,7 @@
      <formal-name>Namespace</formal-name>
      <description>A namespace qualifying the name.</description>
   </define-flag>
-  <define-flag name="class" as-type="NMTOKENS">
+  <define-flag name="class" as-type="string">
      <formal-name>Class</formal-name>
      <description>Indicating the type or classification of the containing object</description>
   </define-flag>

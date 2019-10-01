@@ -24,7 +24,7 @@ OSCAL profiles are representations of their catalogs configured for use by organ
 
 * Which controls are *selected* from the catalog and thereby considered to be in scope for the application;
 * How the control selection should be *organized* and represented, including whether and how competing control definitions are to be resolved and merged;
-* Whether and where any controls are to be *configured* or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls and subcontrols, to describe their application in the system. 
+* Whether and where any controls are to be *configured* or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls to describe their application in the system. 
 
 See [examples](/OSCAL/resources/examples/profiles/) of OSCAL profiles.
 

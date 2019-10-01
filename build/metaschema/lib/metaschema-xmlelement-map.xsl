@@ -32,6 +32,9 @@
 
 <!-- For debugging, to produce standalone HTML, call template 'make-page' in metaschema-docs-util.xsl  -->
 
+<!-- Use this entry point (only) if the pruned tree
+     is wanted - not necessary if the view is
+     dynamic (has expanding/collapsing) -->
    <xsl:template match="/" mode="static-view">
       <div class="OM-map">
          <xsl:apply-templates select="$pruned-tree/*" mode="html-render"/>
@@ -41,6 +44,8 @@
    <xsl:template match="/">
       <div class="OM-map">
          <xsl:variable name="html-basic">
+            <!-- using surrogate-tree since producing the expanding/collapsing
+                 view, we do not need to prune -->
             <xsl:apply-templates select="$surrogate-tree/*" mode="html-render"/>
          </xsl:variable>
          <xsl:apply-templates select="$html-basic" mode="elaborate"/>
@@ -48,6 +53,25 @@
    </xsl:template>
 
    <xsl:template mode="html-render" match="@m:*"/>
+
+   <xsl:template priority="5" match="*[@group-xml='GROUPED']" mode="html-render">
+      <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
+      <div class="OM-entry{ ' open'[$first] }">
+         <p>
+            <span class="OM-view_switcher"/>
+            <xsl:text expand-text="true">&lt;{ @group-name }&gt;</xsl:text>
+            <span class="OM-cardinality" xsl:expand-text="true"> [{ if (@min-occurs = '0') then '0 or ' else '' }1]</span>
+         </p>
+         <div class="OM-map">
+           <xsl:next-match/>
+         </div>
+         <p>
+            <xsl:text>&lt;/</xsl:text>
+            <xsl:value-of select="@group-name"/>
+            <xsl:text>></xsl:text>
+         </p>
+      </div>     
+   </xsl:template>
 
    <xsl:template match="*" mode="html-render">
       <xsl:variable name="contents">
@@ -71,8 +95,9 @@
          <xsl:call-template name="cardinality-note"/>
       </p>
    </xsl:template>
-
-   <!-- matching assemblies containing children other than flags after pruning -->
+   
+   <!-- matching assemblies containing children other than flags after pruning,
+        making a div not a p -->
    <xsl:template match="m:assembly[exists(* except m:flag)]" mode="html-render">
       <xsl:variable name="contents">
          <xsl:apply-templates select="." mode="contents"/>
@@ -110,13 +135,19 @@
       <xsl:text>"</xsl:text>
    </xsl:template>
 
-   <xsl:template mode="html-render" match="m:field[@as-type='markup-multiline'][not(@wrap-xml='yes')]">
+   <xsl:template mode="html-render" match="m:field[@as-type='markup-multiline'][not(@in-xml='WITH_WRAPPER')]">
       <xsl:variable name="first" select=". is key('surrogates-by-name',@name)[1]"/>
       <p class="OM-entry{ ' open'[$first] }">
-         <a href="../../schemas/datatypes/"><i>Prose contents (paragraphs, lists, headers and tables)</i></a>
+         <xsl:call-template name="describe-prose"/>
       </p>
    </xsl:template>
-
+   
+   <xsl:template name="describe-prose">
+      <a href="../../schemas/datatypes/">
+         <i>Prose contents (paragraphs, lists, headers and tables)</i>
+      </a>
+   </xsl:template>
+   
    <xsl:template name="cardinality-note">
       <xsl:text> </xsl:text>
       <span class="OM-cardinality">
@@ -124,6 +155,18 @@
       </span>
    </xsl:template>
 
+   <xsl:template mode="occurrence-code" match="*[@group-xml='GROUPED']">
+      <xsl:variable name="minOccurs" select="max((1,number(@min-occurs))) ! string(.)"/>
+      <xsl:variable name="maxOccurs" select="(@max-occurs,'1')[1] ! (if (. eq 'unbounded') then '&#x221e;' else .)"/>
+      <xsl:text>[</xsl:text>
+      <xsl:choose>
+         <xsl:when test="$minOccurs = $maxOccurs" expand-text="true">{ $minOccurs }</xsl:when>
+         <xsl:when test="number($maxOccurs) = number($minOccurs) + 1" expand-text="true">{ $minOccurs } or { $maxOccurs }</xsl:when>
+         <xsl:otherwise expand-text="true">{ $minOccurs } to { $maxOccurs }</xsl:otherwise>
+      </xsl:choose>
+      <xsl:text>]</xsl:text>
+   </xsl:template>
+   
    <!--<xsl:template name="cardinality-note">
       <xsl:variable name="note">
          <xsl:variable name="singleton" select="@m:maxOccurs = '1'"/>
@@ -148,14 +191,20 @@
    </xsl:template>
 
    <!-- We don't have to do flags here since they are promoted into attribute syntax. -->
-   <xsl:template mode="contents" match="m:field">
-      <span class="OM-emph">string</span>
+   <xsl:template priority="3" mode="contents" match="m:field[@as-type='markup-multiline'][@in-xml='WITH_WRAPPER']">
+      <xsl:call-template name="describe-prose"/>
    </xsl:template>
-
+   
+   <xsl:template priority="2" mode="contents" match="m:field[@as-type='empty']"/>
+   
    <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')]">
       <span class="OM-emph">
-        <xsl:value-of select="@as-type"/>
+         <xsl:value-of select="@as-type"/>
       </span>
+   </xsl:template>
+   
+   <xsl:template mode="contents" match="m:field">
+      <span class="OM-emph">string</span>
    </xsl:template>
 
 

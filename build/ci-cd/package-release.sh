@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
 else
   working_dir=$(readlink -f "$1")
 fi
-echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
+echo -e "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 
 release_version=${CIRCLE_TAG#"v"}
@@ -45,7 +45,7 @@ while IFS="|" read path dest_path || [[ -n "$path" ]]; do
       fi
       dest_dir=${dest%/*} # remove filename
 
-      echo "${P_INFO}Copying '$file' to '$dest'.${P_END}"
+      echo -e "${P_INFO}Copying '$file' to '$dest'.${P_END}"
       mkdir -p "$dest_dir"
       cp "$file" "$dest"
     done

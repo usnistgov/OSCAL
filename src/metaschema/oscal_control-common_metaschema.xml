@@ -81,12 +81,14 @@
    <define-field name="usage" as-type="markup-line">
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
+      <json-value-key>summary</json-value-key>
       <flag ref="id"/>
    </define-field>
    
    <define-field name="constraint">
       <formal-name>Constraint</formal-name>
       <description>A formal or informal expression of a constraint or test</description>
+      <json-value-key>detail</json-value-key>
       <flag ref="test"/>
    </define-field>
    
@@ -94,7 +96,7 @@
       <formal-name>Guideline</formal-name>
       <description>A prose statement that provides a recommendation for the use of a parameter.</description>
       <model>
-         <field ref="prose"/>
+         <field ref="prose" in-xml="UNWRAPPED"/>
          <any/>
       </model>
    </define-assembly>
@@ -141,7 +143,7 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <field ref="prose"/>
+         <field ref="prose" in-xml="UNWRAPPED"/>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts"/>
          </assembly>
@@ -176,13 +178,12 @@
       <description>When selecting, a requirement such as one or more</description>
    </define-flag>
 
-   <define-flag name="depends-on" as-type="IDREF">
+   <define-flag name="depends-on" as-type="NCName">
       <formal-name>Depends on</formal-name>
       <description>Another parameter invoking this one</description>
    </define-flag>
 
    <define-field name="prose" as-type="markup-multiline">
-      <!-- TODO: remove this field -->
       <formal-name>Prose</formal-name>
       <description>Prose permits multiple paragraphs, lists, tables etc.</description>
    </define-field>

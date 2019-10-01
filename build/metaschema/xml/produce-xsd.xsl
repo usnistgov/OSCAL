@@ -20,7 +20,7 @@
     <xsl:output indent="yes"/>
 
 <!-- Including XSD namespace for post process -->
-    <xsl:strip-space elements="METASCHEMA define-assembly define-field define-flag model choice valid-values remarks xs:*"/>
+    <xsl:strip-space elements="METASCHEMA define-assembly define-field define-flag model choice allowed-values remarks xs:*"/>
     
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
@@ -39,12 +39,16 @@
     
     <xsl:param name="debug" select="'no'"/>
     
+    <!--<xsl:template match="/">
+        <xsl:apply-templates select="/METASCHEMA"/>
+    </xsl:template>-->
+    
     <xsl:template match="/">
         <xsl:variable name="unwired">
-         <xsl:call-template name="build-schema"/>
-    </xsl:variable>
-    <xsl:choose>
-            <xsl:when test="$debug='yes'">
+            <xsl:call-template name="build-schema"/>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$debug = 'yes'">
                 <xsl:message>Running in 'debug' to show intermediate results</xsl:message>
                 <xsl:sequence select="$unwired"/>
             </xsl:when>
@@ -53,14 +57,12 @@
             </xsl:otherwise>
         </xsl:choose>
         <!-- $unwired has the schema with no namespaces -->
-        
+
         <!--<xsl:copy-of select="$unwired"/>-->
         <!-- mode 'wire-ns' wires up the namespaces -->
-        
+
     </xsl:template>
 
-    
-    
     <!--MAIN ACTION HERE -->
     
     <xsl:template name="build-schema">
@@ -100,28 +102,11 @@
             </xsl:if>
             <xsl:variable name="all-types" select="$composed-metaschema//@as-type"/>
             
-            <xsl:copy-of select="$available-custom-types[@name = $all-types]"/>
+            <xsl:copy-of select="$types-library/xs:simpleType[@name = $all-types]"/>
         </xs:schema>
     </xsl:template>
     
-    <xsl:variable name="available-custom-types" select="document('oscal-datatypes.xsd')/*/xs:simpleType"/>
-    
-    <xsl:variable name="built-in-types" as="element()*">
-        <xs:simpleType name="boolean"/>
-        <xs:simpleType name="string"/>
-        <xs:simpleType name="NCName"/>
-        <xs:simpleType name="NMTOKENS"/>
-        <xs:simpleType name="decimal"/>
-        <!-- Not supporting float or double -->
-        <!--<xs:simpleType name="float"/>
-        <xs:simpleType name="double"/>-->
-        <xs:simpleType name="integer"/>
-        <xs:simpleType name="nonNegativeInteger"/>
-        <xs:simpleType name="positiveInteger"/>
-        <xs:simpleType name="ID"/>
-        <xs:simpleType name="IDREF"/>
-        <xs:simpleType name="IDREFS"/>
-    </xsl:variable>
+    <xsl:variable name="types-library" select="document('oscal-datatypes.xsd')/*"/>
     
     <xsl:template match="namespace"/>
         
@@ -137,18 +122,62 @@
     
 <!-- Produces an element for markup-line and markup-multiline -->
     
-    <xsl:template priority="6" match="define-field[@as-type='markup-multiline']"/>
-    
     <xsl:template match="define-field">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
-            <xs:complexType mixed="true">
-                <xsl:apply-templates select="flag"/>
+            <xsl:variable name="datatype">
+                <xsl:choose>
+                    <xsl:when test="exists(allowed-values)">
+                        <xsl:value-of select="concat(@name,'-enumeration')"/>
+                    </xsl:when>
+                    <xsl:when test="exists(@as-type)">
+                        <xsl:value-of select="@as-type"/>
+                    </xsl:when>
+                    <xsl:otherwise>string</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xs:complexType>
+                <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                        <!-- replace @base with correct base for type -->
+                        <xsl:call-template name="assign-datatype">
+                            <xsl:with-param name="assign-to-attribute">base</xsl:with-param>
+                            <xsl:with-param name="datatype" select="$datatype"/>
+                        </xsl:call-template>
+                        <xsl:apply-templates select="flag"/>
+                    </xs:extension>
+                    <!--<xs:restriction base="xs:string">
+                        <!-\- overriding @base when a nominal type is given -\->
+                        <xsl:apply-templates select="allowed-values"/>
+                    </xs:restriction>-->
+                </xs:simpleContent>
+                           
             </xs:complexType>
         </xs:element>
+        <xsl:apply-templates select="allowed-values">
+            <xsl:with-param name="simpletype-name" select="@name || '-enumeration'"/>
+        </xsl:apply-templates>
+        <!--<xsl:if test="exists(allowed-values)">
+            <xs:simpleType name="{@name}-enumeration">
+                <xs:restriction base="xs:string">
+                    <xsl:apply-templates select="allowed-values/*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xsl:if>-->
     </xsl:template>
-    
-    <xsl:template priority="5" match="define-field[@as-type='empty']">
+
+    <!--<xsl:template priority="3" match="define-field[exists(@as-type)]">
+        <xs:element name="{@name }">
+            <xsl:call-template name="assign-type">
+                <xsl:with-param name="datatype" select="$type"/>
+            </xsl:call-template>
+            <xsl:apply-templates select="." mode="annotated"/>
+            <xsl:apply-templates select="allowed-values">
+                <xsl:with-param name="datatype" select="@as-type"/>
+            </xsl:apply-templates>
+        </xs:element>
+    </xsl:template>-->
+    <xsl:template priority="5" match="define-field[@as-type='empty']">-
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType>
@@ -167,8 +196,8 @@
         </xs:element>
     </xsl:template>
     
-    <xsl:template priority="5" match="define-field[@as-type='markup-multiline'][@unwrap-xml='no']">
-        <xs:element name="{@name }">
+    <xsl:template priority="5" match="define-field[@as-type='markup-multiline']">
+        <xs:element name="{@name}">
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
                 <xs:group ref="{$declaration-prefix}:PROSE"/>
@@ -177,14 +206,7 @@
         </xs:element>
     </xsl:template>
     
-    <xsl:template priority="3" match="define-field[exists(@as-type)]">
-        <xs:element name="{@name }">
-            <xsl:call-template name="assign-type">
-                <xsl:with-param name="datatype" select="@as-type"/>
-            </xsl:call-template>
-            <xsl:apply-templates select="." mode="annotated"/>
-        </xs:element>
-    </xsl:template>
+    <xsl:template priority="6" match="define-field[@as-type='markup-multiline'][not(@in-xml='WITH_WRAPPER')]"/>
     
     <xsl:template match="define-assembly">
         <xsl:variable name="whose" select="."/>
@@ -199,16 +221,22 @@
             </xs:complexType>
             <!-- producing xs:unique to govern attributes that will be promoted to keys -->
             <!-- this works over and above XSD type validation e.g. ID -->
-            <xsl:for-each select="model//*[group-as/@json-behavior='BY_KEY']/key('definition-by-name',@ref)/json-key">
-                <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
-                    <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
-                    <xs:field xpath="@{ @flag-name }"></xs:field>
-                </xs:unique>
+            <xsl:for-each select="model//*[group-as/@in-json='BY_KEY'][not(group-as/@in-xml='GROUPED')]">
+                <xsl:apply-templates select="key('definition-by-name',@ref)/json-key" mode="uniqueness-constraint">
+                        <xsl:with-param name="whose" select="$whose"/>
+                </xsl:apply-templates>
             </xsl:for-each>
         </xs:element>
     </xsl:template>
-
     
+    <xsl:template match="json-key" mode="uniqueness-constraint">
+        <xsl:param name="whose"/>
+        <xs:unique name="{ $whose/@name}-{ ../@name }-keys">
+            <xs:selector xpath="{ $declaration-prefix}:{../@name }"/>
+            <xs:field xpath="@{ @flag-name }"/>
+        </xs:unique>
+    </xsl:template>
+
     <!-- Flags become attributes; this schema defines them all locally. -->
     <xsl:template match="define-flag"/>
 
@@ -255,14 +283,44 @@
             maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }"/>
     </xsl:template>
     
+    <xsl:template priority="5" match="field[group-as/@in-xml='GROUPED'] | assembly[group-as/@in-xml='GROUPED']">
+        <xs:element name="{group-as/@name}"
+            minOccurs="{ if (@min-occurs != '0') then 1 else 0 }"
+            maxOccurs="1">
+            <xsl:variable name="decl" select="key('definition-by-name',@ref)"/>
+            <xsl:apply-templates select="$decl" mode="annotated"/>
+            <xs:complexType>
+                <xs:sequence>
+                  <xsl:next-match/>
+                </xs:sequence>
+            </xs:complexType>
+            <xsl:apply-templates select="$decl/json-key" mode="uniqueness-constraint">
+                <xsl:with-param name="whose" select="ancestor::define-assembly"/>
+            </xsl:apply-templates>
+        </xs:element>
+    </xsl:template>
+    
+    <!-- TODO XXX switch default behavior ...   -->
     <!-- No wrapper, just prose elements -->
-    <xsl:template match="field[key('definition-by-name',@ref)/@as-type='markup-multiline']">
+    <xsl:template match="field[@in-xml='UNWRAPPED'][key('definition-by-name',@ref)/@as-type='markup-multiline']">
         <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
+    <!-- With wrapper -->
+    <xsl:template match="field[not(@in-xml='UNWRAPPED')][key('definition-by-name',@ref)/@as-type='markup-multiline']">
+        <xs:element name="{@ref}"
+            minOccurs="{ if (exists(@min-occurs)) then @min-occurs else 0 }"
+            maxOccurs="{ if (exists(@max-occurs)) then @max-occurs else 1 }">
+          <xsl:apply-templates select="key('definition-by-name',@ref)" mode="annotated"/>
+            <xs:complexType>
+              <xs:group ref="{$declaration-prefix}:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+        </xs:element>
+    </xsl:template>
+    
     <xsl:template match="flag">
-        <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type)[1]"/>
-        <xsl:variable name="value-list" select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>
+        <xsl:variable name="datatype" select="(@as-type,key('definition-by-name',@ref)/@as-type,'string')[1]"/>
+        <xsl:variable name="value-list" select="(allowed-values,key('definition-by-name',@ref)/allowed-values)[1]"/>
         <xs:attribute name="{ (@name,@ref)[1] }">
             <xsl:if test="(@required='yes') or (@name=(../json-key/@flag-name,../json-value-key/@flag-name))">
                 <xsl:attribute name="use">required</xsl:attribute>
@@ -270,7 +328,7 @@
             <!-- annotate as datatype or string unless an exclusive value-list is given -->
             <xsl:if test="empty($value-list)">
                 <!-- overriding string datatype on attribute -->
-                <xsl:call-template name="assign-type">
+                <xsl:call-template name="assign-datatype">
                     <xsl:with-param name="datatype" select="$datatype"/>
                 </xsl:call-template>
             </xsl:if>
@@ -282,24 +340,46 @@
         </xs:attribute>
     </xsl:template>
     
-    <xsl:template name="assign-type">
+    <xsl:template name="assign-datatype">
+        <xsl:param name="assign-to-attribute" as="xs:string?">type</xsl:param>
         <xsl:param name="datatype"/>
-        <xsl:for-each select="$datatype[. = $available-custom-types/@name]">
-            <xsl:attribute name="type" expand-text="true"
+        <xsl:variable name="oscal-types" select="$datatype[. = $types-library/xs:simpleType/@name]"/>
+        <xsl:for-each select="$oscal-types">
+            <xsl:attribute name="{ $assign-to-attribute }" expand-text="true"
                 select="concat($declaration-prefix, ':', .)"/>
         </xsl:for-each>
-        <xsl:for-each select="$datatype[. = $built-in-types/@name]">
-            <xsl:attribute name="type" expand-text="true" select="concat('xs:', .)"/>
+        <xsl:variable name="xsd-types" select="$datatype[. = $types-library/xs:annotation[@id='built-in-types']/xs:appinfo/xs:simpleType/@name]"/>
+        <xsl:for-each select="$xsd-types">
+            <xsl:attribute name="{ $assign-to-attribute }" expand-text="true" select="concat('xs:', .)"/>
         </xsl:for-each>
+        <xsl:if test="empty(($oscal-types,$xsd-types))">
+            <xsl:attribute name="{ $assign-to-attribute }" expand-text="true"
+                select="concat($declaration-prefix, ':', $datatype)"/>
+        </xsl:if>
+        
     </xsl:template>
 
     <!-- When allow-other=yes, we union the enumeration with the declared datatype -->        
-    <xsl:template match="valid-values[@allow-other='yes']">
+    <xsl:template match="allowed-values[@allow-other='yes']">
         <xsl:param name="datatype" as="xs:string">string</xsl:param>
+        <xsl:param name="simpletype-name" as="xs:string?"/>
         <xs:simpleType>
+            <xsl:for-each select="$simpletype-name">
+                <xsl:attribute name="name">
+                    <xsl:value-of select="."/>
+                </xsl:attribute>
+            </xsl:for-each>
             <xs:union memberTypes="xs:{$datatype}">
+                <xsl:call-template name="assign-datatype">
+                    <xsl:with-param name="datatype" select="$datatype"/>
+                    <xsl:with-param name="assign-to-attribute">memberTypes</xsl:with-param>
+                </xsl:call-template>
                 <xs:simpleType>
                     <xs:restriction base="xs:{$datatype}">
+                        <xsl:call-template name="assign-datatype">
+                            <xsl:with-param name="datatype" select="$datatype"/>
+                            <xsl:with-param name="assign-to-attribute">base</xsl:with-param>
+                        </xsl:call-template>
                         <xsl:apply-templates/>
                     </xs:restriction>
                 </xs:simpleType>
@@ -307,17 +387,23 @@
         </xs:simpleType>
     </xsl:template>
     
-    <xsl:template match="valid-values">
-        <xsl:param name="datatype" as="xs:string">string</xsl:param>
+    <xsl:template match="allowed-values">
+        <xsl:param name="datatype" select="(../@as-type,'string')[1]"/>
+        <xsl:param name="simpletype-name" as="xs:string?"/>
         <xs:simpleType>
+            <xsl:for-each select="$simpletype-name">
+                <xsl:attribute name="name">
+                    <xsl:value-of select="."/>
+                </xsl:attribute>
+            </xsl:for-each>
             <xs:restriction base="xs:{$datatype}">
                 <xsl:apply-templates/>
             </xs:restriction>
         </xs:simpleType>
     </xsl:template>
     
-    <xsl:template match="valid-values/value">
-        <xs:enumeration value="{@name}">
+    <xsl:template match="allowed-values/enum">
+        <xs:enumeration value="{@value}">
             <xsl:if test="matches(.,'\S')">
                 <xs:annotation>
                     <xs:documentation>

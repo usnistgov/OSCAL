@@ -1,0 +1,59 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-uri-schema.json",
+    "$comment" : "Metaschema Unit Test: URIs: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "parent" : 
+      { "title" : "parent",
+        "description" : "parent assembly",
+        "$id" : "#/definitions/parent",
+        "type" : "object",
+        "properties" : 
+        { "uri-flag" : 
+          { "title" : "Universal Resource Identifier Flag",
+            "description" : "Per W3C",
+            "type" : "string",
+            "format" : "uri" },
+          "uri-reference-flag" : 
+          { "title" : "Universal Resource Identifier Reference Flag",
+            "description" : "Per W3C, can be a relative URI",
+            "type" : "string",
+            "format" : "uri-reference" },
+          "uri-fields" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/uri-field" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/uri-field" },
+                "minItems" : 2 } ] },
+          "uri-reference-fields" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/uri-reference-field" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/uri-reference-field" },
+                "minItems" : 2 } ] } },
+        "required" : 
+        [ "uri-flag",
+          "uri-reference-flag" ],
+        "additionalProperties" : false },
+      "uri-field" : 
+      { "title" : "Universal Resource Identifier Flag",
+        "description" : "Per W3C",
+        "$id" : "#/definitions/uri-field",
+        "type" : "string",
+        "format" : "uri" },
+      "uri-reference-field" : 
+      { "title" : "Universal Resource Identifier Flag",
+        "description" : "Per W3C",
+        "$id" : "#/definitions/uri-reference-field",
+        "type" : "string",
+        "format" : "uri-reference" } },
+    "properties" : 
+    { "parent" : 
+      { "$ref" : "#/definitions/parent" } } }

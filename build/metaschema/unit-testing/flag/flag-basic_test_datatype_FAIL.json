@@ -1,0 +1,6 @@
+{
+	"parent": {
+           "flag-required": "string",
+           "flag-constrained": "c"
+	}
+}

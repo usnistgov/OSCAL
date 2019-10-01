@@ -10,7 +10,7 @@
   <import href="oscal_testing_dinosaur_catalog.xml">
     <include>
       <match pattern=".*saur.*"/>
-      <!--<call with-subcontrols="yes" control-id="allosaur"/>
+      <!--<call with-child-controls="yes" control-id="allosaur"/>
          <call control-id="triceratops"/>-->
     </include>
     
@@ -18,7 +18,7 @@
   <import href="oscal_testing_dinosaur_catalog.xml">
     <include>
       <match pattern="triceratops"/>
-      <!--<call with-subcontrols="yes" control-id="allosaur"/>
+      <!--<call with-child-controls="yes" control-id="allosaur"/>
          <call control-id="triceratops"/>-->
     </include>
     

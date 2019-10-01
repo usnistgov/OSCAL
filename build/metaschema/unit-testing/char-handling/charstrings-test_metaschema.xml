@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="examples">
+  <schema-name>Metaschema Unit Test: datatypes-dateTime</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-datatypes-dateTime</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime</namespace>
+
+  <define-assembly name="examples">
+    <formal-name>Examples</formal-name>
+    <description>Some character strings of different sorts</description>
+    <model>
+      <field ref="charstring" max-occurs="unbounded">
+        <group-as name="character-strings"/>
+      </field>
+      <field ref="markupline" max-occurs="unbounded">
+        <group-as name="markup-lines"/>
+      </field>
+    </model>
+  </define-assembly>
+
+  <define-field name="charstring">
+    <formal-name>Character string</formal-name>
+    <description>String of characters</description>
+  </define-field>
+  
+  <define-field name="markupline" as-type="markup-line">
+    <formal-name>Markup line</formal-name>
+    <description>Characters, and more</description>
+  </define-field>
+  
+  
+</METASCHEMA>

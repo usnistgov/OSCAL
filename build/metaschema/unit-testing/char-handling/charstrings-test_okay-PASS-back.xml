@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<examples xmlns="http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-dateTime">
+   <charstring>Here's a string including punctuation ' " \ . $</charstring>
+   <charstring>Here's a string with an ampersand &amp;</charstring>
+   <charstring>Less-than and greater-than, as &lt;delimiters&gt; ...</charstring>
+   <charstring>The star aka asterisk * may be magical and maybe also the tick `</charstring>
+   <markupline>Also, occasionally we have <a href="w3.org">links</a> and <em>other markup</em>.</markupline>
+   <markupline>And <em>sometimes</em>, we have *very confusing stuff* as well.</markupline>
+</examples>

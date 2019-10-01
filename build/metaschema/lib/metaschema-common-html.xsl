@@ -55,7 +55,7 @@
       <li class="prose">Prose contents (paragraphs and lists)</li>
    </xsl:template>
 
-   <xsl:template match="m:valid-values">
+   <xsl:template match="m:allowed-values">
       <xsl:choose>
         <xsl:when test="@allow-other and @allow-other='yes'">
           <p>The value may be locally defined, or one of the following:</p>
@@ -69,8 +69,8 @@
       </ul>   
    </xsl:template>
 
-   <xsl:template match="m:value">
-     <li><strong><xsl:value-of select="@name"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
+   <xsl:template match="m:allowed-values/m:enum">
+     <li><strong><xsl:value-of select="@value"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
    </xsl:template>
 
   <xsl:template match="m:remarks">

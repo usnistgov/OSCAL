@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: flag: basic flag</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-group-as</short-name>
+  <namespace>http://csrc.nist.gov/ns/oscal/unit-testing/flag-basic</namespace>
+
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <model>
+      <assembly ref="child1"/>
+      <assembly ref="child2"/>
+      <field ref="propB">
+        <flag ref="name">
+          <allowed-values>
+            <enum value="z">Z</enum>
+          </allowed-values>
+        </flag>
+      </field>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="child1">
+    <formal-name>Child 1</formal-name>
+    <description>A child with a unique set of properties.</description>
+    <model>
+      <field ref="propA">
+        <flag ref="name">
+          <allowed-values>
+            <enum value="e">E</enum>
+            <enum value="f">F</enum>
+          </allowed-values>
+        </flag>
+      </field>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="child2">
+    <formal-name>Child 2</formal-name>
+    <description>A child with a unique set of properties.</description>
+    <model>
+      <field ref="propA">
+        <flag ref="name">
+          <allowed-values>
+            <enum value="g">G</enum>
+            <enum value="h">H</enum>
+          </allowed-values>
+        </flag>
+      </field>
+    </model>
+  </define-assembly>
+  
+  <define-field name="propA">
+    <formal-name>Property A</formal-name>
+    <description>A property with a name.</description>
+    <flag name="name">
+      <formal-name>Property Name</formal-name>
+      <description>With valid values</description>
+      <allowed-values>
+        <enum value="a">A</enum>
+        <enum value="b">B</enum>
+      </allowed-values>
+    </flag>
+  </define-field>
+  
+  <define-field name="propB">
+    <formal-name>Property B</formal-name>
+    <description>A property with a name.</description>
+    <flag ref="name"/>
+  </define-field>
+  
+  <define-flag name="name">
+    <formal-name>Property Name</formal-name>
+    <description>With valid values</description>
+    <allowed-values>
+      <enum value="x">X</enum>
+      <enum value="Y">Y</enum>
+    </allowed-values>
+  </define-flag>
+</METASCHEMA>

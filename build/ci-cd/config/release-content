@@ -5,6 +5,7 @@ content/fedramp.gov/**/*.yaml
 content/nist.gov/**/*.xml
 content/nist.gov/**/*.json
 content/nist.gov/**/*.yaml
+content/ssp-example/ssp-example.json
 xml/convert/*.xsl
 xml/schema/*.xsd
 json/convert/*.xsl

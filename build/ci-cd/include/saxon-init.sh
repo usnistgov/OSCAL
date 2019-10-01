@@ -7,7 +7,7 @@ fi
 
 if [[ -z "$SAXON_HOME" ]]; then
     if [[ -z "$SAXON_VERSION" ]]; then
-        echo "${P_ERROR}SAXON_VERSION is not set or is empty.${P_END} ${P_INFO}Please set SAXON_VERSION to indicate the library version${P_END}"
+        echo -e "${P_ERROR}SAXON_VERSION is not set or is empty.${P_END} ${P_INFO}Please set SAXON_VERSION to indicate the library version${P_END}"
     fi
     SAXON_HOME=~/.m2/repository/net/sf/saxon/Saxon-HE/$SAXON_VERSION
 fi
@@ -20,7 +20,7 @@ xsl_transform() {
     local output_file="$1"; shift
     local extra_params=($@)
 
-    local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
+    local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo -e "${JARS[*]}")
 
     set -- "-warnings:silent" "-xsl:${stylesheet}"
 
@@ -35,7 +35,7 @@ xsl_transform() {
     java -cp "$classpath" net.sf.saxon.Transform "$@" "${extra_params[@]}"
 
     if [ "$?" -ne 0 ]; then
-        echo "${P_ERROR}Error running Saxon.${P_END}"
+        echo -e "${P_ERROR}Error running Saxon.${P_END}"
         return 3
     fi
     return 0

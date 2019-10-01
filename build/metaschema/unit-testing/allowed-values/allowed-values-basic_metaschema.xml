@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: allowed values</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-allowed-values</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/allowed-values</namespace>
+
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <flag name="odd-flag" as-type="positiveInteger" required="yes">
+      <formal-name>Small odd flag</formal-name>
+      <description>Odd integers from 1 to 11 inclusive</description>
+      <allowed-values>
+        <enum value="1">One</enum>
+        <enum value="3">Three</enum>
+        <enum value="5">Five</enum>
+        <enum value="7">Seven</enum>
+        <enum value="9">Nine</enum>
+        <enum value="11">Eleven</enum>
+      </allowed-values>
+    </flag>
+    <model>
+      <field ref="field-date" max-occurs="unbounded">
+        <group-as name="field-dates"/>
+      </field>
+      <assembly ref="child" max-occurs="unbounded">
+        <group-as name="children"/>
+      </assembly>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="child">
+    <formal-name>child</formal-name>
+    <description>child assembly</description>
+    <flag ref="even-flag"/>
+    <model>
+      <field ref="field-date" min-occurs="1"/>
+    </model>
+  </define-assembly>
+
+  <define-field name="field-date" as-type="date">
+    <formal-name>Date</formal-name>
+    <description>One of several 2020 dates</description>
+    <allowed-values>
+      <enum value="2020-01-01">New Year's Day 2020</enum>
+      <enum value="2020-02-29">Leap Day 2020</enum>
+      <enum value="2020-07-04">July Fourth 2020</enum>
+    </allowed-values>
+  </define-field>
+
+  <define-flag name="even-flag" as-type="positiveInteger">
+    <formal-name>Small even flag</formal-name>
+    <description>Even integers from 2 to 10 inclusive</description>
+    <allowed-values>
+      <enum value="2">Two</enum>
+      <enum value="4">Four</enum>
+      <enum value="6">Six</enum>
+      <enum value="8">Eight</enum>
+      <enum value="10">Ten</enum>
+    </allowed-values>
+  </define-flag>
+  
+</METASCHEMA>

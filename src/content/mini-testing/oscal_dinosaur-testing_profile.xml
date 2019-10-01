@@ -13,7 +13,7 @@
          
          include: tyrannosaur.*"
          exclude: tyrannosaur
-           do we get the subcontrols without the control?
+           do we get child controls without their parent controls?
            see slide 4
          
          -->
@@ -22,7 +22,7 @@
          
          <match pattern="triceratops"/>
          <!--<call control-id="triceratops"/>
-         <call with-subcontrols="yes" control-id="tyrannosaur"/>
+         <call with-child-controls="yes" control-id="tyrannosaur"/>
          <call control-id="archeopteryx"/>-->
       </include>
    </import>

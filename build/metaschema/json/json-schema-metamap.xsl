@@ -34,7 +34,12 @@
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
-    <xsl:template match="/METASCHEMA" expand-text="true">
+    <!-- bypasses composition to operate on the 'raw' metaschema for debugging -->
+    <!--<xsl:template mode="debug"  match="/METASCHEMA">
+        <xsl:apply-templates select="*"/>
+    </xsl:template>-->
+
+    <xsl:template  match="/METASCHEMA" expand-text="true">
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
             <string key="$id">{ $composed-metaschema/METASCHEMA/namespace }-schema.json</string>
@@ -149,6 +154,8 @@
                     <boolean key="additionalProperties">false</boolean>
                 </xsl:otherwise>
             </xsl:choose>
+            <!-- allowed-values only present on fields -->
+            <xsl:apply-templates select="allowed-values"/>
             
             <!--<map key="propertyNames">
                 <array key="enum">
@@ -232,6 +239,7 @@
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
             <xsl:apply-templates select="." mode="object-type"/>
+            <xsl:apply-templates select="allowed-values"/>
         </map>
     </xsl:template>
 
@@ -297,37 +305,41 @@
         
     <xsl:template mode="declaration" match="flag">
         <map key="{(@name,@ref)[1]}">
-            <xsl:apply-templates select="." mode="object-type"/>
             <xsl:apply-templates select="formal-name | description"/>
             <xsl:if test="empty(formal-name | description)">
                 <xsl:apply-templates select="key('definition-by-name',@ref)/(formal-name | description)"/>
             </xsl:if>
-            <xsl:apply-templates select="(valid-values,key('definition-by-name',@ref)/valid-values)[1]"/>    
+            <xsl:apply-templates select="." mode="object-type"/>
+            <xsl:apply-templates select="(allowed-values,key('definition-by-name',@ref)/allowed-values)[1]"/>    
         </map>
     </xsl:template>
     
     <!-- No restriction is introduced when allow others is 'yes' -->
-    <xsl:template match="valid-values[@allow-other='yes']"/>
+    <xsl:template match="allowed-values[@allow-other='yes']"/>
     
-    <xsl:template match="valid-values">
-        <xsl:param name="datatype" as="xs:string">string</xsl:param>
+    <xsl:template match="allowed-values">
         <array key="enum">
             <xsl:apply-templates/>
         </array>
     </xsl:template>
     
-    <xsl:template match="valid-values/value">
-        <string>
-            <xsl:apply-templates select="@name"/>
-        </string>
+    <xsl:template match="allowed-values/enum">
+        <!-- since the JSON must show enumerated values consistent with the base type notation -->
+        <xsl:variable name="type-declaration">
+            <xsl:apply-templates select="../.." mode="object-type"/>
+        </xsl:variable>
+        <xsl:variable name="base-type" select="$type-declaration/*[@key='type'] ! (if (. = 'integer') then 'number' else .)"/>
+        <xsl:element namespace="http://www.w3.org/2005/xpath-functions" name="{$base-type}">
+            <xsl:apply-templates select="@value"/>
+        </xsl:element>
     </xsl:template>
 
     <!-- irrespective of min-occurs and max-occurs, assemblies and fields designated
          with key flags are represented as objects, never arrays, as the key
          flag serves as a label -->
     <xsl:template mode="declaration" priority="5"
-        match="assembly[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)] |
-        field[group-as/@json-behavior='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)]">
+        match="assembly[group-as/@in-json='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)] |
+        field[group-as/@in-json='BY_KEY'][exists(key('definition-by-name',@ref)/json-key)]">
         <xsl:variable name="group-name" select="group-as/@name"/>
         <map key="{ $group-name }">
             <string key="type">object</string>
@@ -361,7 +373,7 @@
     <!-- Otherwise, always an array when min-occurs is greater than 1 or whenever so designated -->
     <xsl:template mode="declaration" priority="3" expand-text="yes"
         match="assembly[number(@min-occurs) &gt; 1 ]     | field[number(@min-occurs) &gt; 1 ] |
-               assembly[group-as/@json-behavior='ARRAY'] | field[group-as/@json-behavior='ARRAY']">
+               assembly[group-as/@in-json='ARRAY'] | field[group-as/@in-json='ARRAY']">
         <map key="{ group-as/@name }">
             <string key="type">array</string>
             <!-- despite @min-occurs = 0, we have a minimum of 1 since the array itself is optional -->
@@ -377,7 +389,7 @@
     </xsl:template>
     
     <!-- Now matching when min-occurs is 1 or less, max-occurs is more than 1,
-         and group-as/@json-behavior is not 'BY-KEY' or 'ARRAY' ... -->
+         and group-as/@in-json is not 'BY-KEY' or 'ARRAY' ... -->
     <xsl:template mode="declaration" match="assembly | field">
         <map key="{ group-as/@name }">
             <array key="anyOf">
@@ -467,7 +479,7 @@
         <number key="minimum">0</number>
     </xsl:template>
     
-    <!--Not supporting float and double--> 
+    <!--Not supporting float or double--> 
 
     <xsl:template priority="2.1" match="*[@as-type = $datatypes/*/@key]" mode="object-type">
         <xsl:copy-of select="key('datatypes-by-name',@as-type,$datatypes)/*"/>
@@ -479,44 +491,52 @@
     <xsl:variable name="datatypes" expand-text="false">
         <map key="decimal">
             <string key="type">number</string>
-            <string key="pattern">(\+|-)?([0-9]+(\.[0-9]*)?|\.[0-9]+)</string>
+            <string key="pattern">^(\+|-)?([0-9]+(\.[0-9]*)?|\.[0-9]+)$</string>
         </map>
-        
+        <map key="date">
+            <string key="type">string</string>
+            <!--<string key="format">date</string> JQ 'date' implementation does not permit time zone -->
+            <string key="pattern">^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})?$</string>
+        </map>
+        <map key="dateTime">
+            <string key="type">string</string>
+            <!--<string key="format">date-time</string> JQ 'date-time' implementation requires time zone -->
+            <string key="pattern">^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$</string>
+        </map>
         <map key="date-with-timezone">
             <string key="type">string</string>
-            <!--<string key="format">date</string>-->
             <!--The xs:date with a required timezone.-->
-            <string key="pattern">((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})</string>
+            <string key="pattern">^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})$</string>
         </map>
         <map key="dateTime-with-timezone">
             <string key="type">string</string>
             <string key="format">date-time</string>
             <!--The xs:dateTime with a required timezone.-->
-            <string key="pattern">((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})</string>
+            <string key="pattern">^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$</string>
         </map>
         <map key="email">
             <string key="type">string</string>
             <string key="format">email</string>
             <!---->
-            <string key="pattern">.+@.+</string>
+            <string key="pattern">^.+@.+</string>
         </map>
         <map key="ip-v4-address">
             <string key="type">string</string>
             <string key="format">ipv4</string>
             <!--The ip-v4-address type specifies an IPv4 address in dot decimal notation.-->
-            <string key="pattern">((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])</string>
+            <string key="pattern">^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$</string>
         </map>
         <map key="ip-v6-address">
             <string key="type">string</string>
             <string key="format">ipv6</string>
             <!--The ip-v6-address type specifies an IPv6 address represented in 8 hextets separated by colons.This is based on the pattern provided here: https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses with some customizations.-->
-            <string key="pattern">(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))</string>
+            <string key="pattern">^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$</string>
         </map>
         <map key="hostname">
             <string key="type">string</string>
             <string key="format">idn-hostname</string>
             <!---->
-            <string key="pattern">.+</string>
+            <string key="pattern">^.+$</string>
         </map>
         <map key="uri">
             <string key="type">string</string>

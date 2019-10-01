@@ -8,16 +8,16 @@
       <include>
          <call control-id="ac.5"/>
          <call control-id="ac.6"/>
-         <call subcontrol-id="ac.6.1"/>
-         <call subcontrol-id="ac.6.2"/>
-         <call subcontrol-id="ac.6.3"/>
-         <call subcontrol-id="ac.6.4"/>
-         <call subcontrol-id="ac.6.5"/>
-         <call subcontrol-id="ac.6.6"/>
-         <call subcontrol-id="ac.6.7"/>
-         <call subcontrol-id="ac.6.8"/>
-         <call subcontrol-id="ac.6.9"/>
-         <call subcontrol-id="ac.6.10"/>
+         <call control-id="ac.6.1"/>
+         <call control-id="ac.6.2"/>
+         <call control-id="ac.6.3"/>
+         <call control-id="ac.6.4"/>
+         <call control-id="ac.6.5"/>
+         <call control-id="ac.6.6"/>
+         <call control-id="ac.6.7"/>
+         <call control-id="ac.6.8"/>
+         <call control-id="ac.6.9"/>
+         <call control-id="ac.6.10"/>
       </include></import>
 <modify>
 

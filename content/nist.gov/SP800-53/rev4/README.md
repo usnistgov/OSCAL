@@ -8,6 +8,14 @@ NIST SP 800-53 Revision 5 files are not yet available. We hope to post these in 
 
 This directory contains OSCAL catalog and profile content for SP 800-53 revision 4.
 
+## Schematron to validate the catalog
+
+Many of the conventions followed by the SP800-53 catalog can be validated by applying the Schematron [validate-names-etc_SP800-53-catalog.sch](../../../../src/content/nist.gov/SP800-53/rev4/xml/validate-names-etc_SP800-53-catalog.sch).
+
+The format and regularity of identifiers can be confirmed by applying the Schematron [validate-labels_SP800-53-catalog.sch](../../../../src/content/nist.gov/SP800-53/rev4/xml/validate-labels_SP800-53-catalog.sch).
+
+Additionally, many other constraints followed by the catalog are tested by the Schematron 
+
 ## OSCAL SP 800-53 Revision 4 Catalog Content
 
 - [NIST_SP-800-53_rev4_catalog.json](json/NIST_SP-800-53_rev4_catalog.json): This file contains the full text of SP 800-53 revision 4 in OSCAL JSON format, *including* information integrated from appendixes describing objectives and assessments for controls (SP 800-53A). This OSCAL catalog is produced via transformation pipeline from NIST NVD XML source data. It is *not* an official version of this publication and cannot be warranted in any way except for purposes of these demonstrations.
@@ -89,5 +97,3 @@ So `AC-3(3)[6](b)(3)[a]` becomes `ac-3.3.b.3_obj.6.a` as corresponding with (sta
 This is done in order to facilitate the matching control objectives with corresponding items in their statements.
 
 Note that since they correspond with labels, `id` values will be "sticky" across different versions of the catalog. So a pointer using such an ID by itself (that is, without being able to authenticate the hosting document as well) has no a guarantee of uniqueness or correctness. To mitigate this, applications may address a combination of element and document id - since the `catalog/@id` value should disambiguate versions of documents where the element id does not help to distinguish them.
-
-The format and regularity of identifiers can be confirmed by applying the Schematron [validate_SP800-53_labels-and-ids.sch](../../../../src/content/nist.gov/SP800-53/rev4/xml/validate_SP800-53_labels-and-ids.sch).

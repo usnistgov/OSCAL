@@ -6,7 +6,7 @@
    <title>Calling All Controls</title>
    <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
-         <!-- Doesn't include subcontrols since @with-subcontrols defaults to 'no'. -->
+         <!-- Doesn't include subcontrols since @with-child-controls defaults to 'no'. -->
          <all/>
       </include></import>
 </profile>

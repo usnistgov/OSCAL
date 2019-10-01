@@ -1,0 +1,20 @@
+{
+  "$schema": "file:/home/davidwal/github/david-waltermire-nist/OSCAL/json/schema/computer-build_schema.json",
+  "computer-build": {
+    "id": "example-build",
+    "components": [
+      {
+        "id": "build-processor",
+        "name": "Intel Core i9-9900K 3.6 GHz 8-Core Processor",
+        "description": "Intel Core i9-9900K Coffee Lake 8-Core, 16-Thread, 3.6 GHz (5.0 GHz Turbo) LGA 1151 (300 Series) 95W Desktop Processor Intel UHD Graphics 630",
+        "model": "BX80684I99900K"
+      },
+      {
+        "id": "build-discrete-graphics",
+        "name": "Zotac GeForce RTX 2080 Ti 11 GB AMP MAXX Video Card",
+        "description": "ZOTAC GAMING GeForce RTX 2080 Ti AMP MAXX 11GB GDDR6 352-bit Gaming Graphics Card, IceStorm 2.0, Factory Overclock, Freeze Fan Stop, Active Fan Control, PowerBoost, Spectra Lighting",
+        "model": "ZT-T20810H-10P"
+      }
+    ]
+  }
+}

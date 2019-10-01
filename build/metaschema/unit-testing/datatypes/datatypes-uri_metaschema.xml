@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ root="parent">
+  <schema-name>Metaschema Unit Test: URIs</schema-name>
+  <schema-version>1.0-milestone1</schema-version>
+  <short-name>metaschema-datatypes-uri</short-name>
+  <namespace>http://csrc.nist.gov/ns/metaschema/unit-test/datatypes-uri</namespace>
+
+  <define-assembly name="parent">
+    <formal-name>parent</formal-name>
+    <description>parent assembly</description>
+    <flag name="uri-flag" as-type="uri" required="yes">
+      <formal-name>Universal Resource Identifier Flag</formal-name>
+      <description>Per W3C</description>
+    </flag>
+    <flag name="uri-reference-flag" as-type="uri-reference" required="yes">
+      <formal-name>Universal Resource Identifier Reference Flag</formal-name>
+      <description>Per W3C, can be a relative URI</description>
+    </flag>
+    <model>
+      <field ref="uri-field" max-occurs="unbounded">
+        <group-as name="uri-fields"/>
+      </field>
+      <field ref="uri-reference-field" max-occurs="unbounded">
+        <group-as name="uri-reference-fields"/>
+      </field>
+    </model>
+  </define-assembly>
+
+  
+  <define-field name="uri-field" as-type="uri">
+    <formal-name>Universal Resource Identifier Flag</formal-name>
+    <description>Per W3C</description>
+  </define-field>
+  
+  <define-field name="uri-reference-field" as-type="uri-reference">
+    <formal-name>Universal Resource Identifier Flag</formal-name>
+    <description>Per W3C</description>
+  </define-field>
+  
+</METASCHEMA>
