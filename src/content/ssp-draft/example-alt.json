@@ -26,14 +26,16 @@
     "system-characteristics": {
       "system-name": "Enterprise Logging and Auditing System",
       "description": "",
-      "system-ids": {"STRVALUE": "example-logging-audit-system"},
+      "system-ids": {
+        "id": "d7456980-9277-4dcb-83cf-f8ff0442623b",
+        "identifier-type": "https://ietf.org/rfc/rfc4122"
+      },
       "security-sensitivity-level": "moderate",
       "system-information": {
         "information-types": {
           "name": "System and Network Monitoring",
           "information-type-ids": {
-            "system": "https://doi.org/10.6028/NIST.SP.800-60v2r1",
-            "id": "C.3.5.8"
+            "https://doi.org/10.6028/NIST.SP.800-60v2r1": {"id": "C.3.5.8"}
           },
           "description": "This systemn maintains historical logging and auditing information for all client devices connected to this system.",
           "confidentiality-impact": {"base": "fips-199-moderate"},
