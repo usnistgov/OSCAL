@@ -240,13 +240,29 @@
             </XSLT:element>
         </XSLT:template>
         
+        
         <!-- A template to place the key value on an attribute      -->
         <xsl:for-each select="child::json-key">
-            <XSLT:template priority="2" match="{ $field-match}/string[@key='{@flag-name}']" mode="as-attribute">
+            <XSLT:template priority="2" match="({ $field-match})/string[@key='{@flag-name}']" mode="as-attribute">
                 <XSLT:attribute name="{@flag-name}">
                     <XSLT:apply-templates mode="#current"/>
                 </XSLT:attribute>
             </XSLT:template>
+        </xsl:for-each>
+        
+        <!-- BUT - we want to prevent the value field (indicated by value key) from appearing as
+        an attribute (in this context only) -->
+        <xsl:for-each select="json-value-key[empty(@flag-name)]">
+            <XSLT:template
+                match="({$field-match})/string[@key='{.}']"
+                mode="as-attribute"/>
+            <!-- AND - for this context, we override the template that would otherwise suppress the value from appearing in mode json2xml -->
+            <XSLT:template priority="8"
+                match="({$field-match})/string[@key='{.}']"
+                mode="json2xml">
+                <XSLT:apply-templates mode="#current"/>
+            </XSLT:template>
+            
         </xsl:for-each>
         
         <!-- when a field has json-value-key/@flag-name, we need a template
@@ -273,7 +289,9 @@
                     <XSLT:value-of select="@key"/>
                 </XSLT:attribute>
             </XSLT:template>
+
         </xsl:if>
+
         
         <!-- array has @key='{$text-value-key}' only when an array has been collapsed into a map
              (for a 'collapsible' field definition) -->
