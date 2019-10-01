@@ -10,14 +10,20 @@ OSCAL 1.0.0 Milestone 1
 OSCAL 1.0.0 Milestone 2
 -----------------------
 
-The following content model changes have been made that may break content compatibility:
+# New OSCAL Features
+
+- A System Security Plan (SSP) model has been added to OSCAL for use by organizations to document the implementation of security and privacy controls in an information system.
+
+# Breaking Changes
+
+The following content model changes have been made to the catalog and profile models that may break content compatibility:
 
 ## Document metadata
 
-  * `last-modified` is required. Its value must be a date-time with time zone (i.e., a timestamp). The old element `last-modified-date` is no longer permitted.
+  * `last-modified` is now required. Its value must be a date-time with time zone (i.e., a timestamp). The old element `last-modified-date` is no longer permitted.
   * `published` is permitted for a nominal publication date, as assigned by the owner or publisher of the catalog or resource. An electronic version of a previously published catalog should carry its own publication date, if any, not that of the original resource (which can be described elsewhere with its own metadata).
   * `role-id` is now assigned as an element in the XML, not an attribute. This permits it to be tokenized more explicitly.
-  
+
 ## Control structures in the catalog model
 
 ### New property in SP800-53 catalog data
@@ -46,7 +52,7 @@ Supported for lexical datatyping has also been added to `link/href`, `rlink/href
 
 ### Calling control enhancements (old "subcontrols")
 
-From call statements, since `subcontrol` has been dropped from the catalog model, `subcontrol-id` has been replaced with `control-id`, and `with-subcontrols` has been replaced by `with-child-controls` (on `call`, `all` and `match`).
+From call statements, since `subcontrol` has been dropped from the catalog model, `subcontrol-id` has been replaced with `control-id`, and `with-subcontrols` has been replaced by `with-child-controls` (on `call`, `all` and `match`). Essentially, a subcontrol is now represented as a control that is a child another parent control.
 
 ### Expanded model for new groups
 

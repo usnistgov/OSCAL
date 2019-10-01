@@ -1,6 +1,6 @@
 # The Open Security Controls Assessment Language (OSCAL)
 
-NIST is developing OSCAL as a set of machine-readable data exchange formats, referred to as "OSCAL models" (https://pages.nist.gov/OSCAL/docs/architecture/). These models enable organizations to express and exchange detailed, security and privacy control-related information in a neutral way that spans the needs of multiple industries and compliance regimes. NIST is defining and governing the core OSCAL models. These models are provided in Extensible Markup Language (XML) and JavaScript Object Notation (JSON) formats that are synchronized allowing them to store the same information. OSCAL has been designed to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content. 
+NIST is developing OSCAL as a set of machine-readable data exchange formats, referred to as "OSCAL models" (https://pages.nist.gov/OSCAL/docs/architecture/). These models enable organizations to express and exchange detailed, security and privacy control-related information in a neutral way that spans the needs of multiple industries and compliance regimes. NIST is defining and governing the core OSCAL models. These models are provided in Extensible Markup Language (XML) and JavaScript Object Notation (JSON) formats that are synchronized allowing them to store the same information. OSCAL has been designed to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content.
 
 More information about OSCAL can be found on the OSCAL Project Website: https://pages.nist.gov/OSCAL.
 
@@ -10,7 +10,7 @@ This release provides 3 types of resources, each located in a different subdirec
 
 - xml: Provides the XML schemas and content converters that are needed to support the OSCAL model XML-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/xml.
 - json: Provides the XML schemas and content converters that are needed to support the OSCAL model JSON-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/json.
-- content: Offers OSCAL XML, JSON, and experimental YAML content for NIST SP 800-53 Revision 4 and FedRAMP Baselines.
+- content: Offers OSCAL XML, JSON, and experimental YAML content for NIST SP 800-53 Revision 4 and FedRAMP Baselines. XML, JSON, and YAML examples of a System Security Plan (SSP) in OSCAL formats is also provided.
 
 These directories provide stable, released versions of the resources provided on the OSCAL GitHub repository: https://github.com/usnistgov/OSCAL.
 
