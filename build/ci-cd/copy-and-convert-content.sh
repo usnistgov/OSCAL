@@ -92,9 +92,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
       file_relative=$(realpath --relative-to="${OSCALDIR}" "$file")
       dest="$WORKING_DIR/${file/$OSCALDIR\/src\//}"
       dest_dir=${dest%/*} # remove filename
-      dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
-
       mkdir -p "$dest_dir"
+      dest_relative=$(realpath --relative-to="${WORKING_DIR}" "$dest")
       result=$(cp "$file" "$dest" 2>&1)
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
