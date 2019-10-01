@@ -23,7 +23,7 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
   The following stakeholders can benefit from control catalogs and control baselines defined using the OSCAL catalog and profile models respectively.
 
   - **Catalog maintainers:** Publishing control catalogs in OSCAL using OSCAL catalog XML, JSON, or YAML formats (e.g., NIST, ISO, ISACA)
-  - **Standard baseline maintainers:** Publishing control baselines using OSCAL profile XML, JSON, or YAML formats (e.g., NIST, FedRAMP), whcih can be used by many organizations consuming OSCAL formatted catalogs and baselines
+  - **Standard baseline maintainers:** Publishing control baselines using OSCAL profile XML, JSON, or YAML formats (e.g., NIST, FedRAMP), which can be used by many organizations consuming OSCAL formatted catalogs and baselines
   - **Custom profile maintainers:** Developing new control baselines or customizing existing control baselines for organization-specific use (e.g., cloud service providers, integrators, agencies, businesses) using OSCAL profile XML, JSON, or YAML formats
   - **Security and privacy personnel:** That need to select controls and implement security and privacy baselines to address security and privacy risks.
   - **Tool vendors:** Creating tools that import and produce information in OSCAL formats to support risk assessment, continuous monitoring, compliance reporting, and other purposes
@@ -34,7 +34,7 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
   The following additional stakeholders can benefit from SSPs formatted based on the OSCAL SSP model.
 
-  - **Security and privacy personnel:** Documenting system implementations, and automatically identifyingand addressing security and privacy implementation gaps before loss or damage occur
+  - **Security and privacy personnel:** Documenting system implementations, and automatically identifying and addressing security and privacy implementation gaps before loss or damage occur
   - **Operations personnel:** Rapidly verifying that systems comply with organizational security requirements
   - **Auditors/assessors:** Performing audits/assessments on demand with minimal effort based on rich OSCAL formatted system implementation information.
   - **Policy personnel:** Identifying systemic problems that necessitate changes to organizational security policies
@@ -46,7 +46,7 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
   The following additional stakeholders can benefit from component definitions formatted based on the OSCAL component definitions model. They include the following producers of OSCAL catalogs, profiles, and/or tools:
 
-  - **Security and privacy personnel:** Documenting system implementations can import component information related to hardware, software, services, policies, and proceedures used to implement their systems saving time and effort
+  - **Security and privacy personnel:** Documenting system implementations can import component information related to hardware, software, services, policies, and procedures used to implement their systems saving time and effort
   - **Policy personnel:** Can publish information about their policies as a component formatted using the OSCAL component definition model.
   - **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted component and system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
 
