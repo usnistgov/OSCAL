@@ -17,29 +17,34 @@ $theme-image-path:  '{{ "/" | relURL }}img';
 }
 
 .usa-header--extended {
-  .usa-logo {
-    max-width: 70%;
-  }
-  .usa-navbar {
-    max-width: 100%;
-  }
-  .usa-nav__inner {
-    max-width: 100%;
+  @media all and (min-width:64em) {
+    .usa-logo {
+      max-width: 70%;
+    }
+    .usa-navbar {
+      max-width: 100%;
+    }
+    .usa-nav__inner {
+      max-width: 100%;
+    }
+    .usa-menu-btn-container {
+      display: none;
+    }
   }
 }
 
 .usa-header--basic {
-  .usa-nav-container {
-    max-width: 100%;
-  }
-  .usa-nav__inner {
-    max-width: 100%;
-    width: 100%;
-  }
-  .usa-nav__primary {
-    float: left;
-  }
   @media all and (min-width:64em) {
+    .usa-nav-container {
+      max-width: 100%;
+    }
+    .usa-nav__inner {
+      max-width: 100%;
+      width: 100%;
+    }
+    .usa-nav__primary {
+      float: left;
+    }
     .usa-navbar {
       width: 20%;
     }

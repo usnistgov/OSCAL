@@ -1,5 +1,6 @@
 ---
 title: Case Studies
+weight: 80
 ---
 
 ## General Services Administration (GSA) Federal Risk and Authorization Management Program (FedRAMP)

@@ -1,4 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" integrity="sha384-S2Sj9dbj135Vzm4xwOrcyOA/FlODQj514E6Il+ayOB/Y0YClPg5BpCy7lG2G8wtV" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
 tocbot.init({
   // Where to render the table of contents.
@@ -14,5 +15,8 @@ tocbot.init({
   listItemClass: 'usa-sidenav__item',
   activeLinkClass: 'usa-current'
 });
-$('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
+$(document).ready(function () {
+  $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
+  $('a.usa-link--external').leaveNotice();
+});
 </script>

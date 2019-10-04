@@ -10,10 +10,16 @@ MetaDataFormat: "yaml"
 theme: "uswds"
 enableGitInfo: true
 enableRobotsTXT: true
+pygmentsCodeFences: true
+pygmentsCodefencesGuessSyntax: true
+pygmentsUseClasses: true
 params:
   header:
     project_shortname: "OSCAL"
     project_name: "OSCAL: the Open Security Controls Assessment Language"
+  custom_css:
+    - "/css/syntax.css"
+  contentRepoPath: https://github.com/usnistgov/OSCAL/tree/master/docs/content
 menu:
   secondary:
   - name: Get involved
