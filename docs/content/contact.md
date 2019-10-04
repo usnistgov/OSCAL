@@ -1,8 +1,5 @@
 ---
 title: "Contact"
-date: 2019-09-30T23:20:40-04:00
-draft: true
-toc: true
 ---
 
 # Level 1 - 1

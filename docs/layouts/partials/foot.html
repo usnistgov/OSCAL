@@ -14,4 +14,5 @@ tocbot.init({
   listItemClass: 'usa-sidenav__item',
   activeLinkClass: 'usa-current'
 });
+$('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
 </script>

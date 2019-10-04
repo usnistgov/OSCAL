@@ -38,8 +38,7 @@ A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition]
 
 An integer value.
 
-OSCAL represents integers   
-[as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
+OSCAL represents integers [as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
 
 In JSON Schema, the [`integer` type](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1.1) is used. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
 
@@ -63,7 +62,7 @@ In JSON Schema, this becomes an `integer` value with an additional `minimum` con
 
 A real number expressed using decimal numerals.
 
-In XML Schema this is represented as the built in typ [decimal](https://www.w3.org/TR/xmlschema11-2/#decimal).
+In XML Schema this is represented as the built in type [decimal](https://www.w3.org/TR/xmlschema11-2/#decimal).
 
 In JSON Schema, this is represented as:
 
@@ -76,40 +75,12 @@ In JSON Schema, this is represented as:
 
 ## Formatted String Data types
 
-### dateTime-with-timezone
+### date
 
-A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
+In XML, the [date](https://www.w3.org/TR/xmlschema11-2/#date) datatype is used. This is the same as
+[date-with-timezone](#date-with-timezone), except the time zone portion is optional.
 
-For example:
-
-```
-2019-09-28T23:20:50.52Z
-2019-12-02T16:39:57-08:00
-2019-12-31T23:59:60Z
-```
-
-In XML Schema this is represented as a restriction on the built in type [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) as follows:
-
-```XML
-<xs:simpleType name="dateTime-with-timezone">
-  <xs:annotation>
-    <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:dateTime">
-    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"/>
-  </xs:restriction>
-</xs:simpleType>
-```
-
-In JSON Schema, this is represented as:
-
-```JSON
-{
-  "type": "string",
-  "format": "date-time",
-  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"
-}
-```
+In JSON, lexical conformance to dates with optional time zones is provided by a regular expression, the same as given above for [date-with-timezone](#date-with-timezone), except as adjusted for the requirement.
 
 ### date-with-timezone
 
@@ -147,16 +118,44 @@ In JSON Schema, this is represented as:
 ### dateTime
 
 In XML, the [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) datatype is used. This is the same as
-[dateTime-with-timezone](#dateTime-with-timezone), except the time zone portion is optional.
+[dateTime-with-timezone](#datetime-with-timezone), except the time zone portion is optional.
 
-In JSON, lexical conformance to date-times with optional time zones is provided by a regular expression, the same as given above for [dateTime-with-timezone](#dateTime-with-timezone), except as adjusted for the requirement.
+In JSON, lexical conformance to date-times with optional time zones is provided by a regular expression, the same as given above for [dateTime-with-timezone](#datetime-with-timezone), except as adjusted for the requirement.
 
-### date
+### dateTime-with-timezone
 
-In XML, the [date](https://www.w3.org/TR/xmlschema11-2/#date) datatype is used. This is the same as
-[date-with-timezone](#date-with-timezone), except the time zone portion is optional.
+A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
 
-In JSON, lexical conformance to dates with optional time zones is provided by a regular expression, the same as given above for [date-with-timezone](#date-with-timezone), except as adjusted for the requirement.
+For example:
+
+```
+2019-09-28T23:20:50.52Z
+2019-12-02T16:39:57-08:00
+2019-12-31T23:59:60Z
+```
+
+In XML Schema this is represented as a restriction on the built in type [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) as follows:
+
+```XML
+<xs:simpleType name="dateTime-with-timezone">
+  <xs:annotation>
+    <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
+  </xs:annotation>
+  <xs:restriction base="xs:dateTime">
+    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"/>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "format": "date-time",
+  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"
+}
+```
 
 ### email
 

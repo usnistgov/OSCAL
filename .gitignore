@@ -20,8 +20,10 @@ pub/
 target/
 xspec/*.html
 # Bundler
-docs/.bundle
-docs/vendor
+/docs/.bundle
+/docs/vendor
+/docs/public
+/docs/resources
 
 # ignore generated content
 /archive

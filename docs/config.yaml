@@ -8,6 +8,8 @@ languages:
     weight: 1
 MetaDataFormat: "yaml"
 theme: "uswds"
+enableGitInfo: true
+enableRobotsTXT: true
 params:
   header:
     project_shortname: "OSCAL"

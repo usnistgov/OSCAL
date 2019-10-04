@@ -40,7 +40,7 @@ Due to their commonalities and potential overlap, however, STS and OSCAL (whethe
 
 ### NISO JATS / NLM BITS (XML encoding for publication of journals and books)
 
-The National Information Standards Organization (NISO) [Journal Article Tag Suite (JATS)](<a href=")https://www.niso.org/standards-committees/jats) was originally developed at the US National Library of Medicine and the National Institute of Health for the aggregation of large numbers of journal articles in online text bases. While it is not as close to the application domain of OSCAL as the [NISO Standards Tagging Suite (STS)](https://www.niso.org/standards-committees/sts) (which is built on the JATS architecture), it presents similar opportunities for integrators. [NLM Book Interchange Tag Suite (BITS)](https://jats.nlm.nih.gov/extensions/bits/) is the related data description standard for monograph and book publication.
+The National Information Standards Organization (NISO) [Journal Article Tag Suite (JATS)](https://www.niso.org/standards-committees/jats) was originally developed at the US National Library of Medicine and the National Institute of Health for the aggregation of large numbers of journal articles in online text bases. While it is not as close to the application domain of OSCAL as the [NISO Standards Tagging Suite (STS)](https://www.niso.org/standards-committees/sts) (which is built on the JATS architecture), it presents similar opportunities for integrators. [NLM Book Interchange Tag Suite (BITS)](https://jats.nlm.nih.gov/extensions/bits/) is the related data description standard for monograph and book publication.
 
 ### Other Industry Vertical Encoding Standards
 

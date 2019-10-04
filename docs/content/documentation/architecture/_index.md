@@ -47,11 +47,11 @@ Starting from the left, the OSCAL layers are currently defined as:
 - **Assessment:** Is a planned model that will describe how a system assessment is to be performed.
 - **Assessment Results:** Is a planned model that will record the findings of a specific assessment.
 
-The OSCAL layers described above provide a high-level explanation of the OSCAL models. As the project [progresses]({{ site.baseurl }}/learnmore/roadmap/), the features of these models are expected to evolve; these layer descriptions are included here to indicate the current status of the related models within OSCAL and may not the represent the final features supported by each model. XML, JSON, and YAML formats for each model will be provided when the model is released.
+The OSCAL layers described above provide a high-level explanation of the OSCAL models. As the project [progresses](/contribute/roadmap/), the features of these models are expected to evolve; these layer descriptions are included here to indicate the current status of the related models within OSCAL and may not the represent the final features supported by each model. XML, JSON, and YAML formats for each model will be provided when the model is released.
 
 The following is the release state of each model, along with download links for the latest versions of schema for each model in XML and JSON formats. YAML is also supported through conversion between JSON and YAML, but YAML schemas are not yet provided because a suffecient YAML schema language has not been identified.
 
-| Layer | Model | State ([Milestone]({{ site.baseurl }}/learnmore/roadmap/)) | Formats |
+| Layer | Model | State ([Milestone](/contribute/roadmap/)) | Formats |
 |:--- |:--- |:--- |:--- |
 | Catalog | Catalog | Draft Released (1.0.0 M1) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_catalog_schema.json), YAML |
 | Profile | Profile | Draft Released (1.0.0 M1) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json), YAML |

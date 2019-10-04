@@ -14,7 +14,7 @@ OSCAL profiles are representations of their catalogs configured for use by organ
 * How the control selection should be *organized* and represented, including whether and how competing control definitions are to be resolved and merged;
 * Whether and where any controls are to be *configured* or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls to describe their application in the system.
 
-See [examples](/OSCAL/resources/examples/profiles/) of OSCAL profiles.
+See [examples](/downloads/examples/profiles/) of OSCAL profiles.
 
 These three functions are reflected in the organization of a profile document, which may contain (in addition to document metadata) any of three sections, `import`, `merge`, and `modify`:
 
@@ -24,4 +24,4 @@ These three functions are reflected in the organization of a profile document, w
 
 The figure below sketches how OSCAL relates profiles to catalogs. This example represents the NIST SP 800-53 low baseline. The profile indicates which controls from the NIST SP 800-53 catalog are required to for compliance with this baseline. Using OSCAL formats for these baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.
 
-![profile-catalog-mapping](profile-catalog-mapping-trivial-example.png)
+![profile-catalog-mapping](../profile-catalog-mapping-trivial-example.png)
