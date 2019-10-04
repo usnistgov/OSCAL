@@ -1,0 +1,6 @@
+---
+title: Component Model
+heading: "OSCAL Implementation Layer: Component Model"
+description: XML and JSON format documentation for the OSCAL Component model, which is part of the OSCAL Implementation layer. These formats model a description of the controls that are supported in a given implementation of a hardware, software, service, policy, process, or proceedure.
+weight: 50
+---

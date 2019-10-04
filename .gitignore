@@ -40,3 +40,6 @@ docs/vendor
 !/xml/**/*.md
 !/json/*.md
 !/json/**/*.md
+
+#
+node_modules/

@@ -1,0 +1,20 @@
+{{ define "head" }}
+{{ partial "head.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{ partial "components/extended-header.html" . }}
+{{ partial "components/hero.html" .Params.hero }}
+{{ partial "components/tagline.html" .Params.intro }}
+{{ partial "components/graphic-list.html" .Params.graphicList }}
+
+<section id="index-content" class="usa-section">
+  <div class="grid-container">
+  {{ .Content }}
+  </div>
+</section>
+{{ end }}
+
+{{ define "foot" }}
+{{ partial "foot.html" . }}
+{{ end }}
