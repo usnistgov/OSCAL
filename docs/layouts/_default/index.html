@@ -4,7 +4,8 @@
 
 {{ define "main" }}
 {{ partial "components/extended-header.html" . }}
-{{ partial "components/hero.html" .Params.hero }}
+{{$baseurl := .Site.BaseURL}}
+{{ partial "components/hero.html" (dict "hero" .Params.hero "BaseURL" $baseurl) }}
 {{ partial "components/tagline.html" .Params.intro }}
 {{ partial "components/graphic-list.html" .Params.graphicList }}
 

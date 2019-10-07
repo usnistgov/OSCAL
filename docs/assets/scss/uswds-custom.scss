@@ -1,5 +1,7 @@
-$theme-font-path:   '{{ "/" | relURL }}fonts';
-$theme-image-path:  '{{ "/" | relURL }}img';
+
+$theme-font-path:   '{{ .Site.BaseURL }}fonts';
+$theme-image-path:  '{{ .Site.BaseURL }}img';
+$theme-hero-image:  '{{ .Site.BaseURL }}img/hero.png';
 
 @import 'uswds';
 

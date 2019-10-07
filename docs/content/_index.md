@@ -3,7 +3,7 @@ title: "OSCAL"
 date: 2019-09-25T18:45:23-04:00
 draft: true
 hero:
-  image: /img/automation-hero.png
+  image: img/automation-hero.png
   callout:
     text: Automated
     alt: Control-Based Assessment

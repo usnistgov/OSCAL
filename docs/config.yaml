@@ -1,5 +1,5 @@
-baseURL: https://pages.nist.gov/OSCAL/
 title: "My First Site"
+baseURL: https://pages.nist.gov/OSCAL/
 defaultContentLanguage: en
 languages:
   en:
@@ -8,7 +8,7 @@ languages:
     weight: 1
 MetaDataFormat: "yaml"
 theme: "uswds"
-canonifyURLs: true
+canonifyurls: true
 enableGitInfo: true
 enableRobotsTXT: true
 pygmentsCodeFences: true
