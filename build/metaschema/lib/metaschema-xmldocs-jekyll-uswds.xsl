@@ -87,9 +87,10 @@
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <header>
-            <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lightest">
-            <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> attribute</h4>
+            <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lighter">
+               <xsl:apply-templates select="@name" mode="tag"/>
+               <xsl:text>: </xsl:text>
+               <xsl:apply-templates select="formal-name" mode="inline"/> (flag)</h4>
             <xsl:call-template name="cross-links"/>
          </header>
          <xsl:apply-templates mode="state-type" select="."/>
@@ -131,12 +132,21 @@
       </div>
    </xsl:template>
 
+   <xsl:template mode="tag" match="define-flag/@name">
+      <code>@<xsl:value-of select="."/></code>   
+   </xsl:template>
+   
+   <xsl:template mode="tag" match="@name">
+      <code>&lt;<xsl:value-of select="."/>&gt;</code>   
+   </xsl:template>
+   
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <header>
             <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lighter">
-               <xsl:apply-templates select="formal-name" mode="inline"/>:
-                  <xsl:apply-templates select="@name"/> element</h4>
+               <xsl:apply-templates select="@name" mode="tag"/>
+               <xsl:text>: </xsl:text>
+               <xsl:apply-templates select="formal-name" mode="inline"/> (field)</h4>
             <xsl:call-template name="cross-links"/>
          </header>
          <xsl:apply-templates mode="state-type" select="."/>
@@ -195,8 +205,9 @@
       <div class="definition define-assembly" id="{@name}">
          <header>
             <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-cool-blue-lighter">
-               <xsl:apply-templates select="formal-name" mode="inline"/>:
-                  <xsl:apply-templates select="@name"/> element</h4>
+               <xsl:apply-templates select="@name" mode="tag"/>
+               <xsl:text>: </xsl:text>
+               <xsl:apply-templates select="formal-name" mode="inline"/> (assembly)</h4>
             <xsl:call-template name="cross-links"/>
          </header>
          <xsl:if test="@name = $home/METASCHEMA/@root">

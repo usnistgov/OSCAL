@@ -95,7 +95,7 @@
         <xsl:variable name="schema-docs-file" as="xs:string" expand-text="true">{$output-path}/{$target-format}-schema-{$metaschema-code}.html</xsl:variable>
         <xsl:variable name="schema-map-file"  as="xs:string" expand-text="true">{$output-path}/{$target-format}-map-{$metaschema-code}.html</xsl:variable>
         
-        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-docs-file}" method="html">
+        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-docs-file}" method="html" indent="yes">
             <xsl:message expand-text="yes">writing to {$schema-docs-file}</xsl:message>
             <xsl:call-template name="yaml-header">
                 <xsl:with-param name="overview" select="true()"/>
@@ -105,7 +105,7 @@
             <xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/*"/>
         </xsl:result-document>
 
-        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-map-file}" method="html">
+        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-map-file}" method="html" indent="yes">
             <xsl:message expand-text="yes">writing to {$schema-map-file}</xsl:message>
             <xsl:call-template name="map-header"/>
 
