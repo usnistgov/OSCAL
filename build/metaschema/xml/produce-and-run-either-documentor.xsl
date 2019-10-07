@@ -97,7 +97,8 @@
                 <xsl:with-param name="overview" select="true()"/>
             </xsl:call-template>
 
-            <xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
+            <!--<xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>-->
+            <xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/*"/>
         </xsl:result-document>
 
         <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/../../maps/{ $metaschema-code }-{ $target-format }-map.html" method="html">
@@ -109,7 +110,7 @@
             </xsl:for-each>
         </xsl:result-document>
 
-        <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
+        <!--<xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
             <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }_{@id}.html"
                method="html">
                 <xsl:message expand-text="yes">{$result-path}/{ $metaschema-code }_{@id}.html</xsl:message>
@@ -121,7 +122,7 @@
                 </xsl:call-template>
                 <xsl:apply-templates select="." mode="cleanup"/>
             </xsl:result-document>
-        </xsl:for-each>
+        </xsl:for-each>-->
     </xsl:template>
 
     <xsl:template name="yaml-header">
