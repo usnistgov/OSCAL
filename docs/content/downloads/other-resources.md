@@ -1,6 +1,8 @@
 ---
 title: Related Resources
 description: Related Resources
+aliases:
+  - /resources/
 ---
 
 ## Useful Links

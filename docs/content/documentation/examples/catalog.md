@@ -1,6 +1,8 @@
 ---
 title: Catalog Example
 description: OSCAL Catalog Example
+aliases:
+  - /resources/examples/catalogs/
 ---
 
 ## NIST SP 800-53

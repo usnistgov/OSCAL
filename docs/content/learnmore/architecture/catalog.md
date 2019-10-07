@@ -2,6 +2,8 @@
 title: Catalog
 description: Catalog concept.
 weight: 15
+aliases:
+  - /docs/catalog/
 ---
 
 In OSCAL, a catalog is:

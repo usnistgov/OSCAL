@@ -2,6 +2,8 @@
 title: For Security Professionals
 heading: How can security professionals get involved?
 description: How can security professionals get involved?
+aliases:
+  - /learnmore/securitypros/
 ---
 
 {{<callout class="padding-05 padding-x-105 border-base border-width-1 bg-base-lighter ">}}*Security professionals who document or implement security controls within information systems.*{{</callout>}}

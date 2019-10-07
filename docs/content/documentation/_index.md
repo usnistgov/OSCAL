@@ -1,7 +1,8 @@
 ---
 title: "Documentation"
 date: 2019-09-23T19:14:12-04:00
-
+aliases:
+  - /docs/schemas/
 menu:
   primary:
     name: Documentation
@@ -20,4 +21,4 @@ Quis risus sed vulputate odio ut enim blandit volutpat. Viverra adipiscing at in
 
 Ut tristique et egestas quis ipsum suspendisse ultrices gravida. Dolor sit amet consectetur adipiscing elit duis tristique. Magna eget est lorem ipsum dolor sit. Amet commodo nulla facilisi nullam. Nec ultrices dui sapien eget mi proin sed. Sed risus ultricies tristique nulla aliquet. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. Tortor id aliquet lectus proin nibh nisl. Purus sit amet volutpat consequat mauris nunc. Porta nibh venenatis cras sed felis eget. Urna duis convallis convallis tellus. Proin sagittis nisl rhoncus mattis rhoncus urna. In hendrerit gravida rutrum quisque non. Lobortis scelerisque fermentum dui faucibus. Justo eget magna fermentum iaculis eu non diam. Molestie at elementum eu facilisis sed odio morbi quis commodo.
 © 2015 — 2019
-Privacy Policy 
+Privacy Policy

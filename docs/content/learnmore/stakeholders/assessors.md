@@ -2,6 +2,9 @@
 title: For Assessors
 heading: How can assessors get involved?
 description: How can assessors get involved?
+aliases:
+  - /learnmore/assessors/
+
 ---
 
 {{<callout class="padding-05 padding-x-105 border-base border-width-1 bg-base-lighter ">}}*Audit and assessment personnel who validate the accuracy of security plans and assess the implementation of security controls within information systems.*{{</callout>}}

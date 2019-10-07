@@ -2,6 +2,8 @@
 title: Relations to Documentary Encoding Standards
 description: TBD
 weight: 100
+aliases:
+  - /docs/relations/
 ---
 
 Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27001/2, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.

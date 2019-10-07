@@ -22,7 +22,7 @@
         <h1>This section contains the following topics:</h1>
         <ul>
         {{ range $index, $page := .Pages }}
-          <li><a class="usa-link" href="{{.Permalink}}"><b>{{.Title}}{{ if .Description }}:{{end}}</b></a>{{ if .Description }} {{ .Description }}{{end}}</li>
+          <li><a class="usa-link" href="{{.Permalink}}"><b>{{.Title}}{{ if .Description }}:{{end}}</b></a>{{ if .Description }} {{ .Description | markdownify }}{{end}}</li>
         {{ end }}
         </ul>
         {{ end }}

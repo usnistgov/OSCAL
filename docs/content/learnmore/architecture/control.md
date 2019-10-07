@@ -2,6 +2,8 @@
 title: Control
 description: Control concept.
 weight: 10
+aliases:
+  - /docs/control/
 ---
 
 In OSCAL, a control is:

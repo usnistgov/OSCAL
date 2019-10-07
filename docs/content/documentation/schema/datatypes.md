@@ -3,6 +3,8 @@ title: OSCAL Data Types
 heading: Data Types Used in OSCAL
 description: OSCAL Model Data Types Reference
 weight: 10
+aliases:
+  - /docs/schemas/datatypes/
 ---
 
 The OSCAL models are based on structures that use a specific set of data types. These data types are documented in the following sections.

@@ -2,6 +2,8 @@
 title: Profile
 description: Profile concept.
 weight: 30
+aliases:
+  - /docs/profile/
 ---
 
 In OSCAL a profile is:

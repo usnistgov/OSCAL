@@ -1,6 +1,8 @@
 ---
 title: Use Cases
 weight: 70
+aliases:
+  - /learnmore/scenarios/
 ---
 
 ## Managing Multiple Regulatory Frameworks

@@ -1,6 +1,8 @@
 ---
 title: Profiles
 description: OSCAL Profile Examples
+aliases:
+  - /resources/examples/profiles/
 ---
 
 Profiles currently available are early work; while we do not believe they have errors, they should be regarded as testing documents until authoritative versions can be published.

@@ -8,6 +8,7 @@ languages:
     weight: 1
 MetaDataFormat: "yaml"
 theme: "uswds"
+canonifyURLs: true
 enableGitInfo: true
 enableRobotsTXT: true
 pygmentsCodeFences: true
