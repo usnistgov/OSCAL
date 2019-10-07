@@ -12,9 +12,9 @@
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
     <xsl:param name="target-format" as="xs:string">xml</xsl:param>
-    <xsl:param name="output-path"   as="xs:string">../../../docs/content/documentation/schemas</xsl:param>
+    <xsl:param name="output-path"   as="xs:string">../../../docs/layouts/partials/generated</xsl:param>
     <xsl:param name="schema-path">
-    <!-- TODO: confirm this value is passed from the calling script, then this can be ripped this out -->
+    <!-- TODO: confirm this value is passed from the calling script, then this can be ripped out -->
         <xsl:choose>
             <xsl:when test="$target-format = 'xml'">
                 <xsl:choose>
@@ -43,8 +43,6 @@
 
     <xsl:param name="example-converter-xslt-path" as="xs:string" required="yes"/>
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
-
-    <xsl:variable name="result-path" select="($output-path || '/_' || $metaschema-code || '-' || $target-format)"/>
 
     <!-- This template produces an XSLT dynamically by running an XSLT with a parameter set. -->
     <xsl:variable name="xslt">
@@ -91,8 +89,12 @@
     </xsl:variable>
 
     <xsl:template match="/">
-        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/{ $metaschema-code }.html" method="html">
-            <xsl:message expand-text="yes">writing to {$result-path}/{ $metaschema-code }.html</xsl:message>
+        <!--file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/layouts/partials/generated/xml-schema-oscal-catalog.html-->
+        <xsl:variable name="schema-docs-file" as="xs:string" expand-text="true">{$output-path}/{$target-format}-schema-{$metaschema-code}.html</xsl:variable>
+        <xsl:variable name="schema-map-file"  as="xs:string" expand-text="true">{$output-path}/{$target-format}-map-{$metaschema-code}.html</xsl:variable>
+        
+        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-docs-file}" method="html">
+            <xsl:message expand-text="yes">writing to {$schema-docs-file}</xsl:message>
             <xsl:call-template name="yaml-header">
                 <xsl:with-param name="overview" select="true()"/>
             </xsl:call-template>
@@ -101,8 +103,8 @@
             <xsl:apply-templates mode="cleanup" select="$html-docs/*/html:body/*"/>
         </xsl:result-document>
 
-        <xsl:result-document exclude-result-prefixes="#all" href="{$result-path}/../../maps/{ $metaschema-code }-{ $target-format }-map.html" method="html">
-            <xsl:message expand-text="yes">{$result-path}/../../maps/{ $metaschema-code }-map.html</xsl:message>
+        <xsl:result-document exclude-result-prefixes="#all" href="{$schema-map-file}" method="html">
+            <xsl:message expand-text="yes">writing to {$schema-map-file}</xsl:message>
             <xsl:call-template name="map-header"/>
 
             <xsl:for-each select="$schema-map">
