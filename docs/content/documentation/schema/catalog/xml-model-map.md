@@ -1,14 +1,13 @@
 ---
-title: "XML Model Map"
-type: html
+title: "Catalog XML Model Map"
+heading: OSCAL Control Catalog Model XML Format Outline
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 custom_css:
   - "/css/model-map.css"
 aliases:
   - /docs/maps/oscal-catalog-xml/
+weight: 50
 ---
 
-<h1>OSCAL Control Catalog Format XML Model Map</h1>
-
-{{<partial "generated/xml-map-oscal-catalog.html" >}}
+{{<partial "generated/catalog-xml-map.html" >}}
