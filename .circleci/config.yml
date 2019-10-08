@@ -19,11 +19,11 @@ references:
     checkout:
       path: git-oscal
   checkout-submodules: &checkout-submodules
-    - run:
-        name: Checkout Submodules
-        command: |
-          git submodule sync --recursive
-          git submodule update --recursive --init
+    run:
+      name: Checkout Submodules
+      command: |
+        git submodule sync --recursive
+        git submodule update --recursive --init
   publish_artifacts: &publish_artifacts
     store_artifacts:
       path: build_artifacts
