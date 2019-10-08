@@ -20,9 +20,9 @@ references:
       path: git-oscal
   checkout-submodules: &checkout-submodules
     run:
-      working_directory: git-oscal
       name: Checkout Submodules
       command: |
+        cd "$OSCAL_REPO_DIR"
         git submodule sync --recursive
         git submodule update --recursive --init
   publish_artifacts: &publish_artifacts
