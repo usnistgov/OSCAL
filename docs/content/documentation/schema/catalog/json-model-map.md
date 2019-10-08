@@ -1,6 +1,7 @@
 ---
 title: "Catalog JSON Model Map"
 heading: OSCAL Control Catalog Model JSON Format Outline
+description: An outline of the OSCAL Catalog model JSON format.
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 custom_css:
@@ -10,4 +11,4 @@ aliases:
 weight: 10
 ---
 
-{{<partial "generated/catalog-json-map.html" >}}
+{{<partial "generated/oscal-catalog-json-map.html" >}}

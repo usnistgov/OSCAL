@@ -71,7 +71,7 @@ stylesheet="$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl
 github_url="https://raw.githubusercontent.com/usnistgov/OSCAL/master"
 
 # the directory to generate the documentation in
-schema_doc_dir="${WORKING_DIR}/docs/content/documentation/schemas"
+schema_doc_dir="${WORKING_DIR}/docs/layouts/partials/generated"
 mkdir -p "$schema_doc_dir" # ensure this directory exists
 
 exitcode=0

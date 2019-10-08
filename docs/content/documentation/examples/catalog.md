@@ -7,11 +7,11 @@ aliases:
 
 ## NIST SP 800-53
 
-{{<callout class="padding-05 padding-x-105 border-base border-width-1 bg-base-lighter ">}}**Note:** Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL [XML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml), [JSON](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json), and [YAML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml) formats in the OSCAL GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.{{</callout>}}
+{{<callout>}}**Note:** Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL [XML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml), [JSON](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json), and [YAML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml) formats in the OSCAL GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.{{</callout>}}
 
 Here is a non-normative, partial illustration showing how control **AC1** from NIST SP 800-53 rev 4 can be rendered in OSCAL Catalog XML format with a `<control>` element. A short walkthrough follows.
 
-{{< highlight xml "linenos=table,nowrap=false" >}}
+{{<highlight xml "linenos=table,nowrap=false" >}}
 <control class="SP800-53" id="ac-1">
   <title>Access Control Policy and Procedures</title>
   <param id="ac-1_prm_1">

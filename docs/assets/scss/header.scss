@@ -1,0 +1,38 @@
+
+.usa-header--extended {
+  @media all and (min-width:64em) {
+    .usa-logo {
+      max-width: 70%;
+    }
+    .usa-navbar {
+      max-width: 100%;
+    }
+    .usa-nav__inner {
+      max-width: 100%;
+    }
+    .usa-menu-btn-container {
+      display: none;
+    }
+  }
+}
+
+.usa-header--basic {
+  @media all and (min-width:64em) {
+    .usa-nav-container {
+      max-width: 100%;
+    }
+    .usa-nav__inner {
+      max-width: 100%;
+      width: 100%;
+    }
+    .usa-nav__primary {
+      float: left;
+    }
+    .usa-navbar {
+      width: 20%;
+    }
+    .usa-nav {
+      padding: 0 0 .25rem 0;
+    }
+  }
+}

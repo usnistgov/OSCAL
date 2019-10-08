@@ -19,7 +19,6 @@ params:
     project_shortname: "OSCAL"
     project_name: "OSCAL: the Open Security Controls Assessment Language"
   custom_css:
-    - "/css/syntax.css"
   contentRepoPath: https://github.com/usnistgov/OSCAL/tree/master/docs/content
 menu:
   secondary:

@@ -7,7 +7,7 @@ aliases:
 
 ---
 
-{{<callout class="padding-05 padding-x-105 border-base border-width-1 bg-base-lighter ">}}*Audit and assessment personnel who validate the accuracy of security plans and assess the implementation of security controls within information systems.*{{</callout>}}
+{{<callout>}}*Audit and assessment personnel who validate the accuracy of security plans and assess the implementation of security controls within information systems.*{{</callout>}}
 
 OSCAL standardizes the format for documentation of security controls, while establishing a framework for the automated assessment of information systems to be evaluated based the state of the security controls being addressed.
 

@@ -2,11 +2,13 @@
 title: "Catalog JSON Schema Reference"
 heading: "OSCAL Control Catalog JSON Schema Reference"
 navtitle: JSON Schema Reference
-custom_js:
-  - "/js/oscal-metaschema-map-expander.js"
+description: Object-level definitions of the OSCAL Catalog model JSON format.
+custom_css:
+- "/css/schema-docs.css"
 aliases:
   - /docs/schemas/oscal-catalog-json/
 weight: 20
+navheadingselectors: "h4.usa-color-text"
 ---
 
-{{<partialCached "generated/catalog-json-schema.html" >}}
+{{<partialCached "generated/oscal-catalog-json-schema.html" >}}

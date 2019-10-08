@@ -6,7 +6,7 @@ aliases:
   - /learnmore/securitypros/
 ---
 
-{{<callout class="padding-05 padding-x-105 border-base border-width-1 bg-base-lighter ">}}*Security professionals who document or implement security controls within information systems.*{{</callout>}}
+{{<callout>}}*Security professionals who document or implement security controls within information systems.*{{</callout>}}
 
 OSCAL provides a standardized format for documenting security and privacy controls that maps across multiple compliance frameworks (i.e. NIST, PCI, etc.) and a method for attesting to the implementation of the controls within information systems
 

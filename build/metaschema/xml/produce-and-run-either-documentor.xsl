@@ -92,8 +92,8 @@
 
     <xsl:template match="/">
         <!--file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/layouts/partials/generated/xml-schema-oscal-catalog.html-->
-        <xsl:variable name="schema-docs-file" as="xs:string" expand-text="true">{$output-path}/{$target-format}-schema-{$metaschema-code}.html</xsl:variable>
-        <xsl:variable name="schema-map-file"  as="xs:string" expand-text="true">{$output-path}/{$target-format}-map-{$metaschema-code}.html</xsl:variable>
+        <xsl:variable name="schema-docs-file" as="xs:string" expand-text="true">{$output-path}/{$metaschema-code}-{$target-format}-schema.html</xsl:variable>
+        <xsl:variable name="schema-map-file"  as="xs:string" expand-text="true">{$output-path}/{$metaschema-code}-{$target-format}-map.html</xsl:variable>
         
         <xsl:result-document exclude-result-prefixes="#all" href="{$schema-docs-file}" method="html" indent="yes">
             <xsl:message expand-text="yes">writing to {$schema-docs-file}</xsl:message>
