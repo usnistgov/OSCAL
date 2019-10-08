@@ -9,7 +9,7 @@
    
    <xsl:template match="m:METASCHEMA/m:short-name">
       <p>
-         <span class="usa-label">Short name</span>
+         <span class="usa-tag">Short name</span>
          <xsl:text> </xsl:text>
          <xsl:apply-templates/>
       </p>
@@ -17,20 +17,14 @@
    
    <xsl:template match="m:METASCHEMA/m:schema-version">
       <p>
-         <span class="usa-label">Schema version</span>
+         <span class="usa-tag">Schema version</span>
          <xsl:text> </xsl:text>
          <xsl:apply-templates/>
       </p>
    </xsl:template>
    
    <xsl:template match="m:description" mode="model">
-      <p style="font-size: smaller">
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:remarks/m:p" mode="model">
-      <p style="font-size: smaller">
+      <p style="measure-3 font-body-xs">
          <xsl:apply-templates/>
       </p>
    </xsl:template>
@@ -45,7 +39,7 @@
 
    <xsl:template  match="m:example">
       <div class="example">
-         <pre class="example">
+         <pre class="example font-mono-sm">
            <xsl:apply-templates select="*" mode="serialize"/>
          </pre>
       </div>
@@ -74,7 +68,7 @@
    </xsl:template>
 
   <xsl:template match="m:remarks">
-     <div class="remarks" style="padding-left: 0.5em; border-left: thin solid black; margin-bottom: 0.5em">
+     <div class="remarks measure-5 border-left-05 padding-left-1 font-body-xs">
          <xsl:apply-templates/>
       </div>
    </xsl:template>
@@ -100,11 +94,11 @@
       </p>
    </xsl:template>
    
-   <xsl:template match="m:example/m:remarks">
+   <!--<xsl:template match="m:example/m:remarks">
       <div class="remarks">
           <xsl:apply-templates/>
       </div>
-   </xsl:template>
+   </xsl:template>-->
    
    <xsl:template  match="m:p">
       <p class="p">

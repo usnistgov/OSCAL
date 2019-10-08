@@ -97,7 +97,7 @@
         <xsl:if test="$target-format='json'">
           <XSLT:import href="{$example-converter-xslt}"/>
         </xsl:if>
-        <XSLT:import href="../lib/metaschema-{$target-format}docs-jekyll-uswds.xsl"/>
+        <XSLT:import href="../lib/metaschema-{$target-format}docs-hugo-uswds.xsl"/>
         <XSLT:preserve-space elements="*"/>
         
         <XSLT:param name="schema-path" select="'{ $schema-path }'"/>

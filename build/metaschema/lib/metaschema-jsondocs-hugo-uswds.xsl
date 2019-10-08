@@ -60,7 +60,7 @@
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
-         <p><span class="usa-label">Schema download</span>
+         <p><span class="usa-tag">Schema download</span>
             <xsl:text> </xsl:text>
             <a href="{$schema-path}">
                <xsl:value-of select="replace($schema-path,'^.*/','')"/></a>
@@ -109,15 +109,14 @@
    </xsl:template>
 
    <xsl:template name="cross-links">
-      <xsl:variable name="alt-schema" select="replace($metaschema-code,'-json$','-xml')"/>
+      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-json$)','')"/>
       <div style="float:right">
-         <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
-            <button class="button-xml-on">Switch to XML</button>
+         <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
+         <a href="../../{ $schema-base }/json-schema#{$schema-base}-xml_{ @name}">
+            <button class="usa-button">Switch to XML</button>
          </a>
-         <!--<button  class="button-json-off" disabled="disabled">JSON</button>-->
       </div>
    </xsl:template>
-
    <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
 
    <xsl:template name="report-module"/>
@@ -520,7 +519,7 @@
 
    <xsl:template match="remarks[@class = 'json']/p[1]">
       <p class="p">
-         <span class="usa-label">JSON</span>
+         <span class="usa-tag">JSON</span>
          <xsl:text> </xsl:text>
          <xsl:apply-templates/>
       </p>
