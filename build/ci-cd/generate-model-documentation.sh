@@ -133,7 +133,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       esac
 
       if [ "$VERBOSE" = "true" ]; then
-        echo -e "${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+        echo -e "  ${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
       fi
       result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
         "target-format=${format}" \
@@ -147,6 +147,9 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         exitcode=1
         continue
       else
+        model="${base/oscal_/}"
+        touch "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
+        touch "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
         echo -e "${P_OK}Generated ${format^^} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     done

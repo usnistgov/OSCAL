@@ -98,7 +98,7 @@ commands:
       - run:
           name: Install Hugo
           command: |
-            sudo apt-get install hugo_extended_0.58.3_Linux-64bit.deb
+            sudo apt-get install ./hugo_extended_0.58.3_Linux-64bit.deb
   install-lxml:
     description: "Installs Python lxml package"
     steps:
