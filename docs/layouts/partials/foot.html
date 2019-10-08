@@ -1,20 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" integrity="sha384-S2Sj9dbj135Vzm4xwOrcyOA/FlODQj514E6Il+ayOB/Y0YClPg5BpCy7lG2G8wtV" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
-tocbot.init({
-  // Where to render the table of contents.
-  tocSelector: '#js-toc',
-  // Where to grab the headings to build the table of contents.
-  contentSelector: '#main-content',
-  // Which headings to grab inside of the contentSelector element.
-  headingSelector: '{{ if $.Params.navheadingselectors }}{{ .Params.navheadingselectors }}{{ else }}h2, h3, h4{{ end }}',
-  // For headings inside relative or absolute positioned containers within content.
-  hasInnerContainers: true,
-  orderedList: false,
-  listClass: 'usa-sidenav',
-  listItemClass: 'usa-sidenav__item',
-  activeLinkClass: 'usa-current'
-});
 $(document).ready(function () {
   $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
   $('a.usa-link--external').leaveNotice();

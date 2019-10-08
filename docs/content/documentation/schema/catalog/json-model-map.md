@@ -9,6 +9,8 @@ custom_css:
 aliases:
   - /docs/maps/oscal-catalog-json/
 weight: 10
+sidenav:
+  title: JSON Schema Map
 ---
 
 {{<partial "generated/oscal-catalog-json-map.html" >}}

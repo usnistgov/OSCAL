@@ -22,8 +22,8 @@ Options:
 
 
 run_build() {
-  echo "Running jekyll"
-  JEKYLL_ENV=production bundle exec jekyll build
+  echo "Running Hugo"
+  hugo -v --debug --minify
 }
 
 parse_args() {
@@ -63,7 +63,7 @@ parse_args() {
   # vars should be declared here, with sane defaults if applicable.
 
   # Source directory & target branch.
-  deploy_directory=_site
+  deploy_directory=public
 
   if [[ -z $deploy_branch ]]; then
     deploy_branch=nist-pages

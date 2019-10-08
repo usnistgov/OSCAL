@@ -7,6 +7,8 @@ custom_css:
 aliases:
   - /docs/schemas/oscal-catalog-xml/
 weight: 60
+sidenav:
+  title: XML Schema Reference
 ---
 
 {{<partial "generated/oscal-catalog-xml-schema.html" >}}

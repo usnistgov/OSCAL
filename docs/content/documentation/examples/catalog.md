@@ -3,6 +3,8 @@ title: Catalog Example
 description: OSCAL Catalog Example
 aliases:
   - /resources/examples/catalogs/
+sidenav:
+  title: Catalog
 ---
 
 ## NIST SP 800-53

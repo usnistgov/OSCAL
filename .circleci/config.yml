@@ -24,11 +24,11 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - gem-cache-v9-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
-        - gem-cache-v9-{{ arch }}-
+        - gem-cache-v10-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v10-{{ arch }}-
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: gem-cache-v9-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: gem-cache-v10-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
         - git-oscal/docs/vendor/bundle
 commands:
@@ -88,6 +88,17 @@ commands:
           name: Get Maven
           command: |
             sudo apt-get install maven
+  install-hugo:
+    description: "Installs Hugo"
+    steps:
+      - run:
+          name: Get Hugo
+          command: |
+            wget https://github.com/gohugoio/hugo/releases/download/v0.58.3/hugo_extended_0.58.3_Linux-64bit.deb
+      - run:
+          name: Install Hugo
+          command: |
+            sudo apt-get install hugo_extended_0.58.3_Linux-64bit.deb
   install-lxml:
     description: "Installs Python lxml package"
     steps:
@@ -141,11 +152,9 @@ commands:
     description: "Install bundler and html-proofer"
     steps:
       - run:
-          name: Install Bundler
+          name: Install with Bundler
           command: |
             cd "$OSCAL_REPO_DIR/docs"
-            # gem install bundler
-            # gem install html-proofer
             bundle install --path vendor/bundle --jobs=4 --retry=3 && bundle clean
   check-skip-build:
     steps:
@@ -376,20 +385,19 @@ jobs: # a collection of
       - check-skip-build
       - *restore_gem_cache
       - install-bundler
+      - install-hugo
       - run:
           name: Restore generated site content
           command: |
             # restore docs from tar
             tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
       - run:
-          name: Build and Validate Jekyll site
+          name: Build and Validate Hugo site
           command: |
             # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
-            bundle exec jekyll build -d _site/OSCAL
-            bundle exec htmlproofer --allow-hash-href --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/" --assume-extension --log-level :debug ./_site
-          environment:
-            JEKYLL_ENV: production
+            hugo -v --debug --minify
+            bundle exec htmlproofer --allow-hash-href --disable-external  public/ --url-swap "\/OSCAL\/:/"  --assume-extension --log-level :debug
       - *save_gem_cache
       - *publish_artifacts
   job-build-and-deploy-website:
@@ -400,18 +408,19 @@ jobs: # a collection of
       - check-skip-build
       - *restore_gem_cache
       - install-bundler
+      - install-hugo
       - run:
           name: Restore generated site content
           command: |
             # restore docs from tar
             tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
       - run:
-          name: Build jekyll site
+          name: Build Site with Hugo
           command: |
             # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
-            bundle exec jekyll build
-            mkdir -p _site/.circleci
+            hugo -v --debug --minify
+            mkdir -p public/.circleci
             # copy the circleci config
             cp ../.circleci/config.yml _site/.circleci/config.yml
           environment:

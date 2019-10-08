@@ -9,6 +9,8 @@ custom_css:
 aliases:
   - /docs/maps/oscal-component-xml/
 weight: 50
+sidenav:
+  title: XML Schema Map
 ---
 
 {{<partial "generated/oscal-component-xml-map.html" >}}

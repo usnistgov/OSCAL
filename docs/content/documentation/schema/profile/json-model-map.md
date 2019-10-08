@@ -10,6 +10,8 @@ custom_css:
 aliases:
   - /docs/maps/oscal-profile-json/
 weight: 10
+sidenav:
+  title: JSON Schema Map
 ---
 
 {{<partial "generated/oscal-profile-json-map.html" >}}

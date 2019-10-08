@@ -8,6 +8,8 @@ custom_css:
 aliases:
   - /docs/schemas/oscal-profile-json/
 weight: 20
+sidenav:
+  title: JSON Schema Reference
 ---
 
 {{<partialCached "generated/oscal-profile-json-schema.html" >}}

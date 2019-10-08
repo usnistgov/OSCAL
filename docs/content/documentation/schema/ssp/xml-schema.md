@@ -7,6 +7,8 @@ custom_css:
 aliases:
   - /docs/schemas/oscal-ssp-xml/
 weight: 60
+sidenav:
+  title: XML Schema Reference
 ---
 
 {{<partial "generated/oscal-ssp-xml-schema.html" >}}

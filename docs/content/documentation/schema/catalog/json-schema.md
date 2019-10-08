@@ -8,7 +8,9 @@ custom_css:
 aliases:
   - /docs/schemas/oscal-catalog-json/
 weight: 20
-navheadingselectors: "h4.usa-color-text"
+sidenav:
+  headingselectors: "h4.usa-color-text"
+  title: JSON Schema Reference
 ---
 
 {{<partialCached "generated/oscal-catalog-json-schema.html" >}}
