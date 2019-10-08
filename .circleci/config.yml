@@ -18,6 +18,12 @@ references:
   checkout: &checkout
     checkout:
       path: git-oscal
+  checkout-submodules: &checkout-submodules
+    - run:
+        name: Checkout Submodules
+        command: |
+          git submodule sync --recursive
+          git submodule update --recursive --init
   publish_artifacts: &publish_artifacts
     store_artifacts:
       path: build_artifacts
@@ -318,6 +324,7 @@ jobs: # a collection of
     executor: java-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
@@ -381,6 +388,7 @@ jobs: # a collection of
     executor: ruby-node-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - *restore_gem_cache
@@ -404,6 +412,7 @@ jobs: # a collection of
     executor: ruby-node-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - *restore_gem_cache

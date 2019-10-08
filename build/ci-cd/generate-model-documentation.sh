@@ -148,8 +148,8 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         continue
       else
         model="${base/oscal_/}"
-        touch "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
-        touch "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
+        touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
+        touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
         echo -e "${P_OK}Generated ${format^^} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     done
