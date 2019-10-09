@@ -406,7 +406,7 @@ jobs: # a collection of
             # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR/docs"
             hugo -v --debug --minify
-            bundle exec htmlproofer --allow-hash-href --disable-external  public/ --url-swap "\/OSCAL\/:/"  --assume-extension --log-level :debug
+            bundle exec htmlproofer --allow-hash-href --disable-external  public/ --url-swap "\/OSCAL\/:/"  --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/schemas\//,/#/,/https:\/\/raw\.githubusercontent\.com/"
       - *save_gem_cache
       - *publish_artifacts
   job-build-and-deploy-website:
