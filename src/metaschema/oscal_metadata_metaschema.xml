@@ -500,7 +500,7 @@
          <allowed-values allow-other="yes">
             <enum value="home">A home phone number.</enum>
             <enum value="office">An office phone number.</enum>
-            <enum value="mobibe">A mobile phone number.</enum>
+            <enum value="mobile">A mobile phone number.</enum>
          </allowed-values>
       </flag>
    </define-field>

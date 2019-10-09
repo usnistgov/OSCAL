@@ -311,7 +311,10 @@ The OSCAL HTML-like syntax supports:
 
 - Within paragraphs or text content: `a`, `img`, `strong`, `em`, `b`, `i`, `sup`, `sub`.
 
-In particular, note that elements such as `div`, `blockquote`, `section` or `aside`, used in HTML to provide structure, are *not permitted in OSCAL*. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as `part`, which can include prose.
+
+In remarks below and throughout this documentation, this element set may be referred to as "prose content" or "prose". A future OSCAL could support the definition of this tag set (and Markdown equivalent) as a module, enabling our HTML subset to be switched out for something else. (Its prose model would be different from OSCAL prose as currently defined.) 
+
+Note that elements such as `div`, `blockquote`, `section` or `aside`, used in HTML to provide structure, are *not permitted in OSCAL*. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as `part`, which can include prose.
 
 In addition, there are contexts in OSCAL where prose usage may be further constrained. For example, at a higher level (outside the base schema) an OSCAL application could forbid the use of prose headers `h1-h6` in favor of nested OSCAL `part` elements with their own titles.
 
@@ -327,21 +330,12 @@ The following table describes the equavalent constructs in HTML and Markdown use
 | Emphasis | &lt;i&gt;*text*&lt;/i&gt; | \**text*\*
 | Important Text (preferred) | &lt;strong&gt;*text*&lt;/strong&gt; | \*\**text*\*\*
 | Important Text | &lt;b&gt;*text*&lt;/b&gt; | \*\**text*\*\*
+| Inline code | &lt;code&gt;*text*&lt;/code&gt; | \`*text*\`
 | Quoted Text | &lt;q&gt;*text*&lt;/q&gt; | "*text*"
 | Subscript Text | &lt;sub&gt;*text*&lt;/sub&gt; | \~*text*\~
 | Superscript Text | &lt;sup&gt;*text*&lt;/sup&gt; | \^*text*\^
 | Image | &lt;img alt="*alt text*" src="*url*" title="*title text*"/&gt; | !\[*alt text*](*url* "*title text*")
 | Link | &lt;a *href*="*url*"&gt;*text*&lt;/a&gt; | \[*text*](*url*)
-| Heading: Level 1 | &lt;h1&gt;*text*&lt;/h1&gt; | # *text*
-| Heading: Level 2 | &lt;h2&gt;*text*&lt;/h2&gt; | ## *text*
-| Heading: Level 3 | &lt;h3&gt;*text*&lt;/h3&gt; | ### *text*
-| Heading: Level 4 | &lt;h4&gt;*text*&lt;/h4&gt; | #### *text*
-| Heading: Level 5 | &lt;h5&gt;*text*&lt;/h5&gt; | ##### *text*
-| Heading: Level 6 | &lt;h6&gt;*text*&lt;/h6&gt; | ###### *text*
-| Code Blocks | &lt;code&gt;*text*&lt;/code&gt; | \`*text*\`
-| Preformatted Text | &lt;pre&gt;*text*&lt;/pre&gt; | \`\`\`*text*\`\`\`
-| Ordered List Item | &lt;ol&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ol&gt; | 1. *text*
-| Unordered List Item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | - *text*
 
 Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; tags, which indicate italics and bold respectively. These concepts are mapped in OSCAL markup text to &lt;em&gt; and &lt;strong&gt; [common mark](https://spec.commonmark.org/0.29/#emphasis-and-strong-emphasis), which render equivalently in browsers, but do not have exactly the same semantics. While this mapping is imperfect, it represents the common uses of these HTML tags.
 
@@ -385,9 +379,21 @@ Since these characters are not markup delimiters in XML, they are safe to use th
 
 ### markup-multiline
 
-All constructs supported by the [markup-line](#markup-line) data type is supported by the `markup-multiline` data type.
+All constructs supported by the [markup-line](#markup-line) data type is supported by the `markup-multiline` data type, when appearing within a header (`h1`-`h6`), paragraph (`p`), list item (`li`) or table cell (`th` or `td`).
 
 The following additonal constructs are also supported.
+
+| Markup Type | HTML | Markdown |
+|:--- |:--- |:--- |
+| Heading: Level 1 | &lt;h1&gt;*text*&lt;/h1&gt; | # *text*
+| Heading: Level 2 | &lt;h2&gt;*text*&lt;/h2&gt; | ## *text*
+| Heading: Level 3 | &lt;h3&gt;*text*&lt;/h3&gt; | ### *text*
+| Heading: Level 4 | &lt;h4&gt;*text*&lt;/h4&gt; | #### *text*
+| Heading: Level 5 | &lt;h5&gt;*text*&lt;/h5&gt; | ##### *text*
+| Heading: Level 6 | &lt;h6&gt;*text*&lt;/h6&gt; | ###### *text*
+| Preformatted Text | &lt;pre&gt;*text*&lt;/pre&gt; | \`\`\`*text*\`\`\`
+| Ordered List, with a single item | &lt;ol&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ol&gt; | 1. *text*
+| Unordered List with single item | &lt;ul&gt;&lt;li&gt;*text*&lt;/li&gt;&lt;/ul&gt; | - *text*
 
 #### Paragraphs
 
