@@ -1,189 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                version="1.0"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns="http://www.w3.org/1999/xhtml"
-                exclude-result-prefixes="xs m">
-   
-   
-   <xsl:template match="m:METASCHEMA/m:short-name">
-      <p>
-         <span class="usa-tag">Short name</span>
-         <xsl:text> </xsl:text>
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:METASCHEMA/m:schema-version">
-      <p>
-         <span class="usa-tag">Schema version</span>
-         <xsl:text> </xsl:text>
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:description" mode="model">
-      <p style="measure-3 font-body-xs">
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:choice">
-      <li class="choice">A choice between:
-         <ul>
-           <xsl:apply-templates/>
-         </ul>
-      </li>
-   </xsl:template>
-
-   <xsl:template  match="m:example">
-      <div class="example">
-         <pre class="example font-mono-sm">
-           <xsl:apply-templates select="*" mode="serialize"/>
-         </pre>
-      </div>
-   </xsl:template>
-
-   <xsl:template match="m:prose">
-      <li class="prose">Prose contents (paragraphs and lists)</li>
-   </xsl:template>
-
-   <xsl:template match="m:allowed-values">
-      <xsl:choose>
-        <xsl:when test="@allow-other and @allow-other='yes'">
-          <p>The value may be locally defined, or one of the following:</p>
-        </xsl:when>
-        <xsl:otherwise>
-          <p>The value must be one of the following:</p>
-        </xsl:otherwise>
-      </xsl:choose>
-      <ul>
-        <xsl:apply-templates/>
-      </ul>   
-   </xsl:template>
-
-   <xsl:template match="m:allowed-values/m:enum">
-     <li><strong><xsl:value-of select="@value"/></strong><xsl:if test="node()">: <xsl:apply-templates/></xsl:if></li>     
-   </xsl:template>
-
-  <xsl:template match="m:remarks">
-     <div class="remarks measure-5 border-left-05 padding-left-1 font-body-xs">
-         <xsl:apply-templates/>
-      </div>
-   </xsl:template>
-   
-   
-   <xsl:template match="m:formal-name"/>
-      
-   <xsl:template match="m:formal-name" mode="inline">
-      <b class="formal-name">
-         <xsl:apply-templates/>
-      </b>
-   </xsl:template>
-
-   <xsl:template match="m:description">
-      <p class="description">
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <xsl:template match="m:example/m:description">
-      <p class="description">
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-   
-   <!--<xsl:template match="m:example/m:remarks">
-      <div class="remarks">
-          <xsl:apply-templates/>
-      </div>
-   </xsl:template>-->
-   
-   <xsl:template  match="m:p">
-      <p class="p">
-         <xsl:apply-templates/>
-      </p>
-   </xsl:template>
-
-   
-   <xsl:template match="m:code">
-      <code>
-         <xsl:apply-templates/>
-      </code>
-   </xsl:template>
-   
-   <xsl:template match="m:q">
-      <q>
-         <xsl:apply-templates/>
-      </q>
-   </xsl:template>
-
-   <xsl:template match="m:em | m:strong | m:b | m:i | m:u">
-      <xsl:element name="{local-name(.)}" namespace="http://www.w3.org/1999/xhtml">
-         <xsl:apply-templates/>
-      </xsl:element>
-   </xsl:template>
-
-   <xsl:template match="m:a">
-     <a href="{@href}"><xsl:apply-templates/></a>
-   </xsl:template>
+<xsl:stylesheet  version="3.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    exclude-result-prefixes="#all">
     
-   <xsl:template match="*" mode="serialize">
-      <!--<xsl:call-template name="indent-for-pre"/>-->
-      
-      <code class="tag">&lt;<xsl:value-of select="name(.)"/>
-         <xsl:for-each select="@*">
+    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): common code -->
+    <!-- Input:   Metaschema -->
+    <!-- Output:  HTML  -->
+    
+    <xsl:import href="metaschema-htmldoc-xslt1.xsl"/>
+    
+    <xsl:import href="metaschema-docs-util.xsl"/>
+    
+    <xsl:param name="schema-path" select="document-uri(/)"/>
+    
+    <!-- override this from importing XSLT -->
+    <xsl:variable name="metaschema-code" select="/*/short-name || '-common'"/>
+    
+    <xsl:variable name="home" select="/METASCHEMA"/>
+    
+    <xsl:variable name="all-references" select="//flag/@name | //model//*/@ref"/>
+     
+    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
+    <xsl:key name="references" match="flag"             use="@name | @ref"/>
+    <xsl:key name="references" match="field | assembly" use="@ref"/>
+    
+    <xsl:template match="/">
+        <html>
+            <head>
+                <xsl:call-template name="css"/>
+            </head>
+            <body>
+                <xsl:apply-templates/>
+            </body>
+        </html>
+    </xsl:template>
+    
+    <!-- stub to override -->
+    
+    
+    <xsl:template match="METASCHEMA">
+        <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
+        <div class="{$metaschema-code ! replace(.,'.*-','') }-docs">
+        <div class="top-level">
+            <p><span class="usa-tag">Schema download</span>
+                <xsl:text> </xsl:text>
+                <a href="{$schema-path}">
+                    <xsl:value-of select="replace($schema-path,'^.*/','')"/></a>
+            </p>
+            <xsl:apply-templates select="* except $definitions"/>
+        </div>
+        <xsl:apply-templates select="$definitions">
+            <xsl:sort select="@name" data-type="text"/>
+        </xsl:apply-templates>
+        </div>
+    </xsl:template>
+    
+    
+    <xsl:template match="METASCHEMA/schema-name"/>
+    
+    <xsl:template match="METASCHEMA/namespace">
+        <p>
+            <span class="label">XML namespace</span>
             <xsl:text> </xsl:text>
-            <xsl:value-of select="name()"/>
-            <xsl:text>="</xsl:text>
-            <xsl:value-of select="."/>
-            <xsl:text>"</xsl:text>
-         </xsl:for-each>
-         <xsl:text>&gt;</xsl:text>
-      </code>
-      
-      <xsl:apply-templates mode="serialize">
-         <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
-      </xsl:apply-templates>
-      
-      <!--<xsl:if test="not(text()[normalize-space(.)])">
-         <xsl:call-template name="indent-for-pre">
-            <xsl:with-param name="endtag" select="true()"/>
-         </xsl:call-template>
-      </xsl:if>-->
-      <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
-         <xsl:text>&gt;</xsl:text>
-      </code>
-   </xsl:template>
-   
-   <xsl:template name="indent-for-pre">
-      <xsl:param name="endtag" select="false()"/>
-      <!-- Pretty heavy duty doing this under XSLT 1.0 -->
-      <xsl:variable name="inline" select="boolean(../text()[normalize-space(.)])"/>
-      <xsl:variable name="all-ancestors" select="ancestor::*"/>
-      <xsl:variable name="example-ancestors" select="ancestor::m:example/ancestor::*"/>
-      <xsl:variable name="depth" select="count($all-ancestors) - count($example-ancestors)"/>
-      
-      <xsl:if test="not($inline)">
-         <!-- No CR for the first one -->
-         <xsl:if test="boolean(preceding-sibling::*) or not(parent::m:example) or $endtag">
-            <xsl:text>&#xA;</xsl:text>
-         </xsl:if>
-         <!-- check out the ancient method for a loop -->
-         <xsl:for-each select="ancestor::*[position() &lt; $depth]">
-            <xsl:text>  </xsl:text>
-         </xsl:for-each>
-      </xsl:if>
-   </xsl:template>
-   
-   <xsl:template match="text()" mode="serialize">
-      <xsl:param name="hot" select="boolean(../text()[normalize-space(.)])"/>
-      <xsl:if test="$hot">
-         <xsl:value-of select="."/>
-      </xsl:if>
-   </xsl:template>
-   
-   
-   
+            <code>
+                <xsl:apply-templates/>
+            </code>
+        </p>
+    </xsl:template>
+    
+    
+    <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
+        <a href="#{@name}"><xsl:value-of select="@name"/></a>
+    </xsl:template>
+    
+    <xsl:template name="definition-header">
+        <header class="definition-header">
+            <xsl:call-template name="cross-links"/>
+            <h2 id="{$metaschema-code}_{@name}" class="{substring-after(local-name(),'define-')}-header">
+                <xsl:apply-templates select="@name" mode="tag"/>
+                <xsl:text>: </xsl:text>
+                <xsl:apply-templates select="formal-name" mode="inline"/>
+            </h2>
+        </header>
+    </xsl:template>
+    
+    
+    <xsl:template name="remarks-group">
+        <!-- can't use xsl:where-populated due to the header :-( -->
+        <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
+            <div class="remarks-group">
+                <h3>Remarks</h3>
+                <xsl:apply-templates select="current-group()"/>
+            </div>
+        </xsl:for-each-group>
+    </xsl:template>
+    
+    
+    <xsl:template mode="tag" match="@name">
+        <code class="tagging"><xsl:value-of select="."/></code>   
+    </xsl:template>
+    
+    
+    <!--<xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>-->
+    
+    <xsl:template name="report-module"/>
+    
+    <!--<xsl:template name="report-module-really">
+         <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
+      <xsl:for-each select="@module">
+         <p class="text-accent-warm-darker" xsl:expand-text="yes">
+            <xsl:text>Module defined: </xsl:text>
+            <a href="{ $github-base}/{ $metaschema-path}">{
+               replace(.,'.*/','') }</a></p>
+      </xsl:for-each>
+   </xsl:template>-->
+    
+    <xsl:template name="css"/>
 </xsl:stylesheet>

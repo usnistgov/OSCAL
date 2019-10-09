@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet  version="3.0"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    exclude-result-prefixes="#all">
-
+   
    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
    <!-- Input:   Metaschema -->
    <!-- Output:  HTML  -->
-   <!-- The XML version translates metaschema jargon into XML terminology. Another module does the same for JSON/object terminology.  -->
-
-   <!-- Planning:
-       Stand up to run
-       Develop to AW's Liquid template
-       Header/metadata info?
-
-   -->
+   
    <xsl:import href="metaschema-common-html.xsl"/>
-   <xsl:import href="metaschema-docs-util.xsl"/>
-
+   
    <xsl:param name="schema-path" select="document-uri(/)"/>
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
@@ -29,76 +22,21 @@
 
    <xsl:output indent="yes"/>
 
-   <xsl:variable name="home" select="/METASCHEMA"/>
-
-   <xsl:variable name="all-references" select="//flag/@name | //model//*/@ref"/>
-
-   <!--<xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>-->
-
-   <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
-   <xsl:key name="references" match="flag"             use="@name | @ref"/>
-   <xsl:key name="references" match="field | assembly" use="@ref"/>
-
-   <xsl:template match="/">
-      <html>
-         <head>
-            <xsl:call-template name="css"/>
-         </head>
-         <body>
-            <xsl:apply-templates/>
-         </body>
-      </html>
-   </xsl:template>
-
-   <xsl:template match="METASCHEMA">
-      <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
-      <div class="METASCHEMA">
-         <p><span class="usa-tag">Schema download</span>
-            <xsl:text> </xsl:text>
-            <a href="{$schema-path}">
-               <xsl:value-of select="replace($schema-path,'^.*/','')"/></a>
-         </p>
-         <xsl:apply-templates select="* except $definitions"/>
-      </div>
-      <xsl:apply-templates select="$definitions"/>
-   </xsl:template>
-
-   <xsl:template match="METASCHEMA/schema-name">
-      <!--<h2>
-         <xsl:apply-templates/>
-         <xsl:text>: Schema Reference</xsl:text>
-      </h2>-->
-   </xsl:template>
-
-   <xsl:template match="METASCHEMA/namespace">
-      <p><span class="usa-tag">XML namespace</span>
-         <xsl:text> </xsl:text>
-         <code>
-            <xsl:apply-templates/>
-         </code></p>
-   </xsl:template>
-
-   <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
-      <a href="#{ @name }"><xsl:value-of select="@name"/></a>
-   </xsl:template>
-
-   <xsl:template name="definition-header">
-      <header>
-         <xsl:call-template name="cross-links"/>
-         <h2 id="{$metaschema-code}_{@name}" class="text-accent-cool-darker margin-top-0 {substring-after(local-name(),'define-')}-header">
-            <xsl:apply-templates select="@name" mode="tag"/>
-            <xsl:text>: </xsl:text>
-            <xsl:apply-templates select="formal-name" mode="inline"/>
-         </h2>
-      </header>
-   </xsl:template>
+   <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
    
-   <xsl:variable name="definition-design">bg-primary-lighter padding-1 margin-top-105</xsl:variable>
+   <xsl:template name="cross-links">
+      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-xml$)','')"/>
+      <div class="crosslink">
+         <a href="../../{ $schema-base }/json-schema#{$schema-base}-json_{ @name}">
+            <button class="schema-link">Switch to JSON</button>
+         </a>
+      </div>
+   </xsl:template>
    
    <xsl:template match="define-flag">
-      <div class="definition define-flag {$definition-design}" id="{@name}">
+      <div class="definition define-flag" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:apply-templates mode="state-type" select="."/>
+         <xsl:apply-templates select="." mode="representation-in-xml"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
@@ -114,9 +52,9 @@
    </xsl:template>
    
    <xsl:template match="define-field">
-      <div class="definition define-field {$definition-design}" id="{@name}">
+      <div class="definition define-field" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:apply-templates mode="state-type" select="."/>
+         <xsl:apply-templates mode="representation-in-xml" select="."/>
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="appears-in"/>
          <xsl:if test="exists(flag)">
@@ -147,7 +85,7 @@
    </xsl:template>
    
    <xsl:template match="define-assembly">
-      <div class="definition define-assembly {$definition-design}" id="{@name}">
+      <div class="definition define-assembly" id="{@name}">
          <xsl:call-template name="definition-header"/>
          <xsl:if test="@name = $home/METASCHEMA/@root">
             <h5>
@@ -164,46 +102,6 @@
    </xsl:template>
    
    
-   
-   <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
-
-   <xsl:template name="report-module"/>
-
-   <!--<xsl:template name="report-module-really">
-         <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
-      <xsl:for-each select="@module">
-         <p class="text-accent-warm-darker" xsl:expand-text="yes">
-            <xsl:text>Module defined: </xsl:text>
-            <a href="{ $github-base}/{ $metaschema-path}">{
-               replace(.,'.*/','') }</a></p>
-      </xsl:for-each>
-   </xsl:template>-->
-
-   <xsl:template name="cross-links">
-      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-xml$)','')"/>
-      <div class="crosslink float-right">
-         <a href="../../{ $schema-base }/json-schema#{$schema-base}-json_{ @name}">
-            <button class="usa-button">Switch to JSON</button>
-         </a>
-      </div>
-   </xsl:template>
-
-   <xsl:template mode="tag" match="@name">
-      <code class="text-primary-darker"><xsl:value-of select="."/></code>   
-   </xsl:template>
-   
-   
-   <xsl:template name="remarks-group">
-      <!-- can't use xsl:where-populated due to the header :-( -->
-      <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
-         <div class="remarks-group padding-1">
-            <h3>Remarks</h3>
-            <xsl:apply-templates select="current-group()"/>
-         </div>
-      </xsl:for-each-group>
-   </xsl:template>
-
-
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
          group-by="true()">
@@ -241,20 +139,23 @@
                <xsl:apply-templates select="@name"/>
             </xsl:if>
             <xsl:text> attribute </xsl:text>
-            <xsl:apply-templates select="@required"/>
-            <xsl:if test="empty(@required)"> (<i>optional</i>)</xsl:if>
             <xsl:apply-templates select="." mode="metaschema-type"/>
+            <xsl:apply-templates select="." mode="requirement"/>
+            <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
          </p>
-         <xsl:apply-templates select="if (description) then description else key('definitions', @name)/description" mode="model"/>
          <xsl:apply-templates select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
 
-   <xsl:template match="@required">
-      <i> (required)</i>
+   <xsl:template match="*" mode="requirement">
+      <i> [optional]</i>
    </xsl:template>
-
+   
+   <xsl:template match="*[exists(@required)]" mode="requirement">
+      <i> [required]</i>
+   </xsl:template>
+   
    <xsl:template match="model[not(*)]" priority="3"/>
 
    <xsl:template match="model">
@@ -282,11 +183,11 @@
                <xsl:apply-templates select="@ref"/>
             </a>
             <xsl:text expand-text="true"> element{ if (@max-occurs != '1') then 's' else '' } </xsl:text>
-            <xsl:apply-templates select="." mode="occurrence-code"/>
             <xsl:apply-templates select="." mode="metaschema-type"/>
+            <xsl:apply-templates select="." mode="occurrence-code"/>
+            <xsl:apply-templates mode="model"
+               select="if (description) then description else key('definitions', @ref)/description"/>
          </p>
-         <xsl:apply-templates mode="model"
-            select="if (description) then description else key('definitions', @ref)/description"/>
          <xsl:apply-templates
             select="if (allowed-values) then allowed-values else key('definitions', @ref)/allowed-values"/>
          <xsl:apply-templates select="remarks" mode="model"/>
@@ -303,24 +204,30 @@
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-
+   
+   <xsl:template match="remarks/p" mode="model #default">
+      <p class="p">
+         <xsl:apply-templates/>
+      </p>
+   </xsl:template>
+   
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
       <xsl:variable name="example-no" select="'example' || count(.|preceding-sibling::example)"/>
-      <div class="usa-accordion usa-accordion--bordered">
-         <h3 class="usa-accordion__heading">
-            <button class="usa-accordion__button" aria-expanded="true"
+      <div class="example">
+         <h3>
+            <button aria-expanded="true"
                aria-controls="{ ../@name }_{$example-no}_xml">
                <xsl:text>Example</xsl:text>
                <xsl:for-each select="description">: <xsl:apply-templates/></xsl:for-each>
             </button>
          </h3>
-         <div id="{ ../@name }_{ $example-no }_xml" class="usa-accordion__content">
+         <div id="{ ../@name }_{ $example-no }_xml" class="example-content">
             <xsl:apply-templates select="remarks"/>
             <pre>
                  <xsl:apply-templates select="*" mode="as-example"/>
-                </pre>
+            </pre>
          </div>
       </div>
    </xsl:template>
@@ -392,16 +299,16 @@
    </xsl:template>
 
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
-      <i class="color-primary">
+      <i>
          <xsl:next-match/>
       </i>
    </xsl:template>
 
-   <xsl:template match="define-flag" mode="state-type">
+   <xsl:template match="define-flag" mode="representation-in-xml">
       <p>An attribute<xsl:apply-templates select="." mode="metaschema-type"/></p>
    </xsl:template>
 
-   <xsl:template match="define-field" mode="state-type">
+   <xsl:template match="define-field" mode="representation-in-xml">
       <xsl:variable name="unwrapped-references" select="key('references',@name)[not(@in-xml='WITH-WRAPPER')]"/>
       <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p>
       <p>
@@ -421,19 +328,19 @@
       <xsl:apply-templates select="key('definitions',@ref)" mode="#current"/>
    </xsl:template>
 
-   <xsl:template mode="metaschema-type" match="flag | define-flag | define-field[exists(@as-type)]">
-      <xsl:text>, type </xsl:text>
+   <xsl:template mode="metaschema-type" match="flag | define-flag | define-field">
+      <xsl:text> </xsl:text>
       <b>
+         <xsl:text>(</xsl:text>
+         <!-- XXXX link to datatypes page  -->
          <xsl:apply-templates mode="#current" select="@as-type"/>
          <xsl:if test="empty(@as-type)">string</xsl:if>
+         <xsl:text>)</xsl:text>
       </b>
+      <xsl:text> </xsl:text>
    </xsl:template>
 
-
-   <xsl:template mode="metaschema-type" match="define-field">, with text contents</xsl:template>
-   <xsl:template mode="metaschema-type" match="*[@as-type='markup-line']"      priority="2">, with mixed text and (inline prose) element contents</xsl:template>
-   <xsl:template mode="metaschema-type" match="*[@as-type='markup-multiline']" priority="2">, as prose content: paragraphs, lists etc.</xsl:template>
-   <xsl:template mode="metaschema-type" match="define-assembly">, with element contents</xsl:template>
+   <xsl:template mode="metaschema-type" match="define-assembly"/>
 
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
@@ -445,142 +352,142 @@
          html,
          body {
          }
-
+         
          pre {
-             color: darkgrey
+         color: darkgrey
          }
          .tag {
-             color: black;
-             font-family: monospace;
-             font-size: 80%;
-             font-weight: bold
+         color: black;
+         font-family: monospace;
+         font-size: 80%;
+         font-weight: bold
          }
-
+         
          pre.json {
-             color: darkblue
+         color: darkblue
          }
-
+         
          .METASCHEMA {
          }
-
+         
          .title {
          }
-
+         
          .define-assembly,
          .define-field,
          .define-flag {
-             margin-top: 1ex;
-             margin-bottom: 1ex;
-             border: thin inset black;
-             padding: 0.5em
+         margin-top: 1ex;
+         margin-bottom: 1ex;
+         border: thin inset black;
+         padding: 0.5em
          }
-
+         
          .define-assembly *,
          .define-field *,
          .define-flag * {
-             margin: 0em
+         margin: 0em
          }
-
-
+         
+         
          pre {
-             padding: 0.5em;
-             background-color: gainsboro
+         padding: 0.5em;
+         background-color: gainsboro
          }
-
+         
          .define-assembly {
          }
-
+         
          .define-field {
          }
-
+         
          .define-flag {
          }
-
+         
          .flag {
          }
-
+         
          .formal-name {
-             font-size: 120%;
-             font-weight: bold;
-             font-family: sans-serif;
-             margin: 0.5em 0em
+         font-size: 120%;
+         font-weight: bold;
+         font-family: sans-serif;
+         margin: 0.5em 0em
          }
-
+         
          .description {
-             font-size: 90%;
-             font-family: sans-serif;
-             margin: 0.5em 0em
+         font-size: 90%;
+         font-family: sans-serif;
+         margin: 0.5em 0em
          }
-
+         
          .remarks {
          }
-
+         
          .remarks p {
-             margin-top: 0.5em
+         margin-top: 0.5em
          }
          // .remarks > p:first-child { margin-top: 0em }
-
+         
          .model {
-             margin-top: 1em
+         margin-top: 1em
          }
-
+         
          .field {
          }
-
+         
          .assembly {
          }
-
+         
          .choice {
          }
-
+         
          .example {
-             margin-top: 1em
+         margin-top: 1em
          }
-
+         
          .prose {
          }
-
-
+         
+         
          .p {
          }
-
+         
          .code {
-             display: inline;
+         display: inline;
          }
          .q {
-             display: inline;
+         display: inline;
          }
          .em {
-             display: inline;
+         display: inline;
          }
          .strong {
-             display: inline;
+         display: inline;
          }
-
+         
          .name {
-             color: midnightblue;
-             background-color: lavender;
-             font-family: monospace;
-             font-size: 90%
+         color: midnightblue;
+         background-color: lavender;
+         font-family: monospace;
+         font-size: 90%
          }
-
+         
          a {
-             text-decoration: none
+         text-decoration: none
          }
          a:hover {
-             text-decoration: underline
+         text-decoration: underline
          }
-
+         
          ul.e_map {
-             font-family: monospace;
-             list-style-type: none
+         font-family: monospace;
+         list-style-type: none
          }
          li.e_map {
-             margin: 0em
+         margin: 0em
          }
          .map_label {
-             font-family: serif;
-             color: darkgrey
+         font-family: serif;
+         color: darkgrey
          }</style>
    </xsl:template>
 

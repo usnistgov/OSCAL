@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet  version="3.0"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns="http://www.w3.org/1999/xhtml"
-   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   exclude-result-prefixes="#all"
-   xmlns:fn="http://www.example.com/fn">
-
-
-   <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
+   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+   exclude-result-prefixes="#all">
+   
+   <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): JSON version -->
    <!-- Input:   Metaschema -->
    <!-- Output:  HTML  -->
-   <!-- The XML version translates metaschema jargon into XML terminology. Another module does the same for JSON/object terminology.  -->
-
-   <!-- Planning:
-       Stand up to run
-       Develop to AW's Liquid template
-       Header/metadata info?
-
-   -->
-
+   
    <xsl:import href="metaschema-common-html.xsl"/>
-   <xsl:import href="metaschema-docs-util.xsl"/>
-
+   
    <xsl:param name="schema-path" select="document-uri(/)"/>
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
-
 
    <xsl:strip-space elements="*"/>
 
@@ -34,72 +22,28 @@
 
    <xsl:output indent="yes"/>
 
-   <xsl:variable name="home" select="/METASCHEMA"/>
-
-   <xsl:variable name="all-references" select="//flag/@name | //model//*/@ref"/>
-
-   <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
-   <xsl:key name="references" match="flag"             use="@name | @ref"/>
-   <xsl:key name="references" match="field | assembly" use="@ref"/>
-
-   <xsl:template match="/">
-      <html>
-         <head>
-            <xsl:call-template name="css"/>
-         </head>
-         <body>
-            <xsl:apply-templates/>
-         </body>
-      </html>
-   </xsl:template>
-
-
-   <!-- only works when XML-to-JSON converter is in the import tree -->
-   <xsl:template match="description | remarks" mode="jsonize"/>
-
-   <xsl:template match="METASCHEMA">
-      <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
-      <div class="METASCHEMA">
-         <p><span class="usa-tag">Schema download</span>
-            <xsl:text> </xsl:text>
-            <a href="{$schema-path}">
-               <xsl:value-of select="replace($schema-path,'^.*/','')"/></a>
-         </p>
-         <xsl:apply-templates select="* except $definitions"/>
+   <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
+   
+   <xsl:template name="cross-links">
+      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-json$)','')"/>
+      <div style="float:right">
+         <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
+         <a href="../../{ $schema-base }/xml-schema#{$schema-base}-xml_{ @name}">
+            <button class="schema-link">Switch to XML</button>
+         </a>
       </div>
-      <xsl:apply-templates select="$definitions"/>
    </xsl:template>
-
-
-   <xsl:template match="METASCHEMA/schema-name">
-      <!--<h2>
-         <xsl:apply-templates/>
-         <xsl:text>: Schema Reference</xsl:text>
-      </h2>-->
-   </xsl:template>
-
-   <xsl:template match="METASCHEMA/namespace"/>
-
-  <!-- <xsl:template priority="5"
-      match="
-         define-flag[not(@show-docs = 'xml' or @show-docs = 'xml json')] |
-         define-field[not(@show-docs = 'xml' or @show-docs = 'xml json')] |
-         define-assembly[not(@show-docs = 'xml' or @show-docs = 'xml json')]"/>-->
-
+   
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
-         <header>
-         <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-green-lighter usa-color-text">
-            <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> object</h4>
-            <xsl:call-template name="cross-links"/>
-         </header>
-         <xsl:apply-templates select="@as-type"/>
+         <xsl:call-template name="definition-header"/>
+         <xsl:apply-templates select="." mode="representation-in-json"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>Appears as a property on: </xsl:text>
                <xsl:for-each select="current-group()">
-                  <xsl:if test="not(position() eq 1)">, </xsl:if>
+                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+                  <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
          </xsl:for-each-group>
@@ -108,52 +52,14 @@
       </div>
    </xsl:template>
 
-   <xsl:template name="cross-links">
-      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-json$)','')"/>
-      <div style="float:right">
-         <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
-         <a href="../../{ $schema-base }/json-schema#{$schema-base}-xml_{ @name}">
-            <button class="usa-button">Switch to XML</button>
-         </a>
-      </div>
-   </xsl:template>
-   <xsl:variable name="github-base" as="xs:string">https://github.com/usnistgov/OSCAL/tree/master</xsl:variable>
-
-   <xsl:template name="report-module"/>
-   <xsl:template name="report-module-really">
-      <xsl:variable name="metaschema-path" select="substring-after(.,'OSCAL/')"/>
-      <xsl:for-each select="@module">
-         <p class="usa-color-gray-lightest usa-color-text usa-color-text-primary-darkest" xsl:expand-text="yes">
-            <xsl:text>Module defined: </xsl:text>
-            <a href="{ $github-base}/{ $metaschema-path}">{
-               replace(.,'.*/','') }</a></p>
-      </xsl:for-each>
-   </xsl:template>
-
-   <xsl:template name="remarks-group">
-      <xsl:for-each-group select="remarks[not(@class != 'xml')]" group-by="true()">
-         <div class="remarks-group usa-color-gray-lightest" style="padding: 0.5em; margin-bottom: 0.5em">
-            <h5 style="margin-top: 0.5em">Remarks</h5>
-            <xsl:apply-templates select="current-group()"/>
-         </div>
-      </xsl:for-each-group>
-   </xsl:template>
-
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
-         <header>
-            <h4 id="{$metaschema-code}_{@name}"
-               class="usa-color-text usa-color-green-lighter">
-               <xsl:apply-templates select="formal-name" mode="inline"/>:
-                  <xsl:apply-templates select="@name"/> object</h4>
-            <xsl:call-template name="cross-links"/>
-            <xsl:call-template name="group-label"/>
-         </header>
+         <xsl:call-template name="definition-header"/>
          <xsl:choose>
-            <xsl:when test="@as = 'mixed'">
+            <xsl:when test="@as-type = 'mixed'">
                <p>Supports Markdown</p>
             </xsl:when>
-            <xsl:when test="@as = 'boolean'">
+            <xsl:when test="@as-type = 'boolean'">
                <p>A Boolean value</p>
             </xsl:when>
          </xsl:choose>
@@ -164,8 +70,8 @@
                <xsl:choose>
                   <xsl:when
                      test="
-                        every $f in (flag)
-                           satisfies $f/@required = 'yes'"
+                     every $f in (flag)
+                     satisfies $f/@required = 'yes'"
                      >must</xsl:when>
                   <xsl:otherwise>may</xsl:otherwise>
                </xsl:choose>
@@ -195,7 +101,27 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-
+   
+   <xsl:template match="define-assembly">
+      <div class="definition define-assembly" id="{@name}">
+         <xsl:call-template name="definition-header"/>
+         <xsl:call-template name="group-label"/>
+         <xsl:if test="@name = $home/METASCHEMA/@root">
+            <h5>
+               <code xsl:expand-text="true">{ @name }</code> is the root (containing) object of this schema. </h5>
+         </xsl:if>
+         <xsl:apply-templates select="formal-name | description"/>
+         <xsl:call-template name="appears-in"/>
+         <xsl:apply-templates select="model"/>
+         <xsl:call-template name="remarks-group"/>
+         <xsl:apply-templates select="example"/>
+         <xsl:call-template name="report-module"/>
+      </div>
+   </xsl:template>
+   
+   
+   
+ 
    <xsl:template match="define-field" mode="json-value-property">
       <li>
          <p>A string property, labeled <code>STRVALUE</code></p>
@@ -260,40 +186,11 @@
                >{ group-as/@name }</code>.</p>
          </xsl:when>-->
          <xsl:when test="matches(group-as/@name, '\S')">
-            <p>This object appears <i>unlabelled</i> in an array called <code xsl:expand-text="true"
+            <p>This object appears <i>unlabeled</i> in an array called <code xsl:expand-text="true"
                >{ @group-as }</code>.</p>
          </xsl:when>
          <xsl:otherwise/>
       </xsl:choose>
-   </xsl:template>
-
-   <xsl:template match="define-assembly">
-      <div class="definition define-assembly" id="{@name}">
-         <header>
-            <h4 id="{$metaschema-code}_{@name}"
-               class="usa-color-text usa-color-green-lighter">
-               <xsl:apply-templates select="formal-name" mode="inline"/>: <xsl:apply-templates
-                  select="@name"/> object</h4>
-            <xsl:call-template name="cross-links"/>
-            <xsl:call-template name="group-label"/>
-         </header>
-         <!-- No mention of @group-as on XML side       -->
-         <xsl:if test="@name = ../@root">
-            <h5>
-               <code xsl:expand-text="true">{ @name }</code> is the root (containing) object of this
-               schema. </h5>
-         </xsl:if>
-         <xsl:apply-templates select="formal-name | description"/>
-         <xsl:call-template name="appears-in"/>
-         <xsl:apply-templates select="model"/>
-         <xsl:call-template name="remarks-group"/>
-         <xsl:apply-templates select="example"/>
-         <xsl:call-template name="report-module"/>
-      </div>
-   </xsl:template>
-
-   <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
-      <a href="#{ @name }"><xsl:value-of select="@name"/></a>
    </xsl:template>
 
    <xsl:template match="@name | @ref">
@@ -315,12 +212,23 @@
       </code>)<xsl:text/>
    </xsl:template>
 
-   <xsl:template match="@as-type"/>
-
-   <xsl:template match="define-flag/@as-type">
-      <p>A string conforming to constraints of type <code><xsl:value-of select="."/></code></p>
+   <xsl:template match="*" mode="representation-in-json">
+      <h1>oops</h1>
    </xsl:template>
-
+   
+   <xsl:template match="define-flag"  mode="representation-in-json">
+      <xsl:apply-templates select="@as-type" mode="#current"/>
+      <xsl:if test="empty(@as-type)"><p>A string property.</p></xsl:if>
+   </xsl:template>
+   
+   <xsl:template match="define-flag/@as-type"  mode="representation-in-json">
+      <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
+   </xsl:template>
+   
+   <xsl:template match="define-flag[@as-type='string']"  mode="representation-in-json">
+      <p>A string property.</p>
+   </xsl:template>
+   
    <xsl:template match="@address">
       <xsl:text> (addressable by </xsl:text>
       <code>
@@ -444,8 +352,8 @@
       <li>
          <p>
             <xsl:choose>
-               <xsl:when test="@max-occurs = '1' or empty(@max-occurs)">A labelled </xsl:when>
-               <xsl:otherwise>Labelled </xsl:otherwise>
+               <xsl:when test="@max-occurs = '1' or empty(@max-occurs)">A labeled </xsl:when>
+               <xsl:otherwise>Labeled </xsl:otherwise>
             </xsl:choose>
             <a href="#{@ref}">
                <xsl:apply-templates select="@ref"/>
@@ -464,14 +372,14 @@
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
          <p>
-            <xsl:text>An array labelled </xsl:text>
+            <xsl:text>An array labeled </xsl:text>
             <!--<xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@ref, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
          <xsl:text> </xsl:text>-->
             <b><xsl:value-of select="group-as/@name"/></b>, containing <a href="#{@ref}">
                <xsl:apply-templates select="@ref"/>
             </a>
-            <xsl:text> objects, labelled </xsl:text>
+            <xsl:text> objects, labeled </xsl:text>
             <b><xsl:value-of select="group-as/@name"/></b>
          </p>
          <xsl:apply-templates select="." mode="occurrence-code"/>
@@ -486,7 +394,7 @@
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
          <p>
-            <xsl:text>Labelled </xsl:text>
+            <xsl:text>Labeled </xsl:text>
             <b>
                <xsl:value-of select="group-as/@name"/>
             </b>
@@ -515,6 +423,7 @@
    </xsl:template>
 
    <!-- remarks are kept if @class='xml' or no class is given -->
+   
    <xsl:template match="remarks[@class != 'json']" priority="2"/>
 
    <xsl:template match="remarks[@class = 'json']/p[1]">
@@ -610,9 +519,13 @@
 
    <xsl:template mode="metaschema-type" match="flag">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
-   <xsl:template mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
+   
+   <!--Calls function in metaschema-docs-util.xsl -->
+   <xsl:template
+      mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
 
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='ARRAY']" expand-text="true">array of { if ( m:has-properties(.)) then 'objects' else 'strings' }.</xsl:template>
+   
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='SINGLETON_OR_ARRAY']">{ if ( m:has-properties(.)) then 'object' else 'string' } (when a singleton) or array { if ( m:has-properties(.)) then 'objects' else 'strings' } (when multiple)</xsl:template>
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='BY_KEY']">object (with label)</xsl:template>
 
@@ -784,4 +697,13 @@
          }</style>
    </xsl:template>
 
+
+   <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
+   
+   <!-- only works when XML-to-JSON converter is in the import tree -->
+   <xsl:template match="description | remarks" mode="jsonize"/>
+   
+   <!-- no namespace for JSON -->
+   <xsl:template match="METASCHEMA/namespace"/>
+   
 </xsl:stylesheet>

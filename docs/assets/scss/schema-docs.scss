@@ -1,3 +1,46 @@
 
 
-.model-entry p { margin-top: units( 0.5 ) } 
+/*.model-entry p { margin-top: units( 0.5 )*/  
+
+.label { @extend .usa-tag }
+
+li.model-entry p {
+  @extend .margin-top-05;
+  @extend .margin-bottom-0 }
+
+li.model-entry > *:not(:first-child) { @extend .font-body-xs }
+
+
+.definition-header { @extend .padding-1; @extend .bg-base-lightest }
+div.json-docs .definition-header { @extend .bg-primary-lighter }
+
+
+.definition-header h2 { @extend .text-accent-cool-darker;
+  @extend .margin-bottom-0;
+  @extend .margin-top-0 }
+  
+.crosslink { @extend .float-right }
+
+div.definition { @extend .margin-top-105 }
+
+code.tagging { @extend .text-primary-darker }
+
+div.example { @extend .usa-accordion;
+  @extend .usa-accordion--bordered }
+  
+div.example h3 { @extend .usa-accordion__heading } 
+
+div.example h3 button { @extend .usa-accordion__button }
+
+div.example div.example-content { @extend .usa-accordion__content }
+
+span.model-description { @extend .font-body-xs }
+
+div.remarks { @extend .measure-6;
+  @extend .border-base-light;
+  @extend .border-left-05;
+  @extend .padding-left-1;
+  @extend .font-body-xs }
+  
+  
+button.schema-link { @extend .usa-button }
