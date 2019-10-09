@@ -84,12 +84,12 @@
 
    <xsl:template name="definition-header">
       <header>
+         <xsl:call-template name="cross-links"/>
          <h2 id="{$metaschema-code}_{@name}" class="text-accent-cool-darker margin-top-0 {substring-after(local-name(),'define-')}-header">
             <xsl:apply-templates select="@name" mode="tag"/>
             <xsl:text>: </xsl:text>
             <xsl:apply-templates select="formal-name" mode="inline"/>
          </h2>
-         <xsl:call-template name="cross-links"/>
       </header>
    </xsl:template>
    
@@ -231,7 +231,7 @@
    <xsl:template match="flag"/>
 
    <xsl:template match="flag" mode="model">
-      <li>
+      <li class="model-entry">
          <p>
             <xsl:apply-templates mode="link-here" select="key('definitions', @ref)"/>
             <xsl:if test="empty(@ref)">
