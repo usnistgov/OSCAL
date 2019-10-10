@@ -7,8 +7,8 @@ aliases:
   - /docs/schemas/oscal-catalog-json/
 weight: 20
 sidenav:
-  headingselectors: "h4.usa-color-text"
   title: JSON Schema Reference
+  headingselectors: "h2.assembly-header"
 ---
 
 {{<partialCached "generated/oscal-catalog-json-schema.html" >}}

@@ -85,7 +85,7 @@
             <div class="model">
                <p xsl:expand-text="true">The <code>{@name}</code> object { $modal } have { $noun }:</p>
                <ul>
-                  <xsl:apply-templates select="." mode="json-value-property"/>
+                  <xsl:apply-templates select="." mode="representation-in-json"/>
                   <!-- sorting so json-key and json-value-key flags come up first -->
                   <xsl:apply-templates select="flag" mode="model">
                      <xsl:sort select="boolean((@name|@ref)=../(json-key|json-value-key)/@flag-name) ! number()" order="descending"/>
@@ -120,23 +120,40 @@
    </xsl:template>
    
    
+   <xsl:template match="*" mode="representation-in-json">
+      <h1>oops</h1>
+   </xsl:template>
+   
+   <xsl:template match="define-flag"  mode="representation-in-json">
+      <xsl:apply-templates select="@as-type" mode="#current"/>
+      <xsl:if test="empty(@as-type)"><p>A string property.</p></xsl:if>
+   </xsl:template>
+   
+   <xsl:template match="define-flag/@as-type"  mode="representation-in-json">
+      <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
+   </xsl:template>
+   
+   <xsl:template match="define-flag[@as-type='string']"  mode="representation-in-json">
+      <p>A string property.</p>
+   </xsl:template>
+   
    
  
-   <xsl:template match="define-field" mode="json-value-property">
+   <xsl:template match="define-field" mode="representation-in-json">
       <li>
          <p>A string property, labeled <code>STRVALUE</code></p>
       </li>
    </xsl:template>
-   <xsl:template match="define-field[@as-type = 'markup-line']" mode="json-value-property">
+   <xsl:template match="define-field[@as-type = 'markup-line']" mode="representation-in-json">
       <li>
          <p>a string property to be processed as a Markdown line, labeled <code>RICHTEXT</code></p>
       </li>
    </xsl:template>
-   <xsl:template match="define-field[@as-type = 'markup-multiline']" mode="json-value-property">
+   <xsl:template match="define-field[@as-type = 'markup-multiline']" mode="representation-in-json">
       <li><p>a string property to be processed as a Markdown page, labeled <code>PROSE</code></p></li>
    </xsl:template>
 
-   <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="json-value-property">
+   <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="representation-in-json">
       <li>
          <p>
             <code><xsl:value-of select="json-value-key"/></code>
@@ -146,7 +163,7 @@
       </li>
    </xsl:template>
 
-   <xsl:template priority="3" match="define-field[exists(json-value-key/@flag-name)]" mode="json-value-property">
+   <xsl:template priority="3" match="define-field[exists(json-value-key/@flag-name)]" mode="representation-in-json">
       <xsl:variable name="other-flags" select="flag[not((@name|@ref)=../json-value-key/@flag-name)]/(@name|@ref)/string()"/>
       <xsl:text>a string property</xsl:text>
       <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
@@ -212,23 +229,6 @@
       </code>)<xsl:text/>
    </xsl:template>
 
-   <xsl:template match="*" mode="representation-in-json">
-      <h1>oops</h1>
-   </xsl:template>
-   
-   <xsl:template match="define-flag"  mode="representation-in-json">
-      <xsl:apply-templates select="@as-type" mode="#current"/>
-      <xsl:if test="empty(@as-type)"><p>A string property.</p></xsl:if>
-   </xsl:template>
-   
-   <xsl:template match="define-flag/@as-type"  mode="representation-in-json">
-      <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
-   </xsl:template>
-   
-   <xsl:template match="define-flag[@as-type='string']"  mode="representation-in-json">
-      <p>A string property.</p>
-   </xsl:template>
-   
    <xsl:template match="@address">
       <xsl:text> (addressable by </xsl:text>
       <code>
@@ -437,9 +437,31 @@
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
+      <xsl:variable name="example-no" select="'example' || count(.|preceding-sibling::example)"/>
+      <div class="example">
+         <h3>
+            <button aria-expanded="true"
+               aria-controls="{ ../@name }_{$example-no}_json">
+               <xsl:text>Example</xsl:text>
+               <xsl:for-each select="description">: <xsl:apply-templates/></xsl:for-each>
+            </button>
+         </h3>
+         <div id="{ ../@name }_{ $example-no }_json" class="example-content">
+            <xsl:apply-templates select="remarks"/>
+            <pre>
+               <!--<xsl:text>&#xA;{{&lt; highlight go "linenos=table,hl_lines=8 15-17,linenostart=199" >}}</xsl:text>-->
+               <xsl:apply-templates select="*" mode="jsonize"/>
+               <!--<xsl:text>&#xA;{{ / highlight }}&#xA;</xsl:text>-->
+            </pre>
+         </div>
+      </div>
+   </xsl:template>
+   
+   
+   <!--<xsl:template match="example">
       <xsl:variable name="n" select="count(. | preceding-sibling::example)"/>
       <ul class="usa-accordion-bordered">
-         <!--<li>
+         <!-\-<li>
             <button class="usa-accordion-button" aria-expanded="true"
                aria-controls="{ ../@name }_example{$n}_xml">XML</button>
             <div id="{ ../@name }_example{$n}_xml" class="usa-accordion-content">
@@ -447,7 +469,7 @@
                <xsl:apply-templates select="*" mode="as-example"/>
                <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
             </div>
-         </li>-->
+         </li>-\->
          <li>
             <button class="usa-accordion-button" aria-expanded="true"
                aria-controls="{ ../@name }_example{$n}_json">
@@ -461,7 +483,7 @@
             </div>
          </li>
       </ul>
-   </xsl:template>
+   </xsl:template>-->
 
    <xsl:output name="jsonish" indent="yes" method="text" use-character-maps="delimiters"/>
 
@@ -511,7 +533,7 @@
    </xsl:template>
 
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
-      <i class="color-primary">
+      <i class="occurrence">
          <xsl:next-match/>
       </i>
    </xsl:template>

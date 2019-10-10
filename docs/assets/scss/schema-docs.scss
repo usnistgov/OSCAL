@@ -42,5 +42,6 @@ div.remarks { @extend .measure-6;
   @extend .padding-left-1;
   @extend .font-body-xs }
   
-  
+.occurrence { @extends .text-primary }
+
 button.schema-link { @extend .usa-button }
