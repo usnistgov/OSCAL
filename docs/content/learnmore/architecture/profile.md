@@ -1,6 +1,6 @@
 ---
 title: Profile
-description: Profile concept.
+description: An exploration of the "*profile*" concept used in OSCAL.
 weight: 30
 aliases:
   - /docs/profile/

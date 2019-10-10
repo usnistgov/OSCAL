@@ -1,6 +1,6 @@
 ---
 title: The OSCAL Architecture
-description: The OSCAL Architecture
+description: The OSCAL architecture is organized into a series of related layers.
 weight: 60
 aliases:
   - /docs/

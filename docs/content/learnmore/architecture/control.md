@@ -1,6 +1,6 @@
 ---
 title: Control
-description: Control concept.
+description: An exploration of the "*control*" concept used in OSCAL.
 weight: 10
 aliases:
   - /docs/control/

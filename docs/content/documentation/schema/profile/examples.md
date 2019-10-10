@@ -1,11 +1,14 @@
 ---
-title: Profiles
+title: Profile Examples
 description: OSCAL Profile Examples
 aliases:
   - /resources/examples/profiles/
+sidenav:
+  title: Examples
+weight: 100
 ---
 
-Profiles currently available are early work; while we do not believe they have errors, they should be regarded as testing documents until authoritative versions can be published.
+The following OSCAL Profile model examples are provided.
 
 ## NIST SP 800-53 Revision 4 Baselines
 

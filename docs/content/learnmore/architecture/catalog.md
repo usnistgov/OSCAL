@@ -1,6 +1,6 @@
 ---
 title: Catalog
-description: Catalog concept.
+description: An exploration of the "*control catalog*" concept used in OSCAL.
 weight: 15
 aliases:
   - /docs/catalog/

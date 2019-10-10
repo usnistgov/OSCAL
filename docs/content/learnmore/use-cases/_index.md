@@ -1,9 +1,12 @@
 ---
 title: Use Cases
+description: OSCAL supports a number of use cases.
 weight: 70
 aliases:
   - /learnmore/scenarios/
 ---
+
+OSCAL supports a number of use cases, some of which are described below.
 
 ## Managing Multiple Regulatory Frameworks
 

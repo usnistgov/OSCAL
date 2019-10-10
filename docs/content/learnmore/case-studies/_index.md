@@ -1,9 +1,12 @@
 ---
 title: Case Studies
+description: OSCAL is currently being adopted by many different organizations.
 weight: 80
 aliases:
   - /learnmore/casestudies/
 ---
+
+OSCAL is currently being adopted by many different organizations, some of which are described below.
 
 ## General Services Administration (GSA) Federal Risk and Authorization Management Program (FedRAMP)
 

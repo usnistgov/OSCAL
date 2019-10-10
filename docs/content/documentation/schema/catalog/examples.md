@@ -1,11 +1,14 @@
 ---
-title: Catalog Example
+title: Catalog Examples
 description: OSCAL Catalog Example
 aliases:
   - /resources/examples/catalogs/
 sidenav:
-  title: Catalog
+  title: Examples
+weight: 100
 ---
+
+The following OSCAL Catalog model examples are provided.
 
 ## NIST SP 800-53
 

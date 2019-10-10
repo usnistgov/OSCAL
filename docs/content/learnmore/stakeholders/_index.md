@@ -1,5 +1,6 @@
 ---
 title: OSCAL Stakeholders
+description: OSCAL supports the needs of many different stakeholder groups.
 weight: 50
 
 ---

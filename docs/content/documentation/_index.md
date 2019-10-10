@@ -9,6 +9,10 @@ menu:
     weight: 30
 ---
 
+The following documentation for OSCAL is provided:
+
+- Documentation for the XML and JSON models provided for the various OSCAL models.
+
 This is the page where the OSCAL specification and schema documentation will be placed.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Posuere ac ut consequat semper viverra nam libero. In cursus turpis massa tincidunt dui. Nulla pharetra diam sit amet nisl suscipit. Ullamcorper a lacus vestibulum sed arcu non odio. Dui vivamus arcu felis bibendum ut. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Malesuada fames ac turpis egestas integer eget aliquet. Nibh tortor id aliquet lectus proin nibh. Aliquet lectus proin nibh nisl condimentum. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Amet porttitor eget dolor morbi non arcu. Auctor eu augue ut lectus arcu bibendum at varius vel. Tempor id eu nisl nunc. Convallis aenean et tortor at risus viverra. Felis bibendum ut tristique et egestas quis ipsum.
