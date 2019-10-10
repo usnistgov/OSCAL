@@ -309,19 +309,22 @@
    </xsl:template>
 
    <xsl:template match="define-field" mode="representation-in-xml">
-      <xsl:variable name="unwrapped-references" select="key('references',@name)[not(@in-xml='WITH-WRAPPER')]"/>
+      <xsl:variable name="unwrapped-references" select="key('references',@name)[@in-xml='UNWRAPPED']"/>
       <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p>
-      <p>
-         <xsl:text>When appearing in </xsl:text>
-         <xsl:for-each select="distinct-values($unwrapped-references/ancestor::model/../@name)">
-            <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
-            <xsl:if test="position() gt 1 and position() eq last()"> or </xsl:if>
-            <a href="#{ . }" xsl:expand-text="true">{ . }</a>
-         </xsl:for-each>
-         <xsl:text> this element is </xsl:text>
-         <em>implicit</em>
-         <xsl:text>; only its contents appear.</xsl:text>
-      </p>
+      
+      <xsl:if test="exists($unwrapped-references)">
+         <p>
+            <xsl:text>When appearing in </xsl:text>
+            <xsl:for-each select="distinct-values($unwrapped-references/ancestor::model/../@name)">
+               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+               <xsl:if test="position() gt 1 and position() eq last()"> or </xsl:if>
+               <a href="#{ . }" xsl:expand-text="true">{ . }</a>
+            </xsl:for-each>
+            <xsl:text> this element is </xsl:text>
+            <em>implicit</em>
+            <xsl:text>; only its contents appear.</xsl:text>
+         </p>
+      </xsl:if>
    </xsl:template>
 
    <xsl:template match="field | assembly" mode="metaschema-type">
