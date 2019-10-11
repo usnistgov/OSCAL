@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OSCAL on My First Site</title><link>https://pages.nist.gov/OSCAL/</link><description>Recent content in OSCAL on My First Site</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 25 Sep 2019 18:45:23 -0400</lastBuildDate><atom:link href="https://pages.nist.gov/OSCAL/index.xml" rel="self" type="application/rss+xml"/><item><title>Catalog JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-model-map/</guid><description>+ catalog: [1]{… }
+- catalog: [1]{
+id: string [1],
++ metadata: [1]{… },
+- metadata: [1]{
+title: markup-line [1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [1],
+version: string [1],
+oscal-version: string [1],
++ document-ids: [0 to ∞][ {… } ],
+- document-ids: [0 to ∞][ {
+STRVALUE: string[0 or 1],
+type: string [1]
+} ],
++ properties: [0 to ∞][ {… } ],</description></item><item><title>Challenges Addressed by OSCAL</title><link>https://pages.nist.gov/OSCAL/learnmore/challenges/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/challenges/</guid><description>OSCAL addresses a number of challenges around security controls and security control assessment.
+Control Information Lacks Standardization The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in information systems in order for the tool to use the information.</description></item><item><title>Component JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/component/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/component/json-model-map/</guid><description>+ component-definition: [1]{… }
+- component-definition: [1]{
++ metadata: [1]{… },
+- metadata: [1]{
+title: markup-line [1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [1],
+version: string [1],
+oscal-version: string [1],
++ document-ids: [0 to ∞][ {… } ],
+- document-ids: [0 to ∞][ {
+STRVALUE: string[0 or 1],
+type: string [1]
+} ],
++ properties: [0 to ∞][ {… } ],</description></item><item><title>Control</title><link>https://pages.nist.gov/OSCAL/learnmore/architecture/control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/architecture/control/</guid><description>In OSCAL, a control is:
+A description of a safeguard or countermeasure designed to satisfy a set of defined security requirements that may be implemented in a system to manage a security or privacy risk.
+The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, &amp;ldquo;The organization has an access control policy and procedures&amp;rdquo;, but most are considerably more complicated.</description></item><item><title>OSCAL Data Types</title><link>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</guid><description>The OSCAL models are based on structures that use a specific set of data types. These data types are documented in the following sections.
+Simple Data types empty This data type indicates that the model information element contains no value content, but may contain other structured information elements.
+In XML, this may represent an element without text content.
+In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.</description></item><item><title>Profile JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-model-map/</guid><description>+ profile: [1]{… }
+- profile: [1]{
+id: string [1],
++ metadata: [1]{… },
+- metadata: [1]{
+title: markup-line [1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [1],
+version: string [1],
+oscal-version: string [1],
++ document-ids: [0 to ∞][ {… } ],
+- document-ids: [0 to ∞][ {
+STRVALUE: string[0 or 1],
+type: string [1]
+} ],
++ properties: [0 to ∞][ {… } ],</description></item><item><title>System Security Plan JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-model-map/</guid><description>+ system-security-plan: [1]{… }
+- system-security-plan: [1]{
+id: string [1],
++ metadata: [0 or 1]{… },
+- metadata: [0 or 1]{
+title: markup-line [1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [1],
+version: string [1],
+oscal-version: string [1],
++ document-ids: [0 to ∞][ {… } ],
+- document-ids: [0 to ∞][ {
+STRVALUE: string[0 or 1],
+type: string [1]
+} ],
++ properties: [0 to ∞][ {… } ],</description></item><item><title>Catalog</title><link>https://pages.nist.gov/OSCAL/learnmore/architecture/catalog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/architecture/catalog/</guid><description>In OSCAL, a catalog is:
+A set of security and/or privacy controls. Examples of catalogs include NIST SP 800-53, ISO 27001, and COBIT. The catalog model in OSCAL refers to any data made available for processing in one of OSCAL&amp;rsquo;s formats for representing catalog information.
+An OSCAL catalog is a set of OSCAL controls published as a machine readable document. The catalog for NIST Special Publication (SP) 800-53 Revision 4 defines all NIST SP 800-53 controls.</description></item><item><title>Catalog JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/</guid><description>Schema download oscal_catalog_schema.json
+Schema version 1.0.0-milestone2
+Short name oscal-catalog
+The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
+Switch to XML addr-line Name Address line
+Description A single line of an address.
+A string property.
+This object appears as a property on: address.</description></item><item><title>Component JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/component/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/component/json-schema/</guid><description>Schema download oscal_component_schema.json
+Schema version 1.0.0-milestone2
+Short name oscal-component
+The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capabiity. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, proceedure, or policy.</description></item><item><title>Profile JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-schema/</guid><description>Schema download oscal_profile_schema.json
+Schema version 1.0.0-milestone2
+Short name oscal-profile
+A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
+Switch to XML add Name Addition
+Description Specifies contents to be added into controls, in resolution
+This object appears as a property on: alter.
+The add object has the following members (properties):</description></item><item><title>System Security Plan JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</guid><description>Schema download oscal_ssp_schema.json
+Schema version 1.0.0-milestone2
+Short name oscal-ssp
+The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
+The root of the OSCAL System Security Plan (SSP) format is system-security-plan.
+Switch to XML addr-line Name Address line
+Description A single line of an address.
+A string property.
+This object appears as a property on: address.</description></item><item><title>Profile</title><link>https://pages.nist.gov/OSCAL/learnmore/architecture/profile/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/architecture/profile/</guid><description>In OSCAL a profile is:
+A specific set of security control requirements; also called a baseline or overlay. A profile represents a selection of controls from one or more catalogs, with configuration or qualification appropriate to the profile&amp;rsquo;s use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and NIST SP 800-171 (a controls baseline for CUI/NFO).</description></item><item><title>Project Goals and Design Principles</title><link>https://pages.nist.gov/OSCAL/learnmore/goals/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/goals/</guid><description>Goals of the OSCAL Project The OSCAL project is working to address the following goals:
+Decrease Paperwork Drive a large decrease in the paperwork burden for both information security professionals and vendors.
+Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine readable formats. Allow the sharing of control implementation information across communities. Improve System Security Assessments Improve the efficiency, accuracy, and consistency of system security assessments.</description></item><item><title>Catalog XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/</guid><description>+ &amp;lt;catalog id=&#34;string&#34;&amp;gt; [1]… &amp;lt;/catalog&amp;gt;
+- &amp;lt;catalog id=&#34;string&#34;&amp;gt; [1]
++ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
+- &amp;lt;metadata&amp;gt; [1]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
+&amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;short-name&amp;gt;string&amp;lt;/short-name&amp;gt; [0 or 1]</description></item><item><title>Component XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-model-map/</guid><description>+ &amp;lt;component-definition&amp;gt; [1]… &amp;lt;/component-definition&amp;gt;
+- &amp;lt;component-definition&amp;gt; [1]
++ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
+- &amp;lt;metadata&amp;gt; [1]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
+&amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;short-name&amp;gt;string&amp;lt;/short-name&amp;gt; [0 or 1]
+&amp;lt;desc&amp;gt;string&amp;lt;/desc&amp;gt; [0 or 1]</description></item><item><title>Profile XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</guid><description>+ &amp;lt;profile id=&#34;string&#34;&amp;gt; [1]… &amp;lt;/profile&amp;gt;
+- &amp;lt;profile id=&#34;string&#34;&amp;gt; [1]
++ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
+- &amp;lt;metadata&amp;gt; [1]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
+&amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;short-name&amp;gt;string&amp;lt;/short-name&amp;gt; [0 or 1]</description></item><item><title>System Security Plan XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-model-map/</guid><description>+ &amp;lt;system-security-plan id=&#34;string&#34;&amp;gt; [1]… &amp;lt;/system-security-plan&amp;gt;
+- &amp;lt;system-security-plan id=&#34;string&#34;&amp;gt; [1]
++ &amp;lt;metadata&amp;gt; [0 or 1]… &amp;lt;/metadata&amp;gt;
+- &amp;lt;metadata&amp;gt; [0 or 1]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
+&amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]</description></item><item><title>Catalog XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/</guid><description>Schema download oscal_catalog_schema.xsd
+Schema version 1.0.0-milestone2
+Short name oscal-catalog
+XML namespace http://csrc.nist.gov/ns/oscal/1.0
+The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
+Switch to JSON addr-line Name Address line
+Description A single line of an address.
+An element (string) This element appears inside: address.</description></item><item><title>Component XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-schema/</guid><description>Schema download oscal_component_schema.xsd
+Schema version 1.0.0-milestone2
+Short name oscal-component
+XML namespace http://csrc.nist.gov/ns/oscal/1.0
+The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capabiity. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, proceedure, or policy.</description></item><item><title>Profile XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-schema/</guid><description>Schema download oscal_profile_schema.xsd
+Schema version 1.0.0-milestone2
+Short name oscal-profile
+XML namespace http://csrc.nist.gov/ns/oscal/1.0
+A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
+Switch to JSON add Name Addition
+Description Specifies contents to be added into controls, in resolution
+This element appears inside: alter.
+The add element has the following contents (in order):</description></item><item><title>System Security Plan XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</guid><description>Schema download oscal_ssp_schema.xsd
+Schema version 1.0.0-milestone2
+Short name oscal-ssp
+XML namespace http://csrc.nist.gov/ns/oscal/1.0
+The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
+The root of the OSCAL System Security Plan (SSP) format is system-security-plan.
+Switch to JSON addr-line Name Address line
+Description A single line of an address.
+An element (string) This element appears inside: address.</description></item><item><title>OSCAL Content Examples</title><link>https://pages.nist.gov/OSCAL/documentation/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/examples/</guid><description>The OSCAL Github Repository provides many examples of OSCAL-formatted data including both actual data and mockups for demonstration.</description></item><item><title>Catalog Examples</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/examples/</guid><description>The following OSCAL Catalog model examples are provided.
+NIST SP 800-53 Note: Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL XML, JSON, and YAML formats in the OSCAL GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.
+Here is a non-normative, partial illustration showing how control AC1 from NIST SP 800-53 rev 4 can be rendered in OSCAL Catalog XML format with a &amp;lt;control&amp;gt; element.</description></item><item><title>Profile Examples</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/examples/</guid><description>The following OSCAL Profile model examples are provided.
+NIST SP 800-53 Revision 4 Baselines The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available in our GitHub repository:
+HIGH MODERATE LOW There are also JSON and YAML versions of the NIST SP 800-53 rev4 profiles.
+FedRAMP Baselines Also find examples representing the FedRAMP baselines (again for the HIGH, MODERATE and LOW impact levels) on our web site.</description></item><item><title>Relations to Documentary Encoding Standards</title><link>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</guid><description>Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27002, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL&amp;rsquo;s models are designed to capture the full range of these.
+However, OSCAL is not the only text encoding technology available, and it is not always the most suitable, depending on the task at hand.</description></item><item><title>Contact Us</title><link>https://pages.nist.gov/OSCAL/contribute/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/contact/</guid><description>Please email the OSCAL team with any questions you have about this project or if you are interested in getting involved.
+Please visit our GitHub repository for more information, schemas, and examples.
+We also offer a couple of mailing lists.
+oscal-dev@nist.gov for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to oscal-dev-join@nist.gov. To unsubscribe send an email to oscal-dev-leave@nist.</description></item><item><title>For Assessors</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/assessors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/assessors/</guid><description>Audit and assessment personnel who validate the accuracy of security plans and assess the implementation of security controls within information systems.
+OSCAL standardizes the format for documentation of security controls, while establishing a framework for the automated assessment of information systems to be evaluated based the state of the security controls being addressed.
+How Does OSCAL Help Me? Reduces the amount of manual labor need to assess the implementation of controls.</description></item><item><title>For Baseline Authors</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/contentcreators/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/contentcreators/</guid><description>Systems security policy professionals who set requirements for security programs, both across and within organizations and agencies
+OSCAL provides a standardized solution for building security baselines, through the use of OSCAL profiles, that set the expectations for control implementation within one or more programs and associated information systems.
+How Does OSCAL Help Me? Ensures consistency of control implementation across the enterprise. Improves the transparency of policy implementation by automating reviews of security control implementation and assessments.</description></item><item><title>For Security Professionals</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/securitypros/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/securitypros/</guid><description>Security professionals who document or implement security controls within information systems.
+OSCAL provides a standardized format for documenting security and privacy controls that maps across multiple compliance frameworks (i.e. NIST, PCI, etc.) and a method for attesting to the implementation of the controls within information systems
+How Does OSCAL Help Me? Enables continuous maintenance of control documentation within a framework designed for that purpose. Reduces the amount of paperwork required to implement multiple compliance frameworks.</description></item><item><title>For Tool Developers</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/tooldevelopers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/tooldevelopers/</guid><description>Tool developers who build security compliance systems (Electronic Governance Risk and Compliance [eGRC] systems), or who provide secure infrastructure/software solutions to the Federal Government or to highly regulated industries
+OSCAL provides standardized formats for consuming control, catalog, profile, and implementation information to visualize and automate security compliance processes. OSCAL provides a standardized means for the automated assessment of infrastructure and software solutions to verify the ongoing effectiveness of the system&amp;rsquo;s security control implementation.</description></item><item><title>OSCAL Development Roadmap</title><link>https://pages.nist.gov/OSCAL/contribute/roadmap/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/roadmap/</guid><description>OSCAL is a community-driven, NIST-led project, with an open invitation to the community to participate in the framing and development of OSCAL. Feature requests can be created and submitted directly into the project&amp;rsquo;s GitHub repository. Feedback in the form of bug reports are also encouraged and appreciated. If appropriate, we ask you add a comment to an existing relevant issue, and only create a new issue when no relevant issue exists.</description></item><item><title>Related Resources</title><link>https://pages.nist.gov/OSCAL/downloads/other-resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/downloads/other-resources/</guid><description>Useful Links GitHub Repository for OSCAL NIST Computer Security Resource Center: OSCAL Tools OSCALkit - Converts XML -&amp;gt; JSON (and vice versa) Videos and Presentations Security Automation Simplified via NIST OSCAL: We&amp;rsquo;re Not in Kansas Anymore Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards News FedRAMP Looks to NIST for Security Control Refinements Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL Federal Business Council Presentation What&amp;rsquo;s Next for FedRAMP?</description></item></channel></rss>
