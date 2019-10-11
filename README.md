@@ -11,7 +11,7 @@ If you are interested in supporting the development of the standard, refer to th
 
 ## Architecture
 
-![OSCAL diagram](https://pages.nist.gov/OSCAL/assets/img/oscal-components.png)
+![OSCAL diagram](https://github.com/usnistgov/OSCAL/raw/master/docs/content/learnmore/architecture/oscal-components.png)
 
 OSCAL is comprised of multiple components which have been highlighted in the architecture diagram above. For more information about each of these components, refer to the [website](https://www.nist.gov/oscal).
 
