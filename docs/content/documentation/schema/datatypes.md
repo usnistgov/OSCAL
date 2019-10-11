@@ -284,7 +284,7 @@ In JSON Schema, this is represented as:
 
 Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
 
-### base64
+### base64Binary
 
 Represents a string containing arbitrary Base64-encoded binary data.
 

@@ -16,6 +16,8 @@
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
 
+   <xsl:variable name="datatype-page" as="xs:string">../../datatypes</xsl:variable>
+   
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -25,7 +27,7 @@
    <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
 
    <xsl:template name="cross-links">
-      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-json$)','')"/>
+      <xsl:variable name="schema-base" select="replace($metaschema-code,'-json$','')"/>
       <div style="float:right">
          <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
          <a href="../xml-schema/#{$schema-base}-xml_{ @name}">
@@ -37,8 +39,8 @@
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:apply-templates select="." mode="representation-in-json"/>
          <xsl:apply-templates select="description"/>
+         <xsl:apply-templates select="." mode="representation-in-json"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>Appears as a property on: </xsl:text>
                <xsl:for-each select="current-group()">
@@ -55,15 +57,8 @@
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:choose>
-            <xsl:when test="@as-type = 'mixed'">
-               <p>Supports Markdown</p>
-            </xsl:when>
-            <xsl:when test="@as-type = 'boolean'">
-               <p>A Boolean value</p>
-            </xsl:when>
-         </xsl:choose>
          <xsl:apply-templates select="formal-name | description"/>
+         <xsl:apply-templates select="." mode="representation-in-json"/>
          <xsl:call-template name="appears-in"/>
          <xsl:if test="exists(flag)">
             <xsl:variable name="modal">
@@ -83,9 +78,9 @@
                </xsl:choose>
             </xsl:variable>
             <div class="model">
-               <p xsl:expand-text="true">The <code>{@name}</code> object { $modal } have { $noun }:</p>
+               <p xsl:expand-text="true">The <code>{@name}</code> object { $modal } additionally have { $noun }:</p>
                <ul>
-                  <xsl:apply-templates select="." mode="representation-in-json"/>
+                  <!--<xsl:apply-templates select="." mode="representation-in-json"/>-->
                   <!-- sorting so json-key and json-value-key flags come up first -->
                   <xsl:apply-templates select="flag" mode="model">
                      <xsl:sort select="boolean((@name|@ref)=../(json-key|json-value-key)/@flag-name) ! number()" order="descending"/>
@@ -105,12 +100,12 @@
    <xsl:template match="define-assembly">
       <div class="definition define-assembly" id="{@name}">
          <xsl:call-template name="definition-header"/>
+         <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="group-label"/>
          <xsl:if test="@name = $home/METASCHEMA/@root">
             <h5>
                <code xsl:expand-text="true">{ @name }</code> is the root (containing) object of this schema. </h5>
          </xsl:if>
-         <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="appears-in"/>
          <xsl:apply-templates select="model"/>
          <xsl:call-template name="remarks-group"/>
@@ -133,34 +128,66 @@
       <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
    </xsl:template>
 
-   <xsl:template match="define-flag[@as-type='string']"  mode="representation-in-json">
+   <xsl:template priority="2" match="define-flag[@as-type='string']"  mode="representation-in-json">
       <p>A string property.</p>
    </xsl:template>
 
-
-
    <xsl:template match="define-field" mode="representation-in-json">
-      <li>
-         <p>A string property, labeled <code>STRVALUE</code></p>
-      </li>
+      <p>A string property 
+        <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
+      </p>
    </xsl:template>
-   <xsl:template match="define-field[@as-type = 'markup-line']" mode="representation-in-json">
-      <li>
-         <p>a string property to be processed as a Markdown line, labeled <code>RICHTEXT</code></p>
-      </li>
+   
+   <xsl:template priority="2" match="define-field[exists(flag)]" mode="representation-in-json">
+      <p>An object with a string property, 
+         <xsl:apply-templates select="." mode="field-value-key"/>
+         
+      <xsl:text>of type </xsl:text>
+      <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
+      </p>
    </xsl:template>
-   <xsl:template match="define-field[@as-type = 'markup-multiline']" mode="representation-in-json">
-      <li><p>a string property to be processed as a Markdown page, labeled <code>PROSE</code></p></li>
+   
+   <xsl:template match="define-field" mode="field-value-key">
+      <xsl:text>labeled </xsl:text>
+      <code>
+        <xsl:value-of select="$string-value-label"/>
+      </code>
+   </xsl:template>
+   
+   <xsl:template match="define-field[@as-type='markup-line']" mode="field-value-key">
+      <xsl:text>labeled </xsl:text>
+      <code><xsl:value-of select="$markup-line-label"/></code>
+   </xsl:template>
+   
+   <xsl:template match="define-field[@as-type='markup-multiline']" mode="field-value-key">
+      <xsl:text>labeled </xsl:text>
+      <code><xsl:value-of select="$markup-multiline-label"/></code>
+   </xsl:template>
+   
+   <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="field-value-key">
+      <xsl:text>labeled </xsl:text>
+      <code><xsl:value-of select="json-value-key"/></code>
    </xsl:template>
 
-   <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="representation-in-json">
-      <li>
+   <xsl:template priority="3" match="define-field[exists(json-value-key/@flag-name)]" mode="field-value-key">
+      <xsl:text>whose label is taken as a value for a </xsl:text>
+      <code><xsl:value-of select="@flag-name"/></code>
+      <xsl:text> property</xsl:text>
+   </xsl:template>
+
+   <xsl:template priority="3" match="define-field[exists(flag)][exists(@as-type)]" mode="representation-in-json">
+      <p>
+         <xsl:text>An object with a string property </xsl:text>
+      </p>
+   </xsl:template>
+   
+   
+   <xsl:template priority="4" match="define-field[exists(json-value-key)]" mode="representation-in-json">
          <p>
+            <xsl:text>An object with property </xsl:text> 
             <code><xsl:value-of select="json-value-key"/></code>
-            <xsl:text> property</xsl:text>
             <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
          </p>
-      </li>
    </xsl:template>
 
    <xsl:template priority="3" match="define-field[exists(json-value-key/@flag-name)]" mode="representation-in-json">
@@ -182,8 +209,8 @@
    </xsl:template>
 
    <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
-   <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
-   <xsl:variable name="markdown-multiline-label">PROSE</xsl:variable>
+   <xsl:variable name="markup-line-label">RICHTEXT</xsl:variable>
+   <xsl:variable name="markup-multiline-label">PROSE</xsl:variable>
 
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
@@ -246,7 +273,7 @@
       <li>
          <xsl:apply-templates mode="link-here" select="key('definitions',@ref)"/>
          <xsl:if test="empty(@ref)">
-            <a id="{../@name}-{@name}"><xsl:apply-templates select="@name"/></a><xsl:apply-templates select="@name"/>
+            <a id="{../@name}-{@name}"><xsl:apply-templates select="@name"/></a>
          </xsl:if>
          <xsl:text> property </xsl:text>
          <xsl:apply-templates select="@as-type"/>
@@ -362,8 +389,6 @@
             <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
-
-         <xsl:apply-templates select="description" mode="model"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -384,8 +409,6 @@
          </p>
          <xsl:apply-templates select="." mode="occurrence-code"/>
          <xsl:apply-templates select="if (description) then description else $definition/description" mode="model"/>
-
-         <xsl:apply-templates select="description" mode="model"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -410,14 +433,8 @@
             <xsl:apply-templates select="." mode="occurrence-code"/>
          </p>
          <xsl:apply-templates
-            select="
-               if (description) then
-                  description
-               else
-                  $definition/description"
+            select="if (description) then description else $definition/description"
             mode="model"/>
-
-         <xsl:apply-templates select="description" mode="model"/>
          <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -447,9 +464,10 @@
          <div id="{ ../@name }_{ $example-no }_json" class="example-content">
             <xsl:apply-templates select="remarks"/>
             <pre>
-               <!--<xsl:text>&#xA;{{&lt; highlight go "linenos=table,hl_lines=8 15-17,linenostart=199" >}}</xsl:text>-->
+               <!-- 'doe' span can be wiped in post-process, but permits disabling output escaping -->
+               <span class="doe">&#xA;{{&lt; highlight json "linenos=table" > }}&#xA;</span>
                <xsl:apply-templates select="*" mode="jsonize"/>
-               <!--<xsl:text>&#xA;{{ / highlight }}&#xA;</xsl:text>-->
+               <span class="doe">&#xA;{{ &lt;/ highlight > }}&#xA;</span>
             </pre>
          </div>
       </div>
@@ -524,18 +542,11 @@
    </xsl:template>
 
 
-   <xsl:template match="code[. = (//@name except ancestor::*/@name)]">
-      <a href="#{.}">
-         <xsl:next-match/>
-      </a>
-   </xsl:template>
-
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="occurrence">
          <xsl:next-match/>
       </i>
    </xsl:template>
-
 
    <xsl:template mode="metaschema-type" match="flag">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
@@ -556,11 +567,15 @@
    <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
    <xsl:template mode="metaschema-type" match="description | remarks"/>
 
-   <xsl:template mode="metaschema-type" match="@as-type"> (type <xsl:value-of select="."/>)</xsl:template>
-   <xsl:template mode="metaschema-type" match="@as-type[.='markdown-line']"> (may contain inline Markdown)</xsl:template>
-   <xsl:template mode="metaschema-type" match="@as-type[.='markdown-multiline']"> (may contain Markdown paragraphs)</xsl:template>
-   <xsl:template mode="metaschema-type" match="@as-type[.='empty']"> (with no value given)</xsl:template>
-
+   <xsl:template mode="metaschema-type" match="@as-type">
+      <xsl:text> (type </xsl:text>
+      <a href="{$datatype-page}/#{lower-case(.)}">
+         <xsl:value-of select="."/>
+      </a>
+      <xsl:text>)</xsl:text>
+   </xsl:template>
+   
+   <xsl:template mode="metaschema-type" match="@as-type[.='empty']"/>
 
    <xsl:template match="*" mode="metaschema-type">
       <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>

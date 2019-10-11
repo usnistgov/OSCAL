@@ -71,6 +71,13 @@
         </p>
     </xsl:template>
     
+    <xsl:template match="description">
+        <p class="description">
+            <span class="usa-tag">Description</span>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
     
     <xsl:template match="define-assembly | define-field | define-flag" mode="link-here">
         <a href="#{@name}"><xsl:value-of select="@name"/></a>
@@ -81,12 +88,18 @@
             <xsl:call-template name="cross-links"/>
             <h2 id="{$metaschema-code}_{@name}" class="{substring-after(local-name(),'define-')}-header">
                 <xsl:apply-templates select="@name" mode="tag"/>
-                <xsl:text>: </xsl:text>
-                <xsl:apply-templates select="formal-name" mode="inline"/>
             </h2>
         </header>
+        <xsl:apply-templates select="formal-name" mode="header"/>
     </xsl:template>
     
+    <xsl:template match="formal-name" mode="header">
+        <p class="formal-name">
+            <span class="usa-tag">Name</span>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
     
     <xsl:template name="remarks-group">
         <!-- can't use xsl:where-populated due to the header :-( -->
@@ -98,6 +111,11 @@
         </xsl:for-each-group>
     </xsl:template>
     
+    <xsl:template match="code[. = (/*/@name except ancestor::*/@name)]">
+        <a href="#{.}">
+            <xsl:next-match/>
+        </a>
+    </xsl:template>
     
     <xsl:template mode="tag" match="@name">
         <code class="tagging"><xsl:value-of select="."/></code>   
@@ -120,6 +138,7 @@
     
     <xsl:template match="example[empty(* except (description | remarks))]"/>
     
-    
     <xsl:template name="css"/>
+    
+    
 </xsl:stylesheet>

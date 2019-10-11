@@ -143,8 +143,8 @@
    </xsl:template>
 
    <xsl:template name="describe-prose">
-      <a href="../../schemas/datatypes/">
-         <i>Prose contents (paragraphs, lists, headers and tables)</i>
+      <a href="../../datatypes/#markup-multiline">
+         <i>Markup multiline</i>
       </a>
    </xsl:template>
 

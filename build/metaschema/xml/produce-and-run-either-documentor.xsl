@@ -178,7 +178,7 @@
     </xsl:variable>
 
     <!-- External links in the docs should not be link checked  -->
-    <xsl:template match="html:a[@href=$suspend-link-checks]" mode="cleanup">
+    <xsl:template match="a[@href=$suspend-link-checks]" mode="cleanup" xpath-default-namespace="">
         <xsl:element name="{ local-name() }">
             <xsl:attribute name="data-proofer-ignore">yes</xsl:attribute>
             <xsl:copy-of select="@*"/>
@@ -186,9 +186,10 @@
         </xsl:element>
     </xsl:template>
 
-    <!-- XML examples have to be written out live for macro -->
-    <xsl:template mode="cleanup" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
-        <xsl:value-of disable-output-escaping="yes" select="."/>
+    <!-- directives for Hugo are wrapped in 'doe' so they emit (unescaped) literal syntax -->
+    <!-- at present they are dropping the directives, until we have syntax that works -->
+    <xsl:template mode="cleanup" match="span[@class='doe']"  xpath-default-namespace="">
+        <!--<xsl:value-of disable-output-escaping="yes" select="."/>-->
     </xsl:template>
 
 </xsl:stylesheet>

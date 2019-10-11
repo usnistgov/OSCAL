@@ -16,6 +16,8 @@
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
 
+   <xsl:variable name="datatype-page" as="xs:string">../../datatypes</xsl:variable>
+   
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -25,7 +27,7 @@
    <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
 
    <xsl:template name="cross-links">
-      <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-xml$)','')"/>
+      <xsl:variable name="schema-base" select="replace($metaschema-code,'-xml$','')"/>
       <div class="crosslink">
          <a href="../json-schema/#{$schema-base}-json_{ @name}">
             <button class="schema-link">Switch to JSON</button>
@@ -36,8 +38,8 @@
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:apply-templates select="." mode="representation-in-xml"/>
          <xsl:apply-templates select="description"/>
+         <xsl:apply-templates select="." mode="representation-in-xml"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
@@ -54,8 +56,8 @@
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <xsl:call-template name="definition-header"/>
-         <xsl:apply-templates mode="representation-in-xml" select="."/>
          <xsl:apply-templates select="formal-name | description"/>
+         <xsl:apply-templates mode="representation-in-xml" select="."/>
          <xsl:call-template name="appears-in"/>
          <xsl:if test="exists(flag)">
             <xsl:variable name="modal">
@@ -87,12 +89,12 @@
    <xsl:template match="define-assembly">
       <div class="definition define-assembly" id="{@name}">
          <xsl:call-template name="definition-header"/>
+         <xsl:apply-templates select="formal-name | description"/>
          <xsl:if test="@name = $home/METASCHEMA/@root">
             <h5>
                <code xsl:expand-text="true">{ @name }</code> is the root (containing) element of
                this schema. </h5>
          </xsl:if>
-         <xsl:apply-templates select="formal-name | description"/>
          <xsl:call-template name="appears-in"/>
          <xsl:apply-templates select="model"/>
          <xsl:call-template name="remarks-group"/>
@@ -136,7 +138,6 @@
                <a id="{../@name}-{@name}">
                   <xsl:apply-templates select="@name"/>
                </a>
-               <xsl:apply-templates select="@name"/>
             </xsl:if>
             <xsl:text> attribute </xsl:text>
             <xsl:apply-templates select="." mode="metaschema-type"/>
@@ -224,7 +225,10 @@
          <div id="{ ../@name }_{ $example-no }_xml" class="example-content">
             <xsl:apply-templates select="remarks"/>
             <pre>
-                 <xsl:apply-templates select="*" mode="as-example"/>
+               <!-- 'doe' span can be wiped in post-process, but permits disabling output escaping -->
+               <span class="doe">&#xA;{{&lt; highlight xml "linenos=table" > }}&#xA;</span>
+               <xsl:apply-templates select="*" mode="as-example"/>
+               <span class="doe">&#xA;{{ &lt;/ highlight > }}&#xA;</span>
             </pre>
          </div>
       </div>
@@ -290,12 +294,6 @@
    </xsl:template>
 
 
-   <xsl:template match="code[. = (//@name except ancestor::*/@name)]">
-      <a href="#{.}">
-         <xsl:next-match/>
-      </a>
-   </xsl:template>
-
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i>
          <xsl:next-match/>
@@ -329,15 +327,15 @@
       <xsl:apply-templates select="key('definitions',@ref)" mode="#current"/>
    </xsl:template>
 
-  <xsl:variable name="datatype-page" as="xs:string">.</xsl:variable>
    
    <xsl:template mode="metaschema-type" match="flag | define-flag | define-field">
+      <xsl:variable name="given-type" select="(@as-type, key('definitions',@ref)/@as-type,'string')[1]"/>
       <xsl:text> </xsl:text>
       <b>
          <xsl:text>(</xsl:text>
-         <!-- XXXX link to datatypes page  -->
-         <xsl:apply-templates mode="#current" select="@as-type"/>
-         <xsl:if test="empty(@as-type)">string</xsl:if>
+         <a href="{$datatype-page}/#{(lower-case($given-type))}">
+            <xsl:apply-templates mode="#current" select="$given-type"/>
+         </a>
          <xsl:text>)</xsl:text>
       </b>
       <xsl:text> </xsl:text>
