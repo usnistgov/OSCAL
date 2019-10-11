@@ -11,6 +11,7 @@ references:
       OSCAL_TOOLS_DIR: oscal_tools
       SCHEMATRON_HOME: git-schematron
       TERM: xterm
+      BUNDLER_VERSION: 2.0.2
     working_directory: ~/oscal
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
@@ -162,6 +163,8 @@ commands:
           name: Install with Bundler
           command: |
             cd "$OSCAL_REPO_DIR/docs"
+            gem update --system
+            gem install bundler
             bundle install --path vendor/bundle --jobs=4 --retry=3 && bundle clean
   check-skip-build:
     steps:
@@ -179,7 +182,7 @@ executors:
     <<: *common_environment
   ruby-node-executor:
     docker: # run the ruby jobs with Docker
-      - image: circleci/ruby:2.4.6-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
     <<: *common_environment
   python-executor:
     docker: #run the python jobs with Docker
