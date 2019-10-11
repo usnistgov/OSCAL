@@ -125,7 +125,11 @@
    </xsl:template>
 
    <xsl:template match="define-flag/@as-type"  mode="representation-in-json">
-      <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
+      <p>
+         <xsl:text>A string property </xsl:text>
+         <xsl:apply-templates select="." mode="metaschema-type"/>
+         <xsl:text>.</xsl:text>
+      </p>
    </xsl:template>
 
    <xsl:template priority="2" match="define-flag[@as-type='string']"  mode="representation-in-json">
@@ -133,8 +137,10 @@
    </xsl:template>
 
    <xsl:template match="define-field" mode="representation-in-json">
-      <p>A string property 
+      <p>
+        <xsl:text>A string property</xsl:text> 
         <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
+         <xsl:text>.</xsl:text>
       </p>
    </xsl:template>
    
@@ -142,7 +148,7 @@
       <p>An object with a string property, 
          <xsl:apply-templates select="." mode="field-value-key"/>
          
-      <xsl:text>of type </xsl:text>
+      <xsl:text>, of type </xsl:text>
       <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
       </p>
    </xsl:template>
