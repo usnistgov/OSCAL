@@ -114,7 +114,6 @@
       </div>
    </xsl:template>
 
-
    <xsl:template match="*" mode="representation-in-json">
       <h1>oops</h1>
    </xsl:template>
@@ -147,7 +146,6 @@
    <xsl:template priority="2" match="define-field[exists(flag)]" mode="representation-in-json">
       <p>An object with a string property, 
          <xsl:apply-templates select="." mode="field-value-key"/>
-         
       <xsl:text>, of type </xsl:text>
       <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
       </p>
@@ -479,34 +477,6 @@
       </div>
    </xsl:template>
 
-
-   <!--<xsl:template match="example">
-      <xsl:variable name="n" select="count(. | preceding-sibling::example)"/>
-      <ul class="usa-accordion-bordered">
-         <!-\-<li>
-            <button class="usa-accordion-button" aria-expanded="true"
-               aria-controls="{ ../@name }_example{$n}_xml">XML</button>
-            <div id="{ ../@name }_example{$n}_xml" class="usa-accordion-content">
-               <xsl:text>&#xA;{% highlight xml %}</xsl:text>
-               <xsl:apply-templates select="*" mode="as-example"/>
-               <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
-            </div>
-         </li>-\->
-         <li>
-            <button class="usa-accordion-button" aria-expanded="true"
-               aria-controls="{ ../@name }_example{$n}_json">
-               <xsl:text>Example</xsl:text>
-               <xsl:for-each select="description">: <xsl:apply-templates/></xsl:for-each></button>
-            <div id="{ ../@name }_example{$n}_json" class="usa-accordion-content">
-               <xsl:text>&#xA;{% highlight json %}</xsl:text>
-               <xsl:apply-templates select="*" mode="jsonize"/>
-               <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
-               <xsl:apply-templates select="remarks"/>
-            </div>
-         </li>
-      </ul>
-   </xsl:template>-->
-
    <xsl:output name="jsonish" indent="yes" method="text" use-character-maps="delimiters"/>
 
    <xsl:character-map name="delimiters">
@@ -546,7 +516,6 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-
 
    <xsl:template mode="occurrence-requirements occurrence-code" match="*">
       <i class="occurrence">
