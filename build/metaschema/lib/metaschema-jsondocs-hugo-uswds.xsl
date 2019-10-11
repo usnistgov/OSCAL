@@ -434,9 +434,7 @@
       </p>
    </xsl:template>
 
-   <xsl:template match="example[empty(* except (description | remarks))]"/>
-
-   <xsl:template match="example">
+      <xsl:template match="example">
       <xsl:variable name="example-no" select="'example' || count(.|preceding-sibling::example)"/>
       <div class="example">
          <h3>

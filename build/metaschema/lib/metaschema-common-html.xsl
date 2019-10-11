@@ -39,7 +39,7 @@
     </xsl:template>
     
     <!-- stub to override -->
-    
+    <xsl:template name="cross-links"/>
     
     <xsl:template match="METASCHEMA">
         <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
@@ -117,6 +117,9 @@
                replace(.,'.*/','') }</a></p>
       </xsl:for-each>
    </xsl:template>-->
+    
+    <xsl:template match="example[empty(* except (description | remarks))]"/>
+    
     
     <xsl:template name="css"/>
 </xsl:stylesheet>

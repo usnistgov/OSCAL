@@ -211,8 +211,6 @@
       </p>
    </xsl:template>
 
-   <xsl:template match="example[empty(* except (description | remarks))]"/>
-
    <xsl:template match="example">
       <xsl:variable name="example-no" select="'example' || count(.|preceding-sibling::example)"/>
       <div class="example">
@@ -331,6 +329,8 @@
       <xsl:apply-templates select="key('definitions',@ref)" mode="#current"/>
    </xsl:template>
 
+  <xsl:variable name="datatype-page" as="xs:string">.</xsl:variable>
+   
    <xsl:template mode="metaschema-type" match="flag | define-flag | define-field">
       <xsl:text> </xsl:text>
       <b>
