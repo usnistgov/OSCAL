@@ -432,7 +432,7 @@ jobs: # a collection of
             hugo -v --debug --minify
             mkdir -p public/.circleci
             # copy the circleci config
-            cp ../.circleci/config.yml _site/.circleci/config.yml
+            cp ../.circleci/config.yml public/.circleci/config.yml
           environment:
             JEKYLL_ENV: production
       - *save_gem_cache
