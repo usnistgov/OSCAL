@@ -91,9 +91,10 @@
             <p>The following is a contrived example to show the use of link, citation, and
                resource.</p>
          </remarks>
-         <o:oscal>
-            <o:link rel="reference" href="#citation1">My citation</o:link>
-            ...snip...
+         <o:profile>
+            <o:metadata>
+              <o:link rel="reference" href="#citation1">My citation</o:link>
+            </o:metadata>
             <o:back-matter>
                <o:citation id="citation1">
                   <o:target>#resource1</o:target>
@@ -102,7 +103,7 @@
                   <o:rlink href="https://example.org/some-resource"/>
                </o:resource>
             </o:back-matter>
-         </o:oscal>
+         </o:profile>
       </example>
    </define-assembly>
    <define-field name="link" as-type="markup-line">
@@ -213,19 +214,12 @@
       <flag ref="class"/>
       <remarks>
          <p>Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p>
-         <p>The value of a property is a
-        simple scalar value or list of values.</p>
-         <p>The lexical composition of properties may be constrained by declarations including matching
-        to regular expressions or by declaring a known datatype.</p>
+         <p>The value of a property is a simple scalar value or list of values.</p>
+         <p>The lexical composition of properties may be constrained by external
+         processes to ensure consistency.</p>
          <p>Because properties are often used as selectors or identifiers for OSCAL operations, their
         values can be expected frequently to be normalized (e.g., with respect to whitespace) in
         use; however, this is application defined.</p>
-         <p>For singletons (that is, the only element among siblings with its <code>class</code>),
-        properties are especially useful as proxies (unique identifiers) for their controls, such
-        that controls may be returned one for one on queries for properties (name and value). The
-        robustness of such queries can be ensured by appropriate property declarations (as
-        singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
-        (which also supports other constraints over property values).</p>
       </remarks>
    </define-field>
    <define-assembly name="annotation">

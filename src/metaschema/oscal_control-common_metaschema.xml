@@ -105,9 +105,6 @@
       <formal-name>Value constraint</formal-name>
       <description>Indicates a permissible value for a parameter or property</description>
       <remarks>
-         <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set of
-        enumerated permissible values (i.e., for an element to be valid to a value constraint, it
-        must equal one of the given values).</p>
          <p>In a parameter, a value represents a value assignment to the parameter, overriding any
         value given at the point of insertion. When parameters are provided in OSCAL profiles, their
         values will override any values assigned <q>lower down the stack</q>.</p>
