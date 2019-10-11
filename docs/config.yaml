@@ -1,0 +1,32 @@
+title: "My First Site"
+baseURL: https://pages.nist.gov/OSCAL/
+defaultContentLanguage: en
+languages:
+  en:
+    lang: en
+    languageName: English
+    weight: 1
+MetaDataFormat: "yaml"
+theme: "uswds"
+googleAnalytics: UA-42404149-54
+canonifyurls: true
+enableGitInfo: true
+enableRobotsTXT: true
+pygmentsCodeFences: true
+pygmentsCodefencesGuessSyntax: true
+pygmentsUseClasses: true
+params:
+  header:
+    project_shortname: "OSCAL"
+    project_name: "OSCAL: the Open Security Controls Assessment Language"
+  custom_css:
+  contentRepoPath: https://github.com/usnistgov/OSCAL/tree/master/docs/content
+  searchAffiliate: oscal
+menu:
+  secondary:
+  - name: Get involved
+    url: /contribute/
+  - name: Contact Us
+    url: /contact/
+  - name: Github
+    url: https://github.com/usnistgov/OSCAL
