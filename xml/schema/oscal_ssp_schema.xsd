@@ -833,7 +833,7 @@
                                     </xs:documentation>
                                  </xs:annotation>
                               </xs:enumeration>
-                              <xs:enumeration value="mobibe">
+                              <xs:enumeration value="mobile">
                                  <xs:annotation>
                                     <xs:documentation>
                                        <p>A mobile phone number.</p>
