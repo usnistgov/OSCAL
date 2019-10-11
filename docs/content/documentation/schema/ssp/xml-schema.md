@@ -7,6 +7,7 @@ aliases:
 weight: 60
 sidenav:
   title: XML Schema Reference
+  headingselectors: "h2.assembly-header"
 ---
 
 {{<partial "generated/oscal-ssp-xml-schema.html" >}}

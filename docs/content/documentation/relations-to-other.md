@@ -6,7 +6,7 @@ aliases:
   - /docs/relations/
 ---
 
-Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27001/2, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.
+Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27002, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.
 
 However, OSCAL is not the only text encoding technology available, and it is not always the most suitable, depending on the task at hand. Designed specifically to support operations related to security automation and assessment support, OSCAL may not be as optimal as other (standards-based, non-proprietary) formats for other applications including, notably, full text transcription, search and retrieval, or publication workflows. (OSCAL data may be shared among partners, even over networks including the Internet; but it is not necessarily suitable for publishing as such.)
 

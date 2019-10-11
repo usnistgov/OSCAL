@@ -5,13 +5,13 @@
    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    exclude-result-prefixes="#all">
-   
+
    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
    <!-- Input:   Metaschema -->
    <!-- Output:  HTML  -->
-   
+
    <xsl:import href="metaschema-common-html.xsl"/>
-   
+
    <xsl:param name="schema-path" select="document-uri(/)"/>
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-xml'"/>
@@ -23,16 +23,16 @@
    <xsl:output indent="yes"/>
 
    <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
-   
+
    <xsl:template name="cross-links">
       <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-xml$)','')"/>
       <div class="crosslink">
-         <a href="../../{ $schema-base }/json-schema#{$schema-base}-json_{ @name}">
+         <a href="../json-schema/#{$schema-base}-json_{ @name}">
             <button class="schema-link">Switch to JSON</button>
          </a>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <xsl:call-template name="definition-header"/>
@@ -41,7 +41,7 @@
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
-                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                   <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
@@ -50,7 +50,7 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-field">
       <div class="definition define-field" id="{@name}">
          <xsl:call-template name="definition-header"/>
@@ -83,7 +83,7 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-assembly">
       <div class="definition define-assembly" id="{@name}">
          <xsl:call-template name="definition-header"/>
@@ -100,14 +100,14 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
-   
+
+
    <xsl:template name="appears-in">
       <xsl:for-each-group select="key('references', @name)/ancestor::model/parent::*"
          group-by="true()">
          <p><xsl:text>This element appears inside: </xsl:text>
             <xsl:for-each select="current-group()">
-               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                <xsl:apply-templates select="." mode="link-here"/>
             </xsl:for-each>.</p>
@@ -151,11 +151,11 @@
    <xsl:template match="*" mode="requirement">
       <i> [optional]</i>
    </xsl:template>
-   
+
    <xsl:template match="*[exists(@required)]" mode="requirement">
       <i> [required]</i>
    </xsl:template>
-   
+
    <xsl:template match="model[not(*)]" priority="3"/>
 
    <xsl:template match="model">
@@ -204,13 +204,13 @@
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="remarks/p" mode="model #default">
       <p class="p">
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
    <xsl:template match="example">
@@ -311,12 +311,12 @@
    <xsl:template match="define-field" mode="representation-in-xml">
       <xsl:variable name="unwrapped-references" select="key('references',@name)[@in-xml='UNWRAPPED']"/>
       <p>An element<xsl:apply-templates select="." mode="metaschema-type"/></p>
-      
+
       <xsl:if test="exists($unwrapped-references)">
          <p>
             <xsl:text>When appearing in </xsl:text>
             <xsl:for-each select="distinct-values($unwrapped-references/ancestor::model/../@name)">
-               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+               <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                <xsl:if test="position() gt 1 and position() eq last()"> or </xsl:if>
                <a href="#{ . }" xsl:expand-text="true">{ . }</a>
             </xsl:for-each>
@@ -355,7 +355,7 @@
          html,
          body {
          }
-         
+
          pre {
          color: darkgrey
          }
@@ -365,17 +365,17 @@
          font-size: 80%;
          font-weight: bold
          }
-         
+
          pre.json {
          color: darkblue
          }
-         
+
          .METASCHEMA {
          }
-         
+
          .title {
          }
-         
+
          .define-assembly,
          .define-field,
          .define-flag {
@@ -384,76 +384,76 @@
          border: thin inset black;
          padding: 0.5em
          }
-         
+
          .define-assembly *,
          .define-field *,
          .define-flag * {
          margin: 0em
          }
-         
-         
+
+
          pre {
          padding: 0.5em;
          background-color: gainsboro
          }
-         
+
          .define-assembly {
          }
-         
+
          .define-field {
          }
-         
+
          .define-flag {
          }
-         
+
          .flag {
          }
-         
+
          .formal-name {
          font-size: 120%;
          font-weight: bold;
          font-family: sans-serif;
          margin: 0.5em 0em
          }
-         
+
          .description {
          font-size: 90%;
          font-family: sans-serif;
          margin: 0.5em 0em
          }
-         
+
          .remarks {
          }
-         
+
          .remarks p {
          margin-top: 0.5em
          }
          // .remarks > p:first-child { margin-top: 0em }
-         
+
          .model {
          margin-top: 1em
          }
-         
+
          .field {
          }
-         
+
          .assembly {
          }
-         
+
          .choice {
          }
-         
+
          .example {
          margin-top: 1em
          }
-         
+
          .prose {
          }
-         
-         
+
+
          .p {
          }
-         
+
          .code {
          display: inline;
          }
@@ -466,21 +466,21 @@
          .strong {
          display: inline;
          }
-         
+
          .name {
          color: midnightblue;
          background-color: lavender;
          font-family: monospace;
          font-size: 90%
          }
-         
+
          a {
          text-decoration: none
          }
          a:hover {
          text-decoration: underline
          }
-         
+
          ul.e_map {
          font-family: monospace;
          list-style-type: none

@@ -7,7 +7,7 @@
 
    <xsl:param as="xs:string" name="model-label">oscal-catalog-xml</xsl:param>
 
-   <xsl:variable as="xs:string" name="path-to-docs" select="'../../schemas/' || $model-label"/>
+   <xsl:variable as="xs:string" name="path-to-docs" select="'../xml-schema/'"/>
 
    <xsl:output indent="yes" method="html"/>
    <!-- Context node for this template is the definition of the root element or object ...  -->
@@ -70,7 +70,7 @@
             <xsl:value-of select="@group-name"/>
             <xsl:text>></xsl:text>
          </p>
-      </div>     
+      </div>
    </xsl:template>
 
    <xsl:template match="*" mode="html-render">
@@ -95,7 +95,7 @@
          <xsl:call-template name="cardinality-note"/>
       </p>
    </xsl:template>
-   
+
    <!-- matching assemblies containing children other than flags after pruning,
         making a div not a p -->
    <xsl:template match="m:assembly[exists(* except m:flag)]" mode="html-render">
@@ -141,13 +141,13 @@
          <xsl:call-template name="describe-prose"/>
       </p>
    </xsl:template>
-   
+
    <xsl:template name="describe-prose">
       <a href="../../schemas/datatypes/">
          <i>Prose contents (paragraphs, lists, headers and tables)</i>
       </a>
    </xsl:template>
-   
+
    <xsl:template name="cardinality-note">
       <xsl:text> </xsl:text>
       <span class="OM-cardinality">
@@ -166,7 +166,7 @@
       </xsl:choose>
       <xsl:text>]</xsl:text>
    </xsl:template>
-   
+
    <!--<xsl:template name="cardinality-note">
       <xsl:variable name="note">
          <xsl:variable name="singleton" select="@m:maxOccurs = '1'"/>
@@ -194,15 +194,15 @@
    <xsl:template priority="3" mode="contents" match="m:field[@as-type='markup-multiline'][@in-xml='WITH_WRAPPER']">
       <xsl:call-template name="describe-prose"/>
    </xsl:template>
-   
+
    <xsl:template priority="2" mode="contents" match="m:field[@as-type='empty']"/>
-   
+
    <xsl:template mode="contents" match="m:field[matches(@as-type,'\S')]">
       <span class="OM-emph">
          <xsl:value-of select="@as-type"/>
       </span>
    </xsl:template>
-   
+
    <xsl:template mode="contents" match="m:field">
       <span class="OM-emph">string</span>
    </xsl:template>

@@ -1,7 +1,7 @@
 ---
 title: OSCAL Data Types
 heading: Data Types Used in OSCAL
-description: OSCAL Model Data Types Reference
+description: A description of the data types used in the OSCAL formats.
 weight: 10
 aliases:
   - /docs/schemas/datatypes/
@@ -312,7 +312,7 @@ The OSCAL HTML-like syntax supports:
 - Within paragraphs or text content: `a`, `img`, `strong`, `em`, `b`, `i`, `sup`, `sub`.
 
 
-In remarks below and throughout this documentation, this element set may be referred to as "prose content" or "prose". A future OSCAL could support the definition of this tag set (and Markdown equivalent) as a module, enabling our HTML subset to be switched out for something else. (Its prose model would be different from OSCAL prose as currently defined.) 
+In remarks below and throughout this documentation, this element set may be referred to as "prose content" or "prose". A future OSCAL could support the definition of this tag set (and Markdown equivalent) as a module, enabling our HTML subset to be switched out for something else. (Its prose model would be different from OSCAL prose as currently defined.)
 
 Note that elements such as `div`, `blockquote`, `section` or `aside`, used in HTML to provide structure, are *not permitted in OSCAL*. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as `part`, which can include prose.
 

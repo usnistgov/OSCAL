@@ -5,13 +5,13 @@
    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    exclude-result-prefixes="#all">
-   
+
    <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): JSON version -->
    <!-- Input:   Metaschema -->
    <!-- Output:  HTML  -->
-   
+
    <xsl:import href="metaschema-common-html.xsl"/>
-   
+
    <xsl:param name="schema-path" select="document-uri(/)"/>
 
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
@@ -23,17 +23,17 @@
    <xsl:output indent="yes"/>
 
    <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
-   
+
    <xsl:template name="cross-links">
       <xsl:variable name="schema-base" select="replace($metaschema-code,'(^oscal-|-json$)','')"/>
       <div style="float:right">
          <!--<button disabled="disabled" class="button-xml-off">XML</button>-->
-         <a href="../../{ $schema-base }/xml-schema#{$schema-base}-xml_{ @name}">
+         <a href="../xml-schema/#{$schema-base}-xml_{ @name}">
             <button class="schema-link">Switch to XML</button>
          </a>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-flag">
       <div class="definition define-flag" id="{@name}">
          <xsl:call-template name="definition-header"/>
@@ -42,7 +42,7 @@
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>Appears as a property on: </xsl:text>
                <xsl:for-each select="current-group()">
-                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>            
+                  <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                   <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
                </xsl:for-each>.</p>
@@ -101,7 +101,7 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="define-assembly">
       <div class="definition define-assembly" id="{@name}">
          <xsl:call-template name="definition-header"/>
@@ -118,27 +118,27 @@
          <xsl:call-template name="report-module"/>
       </div>
    </xsl:template>
-   
-   
+
+
    <xsl:template match="*" mode="representation-in-json">
       <h1>oops</h1>
    </xsl:template>
-   
+
    <xsl:template match="define-flag"  mode="representation-in-json">
       <xsl:apply-templates select="@as-type" mode="#current"/>
       <xsl:if test="empty(@as-type)"><p>A string property.</p></xsl:if>
    </xsl:template>
-   
+
    <xsl:template match="define-flag/@as-type"  mode="representation-in-json">
       <p>A string property conforming to constraints of type <code><xsl:value-of select="."/></code></p>
    </xsl:template>
-   
+
    <xsl:template match="define-flag[@as-type='string']"  mode="representation-in-json">
       <p>A string property.</p>
    </xsl:template>
-   
-   
- 
+
+
+
    <xsl:template match="define-field" mode="representation-in-json">
       <li>
          <p>A string property, labeled <code>STRVALUE</code></p>
@@ -423,7 +423,7 @@
    </xsl:template>
 
    <!-- remarks are kept if @class='xml' or no class is given -->
-   
+
    <xsl:template match="remarks[@class != 'json']" priority="2"/>
 
    <xsl:template match="remarks[@class = 'json']/p[1]">
@@ -456,8 +456,8 @@
          </div>
       </div>
    </xsl:template>
-   
-   
+
+
    <!--<xsl:template match="example">
       <xsl:variable name="n" select="count(. | preceding-sibling::example)"/>
       <ul class="usa-accordion-bordered">
@@ -541,13 +541,13 @@
 
    <xsl:template mode="metaschema-type" match="flag">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
    <xsl:template mode="metaschema-type" match="field">string property <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
-   
+
    <!--Calls function in metaschema-docs-util.xsl -->
    <xsl:template
       mode="metaschema-type" match="field[m:has-properties(.)]">object, with labeled value <xsl:apply-templates select="@as-type" mode="#current"/></xsl:template>
 
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='ARRAY']" expand-text="true">array of { if ( m:has-properties(.)) then 'objects' else 'strings' }.</xsl:template>
-   
+
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='SINGLETON_OR_ARRAY']">{ if ( m:has-properties(.)) then 'object' else 'string' } (when a singleton) or array { if ( m:has-properties(.)) then 'objects' else 'strings' } (when multiple)</xsl:template>
    <xsl:template mode="metaschema-type" priority="2" match="field[group-as/@in-json='BY_KEY']">object (with label)</xsl:template>
 
@@ -721,11 +721,11 @@
 
 
    <!-- ^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V^V -->
-   
+
    <!-- only works when XML-to-JSON converter is in the import tree -->
    <xsl:template match="description | remarks" mode="jsonize"/>
-   
+
    <!-- no namespace for JSON -->
    <xsl:template match="METASCHEMA/namespace"/>
-   
+
 </xsl:stylesheet>

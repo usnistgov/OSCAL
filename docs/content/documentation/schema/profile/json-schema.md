@@ -8,6 +8,7 @@ aliases:
 weight: 20
 sidenav:
   title: JSON Schema Reference
+  headingselectors: "h2.assembly-header"
 ---
 
 {{<partialCached "generated/oscal-profile-json-schema.html" >}}

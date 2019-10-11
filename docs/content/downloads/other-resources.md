@@ -1,6 +1,6 @@
 ---
 title: Related Resources
-description: Related Resources
+description: Other resources related to the OSCAL project, including links to tools, presentations, and news items.
 aliases:
   - /resources/
 ---
