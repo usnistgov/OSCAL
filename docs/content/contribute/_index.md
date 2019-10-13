@@ -10,7 +10,7 @@ menu:
     weight: 50
 ---
 
-We are excited that you want to contribute to the OSCAL project. We are striving to provide a collaborative environment for professionals to contribute to the project's goals and objectives. A primary focus of this project is to improve security assessment efficiency, accuracy, and consistency on the basis of real-world experience with the technology used in this space. The language we develop must be well-defined and easy to use for both human and machine-readable formats, improving both the User Experience (UX) and the Machine Experience (MX).
+We are excited that you want to contribute to the OSCAL project. We are striving to provide a collaborative environment for professionals to contribute to the project's goals and objectives. A primary focus of this project is to improve security assessment efficiency, accuracy, and consistency on the basis of real-world experience with the technology used in this space. The language we develop must be well-defined, with human- and machine-readable formats easy to use to improve both, the User Experience (UX) and the Machine Experience (MX).
 
 # Contributing
 
