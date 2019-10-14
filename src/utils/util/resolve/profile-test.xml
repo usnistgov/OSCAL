@@ -15,15 +15,20 @@
             <call control-id="sc-7"/>
         </include>
     </import>
-    <!--<merge>
+    <merge>
         <combine method="keep"/>
         <custom>
             <group>
                 <title>My extra-special, custom group</title>
                 <call control-id="sc-7"/>
             </group>
+            <group>
+                <title>B group</title>
+                <call control-id="ac-2"/>
+                <call control-id="ac-3"/>
+            </group>
         </custom>  
-    </merge>-->
+    </merge>
     
     <back-matter>
         <resource id="catalog">
