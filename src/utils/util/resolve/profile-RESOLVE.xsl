@@ -151,29 +151,24 @@
     </xsl:template>
 
     <!-- combine[@method='keep'] is assumed until later   -->
+    <!-- 'as-is' true is handled below this catches a non-true value -->
     <xsl:template match="merge/combine | merge/as-is"/>
 
     <xsl:template match="merge/custom" mode="build-merge">
         <xsl:if test="exists(descendant::call)">
             <XSLT:key name="controls-by-id" match="control" use="@id"/>
-            <XSLT:variable name="imported-controls">
-                <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
-            </XSLT:variable>
         </xsl:if>
         <!-- overriding the base template -->
         <XSLT:template match="profile" mode="oscal:resolve" priority="100">
             <catalog id="RESOLVED_CUSTOMIZED-{ancestor::profile/@id}">
                 <!-- traversing the merge/custom to build a 'pull' -->
-                <xsl:apply-templates mode="#current"/>
-                  
+                <xsl:apply-templates mode="#current"/>                
             </catalog>
         </XSLT:template>
-    
-        
     </xsl:template>
     
     <xsl:template match="merge/custom//*" mode="build-merge">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
@@ -182,7 +177,6 @@
     <xsl:template priority="2" match="merge/custom//call" mode="build-merge">
         <XSLT:apply-templates mode="oscal:resolve" select="key('controls-by-id','{@control-id}',$imported-controls)"/>
     </xsl:template>
-    
     
     <xsl:template priority="5" match="as-is[. = ('true', '1')]" mode="build-merge">
         <XSLT:template priority="100" match="group" mode="oscal:resolve">
@@ -242,11 +236,16 @@
         <XSLT:mode name="oscal:propagate" on-no-match="shallow-copy"/>
         <XSLT:mode name="oscal:copy-branch" on-no-match="deep-copy"/>
 
+        <XSLT:variable name="imported-controls">
+            <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
+        </XSLT:variable>
+        
         <XSLT:template match="profile" mode="oscal:resolve">
             <catalog id="RESOLVED-{@id}">
-                <XSLT:apply-templates select="import" mode="#current"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
-                <XSLT:apply-templates select="modify" mode="#current"/>
+                <xsl:if test="empty(merge/custom)">
+                    <XSLT:copy-of select="$imported-controls"/>
+                </xsl:if>
             </catalog>
         </XSLT:template>
 
