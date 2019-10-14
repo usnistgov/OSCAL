@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/C:/Users/wap1/Documents/usnistgov/OSCAL/xml/schema/oscal_profile_schema.xsd" id="">
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/C:/Users/wap1/Documents/usnistgov/OSCAL/xml/schema/oscal_profile_schema.xsd"
+    id="profile-test">
     <metadata>
         <title>Test Profile</title>
         <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
@@ -10,13 +11,20 @@
     </metadata>
     <import href="#catalog">
         <include>
-            <all/>
+            <call control-id="ac-2"/>
+            <call control-id="sc-7"/>
         </include>
     </import>
     <!--<merge>
         <combine method="keep"/>
-        
+        <custom>
+            <group>
+                <title>My extra-special, custom group</title>
+                <call control-id="sc-7"/>
+            </group>
+        </custom>  
     </merge>-->
+    
     <back-matter>
         <resource id="catalog">
             <rlink href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"></rlink>
