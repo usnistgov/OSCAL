@@ -156,13 +156,16 @@
     <xsl:template match="merge/custom" mode="build-merge">
         <xsl:if test="exists(descendant::call)">
             <XSLT:key name="controls-by-id" match="control" use="@id"/>
-            
+            <XSLT:variable name="imported-controls">
+                <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
+            </XSLT:variable>
         </xsl:if>
         <!-- overriding the base template -->
         <XSLT:template match="profile" mode="oscal:resolve" priority="100">
             <catalog id="RESOLVED_CUSTOMIZED-{ancestor::profile/@id}">
                 <!-- traversing the merge/custom to build a 'pull' -->
                 <xsl:apply-templates mode="#current"/>
+                  
             </catalog>
         </XSLT:template>
     
@@ -227,6 +230,7 @@
             </XSLT:copy>
         </XSLT:template>
 
+
     </xsl:template>
 
     <xsl:template name="profile-base">
@@ -240,10 +244,9 @@
 
         <XSLT:template match="profile" mode="oscal:resolve">
             <catalog id="RESOLVED-{@id}">
+                <XSLT:apply-templates select="import" mode="#current"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
-                <xsl:if test="empty(merge)">
-                    <XSLT:copy-of select="$imported-controls"/>
-                </xsl:if>
+                <XSLT:apply-templates select="modify" mode="#current"/>
             </catalog>
         </XSLT:template>
 
@@ -253,10 +256,6 @@
             <XSLT:apply-templates select="document(rlink/@href, /)" mode="oscal:resolve"/>
         </XSLT:template>
 
-        <XSLT:variable name="imported-controls">
-            <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
-        </XSLT:variable>
-        
         <!-- For now, each import is traversed separately, meaning we can get duplicated groups
              repair this by grouping either/both imports/@hrefs and resource targets -->
         <XSLT:template match="profile/import" mode="oscal:resolve">
