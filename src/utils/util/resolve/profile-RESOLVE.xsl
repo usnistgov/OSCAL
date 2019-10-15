@@ -16,7 +16,7 @@
             together as a filter over the imported catalogs -->
 
     <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
-    <xsl:param name="write-xslt" as="xs:string">yes</xsl:param>
+    <xsl:param name="write-xslt" as="xs:string">no</xsl:param>
     <xsl:param name="tracing" as="xs:boolean" select="$write-xslt = 'yes'"/>
 
     <xsl:variable name="filter-location" select="/*/@id || '-resolver.xsl'"/>
@@ -33,21 +33,17 @@
 
         <xsl:variable name="resolution-result">
             <xsl:variable name="runtime"
-                select="
-                    map {
-                        'xslt-version': 3.0,
-                        'source-node': (.),
-                        'default-mode': xs:QName('oscal:filter'),
-                        'stylesheet-node': $resolution-xslt,
-                        'stylesheet-params': map {xs:QName('visited'): $visited}
-                    }"/>
+                select="map { 'xslt-version': 3.0,
+                              'source-node': (.),
+                              'default-mode': xs:QName('oscal:filter'),
+                              'stylesheet-node': $resolution-xslt,
+                              'stylesheet-params': map {xs:QName('visited'): $visited} }"/>
 
             <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
          https://www.w3.org/TR/xpath-functions-31/#func-transform -->
 
             <xsl:sequence select="transform($runtime)?output"/>
-
         </xsl:variable>
         <xsl:sequence select="$resolution-result"/>
         <xsl:if test="$tracing">
@@ -87,12 +83,13 @@
 
             <xsl:call-template name="catalog-base"/>
 
-            <xsl:apply-templates select="import" mode="make-selector"/>
+            <xsl:apply-templates select="import" mode="making-selectors"/>
             <xsl:apply-templates select="merge" mode="build-merge"/>
+            <xsl:apply-templates select="modify" mode="contriving-modifiers"/>
         </XSLT:stylesheet>
     </xsl:template>
 
-    <xsl:template match="import" mode="make-selector">
+    <xsl:template match="import" mode="making-selectors">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
@@ -100,14 +97,14 @@
      nb this is necessary b/c the default behavior is to include everything, which
      we have templates to support when no include statement appears at all
     only an exclude or just a bare import (which ends up including everything) -->
-    <xsl:template match="import/include" mode="make-selector">
+    <xsl:template match="import/include" mode="making-selectors">
         <XSLT:template priority="10" match="control" mode="oscal:propagate"/>
         <!-- but by applying templates inside, we produce templates to copy
              whatever we are including after all -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
-    <xsl:template match="import/include/all" mode="make-selector">
+    <xsl:template match="import/include/all" mode="making-selectors">
         <XSLT:template priority="11" match="control" mode="oscal:propagate">
             <XSLT:copy>
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
@@ -116,7 +113,7 @@
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
-    <xsl:template match="import/include/call" mode="make-selector">
+    <xsl:template match="import/include/call" mode="making-selectors">
         <xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>
         <xsl:variable name="include-subcontrols" select="@with-child-controls = ('true', '1')"/>
         <XSLT:template priority="11" match="{$matcher}" mode="oscal:propagate">
@@ -193,6 +190,41 @@
             <XSLT:apply-templates select="." mode="oscal:propagate"/>
         </XSLT:template>
     </xsl:template>
+
+    <xsl:template match="modify" mode="contriving-modifiers">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="modify/alter" mode="contriving-modifiers">
+        <xsl:variable name="alteration" select="."/>
+        <xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>
+        <XSLT:template priority="1001" match="{$matcher}" mode="oscal:resolve">
+            <XSLT:variable name="so-far">
+                <XSLT:next-match/>
+            </XSLT:variable>
+            <XSLT:variable name="scrambled">
+            <XSLT:for-each select="$so-far/control">
+                    <XSLT:copy copy-namespaces="no">
+                        <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
+                        <xsl:copy-of select="$alteration/add[@position = 'starting']/*"/>
+                        <XSLT:apply-templates select="*" mode="oscal:resolve"/>
+                        <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
+                        <xsl:copy-of select="$alteration/add[empty(@position) or @position = 'ending']/*"/>
+                    </XSLT:copy>
+            </XSLT:for-each>
+            </XSLT:variable>
+            <XSLT:for-each select="$scrambled/control">
+                <xsl:copy-of select="$alteration/add[@position = 'before']/*"/>
+                <XSLT:copy copy-namespaces="no">
+                    <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
+                    <XSLT:sequence select="title, param, prop, link, part, control"/>
+                </XSLT:copy>
+                <xsl:copy-of select="$alteration/add[@position = 'after']/*"/>
+            </XSLT:for-each>
+        </XSLT:template>
+    </xsl:template>
+    
+    
 
     <xsl:template name="catalog-base">
         <XSLT:template match="catalog" mode="oscal:resolve">
