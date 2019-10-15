@@ -30,6 +30,15 @@
         </custom>  
     </merge>
     
+    <modify>
+        <alter control-id="sc-7">
+            <add position="starting">
+                <prop name="extra">EXTRA SPECIAL PROPERTY</prop>
+            </add>
+        </alter>
+    </modify>
+        </alter>
+    </modify>
     <back-matter>
         <resource id="catalog">
             <rlink href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"></rlink>

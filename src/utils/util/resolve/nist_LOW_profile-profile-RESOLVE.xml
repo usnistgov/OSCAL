@@ -7,7 +7,7 @@
    <group id="PROFILE-RESULTS-uuid-47fdefdb-dc1a-4040-9f27-b517a16b06d2">
       <group class="family" id="ac">
          <title>Access Control</title>
-         <control class="SP800-53" id="ac-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-1">
             <title>Access Control Policy and Procedures</title>
             <param id="ac-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -18,6 +18,7 @@
             <param id="ac-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-1</prop>
             <prop name="sort-id">ac-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -157,7 +158,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-2">
             <title>Account Management</title>
             <param id="ac-2_prm_1">
                <label>organization-defined information system account types</label>
@@ -171,6 +172,7 @@
             <param id="ac-2_prm_4">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-2</prop>
             <prop name="sort-id">ac-02</prop>
             <part id="ac-2_smt" name="statement">
@@ -458,8 +460,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-3">
             <title>Access Enforcement</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-3</prop>
             <prop name="sort-id">ac-03</prop>
             <part id="ac-3_smt" name="statement">
@@ -518,7 +521,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-7">
             <title>Unsuccessful Logon Attempts</title>
             <param id="ac-7_prm_1">
                <label>organization-defined number</label>
@@ -541,6 +544,7 @@
             <param id="ac-7_prm_5" depends-on="ac-7_prm_3">
                <label>organization-defined delay algorithm</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">AC-7</prop>
             <prop name="sort-id">ac-07</prop>
             <part id="ac-7_smt" name="statement">
@@ -629,7 +633,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-8">
             <title>System Use Notification</title>
             <param id="ac-8_prm_1">
                <label>organization-defined system use notification message or banner</label>
@@ -637,6 +641,7 @@
             <param id="ac-8_prm_2">
                <label>organization-defined conditions</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-8</prop>
             <prop name="sort-id">ac-08</prop>
             <part id="ac-8_smt" name="statement">
@@ -772,11 +777,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-14">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-14">
             <title>Permitted Actions Without Identification or Authentication</title>
             <param id="ac-14_prm_1">
                <label>organization-defined user actions</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">AC-14</prop>
             <prop name="sort-id">ac-14</prop>
             <part id="ac-14_smt" name="statement">
@@ -833,8 +839,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-17">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-17">
             <title>Remote Access</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-17</prop>
             <prop name="sort-id">ac-17</prop>
             <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
@@ -946,8 +953,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-18">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-18">
             <title>Wireless Access</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-18</prop>
             <prop name="sort-id">ac-18</prop>
             <link href="#ref076" rel="reference">NIST Special Publication 800-48</link>
@@ -1030,8 +1038,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-19">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-19">
             <title>Access Control for Mobile Devices</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-19</prop>
             <prop name="sort-id">ac-19</prop>
             <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
@@ -1120,8 +1129,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-20">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-20">
             <title>Use of External Information Systems</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AC-20</prop>
             <prop name="sort-id">ac-20</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -1183,11 +1193,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ac-22">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ac-22">
             <title>Publicly Accessible Content</title>
             <param id="ac-22_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">AC-22</prop>
             <prop name="sort-id">ac-22</prop>
             <part id="ac-22_smt" name="statement">
@@ -1278,7 +1289,7 @@
       </group>
       <group class="family" id="at">
          <title>Awareness and Training</title>
-         <control class="SP800-53" id="at-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-at-1">
             <title>Security Awareness and Training Policy and Procedures</title>
             <param id="at-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -1289,6 +1300,7 @@
             <param id="at-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AT-1</prop>
             <prop name="sort-id">at-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -1430,11 +1442,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="at-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-at-2">
             <title>Security Awareness Training</title>
             <param id="at-2_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AT-2</prop>
             <prop name="sort-id">at-02</prop>
             <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
@@ -1512,11 +1525,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="at-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-at-3">
             <title>Role-based Security Training</title>
             <param id="at-3_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AT-3</prop>
             <prop name="sort-id">at-03</prop>
             <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
@@ -1597,11 +1611,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="at-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-at-4">
             <title>Security Training Records</title>
             <param id="at-4_prm_1">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">AT-4</prop>
             <prop name="sort-id">at-04</prop>
             <part id="at-4_smt" name="statement">
@@ -1688,7 +1703,7 @@
       </group>
       <group class="family" id="au">
          <title>Audit and Accountability</title>
-         <control class="SP800-53" id="au-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-1">
             <title>Audit and Accountability Policy and Procedures</title>
             <param id="au-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -1699,6 +1714,7 @@
             <param id="au-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-1</prop>
             <prop name="sort-id">au-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -1838,7 +1854,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-2">
             <title>Audit Events</title>
             <param id="au-2_prm_1">
                <label>organization-defined auditable events</label>
@@ -1846,6 +1862,7 @@
             <param id="au-2_prm_2">
                <label>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-2</prop>
             <prop name="sort-id">au-02</prop>
             <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
@@ -1945,8 +1962,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-3">
             <title>Content of Audit Records</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-3</prop>
             <prop name="sort-id">au-03</prop>
             <part id="au-3_smt" name="statement">
@@ -2014,11 +2032,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-4">
             <title>Audit Storage Capacity</title>
             <param id="au-4_prm_1">
                <label>organization-defined audit record storage requirements</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-4</prop>
             <prop name="sort-id">au-04</prop>
             <part id="au-4_smt" name="statement">
@@ -2073,7 +2092,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-5">
             <title>Response to Audit Processing Failures</title>
             <param id="au-5_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -2081,6 +2100,7 @@
             <param id="au-5_prm_2">
                <label>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-5</prop>
             <prop name="sort-id">au-05</prop>
             <part id="au-5_smt" name="statement">
@@ -2153,7 +2173,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-6">
             <title>Audit Review, Analysis, and Reporting</title>
             <param id="au-6_prm_1">
                <label>organization-defined frequency</label>
@@ -2164,6 +2184,7 @@
             <param id="au-6_prm_3">
                <label>organization-defined personnel or roles</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-6</prop>
             <prop name="sort-id">au-06</prop>
             <part id="au-6_smt" name="statement">
@@ -2255,11 +2276,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-8">
             <title>Time Stamps</title>
             <param id="au-8_prm_1">
                <label>organization-defined granularity of time measurement</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-8</prop>
             <prop name="sort-id">au-08</prop>
             <part id="au-8_smt" name="statement">
@@ -2326,8 +2348,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-9">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-9">
             <title>Protection of Audit Information</title>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-9</prop>
             <prop name="sort-id">au-09</prop>
             <part id="au-9_smt" name="statement">
@@ -2406,11 +2429,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-11">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-11">
             <title>Audit Record Retention</title>
             <param id="au-11_prm_1">
                <label>organization-defined time period consistent with records retention policy</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">AU-11</prop>
             <prop name="sort-id">au-11</prop>
             <part id="au-11_smt" name="statement">
@@ -2464,7 +2488,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="au-12">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-au-12">
             <title>Audit Generation</title>
             <param id="au-12_prm_1">
                <label>organization-defined information system components</label>
@@ -2472,6 +2496,7 @@
             <param id="au-12_prm_2">
                <label>organization-defined personnel or roles</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">AU-12</prop>
             <prop name="sort-id">au-12</prop>
             <part id="au-12_smt" name="statement">
@@ -2558,7 +2583,7 @@
       </group>
       <group class="family" id="ca">
          <title>Security Assessment and Authorization</title>
-         <control class="SP800-53" id="ca-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-1">
             <title>Security Assessment and Authorization Policy and Procedures</title>
             <param id="ca-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -2569,6 +2594,7 @@
             <param id="ca-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CA-1</prop>
             <prop name="sort-id">ca-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -2710,7 +2736,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-2">
             <title>Security Assessments</title>
             <param id="ca-2_prm_1">
                <label>organization-defined frequency</label>
@@ -2718,6 +2744,7 @@
             <param id="ca-2_prm_2">
                <label>organization-defined individuals or roles</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CA-2</prop>
             <prop name="sort-id">ca-02</prop>
             <link href="#ref008" rel="reference">Executive Order 13587</link>
@@ -2849,11 +2876,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-3">
             <title>System Interconnections</title>
             <param id="ca-3_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CA-3</prop>
             <prop name="sort-id">ca-03</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -2943,11 +2971,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-5">
             <title>Plan of Action and Milestones</title>
             <param id="ca-5_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">CA-5</prop>
             <prop name="sort-id">ca-05</prop>
             <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
@@ -3035,11 +3064,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-6">
             <title>Security Authorization</title>
             <param id="ca-6_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CA-6</prop>
             <prop name="sort-id">ca-06</prop>
             <link href="#ref104" rel="reference">OMB Circular A-130</link>
@@ -3116,7 +3146,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-7">
             <title>Continuous Monitoring</title>
             <param id="ca-7_prm_1">
                <label>organization-defined metrics</label>
@@ -3133,6 +3163,7 @@
             <param id="ca-7_prm_5">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CA-7</prop>
             <prop name="sort-id">ca-07</prop>
             <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
@@ -3320,11 +3351,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ca-9">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ca-9">
             <title>Internal System Connections</title>
             <param id="ca-9_prm_1">
                <label>organization-defined information system components or classes of components</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CA-9</prop>
             <prop name="sort-id">ca-09</prop>
             <part id="ca-9_smt" name="statement">
@@ -3408,7 +3440,7 @@
       </group>
       <group class="family" id="cm">
          <title>Configuration Management</title>
-         <control class="SP800-53" id="cm-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-1">
             <title>Configuration Management Policy and Procedures</title>
             <param id="cm-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -3419,6 +3451,7 @@
             <param id="cm-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-1</prop>
             <prop name="sort-id">cm-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -3559,8 +3592,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-2">
             <title>Baseline Configuration</title>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-2</prop>
             <prop name="sort-id">cm-02</prop>
             <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -3618,8 +3652,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-4">
             <title>Security Impact Analysis</title>
+            <prop name="priority">P2</prop>
             <prop name="label">CM-4</prop>
             <prop name="sort-id">cm-04</prop>
             <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -3668,7 +3703,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-6">
             <title>Configuration Settings</title>
             <param id="cm-6_prm_1">
                <label>organization-defined security configuration checklists</label>
@@ -3679,6 +3714,7 @@
             <param id="cm-6_prm_3">
                <label>organization-defined operational requirements</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-6</prop>
             <prop name="sort-id">cm-06</prop>
             <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
@@ -3829,11 +3865,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-7">
             <title>Least Functionality</title>
             <param id="cm-7_prm_1">
                <label>organization-defined prohibited or restricted functions, ports, protocols, and/or services</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-7</prop>
             <prop name="sort-id">cm-07</prop>
             <link href="#ref006" rel="reference">DoD Instruction 8551.01</link>
@@ -3935,7 +3972,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-8">
             <title>Information System Component Inventory</title>
             <param id="cm-8_prm_1">
                <label>organization-defined information deemed necessary to achieve effective information system component accountability</label>
@@ -3943,6 +3980,7 @@
             <param id="cm-8_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-8</prop>
             <prop name="sort-id">cm-08</prop>
             <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -4047,8 +4085,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-10">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-10">
             <title>Software Usage Restrictions</title>
+            <prop name="priority">P2</prop>
             <prop name="label">CM-10</prop>
             <prop name="sort-id">cm-10</prop>
             <part id="cm-10_smt" name="statement">
@@ -4120,7 +4159,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cm-11">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cm-11">
             <title>User-installed Software</title>
             <param id="cm-11_prm_1">
                <label>organization-defined policies</label>
@@ -4131,6 +4170,7 @@
             <param id="cm-11_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CM-11</prop>
             <prop name="sort-id">cm-11</prop>
             <part id="cm-11_smt" name="statement">
@@ -4232,7 +4272,7 @@
       </group>
       <group class="family" id="cp">
          <title>Contingency Planning</title>
-         <control class="SP800-53" id="cp-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-1">
             <title>Contingency Planning Policy and Procedures</title>
             <param id="cp-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -4243,6 +4283,7 @@
             <param id="cp-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CP-1</prop>
             <prop name="sort-id">cp-01</prop>
             <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4384,7 +4425,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cp-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-2">
             <title>Contingency Plan</title>
             <param id="cp-2_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -4398,6 +4439,7 @@
             <param id="cp-2_prm_4">
                <label>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CP-2</prop>
             <prop name="sort-id">cp-02</prop>
             <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4613,7 +4655,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cp-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-3">
             <title>Contingency Training</title>
             <param id="cp-3_prm_1">
                <label>organization-defined time period</label>
@@ -4621,6 +4663,7 @@
             <param id="cp-3_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CP-3</prop>
             <prop name="sort-id">cp-03</prop>
             <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4705,7 +4748,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cp-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-4">
             <title>Contingency Plan Testing</title>
             <param id="cp-4_prm_1">
                <label>organization-defined frequency</label>
@@ -4713,6 +4756,7 @@
             <param id="cp-4_prm_2">
                <label>organization-defined tests</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">CP-4</prop>
             <prop name="sort-id">cp-04</prop>
             <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4793,7 +4837,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cp-9">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-9">
             <title>Information System Backup</title>
             <param id="cp-9_prm_1">
                <label>organization-defined frequency consistent with recovery time and recovery point objectives</label>
@@ -4804,6 +4848,7 @@
             <param id="cp-9_prm_3">
                <label>organization-defined frequency consistent with recovery time and recovery point objectives</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">CP-9</prop>
             <prop name="sort-id">cp-09</prop>
             <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -4900,8 +4945,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="cp-10">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-cp-10">
             <title>Information System Recovery and Reconstitution</title>
+            <prop name="priority">P1</prop>
             <prop name="label">CP-10</prop>
             <prop name="sort-id">cp-10</prop>
             <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4987,7 +5033,7 @@
       </group>
       <group class="family" id="ia">
          <title>Identification and Authentication</title>
-         <control class="SP800-53" id="ia-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-1">
             <title>Identification and Authentication Policy and Procedures</title>
             <param id="ia-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -4998,6 +5044,7 @@
             <param id="ia-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-1</prop>
             <prop name="sort-id">ia-01</prop>
             <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -5142,8 +5189,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ia-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-2">
             <title>Identification and Authentication (organizational Users)</title>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-2</prop>
             <prop name="sort-id">ia-02</prop>
             <link href="#ref018" rel="reference">HSPD-12</link>
@@ -5301,7 +5349,7 @@
                </part>
             </control>
          </control>
-         <control class="SP800-53" id="ia-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-4">
             <title>Identifier Management</title>
             <param id="ia-4_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -5312,6 +5360,7 @@
             <param id="ia-4_prm_3">
                <label>organization-defined time period of inactivity</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-4</prop>
             <prop name="sort-id">ia-04</prop>
             <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -5488,11 +5537,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ia-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-5">
             <title>Authenticator Management</title>
             <param id="ia-5_prm_1">
                <label>organization-defined time period by authenticator type</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-5</prop>
             <prop name="sort-id">ia-05</prop>
             <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -5906,8 +5956,9 @@
                </part>
             </control>
          </control>
-         <control class="SP800-53" id="ia-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-6">
             <title>Authenticator Feedback</title>
+            <prop name="priority">P2</prop>
             <prop name="label">IA-6</prop>
             <prop name="sort-id">ia-06</prop>
             <part id="ia-6_smt" name="statement">
@@ -5946,8 +5997,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ia-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-7">
             <title>Cryptographic Module Authentication</title>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-7</prop>
             <prop name="sort-id">ia-07</prop>
             <link href="#ref012" rel="reference">FIPS Publication 140</link>
@@ -5990,8 +6042,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ia-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ia-8">
             <title>Identification and Authentication (non-organizational Users)</title>
+            <prop name="priority">P1</prop>
             <prop name="label">IA-8</prop>
             <prop name="sort-id">ia-08</prop>
             <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -6265,7 +6318,7 @@
       </group>
       <group class="family" id="ir">
          <title>Incident Response</title>
-         <control class="SP800-53" id="ir-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-1">
             <title>Incident Response Policy and Procedures</title>
             <param id="ir-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -6276,6 +6329,7 @@
             <param id="ir-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IR-1</prop>
             <prop name="sort-id">ir-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -6417,7 +6471,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-2">
             <title>Incident Response Training</title>
             <param id="ir-2_prm_1">
                <label>organization-defined time period</label>
@@ -6425,6 +6479,7 @@
             <param id="ir-2_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">IR-2</prop>
             <prop name="sort-id">ir-02</prop>
             <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
@@ -6502,8 +6557,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-4">
             <title>Incident Handling</title>
+            <prop name="priority">P1</prop>
             <prop name="label">IR-4</prop>
             <prop name="sort-id">ir-04</prop>
             <link href="#ref008" rel="reference">Executive Order 13587</link>
@@ -6632,8 +6688,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-5">
             <title>Incident Monitoring</title>
+            <prop name="priority">P1</prop>
             <prop name="label">IR-5</prop>
             <prop name="sort-id">ir-05</prop>
             <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -6688,7 +6745,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-6">
             <title>Incident Reporting</title>
             <param id="ir-6_prm_1">
                <label>organization-defined time period</label>
@@ -6696,6 +6753,7 @@
             <param id="ir-6_prm_2">
                <label>organization-defined authorities</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IR-6</prop>
             <prop name="sort-id">ir-06</prop>
             <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -6770,8 +6828,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-7">
             <title>Incident Response Assistance</title>
+            <prop name="priority">P2</prop>
             <prop name="label">IR-7</prop>
             <prop name="sort-id">ir-07</prop>
             <part id="ir-7_smt" name="statement">
@@ -6822,7 +6881,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ir-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ir-8">
             <title>Incident Response Plan</title>
             <param id="ir-8_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -6836,6 +6895,7 @@
             <param id="ir-8_prm_4">
                <label>organization-defined incident response personnel (identified by name and/or by role) and organizational elements</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">IR-8</prop>
             <prop name="sort-id">ir-08</prop>
             <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -7060,7 +7120,7 @@
       </group>
       <group class="family" id="ma">
          <title>Maintenance</title>
-         <control class="SP800-53" id="ma-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ma-1">
             <title>System Maintenance Policy and Procedures</title>
             <param id="ma-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -7071,6 +7131,7 @@
             <param id="ma-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">MA-1</prop>
             <prop name="sort-id">ma-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -7210,7 +7271,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ma-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ma-2">
             <title>Controlled Maintenance</title>
             <param id="ma-2_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -7218,6 +7279,7 @@
             <param id="ma-2_prm_2">
                <label>organization-defined maintenance-related information</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">MA-2</prop>
             <prop name="sort-id">ma-02</prop>
             <part id="ma-2_smt" name="statement">
@@ -7383,8 +7445,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ma-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ma-4">
             <title>Nonlocal Maintenance</title>
+            <prop name="priority">P2</prop>
             <prop name="label">MA-4</prop>
             <prop name="sort-id">ma-04</prop>
             <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
@@ -7512,8 +7575,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ma-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ma-5">
             <title>Maintenance Personnel</title>
+            <prop name="priority">P2</prop>
             <prop name="label">MA-5</prop>
             <prop name="sort-id">ma-05</prop>
             <part id="ma-5_smt" name="statement">
@@ -7594,7 +7658,7 @@
       </group>
       <group class="family" id="mp">
          <title>Media Protection</title>
-         <control class="SP800-53" id="mp-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-mp-1">
             <title>Media Protection Policy and Procedures</title>
             <param id="mp-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -7605,6 +7669,7 @@
             <param id="mp-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">MP-1</prop>
             <prop name="sort-id">mp-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -7744,7 +7809,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="mp-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-mp-2">
             <title>Media Access</title>
             <param id="mp-2_prm_1">
                <label>organization-defined types of digital and/or non-digital media</label>
@@ -7752,6 +7817,7 @@
             <param id="mp-2_prm_2">
                <label>organization-defined personnel or roles</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">MP-2</prop>
             <prop name="sort-id">mp-02</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -7811,7 +7877,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="mp-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-mp-6">
             <title>Media Sanitization</title>
             <param id="mp-6_prm_1">
                <label>organization-defined information system media</label>
@@ -7819,6 +7885,7 @@
             <param id="mp-6_prm_2">
                <label>organization-defined sanitization techniques and procedures</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">MP-6</prop>
             <prop name="sort-id">mp-06</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -7918,7 +7985,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="mp-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-mp-7">
             <title>Media Use</title>
             <param id="mp-7_prm_1">
                <select>
@@ -7935,6 +8002,7 @@
             <param id="mp-7_prm_4">
                <label>organization-defined security safeguards</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">MP-7</prop>
             <prop name="sort-id">mp-07</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -8015,7 +8083,7 @@
       </group>
       <group class="family" id="pe">
          <title>Physical and Environmental Protection</title>
-         <control class="SP800-53" id="pe-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-1">
             <title>Physical and Environmental Protection Policy and Procedures</title>
             <param id="pe-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -8026,6 +8094,7 @@
             <param id="pe-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-1</prop>
             <prop name="sort-id">pe-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -8165,11 +8234,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-2">
             <title>Physical Access Authorizations</title>
             <param id="pe-2_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-2</prop>
             <prop name="sort-id">pe-02</prop>
             <part id="pe-2_smt" name="statement">
@@ -8263,7 +8333,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-3">
             <title>Physical Access Control</title>
             <param id="pe-3_prm_1">
                <label>organization-defined entry/exit points to the facility where the information system resides</label>
@@ -8297,6 +8367,7 @@
             <param id="pe-3_prm_9">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-3</prop>
             <prop name="sort-id">pe-03</prop>
             <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -8532,7 +8603,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-6">
             <title>Monitoring Physical Access</title>
             <param id="pe-6_prm_1">
                <label>organization-defined frequency</label>
@@ -8540,6 +8611,7 @@
             <param id="pe-6_prm_2">
                <label>organization-defined events or potential indications of events</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-6</prop>
             <prop name="sort-id">pe-06</prop>
             <part id="pe-6_smt" name="statement">
@@ -8618,7 +8690,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-8">
             <title>Visitor Access Records</title>
             <param id="pe-8_prm_1">
                <label>organization-defined time period</label>
@@ -8626,6 +8698,7 @@
             <param id="pe-8_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">PE-8</prop>
             <prop name="sort-id">pe-08</prop>
             <part id="pe-8_smt" name="statement">
@@ -8693,8 +8766,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-12">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-12">
             <title>Emergency Lighting</title>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-12</prop>
             <prop name="sort-id">pe-12</prop>
             <part id="pe-12_smt" name="statement">
@@ -8741,8 +8815,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-13">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-13">
             <title>Fire Protection</title>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-13</prop>
             <prop name="sort-id">pe-13</prop>
             <part id="pe-13_smt" name="statement">
@@ -8787,7 +8862,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-14">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-14">
             <title>Temperature and Humidity Controls</title>
             <param id="pe-14_prm_1">
                <label>organization-defined acceptable levels</label>
@@ -8795,6 +8870,7 @@
             <param id="pe-14_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-14</prop>
             <prop name="sort-id">pe-14</prop>
             <part id="pe-14_smt" name="statement">
@@ -8880,8 +8956,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-15">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-15">
             <title>Water Damage Protection</title>
+            <prop name="priority">P1</prop>
             <prop name="label">PE-15</prop>
             <prop name="sort-id">pe-15</prop>
             <part id="pe-15_smt" name="statement">
@@ -8933,11 +9010,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pe-16">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pe-16">
             <title>Delivery and Removal</title>
             <param id="pe-16_prm_1">
                <label>organization-defined types of information system components</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">PE-16</prop>
             <prop name="sort-id">pe-16</prop>
             <part id="pe-16_smt" name="statement">
@@ -9019,7 +9097,7 @@
       </group>
       <group class="family" id="pl">
          <title>Planning</title>
-         <control class="SP800-53" id="pl-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pl-1">
             <title>Security Planning Policy and Procedures</title>
             <param id="pl-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -9030,6 +9108,7 @@
             <param id="pl-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PL-1</prop>
             <prop name="sort-id">pl-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -9170,7 +9249,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pl-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pl-2">
             <title>System Security Plan</title>
             <param id="pl-2_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -9178,6 +9257,7 @@
             <param id="pl-2_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PL-2</prop>
             <prop name="sort-id">pl-02</prop>
             <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
@@ -9387,11 +9467,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="pl-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-pl-4">
             <title>Rules of Behavior</title>
             <param id="pl-4_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">PL-4</prop>
             <prop name="sort-id">pl-04</prop>
             <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
@@ -9498,7 +9579,7 @@
       </group>
       <group class="family" id="ps">
          <title>Personnel Security</title>
-         <control class="SP800-53" id="ps-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-1">
             <title>Personnel Security Policy and Procedures</title>
             <param id="ps-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -9509,6 +9590,7 @@
             <param id="ps-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PS-1</prop>
             <prop name="sort-id">ps-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -9648,11 +9730,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-2">
             <title>Position Risk Designation</title>
             <param id="ps-2_prm_1">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PS-2</prop>
             <prop name="sort-id">ps-02</prop>
             <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
@@ -9726,11 +9809,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-3">
             <title>Personnel Screening</title>
             <param id="ps-3_prm_1">
                <label>organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PS-3</prop>
             <prop name="sort-id">ps-03</prop>
             <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
@@ -9805,7 +9889,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-4">
             <title>Personnel Termination</title>
             <param id="ps-4_prm_1">
                <label>organization-defined time period</label>
@@ -9819,6 +9903,7 @@
             <param id="ps-4_prm_4">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PS-4</prop>
             <prop name="sort-id">ps-04</prop>
             <part id="ps-4_smt" name="statement">
@@ -9938,7 +10023,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-5">
             <title>Personnel Transfer</title>
             <param id="ps-5_prm_1">
                <label>organization-defined transfer or reassignment actions</label>
@@ -9952,6 +10037,7 @@
             <param id="ps-5_prm_4">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">PS-5</prop>
             <prop name="sort-id">ps-05</prop>
             <part id="ps-5_smt" name="statement">
@@ -10057,7 +10143,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-6">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-6">
             <title>Access Agreements</title>
             <param id="ps-6_prm_1">
                <label>organization-defined frequency</label>
@@ -10065,6 +10151,7 @@
             <param id="ps-6_prm_2">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">PS-6</prop>
             <prop name="sort-id">ps-06</prop>
             <part id="ps-6_smt" name="statement">
@@ -10161,7 +10248,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-7">
             <title>Third-party Personnel Security</title>
             <param id="ps-7_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -10169,6 +10256,7 @@
             <param id="ps-7_prm_2">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">PS-7</prop>
             <prop name="sort-id">ps-07</prop>
             <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
@@ -10269,7 +10357,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ps-8">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ps-8">
             <title>Personnel Sanctions</title>
             <param id="ps-8_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -10277,6 +10365,7 @@
             <param id="ps-8_prm_2">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P3</prop>
             <prop name="label">PS-8</prop>
             <prop name="sort-id">ps-08</prop>
             <part id="ps-8_smt" name="statement">
@@ -10345,7 +10434,7 @@
       </group>
       <group class="family" id="ra">
          <title>Risk Assessment</title>
-         <control class="SP800-53" id="ra-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ra-1">
             <title>Risk Assessment Policy and Procedures</title>
             <param id="ra-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -10356,6 +10445,7 @@
             <param id="ra-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">RA-1</prop>
             <prop name="sort-id">ra-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -10496,8 +10586,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ra-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ra-2">
             <title>Security Categorization</title>
+            <prop name="priority">P1</prop>
             <prop name="label">RA-2</prop>
             <prop name="sort-id">ra-02</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -10566,7 +10657,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ra-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ra-3">
             <title>Risk Assessment</title>
             <param id="ra-3_prm_1">
                <select>
@@ -10589,6 +10680,7 @@
             <param id="ra-3_prm_5">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">RA-3</prop>
             <prop name="sort-id">ra-03</prop>
             <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -10735,7 +10827,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="ra-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-ra-5">
             <title>Vulnerability Scanning</title>
             <param id="ra-5_prm_1">
                <label>organization-defined frequency and/or randomly in accordance with organization-defined process</label>
@@ -10746,6 +10838,7 @@
             <param id="ra-5_prm_3">
                <label>organization-defined personnel or roles</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">RA-5</prop>
             <prop name="sort-id">ra-05</prop>
             <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -10946,7 +11039,7 @@
       </group>
       <group class="family" id="sa">
          <title>System and Services Acquisition</title>
-         <control class="SP800-53" id="sa-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-1">
             <title>System and Services Acquisition Policy and Procedures</title>
             <param id="sa-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -10957,6 +11050,7 @@
             <param id="sa-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SA-1</prop>
             <prop name="sort-id">sa-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -11096,8 +11190,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sa-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-2">
             <title>Allocation of Resources</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SA-2</prop>
             <prop name="sort-id">sa-02</prop>
             <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
@@ -11175,11 +11270,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sa-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-3">
             <title>System Development Life Cycle</title>
             <param id="sa-3_prm_1">
                <label>organization-defined system development life cycle</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SA-3</prop>
             <prop name="sort-id">sa-03</prop>
             <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -11263,8 +11359,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sa-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-4">
             <title>Acquisition Process</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SA-4</prop>
             <prop name="sort-id">sa-04</prop>
             <link href="#ref018" rel="reference">HSPD-12</link>
@@ -11433,7 +11530,7 @@
                </part>
             </control>
          </control>
-         <control class="SP800-53" id="sa-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-5">
             <title>Information System Documentation</title>
             <param id="sa-5_prm_1">
                <label>organization-defined actions</label>
@@ -11441,6 +11538,7 @@
             <param id="sa-5_prm_2">
                <label>organization-defined personnel or roles</label>
             </param>
+            <prop name="priority">P2</prop>
             <prop name="label">SA-5</prop>
             <prop name="sort-id">sa-05</prop>
             <part id="sa-5_smt" name="statement">
@@ -11620,7 +11718,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sa-9">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sa-9">
             <title>External Information System Services</title>
             <param id="sa-9_prm_1">
                <label>organization-defined security controls</label>
@@ -11628,6 +11726,7 @@
             <param id="sa-9_prm_2">
                <label>organization-defined processes, methods, and techniques</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SA-9</prop>
             <prop name="sort-id">sa-09</prop>
             <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
@@ -11723,7 +11822,7 @@
       </group>
       <group class="family" id="sc">
          <title>System and Communications Protection</title>
-         <control class="SP800-53" id="sc-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-1">
             <title>System and Communications Protection Policy and Procedures</title>
             <param id="sc-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -11734,6 +11833,7 @@
             <param id="sc-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-1</prop>
             <prop name="sort-id">sc-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -11873,7 +11973,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-5">
             <title>Denial of Service Protection</title>
             <param id="sc-5_prm_1">
                <label>organization-defined types of denial of service attacks or references to sources for such information</label>
@@ -11881,6 +11981,7 @@
             <param id="sc-5_prm_2">
                <label>organization-defined security safeguards</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-5</prop>
             <prop name="sort-id">sc-05</prop>
             <part id="sc-5_smt" name="statement">
@@ -11936,7 +12037,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-7">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-7">
             <title>Boundary Protection</title>
             <param id="sc-7_prm_1">
                <select>
@@ -11944,6 +12045,7 @@
                   <choice>logically</choice>
                </select>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-7</prop>
             <prop name="sort-id">sc-07</prop>
             <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -12044,11 +12146,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-12">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-12">
             <title>Cryptographic Key Establishment and Management</title>
             <param id="sc-12_prm_1">
                <label>organization-defined requirements for key generation, distribution, storage, access, and destruction</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-12</prop>
             <prop name="sort-id">sc-12</prop>
             <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
@@ -12119,11 +12222,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-13">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-13">
             <title>Cryptographic Protection</title>
             <param id="sc-13_prm_1">
                <label>organization-defined cryptographic uses and type of cryptography required for each use</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-13</prop>
             <prop name="sort-id">sc-13</prop>
             <link href="#ref012" rel="reference">FIPS Publication 140</link>
@@ -12199,11 +12303,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-15">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-15">
             <title>Collaborative Computing Devices</title>
             <param id="sc-15_prm_1">
                <label>organization-defined exceptions where remote activation is to be allowed</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-15</prop>
             <prop name="sort-id">sc-15</prop>
             <part id="sc-15_smt" name="statement">
@@ -12268,8 +12373,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-20">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-20">
             <title>Secure Name / Address Resolution Service (authoritative Source)</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-20</prop>
             <prop name="sort-id">sc-20</prop>
             <link href="#ref112" rel="reference">OMB Memorandum 08-23</link>
@@ -12338,8 +12444,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-21">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-21">
             <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-21</prop>
             <prop name="sort-id">sc-21</prop>
             <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
@@ -12396,8 +12503,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-22">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-22">
             <title>Architecture and Provisioning for Name / Address Resolution Service</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-22</prop>
             <prop name="sort-id">sc-22</prop>
             <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
@@ -12450,8 +12558,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="sc-39">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-sc-39">
             <title>Process Isolation</title>
+            <prop name="priority">P1</prop>
             <prop name="label">SC-39</prop>
             <prop name="sort-id">sc-39</prop>
             <part id="sc-39_smt" name="statement">
@@ -12497,7 +12606,7 @@
       </group>
       <group class="family" id="si">
          <title>System and Information Integrity</title>
-         <control class="SP800-53" id="si-1">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-1">
             <title>System and Information Integrity Policy and Procedures</title>
             <param id="si-1_prm_1">
                <label>organization-defined personnel or roles</label>
@@ -12508,6 +12617,7 @@
             <param id="si-1_prm_3">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SI-1</prop>
             <prop name="sort-id">si-01</prop>
             <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -12647,11 +12757,12 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="si-2">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-2">
             <title>Flaw Remediation</title>
             <param id="si-2_prm_1">
                <label>organization-defined time period</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SI-2</prop>
             <prop name="sort-id">si-02</prop>
             <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -12774,7 +12885,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="si-3">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-3">
             <title>Malicious Code Protection</title>
             <param id="si-3_prm_1">
                <label>organization-defined frequency</label>
@@ -12798,6 +12909,7 @@
             <param id="si-3_prm_4" depends-on="si-3_prm_3">
                <label>organization-defined action</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SI-3</prop>
             <prop name="sort-id">si-03</prop>
             <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
@@ -12956,7 +13068,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="si-4">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-4">
             <title>Information System Monitoring</title>
             <param id="si-4_prm_1">
                <label>organization-defined monitoring objectives</label>
@@ -12981,6 +13093,7 @@
             <param id="si-4_prm_6" depends-on="si-4_prm_5">
                <label>organization-defined frequency</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SI-4</prop>
             <prop name="sort-id">si-04</prop>
             <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -13203,7 +13316,7 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="si-5">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-5">
             <title>Security Alerts, Advisories, and Directives</title>
             <param id="si-5_prm_1">
                <label>organization-defined external organizations</label>
@@ -13230,6 +13343,7 @@
             <param id="si-5_prm_5" depends-on="si-5_prm_2">
                <label>organization-defined external organizations</label>
             </param>
+            <prop name="priority">P1</prop>
             <prop name="label">SI-5</prop>
             <prop name="sort-id">si-05</prop>
             <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -13344,8 +13458,9 @@
                </part>
             </part>
          </control>
-         <control class="SP800-53" id="si-12">
+         <control class="SP800-53" id="PROFILE-RESULTS-PROFILE-RESULTS-si-12">
             <title>Information Handling and Retention</title>
+            <prop name="priority">P2</prop>
             <prop name="label">SI-12</prop>
             <prop name="sort-id">si-12</prop>
             <part id="si-12_smt" name="statement">
