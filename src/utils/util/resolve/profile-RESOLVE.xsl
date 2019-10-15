@@ -202,17 +202,20 @@
             <XSLT:variable name="so-far">
                 <XSLT:next-match/>
             </XSLT:variable>
+            <!-- as a temporary tree we produce the control with additions included, prior to final ordering -->
             <XSLT:variable name="scrambled">
-            <XSLT:for-each select="$so-far/control">
+                <XSLT:for-each select="$so-far/control">
                     <XSLT:copy copy-namespaces="no">
                         <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
                         <xsl:copy-of select="$alteration/add[@position = 'starting']/*"/>
                         <XSLT:apply-templates select="*" mode="oscal:resolve"/>
                         <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
-                        <xsl:copy-of select="$alteration/add[empty(@position) or @position = 'ending']/*"/>
+                        <xsl:copy-of
+                            select="$alteration/add[empty(@position) or @position = 'ending']/*"/>
                     </XSLT:copy>
-            </XSLT:for-each>
+                </XSLT:for-each>
             </XSLT:variable>
+            <!-- now we can emit the control, with alterations, in canonical element order (whatever alterations have already been included) -->
             <XSLT:for-each select="$scrambled/control">
                 <xsl:copy-of select="$alteration/add[@position = 'before']/*"/>
                 <XSLT:copy copy-namespaces="no">
@@ -224,8 +227,6 @@
         </XSLT:template>
     </xsl:template>
     
-    
-
     <xsl:template name="catalog-base">
         <XSLT:template match="catalog" mode="oscal:resolve">
             <group>
