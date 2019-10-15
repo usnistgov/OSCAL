@@ -7,7 +7,7 @@ aliases:
   - /docs/schemas/datatypes/
 ---
 
-The OSCAL models are based on structures that use a specific set of data types. These data types are documented in the following sections.
+The OSCAL models share a set of data type primitives. These data types are documented in the following sections.
 
 ## Simple Data types
 
@@ -25,8 +25,8 @@ A boolean value mapped in XML, JSON, and YAML as follows:
 
 | Value | XML | JSON | YAML |
 |:--- |:--- |:--- |:--- |
-| true | true or 1 | true | true |
-| false | false or 0 | false | false |
+| true | `true` or `1` | `true` | `true` |
+| false | `false` or `0` | `false` | `false` |
 
 ### string
 
@@ -86,7 +86,7 @@ In JSON, lexical conformance to dates with optional time zones is provided by a 
 
 ### date-with-timezone
 
-A string representing a 24 hour period in a given timezone. A `date-with-timezone` is formatted acording to "full-date" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type additionally requires that the time-offset (timezone) is always provided.
+A string representing a 24-hour period in a given timezone. A `date-with-timezone` is formatted according to "full-date" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type additionally requires that the time-offset (timezone) is always provided.
 
 For example:
 
@@ -95,7 +95,7 @@ For example:
 2019-12-02-08:00
 ```
 
-In XML Schema this is represented as a restriction on the built in type [date](https://www.w3.org/TR/xmlschema11-2/#date) as follows:
+In XML Schema this is represented as a restriction on the built-in type [date](https://www.w3.org/TR/xmlschema11-2/#date) as follows:
 
 ```XML
 <xs:simpleType name="date-with-timezone">
@@ -126,7 +126,7 @@ In JSON, lexical conformance to date-times with optional time zones is provided 
 
 ### dateTime-with-timezone
 
-A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is non-ambiguous.
+A string containing a date and time formatted according to "date-time" as defined [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). This type requires that the time-offset (timezone) is always provided. This use of timezone ensure that date/time information that is exchanged across timezones is unambiguous.
 
 For example:
 
@@ -286,7 +286,7 @@ Once a suitable pattern for XML is developed, this pattern will be ported to JSO
 
 ### base64Binary
 
-Represents a string containing arbitrary Base64-encoded binary data.
+A string representing arbitrary Base64-encoded binary data.
 
 In XML Schema this is represented as the built in type [base64Binary](https://www.w3.org/TR/xmlschema11-2/#base64Binary) until a suitable pattern can be developed.
 
@@ -303,7 +303,7 @@ Once a suitable pattern for XML is developed, this pattern will be ported to JSO
 
 ## Markup Data Types
 
-Structured prose text in OSCAL is designed to map cleanly to equivalent subsets of HTML and Markdown. This allows HTML-like markup to be incorporated in OSCAL XML-based content using an HTML-like element set maintained in the OSCAL namespace. This HTML-like element set is not intended to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed. Similarly, OSCAL also uses a subset of Markdown for use in OSCAL JSON- and YAML-based content. A mapping is supported between the HTML-like element set and the Markdown syntax, which supports transparent and lossless bidirectional mapping between both OSCAL markup representations.
+Structured prose text in OSCAL is designed to map cleanly to equivalent subsets of HTML and Markdown. This allows HTML-like markup to be incorporated in OSCAL XML-based content using an element set maintained in the OSCAL namespace. This HTML-equivalent element set is not intended to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed. Similarly, OSCAL uses a subset of Markdown for use in OSCAL JSON- and YAML-based content. A mapping is supported between the HTML-like element set and the Markdown syntax, which supports transparent and lossless bidirectional mapping between both OSCAL markup representations.
 
 The OSCAL HTML-like syntax supports:
 
@@ -379,9 +379,9 @@ Since these characters are not markup delimiters in XML, they are safe to use th
 
 ### markup-multiline
 
-All constructs supported by the [markup-line](#markup-line) data type is supported by the `markup-multiline` data type, when appearing within a header (`h1`-`h6`), paragraph (`p`), list item (`li`) or table cell (`th` or `td`).
+All constructs supported by the [markup-line](#markup-line) data type are also supported by the `markup-multiline` data type, when appearing within a header (`h1`-`h6`), paragraph (`p`), list item (`li`) or table cell (`th` or `td`).
 
-The following additonal constructs are also supported.
+The following additional constructs are also supported. Note that the syntax for these elements must appear on their own lines (i.e., with additional line feeds as delimiters), as is usual in Markdown.
 
 | Markup Type | HTML | Markdown |
 |:--- |:--- |:--- |
