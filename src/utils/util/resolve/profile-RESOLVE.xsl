@@ -122,7 +122,7 @@
             </XSLT:copy>
         </XSLT:template>
         <xsl:if test="$include-subcontrols">
-            <XSLT:template priority="11" match="{$matcher||'/control'}" mode="oscal:propagate">
+            <XSLT:template priority="12" match="{$matcher||'/control'}" mode="oscal:propagate">
                 <XSLT:copy>
                     <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
                 </XSLT:copy>
