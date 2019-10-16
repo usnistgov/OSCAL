@@ -12,6 +12,9 @@
     <import href="#catalog">
         <include>
             <call control-id="ac-2"/>
+            <call control-id="at-1"/>
+            <call control-id="at-2"/>
+            <call control-id="at-3"/>
             <call control-id="sc-7"/>
         </include>
     </import>
@@ -32,16 +35,15 @@
     
     <modify>
         <alter control-id="sc-7">
+            <remove name-ref="assessment"/>
             <add position="starting">
                 <prop name="extra">EXTRA SPECIAL PROPERTY</prop>
             </add>
         </alter>
     </modify>
-        </alter>
-    </modify>
     <back-matter>
         <resource id="catalog">
-            <rlink href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"></rlink>
+            <rlink href="micro-catalog.xml"></rlink>
         </resource>
     </back-matter>
 </profile>
