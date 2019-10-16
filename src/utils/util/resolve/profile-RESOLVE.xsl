@@ -16,7 +16,7 @@
             together as a filter over the imported catalogs -->
 
     <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
-    <xsl:param name="write-xslt" as="xs:string">no</xsl:param>
+    <xsl:param name="write-xslt" as="xs:string">yes</xsl:param>
     <xsl:param name="tracing" as="xs:boolean" select="$write-xslt = 'yes'"/>
 
     <xsl:variable name="filter-location" select="/*/@id || '-resolver.xsl'"/>
@@ -172,7 +172,7 @@
     </xsl:template>
     
     <xsl:template priority="2" match="merge/custom//call" mode="build-merge">
-        <XSLT:apply-templates mode="oscal:resolve" select="key('controls-by-id','{@control-id}',$imported-controls)"/>
+        <XSLT:sequence select="key('controls-by-id','{@control-id}',$imported-controls)"/>
     </xsl:template>
     
     <xsl:template priority="5" match="as-is[. = ('true', '1')]" mode="build-merge">
@@ -198,7 +198,7 @@
     <xsl:template match="modify/alter" mode="contriving-modifiers">
         <xsl:variable name="alteration" select="."/>
         <xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>
-        <XSLT:template priority="1001" match="{$matcher}" mode="oscal:resolve">
+        <XSLT:template priority="1001" match="{$matcher}" mode="oscal:propagate">
             <XSLT:variable name="so-far">
                 <XSLT:next-match/>
             </XSLT:variable>
@@ -206,25 +206,65 @@
             <XSLT:variable name="scrambled">
                 <XSLT:for-each select="$so-far/control">
                     <XSLT:copy copy-namespaces="no">
-                        <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
-                        <xsl:copy-of select="$alteration/add[@position = 'starting']/*"/>
+                        <XSLT:copy-of copy-namespaces="no" select="@*"/>
+                        <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'starting']/*"/>
                         <XSLT:apply-templates select="*" mode="oscal:resolve"/>
                         <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
-                        <xsl:copy-of
+                        <xsl:copy-of copy-namespaces="no"
                             select="$alteration/add[empty(@position) or @position = 'ending']/*"/>
                     </XSLT:copy>
                 </XSLT:for-each>
             </XSLT:variable>
             <!-- now we can emit the control, with alterations, in canonical element order (whatever alterations have already been included) -->
             <XSLT:for-each select="$scrambled/control">
-                <xsl:copy-of select="$alteration/add[@position = 'before']/*"/>
+                <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'before']/*"/>
                 <XSLT:copy copy-namespaces="no">
-                    <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
+                    <XSLT:copy-of copy-namespaces="no" select="@*"/>
                     <XSLT:sequence select="title, param, prop, link, part, control"/>
                 </XSLT:copy>
-                <xsl:copy-of select="$alteration/add[@position = 'after']/*"/>
+                <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'after']/*"/>
             </XSLT:for-each>
         </XSLT:template>
+        
+        <!-- Next, templates to match elements inside controls that get additions -->
+        <xsl:apply-templates select="add[exists(@id-ref)]" mode="#current"/>
+        
+        <!-- Then templates to drop elements indicated for removal -->
+        <xsl:apply-templates select="remove" mode="#current"/>
+        
+    </xsl:template>
+    
+    <xsl:template match="add[exists(@id-ref)]" mode="contriving-modifiers">
+        <XSLT:template mode="oscal:resolve"
+            match="key('elements-by-id','{@id-ref}',key('controls-by-id','{../@control-id}')))"
+            priority="1002">
+            <xsl:copy-of select=".[@position = 'before']"/>
+            <XSLT:copy copy-namespaces="no">
+                <XSLT:apply-templates select="@*" mode="oscal:resolve"/>
+                <xsl:copy-of select=".[@position = 'starting']"/>
+                <XSLT:apply-templates select="*" mode="oscal:resolve"/>
+                <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
+                <xsl:copy-of select=".[empty(@position) or @position = 'ending']"/>
+            </XSLT:copy>
+            <xsl:copy-of select=".[@position = 'after']"/>
+        </XSLT:template>
+    </xsl:template>
+    
+    <!-- Finally implementing removals as straight up empty templates -->
+    <xsl:template match="remove[exists(@id-ref)]" mode="contriving-modifiers">
+        <XSLT:template mode="oscal:resolve" match="key('elements-by-id','{@id-ref}',key('controls-by-id','{../@control-id}'))" priority="1005"/>
+    </xsl:template>
+    
+    <xsl:template match="remove[exists(@name-ref)]" mode="contriving-modifiers">
+        <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//*[@name='{@name-ref}']" priority="1004"/>
+    </xsl:template>
+    
+    <xsl:template match="remove[exists(@class-ref)]" mode="contriving-modifiers">
+        <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//*[@class-ref='{@class-ref}']" priority="1003"/>
+    </xsl:template>
+    
+    <xsl:template match="remove[exists(@item-name)]" mode="contriving-modifiers">
+        <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//{@item-name}" priority="1002"/>
     </xsl:template>
     
     <xsl:template name="catalog-base">

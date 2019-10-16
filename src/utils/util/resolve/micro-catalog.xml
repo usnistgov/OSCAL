@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+         xmlns:fn="http://www.example.com/fn"
+         id="micro-catalog">
+   <metadata>
+      <title>Micro mini catalog</title>
+      <last-modified>2019-10-16T16:09:02.628-04:00</last-modified>
+      <version>0.1</version>
+      <oscal-version>1.0-MR2</oscal-version>
+   </metadata>
+   <control class="SP800-53" id="ac-2">
+         <title>Account Management</title>
+         <param id="ac-2_prm_1">
+            <label>organization-defined information system account types</label>
+         </param>
+         <param id="ac-2_prm_2">
+            <label>organization-defined personnel or roles</label>
+         </param>
+         <param id="ac-2_prm_3">
+            <label>organization-defined procedures or conditions</label>
+         </param>
+         <param id="ac-2_prm_4">
+            <label>organization-defined frequency</label>
+         </param>
+         <prop name="label">AC-2</prop>
+         <prop name="sort-id">ac-02</prop>
+         <part id="ac-2_smt" name="statement">
+            <p>The organization:</p>
+            <part id="ac-2_smt.a" name="item">
+               <prop name="label">a.</prop>
+               <p>Identifies and selects the following types of information system accounts to support organizational missions/business functions: <insert param-id="ac-2_prm_1"/>;</p>
+            </part>
+            <part id="ac-2_smt.b" name="item">
+               <prop name="label">b.</prop>
+               <p>Assigns account managers for information system accounts;</p>
+            </part>
+            <part id="ac-2_smt.c" name="item">
+               <prop name="label">c.</prop>
+               <p>Establishes conditions for group and role membership;</p>
+            </part>
+            <part id="ac-2_smt.d" name="item">
+               <prop name="label">d.</prop>
+               <p>Specifies authorized users of the information system, group and role membership, and access authorizations (i.e., privileges) and other attributes (as required) for each account;</p>
+            </part>
+            <part id="ac-2_smt.e" name="item">
+               <prop name="label">e.</prop>
+               <p>Requires approvals by <insert param-id="ac-2_prm_2"/> for requests to create information system accounts;</p>
+            </part>
+            <part id="ac-2_smt.f" name="item">
+               <prop name="label">f.</prop>
+               <p>Creates, enables, modifies, disables, and removes information system accounts in accordance with <insert param-id="ac-2_prm_3"/>;</p>
+            </part>
+            <part id="ac-2_smt.g" name="item">
+               <prop name="label">g.</prop>
+               <p>Monitors the use of information system accounts;</p>
+            </part>
+            <part id="ac-2_smt.h" name="item">
+               <prop name="label">h.</prop>
+               <p>Notifies account managers:</p>
+               <part id="ac-2_smt.h.1" name="item">
+                  <prop name="label">1.</prop>
+                  <p>When accounts are no longer required;</p>
+               </part>
+               <part id="ac-2_smt.h.2" name="item">
+                  <prop name="label">2.</prop>
+                  <p>When users are terminated or transferred; and</p>
+               </part>
+               <part id="ac-2_smt.h.3" name="item">
+                  <prop name="label">3.</prop>
+                  <p>When individual information system usage or need-to-know changes;</p>
+               </part>
+            </part>
+            <part id="ac-2_smt.i" name="item">
+               <prop name="label">i.</prop>
+               <p>Authorizes access to the information system based on:</p>
+               <part id="ac-2_smt.i.1" name="item">
+                  <prop name="label">1.</prop>
+                  <p>A valid access authorization;</p>
+               </part>
+               <part id="ac-2_smt.i.2" name="item">
+                  <prop name="label">2.</prop>
+                  <p>Intended system usage; and</p>
+               </part>
+               <part id="ac-2_smt.i.3" name="item">
+                  <prop name="label">3.</prop>
+                  <p>Other attributes as required by the organization or associated missions/business functions;</p>
+               </part>
+            </part>
+            <part id="ac-2_smt.j" name="item">
+               <prop name="label">j.</prop>
+               <p>Reviews accounts for compliance with account management requirements <insert param-id="ac-2_prm_4"/>; and</p>
+            </part>
+            <part id="ac-2_smt.k" name="item">
+               <prop name="label">k.</prop>
+               <p>Establishes a process for reissuing shared/group account credentials (if deployed) when individuals are removed from the group.</p>
+            </part>
+         </part>
+         <part id="ac-2_gdn" name="guidance">
+            <p>Information system account types include, for example, individual, shared, group, system, guest/anonymous, emergency, developer/manufacturer/vendor, temporary, and service. Some of the account management requirements listed above can be implemented by organizational information systems. The identification of authorized users of the information system and the specification of access privileges reflects the requirements in other security controls in the security plan. Users requiring administrative privileges on information system accounts receive additional scrutiny by appropriate organizational personnel (e.g., system owner, mission/business owner, or chief information security officer) responsible for approving such accounts and privileged access. Organizations may choose to define access privileges or other attributes by account, by type of account, or a combination of both. Other attributes required for authorizing access include, for example, restrictions on time-of-day, day-of-week, and point-of-origin. In defining other account attributes, organizations consider system-related requirements (e.g., scheduled maintenance, system upgrades) and mission/business requirements, (e.g., time zone differences, customer requirements, remote access to support travel requirements). Failure to consider these factors could affect information system availability. Temporary and emergency accounts are accounts intended for short-term use. Organizations establish temporary accounts as a part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. Organizations establish emergency accounts in response to crisis situations and with the need for rapid account activation. Therefore, emergency account activation may bypass normal account authorization processes. Emergency and temporary accounts are not to be confused with infrequently used accounts (e.g., local logon accounts used for special tasks defined by organizations or when network resources are unavailable). Such accounts remain available and are not subject to automatic disabling or removal dates. Conditions for disabling or deactivating accounts include, for example: (i) when shared/group, emergency, or temporary accounts are no longer required; or (ii) when individuals are transferred or terminated. Some types of information system accounts may require specialized training.</p>
+            <link rel="related" href="#ac-3">AC-3</link>
+            <link rel="related" href="#ac-4">AC-4</link>
+            <link rel="related" href="#ac-5">AC-5</link>
+            <link rel="related" href="#ac-6">AC-6</link>
+            <link rel="related" href="#ac-10">AC-10</link>
+            <link rel="related" href="#ac-17">AC-17</link>
+            <link rel="related" href="#ac-19">AC-19</link>
+            <link rel="related" href="#ac-20">AC-20</link>
+            <link rel="related" href="#au-9">AU-9</link>
+            <link rel="related" href="#ia-2">IA-2</link>
+            <link rel="related" href="#ia-4">IA-4</link>
+            <link rel="related" href="#ia-5">IA-5</link>
+            <link rel="related" href="#ia-8">IA-8</link>
+            <link rel="related" href="#cm-5">CM-5</link>
+            <link rel="related" href="#cm-6">CM-6</link>
+            <link rel="related" href="#cm-11">CM-11</link>
+            <link rel="related" href="#ma-3">MA-3</link>
+            <link rel="related" href="#ma-4">MA-4</link>
+            <link rel="related" href="#ma-5">MA-5</link>
+            <link rel="related" href="#pl-4">PL-4</link>
+            <link rel="related" href="#sc-13">SC-13</link>
+         </part>
+         <part id="ac-2_obj" name="objective">
+            <p>Determine if the organization:</p>
+            <part id="ac-2.a_obj" name="objective">
+               <prop name="label">AC-2(a)</prop>
+               <part id="ac-2.a_obj.1" name="objective">
+                  <prop name="label">AC-2(a)[1]</prop>
+                  <p>defines information system account types to be identified and selected to support organizational missions/business functions;</p>
+               </part>
+               <part id="ac-2.a_obj.2" name="objective">
+                  <prop name="label">AC-2(a)[2]</prop>
+                  <p>identifies and selects organization-defined information system account types to support organizational missions/business functions;</p>
+               </part>
+            </part>
+            <part id="ac-2.b_obj" name="objective">
+               <prop name="label">AC-2(b)</prop>
+               <p>assigns account managers for information system accounts;</p>
+            </part>
+            <part id="ac-2.c_obj" name="objective">
+               <prop name="label">AC-2(c)</prop>
+               <p>establishes conditions for group and role membership;</p>
+            </part>
+            <part id="ac-2.d_obj" name="objective">
+               <prop name="label">AC-2(d)</prop>
+               <p>specifies for each account (as required):</p>
+               <part id="ac-2.d_obj.1" name="objective">
+                  <prop name="label">AC-2(d)[1]</prop>
+                  <p>authorized users of the information system;</p>
+               </part>
+               <part id="ac-2.d_obj.2" name="objective">
+                  <prop name="label">AC-2(d)[2]</prop>
+                  <p>group and role membership;</p>
+               </part>
+               <part id="ac-2.d_obj.3" name="objective">
+                  <prop name="label">AC-2(d)[3]</prop>
+                  <p>access authorizations (i.e., privileges);</p>
+               </part>
+               <part id="ac-2.d_obj.4" name="objective">
+                  <prop name="label">AC-2(d)[4]</prop>
+                  <p>other attributes;</p>
+               </part>
+            </part>
+            <part id="ac-2.e_obj" name="objective">
+               <prop name="label">AC-2(e)</prop>
+               <part id="ac-2.e_obj.1" name="objective">
+                  <prop name="label">AC-2(e)[1]</prop>
+                  <p>defines personnel or roles required to approve requests to create information system accounts;</p>
+               </part>
+               <part id="ac-2.e_obj.2" name="objective">
+                  <prop name="label">AC-2(e)[2]</prop>
+                  <p>requires approvals by organization-defined personnel or roles for requests to create information system accounts;</p>
+               </part>
+            </part>
+            <part id="ac-2.f_obj" name="objective">
+               <prop name="label">AC-2(f)</prop>
+               <part id="ac-2.f_obj.1" name="objective">
+                  <prop name="label">AC-2(f)[1]</prop>
+                  <p>defines procedures or conditions to:</p>
+                  <part id="ac-2.f_obj.1.a" name="objective">
+                     <prop name="label">AC-2(f)[1][a]</prop>
+                     <p>create information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.1.b" name="objective">
+                     <prop name="label">AC-2(f)[1][b]</prop>
+                     <p>enable information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.1.c" name="objective">
+                     <prop name="label">AC-2(f)[1][c]</prop>
+                     <p>modify information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.1.d" name="objective">
+                     <prop name="label">AC-2(f)[1][d]</prop>
+                     <p>disable information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.1.e" name="objective">
+                     <prop name="label">AC-2(f)[1][e]</prop>
+                     <p>remove information system accounts;</p>
+                  </part>
+               </part>
+               <part id="ac-2.f_obj.2" name="objective">
+                  <prop name="label">AC-2(f)[2]</prop>
+                  <p>in accordance with organization-defined procedures or conditions:</p>
+                  <part id="ac-2.f_obj.2.a" name="objective">
+                     <prop name="label">AC-2(f)[2][a]</prop>
+                     <p>creates information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.2.b" name="objective">
+                     <prop name="label">AC-2(f)[2][b]</prop>
+                     <p>enables information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.2.c" name="objective">
+                     <prop name="label">AC-2(f)[2][c]</prop>
+                     <p>modifies information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.2.d" name="objective">
+                     <prop name="label">AC-2(f)[2][d]</prop>
+                     <p>disables information system accounts;</p>
+                  </part>
+                  <part id="ac-2.f_obj.2.e" name="objective">
+                     <prop name="label">AC-2(f)[2][e]</prop>
+                     <p>removes information system accounts;</p>
+                  </part>
+               </part>
+            </part>
+            <part id="ac-2.g_obj" name="objective">
+               <prop name="label">AC-2(g)</prop>
+               <p>monitors the use of information system accounts;</p>
+            </part>
+            <part id="ac-2.h_obj" name="objective">
+               <prop name="label">AC-2(h)</prop>
+               <p>notifies account managers:</p>
+               <part id="ac-2.h.1_obj" name="objective">
+                  <prop name="label">AC-2(h)(1)</prop>
+                  <p>when accounts are no longer required;</p>
+               </part>
+               <part id="ac-2.h.2_obj" name="objective">
+                  <prop name="label">AC-2(h)(2)</prop>
+                  <p>when users are terminated or transferred;</p>
+               </part>
+               <part id="ac-2.h.3_obj" name="objective">
+                  <prop name="label">AC-2(h)(3)</prop>
+                  <p>when individual information system usage or need to know changes;</p>
+               </part>
+            </part>
+            <part id="ac-2.i_obj" name="objective">
+               <prop name="label">AC-2(i)</prop>
+               <p>authorizes access to the information system based on;</p>
+               <part id="ac-2.i.1_obj" name="objective">
+                  <prop name="label">AC-2(i)(1)</prop>
+                  <p>a valid access authorization;</p>
+               </part>
+               <part id="ac-2.i.2_obj" name="objective">
+                  <prop name="label">AC-2(i)(2)</prop>
+                  <p>intended system usage;</p>
+               </part>
+               <part id="ac-2.i.3_obj" name="objective">
+                  <prop name="label">AC-2(i)(3)</prop>
+                  <p>other attributes as required by the organization or associated missions/business functions;</p>
+               </part>
+            </part>
+            <part id="ac-2.j_obj" name="objective">
+               <prop name="label">AC-2(j)</prop>
+               <part id="ac-2.j_obj.1" name="objective">
+                  <prop name="label">AC-2(j)[1]</prop>
+                  <p>defines the frequency to review accounts for compliance with account management requirements;</p>
+               </part>
+               <part id="ac-2.j_obj.2" name="objective">
+                  <prop name="label">AC-2(j)[2]</prop>
+                  <p>reviews accounts for compliance with account management requirements with the organization-defined frequency; and</p>
+               </part>
+            </part>
+            <part id="ac-2.k_obj" name="objective">
+               <prop name="label">AC-2(k)</prop>
+               <p>establishes a process for reissuing shared/group account credentials (if deployed) when individuals are removed from the group.</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">EXAMINE</prop>
+            <part name="objects">
+               <p>Access control policy</p>
+               <p>procedures addressing account management</p>
+               <p>security plan</p>
+               <p>information system design documentation</p>
+               <p>information system configuration settings and associated documentation</p>
+               <p>list of active system accounts along with the name of the individual associated with each account</p>
+               <p>list of conditions for group and role membership</p>
+               <p>notifications or records of recently transferred, separated, or terminated employees</p>
+               <p>list of recently disabled information system accounts along with the name of the individual associated with each account</p>
+               <p>access authorization records</p>
+               <p>account management compliance reviews</p>
+               <p>information system monitoring records</p>
+               <p>information system audit records</p>
+               <p>other relevant documents or records</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">INTERVIEW</prop>
+            <part name="objects">
+               <p>Organizational personnel with account management responsibilities</p>
+               <p>system/network administrators</p>
+               <p>organizational personnel with information security responsibilities</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">TEST</prop>
+            <part name="objects">
+               <p>Organizational processes account management on the information system</p>
+               <p>automated mechanisms for implementing account management</p>
+            </part>
+         </part>
+      </control>
+      <control class="SP800-53" id="at-1">
+         <title>Security Awareness and Training Policy and Procedures</title>
+         <param id="at-1_prm_1">
+            <label>organization-defined personnel or roles</label>
+         </param>
+         <param id="at-1_prm_2">
+            <label>organization-defined frequency</label>
+         </param>
+         <param id="at-1_prm_3">
+            <label>organization-defined frequency</label>
+         </param>
+         <prop name="label">AT-1</prop>
+         <prop name="sort-id">at-01</prop>
+         <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
+         <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
+         <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
+         <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
+         <part id="at-1_smt" name="statement">
+            <p>The organization:</p>
+            <part id="at-1_smt.a" name="item">
+               <prop name="label">a.</prop>
+               <p>Develops, documents, and disseminates to <insert param-id="at-1_prm_1"/>:</p>
+               <part id="at-1_smt.a.1" name="item">
+                  <prop name="label">1.</prop>
+                  <p>A security awareness and training policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</p>
+               </part>
+               <part id="at-1_smt.a.2" name="item">
+                  <prop name="label">2.</prop>
+                  <p>Procedures to facilitate the implementation of the security awareness and training policy and associated security awareness and training controls; and</p>
+               </part>
+            </part>
+            <part id="at-1_smt.b" name="item">
+               <prop name="label">b.</prop>
+               <p>Reviews and updates the current:</p>
+               <part id="at-1_smt.b.1" name="item">
+                  <prop name="label">1.</prop>
+                  <p>Security awareness and training policy <insert param-id="at-1_prm_2"/>; and</p>
+               </part>
+               <part id="at-1_smt.b.2" name="item">
+                  <prop name="label">2.</prop>
+                  <p>Security awareness and training procedures <insert param-id="at-1_prm_3"/>.</p>
+               </part>
+            </part>
+         </part>
+         <part id="at-1_gdn" name="guidance">
+            <p>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AT family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.</p>
+            <link rel="related" href="#pm-9">PM-9</link>
+         </part>
+         <part id="at-1_obj" name="objective">
+            <p>Determine if the organization:</p>
+            <part id="at-1.a_obj" name="objective">
+               <prop name="label">AT-1(a)</prop>
+               <part id="at-1.a.1_obj" name="objective">
+                  <prop name="label">AT-1(a)(1)</prop>
+                  <part id="at-1.a.1_obj.1" name="objective">
+                     <prop name="label">AT-1(a)(1)[1]</prop>
+                     <p>develops and documents an security awareness and training policy that addresses:</p>
+                     <part id="at-1.a.1_obj.1.a" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][a]</prop>
+                        <p>purpose;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.b" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][b]</prop>
+                        <p>scope;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.c" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][c]</prop>
+                        <p>roles;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.d" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][d]</prop>
+                        <p>responsibilities;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.e" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][e]</prop>
+                        <p>management commitment;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.f" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][f]</prop>
+                        <p>coordination among organizational entities;</p>
+                     </part>
+                     <part id="at-1.a.1_obj.1.g" name="objective">
+                        <prop name="label">AT-1(a)(1)[1][g]</prop>
+                        <p>compliance;</p>
+                     </part>
+                  </part>
+                  <part id="at-1.a.1_obj.2" name="objective">
+                     <prop name="label">AT-1(a)(1)[2]</prop>
+                     <p>defines personnel or roles to whom the security awareness and training policy are to be disseminated;</p>
+                  </part>
+                  <part id="at-1.a.1_obj.3" name="objective">
+                     <prop name="label">AT-1(a)(1)[3]</prop>
+                     <p>disseminates the security awareness and training policy to organization-defined personnel or roles;</p>
+                  </part>
+               </part>
+               <part id="at-1.a.2_obj" name="objective">
+                  <prop name="label">AT-1(a)(2)</prop>
+                  <part id="at-1.a.2_obj.1" name="objective">
+                     <prop name="label">AT-1(a)(2)[1]</prop>
+                     <p>develops and documents procedures to facilitate the implementation of the security awareness and training policy and associated awareness and training controls;</p>
+                  </part>
+                  <part id="at-1.a.2_obj.2" name="objective">
+                     <prop name="label">AT-1(a)(2)[2]</prop>
+                     <p>defines personnel or roles to whom the procedures are to be disseminated;</p>
+                  </part>
+                  <part id="at-1.a.2_obj.3" name="objective">
+                     <prop name="label">AT-1(a)(2)[3]</prop>
+                     <p>disseminates the procedures to organization-defined personnel or roles;</p>
+                  </part>
+               </part>
+            </part>
+            <part id="at-1.b_obj" name="objective">
+               <prop name="label">AT-1(b)</prop>
+               <part id="at-1.b.1_obj" name="objective">
+                  <prop name="label">AT-1(b)(1)</prop>
+                  <part id="at-1.b.1_obj.1" name="objective">
+                     <prop name="label">AT-1(b)(1)[1]</prop>
+                     <p>defines the frequency to review and update the current security awareness and training policy;</p>
+                  </part>
+                  <part id="at-1.b.1_obj.2" name="objective">
+                     <prop name="label">AT-1(b)(1)[2]</prop>
+                     <p>reviews and updates the current security awareness and training policy with the organization-defined frequency;</p>
+                  </part>
+               </part>
+               <part id="at-1.b.2_obj" name="objective">
+                  <prop name="label">AT-1(b)(2)</prop>
+                  <part id="at-1.b.2_obj.1" name="objective">
+                     <prop name="label">AT-1(b)(2)[1]</prop>
+                     <p>defines the frequency to review and update the current security awareness and training procedures; and</p>
+                  </part>
+                  <part id="at-1.b.2_obj.2" name="objective">
+                     <prop name="label">AT-1(b)(2)[2]</prop>
+                     <p>reviews and updates the current security awareness and training procedures with the organization-defined frequency.</p>
+                  </part>
+               </part>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">EXAMINE</prop>
+            <part name="objects">
+               <p>Security awareness and training policy and procedures</p>
+               <p>other relevant documents or records</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">INTERVIEW</prop>
+            <part name="objects">
+               <p>Organizational personnel with security awareness and training responsibilities</p>
+               <p>organizational personnel with information security responsibilities</p>
+            </part>
+         </part>
+      </control>
+      <control class="SP800-53" id="at-2">
+         <title>Security Awareness Training</title>
+         <param id="at-2_prm_1">
+            <label>organization-defined frequency</label>
+         </param>
+         <prop name="label">AT-2</prop>
+         <prop name="sort-id">at-02</prop>
+         <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
+         <link href="#ref008" rel="reference">Executive Order 13587</link>
+         <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
+         <part id="at-2_smt" name="statement">
+            <p>The organization provides basic security awareness training to information system users (including managers, senior executives, and contractors):</p>
+            <part id="at-2_smt.a" name="item">
+               <prop name="label">a.</prop>
+               <p>As part of initial training for new users;</p>
+            </part>
+            <part id="at-2_smt.b" name="item">
+               <prop name="label">b.</prop>
+               <p>When required by information system changes; and</p>
+            </part>
+            <part id="at-2_smt.c" name="item">
+               <prop name="label">c.</prop>
+               <p> 
+                  <insert param-id="at-2_prm_1"/> thereafter.</p>
+            </part>
+         </part>
+         <part id="at-2_gdn" name="guidance">
+            <p>Organizations determine the appropriate content of security awareness training and security awareness techniques based on the specific organizational requirements and the information systems to which personnel have authorized access. The content includes a basic understanding of the need for information security and user actions to maintain security and to respond to suspected security incidents. The content also addresses awareness of the need for operations security. Security awareness techniques can include, for example, displaying posters, offering supplies inscribed with security reminders, generating email advisories/notices from senior organizational officials, displaying logon screen messages, and conducting information security awareness events.</p>
+            <link rel="related" href="#at-3">AT-3</link>
+            <link rel="related" href="#at-4">AT-4</link>
+            <link rel="related" href="#pl-4">PL-4</link>
+         </part>
+         <part id="at-2_obj" name="objective">
+            <p>Determine if the organization:</p>
+            <part id="at-2.a_obj" name="objective">
+               <prop name="label">AT-2(a)</prop>
+               <p>provides basic security awareness training to information system users (including managers, senior executives, and contractors) as part of initial training for new users;</p>
+            </part>
+            <part id="at-2.b_obj" name="objective">
+               <prop name="label">AT-2(b)</prop>
+               <p>provides basic security awareness training to information system users (including managers, senior executives, and contractors) when required by information system changes; and</p>
+            </part>
+            <part id="at-2.c_obj" name="objective">
+               <prop name="label">AT-2(c)</prop>
+               <part id="at-2.c_obj.1" name="objective">
+                  <prop name="label">AT-2(c)[1]</prop>
+                  <p>defines the frequency to provide refresher security awareness training thereafter to information system users (including managers, senior executives, and contractors); and</p>
+               </part>
+               <part id="at-2.c_obj.2" name="objective">
+                  <prop name="label">AT-2(c)[2]</prop>
+                  <p>provides refresher security awareness training to information users (including managers, senior executives, and contractors) with the organization-defined frequency.</p>
+               </part>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">EXAMINE</prop>
+            <part name="objects">
+               <p>Security awareness and training policy</p>
+               <p>procedures addressing security awareness training implementation</p>
+               <p>appropriate codes of federal regulations</p>
+               <p>security awareness training curriculum</p>
+               <p>security awareness training materials</p>
+               <p>security plan</p>
+               <p>training records</p>
+               <p>other relevant documents or records</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">INTERVIEW</prop>
+            <part name="objects">
+               <p>Organizational personnel with responsibilities for security awareness training</p>
+               <p>organizational personnel with information security responsibilities</p>
+               <p>organizational personnel comprising the general information system user community</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">TEST</prop>
+            <part name="objects">
+               <p>Automated mechanisms managing security awareness training</p>
+            </part>
+         </part>
+      </control>
+      <control class="SP800-53" id="at-3">
+         <title>Role-based Security Training</title>
+         <param id="at-3_prm_1">
+            <label>organization-defined frequency</label>
+         </param>
+         <prop name="label">AT-3</prop>
+         <prop name="sort-id">at-03</prop>
+         <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
+         <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
+         <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
+         <part id="at-3_smt" name="statement">
+            <p>The organization provides role-based security training to personnel with assigned security roles and responsibilities:</p>
+            <part id="at-3_smt.a" name="item">
+               <prop name="label">a.</prop>
+               <p>Before authorizing access to the information system or performing assigned duties;</p>
+            </part>
+            <part id="at-3_smt.b" name="item">
+               <prop name="label">b.</prop>
+               <p>When required by information system changes; and</p>
+            </part>
+            <part id="at-3_smt.c" name="item">
+               <prop name="label">c.</prop>
+               <p> 
+                  <insert param-id="at-3_prm_1"/> thereafter.</p>
+            </part>
+         </part>
+         <part id="at-3_gdn" name="guidance">
+            <p>Organizations determine the appropriate content of security training based on the assigned roles and responsibilities of individuals and the specific security requirements of organizations and the information systems to which personnel have authorized access. In addition, organizations provide enterprise architects, information system developers, software developers, acquisition/procurement officials, information system managers, system/network administrators, personnel conducting configuration management and auditing activities, personnel performing independent verification and validation activities, security control assessors, and other personnel having access to system-level software, adequate security-related technical training specifically tailored for their assigned duties. Comprehensive role-based training addresses management, operational, and technical roles and responsibilities covering physical, personnel, and technical safeguards and countermeasures. Such training can include for example, policies, procedures, tools, and artifacts for the organizational security roles defined. Organizations also provide the training necessary for individuals to carry out their responsibilities related to operations and supply chain security within the context of organizational information security programs. Role-based security training also applies to contractors providing services to federal agencies.</p>
+            <link rel="related" href="#at-2">AT-2</link>
+            <link rel="related" href="#at-4">AT-4</link>
+            <link rel="related" href="#pl-4">PL-4</link>
+            <link rel="related" href="#ps-7">PS-7</link>
+            <link rel="related" href="#sa-3">SA-3</link>
+            <link rel="related" href="#sa-12">SA-12</link>
+            <link rel="related" href="#sa-16">SA-16</link>
+         </part>
+         <part id="at-3_obj" name="objective">
+            <p>Determine if the organization:</p>
+            <part id="at-3.a_obj" name="objective">
+               <prop name="label">AT-3(a)</prop>
+               <p>provides role-based security training to personnel with assigned security roles and responsibilities before authorizing access to the information system or performing assigned duties;</p>
+            </part>
+            <part id="at-3.b_obj" name="objective">
+               <prop name="label">AT-3(b)</prop>
+               <p>provides role-based security training to personnel with assigned security roles and responsibilities when required by information system changes; and</p>
+            </part>
+            <part id="at-3.c_obj" name="objective">
+               <prop name="label">AT-3(c)</prop>
+               <part id="at-3.c_obj.1" name="objective">
+                  <prop name="label">AT-3(c)[1]</prop>
+                  <p>defines the frequency to provide refresher role-based security training thereafter to personnel with assigned security roles and responsibilities; and</p>
+               </part>
+               <part id="at-3.c_obj.2" name="objective">
+                  <prop name="label">AT-3(c)[2]</prop>
+                  <p>provides refresher role-based security training to personnel with assigned security roles and responsibilities with the organization-defined frequency.</p>
+               </part>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">EXAMINE</prop>
+            <part name="objects">
+               <p>Security awareness and training policy</p>
+               <p>procedures addressing security training implementation</p>
+               <p>codes of federal regulations</p>
+               <p>security training curriculum</p>
+               <p>security training materials</p>
+               <p>security plan</p>
+               <p>training records</p>
+               <p>other relevant documents or records</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">INTERVIEW</prop>
+            <part name="objects">
+               <p>Organizational personnel with responsibilities for role-based security training</p>
+               <p>organizational personnel with assigned information system security roles and responsibilities</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">TEST</prop>
+            <part name="objects">
+               <p>Automated mechanisms managing role-based security training</p>
+            </part>
+         </part>
+      </control>
+      <control class="SP800-53" id="sc-7">
+         <title>Boundary Protection</title>
+         <param id="sc-7_prm_1">
+            <select>
+               <choice>physically</choice>
+               <choice>logically</choice>
+            </select>
+         </param>
+         <prop name="label">SC-7</prop>
+         <prop name="sort-id">sc-07</prop>
+         <link href="#ref015" rel="reference">FIPS Publication 199</link>
+         <link href="#ref072" rel="reference">NIST Special Publication 800-41</link>
+         <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
+         <part id="sc-7_smt" name="statement">
+            <p>The information system:</p>
+            <part id="sc-7_smt.a" name="item">
+               <prop name="label">a.</prop>
+               <p>Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system;</p>
+            </part>
+            <part id="sc-7_smt.b" name="item">
+               <prop name="label">b.</prop>
+               <p>Implements subnetworks for publicly accessible system components that are <insert param-id="sc-7_prm_1"/> separated from internal organizational networks; and</p>
+            </part>
+            <part id="sc-7_smt.c" name="item">
+               <prop name="label">c.</prop>
+               <p>Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.</p>
+            </part>
+         </part>
+         <part id="sc-7_gdn" name="guidance">
+            <p>Managed interfaces include, for example, gateways, routers, firewalls, guards, network-based malicious code analysis and virtualization systems, or encrypted tunnels implemented within a security architecture (e.g., routers protecting firewalls or application gateways residing on protected subnetworks). Subnetworks that are physically or logically separated from internal networks are referred to as demilitarized zones or DMZs. Restricting or prohibiting interfaces within organizational information systems includes, for example, restricting external web traffic to designated web servers within managed interfaces and prohibiting external traffic that appears to be spoofing internal addresses. Organizations consider the shared nature of commercial telecommunications services in the implementation of security controls associated with the use of such services. Commercial telecommunications services are commonly based on network components and consolidated management systems shared by all attached commercial customers, and may also include third party-provided access lines and other service elements. Such transmission services may represent sources of increased risk despite contract security provisions.</p>
+            <link rel="related" href="#ac-4">AC-4</link>
+            <link rel="related" href="#ac-17">AC-17</link>
+            <link rel="related" href="#ca-3">CA-3</link>
+            <link rel="related" href="#cm-7">CM-7</link>
+            <link rel="related" href="#cp-8">CP-8</link>
+            <link rel="related" href="#ir-4">IR-4</link>
+            <link rel="related" href="#ra-3">RA-3</link>
+            <link rel="related" href="#sc-5">SC-5</link>
+            <link rel="related" href="#sc-13">SC-13</link>
+         </part>
+         <part id="sc-7_obj" name="objective">
+            <p>Determine if the information system:</p>
+            <part id="sc-7.a_obj" name="objective">
+               <prop name="label">SC-7(a)</prop>
+               <part id="sc-7.a_obj.1" name="objective">
+                  <prop name="label">SC-7(a)[1]</prop>
+                  <p>monitors communications at the external boundary of the information system;</p>
+               </part>
+               <part id="sc-7.a_obj.2" name="objective">
+                  <prop name="label">SC-7(a)[2]</prop>
+                  <p>monitors communications at key internal boundaries within the system;</p>
+               </part>
+               <part id="sc-7.a_obj.3" name="objective">
+                  <prop name="label">SC-7(a)[3]</prop>
+                  <p>controls communications at the external boundary of the information system;</p>
+               </part>
+               <part id="sc-7.a_obj.4" name="objective">
+                  <prop name="label">SC-7(a)[4]</prop>
+                  <p>controls communications at key internal boundaries within the system;</p>
+               </part>
+            </part>
+            <part id="sc-7.b_obj" name="objective">
+               <prop name="label">SC-7(b)</prop>
+               <p>implements subnetworks for publicly accessible system components that are either:</p>
+               <part id="sc-7.b_obj.1" name="objective">
+                  <prop name="label">SC-7(b)[1]</prop>
+                  <p>physically separated from internal organizational networks; and/or</p>
+               </part>
+               <part id="sc-7.b_obj.2" name="objective">
+                  <prop name="label">SC-7(b)[2]</prop>
+                  <p>logically separated from internal organizational networks; and</p>
+               </part>
+            </part>
+            <part id="sc-7.c_obj" name="objective">
+               <prop name="label">SC-7(c)</prop>
+               <p>connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">EXAMINE</prop>
+            <part name="objects">
+               <p>System and communications protection policy</p>
+               <p>procedures addressing boundary protection</p>
+               <p>list of key internal boundaries of the information system</p>
+               <p>information system design documentation</p>
+               <p>boundary protection hardware and software</p>
+               <p>information system configuration settings and associated documentation</p>
+               <p>enterprise security architecture documentation</p>
+               <p>information system audit records</p>
+               <p>other relevant documents or records</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">INTERVIEW</prop>
+            <part name="objects">
+               <p>System/network administrators</p>
+               <p>organizational personnel with information security responsibilities</p>
+               <p>system developer</p>
+               <p>organizational personnel with boundary protection responsibilities</p>
+            </part>
+         </part>
+         <part name="assessment">
+            <prop name="method">TEST</prop>
+            <part name="objects">
+               <p>Automated mechanisms implementing boundary protection capability</p>
+            </part>
+         </part>
+      </control>
+      <back-matter>
+         <citation id="ref001">
+            <target>http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html</target>
+            <title>5 C.F.R. 731.106</title>
+         </citation>
+         <citation id="ref002">
+            <target>http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html</target>
+            <title>C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</title>
+         </citation>
+         <citation id="ref003">
+            <target>https://www.cnss.gov/policies.html</target>
+            <title>CNSS Policy 15</title>
+         </citation>
+         <citation id="ref004">
+            <title>DoD Information Assurance Vulnerability Alerts</title>
+         </citation>
+         <citation id="ref005">
+            <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
+            <title>DoD Instruction 5200.39</title>
+         </citation>
+         <citation id="ref006">
+            <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
+            <title>DoD Instruction 8551.01</title>
+         </citation>
+         <citation id="ref007">
+            <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
+            <title>DoD Instruction 8552.01</title>
+         </citation>
+         <citation id="ref008">
+            <target>http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net</target>
+            <title>Executive Order 13587</title>
+         </citation>
+         <citation id="ref009">
+            <target>https://acquisition.gov/far</target>
+            <title>Federal Acquisition Regulation</title>
+         </citation>
+         <citation id="ref010">
+            <target>http://www.fema.gov/pdf/about/offices/fcd1.pdf</target>
+            <title>Federal Continuity Directive 1</title>
+         </citation>
+         <citation id="ref011">
+            <target>http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance</target>
+            <title>FICAM Roadmap and Implementation Guidance</title>
+         </citation>
+         <citation id="ref012">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html</target>
+            <title>FIPS Publication 140</title>
+         </citation>
+         <citation id="ref013">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html#140-2</target>
+            <title>FIPS Publication 140-2</title>
+         </citation>
+         <citation id="ref014">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html#197</target>
+            <title>FIPS Publication 197</title>
+         </citation>
+         <citation id="ref015">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html#199</target>
+            <title>FIPS Publication 199</title>
+         </citation>
+         <citation id="ref016">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html#200</target>
+            <title>FIPS Publication 200</title>
+         </citation>
+         <citation id="ref017">
+            <target>http://csrc.nist.gov/publications/PubsFIPS.html#201</target>
+            <title>FIPS Publication 201</title>
+         </citation>
+         <citation id="ref018">
+            <target>http://www.dhs.gov/homeland-security-presidential-directive-12</target>
+            <title>HSPD-12</title>
+         </citation>
+         <citation id="ref019">
+            <target>http://www.fas.org/irp/offdocs/nspd/hspd-7.html</target>
+            <title>HSPD 7</title>
+         </citation>
+         <citation id="ref020">
+            <target>http://capec.mitre.org</target>
+            <title>http://capec.mitre.org</title>
+         </citation>
+         <citation id="ref021">
+            <target>http://checklists.nist.gov</target>
+            <title>http://checklists.nist.gov</title>
+         </citation>
+         <citation id="ref022">
+            <target>http://csrc.nist.gov/cryptval</target>
+            <title>http://csrc.nist.gov/cryptval</title>
+         </citation>
+         <citation id="ref023">
+            <target>http://csrc.nist.gov/groups/STM/cmvp/index.html</target>
+            <title>http://csrc.nist.gov/groups/STM/cmvp/index.html</title>
+         </citation>
+         <citation id="ref024">
+            <target>http://cve.mitre.org</target>
+            <title>http://cve.mitre.org</title>
+         </citation>
+         <citation id="ref025">
+            <target>http://cwe.mitre.org</target>
+            <title>http://cwe.mitre.org</title>
+         </citation>
+         <citation id="ref026">
+            <target>http://fips201ep.cio.gov</target>
+            <title>http://fips201ep.cio.gov</title>
+         </citation>
+         <citation id="ref027">
+            <target>http://idmanagement.gov</target>
+            <title>http://idmanagement.gov</title>
+         </citation>
+         <citation id="ref028">
+            <target>http://nvd.nist.gov</target>
+            <title>http://nvd.nist.gov</title>
+         </citation>
+         <citation id="ref029">
+            <target>http://www.acquisition.gov/far</target>
+            <title>http://www.acquisition.gov/far</title>
+         </citation>
+         <citation id="ref030">
+            <target>http://www.cnss.gov</target>
+            <title>http://www.cnss.gov</title>
+         </citation>
+         <citation id="ref031">
+            <target>http://www.dhs.gov/telecommunications-service-priority-tsp</target>
+            <title>http://www.dhs.gov/telecommunications-service-priority-tsp</title>
+         </citation>
+         <citation id="ref032">
+            <target>http://www.niap-ccevs.org</target>
+            <title>http://www.niap-ccevs.org</title>
+         </citation>
+         <citation id="ref033">
+            <target>http://www.nsa.gov</target>
+            <title>http://www.nsa.gov</title>
+         </citation>
+         <citation id="ref034">
+            <target>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</target>
+            <title>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</title>
+         </citation>
+         <citation id="ref035">
+            <target>http://www.omb.gov</target>
+            <title>http://www.omb.gov</title>
+         </citation>
+         <citation id="ref036">
+            <target>http://www.us-cert.gov</target>
+            <title>http://www.us-cert.gov</title>
+         </citation>
+         <citation id="ref037">
+            <target>http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives</target>
+            <title>ICD 704</title>
+         </citation>
+         <citation id="ref038">
+            <target>http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives</target>
+            <title>ICD 705</title>
+         </citation>
+         <citation id="ref039">
+            <target>http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341</target>
+            <title>ISO/IEC 15408</title>
+         </citation>
+         <citation id="ref040">
+            <title>National Communications Systems Directive 3-10</title>
+         </citation>
+         <citation id="ref041">
+            <target>https://www.dhs.gov/national-infrastructure-protection-plan</target>
+            <title>National Infrastructure Protection Plan</title>
+         </citation>
+         <citation id="ref042">
+            <target>http://www.nist.gov/nstic</target>
+            <title>National Strategy for Trusted Identities in Cyberspace</title>
+         </citation>
+         <citation id="ref043">
+            <target>http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622</target>
+            <title>NIST Interagency Report 7622</title>
+         </citation>
+       
+         <citation id="ref044">
+            <target>https://doi.org/10.6028/NIST.SP.800-100</target>
+            <title>NIST Special Publication 800-100</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-100</doc-id>
+         </citation>
+         <citation id="ref045">
+            <target>https://doi.org/10.6028/NIST.SP.800-111</target>
+            <title>NIST Special Publication 800-111</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-111</doc-id>
+         </citation>
+         <citation id="ref046">
+            <target>https://doi.org/10.6028/NIST.SP.800-113</target>
+            <title>NIST Special Publication 800-113</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-113</doc-id>
+         </citation>
+         <citation id="ref047">
+            <target>https://doi.org/10.6028/NIST.SP.800-114r1</target>
+            <title>NIST Special Publication 800-114 Rev. 1</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-114r1</doc-id>
+         </citation>
+         <citation id="ref048">
+            <target>https://doi.org/10.6028/NIST.SP.800-115</target>
+            <title>NIST Special Publication 800-115</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-115</doc-id>
+         </citation>
+         <citation id="ref049">
+            <target>https://doi.org/10.6028/NIST.SP.800-116r1</target>
+            <title>NIST Special Publication 800-116 Rev. 1</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-116r1</doc-id>
+         </citation>
+         <citation id="ref050">
+            <target>https://doi.org/10.6028/NIST.SP.800-12r1</target>
+            <title>NIST Special Publication 800-12 Rev. 1</title>
+            <doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>
+ 
+         </citation>
+       
+         <citation id="ref051">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-121</target>
+            <title>NIST Special Publication 800-121</title>
+         </citation>
+         <citation id="ref052">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-124</target>
+            <title>NIST Special Publication 800-124</title>
+         </citation>
+         <citation id="ref053">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-128</target>
+            <title>NIST Special Publication 800-128</title>
+         </citation>
+         <citation id="ref054">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-137</target>
+            <title>NIST Special Publication 800-137</title>
+         </citation>
+         <citation id="ref055">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-147</target>
+            <title>NIST Special Publication 800-147</title>
+         </citation>
+         <citation id="ref056">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-155</target>
+            <title>NIST Special Publication 800-155</title>
+         </citation>
+         <citation id="ref057">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-16</target>
+            <title>NIST Special Publication 800-16</title>
+         </citation>
+         <citation id="ref058">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-161</target>
+            <title>NIST Special Publication 800-161</title>
+         </citation>
+         <citation id="ref059">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-164</target>
+            <title>NIST Special Publication 800-164</title>
+         </citation>
+         <citation id="ref060">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-18</target>
+            <title>NIST Special Publication 800-18</title>
+         </citation>
+         <citation id="ref061">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-23</target>
+            <title>NIST Special Publication 800-23</title>
+         </citation>
+         <citation id="ref062">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-27</target>
+            <title>NIST Special Publication 800-27</title>
+         </citation>
+         <citation id="ref063">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-28</target>
+            <title>NIST Special Publication 800-28</title>
+         </citation>
+         <citation id="ref064">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-30</target>
+            <title>NIST Special Publication 800-30</title>
+         </citation>
+         <citation id="ref065">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-32</target>
+            <title>NIST Special Publication 800-32</title>
+         </citation>
+         <citation id="ref066">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-34</target>
+            <title>NIST Special Publication 800-34</title>
+         </citation>
+         <citation id="ref067">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-35</target>
+            <title>NIST Special Publication 800-35</title>
+         </citation>
+         <citation id="ref068">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-36</target>
+            <title>NIST Special Publication 800-36</title>
+         </citation>
+         <citation id="ref069">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-37</target>
+            <title>NIST Special Publication 800-37</title>
+         </citation>
+         <citation id="ref070">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-39</target>
+            <title>NIST Special Publication 800-39</title>
+         </citation>
+         <citation id="ref071">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-40</target>
+            <title>NIST Special Publication 800-40</title>
+         </citation>
+         <citation id="ref072">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-41</target>
+            <title>NIST Special Publication 800-41</title>
+         </citation>
+         <citation id="ref073">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-45</target>
+            <title>NIST Special Publication 800-45</title>
+         </citation>
+         <citation id="ref074">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-46</target>
+            <title>NIST Special Publication 800-46</title>
+         </citation>
+         <citation id="ref075">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-47</target>
+            <title>NIST Special Publication 800-47</title>
+         </citation>
+         <citation id="ref076">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-48</target>
+            <title>NIST Special Publication 800-48</title>
+         </citation>
+         <citation id="ref077">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-50</target>
+            <title>NIST Special Publication 800-50</title>
+         </citation>
+         <citation id="ref078">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-52</target>
+            <title>NIST Special Publication 800-52</title>
+         </citation>
+         <citation id="ref079">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-53</target>
+            <title>NIST Special Publication 800-53</title>
+         </citation>
+         <citation id="ref080">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-53A</target>
+            <title>NIST Special Publication 800-53A</title>
+         </citation>
+         <citation id="ref081">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-55</target>
+            <title>NIST Special Publication 800-55</title>
+         </citation>
+         <citation id="ref082">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-56</target>
+            <title>NIST Special Publication 800-56</title>
+         </citation>
+         <citation id="ref083">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-57</target>
+            <title>NIST Special Publication 800-57</title>
+         </citation>
+         <citation id="ref084">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-58</target>
+            <title>NIST Special Publication 800-58</title>
+         </citation>
+         <citation id="ref085">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-60</target>
+            <title>NIST Special Publication 800-60</title>
+         </citation>
+         <citation id="ref086">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-61</target>
+            <title>NIST Special Publication 800-61</title>
+         </citation>
+         <citation id="ref087">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-63</target>
+            <title>NIST Special Publication 800-63</title>
+         </citation>
+         <citation id="ref088">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-64</target>
+            <title>NIST Special Publication 800-64</title>
+         </citation>
+         <citation id="ref089">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-65</target>
+            <title>NIST Special Publication 800-65</title>
+         </citation>
+         <citation id="ref090">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-70</target>
+            <title>NIST Special Publication 800-70</title>
+         </citation>
+         <citation id="ref091">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-73</target>
+            <title>NIST Special Publication 800-73</title>
+         </citation>
+         <citation id="ref092">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-76</target>
+            <title>NIST Special Publication 800-76</title>
+         </citation>
+         <citation id="ref093">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-77</target>
+            <title>NIST Special Publication 800-77</title>
+         </citation>
+         <citation id="ref094">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-78</target>
+            <title>NIST Special Publication 800-78</title>
+         </citation>
+         <citation id="ref095">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-81</target>
+            <title>NIST Special Publication 800-81</title>
+         </citation>
+         <citation id="ref096">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-83</target>
+            <title>NIST Special Publication 800-83</title>
+         </citation>
+         <citation id="ref097">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-84</target>
+            <title>NIST Special Publication 800-84</title>
+         </citation>
+         <citation id="ref098">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-88</target>
+            <title>NIST Special Publication 800-88</title>
+         </citation>
+         <citation id="ref099">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-92</target>
+            <title>NIST Special Publication 800-92</title>
+         </citation>
+         <citation id="ref100">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-94</target>
+            <title>NIST Special Publication 800-94</title>
+         </citation>
+         <citation id="ref101">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-95</target>
+            <title>NIST Special Publication 800-95</title>
+         </citation>
+         <citation id="ref102">
+            <target>http://csrc.nist.gov/publications/PubsSPs.html#800-97</target>
+            <title>NIST Special Publication 800-97</title>
+         </citation>
+         <citation id="ref103">
+            <target>http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf</target>
+            <title>NSTISSI No. 7003</title>
+         </citation>
+         <citation id="ref104">
+            <target>http://www.whitehouse.gov/omb/circulars_a130_a130trans4</target>
+            <title>OMB Circular A-130</title>
+         </citation>
+         <citation id="ref105">
+            <target>http://www.whitehouse.gov/omb/memoranda_m02-01</target>
+            <title>OMB Memorandum 02-01</title>
+         </citation>
+         <citation id="ref106">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf</target>
+            <title>OMB Memorandum 04-04</title>
+         </citation>
+         <citation id="ref107">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf</target>
+            <title>OMB Memorandum 05-24</title>
+         </citation>
+         <citation id="ref108">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf</target>
+            <title>OMB Memorandum 06-16</title>
+         </citation>
+         <citation id="ref109">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf</target>
+            <title>OMB Memorandum 07-11</title>
+         </citation>
+         <citation id="ref110">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf</target>
+            <title>OMB Memorandum 07-18</title>
+         </citation>
+         <citation id="ref111">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf</target>
+            <title>OMB Memorandum 08-22</title>
+         </citation>
+         <citation id="ref112">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf</target>
+            <title>OMB Memorandum 08-23</title>
+         </citation>
+         <citation id="ref113">
+            <title>OMB Memorandum 10-06-2011</title>
+         </citation>
+         <citation id="ref114">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf</target>
+            <title>OMB Memorandum 11-11</title>
+         </citation>
+         <citation id="ref115">
+            <target>http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf</target>
+            <title>OMB Memorandum 11-33</title>
+         </citation>
+         <citation id="ref116">
+            <title>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</title>
+         </citation>
+         <citation id="ref117">
+            <target>http://www.us-cert.gov/ncas/alerts</target>
+            <title>US-CERT Technical Cyber Security Alerts</title>
+         </citation>
+         <resource id="resource-pdf-sp-800-53r4">
+            <rlink media-type="application/pdf"
+                   href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
+         </resource>
+         <resource id="resource-doi-sp-800-53r4">
+            <rlink media-type="application/pdf"
+                   href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
+         </resource>
+      </back-matter>
+   
+</catalog>
