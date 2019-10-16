@@ -38,6 +38,10 @@ graphicList:
       alt: 'automated'
     title: Automated
     description: Apply the benefits of the ***data-centric*** approach to automate existing processes that are resource intensive.
+alert:
+  heading: OSCAL Workshop
+  text: NIST is hosting the first of a series of OSCAL workshops on **November 5th, 2019** in **Gaithersburg, MD**. Please [register](https://www.nist.gov/news-events/events/2019/11/open-security-controls-assessment-language-oscal-workshop) by **October 29, 2019**. A **hackathon** will be held on **November 6th and 7th** following the workshop for tool developers that would like to work together with the OSCAL team to **develop OSCAL-based capabilities**.
+  type: info
 ---
 
 # Use Information in OSCAL Formats
