@@ -11,3 +11,7 @@ aside.toc {
   float: right;
 }
 */
+
+main p  { max-width: measure( 6 ) }
+main ul,
+main ol { max-width: measure( 6 ) }
