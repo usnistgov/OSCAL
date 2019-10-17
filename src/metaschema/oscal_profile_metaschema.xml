@@ -318,14 +318,14 @@
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control, in resolution</description>
       <flag name="name-ref" as-type="NCName">
-         <formal-name>References by (assigned) name</formal-name>
+         <formal-name>Reference by (assigned) name</formal-name>
          <description>Items to remove, by assigned name</description></flag>
       <flag name="class-ref" as-type="NCName">
-         <formal-name>References by class</formal-name>
+         <formal-name>Reference by class</formal-name>
          <description>Items to remove, by class. A token match.</description>
       </flag>
       <flag name="id-ref"    as-type="NCName">
-         <formal-name>References by ID</formal-name>
+         <formal-name>Reference by ID</formal-name>
          <description>Items to remove, indicated by their IDs</description></flag>
       <flag name="item-name" as-type="NCName">
          <formal-name>References by item name or generic identifier</formal-name>
@@ -345,7 +345,19 @@
    <define-assembly name="add">
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls, in resolution</description>
-      <flag ref="position"/>
+      <flag name="position">
+         <formal-name>Position</formal-name>
+         <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
+         <allowed-values><!-- TODO: define these -->
+            <enum value="before"/>
+            <enum value="after"/>
+            <enum value="starting"/>
+            <enum value="ending"/>
+         </allowed-values>
+      </flag>
+      <flag name="id-ref"    as-type="NCName">
+         <formal-name>Reference by ID</formal-name>
+         <description>Target location of the addition.</description></flag>
       <model>
          <field ref="title"/>
          <assembly ref="param" max-occurs="unbounded">
@@ -354,6 +366,9 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
@@ -361,6 +376,13 @@
             <group-as name="parts"/>
          </assembly>
       </model>
+      <remarks>
+         <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration
+         at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting"
+         or "ending" are permitted when there is no <code>id-ref</code>.</p>
+         <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
+         the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
+      </remarks>
    </define-assembly>
    
    <define-flag as-type="NCName" name="control-id">
@@ -392,15 +414,5 @@
       </allowed-values>
    </define-flag>
    
-   <define-flag as-type="NCName" name="position">
-      <formal-name>Position</formal-name>
-      <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
-      <allowed-values><!-- TODO: define these -->
-         <enum value="before"/>
-         <enum value="after"/>
-         <enum value="starting"/>
-         <enum value="ending"/>
-      </allowed-values>
-   </define-flag>
    
 </METASCHEMA>
