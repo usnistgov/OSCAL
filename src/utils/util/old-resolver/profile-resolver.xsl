@@ -449,7 +449,7 @@
     <xsl:for-each select="$so-far/resolution">
       <xsl:copy>
         <xsl:copy-of select="*|node()"/>
-        <xsl:apply-templates select="merged" mode="patch">
+        <xsl:apply-templates select="child::merged" mode="patch">
           <xsl:with-param name="modifications" tunnel="yes" select="$modifications"/>
     </xsl:apply-templates>
         
@@ -539,8 +539,7 @@
     
     <!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
     <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
-      $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
-      except .//component)descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()] ]
+      $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ]
       [@position='after']"/>
     <xsl:copy-of select="$patches-after/*"/>
     
