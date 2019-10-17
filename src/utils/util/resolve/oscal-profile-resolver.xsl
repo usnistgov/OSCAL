@@ -110,19 +110,23 @@
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
             </XSLT:copy>
         </XSLT:template>
+        <xsl:if test="@with-child-controls='no'">
+            <XSLT:template priority="12" match="control/control" mode="oscal:propagate"/>
+        </xsl:if>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
     <xsl:template match="import/include/call" mode="making-selectors">
-        <xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>
+        <xsl:variable name="matcher" expand-text="true">key('controls-by-id','{@control-id}')</xsl:variable>
+            <!--<xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>-->
         <xsl:variable name="include-subcontrols" select="@with-child-controls = ('true', '1')"/>
-        <XSLT:template priority="11" match="{$matcher}" mode="oscal:propagate">
+        <XSLT:template priority="13" match="{$matcher}" mode="oscal:propagate">
             <XSLT:copy>
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
             </XSLT:copy>
         </XSLT:template>
         <xsl:if test="$include-subcontrols">
-            <XSLT:template priority="12" match="{$matcher||'/control'}" mode="oscal:propagate">
+            <XSLT:template priority="14" match="{$matcher||'/control'}" mode="oscal:propagate">
                 <XSLT:copy>
                     <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
                 </XSLT:copy>
@@ -133,13 +137,6 @@
     <!-- Mode build-merge provides template to provided the build the result structure. They are prioritized starting with 100
     to ensure they override 'selector' templates, to which they will cascade logic -->
     <xsl:template match="merge" mode="build-merge">
-        <!-- A template to produce the outputs -->
-        <!--<XSLT:template match="profile" mode="oscal:resolve" priority="100">
-            <XSLT:apply-templates mode="oscal:fetch"
-                select="import/key('resource-fetch', @href)"/>
-            <XSLT:next-match/>
-        </XSLT:template>-->
-
         <!-- the merge direction itself is dropped -->
         <XSLT:template match="merge" mode="oscal:resolve" priority="100"/>
 
@@ -152,12 +149,10 @@
     <xsl:template match="merge/combine | merge/as-is"/>
 
     <xsl:template match="merge/custom" mode="build-merge">
-        <xsl:if test="exists(descendant::call)">
-            <XSLT:key name="controls-by-id" match="control" use="@id"/>
-        </xsl:if>
         <!-- overriding the base template -->
         <XSLT:template match="profile" mode="oscal:resolve" priority="100">
             <catalog id="RESOLVED_CUSTOMIZED-{ancestor::profile/@id}">
+                <XSLT:call-template name="resolution-metadata"/>
                 <!-- traversing the merge/custom to build a 'pull' -->
                 <xsl:apply-templates mode="#current"/>                
             </catalog>
@@ -197,7 +192,8 @@
     
     <xsl:template match="modify/alter" mode="contriving-modifiers">
         <xsl:variable name="alteration" select="."/>
-        <xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>
+        <!--control[@id='{@control-id}']-->
+        <xsl:variable name="matcher" expand-text="true">key('controls-by-id','{@control-id}')</xsl:variable>
         <XSLT:template priority="1001" match="{$matcher}" mode="oscal:propagate">
             <XSLT:variable name="so-far">
                 <XSLT:next-match/>
@@ -313,8 +309,12 @@
             <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
         </XSLT:variable>
         
+        <XSLT:key name="controls-by-id" match="control" use="@id"/>
+        <XSLT:key name="elements-by-id" match="control" use="@id"/>
+        
         <XSLT:template match="profile" mode="oscal:resolve">
             <catalog id="RESOLVED-{@id}">
+                <XSLT:call-template name="resolution-metadata"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
                 <xsl:if test="empty(merge/custom)">
                     <XSLT:copy-of select="$imported-controls"/>
@@ -336,7 +336,18 @@
             </XSLT:if>
         </XSLT:template>
 
+        <XSLT:template name="resolution-metadata" expand-text="true">
+            <metadata>
+                <title>{metadata/title} - RESOLVED</title>
+                <last-modified>{ current-dateTime() }</last-modified>
+                <XSLT:copy-of copy-namespaces="no" select="metadata/version"/>
+                <oscal-version>1.0-MR2</oscal-version>
+            </metadata>
+        </XSLT:template>
+        
         <XSLT:template match="comment()" mode="#all"/>
     </xsl:template>
+    
+    
     
 </xsl:stylesheet>
