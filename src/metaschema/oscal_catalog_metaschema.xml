@@ -110,6 +110,9 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
