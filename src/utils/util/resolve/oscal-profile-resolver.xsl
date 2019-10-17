@@ -216,7 +216,7 @@
                 <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'before']/*"/>
                 <XSLT:copy copy-namespaces="no">
                     <XSLT:copy-of copy-namespaces="no" select="@*"/>
-                    <XSLT:sequence select="title, param, prop, link, part, control"/>
+                    <XSLT:sequence select="title, param, prop, annotation, link, part, control"/>
                 </XSLT:copy>
                 <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'after']/*"/>
             </XSLT:for-each>
