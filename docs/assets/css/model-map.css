@@ -16,7 +16,9 @@ div.OM-map div.OM-map {
 .OM-entry {
   border: medium solid #f1f1f1;
   background-color: #f1f1f1;
-  padding-right: 0.5rem; }
+  padding-right: 0.5rem;
+  margin-top: 0rem;
+}
 
 .OM-entry:hover {
   border: medium solid #aeb0b5; }
