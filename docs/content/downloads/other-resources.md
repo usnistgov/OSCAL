@@ -14,6 +14,8 @@ aliases:
 
 * [OSCALkit - Converts XML -> JSON (and vice versa)](https://github.com/docker/oscalkit)
 
+If you have a tool that supports the OSCAL formats that you would like to have listed here, please [contact us](/contribute/contact/).
+
 ## Videos and Presentations
 
 * [Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore](https://www.youtube.com/watch?v=eP8K7piU5UQ)
