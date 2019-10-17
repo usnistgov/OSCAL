@@ -22,7 +22,9 @@ We use GitHub as a collaboration platform for the development of the OSCAL model
 
 ## Tools
 
-All users but especially tool developers should consider reaching out and connecting with others using your technology stack or platform. See our [Resources page](/downloads/other-resources/) for more.
+All users, but especially tool developers, should consider reaching out and connecting with others using your technology stack or platform. See our [resources page](/downloads/other-resources/) for more information.
+
+You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby).
 
 ## Contact
 
