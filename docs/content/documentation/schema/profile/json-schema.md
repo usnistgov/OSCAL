@@ -1,7 +1,6 @@
 ---
 title: "Profile JSON Schema Reference"
 heading: "OSCAL Profile JSON Schema Reference"
-navtitle: JSON Schema Reference
 description: Object-level definitions of the OSCAL Profile model JSON format.
 aliases:
   - /docs/schemas/oscal-profile-json/

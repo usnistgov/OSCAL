@@ -17,7 +17,7 @@
    <xsl:variable name="metaschema-code" select="/*/short-name || '-json'"/>
 
    <xsl:variable name="datatype-page" as="xs:string">../../datatypes</xsl:variable>
-   
+
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -137,37 +137,37 @@
 
    <xsl:template match="define-field" mode="representation-in-json">
       <p>
-        <xsl:text>A string property</xsl:text> 
+        <xsl:text>A string property</xsl:text>
         <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
          <xsl:text>.</xsl:text>
       </p>
    </xsl:template>
-   
+
    <xsl:template priority="2" match="define-field[exists(flag)]" mode="representation-in-json">
-      <p>An object with a string property, 
+      <p>An object with a string property,
          <xsl:apply-templates select="." mode="field-value-key"/>
       <xsl:text>, of type </xsl:text>
       <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="define-field" mode="field-value-key">
       <xsl:text>labeled </xsl:text>
       <code>
         <xsl:value-of select="$string-value-label"/>
       </code>
    </xsl:template>
-   
+
    <xsl:template match="define-field[@as-type='markup-line']" mode="field-value-key">
       <xsl:text>labeled </xsl:text>
       <code><xsl:value-of select="$markup-line-label"/></code>
    </xsl:template>
-   
+
    <xsl:template match="define-field[@as-type='markup-multiline']" mode="field-value-key">
       <xsl:text>labeled </xsl:text>
       <code><xsl:value-of select="$markup-multiline-label"/></code>
    </xsl:template>
-   
+
    <xsl:template priority="2" match="define-field[exists(json-value-key)]" mode="field-value-key">
       <xsl:text>labeled </xsl:text>
       <code><xsl:value-of select="json-value-key"/></code>
@@ -184,11 +184,11 @@
          <xsl:text>An object with a string property </xsl:text>
       </p>
    </xsl:template>
-   
-   
+
+
    <xsl:template priority="4" match="define-field[exists(json-value-key)]" mode="representation-in-json">
          <p>
-            <xsl:text>An object with property </xsl:text> 
+            <xsl:text>An object with property </xsl:text>
             <code><xsl:value-of select="json-value-key"/></code>
             <xsl:apply-templates select="@as-type" mode="metaschema-type"/>
          </p>
@@ -457,15 +457,15 @@
 
       <xsl:template match="example">
       <xsl:variable name="example-no" select="'example' || count(.|preceding-sibling::example)"/>
-      <div class="example">
-         <h3>
-            <button aria-expanded="true"
+      <div class="example usa-accordion">
+         <h3 class="usa-accordion__heading">
+            <button class="usa-accordion__button" aria-expanded="true"
                aria-controls="{ ../@name }_{$example-no}_json">
                <xsl:text>Example</xsl:text>
                <xsl:for-each select="description">: <xsl:apply-templates/></xsl:for-each>
             </button>
          </h3>
-         <div id="{ ../@name }_{ $example-no }_json" class="example-content">
+         <div id="{ ../@name }_{ $example-no }_json" class="example-content usa-accordion__content usa-prose">
             <xsl:apply-templates select="remarks"/>
             <pre>
                <!-- 'doe' span can be wiped in post-process, but permits disabling output escaping -->
@@ -549,7 +549,7 @@
       </a>
       <xsl:text>)</xsl:text>
    </xsl:template>
-   
+
    <xsl:template mode="metaschema-type" match="@as-type[.='empty']"/>
 
    <xsl:template match="*" mode="metaschema-type">

@@ -1,6 +1,5 @@
 ---
 title: "Component JSON Model Map"
-navtitle: JSON Model Map
 heading: OSCAL Component Model JSON Format Outline
 description: An outline of the OSCAL Component model JSON format.
 custom_js:
