@@ -39,7 +39,7 @@ In OSCAL, profiles are generalized to be applicable to any set of information pr
 
 The OSCAL Implementation layer defines two models:
 
-1. A **[Component Definition model](/documentation/schema/component/)**, which is currently under development, will allow for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, proceedure, or compliance artifact (e.g., FIPS 140-2 validation).
+1. A **[Component Definition model](/documentation/schema/component/)**, which is currently under development, will allow for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
 
     Each defined component describes where appropriate:
 

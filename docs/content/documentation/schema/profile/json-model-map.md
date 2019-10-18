@@ -1,6 +1,5 @@
 ---
 title: "Profile JSON Model Map"
-navtitle: JSON Model Map
 heading: OSCAL Profile Model JSON Format Outline
 description: An outline of the OSCAL Profile model JSON format.
 custom_js:

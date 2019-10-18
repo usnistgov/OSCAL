@@ -20,11 +20,11 @@ The first major version of OSCAL, OSCAL v1, will be developed over a series of m
 
 ### OSCAL 1.0.0 Milestone 1
 
-{{<tag class="">}}Development Milestone{{</tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1)
 
-{{<tag class="">}}Status{{</tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone1) (June 15, 2019)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone1) (June 15, 2019)
 
-{{<tag class="">}}Focus{{</tag>}} Development of the OSCAL Catalog and Profile Models.
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Catalog and Profile Models.
 
 This initial OSCAL work encompasses the [catalog](/learnmore/architecture/catalog/) and [profile](/learnmore/architecture/profile/) concepts of the OSCAL [architecture](/learnmore/architecture/).
 
@@ -38,11 +38,11 @@ The following stakeholders can benefit from control catalogs and control baselin
 
 ### OSCAL 1.0.0 Milestone 2
 
-{{<tag class="">}}Development Milestone{{</tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/2)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/2)
 
-{{<tag class="">}}Status{{</tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2) (October 1, 2019)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2) (October 1, 2019)
 
-{{<tag class="">}}Focus{{</tag>}} Development of the OSCAL System Security Plan (SSP) Model.
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL System Security Plan (SSP) Model.
 
 This next phase of OSCAL work encompasses the SSP concepts that are part of the implementation layer of the OSCAL [architecture](/learnmore/architecture/). Updates to the catalog and profile models are also provided with this release.
 
@@ -56,11 +56,11 @@ The following additional stakeholders can benefit from SSPs formatted based on t
 
 ### OSCAL 1.0.0 Milestone 3
 
-{{<tag class="">}}Development Milestone{{</tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
 
-{{<tag class="">}}Status{{</tag>}} [Under development](https://github.com/usnistgov/OSCAL/)
+{{<usa-tag>}}Status{{</usa-tag>}} [Under development](https://github.com/usnistgov/OSCAL/)
 
-{{<tag class="">}}Focus{{</tag>}} Development of the OSCAL Component Definition model.
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model.
 
 This current phase of OSCAL work involves completing development of the OSCAL component definition model that is part of the implementation layer of the OSCAL [architecture](/learnmore/architecture/). Updates to the catalog, profile, and SSP models will also be provided with this release.
 
@@ -72,11 +72,11 @@ The following additional stakeholders can benefit from component definitions for
 
 ### OSCAL 1.0.0 Full Release
 
-{{<tag class="">}}Development Milestone{{</tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
 
-{{<tag class="">}}Status{{</tag>}} Planned
+{{<usa-tag>}}Status{{</usa-tag>}} Planned
 
-{{<tag class="">}}Focus{{</tag>}} Publish an OSCAL 1.0.0 Specification
+{{<usa-tag>}}Focus{{</usa-tag>}} Publish an OSCAL 1.0.0 Specification
 
 To accelerate the development of OSCAL, we are not focused on developing a formal specification for OSCAL until the final OSCAL 1.0.0 milestone. Until then, the OSCAL models are [documented](/documentation/schema/) on this site. This will allow us to work on a formal specification once most of the major development of OSCAL is completed. For now, adopters of OSCAL will find all of the resources they need to develop content and tools on this site.
 
@@ -90,11 +90,11 @@ Similar to OSCAL v1, the second major version of OSCAL, OSCAL v2, will be develo
 
 ### OSCAL 2.0.0 Milestone 1
 
-{{<tag class="">}}Development Milestone{{</tag>}} OSCAL 2.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/5)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 2.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/5)
 
-{{<tag class="">}}Status{{</tag>}} Planned
+{{<usa-tag>}}Status{{</usa-tag>}} Planned
 
-{{<tag class="">}}Focus{{</tag>}} Develop the OSCAL Assessment and Assessment Results models.
+{{<usa-tag>}}Focus{{</usa-tag>}} Develop the OSCAL Assessment and Assessment Results models.
 
 The OSCAL Assessment and Assessment Results models will be developed as part of the OSCAL 2.0.0 release. This development will address the Assessment and Assessment Results layers of the OSCAL [architecture](/learnmore/architecture/).
 
