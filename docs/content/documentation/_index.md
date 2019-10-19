@@ -1,6 +1,5 @@
 ---
 title: "Documentation"
-date: 2019-09-23T19:14:12-04:00
 aliases:
   - /docs/schemas/
 menu:

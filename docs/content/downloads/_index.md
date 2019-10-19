@@ -1,6 +1,5 @@
 ---
 title: "Downloads"
-date: 2019-09-23T19:14:12-04:00
 menu:
   primary:
     name: Downloads

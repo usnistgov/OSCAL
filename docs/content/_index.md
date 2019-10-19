@@ -1,6 +1,5 @@
 ---
 title: "OSCAL"
-date: 2019-09-25T18:45:23-04:00
 hero:
   image: img/automation-hero.png
   callout:

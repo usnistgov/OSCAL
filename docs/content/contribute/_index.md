@@ -1,7 +1,6 @@
 ---
 title: "Contribute"
 heading: Welcome to the OSCAL Community
-date: 2019-09-23T19:14:12-04:00
 aliases:
   - /community/
 menu:
