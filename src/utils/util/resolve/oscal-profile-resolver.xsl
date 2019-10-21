@@ -352,7 +352,7 @@
 
         <!-- mode 'resolve' copies by default -->
         <!-- mode 'propagate' copies and switches back to 'resolve' by default -->
-        <XSLT:template mode="oscal:resolve oscal:propagate" match="node() | @*">
+        <XSLT:template mode="oscal:resolve oscal:propagate" match="*| @*">
             <XSLT:copy copy-namespaces="no">
                 <XSLT:apply-templates mode="oscal:resolve" select="node() | @*"/>
             </XSLT:copy>

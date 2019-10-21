@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-49a891e1-514a-46ad-bb47-e169db475a96"
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+   id="popular-controls-profile"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd">
    <metadata>
