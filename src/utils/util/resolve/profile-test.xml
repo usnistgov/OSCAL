@@ -35,11 +35,21 @@
         </custom>  
     </merge>
     <modify>
+        <set param-id="ac-2_prm_2">
+            <label>very important persons</label>
+            <guideline><p>Only one of the three should be allowed in the boat.</p></guideline>
+            <select>
+                <choice>butcher</choice>
+                <choice>baker</choice>
+                <choice>candlestick maker</choice>
+            </select>
+        </set>
         <alter control-id="sc-7">
             <remove name-ref="assessment"/>
             <add position="starting">
                 <prop name="extra">EXTRA SPECIAL PROPERTY</prop>
             </add>
+            
         </alter>
     </modify>
     <back-matter>
