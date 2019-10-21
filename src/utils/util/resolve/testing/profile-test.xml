@@ -30,6 +30,7 @@
             <group>
                 <title>B group</title>
                 <call control-id="ac-2"/>
+                <!-- AC-3 is not selected, so it should not appear in the group -->
                 <call control-id="ac-3"/>
             </group>
         </custom>  
