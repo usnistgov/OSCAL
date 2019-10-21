@@ -8,6 +8,9 @@
 
     <xsl:output indent="yes"/>
 
+    <xsl:strip-space elements="*"/>
+    
+    <xsl:preserve-space elements="title prop p li th td h1 h1 h2 h3 h4 h5 h6 link value description"/>
     <!-- Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied. -->
     <!-- Primary input: an OSCAL profile -->
     <!-- Secondary inputs: control catalogs referenced from profile import statements. -->
@@ -43,7 +46,13 @@
          unless a base output URI is given
          https://www.w3.org/TR/xpath-functions-31/#func-transform -->
 
-            <xsl:sequence select="transform($runtime)?output"/>
+            <xsl:try>
+                <xsl:sequence select="transform($runtime)?output"/>
+                <xsl:catch xmlns:err="http://www.w3.org/2005/xqt-errors" expand-text="true">
+                    <ERROR>Generated transformation failed with this error: [{ $err:code }] { $err:description } </ERROR>
+                </xsl:catch>
+            </xsl:try>
+            
         </xsl:variable>
         <xsl:sequence select="$resolution-result"/>
         <xsl:if test="$tracing">
@@ -56,8 +65,16 @@
     <!-- Before we can run it, we have to 'rinse' the resolver stylesheet,
          to clear it of problems such as template clashes -->
 
-    <xsl:mode name="rinse-resolver" on-no-match="shallow-copy"/>
-
+    <xsl:template match="node() | @*" mode="rinse-resolver">
+        <xsl:copy copy-namespaces="no">
+            <xsl:namespace name="">http://csrc.nist.gov/ns/oscal/1.0</xsl:namespace>
+            <xsl:namespace name="oscal">http://csrc.nist.gov/ns/oscal/1.0</xsl:namespace>
+            <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
+            <xsl:apply-templates mode="#current" select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    
     <!--Function permits us to key templates by 'clash' criteria - same match, same priority
     this is not adequate in general (clashing templates do not always have the same match as literal)
     but adequate for us).-->
@@ -77,7 +94,7 @@
 
     <xsl:template match="profile" mode="make-resolver">
         <XSLT:stylesheet version="3.0" xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
-            default-mode="oscal:resolve">
+            default-mode="oscal:resolve"  exclude-result-prefixes="#all">
 
             <xsl:call-template name="profile-base"/>
 
@@ -106,7 +123,7 @@
 
     <xsl:template match="import/include/all" mode="making-selectors">
         <XSLT:template priority="11" match="control" mode="oscal:propagate">
-            <XSLT:copy>
+            <XSLT:copy copy-namespaces="no">
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
             </XSLT:copy>
         </XSLT:template>
@@ -121,13 +138,13 @@
             <!--<xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>-->
         <xsl:variable name="include-subcontrols" select="@with-child-controls = ('true', '1')"/>
         <XSLT:template priority="13" match="{$matcher}" mode="oscal:propagate">
-            <XSLT:copy>
+            <XSLT:copy copy-namespaces="no">
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
             </XSLT:copy>
         </XSLT:template>
         <xsl:if test="$include-subcontrols">
             <XSLT:template priority="14" match="{$matcher||'/control'}" mode="oscal:propagate">
-                <XSLT:copy>
+                <XSLT:copy copy-namespaces="no">
                     <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
                 </XSLT:copy>
             </XSLT:template>
@@ -188,6 +205,42 @@
 
     <xsl:template match="modify" mode="contriving-modifiers">
         <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="modify/set" mode="contriving-modifiers">
+    <xsl:variable name="setting" select="."/>
+    <!--control[@id='{@control-id}']-->
+    <xsl:variable name="matcher" expand-text="true">key('parameters-by-id','{@param-id}')</xsl:variable>
+    <XSLT:template priority="1005" match="{$matcher}" mode="oscal:resolve">
+        <XSLT:copy copy-namespaces="no">
+            <XSLT:copy-of copy-namespaces="no" select="@*"/>
+            <!-- Provided label replaces given label -->
+            <xsl:copy-of copy-namespaces="no" select="label"/>
+            <xsl:if test="empty(label)">
+                <XSLT:copy-of copy-namespaces="no" select="label"/>
+            </xsl:if>
+            
+            <!-- Any provided usage, constraint or guideline adds to (does not replace elements in) the catalog -->
+            <XSLT:copy-of copy-namespaces="no" select="usage"/>
+            <xsl:copy-of  copy-namespaces="no" select="usage"/>
+            <XSLT:copy-of copy-namespaces="no" select="constraint"/>
+            <xsl:copy-of  copy-namespaces="no" select="constraint"/>
+            <XSLT:copy-of copy-namespaces="no" select="guideline"/>
+            <xsl:copy-of  copy-namespaces="no" select="guideline"/>
+            
+            <!-- Any value or select replaces any given value or select -->
+            <xsl:copy-of copy-namespaces="no" select="value | select"/>
+            <xsl:if test="empty(value|select)">
+                <XSLT:copy-of copy-namespaces="no" select="value|select"/>
+            </xsl:if>
+            
+            <!-- Links are also additive -->
+            <xsl:copy-of copy-namespaces="no" select="link"/>
+            <XSLT:copy-of copy-namespaces="no" select="link"/>
+            
+        </XSLT:copy>
+    </XSLT:template>
+    
     </xsl:template>
     
     <xsl:template match="modify/alter" mode="contriving-modifiers">
@@ -287,11 +340,7 @@
 
         <XSLT:template match="group/*" mode="oscal:resolve"/>
 
-        <XSLT:template match="*" mode="oscal:propagate">
-            <XSLT:copy>
-                <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
-            </XSLT:copy>
-        </XSLT:template>
+        
 
 
     </xsl:template>
@@ -301,8 +350,14 @@
 
         <XSLT:output indent="yes"/>
 
-        <XSLT:mode name="oscal:resolve" on-no-match="shallow-copy"/>
-        <XSLT:mode name="oscal:propagate" on-no-match="shallow-copy"/>
+        <!-- mode 'resolve' copies by default -->
+        <!-- mode 'propagate' copies and switches back to 'resolve' by default -->
+        <XSLT:template mode="oscal:resolve oscal:propagate" match="node() | @*">
+            <XSLT:copy copy-namespaces="no">
+                <XSLT:apply-templates mode="oscal:resolve" select="node() | @*"/>
+            </XSLT:copy>
+        </XSLT:template>
+        
         <XSLT:mode name="oscal:copy-branch" on-no-match="deep-copy"/>
 
         <XSLT:variable name="imported-controls">
@@ -310,14 +365,21 @@
         </XSLT:variable>
         
         <XSLT:key name="controls-by-id" match="control" use="@id"/>
-        <XSLT:key name="elements-by-id" match="control" use="@id"/>
+        
+        <xsl:if test="exists(child::modify/set)">
+            <XSLT:key name="parameters-by-id" match="param" use="@id"/>
+        </xsl:if>
+        
+        <xsl:if test="exists(child::modify/alter/*/@id-ref)">
+            <XSLT:key name="elements-by-id" match="*" use="@id"/>
+        </xsl:if>
         
         <XSLT:template match="profile" mode="oscal:resolve">
             <catalog id="RESOLVED-{@id}">
                 <XSLT:call-template name="resolution-metadata"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
                 <xsl:if test="empty(merge/custom)">
-                    <XSLT:copy-of select="$imported-controls"/>
+                    <XSLT:copy-of copy-namespaces="no" select="$imported-controls"/>
                 </xsl:if>
             </catalog>
         </XSLT:template>
