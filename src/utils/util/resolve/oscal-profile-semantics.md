@@ -4,9 +4,15 @@ Three stages
 
 ### 1 Import (and selection)
 
-More than one import of the same resource is a warning condition but not an error.
+An import indicates a resource from which a set of controls are to be imported. The resource can be either an OSCAL catalog or an OSCAL profile. A catalog provides controls in their native form. An imported profile is resolved on import, using the same rules for the resolution of the profile at the top level.
 
-Processors can define for themselves what constitutes resource identity for these purposes.
+No profile may import itself either directly or indirectly. An import directive that indicates either the profile itself, or a profile into which it is being (currently) imported, should be ignored. Optionally, a processor may issue a warning.
+
+The directive for an import takes the form of a *resource reference* within the profile. That is, the import itself presents a link to a resource description (typically in the profile's back matter), which contains a link to the actual resource.
+
+[example]
+
+Apart from circular imports, more than one import of the same resource can be reported with a warning; but it is not an error. Processors can define for themselves what constitutes resource identity for these purposes.
 
 Imports can specify controls by inclusion and exclusion.
 
@@ -16,14 +22,13 @@ There are two kinds of selections, "calls" and "matches". (include/call | includ
 
 A call is a selection of a control by its ID.
 
-A match is a selection of a control by matching its ID to a given match criterion.
+A match is a selection of a control by matching its ID to the given match pattern.
 
 Exclusions work the same way, except with the opposite effect - the indicated control(s) are dropped from the resource.
 
 If a set of exclusions, but no inclusions, are given, "include all" should be assumed.
 
-Any control that is both included and excluded, is excluded. This holds irrespective of the specifity of the selection for inclusion or exclusion. For example, if AC-1 is included by id 'ac-1' and excluded by matching 'ac*', it is excluded. Selection for exclusion prevails.
-
+Any control that is both included and excluded, is excluded. This holds irrespective of the specifity of the selection for inclusion or exclusion. For example, if AC-1 is included by id 'ac-1' and excluded by matching 'ac\*', it is excluded. Selection for exclusion prevails.
 
 ### 2 Merge - defines rules on how to arrange / manage controls
 
@@ -85,6 +90,16 @@ id="...{}..."
 ```
 
 (and other info)
+
+### Instance back matter
+
+Back matter in OSCAL can contain either or both citations and resources.
+
+A citation is a reference to an out of line document, included for reference purposes. Controls may contain cross-references to these citations.
+
+A resource is like a citation, but is more tightly controlled with a more rigorous description. It is used to designate any materials that are either formally part of a document but not encoded with it (such as a file attachment in a foreign format), or materials with support for identification or authentication, such as by comparing cryptographic hashes.
+
+When a profile is resolved, only citations and resources that are actually referenced from contents in the catalog *as resolved*, should be included.
 
 ### Result structure
 
