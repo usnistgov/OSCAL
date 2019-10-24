@@ -22,9 +22,6 @@ params:
   searchAffiliate: oscal
 menu:
   secondary:
-  - name: Get involved
-    url: /contribute/
-  - name: Contact Us
-    url: /contact/
   - name: Github
     url: https://github.com/usnistgov/OSCAL
+    weight: 90

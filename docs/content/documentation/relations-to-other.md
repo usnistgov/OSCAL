@@ -1,6 +1,5 @@
 ---
 title: Relations to Documentary Encoding Standards
-description: TBD
 weight: 100
 aliases:
   - /docs/relations/

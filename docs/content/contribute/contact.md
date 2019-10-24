@@ -1,6 +1,11 @@
 ---
 title: Contact Us
 description: Contact Us
+menu:
+  secondary:
+    name: Contact Us
+    url: /contribute/contact/
+    weight: 50
 ---
 
 Please visit our [GitHub repository](https://github.com/usnistgov/OSCAL) for more information, schemas, and examples.

@@ -4,6 +4,7 @@ description: An exploration of the "*control catalog*" concept used in OSCAL.
 weight: 15
 aliases:
   - /docs/catalog/
+  - /learnmore/architecture/catalog/
 ---
 
 In OSCAL, a catalog is:

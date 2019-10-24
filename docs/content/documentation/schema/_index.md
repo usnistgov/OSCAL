@@ -18,11 +18,6 @@ The OSCAL project is developing each OSCAL [layer](https://pages.nist.gov/OSCAL/
   {{<area href="/learnmore/architecture/#assessment-results-layer" alt="Assessment Results Layer" title="Assessment Results Layer" shape="rect" coords="3,0,932,105">}}
 {{</imagemap>}}
 
-<map name="image-map">
-    <area target="" alt="Catalog Model" title="Catalog Model" href="#catalog" coords="195,500,896,571" shape="rect">
-    <area target="" alt="" title="" href="#catalog-layer" coords="3,484,932,588" shape="rect">
-</map>
-
 For each model, the OSCAL project is producing the following types of schemas:
 
 * XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1) that describes an XML tag set for an OSCAL model.
