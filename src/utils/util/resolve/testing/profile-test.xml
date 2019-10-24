@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../author/CSS/oscal.css"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -55,7 +55,7 @@
     </modify>
     <back-matter>
         <resource id="catalog">
-            <rlink href="micro-catalog.xml"></rlink>
+            <rlink href="micro-catalog.xml"/>
         </resource>
     </back-matter>
 </profile>
