@@ -4,8 +4,6 @@ heading: OSCAL Control Catalog Model XML Format Outline
 description: An outline of the OSCAL Catalog model JSON format.
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
-custom_css:
-  - "/css/model-map.css"
 aliases:
   - /docs/maps/oscal-catalog-xml/
 weight: 50

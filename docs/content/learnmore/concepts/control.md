@@ -4,6 +4,7 @@ description: An exploration of the "*control*" concept used in OSCAL.
 weight: 10
 aliases:
   - /docs/control/
+  - /learnmore/architecture/control/
 ---
 
 In OSCAL, a control is:
