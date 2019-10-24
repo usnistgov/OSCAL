@@ -10,7 +10,7 @@ version: string [1],
 oscal-version: string [1],
 + document-ids: [0 to ∞][ {… } ],
 - document-ids: [0 to ∞][ {
-STRVALUE: string[0 or 1],
+identifier: string[0 or 1],
 type: string [1]
 } ],
 + properties: [0 to ∞][ {… } ],</description></item><item><title>Catalog JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/</guid><description>Schema download oscal_catalog_schema.json
