@@ -19,9 +19,12 @@
             together as a filter over the imported catalogs -->
 
     <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
-    <xsl:param name="write-xslt" as="xs:string">yes</xsl:param>
-    <xsl:param name="tracing" as="xs:boolean" select="$write-xslt = 'yes'"/>
+    <xsl:param    name="write-xslt"        as="xs:string">yes</xsl:param>
+    <xsl:param    name="trace-resolution"  as="xs:string">no</xsl:param>
 
+    <xsl:variable name="echoing-transform" as="xs:boolean" select="$write-xslt = 'yes'"/>
+    <xsl:variable name="tracing"           as="xs:boolean" select="$write-xslt = 'yes'"/>
+    
     <xsl:variable name="filter-location" select="/*/@id || '-resolver.xsl'"/>
 
     <xsl:template match="profile">
@@ -55,7 +58,7 @@
             
         </xsl:variable>
         <xsl:sequence select="$resolution-result"/>
-        <xsl:if test="$tracing">
+        <xsl:if test="$echoing-transform">
             <xsl:result-document href="{$filter-location}" indent="yes">
                 <xsl:sequence select="$resolution-xslt"/>
             </xsl:result-document>
@@ -340,9 +343,6 @@
 
         <XSLT:template match="group/*" mode="oscal:resolve"/>
 
-        
-
-
     </xsl:template>
 
     <xsl:template name="profile-base">
@@ -379,7 +379,7 @@
                 <XSLT:call-template name="resolution-metadata"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
                 <xsl:if test="empty(merge/custom)">
-                    <XSLT:copy-of copy-namespaces="no" select="$imported-controls"/>
+                    <XSLT:sequence copy-namespaces="no" select="$imported-controls"/>
                 </xsl:if>
             </catalog>
         </XSLT:template>
