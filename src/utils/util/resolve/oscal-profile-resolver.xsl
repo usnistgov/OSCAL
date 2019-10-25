@@ -23,10 +23,12 @@
     <xsl:param    name="trace-resolution"  as="xs:string">no</xsl:param>
 
     <xsl:variable name="echoing-transform" as="xs:boolean" select="$write-xslt = 'yes'"/>
-    <xsl:variable name="tracing"           as="xs:boolean" select="$write-xslt = 'yes'"/>
+    <xsl:variable name="tracing"           as="xs:boolean" select="$trace-resolution = 'yes'"/>
     
-    <xsl:variable name="filter-location" select="/*/@id || '-resolver.xsl'"/>
+    <xsl:variable name="xslt-name" select="/*/@id || '-resolver.xsl'"/>
 
+    <xsl:variable name="in" select="/"/>
+    
     <xsl:template match="profile">
         <xsl:param tunnel="yes" name="visited" select="()"/>
 
@@ -40,8 +42,7 @@
         <xsl:variable name="resolution-result">
             <xsl:variable name="runtime"
                 select="map { 'xslt-version': 3.0,
-                              'source-node': (.),
-                              'default-mode': xs:QName('oscal:filter'),
+                              'source-node': ($in),
                               'stylesheet-node': $resolution-xslt,
                               'stylesheet-params': map {xs:QName('visited'): $visited} }"/>
 
@@ -59,7 +60,7 @@
         </xsl:variable>
         <xsl:sequence select="$resolution-result"/>
         <xsl:if test="$echoing-transform">
-            <xsl:result-document href="{$filter-location}" indent="yes">
+            <xsl:result-document href="{$xslt-name}" indent="yes">
                 <xsl:sequence select="$resolution-xslt"/>
             </xsl:result-document>
         </xsl:if>
@@ -379,7 +380,7 @@
                 <XSLT:call-template name="resolution-metadata"/>
                 <XSLT:apply-templates select="merge" mode="#current"/>
                 <xsl:if test="empty(merge/custom)">
-                    <XSLT:sequence copy-namespaces="no" select="$imported-controls"/>
+                    <XSLT:sequence select="$imported-controls"/>
                 </xsl:if>
             </catalog>
         </XSLT:template>
@@ -389,15 +390,26 @@
         <XSLT:template match="resource[rlink/@href castable as xs:anyURI]" mode="oscal:fetch">
             <XSLT:apply-templates select="document(rlink/@href, /)" mode="oscal:resolve"/>
         </XSLT:template>
-
+        
+        <XSLT:template match="import" mode="oscal:fetch">
+            <XSLT:apply-templates select="document(@href, /)" mode="oscal:resolve"/>
+        </XSLT:template>
+        
         <!-- For now, each import is traversed separately, meaning we can get duplicated groups
              repair this by grouping either/both imports/@hrefs and resource targets -->
-        <XSLT:template match="profile/import" mode="oscal:resolve">
-            <XSLT:if test="starts-with(@href, '#')">
+        
+        <XSLT:template match="import" mode="oscal:resolve">
+            <XSLT:comment expand-text="yes"> No resolution available for import href '{ @href }'</XSLT:comment>
+        </XSLT:template>
+            
+        <XSLT:template priority="2" match="profile/import[starts-with(@href, '#')]" mode="oscal:resolve">
                 <XSLT:apply-templates select="key('resource-fetch', @href)" mode="oscal:fetch"/>
-            </XSLT:if>
         </XSLT:template>
 
+        <XSLT:template match="profile/import[exists(document(@href,/))]" mode="oscal:resolve">
+            <XSLT:apply-templates select="." mode="oscal:fetch"/>
+        </XSLT:template>
+        
         <XSLT:template name="resolution-metadata" expand-text="true">
             <metadata>
                 <title>{metadata/title} - RESOLVED</title>
