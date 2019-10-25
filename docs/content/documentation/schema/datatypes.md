@@ -352,7 +352,7 @@ Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/>
 The same string in Markdown is represented as follows:
 
 ```markdown
-Reviews and updates the risk management strategy {% raw %}{{ pm-9_prm_1 }}{% endraw %} or as required, to address organizational changes.
+Reviews and updates the risk management strategy {{ pm-9_prm_1 }} or as required, to address organizational changes.
 ```
 
 #### Specialized Character Mapping
@@ -371,7 +371,7 @@ The following characters have special handling in their HTML and/or Markdown for
 | ~ (tilde)                                      | ~                                    | \\~              | \\\\~            | \\\\~            |
 | ^ (caret)                                      | ^                                    | \\^              | \\\\^            | \\\\^            |
 
-While the characters `*`&#96;`~^` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear as literals in a Markdown representation, they must be escaped to avoid them being parsed as Markdown to indicate formatting. The escaped representation indicates these characters are to be represented as characters, not markup, when the Markdown is mapped to HTML.
+While the characters ``*`~^`` are valid for use unescaped in JSON strings and YAML double quoted strings, these characters have special meaning in Markdown markup. As a result, when these characters appear as literals in a Markdown representation, they must be escaped to avoid them being parsed as Markdown to indicate formatting. The escaped representation indicates these characters are to be represented as characters, not markup, when the Markdown is mapped to HTML.
 
 Because the character "\\" (back slash or reverse solidus) must be escaped in JSON, note that those characters that require a back slash to escape them in Markdown, such as "\*" (appearing as "\\\*"), must be *double escaped* (as "\\\\\*") to represent the escaped character in JSON or YAML. In conversion, the JSON or YAML processor reduces these to the simple escaped form, again permitting the Markdown processor to recognize them as character contents, not markup.
 
