@@ -20,6 +20,9 @@ params:
     project_name: "OSCAL: the Open Security Controls Assessment Language"
   contentRepoPath: https://github.com/usnistgov/OSCAL/tree/master/docs/content
   searchAffiliate: oscal
+  sidenav:
+#    activerenderdepth: 2
+#    inactiverenderdepth: 5
 menu:
   secondary:
   - name: Github

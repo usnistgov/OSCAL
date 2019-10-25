@@ -2,9 +2,12 @@
 title: Schema Reference
 description: OSCAL Schema Reference
 weight: 50
+sidenav:
+  activerenderdepth: 2
+  inactiverenderdepth: 2
 ---
 
-The OSCAL project is developing each OSCAL [layer](https://pages.nist.gov/OSCAL/docs/) as one or more models, which are each defined in multiple formats. The following image dipicts each layer and the corresponding model(s) for each layer.
+The OSCAL project is developing each OSCAL [layer](/learnmore/architecture/) as one or more models, which are each defined in multiple formats. The following image dipicts each layer and the corresponding model(s) for each layer.
 
 {{<imagemap src="oscal-layers.png" width="932" height="589" alt="oscal layers and models">}}
   {{<area href="catalog/" alt="Catalog Model" title="Catalog Model" shape="rect" coords="195,500,896,571">}}
@@ -37,7 +40,7 @@ The sample schemas have been created with the following design principles in min
 
 ## Modeling Approach
 
-The OSCAL project is modeling each OSCAL [layer](https://pages.nist.gov/OSCAL/docs/) using a framework, called a [Metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema). This framework allows the OSCAL project to model each OSCAL **layer** based on the information needs of the OSCAL **model**, creating an *information model* for each OSCAL layer. An OSCAL **schema** represents a *data model* that defines how to represent an OSCAL *information model* in a serialized format, such as JSON or XML. The OSCAL project uses the Metaschema framework to produce these schemas.
+The OSCAL project is modeling each OSCAL [layer](/learnmore/architecture/) using a framework, called a [Metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema). This framework allows the OSCAL project to model each OSCAL **layer** based on the information needs of the OSCAL **model**, creating an *information model* for each OSCAL layer. An OSCAL **schema** represents a *data model* that defines how to represent an OSCAL *information model* in a serialized format, such as JSON or XML. The OSCAL project uses the Metaschema framework to produce these schemas.
 
 This framework is also used to generate converters capable of converting OSCAL content for a given model to another supported format, and to produce the documentation in this section of the website for each OSCAL model as it applies to each format.
 
