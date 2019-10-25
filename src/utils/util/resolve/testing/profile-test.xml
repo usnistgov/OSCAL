@@ -13,16 +13,21 @@
     </metadata>
     <import href="#catalog">
         <include>
+            <call control-id="sc-7"/>
+        </include>
+    </import>
+    <import href="micro-catalog.xml">
+        <include>
             <call control-id="ac-2"/>
             <call control-id="at-1"/>
             <call control-id="at-2"/>
             <call control-id="at-3"/>
-            <call control-id="sc-7"/>
         </include>
     </import>
     <merge>
         <combine method="keep"/>
-        <custom>
+        <!--<as-is>true</as-is>-->
+        <!--<custom>
             <group>
                 <title>My extra-special, custom group</title>
                 <call control-id="sc-7"/>
@@ -30,10 +35,10 @@
             <group>
                 <title>B group</title>
                 <call control-id="ac-2"/>
-                <!-- AC-3 is not selected, so it should not appear in the group -->
+                <!-\- AC-3 is not selected, so it should not appear in the group -\->
                 <call control-id="ac-3"/>
             </group>
-        </custom>  
+        </custom>  -->
     </merge>
     <modify>
         <set param-id="ac-2_prm_2">
