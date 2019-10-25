@@ -4,8 +4,12 @@
 .nist-footer {
   font-family: inherit;
 }
-/*
-aside.toc {
-  float: right;
+
+@media print {
+  #nist-header {
+    display: none;
+  }
+  .nist-footer {
+    display: none;
+  }
 }
-*/
