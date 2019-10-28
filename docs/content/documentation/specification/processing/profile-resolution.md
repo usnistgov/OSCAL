@@ -1,16 +1,28 @@
 ---
 title: Profile Resolution
 weight: 10
+description: A profile implicitly defines a control set; profile resolution makes this control set explicit and available for further processing.
 ---
 
+A profile in OSCAL represents a selection and configuration of a set of controls. Ordinarily the set of controls available to a profile is provided by a catalog. For example, the three NIST SP 800-53 profiles representing the impact baselines HIGH, MODERATE and LOW: each of these calls on the full SP 800-53/53A catalog, and depends on a file or resource representing that catalog for its underlying information set.
+
+However, profiles may also select controls from profiles, implicitly selecting from underlying catalogs as modified. And they can select controls from more than one catalog or profile origin.
+
+In order to support these semantics, the results of resolving a single profile must be in the form of a single ('virtual' or implicit) catalog, as described below. Two different OSCAL processors that promise profile resolution, must deliver the same catalog with regard to its controls and the structure in which they are embedded (groups). This specification is designed to make this possible, by defining "the same" in this context.
+
+Areas not yet fully defined by this specification (top down):
+
+* How to construct front matter / file metadata
+* What to do with back matter
+* What do to with dangling cross-references
+* Options for tracing (groups?)
 
 ## Profile Semantics
 
-Considered as a "document" or integrated data set (object), a profile has three sections, each of which corresponds to a step in resolution. To resolve a catalog fully is to perform all these steps.
+Considered as a "document" or integrated data set (object), a profile has three sections, each of which corresponds to a conceptual step in resolution. To resolve a catalog fully is to perform all these steps.
 
-While the steps are described as occurring in sequence, a profile processor is not obliged to perform them 
-in the order described. Conformance to these specifications is determined by whether the results 
-of processing (*resolution*) appear as described, not on whether the means to produce those results work in exactly the manner described here.
+While the steps are described in this specification as occurring in sequence, a profile processor is not obliged to perform them 
+in the order described. Conformance to these specifications is determined by whether the results of processing (*resolution*) appear as described, not on whether the means to produce those results work in exactly the manner described here.
 
 The three steps are *import* (control selection); *merge*; and *modify*. In brief:
 
@@ -18,17 +30,17 @@ The three steps are *import* (control selection); *merge*; and *modify*. In brie
 - **merge** produces the rules for how controls will be organized and merged (or not)
 - **modify** indicates how parameters in the underlying catalog may be modified or set, and how control contents may be amended or modified.
 
-The selection stage is mandatory inasmuch as a profile that imports no controls is not a profile.
+The selection stage is mandatory inasmuch as a profile that imports no controls is inoperative.
 
 The merge stage can be considered "optional" in that there are default rules for merging, to be followed when no merge behavior is given.
 
-The modify stage is optional in that controls do not have to be modified and parameters do not have to be set; a profile is always free to represent these components as they are given in their catalogs.
+The modify stage is optional in that controls do not have to be modified and parameters do not have to be set; a profile is always free to represent these components as they are given in their catalogs. Leaving a parameter unset, or qualifying its setting (with additional information or constraints) without actually setting it, is also possible; like a catalog, a profile can represent a set of controls that is not fully defined, for purposes of use at another layer (profile or implementation) where such definition can be provided.
 
 When resolved, an OSCAL profile takes the form of an OSCAL catalog. Its organization and parts are described in the next section. The merge semantics described below will produce outputs conforming to this organization.
 
 ### Import 
 
-An import must first indicate a resource from which a set of controls are to be imported. The resource can be either an OSCAL catalog or an OSCAL profile. A catalog provides controls in their native form. An imported profile is resolved on import, using the same rules for the resolution of the profile at the top level.
+An import must first indicate a resource from which a set of controls is to be imported. The resource can be either an OSCAL catalog or an OSCAL profile. A catalog provides controls in their native form. An imported profile is resolved on import, using the same rules for the resolution of the profile at the top level, so that it too appears as a catalog to the importing profile.
 
 No profile may import itself either directly or indirectly. An import directive that indicates either the profile itself, or a profile into which it is being (currently) imported, should be ignored. Optionally, a processor may issue a warning.
 
@@ -75,13 +87,34 @@ A "circular import" is defined as a directive to import a resource, which has al
 Circular imports are inoperative, and may be reported as an error [or warning].
 
 
-#### Multiple imports of the same resource
+#### Multiple imports
 
-Apart from circular imports, more than one import of the same resource can be reported with a warning; but it is not an error. Processors can define for themselves what constitutes resource identity for these purposes.
+Even apart from circular imports -- which must not be executed -- multiple imports from the same profile of the same resource is considered an error. An error or warning message must be reported whenever a single profile imports the same resource twice from the same URL.
+
+okay - Catalog A is called twice, but not from the same level
+```
+profile A
+  profile B
+    CATALOG Alpha
+  CATALOG Alpha
+```
+
+error - Catalog A is called twice, possibly with two different sets of directives, from the same level
+```
+profile A
+  CATALOG Alpha
+  CATALOG Alpha
+```
+
+While this condition must be reported, a processor is not obliged to stop, but may optionally resolve the resource in question by treating the two calls as a single call (unifying both `include` and `exclude` statements in this case). Even in this case a warning message must be indicated unless the processor is specifically set to a 'silent' mode.
+
+#### Stability of documents returned by given URIs
+
+The rules of XSLT `document()` apply to the traversal of any URI: that is, it is assumed that all calls to a given (resolved) URI reference, will return the same result.
 
 #### Selecting controls
 
-Imports can specify controls by inclusion and exclusion.
+Imports can specify controls by inclusion and exclusion, either or both in combination.
 
 ##### Inclusion
 
@@ -114,6 +147,16 @@ A match is a selection of a control by matching its ID to the given match patter
 
 The match pattern is evaluated as a regular expression using XPath regular expression syntax. [XXXX]
 
+###### Including child controls
+
+In OSCAL, controls may contain controls. For example, SP 800-53 offers control enhancements with its main set of controls; in OSCAL these are represented as child controls within parent controls. So parent AC-2 has children AC-2(1) through AC-2(), for example.
+
+Child controls can be included by the same mechanism as controls, i.e. by means of an ID call. Alternatively a match can frequently be applied (at least given most ID assignment schemes) to match controls and child controls together.
+
+Additionally, a `with-child-controls` directive on a `call` or `match` can indicate that child controls (that is, direct children not all descendants) should be included with the applicable call(s) or match(es).
+
+XXX Furthermore, `all[@with-child-controls='no']` may select all controls *only at the top level* (i.e., directly inside `group`) from a catalog. XXXX
+
 ##### Exclusions
 
 Exclusions work the same way as inclusions, except with the opposite effect - the indicated control(s) are dropped from the resource.
@@ -143,6 +186,30 @@ Any control that is both included and excluded, is excluded. This holds irrespec
 
 #### How to deal with clashing controls (multiple invocation of controls with the same ID)
   
+Even given the rule against multiple imports of the same resource, it may frequently occur that in profiles under development, multiple copies -- and with variations -- of a given control may appear in a resolved profile. For example, if a profile tailors another profile which includes a control with amendments, and then (the top-level profile) includes the same control directly from its home catalog, a collision may occur between these two variants.
+
+Generally such a collision is readily detectable as long as IDs have not been modified; in other words, constraints over uniqueness (within document scope) of IDs will be violated in resolved instances where two (perhaps different) representations of the same control appear.
+
+##### merge combine[@method='keep']
+
+This is also the default if not `merge/combine` directive is given. It indicates that colliding controls should simply be copied through, for handling downstream.
+
+While colliding controls will result in invalid documents under this setting, since care should be taken that controls do not collide in any case, this setting is useful in ensuring integrity.
+
+##### merge combine[@method='use-first']
+
+The first reference to a given control prevails over later references. "First" is read in top-down, depth-first traversal of the tree. So if a profile is imported before a catalog, and the imported profile presents a representation of a control also given in the catalog import -- the profile's representation (perhaps modified) is taken.
+
+The same logic applies to parameter settings.
+
+##### merge combine[@method='merge']
+
+The processor should do its best to merge all representations of a given control, into a single unified representation.
+
+This feature is offered only to permit processors to offer more extensive features.
+
+[XXX online docs are not presenting valid values under combine/@method ]
+
 #### How to build a structure
 
 ##### "as is"
