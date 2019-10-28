@@ -40,6 +40,7 @@
          <xsl:call-template name="definition-header"/>
          <xsl:apply-templates select="description"/>
          <xsl:apply-templates select="." mode="representation-in-xml"/>
+         <xsl:apply-templates select="allowed-values"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This attribute appears on: </xsl:text>
                <xsl:for-each select="current-group()">
@@ -58,6 +59,7 @@
          <xsl:call-template name="definition-header"/>
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:apply-templates mode="representation-in-xml" select="."/>
+         <xsl:apply-templates select="allowed-values"/>
          <xsl:call-template name="appears-in"/>
          <xsl:if test="exists(flag)">
             <xsl:variable name="modal">
