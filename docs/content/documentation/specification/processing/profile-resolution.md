@@ -61,7 +61,7 @@ Indicating a file available via [prototol?]
 
 #### Internal
 
-An import resource can also be indicated using an internal link via a URI fragment identifier (starting with `#`). If an import href resolves to a `resource` elsewhere in the profile (typically in back matter), that resource can be retrieved to provide the source catalog.
+A catalog or profile to be imported can also be indicated using an internal link via a URI fragment identifier (starting with `#`). If an import href resolves to a `resource` elsewhere in the profile (typically in back matter), that resource can be retrieved to provide the source catalog.
 
 ```
 <import href="#nist-catalog">
@@ -94,11 +94,11 @@ Circular imports are inoperative, and may be reported as an error [or warning].
 
 #### Multiple imports
 
-##### 'Sibling' imports must be distinctive
+##### 'Sibling' imports must be distinct
 
-Even apart from circular imports -- which must not be executed -- multiple imports from the same profile of the same resource is considered an error. An error or warning message must be reported whenever a single profile imports the same resource twice from the same URL.
+Even apart from circular imports -- which must not be executed -- multiple imports of the same catalog or profile *from the same profile* is considered an error. An error or warning message must be reported whenever a single profile imports the same resource twice from the same URL.
 
-okay - Catalog A is called twice, but they are not 'siblings':
+The import hierarchy depicted here is okay - Catalog A is called twice, but they are not 'siblings':
 
 ```
 profile A
@@ -107,7 +107,7 @@ profile A
   CATALOG Alpha
 ```
 
-error - Catalog A is called twice, possibly with two different sets of directives, from the same level
+This import hierarchy shows an error - Catalog A is called twice, possibly with two different sets of directives, from the same level
 
 ```
 profile A
@@ -166,6 +166,8 @@ Additionally, a `with-child-controls` directive on a `call` or `match` can indic
 
 XXX Furthermore, `all[@with-child-controls='no']` may select all controls *only at the top level* (i.e., directly inside `group`) from a catalog. XXXX
 
+
+
 ##### Exclusions
 
 Exclusions work the same way as inclusions, except with the opposite effect - the indicated control(s) are dropped from the resource.
@@ -178,12 +180,12 @@ Example:
 
 ```
 <import href="#nist-catalog">
-  <import>
+  <include>
     <all/>
-  </import>
+  </include>
   <exclude>
 	<call control-id="ac-1"/>
-  </include>
+  </exclude>
 </import>
 ```
 
@@ -193,9 +195,9 @@ Any control that is both included and excluded, is excluded. This holds irrespec
 
 ### Merge - defines rules on how to arrange / manage controls
 
-#### How to deal with clashing controls (multiple invocation of controls with the same ID)
-  
-Even given the rule against multiple imports of the same resource, it may frequently occur that in profiles under development, multiple copies -- and with variations -- of a given control may appear in a resolved profile. For example, if a profile tailors another profile which includes a control with amendments, and then (the top-level profile) includes the same control directly from its home catalog, a collision may occur between these two variants.
+#### Colliding controls
+
+"Colliding controls" (or "clashing") describes the condition that occurs when multiple invocations of controls with the same ID are given, and so a profile resolution will result in duplicative and/or contradictory information. Even given the rule against multiple imports of the same resource, it may frequently occur that in profiles under development, multiple copies -- and with variations -- of a given control may appear in a resolved profile. For example, if a profile tailors another profile which includes a control with amendments, and then (the top-level profile) includes the same control directly from its home catalog, a collision will occur between these two variants.
 
 Generally such a collision is readily detectable as long as IDs have not been modified; in other words, constraints over uniqueness (within document scope) of IDs will be violated in resolved instances where two (perhaps different) representations of the same control appear.
 
@@ -213,13 +215,52 @@ The same logic applies to parameter settings.
 
 ##### merge combine[@method='merge']
 
-The processor should do its best to merge all representations of a given control, into a single unified representation.
+The processor should merge all representations of a given control, into a single unified representation.
 
-This feature is offered only to permit processors to offer more extensive features.
+The single unified representation is assembled by aggregating all the contents of all the (clashing) control instances and discarding duplicate branches.
 
-[XXX online docs are not presenting valid values under combine/@method ]
+Example:
+
+```
+<control id="a1">
+  <title>Control A1</title>
+  <prop name="label">A-1</prop>
+  <prop name="status">pending</prop>
+</control>
+```
+
+merging with
+
+```
+<control id="a1">
+  <title>Control A1</title>
+  <prop name="label">A-1</prop>
+  <prop name="status">ready</prop>
+</control>
+```
+
+results in
+
+```
+<control id="a1">
+  <title>Control A1</title>
+  <prop name="label">A-1</prop>
+  <prop name="status">pending</prop>
+  <prop name="status">ready</prop>
+</control>
+```
+
+[tbd]
 
 #### How to build a structure
+
+##### Unstructured catalog output
+
+Two `merge` directives are used to introduce structure into a profile result catalog, `as-is` and `custom`.
+
+Profiles that have neither of these directives are resolved as unstructured catalogs, with no groups of controls. Where controls are given as
+
+
 
 ##### "as is"
 
@@ -227,20 +268,52 @@ reproduce structure of input catalog
 
 (consider case of multiple imports of single resource)
 
+###### Implicit inclusions under "as is"
+
+Under "as is", a resolved profile's structure is expected to replicate the structure of source catalogs.
+
+This is achieved by propagating, with all controls that are included, all groups that they appear within, along with the groups' IDs, titles and other contents.
+
+Groups that do not include controls that have been included (either directly or as descendants of contained groups, are not propagated to the result.
+
+In addition to groups, under 'as is' mergine, certain controls will be included implicitly. This happens when they have not been called, but they contain controls that have been called. Such controls are treated like groups included 'as is' -- they must be propagated to retain the structure for  descendant controls.
+
+Unlike groups, however, the title of such a control is given with the resolution, but no other contents are presented apart from (a) controls included explicitly or (b) child controls that must be included for the sake of their own (included) child (or descendant) controls.
+
+Example:
+
+```
+<import href="#XYZ-catalog">
+  <include>
+    <call control-id='xyz-1.1'/><!-- bedtime routine control -->
+    <call control-id='xyz-1.2.1'/><!-- kitchen trashcan -->
+  </include>
+</import>
+```
+
+the result might be
+
+```
+<control id="xyz-1">
+  <title>Basic Hygiene</title>
+  <control id="xyz-1.1"><!-- bedtime routine -->...</control>
+  <control id="xyz-1.2">
+    <title>Kitchen cleanup</title>
+	<control id="xyz-1.2.1"><!-- kitchen trashcan -->...</control>
+  </control>
+</control>
+
+```
+
 ##### "custom"
 
 a structure is provided, and controls are selected into it
 
 (nb this means that import/all with selection here also works)
 
+@with-child-controls works, but all other organization is explicit (unlike 'as is' merging).
+
 ### Modify - controls are amended or modified
-
-
-#### Parameter settings
-
-Implicit modification of parameter settings.
-
-#### Controls
 
 (Aka "patching") Explicit modification of control content
 
@@ -248,7 +321,23 @@ There are two ways a control may need to be modified. Commonly, controls might b
 
 OSCAL does not provide for "changing" a control, but editing can be achieved by removing contents and adding (edited) contents back. In other words, editing is considered to be the same kind of patching as removing combined with adding.
 
-Additions *may* include new parameter references (example)
+#### Parameter settings
+
+Modification of parameter settings is indicated using 'set'.
+
+Parameters are not always given within controls. A profile resolution result must include copies (with or without modifications or settings) of all parameters defined within the source catalog, which are referenced from 'insert' instructions anywhere inside included controls.
+
+A profile should not reproduce parameters from source catalogs, which are not referenced from 'insert' instructions.
+
+Setting of parameters occurs as follows:
+
+* A `set/title` replaces the `param/title` on the affected parameter
+* A `set/label` replaces the `param/label` on the affected parameter
+* A `set/value` *or* a `set/select` replaces *any* `param/value` or `param/select` on the affected parameter
+* Other elements given in a parameter `set` are added to the affected parameter, after elements of the same name
+* The prescribed order of all elements in the affected parameter is retained: `label`; `usage`; `constraint`; `guideline`; `value` or `select`; and `link`.
+
+[example]
 
 ## Profile resolution - conversion into a catalog
 
@@ -260,11 +349,14 @@ The output of a profile resolution should take the form of a catalog.
 
 ### top-level @id
 
-?
+Because document IDs are sometimes used to distinguish data points in processing context, a resolved profile may not present the same ID as any of the catalogs it is importing, or the same ID as its source profile.
+
+It is permitted to produce the profile's ID in resolution via a static mapping from the ID of the source. For example, the resolution of profile with ID 'profile-X' might have ID 'profile-X-RESOLUTION'.
+
 
 ### Instance metadata
 
-Catalog metadata is required in a catalog. A resolved profile's metadata should look like this --
+Catalog metadata is required in a catalog. A resolved profile's metadata could look like this --
 
 ```
 id="...{}..."
@@ -275,6 +367,8 @@ id="...{}..."
 ```
 
 (and other info)
+
+??? Fully or partially define metadata?
 
 ### Instance back matter
 
