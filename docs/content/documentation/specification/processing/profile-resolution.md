@@ -30,23 +30,25 @@ The three steps are *import* (control selection); *merge*; and *modify*. In brie
 - **merge** produces the rules for how controls will be organized and merged (or not)
 - **modify** indicates how parameters in the underlying catalog may be modified or set, and how control contents may be amended or modified.
 
-The selection stage is mandatory inasmuch as a profile that imports no controls is inoperative.
+The selection stage is mandatory inasmuch as a profile that imports no controls is inoperative. Such a profile is not in error and it can be resolved, but it will contain no controls.
 
-The merge stage can be considered "optional" in that there are default rules for merging, to be followed when no merge behavior is given.
+The merge stage can be considered mandatory in that there are default rules for merging, to be followed when no merge behavior is given; thus "no merging" is permitted, and a profile with no merge semantics indicated is not in error.
 
 The modify stage is optional in that controls do not have to be modified and parameters do not have to be set; a profile is always free to represent these components as they are given in their catalogs. Leaving a parameter unset, or qualifying its setting (with additional information or constraints) without actually setting it, is also possible; like a catalog, a profile can represent a set of controls that is not fully defined, for purposes of use at another layer (profile or implementation) where such definition can be provided.
 
-When resolved, an OSCAL profile takes the form of an OSCAL catalog. Its organization and parts are described in the next section. The merge semantics described below will produce outputs conforming to this organization.
+When resolved, an OSCAL profile takes the form of an OSCAL catalog, whose organization and parts are described in the next section. The merge semantics described below will produce outputs conforming to this organization.
 
 ### Import 
 
 An import must first indicate a resource from which a set of controls is to be imported. The resource can be either an OSCAL catalog or an OSCAL profile. A catalog provides controls in their native form. An imported profile is resolved on import, using the same rules for the resolution of the profile at the top level, so that it too appears as a catalog to the importing profile.
 
-No profile may import itself either directly or indirectly. An import directive that indicates either the profile itself, or a profile into which it is being (currently) imported, should be ignored. Optionally, a processor may issue a warning.
+No profile may import itself either directly or indirectly. An import directive that indicates either the profile itself, or a profile into which it is being (currently) imported, must be ignored. Optionally, a processor may issue a warning.
 
-The directive for an import takes either of two forms:
+In an import directive, the reference to the resource to be imported appears on an `href` flag. It takes either of two forms, external or internal:
 
-#### An absolute or relative URL
+#### External
+
+An external reference appears as an absolute or relative URL
 
 Indicating a file available via [prototol?]
 
@@ -57,9 +59,9 @@ Indicating a file available via [prototol?]
 ...
 ```
 
-#### A URL fragment identifier
+#### Internal
 
-An import resource can be indicated using an internal link. If an import href resolves to a `resource` elsewhere in the profile (typically in back matter), that resource can be retrieved to provide the source catalog.
+An import resource can also be indicated using an internal link via a URI fragment identifier (starting with `#`). If an import href resolves to a `resource` elsewhere in the profile (typically in back matter), that resource can be retrieved to provide the source catalog.
 
 ```
 <import href="#nist-catalog">
@@ -78,20 +80,26 @@ An import resource can be indicated using an internal link. If an import href re
 </back-matter>
 ```
 
+An internal cross-reference from an import to a resource that does not reference a catalog or profile, or a cross-reference to something other than a resource, is inoperative. It may be signaled as an error [or warning] by a processor.
+
 #### Circular imports
 
-When a profile imports a profile, the subordinate profile is resolved into a catalog using the same rules. This presents a possibility of circular imports, when a profile tries to import itself either directly or indirectly.
+When a profile imports a profile, the subordinate profile is resolved into a catalog using the same rules. This presents a possibility of circular imports, when a profile is directed to import itself either directly or indirectly.
 
-A "circular import" is defined as a directive to import a resource, which has already been called higher in the import hierarchy. For example, if Profile A imports Profile B, and Profile B imports Profile A, the second import is circular. (An import at the top can only be circular if a profile tries to import itself.)
+A "circular import" is defined as a directive to import a resource, which has already been called higher in the import hierarchy. For example, if Profile A imports Profile B, and Profile B imports Profile A, the second import is circular. (An import at the top can only be circular if a profile tries to import itself.) If A imports B, B imports C and C imports A, C's import is circular.
+
+Note that an import can only be circular within the context of processing a particular profile. In the last example, C's import would not be circular if invoked in the context of resolving B by itself (without being imported by A), or of resolving some other profile that did not import A. (D importing B importing C importing A would not be a problem.)
 
 Circular imports are inoperative, and may be reported as an error [or warning].
 
-
 #### Multiple imports
+
+##### 'Sibling' imports must be distinctive
 
 Even apart from circular imports -- which must not be executed -- multiple imports from the same profile of the same resource is considered an error. An error or warning message must be reported whenever a single profile imports the same resource twice from the same URL.
 
-okay - Catalog A is called twice, but not from the same level
+okay - Catalog A is called twice, but they are not 'siblings':
+
 ```
 profile A
   profile B
@@ -100,13 +108,14 @@ profile A
 ```
 
 error - Catalog A is called twice, possibly with two different sets of directives, from the same level
+
 ```
 profile A
   CATALOG Alpha
   CATALOG Alpha
 ```
 
-While this condition must be reported, a processor is not obliged to stop, but may optionally resolve the resource in question by treating the two calls as a single call (unifying both `include` and `exclude` statements in this case). Even in this case a warning message must be indicated unless the processor is specifically set to a 'silent' mode.
+While this condition must be reported, a processor is not obliged to stop, but may optionally resolve the resource in question by treating the two calls as a single call (unifying both `include` and `exclude` statements in this case). This permits a downstream application to do something with the information. Even in this case a warning message must be indicated unless the processor is specifically set to a 'silent' mode.
 
 #### Stability of documents returned by given URIs
 
