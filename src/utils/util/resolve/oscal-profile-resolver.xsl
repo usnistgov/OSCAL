@@ -261,7 +261,7 @@
                     <XSLT:copy copy-namespaces="no">
                         <XSLT:copy-of copy-namespaces="no" select="@*"/>
                         <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'starting']/*"/>
-                        <XSLT:apply-templates select="*" mode="oscal:resolve"/>
+                        <XSLT:sequence select="*"/>
                         <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
                         <xsl:copy-of copy-namespaces="no"
                             select="$alteration/add[empty(@position) or @position = 'ending']/*"/>
@@ -305,7 +305,11 @@
     
     <!-- Finally implementing removals as straight up empty templates -->
     <xsl:template match="remove[exists(@id-ref)]" mode="contriving-modifiers">
-        <XSLT:template mode="oscal:resolve" match="key('elements-by-id','{@id-ref}',key('controls-by-id','{../@control-id}'))" priority="1005"/>
+        <XSLT:template mode="oscal:resolve" match="key('elements-by-id','{@id-ref}')" priority="1005">
+            <XSLT:if test="not(ancestor::*/@id='{../@control-id}')">
+                <XSLT:next-match/>
+            </XSLT:if>
+        </XSLT:template>
     </xsl:template>
     
     <xsl:template match="remove[exists(@name-ref)]" mode="contriving-modifiers">
@@ -322,15 +326,16 @@
     
     <xsl:template name="catalog-base">
         <XSLT:template match="catalog" mode="oscal:resolve">
-            <group>
-                <XSLT:apply-templates mode="#current" select="@*"/>
+            <!--<group>-->
+                <XSLT:comment expand-text="true"> Included from catalog { @id }</XSLT:comment>
+                <!--<XSLT:apply-templates mode="#current" select="@*"/>-->
                 <XSLT:apply-templates mode="#current"/>
-            </group>
+            <!--</group>-->
         </XSLT:template>
 
-        <XSLT:template match="/*/@id" mode="oscal:resolve">
+        <!--<XSLT:template match="/*/@id" mode="oscal:resolve">
             <XSLT:attribute name="id" expand-text="true">PROFILE-RESULTS-{.}</XSLT:attribute>
-        </XSLT:template>
+        </XSLT:template>-->
 
         <XSLT:template match="metadata" mode="oscal:resolve"/>
 
