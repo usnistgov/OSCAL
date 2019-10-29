@@ -339,6 +339,22 @@ Setting of parameters occurs as follows:
 
 [example]
 
+```
+<param id="p1">
+  <title>Password length</title>
+  <value>10</value>
+</param>
+
+...
+
+<set param-id="p1">
+  <select>
+    <choice>10</choice>
+    <choice>11</choice>
+  </select>
+```
+
+
 ## Profile resolution - conversion into a catalog
 
 ### Form and organization of resolution out
@@ -370,6 +386,8 @@ id="...{}..."
 
 ??? Fully or partially define metadata?
 
+### Profile back matter
+
 ### Instance back matter
 
 Back matter in OSCAL can contain either or both citations and resources.
@@ -391,6 +409,8 @@ If merge/custom is used, see above.
 Special case rules for handling multiple imports - are controls grouped by their source catalogs (intermediate or ultimate) and should the import hierarchy be reflected?
 
 (Examples)
+
+
 
 ### Merge clashes
 
