@@ -44,11 +44,11 @@
          <xsl:apply-templates select="allowed-values"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>Appears as a property on: </xsl:text>
-               <xsl:for-each select="current-group()">
+               <xsl:for-each-group select="current-group()" group-by="@ref">
                   <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                   <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
-               </xsl:for-each>.</p>
+               </xsl:for-each-group>.</p>
          </xsl:for-each-group>
          <xsl:call-template name="remarks-group"/>
          <xsl:call-template name="report-module"/>
