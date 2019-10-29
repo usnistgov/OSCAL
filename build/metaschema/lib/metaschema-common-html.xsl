@@ -83,6 +83,10 @@
         <a href="#{@name}"><xsl:value-of select="@name"/></a>
     </xsl:template>
     
+    <xsl:template match="*[exists(@ref)]" mode="link-here">
+        <a href="#{@ref}"><xsl:value-of select="@ref"/></a>
+    </xsl:template>
+    
     <xsl:template name="definition-header">
         <header class="definition-header">
             <xsl:call-template name="cross-links"/>
