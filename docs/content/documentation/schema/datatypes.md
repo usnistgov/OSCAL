@@ -333,7 +333,7 @@ The following table describes the equavalent constructs in HTML and Markdown use
 | Inline code | &lt;code&gt;*text*&lt;/code&gt; | \`*text*\`
 | Quoted Text | &lt;q&gt;*text*&lt;/q&gt; | "*text*"
 | Subscript Text | &lt;sub&gt;*text*&lt;/sub&gt; | \~*text*\~
-| Superscript Text | &lt;sup&gt;*text*&lt;/sup&gt; | \^*text*\^
+| Superscript Text | &lt;sup&gt;*text*&lt;/sup&gt; | ^*text*^
 | Image | &lt;img alt="*alt text*" src="*url*" title="*title text*"/&gt; | !\[*alt text*](*url* "*title text*")
 | Link | &lt;a *href*="*url*"&gt;*text*&lt;/a&gt; | \[*text*](*url*)
 
