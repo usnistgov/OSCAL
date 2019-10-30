@@ -30,6 +30,13 @@
         </xsl:copy>
     </xsl:template>
     
+    <!-- Don't copy back-matter wrapper if it has no contents in result -->
+    <xsl:template match="back-matter">
+        <xsl:where-populated>
+            <xsl:next-match/>
+        </xsl:where-populated>
+    </xsl:template>
+    
     <xsl:key name="cross-reference" match="*[starts-with(@href,'#')]" use="substring-after(@href,'#')"/>
     
     <xsl:template match="citation[empty(key('cross-reference',@id))]"/>
