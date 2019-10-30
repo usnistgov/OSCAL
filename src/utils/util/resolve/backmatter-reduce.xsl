@@ -13,11 +13,16 @@
     
     <xsl:output indent="yes"/>
     
-    <xsl:strip-space elements="*"/>
+    <xsl:strip-space elements="metadata back-matter catalog group control 
+        param guideline select part annotation
+        party person org rlink address resource role responsible-party citation
+        profile import merge custom group modify include exclude set alter add"/>
     
     <!--string-join(distinct-values(//text()[matches(.,'\S')]/name(..)),' ') -->
-    <xsl:preserve-space elements="title last-modified version oscal-version label prop p link choice value target doc-id
-        th td li pre em strong i b code a insert"/>
+    <!--<xsl:preserve-space elements="title last-modified version oscal-version label prop p link choice value target doc-id
+        th td li pre em strong i b code a insert"/>-->
+
+    <!-- Query a resolved metaschema to see elements with element-only contents: //define-assembly/@name -->
     
     <xsl:template match="node() | @*">
         <xsl:copy copy-namespaces="no">
