@@ -56,7 +56,7 @@
     </modify>
     <back-matter>
         <resource id="catalog">
-            <rlink href="micro-catalog.xml"/>
+            <rlink href="micro_catalog.xml"/>
         </resource>
     </back-matter>
 </profile>
