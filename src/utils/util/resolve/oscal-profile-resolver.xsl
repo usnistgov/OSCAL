@@ -159,8 +159,8 @@
     to ensure they override 'selector' templates, to which they will cascade logic -->
     <xsl:template match="merge" mode="build-merge">
         <!-- the merge direction itself is dropped -->
-        <XSLT:template match="merge" mode="oscal:resolve" priority="100"/>
-
+        <XSLT:template match="merge" mode="oscal:resolve" priority="101"/>
+        
         <!-- next, the templates for configuring the merge -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
