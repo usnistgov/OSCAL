@@ -3,7 +3,7 @@
 <?xml-stylesheet type="text/css" href="../author/CSS/oscal.css"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/C:/Users/wap1/Documents/usnistgov/OSCAL/xml/schema/oscal_profile_schema.xsd"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../OSCAL/xml/schema/oscal_profile_schema.xsd"
     id="profile-test">
     <metadata>
         <title>Test Profile</title>
