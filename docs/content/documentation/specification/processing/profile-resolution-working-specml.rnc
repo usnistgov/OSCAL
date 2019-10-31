@@ -1,0 +1,32 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/specml"
+
+start = element SPECIFICATION { head?, (p | ul | div.elem | mapping)*, section+ }
+
+head = element head { (text | inline)* }
+
+div.elem = element div { head?, (p | ul | mapping | div.elem)* }
+
+mapping = element mapping { head?, (p?, tagging)*, p* }
+
+p = element p { (text | inline)* }
+
+ul = element ul { li+ }
+  
+li = element li { (p | ul )+ }
+
+section = element section { head, (p | ul | mapping | tagging )*, section* }
+
+inline = (code | term | revisit | em | strong | q | s | t | xpath )
+
+tagging = element tagging { attribute whose { text }, text }
+
+code = element code { text }
+term = element term { text }
+revisit = element revisit { (text | inline)* }
+q = element q { (text | inline)* }
+em = element em { text }
+strong = element strong { text }
+s = element s { text }
+t = element t { text }
+xpath = element xpath { text }
+

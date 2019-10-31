@@ -1,0 +1,74 @@
+
+@namespace url(http://csrc.nist.gov/ns/oscal/specml);
+
+* { display: block }
+
+SPECIFICATION { font-family: serif }
+
+head { font-size: 150%; font-family: sans-serif }
+
+div head { font-size: 90%; font-weight: bold }
+
+p { margin-top: 1em }
+
+
+ul { margin-top: 1em }
+
+li { font-size: 90% }
+
+div { margin-top: 1em; border: thin solid black; padding: 0.5em; background-color: grey;
+    -oxy-foldable:true;
+    -oxy-not-foldable-child: head }
+
+section { margin-top: 1em; border: thin dotted black; padding: 0.5em;
+    -oxy-foldable:true;
+    -oxy-not-foldable-child: head }
+
+em { display: inline; font-style: italic }
+
+strong { display: inline; font-weight: bold }
+
+code { display: inline; font-family: monospace; font-size: 90% }
+
+q { display: inline; quotes: "“" "”" "‘" "’"; }
+
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+term { display: inline; font-family: sans-serif; font-weight: bold; font-size: 80% }
+
+revisit { display: inline; font-family: sans-serif; font-size: 90%; color: darkorange; background-color: yellow }
+
+tagging { font-family: monospace; white-space: pre; padding: 0.5em; margin: 0.5em; font-size: 80%; line-height: 130% }
+tagging[whose=source] { background-color: #F0FFF0 }
+tagging[whose=target] { background-color: #F0F0FF }
+
+tagging:after {
+    content: 
+        oxy_combobox(           
+            edit, "@whose",
+            editable, false,
+            values, "source, target",
+            labels, "source, target");
+}
+
+
+t { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
+
+s { display: inline; color: darkgreen; font-weight: bold; font-size: 90%; font-family: sans-serif }
+
+xpath { display: inline; font-family: sans-serif; font-size: 80% }
+
+
+section head { font-size: 130% }
+
+section section head { font-size: 110%; font-style: italic }
+
+section section section head { font-size: 100% }
+
+section section section section head { font-size: 90% }
+
