@@ -52,7 +52,7 @@ An external reference appears as an absolute or relative URL
 
 Indicating a file available via [prototol?]
 
-```
+```xml
 <import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
   <include>
 	<call control-id="ac-1"/>
@@ -63,7 +63,7 @@ Indicating a file available via [prototol?]
 
 A catalog or profile to be imported can also be indicated using an internal link via a URI fragment identifier (starting with `#`). If an import href resolves to a `resource` elsewhere in the profile (typically in back matter), that resource can be retrieved to provide the source catalog.
 
-```
+```xml
 <import href="#nist-catalog">
   <include>
 	<call control-id="ac-1"/>
@@ -94,27 +94,11 @@ Circular imports are inoperative, and may be reported as an error [or warning].
 
 #### Multiple imports
 
-##### 'Sibling' imports must be distinct
+Multiple imports of the same resource are not an error as long as no circular dependencies occur.
 
-Even apart from circular imports -- which must not be executed -- multiple imports of the same catalog or profile *from the same profile* is considered an error. An error or warning message must be reported whenever a single profile imports the same resource twice from the same URL.
+However, multiple imports may result in invalid outputs. Typically this will be because a control has been selected twice, and no merge behavior (see below) has been given.
 
-The import hierarchy depicted here is okay - Catalog A is called twice, but they are not 'siblings':
-
-```
-profile A
-  profile B
-    CATALOG Alpha
-  CATALOG Alpha
-```
-
-This import hierarchy shows an error - Catalog A is called twice, possibly with two different sets of directives, from the same level
-
-```
-profile A
-  CATALOG Alpha
-  CATALOG Alpha
-```
-
+Moreover, "sibling" imports 
 While this condition must be reported, a processor is not obliged to stop, but may optionally resolve the resource in question by treating the two calls as a single call (unifying both `include` and `exclude` statements in this case). This permits a downstream application to do something with the information. Even in this case a warning message must be indicated unless the processor is specifically set to a 'silent' mode.
 
 #### Stability of documents returned by given URIs
@@ -131,7 +115,7 @@ Using inclusion, all or some controls may be selected from a catalog.
 
 Select all controls from a catalog by using an "include all" rule:
 
-```
+```xml
 <include>
   <all/>
 </include>
@@ -139,7 +123,7 @@ Select all controls from a catalog by using an "include all" rule:
 
 Alternatively, select individual controls or controls by groups using match patterns against their IDs.
 
-```
+```xml
 <include>
   <call control-id="ac-1"/>
 </include>
@@ -178,7 +162,7 @@ If a set of exclusions, but no inclusions, are given, "include all" should be as
 
 Example:
 
-```
+```xml
 <import href="#nist-catalog">
   <include>
     <all/>
@@ -221,7 +205,7 @@ The single unified representation is assembled by aggregating all the contents o
 
 Example:
 
-```
+```xml
 <control id="a1">
   <title>Control A1</title>
   <prop name="label">A-1</prop>
@@ -231,7 +215,7 @@ Example:
 
 merging with
 
-```
+```xml
 <control id="a1">
   <title>Control A1</title>
   <prop name="label">A-1</prop>
@@ -241,7 +225,7 @@ merging with
 
 results in
 
-```
+```xml
 <control id="a1">
   <title>Control A1</title>
   <prop name="label">A-1</prop>
@@ -282,7 +266,7 @@ Unlike groups, however, the title of such a control is given with the resolution
 
 Example:
 
-```
+```xml
 <import href="#XYZ-catalog">
   <include>
     <call control-id='xyz-1.1'/><!-- bedtime routine control -->
@@ -293,7 +277,7 @@ Example:
 
 the result might be
 
-```
+```xml
 <control id="xyz-1">
   <title>Basic Hygiene</title>
   <control id="xyz-1.1"><!-- bedtime routine -->...</control>
@@ -339,7 +323,7 @@ Setting of parameters occurs as follows:
 
 [example]
 
-```
+```xml
 <param id="p1">
   <title>Password length</title>
   <value>10</value>
@@ -374,7 +358,7 @@ It is permitted to produce the profile's ID in resolution via a static mapping f
 
 Catalog metadata is required in a catalog. A resolved profile's metadata could look like this --
 
-```
+```xml
 id="...{}..."
 <title>{ profile title} RESOLUTION</title>
 <last-modified>{ resolution date stamp }</last-modified>
