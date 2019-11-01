@@ -64,8 +64,10 @@
   <div>
     <head>Detecting issues in profiles</head>
     <p>It is frequently possible by static analysis to detect many conditions even in valid profile
-      documents, that will result in invalid catalogs in resolution. Such analysis is outside the
-      scope of these specifications.</p>
+      documents, that will result in problematic catalogs in resolution. The most common issue will
+      be clashing controls, that is more than one control with a given identifier (ID), making
+      references to such controls ambiguous. Such analysis is outside the scope of these
+      specifications.</p>
   </div>
     <p>A <term>profile</term> in OSCAL represents a selection and configuration of a set of
       <term>controls</term>. In the normal case, the set of controls available to a profile is
@@ -116,6 +118,14 @@
       operations, to <q>apply the delta</q> to an unmodified catalog, to produce the local view of
       the catalog as modified. This is profile resolution.</p>
   </div>
+  <div>
+    <head>Comments in result documents</head>
+    <p>In an XML-based profile resolution, XML comments are one easy way for a processor to trace
+      events or conditions without affecting the main results. Two processors are obliged to return
+      the same catalog XML for the same profile XML inputs, but they are not required to match one
+      another's comments, whitespace usage, attribute order, or processing instructions, only each
+      other's elements and attributes.</p>
+  </div>
     <section>
       <head>Profile mapping to catalog</head>
       <p>Considered as a <q>document</q> or integrated data set (object), a profile has three sections,
@@ -126,78 +136,81 @@
         specifications is determined by whether the results of processing (*resolution*) appear as
         described, not on whether the means to produce those results work in exactly the manner
         described here.</p>
-      <p>The three steps are <em>import</em> (control selection); <em>merge</em>; and
-          <em>modify</em>. In brief:</p>
+      <p>The three steps are <term>import</term> (control selection); <term>merge</term>; and
+        <term>modify</term>. In brief:</p>
       <ul>
-        <li><p><strong>import</strong> identifies one or more control sources (catalogs or profiles)
-          and the controls within them to be included in this profile</p></li>
-        <li><p><strong>merge</strong> produces the rules for how controls will be organized and merged
-          (or not)</p></li>
-        <li><p><strong>modify</strong> indicates how parameters in the underlying catalog may be
-          modified or set, and how control contents may be amended or modified.</p></li>
+        <li><p><term>import</term> identifies one or more control sources (catalogs or profiles) and the
+          controls within them to be included in this profile</p></li>
+        <li><p><term>merge</term> produces the rules for how controls will be organized and merged (or not)</p></li>
+        <li><p><term>modify</term> indicates how parameters in the underlying catalog may be modified or set,
+          and how control contents may be amended or modified.</p></li>
       </ul>
-      <p>The selection stage is mandatory inasmuch as a profile that imports no controls is
-      inoperative. Such a profile is not in error and it can be resolved, but it will contain no
-      controls (and as such might fail a schema validation check).</p>
+      <p>The selection (import) stage is mandatory inasmuch as a profile that imports no controls is
+      inoperative. Such a profile is not in error and it can be resolved, but its resolution will
+      contain no controls (and as such might fail a validation check against the catalog
+      schema).</p>
       <p>The merge stage can be considered mandatory in that there are default rules for merging, to
         be followed when no merge behavior is given; thus <q>no merging</q> is permitted, and a profile
         with no merge semantics indicated is not in error.</p>
       <p>The modify stage is optional in that controls do not have to be modified and parameters do
-        not have to be set; a profile is always free to represent these components as they are given
-        in their catalogs. Leaving a parameter unset, or qualifying its setting (with additional
-        information or constraints) without actually setting it, is also possible; like a catalog, a
-        profile can represent a set of controls that is not fully defined, for purposes of use at
-        another layer (profile or implementation) where such definition can be provided.</p>
+      not have to be set; a profile is always free to represent these components as they are given
+      in their catalogs. Leaving a parameter unset, or qualifying its setting (with additional
+      information or constraints) without modifying its value, is also possible; like a catalog, a
+      profile can represent a set of controls (and parameters) that are not fully defined, for
+      purposes of use at another layer (profile or implementation) where such definition can be
+      provided.</p>
       <p>When resolved, an OSCAL profile takes the form of an OSCAL catalog, whose organization and
         parts are described in the next section. The merge semantics described below will produce
         outputs conforming to this organization.</p>
     <section>
       <head>Catalog results - top level</head>
-      <p>A valid catalog must have <term>metadata</term> in addition to controls and control groups.
-        Additionally it may have <term>back-matter</term>. These are both described </p>
-      <p>The following sections describe how to populate and organize the body of the result catalog
-        with controls invoked from source catalog. At a minimum, an OSCAL   <s>profile</s> source
-        should produce a <t>catalog</t>:</p>
-      <mapping>
+      <p>The following sections describe how to populate and organize the body of a result catalog
+        (a target) with controls invoked by a profile from a source catalog. At its base, an OSCAL
+          <s>profile</s> source should produce a <t>catalog</t>:</p>
+      <mapping source_file="base-test_profile.xml" target_file="examples/base-test_TARGET_catalog.xml">
         <tagging whose="source">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
-        <tagging whose="target">&lt;catalog id="{new-catalog-identifier}">
+        <tagging whose="target_catalog">&lt;catalog id="{new-catalog-identifier}">
   &lt;metadata>[Required metadata, as described below]&lt;/metadata>
   [ Controls or control groups, as described below ]
   &lt;back-matter>[Optional back matter as described below]&lt;/back-matter>
 &lt;/catalog></tagging>
       </mapping>
-      <p>How to produce and populate the <t>metadata</t> and <t>back-matter</t> is described below,
-        as is the construction of the <t>catalog/@id</t> in the result.</p>
-      <p>Since metadata and back-matter both have dependencies on the processing of the main body,
-        however (in particular where multiple catalogs are sourced), how controls are selected and
-        modified is discussed first.</p>
+      <p>A valid catalog must have <t>metadata</t> in addition to controls and control groups.
+        Additionally it may have <t>back-matter</t>. How to produce and populate the <t>metadata</t>
+        and <t>back-matter</t> is described below, as is the construction of the <t>catalog/@id</t>
+        in the result.</p>
+      <p>Since <t>metadata</t> and <t>back-matter</t> both have dependencies on the processing of
+        the main body, however (in particular where multiple catalogs are sourced), how controls are
+        selected and modified is discussed first.</p>
     </section>
       <section>
         <head>Import</head>
       <p>A profile begins by importing catalogs, all of whose controls are then available for
         selection. Imports are given in series after the metadata:</p>
-      <tagging whose="">&lt;profile>
+      <tagging whose="source_profile">&lt;profile>
+  &lt;metadata>[ Profile metadata ]&lt;/metadata>
   &lt;import href="#catalog">... selection of controls ...&lt;/import>
   &lt;import href="#catalog-supplemental">... selection of controls ...&lt;/import>
 &lt;/profile>
 </tagging>
         <p>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
         provides controls in their native form. An imported profile is resolved on import, using the
-        same rules for the resolution of the profile at the top level, so that it too appears as a
-        catalog to the importing profile.</p>
+        same rules for the resolution of the profile at the top level, so a catalog is presented to
+        the importing profile.</p>
         <p>No profile may import itself either directly or indirectly. An import directive that
-          indicates either the profile itself, or a profile into which it is being (currently)
-          imported, must be ignored. Optionally, a processor may issue a warning.</p>
+        indicates either the profile itself, or a profile into which it is being (currently)
+        imported, must be ignored. Optionally, a processor may issue a warning.</p>
         <p>In an import directive, the reference to the resource to be imported appears on an
-            <code>href</code> flag. It takes either of two forms, external or internal:</p>
+          <s>@href</s> flag. It takes either of two forms, external or internal:</p>
         <section>
           <head>External</head>
           <p>An external reference appears as an absolute or relative URL</p>
           <p>Indicating a file available via <revisit>[prototol?]</revisit></p>
-          <tagging whose="source">&lt;import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+          <tagging whose="source_profile">&lt;import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
   &lt;include>
 	&lt;call control-id="ac-1"/>
-...
+  &lt;/include>
+&lt;/import>
 </tagging>
         </section>
         <section>
@@ -206,7 +219,8 @@
             URI fragment identifier (starting with <code>#</code>). If an import href resolves to a
               <code>resource</code> elsewhere in the profile (typically in back matter), that
             resource can be retrieved to provide the source catalog.</p>
-          <tagging whose="source">&lt;import href="#nist-catalog">
+          <cf  file="examples/base2-test_profile.xml"/>
+          <tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;include>
 	&lt;call control-id="ac-1"/>
   &lt;/include>
@@ -240,26 +254,28 @@
             of resolving B by itself (without being imported by A), or of resolving some other
             profile that did not import A. (D importing B importing C importing A would not be a
             problem.)</p>
-          <p>Circular imports are inoperative, and may be reported as an error [or warning].</p>
+          <p>Circular imports are inoperative, and may be reported as an error <revisit>[or
+            warning]</revisit>.</p>
         </section>
         <section>
           <head>Multiple imports</head>
           <p>Multiple imports of the same resource are not an error as long as no circular
             dependencies occur.</p>
           <p>However, multiple imports may result in invalid outputs. Typically this will be because
-            a control has been selected twice, and no merge behavior (see below) has been given.</p>
-          <p>Moreover, <q>sibling</q> imports While this condition must be reported, a processor is not
-            obliged to stop, but may optionally resolve the resource in question by treating the two
-            calls as a single call (unifying both <code>include</code> and <code>exclude</code>
-            statements in this case). This permits a downstream application to do something with the
-            information. Even in this case a warning message must be indicated unless the processor
-            is specifically set to a 'silent' mode.</p>
+          a control has been selected twice, and no merge behavior (see below) has been given.</p>
+          <p>In general, sibling imports (two imports into the same profile) should never have to
+          call the same catalog; and this condition may be reported as a warning. Depending on the
+          merge rules and the particular controls being selected, it may or may not result in
+          clashing controls.</p>
         </section>
         <section>
-          <head>Stability of documents returned by given URIs</head>
+          <head>Availability of documents returned by given URIs</head>
           <p>The rules of XSLT <code>document()</code> apply to the traversal of any URI: that is,
             it is assumed that all calls to a given (resolved) URI reference, will return the same
             result.</p>
+        <p>If documents called for import are determined to be unavailable, the processor may drop
+          them along with a warning, both or either out of band (e.g. through <code>STDERR</code>)
+          or in the catalog results.</p>
         </section>
         <section>
           <head>Selecting controls</head>
@@ -268,57 +284,70 @@
           <section>
             <head>Inclusion</head>
             <p>Using inclusion, all or some controls may be selected from a catalog.</p>
-            <p>Select all controls from a catalog by using an <s>include/all</s> rule:</p>
-            <tagging whose="source">&lt;include>
-  &lt;all/>
-&lt;/include>
-</tagging>
-            <p>Alternatively, select individual controls or controls by groups using match patterns
-              against their IDs.</p>
+          <section>
+            <head>Selecting by ID</head>
+            <p>Select individual controls or controls by groups using <s>control-id</s> selectors
+              corresponding to their IDs.</p>
+            <cf file="examples/base-test_profile.xml"/>
             <tagging whose="source">&lt;include>
   &lt;call control-id="ac-1"/>
 &lt;/include>
 </tagging>
-            <p>All or some controls from a catalog are included in selection. (include/all)</p>
-            <p>There are two kinds of selections, <term>calls</term> and <term>matches</term>. (include/call |
-              include/match)</p>
-            <p>Calls and matches cannot be combined in a single include. To use both, use more than
-              one include statement.</p>
-            <p>A match is a selection of a control by matching its ID to the given match
-              pattern.</p>
-            <p>The match pattern is evaluated as a regular expression using XPath regular expression
-              syntax. [XXXX]</p>
+          </section>
+          <section>
+            <head>Matching IDs to select groups of related controls</head>
+            <p>Controls may also be selected using match patterns against their IDs. This is useful
+              because related controls (either in a hierarchy, or together in a group) frequently
+              have related IDs as well.</p>
+            <cf file="examples/include-match-test_profile.xml"/>
+            <tagging whose="source">&lt;include>
+  &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
+&lt;/include>
+</tagging>
+            <p><revisit>Calls and matches cannot be combined in a single include. To use both, use
+                more than one include statement. (See Issue 525.)</revisit></p>
+            <p><revisit>The match pattern is evaluated as a regular expression using XPath regular
+                expression syntax. [XXXX]</revisit></p>
+          </section>
+          <section>
+            <head>Selecting all controls</head>
+            <p>Select all controls from a catalog by using an <s>include/all</s> rule:</p>
+            <cf file="examples/include-all-test_profile.xml"/>
+            <tagging whose="source">&lt;include>
+  &lt;all/>
+&lt;/include>
+</tagging>
+          </section>
             <section>
               <head>Including child controls</head>
               <p>In OSCAL, controls may contain controls. For example, in SP 800-53 many controls
-                are supplemented with control enhancements; in OSCAL these are represented as child
-                controls within parent controls. So parent AC-2 has children AC-2(1) through AC-2(),
-                for example.</p>
+              are supplemented with control enhancements; in OSCAL these are represented as child
+              controls within parent controls. So parent AC-2 has children AC-2(1) through AC-2(13),
+              for example.</p>
               <p>Child controls can be included by the same mechanism as controls, i.e. by means of
                 an ID call. Alternatively a match can frequently be applied (at least given most ID
                 assignment schemes) to match controls and child controls together.</p>
-              <p>Additionally, a <code>with-child-controls</code> directive on a <code>call</code>
-                or <code>match</code> can indicate that child controls (that is, direct children not
-                all descendants) should be included with the applicable call(s) or match(es).</p>
-              <p>XXX Furthermore, <code>all[@with-child-controls='no']</code> may select all
-                controls <em>only at the top level</em> (i.e., directly inside <code>group</code>)
-                from a catalog. XXXX</p>
+              <p>Additionally, a <s>with-child-controls</s> directive on a <s>call</s> or
+                <s>match</s> can indicate that child controls (that is, direct children not all
+              descendants) should be included with the applicable call(s) or match(es).</p>
+              <p>Furthermore, <s>all[@with-child-controls='no']</s> may select all controls placed
+              directly within a group, excluding all  controls appearing inside other controls.</p>
+            <cf file="include-all-no-children.xml"/>
             </section>
           </section>
           <section>
             <head>Exclusions</head>
             <p>Exclusions work the same way as inclusions, except with the opposite effect - the
-              indicated control(s) are dropped from the resource.</p>
-            <p>Additionally, there is no such thing as exclude/all, which is invalid and should be
-              considered inoperable.</p>
-            <p>Any control that is both included and excluded, is excluded. This holds irrespective
-              of the specifity of the selection for inclusion or exclusion. For example, if AC-1 is
-              included by id 'ac-1' and excluded by matching 'ac*', it is excluded. Selection for
-              exclusion prevails.</p>
+            indicated control(s) do not appear in the result catalog.</p>
+            <p>Additionally, there is no such thing as <s>exclude/all</s>, which is invalid and
+            should be considered inoperable.</p>
+            <p>Any control designated to be both included and excluded, is excluded. This holds
+            irrespective of the specifity of the selection for inclusion or exclusion. For example,
+            if AC-1 is included by id <code>ac-1</code> and excluded by matching <code>ac.*</code>,
+            it is excluded. Selection for exclusion prevails.</p>
           </section>
-          <section><head>Implicit <q>all</q></head><p>An empty import statement should be considered the same
-              as an import with an <q>include/all</q>. An empy import
-            instruction</p><tagging whose="source">&lt;import href="#nist-catalog"/>
+          <section><head>Implicit <s>all</s></head><p>An empty import statement should be considered the same as an import with an <s>include/all</s>.
+            An empy import instruction</p><tagging whose="source">&lt;import href="#nist-catalog"/>
 </tagging><p>is
             functionally equivalent to
               this:</p><tagging whose="source">&lt;import href="#nist-catalog">
@@ -326,7 +355,8 @@
     &lt;all/>
   &lt;/include>
 &lt;/import>
-</tagging><p>The
+</tagging>
+          <cf file="examples/include-all-implicit-test_profile.xml"/><p>The
               same thing occurs if an exclude instruction is given without an include
               instruction.</p><p>Example:</p><tagging whose="source">&lt;import href="#nist-catalog">
   &lt;exclude>
@@ -343,9 +373,50 @@
     &lt;call control-id="ac-1"/>
   &lt;/exclude>
 &lt;/import>
-</tagging><p>Result: all controls from the catalog are included <em>except</em> AC-1. <revisit>Make up example
-              for this</revisit></p></section>
+</tagging><p>Result: all controls from the catalog are included <em>except</em> AC-1.</p>
+          <cf file="examples/exclude-call-test_profile.xml"/></section>
         </section>
+      <section>
+        <head>Copying parameters</head>
+        <p>Unlike controls, parameters are copied implicitly. Whether a parameter in the source
+          catalog is copied into the result depends on two factors: its location, and whether it is
+          referenced by an <t>include</t> directive in the result catalog.</p>
+        <section>
+          <head>Parameters given in controls</head>
+          <p>Any parameter (<s>param</s> element) that appears in a control being selected, appears
+            in the result, unless the parameter element was indicated by a remove statement (see
+            below).</p>
+          <mapping>
+            <tagging whose="source">&lt;control id="a1">
+    &lt;title>Control A1&lt;/title>
+    &lt;param id="param-a1.a">
+        &lt;label>a1.a parameter&lt;/label>
+        &lt;value>a1.a value&lt;/value>
+    &lt;/param>
+    &lt;prop name="status">alive&lt;/prop>
+    &lt;part name="statement" id="a1-stmt">
+        &lt;p>A1 aaaaa aaaaaaaaaa&lt;/p>
+    &lt;/part>
+&lt;/control></tagging>
+          </mapping>
+          <cf file="examples/include-all-test_profile.xml"/>
+        </section>
+        <section>
+          <head>Loose parameters</head>
+          <p>Parameters may sometimes be given in catalogs outside of controls. For example, a
+            parameter that is referenced from inside two different controls, may be represented
+            outside both of them, within a group.</p>
+          <p>These parameters are copied if (only if) a control is also propagated, which after
+            modification contains an <s>insert</s> directive referencing this parameter. The
+            parameter appears in the location in the resolved catalog corresponding to its location
+            in the source, albeit ungrouped if no <s>merge/as-is</s> is given.</p>
+          <p>When a catalog is organized by a <s>merge/custom</s> directive, loose parameters are
+            copied into the resulting grouping structure directly preceding the first control
+            appearing that contains an <s>insert</s> instruction referencing that parameter.</p>
+          <p>Parameters that are not referenced by an <s>insert</s>, do not appear in the result
+            catalog.</p>
+        </section>
+      </section>
       </section>
       <section>
         <head>Merge - defines rules on how to arrange / manage controls</head>
@@ -377,8 +448,7 @@
             <tagging whose="source">&lt;profile>
   &lt;import href="#catalog1"/>
   &lt;import href="#catalog2"/>
-&lt;/profile>
-</tagging>
+&lt;/profile></tagging>
           </mapping>
           <p>is the same as</p>
           <tagging whose="source">&lt;profile>
@@ -387,9 +457,7 @@
   &lt;merge>
     &lt;combine method="keep"/>
   &lt;/merge>
-&lt;/profile>
-&lt;/profile>
-</tagging>
+&lt;/profile></tagging>
         </section>
         <section>
           <head><s>merge combine[@method='keep']</s> ()</head>
