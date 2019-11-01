@@ -15,7 +15,9 @@
         <include>
             <call control-id="sc-7"/>
         </include>
-        <include href="#catalog">
+    </import>
+    <import href="#catalog">
+        <include>
             <call control-id="ac-2"/>
             <call control-id="at-1"/>
             <call control-id="at-2"/>
@@ -36,12 +38,14 @@
                 <!-- AC-3 is not selected, so it should not appear in the group -->
                 <call control-id="ac-3"/>
             </group>
-        </custom>  
+        </custom>
     </merge>
     <modify>
         <set param-id="ac-2_prm_2">
             <label>very important persons</label>
-            <guideline><p>Only one of the three should be allowed in the boat.</p></guideline>
+            <guideline>
+                <p>Only one of the three should be allowed in the boat.</p>
+            </guideline>
             <select>
                 <choice>butcher</choice>
                 <choice>baker</choice>
@@ -53,7 +57,6 @@
             <add position="starting">
                 <prop name="extra">EXTRA SPECIAL PROPERTY</prop>
             </add>
-            
         </alter>
     </modify>
     <back-matter>

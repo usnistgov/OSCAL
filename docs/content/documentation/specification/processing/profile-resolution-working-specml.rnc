@@ -1,32 +1,42 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/specml"
 
-start = element SPECIFICATION { head?, (p | ul | div.elem | mapping)*, section+ }
+# Lightweight syntax sugar over tiny HTML subset
 
-head = element head { (text | inline)* }
+start        = element SPECIFICATION { head.elem?, misc, section.elem+ }
 
-div.elem = element div { head?, (p | ul | mapping | div.elem)* }
+head.elem    = element head { (text | inline)* }
 
-mapping = element mapping { head?, (p?, tagging)*, p* }
+misc         = (p.elem | ul.elem | div.elem | tagging.elem | cf.elem | mapping.elem)*
 
-p = element p { (text | inline)* }
+p.elem       = element p { (text | inline)* }
 
-ul = element ul { li+ }
+ul.elem      = element ul { li.elem+ }
   
-li = element li { (p | ul )+ }
+li.elem      = element li { (p.elem | ul.elem )+ }
 
-section = element section { head, (p | ul | mapping | tagging )*, section* }
+div.elem     = element div { head.elem?, misc }
 
-inline = (code | term | revisit | em | strong | q | s | t | xpath )
+tagging.elem = element tagging { attribute whose { text }, text }
 
-tagging = element tagging { attribute whose { text }, text }
+cf.elem = element cf { attribute file { text }?, empty }
 
-code = element code { text }
-term = element term { text }
+mapping.elem = element mapping {
+                attribute source_file { text }?,
+                attribute target_file { text }?,
+                    head.elem?, (p.elem*, tagging.elem)*, p.elem* }
+
+section.elem = element section { head.elem, misc, section.elem* }
+
+
+inline  = (code | term | revisit | em | strong | q | s | t | xpath )
+
+code    = element code    {  text }
+term    = element term    {  text }
 revisit = element revisit { (text | inline)* }
-q = element q { (text | inline)* }
-em = element em { text }
-strong = element strong { text }
-s = element s { text }
-t = element t { text }
-xpath = element xpath { text }
+q       = element q       { (text | inline)* }
+em      = element em      {  text }
+strong  = element strong  {  text }
+s       = element s       {  text }
+t       = element t       {  text }
+xpath   = element xpath   {  text }
 

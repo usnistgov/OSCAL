@@ -44,18 +44,34 @@ term { display: inline; font-family: sans-serif; font-weight: bold; font-size: 8
 revisit { display: inline; font-family: sans-serif; font-size: 90%; color: darkorange; background-color: yellow }
 
 tagging { font-family: monospace; white-space: pre; padding: 0.5em; margin: 0.5em; font-size: 80%; line-height: 130% }
-tagging[whose=source] { background-color: #F0FFF0 }
-tagging[whose=target] { background-color: #F0F0FF }
+tagging[whose=source_catalog] { background-color: #FFF0F0 }
+tagging[whose=source_profile] { background-color: #F0FFF0 }
+tagging[whose=target_catalog] { background-color: #F0F0FF }
 
 tagging:after {
     content: 
         oxy_combobox(           
             edit, "@whose",
             editable, false,
-            values, "source, target",
-            labels, "source, target");
+            values, "source_catalog, source_profile, target_catalog");
 }
 
+mapping:before {
+     content:
+            'source: ' oxy_urlChooser(        
+              edit, "@source_file",
+              columns 25)
+            ' target: ' oxy_urlChooser(        
+              edit, "@target_file",
+              columns 25) }
+
+cf { background-color: pink; font-family: sans-serif; font-weight: bold; font-size: 80% }
+
+cf:before {
+     content:
+            'example: ' oxy_urlChooser(        
+              edit, "@file",
+              columns 35) }
 
 t { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
 

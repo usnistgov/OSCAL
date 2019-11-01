@@ -140,7 +140,7 @@
     <xsl:template match="import/include/call" mode="making-selectors">
         <xsl:variable name="matcher" expand-text="true">key('controls-by-id','{@control-id}')</xsl:variable>
             <!--<xsl:variable name="matcher" expand-text="true">control[@id='{@control-id}']</xsl:variable>-->
-        <xsl:variable name="include-subcontrols" select="@with-child-controls = ('true', '1')"/>
+        <xsl:variable name="include-subcontrols" select="@with-child-controls = 'yes'"/>
         <XSLT:template priority="13" match="{$matcher}" mode="oscal:propagate">
             <XSLT:copy copy-namespaces="no">
                 <XSLT:apply-templates select="@* | node()" mode="oscal:resolve"/>
