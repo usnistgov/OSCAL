@@ -39,6 +39,13 @@
       </div>
    </xsl:template>
 
+   <xsl:template match="/" mode="debug">
+      <xsl:copy-of select="$surrogate-tree"/>
+      <div class="OM-map">
+            <xsl:apply-templates select="$surrogate-tree/*" mode="html-render"/>
+      </div>
+   </xsl:template>
+   
    <xsl:template match="/">
       <!--<xsl:copy-of select="$surrogate-tree"/>-->
       <div class="OM-map">
@@ -48,7 +55,7 @@
          <xsl:apply-templates select="$html-basic" mode="elaborate"/>
       </div>
    </xsl:template>
-
+   
    <xsl:template mode="html-render" match="@m:*"/>
 
    <xsl:template mode="html-render" match="m:flag[(@name)= ../@json-key-flag]"/>
@@ -122,7 +129,7 @@
          <p>
             <span class="OM-view_switcher"/>
             <a class="OM-name" href="{ $path-to-docs }#{ $model-label}_{ @name }">
-               <xsl:value-of select="@name"/>
+               <xsl:value-of select="(@group-name,@name)[1]"/>
             </a>
             <xsl:text>: </xsl:text>
             <xsl:call-template name="cardinality-note"/>
