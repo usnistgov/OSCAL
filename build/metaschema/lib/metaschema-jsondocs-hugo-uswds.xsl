@@ -423,11 +423,11 @@
       <xsl:variable name="definition" select="key('definitions',@ref)"/>
       <li>
          <p>
-            <xsl:text>Labeled </xsl:text>
+            <xsl:text>An array labeled </xsl:text>
             <b>
                <xsl:value-of select="group-as/@name"/>
             </b>
-            <xsl:text>, an array containing </xsl:text>
+            <xsl:text>, containing </xsl:text>
             <a href="#{@ref}">
                <xsl:apply-templates select="@ref"/>
             </a>
