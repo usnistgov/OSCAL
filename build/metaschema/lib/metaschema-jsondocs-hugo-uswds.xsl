@@ -325,7 +325,7 @@
    </xsl:template>
 
    <xsl:template match="flag[(@name|@ref)=../json-key/@flag-name]" mode="model">
-      <xsl:message expand-text="true">{ ../@name }</xsl:message>
+      <!--<xsl:message expand-text="true">{ ../@name }</xsl:message>-->
       <li>
          <p>
             <i>Implicitly</i>
