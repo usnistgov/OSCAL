@@ -8,11 +8,11 @@ menu:
     weight: 50
 ---
 
-Please visit our [GitHub repository](https://github.com/usnistgov/OSCAL) for more information, schemas, and examples.
+{{% usa-tag %}}GitHub.com Repository{{% /usa-tag %}} Please visit our [GitHub repository](https://github.com/usnistgov/OSCAL) for more information, schemas, and examples.
 
-You can chat with us directly on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby).
+{{% usa-tag %}}Chat with Us{{% /usa-tag %}} You can chat with us directly on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby).
 
-Please email the [OSCAL team](mailto:oscal@nist.gov) with any questions you have about this project or if you are interested in getting involved.
+{{% usa-tag %}}Contact by Email{{% /usa-tag %}} Please email the [OSCAL team](mailto:oscal@nist.gov) with any questions you have about this project or if you are interested in getting involved.
 
 We also offer a couple of mailing lists.
 
