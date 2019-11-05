@@ -3,6 +3,8 @@ title: Catalog Model
 heading: "OSCAL Catalog Layer: Catalog Model"
 description: XML and JSON format documentation for the OSCAL Catalog model, which is the sole model in the OSCAL [Catalog](/learnmore/architecture/) layer. These formats model a [control catalog](/learnmore/architecture/catalog/).
 weight: 30
+aliases:
+  - /docs/model/catalog/
 ---
 
 The OSCAL Catalog model represents the information contained within a [control catalog](/learnmore/architecture/catalog/). The Catalog model is the sole model in the OSCAL [Catalog](/learnmore/architecture/) layer.

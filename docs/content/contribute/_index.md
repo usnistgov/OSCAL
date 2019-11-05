@@ -11,11 +11,6 @@ menu:
     name: Get involved
     url: /contribute/
     weight: 10
-alert:
-  heading: OSCAL Workshop
-  text: NIST is hosting the first of a series of OSCAL workshops on **November 5th, 2019** in **Gaithersburg, MD**. Please [register](https://www.nist.gov/news-events/events/2019/11/open-security-controls-assessment-language-oscal-workshop) by **October 29, 2019**. A **hackathon** will be held on **November 6th and 7th** following the workshop for tool developers that would like to work together with the OSCAL team to **develop OSCAL-based capabilities**.
-  type: info
-  class: margin-bottom-105
 ---
 
 We are excited that you want to contribute to the OSCAL project. We are striving to provide a collaborative environment for professionals to contribute to the project's goals and objectives. A primary focus of this project is to improve security assessment efficiency, accuracy, and consistency on the basis of real-world experience with the technology used in this space. The language we develop must be well-defined, with easy to use formats that improve both the User Experience (UX) and the Machine Experience (MX).

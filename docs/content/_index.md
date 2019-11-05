@@ -1,12 +1,6 @@
 ---
 title: "OSCAL"
 ---
-{{<usa-grid-container class="usa-grid-row usa-grid-col">}}
-{{% usa-alert heading="OSCAL Workshop" class="measure-none" %}}
-NIST is hosting the first of a series of OSCAL workshops on **November 5th, 2019** in **Gaithersburg, MD**. Please [register](https://www.nist.gov/news-events/events/2019/11/open-security-controls-assessment-language-oscal-workshop) by **October 29, 2019**. A **hackathon** will be held on **November 6th and 7th** following the workshop for tool developers that would like to work together with the OSCAL team to **develop OSCAL-based capabilities**.
-{{% /usa-alert %}}
-{{</usa-grid-container>}}
-
 {{% usa-hero image="automation-hero.png" calloutText="Automated" calloutAltText="Control-Based Assessment" buttonURL="/learnmore/" buttonText="Learn More" %}}
 Supporting Control-Based<br/>
 Risk Management with<br/>

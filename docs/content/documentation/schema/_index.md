@@ -5,6 +5,8 @@ weight: 50
 sidenav:
   activerenderdepth: 2
   inactiverenderdepth: 2
+aliases:
+  - /docs/model/ssp/
 ---
 
 The OSCAL project is developing each OSCAL [layer](/learnmore/architecture/) as one or more models, which are each defined in multiple formats. The following image dipicts each layer and the corresponding model(s) for each layer.
