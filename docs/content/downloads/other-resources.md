@@ -18,6 +18,7 @@ If you have a tool that supports the OSCAL formats that you would like to have l
 
 ## Videos and Presentations
 
+* [NIST OSCAL Workshop](../OSCAL-workshop-20191105.pdf) -  November 5, 2019
 * [Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore](https://www.youtube.com/watch?v=eP8K7piU5UQ)
 * [Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards](https://www.youtube.com/watch?v=mo3J0tFxixg)
 
