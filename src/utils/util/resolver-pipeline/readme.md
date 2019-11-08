@@ -1,6 +1,10 @@
 Resolver pipeline
 
-will take the form of a sequence of three XSLT transformations to be performed in sequence
+
+See folder OSCAL/docs/content/documentation/specification/processing for specification and examples.
+
+
+Resolution is conceived as a sequence of three XSLT transformations to be performed in sequence
 
 on defined inputs for defined outputs
 
