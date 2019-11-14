@@ -2,13 +2,163 @@
 <x:description
     xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-select.xsl">
-    <x:scenario label="Scenario for testing a function">
+    <x:scenario label="Profile root">
         <x:context>
             <profile/>
         </x:context>
-
+        
         <x:expect label="root becomes root">
             <profile/>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Profile select include all">
+        <x:context>
+            <profile>
+                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml"/>
+            </profile>
+        </x:context>
+        
+        <x:expect label="Select all controls, grouped">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                    <group>
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                    <group>
+                        <title>Group Z of XYZ</title>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z2"><title>Control Z2</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Profile select include call control-id">
+        <x:context>
+            <profile>
+                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                    <include>
+                        <call control-id="x1"/>
+                    </include>
+                </import>
+            </profile>
+        </x:context>
+        
+        <x:expect label="Control x1, in its group">
+            <profile>
+                   <catalog id="xyz-tiny_catalog">
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <control id="x1"><title>Control X1</title></control>
+                        </group>
+                    </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Profile select include call match">
+        <x:context>
+            <profile>
+                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                    <include>
+                        <!-- any x control -->
+                        <match pattern="^x\d+$"/>
+                    </include>
+                </import>
+            </profile>
+        </x:context>
+        
+        <x:expect label="The x controls, matched as such">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Profile implicit select all, excluding x1 y1 z1">
+        <x:context>
+            <profile>
+                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                    <exclude>
+                        <call control-id="x1"/>
+                        <call control-id="y1"/>
+                        <call control-id="z1"/>
+                    </exclude>
+                </import>
+            </profile>
+        </x:context>
+        
+        <x:expect label="All controls but x1,y1,z1, grouped">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                    <group>
+                        <title>Group Y of XYZ</title>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                    <group>
+                        <title>Group Z of XYZ</title>
+                        <control id="z2"><title>Control Z2</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Doubled import, exclusive call">
+        <x:context>
+            <profile>
+                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                    <include>
+                        <!-- any x control -->
+                        <match pattern="^x\d+$"/>
+                    </include>
+                </import>
+            </profile>
+        </x:context>
+        
+        <x:expect label="The x controls, matched as such">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                </catalog>
+            </profile>
         </x:expect>
     </x:scenario>
 </x:description>
