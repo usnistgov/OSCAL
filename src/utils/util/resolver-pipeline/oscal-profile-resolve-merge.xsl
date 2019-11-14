@@ -25,7 +25,7 @@
             <xsl:apply-templates select="back-matter"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="import" mode="o:no-merge">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
@@ -49,15 +49,13 @@
             <xsl:for-each select="$merged[1]">
                 <xsl:copy>
                     <xsl:copy-of select="$merged/@*"/>
+                    <xsl:apply-templates select="title"/>
                     <xsl:call-template name="o:merging">
                         <xsl:with-param name="merging" select="current-group()/group"/>
                     </xsl:call-template>
                     <xsl:apply-templates select="$merging/ancestor::profile" mode="o:merge-controls">
                         <xsl:with-param name="controls" select="current-group()/control"/>
-                    </xsl:apply-templates>
-                    <xsl:for-each select="current-group()">
-                        <xsl:apply-templates mode="o:merge"/>
-                    </xsl:for-each>
+                    </xsl:apply-templates>                    
                 </xsl:copy>
             </xsl:for-each>
         </xsl:for-each-group>
