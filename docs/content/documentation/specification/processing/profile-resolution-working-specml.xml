@@ -10,15 +10,15 @@
     the OSCAL <term>profile</term> and OSCAL <term>catalog</term> document models. The same mapping
     (transformation from source to target) can be effected using other expressions of the OSCAL
     model such as JSON or YAML object serializations. In these specifications, there will be
-    reference to XML constructs (such as <q>element</q> where you might prefer <q>object</q>) and
-    examples using XML syntax: these however are for illustrative purposes only and normative only
-    with respect to the semantic mapping, not the syntax as such. The XML orientation of the
-    specification of this mapping is an expediency; in the longer term we would like to have
-    specifications that are format-agnostic.</p>
+    reference to XML constructs such as <q>element</q> and <q>attribute</q> and examples using XML
+    syntax: these however are for illustrative purposes only and normative only with respect to the
+    semantic mapping, not the syntax as such. The XML orientation of the specification of this
+    mapping is an expediency; in the longer term we would like to have specifications that are
+    format-agnostic.</p>
   <div>
     <head>Use of XPath</head>
     <p>Additionally, in these specs there is lightweight use of XPath notation to identify elements
-      and attributes in the XML. A summary:</p>
+      and attributes in the XML. A summary of some lightweight XPath syntax:</p>
     <ul>
       <li>
         <p><s>element</s> (unpunctuated) indicates an element named <s>element</s></p>
@@ -36,31 +36,57 @@
       </li>
     </ul>
   </div>
-  <p>In an XML context, document validation is available as a means of determining whether an
-    arbitrary XML document entity conforms to structural and naming constraints such as must be
-    assumed by processors respecting application semantics. These specifications assume that XML
-    inputs for profile resolution will be <em>schema-valid</em> with respect to the OSCAL
-      <term>profile</term> model, and hence will be tagged in the namespace
-      <code>http://csrc.nist.gov/ns/oscal/1.0</code>.</p>
-  <p>In these specs there are references to <s>source</s>, <t>target</t> and <term>result</term>.
-      <s>Source</s> refers sometimes to profile documents as a type (abstractly), and sometimes to
-    instance profiles in operation (particular kinds of sources). <t>Target</t> refers to the
-    intended output of the transformation, that is the catalog model generally (as a document type)
-    or, for particular source instances, particular targets.</p>
-  <p>The term <term>result</term> refers to the actual results of transformation, as opposed to the
-    intended or expected results. A processor's conformance can be described as the degree to which
-    its result resembles this target; that is, that resolving a profile in a particular
-    implementation produce correct results as described in these specs. Paradoxically, this means
-    that a correct target, in some circumstances, is invalid to the nominal target schema.
-    Correctness of a processor, in other words, in conforming to these specifications, may require
-    that sometimes its results are formally invalid to the target schema. Such situation will
-    generally reflect erros (even if not formally invalid) or unnecessary complexities in the input;
-    as such they are remediable and can be prevented by design. These conditions are not described
-    by these specifications as errors, but they may be noted as occasions for warnings.</p>
-  <p>In a normal or default configuration, a conformant processor should not repair these problems
-    on its own (making it difficult or impossible to duplicate its results in another conformant
-    processor). It may provide features making it easier to detect and repair problems in source
-    data that give rise to them.</p>
+  <div>
+    <head>Validation</head>
+    <p>In an XML context, document validation is available as a means of determining whether an
+      arbitrary XML document entity conforms to structural and naming constraints such as must be
+      assumed by processors respecting application semantics. These specifications assume that XML
+      inputs for profile resolution will be <em>schema-valid</em> with respect to the OSCAL
+        <term>profile</term> model, and hence will be tagged in the namespace
+        <code>http://csrc.nist.gov/ns/oscal/1.0</code>.</p>
+    <p>Similarly, the definition of the output format or results, is constrained by the OSCAL
+        <term>catalog</term> model as defined by its schema.</p>
+    <p>In addition to the respective schemas, there are additional constraints over the data that
+      this process relies on, both implicit (and unspecified) constraints regarding usage (to
+      whatever extent this specification fails to define clear boundaries and expected behaviors),
+      and explicit constraints not validated by the applicable schema. The most important of these
+      is ID-distinctiveness. Every <s>@id</s> flag (in XML, represented by <xpath>@id</xpath>
+      attributes) on an element in the model, whether it be a control, group or subelement within a
+      control, must be distinct and unique to that control, within the defined processing scope,
+      inasmuch as this value will be used in processing as a proxy for <term>element identity</term>
+      and especially (in the case of controls) for <term>control identity</term>. That is, it is on
+      the basis of their IDs that controls are selected and referenced, and clashes are detected and
+      recognized. Because in current versions, the OSCAL schemas do not formally validate the
+      distinctiveness of ID values, this validation – within the scope of either the source document
+      (at minimum) or across a larger operational environment as appropriate – must be ensured by
+      another process.</p>
+    <p>For SP800-53 control catalog we have a Schematron for this purpose of validating that IDs
+      given to all elements, including those representing controls, parts of controls such as
+      statements or assessment objectives, parameters etc., are all unique within the catalog.</p>
+  </div>
+  <div>
+    <head>Terminological note</head>
+    <p>In these specifications there are references to <s>source</s>, <t>target</t> and
+        <term>result</term>. <s>Source</s> refers sometimes to profile documents as a type
+      (abstractly), and sometimes to instance profiles in operation (particular kinds of sources).
+        <t>Target</t> refers to the intended output of the transformation, that is the catalog model
+      generally (as a document type) or, for particular source instances, particular targets.</p>
+    <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
+      the intended or expected results. A processor's conformance can be described as the degree to
+      which its result resembles this target; that is, that resolving a profile in a particular
+      implementation produce correct results as described in these specs. Paradoxically, this means
+      that a correct target, in some circumstances, is invalid to the nominal target schema.
+      Correctness of a processor, in other words, in conforming to these specifications, may require
+      that sometimes its results are formally invalid to the target schema. Such situation will
+      generally reflect erros (even if not formally invalid) or unnecessary complexities in the
+      input; as such they are remediable and can be prevented by design. These conditions are not
+      described by these specifications as errors, but they may be noted as occasions for
+      warnings.</p>
+    <p>In a normal or default configuration, a conformant processor should not repair these problems
+      on its own (making it difficult or impossible to duplicate its results in another conformant
+      processor). It may provide features making it easier to detect and repair problems in source
+      data that give rise to them.</p>
+  </div>
   <div>
     <head>Detecting issues in profiles</head>
     <p>It is frequently possible by static analysis to detect many conditions even in valid profile
@@ -69,35 +95,40 @@
       references to such controls ambiguous. Such analysis is outside the scope of these
       specifications.</p>
   </div>
+  <div>
+    <head>Processing context and scope</head>
     <p>A <term>profile</term> in OSCAL represents a selection and configuration of a set of
-      <term>controls</term>. In the normal case, the set of controls available to a profile is
-    provided by a catalog. For example, the three NIST SP 800-53 profiles representing the impact
-    baselines HIGH, MODERATE and LOW: each of these calls on the full SP 800-53/53A catalog for its
-    controls. In a data processing system, this dependency can be modeled in the form of separate
-    documents - the (nominal) <q>catalog</q> and its <q>profile</q>, the latter being the selection
-    and application of the catalog as distinct from the catalog itself.</p>
+        <term>controls</term>. In the normal case, the set of controls available to a profile is
+      provided by a catalog. For example, the three NIST SP 800-53 profiles representing the impact
+      baselines HIGH, MODERATE and LOW: each of these calls on the full SP 800-53/53A catalog for
+      its controls. In a data processing system, this dependency can be modeled in the form of
+      separate documents - the (nominal) <q>catalog</q> and its <q>profile</q>, the latter being the
+      selection and application of the catalog as distinct from the catalog itself.</p>
     <p>However, profiles may also select controls from profiles, implicitly selecting from
       underlying catalogs as modified. And they can select controls from more than one catalog or
       profile origin.</p>
-  <p>In the most common case, a profile will source its controls from a single catalog or perhaps a
-    complementary pair of catalogs (perhaps an authoritative or standard catalog, plus a
-    supplement). In the general case and more broadly, however, OSCAL must support sourcing more
-    than one catalog at once, in order to aggregate and organize controls from any sources. This
-    specification describes handling that within an ordinary workflow context must be considered
-    (and detected and handled) as error conditions, and this especially applies to situations where
-    multiple catalogs are sourced – or where the same catalog is sourced more than once.</p>
+    <p>In the most common case, a profile will source its controls from a single catalog or perhaps
+      a complementary pair of catalogs (perhaps an authoritative or standard catalog, plus a
+      supplement). In the general case and more broadly, however, OSCAL must support sourcing more
+      than one catalog at once, in order to aggregate and organize controls from any sources. This
+      specification describes handling that within an ordinary workflow context must be considered
+      (and detected and handled) as error conditions, and this especially applies to situations
+      where multiple catalogs are sourced – or where the same catalog is sourced more than once.</p>
     <p>In order to support these semantics – because whatever data set is sourced by a profile, it
-    must <q>look like a catalog</q>, the results of resolving a single profile must be in the form
-    of a single (<q>virtual</q> or implicit) catalog. Two different OSCAL processors that promise
-    profile resolution, must deliver the same catalog with regard to its controls and the structure
-    in which they are embedded (groups). This specification is designed to make this possible, by
-    defining <q>the same</q> in this context.</p>
+      must <q>look like a catalog</q>, the results of resolving a single profile must be in the form
+      of a single (<q>virtual</q> or implicit) catalog. Two different OSCAL processors that promise
+      profile resolution, must deliver the same catalog with regard to its controls and the
+      structure in which they are embedded (groups). This specification is designed to make this
+      possible, by defining <q>the same</q> in this context.</p>
+  </div>
   <div>
     <head>Why resolve a profile as a catalog</head>
     <p>A profile is a representation of a delta, a <q>here to there</q>. As such, a profile might be
-      conceived of as a recipe or set of procedures, whereby to create an OSCAL catalog (set of
-      controls describing security requirements) from an OSCAL catalog (set of controls describing
-      security requirements).</p>
+      conceived of as a recipe or instruction set – a sequence of steps or procedures – whereby to
+      create an OSCAL catalog (set of controls describing security requirements) from an OSCAL
+      catalog (set of controls describing security requirements). The primary use case for this is
+      when we need to make a new catalog to apply to a set of systems, from a canonical, received,
+      mandated or standard catalog with a more general scope.</p>
     <p>This is because although catalogs - for example, the controls described in NIST SP 800-53 -
       are published, available for use, and even standardized, they can never be used exactly in the
       form in which they are acquired. They must be taken from the packaging and placed into
@@ -106,25 +137,31 @@
       arrange them in order (or not); and we must be able to condition them by setting parameters
       defined for them and making adjustments to them. </p>
     <p>By representing the steps by which a base catalog can be sliced, sifted, amended and edited,
-      into a (nominally) <q>finished</q> set of control requirements, a profile makes it easier to
+      into a (nominally) finished or ready set of control requirements, a profile makes it easier to
       codify and preserve even very temporary local revisions of a control catalog. Once expressed
       as a profile in OSCAL syntax, that is, a set of emendations to a catalog can be managed
       entirely separately and independently from the catalog.</p>
     <p>This separation of concerns - between the originating catalog authors, who describe policy in
       only general terms, and the authors of the <q>user manual</q> catalog, who must describe
       policy in very particular and local terms - is a necessary factor in supporting sustainable
-      processes with the potential for automation and process improvement.</p>
+      processes with the potential for automation and process improvement. An OSCAL profile bridges
+      the gap between a set of general guidelines, and actionable rules. Only by examining the
+      system in the context of the <q>actual intentions</q> appropriate to that system, can we
+      properly assess its security. </p>
     <p>In order for this to work however we need a process that can perform the necessary
-      operations, to <q>apply the delta</q> to an unmodified catalog, to produce the local view of
-      the catalog as modified. This is profile resolution.</p>
+      operations, to apply the delta to an unmodified catalog, to produce the local view of the
+      catalog as modified. This is profile resolution.</p>
   </div>
   <div>
     <head>Comments in result documents</head>
     <p>In an XML-based profile resolution, XML comments are one easy way for a processor to trace
-      events or conditions without affecting the main results. Two processors are obliged to return
-      the same catalog XML for the same profile XML inputs, but they are not required to match one
-      another's comments, whitespace usage, attribute order, or processing instructions, only each
-      other's elements and attributes.</p>
+      events or conditions without affecting the output's nominal semantics. To support this, while
+      two processors are obliged to return the same catalog XML for the same profile XML inputs,
+      they are not required to match one another's comments, whitespace usage, attribute order, or
+      processing instructions, only each other's elements and attributes.</p>
+    <p>One consequence of this is that processes intended to compare two profile resolutions may
+      have to accommodate differences in comments, considering them as insignificant along with
+      other differences in serialization.</p>
   </div>
     <section>
       <head>Profile mapping to catalog</head>
@@ -289,7 +326,7 @@
             <p>Select individual controls or controls by groups using <s>control-id</s> selectors
               corresponding to their IDs.</p>
             <cf file="examples/base-test_profile.xml"/>
-            <tagging whose="source">&lt;include>
+            <tagging whose="source_profile">&lt;include>
   &lt;call control-id="ac-1"/>
 &lt;/include>
 </tagging>
@@ -300,12 +337,13 @@
               because related controls (either in a hierarchy, or together in a group) frequently
               have related IDs as well.</p>
             <cf file="examples/include-match-test_profile.xml"/>
-            <tagging whose="source">&lt;include>
+            <tagging whose="source_profile">&lt;include>
   &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
 &lt;/include>
 </tagging>
-            <p><revisit>Calls and matches cannot be combined in a single include. To use both, use
-                more than one include statement. (See Issue 525.)</revisit></p>
+            <p>Calls and matches may be combined in a single control. Their effect is cumulative;
+              any control that is selected by both calling and matching from a given include
+              instruction, is included once (unless it is also marked for exclusion, see below).</p>
             <p><revisit>The match pattern is evaluated as a regular expression using XPath regular
                 expression syntax. [XXXX]</revisit></p>
           </section>
@@ -313,7 +351,7 @@
             <head>Selecting all controls</head>
             <p>Select all controls from a catalog by using an <s>include/all</s> rule:</p>
             <cf file="examples/include-all-test_profile.xml"/>
-            <tagging whose="source">&lt;include>
+            <tagging whose="source_profile">&lt;include>
   &lt;all/>
 &lt;/include>
 </tagging>
@@ -327,7 +365,7 @@
               <p>Child controls can be included by the same mechanism as controls, i.e. by means of
                 an ID call. Alternatively a match can frequently be applied (at least given most ID
                 assignment schemes) to match controls and child controls together.</p>
-              <p>Additionally, a <s>with-child-controls</s> directive on a <s>call</s> or
+              <p>Additionally, a <s>@with-child-controls</s> directive on a <s>call</s> or
                 <s>match</s> can indicate that child controls (that is, direct children not all
               descendants) should be included with the applicable call(s) or match(es).</p>
               <p>Furthermore, <s>all[@with-child-controls='no']</s> may select all controls placed
@@ -347,18 +385,17 @@
             it is excluded. Selection for exclusion prevails.</p>
           </section>
           <section><head>Implicit <s>all</s></head><p>An empty import statement should be considered the same as an import with an <s>include/all</s>.
-            An empy import instruction</p><tagging whose="source">&lt;import href="#nist-catalog"/>
+            An empy import instruction</p><tagging whose="source_profile">&lt;import href="#nist-catalog"/>
 </tagging><p>is
             functionally equivalent to
-              this:</p><tagging whose="source">&lt;import href="#nist-catalog">
+              this:</p><tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;include>
     &lt;all/>
   &lt;/include>
 &lt;/import>
 </tagging>
-          <cf file="examples/include-all-implicit-test_profile.xml"/><p>The
-              same thing occurs if an exclude instruction is given without an include
-              instruction.</p><p>Example:</p><tagging whose="source">&lt;import href="#nist-catalog">
+          <cf file="examples/include-all-implicit-test_profile.xml"/><p>The same thing occurs if an <s>exclude</s> instruction is given without an <s>include</s>
+            instruction.</p><p>Example:</p><tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;exclude>
     &lt;call control-id="ac-1"/>
   &lt;/exclude>
@@ -636,9 +673,11 @@
     <section>
       <head>Result catalog structure</head>
       <section>
-        <head>Form and organization of resolution out</head>
+        <head>Form and organization of resolution result</head>
         <p>The output of a profile resolution should take the form of a catalog.</p>
-        <p>(Validation against the catalog schema … recommended but not required?)</p>
+        <p>In most cases, catalog results will be valid to the OSCAL catalog. <revisit>Where invalid
+          results are possible, this specification should note the possibility and the expected
+          variance.</revisit></p>
       </section>
       <section>
         <head>top-level @id</head>
