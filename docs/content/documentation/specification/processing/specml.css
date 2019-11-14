@@ -3,7 +3,7 @@
 
 * { display: block }
 
-SPECIFICATION { font-family: serif }
+SPECIFICATION { font-family: serif; padding: 0.5rem }
 
 head { font-size: 150%; font-family: sans-serif }
 
@@ -16,7 +16,7 @@ ul { margin-top: 1em }
 
 li { font-size: 90% }
 
-div { margin-top: 1em; border: thin solid black; padding: 0.5em; background-color: grey;
+div { margin-top: 1em; border: thin solid black; padding: 0.5em; background-color: gainsboro;
     -oxy-foldable:true;
     -oxy-not-foldable-child: head }
 
