@@ -1,6 +1,5 @@
 Resolver pipeline
 
-
 See folder OSCAL/docs/content/documentation/specification/processing for specification and examples.
 
 
