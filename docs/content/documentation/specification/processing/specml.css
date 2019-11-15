@@ -12,9 +12,9 @@ div head { font-size: 90%; font-weight: bold }
 p { margin-top: 1em }
 
 
-ul { margin-top: 1em }
+ul { margin-top: 1em; list-style: circle }
 
-li { font-size: 90% }
+li { font-size: 90%; margin-left: 2em ; display: list-item }
 
 div { margin-top: 1em; border: thin solid black; padding: 0.5em; background-color: gainsboro;
     -oxy-foldable:true;
