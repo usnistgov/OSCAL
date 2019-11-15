@@ -21,8 +21,7 @@ tagging.elem = element tagging { attribute whose { text }, text }
 cf.elem = element cf { attribute file { text }?, empty }
 
 mapping.elem = element mapping {
-                attribute source_file { text }?,
-                attribute target_file { text }?,
+                attribute unit-test { text }?,
                     head.elem?, (p.elem*, tagging.elem)*, p.elem* }
 
 section.elem = element section { head.elem, misc, section.elem* }
