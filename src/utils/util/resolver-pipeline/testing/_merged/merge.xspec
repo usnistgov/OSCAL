@@ -62,6 +62,146 @@
             </profile>
         </x:expect>
     </x:scenario>
+    <x:scenario label="Parallel imports, no merge">
+        <x:context>
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+                <catalog id="xyz-tiny_catalog">
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                    </group>
+                    <group id="y">
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+            </profile>
+        </x:context>
+        <x:expect label="XYZ catalog twice, flat, with some redundancy">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                </catalog>
+                <catalog id="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Parallel imports, no merge, keeping first">
+        <x:context>
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+                <catalog id="xyz-tiny_catalog">
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1">
+                            <title>Control X1</title>
+                            <prop name="mod">modified property</prop>
+                        </control>
+                        <control id="x2"><title>Control X2</title></control>
+                    </group>
+                    <group id="y">
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+            </profile>
+        </x:context>
+        <x:expect label="XYZ catalog twice, flat, no duplicates this time">
+            <profile>
+                <catalog id="xyz-tiny_catalog">
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="z1"><title>Control Z1</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                        </control>
+                    </control>
+                </catalog>
+                <catalog id="xyz-tiny_catalog">
+                    <control id="x1">
+                        <title>Control X1</title>
+                        <prop name="mod">modified property</prop>
+                    </control>
+                    <control id="x2"><title>Control X2</title></control>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="y3"><title>Control Y3</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                        </control>
+                    </control>
+                </catalog>
+            </profile>
+        </x:expect>
+    </x:scenario>
     <x:scenario label="Single import, as-is merge">
         <x:context>
             <profile>
