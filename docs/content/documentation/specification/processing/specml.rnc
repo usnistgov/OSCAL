@@ -1,0 +1,43 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/specml"
+
+# Lightweight syntax sugar over tiny HTML subset
+
+start        = element SPECIFICATION { head.elem?, misc, section.elem+ }
+
+head.elem    = element head { inline-mixed }
+
+misc         = (p.elem | ul.elem | div.elem | tagging.elem | cf.elem | mapping.elem)*
+
+p.elem       = element p { inline-mixed }
+
+ul.elem      = element ul { li.elem+ }
+  
+li.elem      = element li { (p.elem | ul.elem )+ }
+
+div.elem     = element div { head.elem?, misc }
+
+tagging.elem = element tagging { attribute whose { text }, text }
+
+cf.elem = element cf { attribute file { text }?, empty }
+
+mapping.elem = element mapping {
+                attribute source_file { text }?,
+                attribute target_file { text }?,
+                    head.elem?, (p.elem*, tagging.elem)*, p.elem* }
+
+section.elem = element section { head.elem, misc, section.elem* }
+
+
+inline-mixed = (text | a | code | term | revisit | em | strong | q | s | t | xpath )*
+
+a       = element a       { attribute href { text }, text }
+code    = element code    { text }
+term    = element term    { text }
+revisit = element revisit { inline-mixed }
+q       = element q       { inline-mixed }
+em      = element em      { text }
+strong  = element strong  { text }
+s       = element s       { text }
+t       = element t       { text }
+xpath   = element xpath   { text }
+

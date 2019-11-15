@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-model href="profile-resolution-working-specml.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="specml.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="specml.css"?>
 <SPECIFICATION xmlns="http://csrc.nist.gov/ns/oscal/specml">
-    <!--description: A profile implicitly defines a control set; profile resolution makes this
-      control set explicit and available for further processing.-->
   <head>Profile Resolution</head>
   <p>These PRELIMINARY specifications describe how to render an OSCAL profile document in
     the form of an OSCAL catalog. We call this <term>profile resolution</term>.</p>
@@ -13,8 +11,20 @@
     reference to XML constructs such as <q>element</q> and <q>attribute</q> and examples using XML
     syntax: these however are for illustrative purposes only and normative only with respect to the
     semantic mapping, not the syntax as such. The XML orientation of the specification of this
-    mapping is an expediency; in the longer term we would like to have specifications that are
+    mapping is an expediency; in the longer term we plan specifications that are
     format-agnostic.</p>
+  <div>
+    <head>Terminological note</head>
+    <p>In these specifications there are references to <s>source</s>, <t>target</t> and
+        <term>result</term>. <s>Source</s> refers sometimes to profile documents as a type
+      (abstractly), and sometimes to instance profiles in operation, or elements within profiles
+      (particular kinds of sources). <t>Target</t> refers to the intended output of the
+      transformation, that is the catalog model generally (as a document type) or, for particular
+      source instances or elements, particular targets.</p>
+    <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
+      the intended or expected results. Conformance to these specifications requires that a
+      processor's actual result corresponds to this (nominal) target.</p>
+  </div>
   <div>
     <head>Use of XPath</head>
     <p>Additionally, in these specs there is lightweight use of XPath notation to identify elements
@@ -37,7 +47,7 @@
     </ul>
   </div>
   <div>
-    <head>Validation</head>
+    <head>Formal validation of source and result</head>
     <p>In an XML context, document validation is available as a means of determining whether an
       arbitrary XML document entity conforms to structural and naming constraints such as must be
       assumed by processors respecting application semantics. These specifications assume that XML
@@ -46,46 +56,33 @@
         <code>http://csrc.nist.gov/ns/oscal/1.0</code>.</p>
     <p>Similarly, the definition of the output format or results, is constrained by the OSCAL
         <term>catalog</term> model as defined by its schema.</p>
+  </div>
+  <div>
+    <head>ID uniqueness constraint</head>
     <p>In addition to the respective schemas, there are additional constraints over the data that
       this process relies on, both implicit (and unspecified) constraints regarding usage (to
       whatever extent this specification fails to define clear boundaries and expected behaviors),
       and explicit constraints not validated by the applicable schema. The most important of these
       is ID-distinctiveness. Every <s>@id</s> flag (in XML, represented by <xpath>@id</xpath>
-      attributes) on an element in the model, whether it be a control, group or subelement within a
-      control, must be distinct and unique to that control, within the defined processing scope,
-      inasmuch as this value will be used in processing as a proxy for <term>element identity</term>
-      and especially (in the case of controls) for <term>control identity</term>. That is, it is on
-      the basis of their IDs that controls are selected and referenced, and clashes are detected and
-      recognized. Because in current versions, the OSCAL schemas do not formally validate the
-      distinctiveness of ID values, this validation – within the scope of either the source document
-      (at minimum) or across a larger operational environment as appropriate – must be ensured by
-      another process.</p>
-    <p>For SP800-53 control catalog we have a Schematron for this purpose of validating that IDs
-      given to all elements, including those representing controls, parts of controls such as
-      statements or assessment objectives, parameters etc., are all unique within the catalog.</p>
-  </div>
-  <div>
-    <head>Terminological note</head>
-    <p>In these specifications there are references to <s>source</s>, <t>target</t> and
-        <term>result</term>. <s>Source</s> refers sometimes to profile documents as a type
-      (abstractly), and sometimes to instance profiles in operation (particular kinds of sources).
-        <t>Target</t> refers to the intended output of the transformation, that is the catalog model
-      generally (as a document type) or, for particular source instances, particular targets.</p>
-    <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
-      the intended or expected results. A processor's conformance can be described as the degree to
-      which its result resembles this target; that is, that resolving a profile in a particular
-      implementation produce correct results as described in these specs. Paradoxically, this means
-      that a correct target, in some circumstances, is invalid to the nominal target schema.
-      Correctness of a processor, in other words, in conforming to these specifications, may require
-      that sometimes its results are formally invalid to the target schema. Such situation will
-      generally reflect erros (even if not formally invalid) or unnecessary complexities in the
-      input; as such they are remediable and can be prevented by design. These conditions are not
-      described by these specifications as errors, but they may be noted as occasions for
-      warnings.</p>
-    <p>In a normal or default configuration, a conformant processor should not repair these problems
-      on its own (making it difficult or impossible to duplicate its results in another conformant
-      processor). It may provide features making it easier to detect and repair problems in source
-      data that give rise to them.</p>
+      attributes) on an element in the model, whether it be a control, group or an element within a
+      control, must be distinct and unique, within the defined processing scope, inasmuch as this
+      value will be used in processing as a proxy for <term>element identity</term> and especially
+      (in the case of controls) for <term>control identity</term>. That is, it is on the basis of
+      their IDs that controls are selected and referenced, and clashes are detected and recognized
+      between competing representations of controls.</p>
+    <p>One of the reasons a document may be considered by this specification as
+      <term>invalid</term>, is that violates constraints over ID uniqueness, even if it is formally
+      schema-valid. Because in current versions, the OSCAL schemas do not formally validate the
+      distinctiveness of ID values, this constraint – within the scope of either the source document
+      (at minimum) or across a larger operational environment as appropriate – must be checked by
+      another process. For SP800-53 control catalog we have a Schematron for this purpose of
+      validating that IDs given to all elements, including those representing controls, parts of
+      controls such as statements or assessment objectives, parameters etc., are all unique within
+      the catalog.</p>
+    <p>Because ID distinctiveness within the scope of processing, is critical, OSCAL users should
+      take care that different catalogs have distinct sets of IDs. This applies to all  structures
+      within the catalogs, not only controls but also groups, parameters, citations and
+      resources.</p>
   </div>
   <div>
     <head>Detecting issues in profiles</head>
@@ -221,9 +218,10 @@
         selected and modified is discussed first.</p>
     </section>
       <section>
-        <head>Import</head>
-      <p>A profile begins by importing catalogs, all of whose controls are then available for
-        selection. Imports are given in series after the metadata:</p>
+        <head>Import - select controls</head>
+      <p>A profile begins by importing catalogs, all of whose controls are made available. Each
+        import constitutes a <term>selection</term> of controls from a catalog or profile. Imports
+        are given in series after the metadata:</p>
       <tagging whose="source_profile">&lt;profile>
   &lt;metadata>[ Profile metadata ]&lt;/metadata>
   &lt;import href="#catalog">... selection of controls ...&lt;/import>
@@ -245,7 +243,7 @@
           <p>Indicating a file available via <revisit>[prototol?]</revisit></p>
           <tagging whose="source_profile">&lt;import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
   &lt;include>
-	&lt;call control-id="ac-1"/>
+    &lt;call control-id="ac-1"/>
   &lt;/include>
 &lt;/import>
 </tagging>
@@ -259,7 +257,7 @@
           <cf  file="examples/base2-test_profile.xml"/>
           <tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;include>
-	&lt;call control-id="ac-1"/>
+    &lt;call control-id="ac-1"/>
   &lt;/include>
 &lt;/import>
 
@@ -456,7 +454,7 @@
       </section>
       </section>
       <section>
-        <head>Merge - defines rules on how to arrange / manage controls</head>
+        <head>Merge - manage and organize imported controls</head>
         <section>
           <head><s>merge/combine</s> - handling control collisions</head>
           <p><term>Colliding controls</term> (or <term>clashing</term>) describes the condition that
@@ -610,7 +608,7 @@
         </section>
       </section>
       <section>
-        <head>Modify - controls are amended or modified</head>
+        <head>Modify - set parameters and amend or alter controls</head>
         <p>(Aka <term>patching</term>) Explicit modification of control content</p>
         <p>There are two ways a control may need to be modified. Commonly, controls might be amended
         – new material might be added. (For example, the priority marker properties P1-P3 in the
@@ -619,6 +617,10 @@
         <p>OSCAL does not provide for <q>changing</q> a control, but editing can be achieved by removing
           contents and adding (edited) contents back. In other words, editing is considered to be
           the same kind of patching as removing combined with adding.</p>
+      <p>In addition to any modification or adjustment to controls, this section of a profile is used
+        to set parameter values or other properties of parameters declared in catalogs and
+        referenced from their text. Parameters are propagated with the profile's setting into the
+        result catalog for its use.</p>
         <section>
           <head>Parameter settings</head>
           <p>Modification of parameter settings is indicated using <s>set</s>.</p>
@@ -645,24 +647,31 @@
               <s>param/value</s> or <s>param/select</s> on the affected parameter</p></li>
             <li><p>Other elements given in a parameter <s>set</s> are added to the affected
               parameter, after elements of the same name</p></li>
-            <li><p>The prescribed order of all elements in the affected parameter is retained:
-                <t>label</t>; <t>usage</t>; <t>constraint</t>;
-                <t>guideline</t>; <t>value</t> or <t>select</t>; and
-                <t>link</t>.</p></li>
+            <li><p>The prescribed order of elements in the affected parameter is retained: <t>label</t>;
+                <t>usage</t>; <t>constraint</t>; <t>guideline</t>; <t>value</t> or <t>select</t> (a
+              choice); and <t>link</t>.</p></li>
           </ul>
           <p>[example]</p>
-          <tagging whose="source">&lt;param id="p1">
+          <tagging whose="source_catalog">&lt;param id="p1">
   &lt;title>Password length&lt;/title>
   &lt;value>10&lt;/value>
 &lt;/param>
-
-...
-
-&lt;set param-id="p1">
+</tagging>
+        <tagging whose="source_profile">&lt;set param-id="p1">
   &lt;select>
     &lt;choice>10&lt;/choice>
     &lt;choice>11&lt;/choice>
   &lt;/select>
+&lt;/set>
+</tagging>
+        <p>Note that <t>select</t> replaces <s>value</s>:</p>
+        <tagging whose="target_catalog">&lt;param id="p1">
+  &lt;title>Password length&lt;/title>
+  &lt;select>
+    &lt;choice>10&lt;/choice>
+    &lt;choice>11&lt;/choice>
+  &lt;/select>
+&lt;/param>
 </tagging>
         <section>
           <head>Setting a missing parameter</head>
@@ -679,14 +688,54 @@
           results are possible, this specification should note the possibility and the expected
           variance.</revisit></p>
       </section>
+    <section>
+      <head>Valldation of resolution result</head>
+      <p>Although the result of profile resolution takes the form of a catalog, it may not be valid
+        to all constraints that define OSCAL catalog format, whether enforced by its schema or by
+        other means such as Schematron. This is because correct processing of incoherent inputs
+        (even when valid to the profile schema) must result in incoherent outputs.</p>
+      <p>The conditions that produce invalid outputs can however be detected and prevented. [Any
+        other issues here?]</p>
+      <ul>
+        <li>
+          <p>If the merge behavior is set to <s>combine[@method='keep']</s>, or not given (as this
+            setting is the default), a profile with multiple calls on controls will result in
+            controls and possibly groups with clashing IDs. These should both raise validation
+            errors since IDs must be unique on elements in document scope.</p>
+          <p>This can be prevented in either of two ways:</p>
+          <ul>
+            <li>
+              <p>Ensure that no controls are called more than once, even across separate imports.
+                This condition can generally be detected statically by comparing the imports, taking
+                their catalogs into account when <s>include/all</s> is used (explicitly or
+                implicitly when no <s>include</s> is given).</p>
+            </li>
+            <li>
+              <p>Use another combination method (<s>method='use-first'</s> or <s>method='merge'</s>)
+                to resolve the clashes.</p>
+            </li>
+          </ul>
+          <p> by using a different combination rule and/or (the correct solution in any case) by
+            ensuring that and that any groups called more than once in different imports of a given
+            catalog (even indirectly by way of intervening profiles) are merged using
+              <s>merge/as-is</s> or <s>merge/custom</s>.</p>
+        </li>
+        <li>
+          <p>Similarly, <s>combine[@method='keep']</s> can result in clashing groups, even
+            containing distinct (non-clashing) controls, when the source catalog with group
+            structures is called more than once (in parallel imports). Such groups can be merged by
+            using either directive <s>merge/as-is</s> or <s>merge/custom</s>.</p>
+        </li>
+      </ul>
+    </section>
       <section>
         <head>top-level @id</head>
         <p>Because document IDs are sometimes used to distinguish data points in processing context,
           a resolved profile may not present the same ID as any of the catalogs it is importing, or
           the same ID as its source profile.</p>
         <p>It is permitted to produce the profile’s ID in resolution via a static mapping from the
-          ID of the source. For example, the resolution of profile with ID 'profile-X' might have ID
-          'profile-X-RESOLUTION'.</p>
+        ID of the source. For example, the resolution of profile with ID <code>profile-X</code>
+        might have ID <code>profile-X-RESOLVED</code>.</p>
       </section>
       <section>
         <head>Instance metadata</head>
@@ -710,15 +759,25 @@
     </section>
       <section>
         <head>Profile back matter</head>
-        <p>Profiles may have back matter.</p>
+        <p>Profiles may have back matter. Elements in the back </p>
         <p>Under the <term>no merge</term> rules, profile back matter is copied into the resulting catalog
           without modification, along with back matter filtered from imported catalogs and profiles
           (next section). This may result in invalid outputs when more than a single back-matter is
           given in the results.</p>
       </section>
       <section>
-        <head>Resource back matter</head>
-        <p>Back matter in OSCAL can contain either or both citations and resources.</p>
+        <head>Result back matter</head>
+      <p>Back matter in OSCAL can contain either or both citations and resources.</p>
+      <p>A <t>back-matter</t> element appears in the result only when, after selection or merging,
+        there are elements in <s>back-matter</s>
+        <em>either in the source profile, or its imported catalogs</em>, which are linked from
+        elements in the result catalog. These links can be anywhere; they will take the form of
+        internal links (elements <s>link</s> and <s>a</s>, for inline and block-level links
+        respectively) with <s>@href</s> flags (attributes) indicating an internal cross-reference by
+        means of a URI fragment identifier (starting with <code>#</code>).</p>
+      <p>To produce this element, <s>citation</s> and <s>resource</s> elements from the back-matter
+        from the source profile and from all imported catalogs are copied, then their cit</p>
+      <p>ID clashing problems may have impact on referential integrity.</p>
         <p>A citation is a reference to an out of line document, included for reference purposes.
           Controls may contain cross-references to these citations.</p>
         <p>A resource is like a citation, but is more tightly controlled with a more rigorous
@@ -732,11 +791,25 @@
       <section>
         <head>Result structure</head>
         <p>The rest of the catalog is structured as follows:</p>
-        <p>If no 'merge' was given, or if 'merge' is given without 'custom' or 'as-is', controls are
-          flat.</p>
-        <p>If merge/custom is used, see above.</p>
-        <p>Special case rules for handling multiple imports - are controls grouped by their source
-          catalogs (intermediate or ultimate) and should the import hierarchy be reflected?</p>
+      <ul>
+        <li>
+          <p>If no <s>merge</s> was given, or if <s>merge</s> is given without <s>custom</s> or
+              <s>as-is</s>, controls are flat (unstructured) in the result catalog.</p>
+          <p>It has a structure as follows <revisit>(RNC notatation)</revisit>: <code>(metadata,
+              param*, control*, back-matter?)</code></p>
+        </li>
+        <li>
+          <p>If <s>merge/as-is</s> is used, the structure of the result will reflect the
+            structure(s) of the source catalog(s).</p>
+          <p>Its structure has the content model <code>(metadata, param*, control*, group*,
+              back-matter?)</code> where <code>group</code> has the model <code>(title?, control*,
+              group*)</code></p>
+        </li>
+        <li>
+          <p>If <s>merge/custom</s> is used, see above. The content model of the result catalog is
+            the same as that for <s>merge/as-is</s>.</p>
+        </li>
+      </ul>
         <p>(Examples)</p>
       </section>
       <section>

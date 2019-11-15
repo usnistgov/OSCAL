@@ -19,5 +19,9 @@
             <sch:assert test="empty(@id) or count(key('elements-by-id',@id)) = 1">Duplicate @id appears</sch:assert>
         </sch:rule>
         
+        <sch:rule context="oscal:import">
+            <sch:assert test="starts-with(@href,'#') or exists(document(@href,/)/*)">No document is found at import @href target 
+                <sch:value-of select="@href"/>.</sch:assert>
+        </sch:rule>
     </sch:pattern>
 </sch:schema>
