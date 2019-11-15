@@ -21,19 +21,19 @@
         <x:expect label="Select all controls, grouped">
             <profile>
                 <catalog id="xyz-tiny_catalog">
-                    <group>
+                    <group id="...">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
                         <control id="x2"><title>Control X2</title></control>
                         <control id="x3"><title>Control X3</title></control>
                     </group>
-                    <group>
+                    <group id="...">
                         <title>Group Y of XYZ</title>
                         <control id="y1"><title>Control Y1</title></control>
                         <control id="y2"><title>Control Y2</title></control>
                         <control id="y3"><title>Control Y3</title></control>
                     </group>
-                    <group>
+                    <group id="...">
                         <title>Group Z of XYZ</title>
                         <control id="z1"><title>Control Z1</title></control>
                         <control id="z2"><title>Control Z2</title></control>
@@ -58,14 +58,16 @@
             </profile>
         </x:context>
         
-        <x:expect label="Control x1, in its group">
+        <x:expect label="Control x1, in its group, with other groups empty">
             <profile>
                    <catalog id="xyz-tiny_catalog">
-                        <group>
+                        <group id="...">
                             <title>Group X of XYZ</title>
                             <control id="x1"><title>Control X1</title></control>
                         </group>
-                    </catalog>
+                       <group id="..."><title>Group Y of XYZ</title></group>
+                       <group id="..."><title>Group Z of XYZ</title></group>
+                   </catalog>
             </profile>
         </x:expect>
     </x:scenario>
@@ -85,12 +87,14 @@
         <x:expect label="The x controls, matched as such">
             <profile>
                 <catalog id="xyz-tiny_catalog">
-                    <group>
+                    <group id="...">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
                         <control id="x2"><title>Control X2</title></control>
                         <control id="x3"><title>Control X3</title></control>
                     </group>
+                    <group id="..."><title>Group Y of XYZ</title></group>
+                    <group id="..."><title>Group Z of XYZ</title></group>
                 </catalog>
             </profile>
         </x:expect>
@@ -112,17 +116,17 @@
         <x:expect label="All controls but x1,y1,z1, grouped">
             <profile>
                 <catalog id="xyz-tiny_catalog">
-                    <group>
+                    <group id="...">
                         <title>Group X of XYZ</title>
                         <control id="x2"><title>Control X2</title></control>
                         <control id="x3"><title>Control X3</title></control>
                     </group>
-                    <group>
+                    <group id="...">
                         <title>Group Y of XYZ</title>
                         <control id="y2"><title>Control Y2</title></control>
                         <control id="y3"><title>Control Y3</title></control>
                     </group>
-                    <group>
+                    <group id="...">
                         <title>Group Z of XYZ</title>
                         <control id="z2"><title>Control Z2</title></control>
                         <control id="z3"><title>Control Z3</title>
@@ -151,12 +155,14 @@
         <x:expect label="The x controls, matched as such">
             <profile>
                 <catalog id="xyz-tiny_catalog">
-                    <group>
+                    <group id="...">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
                         <control id="x2"><title>Control X2</title></control>
                         <control id="x3"><title>Control X3</title></control>
                     </group>
+                    <group id="..."><title>Group Y of XYZ</title></group>
+                    <group id="..."><title>Group Z of XYZ</title></group>
                 </catalog>
             </profile>
         </x:expect>

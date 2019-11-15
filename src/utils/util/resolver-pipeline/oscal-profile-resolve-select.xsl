@@ -39,12 +39,13 @@
     
     <!-- We want a group only if there is something to put in it.  -->
     <xsl:template match="group" mode="o:select">
-        <xsl:variable name="results">
-            <xsl:apply-templates select="group|param|control" mode="#current"/>
-        </xsl:variable>
-        <xsl:if test="exists($results/*)">
-            <xsl:next-match/>
-        </xsl:if>
+        <xsl:copy>
+            <!-- add an ID for downstream processing when the source has none -->
+            <xsl:if test="empty(@id)">
+                <xsl:attribute name="id">#<xsl:value-of select="concat('#',(@id,generate-id())[1])"/></xsl:attribute>    
+            </xsl:if>
+            <xsl:apply-templates mode="o:select" select="node() | @*"/>
+        </xsl:copy>
     </xsl:template>
     
     <!-- A control is included if it is selected by the provided import instruction -->

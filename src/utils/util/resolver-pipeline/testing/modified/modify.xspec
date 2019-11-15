@@ -2,13 +2,32 @@
 <x:description
     xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-modify.xsl">
-    <x:scenario label="Scenario for testing a function">
+    <x:scenario label="Base">
         <x:context>
-            <profile/>
+            <profile id="abc"/>
         </x:context>
-
+        
         <x:expect label="profile becomes catalog">
-            <catalog/>
+            <catalog id="abc-RESOLVED"/>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Collapsing imports">
+        <x:context>
+            <profile id="abc">
+                <catalog id="a123">
+                    <control id="a"><title>Control A</title></control>
+                </catalog>
+                <catalog id="b456">
+                    <control id="b"><title>Control B</title></control>
+                </catalog>
+            </profile>
+        </x:context>
+        
+        <x:expect label="Imported catalogs are collapsed">
+            <catalog id="abc-RESOLVED">
+                <control id="a"><title>Control A</title></control>
+                <control id="b"><title>Control B</title></control>
+            </catalog>
         </x:expect>
     </x:scenario>
 </x:description>
