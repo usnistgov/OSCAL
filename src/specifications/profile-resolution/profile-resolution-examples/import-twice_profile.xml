@@ -3,7 +3,7 @@
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="base2-test_profile">
+    id="import-twice_profile">
     <!-- Like base-test_profile, except references the catalog in a resource.   -->
     <metadata>
         <title>Test Profile</title>
@@ -14,6 +14,13 @@
     <import href="#catalog">
         <include>
             <call control-id="a1"/>
+            <call control-id="b1"/>
+            <call control-id="c1"/>
+            <call control-id="c3"/>
+        </include>
+    </import>
+    <import href="#catalog">
+        <include>
             <call control-id="b1"/>
             <call control-id="c1"/>
             <call control-id="c3"/>

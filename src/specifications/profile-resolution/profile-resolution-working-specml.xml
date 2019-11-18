@@ -25,20 +25,31 @@
       transformation, that is the catalog model generally (as a document type) or, for particular
       source instances or elements, particular targets.</p>
     <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
-      the intended or expected results. Conformance to these specifications requires that a
-      processor's actual result corresponds to this (nominal) target.</p>
-    <p>Additionally, the term <term>directive</term> is used in these specifications to refer to an
-      element or combination of elements in source data, which is designed to effect a particular
-      outcome in the result catalog. For the most part, directives are in the source profile
-      document – for example, a <s>merge/as-is</s> element represents a directive to merge the
-      catalog into a structure isomorphic to the source catalog(s), hence <q>as is</q>. Similarly, a
-        <s>set</s> element in a profile is a directive to set a parameter value in the result
-      catalog.</p>
-    <p>In contrast, catalogs do not contain directives but instead, representations of security
-      controls and their parts, optionally in groups, on which directives are assumed to operate.
-      There is one exception: the <s>insert</s> element in control catalogs is a directive that a
-      parameter value be inserted into a particular location in running text (data content), when a
-      catalog is rendered.</p>
+        the intended or expected results. Conformance to these specifications requires that a
+        processor's result corresponds to the target as described, given a particular source.</p>
+    <p>The term <term>directive</term> is used in these specifications to refer to an element or
+        combination of elements in source data, which is designed to effect a particular outcome in
+        the result catalog. For the most part, directives are in the source profile document – for
+        example, a <s>set</s> element in a profile is a directive to set a parameter value in the
+        result catalog.</p>
+    <p>In contrast to profiles, catalogs do not contain directives but instead, representations of
+        security controls and their parts, optionally in groups, on which directives are assumed to
+        operate. There is one exception: the <s>insert</s> element in control catalogs can be
+        considered a directive that a parameter value be inserted into a particular location in
+        running text (data content), when a catalog is rendered. Since these semantics respect
+        catalog rendering, however, not profile resolution, they are out of scope for this
+        document.</p>
+      <p>Finally, this specification describes not only (source) profiles and (result) catalogs, but
+          <term>interim catalogs</term> as well. This is because the conceptual model of profile
+        resolution takes a profile through several steps, in which controls are collected from
+        source catalogs, combined, and potentially modified. As described by this specification,
+        interim catalogs are produced during this process: they are essentially  temporary
+        collections of controls in a transitional state. In the last stage of processing, these
+        interim catalogs are collapsed or combined into the single result catalog.</p>
+      <p>For illustrative purposes, these interim catalogs are, like source and target formats, also
+        be represented by tagging in examples given here, even though no OSCAL processor is obliged
+        to produce or recognize such XML at any point, as long as it produces the same results
+        (final outputs) from the same inputs.</p>
   </section>
   <section>
     <head>Use of XPath</head>
@@ -71,27 +82,31 @@
       <p>A <term>profile</term> in OSCAL represents a selection and configuration of a set of
           <term>controls</term>. In the normal case, the set of controls available to a profile is
         provided by a catalog. For example, the three NIST SP 800-53 profiles representing the
-        impact baselines HIGH, MODERATE and LOW: each of these calls on the full SP 800-53/53A
-        catalog for its controls. In a data processing system, this dependency can be modeled in the
-        form of separate documents - the (nominal) <q>catalog</q> and its <q>profile</q>, the latter
-        being the selection and application of controls, as distinct from the catalog from which those controls are derived.</p>
+        impact baselines HIGH, MODERATE and LOW: each of these calls on a catalog representing the
+        families, controls and control enhancements described in SP 800-53/53A. In a data processing
+        system, this dependency can be modeled in the form of separate documents - the (nominal)
+          <q>catalog</q> and its <q>profile</q>, the latter being the selection and application of
+        controls, as distinct from the catalog from which those controls are derived.</p>
       <p>However, profiles may also select controls from profiles, implicitly selecting from
-        underlying catalogs <em>as modified by those profiles</em>. And they can select a combination of 
+        underlying catalogs as modified by those profiles. And they can select a combination of
         controls from more than one catalog or profile origin.</p>
-      <p>In the most common case, a profile will source its controls from a single catalog or
-        perhaps a complementary pair of catalogs (perhaps an authoritative or standard catalog, plus
-        a supplement). In the general case and more broadly, however, OSCAL must support sourcing
-        more than one catalog at once, in order to aggregate and organize controls from any sources.
-        This specification describes handling that within an ordinary workflow context must be
-        considered (and detected and handled) as error conditions, and this especially applies to
-        situations where multiple catalogs are sourced, or where the same catalog is sourced more
-        than once.</p>
+      <p>In the most common case, a profile will acquire its controls from a single catalog or
+        perhaps a complementary pair of catalogs (perhaps an authoritative standard catalog, plus a
+        supplement). In the general case and more broadly, however, OSCAL must support sourcing more
+        than one catalog at once, in order to aggregate and organize controls from any sources. In
+        order to provide sensible and transparent results even for incoherent inputs, this
+        specification defines these processes such that legible and testable results are produced
+        even when they are formally invalid to all constraints governing the outputs. Such
+        downstream processing errors including validation errors are expected to be detectable and
+        remediable. This especially applies to situations where multiple catalogs are sourced, or
+        where the same catalog is sourced more than once.</p>
       <p>In order to support these semantics – because whatever data set is sourced by a profile, it
         must <q>look like a catalog</q> – the results of resolving a single profile must be in the
         form of a single (<q>virtual</q> or implicit) catalog. Two different OSCAL processors that
-        promise profile resolution, must deliver the same catalog with regard to its controls and
-        the structure (groups) in which they are embedded. This specification is designed to make
-        this possible, by defining <q>the same</q> in this context.</p>
+        promise profile resolution, must deliver the same catalog with regard to its controls; their
+        ordering (insofar as the target format represents ordering) and the structure (groups) in
+        which they are embedded. This specification is designed to make this possible, by defining
+          <q>the same</q> in this context.</p>
     </section>
     <section>
       <head>Why resolve a profile as a catalog</head>
@@ -105,21 +120,25 @@
         are published, available for use, and even standardized, they can never be used exactly in
         the form in which they are acquired. They must be taken from the packaging and placed into
         operational context before they mean anything. This typically requires a few operations over
-          <q>raw catalogs</q> be supported. We must be able to select controls; we must be able to
-        arrange them in order (or not); and we must be able to condition them by setting parameters
-        defined for them and making adjustments to them. </p>
+          <q>raw catalogs</q> be supported by a profiling mechanism. We must be able to select
+        controls; we must be able to arrange them in order (or not); and we must be able to
+        condition them by setting parameters defined for them and making adjustments to them. </p>
       <p>By representing the steps by which a base catalog can be sliced, sifted, amended and
         edited, into a (nominally) finished or ready set of control requirements, a profile makes it
-        easier to codify and preserve even very temporary local revisions of a control catalog. Once
-        expressed as a profile in OSCAL syntax, that is, a set of emendations to a catalog can be
-        managed entirely separately and independently from the catalog.</p>
+        easier to codify and preserve even very incidental or temporary local revisions of a control
+        catalog. Once expressed as a profile in OSCAL syntax, that is, a set of emendations to a
+        catalog can be managed entirely separately and independently from the catalog. Because a
+        conformant processor can always create the customized catalog, by resolving the profile
+        against its sources, it can also be taken as a proxy for that catalog for other purposes.
+        The customized catalog can be made available wherever and for whatever purposes it is
+        needed, while its revision and maintenace can be focused on the profile.</p>
       <p>This separation of concerns - between the originating catalog authors, who describe policy
         in only general terms, and the authors of the <q>user manual</q> catalog, who must describe
         policy in very particular and local terms - is a necessary factor in supporting sustainable
         processes with the potential for automation and process improvement. An OSCAL profile
         bridges the gap between a set of general guidelines, and actionable rules. Only by examining
-        the system in the context of the <q>actual intentions</q> appropriate to that system, can we
-        properly assess its security. </p>
+        the system in the context of the actual intentions appropriate to that system, can we
+        properly assess its security. Profiles make this possible.</p>
       <p>In order for this to work however we need a process that can perform the necessary
         operations, to apply the delta to an unmodified catalog, to produce the local view of the
         catalog as modified. This is profile resolution.</p>
@@ -191,6 +210,19 @@
       <p>In most cases, catalog results will be valid to the OSCAL catalog. <revisit>Where invalid
           results are possible, this specification should note the possibility and the expected
           variance.</revisit></p>
+      <p> At its base, an OSCAL <s>profile</s> source produces a <t>catalog</t>:</p>
+      <mapping unit-test="base-test_profile.xml">
+        <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
+        <tagging whose="target_catalog">&lt;catalog id="{new-catalog-identifier}">
+  &lt;metadata>[Required metadata, as described below]&lt;/metadata>
+  [ Controls or control groups, as described below ]
+  &lt;back-matter>[Optional back matter as described below]&lt;/back-matter>
+&lt;/catalog></tagging>
+      </mapping>
+      <p>A valid catalog must have <t>metadata</t> in addition to controls and control groups.
+        Additionally it may have <t>back-matter</t>. How to produce and populate the <t>metadata</t>
+        and <t>back-matter</t> is described below, as is the construction of the <t>catalog/@id</t>
+        in the result.</p>
     </section>
     <section>
       <head>Validation of resolution result</head>
@@ -243,8 +275,8 @@
     </section>
     <section>
       <head>Instance metadata</head>
-      <p>[XXX Rules for constructing or copying or modifying a metadata section for a resolved
-        profile]</p>
+      <p><revisit>[XXX Rules for constructing or copying or modifying a metadata section for a
+          resolved profile]</revisit></p>
       <tagging whose="target_catalog">&lt;title>{ profile title} RESOLUTION&lt;/title>
 &lt;last-modified>{ resolution date stamp }&lt;/last-modified>
 &lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
@@ -253,13 +285,15 @@
     </section>
     <section>
       <head>Body of the result</head>
-      <p>The body of the result <t>catalog</t>, after the metadata, is structured as follows:</p>
+      <p>The construction of the body of the result catalog is described in the next section.</p>
+      <p>The body of the result <t>catalog</t>, after its <term>metadata</term>, is structured as
+        follows, depending on its merge directive:</p>
       <ul>
         <li>
           <p>If no <s>merge</s> was given, or if <s>merge</s> is given without <s>custom</s> or
               <s>as-is</s>, controls are flat (unstructured) in the result catalog.</p>
-          <p>The result catalog has a content model as follows <revisit>(RNC notatation)</revisit>:
-              <code>(metadata, param*, control*, back-matter?)</code></p>
+          <p>The result catalog has a content model as follows <revisit>(DTD/RNC
+              notatation)</revisit>: <code>(metadata, param*, control*, back-matter?)</code></p>
         </li>
         <li>
           <p>If <s>merge/as-is</s> is used, the structure of the result will reflect the
@@ -273,7 +307,6 @@
             the same as that for <s>merge/as-is</s>.</p>
         </li>
       </ul>
-      <p>(Examples)</p>
       <p>Unless it be for special purposes in a debugging or tracing mode, profile results may not
         show and groups or structures in the form of elements not described here. Depending on the
         merge directive, all groups will be given either by the catalog source(s)
@@ -281,33 +314,38 @@
         all (no merge rule).</p>
     </section>
     <section>
-      <head>Profile and catalog back matter</head>
-      <p>Profiles may have back matter, and so may the catalogs (or resolved profiles) they import.
-        Elements in the back matter include <s>citation</s> and <s>resource</s>.</p>
-      <p>Either of these elements may be cross-referenced elsewhere in profile source by means of a
-        URI fragment identifier on an <s>href</s> flag, for example <code>&lt;resource
-          id="document-X</code>> may be referenced by <code>&lt;link href="#document-X"></code>.</p>
-      <p>Elements in the profile back matter must persist in the result if either of two conditions
-        obtains:</p>
+      <head>Back matter</head>
+      <p>The back matter in result catalogs is assembled from the back matter of their source
+        profiles in combination with the back matter of source catalogs. These are all comprised by
+          <s>back-matter</s> elements. Elements inside <s>back-matter</s> include <s>citation</s>
+        and <s>resource</s>. Either of these elements may be cross-referenced from any location in
+        their source documents by means of a URI fragment identifier on an <s>href</s> flag, for
+        example <code>&lt;resource id="document-X</code>> may be referenced by <code>&lt;link
+          href="#document-X"></code>. Whether an element inside back matter is included in the
+        result, depends on whether such a cross-reference has been included.</p>
+      <p>Specifically, any <s>citation</s> or <s>resource</s> inside <s>back-matter</s> either in
+        the profile, or in any imported catalog, is considered eligible for propagation into the
+        result if either of two conditions obtains:</p>
       <ul>
         <li>
-          <p>The element is referenced from the profile metadata</p>
+          <p>The element is referenced by any element inside the profile metadata.</p>
         </li>
         <li>
           <p>The element is referenced from a link or anchor (<s>link</s> or <s>a</s> element)
-            inside controls, parameters, or any copy (for example, <t>group/part</t> included in the
-            resolved profile).</p>
+            inside controls, parameters, or any copy (for example, paragraphs inside
+              <t>group/part</t> included in the resolved profile).</p>
         </li>
       </ul>
+      <p>The assembly of the result <term>back-matter</term> occurs by including all eligible
+        citation elements followed by all resource elements, in the same order as given in their
+        sources.</p>
+      <p>Additionally, merge rules (see next section) will affect whether and how duplicate or
+        competing <s>citation</s> or <s>resource</s> elements are handled, to remove or combine
+        multiple occurrences of the same referenced object.</p>
       <p>In resolution, one way of obtaining this result is to permit all contents of back matter to
         persist until controls are selected and modified (that is, through the modification stage),
         and then filter these to include only those elements still referenced by included
         contents.</p>
-    </section>
-    <section>
-      <head>Merge clashes</head>
-      <p>… merge clash rules …</p>
-      <p>… examples …</p>
     </section>
   </section>
     <section>
@@ -316,57 +354,36 @@
         each of which corresponds to a conceptual step in resolution. To resolve a catalog fully is
         to perform all these steps.</p>
       <p>While the steps are described in this specification as occurring in sequence, a profile
-        processor is not obliged to perform them in the order described. Conformance to these
-        specifications is determined by whether the results of processing (*resolution*) appear as
-        described, not on whether the means to produce those results work in exactly the manner
-        described here.</p>
-      <p>The three steps are <term>import</term> (control selection); <term>merge</term>; and
-        <term>modify</term>. In brief:</p>
+      processor is not obliged to perform them in the order described. Conformance to these
+      specifications is determined by whether the results of processing (<term>resolution</term>)
+      appear as described, not on whether the means to produce those results work in exactly the
+      manner described here.</p>
+      <p>The three steps are <s>import</s> (control <term>selection</term>); <s>merge</s>; and
+        <s>modify</s>. In brief:</p>
       <ul>
-        <li><p><term>import</term> identifies one or more control sources (catalogs or profiles) and the
-          controls within them to be included in this profile</p></li>
-        <li><p><term>merge</term> produces the rules for how controls will be organized and merged (or not)</p></li>
-        <li><p><term>modify</term> indicates how parameters in the underlying catalog may be modified or set,
-          and how control contents may be amended or modified.</p></li>
+        <li><p><s>import</s> identifies one or more control sources (catalogs or profiles) and the controls
+          within them to be included in this profile</p></li>
+        <li><p><s>merge</s> produces the rules for how controls will be organized and merged (or not)</p></li>
+        <li><p><s>modify</s> indicates how parameters in the underlying catalog may be modified or set, and how
+          control contents may be amended or modified.</p></li>
       </ul>
-      <p>The selection (import) stage is mandatory inasmuch as a profile that imports no controls is
-      inoperative. Such a profile is not in error and it can be resolved, but its resolution will
-      contain no controls (and as such might fail a validation check against the catalog
-      schema).</p>
-      <p>The merge stage can be considered mandatory in that there are default rules for merging, to
-        be followed when no merge behavior is given; thus <q>no merging</q> is permitted, and a profile
-        with no merge semantics indicated is not in error.</p>
-      <p>The modify stage is optional in that controls do not have to be modified and parameters do
-      not have to be set; a profile is always free to represent these components as they are given
-      in their catalogs. Leaving a parameter unset, or qualifying its setting (with additional
-      information or constraints) without modifying its value, is also possible; like a catalog, a
-      profile can represent a set of controls (and parameters) that are not fully defined, for
-      purposes of use at another layer (profile or implementation) where such definition can be
-      provided.</p>
-      <p>When resolved, an OSCAL profile takes the form of an OSCAL catalog, whose organization and
-        parts are described in the next section. The merge semantics described below will produce
-        outputs conforming to this organization.</p>
-    <section>
-      <head>Catalog results - top level</head>
-      <p>The following sections describe how to populate and organize the body of a result catalog
-        (a target) with controls invoked by a profile from a source catalog. At its base, an OSCAL
-          <s>profile</s> source should produce a <t>catalog</t>:</p>
-      <mapping unit-test="base-test_profile.xml">
-        <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
-        <tagging whose="target_catalog">&lt;catalog id="{new-catalog-identifier}">
-  &lt;metadata>[Required metadata, as described below]&lt;/metadata>
-  [ Controls or control groups, as described below ]
-  &lt;back-matter>[Optional back matter as described below]&lt;/back-matter>
-&lt;/catalog></tagging>
-      </mapping>
-      <p>A valid catalog must have <t>metadata</t> in addition to controls and control groups.
-        Additionally it may have <t>back-matter</t>. How to produce and populate the <t>metadata</t>
-        and <t>back-matter</t> is described below, as is the construction of the <t>catalog/@id</t>
-        in the result.</p>
-      <p>Since <t>metadata</t> and <t>back-matter</t> both have dependencies on the processing of
-        the main body, however (in particular where multiple catalogs are sourced), how controls are
-        selected and modified is discussed first.</p>
-    </section>
+      <p>The <term>selection</term> (import) stage is mandatory inasmuch as a profile that imports
+      no controls is inoperative. Such a profile is not in error and it can be resolved, but its
+      resolution will contain no controls (and as such might fail a validation check against the
+      catalog schema).</p>
+      <p>The <term>merge</term> stage can be considered mandatory in that there are default rules
+      for merging, to be followed when no merge behavior is given; thus <q>no merging</q> is
+      permitted, and a profile with no merge semantics indicated is not in error.</p>
+      <p>The <term>modify</term> stage is optional in that controls do not have to be modified and
+      parameters do not have to be set; a profile is always free to represent these components as
+      they are given in their catalogs. Leaving a parameter unset, or qualifying its setting (with
+      additional information or constraints) without modifying its value, is also possible; like a
+      catalog, a profile can represent a set of controls and parameters that are not fully defined
+      or are defined only at a general level, for purposes of use at another layer (profile or
+      implementation) where more specific definition and guidance can be provided.</p>
+      <p>As described in the previous section, when resolved, an OSCAL profile takes the form of an
+      OSCAL catalog. The merge semantics described below will produce outputs conforming to this
+      organization.</p>
       <section>
         <head>Import - select controls</head>
       <p>A profile begins by importing catalogs, all of whose controls are made available. Each
@@ -405,7 +422,7 @@
               <code>resource</code> elsewhere in the profile (typically in back matter), that
             resource can be retrieved to provide the source catalog.</p>
           <cf  file="examples/base2-test_profile.xml"/>
-          <tagging whose="source_profile">&lt;import href="#nist-catalog">
+          <tagging whose="source_profile">&lt;import href="#nist-sp800-53_catalog">
   &lt;include>
     &lt;call control-id="ac-1"/>
   &lt;/include>
@@ -414,7 +431,7 @@
   ...
   
 &lt;back-matter>
-  &lt;resource id="catalog">
+  &lt;resource id="nist-sp800-53_catalog">
     &lt;desc>SP 800-53 catalog (OSCAL format) on Github&lt;/desc>
     &lt;rlink href="https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
   &lt;/resource>
@@ -424,44 +441,81 @@
             catalog or profile, or a cross-reference to something other than a resource, is
             inoperative. It may be signaled as an error [or warning] by a processor.</p>
         </section>
-        <section>
-          <head>Circular imports</head>
-          <p>When a profile imports a profile, the subordinate profile is resolved into a catalog
-            using the same rules. This presents a possibility of circular imports, when a profile is
-            directed to import itself either directly or indirectly.</p>
-          <p>A <term>circular import</term> is defined as a directive to import a resource, which has already
-            been called higher in the import hierarchy. For example, if Profile A imports Profile B,
-            and Profile B imports Profile A, the second import is circular. (An import at the top
-            can only be circular if a profile tries to import itself.) If A imports B, B imports C
-            and C imports A, C’s import is circular.</p>
-          <p>Note that an import can only be circular within the context of processing a particular
-            profile. In the last example, C’s import would not be circular if invoked in the context
-            of resolving B by itself (without being imported by A), or of resolving some other
-            profile that did not import A. (D importing B importing C importing A would not be a
-            problem.)</p>
-          <p>Circular imports are inoperative, and may be reported as an error <revisit>[or
-            warning]</revisit>.</p>
-        </section>
-        <section>
-          <head>Multiple imports</head>
-          <p>Multiple imports of the same resource are not an error as long as no circular
-            dependencies occur.</p>
-          <p>However, multiple imports may result in invalid outputs. Typically this will be because
-          a control has been selected twice, and no merge behavior (see below) has been given.</p>
-          <p>In general, sibling imports (two imports into the same profile) should never have to
-          call the same catalog; and this condition may be reported as a warning. Depending on the
-          merge rules and the particular controls being selected, it may or may not result in
-          clashing controls.</p>
-        </section>
-        <section>
-          <head>Availability of documents returned by given URIs</head>
-          <p>The rules of XSLT <code>document()</code> apply to the traversal of any URI: that is,
-            it is assumed that all calls to a given (resolved) URI reference, will return the same
-            result.</p>
+      <section>
+        <head>Availability of documents returned by given URIs</head>
+        <p>The rules of XSLT <code>document()</code> apply to the traversal of any URI: that is, it
+          is assumed that all calls to a given (resolved) URI reference, will return the same
+          result.</p>
         <p>If documents called for import are determined to be unavailable, the processor may drop
           them along with a warning, both or either out of band (e.g. through <code>STDERR</code>)
           or in the catalog results.</p>
-        </section>
+      </section>
+      <section>
+        <head>Missing imports</head>
+        <p>An import that does not reference either an OSCAL catalog, or an OSCAL profile that can
+          be resolved as a catalog, is dropped.</p>
+        <mapping unit-test="profile-resolution-examples/broken_profile.xml">
+          <tagging whose="source_profile">&lt;profile id="broken_profile">
+  &lt;metadata> … &lt;/metadata>
+  &lt;import href="missing_profile.xml">
+     &lt;include>
+        &lt;call control-id="ac-1"/>
+     &lt;/include>
+  &lt;/import>
+&lt;/profile>
+</tagging>
+          <tagging whose="target_catalog">&lt;profile id="home_profile_RESOLVED">
+  &lt;metadata> … &lt;/metadata>
+&lt;/profile>
+</tagging>
+          <p>Optionally, a processor may produce a comment indicating the lapse:</p>
+          <tagging whose="target_catalog">&lt;profile id="home_profile_RESOLVED">
+  &lt;metadata> … &lt;/metadata>
+  &lt;!-- referenced resource 'missing_profile.xml' cannot be resolved -->
+&lt;/profile>
+</tagging>
+        </mapping>
+        <p>In this context, an OSCAL profile that makes direct or indirect reference (via its own
+          imports) to the importing catalog, is also dropped as unavailable. See below under
+            <q>Circular Imports</q>.</p>
+      </section>
+      <section>
+        <head>Multiple imports</head>
+        <p>In the selection stage, each import directive is processed to produce a set of controls
+          and (when they are referenced) parameters. These controls and parameters are represented
+          in the form of an interim catalog. Note that this occurs in the selection stage even if
+          the same catalog (resource) is imported multiple times: each distinct import collects
+          controls in an interim catalog:</p>
+        <mapping unit-test="profile-resolution-examples/import-twice_profile.xml">
+          <tagging whose="source_profile">&lt;profile id="import-twice_profile">
+    &lt;metadata> … &lt;/metadata>
+    &lt;import href="#catalog">
+        &lt;include> … select controls …  &lt;/include>
+    &lt;/import>
+    &lt;import href="#catalog">
+        &lt;include> … select controls …  &lt;/include>
+    &lt;/import>
+    &lt;back-matter> … &lt;/back-matter>
+&lt;/profile></tagging>
+          <tagging whose="target_catalog">&lt;profile id="import-twice_profile_RESOLVED">
+  &lt;metadata> … &lt;/metadata>
+  &lt;catalog id="catalog-id"> … selected controls … &lt;/catalog>
+  &lt;catalog id="catalog-id"> … selected controls … &lt;/catalog>
+  &lt;back-matter> … &lt;/back-matter>
+&lt;/profile>
+</tagging>
+        </mapping>
+        <p>The interim catalogs are combined and collapsed in the next stage of processing,
+            <term>merge</term> (see below) .</p>
+        <p>Multiple imports may result in outputs with clashing controls (see below). Typically this
+          will be because a control has been selected twice, and no merge behavior has been
+          indicated to resolve the clash.</p>
+        <p>In general, sibling imports (two imports into the same profile) should never have to call
+          the same catalog; and this condition may be reported as a warning. More typical cases of
+          multiple imports of the same resource will be when a profile A imports another profile B,
+          which calls catalog Z, and then profile A calls catalog Z again to acquire controls not
+          included in profile B, or as unmodified by profile B.</p>
+      </section>
         <section>
           <head>Selecting controls</head>
           <p>Imports can specify controls by inclusion and exclusion, either or both in
@@ -489,9 +543,6 @@
   &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
 &lt;/include>
 </tagging>
-            <p>Calls and matches may be combined in a single control. Their effect is cumulative;
-              any control that is selected by both calling and matching from a given <s>include</s>
-              directive, is included once (unless it is also marked for exclusion, see below).</p>
             <p><revisit>The match pattern is evaluated as a regular expression using XPath regular
                 expression syntax. [XXXX]</revisit></p>
           </section>
@@ -520,6 +571,13 @@
               directly within a group, excluding all  controls appearing inside other controls.</p>
             <cf file="include-all-no-children.xml"/>
             </section>
+          <section>
+            <head>Redundant calls</head>
+            <p>Calls and matches may be combined in a single import. Their effect is cumulative; any
+              control that is selected by both calling and matching from a given <s>include</s>
+              directive, or by matching more than one pattern, is included once (unless it is also
+              marked for exclusion, see below).</p>
+          </section>
           </section>
           <section>
             <head>Exclusions</head>
@@ -560,12 +618,29 @@
 &lt;/import>
 </tagging><p>Result: all controls from the catalog are included <em>except</em> AC-1.</p>
           <cf file="examples/exclude-call-test_profile.xml"/></section>
+        <section>
+          <head>Order of controls returned in selection</head>
+          <p>Because controls may be organized in the subsequence merge stage, order of controls
+            returned in the selection step is unimportant in most circumstances. If no merge
+            directive is applied, however, or the <q>no merge</q> rule is used (see below), controls
+            are returned for an import in the order of their appearance in their catalog of
+            origin.</p>
+        </section>
         </section>
       <section>
         <head>Copying parameters</head>
         <p>Unlike controls, parameters are copied implicitly. Whether a parameter in the source
           catalog is copied into the result depends on two factors: its location, and whether it is
-          referenced by an <t>include</t> directive in the result catalog.</p>
+          referenced by an <t>insert</t> directive in the result catalog.</p>
+        <p><s>insert</s>  directives may occur anywhere in a catalog's data content including not
+          only in controls, but in other parameters. Thus a parameter may have to be included by
+          virtue of an <s>insert</s> directive, making reference to it, that occurs in another
+          parameter, included by virtue of a different  <s>insert</s> directive found in an included
+          control.</p>
+        <p>A reasonable strategy for implementing this requirement is to copy all parameters through
+          to interim catalogs in the <term>selection</term> phase, and then remove all parameters
+          that are not (directly or indirectly) referenced by <term>insert</term> directives in
+          controls that have been selected.</p>
         <section>
           <head>Parameters given in controls</head>
           <p>Any parameter (<s>param</s> element) that appears in a control being selected, appears
@@ -600,7 +675,61 @@
             appearing that contains an <s>insert</s> directive referencing that parameter.</p>
           <p>Parameters that are not referenced by an <s>insert</s>, do not appear in the result
             catalog.</p>
+          <mapping/>
         </section>
+      </section>
+      <section>
+        <head>Circular imports</head>
+        <p>When a profile imports a profile, the subordinate profile is resolved into a catalog
+          using the same rules. This presents a possibility of circular imports, when a profile is
+          directed to import itself either directly or indirectly.</p>
+        <p>A <term>circular import</term> is defined as a directive to import a resource, which has
+          already been called higher in the import hierarchy. For example, if Profile A imports
+          Profile B, and Profile B imports Profile A, the second import is circular. (An import at
+          the top can only be circular if a profile tries to import itself.) If A imports B, B
+          imports C and C imports A, C’s import is circular.</p>
+        <p>Note that an import can only be circular within the context of processing a particular
+          profile. In the last example, C’s import would not be circular if invoked in the context
+          of resolving B by itself (without being imported by A), or of resolving some other profile
+          that did not import A. (D importing B importing C importing A would not be a problem.)</p>
+        <p>Circular imports are inoperative, and may be reported as an error <revisit>[or
+            warning]</revisit>.</p>
+        <p>An import that is not circular (refers to a document not already imported) results in an
+          interim catalog, subject to merging with other interim catalogs in the merge stage.</p>
+        <mapping unit-test="profile-resolution-examples/home_profile.xml">
+          <p>A profile identified as <code>home_profile.xml</code> imports another one identified as
+              <code>circular_profile.xml</code>:</p>
+          <tagging whose="source_profile">&lt;profile id="home_profile">
+  &lt;metadata>...&lt;/metadata>
+  &lt;import href="circular_profile.xml">
+     &lt;include>
+        &lt;call control-id="ac-1"/>
+     &lt;/include>
+  &lt;/import>
+&lt;/profile>
+</tagging>
+          <p>In turn this file invokes <code>home_profile.xml</code>:</p>
+          <tagging whose="source_profile">&lt;profile id="circular_profile">
+  &lt;metadata>...&lt;/metadata>
+  &lt;import href="home_profile.xml">
+     &lt;include>
+        &lt;call control-id="ac-1"/>
+     &lt;/include>
+  &lt;/import>
+&lt;/profile>
+</tagging>
+          <p>No interim catalog is produced for the circular import:</p>
+          <tagging whose="target_catalog">&lt;profile id="home_profile_RESOLVED">
+  &lt;metadata>...&lt;/metadata>
+&lt;/profile>
+</tagging>
+          <p>Optionally, a processor may produce a comment indicating the lapse:</p>
+          <tagging whose="target_catalog">&lt;profile id="home_profile_RESOLVED">
+  &lt;metadata>...&lt;/metadata>
+  &lt;!-- referenced resource 'home_profile.xml' cannot be resolved from resource 'circular_profile': circular dependency -->
+&lt;/profile>
+</tagging>
+        </mapping>
       </section>
       </section>
       <section>
@@ -622,8 +751,9 @@
           control appear. Careful profile authors will be able to detect and prevent these resulting
           problems.</p>
         <p>Apart from handling problems and exceptions, however, for different purposes different
-          profiles might wish to apply different rules. The combination rules to be applied are
-          given in the profile <s>merge/combine</s> element as a <s>method</s> attribute (flag).</p>
+          profiles might wish to apply different rules. OSCAL offers three such rules: the
+          directives for each are given as a value on the <s>@method</s> attribute of a profile
+            <s>merge/combine</s> element.</p>
           <section>
           <head>No <s>merge/combine</s> given</head>
           <p>If no <s>merge</s> directive is given in the profile, or if a <s>merge</s> is given
@@ -642,6 +772,7 @@
     &lt;combine method="keep"/>
   &lt;/merge>
 &lt;/profile></tagging>
+          <mapping unit-test="profile-resolution-examples/merge-implicit-keep_profile.xml"/>
         </section>
         <section>
           <head><q>No merge</q> merge rule</head>
@@ -657,31 +788,111 @@
             both appear in the results with the same ID. Accordingly, this setting may be useful in
             ensuring integrity of references to controls as given in the profile: if any included
             control is called only once, clashing controls will not be produced and validation will
-            succeed..</p>
+            succeed.</p>
+          <mapping unit-test="profile-resolution-examples/merge-keep_profile.xml">
+            <tagging whose="source_profile">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+    id="merge-keep_profile">
+    &lt;metadata> … &lt;/metadata>
+    &lt;import href="abc-simple_catalog.xml">
+        &lt;include>
+            &lt;call control-id="a1"/>
+            &lt;call control-id="b1"/>
+        &lt;/include>
+    &lt;/import>
+    &lt;import href="abc-simple_catalog.xml">
+        &lt;include>
+            &lt;call control-id="a1"/>
+            &lt;call control-id="b1"/>
+        &lt;/include>
+    &lt;/import>
+    &lt;merge>
+        &lt;combine method="keep"/>
+    &lt;/merge>
+&lt;/profile></tagging>
+            <p>In the result (showing interim catalogs):</p>
+            <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    id="merge-keep_profile">
+    &lt;metadata> … &lt;/metadata>
+    &lt;catalog id="…">
+      &lt;control id="a1"> … &lt;/control>
+      &lt;control id="b1"> … &lt;/control>
+    &lt;/catalog>
+    &lt;catalog id="…">
+      &lt;control id="a1"> … &lt;/control>
+      &lt;control id="b1"> … &lt;/control>
+    &lt;/catalog>
+&lt;/profile></tagging>
+          </mapping>
+          <p>In this case, downstream errors should be expected: the two <code>a1</code> controls
+            clash with each other, as do the two <code>b1</code> controls. To remove the duplicates,
+            either repair the source catalog to avoid the redundant invocations (usually a better
+            solution) or (when that is unavoidable) use a different merge combination rule.</p>
+          <p>Processors may optionally produce warnings when clashing controls are produced due to
+            redundant invocations.</p>
         </section>
           <section>
-            <head><q>Use first</q> merge rule</head>
+            <head><q>Use first</q> merge combination rule</head>
           <tagging whose="source_profile">&lt;merge>
   &lt;combine="use-first"/>
 &lt;/merge>
 </tagging>
-            <p>The first reference to a given control, with respect to the document order of the
-            source data, prevails over later references. <q>First</q> is determined by a top-down,
-            depth-first traversal of the profile import hierarchy. So if a profile is imported
-            before a catalog, and the imported profile presents a representation of a control also
-            given in the catalog import, the profile’s representation (perhaps modified) is
-            taken.</p>
-            <p>The same logic applies to parameter settings.</p>
+            <p>When the <term>use first combination rule</term> is applied, the first reference to a
+            given control, with respect to the document order of the source data, prevails over
+            later references. <q>First</q> is determined in reference to a top-down, depth-first
+            traversal of the profile import hierarchy. So if a profile is imported before a catalog,
+            and the imported profile presents a representation of a control also given in the
+            catalog import, the profile’s representation (perhaps modified) is taken. However, if
+            the import directive targeting the catalog appears first, the catalog's (unmodified)
+            representation of the control is included.</p>
+            <p>The same logic applies to parameters in the source catalogs, as modified by parameter
+              <s>set</s> directives.</p>
+          <mapping unit-test="profile-resolution-examples/merge-keep_profile.xml">
+            <tagging whose="source_profile">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+    id="merge-keep_profile">
+    &lt;metadata> … &lt;/metadata>
+    &lt;import href="abc-simple_catalog.xml">
+        &lt;include>
+            &lt;call control-id="a1"/>
+            &lt;call control-id="c1"/>
+        &lt;/include>
+    &lt;/import>
+    &lt;import href="abc-simple_catalog.xml">
+        &lt;include>
+            &lt;call control-id="a1"/>
+            &lt;call control-id="b1"/>
+        &lt;/include>
+    &lt;/import>
+    &lt;merge>
+        &lt;combine method="use-first"/>
+    &lt;/merge>
+&lt;/profile></tagging>
+            <p>In the result (showing interim catalogs):</p>
+            <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    id="merge-keep_profile">
+    &lt;metadata> … &lt;/metadata>
+    &lt;catalog id="…">
+      &lt;control id="a1"> … &lt;/control>
+      &lt;control id="c1"> … &lt;/control>
+    &lt;/catalog>
+    &lt;catalog id="…">
+      &lt;control id="b1"> … &lt;/control>
+    &lt;/catalog>
+&lt;/profile></tagging>
+          </mapping>
           </section>
           <section>
-            <head><q>Merge controls</q> merge rule</head>
+            <head><q>Merge controls</q> merge combination rule</head>
           <tagging whose="source_profile">&lt;merge>
   &lt;combine="merge"/>
 &lt;/merge>
 </tagging>
-            <p>The processor should merge all representations of a given control, as distinguished
-            by ID, into a single unified representation. <revisit>specify the combination rules. Any
-              elements not duplicated are copied?</revisit></p>
+            <p>When the <term>merge controls</term> merge combination rule is applied, the processor
+            will merge all representations of a given control, as distinguished by ID, into a single
+            unified representation.</p>
             <p>The single unified representation is assembled by aggregating all the contents of all
               the (clashing) control instances and discarding duplicate branches.</p>
             <p>Example:</p>
@@ -717,7 +928,7 @@
             <p>Two <s>merge</s> directives are used to introduce structure into a profile result
             catalog, <s>as-is</s> and <s>custom</s>.</p>
             <p>Profiles that have neither of these directives are resolved as unstructured catalogs,
-              with no groups of controls. Where controls are given as</p>
+            with no groupings of controls.</p>
           </section>
           <section>
             <head>as is</head>

@@ -3,8 +3,7 @@
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="base2-test_profile">
-    <!-- Like base-test_profile, except references the catalog in a resource.   -->
+    id="merge-keep_profile">
     <metadata>
         <title>Test Profile</title>
         <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
@@ -15,10 +14,17 @@
         <include>
             <call control-id="a1"/>
             <call control-id="b1"/>
-            <call control-id="c1"/>
-            <call control-id="c3"/>
         </include>
     </import>
+    <import href="#catalog">
+        <include>
+            <call control-id="a1"/>
+            <call control-id="b1"/>
+        </include>
+    </import>
+    <merge>
+        <combine method="keep"/>
+    </merge>
     <back-matter>
         <resource id="catalog">
             <rlink href="abc-simple_catalog.xml"/>

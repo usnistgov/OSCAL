@@ -3,9 +3,9 @@
 
 * { display: block }
 
-SPECIFICATION { font-family: serif; padding: 0.5rem }
+SPECIFICATION { font-family: 'Corbel'; padding: 0.5rem }
 
-head { font-size: 150%; font-family: sans-serif }
+head { font-size: 150% }
 
 div head { font-size: 90%; font-weight: bold }
 
@@ -30,7 +30,7 @@ strong { display: inline; font-weight: bold }
 
 code { display: inline; font-family: monospace; font-size: 90% }
 
-q { display: inline; quotes: "“" "”" "‘" "’"; }
+q { display: inline; quotes: "\201C" "\201D" "\2018" "\2019"; }
 
 q:before {
     content: open-quote;
@@ -63,7 +63,7 @@ mapping:before {
               edit, "@unit-test",
               columns 25) }
 
-mapping { background-color: gainsboro; border: thin dotted black; padding: 0.5em }
+mapping { background-color: gainsboro; border: medium double black; padding: 0.5em; margin: 1em 0em }
 
 cf { background-color: pink; font-family: sans-serif; font-weight: bold; font-size: 80% }
 
