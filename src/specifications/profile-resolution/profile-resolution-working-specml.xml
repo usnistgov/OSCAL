@@ -4,7 +4,7 @@
 <?xml-model href="spec-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <SPECIFICATION xmlns="http://csrc.nist.gov/ns/oscal/specml">
   <head>Profile Resolution</head>
-  <p>These PRELIMINARY specifications describe how to render an OSCAL profile document in
+  <p>These specifications describe how to render an OSCAL profile document in
     the form of an OSCAL catalog. We call this <term>profile resolution</term>.</p>
   <p>These specifications take the form of a tag set mapping between two XML applications, namely
     the OSCAL <term>profile</term> and OSCAL <term>catalog</term> document models. The same mapping
