@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,11 +18,13 @@
     
     <!--
         
+    An XSLT 3.0 stylesheet using XPath 3.1 functions including transform()
+        
     This XSLT orchestrates a sequence of transformations over its input.
     
     The first transformation, "selection", aggregates the source with external (referenced) contents.
     
-    Subsequent transformations are self-contained.
+    Subsequent transformations, "merge" and "modify", are self-contained: all inputs are included.
     
     -->
     
@@ -36,6 +38,9 @@
     <!-- traps the root node of the source and passes it down the chain of transformation references -->
     <xsl:template match="/">
         <xsl:variable name="source" select="."/>
+        <!-- Each element inside $transformation-sequence is processed in turn.
+        Each represents a stage in processing.
+        The result of each processing step is passed to the next step as its input, until no steps are left. -->
         <xsl:iterate select="$transformation-sequence/*">
             <xsl:param name="doc" select="$source" as="document-node()"/>
             <xsl:on-completion select="$doc"/>
@@ -49,6 +54,7 @@
         </xsl:iterate>
     </xsl:template>
 
+    <!-- for o:transformation, the semantics are "apply this XSLT" -->
     <xsl:template mode="o:execute" match="o:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
@@ -72,7 +78,7 @@
     </xsl:template>
     
     <!-- not knowing any better, any other execution directive passes along its source. -->
-    <xsl:template  mode="o:execute"match="*">
+    <xsl:template mode="o:execute" match="*">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
