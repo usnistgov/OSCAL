@@ -28,4 +28,26 @@
                 <sch:value-of select="@href"/>.</sch:assert>
         </sch:rule>
     </sch:pattern>
+    
+    <sch:pattern>
+        <sch:rule context="oscal:last-modified">
+            <sch:assert test=". castable as xs:dateTime"
+                sqf:fix="datestamp-file"><sch:name/> not a dateTime (argh)</sch:assert>
+            <sch:assert role="warning" test="(current-dateTime() - xs:dateTime(.)) &lt; xs:dayTimeDuration('P1D')"
+                sqf:fix="datestamp-file"><sch:name/> date stamp is more than a day old</sch:assert>
+            
+        </sch:rule>
+    </sch:pattern>
+    
+    <sqf:fixes>
+        <sqf:fix id="datestamp-file">
+            <sqf:description>
+                <sqf:title>Stamp date-time</sqf:title>
+            </sqf:description>
+            <!--<sqf:replace match="o:last-modified" target="o:last-modified" node-type="element" select="current-dateTime()"/>-->
+            <sqf:stringReplace match="text()" regex="^.*$">
+                <sch:value-of select="current-dateTime()"/>
+            </sqf:stringReplace>
+        </sqf:fix>
+    </sqf:fixes>
 </sch:schema>

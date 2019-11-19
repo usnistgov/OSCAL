@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../../../docs/content/documentation/specification/processing/profile-resolution-examples/example-maintenance.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../../author/CSS/oscal-author.css" title="Authoring" alternate="no"?>
 <?xml-model href="../../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../../../../docs/content/documentation/specification/processing/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="pathological-profile">
     <metadata>
         <title>Pathological Profile</title>
@@ -10,7 +9,7 @@
         <version>1.0</version>
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
-    <import href="../../../../../docs/content/documentation/specification/processing/profile-resolution-examples/abc-full_catalog.xml">
+    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
         <include>
             <call control-id="a1"/>
             <match pattern="^a"/>
