@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE x:description [
+<!ENTITY samples-dir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples" >
+]>
 <x:description
     xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-select.xsl">
@@ -14,7 +17,7 @@
     <x:scenario label="Profile select include all">
         <x:context>
             <profile>
-                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml"/>
+                <import href="&samples-dir;/xyz-tiny_catalog.xml"/>
             </profile>
         </x:context>
         
@@ -50,7 +53,7 @@
     <x:scenario label="Profile select include call control-id">
         <x:context>
             <profile>
-                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                <import href="&samples-dir;/xyz-tiny_catalog.xml">
                     <include>
                         <call control-id="x1"/>
                     </include>
@@ -75,7 +78,7 @@
     <x:scenario label="Profile select include call match">
         <x:context>
             <profile>
-                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                <import href="&samples-dir;/xyz-tiny_catalog.xml">
                     <include>
                         <!-- any x control -->
                         <match pattern="^x\d+$"/>
@@ -103,7 +106,7 @@
     <x:scenario label="Profile implicit select all, excluding x1 y1 z1">
         <x:context>
             <profile>
-                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                <import href="&samples-dir;/xyz-tiny_catalog.xml">
                     <exclude>
                         <call control-id="x1"/>
                         <call control-id="y1"/>
@@ -143,7 +146,7 @@
     <x:scenario label="Doubled import, exclusive call">
         <x:context>
             <profile>
-                <import href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/content/documentation/specification/processing/profile-resolution-examples/xyz-tiny_catalog.xml">
+                <import href="&samples-dir;/xyz-tiny_catalog.xml">
                     <include>
                         <!-- any x control -->
                         <match pattern="^x\d+$"/>
