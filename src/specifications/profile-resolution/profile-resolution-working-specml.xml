@@ -583,9 +583,14 @@
             <p>Additionally, there is no such thing as <s>exclude/all</s>, which is invalid and
             should be considered inoperable.</p>
             <p>Any control designated to be both included and excluded, is excluded. This holds
-            irrespective of the specifity of the selection for inclusion or exclusion. For example,
-            if AC-1 is included by id <code>ac-1</code> and excluded by matching <code>ac.*</code>,
-            it is excluded. Selection for exclusion prevails.</p>
+            irrespective of the specificity of the selection for inclusion or exclusion. For
+            example, if AC-1 is included by id <code>ac-1</code> and excluded by matching
+              <code>ac.*</code>, it is excluded. Selection for exclusion prevails.</p>
+          <p><revisit>What about when a control is excluded, but  it has descendant controls that
+              are included? Under <s>include/all</s>, the descendants maybe would be excluded. If
+              the subcontrol is included by <s>call</s> or <s>match</s> perhaps the 'shells' of its
+              ancestors should be included. See section on "implicit inclusions under as-is",
+              below.</revisit></p>
           </section>
           <section><head>Implicit <s>all</s></head><p>An empty import statement should be considered the same as an import with an <s>include/all</s>.
             An empy <s>import</s> directive</p><tagging whose="source_profile">&lt;import href="#nist-catalog"/>
@@ -946,7 +951,7 @@
         </section>
         </section>
         <section>
-          <head>Directives for structuring the result</head>
+          <head>Structuring the result</head>
         <p><s>merge</s> also includes directives that can be used to organize the result catalog
           into a structure or hierarchy of groups.</p>
           <section>
@@ -982,7 +987,7 @@
                 (or descendant) controls.</p>
               <p>Example:</p>
             <tagging whose="source_catalog">&lt;control id="xyz-1">
-  &lt;title>Basic Hygiene&lt;/title>
+  &lt;title>Basic Household&lt;/title>
   &lt;control id="xyz-1.1">&lt;!-- bedtime routine -->...&lt;/control>
   &lt;control id="xyz-1.2">
     &lt;title>Kitchen cleanup&lt;/title>
@@ -996,14 +1001,14 @@
               control <code>xyz-1.2</code> for inclusion</p>
               <tagging whose="source_profile">&lt;import href="#XYZ-catalog">
   &lt;include>
-    &lt;call control-id='xyz-1.1'/>&lt;!-- bedtime routine control -->
+    &lt;call control-id='xyz-1.1'/>&lt;!-- bedtime routine -->
     &lt;call control-id='xyz-1.2.1'/>&lt;!-- kitchen trashcan -->
   &lt;/include>
 &lt;/import>
 </tagging>
-              <p>These elements are included, however, with their titles, because controls that they
-              contain are included. But control <code>xyz-1.3</code> does not appear in the
-              result.</p>
+              <p>The unmentioned elements are included, however, with their titles, because controls
+              that they contain are included. But control <code>xyz-1.3</code> does not appear in
+              the result.</p>
               <tagging whose="target_catalog">&lt;control id="xyz-1">
   &lt;title>Basic Hygiene&lt;/title>
   &lt;control id="xyz-1.1">&lt;!-- bedtime routine -->...&lt;/control>
