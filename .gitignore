@@ -16,6 +16,10 @@ working/
 __pycache__
 xspec/
 
+# test reports
+testing/*.html
+testing/**/*.html
+
 ## Production outputs
 ## ==================
 pub/
