@@ -515,12 +515,10 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
-         <choice>
-            <assembly ref="rlink" max-occurs="unbounded">
-               <group-as name="rlinks"/>
-            </assembly>
-            <field ref="base64"/>
-         </choice>
+         <assembly ref="rlink" max-occurs="unbounded">
+            <group-as name="rlinks"/>
+         </assembly>
+         <field ref="base64"/>
          <field ref="remarks"/>
       </model>
       <remarks>
