@@ -218,7 +218,7 @@
    <define-field name="call" as-type="empty">
       <formal-name>Call</formal-name>
       <description>Call a control by its ID</description>
-      <flag ref="control-id"/>
+      <flag ref="control-id" required="yes"/>
       <flag ref="with-child-controls"/>
       <remarks>
          <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling
