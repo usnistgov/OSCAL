@@ -1,5 +1,7 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/specml"
 
+datatypes dtd="http://relaxng.org/ns/compatibility/datatypes/1.0"
+
 # Lightweight syntax sugar over tiny HTML subset
 
 start        = element SPECIFICATION { head.elem?, misc, section.elem+ }
@@ -24,10 +26,9 @@ mapping.elem = element mapping {
                 attribute unit-test { text }?,
                     head.elem?, (p.elem*, tagging.elem)*, p.elem* }
 
-section.elem = element section { head.elem, misc, section.elem* }
+section.elem = element section { attribute id { xsd:ID }?, head.elem, misc, section.elem* }
 
-
-inline-mixed = (text | a | code | term | revisit | em | strong | q | s | t | xpath )*
+inline-mixed = (text | a | code | term | revisit | em | strong | q | src | tgt | xpath | xref )*
 
 a       = element a       { attribute href { text }, text }
 code    = element code    { text }
@@ -36,7 +37,8 @@ revisit = element revisit { inline-mixed }
 q       = element q       { inline-mixed }
 em      = element em      { text }
 strong  = element strong  { text }
-s       = element s       { text }
-t       = element t       { text }
+src     = element src     { text }
+tgt     = element tgt     { text }
 xpath   = element xpath   { text }
+xref    = element xref    { attribute to { dtd:IDREF }, empty }
 
