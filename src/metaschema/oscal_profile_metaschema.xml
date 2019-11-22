@@ -286,9 +286,6 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links"/>
          </field>
-         <assembly ref="part" max-occurs="unbounded">
-            <group-as name="parts"/>
-         </assembly>
       </model>
    </define-assembly>
    
