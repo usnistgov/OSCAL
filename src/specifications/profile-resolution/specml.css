@@ -28,6 +28,9 @@ section { margin-top: 1em; border: thin dotted black; padding: 0.5em;
     -oxy-foldable:true;
     -oxy-not-foldable-child: head }
 
+section:before { content: 'section ' oxy_textfield(           
+            edit, "@id"  ) }
+
 em { display: inline; font-style: italic }
 
 strong { display: inline; font-weight: bold }
@@ -77,9 +80,20 @@ cf:before {
               edit, "@file",
               columns 35) }
 
-t { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
+xref { display: inline }
 
-s { display: inline; color: darkgreen; font-weight: bold; font-size: 90%; font-family: sans-serif }
+
+xref:after { content: oxy_combobox(           
+            edit, "@to",
+            editable, false 
+            )}
+
+xref:before { font-weight: bold; font-size: 80%; content: " [See section \201C" oxy_xpath(
+  'for $t in (@to) return //section[@id=$t]/string(head)')  "\201D] " }
+
+tgt { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
+
+src { display: inline; color: darkgreen; font-weight: bold; font-size: 90%; font-family: sans-serif }
 
 xpath { display: inline; font-family: sans-serif; font-size: 90%; font-weight: bold }
 

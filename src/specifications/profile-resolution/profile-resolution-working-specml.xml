@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-model href="specml.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="specml.rnc" type="application/relax-ng-compact-syntax"?>
 <!--<?xml-stylesheet type="text/xsl" href="specml-html-xslt1.xsl"?>-->
 <?xml-stylesheet type="text/css" href="specml.css"?>
 <?xml-model href="spec-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
@@ -15,87 +16,91 @@
     semantic mapping, not the syntax as such. The XML orientation of the specification of this
     mapping is an expediency; in the longer term we plan specifications that are
     format-agnostic.</p>
-  <section><head>Reading these specifications</head>
-  <section>
-    <head>Terminology</head>
-    <p>In these specifications there are references to <term>source</term>, <term>target</term> and
-          <term>result</term>. <term>Source</term> refers sometimes to profile documents as a type
+  <section id="top">
+    <head>Reading these specifications</head>
+    <section id="terminology">
+      <head>Terminology</head>
+      <p>In these specifications there are references to <term>source</term>, <term>target</term>
+        and <term>result</term>. <term>Source</term> refers sometimes to profile documents as a type
         (abstractly), and sometimes to instance profiles in operation, or elements within profiles
         (particular kinds of sources). <term>Target</term> refers to the intended output of the
         transformation, that is the catalog model generally (as a document type) or, for particular
         source instances or elements, particular targets.</p>
       <p>Elements in the source format are marked in these specifications to appear distinctively as
-          <s>source-element</s> (for an element named <q>source-element</q>).</p>
+          <src>source-element</src> (for an element named <q>source-element</q>).</p>
       <p>Elements in the target format are marked in these specifications to appear distinctively as
-          <t>target-element</t> (for an element named <q>target-element</q>).</p>
-    <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
+          <tgt>target-element</tgt> (for an element named <q>target-element</q>).</p>
+      <p>The term <term>result</term> refers to the actual results of transformation, as opposed to
         the intended or expected results. Conformance to these specifications requires that a
         processor's result corresponds to the target as described here, given a particular
         source.</p>
-    <p>The term <term>directive</term> is used in these specifications to refer to an element or
+      <p>The term <term>directive</term> is used in these specifications to refer to an element or
         combination of elements in source data, which is designed to effect a particular outcome in
         the result catalog. For the most part, directives are in the source profile document – for
-        example, a <s>set</s> element in a profile is a directive to set a parameter value in the
-        result catalog.</p>
-    <p>In contrast to profiles, catalogs do not contain directives but instead, representations of
+        example, a <src>set</src> element in a profile is a directive to set a parameter value in
+        the result catalog.</p>
+      <p>In contrast to profiles, catalogs do not contain directives but instead, representations of
         security controls and their parts, optionally gathered in groups, on which directives are
-        assumed to operate. There is one exception: the <s>insert</s> element in control catalogs
-        can be considered a directive that a parameter value be inserted into a particular location
-        in running text (data content), when a catalog is rendered. Since these semantics respect
-        catalog rendering, however, not profile resolution, they are out of scope for this
+        assumed to operate. There is one exception: the <src>insert</src> element in control
+        catalogs can be considered a directive that a parameter value be inserted into a particular
+        location in running text (data content), when a catalog is rendered. Since these semantics
+        respect catalog rendering, however, not profile resolution, they are out of scope for this
         document.</p>
       <p>Finally, this specification describes not only (source) profiles and (result) catalogs, but
-          <term>interim catalogs</term> as well. The conceptual model of profile resolution takes a
-        profile through several steps, in which controls are collected from source catalogs,
-        combined, and potentially modified. As described by this specification, interim catalogs are
-        produced during this process, as temporary collections of controls in a transitional state.
-        In the last stage of processing, these interim catalogs are collapsed or combined into the
-        single result catalog.</p>
-      <p>For illustrative purposes, these interim catalogs are, like source and target formats, also
-        represented by tagging in examples given here, even though no OSCAL processor is obliged to
-        produce or recognize such XML at any point, as long as it produces the same results (final
-        outputs) from the same inputs.</p>
+          <term>control selections</term> as well. The conceptual model of profile resolution takes
+        a profile through several steps, in which controls are collected from source catalogs,
+        combined, and potentially modified. As described by this specification, control selections
+        are produced during this process, as temporary collections of controls in a transitional
+        state. In the last stage of processing, the discrete selections are combined into the single
+        result catalog.</p>
+      <p>For illustrative purposes, these control selections are, like source and target formats,
+        also represented by tagging in examples given here, even though no OSCAL processor is
+        obliged to produce or recognize such XML at any point, as long as it produces the same
+        results (final outputs) from the same inputs.</p>
+    </section>
+    <section id="use-of-xpath">
+      <head>Use of XPath</head>
+      <p>Additionally, in these specifications XPath notation is used to identify elements and
+        attributes in the XML. A summary of some lightweight XPath syntax:</p>
+      <ul>
+        <li>
+          <p><xpath>element</xpath> (unpunctuated) indicates an element named
+            <xpath>element</xpath></p>
+        </li>
+        <li>
+          <p><xpath>@attribute</xpath> (punctuated <q>@</q>) indicates an attribute named
+              <xpath>attribute</xpath></p>
+        </li>
+        <li>
+          <p><xpath>elem/@attr</xpath> indicates an attribute named <xpath>attr</xpath> on an
+            element named <xpath>elem</xpath></p>
+        </li>
+        <li>
+          <p><xpath>elmn[@att='val']</xpath> indicates an element <xpath>elmn</xpath> that has an
+            attribute <xpath>@att</xpath> with value <code>val</code>. </p>
+        </li>
+      </ul>
+    </section>
   </section>
-  <section>
-    <head>Use of XPath</head>
-    <p>Additionally, in these specifications XPath notation is used to identify elements and
-      attributes in the XML. A summary of some lightweight XPath syntax:</p>
-    <ul>
-      <li>
-        <p><xpath>element</xpath> (unpunctuated) indicates an element named
-          <xpath>element</xpath></p>
-      </li>
-      <li>
-        <p><xpath>@attribute</xpath> (punctuated <q>@</q>) indicates an attribute named <xpath>attribute</xpath></p>
-      </li>
-      <li>
-        <p><xpath>elem/@attr</xpath> indicates an attribute named <xpath>attr</xpath> on an element named
-            <xpath>elem</xpath></p>
-      </li>
-      <li>
-        <p><xpath>elmn[@att='val']</xpath> indicates an element <xpath>elmn</xpath> that has an
-          attribute <xpath>@att</xpath> with value <code>val</code>. </p>
-      </li>
-    </ul>
-  </section>
-  
-  </section>
-  <section>
+  <section id="operational-context">
     <head>Operational context</head>
-    <section>
+    <section id="processing-context">
       <head>Processing context and scope</head>
       <p>A <term>profile</term> in OSCAL represents a selection and configuration of a set of
           <term>controls</term>. In the normal case, the set of controls available to a profile is
         provided by a catalog. For example, the three NIST SP 800-53 profiles representing the
         impact baselines HIGH, MODERATE and LOW: each of these calls on a catalog representing the
         families, controls and control enhancements described in SP 800-53/53A. In a data processing
-        system, this dependency can be modeled in the form of separate documents - the (nominal)
-          <q>catalog</q> and its <q>profile</q>, the latter being a selection, adaptation and
-        organization of controls, as distinct from the catalog from which those controls are
-        derived.</p>
-      <p>However, profiles may also select controls from profiles, implicitly deriving them  from
-        underlying catalogs as modified by those profiles. And they can select a combination of
-        controls from more than one catalog or profile origin.</p>
+        system, this dependency can be modeled in the form of separate documents or data instances -
+        the (nominal) <q>catalog</q> and its <q>profile</q>, the latter being a selection,
+        adaptation and organization of controls, as distinct from the catalog from which those
+        controls are derived.</p>
+      <p>However, profiles may also select controls from profiles, thus deriving them from
+        underlying catalogs as modified by those profiles. This feature enables an organization that
+        wishes to promulgate guidelines or requirements to do so by publishing a set of
+        customizations to an existing catalog, rather than create a catalog from scratch. Profiles
+        can also arrange combinations of controls from more than one catalog or profile origin,
+        making it possible to use them to support the creation of hybrid catalogs. </p>
       <p>In the most common case, a profile will acquire its controls from a single catalog or
         perhaps a complementary pair of catalogs (perhaps an authoritative standard catalog, plus a
         supplement). In the general case OSCAL must support sourcing more than one catalog at once,
@@ -114,7 +119,7 @@
         This specification is designed to make this possible, by defining outputs with sufficient
         rigor that <q>the same</q> is meaningful and testable in this context.</p>
     </section>
-    <section>
+    <section id="why-a-catalog">
       <head>Why resolve a profile as a catalog</head>
       <p>A profile is a representation of a delta, a <q>here to there</q>. As such, a profile might
         be conceived of as a recipe or instruction set – a sequence of steps or procedures – whereby
@@ -150,7 +155,7 @@
         operations, to apply the delta to an unmodified catalog, to produce the local view of the
         catalog as modified. This is profile resolution.</p>
     </section>
-    <section>
+    <section id="valid-endpoints">
       <head>Formal validation of source and result</head>
       <p>In an XML context, document validation is available as a means of determining whether an
         arbitrary XML document entity conforms to structural and naming constraints such as must be
@@ -161,11 +166,11 @@
       <p>Similarly, the definition of the output format or results, is constrained by the OSCAL
           <term>catalog</term> model as defined by its schema.</p>
     </section>
-    <section>
+    <section id="id-uniequeness">
       <head>ID uniqueness constraint</head>
       <p>In addition to those described and enforced by the respective schemas, there are additional
         constraints over the data that this process relies on. The most important of these is
-        ID-distinctiveness. Every <s>id</s> flag (in XML, represented by <xpath>@id</xpath>
+        ID-distinctiveness. Every <src>id</src> flag (in XML, represented by <xpath>@id</xpath>
         attributes) on an element in the model, whether it be attached to a control, group or an
         element within a control, must be distinct and unique, within the defined processing scope,
         inasmuch as this value will be used in processing as a proxy for <term>element
@@ -187,7 +192,7 @@
           all structures within the catalogs, not only controls but also groups, parameters,
           citations and resources.</revisit></p>
     </section>
-    <section>
+    <section id="detecting-issues">
       <head>Detecting issues in profiles</head>
       <p>It is frequently possible by static analysis to detect many conditions even in valid
         profile documents, that will result in problematic catalogs in resolution. The most common
@@ -195,7 +200,7 @@
         given identifier (ID), making references to such controls ambiguous. Such analysis is
         outside the scope of these specifications.</p>
     </section>
-    <section>
+    <section id="comments-in-result">
       <head>Comments in result documents</head>
       <p>In an XML-based profile resolution, XML comments are one straightforward way for a
         processor to record events or conditions without affecting the output's nominal semantics.
@@ -208,7 +213,7 @@
         other differences in serialization.</p>
     </section>
   </section>
-  <section>
+  <section id="result-structure">
     <head>Result catalog structure</head>
     <section>
       <head>Form and organization of resolution result</head>
@@ -216,7 +221,7 @@
       <p>In most cases, catalog results will be valid to the OSCAL catalog schema. <revisit>Where
           invalid results are possible, this specification should note the possibility and the
           expected variance.</revisit></p>
-      <p> At its base, an OSCAL <s>profile</s> source produces a <t>catalog</t>:</p>
+      <p> At its base, an OSCAL <src>profile</src> source produces a <tgt>catalog</tgt>:</p>
       <mapping unit-test="base-test_profile.xml">
         <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
         <tagging whose="target_catalog">&lt;catalog id="{new-catalog-identifier}">
@@ -225,23 +230,25 @@
   &lt;back-matter>[Optional back matter as described below]&lt;/back-matter>
 &lt;/catalog></tagging>
       </mapping>
-      <p>A valid catalog must have <t>metadata</t> in addition to controls and control groups.
-        Additionally it may have <t>back-matter</t>. How to produce and populate the <t>metadata</t>
-        and <t>back-matter</t> is described below, as is the construction of the <t>catalog/@id</t>
-        in the result.</p>
+      <p>A valid catalog must have <tgt>metadata</tgt> in addition to controls and control groups.
+        Additionally it may have <tgt>back-matter</tgt>. How to produce and populate the
+          <tgt>metadata</tgt> and <tgt>back-matter</tgt> is described below, as is the construction
+        of the <tgt>catalog/@id</tgt> in the result.</p>
     </section>
-    <section>
+    <section id="validation-of-result">
       <head>Validation of resolution result</head>
       <p>Although the result of profile resolution takes the form of a catalog, it may not be valid
         to all constraints that define the OSCAL catalog format, whether enforced by its schema or
         by other means such as Schematron. This is because correct processing of incoherent inputs
-        (even when valid to the profile schema) must result in incoherent outputs.</p>
+        (even when valid to the profile schema) must result in incoherent outputs. A range of
+        nominally <q>correct</q> results will thus fail in workflows that are properly reliant on
+        validation to enforce boundaries around expected input. <xref to="valid-endpoints"/></p>
       <p>The conditions that produce invalid outputs can however be detected and prevented.
           <revisit>[Any other issues here?]</revisit></p>
       <ul>
         <li>
-          <p>If the merge behavior is set to <s>combine[@method='keep']</s>, or not given (as this
-            setting is the default), a profile with multiple calls on controls will result in
+          <p>If the merge behavior is set to <src>combine[@method='keep']</src>, or not given (as
+            this setting is the default), a profile with multiple calls on controls will result in
             multiple copies of controls with clashing IDs. These should both raise validation errors
             since IDs must be unique on elements in document scope.</p>
           <p>This can be prevented in either of two ways:</p>
@@ -249,18 +256,18 @@
             <li>
               <p>Ensure that no controls are called more than once, even across separate imports.
                 This condition can generally be detected statically by comparing the imports, taking
-                their catalogs into account when <s>include/all</s> is used (explicitly or
-                implicitly when no <s>include</s> is given).</p>
+                their catalogs into account when <src>include/all</src> is used (explicitly or
+                implicitly when no <src>include</src> is given).</p>
             </li>
             <li>
-              <p>Use another combination method (<s>method='use-first'</s> or <s>method='merge'</s>)
-                to resolve the clashes.</p>
+              <p>Use another combination method (<src>method='use-first'</src> or
+                  <src>method='merge'</src>) to resolve the clashes.</p>
             </li>
           </ul>
         </li>
       </ul>
     </section>
-    <section>
+    <section id="top-level-id">
       <head>top-level @id</head>
       <p>Because document IDs are sometimes used to distinguish data points in processing context, a
         resolved profile may not present the same ID as any of the catalogs it is importing, or the
@@ -269,7 +276,7 @@
         of the source. For example, the resolution of profile with ID <code>profile-X</code> might
         have ID <code>profile-X-RESOLVED</code>.</p>
     </section>
-    <section>
+    <section id="metadata-in-result">
       <head>Instance metadata</head>
       <p><revisit>[XXX Rules for constructing or copying or modifying a metadata section for a
           resolved profile]</revisit></p>
@@ -279,147 +286,163 @@
 &lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
 </tagging>
     </section>
-    <section>
+    <section id="body-of-result">
       <head>Body of the result</head>
       <p>The construction of the body of the result catalog is described in the next section.</p>
-      <p>The body of the result <t>catalog</t>, after its <term>metadata</term>, is structured as
-        follows, depending on its merge directive. (Details on merging are given below.)</p>
+      <p>The body of the result <tgt>catalog</tgt>, after its <term>metadata</term>, is structured
+        as follows, depending on its merge directive. (Details on merging are given below.)</p>
       <ul>
         <li>
-          <p>If no <s>merge</s> was given, or if <s>merge</s> is given without <s>custom</s> or
-              <s>as-is</s>, controls are flat (unstructured) in the result catalog.</p>
+          <p>If no <src>merge</src> was given, or if <src>merge</src> is given without
+              <src>custom</src> or <src>as-is</src>, controls are flat (unstructured) in the result
+            catalog.</p>
           <p>The result catalog has a content model as follows <revisit>(DTD/RNC
               notatation)</revisit>: <code>(metadata, param*, control*, back-matter?)</code></p>
         </li>
         <li>
-          <p>If <s>merge/as-is</s> is used, the structure of the result will reflect the
+          <p>If <src>merge/as-is</src> is used, the structure of the result will reflect the
             structure(s) of the source catalog(s).</p>
           <p>The result catalog has the content model <code>(metadata, param*, control*, group*,
               back-matter?)</code> where <code>group</code> has the model <code>(title?, control*,
               group*)</code></p>
         </li>
         <li>
-          <p>If <s>merge/custom</s> is used, see above. The content model of the result catalog is
-            the same as that for <s>merge/as-is</s>.</p>
+          <p>If <src>merge/custom</src> is used, see above. The content model of the result catalog
+            is the same as that for <src>merge/as-is</src>.</p>
         </li>
       </ul>
       <p>Unless it be for special purposes in a debugging or tracing mode, profile results may not
         show and groups or structures in the form of elements not described here. Depending on the
         merge directive, all groups will be given either by the catalog source(s)
-          (<s>merge/as-is</s>) or the profile (<s>merge/custom</s>), or there will be no groups at
-        all (no combination rule).</p>
+          (<src>merge/as-is</src>) or the profile (<src>merge/custom</src>), or there will be no
+        groups at all (no combination rule).</p>
     </section>
-    <section>
+    <section id="back-matter-of-result">
       <head>Back matter</head>
       <p>The back matter in result catalogs is assembled from the back matter of their source
         profiles in combination with the back matter of source catalogs. In both catalogs and
-        profiles, <s>back-matter</s> is comprised of (multiple uses of either) <s>citation</s> or
-          <s>resource</s>. Either of these elements may be cross-referenced from any location in
-        their source documents by means of a URI fragment identifier on an <s>href</s> flag, for
-        example <code>&lt;resource id="document-X</code>> may be referenced from inside its
-        containing document by <code>&lt;link href="#document-X"></code> appearing elsewhere.
-        Whether an element inside back matter must be included in the result, depends on whether
-        such a cross-reference has also been included in the same result.</p>
-      <p>Specifically, any <s>citation</s> or <s>resource</s> inside <s>back-matter</s> either in
-        the profile, or in any imported catalog, is considered eligible for propagation into the
-        result if either of two conditions obtains:</p>
+        profiles, <src>back-matter</src> is comprised of (multiple uses of either)
+          <src>citation</src> or <src>resource</src>. Either of these elements may be
+        cross-referenced from any location in their source documents by means of a URI fragment
+        identifier on an <src>href</src> flag, for example <code>&lt;resource id="document-X</code>>
+        may be referenced from inside its containing document by <code>&lt;link
+          href="#document-X"></code> appearing elsewhere. Whether an element inside back matter must
+        be included in the result, depends on whether such a cross-reference has also been included
+        in the same result.</p>
+      <p>Specifically, any <src>citation</src> or <src>resource</src> inside <src>back-matter</src>
+        either in the profile, or in any imported catalog, is considered eligible for propagation
+        into the result if either of two conditions obtains:</p>
       <ul>
         <li>
           <p>The element is referenced by any element inside the profile metadata.</p>
         </li>
         <li>
-          <p>The element is referenced from a link or anchor (<s>link</s> or <s>a</s> element)
-            inside controls, parameters, or any contents (for example, paragraphs inside
-              <t>group/part</t>) included in the resolved profile.</p>
+          <p>The element is referenced from a link or anchor (<src>link</src> or <src>a</src>
+            element) inside controls, parameters, or any contents (for example, paragraphs inside
+              <tgt>group/part</tgt>) included in the resolved profile.</p>
         </li>
       </ul>
-      <p>The assembly of the result <t>back-matter</t> occurs by including copies of all eligible
-          <s>citation</s> elements followed by all eligible <s>resource</s> elements, in the same
-        order as given in their sources.</p>
+      <p>The assembly of the result <tgt>back-matter</tgt> occurs by including copies of all
+        eligible <src>citation</src> elements followed by all eligible <src>resource</src> elements,
+        in the same order as given in their sources.</p>
       <p>Additionally, combination rules (see next section) will affect whether and how duplicate or
-        competing <s>citation</s> or <s>resource</s> elements are handled, to remove or combine
-        multiple occurrences of the same referenced object.</p>
+        competing <src>citation</src> or <src>resource</src> elements are handled, to remove or
+        combine multiple occurrences of the same referenced object.</p>
       <p>In resolution, one way of obtaining this result is to permit all contents of back matter to
         persist until controls are selected and modified (that is, through the modification stage),
         and then filter these to include only those elements still referenced by included
         contents.</p>
     </section>
   </section>
-    <section>
-      <head>Profile mapping to catalog</head>
-      <p>Considered as a <q>document</q> or integrated data set (object), a profile has three sections,
-        each of which corresponds to a conceptual step in resolution. To resolve a catalog fully is
-        to perform all these steps.</p>
-      <p>While the steps are described in this specification as occurring in sequence, a profile
+    <section id="full-mapping">
+    <head>Profile mapping to catalog</head>
+    <p>Considered as a <q>document</q> or integrated data set (object), a profile has three
+      sections, each of which corresponds to a conceptual step in resolution. To resolve a catalog
+      fully is to perform all these steps.</p>
+    <p>While the steps are described in this specification as occurring in sequence, a profile
       processor is not obliged to perform them in the order described. Conformance to these
       specifications is determined by whether the results of processing (<term>resolution</term>)
       appear as described, not on whether the means to produce those results work in exactly the
       manner described here.</p>
-      <p>The three steps are <s>import</s> (control <term>selection</term>); <s>merge</s>; and
-        <s>modify</s>. In brief:</p>
-      <ul>
-        <li><p><s>import</s> identifies one or more control sources (catalogs or profiles) and the controls
-          within them to be included in this profile</p></li>
-        <li><p><s>merge</s> produces the rules for how controls will be organized and merged (or not)</p></li>
-        <li><p><s>modify</s> indicates how parameters in the underlying catalog may be modified or set, and how
-          control contents may be amended or modified.</p></li>
-      </ul>
-      <p>The <term>selection</term> (import) stage is mandatory inasmuch as a profile that imports
-      no controls is inoperative. Such a profile is not in error and it can be resolved, but its
+    <p>The three steps are <src>import</src> (control <term>selection</term>); <src>merge</src>; and
+        <src>modify</src>. In brief:</p>
+    <ul>
+      <li>
+        <p><src>import</src> identifies one or more control sources (catalogs or profiles) and the
+          controls within them to be included in this profile;</p>
+      </li>
+      <li>
+        <p><src>merge</src> produces the rules for how controls will be organized and merged (or
+          not);</p>
+      </li>
+      <li>
+        <p><src>modify</src> indicates how parameters in the underlying catalog may be modified or
+          set, and how control contents may be amended or modified.</p>
+      </li>
+    </ul>
+    <p>The <term>selection</term> (import) stage is mandatory inasmuch as a profile that imports no
+      controls is inoperative. Such a profile is not in error and it can be resolved, but its
       resolution will contain no controls (and as such might fail a validation check against the
       catalog schema).</p>
-      <p>The <term>merge</term> stage can be considered mandatory in that there are default rules
-      for merging, to be followed when no merge behavior is given; thus <q>no merging</q> is
-      permitted, and a profile with no merge semantics indicated is not in error.</p>
-      <p>The <term>modify</term> stage is optional in that controls do not have to be modified and
+    <p>The <term>merge</term> stage can be considered mandatory in that there are default rules for
+      merging, to be followed when no merge behavior is given; thus <q>no merging</q> is permitted,
+      and a profile with no merge semantics indicated is not in error.</p>
+    <p>The <term>modify</term> stage is optional in that controls do not have to be modified and
       parameters do not have to be set; a profile is always free to represent these components as
       they are given in their catalogs. Leaving a parameter unset, or qualifying its setting (with
       additional information or constraints) without modifying its value, is also possible; like a
       catalog, a profile can represent a set of controls and parameters that are not fully defined
       or are defined only at a general level, for purposes of use at another layer (profile or
       implementation) where more specific definition and guidance can be provided.</p>
-      <p>As described in the previous section, when resolved, an OSCAL profile takes the form of an
+    <p>As described in the previous section, when resolved, an OSCAL profile takes the form of an
       OSCAL catalog. The merge semantics described below will produce outputs conforming to this
       organization.</p>
-      <section>
-        <head>Import - select controls</head>
+    <section id="import-selections">
+      <head>Import - select controls</head>
       <p>A profile begins by importing catalogs, all of whose controls are made available. Each
         import constitutes a <term>selection</term> of controls from a catalog or profile. Imports
-        are given in series after the metadata:</p>
+        are given in sequence after the metadata:</p>
       <tagging whose="source_profile">&lt;profile>
   &lt;metadata>[ Profile metadata ]&lt;/metadata>
   &lt;import href="#catalog">... selection of controls ...&lt;/import>
   &lt;import href="#catalog-supplemental">... selection of controls ...&lt;/import>
 &lt;/profile>
 </tagging>
-        <p>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
+      <tagging whose="target_catalog">&lt;profile>
+  &lt;metadata>[ Profile metadata ]&lt;/metadata>
+  &lt;selection href="#catalog" catalog-id="{catalog-identifier}">... selection of controls ...&lt;/selection>
+  &lt;selection href="#catalog-supplemental" catalog-id="{catalog-identifier}">... selection of controls ...&lt;/selection>
+&lt;/profile>
+</tagging>
+      <p>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
         provides controls in their native form. An imported profile is resolved on import, using the
-        same rules for the resolution of the profile at the top level, so a catalog is presented to
-        the importing profile.</p>
-        <p>No profile may import itself either directly or indirectly. An import directive that
+        same rules for profile resolution, so a catalog is presented to the importing profile.</p>
+      <p>(The result of importing other endpoints or resources besides valid OSCAL catalogs and
+        profiles, is not defined by this specification.)</p>
+      <p>No profile may import itself either directly or indirectly. An import directive that
         indicates either the profile itself, or a profile into which it is being (currently)
         imported, must be ignored. Optionally, a processor may issue a warning.</p>
-        <p>In an import directive, the reference to the resource to be imported appears on an
-          <s>@href</s> flag. It takes either of two forms, external or internal:</p>
-        <section>
-          <head>External</head>
-          <p>An external reference appears as an absolute or relative URL</p>
-          <p>Indicating a file available via <revisit>[prototol?]</revisit></p>
-          <tagging whose="source_profile">&lt;import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+      <p>In an import directive, the reference to the resource to be imported appears on an
+          <src>@href</src> flag. It takes either of two forms, external or internal:</p>
+      <section id="import-via-uri">
+        <head>External - import via URI</head>
+        <p>An external reference appears as an absolute or relative URL</p>
+        <p>Indicating a file available via <revisit>[prototol?]</revisit></p>
+        <tagging whose="source_profile">&lt;import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
   &lt;include>
     &lt;call control-id="ac-1"/>
   &lt;/include>
 &lt;/import>
 </tagging>
-        </section>
-        <section>
-          <head>Internal</head>
-          <p>A catalog or profile to be imported can also be indicated using an internal link via a
-            URI fragment identifier (starting with <code>#</code>). If an import href resolves to a
-              <code>resource</code> elsewhere in the profile (typically in back matter), that
-            resource can be retrieved to provide the source catalog.</p>
-          <cf  file="examples/base2-test_profile.xml"/>
-          <tagging whose="source_profile">&lt;import href="#nist-sp800-53_catalog">
+      </section>
+      <section id="import-via-resource">
+        <head>Internal - import via resource</head>
+        <p>A catalog or profile to be imported can also be indicated using an internal link via a
+          URI fragment identifier (starting with <code>#</code>). If an import href resolves to a
+            <code>resource</code> elsewhere in the profile (typically in back matter), that resource
+          can be retrieved to provide the source catalog.</p>
+        <cf file="profile-resolution-examples/base2-test_profile.xml"/>
+        <tagging whose="source_profile">&lt;import href="#nist-sp800-53_catalog">
   &lt;include>
     &lt;call control-id="ac-1"/>
   &lt;/include>
@@ -434,11 +457,12 @@
   &lt;/resource>
 &lt;/back-matter>
 </tagging>
-          <p>An internal cross-reference from an import to a resource that does not reference a
-            catalog or profile, or a cross-reference to something other than a resource, is
-            inoperative. It may be signaled as an error [or warning] by a processor.</p>
-        </section>
-      <section>
+        <p>A reference from an import to a resource that does not reference a catalog or profile, or
+          a cross-reference to something other than a resource, is inoperative for purposes of
+          importing. It may be signaled as an error [or warning] by a processor. <revisit>Allow
+            processors to import other stuff as they like?</revisit></p>
+      </section>
+      <section id="stateless-URIs">
         <head>Availability of documents returned by given URIs</head>
         <p>The rules of XSLT <code>document()</code> apply to the traversal of any URI: that is, it
           is assumed that all calls to a given (resolved) URI reference, will return the same
@@ -480,9 +504,9 @@
         <head>Multiple imports</head>
         <p>In the selection stage, each import directive is processed to produce a set of controls
           and (when they are referenced) parameters. These controls and parameters are represented
-          in the form of an interim catalog. Note that this occurs in the selection stage even if
+          in the form of a control selection. Note that this occurs in the selection stage even if
           the same catalog (resource) is imported multiple times: each distinct import collects
-          controls in an interim catalog:</p>
+          controls into a <tgt>selection</tgt>:</p>
         <mapping unit-test="profile-resolution-examples/import-twice_profile.xml">
           <tagging whose="source_profile">&lt;profile id="import-twice_profile">
     &lt;metadata> … &lt;/metadata>
@@ -496,13 +520,13 @@
 &lt;/profile></tagging>
           <tagging whose="target_catalog">&lt;profile id="import-twice_profile_RESOLVED">
   &lt;metadata> … &lt;/metadata>
-  &lt;catalog id="catalog-id"> … selected controls … &lt;/catalog>
-  &lt;catalog id="catalog-id"> … selected controls … &lt;/catalog>
+  &lt;selection id="catalog-id"> … selected controls … &lt;/selection>
+  &lt;selection id="catalog-id"> … selected controls … &lt;/selection>
   &lt;back-matter> … &lt;/back-matter>
 &lt;/profile>
 </tagging>
         </mapping>
-        <p>The interim catalogs are combined and collapsed in the next stage of processing,
+        <p>The control selections are combined and collapsed in the next stage of processing,
             <term>merge</term> (see below) .</p>
         <p>Multiple imports may result in outputs with clashing controls (see below). Typically this
           will be because a control has been selected twice, and no merge behavior has been
@@ -513,18 +537,18 @@
           which calls catalog Z, and then profile A calls catalog Z again to acquire controls not
           included in profile B, or as unmodified by profile B.</p>
       </section>
+      <section id="select-phase">
+        <head>Selecting controls</head>
+        <p>Imports can specify controls by inclusion and exclusion, either or both in
+          combination.</p>
         <section>
-          <head>Selecting controls</head>
-          <p>Imports can specify controls by inclusion and exclusion, either or both in
-            combination.</p>
-          <section>
-            <head>Inclusion</head>
-            <p>Using inclusion, all or some controls may be selected from a catalog.</p>
+          <head>Inclusion</head>
+          <p>Using inclusion, all or some controls may be selected from a catalog.</p>
           <section>
             <head>Selecting by ID</head>
-            <p>Select individual controls or controls by groups using <s>control-id</s> selectors
-              corresponding to their IDs.</p>
-            <cf file="examples/base-test_profile.xml"/>
+            <p>Select individual controls or controls by groups using <src>control-id</src>
+              selectors corresponding to their IDs.</p>
+            <cf file="profile-resolution-examples/base-test_profile.xml"/>
             <tagging whose="source_profile">&lt;include>
   &lt;call control-id="ac-1"/>
 &lt;/include>
@@ -535,7 +559,7 @@
             <p>Controls may also be selected using match patterns against their IDs. This is useful
               because related controls (either in a hierarchy, or together in a group) frequently
               have related IDs as well.</p>
-            <cf file="examples/include-match-test_profile.xml"/>
+            <cf file="profile-resolution-examples/include-match-test_profile.xml"/>
             <tagging whose="source_profile">&lt;include>
   &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
 &lt;/include>
@@ -545,72 +569,78 @@
           </section>
           <section>
             <head>Selecting all controls</head>
-            <p>Select all controls from a catalog by using an <s>include/all</s> rule:</p>
-            <cf file="examples/include-all-test_profile.xml"/>
+            <p>Select all controls from a catalog by using an <src>include/all</src> rule:</p>
+            <cf file="profile-resolution-examples/include-all-test_profile.xml"/>
             <tagging whose="source_profile">&lt;include>
   &lt;all/>
 &lt;/include>
 </tagging>
           </section>
-            <section>
-              <head>Including child controls</head>
-              <p>In OSCAL, controls may contain controls. For example, in SP 800-53 many controls
-              are supplemented with control enhancements; in OSCAL these are represented as child
+          <section id="including-child-controls">
+            <head>Including child controls</head>
+            <p>In OSCAL, controls may contain controls. For example, in SP 800-53 many controls are
+              supplemented with control enhancements; in OSCAL these are represented as child
               controls within parent controls. So parent AC-2 has children AC-2(1) through AC-2(13),
               for example.</p>
-              <p>Child controls can be included by the same mechanism as controls, i.e. by means of
-                an ID call. Alternatively a match can frequently be applied (at least given most ID
-                assignment schemes) to match controls and child controls together.</p>
-              <p>Additionally, a <s>@with-child-controls</s> directive on a <s>call</s> or
-                <s>match</s> can indicate that child controls (that is, direct children not all
+            <p>Child controls can be included by the same mechanism as controls, i.e. by means of an
+              ID call. Alternatively a match can frequently be applied (at least given most ID
+              assignment schemes) to match controls and child controls together.</p>
+            <p>Additionally, a <src>@with-child-controls</src> directive on a <src>call</src> or
+                <src>match</src> can indicate that child controls (that is, direct children not all
               descendants) should be included with the applicable call(s) or match(es).</p>
-              <p>Furthermore, <s>all[@with-child-controls='no']</s> may select all controls placed
-              directly within a group, excluding all  controls appearing inside other controls.</p>
-            <cf file="include-all-no-children.xml"/>
-            </section>
-          <section>
+            <p>Furthermore, <src>all[@with-child-controls='no']</src> may select all controls placed
+              directly within a group, excluding all controls appearing inside other controls.</p>
+            <cf file="profile-resolution-examples/include-all-no-children-test_profile.xml"/>
+          </section>
+          <section id="redundant-calls">
             <head>Redundant calls</head>
             <p>Calls and matches may be combined in a single import. Their effect is cumulative; any
-              control that is selected by both calling and matching from a given <s>include</s>
+              control that is selected by both calling and matching from a given <src>include</src>
               directive, or by matching more than one pattern, is included once (unless it is also
-              marked for exclusion, see below).</p>
+              marked for exclusion, see <xref to="exclusions"/> below).</p>
           </section>
-          </section>
-          <section>
-            <head>Exclusions</head>
-            <p>Exclusions work the same way as inclusions, except with the opposite effect - the
+        </section>
+        <section id="exclusions">
+          <head>Exclusions</head>
+          <p>Exclusions work the same way as inclusions, except with the opposite effect - the
             indicated control(s) do not appear in the result catalog.</p>
-            <p>Additionally, there is no such thing as <s>exclude/all</s>, which is invalid and
+          <p>Additionally, there is no such thing as <src>exclude/all</src>, which is invalid and
             should be considered inoperable.</p>
-            <p>Any control designated to be both included and excluded, is excluded. This holds
+          <p>Any control designated to be both included and excluded, is excluded. This holds
             irrespective of the specificity of the selection for inclusion or exclusion. For
             example, if AC-1 is included by id <code>ac-1</code> and excluded by matching
               <code>ac.*</code>, it is excluded. Selection for exclusion prevails.</p>
-          <p><revisit>What about when a control is excluded, but  it has descendant controls that
-              are included? Under <s>include/all</s>, the descendants maybe would be excluded. If
-              the subcontrol is included by <s>call</s> or <s>match</s> perhaps the 'shells' of its
-              ancestors should be included. See section on "implicit inclusions under as-is",
+          <p><revisit>What about when a control is excluded, but it has descendant controls that are
+              included? Under <src>include/all</src>, the descendants maybe would be excluded. If
+              the subcontrol is included by <src>call</src> or <src>match</src> perhaps the 'shells'
+              of its ancestors should be included. See section on "implicit inclusions under as-is",
               below.</revisit></p>
-          </section>
-          <section><head>Implicit <s>all</s></head><p>An empty import statement should be considered the same as an import with an <s>include/all</s>.
-            An empy <s>import</s> directive</p><tagging whose="source_profile">&lt;import href="#nist-catalog"/>
-</tagging><p>is
-            functionally equivalent to
-              this:</p><tagging whose="source_profile">&lt;import href="#nist-catalog">
+        </section>
+        <section>
+          <head>Implicit <src>all</src></head>
+          <p>An empty import statement should be considered the same as an import with an
+              <src>include/all</src>. An empy <src>import</src> directive</p>
+          <tagging whose="source_profile">&lt;import href="#nist-catalog"/>
+</tagging>
+          <p>is functionally equivalent to this:</p>
+          <tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;include>
     &lt;all/>
   &lt;/include>
 &lt;/import>
 </tagging>
-          <cf file="examples/include-all-implicit-test_profile.xml"/><p>The same thing occurs if an <s>exclude</s> directive is given without an <s>include</s>
-            directive.</p><p>Example:</p><tagging whose="source_profile">&lt;import href="#nist-catalog">
+          <cf file="profile-resolution-examples/include-all-implicit-test_profile.xml"/>
+          <p>The same thing occurs if an <src>exclude</src> directive is given without an
+              <src>include</src> directive.</p>
+          <p>Example:</p>
+          <tagging whose="source_profile">&lt;import href="#nist-catalog">
   &lt;exclude>
     &lt;call control-id="ac-1"/>
   &lt;/exclude>
 &lt;/import>
-</tagging><p>is
-            the same as
-              this:</p><tagging whose="source_catalog">&lt;import href="#nist-catalog">
+</tagging>
+          <p>is the same as this:</p>
+          <tagging whose="source_catalog">&lt;import href="#nist-catalog">
   &lt;include>
     &lt;all/>
   &lt;/include>
@@ -618,8 +648,10 @@
     &lt;call control-id="ac-1"/>
   &lt;/exclude>
 &lt;/import>
-</tagging><p>Result: all controls from the catalog are included <em>except</em> AC-1.</p>
-          <cf file="examples/exclude-call-test_profile.xml"/></section>
+</tagging>
+          <p>Result: all controls from the catalog are included <em>except</em> AC-1.</p>
+          <cf file="profile-resolution-examples/exclude-call-test_profile.xml"/>
+        </section>
         <section>
           <head>Order of controls returned in selection</head>
           <p>Because controls may be organized in the subsequence merge stage, order of controls
@@ -628,26 +660,26 @@
             below), controls are returned for an import in the order of their appearance in their
             catalog of origin.</p>
         </section>
-        </section>
+      </section>
       <section>
         <head>Copying parameters</head>
         <p>Unlike controls, parameters are copied implicitly. Whether a parameter in the source
           catalog is copied into the result depends on two factors: its location, and whether it is
-          referenced by an <t>insert</t> directive in the result catalog.</p>
-        <p><s>insert</s>  directives may occur anywhere in a catalog's data content including not
+          referenced by an <tgt>insert</tgt> directive in the result catalog.</p>
+        <p><src>insert</src> directives may occur anywhere in a catalog's data content including not
           only in controls, but in other parameters. Thus a parameter may have to be included by
-          virtue of an <s>insert</s> directive, making reference to it, that occurs in another
-          parameter, included by virtue of a different  <s>insert</s> directive found in an included
-          control.</p>
+          virtue of an <src>insert</src> directive, making reference to it, that occurs in another
+          parameter, included by virtue of a different <src>insert</src> directive found in an
+          included control.</p>
         <p>A reasonable strategy for implementing this requirement is to copy all parameters through
-          to interim catalogs in the <term>selection</term> phase, and then remove all parameters
+          to control selections in the <term>selection</term> phase, and then remove all parameters
           that are not (directly or indirectly) referenced by <term>insert</term> directives in
           controls that have been selected.</p>
-        <section>
+        <section id="params-in-controls">
           <head>Parameters given in controls</head>
-          <p>Any parameter (<s>param</s> element) that appears in a control being selected, appears
-            in the result, unless the parameter element was indicated by a remove statement (see
-            below).</p>
+          <p>Any parameter (<src>param</src> element) that appears in a control being selected,
+            appears in the result, unless the parameter element was indicated by a remove statement
+            (see below).</p>
           <mapping>
             <tagging whose="source_catalog">&lt;control id="a1">
     &lt;title>Control A1&lt;/title>
@@ -661,26 +693,26 @@
     &lt;/part>
 &lt;/control></tagging>
           </mapping>
-          <cf file="examples/include-all-test_profile.xml"/>
+          <cf file="profile-resolution-examples/include-all-test_profile.xml"/>
         </section>
-        <section>
+        <section id="loose-params">
           <head>Loose parameters</head>
           <p>Parameters may sometimes be given in catalogs outside of controls. For example, a
             parameter that is referenced from inside two different controls, may be represented
             outside both of them, within a group.</p>
           <p>These parameters are copied if (only if) a control is also propagated, which after
-            modification contains an <s>insert</s> directive referencing this parameter. The
+            modification contains an <src>insert</src> directive referencing this parameter. The
             parameter appears in the location in the resolved catalog corresponding to its location
-            in the source, albeit ungrouped if no <s>merge/as-is</s> is given.</p>
-          <p>When a catalog is organized by a <s>merge/custom</s> directive, loose parameters are
-            copied into the resulting grouping structure directly preceding the first control
-            appearing that contains an <s>insert</s> directive referencing that parameter.</p>
-          <p>Parameters that are not referenced by an <s>insert</s>, do not appear in the result
+            in the source, albeit ungrouped if no <src>merge/as-is</src> is given.</p>
+          <p>When a catalog is organized by a <src>merge/custom</src> directive, loose parameters
+            are copied into the resulting grouping structure directly preceding the first control
+            appearing that contains an <src>insert</src> directive referencing that parameter.</p>
+          <p>Parameters that are not referenced by an <src>insert</src>, do not appear in the result
             catalog.</p>
           <mapping/>
         </section>
       </section>
-      <section>
+      <section id="circular-imports">
         <head>Circular imports</head>
         <p>When a profile imports a profile, the subordinate profile is resolved into a catalog
           using the same rules. This presents a possibility of circular imports, when a profile is
@@ -696,8 +728,9 @@
           that did not import A. (D importing B importing C importing A would not be a problem.)</p>
         <p>Circular imports are inoperative, and may be reported as an error <revisit>[or
             warning]</revisit>.</p>
-        <p>An import that is not circular (refers to a document not already imported) results in an
-          interim catalog, subject to merging with other interim catalogs in the merge stage.</p>
+        <p>An import that is not circular (refers to a document not already imported) results in a
+          control selection, subject to merging with other control selections in the merge
+          stage.</p>
         <mapping unit-test="profile-resolution-examples/home_profile.xml">
           <p>A profile identified as <code>home_profile.xml</code> imports another one identified as
               <code>circular_profile.xml</code>:</p>
@@ -720,7 +753,7 @@
   &lt;/import>
 &lt;/profile>
 </tagging>
-          <p>No interim catalog is produced for the circular import:</p>
+          <p>No control selection is produced for the circular import:</p>
           <tagging whose="target_catalog">&lt;profile id="home_profile_RESOLVED">
   &lt;metadata>...&lt;/metadata>
 &lt;/profile>
@@ -733,12 +766,12 @@
 </tagging>
         </mapping>
       </section>
-      </section>
-      <section>
-        <head>Merge - manage and organize imported controls</head>
-        <section>
-          <head><s>merge/combine</s> - handling control collisions</head>
-          <p><term>Colliding controls</term> (or <term>clashing</term>) describes the condition that
+    </section>
+    <section id="merge-phase">
+      <head>Merge - manage and organize imported controls</head>
+      <section id="merge-combine">
+        <head><src>merge/combine</src> - handling control collisions</head>
+        <p><term>Colliding controls</term> (or <term>clashing</term>) describes the condition that
           occurs when multiple invocations of controls with the same ID are given, and so a profile
           resolution will result in duplicative and/or contradictory information. Even given a rule
           against multiple imports of the same resource, it may frequently occur that in profiles
@@ -747,21 +780,21 @@
           includes a control with amendments, and then (the top-level profile) includes the same
           control directly from its original catalog, a collision will occur between these two
           variants.</p>
-          <p>Generally such a collision is readily detectable as long as IDs have not been modified;
+        <p>Generally such a collision is readily detectable as long as IDs have not been modified;
           in other words, constraints over uniqueness (within document scope) of IDs will be
           violated in resolved instances where two (perhaps different) representations of the same
           control appear. Careful profile authors will be able to detect and prevent these resulting
           problems.</p>
         <p>Apart from handling problems and exceptions, however, for different purposes different
           profiles might wish to apply different rules. OSCAL offers three such rules: the
-          directives for each are given as a value on the <s>@method</s> attribute of a profile
-            <s>merge/combine</s> element.</p>
-          <section>
-          <head>No <s>merge/combine</s> given</head>
-          <p>If no <s>merge</s> directive is given in the profile, or if a <s>merge</s> is given
-            without a <s>combine</s>, control or parameter clashes are treated as if
-              <s>merge/combine[@method='keep']</s> were given. A profile with no <s>merge</s>
-            directive:</p>
+          directives for each are given as a value on the <src>@method</src> attribute of a profile
+            <src>merge/combine</src> element.</p>
+        <section id="no-merge-explicit">
+          <head>No <src>merge/combine</src> given</head>
+          <p>If no <src>merge</src> directive is given in the profile, or if a <src>merge</src> is
+            given without a <src>combine</src>, control or parameter clashes are treated as if
+              <src>merge/combine[@method='keep']</src> were given. A profile with no
+              <src>merge</src> directive:</p>
           <tagging whose="source_profile">&lt;profile>
   &lt;import href="#catalog1"/>
   &lt;import href="#catalog2"/>
@@ -776,12 +809,12 @@
 &lt;/profile></tagging>
           <mapping unit-test="profile-resolution-examples/merge-implicit-keep_profile.xml"/>
         </section>
-        <section>
+        <section id="no-merge-combination-rule">
           <head><q>No merge</q> combination rule</head>
-          <p>When a merge is indicated by <s>merge combine[@method='keep']</s>, or not given, the
-              <q>no merge</q> combination rule is used. Clashing controls or parameters are not
-            merged. Their groups are merged only if another <s>merge</s> directive such as
-              <s>as-is</s> is given.</p>
+          <p>When a merge is indicated by <src>merge combine[@method='keep']</src>, or not given,
+            the <q>no merge</q> combination rule is used. Clashing controls or parameters are not
+            merged. Their groups are merged only if another <src>merge</src> directive such as
+              <src>as-is</src> is given.</p>
           <tagging whose="source_profile">&lt;merge>
   &lt;combine method="keep"/>
 &lt;/merge>
@@ -813,18 +846,18 @@
         &lt;combine method="keep"/>
     &lt;/merge>
 &lt;/profile></tagging>
-            <p>In the result (showing interim catalogs):</p>
+            <p>In the result (showing control selections):</p>
             <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     id="merge-keep_profile">
     &lt;metadata> … &lt;/metadata>
-    &lt;catalog id="…">
+    &lt;selection id="…">
       &lt;control id="a1"> … &lt;/control>
       &lt;control id="b1"> … &lt;/control>
-    &lt;/catalog>
-    &lt;catalog id="…">
+    &lt;/selection>
+    &lt;selection id="…">
       &lt;control id="a1"> … &lt;/control>
       &lt;control id="b1"> … &lt;/control>
-    &lt;/catalog>
+    &lt;/selection>
 &lt;/profile></tagging>
           </mapping>
           <p>In this case, downstream errors should be expected: the two <code>a1</code> controls
@@ -834,13 +867,13 @@
           <p>Processors may optionally produce warnings when clashing controls are produced due to
             redundant invocations.</p>
         </section>
-          <section>
-            <head><q>Use first</q> merge combination rule</head>
+        <section id="use-first-combination-rule">
+          <head><q>Use first</q> merge combination rule</head>
           <tagging whose="source_profile">&lt;merge>
   &lt;combine="use-first"/>
 &lt;/merge>
 </tagging>
-            <p>When the <q>use first</q> combination rule is applied, the first reference to a given
+          <p>When the <q>use first</q> combination rule is applied, the first reference to a given
             control, with respect to the document order of the source data, prevails over later
             references. <q>First</q> is determined in reference to a top-down, depth-first traversal
             of the profile import hierarchy. So if a profile is imported before a catalog, and the
@@ -848,8 +881,8 @@
             import, the profile’s representation (perhaps modified) is taken. However, if the import
             directive targeting the catalog appears first, the catalog's (unmodified) representation
             of the control is included.</p>
-            <p>The same logic applies to parameters in the source catalogs, as modified by parameter
-              <s>set</s> directives.</p>
+          <p>The same logic applies to parameters in the source catalogs, as modified by parameter
+              <src>set</src> directives.</p>
           <mapping unit-test="profile-resolution-examples/merge-keep_profile.xml">
             <tagging whose="source_profile">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -872,63 +905,63 @@
         &lt;combine method="use-first"/>
     &lt;/merge>
 &lt;/profile></tagging>
-            <p>In the result (showing interim catalogs):</p>
+            <p>In the result (showing control selections):</p>
             <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     id="merge-keep_profile">
     &lt;metadata> … &lt;/metadata>
-    &lt;catalog id="…">
+    &lt;selection id="…">
       &lt;control id="a1"> … &lt;/control>
       &lt;control id="c1"> … &lt;/control>
-    &lt;/catalog>
-    &lt;catalog id="…">
+    &lt;/selection>
+    &lt;selection id="…">
       &lt;control id="b1"> … &lt;/control>
-    &lt;/catalog>
+    &lt;/selection>
 &lt;/profile></tagging>
           </mapping>
           <p><revisit>The <q>use first</q> combination rule also affects back matter,
             q.v.</revisit></p>
-          </section>
-          <section>
-            <head><q>Merge controls</q> merge combination rule</head>
+        </section>
+        <section id="merge-combination-rule">
+          <head><q>Merge controls</q> merge combination rule</head>
           <tagging whose="source_profile">&lt;merge>
   &lt;combine="merge"/>
 &lt;/merge>
 </tagging>
-            <p>When the <term>merge controls</term> merge combination rule is applied, the processor
+          <p>When the <term>merge controls</term> merge combination rule is applied, the processor
             will merge all representations of a given control, as distinguished by ID, into a single
             unified representation.</p>
-            <p>The single unified representation is assembled by aggregating all the contents of all
-              the (clashing) control instances and discarding duplicate branches.</p>
-            <p>Example:</p>
-            <tagging whose="source_catalog">&lt;control id="a1">
+          <p>The single unified representation is assembled by aggregating all the contents of all
+            the (clashing) control instances and discarding duplicate branches.</p>
+          <p>Example:</p>
+          <tagging whose="source_catalog">&lt;control id="a1">
   &lt;title>Control A1&lt;/title>
   &lt;prop name="label">A-1&lt;/prop>
   &lt;prop name="status">pending&lt;/prop>
 &lt;/control>
 </tagging>
-            <p>merging with</p>
-            <tagging whose="source_catalog">&lt;control id="a1">
+          <p>merging with</p>
+          <tagging whose="source_catalog">&lt;control id="a1">
   &lt;title>Control A1&lt;/title>
   &lt;prop name="label">A-1&lt;/prop>
   &lt;prop name="status">ready&lt;/prop>
 &lt;/control>
 </tagging>
-            <p>results in</p>
-            <tagging whose="target_catalog">&lt;control id="a1">
+          <p>results in</p>
+          <tagging whose="target_catalog">&lt;control id="a1">
   &lt;title>Control A1&lt;/title>
   &lt;prop name="label">A-1&lt;/prop>
   &lt;prop name="status">pending&lt;/prop>
   &lt;prop name="status">ready&lt;/prop>
 &lt;/control>
 </tagging>
-            <p>Note that groups are not merged by this rule; for that purpose, <s>merge/as-is</s> or
-              <s>merge/custom</s> should be used (in addition to the combine directive).</p>
+          <p>Note that groups are not merged by this rule; for that purpose, <src>merge/as-is</src>
+            or <src>merge/custom</src> should be used (in addition to the combine directive).</p>
           <p>Since the effect of this merge rule is to drop data silently (when it is considered to
             be redundant or duplicative), it should only be used on well-understood, well-controlled
-            catalog and profile  inputs, whose potential clashes or collisions are known in
+            catalog and profile inputs, whose potential clashes or collisions are known in
             advance.</p>
-          </section>
-        <section>
+        </section>
+        <section id="combining-back-matter">
           <head>Effects of combination rules on back matter</head>
           <p>When profiles import from more than one resource (catalog or profile), not only is
             there a potential for clashing controls, but also citation and resource elements
@@ -937,55 +970,61 @@
           <p>This situation is not remedied by the <q>no merge</q> combination rule. Under this
             rule, any citation or resource that is referenced from an imported catalog or profile,
             is included in the resolution result.</p>
-          <p>Under the <q>use first</q> rule (with <s>merge/combine[@method='use-first']</s>), only
-            the first <s>citation</s> with a given ID is kept from the set of citations (gathered
-            from all sources). Likewise only the first <s>resource</s> with a given ID is kept from
-            the set of resources. Note that uncontrolled identifiers may still clash – for example,
-            this will not prevent a <t>citation</t> and <t>resource</t> from appearing in the result
-            with the same ID (perhaps sourced from two different catalogs). Control and possibly
-            revision of upstream data sets is necessary to prevent such ambiguities.</p>
+          <p>Under the <q>use first</q> rule (with <src>merge/combine[@method='use-first']</src>),
+            only the first <src>citation</src> with a given ID is kept from the set of citations
+            (gathered from all sources). Likewise only the first <src>resource</src> with a given ID
+            is kept from the set of resources. Note that uncontrolled identifiers may still clash –
+            for example, this will not prevent a <tgt>citation</tgt> and <tgt>resource</tgt> from
+            appearing in the result with the same ID (perhaps sourced from two different catalogs).
+            Control and possibly revision of upstream data sets is necessary to prevent such
+            ambiguities.</p>
           <p><revisit>Examples</revisit></p>
-          <p><revisit>How does the <s>merge/combine[@method='merge']</s> (<q>merge controls</q>)
+          <p><revisit>How does the <src>merge/combine[@method='merge']</src> (<q>merge controls</q>)
               rule apply to back matter? Maybe the same as use-first. Or maybe use an approach
               similar to controls.</revisit></p>
         </section>
-        </section>
-        <section>
-          <head>Structuring the result</head>
-        <p><s>merge</s> also includes directives that can be used to organize the result catalog
+      </section>
+      <section id="result-structure">
+        <head>Structuring the result</head>
+        <p><src>merge</src> also includes directives that can be used to organize the result catalog
           into a structure or hierarchy of groups.</p>
-          <section>
-            <head>Unstructured catalog output</head>
-            <p>Two <s>merge</s> directives are used to introduce structure into a profile result
-            catalog, <s>as-is</s> and <s>custom</s>.</p>
-            <p>Profiles that have neither of these directives are resolved as unstructured catalogs,
+        <p>Two <src>merge</src> directives are used to introduce structure into a profile result
+          catalog, <src>as-is</src> and <src>custom</src>.</p>
+        <section id="merge-flat">
+          <head>Unstructured catalog output</head>
+          <p>Profiles that have neither of these directives are resolved as unstructured catalogs,
             with no groupings of controls.</p>
-          </section>
-          <section>
-            <head>as is</head>
-            <p>An <s>as-is</s>directive is used to reproduce the structure of a source catalog in
+          <p>Unstructured catalog output is produced by simple emitting the contents of the sequence
+            of control selections produced in the selection phase.</p>
+        </section>
+        <section id="merge-as-is">
+          <head>as is</head>
+          <p>An <src>as-is</src>directive is used to reproduce the structure of a source catalog in
             the result catalog. When more than one catalog is referenced by a profile, the
-              <s>as-is</s> directive produces a catalog that combines the grouping structures of all
-            the source catalogs.</p>
-            <p><revisit>(consider case of multiple imports of single resource – we need to track
+              <src>as-is</src> directive produces a catalog that combines the grouping structures of
+            all the source catalogs.</p>
+          <p><revisit>(consider case of multiple imports of single resource – we need to track
               catalog identity here)</revisit></p>
-            <section>
-              <head>Implicit inclusions under <s>as-is</s></head>
-              <p>Under <term>as is</term>, a resolved profile’s structure is expected to replicate the
-                structure of source catalogs.</p>
-              <p>This is achieved by propagating, with all controls that are included, all groups
-                that they appear within, along with the groups’ IDs, titles and other contents.</p>
-              <p>Groups that do not include controls that have been included (either directly or as
-                descendants of contained groups, are not propagated to the result.</p>
-              <p>In addition to groups, under 'as is' mergine, certain controls will be included
-                implicitly. This happens when they have not been called, but they contain controls
-                that have been called. Such controls are treated like groups included 'as is' – they
-                must be propagated to retain the structure for descendant controls.</p>
-              <p>Unlike groups, however, the title of such a control is given with the resolution,
-                but no other contents are presented apart from (a) controls included explicitly or
-                (b) child controls that must be included for the sake of their own (included) child
-                (or descendant) controls.</p>
-              <p>Example:</p>
+          <section>
+            <head>Implicit inclusions under <src>as-is</src></head>
+            <p>Under <term>as is</term>, a resolved profile’s structure is expected to replicate the
+              structure of source catalogs.</p>
+            <p>This is achieved by propagating, with all controls that are included, all groups that
+              they appear within, along with the groups’ IDs, titles and other contents, apart from
+              controls not included in one or another control selection.</p>
+            <p>Groups that do not include controls that have been included (either directly or as
+              descendants of contained groups), are not propagated to the result.</p>
+            <p>In addition to groups, under 'as is' mergine, certain controls will be included
+              implicitly. This happens when they have not been called, but they contain controls
+              that have been called. Such controls are treated like groups included 'as is' – they
+              must be propagated to retain the structure for descendant controls. Apart from their
+              titles, however, their contents – aparts from controls that are included or controls
+              that must be included by virtue of included descendant controls – do not appear in the
+              target.</p>
+            <p>This is slightly different from groups, which may in valid inputs have other contents
+              – besides titles, controls, or groups – that profile authors wish to see copied into
+              the customized catalog.</p>
+            <p>Example:</p>
             <tagging whose="source_catalog">&lt;control id="xyz-1">
   &lt;title>Basic Household&lt;/title>
   &lt;control id="xyz-1.1">&lt;!-- bedtime routine -->...&lt;/control>
@@ -999,17 +1038,17 @@
 </tagging>
             <p>In this case the profile does not designate either control <code>xyz-1</code> or
               control <code>xyz-1.2</code> for inclusion</p>
-              <tagging whose="source_profile">&lt;import href="#XYZ-catalog">
+            <tagging whose="source_profile">&lt;import href="#XYZ-catalog">
   &lt;include>
     &lt;call control-id='xyz-1.1'/>&lt;!-- bedtime routine -->
     &lt;call control-id='xyz-1.2.1'/>&lt;!-- kitchen trashcan -->
   &lt;/include>
 &lt;/import>
 </tagging>
-              <p>The unmentioned elements are included, however, with their titles, because controls
+            <p>The unmentioned elements are included, however, with their titles, because controls
               that they contain are included. But control <code>xyz-1.3</code> does not appear in
               the result.</p>
-              <tagging whose="target_catalog">&lt;control id="xyz-1">
+            <tagging whose="target_catalog">&lt;control id="xyz-1">
   &lt;title>Basic Hygiene&lt;/title>
   &lt;control id="xyz-1.1">&lt;!-- bedtime routine -->...&lt;/control>
   &lt;control id="xyz-1.2">
@@ -1019,67 +1058,88 @@
 &lt;/control>
 
 </tagging>
-            </section>
-          </section>
-          <section>
-            <head><s>custom</s></head>
-            <p>The <s>merge/custom</s> directive provides a way to provide a result catalog with a
-            custom structure. It combines <s>call</s> or <s>match</s> directives, which work as they
-            do in selection, into groups, which provide the result with its structure.</p>
-          <p>The controls to be included must be selected in the profile's import. A call or match
-            appearing inside <s>custom</s>, if it refers to controls  not selected, is
-            inoperative.</p>
-          <p><revisit>Illustration</revisit></p>
-            <p><s>@with-child-controls</s> works, but all other organization is explicit (unlike 'as
-            is' merging). (<revisit>what about deeper descendant controls?</revisit>?)</p>
+            <p>Note that this means there may be controls that are selected implicitly by
+                <tgt>as-is</tgt> merging, over and above controls actually designated in import
+              statements. Thus the control set, considered strictly, of the target of an
+                <tgt>as-is</tgt> process, will be different from the control set delivered by a
+                <q>no merge</q> process.</p>
+            <p>Processors may optionally provide services for detection of nesting and structural
+              issues related to the importing and merging of controls, including but not limited to
+              validation / detection utilities (for imports regarded as incorrect, incomplete or
+              otherwise subject to improvement); runtime warnings; or user interfaces.</p>
           </section>
         </section>
+        <section id="merge-custom">
+          <head><src>custom</src></head>
+          <p>The <src>merge/custom</src> directive provides a way to provide a result catalog with a
+            custom structure. It combines <src>call</src> or <src>match</src> directives, which work
+            as they do in selection, into groups, which provide the result with its structure.</p>
+          <p>The controls to be included must be selected in the profile's import. A call or match
+            appearing inside <src>custom</src>, if it refers to controls not selected, is
+            inoperative.</p>
+          <p><revisit>Illustration</revisit></p>
+          <p><src>@with-child-controls</src> works, but all other organization is explicit (unlike
+            'as is' merging). (<revisit>what about deeper descendant controls?</revisit>?)</p>
+        </section>
       </section>
-      <section>
-        <head>Modify - set parameters and amend or alter controls</head>
-        <p>(Aka <term>patching</term>) Explicit modification of control content</p>
-        <p>There are two ways a control may need to be modified. Commonly, controls might be amended
-        – new material might be added. (For example, the priority marker properties P1-P3 in the
+    </section>
+    <section id="modify-phase">
+      <head>Modify - set parameters and amend or alter controls</head>
+      <p>(Aka <term>patching</term>) Explicit modification of control content</p>
+      <p>There are two ways a control may need to be modified. Commonly, controls might be amended –
+        new material might be added. (For example, the priority marker properties P1-P3 in the
         SP800-53 LOW MODERATE and HIGH baselines.) Less commonly, materials might be removed or
         edited.</p>
-        <p>OSCAL does not provide for <q>changing</q> a control, but editing can be achieved by removing
-          contents and adding (edited) contents back. In other words, editing is considered to be
-          the same kind of patching as removing combined with adding.</p>
-      <p>In addition to any modification or adjustment to controls, this section of a profile is used
-        to set parameter values or other properties of parameters declared in catalogs and
+      <p>OSCAL does not provide for <q>changing</q> a control, but editing can be achieved by
+        removing contents and adding (edited) contents back. In other words, editing is considered
+        to be the same kind of patching as removing combined with adding.</p>
+      <p>In addition to any modification or adjustment to controls, this section of a profile is
+        used to set parameter values or other properties of parameters declared in catalogs and
         referenced from their text. Parameters are propagated with the profile's setting into the
         result catalog for its use.</p>
-        <section>
-          <head>Setting Parameters</head>
-          <p>Modification of parameter settings is indicated using <s>set</s>.</p>
-          <p>Parameters are not always given within controls. A profile resolution result must
-          include copies (with or without modifications or settings) of all parameters defined
-          within the source catalog, which are referenced from <s>insert</s> directives anywhere
-          inside included controls.</p>
-        <p>Accordingly, any parameter referenced by an <s>insert</s> in any source catalog is copied
-          from catalog source to result <revisit>parameter propagation rules for merge/as-is,
+      <section id="param-setting">
+        <head>Setting Parameters</head>
+        <p>Modification of parameter settings is indicated using <src>set</src>.</p>
+        <p>Parameters are not always given within controls. A profile resolution result must include
+          copies (with or without modifications or settings) of all parameters defined within the
+          source catalog, which are referenced from <src>insert</src> directives anywhere inside
+          included controls.</p>
+        <p>Accordingly, any parameter referenced by an <src>insert</src> in any source catalog is
+          copied from catalog source to result <revisit>parameter propagation rules for merge/as-is,
             merge/custom</revisit> without any configuration required in the profile.</p>
-          <p>However, a profile should not reproduce parameters from source catalogs, which are not
-          referenced from <s>insert</s> directives.</p>
-          <p>When parameters are propagated, they may be modified by <s>set</s> directives given in
-          the profile.</p>
-        <p>If more than one <s>set</s> directive is given for the same parameter, all are applied,
-          in the sequence given in the profile. <revisit>[XXX even when
+        <p>However, a profile should not reproduce parameters from source catalogs, which are not
+          referenced from <src>insert</src> directives.</p>
+        <p>When parameters are propagated, they may be modified by <src>set</src> directives given
+          in the profile.</p>
+        <p>If more than one <src>set</src> directive is given for the same parameter, all are
+          applied, in the sequence given in the profile. <revisit>[XXX even when
             merge/combine/@method='use-first'?]</revisit></p>
-          <ul>
-            <li><p>A <s>set/title</s> replaces the <s>param/title</s> on the affected parameter</p></li>
-            <li><p>A <s>set/label</s> replaces the <s>param/label</s> on the affected parameter</p></li>
-            <li><p>A <s>set/value</s>
-              <em>or</em> a <s>set/select</s> replaces <em>any</em>
-              <s>param/value</s> or <s>param/select</s> on the affected parameter</p></li>
-            <li><p>Other elements given in a parameter <s>set</s> are added to the affected
-              parameter, after elements of the same name</p></li>
-            <li><p>The prescribed order of elements in the affected parameter is retained: <t>label</t>;
-                <t>usage</t>; <t>constraint</t>; <t>guideline</t>; <t>value</t> or <t>select</t> (a
-              choice); and <t>link</t>.</p></li>
-          </ul>
-          <p>[example]</p>
-          <tagging whose="source_catalog">&lt;param id="p1">
+        <ul>
+          <li>
+            <p>A <src>set/title</src> replaces the <src>param/title</src> on the affected
+              parameter</p>
+          </li>
+          <li>
+            <p>A <src>set/label</src> replaces the <src>param/label</src> on the affected
+              parameter</p>
+          </li>
+          <li>
+            <p>A <src>set/value</src>
+              <em>or</em> a <src>set/select</src> replaces <em>any</em>
+              <src>param/value</src> or <src>param/select</src> on the affected parameter</p>
+          </li>
+          <li>
+            <p>Other elements given in a parameter <src>set</src> are added to the affected
+              parameter, after elements of the same name</p>
+          </li>
+          <li>
+            <p>The prescribed order of elements in the affected parameter is retained:
+                <tgt>label</tgt>; <tgt>usage</tgt>; <tgt>constraint</tgt>; <tgt>guideline</tgt>;
+                <tgt>value</tgt> or <tgt>select</tgt> (a choice); and <tgt>link</tgt>.</p>
+          </li>
+        </ul>
+        <p>[example]</p>
+        <tagging whose="source_catalog">&lt;param id="p1">
   &lt;title>Password length&lt;/title>
   &lt;value>10&lt;/value>
 &lt;/param>
@@ -1091,7 +1151,7 @@
   &lt;/select>
 &lt;/set>
 </tagging>
-        <p>Note that <t>select</t> replaces <s>value</s>:</p>
+        <p>Note that <tgt>select</tgt> replaces <src>value</src>:</p>
         <tagging whose="target_catalog">&lt;param id="p1">
   &lt;title>Password length&lt;/title>
   &lt;select>
@@ -1102,15 +1162,15 @@
 </tagging>
         <section>
           <head>Setting a missing parameter</head>
-          <p>A <s>set</s> directive whose <s>@control-id</s> does not correspond to any control in
-            the resolved catalog, is inoperative.</p>
+          <p>A <src>set</src> directive whose <src>@control-id</src> does not correspond to any
+            control in the resolved catalog, is inoperative.</p>
           <p>Optionally, a processor may issue a warning in these cases.</p>
         </section>
-        </section>
-      <section>
+      </section>
+      <section id="control-altering">
         <head>Altering controls</head>
-        <p>A control can be altered by an <s>alter</s> directive on a control. The
-            <s>@control-id</s> flag on the <s>alter</s> indicates the control to which the
+        <p>A control can be altered by an <src>alter</src> directive on a control. The
+            <src>@control-id</src> flag on the <src>alter</src> indicates the control to which the
           alteration is applied.</p>
         <section>
           <head>Adding contents to controls</head>
@@ -1118,21 +1178,21 @@
             There are two forms of alteration: with implicit and explicit bindings.</p>
           <section>
             <head>Implicit binding</head>
-            <p>An <s>add</s> directive with no <s>id-ref</s> flag is taken to apply to the control
-              as a whole. Its <s>position</s> flag may be either of two values:
+            <p>An <src>add</src> directive with no <src>id-ref</src> flag is taken to apply to the
+              control as a whole. Its <src>position</src> flag may be either of two values:
                 <code>starting</code> and <code>ending</code>.</p>
             <p>The contents of the add directive are then added to the control contents in the
-              result, either after its <t>title</t> when <s>position</s> is <code>starting</code>,
-              or at the end if its position is <code>ending</code>.</p>
+              result, either after its <tgt>title</tgt> when <src>position</src> is
+                <code>starting</code>, or at the end if its position is <code>ending</code>.</p>
             <p>However, control contents in catalogs must appear in the order <code>title, param,
                 prop, link, part, control</code>. Subsequent to adding new elements, the control
               contents are sorted to appear in the required order. As a consequence, a new
-                <t>prop</t> appears after any <s>prop</s> already in the control, when
-                <s>position</s> is <code>ending</code>, or before any <s>prop</s> in the control
-              when <s>position</s> is <code>starting</code>.</p>
-            <p>When add has no <s>@ref-id</s> (has an implicit binding), the <s>position</s> values
-                <code>before</code> and <code>after</code> are inoperative. A processor may issue a
-              warning if they are encountered.</p>
+                <tgt>prop</tgt> appears after any <src>prop</src> already in the control, when
+                <src>position</src> is <code>ending</code>, or before any <src>prop</src> in the
+              control when <src>position</src> is <code>starting</code>.</p>
+            <p>When add has no <src>@ref-id</src> (has an implicit binding), the <src>position</src>
+              values <code>before</code> and <code>after</code> are inoperative. A processor may
+              issue a warning if they are encountered.</p>
             <mapping>
               <p>An addition operating on a control with implicit binding and position
                   <code>starting</code></p>
@@ -1152,8 +1212,9 @@
   &lt;prop name="status">ready&lt;/prop>
   &lt;part name="caution">&lt;p>Only for adult use.&lt;/p>&lt;/part>
 &lt;/control></tagging>
-              <p>Position is <code>starting</code> but the new <t>part</t> is added after the
-                existing <t>prop</t>, because <t>prop</t> elements must always occur first.</p>
+              <p>Position is <code>starting</code> but the new <tgt>part</tgt> is added after the
+                existing <tgt>prop</tgt>, because <tgt>prop</tgt> elements must always occur
+                first.</p>
             </mapping>
             <mapping>
               <p>An addition operating on a control with implicit binding and position
@@ -1174,29 +1235,29 @@
   &lt;prop name="basis">enumerated&lt;/prop>
   &lt;part name="caution">&lt;p>Only for adult use.&lt;/p>&lt;/part>
 &lt;/control></tagging>
-              <p>The <s>add/@position</s> is <code>ending</code> so the new <t>prop</t> appears
-                after the existing <t>prop</t>.</p>
+              <p>The <src>add/@position</src> is <code>ending</code> so the new <tgt>prop</tgt>
+                appears after the existing <tgt>prop</tgt>.</p>
             </mapping>
           </section>
           <section>
-            <head>Explicit  binding</head>
+            <head>Explicit binding</head>
             <p>An explicit binding on an addition permits inserting new contents anywhere in a
-              control, not only at the top level. It is given by a <s>@ref-id</s> flag on the
-                <s>add</s> directive. The value of  the <s>@ref-id</s> must correspond to the value
-              of an <s>@id</s> flag on an element inside the control, and not the control itself. If
-                <s>ref-id</s> does not correspond to such a value, the <s>add</s> directive is
-              inoperative. Optionally, a warning may be issued in such a case.</p>
-            <p>The element with <s>@id</s> equal to the <s>@ref-id</s> is considered the
+              control, not only at the top level. It is given by a <src>@ref-id</src> flag on the
+                <src>add</src> directive. The value of the <src>@ref-id</src> must correspond to the
+              value of an <src>@id</src> flag on an element inside the control, and not the control
+              itself. If <src>ref-id</src> does not correspond to such a value, the <src>add</src>
+              directive is inoperative. Optionally, a warning may be issued in such a case.</p>
+            <p>The element with <src>@id</src> equal to the <src>@ref-id</src> is considered the
                 <term>target</term> of the addition.</p>
-            <p>Additionally, with an explicit binding given by a <s>@ref-id</s>, <s>@position</s>
-              may have any of the values <code>starting</code>, <code>ending</code>,
-                <code>before</code> and <code>after</code>.</p>
-            <p>When <s>position</s> is <code>starting</code> or <code>ending</code>, the new
+            <p>Additionally, with an explicit binding given by a <src>@ref-id</src>,
+                <src>@position</src> may have any of the values <code>starting</code>,
+                <code>ending</code>, <code>before</code> and <code>after</code>.</p>
+            <p>When <src>position</src> is <code>starting</code> or <code>ending</code>, the new
               contents are added at the beginning or ending of the target element, inside that
               element, as are additions into controls (using implicit bindings).</p>
-            <p>Additionally, a <s>position</s> given as <code>before</code> indicates the addition
-              should be made directly before the target element, while <code>after</code> indicates
-              the addition should appear directly after the target element.</p>
+            <p>Additionally, a <src>position</src> given as <code>before</code> indicates the
+              addition should be made directly before the target element, while <code>after</code>
+              indicates the addition should appear directly after the target element.</p>
             <p><revisit>Unlike additions with implicit bindings, an explicit binding does not
                 provide for sorting of newly added elements to ensure correct ordering.
                 Consequently, profile authors must take care that additions they make into control
@@ -1213,7 +1274,7 @@
     &lt;part id="a1.b2">&lt;p>Sweep surfaces free of dust.&lt;/p>&lt;/part>
   &lt;/part>
 &lt;/control></tagging>
-              <p>Note that the <s>add</s> directive identifies the element with <s>@id</s>
+              <p>Note that the <src>add</src> directive identifies the element with <src>@id</src>
                 <code>a1.b1</code> as its target.</p>
               <tagging whose="source_profile">&lt;alter control-id="a1">
   &lt;add position="after" ref-id="a1.b1">
@@ -1231,21 +1292,22 @@
     &lt;part id="a1.b2">&lt;p>Sweep surfaces free of dust.&lt;/p>&lt;/part>
   &lt;/part>
 &lt;/control></tagging>
-              <p>The <s>position</s> is <code>after</code> so both elements inside <s>add</s> are
-                added after (not inside) the target element. Since the target element is inside
-                another <t>part</t> in the control, the new additions appear there as well.</p>
-              <p>Note that the result in this case will be schema-invalid since a <t>prop</t> may
-                not occur directly following a <t>part</t>. A better result can be obtained by using
-                two <s>add</s> directives, to insert the new <t>prop</t> separately before any
-                  <t>part</t> elements in the result.</p>
+              <p>The <src>position</src> is <code>after</code> so both elements inside
+                  <src>add</src> are added after (not inside) the target element. Since the target
+                element is inside another <tgt>part</tgt> in the control, the new additions appear
+                there as well.</p>
+              <p>Note that the result in this case will be schema-invalid since a <tgt>prop</tgt>
+                may not occur directly following a <tgt>part</tgt>. A better result can be obtained
+                by using two <src>add</src> directives, to insert the new <tgt>prop</tgt> separately
+                before any <tgt>part</tgt> elements in the result.</p>
             </mapping>
           </section>
           <section>
-            <head>Usage of <s>add</s> directives modifying controls inside controls</head>
-            <p>OSCAL supports control extensions inside controls in the form of <s>control</s>
-              elements inside <s>control</s> elements. Because the semantics of the <s>add</s>
-              directive target any (element)  contents of controls, they can be used to target these
-              control extensions for modification as well as other contents.</p>
+            <head>Usage of <src>add</src> directives modifying controls inside controls</head>
+            <p>OSCAL supports control extensions inside controls in the form of <src>control</src>
+              elements inside <src>control</src> elements. Because the semantics of the
+                <src>add</src> directive target any (element) contents of controls, they can be used
+              to target these control extensions for modification as well as other contents.</p>
             <p>Because such a control can already be modified using implicit bindings, it is
               recommended that they not be targeted with explicit bindings. Using an implicit
               binding supports more robust alteration since contents in the result can be ordered
@@ -1257,63 +1319,74 @@
           <p>Contents inside controls can be removed from them in catalog results. In combination
             with adding new contents, this feature can be used to edit controls as well as amend
             them.</p>
-          <p>A <s>remove</s> directive inside an <s>alter</s> directive identifies an element or set
-            of elements inside a control to be removed. It does this using any of four flags:</p>
+          <p>A <src>remove</src> directive inside an <src>alter</src> directive identifies an
+            element or set of elements inside a control to be removed. It does this using any of
+            four flags:</p>
           <ul>
             <li>
-              <p><s>@id-ref</s>, like <s>add/@id-ref</s>, matches an element by its <s>@id</s>
-                value.</p>
-              <p>Because <s>@id</s> values are unique, the remove directive will remove only a
+              <p><src>@id-ref</src>, like <src>add/@id-ref</src>, matches an element by its
+                  <src>@id</src> value.</p>
+              <p>Because <src>@id</src> values are unique, the remove directive will remove only a
                 single element.</p>
             </li>
             <li>
-              <p><s>@name-ref</s> keys to the <s>@name</s> attribute on any element inside the
-                control.</p>
-              <p>Any element inside the control with the assigned <s>name</s>, is removed.</p>
+              <p><src>@name-ref</src> keys to the <src>@name</src> attribute on any element inside
+                the control.</p>
+              <p>Any element inside the control with the assigned <src>name</src>, is removed.</p>
             </li>
             <li>
-              <p><s>@class-ref</s> keys to the <s>@class</s> attribute on any element inside the
-                control. All elements with matching <s>class</s> are removed.</p>
+              <p><src>@class-ref</src> keys to the <src>@class</src> attribute on any element inside
+                the control. All elements with matching <src>class</src> are removed.</p>
             </li>
             <li>
-              <p><s>@item-name</s> keys to the element or property name; for example,
+              <p><src>@item-name</src> keys to the element or property name; for example,
                   <code>&lt;remove item-name='prop'/></code> has the effect of removing all
-                  <s>prop</s> elements from inside the control. <revisit>(NB: what about in JSON
+                  <src>prop</src> elements from inside the control. <revisit>(NB: what about in JSON
                   where names are often group names? Can we support removal by item
                 name?)</revisit></p>
             </li>
           </ul>
           <p>These are examined in the order given here; the first one that appears is used. Thus a
-            remove directive with  both a <s>name-ref</s> and a <s>class-ref</s>, uses only the
-              <s>name-ref</s>. <revisit>(Or should the effect be cumulative?)</revisit></p>
-          <p>Unlike an <s>add</s> directive, a <s>remove</s> may not be bound implicitly to the
-            control; its binding, to contents inside the control, must be explicit.</p>
+            remove directive with both a <src>name-ref</src> and a <src>class-ref</src>, uses only
+            the <src>name-ref</src>. <revisit>(Or should the effect be cumulative?)</revisit></p>
+          <p>Unlike an <src>add</src> directive, a <src>remove</src> may not be bound implicitly to
+            the control; its binding, to contents inside the control, must be explicit.</p>
           <p>To remove an control, simply avoid selecting it into the profile, or exclude it
-            specifically using <s>import/exclude</s>.</p>
-          <p>As with <s>add</s>, a remove that targets any element outside the control, is
-            inoperative. Similarly, a remove directive that indicates that all <t>prop</t> elements
-            should be removed from the result catalog, applies only to <s>prop</s></p>
+            specifically using <src>import/exclude</src>.</p>
+          <p>As with <src>add</src>, a remove that targets any element outside the control, is
+            inoperative. Similarly, a remove directive that indicates that all <tgt>prop</tgt>
+            elements should be removed from the result catalog, applies only to <src>prop</src></p>
         </section>
         <section>
           <head>Implicit alterations</head>
           <p>Finally some alterations are made automatically.</p>
-          <p>For example, <s>link</s> elements in source data representing cross-references in a
+          <p>For example, <src>link</src> elements in source data representing cross-references in a
             catalog, may no longer be effective in catalogs produced from profiles, which have not
             included the elements (controls or other) to which the links refer.</p>
           <p><revisit>Either: expand the links to refer back to the source catalogs; or remove the
               links.</revisit></p>
         </section>
       </section>
-      </section>
     </section>
-    <section>
-      <head>Profile tools/utilities</head>
-      <ul>
-        <li><p>rendering - showing both unresolved (raw) and resolved profiles</p></li>
-        <li><p>editing / integrity checking</p></li>
-        <li><p>rewriting/normalization</p></li>
-        <li><p>diffing</p></li>
-        <li><p>deriving a profile as the delta of two catalogs ('base' and 'profile')</p></li>
-      </ul>
-    </section>
+  </section>
+    <section id="tools-utlities">
+    <head>Profile tools/utilities</head>
+    <ul>
+      <li>
+        <p>rendering - showing both unresolved (raw) and resolved profiles</p>
+      </li>
+      <li>
+        <p>editing / integrity checking</p>
+      </li>
+      <li>
+        <p>rewriting/normalization</p>
+      </li>
+      <li>
+        <p>diffing</p>
+      </li>
+      <li>
+        <p>deriving a profile as the delta of two catalogs ('base' and 'profile')</p>
+      </li>
+    </ul>
+  </section>
   </SPECIFICATION>
