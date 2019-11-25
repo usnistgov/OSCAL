@@ -123,7 +123,7 @@
       <p>Components may be products, services, APIs, policies, processes, plans, guidance,
         standards, or other tangible items that enable security and/or privacy.</p>
       <p>The <code>type</code> indicates which of these component types is represented.</p>
-      <p>A group of components may be aggregated into a <code>capability</code>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+      <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
       <p>Capabilities are expressed by combining one or more components.</p>
     </remarks>
   </define-assembly>
