@@ -27,45 +27,50 @@
    <xsl:template match="o:SPECIFICATION/o:head">
       
    </xsl:template>
+   
+   <xsl:template match="o:head" mode="header-text">
+     <xsl:apply-templates/>
+   </xsl:template>
+   
    <xsl:template match="o:head">
       <h1 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h1>
    </xsl:template>
    
    <xsl:template priority="1" match="o:section/o:head">
       <h2 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h2>
    </xsl:template>
    
    <xsl:template priority="2" match="o:section/o:section/o:head">
       <h3 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
    
    <xsl:template priority="2" match="o:div/o:head">
       <h3 class="divhead" id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
    
    <xsl:template priority="3" match="o:section/o:section/o:section/o:head">
       <h4 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h4>
    </xsl:template>
    
    <xsl:template priority="4" match="o:section/o:section/o:section/o:section/o:head">
       <h5 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h5>
    </xsl:template>
    
    <xsl:template priority="5" match="o:section/o:section/o:section/o:section/o:section/o:head">
       <h6 id="{generate-id()}-head">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="header-text"/>
       </h6>
    </xsl:template>
    
@@ -93,13 +98,13 @@
       </div>
    </xsl:template>-->
 
-   <xsl:template match="o:s">
+   <xsl:template match="o:src">
       <code class="src">
          <xsl:apply-templates/>
       </code>
    </xsl:template>
 
-   <xsl:template match="o:t">
+   <xsl:template match="o:tgt">
       <code class="tgt">
          <xsl:apply-templates/>
       </code>
@@ -111,6 +116,18 @@
       </ul>
    </xsl:template>
 
+<xsl:key match="*[exists(@id)]" use="@id" name="by-id"/>
+   
+   <xsl:template match="o:xref">
+      <xsl:text>[See: </xsl:text>
+      <xsl:for-each select="key('by-id',@rid)/o:head">
+         <a href="#{generate-id()}-head" class="xref">
+            <xsl:apply-templates select="." mode="header-text"/>
+         </a>
+      </xsl:for-each>
+      <xsl:text>]</xsl:text>
+   </xsl:template>
+   
    <xsl:template match="o:li">
       <li>
          <xsl:apply-templates/>
@@ -161,7 +178,9 @@
    </xsl:template>
 
    <xsl:template match="o:revisit">
-      <xsl:apply-templates/>
+      <span class="revisit">
+        <xsl:apply-templates/>
+      </span>
    </xsl:template>
 
    <xsl:template match="o:cf">

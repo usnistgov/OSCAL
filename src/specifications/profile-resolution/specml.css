@@ -50,7 +50,7 @@ term { display: inline; font-family: sans-serif; font-weight: bold; font-size: 8
 
 revisit { display: inline; font-family: sans-serif; font-size: 90%; color: darkorange; background-color: yellow }
 
-tagging { font-family: monospace; white-space: pre; padding: 0.5em; margin: 0.5em 0em; font-size: 80%; line-height: 130% }
+tagging { font-family: monospace; white-space: pre-wrap; padding: 0.5em; margin: 0.5em 0em; font-size: 80%; line-height: 130% }
 tagging[whose=source_catalog] { background-color: #FFF0F0 }
 tagging[whose=source_profile] { background-color: #F0FFF0 }
 tagging[whose=target_catalog] { background-color: #F0F0FF }
@@ -84,12 +84,12 @@ xref { display: inline }
 
 
 xref:after { content: oxy_combobox(           
-            edit, "@to",
+            edit, "@rid",
             editable, false 
             )}
 
 xref:before { font-weight: bold; font-size: 80%; content: " [See section \201C" oxy_xpath(
-  'for $t in (@to) return //section[@id=$t]/string(head)')  "\201D] " }
+  'for $t in (@rid) return //section[@id=$t]/string(head)')  "\201D] " }
 
 tgt { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
 

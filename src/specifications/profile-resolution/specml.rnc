@@ -40,5 +40,5 @@ strong  = element strong  { text }
 src     = element src     { text }
 tgt     = element tgt     { text }
 xpath   = element xpath   { text }
-xref    = element xref    { attribute to { dtd:IDREF }, empty }
+xref    = element xref    { attribute rid { dtd:IDREF }, empty }
 
