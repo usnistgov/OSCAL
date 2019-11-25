@@ -635,7 +635,7 @@
         <p>Imports can specify controls by inclusion and exclusion, either or both in
           combination.</p>
         <section id="include-directive">
-          <head>Inclusion</head>
+          <head>Including controls</head>
           <p>Using inclusion, all or some controls may be selected from a catalog.</p>
           <section id="include-by-id">
             <head>Selecting by ID</head>
@@ -693,8 +693,8 @@
               marked for exclusion, see <xref rid="exclusions"/> below).</p>
           </section>
         </section>
-        <section id="exclusions">
-          <head>Exclusions</head>
+        <section id="exclude-directive">
+          <head>Excluding controls</head>
           <p>Exclusions work the same way as inclusions, except with the opposite effect - the
             indicated control(s) do not appear in the result catalog.</p>
           <p>Additionally, there is no such thing as <src>exclude/all</src>, which is invalid and
