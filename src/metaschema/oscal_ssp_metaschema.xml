@@ -385,7 +385,7 @@
 
    <define-assembly name="authorization-boundary">
       <formal-name>Authorization Boundary</formal-name>
-      <description>A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.</description>
+      <description>A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.</description>
       <model>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
@@ -460,7 +460,7 @@
    </define-field>
    <define-assembly name="network-architecture">
       <formal-name>Network Architecture</formal-name>
-      <description>A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.</description>
+      <description>A description of the system's network architecture, optionally supplemented by diagrams that illustrate the network architecture.</description>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
@@ -485,7 +485,7 @@
    <define-assembly name="data-flow">
       <!-- TODO: Should this relate to a system-interconnection? -->
       <formal-name>Data Flow</formal-name>
-      <description>A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.</description>
+      <description>A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illustrate these flows.</description>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
@@ -736,7 +736,7 @@
       <remarks>
          <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
          <p>The <code>type</code> indicates which of these component types is represented.</p>
-        <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, am account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+        <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>-->
       </remarks>
    </define-assembly>
@@ -818,7 +818,7 @@
          </allowed-values>
       </flag>
       <remarks>
-         <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for on-contiguous ranges.</p>
+         <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for non-contiguous ranges.</p>
       </remarks>
       <example>
          <service xmlns="http://csrc.nist.gov/ns/oscal/example"
