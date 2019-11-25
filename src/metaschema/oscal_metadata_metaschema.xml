@@ -238,14 +238,8 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
-         <p>Characteristics permit the deployment and management of arbitrary controlled values for any purpose useful to an application or implementation scenario.</p>
-         <p>The value of a characteristic is a
-            simple scalar value or list of values.</p>
-         <p>The lexical composition of characteristics may be constrained by declarations including matching
-            to regular expressions or by declaring a known datatype.</p>
-         <p>Because characteristics are often used as selectors or identifiers for OSCAL operations, their
-            values can be expected frequently to be normalized (e.g., with respect to whitespace) in
-            use; however, this is application defined.</p>
+         <p>Annotations permit the deployment and management of arbitrary controlled values for any purpose useful to an application or implementation scenario.</p>
+         <p>The <code>value</code> (flag) of an annotation is a simple scalar value or list of values. The body of the annotation offers remarks in explanation of or reference to this value.</p>
       </remarks>
    </define-assembly>
    <define-flag name="name" as-type="NCName">
