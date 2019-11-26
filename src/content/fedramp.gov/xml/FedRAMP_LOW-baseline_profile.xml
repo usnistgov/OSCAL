@@ -1,11 +1,10 @@
-<!-- Created: 5/16/2019 9:05:20 PM -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-	id="uuid-eda582b6-d61f-42a4-8165-9637ea1e8a32">
+<?xml version="1.0" encoding="UTF-8"?><!-- Created: 5/16/2019 9:05:20 PM --><profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-eda582b6-d61f-42a4-8165-9637ea1e8a32">
 	<metadata>
 		<title>FedRAMP Low Baseline</title>
-		<last-modified>2019-10-01T11:03:27.392-04:00</last-modified>
-		<version>1.1</version>
-		<oscal-version>1.0.0-milestone1</oscal-version>
+		<published>2019-11-27T00:00:00.000-05:00</published>
+		<last-modified>2019-11-25T10:00:00.000-05:00</last-modified>
+		<version>1.2</version>
+		<oscal-version>1.0.0-milestone2</oscal-version>
 		
 		<role id="creator">
 			<title>Document creator</title>
@@ -27,7 +26,7 @@
 			<party-id>fedramp</party-id>
 		</responsible-party>
 	</metadata>
-	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
@@ -156,7 +155,7 @@
 			<call control-id="si-16"/>
 		</include>
 	</import>
-	<import href="FedRAMP_catalog.xml">
+	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/fedramp.gov/xml/FedRAMP_catalog.xml">
 		<include>
 			<call control-id="ac-8.fr"/>
 			<call control-id="ca-7.fr"/>
@@ -164,7 +163,7 @@
 		</include>
 	</import>
 	<merge>
-		<combine method="keep" />
+		<combine method="keep"/>
 		<as-is>true</as-is>
 	</merge>
 	<modify>
@@ -641,7 +640,7 @@
 		<!-- - - AC-7 - -  -->
 		<!-- - - AC-8 - -  -->
 		<alter control-id="ac-8">
-			<add position="ending">
+			<add position="ending" id-ref="ac-8_smt">
 				<part id="ac-8_fr" name="item" ns="fedramp">
 					<title>AC-8 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ac-8_fr_smt.1" name="item">
@@ -672,7 +671,7 @@
 		<!-- - - AU-1 - -  -->
 		<!-- - - AU-2 - -  -->
 		<alter control-id="au-2">
-			<add position="ending">
+			<add position="ending" id-ref="au-2_smt">
 				<part id="au-2_fr" name="item" ns="fedramp">
 					<title>AU-2 Additional FedRAMP Requirements and Guidance</title>
 					<part id="au-2_fr_smt.1" name="item">
@@ -687,7 +686,7 @@
 		<!-- - - AU-5 - -  -->
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
-			<add position="ending">
+			<add position="ending" id-ref="au-6_smt">
 				<part id="au-6_fr" name="item" ns="fedramp">
 					<title>AU-6 Additional FedRAMP Requirements and Guidance</title>
 					<part id="au-6_fr_smt.1" name="item">
@@ -701,7 +700,7 @@
 		<!-- - - AU-9 - -  -->
 		<!-- - - AU-11 - -  -->
 		<alter control-id="au-11">
-			<add position="ending">
+			<add position="ending" id-ref="au-11_smt">
 				<part id="au-11_fr" name="item" ns="fedramp">
 					<title>AU-11 Additional FedRAMP Requirements and Guidance</title>
 					<part id="au-11_fr_smt.1" name="item">
@@ -715,7 +714,7 @@
 		<!-- - - CA-1 - -  -->
 		<!-- - - CA-2 - -  -->
 		<alter control-id="ca-2">
-			<add position="ending">
+			<add position="ending" id-ref="ca-2_smt">
 				<part id="ca-2_fr" name="item" ns="fedramp">
 					<title>CA-2 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ca-2_fr_gdn.1" name="guidance">
@@ -727,7 +726,7 @@
 		</alter>
 		<!-- - - CA-2 (1) - -  -->
 		<alter control-id="ca-2.1">
-			<add position="ending">
+			<add position="ending" id-ref="ca-2.1_smt">
 				<part id="ca-2.1_fr" name="item" ns="fedramp">
 					<title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
 					<part id="ca-2.1_fr_smt.1" name="item">
@@ -740,7 +739,7 @@
 		<!-- - - CA-3 - -  -->
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
-			<add position="ending">
+			<add position="ending" id-ref="ca-5_smt">
 				<part id="ca-5_fr" name="item" ns="fedramp">
 					<title>CA-5 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ca-5_fr_smt.1" name="item">
@@ -756,7 +755,7 @@
 		</alter>
 		<!-- - - CA-6 - -  -->
 		<alter control-id="ca-6">
-			<add position="ending">
+			<add position="ending" id-ref="ca-6_smt">
 				<part id="ca-6_fr" name="item" ns="fedramp">
 					<title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
 					<part id="ca-6_fr_gdn.1" name="guidance">
@@ -768,7 +767,7 @@
 		</alter>
 		<!-- - - CA-7 - -  -->
 		<alter control-id="ca-7">
-			<add position="ending">
+			<add position="ending" id-ref="ca-7_smt">
 				<part id="ca-7_fr" name="item" ns="fedramp">
 					<title>CA-7 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ca-7_fr_smt.1" name="item">
@@ -792,7 +791,7 @@
 		<!-- - - CM-4 - -  -->
 		<!-- - - CM-6 - -  -->
 		<alter control-id="cm-6">
-			<add position="ending">
+			<add position="ending" id-ref="cm-6_smt">
 				<part id="cm-6_fr" name="item" ns="fedramp">
 					<title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
 					<part id="cm-6_fr_smt.1" name="item">
@@ -812,7 +811,7 @@
 		</alter>
 		<!-- - - CM-7 - -  -->
 		<alter control-id="cm-7">
-			<add position="ending">
+			<add position="ending" id-ref="cm-7_smt">
 				<part id="cm-7_fr" name="item" ns="fedramp">
 					<title>CM-7 Additional FedRAMP Requirements and Guidance</title>
 					<part id="cm-7_fr_smt.1" name="item">
@@ -829,7 +828,7 @@
 		</alter>
 		<!-- - - CM-8 - -  -->
 		<alter control-id="cm-8">
-			<add position="ending">
+			<add position="ending" id-ref="cm-8_smt">
 				<part id="cm-8_fr" name="item" ns="fedramp">
 					<title>CM-8 Additional FedRAMP Requirements and Guidance</title>
 					<part id="cm-8_fr_smt.1" name="item">
@@ -844,7 +843,7 @@
 		<!-- - - CP-1 - -  -->
 		<!-- - - CP-2 - -  -->
 		<alter control-id="cp-2">
-			<add position="ending">
+			<add position="ending" id-ref="cp-2_smt">
 				<part id="cp-2_fr" name="item" ns="fedramp">
 					<title>CP-2 Additional FedRAMP Requirements and Guidance</title>
 					<part id="cp-2_fr_smt.1" name="item">
@@ -857,7 +856,7 @@
 		<!-- - - CP-3 - -  -->
 		<!-- - - CP-4 - -  -->
 		<alter control-id="cp-4">
-			<add position="ending">
+			<add position="ending" id-ref="cp-4_smt">
 				<part id="cp-4_fr" name="item" ns="fedramp">
 					<title>CP-4(a) Additional FedRAMP Requirements and Guidance</title>
 					<part id="cp-4_fr_smt.a" name="item">
@@ -869,7 +868,7 @@
 		</alter>
 		<!-- - - CP-9 - -  -->
 		<alter control-id="cp-9">
-			<add position="ending">
+			<add position="ending" id-ref="cp-9_smt">
 				<part id="cp-9_fr" name="item" ns="fedramp">
 					<title>CP-9 Additional FedRAMP Requirements and Guidance</title>
 					<part id="cp-9_fr_smt.1" name="item">
@@ -897,7 +896,7 @@
 		<!-- - - IA-2 (1) - -  -->
 		<!-- - - IA-2 (12) - -  -->
 		<alter control-id="ia-2.12">
-			<add position="ending">
+			<add position="ending" id-ref="ia-2.12_smt">
 				<part id="ia-2.12_fr" name="item" ns="fedramp">
 					<title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
 					<part id="ia-2.12_fr_gdn.1" name="guidance">
@@ -909,7 +908,7 @@
 		</alter>
 		<!-- - - IA-4 - -  -->
 		<alter control-id="ia-4">
-			<add position="ending">
+			<add position="ending" id-ref="ia-4_smt">
 				<part id="ia-4_fr" name="item" ns="fedramp">
 					<title>IA-4(e) Additional FedRAMP Requirements and Guidance</title>
 					<part id="ia-4_fr_smt.e" name="item">
@@ -925,7 +924,7 @@
 		</alter>
 		<!-- - - IA-5 - -  -->
 		<alter control-id="ia-5">
-			<add position="ending">
+			<add position="ending" id-ref="ia-5_smt">
 				<part id="ia-5_fr" name="item" ns="fedramp">
 					<title>IA-5 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ia-5_fr_smt.1" name="item">
@@ -937,7 +936,7 @@
 		</alter>
 		<!-- - - IA-5 (1) - -  -->
 		<alter control-id="ia-5.1">
-			<add position="ending">
+			<add position="ending" id-ref="ia-5.1_smt">
 				<part id="ia-5.1_fr" name="item" ns="fedramp">
 					<title>IA-5 (1) (a) and (d) Additional FedRAMP Requirements and Guidance</title>
 					<part id="ia-5.1_fr_gdn.1" name="guidance">
@@ -959,7 +958,7 @@
 		<!-- - - IR-2 - -  -->
 		<!-- - - IR-4 - -  -->
 		<alter control-id="ir-4">
-			<add position="ending">
+			<add position="ending" id-ref="ir-4_smt">
 				<part id="ir-4_fr" name="item" ns="fedramp">
 					<title>IR-4 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ir-4_fr_smt.1" name="item">
@@ -972,7 +971,7 @@
 		<!-- - - IR-5 - -  -->
 		<!-- - - IR-6 - -  -->
 		<alter control-id="ir-6">
-			<add position="ending">
+			<add position="ending" id-ref="ir-6_smt">
 				<part id="ir-6_fr" name="item" ns="fedramp">
 					<title>IR-6 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ir-6_fr_smt.1" name="item">
@@ -985,7 +984,7 @@
 		<!-- - - IR-7 - -  -->
 		<!-- - - IR-8 - -  -->
 		<alter control-id="ir-8">
-			<add position="ending">
+			<add position="ending" id-ref="ir-8_smt">
 				<part id="ir-8_fr" name="item" ns="fedramp">
 					<title>IR-8 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ir-8_fr_smt.b" name="item">
@@ -1016,7 +1015,7 @@
 		<!-- - - PE-13 - -  -->
 		<!-- - - PE-14 - -  -->
 		<alter control-id="pe-14">
-			<add position="ending">
+			<add position="ending" id-ref="pe-14_smt">
 				<part id="pe-14_fr" name="item" ns="fedramp">
 					<title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
 					<part id="pe-14_fr_smt.a" name="item">
@@ -1043,7 +1042,7 @@
 		<!-- - - RA-2 - -  -->
 		<!-- - - RA-3 - -  -->
 		<alter control-id="ra-3">
-			<add position="ending">
+			<add position="ending" id-ref="ra-3_smt">
 				<part id="ra-3_fr" name="item" ns="fedramp">
 					<title>RA-3 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ra-3_fr_gdn.1" name="guidance">
@@ -1059,7 +1058,7 @@
 		</alter>
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
-			<add>
+			<add id-ref="ra-5_smt">
 				<part id="ra-5_fr_smt.a" name="item">
 					<title>RA-5(a) Additional FedRAMP Requirements and Guidance</title>
 					<prop name="label">RA-5 (a)Requirement:</prop>
@@ -1074,7 +1073,7 @@
 					<title>RA-5 Additional FedRAMP Requirements and Guidance</title>
 					<part id="ra-5_fr_gdn.1" name="guidance">
 						<prop name="label">Guidance:</prop>
-						<p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
+						<p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
 					</part>
 				</part>
 			</add>
@@ -1084,7 +1083,7 @@
 		<!-- - - SA-3 - -  -->
 		<!-- - - SA-4 - -  -->
 		<alter control-id="sa-4">
-			<add position="ending">
+			<add position="ending" id-ref="sa-4_smt">
 				<part id="sa-4_fr" name="item" ns="fedramp">
 					<title>SA-4 Additional FedRAMP Requirements and Guidance</title>
 					<part id="sa-4_fr_gdn.1" name="guidance">
@@ -1097,16 +1096,16 @@
 		<!-- - - SA-5 - -  -->
 		<!-- - - SA-9 - -  -->
 		<alter control-id="sa-9">
-			<add position="ending">
+			<add position="ending" id-ref="sa-9_smt">
 				<part id="sa-9_fr" name="item" ns="fedramp">
 					<title>SA-9 Additional FedRAMP Requirements and Guidance</title>
 					<part id="sa-9_fr_gdn.1" name="guidance">
 						<prop name="label">Guidance:</prop>
-						<p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents">https://www.FedRAMP.gov/documents</a></p>
+						<p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents">https://www.FedRAMP.gov/documents</a></p>
 					</part>
 					<part id="sa-9_fr_gdn.2" name="guidance">
 						<prop name="label">Guidance:</prop>
-						<p>Independent Assessors should assess the risk associated with the use of external services. See the FedRAMP page under Key Cloud Service Provider (CSP) Documents>FedRAMP Authorization Boundary Guidance</p>
+						<p>Independent Assessors should assess the risk associated with the use of external services. See the FedRAMP page under Key Cloud Service Provider (CSP) Documents&gt;FedRAMP Authorization Boundary Guidance</p>
 					</part>
 				</part>
 			</add>
@@ -1116,7 +1115,7 @@
 		<!-- - - SC-7 - -  -->
 		<!-- - - SC-12 - -  -->
 		<alter control-id="sc-12">
-			<add position="ending">
+			<add position="ending" id-ref="sc-12_smt">
 				<part id="sc-12_fr" name="item" ns="fedramp">
 					<title>SC-12 Additional FedRAMP Requirements and Guidance</title>
 					<part id="sc-12_fr_gdn.1" name="guidance">
@@ -1129,7 +1128,7 @@
 		<!-- - - SC-13 - -  -->
 		<!-- - - SC-15 - -  -->
 		<alter control-id="sc-15">
-			<add position="ending">
+			<add position="ending" id-ref="sc-15_smt">
 				<part id="sc-15_fr" name="item" ns="fedramp">
 					<title>SC-15 Additional FedRAMP Requirements and Guidance</title>
 					<part id="sc-15_fr_smt.1" name="item">
@@ -1148,7 +1147,7 @@
 		<!-- - - SI-3 - -  -->
 		<!-- - - SI-4 - -  -->
 		<alter control-id="si-4">
-			<add position="ending">
+			<add position="ending" id-ref="si-4_smt">
 				<part id="si-4_fr" name="item" ns="fedramp">
 					<title>SI-4 Additional FedRAMP Requirements and Guidance</title>
 					<part id="si-4_fr_gdn.1" name="guidance">
