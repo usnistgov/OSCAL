@@ -446,7 +446,7 @@
       </remarks>
       <example>
          <remarks>
-            <p>The internal reference "#diagram1" points to an attached resource defined in the <code>back-matter</code> as a <code>resource</code>. The <code>media-type</code> indicates that the image is a Potable Network Graphics (PNG) image.</p>
+            <p>The internal reference "#diagram1" points to an attached resource defined in the <code>back-matter</code> as a <code>resource</code>. The <code>media-type</code> indicates that the image is a Portable Network Graphics (PNG) image.</p>
          </remarks>
          <o:diagram id="boundary-diagram-1">
             <o:description>A boundary diagram.</o:description>
