@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     exclude-result-prefixes="#all"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
-
-    <xsl:output method="xml" indent="yes"/>
-
-    <xsl:strip-space elements="catalog group control param guideline select part
-        metadata back-matter annotation party person org rlink address resource role responsible-party citation
-        profile import merge custom modify include exclude set alter add"/>
-    
-    
     <!--
         
     An XSLT 3.0 stylesheet using XPath 3.1 functions including transform()
@@ -27,26 +18,35 @@
     Subsequent transformations, "merge" and "modify", are self-contained: all inputs are included.
     
     -->
+
+    <xsl:output method="xml" indent="yes"/>
     
+    <xsl:strip-space elements="catalog group control param guideline select part
+        metadata back-matter annotation party person org rlink address resource role responsible-party citation
+        profile import merge custom modify include exclude set alter add"/>
+    
+    
+    <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
-        <o:transform version="2.0">oscal-profile-resolve-select.xsl</o:transform>
-        <o:transform version="2.0">oscal-profile-resolve-merge.xsl</o:transform>
-        <o:transform version="2.0">oscal-profile-resolve-modify.xsl</o:transform>
-        <o:finalize/>
+        <opr:transform version="2.0">oscal-profile-resolve-select.xsl</opr:transform>
+        <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
+        <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
+        <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>
+        <opr:finalize/>
     </xsl:variable>
 
-    <!-- traps the root node of the source and passes it down the chain of transformation references -->
-    <xsl:template match="/">
-        <xsl:variable name="source" select="."/>
+    <!-- Entry point traps the root node of the source and passes it down the chain of transformation references -->
+    <xsl:template match="/" name="profile-resolve">
+        <xsl:param name="source" select="." as="document-node()"/>
         <!-- Each element inside $transformation-sequence is processed in turn.
-        Each represents a stage in processing.
-        The result of each processing step is passed to the next step as its input, until no steps are left. -->
+             Each represents a stage in processing.
+             The result of each processing step is passed to the next step as its input, until no steps are left. -->
         <xsl:iterate select="$transformation-sequence/*">
             <xsl:param name="doc" select="$source" as="document-node()"/>
             <xsl:on-completion select="$doc"/>
             <xsl:next-iteration>
                 <xsl:with-param name="doc">
-                    <xsl:apply-templates mode="o:execute" select=".">
+                    <xsl:apply-templates mode="opr:execute" select=".">
                         <xsl:with-param name="sourcedoc" select="$doc"/>
                     </xsl:apply-templates>
                 </xsl:with-param>
@@ -54,49 +54,46 @@
         </xsl:iterate>
     </xsl:template>
 
-    <!-- for o:transformation, the semantics are "apply this XSLT" -->
-    <xsl:template mode="o:execute" match="o:transform">
+    <!-- for opr:transformation, the semantics are "apply this XSLT" -->
+    <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
-        <xsl:variable name="runtime"
-            select="
-                map {
+        <xsl:variable name="runtime" select="map {
                     'xslt-version': xs:decimal($xslt-spec/@version),
                     'stylesheet-location': string($xslt-spec),
                     'source-node': $sourcedoc
-                }"/>
+                    }"/>
         <!-- The function returns a map; primary results are under 'output'
-         unless a base output URI is given
-         https://www.w3.org/TR/xpath-functions-31/#func-transform -->
+             unless a base output URI is given
+             https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
     </xsl:template>
 
-    <!-- the finalize directive performs any last cleanup -->
-    <xsl:template mode="o:execute" match="o:finalize">
+    <!-- The finalize step performs any last cleanup. -->
+    <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
-        <xsl:apply-templates select="$sourcedoc" mode="o:finalize"/>
+        <xsl:apply-templates select="$sourcedoc" mode="#current"/>
     </xsl:template>
     
-    <!-- not knowing any better, any other execution directive passes along its source. -->
-    <xsl:template mode="o:execute" match="*">
+    <!-- Not knowing any better, any other execution step passes through its source. -->
+    <xsl:template mode="opr:execute" match="*">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
     
-    <!-- mode 'o:finalize' makes final adjustments -->
+    <!-- Mode 'opr:finalize' makes final adjustments. -->
 
-    <!-- wiping traces of XSD   -->
-    <xsl:template mode="o:finalize" match="@xsi:*"/>
+    <!-- Here we wipe traces of XSD.   -->
+    <xsl:template mode="opr:finalize" match="@xsi:*"/>
     
-    <!-- IDs with leading '#' should be stripped as an artifact of resolution  -->
-    <xsl:template mode="o:finalize" match="@id[starts-with(.,'#')]"/>
+    <!-- Likewise, intermediate processing directives. -->
+    <xsl:template mode="opr:finalize" match="opr:* | @opr:*"/>
     
-    <!-- copying everything else without namespaces -->
-    <xsl:template mode="o:finalize" match="node() | @*">
+    <!-- In 'finalize' mode, copying everything else without namespaces. -->
+    <xsl:template mode="opr:finalize" match="node() | @*">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates select="node() | @*" mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
     
 </xsl:stylesheet>

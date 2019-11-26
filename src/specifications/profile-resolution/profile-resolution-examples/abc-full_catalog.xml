@@ -80,11 +80,13 @@
             <prop name="place">first</prop>
             <part name="statement" id="c1-stmt">
                 <p>C1 ccccc ccc ccccccccccccccccc.</p>
+                <p>We cite a document with an anchor: <a href="#citation">... citation ...</a>.</p>
             </part>
         </control>
         <control id="c2">
             <title>Control C2</title>
             <prop name="place">second</prop>
+            <link rel="citation" href="#citation">Citation</link>
             <part name="statement" id="c2-stmt">
                 <p>C2 cccccccc ccccccccccccccccc.</p>
             </part>

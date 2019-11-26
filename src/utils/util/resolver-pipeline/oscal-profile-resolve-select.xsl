@@ -2,17 +2,27 @@
 <xsl:stylesheet version="2.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     exclude-result-prefixes="xs math o"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
     
-<!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
+    <!-- Purpose: perform operations supporting the selection stage of OSCAL profile resolution. -->
+    <!-- XSLT version: 2.0 -->
     
     <xsl:strip-space elements="catalog group control param guideline select part
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
+    
+<!-- The default processing is to pass everything through.
+     Note: The source catalog includes other contents besides selected controls
+           that may be required in the result. Examples are elements in the back
+           matter, loose parameters (not declared inside controls) and groups and
+           their contents apart from controls.
+           These elements are also copied into the result.
+           A post-process (filter) will be applied to remove them in a later stage. -->
     
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
@@ -20,16 +30,28 @@
         </xsl:copy>
     </xsl:template>
     
+    <!-- Making the default handling explicit. -->
+    <xsl:template match="comment() | processing-instruction()" mode="#all"/>
+    
     <xsl:template match="profile">
         <xsl:copy>
             <xsl:apply-templates mode="o:select" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="catalog/metadata" mode="o:select">
-        <!-- make new metadata here -->
+    <xsl:template match="catalog" mode="o:select">
+        <selection>
+            <xsl:copy-of select="@* except @xsi:*" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <!--<xsl:attribute name="opr:base" select="document-uri(root())"/>-->
+            <xsl:apply-templates mode="#current"/>
+        </selection>
     </xsl:template>
     
+    <!--<xsl:template match="catalog/metadata" mode="o:select">
+        <metadata>
+            <new-metadata-here/>
+        </metadata>
+    </xsl:template>-->
     
     <xsl:template match="import" mode="o:select">
         <xsl:apply-templates mode="#current" select="document(@href)">
@@ -37,40 +59,48 @@
         </xsl:apply-templates>
     </xsl:template>
     
-    <!-- We want a group only if there is something to put in it.  -->
+    <!-- We want a group even if there is nothing to put in it, for potential merging downstream  -->
     <xsl:template match="group" mode="o:select">
         <xsl:copy>
             <!-- add an ID for downstream processing when the source has none -->
-            <xsl:if test="empty(@id)">
-                <xsl:attribute name="id">#<xsl:value-of select="concat('#',(@id,generate-id())[1])"/></xsl:attribute>    
-            </xsl:if>
+            <xsl:call-template name="add-process-id"/>    
             <xsl:apply-templates mode="o:select" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
+     
+    <xsl:template name="add-process-id">
+        <xsl:attribute name="opr:id" namespace="http://csrc.nist.gov/ns/oscal/profile-resolution">
+            <xsl:value-of
+                select="concat(opr:catalog-identifier(/o:catalog), '#', (@id, generate-id())[1])"/>
+        </xsl:attribute>
+    </xsl:template>
+    
+    <xsl:function name="opr:catalog-identifier" as="xs:string">
+        <xsl:param name="catalog" as="element(o:catalog)"/>
+        <xsl:sequence select="$catalog/(@canonical-id,@id,document-uri(root(.)))[1]"/>
+    </xsl:function>
     
     <!-- A control is included if it is selected by the provided import instruction -->
     <xsl:template match="control" mode="o:select">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:if test="o:selects($import-instruction,.)">
-            <xsl:next-match/>
+            <xsl:copy>
+                <xsl:call-template name="add-process-id"/>    
+                <xsl:apply-templates mode="#current" select="node() | @*"/>
+            </xsl:copy>
         </xsl:if>
     </xsl:template>
     
-    <xsl:key name="param-insertions" match="insert" use="@param-id"/>
-    
-    <!-- A parameter is included if it is selected by the provided import instruction -->
+    <!-- Parameters are always passed through until later stages. -->
     <xsl:template match="param" mode="o:select">
-        <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
-        <xsl:variable name="used-in" select="key('param-insertions',@id)/ancestor::control[1]"/>   
-        <xsl:if test="some $c in $used-in satisfies o:selects($import-instruction,$c)">
-            <xsl:next-match/>
-        </xsl:if>
+        <xsl:copy>
+            <xsl:call-template name="add-process-id"/>    
+            <xsl:apply-templates mode="#current" select="node() | @*"/>
+        </xsl:copy>
     </xsl:template>
-    
-    <xsl:key name="internal-links" match="a[starts-with(@href,'#')] | link[starts-with(@href,'#')]" use="substring-after(@href,'#')"/>
     
     <!-- A citation or resource is included if it is targeted as an internal link -->
-    <xsl:template match="back-matter/*" mode="o:select">
+    <!--<xsl:template match="back-matter/*" mode="o:select">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:variable name="called-by" select="key('internal-links',@id)"/>
         <xsl:variable name="calling-params" select="$called-by/ancestor::param"/>   
@@ -79,7 +109,7 @@
         <xsl:if test="some $c in $calling-controls satisfies o:selects($import-instruction,$c)">
             <xsl:next-match/>
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
     
     <!-- Function o:selects($importing,$candidate) returns a true or false
          depending on whether the import calls the candidate control  -->
