@@ -2,9 +2,10 @@
 	id="uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304">
 	<metadata>
 		<title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
-		<last-modified>2019-10-01T11:05:07.595-04:00</last-modified>
-		<version>1.0</version>
-		<oscal-version>1.0.0-milestone1</oscal-version>
+		<published>2019-11-27T00:00:00.000-05:00</published>
+		<last-modified>2019-11-24T10:00:00.000-05:00</last-modified>
+		<version>1.2</version>
+		<oscal-version>1.0.0-milestone2</oscal-version>
 		
 		<role id="author"><title>Author</title></role>
 		<party id="fedramp">
@@ -307,6 +308,8 @@
 		<!-- - -     CONTROL MODIFICATIONS      - -  -->
 		<!-- - - AC-1 - -  -->
 		<alter control-id="ac-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
@@ -320,6 +323,8 @@
 			<remove id-ref="ac-2_smt.i" />
 			<remove id-ref="ac-2_smt.j" />
 			<remove id-ref="ac-2_smt.k" />
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ac-2_fr" name="item" ns="fedramp">
@@ -333,12 +338,16 @@
 		</alter>
 		<!-- - - AC-3 - -  -->
 		<alter control-id="ac-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AC-7 - -  -->
 		<alter control-id="ac-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
@@ -347,6 +356,8 @@
 		</alter>
 		<!-- - - AC-8 - -  -->
 		<alter control-id="ac-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='fed' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>FED - This is related to agency data and agency policy solution.</p></part>
@@ -354,6 +365,8 @@
 		</alter>
 		<!-- - - AC-14 - -  -->
 		<alter control-id="ac-14">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='fed' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>FED - This is related to agency data and agency policy solution.</p></part>
@@ -361,12 +374,16 @@
 		</alter>
 		<!-- - - AC-17 - -  -->
 		<alter control-id="ac-17">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AC-18 - -  -->
 		<alter control-id="ac-18">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - All access to Cloud SaaS are via web services and/or API.  The device accessed from or whether via wired or wireless connection is out of scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2[1]).</p></part>
@@ -374,6 +391,8 @@
 		</alter>
 		<!-- - - AC-19 - -  -->
 		<alter control-id="ac-19">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - All access to Cloud SaaS are via web service and/or API.  The device accessed from is out of the scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2 [1]).</p></part>
@@ -381,60 +400,80 @@
 		</alter>
 		<!-- - - AC-20 - -  -->
 		<alter control-id="ac-20">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AC-22 - -  -->
 		<alter control-id="ac-22">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AT-1 - -  -->
 		<alter control-id="at-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AT-2 - -  -->
 		<alter control-id="at-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AT-3 - -  -->
 		<alter control-id="at-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AT-4 - -  -->
 		<alter control-id="at-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-1 - -  -->
 		<alter control-id="au-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-2 - -  -->
 		<alter control-id="au-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-3 - -  -->
 		<alter control-id="au-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-4 - -  -->
 		<alter control-id="au-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the audit data has been determined to have little or no impact to government business/mission needs.</p></part>
@@ -442,30 +481,40 @@
 		</alter>
 		<!-- - - AU-5 - -  -->
 		<alter control-id="au-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-8 - -  -->
 		<alter control-id="au-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-9 - -  -->
 		<alter control-id="au-9">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - AU-11 - -  -->
 		<alter control-id="au-11">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the audit data has been determined as little or no impact to government business/mission needs.</p></part>
@@ -473,18 +522,24 @@
 		</alter>
 		<!-- - - AU-12 - -  -->
 		<alter control-id="au-12">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CA-1 - -  -->
 		<alter control-id="ca-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CA-2 - -  -->
 		<alter control-id="ca-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ca-2_fr" name="item" ns="fedramp">
@@ -498,12 +553,16 @@
 		</alter>
 		<!-- - - CA-2 (1) - -  -->
 		<alter control-id="ca-2.1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CA-3 - -  -->
 		<alter control-id="ca-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
@@ -515,6 +574,8 @@
 		</alter>
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - for compliance with FedRAMP Tailored LI-SaaS Continuous Monitoring Requirements.</p></part>
@@ -522,6 +583,8 @@
 		</alter>
 		<!-- - - CA-6 - -  -->
 		<alter control-id="ca-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ca-6_fr" name="item" ns="fedramp">
@@ -535,6 +598,8 @@
 		</alter>
 		<!-- - - CA-7 - -  -->
 		<alter control-id="ca-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ca-7_fr" name="item" ns="fedramp">
@@ -552,6 +617,8 @@
 		</alter>
 		<!-- - - CA-9 - -  -->
 		<alter control-id="ca-9">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: There are connection(s) to external systems.  Connections (if any) shall be authorized and must:
@@ -563,24 +630,32 @@
 		</alter>
 		<!-- - - CM-1 - -  -->
 		<alter control-id="cm-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CM-2 - -  -->
 		<alter control-id="cm-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CM-4 - -  -->
 		<alter control-id="cm-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CM-6 - -  -->
 		<alter control-id="cm-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Required - Specifically include details of least functionality.</p></part>
@@ -603,12 +678,16 @@
 		</alter>
 		<!-- - - CM-7 - -  -->
 		<alter control-id="cm-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CM-8 - -  -->
 		<alter control-id="cm-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="cm-8_fr" name="item" ns="fedramp">
@@ -622,6 +701,8 @@
 		</alter>
 		<!-- - - CM-10 - -  -->
 		<alter control-id="cm-10">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO- Not directly related to protection of the data.</p></part>
@@ -629,6 +710,8 @@
 		</alter>
 		<!-- - - CM-11 - -  -->
 		<alter control-id="cm-11">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Boundary is specific to SaaS environment; all access is via web services; users' machine or internal network are not contemplated.  External services (SA-9), internal connection (CA-9), remote access (AC-17), and secure access (SC-12 and SC-13), and privileged authentication (IA-2[1]) are considerations.</p></part>
@@ -636,12 +719,16 @@
 		</alter>
 		<!-- - - CP-1 - -  -->
 		<alter control-id="cp-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - CP-2 - -  -->
 		<alter control-id="cp-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
@@ -649,6 +736,8 @@
 		</alter>
 		<!-- - - CP-3 - -  -->
 		<alter control-id="cp-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
@@ -656,6 +745,8 @@
 		</alter>
 		<!-- - - CP-4 - -  -->
 		<alter control-id="cp-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
@@ -663,6 +754,8 @@
 		</alter>
 		<!-- - - CP-9 - -  -->
 		<alter control-id="cp-9">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="cp-9_fr" name="item" ns="fedramp">
@@ -688,6 +781,8 @@
 		</alter>
 		<!-- - - CP-10 - -  -->
 		<alter control-id="cp-10">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.</p></part>
@@ -695,12 +790,16 @@
 		</alter>
 		<!-- - - IA-1 - -  -->
 		<alter control-id="ia-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-2 - -  -->
 		<alter control-id="ia-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
@@ -709,12 +808,16 @@
 		</alter>
 		<!-- - - IA-2 (1) - -  -->
 		<alter control-id="ia-2.1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-2 (12) - -  -->
 		<alter control-id="ia-2.12">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
@@ -729,24 +832,32 @@
 		</alter>
 		<!-- - - IA-4 - -  -->
 		<alter control-id="ia-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-5 - -  -->
 		<alter control-id="ia-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-5 (1) - -  -->
 		<alter control-id="ia-5.1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-5 (11) - -  -->
 		<alter control-id="ia-5.11">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='fed' class='tailored-designation' ns='fedramp' />
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
@@ -755,24 +866,32 @@
 		</alter>
 		<!-- - - IA-6 - -  -->
 		<alter control-id="ia-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-7 - -  -->
 		<alter control-id="ia-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-8 - -  -->
 		<alter control-id="ia-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-8 (1) - -  -->
 		<alter control-id="ia-8.1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
@@ -780,6 +899,8 @@
 		</alter>
 		<!-- - - IA-8 (2) - -  -->
 		<alter control-id="ia-8.2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.</p></part>
@@ -787,30 +908,40 @@
 		</alter>
 		<!-- - - IA-8 (3) - -  -->
 		<alter control-id="ia-8.3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IA-8 (4) - -  -->
 		<alter control-id="ia-8.4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IR-1 - -  -->
 		<alter control-id="ir-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IR-2 - -  -->
 		<alter control-id="ir-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IR-4 - -  -->
 		<alter control-id="ir-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ir-4_fr" name="item" ns="fedramp">
@@ -824,12 +955,16 @@
 		</alter>
 		<!-- - - IR-5 - -  -->
 		<alter control-id="ir-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IR-6 - -  -->
 		<alter control-id="ir-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ir-6_fr" name="item" ns="fedramp">
@@ -843,12 +978,16 @@
 		</alter>
 		<!-- - - IR-7 - -  -->
 		<alter control-id="ir-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - IR-8 - -  -->
 		<alter control-id="ir-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically attest to US-CERT compliance.</p></part>
@@ -856,6 +995,8 @@
 		</alter>
 		<!-- - - IR-9 - -  -->
 		<alter control-id="ir-9">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically describe information spillage response processes.</p></part>
@@ -863,12 +1004,16 @@
 		</alter>
 		<!-- - - MA-1 - -  -->
 		<alter control-id="ma-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - MA-2 - -  -->
 		<alter control-id="ma-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -876,12 +1021,16 @@
 		</alter>
 		<!-- - - MA-4 - -  -->
 		<alter control-id="ma-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - MA-5 - -  -->
 		<alter control-id="ma-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -889,12 +1038,16 @@
 		</alter>
 		<!-- - - MP-1 - -  -->
 		<alter control-id="mp-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - MP-2 - -  -->
 		<alter control-id="mp-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -902,6 +1055,8 @@
 		</alter>
 		<!-- - - MP-6 - -  -->
 		<alter control-id="mp-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -909,6 +1064,8 @@
 		</alter>
 		<!-- - - MP-7 - -  -->
 		<alter control-id="mp-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -916,12 +1073,16 @@
 		</alter>
 		<!-- - - PE-1 - -  -->
 		<alter control-id="pe-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PE-2 - -  -->
 		<alter control-id="pe-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -929,6 +1090,8 @@
 		</alter>
 		<!-- - - PE-3 - -  -->
 		<alter control-id="pe-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -936,6 +1099,8 @@
 		</alter>
 		<!-- - - PE-6 - -  -->
 		<alter control-id="pe-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -943,6 +1108,8 @@
 		</alter>
 		<!-- - - PE-8 - -  -->
 		<alter control-id="pe-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -950,6 +1117,8 @@
 		</alter>
 		<!-- - - PE-12 - -  -->
 		<alter control-id="pe-12">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -957,6 +1126,8 @@
 		</alter>
 		<!-- - - PE-13 - -  -->
 		<alter control-id="pe-13">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -964,6 +1135,8 @@
 		</alter>
 		<!-- - - PE-14 - -  -->
 		<alter control-id="pe-14">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -978,6 +1151,8 @@
 		</alter>
 		<!-- - - PE-15 - -  -->
 		<alter control-id="pe-15">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -985,6 +1160,8 @@
 		</alter>
 		<!-- - - PE-16 - -  -->
 		<alter control-id="pe-16">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.</p></part>
@@ -992,60 +1169,80 @@
 		</alter>
 		<!-- - - PL-1 - -  -->
 		<alter control-id="pl-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PL-2 - -  -->
 		<alter control-id="pl-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PL-4 - -  -->
 		<alter control-id="pl-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-1 - -  -->
 		<alter control-id="ps-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-2 - -  -->
 		<alter control-id="ps-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='fed' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-3 - -  -->
 		<alter control-id="ps-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-4 - -  -->
 		<alter control-id="ps-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-5 - -  -->
 		<alter control-id="ps-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-6 - -  -->
 		<alter control-id="ps-6">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - PS-7 - -  -->
 		<alter control-id="ps-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically stating that any third-party security personnel are treated as CSP employees.</p></part>
@@ -1053,24 +1250,32 @@
 		</alter>
 		<!-- - - PS-8 - -  -->
 		<alter control-id="ps-8">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - RA-1 - -  -->
 		<alter control-id="ra-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - RA-2 - -  -->
 		<alter control-id="ra-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - RA-3 - -  -->
 		<alter control-id="ra-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ra-3_fr" name="item" ns="fedramp">
@@ -1088,6 +1293,8 @@
 		</alter>
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add>
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="ra-5_fr_smt.a" name="item">
@@ -1111,54 +1318,72 @@
 		</alter>
 		<!-- - - SA-1 - -  -->
 		<alter control-id="sa-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-2 - -  -->
 		<alter control-id="sa-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-3 - -  -->
 		<alter control-id="sa-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-4 - -  -->
 		<alter control-id="sa-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-4(10) - -  -->
 		<alter control-id="sa-4.10">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-5 - -  -->
 		<alter control-id="sa-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SA-9 - -  -->
 		<alter control-id="sa-9">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-1 - -  -->
 		<alter control-id="sc-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-5 - -  -->
 		<alter control-id="sc-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: If availability is a requirement, define protections in place as per control requirement.</p></part>
@@ -1166,12 +1391,16 @@
 		</alter>
 		<!-- - - SC-7 - -  -->
 		<alter control-id="sc-7">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-12 - -  -->
 		<alter control-id="sc-12">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 				<part id="sc-12_fr" name="item" ns="fedramp">
@@ -1185,6 +1414,8 @@
 		</alter>
 		<!-- - - SC-13 - -  -->
 		<alter control-id="sc-13">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='conditional' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Condition: If implementing need to detail how they meet it or don't meet it.</p></part>
@@ -1192,6 +1423,8 @@
 		</alter>
 		<!-- - - SC-15 - -  -->
 		<alter control-id="sc-15">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='nso' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>NSO - Not directly related to the security of the SaaS.</p></part>
@@ -1199,60 +1432,80 @@
 		</alter>
 		<!-- - - SC-20 - -  -->
 		<alter control-id="sc-20">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-21 - -  -->
 		<alter control-id="sc-21">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-22 - -  -->
 		<alter control-id="sc-22">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SC-39 - -  -->
 		<alter control-id="sc-39">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-1 - -  -->
 		<alter control-id="si-1">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-2 - -  -->
 		<alter control-id="si-2">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-3 - -  -->
 		<alter control-id="si-3">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-4 - -  -->
 		<alter control-id="si-4">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='assess' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-5 - -  -->
 		<alter control-id="si-5">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 			</add>
 		</alter>
 		<!-- - - SI-12 - -  -->
 		<alter control-id="si-12">
+			<remove name-ref="objective" />
+			<remove name-ref="assessment" />
 			<add position="ending">
 				<prop name='attest' class='tailored-designation' ns='fedramp' />
 				<part name='comment' class='tailored-designation' ns='fedramp'><p>Attestation - Specifically related to US-CERT and FedRAMP communications procedures.</p></part>

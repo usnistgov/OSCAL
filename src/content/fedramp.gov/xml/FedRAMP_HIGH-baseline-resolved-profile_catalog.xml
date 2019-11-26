@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="92c23cad-101c-4746-a372-0451b2b656a6">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="4045631f-a7f3-48b7-9228-052cb2a2e8fe">
   <metadata>
-    <title>FedRAMP High Baseline</title>
-    <last-modified>2019-10-01T11:04:14.081-04:00</last-modified>
-    <version>1.1</version>
-    <oscal-version>1.0.0-milestone1</oscal-version>
+    <title>FedRAMP High Baseline [RESOLVED]</title>
+    <published>2019-11-27T00:00:00.000-05:00</published>
+    <last-modified>2019-11-25T21:19:31.000000-05:00</last-modified>
+    <version>1.2</version>
+    <oscal-version>1.0.0-milestone2</oscal-version>
     <role id="creator">
       <title>Document creator</title>
     </role>
@@ -592,6 +593,13 @@
         <prop name="sort-id">ac-02.03</prop>
         <part id="ac-2.3_smt" name="statement">
           <p>The information system automatically disables inactive accounts after <insert param-id="ac-2.3_prm_1"/>.</p>
+          <part id="ac-2.3_fr" name="item" ns="fedramp">
+            <title>AC-2 (3) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-2.3_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
+            </part>
+          </part>
         </part>
         <part id="ac-2.3_obj" name="objective">
           <p>Determine if:</p>
@@ -631,13 +639,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing account management functions</p>
-          </part>
-        </part>
-        <part id="ac-2.3_fr" name="item" ns="fedramp">
-          <title>AC-2 (3) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-2.3_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
           </part>
         </part>
       </control>
@@ -768,6 +769,13 @@
         <prop name="sort-id">ac-02.05</prop>
         <part id="ac-2.5_smt" name="statement">
           <p>The organization requires that users log out when <insert param-id="ac-2.5_prm_1"/>.</p>
+          <part id="ac-2.5_fr" name="item" ns="fedramp">
+            <title>AC-2 (5) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-2.5_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Should use a shorter timeframe than AC-12.</p>
+            </part>
+          </part>
         </part>
         <part id="ac-2.5_gdn" name="guidance">
           <link rel="related" href="#sc-23">SC-23</link>
@@ -803,13 +811,6 @@
             <p>system/network administrators</p>
             <p>organizational personnel with information security responsibilities</p>
             <p>users that must comply with inactivity logout policy</p>
-          </part>
-        </part>
-        <part id="ac-2.5_fr" name="item" ns="fedramp">
-          <title>AC-2 (5) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-2.5_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Should use a shorter timeframe than AC-12.</p>
           </part>
         </part>
       </control>
@@ -905,6 +906,13 @@
         <prop name="sort-id">ac-02.09</prop>
         <part id="ac-2.9_smt" name="statement">
           <p>The organization only permits the use of shared/group accounts that meet <insert param-id="ac-2.9_prm_1"/>.</p>
+          <part id="ac-2.9_fr" name="item" ns="fedramp">
+            <title>AC-2 (9) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-2.9_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Required if shared/group accounts are deployed</p>
+            </part>
+          </part>
         </part>
         <part id="ac-2.9_obj" name="objective">
           <p>Determine if the organization:</p>
@@ -943,13 +951,6 @@
             <p>Automated mechanisms implementing management of shared/group accounts</p>
           </part>
         </part>
-        <part id="ac-2.9_fr" name="item" ns="fedramp">
-          <title>AC-2 (9) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-2.9_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Required if shared/group accounts are deployed</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ac-2.10">
         <title>Shared / Group Account Credential Termination</title>
@@ -957,6 +958,13 @@
         <prop name="sort-id">ac-02.10</prop>
         <part id="ac-2.10_smt" name="statement">
           <p>The information system terminates shared/group account credentials when members leave the group.</p>
+          <part id="ac-2.10_fr" name="item" ns="fedramp">
+            <title>AC-2 (10) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-2.10_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Required if shared/group accounts are deployed</p>
+            </part>
+          </part>
         </part>
         <part id="ac-2.10_obj" name="objective">
           <p>Determine if the information system terminates shared/group account credentials when members leave the group.</p>
@@ -986,13 +994,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing account management functions</p>
-          </part>
-        </part>
-        <part id="ac-2.10_fr" name="item" ns="fedramp">
-          <title>AC-2 (10) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-2.10_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Required if shared/group accounts are deployed</p>
           </part>
         </part>
       </control>
@@ -1076,6 +1077,17 @@
             <prop name="label">(b)</prop>
             <p>Reports atypical usage of information system accounts to <insert param-id="ac-2.12_prm_2"/>.</p>
           </part>
+          <part id="ac-2.12_fr" name="item" ns="fedramp">
+            <title>AC-2 (12) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-2.12_fr_gdn.1" name="guidance">
+              <prop name="label">(a) Guidance:</prop>
+              <p>Required for privileged accounts.</p>
+            </part>
+            <part id="ac-2.12_fr_gdn.2" name="guidance">
+              <prop name="label">(b) Guidance:</prop>
+              <p>Required for privileged accounts.</p>
+            </part>
+          </part>
         </part>
         <part id="ac-2.12_gdn" name="guidance">
           <p>Atypical usage includes, for example, accessing information systems at certain times of the day and from locations that are not consistent with the normal usage patterns of individuals working in organizations.</p>
@@ -1133,17 +1145,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing account management functions</p>
-          </part>
-        </part>
-        <part id="ac-2.12_fr" name="item" ns="fedramp">
-          <title>AC-2 (12) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-2.12_fr_gdn.1" name="guidance">
-            <prop name="label">(a) Guidance:</prop>
-            <p>Required for privileged accounts.</p>
-          </part>
-          <part id="ac-2.12_fr_gdn.2" name="guidance">
-            <prop name="label">(b) Guidance:</prop>
-            <p>Required for privileged accounts.</p>
           </part>
         </part>
       </control>
@@ -1467,6 +1468,13 @@
           <prop name="label">c.</prop>
           <p>Defines information system access authorizations to support separation of duties.</p>
         </part>
+        <part id="ac-5_fr" name="item" ns="fedramp">
+          <title>AC-5 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ac-5_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
+          </part>
+        </part>
       </part>
       <part id="ac-5_gdn" name="guidance">
         <p>Separation of duties addresses the potential for abuse of authorized privileges and helps to reduce the risk of malevolent activity without collusion. Separation of duties includes, for example: (i) dividing mission functions and information system support functions among different individuals and/or roles; (ii) conducting information system support functions with different individuals (e.g., system management, programming, configuration management, quality assurance and testing, and network security); and (iii) ensuring security personnel administering access control functions do not also administer audit functions.</p>
@@ -1522,13 +1530,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms implementing separation of duties policy</p>
-        </part>
-      </part>
-      <part id="ac-5_fr" name="item" ns="fedramp">
-        <title>AC-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ac-5_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
         </part>
       </part>
     </control>
@@ -1664,6 +1665,13 @@
         <prop name="sort-id">ac-06.02</prop>
         <part id="ac-6.2_smt" name="statement">
           <p>The organization requires that users of information system accounts, or roles, with access to <insert param-id="ac-6.2_prm_1"/>, use non-privileged accounts or roles, when accessing nonsecurity functions.</p>
+          <part id="ac-6.2_fr" name="item" ns="fedramp">
+            <title>AC-6 (2) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-6.2_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
+            </part>
+          </part>
         </part>
         <part id="ac-6.2_gdn" name="guidance">
           <p>This control enhancement limits exposure when operating from within privileged accounts or roles. The inclusion of roles addresses situations where organizations implement access control policies such as role-based access control and where a change of role provides the same degree of assurance in the change of access authorizations for both the user and all processes acting on behalf of the user as would be provided by a change between a privileged and non-privileged account.</p>
@@ -1703,13 +1711,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing least privilege functions</p>
-          </part>
-        </part>
-        <part id="ac-6.2_fr" name="item" ns="fedramp">
-          <title>AC-6 (2) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-6.2_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
           </part>
         </part>
       </control>
@@ -2294,6 +2295,21 @@
             <p>Includes a description of the authorized uses of the system.</p>
           </part>
         </part>
+        <part id="ac-8_fr" name="item" ns="fedramp">
+          <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ac-8_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
+          </part>
+          <part id="ac-8_fr_smt.2" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
+          </part>
+          <part id="ac-8_fr_smt.3" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
+          </part>
+        </part>
       </part>
       <part id="ac-8_gdn" name="guidance">
         <p>System use notifications can be implemented using messages or warning banners displayed before individuals log in to information systems. System use notifications are used only for access via logon interfaces with human users and are not required when such human interfaces do not exist. Organizations consider system use notification messages/banners displayed in multiple languages based on specific organizational needs and the demographics of information system users. Organizations also consult with the Office of the General Counsel for legal review and approval of warning banner content.</p>
@@ -2384,21 +2400,22 @@
           <p>Automated mechanisms implementing system use notification</p>
         </part>
       </part>
-      <part id="ac-8_fr" name="item" ns="fedramp">
+      <control class="SP800-53" id="ac-8.fr">
         <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ac-8_fr_smt.1" name="item">
+        <prop name="label">AC-8 Req</prop>
+        <part id="ac-8.fr_smt.1" name="item">
           <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
+          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
         </part>
-        <part id="ac-8_fr_smt.2" name="item">
+        <part id="ac-8.fr_smt.2" name="item">
           <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
+          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
         </part>
-        <part id="ac-8_fr_smt.3" name="item">
+        <part id="ac-8.fr_smt.3" name="item">
           <prop name="label">Requirement:</prop>
-          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
+          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
         </part>
-      </part>
+      </control>
     </control>
     <control class="SP800-53" id="ac-10">
       <title>Concurrent Session Control</title>
@@ -2635,6 +2652,13 @@
             <prop name="label">(b)</prop>
             <p>Displays an explicit logout message to users indicating the reliable termination of authenticated communications sessions.</p>
           </part>
+          <part id="ac-12.1_fr" name="item" ns="fedramp">
+            <title>AC-12 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ac-12.1_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
+            </part>
+          </part>
         </part>
         <part id="ac-12.1_gdn" name="guidance">
           <p>Information resources to which users gain access via authentication include, for example, local workstations, databases, and password-protected websites/web-based services. Logout messages for web page access, for example, can be displayed after authenticated sessions have been terminated. However, for some types of interactive sessions including, for example, file transfer protocol (FTP) sessions, information systems typically send logout messages as final messages prior to terminating sessions.</p>
@@ -2683,13 +2707,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Information system session lock mechanisms</p>
-          </part>
-        </part>
-        <part id="ac-12.1_fr" name="item" ns="fedramp">
-          <title>AC-12 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ac-12.1_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
           </part>
         </part>
       </control>
@@ -4592,6 +4609,13 @@
           <prop name="label">d.</prop>
           <p>Determines that the following events are to be audited within the information system: <insert param-id="au-2_prm_2"/>.</p>
         </part>
+        <part id="au-2_fr" name="item" ns="fedramp">
+          <title>AU-2 Additional FedRAMP Requirements and Guidance</title>
+          <part id="au-2_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
+          </part>
+        </part>
       </part>
       <part id="au-2_gdn" name="guidance">
         <p>An event is any observable occurrence in an organizational information system. Organizations identify audit events as those events which are significant and relevant to the security of information systems and the environments in which those systems operate in order to meet specific and ongoing audit needs. Audit events can include, for example, password changes, failed logons, or failed accesses related to information systems, administrative privilege usage, PIV credential usage, or third-party credential usage. In determining the set of auditable events, organizations consider the auditing appropriate for each of the security controls to be implemented. To balance auditing requirements with other information system needs, this control also requires identifying that subset of auditable events that are audited at a given point in time. For example, organizations may determine that information systems must have the capability to log every file access both successful and unsuccessful, but not activate that capability except for specific circumstances due to the potential burden on system performance. Auditing requirements, including the need for auditable events, may be referenced in other security controls and control enhancements. Organizations also include auditable events that are required by applicable federal laws, Executive Orders, directives, policies, regulations, and standards. Audit records can be generated at various levels of abstraction, including at the packet level as information traverses the network. Selecting the appropriate level of abstraction is a critical aspect of an audit capability and can facilitate the identification of root causes to problems. Organizations consider in the definition of auditable events, the auditing necessary to cover related events such as the steps in distributed, transaction-based processes (e.g., processes that are distributed across multiple organizations) and actions that occur in service-oriented architectures.</p>
@@ -4668,13 +4692,6 @@
           <p>Automated mechanisms implementing information system auditing</p>
         </part>
       </part>
-      <part id="au-2_fr" name="item" ns="fedramp">
-        <title>AU-2 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-2_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="au-2.3">
         <title>Reviews and Updates</title>
         <param id="au-2.3_prm_1">
@@ -4685,6 +4702,13 @@
         <prop name="sort-id">au-02.03</prop>
         <part id="au-2.3_smt" name="statement">
           <p>The organization reviews and updates the audited events <insert param-id="au-2.3_prm_1"/>.</p>
+          <part id="au-2.3_fr" name="item" ns="fedramp">
+            <title>AU-2 (3) Additional FedRAMP Requirements and Guidance</title>
+            <part id="au-2.3_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
+            </part>
+          </part>
         </part>
         <part id="au-2.3_gdn" name="guidance">
           <p>Over time, the events that organizations believe should be audited may change. Reviewing and updating the set of audited events periodically is necessary to ensure that the current set is still necessary and sufficient.</p>
@@ -4724,13 +4748,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms supporting review and update of auditable events</p>
-          </part>
-        </part>
-        <part id="au-2.3_fr" name="item" ns="fedramp">
-          <title>AU-2 (3) Additional FedRAMP Requirements and Guidance</title>
-          <part id="au-2.3_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
           </part>
         </part>
       </control>
@@ -4813,6 +4830,17 @@
         <prop name="sort-id">au-03.01</prop>
         <part id="au-3.1_smt" name="statement">
           <p>The information system generates audit records containing the following additional information: <insert param-id="au-3.1_prm_1"/>.</p>
+          <part id="au-3.1_fr" name="item" ns="fedramp">
+            <title>AU-3 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="au-3.1_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider defines audit record types <em>[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</em>.  The audit record types are approved and accepted by the JAB/AO.</p>
+            </part>
+            <part id="au-3.1_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
+            </part>
+          </part>
         </part>
         <part id="au-3.1_gdn" name="guidance">
           <p>Detailed information that organizations may consider in audit records includes, for example, full text recording of privileged commands or the individual identities of group account users. Organizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. This facilitates the use of audit trails and audit logs by not including information that could potentially be misleading or could make it more difficult to locate information of interest.</p>
@@ -4853,17 +4881,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Information system audit capability</p>
-          </part>
-        </part>
-        <part id="au-3.1_fr" name="item" ns="fedramp">
-          <title>AU-3 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="au-3.1_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider defines audit record types <em>[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</em>.  The audit record types are approved and accepted by the JAB/AO.</p>
-          </part>
-          <part id="au-3.1_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
           </part>
         </part>
       </control>
@@ -5247,6 +5264,13 @@
           <prop name="label">b.</prop>
           <p>Reports findings to <insert param-id="au-6_prm_3"/>.</p>
         </part>
+        <part id="au-6_fr" name="item" ns="fedramp">
+          <title>AU-6 Additional FedRAMP Requirements and Guidance</title>
+          <part id="au-6_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
+          </part>
+        </part>
       </part>
       <part id="au-6_gdn" name="guidance">
         <p>Audit review, analysis, and reporting covers information security-related auditing performed by organizations including, for example, auditing that results from monitoring of account usage, remote access, wireless connectivity, mobile device connection, configuration settings, system component inventory, use of maintenance tools and nonlocal maintenance, physical access, temperature and humidity, equipment delivery and removal, communications at the information system boundaries, use of mobile code, and use of VoIP. Findings can be reported to organizational entities that include, for example, incident response team, help desk, information security group/department. If organizations are prohibited from reviewing and analyzing audit information or unable to conduct such activities (e.g., in certain national security applications or systems), the review/analysis may be carried out by other organizations granted such authority.</p>
@@ -5323,13 +5347,6 @@
         <part name="objects">
           <p>Organizational personnel with audit review, analysis, and reporting responsibilities</p>
           <p>organizational personnel with information security responsibilities</p>
-        </part>
-      </part>
-      <part id="au-6_fr" name="item" ns="fedramp">
-        <title>AU-6 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-6_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="au-6.1">
@@ -5572,6 +5589,13 @@
         <prop name="sort-id">au-06.06</prop>
         <part id="au-6.6_smt" name="statement">
           <p>The organization correlates information from audit records with information obtained from monitoring physical access to further enhance the ability to identify suspicious, inappropriate, unusual, or malevolent activity.</p>
+          <part id="au-6.6_fr" name="item" ns="fedramp">
+            <title>AU-6 (6) Additional FedRAMP Requirements and Guidance</title>
+            <part id="au-6.6_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
+            </part>
+          </part>
         </part>
         <part id="au-6.6_gdn" name="guidance">
           <p>The correlation of physical audit information and audit logs from information systems may assist organizations in identifying examples of suspicious behavior or supporting evidence of such behavior. For example, the correlation of an individual’s identity for logical access to certain information systems with the additional physical security information that the individual was actually present at the facility when the logical access occurred, may prove to be useful in investigations.</p>
@@ -5604,13 +5628,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing capability to correlate information from audit records with information from monitoring physical access</p>
-          </part>
-        </part>
-        <part id="au-6.6_fr" name="item" ns="fedramp">
-          <title>AU-6 (6) Additional FedRAMP Requirements and Guidance</title>
-          <part id="au-6.6_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
           </part>
         </part>
       </control>
@@ -5943,6 +5960,21 @@
             <prop name="label">(b)</prop>
             <p>Synchronizes the internal system clocks to the authoritative time source when the time difference is greater than <insert param-id="au-8.1_prm_3"/>.</p>
           </part>
+          <part id="au-8.1_fr" name="item" ns="fedramp">
+            <title>AU-8 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="au-8.1_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
+            </part>
+            <part id="au-8.1_fr_smt.2" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
+            </part>
+            <part id="au-8.1_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Synchronization of system clocks improves the accuracy of log analysis.</p>
+            </part>
+          </part>
         </part>
         <part id="au-8.1_gdn" name="guidance">
           <p>This control enhancement provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.</p>
@@ -6001,21 +6033,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms implementing internal information system clock synchronization</p>
-          </part>
-        </part>
-        <part id="au-8.1_fr" name="item" ns="fedramp">
-          <title>AU-8 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="au-8.1_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
-          </part>
-          <part id="au-8.1_fr_smt.2" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
-          </part>
-          <part id="au-8.1_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Synchronization of system clocks improves the accuracy of log analysis.</p>
           </part>
         </part>
       </control>
@@ -6328,6 +6345,13 @@
       <prop name="sort-id">au-11</prop>
       <part id="au-11_smt" name="statement">
         <p>The organization retains audit records for <insert param-id="au-11_prm_1"/> to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.</p>
+        <part id="au-11_fr" name="item" ns="fedramp">
+          <title>AU-11 Additional FedRAMP Requirements and Guidance</title>
+          <part id="au-11_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
+          </part>
+        </part>
       </part>
       <part id="au-11_gdn" name="guidance">
         <p>Organizations retain audit records until it is determined that they are no longer needed for administrative, legal, audit, or other operational purposes. This includes, for example, retention and availability of audit records relative to Freedom of Information Act (FOIA) requests, subpoenas, and law enforcement actions. Organizations develop standard categories of audit records relative to such types of actions and standard response processes for each type of action. The National Archives and Records Administration (NARA) General Records Schedules provide federal policy on record retention.</p>
@@ -6374,13 +6398,6 @@
           <p>Organizational personnel with audit record retention responsibilities</p>
           <p>organizational personnel with information security responsibilities</p>
           <p>system/network administrators</p>
-        </part>
-      </part>
-      <part id="au-11_fr" name="item" ns="fedramp">
-        <title>AU-11 Additional FedRAMP Requirements and Guidance</title>
-        <part id="au-11_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
         </part>
       </part>
     </control>
@@ -6820,6 +6837,13 @@
           <prop name="label">d.</prop>
           <p>Provides the results of the security control assessment to <insert param-id="ca-2_prm_2"/>.</p>
         </part>
+        <part id="ca-2_fr" name="item" ns="fedramp">
+          <title>CA-2 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ca-2_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
+          </part>
+        </part>
       </part>
       <part id="ca-2_gdn" name="guidance">
         <p>Organizations assess security controls in organizational information systems and the environments in which those systems operate as part of: (i) initial and ongoing security authorizations; (ii) FISMA annual assessments; (iii) continuous monitoring; and (iv) system development life cycle activities. Security assessments: (i) ensure that information security is built into organizational information systems; (ii) identify weaknesses and deficiencies early in the development process; (iii) provide essential information needed to make risk-based decisions as part of security authorization processes; and (iv) ensure compliance to vulnerability mitigation procedures. Assessments are conducted on the implemented security controls from Appendix F (main catalog) and Appendix G (Program Management controls) as documented in System Security Plans and Information Security Program Plans. Organizations can use other types of assessment activities such as vulnerability scanning and system monitoring to maintain the security posture of information systems during the entire life cycle. Security assessment reports document assessment results in sufficient detail as deemed necessary by organizations, to determine the accuracy and completeness of the reports and whether the security controls are implemented correctly, operating as intended, and producing the desired outcome with respect to meeting security requirements. The FISMA requirement for assessing security controls at least annually does not require additional assessment activities to those activities already in place in organizational security authorization processes. Security assessment results are provided to the individuals or roles appropriate for the types of assessments being conducted. For example, assessments conducted in support of security authorization decisions are provided to authorizing officials or authorizing official designated representatives. To satisfy annual assessment requirements, organizations can use assessment results from the following sources: (i) initial or ongoing information system authorizations; (ii) continuous monitoring; or (iii) system development life cycle activities. Organizations ensure that security assessment results are current, relevant to the determination of security control effectiveness, and obtained with the appropriate level of assessor independence. Existing security control assessment results can be reused to the extent that the results are still valid and can also be supplemented with additional assessments as needed. Subsequent to initial authorizations and in accordance with OMB policy, organizations assess security controls during continuous monitoring. Organizations establish the frequency for ongoing security control assessments in accordance with organizational continuous monitoring strategies. Information Assurance Vulnerability Alerts provide useful examples of vulnerability mitigation procedures. External audits (e.g., audits by external entities such as regulatory agencies) are outside the scope of this control.</p>
@@ -6911,13 +6935,6 @@
           <p>Automated mechanisms supporting security assessment, security assessment plan development, and/or security assessment reporting</p>
         </part>
       </part>
-      <part id="ca-2_fr" name="item" ns="fedramp">
-        <title>CA-2 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-2_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="ca-2.1">
         <title>Independent Assessors</title>
         <param id="ca-2.1_prm_1">
@@ -6927,6 +6944,13 @@
         <prop name="sort-id">ca-02.01</prop>
         <part id="ca-2.1_smt" name="statement">
           <p>The organization employs assessors or assessment teams with <insert param-id="ca-2.1_prm_1"/> to conduct security control assessments.</p>
+          <part id="ca-2.1_fr" name="item" ns="fedramp">
+            <title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ca-2.1_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).</p>
+            </part>
+          </part>
         </part>
         <part id="ca-2.1_gdn" name="guidance">
           <p>Independent assessors or assessment teams are individuals or groups who conduct impartial assessments of organizational information systems. Impartiality implies that assessors are free from any perceived or actual conflicts of interest with regard to the development, operation, or management of the organizational information systems under assessment or to the determination of security control effectiveness. To achieve impartiality, assessors should not: (i) create a mutual or conflicting interest with the organizations where the assessments are being conducted; (ii) assess their own work; (iii) act as management or employees of the organizations they are serving; or (iv) place themselves in positions of advocacy for the organizations acquiring their services. Independent assessments can be obtained from elements within organizations or can be contracted to public or private sector entities outside of organizations. Authorizing officials determine the required level of independence based on the security categories of information systems and/or the ultimate risk to organizational operations, organizational assets, or individuals. Authorizing officials also determine if the level of assessor independence provides sufficient assurance that the results are sound and can be used to make credible, risk-based decisions. This includes determining whether contracted security assessment services have sufficient independence, for example, when information system owners are not directly involved in contracting processes or cannot unduly influence the impartiality of assessors conducting assessments. In special situations, for example, when organizations that own the information systems are small or organizational structures require that assessments are conducted by individuals that are in the developmental, operational, or management chain of system owners, independence in assessment processes can be achieved by ensuring that assessment results are carefully reviewed and analyzed by independent teams of experts to validate the completeness, accuracy, integrity, and reliability of the results. Organizations recognize that assessments performed for purposes other than direct support to authorization decisions are, when performed by assessors with sufficient independence, more likely to be useable for such decisions, thereby reducing the need to repeat assessments.</p>
@@ -6956,13 +6980,6 @@
           <part name="objects">
             <p>Organizational personnel with security assessment responsibilities</p>
             <p>organizational personnel with information security responsibilities</p>
-          </part>
-        </part>
-        <part id="ca-2.1_fr" name="item" ns="fedramp">
-          <title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ca-2.1_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).</p>
           </part>
         </part>
       </control>
@@ -6997,6 +7014,13 @@
         <prop name="sort-id">ca-02.02</prop>
         <part id="ca-2.2_smt" name="statement">
           <p>The organization includes as part of security control assessments, <insert param-id="ca-2.2_prm_1"/>, <insert param-id="ca-2.2_prm_2"/>, <insert param-id="ca-2.2_prm_3"/>.</p>
+          <part id="ca-2.2_fr" name="item" ns="fedramp">
+            <title>CA-2 (2) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ca-2.2_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>To include 'announced', 'vulnerability scanning'</p>
+            </part>
+          </part>
         </part>
         <part id="ca-2.2_gdn" name="guidance">
           <p>Organizations can employ information system monitoring, insider threat assessments, malicious user testing, and other forms of testing (e.g., verification and validation) to improve readiness by exercising organizational capabilities and indicating current performance levels as a means of focusing actions to improve security. Organizations conduct assessment activities in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. Authorizing officials approve the assessment methods in coordination with the organizational risk executive function. Organizations can incorporate vulnerabilities uncovered during assessments into vulnerability remediation processes.</p>
@@ -7069,13 +7093,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms supporting security control assessment</p>
-          </part>
-        </part>
-        <part id="ca-2.2_fr" name="item" ns="fedramp">
-          <title>CA-2 (2) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ca-2.2_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>To include 'announced', 'vulnerability scanning'</p>
           </part>
         </part>
       </control>
@@ -7251,6 +7268,13 @@
         <prop name="sort-id">ca-03.03</prop>
         <part id="ca-3.3_smt" name="statement">
           <p>The organization prohibits the direct connection of an <insert param-id="ca-3.3_prm_1"/> to an external network without the use of <insert param-id="ca-3.3_prm_2"/>.</p>
+          <part id="ca-3.3_fr" name="item" ns="fedramp">
+            <title>CA-3 (3) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ca-3.3_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
+            </part>
+          </part>
         </part>
         <part id="ca-3.3_gdn" name="guidance">
           <p>Organizations typically do not have control over external networks (e.g., the Internet). Approved boundary protection devices (e.g., routers, firewalls) mediate communications (i.e., information flows) between unclassified non-national security systems and external networks. This control enhancement is required for organizations processing, storing, or transmitting Controlled Unclassified Information (CUI).</p>
@@ -7300,13 +7324,6 @@
             <p>Automated mechanisms supporting the management of external network connections</p>
           </part>
         </part>
-        <part id="ca-3.3_fr" name="item" ns="fedramp">
-          <title>CA-3 (3) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ca-3.3_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ca-3.5">
         <title>Restrictions On External System Connections</title>
@@ -7325,6 +7342,13 @@
         <prop name="sort-id">ca-03.05</prop>
         <part id="ca-3.5_smt" name="statement">
           <p>The organization employs <insert param-id="ca-3.5_prm_1"/> policy for allowing <insert param-id="ca-3.5_prm_2"/> to connect to external information systems.</p>
+          <part id="ca-3.5_fr" name="item" ns="fedramp">
+            <title>CA-3 (5) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ca-3.5_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
+            </part>
+          </part>
         </part>
         <part id="ca-3.5_gdn" name="guidance">
           <p>Organizations can constrain information system connectivity to external domains (e.g., websites) by employing one of two policies with regard to such connectivity: (i) allow-all, deny by exception, also known as blacklisting (the weaker of the two policies); or (ii) deny-all, allow by exception, also known as whitelisting (the stronger of the two policies). For either policy, organizations determine what exceptions, if any, are acceptable.</p>
@@ -7386,13 +7410,6 @@
             <p>Automated mechanisms implementing restrictions on external system connections</p>
           </part>
         </part>
-        <part id="ca-3.5_fr" name="item" ns="fedramp">
-          <title>CA-3 (5) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ca-3.5_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
-          </part>
-        </part>
       </control>
     </control>
     <control class="SP800-53" id="ca-5">
@@ -7414,6 +7431,17 @@
         <part id="ca-5_smt.b" name="item">
           <prop name="label">b.</prop>
           <p>Updates existing plan of action and milestones <insert param-id="ca-5_prm_1"/> based on the findings from security controls assessments, security impact analyses, and continuous monitoring activities.</p>
+        </part>
+        <part id="ca-5_fr" name="item" ns="fedramp">
+          <title>CA-5 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ca-5_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.</p>
+          </part>
+          <part id="ca-5_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
+          </part>
         </part>
       </part>
       <part id="ca-5_gdn" name="guidance">
@@ -7487,17 +7515,6 @@
           <p>Automated mechanisms for developing, implementing, and maintaining plan of action and milestones</p>
         </part>
       </part>
-      <part id="ca-5_fr" name="item" ns="fedramp">
-        <title>CA-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-5_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.</p>
-        </part>
-        <part id="ca-5_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="ca-6">
       <title>Security Authorization</title>
@@ -7524,6 +7541,13 @@
         <part id="ca-6_smt.c" name="item">
           <prop name="label">c.</prop>
           <p>Updates the security authorization <insert param-id="ca-6_prm_1"/>.</p>
+        </part>
+        <part id="ca-6_fr" name="item" ns="fedramp">
+          <title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
+          <part id="ca-6_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
+          </part>
         </part>
       </part>
       <part id="ca-6_gdn" name="guidance">
@@ -7578,13 +7602,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms that facilitate security authorizations and updates</p>
-        </part>
-      </part>
-      <part id="ca-6_fr" name="item" ns="fedramp">
-        <title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-6_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
         </part>
       </part>
     </control>
@@ -7646,6 +7663,21 @@
         <part id="ca-7_smt.g" name="item">
           <prop name="label">g.</prop>
           <p>Reporting the security status of organization and the information system to <insert param-id="ca-7_prm_4"/> <insert param-id="ca-7_prm_5"/>.</p>
+        </part>
+        <part id="ca-7_fr" name="item" ns="fedramp">
+          <title>CA-7 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ca-7_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.</p>
+          </part>
+          <part id="ca-7_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
+          </part>
+          <part id="ca-7_fr_gdn.2" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
+          </part>
         </part>
       </part>
       <part id="ca-7_gdn" name="guidance">
@@ -7792,21 +7824,6 @@
           <p>Mechanisms implementing continuous monitoring</p>
         </part>
       </part>
-      <part id="ca-7_fr" name="item" ns="fedramp">
-        <title>CA-7 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-7_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.</p>
-        </part>
-        <part id="ca-7_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
-        </part>
-        <part id="ca-7_fr_gdn.2" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a></p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="ca-7.1">
         <title>Independent Assessment</title>
         <param id="ca-7.1_prm_1">
@@ -7901,6 +7918,28 @@
           </part>
         </part>
       </control>
+      <control class="SP800-53-enhancement" id="ca-7.fr">
+        <title>Additional FedRAMP Requirements and Guidance</title>
+        <prop name="label">CA-7 Req</prop>
+        <part id="ca-7.fr_smt.1" name="item">
+          <prop name="label">Requirement 1</prop>
+          <p>Operating System Scans: at least monthly</p>
+        </part>
+        <part id="ca-7.fr_smt.2" name="item">
+          <prop name="label">Requirement 2</prop>
+          <p>Database and Web Application Scans: at least monthly</p>
+        </part>
+        <part id="ca-7.fr_smt.3" name="item">
+          <prop name="label">Requirement 3</prop>
+          <p>All scans performed by Independent Assessor: at least annually</p>
+        </part>
+        <part id="ca-7.fr_gdn.1" name="guidance">
+          <p>CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates.</p>
+        </part>
+        <part id="ca-7.fr_gdn.2" name="guidance">
+          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
+        </part>
+      </control>
     </control>
     <control class="SP800-53" id="ca-8">
       <title>Penetration Testing</title>
@@ -7915,6 +7954,13 @@
       <prop name="sort-id">ca-08</prop>
       <part id="ca-8_smt" name="statement">
         <p>The organization conducts penetration testing <insert param-id="ca-8_prm_1"/> on <insert param-id="ca-8_prm_2"/>.</p>
+        <part id="ca-8_fr" name="item" ns="fedramp">
+          <title>CA-8 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ca-8_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Penetration Test Guidance <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
+          </part>
+        </part>
       </part>
       <part id="ca-8_gdn" name="guidance">
         <p>Penetration testing is a specialized type of assessment conducted on information systems or individual system components to identify vulnerabilities that could be exploited by adversaries. Such testing can be used to either validate vulnerabilities or determine the degree of resistance organizational information systems have to adversaries within a set of specified constraints (e.g., time, resources, and/or skills). Penetration testing attempts to duplicate the actions of adversaries in carrying out hostile cyber attacks against organizations and provides a more in-depth analysis of security-related weaknesses/deficiencies. Organizations can also use the results of vulnerability analyses to support penetration testing activities. Penetration testing can be conducted on the hardware, software, or firmware components of an information system and can exercise both physical and technical security controls. A standard method for penetration testing includes, for example: (i) pretest analysis based on full knowledge of the target system; (ii) pretest identification of potential vulnerabilities based on pretest analysis; and (iii) testing designed to determine exploitability of identified vulnerabilities. All parties agree to the rules of engagement before the commencement of penetration testing scenarios. Organizations correlate the penetration testing rules of engagement with the tools, techniques, and procedures that are anticipated to be employed by adversaries carrying out attacks. Organizational risk assessments guide decisions on the level of independence required for personnel conducting penetration testing.</p>
@@ -7959,13 +8005,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms supporting penetration testing</p>
-        </part>
-      </part>
-      <part id="ca-8_fr" name="item" ns="fedramp">
-        <title>CA-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ca-8_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Penetration Test Guidance <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="ca-8.1">
@@ -8329,6 +8368,13 @@
             <prop name="label">(c)</prop>
             <p>As an integral part of information system component installations and upgrades.</p>
           </part>
+          <part id="cm-2.1_fr" name="item" ns="fedramp">
+            <title>CM-8 Additional FedRAMP Requirements and Guidance</title>
+            <part id="cm-2.1_fr_gdn.1" name="guidance">
+              <prop name="label">(a) Guidance:</prop>
+              <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
+            </part>
+          </part>
         </part>
         <part id="cm-2.1_gdn" name="guidance">
           <link rel="related" href="#cm-5">CM-5</link>
@@ -8393,13 +8439,6 @@
           <part name="objects">
             <p>Organizational processes for managing baseline configurations</p>
             <p>automated mechanisms supporting review and update of the baseline configuration</p>
-          </part>
-        </part>
-        <part id="cm-2.1_fr" name="item" ns="fedramp">
-          <title>CM-8 Additional FedRAMP Requirements and Guidance</title>
-          <part id="cm-2.1_fr_gdn.1" name="guidance">
-            <prop name="label">(a) Guidance:</prop>
-            <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
           </part>
         </part>
       </control>
@@ -8661,6 +8700,17 @@
           <prop name="label">g.</prop>
           <p>Coordinates and provides oversight for configuration change control activities through <insert param-id="cm-3_prm_2"/> that convenes <insert param-id="cm-3_prm_3"/>.</p>
         </part>
+        <part id="cm-3_fr" name="item" ns="fedramp">
+          <title>CM-3 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cm-3_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
+          </part>
+          <part id="cm-3_fr_gdn.1" name="guidance">
+            <prop name="label">(e) Guidance:</prop>
+            <p>In accordance with record retention policies and procedures.</p>
+          </part>
+        </part>
       </part>
       <part id="cm-3_gdn" name="guidance">
         <p>Configuration change controls for organizational information systems involve the systematic proposal, justification, implementation, testing, review, and disposition of changes to the systems, including system upgrades and modifications. Configuration change control includes changes to baseline configurations for components and configuration items of information systems, changes to configuration settings for information technology products (e.g., operating systems, applications, firewalls, routers, and mobile devices), unscheduled/unauthorized changes, and changes to remediate vulnerabilities. Typical processes for managing configuration changes to information systems include, for example, Configuration Control Boards that approve proposed changes to systems. For new development information systems or systems undergoing major upgrades, organizations consider including representatives from development organizations on the Configuration Control Boards. Auditing of changes includes activities before and after changes are made to organizational information systems and the auditing activities required to implement such changes.</p>
@@ -8756,17 +8806,6 @@
         <part name="objects">
           <p>Organizational processes for configuration change control</p>
           <p>automated mechanisms that implement configuration change control</p>
-        </part>
-      </part>
-      <part id="cm-3_fr" name="item" ns="fedramp">
-        <title>CM-3 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cm-3_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
-        </part>
-        <part id="cm-3_fr_gdn.1" name="guidance">
-          <prop name="label">(e) Guidance:</prop>
-          <p>In accordance with record retention policies and procedures.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cm-3.1">
@@ -9398,6 +9437,13 @@
         <prop name="sort-id">cm-05.03</prop>
         <part id="cm-5.3_smt" name="statement">
           <p>The information system prevents the installation of <insert param-id="cm-5.3_prm_1"/> without verification that the component has been digitally signed using a certificate that is recognized and approved by the organization.</p>
+          <part id="cm-5.3_fr" name="item" ns="fedramp">
+            <title>CM-5 (3) Additional FedRAMP Requirements and Guidance</title>
+            <part id="cm-5.3_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
+            </part>
+          </part>
         </part>
         <part id="cm-5.3_gdn" name="guidance">
           <p>Software and firmware components prevented from installation unless signed with recognized and approved certificates include, for example, software and firmware version updates, patches, service packs, device drivers, and basic input output system (BIOS) updates. Organizations can identify applicable software and firmware components by type, by specific items, or a combination of both. Digital signatures and organizational verification of such signatures, is a method of code authentication.</p>
@@ -9445,13 +9491,6 @@
           <part name="objects">
             <p>Organizational processes for managing access restrictions to change</p>
             <p>automated mechanisms preventing installation of software and firmware components not signed with an organization-recognized and approved certificate</p>
-          </part>
-        </part>
-        <part id="cm-5.3_fr" name="item" ns="fedramp">
-          <title>CM-5 (3) Additional FedRAMP Requirements and Guidance</title>
-          <part id="cm-5.3_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
           </part>
         </part>
       </control>
@@ -9573,6 +9612,21 @@
           <prop name="label">d.</prop>
           <p>Monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.</p>
         </part>
+        <part id="cm-6_fr" name="item" ns="fedramp">
+          <title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
+          <part id="cm-6_fr_smt.1" name="item">
+            <prop name="label">Requirement 1:</prop>
+            <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. </p>
+          </part>
+          <part id="cm-6_fr_smt.2" name="item">
+            <prop name="label">Requirement 2:</prop>
+            <p>The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) (<a href="http://scap.nist.gov/">http://scap.nist.gov/</a>) validated or SCAP compatible (if validated checklists are not available).</p>
+          </part>
+          <part id="cm-6_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Information on the USGCB checklists can be found at: <a href="https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline">https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline</a>.</p>
+          </part>
+        </part>
       </part>
       <part id="cm-6_gdn" name="guidance">
         <p>Configuration settings are the set of parameters that can be changed in hardware, software, or firmware components of the information system that affect the security posture and/or functionality of the system. Information technology products for which security-related configuration settings can be defined include, for example, mainframe computers, servers (e.g., database, electronic mail, authentication, web, proxy, file, domain name), workstations, input/output devices (e.g., scanners, copiers, and printers), network components (e.g., firewalls, routers, gateways, voice and data switches, wireless access points, network appliances, sensors), operating systems, middleware, and applications. Security-related parameters are those parameters impacting the security state of information systems including the parameters required to satisfy other security control requirements. Security-related parameters include, for example: (i) registry settings; (ii) account, file, directory permission settings; and (iii) settings for functions, ports, protocols, services, and remote connections. Organizations establish organization-wide configuration settings and subsequently derive specific settings for information systems. The established settings become part of the systems configuration baseline. Common secure configurations (also referred to as security configuration checklists, lockdown and hardening guides, security reference guides, security technical implementation guides) provide recognized, standardized, and established benchmarks that stipulate secure configuration settings for specific information technology platforms/products and instructions for configuring those information system components to meet operational requirements. Common secure configurations can be developed by a variety of organizations including, for example, information technology product developers, manufacturers, vendors, consortia, academia, industry, federal agencies, and other organizations in the public and private sectors. Common secure configurations include the United States Government Configuration Baseline (USGCB) which affects the implementation of CM-6 and other controls such as AC-19 and CM-7. The Security Content Automation Protocol (SCAP) and the defined standards within the protocol (e.g., Common Configuration Enumeration) provide an effective method to uniquely identify, track, and control configuration settings. OMB establishes federal policy on configuration requirements for federal information systems.</p>
@@ -9692,21 +9746,6 @@
           <p>Organizational processes for managing configuration settings</p>
           <p>automated mechanisms that implement, monitor, and/or control information system configuration settings</p>
           <p>automated mechanisms that identify and/or document deviations from established configuration settings</p>
-        </part>
-      </part>
-      <part id="cm-6_fr" name="item" ns="fedramp">
-        <title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
-        <part id="cm-6_fr_smt.1" name="item">
-          <prop name="label">Requirement 1:</prop>
-          <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. </p>
-        </part>
-        <part id="cm-6_fr_smt.2" name="item">
-          <prop name="label">Requirement 2:</prop>
-          <p>The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) (<a href="http://scap.nist.gov/">http://scap.nist.gov/</a>) validated or SCAP compatible (if validated checklists are not available).</p>
-        </part>
-        <part id="cm-6_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Information on the USGCB checklists can be found at: <a href="https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline">https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline</a>.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cm-6.1">
@@ -9874,6 +9913,17 @@
           <prop name="label">b.</prop>
           <p>Prohibits or restricts the use of the following functions, ports, protocols, and/or services: <insert param-id="cm-7_prm_1"/>.</p>
         </part>
+        <part id="cm-7_fr" name="item" ns="fedramp">
+          <title>CM-7 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cm-7_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
+          </part>
+          <part id="cm-7_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Information on the USGCB checklists can be found at: <a href="http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc">http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</a>. Partially derived from AC-17(8).</p>
+          </part>
+        </part>
       </part>
       <part id="cm-7_gdn" name="guidance">
         <p>Information systems can provide a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). Additionally, it is sometimes convenient to provide multiple services from single information system components, but doing so increases risk over limiting the services provided by any one component. Where feasible, organizations limit component functionality to a single function per device (e.g., email servers or web servers, but not both). Organizations review functions and services provided by information systems or individual components of information systems, to determine which functions and services are candidates for elimination (e.g., Voice Over Internet Protocol, Instant Messaging, auto-execute, and file sharing). Organizations consider disabling unused or unnecessary physical and logical ports/protocols (e.g., Universal Serial Bus, File Transfer Protocol, and Hyper Text Transfer Protocol) on information systems to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling. Organizations can utilize network scanning tools, intrusion detection and prevention systems, and end-point protections such as firewalls and host-based intrusion detection systems to identify and prevent the use of prohibited functions, ports, protocols, and services.</p>
@@ -9959,17 +10009,6 @@
         <part name="objects">
           <p>Organizational processes prohibiting or restricting functions, ports, protocols, and/or services</p>
           <p>automated mechanisms implementing restrictions or prohibition of functions, ports, protocols, and/or services</p>
-        </part>
-      </part>
-      <part id="cm-7_fr" name="item" ns="fedramp">
-        <title>CM-7 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cm-7_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
-        </part>
-        <part id="cm-7_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Information on the USGCB checklists can be found at: <a href="http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc">http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</a>. Partially derived from AC-17(8).</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cm-7.1">
@@ -10140,6 +10179,13 @@
         <prop name="sort-id">cm-07.02</prop>
         <part id="cm-7.2_smt" name="statement">
           <p>The information system prevents program execution in accordance with <insert param-id="cm-7.2_prm_1"/>.</p>
+          <part id="cm-7.2_fr" name="item" ns="fedramp">
+            <title>CM-7 (2) Additional FedRAMP Requirements and Guidance</title>
+            <part id="cm-7.2_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
+            </part>
+          </part>
         </part>
         <part id="cm-7.2_gdn" name="guidance">
           <link rel="related" href="#cm-8">CM-8</link>
@@ -10194,13 +10240,6 @@
             <p>organizational processes for software program usage and restrictions</p>
             <p>automated mechanisms preventing program execution on the information system</p>
             <p>automated mechanisms supporting and/or implementing software program usage and restrictions</p>
-          </part>
-        </part>
-        <part id="cm-7.2_fr" name="item" ns="fedramp">
-          <title>CM-7 (2) Additional FedRAMP Requirements and Guidance</title>
-          <part id="cm-7.2_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
           </part>
         </part>
       </control>
@@ -10337,6 +10376,13 @@
           <prop name="label">b.</prop>
           <p>Reviews and updates the information system component inventory <insert param-id="cm-8_prm_2"/>.</p>
         </part>
+        <part id="cm-8_fr" name="item" ns="fedramp">
+          <title>CM-8 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cm-8_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Must be provided at least monthly or when there is a change.</p>
+          </part>
+        </part>
       </part>
       <part id="cm-8_gdn" name="guidance">
         <p>Organizations may choose to implement centralized information system component inventories that include components from all organizational information systems. In such situations, organizations ensure that the resulting inventories include system-specific information required for proper component accountability (e.g., information system association, information system owner). Information deemed necessary for effective accountability of information system components includes, for example, hardware inventory specifications, software license information, software version numbers, component owners, and for networked components or devices, machine names and network addresses. Inventory specifications include, for example, manufacturer, device type, model, serial number, and physical location.</p>
@@ -10409,13 +10455,6 @@
         <part name="objects">
           <p>Organizational processes for developing and documenting an inventory of information system components</p>
           <p>automated mechanisms supporting and/or implementing the information system component inventory</p>
-        </part>
-      </part>
-      <part id="cm-8_fr" name="item" ns="fedramp">
-        <title>CM-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cm-8_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Must be provided at least monthly or when there is a change.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cm-8.1">
@@ -11408,6 +11447,13 @@
           <prop name="label">g.</prop>
           <p>Protects the contingency plan from unauthorized disclosure and modification.</p>
         </part>
+        <part id="cp-2_fr" name="item" ns="fedramp">
+          <title>CP-2 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cp-2_fr_smt.1" name="item">
+            <prop name="label">CP-2 Requirement:</prop>
+            <p>For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
+          </part>
+        </part>
       </part>
       <part id="cp-2_gdn" name="guidance">
         <p>Contingency planning for information systems is part of an overall organizational program for achieving continuity of operations for mission/business functions. Contingency planning addresses both information system restoration and implementation of alternative mission/business processes when systems are compromised. The effectiveness of contingency planning is maximized by considering such planning throughout the phases of the system development life cycle. Performing contingency planning on hardware, software, and firmware development can be an effective means of achieving information system resiliency. Contingency plans reflect the degree of restoration required for organizational information systems since not all systems may need to fully recover to achieve the level of continuity of operations desired. Information system recovery objectives reflect applicable laws, Executive Orders, directives, policies, standards, regulations, and guidelines. In addition to information system availability, contingency plans also address other security-related events resulting in a reduction in mission and/or business effectiveness, such as malicious attacks compromising the confidentiality or integrity of information systems. Actions addressed in contingency plans include, for example, orderly/graceful degradation, information system shutdown, fallback to a manual mode, alternate information flows, and operating in modes reserved for when systems are under attack. By closely coordinating contingency planning with incident handling activities, organizations can ensure that the necessary contingency planning activities are in place and activated in the event of a security incident.</p>
@@ -11562,13 +11608,6 @@
         <part name="objects">
           <p>Organizational processes for contingency plan development, review, update, and protection</p>
           <p>automated mechanisms for developing, reviewing, updating and/or protecting the contingency plan</p>
-        </part>
-      </part>
-      <part id="cp-2_fr" name="item" ns="fedramp">
-        <title>CP-2 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-2_fr_smt.1" name="item">
-          <prop name="label">CP-2 Requirement:</prop>
-          <p>For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cp-2.1">
@@ -12003,6 +12042,13 @@
           <prop name="label">c.</prop>
           <p>Initiates corrective actions, if needed.</p>
         </part>
+        <part id="cp-4_fr" name="item" ns="fedramp">
+          <title>CP-4(a) Additional FedRAMP Requirements and Guidance</title>
+          <part id="cp-4_fr_smt.a" name="item">
+            <prop name="label">CP-4(a) Requirement:</prop>
+            <p>The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
+          </part>
+        </part>
       </part>
       <part id="cp-4_gdn" name="guidance">
         <p>Methods for testing contingency plans to determine the effectiveness of the plans and to identify potential weaknesses in the plans include, for example, walk-through and tabletop exercises, checklists, simulations (parallel, full interrupt), and comprehensive exercises. Organizations conduct testing based on the continuity requirements in contingency plans and include a determination of the effects on organizational operations, assets, and individuals arising due to contingency operations. Organizations have flexibility and discretion in the breadth, depth, and timelines of corrective actions.</p>
@@ -12060,13 +12106,6 @@
         <part name="objects">
           <p>Organizational processes for contingency plan testing</p>
           <p>automated mechanisms supporting the contingency plan and/or contingency plan testing</p>
-        </part>
-      </part>
-      <part id="cp-4_fr" name="item" ns="fedramp">
-        <title>CP-4(a) Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-4_fr_smt.a" name="item">
-          <prop name="label">CP-4(a) Requirement:</prop>
-          <p>The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cp-4.1">
@@ -12377,6 +12416,13 @@
           <prop name="label">c.</prop>
           <p>Ensures that the alternate processing site provides information security safeguards equivalent to those of the primary site.</p>
         </part>
+        <part id="cp-7_fr" name="item" ns="fedramp">
+          <title>CP-7 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cp-7_fr_smt.a" name="item">
+            <prop name="label">(a) Requirement:</prop>
+            <p>The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
+          </part>
+        </part>
       </part>
       <part id="cp-7_gdn" name="guidance">
         <p>Alternate processing sites are sites that are geographically distinct from primary processing sites. An alternate processing site provides processing capability in the event that the primary processing site is not available. Items covered by alternate processing site agreements include, for example, environmental conditions at alternate sites, access rules, physical and environmental protection requirements, and coordination for the transfer/assignment of personnel. Requirements are specifically allocated to alternate processing sites that reflect the requirements in contingency plans to maintain essential missions/business functions despite disruption, compromise, or failure in organizational information systems.</p>
@@ -12448,19 +12494,19 @@
           <p>automated mechanisms supporting and/or implementing recovery at the alternate processing site</p>
         </part>
       </part>
-      <part id="cp-7_fr" name="item" ns="fedramp">
-        <title>CP-7 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-7_fr_smt.a" name="item">
-          <prop name="label">(a) Requirement:</prop>
-          <p>The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="cp-7.1">
         <title>Separation from Primary Site</title>
         <prop name="label">CP-7(1)</prop>
         <prop name="sort-id">cp-07.01</prop>
         <part id="cp-7.1_smt" name="statement">
           <p>The organization identifies an alternate processing site that is separated from the primary processing site to reduce susceptibility to the same threats.</p>
+          <part id="cp-7.1_fr" name="item" ns="fedramp">
+            <title>CP-7 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="cp-7.1_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
+            </part>
+          </part>
         </part>
         <part id="cp-7.1_gdn" name="guidance">
           <p>Threats that affect alternate processing sites are typically defined in organizational assessments of risk and include, for example, natural disasters, structural failures, hostile cyber attacks, and errors of omission/commission. Organizations determine what is considered a sufficient degree of separation between primary and alternate processing sites based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites is less relevant.</p>
@@ -12487,13 +12533,6 @@
             <p>Organizational personnel with contingency plan alternate processing site responsibilities</p>
             <p>organizational personnel with information system recovery responsibilities</p>
             <p>organizational personnel with information security responsibilities</p>
-          </part>
-        </part>
-        <part id="cp-7.1_fr" name="item" ns="fedramp">
-          <title>CP-7 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="cp-7.1_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
           </part>
         </part>
       </control>
@@ -12632,6 +12671,13 @@
       <link href="#ref031" rel="reference">http://www.dhs.gov/telecommunications-service-priority-tsp</link>
       <part id="cp-8_smt" name="statement">
         <p>The organization establishes alternate telecommunications services including necessary agreements to permit the resumption of <insert param-id="cp-8_prm_1"/> for essential missions and business functions within <insert param-id="cp-8_prm_2"/> when the primary telecommunications capabilities are unavailable at either the primary or alternate processing or storage sites.</p>
+        <part id="cp-8_fr" name="item" ns="fedramp">
+          <title>CP-8 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cp-8_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
+          </part>
+        </part>
       </part>
       <part id="cp-8_gdn" name="guidance">
         <p>This control applies to telecommunications services (data and voice) for primary and alternate processing and storage sites. Alternate telecommunications services reflect the continuity requirements in contingency plans to maintain essential missions/business functions despite the loss of primary telecommunications services. Organizations may specify different time periods for primary/alternate sites. Alternate telecommunications services include, for example, additional organizational or commercial ground-based circuits/lines or satellites in lieu of ground-based communications. Organizations consider factors such as availability, quality of service, and access when entering into alternate telecommunications agreements.</p>
@@ -12677,13 +12723,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms supporting telecommunications</p>
-        </part>
-      </part>
-      <part id="cp-8_fr" name="item" ns="fedramp">
-        <title>CP-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-8_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cp-8.1">
@@ -12923,6 +12962,25 @@
           <prop name="label">d.</prop>
           <p>Protects the confidentiality, integrity, and availability of backup information at storage locations.</p>
         </part>
+        <part id="cp-9_fr" name="item" ns="fedramp">
+          <title>CP-9 Additional FedRAMP Requirements and Guidance</title>
+          <part id="cp-9_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
+          </part>
+          <part id="cp-9_fr_smt.a" name="item">
+            <prop name="label">CP-9(a) Requirement:</prop>
+            <p>The service provider maintains at least three backup copies of user-level information (at least one of which is available online).</p>
+          </part>
+          <part id="cp-9_fr_smt.b" name="item">
+            <prop name="label">CP-9(b)Requirement:</prop>
+            <p>The service provider maintains at least three backup copies of system-level information (at least one of which is available online).</p>
+          </part>
+          <part id="cp-9_fr_smt.c" name="item">
+            <prop name="label">CP-9(c)Requirement:</prop>
+            <p>The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).</p>
+          </part>
+        </part>
       </part>
       <part id="cp-9_gdn" name="guidance">
         <p>System-level information includes, for example, system-state information, operating system and application software, and licenses. User-level information includes any information other than system-level information. Mechanisms employed by organizations to protect the integrity of information system backups include, for example, digital signatures and cryptographic hashes. Protection of system backup information while in transit is beyond the scope of this control. Information system backups reflect the requirements in contingency plans as well as other organizational requirements for backing up information.</p>
@@ -12995,25 +13053,6 @@
         <part name="objects">
           <p>Organizational processes for conducting information system backups</p>
           <p>automated mechanisms supporting and/or implementing information system backups</p>
-        </part>
-      </part>
-      <part id="cp-9_fr" name="item" ns="fedramp">
-        <title>CP-9 Additional FedRAMP Requirements and Guidance</title>
-        <part id="cp-9_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
-        </part>
-        <part id="cp-9_fr_smt.a" name="item">
-          <prop name="label">CP-9(a) Requirement:</prop>
-          <p>The service provider maintains at least three backup copies of user-level information (at least one of which is available online).</p>
-        </part>
-        <part id="cp-9_fr_smt.b" name="item">
-          <prop name="label">CP-9(b)Requirement:</prop>
-          <p>The service provider maintains at least three backup copies of system-level information (at least one of which is available online).</p>
-        </part>
-        <part id="cp-9_fr_smt.c" name="item">
-          <prop name="label">CP-9(c)Requirement:</prop>
-          <p>The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="cp-9.1">
@@ -13922,6 +13961,13 @@
         <prop name="sort-id">ia-02.11</prop>
         <part id="ia-2.11_smt" name="statement">
           <p>The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets <insert param-id="ia-2.11_prm_1"/>.</p>
+          <part id="ia-2.11_fr" name="item" ns="fedramp">
+            <title>IA-2 (11) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ia-2.11_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
+            </part>
+          </part>
         </part>
         <part id="ia-2.11_gdn" name="guidance">
           <p>For remote access to privileged/non-privileged accounts, the purpose of requiring a device that is separate from the information system gaining access for one of the factors during multifactor authentication is to reduce the likelihood of compromising authentication credentials stored on the system. For example, adversaries deploying malicious code on organizational information systems can potentially compromise such credentials resident on the system and subsequently impersonate authorized users.</p>
@@ -13982,13 +14028,6 @@
             <p>Automated mechanisms supporting and/or implementing identification and authentication capability</p>
           </part>
         </part>
-        <part id="ia-2.11_fr" name="item" ns="fedramp">
-          <title>IA-2 (11) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ia-2.11_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ia-2.12">
         <title>Acceptance of PIV Credentials</title>
@@ -13996,6 +14035,13 @@
         <prop name="sort-id">ia-02.12</prop>
         <part id="ia-2.12_smt" name="statement">
           <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.</p>
+          <part id="ia-2.12_fr" name="item" ns="fedramp">
+            <title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ia-2.12_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
+            </part>
+          </part>
         </part>
         <part id="ia-2.12_gdn" name="guidance">
           <p>This control enhancement applies to organizations implementing logical access control systems (LACS) and physical access control systems (PACS). Personal Identity Verification (PIV) credentials are those credentials issued by federal agencies that conform to FIPS Publication 201 and supporting guidance documents. OMB Memorandum 11-11 requires federal agencies to continue implementing the requirements specified in HSPD-12 to enable agency-wide use of PIV credentials.</p>
@@ -14042,13 +14088,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms supporting and/or implementing acceptance and verification of PIV credentials</p>
-          </part>
-        </part>
-        <part id="ia-2.12_fr" name="item" ns="fedramp">
-          <title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ia-2.12_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
           </part>
         </part>
       </control>
@@ -14183,6 +14222,17 @@
         <part id="ia-4_smt.e" name="item">
           <prop name="label">e.</prop>
           <p>Disabling the identifier after <insert param-id="ia-4_prm_3"/>.</p>
+        </part>
+        <part id="ia-4_fr" name="item" ns="fedramp">
+          <title>IA-4(e) Additional FedRAMP Requirements and Guidance</title>
+          <part id="ia-4_fr_smt.e" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider defines the time period of inactivity for device identifiers.</p>
+          </part>
+          <part id="ia-4_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP <a href="http://iase.disa.mil/cloud_security/Pages/index.aspx">http://iase.disa.mil/cloud_security/Pages/index.aspx</a>.</p>
+          </part>
         </part>
       </part>
       <part id="ia-4_gdn" name="guidance">
@@ -14331,17 +14381,6 @@
           <p>Automated mechanisms supporting and/or implementing identifier management</p>
         </part>
       </part>
-      <part id="ia-4_fr" name="item" ns="fedramp">
-        <title>IA-4(e) Additional FedRAMP Requirements and Guidance</title>
-        <part id="ia-4_fr_smt.e" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider defines the time period of inactivity for device identifiers.</p>
-        </part>
-        <part id="ia-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP <a href="http://iase.disa.mil/cloud_security/Pages/index.aspx">http://iase.disa.mil/cloud_security/Pages/index.aspx</a>.</p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="ia-4.4">
         <title>Identify User Status</title>
         <param id="ia-4.4_prm_1">
@@ -14451,6 +14490,13 @@
         <part id="ia-5_smt.j" name="item">
           <prop name="label">j.</prop>
           <p>Changing authenticators for group/role accounts when membership to those accounts changes.</p>
+        </part>
+        <part id="ia-5_fr" name="item" ns="fedramp">
+          <title>IA-5 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ia-5_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 3. Link <a href="https://pages.nist.gov/800-63-3">https://pages.nist.gov/800-63-3</a>.</p>
+          </part>
         </part>
       </part>
       <part id="ia-5_gdn" name="guidance">
@@ -14600,13 +14646,6 @@
           <p>Automated mechanisms supporting and/or implementing authenticator management capability</p>
         </part>
       </part>
-      <part id="ia-5_fr" name="item" ns="fedramp">
-        <title>IA-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ia-5_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 3. Link <a href="https://pages.nist.gov/800-63-3">https://pages.nist.gov/800-63-3</a>.</p>
-        </part>
-      </part>
       <control class="SP800-53-enhancement" id="ia-5.1">
         <title>Password-based Authentication</title>
         <param id="ia-5.1_prm_1">
@@ -14650,6 +14689,13 @@
           <part id="ia-5.1_smt.f" name="item">
             <prop name="label">(f)</prop>
             <p>Allows the use of a temporary password for system logons with an immediate change to a permanent password.</p>
+          </part>
+          <part id="ia-5.1_fr" name="item" ns="fedramp">
+            <title>IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ia-5.1_fr_gdn.1" name="guidance">
+              <prop name="label">(a) (d) Guidance:</prop>
+              <p>If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.</p>
+            </part>
           </part>
         </part>
         <part id="ia-5.1_gdn" name="guidance">
@@ -14763,13 +14809,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms supporting and/or implementing password-based authenticator management capability</p>
-          </part>
-        </part>
-        <part id="ia-5.1_fr" name="item" ns="fedramp">
-          <title>IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ia-5.1_fr_gdn.1" name="guidance">
-            <prop name="label">(a) (d) Guidance:</prop>
-            <p>If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.</p>
           </part>
         </part>
       </control>
@@ -14949,6 +14988,13 @@
         <prop name="sort-id">ia-05.04</prop>
         <part id="ia-5.4_smt" name="statement">
           <p>The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy <insert param-id="ia-5.4_prm_1"/>.</p>
+          <part id="ia-5.4_fr" name="item" ns="fedramp">
+            <title>IA-5 (4) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ia-5.4_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
+            </part>
+          </part>
         </part>
         <part id="ia-5.4_gdn" name="guidance">
           <p>This control enhancement focuses on the creation of strong passwords and the characteristics of such passwords (e.g., complexity) prior to use, the enforcement of which is carried out by organizational information systems in IA-5 (1).</p>
@@ -14992,13 +15038,6 @@
           <part name="objects">
             <p>Automated mechanisms supporting and/or implementing password-based authenticator management capability</p>
             <p>automated tools for determining password strength</p>
-          </part>
-        </part>
-        <part id="ia-5.4_fr" name="item" ns="fedramp">
-          <title>IA-5 (4) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ia-5.4_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
           </part>
         </part>
       </control>
@@ -15940,6 +15979,13 @@
       <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
       <part id="ir-3_smt" name="statement">
         <p>The organization tests the incident response capability for the information system <insert param-id="ir-3_prm_1"/> using <insert param-id="ir-3_prm_2"/> to determine the incident response effectiveness and documents the results.</p>
+        <part id="ir-3_fr" name="item" ns="fedramp">
+          <title>IR-3 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ir-3_fr_smt.1" name="item">
+            <prop name="label">IR-3 -2 Requirement:</prop>
+            <p>The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.</p>
+          </part>
+        </part>
       </part>
       <part id="ir-3_gdn" name="guidance">
         <p>Organizations test incident response capabilities to determine the overall effectiveness of the capabilities and to identify potential weaknesses or deficiencies. Incident response testing includes, for example, the use of checklists, walk-through or tabletop exercises, simulations (parallel/full interrupt), and comprehensive exercises. Incident response testing can also include a determination of the effects on organizational operations (e.g., reduction in mission capabilities), organizational assets, and individuals due to incident response.</p>
@@ -15982,13 +16028,6 @@
         <part name="objects">
           <p>Organizational personnel with incident response testing responsibilities</p>
           <p>organizational personnel with information security responsibilities</p>
-        </part>
-      </part>
-      <part id="ir-3_fr" name="item" ns="fedramp">
-        <title>IR-3 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ir-3_fr_smt.1" name="item">
-          <prop name="label">IR-3 -2 Requirement:</prop>
-          <p>The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="ir-3.2">
@@ -16052,6 +16091,13 @@
         <part id="ir-4_smt.c" name="item">
           <prop name="label">c.</prop>
           <p>Incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.</p>
+        </part>
+        <part id="ir-4_fr" name="item" ns="fedramp">
+          <title>IR-4 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ir-4_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
+          </part>
         </part>
       </part>
       <part id="ir-4_gdn" name="guidance">
@@ -16160,13 +16206,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Incident handling capability for the organization</p>
-        </part>
-      </part>
-      <part id="ir-4_fr" name="item" ns="fedramp">
-        <title>IR-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ir-4_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="ir-4.1">
@@ -16611,6 +16650,13 @@
           <prop name="label">b.</prop>
           <p>Reports security incident information to <insert param-id="ir-6_prm_2"/>.</p>
         </part>
+        <part id="ir-6_fr" name="item" ns="fedramp">
+          <title>IR-6 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ir-6_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>Report security incident information according to FedRAMP Incident Communications Procedure.</p>
+          </part>
+        </part>
       </part>
       <part id="ir-6_gdn" name="guidance">
         <p>The intent of this control is to address both specific incident reporting requirements within an organization and the formal incident reporting requirements for federal agencies and their subordinate organizations. Suspected security incidents include, for example, the receipt of suspicious email communications that can potentially contain malicious code. The types of security incidents reported, the content and timeliness of the reports, and the designated reporting authorities reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Current federal policy requires that all federal agencies (unless specifically exempted from such requirements) report security incidents to the United States Computer Emergency Readiness Team (US-CERT) within specified time frames designated in the US-CERT Concept of Operations for Federal Cyber Security Incident Handling.</p>
@@ -16668,13 +16714,6 @@
         <part name="objects">
           <p>Organizational processes for incident reporting</p>
           <p>automated mechanisms supporting and/or implementing incident reporting</p>
-        </part>
-      </part>
-      <part id="ir-6_fr" name="item" ns="fedramp">
-        <title>IR-6 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ir-6_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>Report security incident information according to FedRAMP Incident Communications Procedure.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="ir-6.1">
@@ -16941,6 +16980,17 @@
           <prop name="label">f.</prop>
           <p>Protects the incident response plan from unauthorized disclosure and modification.</p>
         </part>
+        <part id="ir-8_fr" name="item" ns="fedramp">
+          <title>IR-8 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ir-8_fr_smt.b" name="item">
+            <prop name="label">(b) Requirement:</prop>
+            <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
+          </part>
+          <part id="ir-8_fr_smt.e" name="item">
+            <prop name="label">(e) Requirement:</prop>
+            <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
+          </part>
+        </part>
       </part>
       <part id="ir-8_gdn" name="guidance">
         <p>It is important that organizations develop and implement a coordinated approach to incident response. Organizational missions, business functions, strategies, goals, and objectives for incident response help to determine the structure of incident response capabilities. As part of a comprehensive incident response capability, organizations consider the coordination and sharing of information with external organizations, including, for example, external service providers and organizations involved in the supply chain for organizational information systems.</p>
@@ -17098,17 +17148,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Organizational incident response plan and related organizational processes</p>
-        </part>
-      </part>
-      <part id="ir-8_fr" name="item" ns="fedramp">
-        <title>IR-8 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ir-8_fr_smt.b" name="item">
-          <prop name="label">(b) Requirement:</prop>
-          <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
-        </part>
-        <part id="ir-8_fr_smt.e" name="item">
-          <prop name="label">(e) Requirement:</prop>
-          <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
         </part>
       </part>
     </control>
@@ -18835,6 +18874,13 @@
           <prop name="label">b.</prop>
           <p>Exempts <insert param-id="mp-3_prm_1"/> from marking as long as the media remain within <insert param-id="mp-3_prm_2"/>.</p>
         </part>
+        <part id="mp-3_fr" name="item" ns="fedramp">
+          <title>MP-3 Additional FedRAMP Requirements and Guidance</title>
+          <part id="mp-3_fr_gdn.b" name="guidance">
+            <prop name="label">(b) Guidance:</prop>
+            <p>Second parameter not-applicable</p>
+          </part>
+        </part>
       </part>
       <part id="mp-3_gdn" name="guidance">
         <p>The term security marking refers to the application/use of human-readable security attributes. The term security labeling refers to the application/use of security attributes with regard to internal data structures within information systems (see AC-16). Information system media includes both digital and non-digital media. Digital media includes, for example, diskettes, magnetic tapes, external/removable hard disk drives, flash drives, compact disks, and digital video disks. Non-digital media includes, for example, paper and microfilm. Security marking is generally not required for media containing information determined by organizations to be in the public domain or to be publicly releasable. However, some organizations may require markings for public information indicating that the information is publicly releasable. Marking of information system media reflects applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.</p>
@@ -18902,13 +18948,6 @@
           <p>automated mechanisms supporting and/or implementing media marking</p>
         </part>
       </part>
-      <part id="mp-3_fr" name="item" ns="fedramp">
-        <title>MP-3 Additional FedRAMP Requirements and Guidance</title>
-        <part id="mp-3_fr_gdn.b" name="guidance">
-          <prop name="label">(b) Guidance:</prop>
-          <p>Second parameter not-applicable</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="mp-4">
       <title>Media Storage</title>
@@ -18935,6 +18974,13 @@
         <part id="mp-4_smt.b" name="item">
           <prop name="label">b.</prop>
           <p>Protects information system media until the media are destroyed or sanitized using approved equipment, techniques, and procedures.</p>
+        </part>
+        <part id="mp-4_fr" name="item" ns="fedramp">
+          <title>MP-4 Additional FedRAMP Requirements and Guidance</title>
+          <part id="mp-4_fr_smt.a" name="item">
+            <prop name="label">(a) Requirement:</prop>
+            <p>The service provider defines controlled areas within facilities where the information and information system reside.</p>
+          </part>
         </part>
       </part>
       <part id="mp-4_gdn" name="guidance">
@@ -18998,13 +19044,6 @@
           <p>automated mechanisms supporting and/or implementing secure media storage/media protection</p>
         </part>
       </part>
-      <part id="mp-4_fr" name="item" ns="fedramp">
-        <title>MP-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="mp-4_fr_smt.a" name="item">
-          <prop name="label">(a) Requirement:</prop>
-          <p>The service provider defines controlled areas within facilities where the information and information system reside.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="mp-5">
       <title>Media Transport</title>
@@ -19037,6 +19076,13 @@
         <part id="mp-5_smt.d" name="item">
           <prop name="label">d.</prop>
           <p>Restricts the activities associated with the transport of information system media to authorized personnel.</p>
+        </part>
+        <part id="mp-5_fr" name="item" ns="fedramp">
+          <title>MP-5 Additional FedRAMP Requirements and Guidance</title>
+          <part id="mp-5_fr_smt.a" name="item">
+            <prop name="label">(a) Requirement:</prop>
+            <p>The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
+          </part>
         </part>
       </part>
       <part id="mp-5_gdn" name="guidance">
@@ -19106,13 +19152,6 @@
         <part name="objects">
           <p>Organizational processes for storing information media</p>
           <p>automated mechanisms supporting and/or implementing media storage/media protection</p>
-        </part>
-      </part>
-      <part id="mp-5_fr" name="item" ns="fedramp">
-        <title>MP-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="mp-5_fr_smt.a" name="item">
-          <prop name="label">(a) Requirement:</prop>
-          <p>The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="mp-5.4">
@@ -19337,6 +19376,13 @@
         <prop name="sort-id">mp-06.02</prop>
         <part id="mp-6.2_smt" name="statement">
           <p>The organization tests sanitization equipment and procedures <insert param-id="mp-6.2_prm_1"/> to verify that the intended sanitization is being achieved.</p>
+          <part id="mp-6.2_fr" name="item" ns="fedramp">
+            <title>MP-6 (2) Additional FedRAMP Requirements and Guidance</title>
+            <part id="mp-6.2_fr_gdn.a" name="guidance">
+              <prop name="label">(a) Requirement:</prop>
+              <p>Equipment and procedures may be tested or validated for effectiveness</p>
+            </part>
+          </part>
         </part>
         <part id="mp-6.2_gdn" name="guidance">
           <p>Testing of sanitization equipment and procedures may be conducted by qualified and authorized external entities (e.g., other federal agencies or external service providers).</p>
@@ -19375,13 +19421,6 @@
           <part name="objects">
             <p>Organizational processes for media sanitization</p>
             <p>automated mechanisms supporting and/or implementing media sanitization</p>
-          </part>
-        </part>
-        <part id="mp-6.2_fr" name="item" ns="fedramp">
-          <title>MP-6 (2) Additional FedRAMP Requirements and Guidance</title>
-          <part id="mp-6.2_fr_gdn.a" name="guidance">
-            <prop name="label">(a) Requirement:</prop>
-            <p>Equipment and procedures may be tested or validated for effectiveness</p>
           </part>
         </part>
       </control>
@@ -21058,6 +21097,13 @@
           <prop name="label">b.</prop>
           <p>Monitors temperature and humidity levels <insert param-id="pe-14_prm_2"/>.</p>
         </part>
+        <part id="pe-14_fr" name="item" ns="fedramp">
+          <title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
+          <part id="pe-14_fr_smt.a" name="item">
+            <prop name="label">(a) Requirement:</prop>
+            <p>The service provider measures temperature at server inlets and humidity levels by dew point.</p>
+          </part>
+        </part>
       </part>
       <part id="pe-14_gdn" name="guidance">
         <p>This control applies primarily to facilities containing concentrations of information system resources, for example, data centers, server rooms, and mainframe computer rooms.</p>
@@ -21128,13 +21174,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms supporting and/or implementing maintenance and monitoring of temperature and humidity levels</p>
-        </part>
-      </part>
-      <part id="pe-14_fr" name="item" ns="fedramp">
-        <title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
-        <part id="pe-14_fr_smt.a" name="item">
-          <prop name="label">(a) Requirement:</prop>
-          <p>The service provider measures temperature at server inlets and humidity levels by dew point.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="pe-14.2">
@@ -22133,6 +22172,13 @@
           <prop name="label">c.</prop>
           <p>Ensures that planned information security architecture changes are reflected in the security plan, the security Concept of Operations (CONOPS), and organizational procurements/acquisitions.</p>
         </part>
+        <part id="pl-8_fr" name="item" ns="fedramp">
+          <title>PL-8(b) Additional FedRAMP Requirements and Guidance</title>
+          <part id="pl-8_fr_gdn.b" name="guidance">
+            <prop name="label">(b) Guidance:</prop>
+            <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
+          </part>
+        </part>
       </part>
       <part id="pl-8_gdn" name="guidance">
         <p>This control addresses actions taken by organizations in the design and development of information systems. The information security architecture at the individual information system level is consistent with and complements the more global, organization-wide information security architecture described in PM-7 that is integral to and developed as part of the enterprise architecture. The information security architecture includes an architectural description, the placement/allocation of security functionality (including security controls), security-related information for external interfaces, information being exchanged across the interfaces, and the protection mechanisms associated with each interface. In addition, the security architecture can include other important security-related information, for example, user roles and access privileges assigned to each role, unique security requirements, the types of information processed, stored, and transmitted by the information system, restoration priorities of information and information system services, and any other specific protection needs. In today’s modern architecture, it is becoming less common for organizations to control all information resources. There are going to be key dependencies on external information services and service providers. Describing such dependencies in the information security architecture is important to developing a comprehensive mission/business protection strategy. Establishing, developing, documenting, and maintaining under configuration control, a baseline configuration for organizational information systems is critical to implementing and maintaining an effective information security architecture. The development of the information security architecture is coordinated with the Senior Agency Official for Privacy (SAOP)/Chief Privacy Officer (CPO) to ensure that security controls needed to support privacy requirements are identified and effectively implemented. PL-8 is primarily directed at organizations (i.e., internally focused) to help ensure that organizations develop an information security architecture for the information system, and that the security architecture is integrated with or tightly coupled to the enterprise architecture through the organization-wide information security architecture. In contrast, SA-17 is primarily directed at external information technology product/system developers and integrators (although SA-17 could be used internally within organizations for in-house system development). SA-17, which is complementary to PL-8, is selected when organizations outsource the development of information systems or information system components to external entities, and there is a need to demonstrate/show consistency with the organization’s enterprise architecture and information security architecture.</p>
@@ -22217,13 +22263,6 @@
         <part name="objects">
           <p>Organizational processes for developing, reviewing, and updating the information security architecture</p>
           <p>automated mechanisms supporting and/or implementing the development, review, and update of the information security architecture</p>
-        </part>
-      </part>
-      <part id="pl-8_fr" name="item" ns="fedramp">
-        <title>PL-8(b) Additional FedRAMP Requirements and Guidance</title>
-        <part id="pl-8_fr_gdn.b" name="guidance">
-          <prop name="label">(b) Guidance:</prop>
-          <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
         </part>
       </part>
     </control>
@@ -23485,6 +23524,17 @@
           <prop name="label">e.</prop>
           <p>Updates the risk assessment <insert param-id="ra-3_prm_5"/> or whenever there are significant changes to the information system or environment of operation (including the identification of new threats and vulnerabilities), or other conditions that may impact the security state of the system.</p>
         </part>
+        <part id="ra-3_fr" name="item" ns="fedramp">
+          <title>RA-3 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ra-3_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F</p>
+          </part>
+          <part id="ra-3_fr_smt.d" name="item">
+            <prop name="label">RA-3 (d) Requirement:</prop>
+            <p>Include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
+          </part>
+        </part>
       </part>
       <part id="ra-3_gdn" name="guidance">
         <p>Clearly defined authorization boundaries are a prerequisite for effective risk assessments. Risk assessments take into account threats, vulnerabilities, likelihood, and impact to organizational operations and assets, individuals, other organizations, and the Nation based on the operation and use of information systems. Risk assessments also take into account risk from external parties (e.g., service providers, contractors operating information systems on behalf of the organization, individuals accessing organizational information systems, outsourcing entities). In accordance with OMB policy and related E-authentication initiatives, authentication of public users accessing federal information systems may also be required to protect nonpublic or privacy-related information. As such, organizational assessments of risk also address public access to federal information systems. Risk assessments (either formal or informal) can be conducted at all three tiers in the risk management hierarchy (i.e., organization level, mission/business process level, or information system level) and at any phase in the system development life cycle. Risk assessments can also be conducted at various steps in the Risk Management Framework, including categorization, security control selection, security control implementation, security control assessment, information system authorization, and security control monitoring. RA-3 is noteworthy in that the control must be partially implemented prior to the implementation of other controls in order to complete the first two steps in the Risk Management Framework. Risk assessments can play an important role in security control selection processes, particularly during the application of tailoring guidance, which includes security control supplementation.</p>
@@ -23602,17 +23652,6 @@
           <p>automated mechanisms supporting and/or for conducting, documenting, reviewing, disseminating, and updating the risk assessment</p>
         </part>
       </part>
-      <part id="ra-3_fr" name="item" ns="fedramp">
-        <title>RA-3 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ra-3_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F</p>
-        </part>
-        <part id="ra-3_fr_smt.d" name="item">
-          <prop name="label">RA-3 (d) Requirement:</prop>
-          <p>Include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
-        </part>
-      </part>
     </control>
     <control class="SP800-53" id="ra-5">
       <title>Vulnerability Scanning</title>
@@ -23667,6 +23706,23 @@
         <part id="ra-5_smt.e" name="item">
           <prop name="label">e.</prop>
           <p>Shares information obtained from the vulnerability scanning process and security control assessments with <insert param-id="ra-5_prm_3"/> to help eliminate similar vulnerabilities in other information systems (i.e., systemic weaknesses or deficiencies).</p>
+        </part>
+        <part id="ra-5_fr_smt.a" name="item">
+          <title>RA-5(a) Additional FedRAMP Requirements and Guidance</title>
+          <prop name="label">RA-5 (a)Requirement:</prop>
+          <p>An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
+        </part>
+        <part id="ra-5_fr_smt.e" name="item">
+          <title>RA-5(e) Additional FedRAMP Requirements and Guidance</title>
+          <prop name="label">RA-5 (e)Requirement:</prop>
+          <p>To include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
+        </part>
+        <part id="ra-5_fr" name="item" ns="fedramp">
+          <title>RA-5 Additional FedRAMP Requirements and Guidance</title>
+          <part id="ra-5_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
+          </part>
         </part>
       </part>
       <part id="ra-5_gdn" name="guidance">
@@ -23821,23 +23877,6 @@
         <part name="objects">
           <p>Organizational processes for vulnerability scanning, analysis, remediation, and information sharing</p>
           <p>automated mechanisms supporting and/or implementing vulnerability scanning, analysis, remediation, and information sharing</p>
-        </part>
-      </part>
-      <part id="ra-5_fr_smt.a" name="item">
-        <title>RA-5(a) Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">RA-5 (a)Requirement:</prop>
-        <p>An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
-      </part>
-      <part id="ra-5_fr_smt.e" name="item">
-        <title>RA-5(e) Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">RA-5 (e)Requirement:</prop>
-        <p>To include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
-      </part>
-      <part id="ra-5_fr" name="item" ns="fedramp">
-        <title>RA-5 Additional FedRAMP Requirements and Guidance</title>
-        <part id="ra-5_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p><strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="ra-5.1">
@@ -24145,6 +24184,13 @@
         <prop name="sort-id">ra-05.06</prop>
         <part id="ra-5.6_smt" name="statement">
           <p>The organization employs automated mechanisms to compare the results of vulnerability scans over time to determine trends in information system vulnerabilities.</p>
+          <part id="ra-5.6_fr" name="item" ns="fedramp">
+            <title>RA-5 (6) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ra-5.6_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
+            </part>
+          </part>
         </part>
         <part id="ra-5.6_gdn" name="guidance">
           <link rel="related" href="#ir-4">IR-4</link>
@@ -24181,13 +24227,6 @@
             <p>automated mechanisms supporting and/or implementing trend analysis of vulnerability scan results</p>
           </part>
         </part>
-        <part id="ra-5.6_fr" name="item" ns="fedramp">
-          <title>RA-5 (6) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ra-5.6_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ra-5.8">
         <title>Review Historic Audit Logs</title>
@@ -24195,6 +24234,17 @@
         <prop name="sort-id">ra-05.08</prop>
         <part id="ra-5.8_smt" name="statement">
           <p>The organization reviews historic audit logs to determine if a vulnerability identified in the information system has been previously exploited.</p>
+          <part id="ra-5.8_fr" name="item" ns="fedramp">
+            <title>RA-5 (8) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ra-5.8_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>This enhancement is required for all high vulnerability scan findings.</p>
+            </part>
+            <part id="ra-5.8_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
+            </part>
+          </part>
         </part>
         <part id="ra-5.8_gdn" name="guidance">
           <link rel="related" href="#au-6">AU-6</link>
@@ -24233,17 +24283,6 @@
             <p>automated mechanisms supporting and/or implementing audit record review</p>
           </part>
         </part>
-        <part id="ra-5.8_fr" name="item" ns="fedramp">
-          <title>RA-5 (8) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ra-5.8_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>This enhancement is required for all high vulnerability scan findings.</p>
-          </part>
-          <part id="ra-5.8_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
-          </part>
-        </part>
       </control>
       <control class="SP800-53-enhancement" id="ra-5.10">
         <title>Correlate Scanning Information</title>
@@ -24251,6 +24290,13 @@
         <prop name="sort-id">ra-05.10</prop>
         <part id="ra-5.10_smt" name="statement">
           <p>The organization correlates the output from vulnerability scanning tools to determine the presence of multi-vulnerability/multi-hop attack vectors.</p>
+          <part id="ra-5.10_fr" name="item" ns="fedramp">
+            <title>RA-5 (10) Additional FedRAMP Requirements and Guidance</title>
+            <part id="ra-5.10_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>If multiple tools are not used, this control is not applicable.</p>
+            </part>
+          </part>
         </part>
         <part id="ra-5.10_obj" name="objective">
           <p>Determine if the organization correlates the output from vulnerability scanning tools to determine the presence of multi-vulnerability/multi-hop attack vectors. </p>
@@ -24284,13 +24330,6 @@
             <p>Organizational processes for vulnerability scanning</p>
             <p>automated mechanisms/tools supporting and/or implementing vulnerability scanning</p>
             <p>automated mechanisms implementing correlation of vulnerability scan results</p>
-          </part>
-        </part>
-        <part id="ra-5.10_fr" name="item" ns="fedramp">
-          <title>RA-5 (10) Additional FedRAMP Requirements and Guidance</title>
-          <part id="ra-5.10_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>If multiple tools are not used, this control is not applicable.</p>
           </part>
         </part>
       </control>
@@ -24666,6 +24705,13 @@
           <prop name="label">g.</prop>
           <p>Acceptance criteria.</p>
         </part>
+        <part id="sa-4_fr" name="item" ns="fedramp">
+          <title>SA-4 Additional FedRAMP Requirements and Guidance</title>
+          <part id="sa-4_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See <a href="http://www.niap-ccevs.org/vpl">http://www.niap-ccevs.org/vpl</a> or <a href="http://www.commoncriteriaportal.org/products.html">http://www.commoncriteriaportal.org/products.html</a>.</p>
+          </part>
+        </part>
       </part>
       <part id="sa-4_gdn" name="guidance">
         <p>Information system components are discrete, identifiable information technology assets (e.g., hardware, software, or firmware) that represent the building blocks of an information system. Information system components include commercial information technology products. Security functional requirements include security capabilities, security functions, and security mechanisms. Security strength requirements associated with such capabilities, functions, and mechanisms include degree of correctness, completeness, resistance to direct attack, and resistance to tampering or bypass. Security assurance requirements include: (i) development processes, procedures, practices, and methodologies; and (ii) evidence from development and assessment activities providing grounds for confidence that the required security functionality has been implemented and the required security strength has been achieved. Security documentation requirements address all phases of the system development life cycle. Security functionality, assurance, and documentation requirements are expressed in terms of security controls and control enhancements that have been selected through the tailoring process. The security control tailoring process includes, for example, the specification of parameter values through the use of assignment and selection statements and the specification of platform dependencies and implementation information. Security documentation provides user and administrator guidance regarding the implementation and operation of security controls. The level of detail required in security documentation is based on the security category or classification level of the information system and the degree to which organizations depend on the stated security capability, functions, or mechanisms to meet overall risk response expectations (as defined in the organizational risk management strategy). Security requirements can also include organizationally mandated configuration settings specifying allowed functions, ports, protocols, and services. Acceptance criteria for information systems, information system components, and information system services are defined in the same manner as such criteria for any organizational acquisition or procurement. The Federal Acquisition Regulation (FAR) Section 7.103 contains information security requirements from FISMA.</p>
@@ -24742,13 +24788,6 @@
           <p>Organizational processes for determining information system security functional, strength, and assurance requirements</p>
           <p>organizational processes for developing acquisition contracts</p>
           <p>automated mechanisms supporting and/or implementing acquisitions and inclusion of security requirements in contracts</p>
-        </part>
-      </part>
-      <part id="sa-4_fr" name="item" ns="fedramp">
-        <title>SA-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sa-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See <a href="http://www.niap-ccevs.org/vpl">http://www.niap-ccevs.org/vpl</a> or <a href="http://www.commoncriteriaportal.org/products.html">http://www.commoncriteriaportal.org/products.html</a>.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="sa-4.1">
@@ -24902,6 +24941,13 @@
         <prop name="sort-id">sa-04.08</prop>
         <part id="sa-4.8_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to produce a plan for the continuous monitoring of security control effectiveness that contains <insert param-id="sa-4.8_prm_1"/>.</p>
+          <part id="sa-4.8_fr" name="item" ns="fedramp">
+            <title>SA-4 (8) Additional FedRAMP Requirements and Guidance</title>
+            <part id="sa-4.8_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
+            </part>
+          </part>
         </part>
         <part id="sa-4.8_gdn" name="guidance">
           <p>The objective of continuous monitoring plans is to determine if the complete set of planned, required, and deployed security controls within the information system, system component, or information system service continue to be effective over time based on the inevitable changes that occur. Developer continuous monitoring plans include a sufficient level of detail such that the information can be incorporated into the continuous monitoring strategies and programs implemented by organizations.</p>
@@ -24947,13 +24993,6 @@
           <part name="objects">
             <p>Vendor processes for continuous monitoring</p>
             <p>automated mechanisms supporting and/or implementing developer continuous monitoring</p>
-          </part>
-        </part>
-        <part id="sa-4.8_fr" name="item" ns="fedramp">
-          <title>SA-4 (8) Additional FedRAMP Requirements and Guidance</title>
-          <part id="sa-4.8_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
           </part>
         </part>
       </control>
@@ -25743,6 +25782,13 @@
           <prop name="label">e.</prop>
           <p>Track security flaws and flaw resolution within the system, component, or service and report findings to <insert param-id="sa-10_prm_3"/>.</p>
         </part>
+        <part id="sa-10_fr" name="item" ns="fedramp">
+          <title>SA-10 Additional FedRAMP Requirements and Guidance</title>
+          <part id="sa-10_fr_smt.1" name="item">
+            <prop name="label">(e)  Requirement:</prop>
+            <p>For JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
+          </part>
+        </part>
       </part>
       <part id="sa-10_gdn" name="guidance">
         <p>This control also applies to organizations conducting internal information systems development and integration. Organizations consider the quality and completeness of the configuration management activities conducted by developers as evidence of applying effective security safeguards. Safeguards include, for example, protecting from unauthorized modification or destruction, the master copies of all material used to generate security-relevant portions of the system hardware, software, and firmware. Maintaining the integrity of changes to the information system, information system component, or information system service requires configuration control throughout the system development life cycle to track authorized changes and prevent unauthorized changes. Configuration items that are placed under configuration management (if existence/use is required by other security controls) include: the formal model; the functional, high-level, and low-level design specifications; other design data; implementation documentation; source code and hardware schematics; the running version of the object code; tools for comparing new versions of security-relevant hardware descriptions and software/firmware source code with previous versions; and test fixtures and documentation. Depending on the mission/business needs of organizations and the nature of the contractual relationships in place, developers may provide configuration management support during the operations and maintenance phases of the life cycle.</p>
@@ -25868,13 +25914,6 @@
         <part name="objects">
           <p>Organizational processes for monitoring developer configuration management</p>
           <p>automated mechanisms supporting and/or implementing the monitoring of developer configuration management</p>
-        </part>
-      </part>
-      <part id="sa-10_fr" name="item" ns="fedramp">
-        <title>SA-10 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sa-10_fr_smt.1" name="item">
-          <prop name="label">(e)  Requirement:</prop>
-          <p>For JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="sa-10.1">
@@ -26076,6 +26115,13 @@
         <prop name="sort-id">sa-11.01</prop>
         <part id="sa-11.1_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to employ static code analysis tools to identify common flaws and document the results of the analysis.</p>
+          <part id="sa-11.1_fr" name="item" ns="fedramp">
+            <title>SA-11 (1) Additional FedRAMP Requirements and Guidance</title>
+            <part id="sa-11.1_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
+            </part>
+          </part>
         </part>
         <part id="sa-11.1_gdn" name="guidance">
           <p>Static code analysis provides a technology and methodology for security reviews. Such analysis can be used to identify security vulnerabilities and enforce security coding practices. Static code analysis is most effective when used early in the development process, when each code change can be automatically scanned for potential weaknesses. Static analysis can provide clear remediation guidance along with defects to enable developers to fix such defects. Evidence of correct implementation of static analysis can include, for example, aggregate defect density for critical defect types, evidence that defects were inspected by developers or security professionals, and evidence that defects were fixed. An excessively high density of ignored findings (commonly referred to as ignored or false positives) indicates a potential problem with the analysis process or tool. In such cases, organizations weigh the validity of the evidence against evidence from other sources.</p>
@@ -26115,13 +26161,6 @@
             <p>Organizational processes for monitoring developer security testing and evaluation</p>
             <p>automated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation</p>
             <p>static code analysis tools</p>
-          </part>
-        </part>
-        <part id="sa-11.1_fr" name="item" ns="fedramp">
-          <title>SA-11 (1) Additional FedRAMP Requirements and Guidance</title>
-          <part id="sa-11.1_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
           </part>
         </part>
       </control>
@@ -26192,6 +26231,13 @@
         <prop name="sort-id">sa-11.08</prop>
         <part id="sa-11.8_smt" name="statement">
           <p>The organization requires the developer of the information system, system component, or information system service to employ dynamic code analysis tools to identify common flaws and document the results of the analysis.</p>
+          <part id="sa-11.8_fr" name="item" ns="fedramp">
+            <title>SA-11 (8) Additional FedRAMP Requirements and Guidance</title>
+            <part id="sa-11.8_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
+            </part>
+          </part>
         </part>
         <part id="sa-11.8_gdn" name="guidance">
           <p>Dynamic code analysis provides run-time verification of software programs, using tools capable of monitoring programs for memory corruption, user privilege issues, and other potential security problems. Dynamic code analysis employs run-time tools to help to ensure that security functionality performs in the manner in which it was designed. A specialized type of dynamic analysis, known as fuzz testing, induces program failures by deliberately introducing malformed or random data into software programs. Fuzz testing strategies derive from the intended use of applications and the functional and design specifications for the applications. To understand the scope of dynamic code analysis and hence the assurance provided, organizations may also consider conducting code coverage analysis (checking the degree to which the code has been tested using metrics such as percent of subroutines tested or percent of program statements called during execution of the test suite) and/or concordance analysis (checking for words that are out of place in software code such as non-English language words or derogatory terms).</p>
@@ -26230,13 +26276,6 @@
           <part name="objects">
             <p>Organizational processes for monitoring developer security testing and evaluation</p>
             <p>automated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation</p>
-          </part>
-        </part>
-        <part id="sa-11.8_fr" name="item" ns="fedramp">
-          <title>SA-11 (8) Additional FedRAMP Requirements and Guidance</title>
-          <part id="sa-11.8_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
           </part>
         </part>
       </control>
@@ -27543,6 +27582,17 @@
         <prop name="sort-id">sc-07.13</prop>
         <part id="sc-7.13_smt" name="statement">
           <p>The organization isolates <insert param-id="sc-7.13_prm_1"/> from other internal information system components by implementing physically separate subnetworks with managed interfaces to other components of the system.</p>
+          <part id="sc-7.13_fr" name="item" ns="fedramp">
+            <title>SC-7 (13) Additional FedRAMP Requirements and Guidance</title>
+            <part id="sc-7.13_fr_smt.1" name="item">
+              <prop name="label">Requirement:</prop>
+              <p>The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
+            </part>
+            <part id="sc-7.13_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers, centralized audit log servers etc.</p>
+            </part>
+          </part>
         </part>
         <part id="sc-7.13_gdn" name="guidance">
           <p>Physically separate subnetworks with managed interfaces are useful, for example, in isolating computer network defenses from critical operational processing networks to prevent adversaries from discovering the analysis and forensics techniques of organizations.</p>
@@ -27587,17 +27637,6 @@
           <prop name="method">TEST</prop>
           <part name="objects">
             <p>Automated mechanisms supporting and/or implementing isolation of information security tools, mechanisms, and support components</p>
-          </part>
-        </part>
-        <part id="sc-7.13_fr" name="item" ns="fedramp">
-          <title>SC-7 (13) Additional FedRAMP Requirements and Guidance</title>
-          <part id="sc-7.13_fr_smt.1" name="item">
-            <prop name="label">Requirement:</prop>
-            <p>The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
-          </part>
-          <part id="sc-7.13_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers, centralized audit log servers etc.</p>
           </part>
         </part>
       </control>
@@ -27957,6 +27996,13 @@
       <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
       <part id="sc-12_smt" name="statement">
         <p>The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with <insert param-id="sc-12_prm_1"/>.</p>
+        <part id="sc-12_fr" name="item" ns="fedramp">
+          <title>SC-12 Additional FedRAMP Requirements and Guidance</title>
+          <part id="sc-12_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>Federally approved and validated cryptography.</p>
+          </part>
+        </part>
       </part>
       <part id="sc-12_gdn" name="guidance">
         <p>Cryptographic key management and establishment can be performed using manual procedures or automated mechanisms with supporting manual procedures. Organizations define key management requirements in accordance with applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance, specifying appropriate options, levels, and parameters. Organizations manage trust stores to ensure that only approved trust anchors are in such trust stores. This includes certificates with visibility external to organizational information systems and certificates related to the internal operations of systems.</p>
@@ -28018,13 +28064,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms supporting and/or implementing cryptographic key establishment and management</p>
-        </part>
-      </part>
-      <part id="sc-12_fr" name="item" ns="fedramp">
-        <title>SC-12 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sc-12_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>Federally approved and validated cryptography.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="sc-12.1">
@@ -28279,6 +28318,13 @@
           <prop name="label">b.</prop>
           <p>Provides an explicit indication of use to users physically present at the devices.</p>
         </part>
+        <part id="sc-15_fr" name="item" ns="fedramp">
+          <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
+          <part id="sc-15_fr_smt.1" name="item">
+            <prop name="label">Requirement:</prop>
+            <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
+          </part>
+        </part>
       </part>
       <part id="sc-15_gdn" name="guidance">
         <p>Collaborative computing devices include, for example, networked white boards, cameras, and microphones. Explicit indication of use includes, for example, signals to users when collaborative computing devices are activated.</p>
@@ -28330,13 +28376,14 @@
           <p>automated mechanisms providing an indication of use of collaborative computing devices</p>
         </part>
       </part>
-      <part id="sc-15_fr" name="item" ns="fedramp">
+      <control class="SP800-53-enhancement" id="sc-15.fr">
         <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sc-15_fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
+        <prop name="label">SC-15 Req</prop>
+        <part id="sc-15.fr_smt" name="item">
+          <prop name="label">Requirement</prop>
           <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
         </part>
-      </part>
+      </control>
     </control>
     <control class="SP800-53" id="sc-17">
       <title>Public Key Infrastructure Certificates</title>
@@ -28932,6 +28979,13 @@
       <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
       <part id="sc-28_smt" name="statement">
         <p>The information system protects the <insert param-id="sc-28_prm_1"/> of <insert param-id="sc-28_prm_2"/>.</p>
+        <part id="sc-28_fr" name="item" ns="fedramp">
+          <title>SC-28 Additional FedRAMP Requirements and Guidance</title>
+          <part id="sc-28_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
+          </part>
+        </part>
       </part>
       <part id="sc-28_gdn" name="guidance">
         <p>This control addresses the confidentiality and integrity of information at rest and covers user information and system information. Information at rest refers to the state of information when it is located on storage devices as specific components of information systems. System-related information requiring protection includes, for example, configurations or rule sets for firewalls, gateways, intrusion detection/prevention systems, filtering routers, and authenticator content. Organizations may employ different mechanisms to achieve confidentiality and integrity protections, including the use of cryptographic mechanisms and file share scanning. Integrity protection can be achieved, for example, by implementing Write-Once-Read-Many (WORM) technologies. Organizations may also employ other security controls including, for example, secure off-line storage in lieu of online storage when adequate protection of information at rest cannot otherwise be achieved and/or continuous monitoring to identify malicious code at rest.</p>
@@ -28998,13 +29052,6 @@
         <prop name="method">TEST</prop>
         <part name="objects">
           <p>Automated mechanisms supporting and/or implementing confidentiality and integrity protections for information at rest</p>
-        </part>
-      </part>
-      <part id="sc-28_fr" name="item" ns="fedramp">
-        <title>SC-28 Additional FedRAMP Requirements and Guidance</title>
-        <part id="sc-28_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="sc-28.1">
@@ -29954,6 +30001,13 @@
           <prop name="label">g.</prop>
           <p>Provides <insert param-id="si-4_prm_3"/> to <insert param-id="si-4_prm_4"/> <insert param-id="si-4_prm_5"/>.</p>
         </part>
+        <part id="si-4_fr" name="item" ns="fedramp">
+          <title>SI-4 Additional FedRAMP Requirements and Guidance</title>
+          <part id="si-4_fr_gdn.1" name="guidance">
+            <prop name="label">Guidance:</prop>
+            <p>See US-CERT Incident Response Reporting Guidelines.</p>
+          </part>
+        </part>
       </part>
       <part id="si-4_gdn" name="guidance">
         <p>Information system monitoring includes external and internal monitoring. External monitoring includes the observation of events occurring at the information system boundary (i.e., part of perimeter defense and boundary protection). Internal monitoring includes the observation of events occurring within the information system. Organizations can monitor information systems, for example, by observing audit activities in real time or by observing other system aspects such as access patterns, characteristics of access, and other actions. The monitoring objectives may guide determination of the events. Information system monitoring capability is achieved through a variety of tools and techniques (e.g., intrusion detection systems, intrusion prevention systems, malicious code protection software, scanning tools, audit record monitoring software, network monitoring software). Strategic locations for monitoring devices include, for example, selected perimeter locations and near server farms supporting critical applications, with such devices typically being employed at the managed interfaces associated with controls SC-7 and AC-17. Einstein network monitoring devices from the Department of Homeland Security can also be included as monitoring devices. The granularity of monitoring information collected is based on organizational monitoring objectives and the capability of information systems to support such objectives. Specific types of transactions of interest include, for example, Hyper Text Transfer Protocol (HTTP) traffic that bypasses HTTP proxies. Information system monitoring is an integral part of organizational continuous monitoring and incident response programs. Output from system monitoring serves as input to continuous monitoring and incident response programs. A network connection is any connection with a device that communicates through a network (e.g., local area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet). Local, network, and remote connections can be either wired or wireless.</p>
@@ -30119,13 +30173,6 @@
         <part name="objects">
           <p>Organizational processes for information system monitoring</p>
           <p>automated mechanisms supporting and/or implementing information system monitoring capability</p>
-        </part>
-      </part>
-      <part id="si-4_fr" name="item" ns="fedramp">
-        <title>SI-4 Additional FedRAMP Requirements and Guidance</title>
-        <part id="si-4_fr_gdn.1" name="guidance">
-          <prop name="label">Guidance:</prop>
-          <p>See US-CERT Incident Response Reporting Guidelines.</p>
         </part>
       </part>
       <control class="SP800-53-enhancement" id="si-4.1">
@@ -30306,6 +30353,13 @@
         <prop name="sort-id">si-04.05</prop>
         <part id="si-4.5_smt" name="statement">
           <p>The information system alerts <insert param-id="si-4.5_prm_1"/> when the following indications of compromise or potential compromise occur: <insert param-id="si-4.5_prm_2"/>.</p>
+          <part id="si-4.5_fr" name="item" ns="fedramp">
+            <title>SI-4 (5) Additional FedRAMP Requirements and Guidance</title>
+            <part id="si-4.5_fr_gdn.1" name="guidance">
+              <prop name="label">Guidance:</prop>
+              <p>In accordance with the incident response plan.</p>
+            </part>
+          </part>
         </part>
         <part id="si-4.5_gdn" name="guidance">
           <p>Alerts may be generated from a variety of sources, including, for example, audit records or inputs from malicious code protection mechanisms, intrusion detection or prevention mechanisms, or boundary protection devices such as firewalls, gateways, and routers. Alerts can be transmitted, for example, telephonically, by electronic mail messages, or by text messaging. Organizational personnel on the notification list can include, for example, system administrators, mission/business owners, system owners, or information system security officers.</p>
@@ -30356,13 +30410,6 @@
             <p>Organizational processes for intrusion detection/information system monitoring</p>
             <p>automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
             <p>automated mechanisms supporting and/or implementing alerts for compromise indicators</p>
-          </part>
-        </part>
-        <part id="si-4.5_fr" name="item" ns="fedramp">
-          <title>SI-4 (5) Additional FedRAMP Requirements and Guidance</title>
-          <part id="si-4.5_fr_gdn.1" name="guidance">
-            <prop name="label">Guidance:</prop>
-            <p>In accordance with the incident response plan.</p>
           </part>
         </part>
       </control>
