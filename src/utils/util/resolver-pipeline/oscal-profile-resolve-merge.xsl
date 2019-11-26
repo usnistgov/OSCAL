@@ -60,7 +60,9 @@
             <xsl:for-each select="$merged[1]">
                 <xsl:copy copy-namespaces="no">
                     <xsl:apply-templates select="$merged/@*"/>
-                    <xsl:apply-templates select="* except (control | group)"/>
+                    <xsl:apply-templates select="title"/>
+                    <xsl:apply-templates select="$merged/(* except (title | param | control | group) )"/>
+                    
                     <xsl:apply-templates select="$merging/ancestor::profile" mode="o:merge-elements">
                         <xsl:with-param name="elements" select="$merged/param"/>
                     </xsl:apply-templates>

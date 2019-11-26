@@ -1164,6 +1164,11 @@
               validation / detection utilities (for imports regarded as incorrect, incomplete or
               otherwise subject to improvement); runtime warnings; or user interfaces.</p>
           </section>
+          <section id="as-is-group-contents">
+            <head>Group contents under merging as-is</head>
+            <p>One title only. Other contents? Elements and controls are subject to the merge
+              combination rules. <revisit>Other kinds of contents of groups … </revisit></p>
+          </section>
         </section>
         <section id="merge-custom">
           <head>Merging into a new structure: <src>custom</src></head>
