@@ -19,7 +19,7 @@ In scope:
 
 ### Validation map
 
-Find details on the application of schemas and Schematon validations in the /schema subdirectory.
+Find details on the application of schemas and Schematron validations in the /schema subdirectory.
 
 | Process or schema | Constraint set |
 |:-----|:-----|
