@@ -1626,8 +1626,10 @@
       configuration, exactly as described in these specifications with no elaboration.</p>
     <p>Conformance does not preclude providing additional features, however, including elaborated
       outputs, in an optional mode. Such features could include offering warning or process
-      exception handling (appropriate to workflow) not described here, or outputs provided with
-      comments or extra structure to support tracing or analytics. </p>
+      exception handling (appropriate to workflow) not described here; outputs provided with
+      comments or extra structure to support tracing or analytics; or <q>gateway</q> or
+        <q>Draconian</q> modes that would provide user assistance or refuse to deliver results for
+      inputs considered erroneous in a workflow.</p>
   </section>
     <section id="tools-utlities">
     <head>Profile tools and utilities</head>
