@@ -690,7 +690,7 @@
             <p>Calls and matches may be combined in a single import. Their effect is cumulative; any
               control that is selected by both calling and matching from a given <src>include</src>
               directive, or by matching more than one pattern, is included once (unless it is also
-              marked for exclusion, see <xref rid="exclusions"/> below).</p>
+              marked for exclusion, see <xref rid="exclude-directive"/>).</p>
           </section>
         </section>
         <section id="exclude-directive">
@@ -1057,8 +1057,9 @@
           disambiguate clashing controls, also includes directives that can be used to organize the
           result catalog into a structure or hierarchy of groups. Two <src>merge</src> directives
           are used to introduce structure into a profile result catalog, <src>as-is</src> and
-            <src>custom</src>. If neither is given, no structure is introduced or imposed; the
-          result is</p>
+            <src>custom</src>. If neither is given, no structure is provided: parameters and
+          controls in the target appear in sequence, with no structure or grouping apart from what
+          is internal to the controls</p>
         <section id="merge-flat">
           <head>Unstructured catalog output</head>
           <p>Profiles that have neither of these directives are resolved as unstructured catalogs,

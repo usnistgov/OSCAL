@@ -1253,7 +1253,7 @@ a.linked { color: inherit }
                            any
                            control that is selected by both calling and matching from a given <code class="src">include</code>
                            directive, or by matching more than one pattern, is included once (unless it is also
-                           marked for exclusion, see [See: ] below).
+                           marked for exclusion, see [See: <a href="#d2e883-head" class="xref"><span class="secnum">4.1.7.2</span> Excluding controls</a>]).
                         </p>
                      </details>
                   </details>
@@ -1769,8 +1769,10 @@ a.linked { color: inherit }
                      the
                      result catalog into a structure or hierarchy of groups. Two <code class="src">merge</code> directives
                      are used to introduce structure into a profile result catalog, <code class="src">as-is</code> and
-                     <code class="src">custom</code>. If neither is given, no structure is introduced or imposed; the
-                     result is
+                     <code class="src">custom</code>. If neither is given, no structure is provided: parameters and
+                     controls in the target appear in sequence, with no structure or grouping apart from
+                     what
+                     is internal to the controls.
                   </p>
                   <details open="open">
                      <summary>
