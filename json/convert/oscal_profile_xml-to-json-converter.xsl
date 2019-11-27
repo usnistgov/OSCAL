@@ -1048,11 +1048,6 @@
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(part)">
-            <array key="parts">
-               <xsl:apply-templates select="part" mode="#current"/>
-            </array>
-         </xsl:if>
       </map>
    </xsl:template>
    <xsl:template match="alter" mode="xml2json">
@@ -1082,6 +1077,7 @@
    <xsl:template match="add" mode="xml2json">
       <map key="add">
          <xsl:apply-templates mode="as-string" select="@position"/>
+         <xsl:apply-templates mode="as-string" select="@id-ref"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:if test="exists(param)">
             <array key="parameters">
@@ -1091,6 +1087,11 @@
          <xsl:if test="exists(prop)">
             <array key="properties">
                <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">

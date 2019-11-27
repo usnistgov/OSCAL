@@ -1131,10 +1131,8 @@
          <xs:sequence>
             <xs:element ref="oscal-catalog:desc" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:choice>
-               <xs:element ref="oscal-catalog:rlink" minOccurs="0" maxOccurs="unbounded"/>
-               <xs:element ref="oscal-catalog:base64" minOccurs="0" maxOccurs="1"/>
-            </xs:choice>
+            <xs:element ref="oscal-catalog:rlink" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:base64" minOccurs="0" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -1463,6 +1461,7 @@
             <xs:element ref="oscal-catalog:title" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:part" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:control" minOccurs="0" maxOccurs="unbounded"/>

@@ -1289,6 +1289,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>

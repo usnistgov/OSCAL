@@ -1472,7 +1472,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
       </xsl:element>
    </xsl:template>
    <xsl:template match="map[@key=('settings')]" priority="5" mode="json2xml">
@@ -1496,7 +1495,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling flag "set/@param-id" 000 -->
@@ -1616,9 +1614,34 @@
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
       </xsl:element>
+   </xsl:template>
+   <!-- 000 Handling flag "add/@position" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='add']/*[@key='position'] | *[@key='additions']/*[@key='position'] | array[@key='additions']/*/*[@key='position']"
+                 priority="7"
+                 mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='add']/*[@key='position'] | *[@key='additions']/*[@key='position'] | array[@key='additions']/*/*[@key='position']"
+                 mode="as-attribute">
+      <xsl:attribute name="position">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "add/@id-ref" 000 -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='add']/*[@key='id-ref'] | *[@key='additions']/*[@key='id-ref'] | array[@key='additions']/*/*[@key='id-ref']"
+                 priority="7"
+                 mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='add']/*[@key='id-ref'] | *[@key='additions']/*[@key='id-ref'] | array[@key='additions']/*/*[@key='id-ref']"
+                 mode="as-attribute">
+      <xsl:attribute name="id-ref">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
    </xsl:template>
    <!-- 000 Handling flag @control-id 000 -->
    <xsl:template match="*[@key='control-id']" priority="6" mode="json2xml"/>
@@ -1653,15 +1676,6 @@
                  match="*[@key='match']/*[@key='order'] | *[@key='pattern-selectors']/*[@key='order'] | array[@key='pattern-selectors']/*/*[@key='order'] | map[@key='pattern-selectors']/*/*[@key='order']"
                  mode="as-attribute">
       <xsl:attribute name="order">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 000 Handling flag @position 000 -->
-   <xsl:template match="*[@key='position']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='add']/*[@key='position'] | *[@key='additions']/*[@key='position'] | array[@key='additions']/*/*[@key='position'] | map[@key='additions']/*/*[@key='position']"
-                 mode="as-attribute">
-      <xsl:attribute name="position">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>

@@ -1313,6 +1313,8 @@
             "enum" : 
             [ "yes",
               "no" ] } },
+        "required" : 
+        [ "control-id" ],
         "additionalProperties" : false },
       "match" : 
       { "title" : "Match controls by identifier",
@@ -1420,15 +1422,6 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
-          "parts" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/part" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/part" },
                 "minItems" : 2 } ] } },
         "additionalProperties" : false },
       "alter" : 
@@ -1467,15 +1460,15 @@
         "type" : "object",
         "properties" : 
         { "name-ref" : 
-          { "title" : "References by (assigned) name",
+          { "title" : "Reference by (assigned) name",
             "description" : "Items to remove, by assigned name",
             "type" : "string" },
           "class-ref" : 
-          { "title" : "References by class",
+          { "title" : "Reference by class",
             "description" : "Items to remove, by class. A token match.",
             "type" : "string" },
           "id-ref" : 
-          { "title" : "References by ID",
+          { "title" : "Reference by ID",
             "description" : "Items to remove, indicated by their IDs",
             "type" : "string" },
           "item-name" : 
@@ -1498,6 +1491,10 @@
               "after",
               "starting",
               "ending" ] },
+          "id-ref" : 
+          { "title" : "Reference by ID",
+            "description" : "Target location of the addition.",
+            "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "parameters" : 
@@ -1517,6 +1514,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
                 "minItems" : 2 } ] },
           "links" : 
           { "anyOf" : 

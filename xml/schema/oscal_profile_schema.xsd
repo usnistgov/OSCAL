@@ -891,10 +891,8 @@
          <xs:sequence>
             <xs:element ref="oscal-profile:desc" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-profile:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:choice>
-               <xs:element ref="oscal-profile:rlink" minOccurs="0" maxOccurs="unbounded"/>
-               <xs:element ref="oscal-profile:base64" minOccurs="0" maxOccurs="1"/>
-            </xs:choice>
+            <xs:element ref="oscal-profile:rlink" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-profile:base64" minOccurs="0" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -1672,7 +1670,7 @@
             <b>Call</b>: Call a control by its ID</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:attribute name="control-id" type="xs:NCName">
+         <xs:attribute name="control-id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Control ID</m:formal-name>
@@ -1819,7 +1817,6 @@
                <xs:element ref="oscal-profile:select" minOccurs="0" maxOccurs="1"/>
             </xs:choice>
             <xs:element ref="oscal-profile:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-profile:part" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
          <xs:attribute name="param-id" use="required" type="xs:NCName">
             <xs:annotation>
@@ -1892,31 +1889,31 @@
          <xs:attribute name="name-ref" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>References by (assigned) name</m:formal-name>
+                  <m:formal-name>Reference by (assigned) name</m:formal-name>
                   <m:description>Items to remove, by assigned name</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>References by (assigned) name</b>: Items to remove, by assigned name</xs:documentation>
+                  <b>Reference by (assigned) name</b>: Items to remove, by assigned name</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class-ref" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>References by class</m:formal-name>
+                  <m:formal-name>Reference by class</m:formal-name>
                   <m:description>Items to remove, by class. A token match.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>References by class</b>: Items to remove, by class. A token match.</xs:documentation>
+                  <b>Reference by class</b>: Items to remove, by class. A token match.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="id-ref" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>References by ID</m:formal-name>
+                  <m:formal-name>Reference by ID</m:formal-name>
                   <m:description>Items to remove, indicated by their IDs</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>References by ID</b>: Items to remove, indicated by their IDs</xs:documentation>
+                  <b>Reference by ID</b>: Items to remove, indicated by their IDs</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="item-name" type="xs:NCName">
@@ -1946,6 +1943,7 @@
             <xs:element ref="oscal-profile:title" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-profile:param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-profile:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:part" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
@@ -1959,13 +1957,47 @@
                   <b>Position</b>: Where to add the new content with respect to the targeted element (beside it or inside it)</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
-               <xs:restriction base="xs:NCName">
-                  <xs:enumeration value="before"/>
-                  <xs:enumeration value="after"/>
-                  <xs:enumeration value="starting"/>
-                  <xs:enumeration value="ending"/>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="before">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Preceding the id-ref target</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="after">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Following the id-ref target</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="starting">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Inside the control or id-ref target, at the start</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="ending">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Inside the control or id-ref target, at the end</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
                </xs:restriction>
             </xs:simpleType>
+         </xs:attribute>
+         <xs:attribute name="id-ref" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Reference by ID</m:formal-name>
+                  <m:description>Target location of the addition.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Reference by ID</b>: Target location of the addition.</xs:documentation>
+            </xs:annotation>
          </xs:attribute>
       </xs:complexType>
    </xs:element>

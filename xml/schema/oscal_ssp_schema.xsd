@@ -892,10 +892,8 @@
          <xs:sequence>
             <xs:element ref="oscal-ssp:desc" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:choice>
-               <xs:element ref="oscal-ssp:rlink" minOccurs="0" maxOccurs="unbounded"/>
-               <xs:element ref="oscal-ssp:base64" minOccurs="0" maxOccurs="1"/>
-            </xs:choice>
+            <xs:element ref="oscal-ssp:rlink" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:base64" minOccurs="0" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>

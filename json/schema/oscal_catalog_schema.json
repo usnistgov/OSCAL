@@ -1175,6 +1175,15 @@
                 "items" : 
                 { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
           "links" : 
           { "anyOf" : 
             [ 
