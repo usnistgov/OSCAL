@@ -19,6 +19,7 @@ xspec/
 # test reports
 testing/*.html
 testing/**/*.html
+*-report.html
 
 ## Production outputs
 ## ==================
