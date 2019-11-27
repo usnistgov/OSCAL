@@ -81,7 +81,7 @@ a.linked { color: inherit }
                         <li><a href="#d2e737-head"><span class="secnum">4.1.5</span> Circular imports</a></li>
                         <li><a href="#d2e784-head"><span class="secnum">4.1.6</span> Multiple imports</a></li>
                         <li><a href="#d2e806-head"><span class="secnum">4.1.7</span> Selecting controls</a><ul>
-                              <li><a href="#d2e811-head"><span class="secnum">4.1.7.1</span> Inclusion</a><ul>
+                              <li><a href="#d2e811-head"><span class="secnum">4.1.7.1</span> Including controls</a><ul>
                                     <li><a href="#d2e816-head"><span class="secnum">4.1.7.1.1</span> Selecting by ID</a></li>
                                     <li><a href="#d2e827-head"><span class="secnum">4.1.7.1.2</span> Matching IDs to select groups of related controls</a></li>
                                     <li><a href="#d2e838-head"><span class="secnum">4.1.7.1.3</span> Selecting all controls</a></li>
@@ -89,7 +89,7 @@ a.linked { color: inherit }
                                     <li><a href="#d2e873-head"><span class="secnum">4.1.7.1.5</span> Redundant calls</a></li>
                                  </ul>
                               </li>
-                              <li><a href="#d2e883-head"><span class="secnum">4.1.7.2</span> Exclusions</a></li>
+                              <li><a href="#d2e883-head"><span class="secnum">4.1.7.2</span> Excluding controls</a></li>
                               <li><a href="#d2e913-head"><span class="secnum">4.1.7.3</span> Implicit <code class="src">all</code></a></li>
                               <li><a href="#d2e956-head"><span class="secnum">4.1.7.4</span> Order of controls returned in selection</a></li>
                            </ul>
@@ -114,38 +114,39 @@ a.linked { color: inherit }
                               <li><a href="#d2e1315-head"><span class="secnum">4.2.2.1</span> Unstructured catalog output</a></li>
                               <li><a href="#d2e1333-head"><span class="secnum">4.2.2.2</span> Merging <q class="q">as is</q></a><ul>
                                     <li><a href="#d2e1349-head"><span class="secnum">4.2.2.2.1</span> Implicit inclusions under <code class="src">as-is</code></a></li>
+                                    <li><a href="#d2e1409-head"><span class="secnum">4.2.2.2.2</span> Group contents under merging as-is</a></li>
                                  </ul>
                               </li>
-                              <li><a href="#d2e1409-head"><span class="secnum">4.2.2.3</span> Merging into a new structure: <code class="src">custom</code></a><ul>
-                                    <li><a href="#d2e1438-head"><span class="secnum">4.2.2.3.1</span> Grouping controls inside a custom structure</a></li>
-                                    <li><a href="#d2e1585-head"><span class="secnum">4.2.2.3.2</span> <code class="src">with-child-controls</code> inside a custom catalog structure</a></li>
+                              <li><a href="#d2e1416-head"><span class="secnum">4.2.2.3</span> Merging into a new structure: <code class="src">custom</code></a><ul>
+                                    <li><a href="#d2e1445-head"><span class="secnum">4.2.2.3.1</span> Grouping controls inside a custom structure</a></li>
+                                    <li><a href="#d2e1592-head"><span class="secnum">4.2.2.3.2</span> <code class="src">with-child-controls</code> inside a custom catalog structure</a></li>
                                  </ul>
                               </li>
                            </ul>
                         </li>
                      </ul>
                   </li>
-                  <li><a href="#d2e1598-head"><span class="secnum">4.3</span> Modification stage</a><ul>
-                        <li><a href="#d2e1615-head"><span class="secnum">4.3.1</span> Setting Parameters</a><ul>
-                              <li><a href="#d2e1733-head"><span class="secnum">4.3.1.1</span> Setting a missing parameter</a></li>
+                  <li><a href="#d2e1605-head"><span class="secnum">4.3</span> Modification stage</a><ul>
+                        <li><a href="#d2e1622-head"><span class="secnum">4.3.1</span> Setting Parameters</a><ul>
+                              <li><a href="#d2e1740-head"><span class="secnum">4.3.1.1</span> Setting a missing parameter</a></li>
                            </ul>
                         </li>
-                        <li><a href="#d2e1746-head"><span class="secnum">4.3.2</span> Altering controls</a><ul>
-                              <li><a href="#d2e1760-head"><span class="secnum">4.3.2.1</span> Adding contents to controls</a><ul>
-                                    <li><a href="#d2e1765-head"><span class="secnum">4.3.2.1.1</span> Implicit binding</a></li>
-                                    <li><a href="#d2e1890-head"><span class="secnum">4.3.2.1.2</span> Explicit binding</a></li>
-                                    <li><a href="#d2e2024-head"><span class="secnum">4.3.2.1.3</span> Usage of <code class="src">add</code> directives modifying controls inside controls</a></li>
+                        <li><a href="#d2e1753-head"><span class="secnum">4.3.2</span> Altering controls</a><ul>
+                              <li><a href="#d2e1767-head"><span class="secnum">4.3.2.1</span> Adding contents to controls</a><ul>
+                                    <li><a href="#d2e1772-head"><span class="secnum">4.3.2.1.1</span> Implicit binding</a></li>
+                                    <li><a href="#d2e1897-head"><span class="secnum">4.3.2.1.2</span> Explicit binding</a></li>
+                                    <li><a href="#d2e2031-head"><span class="secnum">4.3.2.1.3</span> Usage of <code class="src">add</code> directives modifying controls inside controls</a></li>
                                  </ul>
                               </li>
-                              <li><a href="#d2e2046-head"><span class="secnum">4.3.2.2</span> Removing contents from controls</a></li>
-                              <li><a href="#d2e2149-head"><span class="secnum">4.3.2.3</span> Implicit alterations</a></li>
+                              <li><a href="#d2e2053-head"><span class="secnum">4.3.2.2</span> Removing contents from controls</a></li>
+                              <li><a href="#d2e2156-head"><span class="secnum">4.3.2.3</span> Implicit alterations</a></li>
                            </ul>
                         </li>
                      </ul>
                   </li>
                </ul>
             </li>
-            <li><a href="#d2e2165-head"><span class="secnum">5</span> Profile tools and utilities</a></li>
+            <li><a href="#d2e2172-head"><span class="secnum">5</span> Profile tools and utilities</a></li>
          </ul>
       </aside>
       <main>
@@ -1104,7 +1105,7 @@ a.linked { color: inherit }
                   </p>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e811-head"><span class="secnum">4.1.7.1</span> Inclusion
+                        <h5 id="d2e811-head"><span class="secnum">4.1.7.1</span> Including controls
                         </h5>
                      </summary>
                      <p>Using inclusion, all or some controls may be selected from a catalog.</p>
@@ -1252,13 +1253,13 @@ a.linked { color: inherit }
                            any
                            control that is selected by both calling and matching from a given <code class="src">include</code>
                            directive, or by matching more than one pattern, is included once (unless it is also
-                           marked for exclusion, see [See: <a href="#d2e883-head" class="xref"><span class="secnum">4.1.7.2</span> Exclusions</a>] below).
+                           marked for exclusion, see [See: ] below).
                         </p>
                      </details>
                   </details>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e883-head"><span class="secnum">4.1.7.2</span> Exclusions
+                        <h5 id="d2e883-head"><span class="secnum">4.1.7.2</span> Excluding controls
                         </h5>
                      </summary>
                      <p>Exclusions work the same way as inclusions, except with the opposite effect - the
@@ -1390,7 +1391,7 @@ a.linked { color: inherit }
                      </summary>
                      <p>Any parameter (<code class="src">param</code> element) that appears in a control being selected,
                         appears in the result, unless the parameter element was indicated by a remove directive
-                        (see below [See: <a href="#d2e2046-head" class="xref"><span class="secnum">4.3.2.2</span> Removing contents from controls</a>]).
+                        (see below [See: <a href="#d2e2053-head" class="xref"><span class="secnum">4.3.2.2</span> Removing contents from controls</a>]).
                      </p>
                      <p><span class="revisit">BR thinks such nonsense should be prevented somehow perhaps warnings or
                            errors. My feeling is, that's what validation is all about.</span></p>
@@ -1900,10 +1901,18 @@ a.linked { color: inherit }
                            otherwise subject to improvement); runtime warnings; or user interfaces.
                         </p>
                      </details>
+                     <details open="open">
+                        <summary>
+                           <h6 id="d2e1409-head"><span class="secnum">4.2.2.2.2</span> Group contents under merging as-is
+                           </h6>
+                        </summary>
+                        <p>One title only. Other contents? Elements and controls are subject to the merge
+                           combination rules. <span class="revisit">Other kinds of contents of groups … </span></p>
+                     </details>
                   </details>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e1409-head"><span class="secnum">4.2.2.3</span> Merging into a new structure: <code class="src">custom</code></h5>
+                        <h5 id="d2e1416-head"><span class="secnum">4.2.2.3</span> Merging into a new structure: <code class="src">custom</code></h5>
                      </summary>
                      <p>The <code class="src">merge/custom</code> directive provides a way to provide a result catalog with a
                         custom structure. It combines <code class="src">call</code> or <code class="src">match</code> directives, which work
@@ -1922,7 +1931,7 @@ a.linked { color: inherit }
                      </p>
                      <details open="open">
                         <summary>
-                           <h6 id="d2e1438-head"><span class="secnum">4.2.2.3.1</span> Grouping controls inside a custom structure
+                           <h6 id="d2e1445-head"><span class="secnum">4.2.2.3.1</span> Grouping controls inside a custom structure
                            </h6>
                         </summary>
                         <p>A <code class="src">group</code> element given in a custom structure results in an analogous
@@ -2068,7 +2077,7 @@ a.linked { color: inherit }
                      </details>
                      <details open="open">
                         <summary>
-                           <h6 id="d2e1585-head"><span class="secnum">4.2.2.3.2</span> <code class="src">with-child-controls</code> inside a custom catalog structure
+                           <h6 id="d2e1592-head"><span class="secnum">4.2.2.3.2</span> <code class="src">with-child-controls</code> inside a custom catalog structure
                            </h6>
                         </summary>
                         <p><code class="src">@with-child-controls</code> works also: if child controls are selected, they can
@@ -2082,7 +2091,7 @@ a.linked { color: inherit }
             </details>
             <details open="open">
                <summary>
-                  <h3 id="d2e1598-head"><span class="secnum">4.3</span> Modification stage
+                  <h3 id="d2e1605-head"><span class="secnum">4.3</span> Modification stage
                   </h3>
                </summary>
                <p>(Aka <b class="term">patching</b>) Explicit modification of control content
@@ -2111,7 +2120,7 @@ a.linked { color: inherit }
                </p>
                <details open="open">
                   <summary>
-                     <h4 id="d2e1615-head"><span class="secnum">4.3.1</span> Setting Parameters
+                     <h4 id="d2e1622-head"><span class="secnum">4.3.1</span> Setting Parameters
                      </h4>
                   </summary>
                   <p>Modification of parameter settings is indicated using <code class="src">set</code>.
@@ -2189,7 +2198,7 @@ a.linked { color: inherit }
 </pre></div>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e1733-head"><span class="secnum">4.3.1.1</span> Setting a missing parameter
+                        <h5 id="d2e1740-head"><span class="secnum">4.3.1.1</span> Setting a missing parameter
                         </h5>
                      </summary>
                      <p>A <code class="src">set</code> directive whose <code class="src">@control-id</code> does not correspond to any
@@ -2200,7 +2209,7 @@ a.linked { color: inherit }
                </details>
                <details open="open">
                   <summary>
-                     <h4 id="d2e1746-head"><span class="secnum">4.3.2</span> Altering controls
+                     <h4 id="d2e1753-head"><span class="secnum">4.3.2</span> Altering controls
                      </h4>
                   </summary>
                   <p>A control can be altered by an <code class="src">alter</code> directive on a control. The
@@ -2209,7 +2218,7 @@ a.linked { color: inherit }
                   </p>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e1760-head"><span class="secnum">4.3.2.1</span> Adding contents to controls
+                        <h5 id="d2e1767-head"><span class="secnum">4.3.2.1</span> Adding contents to controls
                         </h5>
                      </summary>
                      <p>Contents may be added to controls using an add directive inside an alter directive.
@@ -2217,7 +2226,7 @@ a.linked { color: inherit }
                      </p>
                      <details open="open">
                         <summary>
-                           <h6 id="d2e1765-head"><span class="secnum">4.3.2.1.1</span> Implicit binding
+                           <h6 id="d2e1772-head"><span class="secnum">4.3.2.1.1</span> Implicit binding
                            </h6>
                         </summary>
                         <p>An <code class="src">add</code> directive with no <code class="src">id-ref</code> flag is taken to apply to the
@@ -2291,7 +2300,7 @@ a.linked { color: inherit }
                      </details>
                      <details open="open">
                         <summary>
-                           <h6 id="d2e1890-head"><span class="secnum">4.3.2.1.2</span> Explicit binding
+                           <h6 id="d2e1897-head"><span class="secnum">4.3.2.1.2</span> Explicit binding
                            </h6>
                         </summary>
                         <p>An explicit binding on an addition permits inserting new contents anywhere in a
@@ -2366,7 +2375,7 @@ a.linked { color: inherit }
                      </details>
                      <details open="open">
                         <summary>
-                           <h6 id="d2e2024-head"><span class="secnum">4.3.2.1.3</span> Usage of <code class="src">add</code> directives modifying controls inside controls
+                           <h6 id="d2e2031-head"><span class="secnum">4.3.2.1.3</span> Usage of <code class="src">add</code> directives modifying controls inside controls
                            </h6>
                         </summary>
                         <p>OSCAL supports control extensions inside controls in the form of <code class="src">control</code>
@@ -2386,7 +2395,7 @@ a.linked { color: inherit }
                   </details>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e2046-head"><span class="secnum">4.3.2.2</span> Removing contents from controls
+                        <h5 id="d2e2053-head"><span class="secnum">4.3.2.2</span> Removing contents from controls
                         </h5>
                      </summary>
                      <p>Contents inside controls can be removed from them in catalog results. In combination
@@ -2443,7 +2452,7 @@ a.linked { color: inherit }
                   </details>
                   <details open="open">
                      <summary>
-                        <h5 id="d2e2149-head"><span class="secnum">4.3.2.3</span> Implicit alterations
+                        <h5 id="d2e2156-head"><span class="secnum">4.3.2.3</span> Implicit alterations
                         </h5>
                      </summary>
                      <p>Finally some alterations are made automatically.</p>
@@ -2462,7 +2471,7 @@ a.linked { color: inherit }
          </details>
          <details open="open">
             <summary>
-               <h2 id="d2e2165-head"><span class="secnum">5</span> Profile tools and utilities
+               <h2 id="d2e2172-head"><span class="secnum">5</span> Profile tools and utilities
                </h2>
             </summary>
             <ul>
