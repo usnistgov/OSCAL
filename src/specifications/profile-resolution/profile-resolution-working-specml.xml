@@ -8,7 +8,7 @@
   <p>These specifications describe how to render an OSCAL profile document in
     the form of an OSCAL catalog. We call this <term>profile resolution</term>.</p>
   <p>These DRAFT specifications take the form of a tag set mapping between the OSCAL
-      <term>profile</term> and OSCAL <term>catalog</term> document models. The same mapping
+      <term>profile</term> and OSCAL <term>catalog</term> XML document models. The same mapping
     (transformation from source to target) can be effected using other expressions of the OSCAL
     model such as JSON or YAML object serializations. In these specifications, reference is made to
     XML constructs such as <q>element</q> and <q>attribute</q>, with examples given using XML
@@ -36,9 +36,9 @@
         source.</p>
       <p>The term <term>directive</term> is used in these specifications to refer to an element or
         combination of elements in source data, which is designed to effect a particular outcome in
-        the result catalog. For the most part, directives are in the source profile document – for
+        the target catalog. For the most part, directives are in the source profile document – for
         example, a <src>set</src> element in a profile is a directive to set a parameter value in
-        the result catalog.</p>
+        the target catalog.</p>
       <p>In contrast to profiles, catalogs do not contain directives but instead, representations of
         security controls and their parts, optionally gathered in groups, on which directives are
         assumed to operate. There is one exception: the <src>insert</src> element in control
@@ -46,17 +46,17 @@
         location in running text (data content), when a catalog is rendered. Since these semantics
         respect catalog rendering, however, not profile resolution, they are out of scope for this
         document.</p>
-      <p>Finally, this specification describes not only (source) profiles and (result) catalogs, but
+      <p>Finally, this specification describes not only (source) profiles and (target or result) catalogs, but
           <term>control selections</term> as well. The conceptual model of profile resolution takes
         a profile through several steps, in which controls are collected from source catalogs,
         combined, and potentially modified. As described by this specification, control selections
         are produced during this process, as temporary collections of controls in a transitional
         state. In the last stage of processing, the discrete selections are combined into the single
-        result catalog.</p>
+        catalog, the target.</p>
       <p>For illustrative purposes, these control selections are, like source and target formats,
-        also represented by tagging in examples given here, even though no OSCAL processor is
-        obliged to produce or recognize such XML at any point, as long as it produces the same
-        results (final outputs) from the same inputs.</p>
+        also represented by tagging in examples given here, and described as intermediate targets,
+        even though no OSCAL processor is obliged to produce or recognize such XML at any point, as
+        long as it produces the same results (final outputs) from the same inputs.</p>
     </section>
     <section id="use-of-xpath">
       <head>Use of XPath</head>
@@ -215,8 +215,8 @@
         other differences in serialization.</p>
     </section>
   </section>
-  <section id="result-structure">
-    <head>Result catalog structure</head>
+  <section id="target-structure">
+    <head>Target catalog structure</head>
     <p>Inasmuch as the target of profile resolution is a catalog, the resulting document is expected
       to be a catalog document as specified by OSCAL, conforming to the applicable schema, XSD in
       the case of OSCAL XML or JSON Schema for OSCAL object serialization formats.</p>
@@ -225,17 +225,19 @@
       be represented in JSON by either objects, or arrays of objects, depending on the respective object's
       OSCAL definition; and where objects appear outside arrays, ordering semantics cannot be respected (whereas in XML, order among nodes is
       always an intrinsic property of the graph).</p>
-    <p>Consequently, where these specifications dictate that results appear in order, it must be
+    <p>Consequently, where these specifications dictate that targets appear in order, it must be
       understood that what is described is <em>both</em> (a) the order in XML, and (b) the <term>canonical
         order</term> in OSCAL, which while it is not exposed in a JSON object serialization, will
       always available to an OSCAL processor by reference to the appropriate metaschema (in this
       case, the Metaschema instance that defines the catalog model).</p>
     <section id="form-of-result">
-      <head>Form and organization of resolution result</head>
+      <head>Form and organization of resolution target</head>
       <p>The output of a profile resolution should take the form of a catalog.</p>
-      <p>In most cases, catalog results will be valid to the OSCAL catalog schema. <revisit>Where
+      <p>In most cases, catalog results (the output of a conformant profile resolution)
+        will be valid to the OSCAL catalog schema. <revisit>Where
           invalid results are possible, this specification should note the possibility and the
-          expected variance. <xref rid="validation-of-result"/></revisit></p>
+          expected variance. There are cases where the <em>target</em> of transformation is actually
+          invalid (including trivial cases of profiles whose links all fail to resolve). <xref rid="validation-of-result"/></revisit></p>
       <p> At its base, an OSCAL <src>profile</src> source produces a <tgt>catalog</tgt>:</p>
       <mapping unit-test="base-test_profile.xml">
         <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
@@ -247,16 +249,17 @@
       </mapping>
       <p>A valid catalog must have <tgt>metadata</tgt> in addition to controls and control groups.
         Additionally it may have <tgt>back-matter</tgt>. How to produce and populate the
-          <tgt>metadata</tgt> and <tgt>back-matter</tgt> is described below, as is the construction
-        of the <tgt>catalog/@id</tgt> in the result.</p>
+          <tgt>metadata</tgt> and <tgt>back-matter</tgt> is described below 
+        <revisit>link me</revisit>, as is the construction
+        of the <tgt>catalog/@id</tgt> in the target.</p>
     </section>
     <section id="validation-of-result">
       <head>Validation of resolution result</head>
-      <p>Although the result of profile resolution takes the form of a catalog, it may not be valid
+      <p>Although the target of profile resolution takes the form of a catalog, it may not be valid
         to all constraints that define the OSCAL catalog format, whether enforced by its schema or
         by other means such as Schematron. This is because correct processing of incoherent inputs
         (even when valid to the profile schema) must result in incoherent outputs. A range of
-        nominally <q>correct</q> results will thus fail in workflows that are properly reliant on
+        nominally correct results will thus fail in workflows that are properly reliant on
         validation to enforce boundaries around expected input. <xref rid="valid-endpoints"/></p>
       <p>The conditions that produce invalid outputs can however be detected and prevented.
           <revisit>[Any other issues here?]</revisit></p>
@@ -310,34 +313,34 @@
         work.</revisit></p>
     </section>
     <section id="body-of-result">
-      <head>Body of the result</head>
-      <p>The construction of the body of the result catalog is described in the next section. <xref rid="full-mapping"/></p>
-      <p>The body of the result <tgt>catalog</tgt>, after its <term>metadata</term>, is structured
+      <head>Body of the target</head>
+      <p>The construction of the body of the target catalog is described in the next section. <xref rid="full-mapping"/></p>
+      <p>The body of the target <tgt>catalog</tgt>, after its <term>metadata</term>, is structured
         as follows, depending on its merge directive. (Details on merging are given below <xref rid="merge-phase"/>.)</p>
       <ul>
         <li>
           <p>If no <src>merge</src> was given, or if <src>merge</src> is given without
-              <src>custom</src> or <src>as-is</src>, controls are flat (unstructured) in the result
+              <src>custom</src> or <src>as-is</src>, controls are flat (unstructured) in the target
             catalog. This mode of processing is referred to as <q>no merge</q>. Note that the same
               <src>merge</src> element in the source is also the location for the combination
             directive, expressed as <src>merge/combine/@method</src>. The combination method and the
             merge rule are two distinct concepts in profile resolution; and any merge rule (<q>no
               merge</q>, <q>as is</q> or <q>custom</q>) can work with any combination method
               (<q>keep</q>, <q>use-first</q> or <q>merge</q>).</p>
-          <p>The result catalog has a content model as follows <revisit>(DTD/RNC
+          <p>The target catalog has a content model as follows <revisit>(DTD/RNC
               notatation)</revisit>: <code>(metadata, param*, control*, back-matter?)</code></p>
           <p><revisit>BR: note we have Issue #523 about permitting param to appear at the
               top.</revisit></p>
         </li>
         <li>
-          <p>If <src>merge/as-is</src> is used, the structure of the result will reflect the
+          <p>If <src>merge/as-is</src> is used, the structure of the target will reflect the
             structure(s) of the source catalog(s).</p>
-          <p>The result catalog has the content model <code>(metadata, param*, control*, group*,
+          <p>The target catalog has the content model <code>(metadata, param*, control*, group*,
               back-matter?)</code> where <code>group</code> has the model <code>(title?, param*,
               control*, group*)</code></p>
         </li>
         <li>
-          <p>If <src>merge/custom</src> is used, see above. The content model of the result catalog
+          <p>If <src>merge/custom</src> is used, see above. The content model of the target catalog
             is the same as that for <src>merge/as-is</src>.</p>
         </li>
       </ul>
@@ -347,9 +350,9 @@
           (<src>merge/as-is</src>) or the profile (<src>merge/custom</src>), or there will be no
         groups at all (no merge directive).</p>
     </section>
-    <section id="back-matter-of-result">
+    <section id="target-back-matter">
       <head>Back matter</head>
-      <p>The back matter in result catalogs is assembled from the back matter of their source
+      <p>The back matter in target catalogs is assembled from the back matter of their source
         profiles in combination with the back matter of source catalogs. In both catalogs and
         profiles, <src>back-matter</src> is comprised of (multiple uses of either)
           <src>citation</src> or <src>resource</src>. Either of these elements may be
@@ -357,11 +360,11 @@
         identifier on an <src>href</src> flag, for example <code>&lt;resource id="document-X</code>>
         may be referenced from inside its containing document by <code>&lt;link
           href="#document-X"></code> appearing elsewhere. Whether an element inside back matter must
-        be included in the result, depends on whether such a cross-reference has also been included
-        in the same result.</p>
+        be included in the target, depends on whether such a cross-reference has also been included
+        in the same target.</p>
       <p>Specifically, any <src>citation</src> or <src>resource</src> inside <src>back-matter</src>
         either in the profile, or in any imported catalog, is considered eligible for propagation
-        into the result if either of two conditions obtains:</p>
+        into the target if either of two conditions obtains:</p>
       <ul>
         <li>
           <p>The element (<src>citation</src> or <src>resource</src>) is referenced by any element
@@ -375,7 +378,7 @@
               <src>@id</src> attribute of the <src>citation</src> or <src>resource</src>.</p>
         </li>
       </ul>
-      <p>The assembly of the result <tgt>back-matter</tgt> occurs by including copies of all
+      <p>The assembly of the target <tgt>back-matter</tgt> occurs by including copies of all
         eligible <src>citation</src> elements followed by all eligible <src>resource</src> elements,
         in the same order as given in their sources.</p>
       <p>Additionally, combination rules (see next section) will affect whether and how duplicate or
@@ -696,7 +699,7 @@
         <section id="exclude-directive">
           <head>Excluding controls</head>
           <p>Exclusions work the same way as inclusions, except with the opposite effect - the
-            indicated control(s) do not appear in the result catalog.</p>
+            indicated control(s) do not appear in the target catalog.</p>
           <p>Additionally, there is no such thing as <src>exclude/all</src>, which is invalid and
             should be considered inoperable.</p>
           <p>Any control designated to be both included and excluded, is excluded. This holds
@@ -742,7 +745,7 @@
   &lt;/exclude>
 &lt;/import>
 </tagging>
-          <p>Result: all controls from the catalog are included <em>except</em> AC-1.</p>
+          <p>Target: all controls from the catalog are included <em>except</em> AC-1.</p>
           <cf file="profile-resolution-examples/exclude-call-test_profile.xml"/>
         </section>
         <section id="controls-order">
@@ -759,8 +762,8 @@
       <section>
         <head>Copying parameters</head>
         <p>Unlike controls, parameters are copied implicitly. Whether a parameter in the source
-          catalog is copied into the result depends on two factors: its location, and whether it is
-          referenced by an <tgt>insert</tgt> directive in the result catalog.</p>
+          catalog is copied into the target depends on two factors: its location, and whether it is
+          referenced by an <tgt>insert</tgt> directive in the target catalog.</p>
         <p><src>insert</src> directives may occur anywhere in a catalog's data content including not
           only in controls, but in other parameters. Thus a parameter may have to be included by
           virtue of an <src>insert</src> directive, making reference to it, that occurs in another
@@ -769,7 +772,7 @@
         <section id="params-in-controls">
           <head>Parameters given in controls</head>
           <p>Any parameter (<src>param</src> element) that appears in a control being selected,
-            appears in the result, unless the parameter element was indicated by a remove directive
+            appears in the target, unless the parameter element was indicated by a remove directive
             (see below <xref rid="remove-directive"/>).</p>
           <p><revisit>BR thinks such nonsense should be prevented somehow perhaps warnings or
               errors. My feeling is, that's what validation is all about.</revisit></p>
@@ -819,10 +822,11 @@
             followed by all <tgt>control</tgt> elements. <revisit>this is a case where the XML and
               JSON requirements are different.</revisit></p>
           <p>When a catalog is organized by a <src>merge/custom</src> directive, loose parameters
-            are copied into the resulting grouping structure directly preceding the first control
+            are copied into the resultting grouping structure directly preceding the first control
             appearing that contains an <src>insert</src> directive referencing that parameter.</p>
-          <p>Parameters that are not referenced by an <src>insert</src> in the result, do not appear
-            in the target.</p>
+          <p>Parameters that are not referenced by an <src>insert</src> elsewhere in the target, do not appear
+            in the target. While it is not formally invalid to include unreferenced (unused) parameters,
+          profile resolution requires that none be included except as a special option.</p>
           <mapping/>
         </section>
       </section>
@@ -907,7 +911,7 @@
         &lt;combine method="keep"/>
     &lt;/merge>
 &lt;/profile></tagging>
-            <p>In the result (showing control selections):</p>
+            <p>In the target (showing control selections):</p>
             <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     id="merge-keep_profile">
     &lt;metadata> … &lt;/metadata>
@@ -966,7 +970,7 @@
         &lt;combine method="use-first"/>
     &lt;/merge>
 &lt;/profile></tagging>
-            <p>In the result (showing control selections):</p>
+            <p>In the target (showing control selections):</p>
             <tagging whose="target_catalog">&lt;profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     id="merge-keep_profile">
     &lt;metadata> … &lt;/metadata>
@@ -1007,7 +1011,7 @@
   &lt;prop name="status">ready&lt;/prop>
 &lt;/control>
 </tagging>
-          <p>results in</p>
+          <p>produces</p>
           <tagging whose="target_catalog">&lt;control id="a1">
   &lt;title>Control A1&lt;/title>
   &lt;prop name="label">A-1&lt;/prop>
@@ -1033,7 +1037,7 @@
             validation errors in the result when an ID appears more than once.</p>
           <p>This situation is not remedied by the <q>no merge</q> combination rule. Under this
             rule, any citation or resource that is referenced from an imported catalog or profile,
-            is included in the resolution result.</p>
+            is included in the resolution target.</p>
           <p>Under the <q>use first</q> rule (with <src>merge/combine[@method='use-first']</src>),
             only the first <src>citation</src> with a given ID is kept from the set of citations
             (gathered from all sources). Likewise only the first <src>resource</src> with a given ID
@@ -1049,14 +1053,14 @@
         </section>
       </section>
       <section id="structuring-result">
-        <head>Structuring the result</head>
-        <p>The overall organization of the result document at the top level has been described <xref rid="result-structure"/>. This section describes how a profile may dictate the body of
-          the result <tgt>catalog</tgt>, apart from its <tgt>metadata</tgt> or
+        <head>Structuring the target</head>
+        <p>The overall organization of the target document at the top level has been described <xref rid="target-structure"/>. This section describes how a profile may dictate the body of
+          the target <tgt>catalog</tgt>, apart from its <tgt>metadata</tgt> or
             <tgt>back-matter</tgt>.</p>
         <p>The <src>merge</src> element, in addition to proposing a strategy by which to
           disambiguate clashing controls, also includes directives that can be used to organize the
-          result catalog into a structure or hierarchy of groups. Two <src>merge</src> directives
-          are used to introduce structure into a profile result catalog, <src>as-is</src> and
+          target catalog into a structure or hierarchy of groups. Two <src>merge</src> directives
+          are used to introduce structure into the target catalog, <src>as-is</src> and
             <src>custom</src>. If neither is given, no structure is provided: parameters and
           controls in the target appear in sequence, with no structure or grouping apart from what
           is internal to the controls</p>
@@ -1100,7 +1104,7 @@
         <section id="merge-as-is">
           <head>Merging <q>as is</q></head>
           <p>An <src>as-is</src>directive is used to reproduce the structure of a source catalog in
-            the result catalog. When more than one catalog is referenced by a profile, the
+            the target catalog. When more than one catalog is referenced by a profile, the
               <src>as-is</src> directive produces a catalog that combines the grouping structures of
             all the source catalogs.</p>
           <p><revisit>(consider case of multiple imports of single resource – we need to track
@@ -1111,13 +1115,13 @@
               structure of source catalogs.</p>
             <p>This is achieved by propagating, with all controls that are included, all groups that
               they appear within, along with the groups’ IDs, titles and other contents, including
-              any parameters to be referenced in the result (<xref rid="loose-params"/> ) or
+              any parameters to be referenced in the target (<xref rid="loose-params"/> ) or
                 <src>part</src> element children; but not including any controls not included in one
               or another control selection, directly or indirectly. Controls may be included into a
               group indirectly when merging <term>as is</term>, by virtue of containing controls
               that have been included <xref rid="merge-as-is"/></p>
             <p>Groups that do not include controls that have been included (either directly or as
-              descendants of contained groups), are not propagated to the result.</p>
+              descendants of contained groups), are not propagated to the target.</p>
             <p>This is slightly different from groups, which may in valid inputs have other contents
               – besides titles, controls, or groups – that profile authors wish to see copied into
               the customized catalog.</p>
@@ -1144,7 +1148,7 @@
 </tagging>
             <p>The unmentioned elements are included, however, with their titles, because controls
               that they contain are included. But control <code>xyz-1.3</code> does not appear in
-              the result.</p>
+              the target.</p>
             <tagging whose="target_catalog">&lt;control id="xyz-1">
   &lt;title>Basic Hygiene&lt;/title>
   &lt;control id="xyz-1.1">&lt;!-- bedtime routine -->...&lt;/control>
@@ -1173,24 +1177,24 @@
         </section>
         <section id="merge-custom">
           <head>Merging into a new structure: <src>custom</src></head>
-          <p>The <src>merge/custom</src> directive provides a way to provide a result catalog with a
+          <p>The <src>merge/custom</src> directive provides a way to provide a target catalog with a
             custom structure. It combines <src>call</src> or <src>match</src> directives, which work
-            as they do in selection, into groups, which provide the result with its structure.</p>
+            as they do in selection, into groups, which provide the target with its structure.</p>
           <p>The controls to be included must be selected in the profile's import. A call or match
             appearing inside <src>custom</src>, if it refers to controls not selected, is
             inoperative.</p>
           <p>The structures given inside the <src>custom</src> assembly indicate the structure of
-            the  result catalog. They produce this structure by mapping one for one. Unlike
+            the  target catalog. They produce this structure by mapping one for one. Unlike
               <q>as-is</q> merging, there is no implicit inclusion of controls by virtue of
-            including descendant controls. Instead, all controls are included in the result in the
+            including descendant controls. Instead, all controls are included in the target in the
             locations indicated by the custom structure.</p>
           <section id="custom-groups">
             <head>Grouping controls inside a custom structure</head>
             <p>A <src>group</src> element given in a custom structure results in an analogous
-                <tgt>group</tgt>. Its attributes (flags) are copied to the result catalog to appear
-              on the <tgt>group</tgt> in the result. All element contents inside the group,
+                <tgt>group</tgt>. Its attributes (flags) are copied to the target catalog to appear
+              on the <tgt>group</tgt> in the target. All element contents inside the group,
               including <src>title</src>, <src>param</src>, <src>prop</src> and <src>part</src>
-              elements are likewise copied into the result, appearing in the same order as in the
+              elements are likewise copied into the target, appearing in the same order as in the
               source.</p>
             <p>Within <src>custom</src>, <src>call</src> and <src>match</src> elements reference
               controls in much the same way as they do when given in import/include directives - a
@@ -1250,7 +1254,7 @@
         &lt;control id="c2"> ... control contents ... &lt;/control>
     &lt;/group>
 &lt;/profile></tagging>
-              <p>In this example, control <code>a2</code> does <em>not</em> appear in the result
+              <p>In this example, control <code>a2</code> does <em>not</em> appear in the target
                 catalog, as a custom structure was indicated (by the presence of the source profile
                   <src>merge/custom</src>), but the control never referenced by a <src>call</src>
                 (or <src>match</src>) directive inside the custom structure.</p>
@@ -1259,7 +1263,7 @@
                 signal a warning in this case.</p>
               <p>Similarly, no error occurs if a control is selected (appears in a control selection
                 or even more than one), but it is never referenced from the <src>custom</src>
-                structure given. The control does not appear in the result catalog. Again, a
+                structure given. The control does not appear in the target catalog. Again, a
                 processor may optionally signal a warning if this occurs.</p>
             </mapping>
             <mapping>
@@ -1306,7 +1310,7 @@
 &lt;/profile></tagging>
               <p>In this case, no <tgt>group</tgt> container appears in the target for the controls
                   <code>b2</code> and <code>c2</code>;  because they appear unwrapped before the
-                  <src>group</src> in the profile source, they appear the same way in the result
+                  <src>group</src> in the profile source, they appear the same way in the target
                 catalog. Control <code>c2</code>, however, appears in a subgroup <code>group2</code>
                 inside the group with ID <code>group1</code> , again reflecting the source
                 organization. Note also that <src>id</src> flags are copied.</p>
@@ -1341,16 +1345,16 @@
       <p>In addition to any modification or adjustment to controls, this section of a profile is
         used to set parameter values or other properties of parameters declared in catalogs and
         referenced from their text. Parameters are propagated with the profile's setting into the
-        result catalog for its use.</p>
+        target catalog for its use.</p>
       <section id="param-setting">
         <head>Setting Parameters</head>
         <p>Modification of parameter settings is indicated using <src>set</src>.</p>
-        <p>Parameters are not always given within controls. A profile resolution result must include
+        <p>Parameters are not always given within controls. A profile resolution target must include
           copies (with or without modifications or settings) of all parameters defined within the
           source catalog, which are referenced from <src>insert</src> directives anywhere inside
           included controls.</p>
         <p>Accordingly, any parameter referenced by an <src>insert</src> in any source catalog is
-          copied from catalog source to result <revisit>parameter propagation rules for merge/as-is,
+          copied from catalog source to target <revisit>parameter propagation rules for merge/as-is,
             merge/custom</revisit> without any configuration required in the profile.</p>
         <p>However, a profile should not reproduce parameters from source catalogs, which are not
           referenced from <src>insert</src> directives.</p>
@@ -1423,7 +1427,7 @@
               control as a whole. Its <src>position</src> flag may be either of two values:
                 <code>starting</code> and <code>ending</code>.</p>
             <p>The contents of the add directive are then added to the control contents in the
-              result, either after its <tgt>title</tgt> when <src>position</src> is
+              target, either after its <tgt>title</tgt> when <src>position</src> is
                 <code>starting</code>, or at the end if its position is <code>ending</code>.</p>
             <p>However, control contents in catalogs must appear in the order <code>title, param,
                 prop, link, part, control</code>. Subsequent to adding new elements, the control
@@ -1539,8 +1543,9 @@
                 there as well.</p>
               <p>Note that the result in this case will be schema-invalid since a <tgt>prop</tgt>
                 may not occur directly following a <tgt>part</tgt>. A better result can be obtained
-                by using two <src>add</src> directives, to insert the new <tgt>prop</tgt> separately
-                before any <tgt>part</tgt> elements in the result.</p>
+                (a better target may be defined) by using two <src>add</src> directives, to insert
+                the new <tgt>prop</tgt> separately
+                before any <tgt>part</tgt> elements in the target.</p>
             </mapping>
           </section>
           <section>
@@ -1551,7 +1556,7 @@
               to target these control extensions for modification as well as other contents.</p>
             <p>Because such a control can already be modified using implicit bindings, it is
               recommended that they not be targeted with explicit bindings. Using an implicit
-              binding supports more robust alteration since contents in the result can be ordered
+              binding supports more robust alteration since contents in the target can be ordered
               properly by the resolution processor. <revisit>XXX can we guarantee valid results here
                 and do we have to specify a sort/order?</revisit> However, it is not an error to
               target control elements in this way, manipulating them in the same way as other
@@ -1560,7 +1565,7 @@
         </section>
         <section id="remove-directive">
           <head>Removing contents from controls</head>
-          <p>Contents inside controls can be removed from them in catalog results. In combination
+          <p>Contents inside controls can be removed from them in catalog targets. In combination
             with adding new contents, this feature can be used to edit controls as well as amend
             them.</p>
           <p>A <src>remove</src> directive inside an <src>alter</src> directive identifies an
@@ -1599,7 +1604,7 @@
             specifically using <src>import/exclude</src>.</p>
           <p>As with <src>add</src>, a remove that targets any element outside the control, is
             inoperative. Similarly, a remove directive that indicates that all <tgt>prop</tgt>
-            elements should be removed from the result catalog, applies only to <src>prop</src></p>
+            elements should be removed from the target catalog, applies only to <src>prop</src></p>
         </section>
         <section>
           <head>Implicit alterations</head>
@@ -1614,6 +1619,15 @@
         </section>
       </section>
     </section>
+  </section>
+  <section>
+    <head>Options</head>
+    <p>For conformance, an OSCAL processor must deliver results of profile processing, in a basic
+      configuration, exactly as described in these specifications with no elaboration.</p>
+    <p>Conformance does not preclude providing additional features, however, including elaborated
+      outputs, in an optional mode. Such features could include offering warning or process
+      exception handling (appropriate to workflow) not described here, or outputs provided with
+      comments or extra structure to support tracing or analytics. </p>
   </section>
     <section id="tools-utlities">
     <head>Profile tools and utilities</head>
