@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-merge.xsl">
+    <x:scenario label="Base">
+        <x:context>
+            <profile/>
+        </x:context>
+
+        <x:expect label="root becomes root">
+            <catalog/>
+        </x:expect>
+    </x:scenario>
+    
+</x:description>
