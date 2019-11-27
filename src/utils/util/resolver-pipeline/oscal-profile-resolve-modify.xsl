@@ -15,22 +15,6 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="profile">
-        <catalog>
-            <xsl:copy-of select="@*"/>
-            <xsl:attribute name="id" select="concat(@id,'-RESOLVED')"/>
-            <xsl:apply-templates/>
-        </catalog>
-    </xsl:template>
     
-    <xsl:template match="catalog">
-        <xsl:apply-templates/>
-    </xsl:template>
-
-    <!-- discard groups with no parameters, controls or groups -->
-    <xsl:template match="group[empty(control|param|group)]"/>
-
-    <!-- dropped from regular traversal -->
-    <xsl:template match="modify"/>
     
 </xsl:stylesheet>

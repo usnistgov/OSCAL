@@ -29,6 +29,7 @@
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
         <opr:transform version="2.0">oscal-profile-resolve-select.xsl</opr:transform>
+        <opr:transform version="2.0">oscal-profile-resolve-metadata.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>

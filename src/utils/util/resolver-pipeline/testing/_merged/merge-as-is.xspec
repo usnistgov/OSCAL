@@ -5,7 +5,7 @@
         </x:context>
 
         <x:expect label="root becomes root">
-            <profile/>
+            <catalog/>
         </x:expect>
     </x:scenario>
     <x:scenario label="Single import, as-is merge">
@@ -41,7 +41,7 @@
             </profile>
         </x:context>
         <x:expect label="XYZ catalog with original grouping">
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
@@ -66,7 +66,7 @@
                         </control>
                     </group>
                 </selection>
-            </profile>
+            </catalog>
         </x:expect>
     </x:scenario>
     <x:scenario label="Parallel imports, as-is merge">
@@ -114,7 +114,7 @@
             </profile>
         </x:context>
         <x:expect label="XYZ catalog merged, with some redundancy">
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
@@ -143,7 +143,7 @@
                         <control id="y3"><title>Control Y3</title></control>
                     </group>
                 </selection>
-            </profile>
+            </catalog>
         </x:expect>
     </x:scenario>
     <x:scenario label="Ugly merge with loose parameters and stuff">
@@ -201,7 +201,7 @@
             </profile>
         </x:context>
         <x:expect label="XYZ ugly merged, with extra redundancy">
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
@@ -240,7 +240,7 @@
                         <control id="y3"><title>Control Y3</title></control>
                     </group>
                 </selection>
-            </profile>
+            </catalog>
         </x:expect>
     </x:scenario>
     

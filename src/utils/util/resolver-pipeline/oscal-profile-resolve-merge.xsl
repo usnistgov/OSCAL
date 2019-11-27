@@ -19,18 +19,22 @@
     
     <!-- With no combination rule, we simply emit parameters and controls -->
     <xsl:template match="profile">
-        <xsl:copy copy-namespaces="no">
+        <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
-            <xsl:apply-templates select="selection/param   | selection//group/param"/>
-            <xsl:apply-templates select="selection/control | selection//group/control"/>
+            <xsl:apply-templates select="selection"/>
             <xsl:apply-templates select="modify"/>
             <xsl:apply-templates select="back-matter"/>
-        </xsl:copy>
+        </catalog>
     </xsl:template>
 
-    <xsl:template match="profile[merge/as-is=('true','1')]">
-        <xsl:copy copy-namespaces="no">
+    <xsl:template match="selection">
+            <xsl:apply-templates select="param   | .//group/param"/>
+            <xsl:apply-templates select="control | .//group/control"/>
+    </xsl:template>
+    
+    <xsl:template priority="2" match="profile[merge/as-is=('true','1')]">
+        <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
             <xsl:call-template name="o:merge-groups-asis">
@@ -38,19 +42,19 @@
             </xsl:call-template>
             <!-- copying 'modify' unchanged through this transformation --> 
             <xsl:apply-templates select="modify"/>
-        </xsl:copy>
+        </catalog>
     </xsl:template>
     
-    <xsl:template match="profile[merge/custom]">
+    <xsl:template priority="3" match="profile[merge/custom]">
         <xsl:message>custom merge not supported yet</xsl:message>
-        <xsl:copy copy-namespaces="no">
+        <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
-            
-            
-            <!-- copying 'modify' unchanged through this transformation --> 
+
+
+            <!-- copying 'modify' unchanged through this transformation -->
             <xsl:apply-templates select="modify"/>
-        </xsl:copy>
+        </catalog>
     </xsl:template>
     
     <xsl:template name="o:merge-groups-asis">

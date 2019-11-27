@@ -7,7 +7,7 @@
             <profile/>
         </x:context>
 
-        <x:expect label="root becomes root">
+        <x:expect label="profile becomes catalog">
             <catalog/>
         </x:expect>
     </x:scenario>
