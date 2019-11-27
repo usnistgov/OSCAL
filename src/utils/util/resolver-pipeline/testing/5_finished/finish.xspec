@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-finish.xsl">
+    <x:scenario label="Base">
+        <x:context>
+            <catalog id="abc"/>
+        </x:context>
+        
+        <x:expect label="profile becomes catalog">
+            <catalog id="abc"/>
+        </x:expect>
+    </x:scenario>
+</x:description>
