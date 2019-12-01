@@ -52,7 +52,7 @@
             <enum value="service">A service that may provide APIs.</enum>
             <enum value="policy"></enum>
             <enum value="process"></enum>
-            <enum value="proceedure"></enum>
+            <enum value="procedure"></enum>
             <enum value="plan"></enum>
             <enum value="guidance">Any guideline or recommendation</enum>
             <enum value="standard"></enum>
@@ -72,7 +72,7 @@
     
     <define-assembly name="only-statement">
         <formal-name>Specific Statement</formal-name>
-        <description>Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.</description>
+        <description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</description>
         <json-key flag-name="statement-id"/>
         <flag ref="statement-id">
             <description>A reference to the specific implemented statement.</description>
