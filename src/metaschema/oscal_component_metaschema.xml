@@ -14,7 +14,7 @@
 
 
   <remarks>
-    <p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capabiity</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, proceedure, or policy.</p>
+    <p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
     <p>The root of the OSCAL Implementation Component format is <code>component-definition</code>.</p>
     <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
   </remarks>

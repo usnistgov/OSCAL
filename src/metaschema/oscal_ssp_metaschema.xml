@@ -68,10 +68,10 @@
             <group-as name="properties"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
-                  <enum value="identiy-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
+                  <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
                   <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
                   <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
-<!--                  <enum value="minimum-x-assurance-level">A value of 1, 2, or 3, which is the minimum value of identiy-assurance-level, authenticator-assurance-level, and federation-assurance-level.</enum>
+<!--                  <enum value="minimum-x-assurance-level">A value of 1, 2, or 3, which is the minimum value of identity-assurance-level, authenticator-assurance-level, and federation-assurance-level.</enum>
 -->               </allowed-values>
             </flag>
          </field>
@@ -125,7 +125,7 @@
       <json-value-key>id</json-value-key>
       <flag name="identifier-type" as-type="uri">
          <formal-name>Identification System Type</formal-name>
-         <description>Identifies the identifcation system from which the provided identifier was assigned.</description>
+         <description>Identifies the identification system from which the provided identifier was assigned.</description>
          <allowed-values allow-other="yes">
             <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
             <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique IDentifier (UUID) as defined by RFC4122.</enum>
@@ -286,7 +286,7 @@
    </define-field>
    <define-field name="adjustment-justification" as-type="markup-multiline">
       <formal-name>Adjustment Justification</formal-name>
-      <description>If the selected security level is different from the base security level, this contains the justificaiton for the change.</description>
+      <description>If the selected security level is different from the base security level, this contains the justification for the change.</description>
    </define-field>
    <define-assembly name="security-impact-level">
       <formal-name>Security Impact Level</formal-name>
@@ -413,7 +413,7 @@
 
    <define-assembly name="diagram">
       <formal-name>Diagram</formal-name>
-      <description>A graphic that provides a visual represenation the system, or some aspect of it.</description>
+      <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
       <json-key flag-name="id"/>
       <flag name="id" as-type="NCName" required="yes">
          <formal-name>Diagram ID</formal-name>
@@ -903,7 +903,7 @@
       <flag ref="id" required="yes"/>
       <flag name="asset-id" required="yes">
          <formal-name>Asset Identifier</formal-name>
-         <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.</description>
+         <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
       </flag>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
