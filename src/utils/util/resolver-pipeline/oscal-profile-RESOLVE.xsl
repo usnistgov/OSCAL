@@ -25,15 +25,16 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
     
+    <xsl:variable name="home" select="/"/>
     
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
         <opr:transform version="2.0">oscal-profile-resolve-select.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-metadata.xsl</opr:transform>
-        <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
+        <!--<opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>
-        <opr:finalize/>
+        <opr:finalize/>-->
     </xsl:variable>
 
     <!-- Entry point traps the root node of the source and passes it down the chain of transformation references -->
@@ -59,21 +60,24 @@
     <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
+        <xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home) }"/>
         <xsl:variable name="runtime" select="map {
                     'xslt-version': xs:decimal($xslt-spec/@version),
                     'stylesheet-location': string($xslt-spec),
-                    'source-node': $sourcedoc
+                    'source-node': $sourcedoc,
+                    'stylesheet-params': $runtime-params
                     }"/>
         <!-- The function returns a map; primary results are under 'output'
              unless a base output URI is given
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
+        <xsl:message expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec } ...</xsl:message>
     </xsl:template>
 
     <!-- The finalize step performs any last cleanup. -->
     <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
-        <xsl:apply-templates select="$sourcedoc" mode="#current"/>
+        <xsl:apply-templates select="$sourcedoc" mode="opr:finalize"/>
     </xsl:template>
     
     <!-- Not knowing any better, any other execution step passes through its source. -->

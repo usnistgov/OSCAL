@@ -19,6 +19,8 @@
     
 <!-- remove opqr and xsi namespaces -->
 
+<!-- consider sorting elements in metadata, groups and controls into expected order -->
+    
 <!-- filter back-matter -->
 
 </xsl:stylesheet>

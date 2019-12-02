@@ -17,8 +17,18 @@
         </xsl:copy>
     </xsl:template>
     
+<!-- TODO; exception handling such as unmatched document element (i.e., not already 'catalog' with 'selection' children)    -->
     <!-- With no combination rule, we simply emit parameters and controls -->
-    <xsl:template match="profile">
+    <xsl:template match="/*" priority="1">
+        <!-- emitting nothing as this is input is erroneous; a catalog will match one of the following
+            templates not this one. -->
+    </xsl:template>
+    
+    <xsl:template match="catalog" priority="2">
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="catalog[exists(selection)]" priority="10">
         <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
@@ -27,7 +37,7 @@
             <xsl:apply-templates select="back-matter"/>
         </catalog>
     </xsl:template>
-
+    
     <xsl:template match="selection">
             <xsl:apply-templates select="param   | .//group/param"/>
             <xsl:apply-templates select="control | .//group/control"/>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" stylesheet="../../oscal-profile-resolve-merge.xsl">
     <x:scenario label="Base">
         <x:context>
-            <profile/>
+            <catalog/>
         </x:context>
-
+        
         <x:expect label="profile becomes catalog">
             <catalog/>
         </x:expect>
     </x:scenario>
-    
     <x:scenario label="Single import, no merge (flat)">
         <x:context>
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog">
                         <group id="x">
                             <title>Group X of XYZ</title>
@@ -37,7 +36,7 @@
                         </group>
                     </selection>
                 <!-- no merge -->
-            </profile>
+            </catalog>
         </x:context>
         <x:expect label="All XYZ controls, ungrouped">
             <catalog>
@@ -60,7 +59,7 @@
     
     <x:scenario label="Parallel imports, no merge, keeping all">
         <x:context>
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
@@ -100,7 +99,7 @@
                         </control>
                     </group>
                 </selection>
-            </profile>
+            </catalog>
         </x:context>
         <x:expect label="XYZ catalog twice, flat, with clashing controls">
             <catalog>

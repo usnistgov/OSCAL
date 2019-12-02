@@ -40,7 +40,7 @@
     </xsl:template>
     
     <xsl:template match="catalog" mode="o:select">
-        <selection>
+        <selection opr:src="{document-uri(root())}">
             <xsl:copy-of select="@* except @xsi:*" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
             <!--<xsl:attribute name="opr:base" select="document-uri(root())"/>-->
             <xsl:apply-templates mode="#current"/>

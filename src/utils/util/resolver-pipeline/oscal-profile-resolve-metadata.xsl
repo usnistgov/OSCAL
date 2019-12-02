@@ -11,11 +11,51 @@
     
     <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
     
+    <xsl:param name="source-uri">urn:UNKNOWN</xsl:param>
+    
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
  
-    <!-- Process metadata -->
+    <xsl:template match="profile" priority="1">
+        <catalog id="{@id}-RESOLVED">
+            <xsl:apply-templates/>
+        </catalog>
+    </xsl:template>
+    
+    <xsl:template match="profile/metadata">
+        <xsl:copy>
+            <xsl:apply-templates mode="#current" select="node() | @*"/>
+            <link href="{$source-uri}" rel="resolution-source">
+                <xsl:for-each select="title">
+                    <xsl:apply-templates/>
+                </xsl:for-each>
+            </link>
+            <!--<xsl:apply-templates select="../selection" mode="imported-metadata"/>-->
+        </xsl:copy>
+    </xsl:template>
+    
+    <!--<xsl:template match="selection" mode="imported-metadata">
+        <resource id="{@id}-RESOURCE" rel="imported">
+            <xsl:copy-of select="metadata/title" copy-namespaces="no"/>
+            <rlink href="{@opr:src}"/>
+        </resource>
+    </xsl:template>-->
+    
+    <xsl:template match="metadata/title">
+        <title>
+            <xsl:apply-templates/>
+            <xsl:text> - RESOLUTION RESULT</xsl:text>
+        </title>
+    </xsl:template>
+    
+    <xsl:template match="metadata/last-modified">
+        <last-modified>
+            <xsl:value-of select="current-dateTime()"/>
+        </last-modified>
+    </xsl:template>
+    <xsl:template match="selection/metadata"/>
+    
 </xsl:stylesheet>

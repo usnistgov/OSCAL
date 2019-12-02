@@ -7,19 +7,20 @@
   <head>Profile Resolution</head>
   <p>These specifications describe how to render an OSCAL profile document in
     the form of an OSCAL catalog. We call this <term>profile resolution</term>.</p>
-  <p>These DRAFT specifications take the form of a tag set mapping between the OSCAL
-      <term>profile</term> and OSCAL <term>catalog</term> XML document models. The same mapping
-    (transformation from source to target) can be effected using other expressions of the OSCAL
-    model such as JSON or YAML object serializations. In these specifications, reference is made to
-    XML constructs such as <q>element</q> and <q>attribute</q>, with examples given using XML
-    syntax: these however are for illustrative purposes only and normative only with respect to the
-    semantic mapping, not the syntax as such. The XML orientation of the specification of this
-    mapping is an expediency; in the longer term we plan specifications that are
-    format-agnostic.</p>
   <section id="top">
     <head>Reading these specifications</head>
     <section id="terminology">
       <head>Terminology</head>
+      <p>These DRAFT specifications take the form of a tag set mapping between the OSCAL
+          <term>profile</term> and OSCAL <term>catalog</term> XML document models. The same mapping
+        (transformation from source to target) can be effected using other expressions of the OSCAL
+        model such as JSON or YAML object serializations. In these specifications, XML terminology
+        is used, with reference to XML constructs such as <q>element</q> and <q>attribute</q>, with
+        examples given using XML syntax: these however are for illustrative purposes only and
+        normative only with respect to the semantic mapping, not the syntax as such. The XML
+        orientation of the specification of this mapping is an expediency; in the longer term we
+        plan specifications that are format-agnostic.<revisit> Let us know if you have an interest
+          in helping to recast the specs / metaschema terminology?</revisit></p>
       <p>In these specifications there are references to <term>source</term>, <term>target</term>
         and <term>result</term>. <term>Source</term> refers sometimes to profile documents as a type
         (abstractly), and sometimes to instance profiles in operation, or elements within profiles
@@ -304,7 +305,7 @@
       <head>Instance metadata</head>
       <p><revisit>[XXX Rules for constructing or copying or modifying a metadata section for a
           resolved profile]</revisit></p>
-      <tagging whose="target_catalog">&lt;title>{ profile title} RESOLUTION&lt;/title>
+      <tagging whose="target_catalog">&lt;title>{ profile title } RESOLUTION RESULT&lt;/title>
 &lt;last-modified>{ resolution date stamp }&lt;/last-modified>
 &lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
 &lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
