@@ -82,6 +82,23 @@
         </li>
       </ul>
     </section>
+    <section id="variable-content">
+      <head>Variable contents in XML examples</head>
+      <p>Examples given to illustrate targets for particular source (example) inputs are given, like
+        the source, in XML notation. Sometimes, however, the expected outputs are not fully defined
+        by the inputs given. In these cases, a description of the dynamic (variable) contents in
+        curly braces <term>{ }</term>.</p>
+      <p>So for example where a time stamp is to be produced in the result, an example could
+        show</p>
+      <tagging whose="target_catalog">&lt;last-modified><hi>{ timestamp }</hi>&lt;/last-modified></tagging>
+      <p>This indicates the <tgt>last-modified</tgt> element should be produced with contents
+        generated appropriately, namely with an actual time stamp in this case, and not the string
+          <q>{ timestamp }</q>. In display, these values should also be shown with special
+        formatting as shown here.</p>
+      <p>Examples also indicate unspecified content using a simple <q> … </q> (elision) character,
+        typically for more verbose chunks of target data whose production is specified elsewhere in
+        the document.</p>
+    </section>
   </section>
   <section id="operational-context">
     <head>Operational context</head>
@@ -242,10 +259,10 @@
       <p> At its base, an OSCAL <src>profile</src> source produces a <tgt>catalog</tgt>:</p>
       <mapping unit-test="base-test_profile.xml">
         <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
-        <tagging whose="target_catalog">&lt;catalog id="{new-catalog-identifier}">
+        <tagging whose="target_catalog">&lt;catalog id="<hi>{ new-catalog-identifier }</hi>">
   &lt;metadata>[Required metadata, as described below]&lt;/metadata>
-  [ Controls or control groups, as described below ]
-  &lt;back-matter>[Optional back matter as described below]&lt;/back-matter>
+  <hi>{ controls or control groups, as described below }</hi>
+  &lt;back-matter><hi>{ back matter as described below }</hi>&lt;/back-matter>
 &lt;/catalog></tagging>
       </mapping>
       <p>A valid catalog must have <tgt>metadata</tgt> in addition to controls and control groups.
@@ -303,15 +320,90 @@
     </section>
     <section id="metadata-in-result">
       <head>Instance metadata</head>
-      <p><revisit>[XXX Rules for constructing or copying or modifying a metadata section for a
-          resolved profile]</revisit></p>
-      <tagging whose="target_catalog">&lt;title>{ profile title } RESOLUTION RESULT&lt;/title>
-&lt;last-modified>{ resolution date stamp }&lt;/last-modified>
-&lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
-&lt;prop name="catalog-title">{ imported catalog title }&lt;/prop>
-</tagging>
-      <p><revisit>BR concurs this is going in the right direction. But it needs more
-        work.</revisit></p>
+      <p>Metadata in the target is derived directly from the source metadata, with modifications.
+        All elements inside <src>metadata</src> in the source profile are copied in their native
+        order into the catalog. Additionally, new elements are introduced as described here.</p>
+      <p>Because of options in producing metadata and especially the requirement for a timestamp,
+        developers and users should note that two different resolutions of the same profile will
+        not, ordinarily, be identical inside <tgt>metadata</tgt>.</p>
+      <p><revisit>This has been worked, with changes suggested by DW, since BR's
+        review</revisit></p>
+      <section id="metadata-timestamp">
+        <head>Metadata resolution timestamp</head>
+        <mapping>
+          <p>A <tgt>prop</tgt> element with <tgt>name</tgt>
+            <q>resolution-timestamp</q> is added to the resolution target metadata with a valid
+            timestamp indicating the time of the resolution runtime. It must be placed into metadata
+            structure after any <tgt>title</tgt>, <tgt>published</tgt>, <tgt>last-modified</tgt>,
+              <tgt>version</tgt>, <tgt>oscal-version</tgt>, or <tgt>doc-id</tgt> elements, and
+            before any <tgt>prop</tgt><tgt>, link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or
+              <tgt>responsible-party</tgt> elements; i.e. the target is schema valid, and the new
+              <tgt>prop</tgt> is given before copies of <src>prop</src> elements already
+            present.</p>
+          <tagging whose="source_profile">&lt;metadata>
+  &lt;title>Example Profile&lt;/title>
+  &lt;last-modified>2019-06-30T10:54:16.372-05:00&lt;/last-modified>
+  &lt;prop name="status">NEW&lt;/prop>
+&lt;/metadata></tagging>
+          <tagging whose="target_catalog">&lt;metadata>
+  &lt;title>Example Profile&lt;/title>
+  &lt;last-modified>2019-06-30T10:54:16.372-05:00&lt;/last-modified>
+  &lt;prop name="resolution-timestamp"><hi>{ timestamp of profile resolution runtime }</hi>&lt;/last-modified>
+  &lt;prop name="status">NEW&lt;/prop>
+&lt;/metadata></tagging>
+          <p>The presence of this property with a valid timestamp may be taken as an indicator that
+            an OSCAL <src>catalog</src> has been produced by resolution of a <src>profile</src>.</p>
+        </mapping>
+        <p>Note that due to this provision, two different resolutions of the same profile produced
+          at different times will not be bit-equivalent, since their timestamps will be
+          different.</p>
+        <p><revisit>Any provision for systems that cannot provide a valid timestamp?</revisit></p>
+      </section>
+      <section id="metadata-link">
+        <head>Metadata link to source profile</head>
+        <mapping>
+          <p><revisit>Optionally</revisit>, a processor may add a link to the result<tgt>
+              metadata</tgt>. It must be placed into metadata structure after any <tgt>title</tgt>,
+              <tgt>published</tgt>, <tgt>last-modified</tgt>, <tgt>version</tgt>,
+              <tgt>oscal-version</tgt>, <tgt>doc-id</tgt> or <tgt>prop</tgt> elements, and before
+            any <tgt>link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or <tgt>responsible-party</tgt>
+            elements; i.e. the target is schema valid, and the new <tgt>link</tgt> is given before
+            copies of links already present.</p>
+          <p>The new link should have two flags (attributes):</p>
+          <ul>
+            <li>
+              <p><tgt>@rel</tgt> has the value <q>resolution-source</q></p>
+            </li>
+            <li>
+              <p><tgt>@href</tgt> provides a URL or URI address for the source profile</p>
+            </li>
+          </ul>
+          <tagging whose="source_profile">&lt;metadata>
+  &lt;title>Test profile&lt;/title>
+  &lt;last-modified>2019-12-03T11:36:32.284-05:00&lt;/last-modified>
+  &lt;version>1.0&lt;/version>
+  &lt;oscal-version>1.0-MR2&lt;/oscal-version>
+  &lt;party>
+    &lt;org>
+      &lt;org-name>Standing Committee&lt;/org-name>
+    &lt;/org>
+  &lt;/party>
+&lt;/metadata></tagging>
+          <tagging whose="target_catalog">&lt;metadata>
+  &lt;title>Test profile - RESOLUTION RESULT&lt;/title>
+  &lt;last-modified>2019-12-03T11:36:32.284-05:00&lt;/last-modified>
+  &lt;version>1.0&lt;/version>
+  &lt;oscal-version>1.0-MR2&lt;/oscal-version>
+  &lt;prop name="resolution-timestamp"><hi>{ timestamp of profile resolution runtime }</hi>&lt;/last-modified>
+  &lt;link rel="resolution-source" href="<hi>{ URI to resolution source data instance }</hi>">Test profile&lt;/link>
+  &lt;party>
+    &lt;org>
+      &lt;org-name>Standing Committee&lt;/org-name>
+    &lt;/org>
+  &lt;/party>
+&lt;/metadata></tagging>
+        </mapping>
+      </section>
     </section>
     <section id="body-of-result">
       <head>Body of the target</head>
@@ -446,9 +538,9 @@
 &lt;/profile>
 </tagging>
       <tagging whose="target_catalog">&lt;profile>
-  &lt;metadata>[ Profile metadata ]&lt;/metadata>
-  &lt;selection href="#catalog" catalog-id="{catalog-identifier}">... selection of controls ...&lt;/selection>
-  &lt;selection href="#catalog-supplemental" catalog-id="{catalog-identifier}">... selection of controls ...&lt;/selection>
+  &lt;metadata><hi>{ Profile metadata }</hi>&lt;/metadata>
+  &lt;selection href="#catalog" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ ... selection of controls … }</hi>&lt;/selection>
+  &lt;selection href="#catalog-supplemental" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ ... selection of controls … }</hi>&lt;/selection>
 &lt;/profile>
 </tagging>
       <p>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
@@ -1090,7 +1182,7 @@
     &lt;/selection>
 &lt;/profile></tagging>
             <tagging whose="target_catalog">&lt;catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    id="{catalog-id}">
+    id="<hi>{ catalog-id }</hi>">
     &lt;metadata> … &lt;/metadata>
     &lt;param id="p1"> … &lt;/param>
     &lt;param id="p2"> … &lt;/param>
@@ -1241,18 +1333,18 @@
     &lt;/merge>
 &lt;/profile></tagging>
               <tagging whose="target_catalog">&lt;catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    id="{new-catalog-identifier}">
+    id="<hi>{ new-catalog-identifier }</hi>">
     &lt;metadata> … &lt;/metadata>
     &lt;group>
         &lt;title>New Group I&lt;/title>
-        &lt;control id="a1"> ... control contents ... &lt;/control>
-        &lt;control id="b1"> ... control contents ... &lt;/control>
-        &lt;control id="c1"> ... control contents ... &lt;/control>
+        &lt;control id="a1"> … &lt;/control>
+        &lt;control id="b1"> … &lt;/control>
+        &lt;control id="c1"> … &lt;/control>
     &lt;/group>
     &lt;group>
         &lt;title>New Group II&lt;/title>
-        &lt;control id="b2"> ... control contents ... &lt;/control>
-        &lt;control id="c2"> ... control contents ... &lt;/control>
+        &lt;control id="b2"> … &lt;/control>
+        &lt;control id="c2"> … &lt;/control>
     &lt;/group>
 &lt;/profile></tagging>
               <p>In this example, control <code>a2</code> does <em>not</em> appear in the target
@@ -1296,16 +1388,16 @@
     &lt;/merge>
 &lt;/profile></tagging>
               <tagging whose="target_catalog">&lt;catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    id="{new-catalog-identifier}">
+    id="<hi>{ new-catalog-identifier }</hi>">
     &lt;metadata> … &lt;/metadata>
-    &lt;control id="b2"> ... control B2 contents ... &lt;/control>
-    &lt;control id="c2"> ... control C2 contents ... &lt;/control>
+    &lt;control id="b2"> … &lt;/control>
+    &lt;control id="c2"> … &lt;/control>
     &lt;group id="group1">
         &lt;title>New Grouping&lt;/title>
-        &lt;control id="a1"> ... control A1 contents ... &lt;/control>
-        &lt;control id="b1"> ... control B1 contents ... &lt;/control>
+        &lt;control id="a1"> … &lt;/control>
+        &lt;control id="b1"> … &lt;/control>
         &lt;group id="group2">
-          &lt;control id="c1"> ... control C2 contents ... &lt;/control>
+          &lt;control id="c1"> … &lt;/control>
         &lt;/group>
     &lt;/group>
 &lt;/profile></tagging>

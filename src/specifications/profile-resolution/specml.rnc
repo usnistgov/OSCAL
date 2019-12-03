@@ -10,21 +10,23 @@ head.elem    = element head { inline-mixed }
 
 misc         = (p.elem | ul.elem | div.elem | tagging.elem | cf.elem | mapping.elem)*
 
+blocks       = (p.elem | ul.elem)*
+
 p.elem       = element p { inline-mixed }
 
 ul.elem      = element ul { li.elem+ }
   
-li.elem      = element li { (p.elem | ul.elem )+ }
+li.elem      = element li { blocks+ }
 
 div.elem     = element div { head.elem?, misc }
 
-tagging.elem = element tagging { attribute whose { text }, text }
+tagging.elem = element tagging { attribute whose { text }, (text | hi | revisit)* }
 
 cf.elem = element cf { attribute file { text }?, empty }
 
 mapping.elem = element mapping {
                 attribute unit-test { text }?,
-                    head.elem?, (p.elem*, tagging.elem)*, p.elem* }
+                    head.elem?, (blocks*, tagging.elem)*, blocks* }
 
 section.elem = element section { attribute id { xsd:ID }?, head.elem, misc, section.elem* }
 
@@ -42,3 +44,5 @@ tgt     = element tgt     { text }
 xpath   = element xpath   { text }
 xref    = element xref    { attribute rid { dtd:IDREF }, empty }
 
+# hi combines em and strong inside tagging
+hi      = element hi      { text }

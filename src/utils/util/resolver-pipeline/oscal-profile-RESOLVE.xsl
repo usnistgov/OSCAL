@@ -31,10 +31,10 @@
     <xsl:variable name="transformation-sequence">
         <opr:transform version="2.0">oscal-profile-resolve-select.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-metadata.xsl</opr:transform>
-        <!--<opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
+        <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>
-        <opr:finalize/>-->
+        <!--<opr:finalize/>-->
     </xsl:variable>
 
     <!-- Entry point traps the root node of the source and passes it down the chain of transformation references -->
@@ -77,12 +77,14 @@
     <!-- The finalize step performs any last cleanup. -->
     <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
+        <xsl:message expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: finalize ...</xsl:message>
         <xsl:apply-templates select="$sourcedoc" mode="opr:finalize"/>
     </xsl:template>
     
     <!-- Not knowing any better, any other execution step passes through its source. -->
     <xsl:template mode="opr:execute" match="*">
         <xsl:param name="sourcedoc" as="document-node()"/>
+        <xsl:message expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: { name() } ...</xsl:message>
         <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
     

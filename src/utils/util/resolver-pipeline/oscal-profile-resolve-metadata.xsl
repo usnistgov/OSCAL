@@ -26,13 +26,20 @@
     </xsl:template>
     
     <xsl:template match="profile/metadata">
+        <xsl:variable name="leaders" select="(title | published | last-modified | version | oscal-version | doc-id)"/>
         <xsl:copy>
-            <xsl:apply-templates mode="#current" select="node() | @*"/>
+            <xsl:apply-templates mode="#current" select="@*"/>
+            <xsl:apply-templates mode="#current" select="$leaders"/>
+            <prop name="resolution-timestamp">
+                <xsl:value-of select="current-dateTime()"/>
+            </prop>
+            <xsl:apply-templates mode="#current" select="prop"/>
             <link href="{$source-uri}" rel="resolution-source">
                 <xsl:for-each select="title">
                     <xsl:apply-templates/>
                 </xsl:for-each>
             </link>
+            <xsl:apply-templates mode="#current" select="* except ($leaders | prop)"/>
             <!--<xsl:apply-templates select="../selection" mode="imported-metadata"/>-->
         </xsl:copy>
     </xsl:template>
@@ -44,18 +51,6 @@
         </resource>
     </xsl:template>-->
     
-    <xsl:template match="metadata/title">
-        <title>
-            <xsl:apply-templates/>
-            <xsl:text> - RESOLUTION RESULT</xsl:text>
-        </title>
-    </xsl:template>
-    
-    <xsl:template match="metadata/last-modified">
-        <last-modified>
-            <xsl:value-of select="current-dateTime()"/>
-        </last-modified>
-    </xsl:template>
     <xsl:template match="selection/metadata"/>
     
 </xsl:stylesheet>
