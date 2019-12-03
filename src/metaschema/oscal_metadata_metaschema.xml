@@ -144,9 +144,9 @@
       <formal-name>Publication Timestamp</formal-name>
       <description>The date and time this document was published.</description>
       <remarks>
-         <p>This value represents the point in time when the OSCAL document was published. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
-         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material. (The nominal publication date of the original source material can be captured as a named property or custom metadata construct.)</p>
-         <p>A publisher of OSCAL content can use this data point along with its sibling <code>last-modified</code> to establish commonality across OSCAL instances that are intended to be considered as successive <q>current versions</q> of a given publication.</p>
+         <p>This value represents the point in time when the OSCAL document was published, or in the case where the OSCAL document is derived from an authoritative source in a non-OSCAL format, the point in time when the source document was published. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
+         <p>For the case where the OSCAL document is derived from source material in a different format, the published (and version) metadata values reflects the source material; while the last-modified metadata value indicates the modification time of the OSCAL document rather than the source material.</p>
+         <p>A publisher of OSCAL content can use the published and version metadata values along with its sibling <code>last-modified</code> to establish commonality across OSCAL instances that are intended to be considered as successive <q>current versions</q> of a given publication.</p>
       </remarks>
    </define-field>
    <define-field name="last-modified" as-type="dateTime-with-timezone">
@@ -154,7 +154,7 @@
       <description>Date and time of last modification.</description>
       <remarks>
          <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
-         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified value should indicate the modification time of the OSCAL document rather than the source material.</p>
       </remarks>
    </define-field>
    <define-field name="version">
@@ -162,6 +162,7 @@
       <description>The version of the document content.</description>
       <remarks>
          <p>A string indicating the document's version, by release number, date, or other identifier. This version is typically set by the document owner or by the tool used to maintain the content.</p>
+         <p>For the case where the OSCAL document is derived from source material in a different format, the version (and published) metadata values reflects the source material; while the last-modified metadata value indicates the modification time of the OSCAL document rather than the source material.</p>
       </remarks>
    </define-field>
    <define-field name="oscal-version">
