@@ -78,7 +78,7 @@ while [ $# -gt 0 ]; do
       RUN_UNITTESTS=YES
       ;;
     --no-run-unittests)
-      PRUN_UNITTESTS=NO
+      RUN_UNITTESTS=NO
       ;;
     -w|--working-dir)
       WORKING_DIR="$(realpath "$2")"
