@@ -10,6 +10,7 @@ PERFORM_VALIDATION=YES
 PERFORM_CONTENT_GENERATION=YES
 PERFORM_SITE_GENERATION=NO
 PERFORM_CONTENT_CONVERSION=YES
+RUN_UNITTESTS=YES
 KEEP_TEMP_SCRATCH_DIR=false
 WORKING_DIR="${OSCALDIR}"
 VERBOSE=false
@@ -35,7 +36,9 @@ Run all build scripts
 --generate-site                   Generate all website content
 --no-generate-site                Do not generate all website content
 --convert-content                 Convert content to alternate formats
---no-convert-content              Do not convert content to alterbate formats
+--no-convert-content              Do not convert content to alternate formats
+--run-unittests                   Run unit tests
+--no-run-unittests                Do not run unit tests
 EOF
 }
 
@@ -70,6 +73,12 @@ while [ $# -gt 0 ]; do
       ;;
     --no-convert-content)
       PERFORM_CONTENT_CONVERSION=NO
+      ;;
+    --run-unittests)
+      RUN_UNITTESTS=YES
+      ;;
+    --no-run-unittests)
+      PRUN_UNITTESTS=NO
       ;;
     -w|--working-dir)
       WORKING_DIR="$(realpath "$2")"
@@ -133,6 +142,7 @@ if [ "$VERBOSE" = "true" ]; then
   echo "${P_INFO}Perform Content Generation:${P_END} ${PERFORM_CONTENT_GENERATION}"
   echo "${P_INFO}Perform Content Conversion:${P_END} ${PERFORM_CONTENT_CONVERSION}"
   echo "${P_INFO}Perform Site Generation:${P_END}    ${PERFORM_SITE_GENERATION}"
+  echo "${P_INFO}Run unit tests:${P_END}             ${RUN_UNITTESTS}"
 fi
 
 extra_args=$( IFS=" "; echo "${extra_params[*]}" )
@@ -180,5 +190,11 @@ if [ "$PERFORM_SITE_GENERATION" == "YES" ] && "${script_path}/generate-model-doc
   if [ $? -ne 0 ]; then
     echo "${P_ERROR}*** Failed to generate website schema model content${P_END}"
     exit 7
+  fi
+fi
+if [ "$RUN_UNITTESTS" == "YES" ] && "${script_path}/run-unittests.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to run all unit tests${P_END}"
+    exit 8
   fi
 fi
