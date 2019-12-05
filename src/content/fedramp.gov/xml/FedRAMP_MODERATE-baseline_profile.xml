@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Created: 5/16/2019 9:05:18 PM --><profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-87ae6162-8387-4418-8df2-c2673f73886c">
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-87ae6162-8387-4418-8df2-c2673f73886c">
 	<metadata>
 		<title>FedRAMP Moderate Baseline</title>
 		<published>2019-11-27T00:00:00.000-05:00</published>
