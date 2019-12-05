@@ -1314,7 +1314,7 @@
             <b>Import Component Definition</b>: Loads a component definition from another resource.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:attribute name="href" use="required" type="oscal-component:uri">
+         <xs:attribute name="href" use="required" type="oscal-component:uri-reference">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Hyperlink Reference</m:formal-name>
