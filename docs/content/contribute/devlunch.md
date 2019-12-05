@@ -3,9 +3,17 @@ title: Lunch with the Devs
 description: Contact Us
 ---
 
-{{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}
+{{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}Global
 
-{{% usa-tag %}}Meeting Info{{% /usa-tag %}} [Webex Details](https://nist-773-05.my.webex.com/nist-773-05.my/j.php?MTID=mc8a1cd181d1a5cdf769753c688a5aaf6) including a calender link (ICS file) and global call-in numbers.
+Note: We have had a change in the teleconferencing solution we are using for this meeting. We are switching from WebEx to Bluejeans. As a result, we have setup a single meeting for the Thursday, December 5th 2019 teleconference. Meeting info for the next teleconference on Thursday, December 19th, 2019 will be posted here in before that meeting. Please check back for updated details.
+
+{{% usa-tag %}}Meeting Info{{% /usa-tag %}} [Bluejeans Details](https://bluejeans.com/446080647) including a calender link (ICS file)
+{{% usa-tag %}}Call-in Numbers{{% /usa-tag %}}:
+
+> +1.408.317.9254 (US (San Jose))
+> +1.408.740.7256 (US (San Jose))
+> [Global Numbers](https://www.bluejeans.com/premium-numbers)
+
 {{% usa-tag %}}Who Can Attend{{% /usa-tag %}} Open to All Members of the Public
 {{% usa-tag %}}Format{{% /usa-tag %}} Question and Answer, Discussion
 
