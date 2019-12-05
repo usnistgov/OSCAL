@@ -455,6 +455,18 @@ jobs: # a collection of
           name: Package Release
           command: |
             bash "$CICD_DIR/package-release.sh" "$OSCAL_BUILD_DIR"
+  job-run-unittests:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - install-xmllint
+      - install-maven-dependencies
+      - run:
+          name: Run unit tests
+          command: |
+            bash "$CICD_DIR/run-unittests.sh" -w "$OSCAL_BUILD_DIR"
 workflows:
   version: 2
   build:
@@ -526,3 +538,6 @@ workflows:
           filters:
             branches:
               only: master
+      - job-run-unittests:
+          requires:
+            - job-generate-schema
