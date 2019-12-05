@@ -195,7 +195,7 @@
         "maxProperties" : 4 },
       "annotation" : 
       { "title" : "Annotation",
-        "description" : "A name/value pair with optional explanitory remarks.",
+        "description" : "A name/value pair with optional explanatory remarks.",
         "$id" : "#/definitions/annotation",
         "type" : "object",
         "properties" : 
@@ -995,7 +995,7 @@
         "properties" : 
         { "identifier-type" : 
           { "title" : "Identification System Type",
-            "description" : "Identifies the identifcation system from which the provided identifier was assigned.",
+            "description" : "Identifies the identification system from which the provided identifier was assigned.",
             "type" : "string",
             "format" : "uri" },
           "id" : 
@@ -1219,7 +1219,7 @@
           "fips-199-high" ] },
       "adjustment-justification" : 
       { "title" : "Adjustment Justification",
-        "description" : "If the selected security level is different from the base security level, this contains the justificaiton for the change.",
+        "description" : "If the selected security level is different from the base security level, this contains the justification for the change.",
         "$id" : "#/definitions/adjustment-justification",
         "type" : "string" },
       "security-impact-level" : 
@@ -1343,7 +1343,7 @@
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})?$" },
       "authorization-boundary" : 
       { "title" : "Authorization Boundary",
-        "description" : "A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.",
+        "description" : "A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.",
         "$id" : "#/definitions/authorization-boundary",
         "type" : "object",
         "properties" : 
@@ -1394,7 +1394,7 @@
         "additionalProperties" : false },
       "diagram" : 
       { "title" : "Diagram",
-        "description" : "A graphic that provides a visual represenation the system, or some aspect of it.",
+        "description" : "A graphic that provides a visual representation the system, or some aspect of it.",
         "$id" : "#/definitions/diagram",
         "type" : "object",
         "properties" : 
@@ -1430,7 +1430,7 @@
         "type" : "string" },
       "network-architecture" : 
       { "title" : "Network Architecture",
-        "description" : "A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.",
+        "description" : "A description of the system's network architecture, optionally supplemented by diagrams that illustrate the network architecture.",
         "$id" : "#/definitions/network-architecture",
         "type" : "object",
         "properties" : 
@@ -1481,7 +1481,7 @@
         "additionalProperties" : false },
       "data-flow" : 
       { "title" : "Data Flow",
-        "description" : "A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.",
+        "description" : "A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illustrate these flows.",
         "$id" : "#/definitions/data-flow",
         "type" : "object",
         "properties" : 
@@ -1969,7 +1969,7 @@
             "type" : "string" },
           "asset-id" : 
           { "title" : "Asset Identifier",
-            "description" : "Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.",
+            "description" : "Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.",
             "type" : "string" },
           "description" : 
           { "$ref" : "#/definitions/description" },

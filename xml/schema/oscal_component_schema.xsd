@@ -12,7 +12,7 @@
          <m:schema-version>1.0.0-milestone2</m:schema-version>
          <m:short-name>oscal-component</m:short-name>
          <m:remarks>
-            <m:p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <m:code>component</m:code> or a set of components grouped as a <m:code>capabiity</m:code>. A component can be either a <m:em>technical component</m:em>, or a <m:em>documentary component</m:em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, proceedure, or policy.</m:p>
+            <m:p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <m:code>component</m:code> or a set of components grouped as a <m:code>capability</m:code>. A component can be either a <m:em>technical component</m:em>, or a <m:em>documentary component</m:em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</m:p>
             <m:p>The root of the OSCAL Implementation Component format is <m:code>component-definition</m:code>.</m:p>
             <m:p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</m:p>
          </m:remarks>
@@ -326,10 +326,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Annotation</m:formal-name>
-            <m:description>A name/value pair with optional explanitory remarks.</m:description>
+            <m:description>A name/value pair with optional explanatory remarks.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Annotation</b>: A name/value pair with optional explanitory remarks.</xs:documentation>
+            <b>Annotation</b>: A name/value pair with optional explanatory remarks.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1151,10 +1151,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Specific Statement</m:formal-name>
-            <m:description>Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.</m:description>
+            <m:description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Specific Statement</b>: Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.</xs:documentation>
+            <b>Specific Statement</b>: Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1423,7 +1423,7 @@
                         </xs:enumeration>
                         <xs:enumeration value="policy"/>
                         <xs:enumeration value="process"/>
-                        <xs:enumeration value="proceedure"/>
+                        <xs:enumeration value="procedure"/>
                         <xs:enumeration value="plan"/>
                         <xs:enumeration value="guidance">
                            <xs:annotation>

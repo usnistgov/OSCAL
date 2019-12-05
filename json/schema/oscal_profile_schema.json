@@ -195,7 +195,7 @@
         "maxProperties" : 4 },
       "annotation" : 
       { "title" : "Annotation",
-        "description" : "A name/value pair with optional explanitory remarks.",
+        "description" : "A name/value pair with optional explanatory remarks.",
         "$id" : "#/definitions/annotation",
         "type" : "object",
         "properties" : 
