@@ -564,10 +564,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Annotation</m:formal-name>
-            <m:description>A name/value pair with optional explanitory remarks.</m:description>
+            <m:description>A name/value pair with optional explanatory remarks.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Annotation</b>: A name/value pair with optional explanitory remarks.</xs:documentation>
+            <b>Annotation</b>: A name/value pair with optional explanatory remarks.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

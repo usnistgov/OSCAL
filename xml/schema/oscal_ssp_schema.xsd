@@ -325,10 +325,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Annotation</m:formal-name>
-            <m:description>A name/value pair with optional explanitory remarks.</m:description>
+            <m:description>A name/value pair with optional explanatory remarks.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Annotation</b>: A name/value pair with optional explanitory remarks.</xs:documentation>
+            <b>Annotation</b>: A name/value pair with optional explanatory remarks.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1285,10 +1285,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Identification System Type</m:formal-name>
-                        <m:description>Identifies the identifcation system from which the provided identifier was assigned.</m:description>
+                        <m:description>Identifies the identification system from which the provided identifier was assigned.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Identification System Type</b>: Identifies the identifcation system from which the provided identifier was assigned.</xs:documentation>
+                        <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned.</xs:documentation>
                   </xs:annotation>
                   <xs:simpleType>
                      <xs:union memberTypes="oscal-ssp:uri">
@@ -1524,10 +1524,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Adjustment Justification</m:formal-name>
-                     <m:description>If the selected security level is different from the base security level, this contains the justificaiton for the change.</m:description>
+                     <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justificaiton for the change.</xs:documentation>
+                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
                   <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
@@ -1554,10 +1554,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Adjustment Justification</m:formal-name>
-                     <m:description>If the selected security level is different from the base security level, this contains the justificaiton for the change.</m:description>
+                     <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justificaiton for the change.</xs:documentation>
+                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
                   <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
@@ -1584,10 +1584,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Adjustment Justification</m:formal-name>
-                     <m:description>If the selected security level is different from the base security level, this contains the justificaiton for the change.</m:description>
+                     <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justificaiton for the change.</xs:documentation>
+                     <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
                   <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
@@ -1966,10 +1966,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Authorization Boundary</m:formal-name>
-            <m:description>A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.</m:description>
+            <m:description>A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Authorization Boundary</b>: A description of this system's authorization boundary, optionally supplemented by diagrams that illutrate the authorization boundary.</xs:documentation>
+            <b>Authorization Boundary</b>: A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2014,10 +2014,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Diagram</m:formal-name>
-            <m:description>A graphic that provides a visual represenation the system, or some aspect of it.</m:description>
+            <m:description>A graphic that provides a visual representation the system, or some aspect of it.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Diagram</b>: A graphic that provides a visual represenation the system, or some aspect of it.</xs:documentation>
+            <b>Diagram</b>: A graphic that provides a visual representation the system, or some aspect of it.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2080,10 +2080,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Network Architecture</m:formal-name>
-            <m:description>A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.</m:description>
+            <m:description>A description of the system's network architecture, optionally supplemented by diagrams that illustrate the network architecture.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Network Architecture</b>: A description of the system's network architecture, optionally supplemented by diagrams that illutrate the network architecture.</xs:documentation>
+            <b>Network Architecture</b>: A description of the system's network architecture, optionally supplemented by diagrams that illustrate the network architecture.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2128,10 +2128,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Data Flow</m:formal-name>
-            <m:description>A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.</m:description>
+            <m:description>A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illustrate these flows.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Data Flow</b>: A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illutrate these flows.</xs:documentation>
+            <b>Data Flow</b>: A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illustrate these flows.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2496,7 +2496,7 @@
                         </xs:enumeration>
                         <xs:enumeration value="policy"/>
                         <xs:enumeration value="process"/>
-                        <xs:enumeration value="proceedure"/>
+                        <xs:enumeration value="procedure"/>
                         <xs:enumeration value="plan"/>
                         <xs:enumeration value="guidance">
                            <xs:annotation>
@@ -2833,10 +2833,10 @@
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Asset Identifier</m:formal-name>
-                  <m:description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.</m:description>
+                  <m:description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Asset Identifier</b>: Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerabilty scanning tool.</xs:documentation>
+                  <b>Asset Identifier</b>: Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>

@@ -195,7 +195,7 @@
         "maxProperties" : 4 },
       "annotation" : 
       { "title" : "Annotation",
-        "description" : "A name/value pair with optional explanitory remarks.",
+        "description" : "A name/value pair with optional explanatory remarks.",
         "$id" : "#/definitions/annotation",
         "type" : "object",
         "properties" : 
@@ -850,7 +850,7 @@
         "type" : "string" },
       "only-statement" : 
       { "title" : "Specific Statement",
-        "description" : "Describes which specific statements are addressed by a requirement, by pointing to a speific requirement statement within a control.",
+        "description" : "Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.",
         "$id" : "#/definitions/only-statement",
         "type" : "object",
         "properties" : 

@@ -116,7 +116,7 @@
       <remarks>
          <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
         element.</p>
-         <p>The <code>href</code> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>citation</code> or <code>resource</code> in the document's <code>back-matter</code>. If a remote resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document conatining the link.</p>
+         <p>The <code>href</code> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>citation</code> or <code>resource</code> in the document's <code>back-matter</code>. If a remote resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document containing the link.</p>
          <p>To provide a cryptographic hash for a remote target resource, a local reference to a <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink</code>
             <code>hash</code> object.</p>
          <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a>
@@ -183,7 +183,7 @@
          </allowed-values>
       </flag>
       <remarks>
-         <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
+         <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistent location of <q>the same</q> or <q>another version</q> of the document.</p>
          <p>Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p>
       </remarks>
    </define-field>
@@ -224,7 +224,7 @@
    </define-field>
    <define-assembly name="annotation">
       <formal-name>Annotation</formal-name>
-      <description>A name/value pair with optional explanitory remarks.</description>
+      <description>A name/value pair with optional explanatory remarks.</description>
       <!-- TODO: Add support for this -->
 <!--      <json-value-key key-flag-name="name" value-flag-name="value" /> -->
       <flag ref="name" required="yes"/>
