@@ -4,29 +4,33 @@
     stylesheet="../../oscal-profile-resolve-modify.xsl">
     <x:scenario label="Base">
         <x:context>
-            <profile id="abc"/>
+            <catalog id="abc"/>
         </x:context>
         
         <x:expect label="profile becomes catalog">
-            <catalog id="abc-RESOLVED"/>
+            <catalog id="abc"/>
         </x:expect>
     </x:scenario>
-    <x:scenario label="Collapsing imports">
+    <x:scenario label="Simple property addition">
         <x:context>
-            <profile id="abc">
-                <catalog id="a123">
-                    <control id="a"><title>Control A</title></control>
-                </catalog>
-                <catalog id="b456">
-                    <control id="b"><title>Control B</title></control>
-                </catalog>
-            </profile>
+            <catalog id="abc">
+                <control id="a123"><title>Control A</title></control>
+                <modify>
+                    <alter control-id="a123">
+                        <add>
+                            <prop name="due_date">2020-02-20</prop>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
         </x:context>
         
-        <x:expect label="Imported catalogs are collapsed">
-            <catalog id="abc-RESOLVED">
-                <control id="a"><title>Control A</title></control>
-                <control id="b"><title>Control B</title></control>
+        <x:expect label="Adding the property to the front">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="due_date">2020-02-20</prop>
+                </control>
             </catalog>
         </x:expect>
     </x:scenario>

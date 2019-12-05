@@ -47,9 +47,15 @@
         <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
+            <xsl:variable name="merged-selections">
             <xsl:call-template name="o:merge-groups-asis">
                 <xsl:with-param name="merging" select="selection"/>
             </xsl:call-template>
+            </xsl:variable>
+            <!-- not copying the selection elements only their contents -->
+            <xsl:for-each select="$merged-selections/selection">
+                <xsl:sequence select="*"/>
+            </xsl:for-each>
             <!-- copying 'modify' unchanged through this transformation --> 
             <xsl:apply-templates select="modify"/>
         </catalog>

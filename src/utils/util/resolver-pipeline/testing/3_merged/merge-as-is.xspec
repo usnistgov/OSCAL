@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" stylesheet="../../oscal-profile-resolve-merge.xsl">
     <x:scenario label="Base">
         <x:context>
-            <catalog/>
+            <catalog id="zzz"/>
         </x:context>
 
         <x:expect label="root becomes root">
-            <catalog/>
+            <catalog id="zzz"/>
         </x:expect>
     </x:scenario>
     <x:scenario label="Single import, as-is merge">
@@ -42,7 +42,7 @@
         </x:context>
         <x:expect label="XYZ catalog with original grouping">
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
@@ -65,7 +65,6 @@
                             </control>
                         </control>
                     </group>
-                </selection>
             </catalog>
         </x:expect>
     </x:scenario>
@@ -115,34 +114,32 @@
         </x:context>
         <x:expect label="XYZ catalog merged, with some redundancy">
             <catalog>
-                <selection id="xyz-tiny_catalog">
-                    <group id="x">
-                        <title>Group X of XYZ</title>
-                        <control id="x1"><title>Control X1</title></control>
-                        <control id="x1"><title>Control X1</title></control>
-                        <control id="x2"><title>Control X2</title></control>
-                    </group>
-                    <group id="z">
-                        <title>Group Z of XYZ</title>
-                        <control id="z1"><title>Control Z1</title></control>
-                        <control id="z3"><title>Control Z3</title>
-                            <control id="z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
+                <group id="x">
+                    <title>Group X of XYZ</title>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="x2"><title>Control X2</title></control>
+                </group>
+                <group id="z">
+                    <title>Group Z of XYZ</title>
+                    <control id="z1"><title>Control Z1</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                         </control>
-                        <control id="z3"><title>Control Z3</title>
-                            <control id="z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
+                    </control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                         </control>
-                    </group>
-                    <group id="y">
-                        <title>Group Y of XYZ</title>
-                        <control id="y1"><title>Control Y1</title></control>
-                        <control id="y2"><title>Control Y2</title></control>
-                        <control id="y3"><title>Control Y3</title></control>
-                    </group>
-                </selection>
+                    </control>
+                </group>
+                <group id="y">
+                    <title>Group Y of XYZ</title>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="y3"><title>Control Y3</title></control>
+                </group>
             </catalog>
         </x:expect>
     </x:scenario>
@@ -202,44 +199,42 @@
         </x:context>
         <x:expect label="XYZ ugly merged, with extra redundancy">
             <catalog>
-                <selection id="xyz-tiny_catalog">
-                    <group id="x">
-                        <title>Group X of XYZ</title>
-                        <prop name="status">special</prop>
-                        <prop name="status">special</prop>
-                        <param id="param-x">
-                            <label>Param X</label>
-                            <constraint>no control</constraint>
-                        </param>
-                        <param id="param-x">
-                            <label>Param X</label>
-                            <constraint>some control</constraint>
-                        </param>
-                        <control id="x1"><title>Control X1</title></control>
-                        <control id="x1"><title>Control X1</title></control>
-                        <control id="x2"><title>Control X2</title></control>
-                    </group>
-                    <group id="z">
-                        <title>Group Z of XYZ</title>
-                        <control id="z1"><title>Control Z1</title></control>
-                        <control id="z3"><title>Control Z3</title>
-                            <control id="z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
+                <group id="x">
+                    <title>Group X of XYZ</title>
+                    <prop name="status">special</prop>
+                    <prop name="status">special</prop>
+                    <param id="param-x">
+                        <label>Param X</label>
+                        <constraint>no control</constraint>
+                    </param>
+                    <param id="param-x">
+                        <label>Param X</label>
+                        <constraint>some control</constraint>
+                    </param>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="x2"><title>Control X2</title></control>
+                </group>
+                <group id="z">
+                    <title>Group Z of XYZ</title>
+                    <control id="z1"><title>Control Z1</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                         </control>
-                        <control id="z3"><title>Control Z3</title>
-                            <control id="z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
+                    </control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                         </control>
-                    </group>
-                    <group id="y">
-                        <title>Group Y of XYZ</title>
-                        <control id="y1"><title>Control Y1</title></control>
-                        <control id="y2"><title>Control Y2</title></control>
-                        <control id="y3"><title>Control Y3</title></control>
-                    </group>
-                </selection>
+                    </control>
+                </group>
+                <group id="y">
+                    <title>Group Y of XYZ</title>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="y3"><title>Control Y3</title></control>
+                </group>
             </catalog>
         </x:expect>
     </x:scenario>
