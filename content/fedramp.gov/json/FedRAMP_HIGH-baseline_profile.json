@@ -3,9 +3,10 @@
     "id": "uuid-2d9e9fd6-b9dd-4ed2-be21-79d7c779942b",
     "metadata": {
       "title": "FedRAMP High Baseline",
-      "last-modified": "2019-10-01T11:04:14.081-04:00",
-      "version": "1.1",
-      "oscal-version": "1.0.0-milestone1",
+      "published": "2019-11-27T00:00:00.000-05:00",
+      "last-modified": "2019-11-25T10:00:00.000-05:00",
+      "version": "1.2",
+      "oscal-version": "1.0.0-milestone2",
       "roles": [
         {
           "id": "creator",
@@ -35,7 +36,7 @@
     },
     "imports": [
       {
-        "href": "../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml",
+        "href": "https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml",
         "include": {
           "id-selectors": [
             {
@@ -1305,17 +1306,17 @@
         }
       },
       {
-        "href": "FedRAMP_catalog.json",
+        "href": "https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/fedramp.gov/xml/FedRAMP_catalog.xml",
         "include": {
           "id-selectors": [
             {
-              "control-id": "ac-8-fr"
+              "control-id": "ac-8.fr"
             },
             {
-              "control-id": "ca-7-fr"
+              "control-id": "ca-7.fr"
             },
             {
-              "control-id": "sc-15-fr"
+              "control-id": "sc-15.fr"
             }
           ]
         }
@@ -2530,6 +2531,7 @@
           "control-id": "ac-2.3",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-2.3_smt",
             "parts": {
               "id": "ac-2.3_fr",
               "name": "item",
@@ -2550,6 +2552,7 @@
           "control-id": "ac-2.5",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-2.5_smt",
             "parts": {
               "id": "ac-2.5_fr",
               "name": "item",
@@ -2570,6 +2573,7 @@
           "control-id": "ac-2.9",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-2.9_smt",
             "parts": {
               "id": "ac-2.9_fr",
               "name": "item",
@@ -2590,6 +2594,7 @@
           "control-id": "ac-2.10",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-2.10_smt",
             "parts": {
               "id": "ac-2.10_fr",
               "name": "item",
@@ -2610,6 +2615,7 @@
           "control-id": "ac-2.12",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-2.12_smt",
             "parts": {
               "id": "ac-2.12_fr",
               "name": "item",
@@ -2640,6 +2646,7 @@
           "control-id": "ac-5",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-5_smt",
             "parts": {
               "id": "ac-5_fr",
               "name": "item",
@@ -2660,6 +2667,7 @@
           "control-id": "ac-6.2",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-6.2_smt",
             "parts": {
               "id": "ac-6.2_fr",
               "name": "item",
@@ -2680,6 +2688,7 @@
           "control-id": "ac-8",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-8_smt",
             "parts": {
               "id": "ac-8_fr",
               "name": "item",
@@ -2718,6 +2727,7 @@
           "control-id": "ac-12.1",
           "additions": {
             "position": "ending",
+            "id-ref": "ac-12.1_smt",
             "parts": {
               "id": "ac-12.1_fr",
               "name": "item",
@@ -2738,6 +2748,7 @@
           "control-id": "au-2",
           "additions": {
             "position": "ending",
+            "id-ref": "au-2_smt",
             "parts": {
               "id": "au-2_fr",
               "name": "item",
@@ -2758,6 +2769,7 @@
           "control-id": "au-2.3",
           "additions": {
             "position": "ending",
+            "id-ref": "au-2.3_smt",
             "parts": {
               "id": "au-2.3_fr",
               "name": "item",
@@ -2778,6 +2790,7 @@
           "control-id": "au-3.1",
           "additions": {
             "position": "ending",
+            "id-ref": "au-3.1_smt",
             "parts": {
               "id": "au-3.1_fr",
               "name": "item",
@@ -2808,6 +2821,7 @@
           "control-id": "au-6",
           "additions": {
             "position": "ending",
+            "id-ref": "au-6_smt",
             "parts": {
               "id": "au-6_fr",
               "name": "item",
@@ -2828,6 +2842,7 @@
           "control-id": "au-6.6",
           "additions": {
             "position": "ending",
+            "id-ref": "au-6.6_smt",
             "parts": {
               "id": "au-6.6_fr",
               "name": "item",
@@ -2848,6 +2863,7 @@
           "control-id": "au-8.1",
           "additions": {
             "position": "ending",
+            "id-ref": "au-8.1_smt",
             "parts": {
               "id": "au-8.1_fr",
               "name": "item",
@@ -2886,6 +2902,7 @@
           "control-id": "au-11",
           "additions": {
             "position": "ending",
+            "id-ref": "au-11_smt",
             "parts": {
               "id": "au-11_fr",
               "name": "item",
@@ -2906,6 +2923,7 @@
           "control-id": "ca-2",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-2_smt",
             "parts": {
               "id": "ca-2_fr",
               "name": "item",
@@ -2926,6 +2944,7 @@
           "control-id": "ca-2.1",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-2.1_smt",
             "parts": {
               "id": "ca-2.1_fr",
               "name": "item",
@@ -2946,6 +2965,7 @@
           "control-id": "ca-2.2",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-2.2_smt",
             "parts": {
               "id": "ca-2.2_fr",
               "name": "item",
@@ -2966,6 +2986,7 @@
           "control-id": "ca-3.3",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-3.3_smt",
             "parts": {
               "id": "ca-3.3_fr",
               "name": "item",
@@ -2986,6 +3007,7 @@
           "control-id": "ca-3.5",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-3.5_smt",
             "parts": {
               "id": "ca-3.5_fr",
               "name": "item",
@@ -3006,6 +3028,7 @@
           "control-id": "ca-5",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-5_smt",
             "parts": {
               "id": "ca-5_fr",
               "name": "item",
@@ -3036,6 +3059,7 @@
           "control-id": "ca-6",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-6_smt",
             "parts": {
               "id": "ca-6_fr",
               "name": "item",
@@ -3056,6 +3080,7 @@
           "control-id": "ca-7",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-7_smt",
             "parts": {
               "id": "ca-7_fr",
               "name": "item",
@@ -3094,6 +3119,7 @@
           "control-id": "ca-8",
           "additions": {
             "position": "ending",
+            "id-ref": "ca-8_smt",
             "parts": {
               "id": "ca-8_fr",
               "name": "item",
@@ -3114,6 +3140,7 @@
           "control-id": "cm-2.1",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-2.1_smt",
             "parts": {
               "id": "cm-2.1_fr",
               "name": "item",
@@ -3134,6 +3161,7 @@
           "control-id": "cm-3",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-3_smt",
             "parts": {
               "id": "cm-3_fr",
               "name": "item",
@@ -3164,6 +3192,7 @@
           "control-id": "cm-5.3",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-5.3_smt",
             "parts": {
               "id": "cm-5.3_fr",
               "name": "item",
@@ -3184,6 +3213,7 @@
           "control-id": "cm-6",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-6_smt",
             "parts": {
               "id": "cm-6_fr",
               "name": "item",
@@ -3222,6 +3252,7 @@
           "control-id": "cm-7",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-7_smt",
             "parts": {
               "id": "cm-7_fr",
               "name": "item",
@@ -3252,6 +3283,7 @@
           "control-id": "cm-7.2",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-7.2_smt",
             "parts": {
               "id": "cm-7.2_fr",
               "name": "item",
@@ -3272,6 +3304,7 @@
           "control-id": "cm-8",
           "additions": {
             "position": "ending",
+            "id-ref": "cm-8_smt",
             "parts": {
               "id": "cm-8_fr",
               "name": "item",
@@ -3292,6 +3325,7 @@
           "control-id": "cp-2",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-2_smt",
             "parts": {
               "id": "cp-2_fr",
               "name": "item",
@@ -3312,6 +3346,7 @@
           "control-id": "cp-4",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-4_smt",
             "parts": {
               "id": "cp-4_fr",
               "name": "item",
@@ -3332,6 +3367,7 @@
           "control-id": "cp-7",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-7_smt",
             "parts": {
               "id": "cp-7_fr",
               "name": "item",
@@ -3352,6 +3388,7 @@
           "control-id": "cp-7.1",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-7.1_smt",
             "parts": {
               "id": "cp-7.1_fr",
               "name": "item",
@@ -3372,6 +3409,7 @@
           "control-id": "cp-8",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-8_smt",
             "parts": {
               "id": "cp-8_fr",
               "name": "item",
@@ -3392,6 +3430,7 @@
           "control-id": "cp-9",
           "additions": {
             "position": "ending",
+            "id-ref": "cp-9_smt",
             "parts": {
               "id": "cp-9_fr",
               "name": "item",
@@ -3438,6 +3477,7 @@
           "control-id": "ia-2.11",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-2.11_smt",
             "parts": {
               "id": "ia-2.11_fr",
               "name": "item",
@@ -3458,6 +3498,7 @@
           "control-id": "ia-2.12",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-2.12_smt",
             "parts": {
               "id": "ia-2.12_fr",
               "name": "item",
@@ -3478,6 +3519,7 @@
           "control-id": "ia-4",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-4_smt",
             "parts": {
               "id": "ia-4_fr",
               "name": "item",
@@ -3508,6 +3550,7 @@
           "control-id": "ia-5",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-5_smt",
             "parts": {
               "id": "ia-5_fr",
               "name": "item",
@@ -3528,6 +3571,7 @@
           "control-id": "ia-5.1",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-5.1_smt",
             "parts": {
               "id": "ia-5.1_fr",
               "name": "item",
@@ -3548,6 +3592,7 @@
           "control-id": "ia-5.4",
           "additions": {
             "position": "ending",
+            "id-ref": "ia-5.4_smt",
             "parts": {
               "id": "ia-5.4_fr",
               "name": "item",
@@ -3568,6 +3613,7 @@
           "control-id": "ir-3",
           "additions": {
             "position": "ending",
+            "id-ref": "ir-3_smt",
             "parts": {
               "id": "ir-3_fr",
               "name": "item",
@@ -3588,6 +3634,7 @@
           "control-id": "ir-4",
           "additions": {
             "position": "ending",
+            "id-ref": "ir-4_smt",
             "parts": {
               "id": "ir-4_fr",
               "name": "item",
@@ -3608,6 +3655,7 @@
           "control-id": "ir-6",
           "additions": {
             "position": "ending",
+            "id-ref": "ir-6_smt",
             "parts": {
               "id": "ir-6_fr",
               "name": "item",
@@ -3628,6 +3676,7 @@
           "control-id": "ir-8",
           "additions": {
             "position": "ending",
+            "id-ref": "ir-8_smt",
             "parts": {
               "id": "ir-8_fr",
               "name": "item",
@@ -3658,6 +3707,7 @@
           "control-id": "mp-3",
           "additions": {
             "position": "ending",
+            "id-ref": "mp-3_smt",
             "parts": {
               "id": "mp-3_fr",
               "name": "item",
@@ -3678,6 +3728,7 @@
           "control-id": "mp-4",
           "additions": {
             "position": "ending",
+            "id-ref": "mp-4_smt",
             "parts": {
               "id": "mp-4_fr",
               "name": "item",
@@ -3698,6 +3749,7 @@
           "control-id": "mp-5",
           "additions": {
             "position": "ending",
+            "id-ref": "mp-5_smt",
             "parts": {
               "id": "mp-5_fr",
               "name": "item",
@@ -3718,6 +3770,7 @@
           "control-id": "mp-6.2",
           "additions": {
             "position": "ending",
+            "id-ref": "mp-6.2_smt",
             "parts": {
               "id": "mp-6.2_fr",
               "name": "item",
@@ -3738,6 +3791,7 @@
           "control-id": "pe-14",
           "additions": {
             "position": "ending",
+            "id-ref": "pe-14_smt",
             "parts": {
               "id": "pe-14_fr",
               "name": "item",
@@ -3758,6 +3812,7 @@
           "control-id": "pl-8",
           "additions": {
             "position": "ending",
+            "id-ref": "pl-8_smt",
             "parts": {
               "id": "pl-8_fr",
               "name": "item",
@@ -3778,6 +3833,7 @@
           "control-id": "ra-3",
           "additions": {
             "position": "ending",
+            "id-ref": "ra-3_smt",
             "parts": {
               "id": "ra-3_fr",
               "name": "item",
@@ -3807,6 +3863,7 @@
         {
           "control-id": "ra-5",
           "additions": {
+            "id-ref": "ra-5_smt",
             "parts": [
               {
                 "id": "ra-5_fr_smt.a",
@@ -3847,6 +3904,7 @@
           "control-id": "ra-5.6",
           "additions": {
             "position": "ending",
+            "id-ref": "ra-5.6_smt",
             "parts": {
               "id": "ra-5.6_fr",
               "name": "item",
@@ -3867,6 +3925,7 @@
           "control-id": "ra-5.8",
           "additions": {
             "position": "ending",
+            "id-ref": "ra-5.8_smt",
             "parts": {
               "id": "ra-5.8_fr",
               "name": "item",
@@ -3897,6 +3956,7 @@
           "control-id": "ra-5.10",
           "additions": {
             "position": "ending",
+            "id-ref": "ra-5.10_smt",
             "parts": {
               "id": "ra-5.10_fr",
               "name": "item",
@@ -3917,6 +3977,7 @@
           "control-id": "sa-4",
           "additions": {
             "position": "ending",
+            "id-ref": "sa-4_smt",
             "parts": {
               "id": "sa-4_fr",
               "name": "item",
@@ -3937,6 +3998,7 @@
           "control-id": "sa-4.8",
           "additions": {
             "position": "ending",
+            "id-ref": "sa-4.8_smt",
             "parts": {
               "id": "sa-4.8_fr",
               "name": "item",
@@ -3957,6 +4019,7 @@
           "control-id": "sa-10",
           "additions": {
             "position": "ending",
+            "id-ref": "sa-10_smt",
             "parts": {
               "id": "sa-10_fr",
               "name": "item",
@@ -3977,6 +4040,7 @@
           "control-id": "sa-11.1",
           "additions": {
             "position": "ending",
+            "id-ref": "sa-11.1_smt",
             "parts": {
               "id": "sa-11.1_fr",
               "name": "item",
@@ -3997,6 +4061,7 @@
           "control-id": "sa-11.8",
           "additions": {
             "position": "ending",
+            "id-ref": "sa-11.8_smt",
             "parts": {
               "id": "sa-11.8_fr",
               "name": "item",
@@ -4017,6 +4082,7 @@
           "control-id": "sc-7.13",
           "additions": {
             "position": "ending",
+            "id-ref": "sc-7.13_smt",
             "parts": {
               "id": "sc-7.13_fr",
               "name": "item",
@@ -4047,6 +4113,7 @@
           "control-id": "sc-12",
           "additions": {
             "position": "ending",
+            "id-ref": "sc-12_smt",
             "parts": {
               "id": "sc-12_fr",
               "name": "item",
@@ -4067,6 +4134,7 @@
           "control-id": "sc-15",
           "additions": {
             "position": "ending",
+            "id-ref": "sc-15_smt",
             "parts": {
               "id": "sc-15_fr",
               "name": "item",
@@ -4087,6 +4155,7 @@
           "control-id": "sc-28",
           "additions": {
             "position": "ending",
+            "id-ref": "sc-28_smt",
             "parts": {
               "id": "sc-28_fr",
               "name": "item",
@@ -4107,6 +4176,7 @@
           "control-id": "si-4",
           "additions": {
             "position": "ending",
+            "id-ref": "si-4_smt",
             "parts": {
               "id": "si-4_fr",
               "name": "item",
@@ -4127,6 +4197,7 @@
           "control-id": "si-4.5",
           "additions": {
             "position": "ending",
+            "id-ref": "si-4.5_smt",
             "parts": {
               "id": "si-4.5_fr",
               "name": "item",

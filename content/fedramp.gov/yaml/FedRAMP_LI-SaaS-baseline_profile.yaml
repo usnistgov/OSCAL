@@ -2,9 +2,10 @@ profile:
   id:       uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304
   metadata: 
     title:               FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline
-    last-modified:       2019-10-01T11:05:07.595-04:00
-    version:             1.0
-    oscal-version:       1.0.0-milestone1
+    published:           2019-11-27T00:00:00.000-05:00
+    last-modified:       2019-11-24T10:00:00.000-05:00
+    version:             1.2
+    oscal-version:       1.0.0-milestone2
     roles: 
       id:    author
       title: Author
@@ -406,6 +407,11 @@ profile:
     alterations: 
       - 
         control-id: ac-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -429,6 +435,10 @@ profile:
             id-ref: ac-2_smt.j
           - 
             id-ref: ac-2_smt.k
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -448,6 +458,11 @@ profile:
               prose:      Parts (b), (c), (d), (e), (i), (j), and (k) are excluded from FedRAMP Tailored for LI-SaaS.
       - 
         control-id: ac-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -456,6 +471,11 @@ profile:
             assess: 
       - 
         control-id: ac-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -474,6 +494,11 @@ profile:
             prose: NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication.
       - 
         control-id: ac-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -487,6 +512,11 @@ profile:
             prose: FED - This is related to agency data and agency policy solution.
       - 
         control-id: ac-14
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -500,6 +530,11 @@ profile:
             prose: FED - This is related to agency data and agency policy solution.
       - 
         control-id: ac-17
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -508,6 +543,11 @@ profile:
             assess: 
       - 
         control-id: ac-18
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -521,6 +561,11 @@ profile:
             prose: NSO - All access to Cloud SaaS are via web services and/or API.  The device accessed from or whether via wired or wireless connection is out of scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2[1]).
       - 
         control-id: ac-19
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -534,6 +579,11 @@ profile:
             prose: NSO - All access to Cloud SaaS are via web service and/or API.  The device accessed from is out of the scope.  Regardless of device accessed from, must utilize approved remote access methods (AC-17), secure communication with strong encryption (SC-13), key management (SC-12), and multi-factor authentication for privileged access (IA-2 [1]).
       - 
         control-id: ac-20
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -542,6 +592,11 @@ profile:
             attest: 
       - 
         control-id: ac-22
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -550,6 +605,11 @@ profile:
             assess: 
       - 
         control-id: at-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -558,6 +618,11 @@ profile:
             attest: 
       - 
         control-id: at-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -566,6 +631,11 @@ profile:
             attest: 
       - 
         control-id: at-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -574,6 +644,11 @@ profile:
             attest: 
       - 
         control-id: at-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -582,6 +657,11 @@ profile:
             attest: 
       - 
         control-id: au-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -590,6 +670,11 @@ profile:
             attest: 
       - 
         control-id: au-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -598,6 +683,11 @@ profile:
             attest: 
       - 
         control-id: au-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -606,6 +696,11 @@ profile:
             assess: 
       - 
         control-id: au-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -619,6 +714,11 @@ profile:
             prose: NSO - Loss of availability of the audit data has been determined to have little or no impact to government business/mission needs.
       - 
         control-id: au-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -627,6 +727,11 @@ profile:
             assess: 
       - 
         control-id: au-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -635,6 +740,11 @@ profile:
             assess: 
       - 
         control-id: au-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -643,6 +753,11 @@ profile:
             attest: 
       - 
         control-id: au-9
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -651,6 +766,11 @@ profile:
             attest: 
       - 
         control-id: au-11
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -664,6 +784,11 @@ profile:
             prose: NSO - Loss of availability of the audit data has been determined as little or no impact to government business/mission needs.
       - 
         control-id: au-12
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -672,6 +797,11 @@ profile:
             attest: 
       - 
         control-id: ca-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -680,6 +810,11 @@ profile:
             attest: 
       - 
         control-id: ca-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -699,6 +834,11 @@ profile:
               prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
       - 
         control-id: ca-2.1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -707,6 +847,11 @@ profile:
             attest: 
       - 
         control-id: ca-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -727,6 +872,11 @@ profile:
               """
       - 
         control-id: ca-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -740,6 +890,11 @@ profile:
             prose: Attestation - for compliance with FedRAMP Tailored LI-SaaS Continuous Monitoring Requirements.
       - 
         control-id: ca-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -759,6 +914,11 @@ profile:
               prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the Authorizing Official.
       - 
         control-id: ca-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -785,6 +945,11 @@ profile:
                 prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
       - 
         control-id: ca-9
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -805,6 +970,11 @@ profile:
               """
       - 
         control-id: cm-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -813,6 +983,11 @@ profile:
             attest: 
       - 
         control-id: cm-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -821,6 +996,11 @@ profile:
             attest: 
       - 
         control-id: cm-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -829,6 +1009,11 @@ profile:
             assess: 
       - 
         control-id: cm-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -867,6 +1052,11 @@ profile:
                   prose:      Information on the USGCB checklists can be found at: [https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline](https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline).
       - 
         control-id: cm-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -875,6 +1065,11 @@ profile:
             attest: 
       - 
         control-id: cm-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -894,6 +1089,11 @@ profile:
               prose:      Must be provided at least monthly or when there is a change.
       - 
         control-id: cm-10
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -907,6 +1107,11 @@ profile:
             prose: NSO- Not directly related to protection of the data.
       - 
         control-id: cm-11
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -920,6 +1125,11 @@ profile:
             prose: NSO - Boundary is specific to SaaS environment; all access is via web services; users' machine or internal network are not contemplated.  External services (SA-9), internal connection (CA-9), remote access (AC-17), and secure access (SC-12 and SC-13), and privileged authentication (IA-2[1]) are considerations.
       - 
         control-id: cp-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -928,6 +1138,11 @@ profile:
             attest: 
       - 
         control-id: cp-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -941,6 +1156,11 @@ profile:
             prose: NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.
       - 
         control-id: cp-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -954,6 +1174,11 @@ profile:
             prose: NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.
       - 
         control-id: cp-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -967,6 +1192,11 @@ profile:
             prose: NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.
       - 
         control-id: cp-9
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1005,6 +1235,11 @@ profile:
                 prose:      The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).
       - 
         control-id: cp-10
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1018,6 +1253,11 @@ profile:
             prose: NSO - Loss of availability of the SaaS has been determined as little or no impact to government business/mission needs.
       - 
         control-id: ia-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1026,6 +1266,11 @@ profile:
             attest: 
       - 
         control-id: ia-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1044,6 +1289,11 @@ profile:
             prose: NSO for non-privileged users. Attestation for privileged users related to multi-factor identification and authentication - specifically include description of management of service accounts.
       - 
         control-id: ia-2.1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1052,6 +1302,11 @@ profile:
             assess: 
       - 
         control-id: ia-2.12
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1077,6 +1332,11 @@ profile:
                 prose:      Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.
       - 
         control-id: ia-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1085,6 +1345,11 @@ profile:
             attest: 
       - 
         control-id: ia-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1093,6 +1358,11 @@ profile:
             attest: 
       - 
         control-id: ia-5.1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1101,6 +1371,11 @@ profile:
             attest: 
       - 
         control-id: ia-5.11
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1119,6 +1394,11 @@ profile:
             prose: FED - for Federal privileged users. Condition - Must document and assess for privileged users. May attest to this control for non-privileged users.
       - 
         control-id: ia-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1127,6 +1407,11 @@ profile:
             assess: 
       - 
         control-id: ia-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1135,6 +1420,11 @@ profile:
             attest: 
       - 
         control-id: ia-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1143,6 +1433,11 @@ profile:
             attest: 
       - 
         control-id: ia-8.1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1156,6 +1451,11 @@ profile:
             prose: Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.
       - 
         control-id: ia-8.2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1169,6 +1469,11 @@ profile:
             prose: Condition: Must document and assess for privileged users. May attest to this control for non-privileged users. FedRAMP requires a minimum of multi-factor authentication for all Federal privileged users, if acceptance of PIV credentials is not supported.  The implementation status and details of how this control is implemented must be clearly defined by the CSP.
       - 
         control-id: ia-8.3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1177,6 +1482,11 @@ profile:
             attest: 
       - 
         control-id: ia-8.4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1185,6 +1495,11 @@ profile:
             attest: 
       - 
         control-id: ir-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1193,6 +1508,11 @@ profile:
             attest: 
       - 
         control-id: ir-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1201,6 +1521,11 @@ profile:
             attest: 
       - 
         control-id: ir-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1220,6 +1545,11 @@ profile:
               prose:      The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.
       - 
         control-id: ir-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1228,6 +1558,11 @@ profile:
             attest: 
       - 
         control-id: ir-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1247,6 +1582,11 @@ profile:
               prose:      Report security incident information according to FedRAMP Incident Communications Procedure.
       - 
         control-id: ir-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1255,6 +1595,11 @@ profile:
             attest: 
       - 
         control-id: ir-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1268,6 +1613,11 @@ profile:
             prose: Attestation - Specifically attest to US-CERT compliance.
       - 
         control-id: ir-9
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1281,6 +1631,11 @@ profile:
             prose: Attestation - Specifically describe information spillage response processes.
       - 
         control-id: ma-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1289,6 +1644,11 @@ profile:
             attest: 
       - 
         control-id: ma-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1302,6 +1662,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: ma-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1310,6 +1675,11 @@ profile:
             attest: 
       - 
         control-id: ma-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1323,6 +1693,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: mp-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1331,6 +1706,11 @@ profile:
             attest: 
       - 
         control-id: mp-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1344,6 +1724,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: mp-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1357,6 +1742,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: mp-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1370,6 +1760,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1378,6 +1773,11 @@ profile:
             attest: 
       - 
         control-id: pe-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1391,6 +1791,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1404,6 +1809,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1417,6 +1827,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1430,6 +1845,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-12
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1443,6 +1863,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-13
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1456,6 +1881,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-14
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1481,6 +1911,11 @@ profile:
                 prose:      The service provider measures temperature at server inlets and humidity levels by dew point.
       - 
         control-id: pe-15
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1494,6 +1929,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pe-16
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1507,6 +1947,11 @@ profile:
             prose: Condition: Control is not inherited from a FedRAMP-authorized PaaS or IaaS.
       - 
         control-id: pl-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1515,6 +1960,11 @@ profile:
             attest: 
       - 
         control-id: pl-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1523,6 +1973,11 @@ profile:
             assess: 
       - 
         control-id: pl-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1531,6 +1986,11 @@ profile:
             attest: 
       - 
         control-id: ps-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1539,6 +1999,11 @@ profile:
             attest: 
       - 
         control-id: ps-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1547,6 +2012,11 @@ profile:
             fed:   
       - 
         control-id: ps-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1555,6 +2025,11 @@ profile:
             assess: 
       - 
         control-id: ps-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1563,6 +2038,11 @@ profile:
             attest: 
       - 
         control-id: ps-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1571,6 +2051,11 @@ profile:
             attest: 
       - 
         control-id: ps-6
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1579,6 +2064,11 @@ profile:
             attest: 
       - 
         control-id: ps-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1592,6 +2082,11 @@ profile:
             prose: Attestation - Specifically stating that any third-party security personnel are treated as CSP employees.
       - 
         control-id: ps-8
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1600,6 +2095,11 @@ profile:
             attest: 
       - 
         control-id: ra-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1608,6 +2108,11 @@ profile:
             attest: 
       - 
         control-id: ra-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1616,6 +2121,11 @@ profile:
             assess: 
       - 
         control-id: ra-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1642,6 +2152,11 @@ profile:
                 prose:      Include all Authorizing Officials; for JAB authorizations to include FedRAMP.
       - 
         control-id: ra-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           properties: 
             ns:     fedramp
@@ -1675,6 +2190,11 @@ profile:
                 prose:      **See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements** ([https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/))
       - 
         control-id: sa-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1683,6 +2203,11 @@ profile:
             attest: 
       - 
         control-id: sa-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1691,6 +2216,11 @@ profile:
             attest: 
       - 
         control-id: sa-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1699,6 +2229,11 @@ profile:
             attest: 
       - 
         control-id: sa-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1707,6 +2242,11 @@ profile:
             attest: 
       - 
         control-id: sa-4.10
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1715,6 +2255,11 @@ profile:
             attest: 
       - 
         control-id: sa-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1723,6 +2268,11 @@ profile:
             attest: 
       - 
         control-id: sa-9
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1731,6 +2281,11 @@ profile:
             assess: 
       - 
         control-id: sc-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1739,6 +2294,11 @@ profile:
             attest: 
       - 
         control-id: sc-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1752,6 +2312,11 @@ profile:
             prose: Condition: If availability is a requirement, define protections in place as per control requirement.
       - 
         control-id: sc-7
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1760,6 +2325,11 @@ profile:
             assess: 
       - 
         control-id: sc-12
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1779,6 +2349,11 @@ profile:
               prose:      Federally approved cryptography.
       - 
         control-id: sc-13
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1792,6 +2367,11 @@ profile:
             prose: Condition: If implementing need to detail how they meet it or don't meet it.
       - 
         control-id: sc-15
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1805,6 +2385,11 @@ profile:
             prose: NSO - Not directly related to the security of the SaaS.
       - 
         control-id: sc-20
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1813,6 +2398,11 @@ profile:
             attest: 
       - 
         control-id: sc-21
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1821,6 +2411,11 @@ profile:
             attest: 
       - 
         control-id: sc-22
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1829,6 +2424,11 @@ profile:
             attest: 
       - 
         control-id: sc-39
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1837,6 +2437,11 @@ profile:
             attest: 
       - 
         control-id: si-1
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1845,6 +2450,11 @@ profile:
             attest: 
       - 
         control-id: si-2
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1853,6 +2463,11 @@ profile:
             assess: 
       - 
         control-id: si-3
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1861,6 +2476,11 @@ profile:
             assess: 
       - 
         control-id: si-4
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1869,6 +2489,11 @@ profile:
             assess: 
       - 
         control-id: si-5
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 
@@ -1877,6 +2502,11 @@ profile:
             attest: 
       - 
         control-id: si-12
+        removals: 
+          - 
+            name-ref: objective
+          - 
+            name-ref: assessment
         additions: 
           position:   ending
           properties: 

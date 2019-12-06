@@ -1,10 +1,11 @@
 catalog: 
-  id:       92c23cad-101c-4746-a372-0451b2b656a6
+  id:       4045631f-a7f3-48b7-9228-052cb2a2e8fe
   metadata: 
-    title:               FedRAMP High Baseline
-    last-modified:       2019-10-01T11:04:14.081-04:00
-    version:             1.1
-    oscal-version:       1.0.0-milestone1
+    title:               FedRAMP High Baseline [RESOLVED]
+    published:           2019-11-27T00:00:00.000-05:00
+    last-modified:       2019-11-25T21:19:31.000000-05:00
+    version:             1.2
+    oscal-version:       1.0.0-milestone2
     roles: 
       - 
         id:    creator
@@ -890,6 +891,17 @@ catalog:
                   id:    ac-2.3_smt
                   name:  statement
                   prose: The information system automatically disables inactive accounts after {{ ac-2.3_prm_1 }}.
+                  parts: 
+                    id:    ac-2.3_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-2 (3) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-2.3_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.
                 - 
                   id:    ac-2.3_obj
                   name:  objective
@@ -928,17 +940,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing account management functions
-                - 
-                  id:    ac-2.3_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-2 (3) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ac-2.3_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.
             - 
               id:         ac-2.4
               class:      SP800-53-enhancement
@@ -1126,6 +1127,17 @@ catalog:
                   id:    ac-2.5_smt
                   name:  statement
                   prose: The organization requires that users log out when {{ ac-2.5_prm_1 }}.
+                  parts: 
+                    id:    ac-2.5_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-2 (5) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-2.5_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Should use a shorter timeframe than AC-12.
                 - 
                   id:    ac-2.5_gdn
                   name:  guidance
@@ -1164,17 +1176,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational personnel with account management responsibilities\n\nsystem/network administrators\n\norganizational personnel with information security responsibilities\n\nusers that must comply with inactivity logout policy
-                - 
-                  id:    ac-2.5_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-2 (5) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ac-2.5_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Should use a shorter timeframe than AC-12.
             - 
               id:         ac-2.7
               class:      SP800-53-enhancement
@@ -1304,6 +1305,17 @@ catalog:
                   id:    ac-2.9_smt
                   name:  statement
                   prose: The organization only permits the use of shared/group accounts that meet {{ ac-2.9_prm_1 }}.
+                  parts: 
+                    id:    ac-2.9_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-2 (9) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-2.9_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Required if shared/group accounts are deployed
                 - 
                   id:    ac-2.9_obj
                   name:  objective
@@ -1342,17 +1354,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing management of shared/group accounts
-                - 
-                  id:    ac-2.9_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-2 (9) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ac-2.9_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Required if shared/group accounts are deployed
             - 
               id:         ac-2.10
               class:      SP800-53-enhancement
@@ -1367,6 +1368,17 @@ catalog:
                   id:    ac-2.10_smt
                   name:  statement
                   prose: The information system terminates shared/group account credentials when members leave the group.
+                  parts: 
+                    id:    ac-2.10_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-2 (10) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-2.10_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Required if shared/group accounts are deployed
                 - 
                   id:    ac-2.10_obj
                   name:  objective
@@ -1392,17 +1404,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing account management functions
-                - 
-                  id:    ac-2.10_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-2 (10) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ac-2.10_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Required if shared/group accounts are deployed
             - 
               id:         ac-2.11
               class:      SP800-53-enhancement
@@ -1508,6 +1509,24 @@ catalog:
                       properties: 
                         label: (b)
                       prose:      Reports atypical usage of information system accounts to {{ ac-2.12_prm_2 }}.
+                    - 
+                      id:    ac-2.12_fr
+                      name:  item
+                      ns:    fedramp
+                      title: AC-2 (12) Additional FedRAMP Requirements and Guidance
+                      parts: 
+                        - 
+                          id:         ac-2.12_fr_gdn.1
+                          name:       guidance
+                          properties: 
+                            label: (a) Guidance:
+                          prose:      Required for privileged accounts.
+                        - 
+                          id:         ac-2.12_fr_gdn.2
+                          name:       guidance
+                          properties: 
+                            label: (b) Guidance:
+                          prose:      Required for privileged accounts.
                 - 
                   id:    ac-2.12_gdn
                   name:  guidance
@@ -1586,24 +1605,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing account management functions
-                - 
-                  id:    ac-2.12_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-2 (12) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    - 
-                      id:         ac-2.12_fr_gdn.1
-                      name:       guidance
-                      properties: 
-                        label: (a) Guidance:
-                      prose:      Required for privileged accounts.
-                    - 
-                      id:         ac-2.12_fr_gdn.2
-                      name:       guidance
-                      properties: 
-                        label: (b) Guidance:
-                      prose:      Required for privileged accounts.
             - 
               id:         ac-2.13
               class:      SP800-53-enhancement
@@ -2068,6 +2069,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Defines information system access authorizations to support separation of duties.
+                - 
+                  id:    ac-5_fr
+                  name:  item
+                  ns:    fedramp
+                  title: AC-5 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ac-5_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.
             - 
               id:    ac-5_gdn
               name:  guidance
@@ -2149,17 +2161,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing separation of duties policy
-            - 
-              id:    ac-5_fr
-              name:  item
-              ns:    fedramp
-              title: AC-5 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ac-5_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.
         - 
           id:         ac-6
           class:      SP800-53
@@ -2360,6 +2361,17 @@ catalog:
                   id:    ac-6.2_smt
                   name:  statement
                   prose: The organization requires that users of information system accounts, or roles, with access to {{ ac-6.2_prm_1 }}, use non-privileged accounts or roles, when accessing nonsecurity functions.
+                  parts: 
+                    id:    ac-6.2_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-6 (2) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-6.2_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.
                 - 
                   id:    ac-6.2_gdn
                   name:  guidance
@@ -2406,17 +2418,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing least privilege functions
-                - 
-                  id:    ac-6.2_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AC-6 (2) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ac-6.2_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.
             - 
               id:         ac-6.3
               class:      SP800-53-enhancement
@@ -3188,6 +3189,30 @@ catalog:
                       properties: 
                         label: 3.
                       prose:      Includes a description of the authorized uses of the system.
+                - 
+                  id:    ac-8_fr
+                  name:  item
+                  ns:    fedramp
+                  title: AC-8 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ac-8_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.
+                    - 
+                      id:         ac-8_fr_smt.2
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.
+                    - 
+                      id:         ac-8_fr_smt.3
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.
             - 
               id:    ac-8_gdn
               name:  guidance
@@ -3304,30 +3329,31 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing system use notification
-            - 
-              id:    ac-8_fr
-              name:  item
-              ns:    fedramp
-              title: AC-8 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ac-8_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.
-                - 
-                  id:         ac-8_fr_smt.2
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.
-                - 
-                  id:         ac-8_fr_smt.3
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.
+          controls: 
+            id:         ac-8.fr
+            class:      SP800-53
+            title:      AC-8 Additional FedRAMP Requirements and Guidance
+            properties: 
+              label: AC-8 Req
+            parts: 
+              - 
+                id:         ac-8.fr_smt.1
+                name:       item
+                properties: 
+                  label: Requirement:
+                prose:      The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.
+              - 
+                id:         ac-8.fr_smt.2
+                name:       item
+                properties: 
+                  label: Requirement:
+                prose:      The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.
+              - 
+                id:         ac-8.fr_smt.3
+                name:       item
+                properties: 
+                  label: Requirement:
+                prose:      If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.
         - 
           id:         ac-10
           class:      SP800-53
@@ -3634,6 +3660,17 @@ catalog:
                     properties: 
                       label: (b)
                     prose:      Displays an explicit logout message to users indicating the reliable termination of authenticated communications sessions.
+                  - 
+                    id:    ac-12.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AC-12 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ac-12.1_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29
               - 
                 id:    ac-12.1_gdn
                 name:  guidance
@@ -3696,17 +3733,6 @@ catalog:
                 parts: 
                   name:  objects
                   prose: Information system session lock mechanisms
-              - 
-                id:    ac-12.1_fr
-                name:  item
-                ns:    fedramp
-                title: AC-12 (1) Additional FedRAMP Requirements and Guidance
-                parts: 
-                  id:         ac-12.1_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29
         - 
           id:         ac-14
           class:      SP800-53
@@ -6544,6 +6570,17 @@ catalog:
                   properties: 
                     label: d.
                   prose:      Determines that the following events are to be audited within the information system: {{ au-2_prm_2 }}.
+                - 
+                  id:    au-2_fr
+                  name:  item
+                  ns:    fedramp
+                  title: AU-2 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         au-2_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.
             - 
               id:    au-2_gdn
               name:  guidance
@@ -6661,17 +6698,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing information system auditing
-            - 
-              id:    au-2_fr
-              name:  item
-              ns:    fedramp
-              title: AU-2 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         au-2_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.
           controls: 
             id:         au-2.3
             class:      SP800-53-enhancement
@@ -6691,6 +6717,17 @@ catalog:
                 id:    au-2.3_smt
                 name:  statement
                 prose: The organization reviews and updates the audited events {{ au-2.3_prm_1 }}.
+                parts: 
+                  id:    au-2.3_fr
+                  name:  item
+                  ns:    fedramp
+                  title: AU-2 (3) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         au-2.3_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.
               - 
                 id:    au-2.3_gdn
                 name:  guidance
@@ -6733,17 +6770,6 @@ catalog:
                 parts: 
                   name:  objects
                   prose: Automated mechanisms supporting review and update of auditable events
-              - 
-                id:    au-2.3_fr
-                name:  item
-                ns:    fedramp
-                title: AU-2 (3) Additional FedRAMP Requirements and Guidance
-                parts: 
-                  id:         au-2.3_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.
         - 
           id:         au-3
           class:      SP800-53
@@ -6861,6 +6887,24 @@ catalog:
                   id:    au-3.1_smt
                   name:  statement
                   prose: The information system generates audit records containing the following additional information: {{ au-3.1_prm_1 }}.
+                  parts: 
+                    id:    au-3.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AU-3 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      - 
+                        id:         au-3.1_fr_smt.1
+                        name:       item
+                        properties: 
+                          label: Requirement:
+                        prose:      The service provider defines audit record types *[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]*.  The audit record types are approved and accepted by the JAB/AO.
+                      - 
+                        id:         au-3.1_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: Guidance:
+                        prose:      For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.
                 - 
                   id:    au-3.1_gdn
                   name:  guidance
@@ -6903,24 +6947,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Information system audit capability
-                - 
-                  id:    au-3.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AU-3 (1) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    - 
-                      id:         au-3.1_fr_smt.1
-                      name:       item
-                      properties: 
-                        label: Requirement:
-                      prose:      The service provider defines audit record types *[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]*.  The audit record types are approved and accepted by the JAB/AO.
-                    - 
-                      id:         au-3.1_fr_gdn.1
-                      name:       guidance
-                      properties: 
-                        label: Guidance:
-                      prose:      For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.
             - 
               id:         au-3.2
               class:      SP800-53-enhancement
@@ -7426,6 +7452,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Reports findings to {{ au-6_prm_3 }}.
+                - 
+                  id:    au-6_fr
+                  name:  item
+                  ns:    fedramp
+                  title: AU-6 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         au-6_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.
             - 
               id:    au-6_gdn
               name:  guidance
@@ -7604,17 +7641,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with audit review, analysis, and reporting responsibilities\n\norganizational personnel with information security responsibilities
-            - 
-              id:    au-6_fr
-              name:  item
-              ns:    fedramp
-              title: AU-6 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         au-6_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.
           controls: 
             - 
               id:         au-6.1
@@ -7945,6 +7971,17 @@ catalog:
                   id:    au-6.6_smt
                   name:  statement
                   prose: The organization correlates information from audit records with information obtained from monitoring physical access to further enhance the ability to identify suspicious, inappropriate, unusual, or malevolent activity.
+                  parts: 
+                    id:    au-6.6_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AU-6 (6) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         au-6.6_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.
                 - 
                   id:    au-6.6_gdn
                   name:  guidance
@@ -7974,17 +8011,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing capability to correlate information from audit records with information from monitoring physical access
-                - 
-                  id:    au-6.6_fr
-                  name:  item
-                  ns:    fedramp
-                  title: AU-6 (6) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         au-6.6_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.
             - 
               id:         au-6.7
               class:      SP800-53-enhancement
@@ -8423,6 +8449,30 @@ catalog:
                     properties: 
                       label: (b)
                     prose:      Synchronizes the internal system clocks to the authoritative time source when the time difference is greater than {{ au-8.1_prm_3 }}.
+                  - 
+                    id:    au-8.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: AU-8 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      - 
+                        id:         au-8.1_fr_smt.1
+                        name:       item
+                        properties: 
+                          label: Requirement:
+                        prose:      The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.
+                      - 
+                        id:         au-8.1_fr_smt.2
+                        name:       item
+                        properties: 
+                          label: Requirement:
+                        prose:      The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.
+                      - 
+                        id:         au-8.1_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: Guidance:
+                        prose:      Synchronization of system clocks improves the accuracy of log analysis.
               - 
                 id:    au-8.1_gdn
                 name:  guidance
@@ -8503,30 +8553,6 @@ catalog:
                 parts: 
                   name:  objects
                   prose: Automated mechanisms implementing internal information system clock synchronization
-              - 
-                id:    au-8.1_fr
-                name:  item
-                ns:    fedramp
-                title: AU-8 (1) Additional FedRAMP Requirements and Guidance
-                parts: 
-                  - 
-                    id:         au-8.1_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.
-                  - 
-                    id:         au-8.1_fr_smt.2
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.
-                  - 
-                    id:         au-8.1_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Synchronization of system clocks improves the accuracy of log analysis.
         - 
           id:         au-9
           class:      SP800-53
@@ -8962,6 +8988,17 @@ catalog:
               id:    au-11_smt
               name:  statement
               prose: The organization retains audit records for {{ au-11_prm_1 }} to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.
+              parts: 
+                id:    au-11_fr
+                name:  item
+                ns:    fedramp
+                title: AU-11 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         au-11_fr_smt.1
+                  name:       item
+                  properties: 
+                    label: Requirement:
+                  prose:      The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.
             - 
               id:    au-11_gdn
               name:  guidance
@@ -9027,17 +9064,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with audit record retention responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem/network administrators
-            - 
-              id:    au-11_fr
-              name:  item
-              ns:    fedramp
-              title: AU-11 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         au-11_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.
         - 
           id:         au-12
           class:      SP800-53
@@ -9702,6 +9728,17 @@ catalog:
                   properties: 
                     label: d.
                   prose:      Provides the results of the security control assessment to {{ ca-2_prm_2 }}.
+                - 
+                  id:    ca-2_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CA-2 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ca-2_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
             - 
               id:    ca-2_gdn
               name:  guidance
@@ -9850,17 +9887,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting security assessment, security assessment plan development, and/or security assessment reporting
-            - 
-              id:    ca-2_fr
-              name:  item
-              ns:    fedramp
-              title: CA-2 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ca-2_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
           controls: 
             - 
               id:         ca-2.1
@@ -9879,6 +9905,17 @@ catalog:
                   id:    ca-2.1_smt
                   name:  statement
                   prose: The organization employs assessors or assessment teams with {{ ca-2.1_prm_1 }} to conduct security control assessments.
+                  parts: 
+                    id:    ca-2.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CA-2 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ca-2.1_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).
                 - 
                   id:    ca-2.1_gdn
                   name:  guidance
@@ -9914,17 +9951,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational personnel with security assessment responsibilities\n\norganizational personnel with information security responsibilities
-                - 
-                  id:    ca-2.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CA-2 (1) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ca-2.1_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).
             - 
               id:         ca-2.2
               class:      SP800-53-enhancement
@@ -9960,6 +9986,17 @@ catalog:
                   id:    ca-2.2_smt
                   name:  statement
                   prose: The organization includes as part of security control assessments, {{ ca-2.2_prm_1 }}, {{ ca-2.2_prm_2 }}, {{ ca-2.2_prm_3 }}.
+                  parts: 
+                    id:    ca-2.2_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CA-2 (2) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ca-2.2_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      To include 'announced', 'vulnerability scanning'
                 - 
                   id:    ca-2.2_gdn
                   name:  guidance
@@ -10060,17 +10097,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting security control assessment
-                - 
-                  id:    ca-2.2_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CA-2 (2) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ca-2.2_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      To include 'announced', 'vulnerability scanning'
             - 
               id:         ca-2.3
               class:      SP800-53-enhancement
@@ -10336,6 +10362,17 @@ catalog:
                   id:    ca-3.3_smt
                   name:  statement
                   prose: The organization prohibits the direct connection of an {{ ca-3.3_prm_1 }} to an external network without the use of {{ ca-3.3_prm_2 }}.
+                  parts: 
+                    id:    ca-3.3_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CA-3 (3) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ca-3.3_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.
                 - 
                   id:    ca-3.3_gdn
                   name:  guidance
@@ -10384,17 +10421,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting the management of external network connections
-                - 
-                  id:    ca-3.3_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CA-3 (3) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ca-3.3_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.
             - 
               id:         ca-3.5
               class:      SP800-53-enhancement
@@ -10421,6 +10447,17 @@ catalog:
                   id:    ca-3.5_smt
                   name:  statement
                   prose: The organization employs {{ ca-3.5_prm_1 }} policy for allowing {{ ca-3.5_prm_2 }} to connect to external information systems.
+                  parts: 
+                    id:    ca-3.5_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CA-3 (5) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ca-3.5_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing
                 - 
                   id:    ca-3.5_gdn
                   name:  guidance
@@ -10492,17 +10529,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms implementing restrictions on external system connections
-                - 
-                  id:    ca-3.5_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CA-3 (5) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ca-3.5_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing
         - 
           id:         ca-5
           class:      SP800-53
@@ -10544,6 +10570,24 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Updates existing plan of action and milestones {{ ca-5_prm_1 }} based on the findings from security controls assessments, security impact analyses, and continuous monitoring activities.
+                - 
+                  id:    ca-5_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CA-5 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ca-5_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      Plan of Action & Milestones (POA&M) must be provided at least monthly.
+                    - 
+                      id:         ca-5_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
             - 
               id:    ca-5_gdn
               name:  guidance
@@ -10647,24 +10691,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms for developing, implementing, and maintaining plan of action and milestones
-            - 
-              id:    ca-5_fr
-              name:  item
-              ns:    fedramp
-              title: CA-5 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ca-5_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      Plan of Action & Milestones (POA&M) must be provided at least monthly.
-                - 
-                  id:         ca-5_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
         - 
           id:         ca-6
           class:      SP800-53
@@ -10720,6 +10746,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Updates the security authorization {{ ca-6_prm_1 }}.
+                - 
+                  id:    ca-6_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CA-6(c) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ca-6_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.
             - 
               id:    ca-6_gdn
               name:  guidance
@@ -10797,17 +10834,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms that facilitate security authorizations and updates
-            - 
-              id:    ca-6_fr
-              name:  item
-              ns:    fedramp
-              title: CA-6(c) Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ca-6_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.
         - 
           id:         ca-7
           class:      SP800-53
@@ -10918,6 +10944,30 @@ catalog:
                   properties: 
                     label: g.
                   prose:      Reporting the security status of organization and the information system to {{ ca-7_prm_4 }} {{ ca-7_prm_5 }}.
+                - 
+                  id:    ca-7_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CA-7 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ca-7_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.
+                    - 
+                      id:         ca-7_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.
+                    - 
+                      id:         ca-7_fr_gdn.2
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
             - 
               id:    ca-7_gdn
               name:  guidance
@@ -11153,30 +11203,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Mechanisms implementing continuous monitoring
-            - 
-              id:    ca-7_fr
-              name:  item
-              ns:    fedramp
-              title: CA-7 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ca-7_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.
-                - 
-                  id:         ca-7_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates.
-                - 
-                  id:         ca-7_fr_gdn.2
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)
           controls: 
             - 
               id:         ca-7.1
@@ -11285,6 +11311,39 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational personnel with continuous monitoring responsibilities\n\norganizational personnel with information security responsibilities
+            - 
+              id:         ca-7.fr
+              class:      SP800-53-enhancement
+              title:      Additional FedRAMP Requirements and Guidance
+              properties: 
+                label: CA-7 Req
+              parts: 
+                - 
+                  id:         ca-7.fr_smt.1
+                  name:       item
+                  properties: 
+                    label: Requirement 1
+                  prose:      Operating System Scans: at least monthly
+                - 
+                  id:         ca-7.fr_smt.2
+                  name:       item
+                  properties: 
+                    label: Requirement 2
+                  prose:      Database and Web Application Scans: at least monthly
+                - 
+                  id:         ca-7.fr_smt.3
+                  name:       item
+                  properties: 
+                    label: Requirement 3
+                  prose:      All scans performed by Independent Assessor: at least annually
+                - 
+                  id:    ca-7.fr_gdn.1
+                  name:  guidance
+                  prose: CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&M updates.
+                - 
+                  id:    ca-7.fr_gdn.2
+                  name:  guidance
+                  prose: See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/)
         - 
           id:         ca-8
           class:      SP800-53
@@ -11308,6 +11367,17 @@ catalog:
               id:    ca-8_smt
               name:  statement
               prose: The organization conducts penetration testing {{ ca-8_prm_1 }} on {{ ca-8_prm_2 }}.
+              parts: 
+                id:    ca-8_fr
+                name:  item
+                ns:    fedramp
+                title: CA-8 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         ca-8_fr_gdn.1
+                  name:       guidance
+                  properties: 
+                    label: Guidance:
+                  prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Penetration Test Guidance [https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/)
             - 
               id:    ca-8_gdn
               name:  guidance
@@ -11360,17 +11430,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting penetration testing
-            - 
-              id:    ca-8_fr
-              name:  item
-              ns:    fedramp
-              title: CA-8 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ca-8_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Penetration Test Guidance [https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/)
           controls: 
             id:         ca-8.1
             class:      SP800-53-enhancement
@@ -11933,6 +11992,17 @@ catalog:
                       properties: 
                         label: (c)
                       prose:      As an integral part of information system component installations and upgrades.
+                    - 
+                      id:    cm-2.1_fr
+                      name:  item
+                      ns:    fedramp
+                      title: CM-8 Additional FedRAMP Requirements and Guidance
+                      parts: 
+                        id:         cm-2.1_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: (a) Guidance:
+                        prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.
                 - 
                   id:    cm-2.1_gdn
                   name:  guidance
@@ -12020,17 +12090,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for managing baseline configurations\n\nautomated mechanisms supporting review and update of the baseline configuration
-                - 
-                  id:    cm-2.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CM-8 Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         cm-2.1_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: (a) Guidance:
-                    prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.
             - 
               id:         cm-2.2
               class:      SP800-53-enhancement
@@ -12379,6 +12438,24 @@ catalog:
                   properties: 
                     label: g.
                   prose:      Coordinates and provides oversight for configuration change control activities through {{ cm-3_prm_2 }} that convenes {{ cm-3_prm_3 }}.
+                - 
+                  id:    cm-3_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CM-3 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         cm-3_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.
+                    - 
+                      id:         cm-3_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: (e) Guidance:
+                      prose:      In accordance with record retention policies and procedures.
             - 
               id:    cm-3_gdn
               name:  guidance
@@ -12524,24 +12601,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for configuration change control\n\nautomated mechanisms that implement configuration change control
-            - 
-              id:    cm-3_fr
-              name:  item
-              ns:    fedramp
-              title: CM-3 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         cm-3_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.
-                - 
-                  id:         cm-3_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: (e) Guidance:
-                  prose:      In accordance with record retention policies and procedures.
           controls: 
             - 
               id:         cm-3.1
@@ -13393,6 +13452,17 @@ catalog:
                   id:    cm-5.3_smt
                   name:  statement
                   prose: The information system prevents the installation of {{ cm-5.3_prm_1 }} without verification that the component has been digitally signed using a certificate that is recognized and approved by the organization.
+                  parts: 
+                    id:    cm-5.3_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CM-5 (3) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         cm-5.3_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.
                 - 
                   id:    cm-5.3_gdn
                   name:  guidance
@@ -13448,17 +13518,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for managing access restrictions to change\n\nautomated mechanisms preventing installation of software and firmware components not signed with an organization-recognized and approved certificate
-                - 
-                  id:    cm-5.3_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CM-5 (3) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         cm-5.3_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.
             - 
               id:         cm-5.5
               class:      SP800-53-enhancement
@@ -13641,6 +13700,30 @@ catalog:
                   properties: 
                     label: d.
                   prose:      Monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.
+                - 
+                  id:    cm-6_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CM-6(a) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         cm-6_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement 1:
+                      prose:      The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. 
+                    - 
+                      id:         cm-6_fr_smt.2
+                      name:       item
+                      properties: 
+                        label: Requirement 2:
+                      prose:      The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) ([http://scap.nist.gov/](http://scap.nist.gov/)) validated or SCAP compatible (if validated checklists are not available).
+                    - 
+                      id:         cm-6_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Information on the USGCB checklists can be found at: [https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline](https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline).
             - 
               id:    cm-6_gdn
               name:  guidance
@@ -13814,30 +13897,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for managing configuration settings\n\nautomated mechanisms that implement, monitor, and/or control information system configuration settings\n\nautomated mechanisms that identify and/or document deviations from established configuration settings
-            - 
-              id:    cm-6_fr
-              name:  item
-              ns:    fedramp
-              title: CM-6(a) Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         cm-6_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement 1:
-                  prose:      The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. 
-                - 
-                  id:         cm-6_fr_smt.2
-                  name:       item
-                  properties: 
-                    label: Requirement 2:
-                  prose:      The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) ([http://scap.nist.gov/](http://scap.nist.gov/)) validated or SCAP compatible (if validated checklists are not available).
-                - 
-                  id:         cm-6_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      Information on the USGCB checklists can be found at: [https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline](https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline).
           controls: 
             - 
               id:         cm-6.1
@@ -14058,6 +14117,24 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Prohibits or restricts the use of the following functions, ports, protocols, and/or services: {{ cm-7_prm_1 }}.
+                - 
+                  id:    cm-7_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CM-7 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         cm-7_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.
+                    - 
+                      id:         cm-7_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Information on the USGCB checklists can be found at: [http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc](http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc). Partially derived from AC-17(8).
             - 
               id:    cm-7_gdn
               name:  guidance
@@ -14183,24 +14260,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes prohibiting or restricting functions, ports, protocols, and/or services\n\nautomated mechanisms implementing restrictions or prohibition of functions, ports, protocols, and/or services
-            - 
-              id:    cm-7_fr
-              name:  item
-              ns:    fedramp
-              title: CM-7 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         cm-7_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.
-                - 
-                  id:         cm-7_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      Information on the USGCB checklists can be found at: [http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc](http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc). Partially derived from AC-17(8).
           controls: 
             - 
               id:         cm-7.1
@@ -14456,6 +14515,17 @@ catalog:
                   id:    cm-7.2_smt
                   name:  statement
                   prose: The information system prevents program execution in accordance with {{ cm-7.2_prm_1 }}.
+                  parts: 
+                    id:    cm-7.2_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CM-7 (2) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         cm-7.2_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.
                 - 
                   id:    cm-7.2_gdn
                   name:  guidance
@@ -14519,17 +14589,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes preventing program execution on the information system\n\norganizational processes for software program usage and restrictions\n\nautomated mechanisms preventing program execution on the information system\n\nautomated mechanisms supporting and/or implementing software program usage and restrictions
-                - 
-                  id:    cm-7.2_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CM-7 (2) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         cm-7.2_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.
             - 
               id:         cm-7.5
               class:      SP800-53-enhancement
@@ -14738,6 +14797,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Reviews and updates the information system component inventory {{ cm-8_prm_2 }}.
+                - 
+                  id:    cm-8_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CM-8 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         cm-8_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      Must be provided at least monthly or when there is a change.
             - 
               id:    cm-8_gdn
               name:  guidance
@@ -14841,17 +14911,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developing and documenting an inventory of information system components\n\nautomated mechanisms supporting and/or implementing the information system component inventory
-            - 
-              id:    cm-8_fr
-              name:  item
-              ns:    fedramp
-              title: CM-8 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         cm-8_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      Must be provided at least monthly or when there is a change.
           controls: 
             - 
               id:         cm-8.1
@@ -16230,6 +16289,17 @@ catalog:
                   properties: 
                     label: g.
                   prose:      Protects the contingency plan from unauthorized disclosure and modification.
+                - 
+                  id:    cp-2_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CP-2 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         cp-2_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: CP-2 Requirement:
+                    prose:      For JAB authorizations the contingency lists include designated FedRAMP personnel.
             - 
               id:    cp-2_gdn
               name:  guidance
@@ -16489,17 +16559,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for contingency plan development, review, update, and protection\n\nautomated mechanisms for developing, reviewing, updating and/or protecting the contingency plan
-            - 
-              id:    cp-2_fr
-              name:  item
-              ns:    fedramp
-              title: CP-2 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         cp-2_fr_smt.1
-                name:       item
-                properties: 
-                  label: CP-2 Requirement:
-                prose:      For JAB authorizations the contingency lists include designated FedRAMP personnel.
           controls: 
             - 
               id:         cp-2.1
@@ -17071,6 +17130,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Initiates corrective actions, if needed.
+                - 
+                  id:    cp-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CP-4(a) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         cp-4_fr_smt.a
+                    name:       item
+                    properties: 
+                      label: CP-4(a) Requirement:
+                    prose:      The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.
             - 
               id:    cp-4_gdn
               name:  guidance
@@ -17150,17 +17220,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for contingency plan testing\n\nautomated mechanisms supporting the contingency plan and/or contingency plan testing
-            - 
-              id:    cp-4_fr
-              name:  item
-              ns:    fedramp
-              title: CP-4(a) Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         cp-4_fr_smt.a
-                name:       item
-                properties: 
-                  label: CP-4(a) Requirement:
-                prose:      The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.
           controls: 
             - 
               id:         cp-4.1
@@ -17558,6 +17617,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Ensures that the alternate processing site provides information security safeguards equivalent to those of the primary site.
+                - 
+                  id:    cp-7_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CP-7 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         cp-7_fr_smt.a
+                    name:       item
+                    properties: 
+                      label: (a) Requirement:
+                    prose:      The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
             - 
               id:    cp-7_gdn
               name:  guidance
@@ -17661,17 +17731,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for recovery at the alternate site\n\nautomated mechanisms supporting and/or implementing recovery at the alternate processing site
-            - 
-              id:    cp-7_fr
-              name:  item
-              ns:    fedramp
-              title: CP-7 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         cp-7_fr_smt.a
-                name:       item
-                properties: 
-                  label: (a) Requirement:
-                prose:      The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
           controls: 
             - 
               id:         cp-7.1
@@ -17687,6 +17746,17 @@ catalog:
                   id:    cp-7.1_smt
                   name:  statement
                   prose: The organization identifies an alternate processing site that is separated from the primary processing site to reduce susceptibility to the same threats.
+                  parts: 
+                    id:    cp-7.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: CP-7 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         cp-7.1_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.
                 - 
                   id:    cp-7.1_gdn
                   name:  guidance
@@ -17713,17 +17783,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational personnel with contingency plan alternate processing site responsibilities\n\norganizational personnel with information system recovery responsibilities\n\norganizational personnel with information security responsibilities
-                - 
-                  id:    cp-7.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: CP-7 (1) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         cp-7.1_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.
             - 
               id:         cp-7.2
               class:      SP800-53-enhancement
@@ -17899,6 +17958,17 @@ catalog:
               id:    cp-8_smt
               name:  statement
               prose: The organization establishes alternate telecommunications services including necessary agreements to permit the resumption of {{ cp-8_prm_1 }} for essential missions and business functions within {{ cp-8_prm_2 }} when the primary telecommunications capabilities are unavailable at either the primary or alternate processing or storage sites.
+              parts: 
+                id:    cp-8_fr
+                name:  item
+                ns:    fedramp
+                title: CP-8 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         cp-8_fr_smt.1
+                  name:       item
+                  properties: 
+                    label: Requirement:
+                  prose:      The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
             - 
               id:    cp-8_gdn
               name:  guidance
@@ -17960,17 +18030,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting telecommunications
-            - 
-              id:    cp-8_fr
-              name:  item
-              ns:    fedramp
-              title: CP-8 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         cp-8_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
           controls: 
             - 
               id:         cp-8.1
@@ -18283,6 +18342,36 @@ catalog:
                   properties: 
                     label: d.
                   prose:      Protects the confidentiality, integrity, and availability of backup information at storage locations.
+                - 
+                  id:    cp-9_fr
+                  name:  item
+                  ns:    fedramp
+                  title: CP-9 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         cp-9_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.
+                    - 
+                      id:         cp-9_fr_smt.a
+                      name:       item
+                      properties: 
+                        label: CP-9(a) Requirement:
+                      prose:      The service provider maintains at least three backup copies of user-level information (at least one of which is available online).
+                    - 
+                      id:         cp-9_fr_smt.b
+                      name:       item
+                      properties: 
+                        label: CP-9(b)Requirement:
+                      prose:      The service provider maintains at least three backup copies of system-level information (at least one of which is available online).
+                    - 
+                      id:         cp-9_fr_smt.c
+                      name:       item
+                      properties: 
+                        label: CP-9(c)Requirement:
+                      prose:      The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).
             - 
               id:    cp-9_gdn
               name:  guidance
@@ -18394,36 +18483,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for conducting information system backups\n\nautomated mechanisms supporting and/or implementing information system backups
-            - 
-              id:    cp-9_fr
-              name:  item
-              ns:    fedramp
-              title: CP-9 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         cp-9_fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.
-                - 
-                  id:         cp-9_fr_smt.a
-                  name:       item
-                  properties: 
-                    label: CP-9(a) Requirement:
-                  prose:      The service provider maintains at least three backup copies of user-level information (at least one of which is available online).
-                - 
-                  id:         cp-9_fr_smt.b
-                  name:       item
-                  properties: 
-                    label: CP-9(b)Requirement:
-                  prose:      The service provider maintains at least three backup copies of system-level information (at least one of which is available online).
-                - 
-                  id:         cp-9_fr_smt.c
-                  name:       item
-                  properties: 
-                    label: CP-9(c)Requirement:
-                  prose:      The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).
           controls: 
             - 
               id:         cp-9.1
@@ -19627,6 +19686,17 @@ catalog:
                   id:    ia-2.11_smt
                   name:  statement
                   prose: The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets {{ ia-2.11_prm_1 }}.
+                  parts: 
+                    id:    ia-2.11_fr
+                    name:  item
+                    ns:    fedramp
+                    title: IA-2 (11) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ia-2.11_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.
                 - 
                   id:    ia-2.11_gdn
                   name:  guidance
@@ -19697,17 +19767,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing identification and authentication capability
-                - 
-                  id:    ia-2.11_fr
-                  name:  item
-                  ns:    fedramp
-                  title: IA-2 (11) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ia-2.11_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.
             - 
               id:         ia-2.12
               class:      SP800-53-enhancement
@@ -19722,6 +19781,17 @@ catalog:
                   id:    ia-2.12_smt
                   name:  statement
                   prose: The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.
+                  parts: 
+                    id:    ia-2.12_fr
+                    name:  item
+                    ns:    fedramp
+                    title: IA-2 (12) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ia-2.12_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.
                 - 
                   id:    ia-2.12_gdn
                   name:  guidance
@@ -19777,17 +19847,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing acceptance and verification of PIV credentials
-                - 
-                  id:    ia-2.12_fr
-                  name:  item
-                  ns:    fedramp
-                  title: IA-2 (12) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ia-2.12_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.
         - 
           id:         ia-3
           class:      SP800-53
@@ -19994,6 +20053,24 @@ catalog:
                   properties: 
                     label: e.
                   prose:      Disabling the identifier after {{ ia-4_prm_3 }}.
+                - 
+                  id:    ia-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: IA-4(e) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ia-4_fr_smt.e
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider defines the time period of inactivity for device identifiers.
+                    - 
+                      id:         ia-4_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP [http://iase.disa.mil/cloud_security/Pages/index.aspx](http://iase.disa.mil/cloud_security/Pages/index.aspx).
             - 
               id:    ia-4_gdn
               name:  guidance
@@ -20215,24 +20292,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing identifier management
-            - 
-              id:    ia-4_fr
-              name:  item
-              ns:    fedramp
-              title: IA-4(e) Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ia-4_fr_smt.e
-                  name:       item
-                  properties: 
-                    label: Requirement:
-                  prose:      The service provider defines the time period of inactivity for device identifiers.
-                - 
-                  id:         ia-4_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP [http://iase.disa.mil/cloud_security/Pages/index.aspx](http://iase.disa.mil/cloud_security/Pages/index.aspx).
           controls: 
             id:         ia-4.4
             class:      SP800-53-enhancement
@@ -20413,6 +20472,17 @@ catalog:
                   properties: 
                     label: j.
                   prose:      Changing authenticators for group/role accounts when membership to those accounts changes.
+                - 
+                  id:    ia-5_fr
+                  name:  item
+                  ns:    fedramp
+                  title: IA-5 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ia-5_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 3. Link [https://pages.nist.gov/800-63-3](https://pages.nist.gov/800-63-3).
             - 
               id:    ia-5_gdn
               name:  guidance
@@ -20658,17 +20728,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing authenticator management capability
-            - 
-              id:    ia-5_fr
-              name:  item
-              ns:    fedramp
-              title: IA-5 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ia-5_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 3. Link [https://pages.nist.gov/800-63-3](https://pages.nist.gov/800-63-3).
           controls: 
             - 
               id:         ia-5.1
@@ -20738,6 +20797,17 @@ catalog:
                       properties: 
                         label: (f)
                       prose:      Allows the use of a temporary password for system logons with an immediate change to a permanent password.
+                    - 
+                      id:    ia-5.1_fr
+                      name:  item
+                      ns:    fedramp
+                      title: IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance
+                      parts: 
+                        id:         ia-5.1_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: (a) (d) Guidance:
+                        prose:      If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.
                 - 
                   id:    ia-5.1_gdn
                   name:  guidance
@@ -20910,17 +20980,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing password-based authenticator management capability
-                - 
-                  id:    ia-5.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ia-5.1_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: (a) (d) Guidance:
-                    prose:      If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.
             - 
               id:         ia-5.2
               class:      SP800-53-enhancement
@@ -21165,6 +21224,17 @@ catalog:
                   id:    ia-5.4_smt
                   name:  statement
                   prose: The organization employs automated tools to determine if password authenticators are sufficiently strong to satisfy {{ ia-5.4_prm_1 }}.
+                  parts: 
+                    id:    ia-5.4_fr
+                    name:  item
+                    ns:    fedramp
+                    title: IA-5 (4) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ia-5.4_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.
                 - 
                   id:    ia-5.4_gdn
                   name:  guidance
@@ -21220,17 +21290,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing password-based authenticator management capability\n\nautomated tools for determining password strength
-                - 
-                  id:    ia-5.4_fr
-                  name:  item
-                  ns:    fedramp
-                  title: IA-5 (4) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ia-5.4_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.
             - 
               id:         ia-5.6
               class:      SP800-53-enhancement
@@ -22468,6 +22527,17 @@ catalog:
               id:    ir-3_smt
               name:  statement
               prose: The organization tests the incident response capability for the information system {{ ir-3_prm_1 }} using {{ ir-3_prm_2 }} to determine the incident response effectiveness and documents the results.
+              parts: 
+                id:    ir-3_fr
+                name:  item
+                ns:    fedramp
+                title: IR-3 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         ir-3_fr_smt.1
+                  name:       item
+                  properties: 
+                    label: IR-3 -2 Requirement:
+                  prose:      The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.
             - 
               id:    ir-3_gdn
               name:  guidance
@@ -22518,17 +22588,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational personnel with incident response testing responsibilities\n\norganizational personnel with information security responsibilities
-            - 
-              id:    ir-3_fr
-              name:  item
-              ns:    fedramp
-              title: IR-3 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ir-3_fr_smt.1
-                name:       item
-                properties: 
-                  label: IR-3 -2 Requirement:
-                prose:      The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.
           controls: 
             id:         ir-3.2
             class:      SP800-53-enhancement
@@ -22607,6 +22666,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.
+                - 
+                  id:    ir-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: IR-4 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ir-4_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.
             - 
               id:    ir-4_gdn
               name:  guidance
@@ -22789,17 +22859,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Incident handling capability for the organization
-            - 
-              id:    ir-4_fr
-              name:  item
-              ns:    fedramp
-              title: IR-4 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ir-4_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.
           controls: 
             - 
               id:         ir-4.1
@@ -23365,6 +23424,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Reports security incident information to {{ ir-6_prm_2 }}.
+                - 
+                  id:    ir-6_fr
+                  name:  item
+                  ns:    fedramp
+                  title: IR-6 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ir-6_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      Report security incident information according to FedRAMP Incident Communications Procedure.
             - 
               id:    ir-6_gdn
               name:  guidance
@@ -23444,17 +23514,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for incident reporting\n\nautomated mechanisms supporting and/or implementing incident reporting
-            - 
-              id:    ir-6_fr
-              name:  item
-              ns:    fedramp
-              title: IR-6 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ir-6_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      Report security incident information according to FedRAMP Incident Communications Procedure.
           controls: 
             id:         ir-6.1
             class:      SP800-53-enhancement
@@ -23815,6 +23874,24 @@ catalog:
                   properties: 
                     label: f.
                   prose:      Protects the incident response plan from unauthorized disclosure and modification.
+                - 
+                  id:    ir-8_fr
+                  name:  item
+                  ns:    fedramp
+                  title: IR-8 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ir-8_fr_smt.b
+                      name:       item
+                      properties: 
+                        label: (b) Requirement:
+                      prose:      The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.
+                    - 
+                      id:         ir-8_fr_smt.e
+                      name:       item
+                      properties: 
+                        label: (e) Requirement:
+                      prose:      The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.
             - 
               id:    ir-8_gdn
               name:  guidance
@@ -24059,24 +24136,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational incident response plan and related organizational processes
-            - 
-              id:    ir-8_fr
-              name:  item
-              ns:    fedramp
-              title: IR-8 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ir-8_fr_smt.b
-                  name:       item
-                  properties: 
-                    label: (b) Requirement:
-                  prose:      The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.
-                - 
-                  id:         ir-8_fr_smt.e
-                  name:       item
-                  properties: 
-                    label: (e) Requirement:
-                  prose:      The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.
         - 
           id:         ir-9
           class:      SP800-53
@@ -26610,6 +26669,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Exempts {{ mp-3_prm_1 }} from marking as long as the media remain within {{ mp-3_prm_2 }}.
+                - 
+                  id:    mp-3_fr
+                  name:  item
+                  ns:    fedramp
+                  title: MP-3 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         mp-3_fr_gdn.b
+                    name:       guidance
+                    properties: 
+                      label: (b) Guidance:
+                    prose:      Second parameter not-applicable
             - 
               id:    mp-3_gdn
               name:  guidance
@@ -26702,17 +26772,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for marking information media\n\nautomated mechanisms supporting and/or implementing media marking
-            - 
-              id:    mp-3_fr
-              name:  item
-              ns:    fedramp
-              title: MP-3 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         mp-3_fr_gdn.b
-                name:       guidance
-                properties: 
-                  label: (b) Guidance:
-                prose:      Second parameter not-applicable
         - 
           id:         mp-4
           class:      SP800-53
@@ -26768,6 +26827,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Protects information system media until the media are destroyed or sanitized using approved equipment, techniques, and procedures.
+                - 
+                  id:    mp-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: MP-4 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         mp-4_fr_smt.a
+                    name:       item
+                    properties: 
+                      label: (a) Requirement:
+                    prose:      The service provider defines controlled areas within facilities where the information and information system reside.
             - 
               id:    mp-4_gdn
               name:  guidance
@@ -26855,17 +26925,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for storing information media\n\nautomated mechanisms supporting and/or implementing secure media storage/media protection
-            - 
-              id:    mp-4_fr
-              name:  item
-              ns:    fedramp
-              title: MP-4 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         mp-4_fr_smt.a
-                name:       item
-                properties: 
-                  label: (a) Requirement:
-                prose:      The service provider defines controlled areas within facilities where the information and information system reside.
         - 
           id:         mp-5
           class:      SP800-53
@@ -26925,6 +26984,17 @@ catalog:
                   properties: 
                     label: d.
                   prose:      Restricts the activities associated with the transport of information system media to authorized personnel.
+                - 
+                  id:    mp-5_fr
+                  name:  item
+                  ns:    fedramp
+                  title: MP-5 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         mp-5_fr_smt.a
+                    name:       item
+                    properties: 
+                      label: (a) Requirement:
+                    prose:      The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.
             - 
               id:    mp-5_gdn
               name:  guidance
@@ -27030,17 +27100,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for storing information media\n\nautomated mechanisms supporting and/or implementing media storage/media protection
-            - 
-              id:    mp-5_fr
-              name:  item
-              ns:    fedramp
-              title: MP-5 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         mp-5_fr_smt.a
-                name:       item
-                properties: 
-                  label: (a) Requirement:
-                prose:      The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.
           controls: 
             id:         mp-5.4
             class:      SP800-53-enhancement
@@ -27354,6 +27413,17 @@ catalog:
                   id:    mp-6.2_smt
                   name:  statement
                   prose: The organization tests sanitization equipment and procedures {{ mp-6.2_prm_1 }} to verify that the intended sanitization is being achieved.
+                  parts: 
+                    id:    mp-6.2_fr
+                    name:  item
+                    ns:    fedramp
+                    title: MP-6 (2) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         mp-6.2_fr_gdn.a
+                      name:       guidance
+                      properties: 
+                        label: (a) Requirement:
+                      prose:      Equipment and procedures may be tested or validated for effectiveness
                 - 
                   id:    mp-6.2_gdn
                   name:  guidance
@@ -27396,17 +27466,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for media sanitization\n\nautomated mechanisms supporting and/or implementing media sanitization
-                - 
-                  id:    mp-6.2_fr
-                  name:  item
-                  ns:    fedramp
-                  title: MP-6 (2) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         mp-6.2_fr_gdn.a
-                    name:       guidance
-                    properties: 
-                      label: (a) Requirement:
-                    prose:      Equipment and procedures may be tested or validated for effectiveness
             - 
               id:         mp-6.3
               class:      SP800-53-enhancement
@@ -29715,6 +29774,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Monitors temperature and humidity levels {{ pe-14_prm_2 }}.
+                - 
+                  id:    pe-14_fr
+                  name:  item
+                  ns:    fedramp
+                  title: PE-14(a) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         pe-14_fr_smt.a
+                    name:       item
+                    properties: 
+                      label: (a) Requirement:
+                    prose:      The service provider measures temperature at server inlets and humidity levels by dew point.
             - 
               id:    pe-14_gdn
               name:  guidance
@@ -29809,17 +29879,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing maintenance and monitoring of temperature and humidity levels
-            - 
-              id:    pe-14_fr
-              name:  item
-              ns:    fedramp
-              title: PE-14(a) Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         pe-14_fr_smt.a
-                name:       item
-                properties: 
-                  label: (a) Requirement:
-                prose:      The service provider measures temperature at server inlets and humidity levels by dew point.
           controls: 
             id:         pe-14.2
             class:      SP800-53-enhancement
@@ -31341,6 +31400,17 @@ catalog:
                   properties: 
                     label: c.
                   prose:      Ensures that planned information security architecture changes are reflected in the security plan, the security Concept of Operations (CONOPS), and organizational procurements/acquisitions.
+                - 
+                  id:    pl-8_fr
+                  name:  item
+                  ns:    fedramp
+                  title: PL-8(b) Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         pl-8_fr_gdn.b
+                    name:       guidance
+                    properties: 
+                      label: (b) Guidance:
+                    prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.
             - 
               id:    pl-8_gdn
               name:  guidance
@@ -31468,17 +31538,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for developing, reviewing, and updating the information security architecture\n\nautomated mechanisms supporting and/or implementing the development, review, and update of the information security architecture
-            - 
-              id:    pl-8_fr
-              name:  item
-              ns:    fedramp
-              title: PL-8(b) Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         pl-8_fr_gdn.b
-                name:       guidance
-                properties: 
-                  label: (b) Guidance:
-                prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.
     - 
       id:       ps
       class:    family
@@ -33395,6 +33454,24 @@ catalog:
                   properties: 
                     label: e.
                   prose:      Updates the risk assessment {{ ra-3_prm_5 }} or whenever there are significant changes to the information system or environment of operation (including the identification of new threats and vulnerabilities), or other conditions that may impact the security state of the system.
+                - 
+                  id:    ra-3_fr
+                  name:  item
+                  ns:    fedramp
+                  title: RA-3 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    - 
+                      id:         ra-3_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F
+                    - 
+                      id:         ra-3_fr_smt.d
+                      name:       item
+                      properties: 
+                        label: RA-3 (d) Requirement:
+                      prose:      Include all Authorizing Officials; for JAB authorizations to include FedRAMP.
             - 
               id:    ra-3_gdn
               name:  guidance
@@ -33563,24 +33640,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for risk assessment\n\nautomated mechanisms supporting and/or for conducting, documenting, reviewing, disseminating, and updating the risk assessment
-            - 
-              id:    ra-3_fr
-              name:  item
-              ns:    fedramp
-              title: RA-3 Additional FedRAMP Requirements and Guidance
-              parts: 
-                - 
-                  id:         ra-3_fr_gdn.1
-                  name:       guidance
-                  properties: 
-                    label: Guidance:
-                  prose:      Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F
-                - 
-                  id:         ra-3_fr_smt.d
-                  name:       item
-                  properties: 
-                    label: RA-3 (d) Requirement:
-                  prose:      Include all Authorizing Officials; for JAB authorizations to include FedRAMP.
         - 
           id:         ra-5
           class:      SP800-53
@@ -33680,6 +33739,31 @@ catalog:
                   properties: 
                     label: e.
                   prose:      Shares information obtained from the vulnerability scanning process and security control assessments with {{ ra-5_prm_3 }} to help eliminate similar vulnerabilities in other information systems (i.e., systemic weaknesses or deficiencies).
+                - 
+                  id:         ra-5_fr_smt.a
+                  name:       item
+                  title:      RA-5(a) Additional FedRAMP Requirements and Guidance
+                  properties: 
+                    label: RA-5 (a)Requirement:
+                  prose:      An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.
+                - 
+                  id:         ra-5_fr_smt.e
+                  name:       item
+                  title:      RA-5(e) Additional FedRAMP Requirements and Guidance
+                  properties: 
+                    label: RA-5 (e)Requirement:
+                  prose:      To include all Authorizing Officials; for JAB authorizations to include FedRAMP.
+                - 
+                  id:    ra-5_fr
+                  name:  item
+                  ns:    fedramp
+                  title: RA-5 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         ra-5_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      **See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements** ([https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/))
             - 
               id:    ra-5_gdn
               name:  guidance
@@ -33920,31 +34004,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for vulnerability scanning, analysis, remediation, and information sharing\n\nautomated mechanisms supporting and/or implementing vulnerability scanning, analysis, remediation, and information sharing
-            - 
-              id:         ra-5_fr_smt.a
-              name:       item
-              title:      RA-5(a) Additional FedRAMP Requirements and Guidance
-              properties: 
-                label: RA-5 (a)Requirement:
-              prose:      An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.
-            - 
-              id:         ra-5_fr_smt.e
-              name:       item
-              title:      RA-5(e) Additional FedRAMP Requirements and Guidance
-              properties: 
-                label: RA-5 (e)Requirement:
-              prose:      To include all Authorizing Officials; for JAB authorizations to include FedRAMP.
-            - 
-              id:    ra-5_fr
-              name:  item
-              ns:    fedramp
-              title: RA-5 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         ra-5_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      **See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements** ([https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/))
           controls: 
             - 
               id:         ra-5.1
@@ -34311,6 +34370,17 @@ catalog:
                   id:    ra-5.6_smt
                   name:  statement
                   prose: The organization employs automated mechanisms to compare the results of vulnerability scans over time to determine trends in information system vulnerabilities.
+                  parts: 
+                    id:    ra-5.6_fr
+                    name:  item
+                    ns:    fedramp
+                    title: RA-5 (6) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ra-5.6_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      Include in Continuous Monitoring ISSO digest/report to JAB/AO
                 - 
                   id:    ra-5.6_gdn
                   name:  guidance
@@ -34352,17 +34422,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for vulnerability scanning\n\nautomated mechanisms/tools supporting and/or implementing vulnerability scanning\n\nautomated mechanisms supporting and/or implementing trend analysis of vulnerability scan results
-                - 
-                  id:    ra-5.6_fr
-                  name:  item
-                  ns:    fedramp
-                  title: RA-5 (6) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ra-5.6_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      Include in Continuous Monitoring ISSO digest/report to JAB/AO
             - 
               id:         ra-5.8
               class:      SP800-53-enhancement
@@ -34377,6 +34436,24 @@ catalog:
                   id:    ra-5.8_smt
                   name:  statement
                   prose: The organization reviews historic audit logs to determine if a vulnerability identified in the information system has been previously exploited.
+                  parts: 
+                    id:    ra-5.8_fr
+                    name:  item
+                    ns:    fedramp
+                    title: RA-5 (8) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      - 
+                        id:         ra-5.8_fr_smt.1
+                        name:       item
+                        properties: 
+                          label: Requirement:
+                        prose:      This enhancement is required for all high vulnerability scan findings.
+                      - 
+                        id:         ra-5.8_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: Guidance:
+                        prose:      While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.
                 - 
                   id:    ra-5.8_gdn
                   name:  guidance
@@ -34409,24 +34486,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for vulnerability scanning\n\norganizational process for audit record review and response\n\nautomated mechanisms/tools supporting and/or implementing vulnerability scanning\n\nautomated mechanisms supporting and/or implementing audit record review
-                - 
-                  id:    ra-5.8_fr
-                  name:  item
-                  ns:    fedramp
-                  title: RA-5 (8) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    - 
-                      id:         ra-5.8_fr_smt.1
-                      name:       item
-                      properties: 
-                        label: Requirement:
-                      prose:      This enhancement is required for all high vulnerability scan findings.
-                    - 
-                      id:         ra-5.8_fr_gdn.1
-                      name:       guidance
-                      properties: 
-                        label: Guidance:
-                      prose:      While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.
             - 
               id:         ra-5.10
               class:      SP800-53-enhancement
@@ -34441,6 +34500,17 @@ catalog:
                   id:    ra-5.10_smt
                   name:  statement
                   prose: The organization correlates the output from vulnerability scanning tools to determine the presence of multi-vulnerability/multi-hop attack vectors.
+                  parts: 
+                    id:    ra-5.10_fr
+                    name:  item
+                    ns:    fedramp
+                    title: RA-5 (10) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         ra-5.10_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      If multiple tools are not used, this control is not applicable.
                 - 
                   id:    ra-5.10_obj
                   name:  objective
@@ -34466,17 +34536,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for vulnerability scanning\n\nautomated mechanisms/tools supporting and/or implementing vulnerability scanning\n\nautomated mechanisms implementing correlation of vulnerability scan results
-                - 
-                  id:    ra-5.10_fr
-                  name:  item
-                  ns:    fedramp
-                  title: RA-5 (10) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         ra-5.10_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      If multiple tools are not used, this control is not applicable.
     - 
       id:       sa
       class:    family
@@ -35085,6 +35144,17 @@ catalog:
                   properties: 
                     label: g.
                   prose:      Acceptance criteria.
+                - 
+                  id:    sa-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: SA-4 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         sa-4_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See [http://www.niap-ccevs.org/vpl](http://www.niap-ccevs.org/vpl) or [http://www.commoncriteriaportal.org/products.html](http://www.commoncriteriaportal.org/products.html).
             - 
               id:    sa-4_gdn
               name:  guidance
@@ -35203,17 +35273,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for determining information system security functional, strength, and assurance requirements\n\norganizational processes for developing acquisition contracts\n\nautomated mechanisms supporting and/or implementing acquisitions and inclusion of security requirements in contracts
-            - 
-              id:    sa-4_fr
-              name:  item
-              ns:    fedramp
-              title: SA-4 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         sa-4_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See [http://www.niap-ccevs.org/vpl](http://www.niap-ccevs.org/vpl) or [http://www.commoncriteriaportal.org/products.html](http://www.commoncriteriaportal.org/products.html).
           controls: 
             - 
               id:         sa-4.1
@@ -35401,6 +35460,17 @@ catalog:
                   id:    sa-4.8_smt
                   name:  statement
                   prose: The organization requires the developer of the information system, system component, or information system service to produce a plan for the continuous monitoring of security control effectiveness that contains {{ sa-4.8_prm_1 }}.
+                  parts: 
+                    id:    sa-4.8_fr
+                    name:  item
+                    ns:    fedramp
+                    title: SA-4 (8) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         sa-4.8_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      CSP must use the same security standards regardless of where the system component or information system service is acquired.
                 - 
                   id:    sa-4.8_gdn
                   name:  guidance
@@ -35447,17 +35517,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Vendor processes for continuous monitoring\n\nautomated mechanisms supporting and/or implementing developer continuous monitoring
-                - 
-                  id:    sa-4.8_fr
-                  name:  item
-                  ns:    fedramp
-                  title: SA-4 (8) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         sa-4.8_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      CSP must use the same security standards regardless of where the system component or information system service is acquired.
             - 
               id:         sa-4.9
               class:      SP800-53-enhancement
@@ -36538,6 +36597,17 @@ catalog:
                   properties: 
                     label: e.
                   prose:      Track security flaws and flaw resolution within the system, component, or service and report findings to {{ sa-10_prm_3 }}.
+                - 
+                  id:    sa-10_fr
+                  name:  item
+                  ns:    fedramp
+                  title: SA-10 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         sa-10_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: (e)  Requirement:
+                    prose:      For JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.
             - 
               id:    sa-10_gdn
               name:  guidance
@@ -36719,17 +36789,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for monitoring developer configuration management\n\nautomated mechanisms supporting and/or implementing the monitoring of developer configuration management
-            - 
-              id:    sa-10_fr
-              name:  item
-              ns:    fedramp
-              title: SA-10 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         sa-10_fr_smt.1
-                name:       item
-                properties: 
-                  label: (e)  Requirement:
-                prose:      For JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.
           controls: 
             id:         sa-10.1
             class:      SP800-53-enhancement
@@ -37012,6 +37071,17 @@ catalog:
                   id:    sa-11.1_smt
                   name:  statement
                   prose: The organization requires the developer of the information system, system component, or information system service to employ static code analysis tools to identify common flaws and document the results of the analysis.
+                  parts: 
+                    id:    sa-11.1_fr
+                    name:  item
+                    ns:    fedramp
+                    title: SA-11 (1) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         sa-11.1_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
                 - 
                   id:    sa-11.1_gdn
                   name:  guidance
@@ -37041,17 +37111,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for monitoring developer security testing and evaluation\n\nautomated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation\n\nstatic code analysis tools
-                - 
-                  id:    sa-11.1_fr
-                  name:  item
-                  ns:    fedramp
-                  title: SA-11 (1) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         sa-11.1_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
             - 
               id:         sa-11.2
               class:      SP800-53-enhancement
@@ -37137,6 +37196,17 @@ catalog:
                   id:    sa-11.8_smt
                   name:  statement
                   prose: The organization requires the developer of the information system, system component, or information system service to employ dynamic code analysis tools to identify common flaws and document the results of the analysis.
+                  parts: 
+                    id:    sa-11.8_fr
+                    name:  item
+                    ns:    fedramp
+                    title: SA-11 (8) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         sa-11.8_fr_smt.1
+                      name:       item
+                      properties: 
+                        label: Requirement:
+                      prose:      The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
                 - 
                   id:    sa-11.8_gdn
                   name:  guidance
@@ -37166,17 +37236,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for monitoring developer security testing and evaluation\n\nautomated mechanisms supporting and/or implementing the monitoring of developer security testing and evaluation
-                - 
-                  id:    sa-11.8_fr
-                  name:  item
-                  ns:    fedramp
-                  title: SA-11 (8) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         sa-11.8_fr_smt.1
-                    name:       item
-                    properties: 
-                      label: Requirement:
-                    prose:      The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
         - 
           id:         sa-12
           class:      SP800-53
@@ -38994,6 +39053,24 @@ catalog:
                   id:    sc-7.13_smt
                   name:  statement
                   prose: The organization isolates {{ sc-7.13_prm_1 }} from other internal information system components by implementing physically separate subnetworks with managed interfaces to other components of the system.
+                  parts: 
+                    id:    sc-7.13_fr
+                    name:  item
+                    ns:    fedramp
+                    title: SC-7 (13) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      - 
+                        id:         sc-7.13_fr_smt.1
+                        name:       item
+                        properties: 
+                          label: Requirement:
+                        prose:      The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.
+                      - 
+                        id:         sc-7.13_fr_gdn.1
+                        name:       guidance
+                        properties: 
+                          label: Guidance:
+                        prose:      Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers, centralized audit log servers etc.
                 - 
                   id:    sc-7.13_gdn
                   name:  guidance
@@ -39049,24 +39126,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Automated mechanisms supporting and/or implementing isolation of information security tools, mechanisms, and support components
-                - 
-                  id:    sc-7.13_fr
-                  name:  item
-                  ns:    fedramp
-                  title: SC-7 (13) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    - 
-                      id:         sc-7.13_fr_smt.1
-                      name:       item
-                      properties: 
-                        label: Requirement:
-                      prose:      The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.
-                    - 
-                      id:         sc-7.13_fr_gdn.1
-                      name:       guidance
-                      properties: 
-                        label: Guidance:
-                      prose:      Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers, centralized audit log servers etc.
             - 
               id:         sc-7.18
               class:      SP800-53-enhancement
@@ -39534,6 +39593,17 @@ catalog:
               id:    sc-12_smt
               name:  statement
               prose: The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with {{ sc-12_prm_1 }}.
+              parts: 
+                id:    sc-12_fr
+                name:  item
+                ns:    fedramp
+                title: SC-12 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         sc-12_fr_gdn.1
+                  name:       guidance
+                  properties: 
+                    label: Guidance:
+                  prose:      Federally approved and validated cryptography.
             - 
               id:    sc-12_gdn
               name:  guidance
@@ -39616,17 +39686,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing cryptographic key establishment and management
-            - 
-              id:    sc-12_fr
-              name:  item
-              ns:    fedramp
-              title: SC-12 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         sc-12_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      Federally approved and validated cryptography.
           controls: 
             - 
               id:         sc-12.1
@@ -39984,6 +40043,17 @@ catalog:
                   properties: 
                     label: b.
                   prose:      Provides an explicit indication of use to users physically present at the devices.
+                - 
+                  id:    sc-15_fr
+                  name:  item
+                  ns:    fedramp
+                  title: SC-15 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         sc-15_fr_smt.1
+                    name:       item
+                    properties: 
+                      label: Requirement:
+                    prose:      The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.
             - 
               id:    sc-15_gdn
               name:  guidance
@@ -40042,17 +40112,18 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing management of remote activation of collaborative computing devices\n\nautomated mechanisms providing an indication of use of collaborative computing devices
-            - 
-              id:    sc-15_fr
-              name:  item
-              ns:    fedramp
-              title: SC-15 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         sc-15_fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.
+          controls: 
+            id:         sc-15.fr
+            class:      SP800-53-enhancement
+            title:      SC-15 Additional FedRAMP Requirements and Guidance
+            properties: 
+              label: SC-15 Req
+            parts: 
+              id:         sc-15.fr_smt
+              name:       item
+              properties: 
+                label: Requirement
+              prose:      The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.
         - 
           id:         sc-17
           class:      SP800-53
@@ -40927,6 +40998,17 @@ catalog:
               id:    sc-28_smt
               name:  statement
               prose: The information system protects the {{ sc-28_prm_1 }} of {{ sc-28_prm_2 }}.
+              parts: 
+                id:    sc-28_fr
+                name:  item
+                ns:    fedramp
+                title: SC-28 Additional FedRAMP Requirements and Guidance
+                parts: 
+                  id:         sc-28_fr_gdn.1
+                  name:       guidance
+                  properties: 
+                    label: Guidance:
+                  prose:      The organization supports the capability to use cryptographic mechanisms to protect information at rest.
             - 
               id:    sc-28_gdn
               name:  guidance
@@ -41040,17 +41122,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing confidentiality and integrity protections for information at rest
-            - 
-              id:    sc-28_fr
-              name:  item
-              ns:    fedramp
-              title: SC-28 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         sc-28_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      The organization supports the capability to use cryptographic mechanisms to protect information at rest.
           controls: 
             id:         sc-28.1
             class:      SP800-53-enhancement
@@ -42414,6 +42485,17 @@ catalog:
                   properties: 
                     label: g.
                   prose:      Provides {{ si-4_prm_3 }} to {{ si-4_prm_4 }} {{ si-4_prm_5 }}.
+                - 
+                  id:    si-4_fr
+                  name:  item
+                  ns:    fedramp
+                  title: SI-4 Additional FedRAMP Requirements and Guidance
+                  parts: 
+                    id:         si-4_fr_gdn.1
+                    name:       guidance
+                    properties: 
+                      label: Guidance:
+                    prose:      See US-CERT Incident Response Reporting Guidelines.
             - 
               id:    si-4_gdn
               name:  guidance
@@ -42696,17 +42778,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Organizational processes for information system monitoring\n\nautomated mechanisms supporting and/or implementing information system monitoring capability
-            - 
-              id:    si-4_fr
-              name:  item
-              ns:    fedramp
-              title: SI-4 Additional FedRAMP Requirements and Guidance
-              parts: 
-                id:         si-4_fr_gdn.1
-                name:       guidance
-                properties: 
-                  label: Guidance:
-                prose:      See US-CERT Incident Response Reporting Guidelines.
           controls: 
             - 
               id:         si-4.1
@@ -42911,6 +42982,17 @@ catalog:
                   id:    si-4.5_smt
                   name:  statement
                   prose: The information system alerts {{ si-4.5_prm_1 }} when the following indications of compromise or potential compromise occur: {{ si-4.5_prm_2 }}.
+                  parts: 
+                    id:    si-4.5_fr
+                    name:  item
+                    ns:    fedramp
+                    title: SI-4 (5) Additional FedRAMP Requirements and Guidance
+                    parts: 
+                      id:         si-4.5_fr_gdn.1
+                      name:       guidance
+                      properties: 
+                        label: Guidance:
+                      prose:      In accordance with the incident response plan.
                 - 
                   id:    si-4.5_gdn
                   name:  guidance
@@ -42968,17 +43050,6 @@ catalog:
                   parts: 
                     name:  objects
                     prose: Organizational processes for intrusion detection/information system monitoring\n\nautomated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability\n\nautomated mechanisms supporting and/or implementing alerts for compromise indicators
-                - 
-                  id:    si-4.5_fr
-                  name:  item
-                  ns:    fedramp
-                  title: SI-4 (5) Additional FedRAMP Requirements and Guidance
-                  parts: 
-                    id:         si-4.5_fr_gdn.1
-                    name:       guidance
-                    properties: 
-                      label: Guidance:
-                    prose:      In accordance with the incident response plan.
             - 
               id:         si-4.11
               class:      SP800-53-enhancement

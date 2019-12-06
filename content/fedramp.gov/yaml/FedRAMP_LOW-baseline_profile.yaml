@@ -2,9 +2,10 @@ profile:
   id:       uuid-eda582b6-d61f-42a4-8165-9637ea1e8a32
   metadata: 
     title:               FedRAMP Low Baseline
-    last-modified:       2019-10-01T11:03:27.392-04:00
-    version:             1.1
-    oscal-version:       1.0.0-milestone1
+    published:           2019-11-27T00:00:00.000-05:00
+    last-modified:       2019-11-25T10:00:00.000-05:00
+    version:             1.2
+    oscal-version:       1.0.0-milestone2
     roles: 
       - 
         id:    creator
@@ -25,7 +26,7 @@ profile:
         party-ids: fedramp
   imports: 
     - 
-      href:    ../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml
+      href:    https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml
       include: 
         id-selectors: 
           - 
@@ -279,7 +280,7 @@ profile:
           - 
             control-id: si-16
     - 
-      href:    FedRAMP_catalog.json
+      href:    https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/fedramp.gov/xml/FedRAMP_catalog.xml
       include: 
         id-selectors: 
           - 
@@ -641,6 +642,7 @@ profile:
         control-id: ac-8
         additions: 
           position: ending
+          id-ref:   ac-8_smt
           parts: 
             id:    ac-8_fr
             name:  item
@@ -669,6 +671,7 @@ profile:
         control-id: au-2
         additions: 
           position: ending
+          id-ref:   au-2_smt
           parts: 
             id:    au-2_fr
             name:  item
@@ -684,6 +687,7 @@ profile:
         control-id: au-6
         additions: 
           position: ending
+          id-ref:   au-6_smt
           parts: 
             id:    au-6_fr
             name:  item
@@ -699,6 +703,7 @@ profile:
         control-id: au-11
         additions: 
           position: ending
+          id-ref:   au-11_smt
           parts: 
             id:    au-11_fr
             name:  item
@@ -714,6 +719,7 @@ profile:
         control-id: ca-2
         additions: 
           position: ending
+          id-ref:   ca-2_smt
           parts: 
             id:    ca-2_fr
             name:  item
@@ -729,6 +735,7 @@ profile:
         control-id: ca-2.1
         additions: 
           position: ending
+          id-ref:   ca-2.1_smt
           parts: 
             id:    ca-2.1_fr
             name:  item
@@ -744,6 +751,7 @@ profile:
         control-id: ca-5
         additions: 
           position: ending
+          id-ref:   ca-5_smt
           parts: 
             id:    ca-5_fr
             name:  item
@@ -766,6 +774,7 @@ profile:
         control-id: ca-6
         additions: 
           position: ending
+          id-ref:   ca-6_smt
           parts: 
             id:    ca-6_fr
             name:  item
@@ -781,6 +790,7 @@ profile:
         control-id: ca-7
         additions: 
           position: ending
+          id-ref:   ca-7_smt
           parts: 
             id:    ca-7_fr
             name:  item
@@ -809,6 +819,7 @@ profile:
         control-id: cm-6
         additions: 
           position: ending
+          id-ref:   cm-6_smt
           parts: 
             id:    cm-6_fr
             name:  item
@@ -837,6 +848,7 @@ profile:
         control-id: cm-7
         additions: 
           position: ending
+          id-ref:   cm-7_smt
           parts: 
             id:    cm-7_fr
             name:  item
@@ -863,6 +875,7 @@ profile:
         control-id: cm-8
         additions: 
           position: ending
+          id-ref:   cm-8_smt
           parts: 
             id:    cm-8_fr
             name:  item
@@ -878,6 +891,7 @@ profile:
         control-id: cp-2
         additions: 
           position: ending
+          id-ref:   cp-2_smt
           parts: 
             id:    cp-2_fr
             name:  item
@@ -893,6 +907,7 @@ profile:
         control-id: cp-4
         additions: 
           position: ending
+          id-ref:   cp-4_smt
           parts: 
             id:    cp-4_fr
             name:  item
@@ -908,6 +923,7 @@ profile:
         control-id: cp-9
         additions: 
           position: ending
+          id-ref:   cp-9_smt
           parts: 
             id:    cp-9_fr
             name:  item
@@ -942,6 +958,7 @@ profile:
         control-id: ia-2.12
         additions: 
           position: ending
+          id-ref:   ia-2.12_smt
           parts: 
             id:    ia-2.12_fr
             name:  item
@@ -957,6 +974,7 @@ profile:
         control-id: ia-4
         additions: 
           position: ending
+          id-ref:   ia-4_smt
           parts: 
             id:    ia-4_fr
             name:  item
@@ -979,6 +997,7 @@ profile:
         control-id: ia-5
         additions: 
           position: ending
+          id-ref:   ia-5_smt
           parts: 
             id:    ia-5_fr
             name:  item
@@ -994,6 +1013,7 @@ profile:
         control-id: ia-5.1
         additions: 
           position: ending
+          id-ref:   ia-5.1_smt
           parts: 
             id:    ia-5.1_fr
             name:  item
@@ -1009,6 +1029,7 @@ profile:
         control-id: ir-4
         additions: 
           position: ending
+          id-ref:   ir-4_smt
           parts: 
             id:    ir-4_fr
             name:  item
@@ -1024,6 +1045,7 @@ profile:
         control-id: ir-6
         additions: 
           position: ending
+          id-ref:   ir-6_smt
           parts: 
             id:    ir-6_fr
             name:  item
@@ -1039,6 +1061,7 @@ profile:
         control-id: ir-8
         additions: 
           position: ending
+          id-ref:   ir-8_smt
           parts: 
             id:    ir-8_fr
             name:  item
@@ -1061,6 +1084,7 @@ profile:
         control-id: pe-14
         additions: 
           position: ending
+          id-ref:   pe-14_smt
           parts: 
             id:    pe-14_fr
             name:  item
@@ -1076,6 +1100,7 @@ profile:
         control-id: ra-3
         additions: 
           position: ending
+          id-ref:   ra-3_smt
           parts: 
             id:    ra-3_fr
             name:  item
@@ -1097,6 +1122,7 @@ profile:
       - 
         control-id: ra-5
         additions: 
+          id-ref: ra-5_smt
           parts: 
             - 
               id:         ra-5_fr_smt.a
@@ -1127,6 +1153,7 @@ profile:
         control-id: sa-4
         additions: 
           position: ending
+          id-ref:   sa-4_smt
           parts: 
             id:    sa-4_fr
             name:  item
@@ -1142,6 +1169,7 @@ profile:
         control-id: sa-9
         additions: 
           position: ending
+          id-ref:   sa-9_smt
           parts: 
             id:    sa-9_fr
             name:  item
@@ -1164,6 +1192,7 @@ profile:
         control-id: sc-12
         additions: 
           position: ending
+          id-ref:   sc-12_smt
           parts: 
             id:    sc-12_fr
             name:  item
@@ -1179,6 +1208,7 @@ profile:
         control-id: sc-15
         additions: 
           position: ending
+          id-ref:   sc-15_smt
           parts: 
             id:    sc-15_fr
             name:  item
@@ -1194,6 +1224,7 @@ profile:
         control-id: si-4
         additions: 
           position: ending
+          id-ref:   si-4_smt
           parts: 
             id:    si-4_fr
             name:  item

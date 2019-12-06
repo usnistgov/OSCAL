@@ -3,9 +3,10 @@
     "id": "uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304",
     "metadata": {
       "title": "FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline",
-      "last-modified": "2019-10-01T11:05:07.595-04:00",
-      "version": "1.0",
-      "oscal-version": "1.0.0-milestone1",
+      "published": "2019-11-27T00:00:00.000-05:00",
+      "last-modified": "2019-11-24T10:00:00.000-05:00",
+      "version": "1.2",
+      "oscal-version": "1.0.0-milestone2",
       "roles": {
         "id": "author",
         "title": "Author"
@@ -627,6 +628,14 @@
       "alterations": [
         {
           "control-id": "ac-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -659,6 +668,12 @@
             },
             {
               "id-ref": "ac-2_smt.k"
+            },
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
             }
           ],
           "additions": {
@@ -686,6 +701,14 @@
         },
         {
           "control-id": "ac-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -697,6 +720,14 @@
         },
         {
           "control-id": "ac-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": [
@@ -721,6 +752,14 @@
         },
         {
           "control-id": "ac-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -738,6 +777,14 @@
         },
         {
           "control-id": "ac-14",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -755,6 +802,14 @@
         },
         {
           "control-id": "ac-17",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -766,6 +821,14 @@
         },
         {
           "control-id": "ac-18",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -783,6 +846,14 @@
         },
         {
           "control-id": "ac-19",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -800,6 +871,14 @@
         },
         {
           "control-id": "ac-20",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -811,6 +890,14 @@
         },
         {
           "control-id": "ac-22",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -822,6 +909,14 @@
         },
         {
           "control-id": "at-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -833,6 +928,14 @@
         },
         {
           "control-id": "at-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -844,6 +947,14 @@
         },
         {
           "control-id": "at-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -855,6 +966,14 @@
         },
         {
           "control-id": "at-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -866,6 +985,14 @@
         },
         {
           "control-id": "au-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -877,6 +1004,14 @@
         },
         {
           "control-id": "au-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -888,6 +1023,14 @@
         },
         {
           "control-id": "au-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -899,6 +1042,14 @@
         },
         {
           "control-id": "au-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -916,6 +1067,14 @@
         },
         {
           "control-id": "au-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -927,6 +1086,14 @@
         },
         {
           "control-id": "au-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -938,6 +1105,14 @@
         },
         {
           "control-id": "au-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -949,6 +1124,14 @@
         },
         {
           "control-id": "au-9",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -960,6 +1143,14 @@
         },
         {
           "control-id": "au-11",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -977,6 +1168,14 @@
         },
         {
           "control-id": "au-12",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -988,6 +1187,14 @@
         },
         {
           "control-id": "ca-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -999,6 +1206,14 @@
         },
         {
           "control-id": "ca-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1024,6 +1239,14 @@
         },
         {
           "control-id": "ca-2.1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1035,6 +1258,14 @@
         },
         {
           "control-id": "ca-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1052,6 +1283,14 @@
         },
         {
           "control-id": "ca-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1069,6 +1308,14 @@
         },
         {
           "control-id": "ca-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1094,6 +1341,14 @@
         },
         {
           "control-id": "ca-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1129,6 +1384,14 @@
         },
         {
           "control-id": "ca-9",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1146,6 +1409,14 @@
         },
         {
           "control-id": "cm-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1157,6 +1428,14 @@
         },
         {
           "control-id": "cm-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1168,6 +1447,14 @@
         },
         {
           "control-id": "cm-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1179,6 +1466,14 @@
         },
         {
           "control-id": "cm-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1230,6 +1525,14 @@
         },
         {
           "control-id": "cm-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1241,6 +1544,14 @@
         },
         {
           "control-id": "cm-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1266,6 +1577,14 @@
         },
         {
           "control-id": "cm-10",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1283,6 +1602,14 @@
         },
         {
           "control-id": "cm-11",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1300,6 +1627,14 @@
         },
         {
           "control-id": "cp-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1311,6 +1646,14 @@
         },
         {
           "control-id": "cp-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1328,6 +1671,14 @@
         },
         {
           "control-id": "cp-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1345,6 +1696,14 @@
         },
         {
           "control-id": "cp-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1362,6 +1721,14 @@
         },
         {
           "control-id": "cp-9",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1413,6 +1780,14 @@
         },
         {
           "control-id": "cp-10",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1430,6 +1805,14 @@
         },
         {
           "control-id": "ia-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1441,6 +1824,14 @@
         },
         {
           "control-id": "ia-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": [
@@ -1465,6 +1856,14 @@
         },
         {
           "control-id": "ia-2.1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1476,6 +1875,14 @@
         },
         {
           "control-id": "ia-2.12",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1509,6 +1916,14 @@
         },
         {
           "control-id": "ia-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1520,6 +1935,14 @@
         },
         {
           "control-id": "ia-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1531,6 +1954,14 @@
         },
         {
           "control-id": "ia-5.1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1542,6 +1973,14 @@
         },
         {
           "control-id": "ia-5.11",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": [
@@ -1566,6 +2005,14 @@
         },
         {
           "control-id": "ia-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1577,6 +2024,14 @@
         },
         {
           "control-id": "ia-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1588,6 +2043,14 @@
         },
         {
           "control-id": "ia-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1599,6 +2062,14 @@
         },
         {
           "control-id": "ia-8.1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1616,6 +2087,14 @@
         },
         {
           "control-id": "ia-8.2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1633,6 +2112,14 @@
         },
         {
           "control-id": "ia-8.3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1644,6 +2131,14 @@
         },
         {
           "control-id": "ia-8.4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1655,6 +2150,14 @@
         },
         {
           "control-id": "ir-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1666,6 +2169,14 @@
         },
         {
           "control-id": "ir-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1677,6 +2188,14 @@
         },
         {
           "control-id": "ir-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1702,6 +2221,14 @@
         },
         {
           "control-id": "ir-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1713,6 +2240,14 @@
         },
         {
           "control-id": "ir-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1738,6 +2273,14 @@
         },
         {
           "control-id": "ir-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1749,6 +2292,14 @@
         },
         {
           "control-id": "ir-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1766,6 +2317,14 @@
         },
         {
           "control-id": "ir-9",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1783,6 +2342,14 @@
         },
         {
           "control-id": "ma-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1794,6 +2361,14 @@
         },
         {
           "control-id": "ma-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1811,6 +2386,14 @@
         },
         {
           "control-id": "ma-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1822,6 +2405,14 @@
         },
         {
           "control-id": "ma-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1839,6 +2430,14 @@
         },
         {
           "control-id": "mp-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1850,6 +2449,14 @@
         },
         {
           "control-id": "mp-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1867,6 +2474,14 @@
         },
         {
           "control-id": "mp-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1884,6 +2499,14 @@
         },
         {
           "control-id": "mp-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1901,6 +2524,14 @@
         },
         {
           "control-id": "pe-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1912,6 +2543,14 @@
         },
         {
           "control-id": "pe-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1929,6 +2568,14 @@
         },
         {
           "control-id": "pe-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1946,6 +2593,14 @@
         },
         {
           "control-id": "pe-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1963,6 +2618,14 @@
         },
         {
           "control-id": "pe-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1980,6 +2643,14 @@
         },
         {
           "control-id": "pe-12",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -1997,6 +2668,14 @@
         },
         {
           "control-id": "pe-13",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2014,6 +2693,14 @@
         },
         {
           "control-id": "pe-14",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2047,6 +2734,14 @@
         },
         {
           "control-id": "pe-15",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2064,6 +2759,14 @@
         },
         {
           "control-id": "pe-16",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2081,6 +2784,14 @@
         },
         {
           "control-id": "pl-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2092,6 +2803,14 @@
         },
         {
           "control-id": "pl-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2103,6 +2822,14 @@
         },
         {
           "control-id": "pl-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2114,6 +2841,14 @@
         },
         {
           "control-id": "ps-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2125,6 +2860,14 @@
         },
         {
           "control-id": "ps-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2136,6 +2879,14 @@
         },
         {
           "control-id": "ps-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2147,6 +2898,14 @@
         },
         {
           "control-id": "ps-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2158,6 +2917,14 @@
         },
         {
           "control-id": "ps-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2169,6 +2936,14 @@
         },
         {
           "control-id": "ps-6",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2180,6 +2955,14 @@
         },
         {
           "control-id": "ps-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2197,6 +2980,14 @@
         },
         {
           "control-id": "ps-8",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2208,6 +2999,14 @@
         },
         {
           "control-id": "ra-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2219,6 +3018,14 @@
         },
         {
           "control-id": "ra-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2230,6 +3037,14 @@
         },
         {
           "control-id": "ra-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2265,6 +3080,14 @@
         },
         {
           "control-id": "ra-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "properties": {
               "ns": "fedramp",
@@ -2309,6 +3132,14 @@
         },
         {
           "control-id": "sa-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2320,6 +3151,14 @@
         },
         {
           "control-id": "sa-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2331,6 +3170,14 @@
         },
         {
           "control-id": "sa-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2342,6 +3189,14 @@
         },
         {
           "control-id": "sa-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2353,6 +3208,14 @@
         },
         {
           "control-id": "sa-4.10",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2364,6 +3227,14 @@
         },
         {
           "control-id": "sa-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2375,6 +3246,14 @@
         },
         {
           "control-id": "sa-9",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2386,6 +3265,14 @@
         },
         {
           "control-id": "sc-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2397,6 +3284,14 @@
         },
         {
           "control-id": "sc-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2414,6 +3309,14 @@
         },
         {
           "control-id": "sc-7",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2425,6 +3328,14 @@
         },
         {
           "control-id": "sc-12",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2450,6 +3361,14 @@
         },
         {
           "control-id": "sc-13",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2467,6 +3386,14 @@
         },
         {
           "control-id": "sc-15",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2484,6 +3411,14 @@
         },
         {
           "control-id": "sc-20",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2495,6 +3430,14 @@
         },
         {
           "control-id": "sc-21",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2506,6 +3449,14 @@
         },
         {
           "control-id": "sc-22",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2517,6 +3468,14 @@
         },
         {
           "control-id": "sc-39",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2528,6 +3487,14 @@
         },
         {
           "control-id": "si-1",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2539,6 +3506,14 @@
         },
         {
           "control-id": "si-2",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2550,6 +3525,14 @@
         },
         {
           "control-id": "si-3",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2561,6 +3544,14 @@
         },
         {
           "control-id": "si-4",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2572,6 +3563,14 @@
         },
         {
           "control-id": "si-5",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
@@ -2583,6 +3582,14 @@
         },
         {
           "control-id": "si-12",
+          "removals": [
+            {
+              "name-ref": "objective"
+            },
+            {
+              "name-ref": "assessment"
+            }
+          ],
           "additions": {
             "position": "ending",
             "properties": {
