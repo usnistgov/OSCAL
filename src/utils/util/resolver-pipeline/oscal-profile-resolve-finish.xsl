@@ -15,8 +15,19 @@
         </xsl:copy>
     </xsl:template>
     
-<!-- remove opqr and xsi namespaces -->
-    
+    <!-- Finalizing profile resolution into a catalog:
+           reordering metadata, group and control contents to valid order
+           removing loose orphan parameters
+             orphans given inside controls are retained
+           removing unclaimed inventory
+             defined as any 'citation' or 'resource' in back matter
+               without something somewhere linking to it
+               
+               
+         What we are not doing:
+           removing broken links
+           remove opqr and xsi namespaces (that happens in the shell)   
+    -->
 <!-- An XQuery run on a metaschema can return a sequence of instructions
     
     let $where := 'metadata'
@@ -67,10 +78,7 @@
             <xsl:apply-templates mode="#current" select="control"/>
         </xsl:copy>
     </xsl:template>
-    <!-- consider sorting elements in metadata, groups and controls into expected order -->
-    
-<!-- filter back-matter -->
-
+ 
   <xsl:key name="param-insertions" match="insert" use="@param-id"/>
     
   <xsl:template match="catalog/param[empty(key('param-insertions',@id))]
