@@ -14,12 +14,18 @@ wendell
 backup*
 working/
 __pycache__
+xspec/
+
+# test reports
+testing/*.html
+testing/**/*.html
+*-report.html
+*-result.html
 
 ## Production outputs
 ## ==================
 pub/
 target/
-xspec/*.html
 /archive
 /roundtrip
 /svrl

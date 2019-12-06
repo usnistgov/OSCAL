@@ -11,7 +11,7 @@
   <!-- Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied. -->
   <!-- Dependencies: working links to valid control catalogs in OSCAL XML. -->
   
-  <xsl:strip-space elements="group control subcontrol part section component"/>
+  <xsl:strip-space elements="group control part section component"/>
   
   <xsl:output indent="yes"/>
 
@@ -189,14 +189,14 @@
   </xsl:template>-->
   
   <xsl:function name="oscal:matched" as="xs:boolean">
-    <!-- $comp should be a control, subcontrol or component -->
+    <!-- $comp should be a control or component -->
     <xsl:param name="comp" as="element()"/>
     <!-- $imp will be an import element -->
     <xsl:param name="invocation" as="element()"/>
     <xsl:variable name="included" as="xs:boolean" select="exists($invocation/include/all) or empty($invocation/include)"/>
     <xsl:variable name="matched" select="some $re in ($invocation/include/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
-    <xsl:variable name="parent-control" select="$comp/(parent::control | parent::comp[oscal:classes(.)='control'] )"/>
-    <xsl:variable name="subcontrol-matched" select="some $re in ($invocation/include/match[@with-subcontrols='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($parent-control/@id,$re))"/>
+    <xsl:variable name="ancestor-control" select="$comp/(ancestor::control | ancestor::requirement[oscal:classes(.)='control'] )"/>
+    <xsl:variable name="subcontrol-matched" select="some $re in ($invocation/include/match[@with-child-controls='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($ancestor-control/@id,$re))"/>
     <!--<xsl:variable name="control-implied" select="some $re in ($invocation/include/match[@with-control='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/subcontrol/@id,$re))"/>-->
     
     <xsl:variable name="unmatched" select="some $re in ($invocation/exclude/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
@@ -228,43 +228,14 @@
       </xsl:when>
       <xsl:otherwise>
         <!-- The control is not included but it is not impossible than a subcontrol is included anyway -->
-        <xsl:apply-templates select="subcontrol" mode="import">
+        <xsl:apply-templates select="control" mode="import">
           <xsl:with-param name="orphan" select="true()"/>
         </xsl:apply-templates>
       </xsl:otherwise>
     </xsl:choose>
-    <!--<xsl:apply-templates mode="#current" select="subcontrol | component[oscal:classes(.)='subcontrol']"/>-->
   </xsl:template>
   
-  <xsl:template match="subcontrol | component[oscal:classes(.)='subcontrol']" priority="2" mode="import">
-    <!-- Subcontrol logic is analogous to control logic for keeping.
-      Extend this with (parameterized) defaults for handling subcontrols. -->
-    <xsl:param name="orphan" select="false()"/>
-    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
-    <!-- A subcontrol is included if all explicitly says to include all subcontrols, or
-         if its containing controls is called and set @with-subcontrols -->
-    <xsl:variable name="control" select="ancestor::control[1]"/>
-    <xsl:variable name="included" select="(: include if with-subcontrols is on 'all'
-      or on a corresponding 'call' :) 
-      ($invocation/include/all/@with-subcontrols='yes') or
-      ($invocation/include/call[@control-id  = $control/@id]/@with-subcontrols='yes')
-      "/>
-    <!-- Or it can be called on its own (no matter other settings) -->
-    <xsl:variable name="called"   select="exists($invocation/include/call[@subcontrol-id  = current()/@id])"/>
-    <!-- The subcontrol can still be excluded -->
-    <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
-    
-    <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
-        <xsl:if test="$orphan">
-          <xsl:attribute name="control-id" select="../@id"/>
-        </xsl:if>
-        <xsl:apply-templates mode="#current"/>
-      </xsl:copy>
-    </xsl:if>
-  </xsl:template>
-
+ 
   <xsl:template match="processing-instruction()" mode="import"/>
 
 
@@ -285,7 +256,7 @@
     <xsl:variable name="merged">
       <merged>
         <!-- $so-far is giving us a sequence of imported controls and subcontrols, some of which may be nested, so representing all the import trees. -->
-        <xsl:variable name="included" select="$so-far//control | $so-far//subcontrol[empty(parent::control)]"/>
+        <xsl:variable name="included" select="$so-far//control"/>
         <xsl:choose>
           <xsl:when test="exists($merge-spec/custom)">
             
@@ -366,7 +337,7 @@
    
   <!-- in 'rebuild' mode, the controls are matched in their original structure,
        but must then be emitted (now not the originals, but the proxies) according to the merge/combine rules. -->
-  <xsl:template   mode="rebuild" match="control | subcontrol | component">
+  <xsl:template   mode="rebuild" match="control | component">
     <xsl:param    name="controls"   tunnel="yes" select="()"/>
     <xsl:param    name="merge-spec" tunnel="yes" as="element(merge)"/>
     <xsl:variable name="here"  select="."/>
@@ -402,13 +373,13 @@
             <xsl:copy-of select="$control-set/@*"/>
 
             <xsl:for-each-group
-              select="$control-set/(* except (subcontrol | component | references))"
+              select="$control-set/(* except (component | references))"
               group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
               <xsl:copy-of select="."/>
               <!-- just one -->
             </xsl:for-each-group>
 
-            <xsl:apply-templates mode="#current" select="$control-set/(subcontrol | component)"/>
+            <xsl:apply-templates mode="#current" select="$control-set/component"/>
 
             <xsl:for-each-group select="$control-set/references/*"
               group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
@@ -478,7 +449,7 @@
     <xsl:for-each select="$so-far/resolution">
       <xsl:copy>
         <xsl:copy-of select="*|node()"/>
-        <xsl:apply-templates select="merged" mode="patch">
+        <xsl:apply-templates select="child::merged" mode="patch">
           <xsl:with-param name="modifications" tunnel="yes" select="$modifications"/>
     </xsl:apply-templates>
         
@@ -517,7 +488,7 @@
   <xsl:function name="oscal:removable" as="xs:boolean">
     <xsl:param name="who" as="node()"/>
     <xsl:param name="mods" as="element(modify)"/>
-    <xsl:variable name="home" select="($who/ancestor::control | $who/ancestor::subcontrol | $who/ancestor::component)[last()]"/> 
+    <xsl:variable name="home" select="($who/ancestor::control | $who/ancestor::component)[last()]"/> 
     <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$mods)"/>
     <xsl:variable name="removals" select="$alterations/remove"/>
     
@@ -534,10 +505,10 @@
   </xsl:function>
   
   
-  <xsl:template match="control//* | subcontrol//* | component//*" mode="patch">
+  <xsl:template match="control//* | component//*" mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:variable name="here" select="."/>
-    <xsl:variable name="home" select="(ancestor::control | ancestor-or-self::subcontrol | ancestor-or-self::component)[last()]"/> 
+    <xsl:variable name="home" select="(ancestor::control | ancestor-or-self::component)[last()]"/> 
     <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$modifications)"/>
     <!-- Key retrievals scoped to alterations...   -->
     <xsl:variable name="patches-to-id" select="$alterations/key('addition-by-target',$here/@id,.)"/>
@@ -568,8 +539,7 @@
     
     <!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
     <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
-      $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
-      except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()] ]
+      $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ]
       [@position='after']"/>
     <xsl:copy-of select="$patches-after/*"/>
     
@@ -633,7 +603,7 @@
   
   <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
   
-  <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
+  <xsl:key name="alteration-by-target" match="alter" use="@control-id"/>
   
 <!-- additions (modify/alter/add elements) can be applied using either class value or id:
      however the key must be scoped to within the control (or subcontrol)
