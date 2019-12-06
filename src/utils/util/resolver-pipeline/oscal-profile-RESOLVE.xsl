@@ -34,7 +34,7 @@
         <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
         <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>
-        <!--<opr:finalize/>-->
+        <opr:finalize/>
     </xsl:variable>
 
     <!-- Entry point traps the root node of the source and passes it down the chain of transformation references -->
