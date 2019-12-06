@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    id="worksheet">
+    <metadata>
+        <title>Worksheet Catalog</title>
+        <last-modified>2019-12-06T15:00:35.313-05:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0-MR2</oscal-version>
+    </metadata>
+    <group>
+        <title>Only Group</title>
+        <param id="loose">
+            <label>Loose parameter</label>
+        </param>
+        <control id="control_A">
+            <title>Control A</title>
+            <prop name="somewhat">property</prop>
+            <link href="file.xml">A link</link>
+        </control>
+    </group>
+</catalog>

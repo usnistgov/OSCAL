@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description
-    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-finish.xsl">
     <x:scenario label="Base">
         <x:context>
             <catalog id="abc"/>
         </x:context>
-        
         <x:expect label="profile becomes catalog">
             <catalog id="abc"/>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Loose parameter, unreferenced">
+        <x:context>
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <param id="loose">
+                    <label>Loose parameter</label>
+                </param>
+                <control id="control_A">
+                    <title>Control A</title>
+                </control>
+            </catalog>
+        </x:context>
+        <x:expect label="parameter is dropped">
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <control id="control_A">
+                    <title>Control A</title>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Loose parameter, referenced">
+        <x:context>
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <param id="loose">
+                    <label>Loose parameter</label>
+                </param>
+                <control id="control_A">
+                    <title>Control A</title>
+                    <part>
+                        <p><insert param-id="loose"/> goes here.</p></part>
+                </control>
+            </catalog>
+        </x:context>
+        <x:expect label="parameter is dropped">
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <param id="loose">
+                    <label>Loose parameter</label>
+                </param>
+                <control id="control_A">
+                    <title>Control A</title>
+                    <part>
+                        <p><insert param-id="loose"/> goes here.</p>
+                    </part>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Control contents re-ordered">
+        <x:context>
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <control id="control_A">
+                    <title>Control A</title>
+                    <link href="file.xml">A link</link>
+                    <prop name="somewhat">property</prop>
+                </control>
+            </catalog>
+        </x:context>
+        <x:expect label="in valid order">
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <control id="control_A">
+                    <title>Control A</title>
+                    <prop name="somewhat">property</prop>
+                    <link href="file.xml">A link</link>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Superfluous back matter discarded">
+        <x:context>
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <back-matter>
+                    <citation id="cit1">citation</citation>
+                </back-matter>
+            </catalog>
+        </x:context>
+        <x:expect label="discarding empty back-matter">
+            <catalog id="worksheet">
+                <title>Catalog</title>                
+            </catalog>
         </x:expect>
     </x:scenario>
 </x:description>
