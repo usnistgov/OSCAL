@@ -11,7 +11,7 @@
     </metadata>
     <!-- random comment -->
     <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
-        <include>
+        <include >
             <call control-id="a1"/>
         </include>
         

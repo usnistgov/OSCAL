@@ -1713,6 +1713,53 @@
       </section>
     </section>
   </section>
+  <section id="null-profile">
+    <head>Null profile</head>
+    <p>A <term>null profile</term> is a profile that imports a catalog and selects all its controls
+      without modification. A truly <q>null</q> profile – that is, with only an import and nothing
+      else – does not return its imported catalog unchanged. But the changes it makes can be useful.
+      This makes a null profile or its <term>near-null</term> variants, as described in this
+      section, potentially useful for catalog management, design and use, as described in this
+      section.</p>
+    <section id="all-null">
+      <head>Importing and nothing else</head>
+      <tagging whose="source_profile">&lt;profile>
+  &lt;metadata>...&lt;/metadata>
+  &lt;import href="catalog.xml"/>
+&lt;/profile></tagging>
+      <p>In the target, the catalog group structure and all hierarchy is removed; its controls are
+        all returned in sequence. Any loose parameters in the catalog not referenced in a control,
+        are dropped.</p>
+      <p>This is the same as</p>
+      <tagging whose="source_profile">&lt;profile>
+  &lt;metadata>...&lt;/metadata>
+  &lt;import href="catalog.xml">
+    &lt;include>
+      &lt;all/>
+    &lt;/include>
+  &lt;/import>
+  &lt;merge>
+    &lt;combine method="keep"/>
+  &lt;/merge>
+&lt;/profile></tagging>
+    </section>
+    <section>
+      <head>all/with-child-controls='no'</head>
+      <p>The same, except that only top-level controls are included, not descendants.</p>
+      <p><revisit>unit test this</revisit></p>
+    </section>
+    <section>
+      <head>including merge directives</head>
+      <p>Using merge <src>as-is='true'</src>, the grouping hierarchy of a source catalog can be
+        reflected in the target.</p>
+      <p>This enables a near-null profile to define a normalization or cleanup pass on a catalog, as
+        it will have the result of removing dangling references and orphan parameters, without
+        otherwise affecting controls.</p>
+      <p><revisit>unit test this too, especially with more than two levels of control hierarchy as
+          well as groups</revisit></p>
+      <p><revisit>unit test this</revisit></p>
+    </section>
+  </section>
   <section>
     <head>Options</head>
     <p>For conformance, an OSCAL processor must deliver results of profile processing, in a basic
