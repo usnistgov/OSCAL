@@ -97,4 +97,31 @@
             </catalog>
         </x:expect>
     </x:scenario>
+    <x:scenario label="Non-superfluous back matter retained">
+        <x:context>
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <control>
+                    <title>Control A</title>
+                    <link href="#citA">link to good citation</link>
+                </control>
+                <back-matter>
+                    <citation id="cit1">unclaimed citation</citation>
+                    <citation id="citA">good citation</citation>
+                </back-matter>
+            </catalog>
+        </x:context>
+        <x:expect label="keeping back-matter with a citation">
+            <catalog id="worksheet">
+                <title>Catalog</title>
+                <control>
+                    <title>Control A</title>
+                    <link href="#citA">link to good citation</link>
+                </control>
+                <back-matter>
+                    <citation id="citA">good citation</citation>
+                </back-matter>
+            </catalog>
+        </x:expect>
+    </x:scenario>
 </x:description>
