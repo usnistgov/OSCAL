@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+   id="popular-controls-profile"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd">
+   <metadata>
+      <title>Popular Controls Profile</title>
+      <last-modified>2019-10-21T10:12:33.06-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0-MR2</oscal-version>
+   </metadata>
+   <import href="#catalog">
+      <include>
+         <call control-id="ac-2"/>
+         <call control-id="ac-3"/>
+         <call control-id="ac-4"/>
+         <call control-id="ac-6"/>
+         <call control-id="ac-17"/>
+         <call control-id="au-2"/>
+         <call control-id="au-6"/>
+         <call control-id="au-12"/>
+         <call control-id="ca-7"/>
+         <call control-id="cm-3"/>
+         <call control-id="cm-6"/>
+         <call control-id="cp-2"/>
+         <call control-id="pe-3"/>
+         <call control-id="sa-12"/>
+         <call control-id="sc-7"/>
+         <call control-id="sc-12"/>
+         <call control-id="sc-13"/>
+         <call control-id="si-3"/>
+         <call control-id="si-4"/>
+         <call control-id="si-7"/>
+         <call control-id="pm-9"/>
+      </include>
+   </import>
+   <back-matter>
+      <resource id="catalog">
+         <desc>NIST SP 800-53 rev 4 catalog in OSCAL</desc>
+         <rlink href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
+      </resource>
+   </back-matter>
+</profile>

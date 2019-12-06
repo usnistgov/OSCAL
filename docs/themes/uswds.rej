@@ -1,0 +1,5 @@
+--- docs/themes/uswds
++++ docs/themes/uswds
+@@ -1 +1 @@
+-Subproject commit 764e52ad21f9e5aeefd142f90886d1e6c237d3f2
++Subproject commit 8f3c04ce04db2279697682719478945e7a69952e

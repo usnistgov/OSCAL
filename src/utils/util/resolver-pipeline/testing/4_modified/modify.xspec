@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-modify.xsl">
+    <x:scenario label="Modify Base">
+        <x:context>
+            <catalog id="abc">
+                <modify/>
+            </catalog>
+        </x:context>
+        
+        <x:expect label="modify element is dropped">
+            <catalog id="abc"/>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Simple property addition to a control">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123"><title>Control A</title></control>
+                <modify>
+                    <alter control-id="a123">
+                        <add>
+                            <prop name="due_date">2020-02-20</prop>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        
+        <x:expect label="Adding the property to the front">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="due_date">2020-02-20</prop>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+</x:description>

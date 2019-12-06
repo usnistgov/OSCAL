@@ -1,5 +1,7 @@
 @import 'oscal.css';
 
+metadata > *:before { content: oxy_xpath('name()');
+  font-size: 80%; background-color: midnightblue; color: white; font-family: sans-serif; font-weight: bold; padding: 0rem 0.2rem; margin-right: 0.2rem }
 
 a:after { content:
    oxy_urlChooser(
