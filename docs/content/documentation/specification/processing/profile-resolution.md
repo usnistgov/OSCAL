@@ -5,5 +5,7 @@ custom_css:
   - /css/oscal-specs.css
 ---
 
-{{<partial "generated/oscal-profile-resolution-specification.html" >}}
-   
+To come: Profile Resolution Specification
+
+Switch on by replacing '[' with '{' and removing leading ws in
+`[[< partial "generated/oscal-profile-resolution-specification.html" > ]]`
