@@ -13,6 +13,11 @@
     <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
         <include>
             <call control-id="a1"/>
+        </include>
+        
+    </import>
+    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
+        <include>
             <match pattern="^a"/>
         </include>
         
