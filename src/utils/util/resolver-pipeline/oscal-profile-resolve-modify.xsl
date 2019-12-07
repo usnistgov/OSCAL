@@ -94,9 +94,9 @@
     
     <xsl:function name="oscal:removable" as="xs:boolean">
         <xsl:param name="who" as="node()"/>
-        <xsl:param name="mods" as="element(modify)"/>
+        <xsl:param name="mods" as="element(modify)?"/>
         <xsl:variable name="home" select="($who/ancestor::control | $who/ancestor::component)[last()]"/> 
-        <xsl:variable name="alterations" select="key('alteration-for-control-id',$home/@id,$mods)"/>
+        <xsl:variable name="alterations" select="$mods/key('alteration-for-control-id',$home/@id,.)"/>
         <xsl:variable name="removals" select="$alterations/remove"/>
         
         <xsl:sequence select="some $r in $removals satisfies oscal:remove-match($who,$r)"/>
