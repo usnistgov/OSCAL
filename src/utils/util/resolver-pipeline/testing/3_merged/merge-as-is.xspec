@@ -10,7 +10,7 @@
     </x:scenario>
     <x:scenario label="Single import, as-is merge">
         <x:context>
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
@@ -38,7 +38,7 @@
                 <merge>
                     <as-is>true</as-is>
                 </merge>
-            </profile>
+            </catalog>
         </x:context>
         <x:expect label="XYZ catalog with original grouping">
             <catalog>
@@ -70,7 +70,7 @@
     </x:scenario>
     <x:scenario label="Parallel imports, as-is merge">
         <x:context>
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
@@ -110,7 +110,7 @@
                 <merge>
                     <as-is>true</as-is>
                 </merge>
-            </profile>
+            </catalog>
         </x:context>
         <x:expect label="XYZ catalog merged, with some redundancy">
             <catalog>
@@ -145,7 +145,7 @@
     </x:scenario>
     <x:scenario label="Ugly merge with loose parameters and stuff">
         <x:context>
-            <profile>
+            <catalog>
                 <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
@@ -195,7 +195,7 @@
                 <merge>
                     <as-is>true</as-is>
                 </merge>
-            </profile>
+            </catalog>
         </x:context>
         <x:expect label="XYZ ugly merged, with extra redundancy">
             <catalog>
