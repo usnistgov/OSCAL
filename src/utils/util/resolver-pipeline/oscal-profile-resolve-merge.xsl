@@ -43,7 +43,7 @@
             <xsl:apply-templates select="control | .//group/control"/>
     </xsl:template>
     
-    <xsl:template priority="2" match="profile[merge/as-is=('true','1')]">
+    <xsl:template priority="12" match="catalog[merge/as-is=('true','1')]">
         <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
@@ -61,7 +61,7 @@
         </catalog>
     </xsl:template>
     
-    <xsl:template priority="3" match="profile[merge/custom]">
+    <xsl:template priority="13" match="catalog[merge/custom]">
         <xsl:message>custom merge not supported yet</xsl:message>
         <catalog>
             <xsl:apply-templates select="@*"/>
@@ -75,7 +75,7 @@
     
     <xsl:template name="o:merge-groups-asis">
         <xsl:param name="merging" select="()"/>
-        <xsl:for-each-group select="$merging" group-by="@opr:id">
+        <xsl:for-each-group select="$merging" group-by="(@opr:id,@id)[1]">
             <xsl:variable name="merged" select="current-group()"/>
             <xsl:for-each select="$merged[1]">
                 <xsl:copy copy-namespaces="no">
@@ -83,10 +83,10 @@
                     <xsl:apply-templates select="title"/>
                     <xsl:apply-templates select="$merged/(* except (title | param | control | group) )"/>
                     
-                    <xsl:apply-templates select="$merging/ancestor::profile" mode="o:merge-elements">
+                    <xsl:apply-templates select="$merging/ancestor::catalog" mode="o:merge-elements">
                         <xsl:with-param name="elements" select="$merged/param"/>
                     </xsl:apply-templates>
-                    <xsl:apply-templates select="$merging/ancestor::profile" mode="o:merge-elements">
+                    <xsl:apply-templates select="$merging/ancestor::catalog" mode="o:merge-elements">
                         <xsl:with-param name="elements" select="$merged/control"/>
                     </xsl:apply-templates>
                     
@@ -106,7 +106,7 @@
          with the combination method as an argument.
     -->
     
-    <xsl:template priority="10" match="profile[merge/combine/@method='merge']" mode="o:merge-elements">
+    <xsl:template priority="10" match="catalog[merge/combine/@method='merge']" mode="o:merge-elements">
         <xsl:param name="elements" as="element()*" required="yes"/>
         <!-- All the elements coming in have the same name but different opr:id
              we operate on controls and parameters (not groups or group contents otherwise) -->
@@ -130,13 +130,13 @@
         
     </xsl:template>
     
-    <xsl:template priority="10" match="profile[merge/combine/@method='use-first']" mode="o:merge-elements">
+    <xsl:template priority="10" match="catalog[merge/combine/@method='use-first']" mode="o:merge-elements">
         <xsl:param name="elements" as="element()*" required="yes"/>
         <xsl:apply-templates select="$elements[1]"/>
     </xsl:template>
     
     <!--[merge/combine/@method='keep'] is the default handling -->
-    <xsl:template priority="5" match="profile" mode="o:merge-elements">
+    <xsl:template priority="5" match="catalog" mode="o:merge-elements">
         <xsl:param name="elements" as="element()*" required="yes"/>
         <xsl:apply-templates select="$elements"/>
     </xsl:template>

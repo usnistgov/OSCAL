@@ -35,6 +35,18 @@
     return <apply-templates mode="#current" select="{ $n }"/>
     
     -->
+    
+    <xsl:template match="catalog">
+        <xsl:copy copy-namespaces="no">
+            <xsl:apply-templates mode="#current" select="@*"/>
+            <xsl:apply-templates mode="#current" select="metadata"/>
+            <xsl:apply-templates mode="#current" select="param"/>
+            <xsl:apply-templates mode="#current" select="control"/>
+            <xsl:apply-templates mode="#current" select="group"/>
+            <xsl:apply-templates mode="#current" select="back-matter"/>
+        </xsl:copy>
+    </xsl:template>
+    
     <xsl:template match="metadata">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>
