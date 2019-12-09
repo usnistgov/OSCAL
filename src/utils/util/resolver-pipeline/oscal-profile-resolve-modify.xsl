@@ -32,19 +32,15 @@
         <!--<xsl:variable name="modifications" select="/*/modify"/>-->
         <xsl:variable name="id" select="@id"/>
         
-        <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][@position='before']/*"/>
-        
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="title" mode="#current"/>
-            <!-- taking anything that is not 'ending' to be 'starting' -->
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][@position!='ending']/*"/>
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][@position=('before','starting')]/*"/>
             
             <xsl:apply-templates select="* except title" mode="#current"/>
             <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
             
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][empty(@position) or @position='ending']/*"/>
-            
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][not(@position = ('before','starting'))]/*"/>      
         </xsl:copy>
     </xsl:template>
     

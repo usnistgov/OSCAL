@@ -1521,16 +1521,19 @@
                 <code>starting</code> and <code>ending</code>.</p>
             <p>The contents of the add directive are then added to the control contents in the
               target, either after its <tgt>title</tgt> when <src>position</src> is
-                <code>starting</code>, or at the end if its position is <code>ending</code>.</p>
+                <code>starting</code>, or at the end if its position is <code>ending</code>, or not
+              given.</p>
             <p>However, control contents in catalogs must appear in the order <code>title, param,
                 prop, link, part, control</code>. Subsequent to adding new elements, the control
               contents are sorted to appear in the required order. As a consequence, a new
                 <tgt>prop</tgt> appears after any <src>prop</src> already in the control, when
-                <src>position</src> is <code>ending</code>, or before any <src>prop</src> in the
-              control when <src>position</src> is <code>starting</code>.</p>
+                <src>position</src> is <code>ending</code>, or not given,, or before any
+                <src>prop</src> in the control when <src>position</src> is
+              <code>starting</code>.</p>
             <p>When add has no <src>@ref-id</src> (has an implicit binding), the <src>position</src>
-              values <code>before</code> and <code>after</code> are inoperative. A processor may
-              issue a warning if they are encountered.</p>
+              values <code>before</code> and <code>after</code> are treated like
+                <code>starting</code> and <code>ending</code>, respectively. <revisit>The schema
+                permits these values.</revisit></p>
             <mapping>
               <p>An addition operating on a control with implicit binding and position
                   <code>starting</code></p>

@@ -13,6 +13,7 @@
             <catalog id="abc"/>
         </x:expect>
     </x:scenario>
+    
     <x:scenario label="Simple property addition to a control">
         <x:context>
             <catalog id="abc">
@@ -26,7 +27,6 @@
                 </modify>
             </catalog>
         </x:context>
-        
         <x:expect label="Adding the property to the front">
             <catalog id="abc">
                 <control id="a123">
