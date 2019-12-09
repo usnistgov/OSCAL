@@ -10,8 +10,8 @@
         <version>1.0</version>
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
-    <import href="abc-simple_catalog.xml"/>
-    <!-- same as <import href="abc_catalog.xml">
+    <import href="catalogs/abc-simple_catalog.xml"/>
+    <!-- same as <import href="catalogs/abc_catalog.xml">
         <include>
             <all/>
         </include>
