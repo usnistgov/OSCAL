@@ -44,7 +44,7 @@
          <xsl:apply-templates select="allowed-values"/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>Appears as a property on: </xsl:text>
-               <xsl:for-each-group select="current-group()" group-by="@ref">
+               <xsl:for-each-group select="current-group()" group-by="(@ref|@name)">
                   <xsl:if test="position() gt 1 and last() ne 2">, </xsl:if>
                   <xsl:if test="position() gt 1 and position() eq last()"> and </xsl:if>
                   <xsl:apply-templates select="." mode="link-here"/>
