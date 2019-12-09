@@ -36,6 +36,17 @@
     
     -->
     
+    <!-- this declares $path-to-source as string '..' -->
+    <xsl:param name="path-to-source" as="xs:string">..</xsl:param>
+    
+    <xsl:template match="metadata/link[@rel='resolution-source']">
+        <!-- splicing together a path with '/' -->
+        <link rel="resolution-source" href="{string-join(
+            ($path-to-source[matches(.,'\S')],replace(@href,'.*/','')), '/')}">
+            <xsl:apply-templates></xsl:apply-templates>
+        </link>
+    </xsl:template>
+
     <xsl:template match="catalog">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>

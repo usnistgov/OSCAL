@@ -87,7 +87,9 @@
                 </control>
             </catalog>
         </x:expect>
-    </x:scenario> <x:scenario label="Add a part and a prop, explicit ending position">
+    </x:scenario>
+    
+    <x:scenario label="Add a part and a prop, explicit ending position">
         <x:context>
             <catalog id="abc">
                 <control id="a123">
