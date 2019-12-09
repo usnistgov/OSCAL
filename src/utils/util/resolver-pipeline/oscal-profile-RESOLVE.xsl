@@ -56,11 +56,14 @@
         </xsl:iterate>
     </xsl:template>
 
+    <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
+   
     <!-- for opr:transformation, the semantics are "apply this XSLT" -->
     <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
-        <xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home) }"/>
+        <xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home),
+            QName('','uri-stack-in'): ($uri-stack,document-uri($home)) }"/>
         <xsl:variable name="runtime" select="map {
                     'xslt-version': xs:decimal($xslt-spec/@version),
                     'stylesheet-location': string($xslt-spec),

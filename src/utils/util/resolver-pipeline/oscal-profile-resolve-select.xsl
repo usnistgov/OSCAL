@@ -16,6 +16,9 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
     
+    <!--<xsl:param name="source-uri"   required="yes" as="xs:anyURI"/>-->
+    <xsl:param name="uri-stack-in" required="yes" as="xs:anyURI*"/>
+    
 <!-- The default processing is to pass everything through.
      Note: The source catalog includes other contents besides selected controls
            that may be required in the result. Examples are elements in the back
@@ -33,10 +36,32 @@
     <!-- Making the default handling explicit. -->
     <xsl:template match="comment() | processing-instruction()" mode="#all"/>
     
+<!-- We catch the unmoded template only once, at the top; other matches will be in mode o:select   -->
     <xsl:template match="profile">
         <xsl:copy>
-            <xsl:apply-templates mode="o:select" select="node() | @*"/>
+            <xsl:apply-templates mode="o:select" select="node() | @*">
+                <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack-in"/>
+            </xsl:apply-templates>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="profile" mode="o:select">
+        <!-- $uri-stack contains an import call stack trace from the point of entry -->
+        <xsl:param name="uri-stack" tunnel="yes" select="()"/>
+        <xsl:variable name="uri-here" select="document-uri(root())"/>
+        <xsl:if test="not($uri-here = $uri-stack)">
+            <xsl:copy>
+                <xsl:message>
+                    <xsl:text>profile '</xsl:text>
+                    <xsl:value-of select="$uri-here"/>
+                    <xsl:text>' picked up - and dropped - on import - we do only catalogs so far</xsl:text>
+                </xsl:message>
+                <!--<xsl:apply-templates mode="o:select" select="node() | @*">
+                    <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack,$uri-here"/>
+                </xsl:apply-templates>-->
+            </xsl:copy>
+        </xsl:if>
+        
     </xsl:template>
     
     <xsl:template match="catalog" mode="o:select">
@@ -53,7 +78,19 @@
         </metadata>
     </xsl:template>-->
     
-    <xsl:template match="import" mode="o:select">
+    <xsl:key name="resource-by-id" match="resource" use="@id"/>
+    
+    <xsl:template priority="2" mode="o:select" match="import[starts-with(@href,'#')]">
+        <xsl:apply-templates mode="o:import" select="key('resource-by-id',@href)">
+            <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:template>
+    
+    <xsl:template match="resource" mode="o:import">
+        <xsl:apply-templates mode="o:select" select="document(rlink/@href)"/>
+    </xsl:template>
+    
+    <xsl:template priority="1" mode="o:select" match="import">
         <xsl:apply-templates mode="#current" select="document(@href)">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>

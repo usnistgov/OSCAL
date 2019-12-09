@@ -13,7 +13,9 @@
     <x:scenario label="Loose parameter, unreferenced">
         <x:context>
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <param id="loose">
                     <label>Loose parameter</label>
                 </param>
@@ -24,7 +26,9 @@
         </x:context>
         <x:expect label="parameter is dropped">
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <control id="control_A">
                     <title>Control A</title>
                 </control>
@@ -34,7 +38,9 @@
     <x:scenario label="Loose parameter, referenced">
         <x:context>
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <param id="loose">
                     <label>Loose parameter</label>
                 </param>
@@ -47,7 +53,9 @@
         </x:context>
         <x:expect label="parameter is dropped">
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <param id="loose">
                     <label>Loose parameter</label>
                 </param>
@@ -63,7 +71,9 @@
     <x:scenario label="Control contents re-ordered">
         <x:context>
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <control id="control_A">
                     <title>Control A</title>
                     <link href="file.xml">A link</link>
@@ -73,7 +83,9 @@
         </x:context>
         <x:expect label="in valid order">
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <control id="control_A">
                     <title>Control A</title>
                     <prop name="somewhat">property</prop>
@@ -85,7 +97,9 @@
     <x:scenario label="Superfluous back matter discarded">
         <x:context>
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <back-matter>
                     <citation id="cit1">citation</citation>
                 </back-matter>
@@ -93,14 +107,18 @@
         </x:context>
         <x:expect label="discarding empty back-matter">
             <catalog id="worksheet">
-                <title>Catalog</title>                
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
             </catalog>
         </x:expect>
     </x:scenario>
     <x:scenario label="Non-superfluous back matter retained">
         <x:context>
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <control>
                     <title>Control A</title>
                     <link href="#citA">link to good citation</link>
@@ -113,7 +131,9 @@
         </x:context>
         <x:expect label="keeping back-matter with a citation">
             <catalog id="worksheet">
-                <title>Catalog</title>
+                <metadata>
+                    <title>Catalog</title>
+                </metadata>
                 <control>
                     <title>Control A</title>
                     <link href="#citA">link to good citation</link>
@@ -121,6 +141,30 @@
                 <back-matter>
                     <citation id="citA">good citation</citation>
                 </back-matter>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Restoring order of control contents">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <link href="linkme.pdf">Link Me</link>
+                    <prop name="rating">AAA</prop>
+                    <part name="statement"><p>Statement</p></part>
+                    <prop name="due_date">2020-02-20</prop>
+                </control>
+            </catalog>
+        </x:context>
+        <x:expect label="Link and part after prop">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                    <prop name="due_date">2020-02-20</prop>
+                    <link href="linkme.pdf">Link Me</link>
+                    <part name="statement"><p>Statement</p></part>
+                </control>
             </catalog>
         </x:expect>
     </x:scenario>
