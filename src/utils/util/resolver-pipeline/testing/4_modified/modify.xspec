@@ -14,7 +14,7 @@
         </x:expect>
     </x:scenario>
     
-    <x:scenario label="Simple property addition to a control">
+    <x:scenario label="Simple property addition to a control, solo">
         <x:context>
             <catalog id="abc">
                 <control id="a123"><title>Control A</title></control>
@@ -27,10 +27,89 @@
                 </modify>
             </catalog>
         </x:context>
-        <x:expect label="Adding the property to the front">
+        <x:expect label="Adding the property">
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
+                    <prop name="due_date">2020-02-20</prop>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Simple property addition to a control, starting position">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <add position="starting">
+                            <prop name="due_date">2020-02-20</prop>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Adding the new property at the front">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="due_date">2020-02-20</prop>
+                    <prop name="rating">AAA</prop>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Simple property addition to a control, ending position - implicit">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <add>
+                            <prop name="due_date">2020-02-20</prop>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Adding the new property at the end">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                    <prop name="due_date">2020-02-20</prop>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario> <x:scenario label="Add a part and a prop, explicit ending position">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <add position="ending">
+                            <part name="statement"><p>Statement</p></part>
+                            <prop name="due_date">2020-02-20</prop>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Adding the new prop and part at the end">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                    <part name="statement"><p>Statement</p></part>
                     <prop name="due_date">2020-02-20</prop>
                 </control>
             </catalog>
