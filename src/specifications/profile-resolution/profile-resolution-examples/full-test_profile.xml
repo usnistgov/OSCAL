@@ -12,7 +12,7 @@
         <version>1.0</version>
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
-    <import href="abc-full_catalog.xml">
+    <import href="catalogs/abc-full_catalog.xml">
         <include>
             <call control-id="a1"/>
             <call control-id="b1"/>

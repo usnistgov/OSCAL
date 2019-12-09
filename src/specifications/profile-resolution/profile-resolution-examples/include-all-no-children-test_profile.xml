@@ -11,7 +11,7 @@
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
     <!-- The full catalog includes subcontrols, which are to be left behind. -->
-    <import href="abc-full_catalog.xml">
+    <import href="catalogs/abc-full_catalog.xml">
         <include>
             <all with-child-controls="no"/>
         </include>
