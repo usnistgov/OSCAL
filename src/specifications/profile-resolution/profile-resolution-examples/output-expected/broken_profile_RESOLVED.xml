@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="broken_profile-RESOLVED">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0-MR2</oscal-version>
+      <prop name="resolution-timestamp">2019-12-10T15:21:19.879-05:00</prop>
+      <link rel="resolution-source" href="../broken_profile.xml">Test Profile</link>
+   </metadata>
+</catalog>
