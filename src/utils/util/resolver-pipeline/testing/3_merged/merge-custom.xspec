@@ -8,7 +8,7 @@
             <catalog/>
         </x:expect>
     </x:scenario>
-    <x:scenario label="Single import, no merge (flat)">
+    <x:scenario label="Single import, custom structure">
         <x:context>
             <catalog>
                 <selection id="xyz-tiny_catalog">
@@ -54,19 +54,19 @@
                     </merge>
             </catalog>
         </x:context>
-        <x:expect label="All XYZ controls, ungrouped">
+        <x:expect label="New groups for XYZ 1 and 2">
             <catalog>
                 <group>
                     <title>New Group 1</title>
-                    <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
-                    <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
-                    <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="z1"><title>Control Z1</title></control>
                 </group>
                 <group>
                     <title>New Group 1</title>
-                    <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
-                    <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
-                    <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
+                    <control id="x2"><title>Control X2</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="z2"><title>Control Z2</title></control>
                 </group>
             </catalog>
         </x:expect>
