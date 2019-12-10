@@ -1,5 +1,7 @@
 # Profile semantics notes
 
+OSCAL Profile semantics: old profile resolver (2018) notes ...
+
 ## Importing catalogs and including controls
 `include/match[@pattern]` and `include/call[@control-id|@subcontrol-id]` *both* provide selection of controls.
 
