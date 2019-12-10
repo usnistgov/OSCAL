@@ -11,7 +11,7 @@
     
     <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
     
-    <xsl:param name="source-uri">urn:UNKNOWN</xsl:param>
+    <xsl:param name="profile-origin-uri">urn:UNKNOWN</xsl:param>
     
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
@@ -34,7 +34,7 @@
                 <xsl:value-of select="current-dateTime()"/>
             </prop>
             <xsl:apply-templates mode="#current" select="prop"/>
-            <link href="{$source-uri}" rel="resolution-source">
+            <link href="{$profile-origin-uri}" rel="resolution-source">
                 <xsl:for-each select="title">
                     <xsl:apply-templates/>
                 </xsl:for-each>

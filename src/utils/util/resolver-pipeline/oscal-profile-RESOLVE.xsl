@@ -25,13 +25,17 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
 
-
-    <!-- turning 'trace' on will
-            - emit runtime messages with each transformation
-            - retain opr:warning messages in results
-                                                     -->
+    <!-- Turning $trace to 'on' will
+         - emit runtime messages with each transformation, and
+         - retain opr:ERROR and opr:WARNING messages in results. -->
     
     <xsl:param name="trace" as="xs:string">off</xsl:param>
+
+    <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
+    
+    <!-- $path-to-source should point back to the source catalog from its result,
+         so '..' is appropriate when writing results down a directory. -->
+    <xsl:param name="path-to-source" as="xs:string?"/>
     
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
@@ -69,19 +73,15 @@
         </xsl:iterate>
     </xsl:template>
 
-    <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
-
     <!-- for opr:transformation, the semantics are "apply this XSLT" -->
     <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
-        <!--<xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home),
-            QName('','uri-stack-in'): ($uri-stack,document-uri($home)) }"/>-->
         <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
             <xsl:map>
-                <xsl:map-entry key="QName('', 'source-uri')" select="document-uri($home)"/>
-                <xsl:map-entry key="QName('', 'uri-stack-in')"
-                    select="($uri-stack, document-uri($home))"/>
+                <xsl:map-entry key="QName('','profile-origin-uri')" select="document-uri($home)"/>
+                <xsl:map-entry key="QName('','path-to-source')"     select="$path-to-source"/>
+                <xsl:map-entry key="QName('','uri-stack-in')"       select="($uri-stack, document-uri($home))"/>
             </xsl:map>
         </xsl:variable>
         <!--<xsl:variable name="runtime" select="map {

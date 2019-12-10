@@ -16,7 +16,7 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
     
-    <xsl:param name="source-uri"   required="yes" as="xs:anyURI"/>
+    <!--<xsl:param name="profile-origin-uri"   required="yes" as="xs:anyURI"/>-->
     <xsl:param name="uri-stack-in" required="yes" as="xs:anyURI*"/>
     
 <!-- The default processing is to pass everything through.
