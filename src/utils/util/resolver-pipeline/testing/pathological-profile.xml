@@ -10,13 +10,13 @@
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
     <!-- random comment -->
-    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
+    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/catalogs/abc-full_catalog.xml">
         <include >
             <call control-id="a1"/>
         </include>
         
     </import>
-    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/abc-full_catalog.xml">
+    <import href="../../../../specifications/profile-resolution/profile-resolution-examples/catalogs/abc-full_catalog.xml">
         <include>
             <match pattern="^a"/>
         </include>

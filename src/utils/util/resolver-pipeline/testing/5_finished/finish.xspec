@@ -24,7 +24,7 @@
                 </control>
             </catalog>
         </x:context>
-        <x:expect label="parameter is dropped">
+        <x:expect label="orphan parameter is dropped">
             <catalog id="worksheet">
                 <metadata>
                     <title>Catalog</title>
@@ -51,7 +51,7 @@
                 </control>
             </catalog>
         </x:context>
-        <x:expect label="parameter is dropped">
+        <x:expect label="referenced loose parameter is kept">
             <catalog id="worksheet">
                 <metadata>
                     <title>Catalog</title>

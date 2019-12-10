@@ -62,14 +62,30 @@
     <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
-        <xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home),
-            QName('','uri-stack-in'): ($uri-stack,document-uri($home)) }"/>
-        <xsl:variable name="runtime" select="map {
+        <!--<xsl:variable name="runtime-params" select="map { QName('','source-uri'): document-uri($home),
+            QName('','uri-stack-in'): ($uri-stack,document-uri($home)) }"/>-->
+        <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
+            <xsl:map>
+                <xsl:map-entry key="QName('', 'source-uri')" select="document-uri($home)"/>
+                <xsl:map-entry key="QName('', 'uri-stack-in')"
+                    select="($uri-stack, document-uri($home))"/>
+            </xsl:map>
+        </xsl:variable>
+        <!--<xsl:variable name="runtime" select="map {
                     'xslt-version': xs:decimal($xslt-spec/@version),
                     'stylesheet-location': string($xslt-spec),
                     'source-node': $sourcedoc,
                     'stylesheet-params': $runtime-params
-                    }"/>
+                    }"/>-->
+        <xsl:variable name="runtime" as="map(xs:string, item())">
+            <xsl:map>
+                <xsl:map-entry key="'xslt-version'"        select="xs:decimal($xslt-spec/@version)"/>
+                <xsl:map-entry key="'stylesheet-location'" select="string($xslt-spec)"/>
+                <xsl:map-entry key="'source-node'"         select="$sourcedoc"/>
+                <xsl:map-entry key="'stylesheet-params'"   select="$runtime-params"/>
+            </xsl:map>
+        </xsl:variable>
+        
         <!-- The function returns a map; primary results are under 'output'
              unless a base output URI is given
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
