@@ -34,9 +34,12 @@
             <xsl:apply-templates select="metadata"/>
             <xsl:apply-templates select="selection"/>
             <xsl:apply-templates select="modify"/>
-            <xsl:call-template name="make-back-matter"/>
+            <xsl:for-each-group select="back-matter/* | selection/back-matter/*" group-by="true()">
+                <back-matter>
+                    <xsl:copy-of select="current-group()"/>
+                </back-matter>
+            </xsl:for-each-group>
         </catalog>
-        
     </xsl:template>
     
     <xsl:template priority="12" match="catalog[merge/as-is=('true','1')]">
@@ -54,7 +57,7 @@
             </xsl:for-each>
             <!-- copying 'modify' unchanged through this transformation --> 
             <xsl:apply-templates select="modify"/>
-            <xsl:call-template name="make-back-matter"/>
+            <xsl:call-template name="combine-back-matter"/>
         </catalog>
     </xsl:template>
     
@@ -69,16 +72,16 @@
 
             <!-- copying 'modify' unchanged through this transformation -->
             <xsl:apply-templates select="modify"/>
-            <xsl:call-template name="make-back-matter"/>
+            <xsl:call-template name="combine-back-matter"/>
         </catalog>
     </xsl:template>
     
-    <xsl:template name="make-back-matter">
+    <xsl:template name="combine-back-matter">
         <xsl:variable name="here" select="self::catalog"/>
         <xsl:for-each-group select="back-matter/* | selection/back-matter/*" group-by="true()">
             <back-matter>
                 <!-- Using combination logic on back matter elements. -->
-                <xsl:for-each-group select="current-group()" group-by="(@opr:id,@id)[1]">
+                <xsl:for-each-group select="current-group()" group-by="(@opr:id,@id,generate-id())[1]">
                     <xsl:call-template name="combine-elements">
                         <xsl:with-param name="who" select="current-group()"/>
                     </xsl:call-template>
@@ -120,7 +123,7 @@
     
     <xsl:template name="o:merge-groups-asis">
         <xsl:param name="merging" select="()"/>
-        <xsl:for-each-group select="$merging" group-by="(@opr:id,@id)[1]">
+        <xsl:for-each-group select="$merging" group-by="(@opr:id,@id,generate-id())[1]">
             <xsl:variable name="merged" select="current-group()"/>
             <xsl:for-each select="$merged[1]">
                 <xsl:copy copy-namespaces="no">
@@ -164,7 +167,7 @@
         <!-- further, we assume all controls or all parameters -->
         <xsl:if test="$elements/name() != $elements/name()">
             <opr:error> ... elements of different types combining ...</opr:error></xsl:if>
-        <xsl:for-each-group select="$elements" group-by="(@opr:id,@id)[1]">
+        <xsl:for-each-group select="$elements" group-by="(@opr:id,@id,generate-id())[1]">
             <xsl:variable name="merged" select="current-group()"/>
             <xsl:for-each select="$merged[1]">
                 <xsl:copy copy-namespaces="no">
