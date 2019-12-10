@@ -36,8 +36,7 @@
     
     -->
     
-    <!-- this declares $path-to-source as string '..' -->
-    <xsl:param name="path-to-source" as="xs:string">..</xsl:param>
+    <xsl:param name="path-to-source" as="xs:string?"/>
     
     <xsl:template match="metadata/link[@rel='resolution-source']">
         <!-- splicing together a path with '/' -->
