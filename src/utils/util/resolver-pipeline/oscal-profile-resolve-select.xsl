@@ -16,7 +16,7 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
     
-    <!--<xsl:param name="source-uri"   required="yes" as="xs:anyURI"/>-->
+    <xsl:param name="source-uri"   required="yes" as="xs:anyURI"/>
     <xsl:param name="uri-stack-in" required="yes" as="xs:anyURI*"/>
     
 <!-- The default processing is to pass everything through.
@@ -51,11 +51,11 @@
         <xsl:variable name="uri-here" select="document-uri(root())"/>
         <xsl:if test="not($uri-here = $uri-stack)">
             <xsl:copy>
-                <xsl:message>
+                <opr:warning>
                     <xsl:text>profile '</xsl:text>
                     <xsl:value-of select="$uri-here"/>
                     <xsl:text>' picked up - and dropped - on import - we do only catalogs so far</xsl:text>
-                </xsl:message>
+                </opr:warning>
                 <!--<xsl:apply-templates mode="o:select" select="node() | @*">
                     <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack,$uri-here"/>
                 </xsl:apply-templates>-->
@@ -87,11 +87,11 @@
     </xsl:template>
     
     <xsl:template match="resource" mode="o:import">
-        <xsl:apply-templates mode="o:select" select="document(rlink/@href)"/>
+        <xsl:apply-templates mode="o:select" select="o:resource-or-warning(rlink/@href)"/>
     </xsl:template>
     
     <xsl:template priority="1" mode="o:select" match="import">
-        <xsl:apply-templates mode="#current" select="document(@href)">
+        <xsl:apply-templates mode="#current" select="o:resource-or-warning(@href)">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>
     </xsl:template>
@@ -185,5 +185,27 @@
         <xsl:sequence select="$caller/@with-child-controls='yes'"/>
     </xsl:function>
 
+    <!-- Returns a document when found, a <opr:warning> element when not. -->
+    <xsl:function name="o:resource-or-warning" as="document-node()">
+        <xsl:param name="href" as="attribute(href)"/>
+        <xsl:variable name="resolved-href" select="resolve-uri($href,$href/base-uri())"/>
+        <xsl:choose>
+            <xsl:when test="doc-available($resolved-href)">
+                <xsl:sequence select="document($resolved-href)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:document>
+                    <opr:WARNING>
+                        <xsl:text>Document not found: '</xsl:text>
+                        <xsl:value-of select="$href"/>
+                        <xsl:text>' resolved as '</xsl:text>
+                        <xsl:value-of select="$resolved-href"/>
+                        <xsl:text>'</xsl:text>
+                    </opr:WARNING>
+                </xsl:document>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
 
 </xsl:stylesheet>
