@@ -51,6 +51,7 @@
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>
             <xsl:apply-templates mode="#current" select="metadata"/>
+            <xsl:apply-templates mode="#current" select="opr:*"/>
             <xsl:apply-templates mode="#current" select="param"/>
             <xsl:apply-templates mode="#current" select="control"/>
             <xsl:apply-templates mode="#current" select="group"/>

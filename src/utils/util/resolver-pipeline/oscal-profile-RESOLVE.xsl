@@ -25,6 +25,12 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include exclude set alter add"/>
 
+
+    <!-- turning 'trace' on will
+            - emit runtime messages with each transformation
+            - retain opr:warning messages in results
+                                                     -->
+    
     <xsl:param name="trace" as="xs:string">off</xsl:param>
     
     <xsl:variable name="louder" select="$trace = 'on'"/>
@@ -129,7 +135,15 @@
 
     <!-- Likewise, intermediate processing directives. -->
     <xsl:template mode="opr:finalize" match="opr:* | @opr:*"/>
-
+    
+    <!-- But keep warnings and errors when tracing. -->
+    <xsl:template mode="opr:finalize" match="opr:ERROR[$louder] | opr:WARNING[$louder]">
+        <xsl:copy-of copy-namespaces="no" select="."/>
+        <xsl:call-template name="alert">
+            <xsl:with-param name="msg" select="string(.)"/>
+        </xsl:call-template>
+    </xsl:template>
+    
     <!-- In 'finalize' mode, copying everything else without namespaces. -->
     <xsl:template mode="opr:finalize" match="node() | @*">
         <xsl:copy copy-namespaces="no">
