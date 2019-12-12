@@ -1387,10 +1387,9 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-catalog:metadata" minOccurs="1" maxOccurs="1"/>
-            <xs:choice>
-               <xs:element ref="oscal-catalog:group" minOccurs="0" maxOccurs="unbounded"/>
-               <xs:element ref="oscal-catalog:control" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:choice>
+            <xs:element ref="oscal-catalog:param" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:control" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:group" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="id" use="required" type="xs:string">

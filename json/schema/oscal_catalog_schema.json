@@ -1053,14 +1053,14 @@
             "type" : "string" },
           "metadata" : 
           { "$ref" : "#/definitions/metadata" },
-          "groups" : 
+          "parameters" : 
           { "anyOf" : 
             [ 
-              { "$ref" : "#/definitions/group" },
+              { "$ref" : "#/definitions/param" },
               
               { "type" : "array",
                 "items" : 
-                { "$ref" : "#/definitions/group" },
+                { "$ref" : "#/definitions/param" },
                 "minItems" : 2 } ] },
           "controls" : 
           { "anyOf" : 
@@ -1070,6 +1070,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/control" },
+                "minItems" : 2 } ] },
+          "groups" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/group" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/group" },
                 "minItems" : 2 } ] },
           "back-matter" : 
           { "$ref" : "#/definitions/back-matter" } },

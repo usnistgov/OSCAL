@@ -24,16 +24,15 @@
       <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
-         <!--<field named="declarations"/>-->
-         <!--<assemblies named="section"/>-->
-         <choice>
-            <assembly ref="group" max-occurs="unbounded">
-               <group-as name="groups"/>
-            </assembly>
-            <assembly ref="control" max-occurs="unbounded">
-               <group-as name="controls"/>
-            </assembly>
-         </choice>
+         <assembly ref="param" max-occurs="unbounded">
+            <group-as name="parameters"/>
+         </assembly>
+         <assembly ref="control" max-occurs="unbounded">
+            <group-as name="controls"/>
+         </assembly>
+         <assembly ref="group" max-occurs="unbounded">
+            <group-as name="groups"/>
+         </assembly>
          <assembly ref="back-matter">
             <description>Back matter including references and resources.</description>
          </assembly>
