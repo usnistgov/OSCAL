@@ -1,62 +1,84 @@
 # OSCAL Website
 
-This subdirectory contains source code for the OSCAL Pages web site. For development you may need to know how to run it.
+This subdirectory contains source code for the OSCAL website at https://pages.nist.gov/OSCAL. Below are instructions for building the site for local development if making any contributions to the documentation.
 
-## Developing with Jekyll
+The website is built using the [Hugo](https://gohugo.io/) static site generator and the [United States Web Design System](https://designsystem.digital.gov/) (USWDS).
 
-Jekyll, a static web site generator implemented in Ruby, is documented with a Quickstart here: https://jekyllrb.com/docs/ 
+## Prerequisites
 
-The USWDS framework, a Jekyll customization we are using, is documented here: https://designsystem.digital.gov/
+If using Docker:
 
+- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Docker 19.03+](https://docs.docker.com/install/)
 
-On Windows 10, for best results, install a Linux subsystem (LSW) such as an Ubuntu VM. This avoids Windows-related Jekyll configuration madness.
+If not using Docker:
 
-```
-sudo gem install bundler -v 1.17.3
-```
+- macOS, Linux or Windows Subsystem for Linux (WSL) (model doc build scripts don't support Windows natively at this time)
+- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Hugo](https://gohugo.io/)
 
-Next after you have installed the bundler gem, Ruby sources for Jekyll (as configured in the Gemfile) must be acquired and compiled:
+## Generating the model documentation
 
-```
-bundle install
-```
+Before you can build and serve the site using Hugo directly or Docker, you must generate the OSCAL model documentation using the provided shell scripts. This step assumes that you've already downloaded Saxon-HE for Java and that you've set the `$SAXON_HOME` environment variable in your shell to the directory in which you extracted Saxon-HE.
 
-Now you can run Jekyll. To build a site for preview (from the `docs` subdirectory):
-
-```
-bundle exec jekyll build
-```
-
-To build the entire site including schema documentation requires more:
+From the root directory of the repository, execute the following command to generate the model documentation:
 
 ```
-JEKYLL_ENV=production bundle exec jekyll build
+./build/ci-cd/generate-model-documentation.sh
 ```
 
+## Using Hugo
 
-To serve the site, rebuilding on changes to contents or templates:
+[Hugo](https://gohugo.io/) is a popular open source static site generator that is used to develop all of the content for the OSCAL website. It is a general-purpose framework that builds pages when the content is created or updated.
+
+Instructions for installing the Hugo CLI on your OS can be found [here](https://gohugo.io/getting-started/installing).
+
+The website's visual styling is also backed by the U.S. Web Design System (USWDS) via an open source Hugo theme at https://github.com/usnistgov/hugo-uswds.
+
+The USWDS framework, a Jekyll customization we are using, is documented here: https://designsystem.digital.gov/.
+
+### Building the site with LiveReload
+
+Hugo provides built-in LiveReload which watches for any changes to the source content and automatically reloads the site when changes are detected.
+
+1. Pull the currently used USWDS Hugo theme revision to your locally cloned copy of the OSCAL repo by executing the following command from within the folder of the git repo
+
+ ```
+git submodule update --init
+```
+
+2. Verify that Hugo is installed
 
 ```
-JEKYLL_ENV=production bundle exec jekyll serve
+hugo version
 ```
 
-or even
+3. Navigate into the `docs/` directory
 
 ```
-JEKYLL_ENV=production bundle exec jekyll serve --incremental
-``` 
+cd docs
+```
 
-At that point you should have a Jekyll site running at http://localhost:4000
+4. Start the Hugo server
+
+```
+hugo server -v --debug --minify
+```
+
+5. Open your browser and navigate to `http://localhost:1313/OSCAL` to view the locally built site
+
+
+Now whenever you make any changes to the content with the Hugo server running, you'll notice that the site automtically updates itself to reflect those changes.
+
 
 ## Developing with Docker
 
-The website can also be developed and built using the included Docker resources. Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
+The website can also be developed and built using the included Docker resources.
+
+Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
 
 ```
 docker-compose up
 ```
 
-Once the site is running, it can be accessed at http://localhost:4000
-
-The `docker-compose.yml` file uses the `Dockerfile.dev` image to build the development version of the website.
-
+Once the site is running, it can be accessed at http://localhost:1313/OSCAL
