@@ -1,0 +1,6 @@
+public/
+resources/
+docker-compose.yml
+deploy.sh
+Gemfile*
+README.md
