@@ -68,7 +68,7 @@ hugo server -v --debug --minify
 5. Open your browser and navigate to `http://localhost:1313/OSCAL` to view the locally built site
 
 
-Now whenever you make any changes to the content with the Hugo server running, you'll notice that the site automtically updates itself to reflect those changes.
+Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.
 
 
 ## Developing with Docker
@@ -81,4 +81,4 @@ Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker
 docker-compose up
 ```
 
-Once the site is running, it can be accessed at http://localhost:1313/OSCAL
+Once the site is running, it can be accessed at http://localhost:1313/OSCAL. Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.
