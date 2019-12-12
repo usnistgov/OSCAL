@@ -46,14 +46,42 @@
         catalogs can be considered a directive that a parameter value be inserted into a particular
         location in running text (data content), when a catalog is rendered. Since these semantics
         respect catalog rendering, however, not profile resolution, they are out of scope for this
-        document.</p>
-      <p>Finally, this specification describes not only (source) profiles and (target or result) catalogs, but
-          <term>control selections</term> as well. The conceptual model of profile resolution takes
-        a profile through several steps, in which controls are collected from source catalogs,
-        combined, and potentially modified. As described by this specification, control selections
-        are produced during this process, as temporary collections of controls in a transitional
-        state. In the last stage of processing, the discrete selections are combined into the single
-        catalog, the target.</p>
+        document. For purposes of profile resolution, catalogs may be considered to be passive
+        resources from which contents are replicated (copied): the operation of the profile, in
+        contrast - its <q>OSCAL semantics</q> as opposed to the domain-specific semantics of the
+        information it handles – requires that it express what is to be done and how.</p>
+      <p><term>Original order</term> refers to the order of elements and objects as given in the
+        source. <term>Canonical order</term> refers to the <q>correct</q> order of elements or
+        objects as defined by an OSCAL format such as the catalog or profile models. That is, the
+        respective schemas of these models enforce order to the extent it is meaningful; where it is
+        not (for example, in the ordering of properties on objects in JSON), a metaschema can
+        nevertheless be referenced to provide an order.</p>
+      <p>So for example, on a JSON object, a <src>links</src> object and a <src>parts</src> object
+        may be given as properties on an OSCAL <src>control</src> object. Each of these collects a
+        sequence of one or more objects of the appropriate type (links or parts). As properties in
+        JSON, these collections are not ordered with respect to one another. However, for the sake
+        of a complete definition in another of OSCAL's operational contexts (namely XML), the OSCAL
+        catalog model stipulates that all links come before all parts. This has two consequences.
+        First, lossless conversion between formats is possible, even when one or both is defective
+        in some respect (as in this case, JSON's object model does not capture the order of object
+        properties): the metaschema can provide the difference, enabling a compliant OSCAL processor
+        to know how deterministically to emit valid XML (with respect to ordering) even from a
+        property set (intrinsically unordered) JSON source. Second, it ensures that the relative
+        ordering of links to parts will never be significant in the data: while the order of links
+        within <tgt>links</tgt> and the order of parts within <tgt>parts</tgt> may be significant
+        and can hence be preserved across representations, the order <q>first links, then parts</q>,
+        being defined by the model, becomes invariant across instances and thus insignificant.</p>
+      <p>Canonical order is important since there are occasions when, in order to produce valid
+        outputs in XML, a profile resolver must resequence items. This may happen any place where
+        the natural or intrinsic order resulting from splicing sequences in original order is not
+        correct.</p>
+      <p>Finally, this specification describes not only (source) profiles and (target or result)
+        catalogs, but <term>control selections</term> as well. The conceptual model of profile
+        resolution takes a profile through several steps, in which controls are collected from
+        source catalogs, combined, and potentially modified. As described by this specification,
+        control selections are produced during this process, as temporary collections of controls in
+        a transitional state. In the last phase of processing, the discrete selections are combined
+        into the single catalog, the target.</p>
       <p>For illustrative purposes, these control selections are, like source and target formats,
         also represented by tagging in examples given here, and described as intermediate targets,
         even though no OSCAL processor is obliged to produce or recognize such XML at any point, as
@@ -88,7 +116,7 @@
         the source, in XML notation. Sometimes, however, the expected outputs are not fully defined
         by the inputs given. In these cases, a description of the dynamic (variable) contents in
         curly braces <term>{ }</term>.</p>
-      <p>So for example where a time stamp is to be produced in the result, an example could
+      <p>So for example where a property is added to target <tgt>metadata</tgt>, an example could
         show</p>
       <tagging whose="target_catalog">&lt;last-modified><hi>{ timestamp }</hi>&lt;/last-modified></tagging>
       <p>This indicates the <tgt>last-modified</tgt> element should be produced with contents
@@ -186,6 +214,39 @@
       <p>Similarly, the definition of the output format or results, is constrained by the OSCAL
           <term>catalog</term> model as defined by its schema.</p>
     </section>
+    <section>
+      <head>Order of objects in serialization</head>
+      <p>As described above, <term>original order</term> refers to the order of elements and objects
+        as given in the source, whereas <term>canonical order</term> refers to the <q>correct</q>
+        order of elements or objects as defined by an OSCAL format such as the catalog or profile
+        models. That is, the respective schemas of these models enforce order to the extent it is
+        meaningful; where it is not (for example, in the ordering of properties on objects in JSON),
+        a metaschema can nevertheless be referenced to restore an order.</p>
+      <p>So for example, on a JSON object, a <src>links</src> object and a <src>parts</src> object
+        may be given as properties on a <src>control</src> object. As properties, they are not
+        ordered with respect to one another. However, for the sake of a complete definition in
+        another of OSCAL's operational contexts (namely XML), the catalog model stipulates that all
+        links come before all parts: in an XML representation, <tgt>link</tgt> elements come before
+          <tgt>part</tgt> elements. This restriction ensures that the relative ordering of links to
+        parts will never be significant in the data: while the order of links within
+          <tgt>links</tgt> and the order of parts within <tgt>parts</tgt> may be significant and can
+        hence be preserved across representations, the order <q>first links, then parts</q> is
+        defined by the model, with the consequence that it can be represented as such even when an
+        underlying representation (such as a compiled JSON object) does not encode that relationship
+        natively.</p>
+      <p>There are occasions especially when control contents are altered or amended, when a
+        straightforward representation of elements in their original order, or in two sequences
+        spliced together (say, the parts of a control, followed by new properties for the same
+        control, added by the profile), would be invalid, which is to say not conformant with
+        canonical order. In general the rule in these cases is, in resolution, to reorder the
+        elements. <revisit>Example</revisit></p>
+      <p>For any given element (defined as an assembly in the metaschema), the canonical order is
+        given by its model. So for example the canonical order for contents of a catalog is
+          <tgt>metadata</tgt>, <tgt>param</tgt>, <tgt>control</tgt>, <tgt>group</tgt>,
+          <tgt>back-matter</tgt>. Within this sequence, members may be missing, as for example not
+        all catalogs will have parameters or groups. Any members that are present, however, must be
+        given in this order.</p>
+    </section>
     <section id="id-uniqueness">
       <head>ID uniqueness constraint</head>
       <p>In addition to those described and enforced by the respective schemas, there are additional
@@ -198,27 +259,59 @@
         identity</term>. That is, it is on the basis of their IDs that controls are selected and
         referenced, and clashes are detected and recognized between competing representations of
         controls.</p>
-      <p>A document may be considered by this specification as <term>invalid</term> because it
-        violates constraints over ID uniqueness, even if it is formally schema-valid. Because in
-        current versions, the OSCAL schemas do not formally validate the distinctiveness of ID
-        values, this constraint – within the scope of either the source document (at minimum) or
-        across a larger operational environment as appropriate – must be checked by another process.
-        For the SP800-53 control catalog, and for profiles derived from it, a Schematron is
-        available for this purpose of validating that IDs given to all elements, including those
-        representing controls, parts of controls such as statements or assessment objectives,
-        parameters etc., are all unique within the catalog.</p>
+      <p>In this context, <q>defined processing scope</q> includes a profile along with all profiles
+        and all catalogs it imports, directly and indirectly. Many arrangements are possible in
+        which a single catalog provides controls to more than a single branch on the import tree. In
+        profiles where this occurs, distinct imports must identify discrete, non-intersecting, sets
+        of controls, or clashes occur. Additionally, clashes may naturally occur through implicit
+        copying of parameters from multiple imports.</p>
+      <p>OSCAL profiles provide three different modes for handling clashing controls or replicas in
+        general, where <term>replica</term> refers to any element represented more than once. Each
+        of these modes is indicated by different directives given on <src>merge/@combine</src>,
+        namely <q>keep</q> (also the default), <q>use-first</q> and <q>merge</q>.</p>
       <p><revisit>Because ID distinctiveness within the scope of processing, is critical, OSCAL
           users should take care that different catalogs have distinct sets of IDs. This applies to
           all structures within the catalogs, not only controls but also groups, parameters,
           citations and resources.</revisit></p>
+    </section>
+    <section id="control-identity">
+      <head><propose>Defining control identity</propose></head>
+      <p>A central problem in profile resolution is determining when two controls are both
+        representations of <q>the same</q> control, even when those representations have dissimilar
+        contents or come to a profile through different import pathways.</p>
+      <p>For purposes of profile resolution, control identity (or parameter, group identity etc.)
+        can be determined by any of several ways, depending on the <term>identity designation
+          mode</term>:</p>
+      <ul>
+        <li>
+          <p>strict - control ID only - ordinary mode for well-controlled inputs</p>
+        </li>
+        <li>
+          <p>diagnostic - control ID + provenance identifier</p>
+        </li>
+        <li>
+          <p>maintenance - control ID + provenance + class (version etc)</p>
+        </li>
+        <li>
+          <p>none - no identification (each input control is distinct) - for tracing</p>
+        </li>
+      </ul>
+      <p><revisit>Brian Ruf suggested we provide a resolution/disambiguation/debugging mode that
+          produces valid OSCAL by producing new IDs for everything, thereby disambiguating by brute
+          force. This is not a bad idea. This proposal offers that feature as 'no identity
+          designation', i.e. nothing is found to be identical with anything.</revisit></p>
     </section>
     <section id="detecting-issues">
       <head>Detecting issues in profiles</head>
       <p>It is frequently possible by static analysis to detect many conditions even in schema-valid
         profile documents, that will result in problematic catalogs in resolution. The most common
         issue will be clashing controls, that is more than one control in underlying catalogs with a
-        given identifier (ID), making references to such controls ambiguous. Such analysis is
-        outside the scope of these specifications.</p>
+        given identifier (ID), making references to such controls ambiguous. The <term>identity
+          designation mode</term> is intended to give profile developers some control over this
+        handling, for purposes of development or diagnosis; but the quality of the results can only
+        be guaranteed determinatively by the quality of the inputs, and full analysis in support of
+        profile development and diagnostics – to produce correct inputs that accurately reflect the
+        intent – is outside the scope of these specifications.</p>
     </section>
     <section id="comments-in-result">
       <head>Comments in result documents</head>
@@ -244,18 +337,15 @@
       OSCAL definition; and where objects appear outside arrays, ordering semantics cannot be respected (whereas in XML, order among nodes is
       always an intrinsic property of the graph).</p>
     <p>Consequently, where these specifications dictate that targets appear in order, it must be
-      understood that what is described is <em>both</em> (a) the order in XML, and (b) the <term>canonical
-        order</term> in OSCAL, which while it is not exposed in a JSON object serialization, will
-      always available to an OSCAL processor by reference to the appropriate metaschema (in this
-      case, the Metaschema instance that defines the catalog model).</p>
+      understood that what is described is <em>both</em> (a) the order in XML, and (b) the
+        <term>canonical order</term> in OSCAL, which while it is not exposed in a JSON object
+      serialization, will always available to an OSCAL processor by reference to the appropriate
+      metaschema (in this case, the Metaschema instance that defines the catalog model). <xref
+        rid="terminology"/></p>
     <section id="form-of-result">
       <head>Form and organization of resolution target</head>
-      <p>The output of a profile resolution should take the form of a catalog.</p>
-      <p>In most cases, catalog results (the output of a conformant profile resolution)
-        will be valid to the OSCAL catalog schema. <revisit>Where
-          invalid results are possible, this specification should note the possibility and the
-          expected variance. There are cases where the <em>target</em> of transformation is actually
-          invalid (including trivial cases of profiles whose links all fail to resolve). <xref rid="validation-of-result"/></revisit></p>
+      <p>The output of a profile resolution should take the form of a catalog. Catalog results (the
+        output of a conformant profile resolution) will be valid to the OSCAL catalog schema.</p>
       <p> At its base, an OSCAL <src>profile</src> source produces a <tgt>catalog</tgt>:</p>
       <mapping unit-test="base-test_profile.xml">
         <tagging whose="source_profile">&lt;profile id="profile-identifier">...&lt;/profile></tagging>
@@ -275,36 +365,21 @@
       <head>Validation of resolution result</head>
       <p>Although the target of profile resolution takes the form of a catalog, it may not be valid
         to all constraints that define the OSCAL catalog format, whether enforced by its schema or
-        by other means such as Schematron. This is because correct processing of incoherent inputs
-        (even when valid to the profile schema) must result in incoherent outputs. A range of
-        nominally correct results will thus fail in workflows that are properly reliant on
-        validation to enforce boundaries around expected input. <xref rid="valid-endpoints"/></p>
-      <p>The conditions that produce invalid outputs can however be detected and prevented.
-          <revisit>[Any other issues here?]</revisit></p>
-      <ul>
-        <li>
-          <p>If the merge behavior is set to <src>combine[@method='keep']</src>, or not given (as
-            this setting is the default), a profile with multiple calls on controls will result in
-            multiple copies of controls with clashing IDs. These should both raise validation errors
-            since IDs must be unique on elements in document scope.</p>
-          <p>This can be prevented in either of two ways:</p>
-          <ul>
-            <li>
-              <p>Ensure that no controls are called more than once, even across separate imports.
-                This condition can generally be detected statically by comparing the imports, taking
-                their catalogs into account when <src>include/all</src> is used (explicitly or
-                implicitly when no <src>include</src> is given).</p>
-            </li>
-            <li>
-              <p>Use another combination method (<src>method='use-first'</src> or
-                  <src>method='merge'</src>) to resolve the clashes.</p>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p><revisit>Brian Ruf also suggests we provide a resolution/disambiguation/debugging mode that
-          produces valid OSCAL by producing new IDs for everything, thereby disambiguating by brute
-          force. This is not a bad idea.</revisit></p>
+        by other means such as Schematron. Specifically, while a correctly implemented profile
+        resolution may produce a result catalog that is structurally valid, there is a mode of
+        operation, namely the <tgt>keep-all combination rule</tgt>, which can permit replication of
+        controls or control contents, when the control imports are redundant or contain redundant
+          <src>call</src> or <src>match</src> directives. Such replication can result in violations
+        of ID uniqueness constraints, in particular. <xref rid="valid-endpoints"/></p>
+      <p>If the merge behavior is set to <src>combine[@method='keep']</src>, or not given (as this
+        setting is the default), a profile with multiple calls on controls will result in multiple
+        copies of controls with clashing IDs. These should raise validation errors in the results,
+        since IDs must be unique on elements in document scope. Accordingly, this is an appropriate
+        combination rule to use in development when any potential collisions should be detected and
+        removed; it is also an appropriate rule to apply when a profile has been tested and found to
+        be free of any such collisions. Other combination rules (<src>method='use-first'</src> or
+          <src>method='merge'</src>)  are provided for special exigencies or to permit certain kinds
+        of optimization.</p>
     </section>
     <section id="top-level-id">
       <head>top-level @id</head>
@@ -321,7 +396,7 @@
     <section id="metadata-in-result">
       <head>Instance metadata</head>
       <p>Metadata in the target is derived directly from the source metadata, with modifications.
-        All elements inside <src>metadata</src> in the source profile are copied in their native
+        All elements inside <src>metadata</src> in the source profile are copied in their original
         order into the catalog. Additionally, new elements are introduced as described here.</p>
       <p>Because of options in producing metadata and especially the requirement for a timestamp,
         developers and users should note that two different resolutions of the same profile will
@@ -333,11 +408,12 @@
         <mapping>
           <p>A <tgt>prop</tgt> element with <tgt>name</tgt>
             <q>resolution-timestamp</q> is added to the resolution target metadata with a valid
-            timestamp indicating the time of the resolution runtime. It must be placed into metadata
-            structure after any <tgt>title</tgt>, <tgt>published</tgt>, <tgt>last-modified</tgt>,
-              <tgt>version</tgt>, <tgt>oscal-version</tgt>, or <tgt>doc-id</tgt> elements, and
-            before any <tgt>prop</tgt><tgt>, link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or
-              <tgt>responsible-party</tgt> elements; i.e. the target is schema valid, and the new
+            timestamp indicating the time of the resolution runtime. Conforming with canonical order
+            of <tgt>metadata</tgt> in the target, It must be placed into metadata structure after
+            any <tgt>title</tgt>, <tgt>published</tgt>, <tgt>last-modified</tgt>,
+            <tgt>version</tgt>, <tgt>oscal-version</tgt>, or <tgt>doc-id</tgt> elements, and before
+            any <tgt>prop</tgt><tgt>, link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or
+              <tgt>responsible-party</tgt> elements. The target is schema valid, and the new
               <tgt>prop</tgt> is given before copies of <src>prop</src> elements already
             present.</p>
           <tagging whose="source_profile">&lt;metadata>
@@ -363,12 +439,13 @@
         <head>Metadata link to source profile</head>
         <mapping>
           <p><revisit>Optionally</revisit>, a processor may add a link to the result<tgt>
-              metadata</tgt>. It must be placed into metadata structure after any <tgt>title</tgt>,
+              metadata</tgt>. Conforming with canonical order of <tgt>metadata</tgt> in the target,
+            It must be placed into metadata structure after any <tgt>title</tgt>,
               <tgt>published</tgt>, <tgt>last-modified</tgt>, <tgt>version</tgt>,
               <tgt>oscal-version</tgt>, <tgt>doc-id</tgt> or <tgt>prop</tgt> elements, and before
-            any <tgt>link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or <tgt>responsible-party</tgt>
-            elements; i.e. the target is schema valid, and the new <tgt>link</tgt> is given before
-            copies of links already present.</p>
+              any<tgt> link</tgt>, <tgt>role</tgt>, <tgt>party</tgt>, or
+              <tgt>responsible-party</tgt> elements. The target is schema valid, and the new
+              <tgt>link</tgt> is given before copies of <src>link</src> elements already present</p>
           <p>The new link should have two flags (attributes):</p>
           <ul>
             <li>
@@ -420,17 +497,19 @@
             merge rule are two distinct concepts in profile resolution; and any merge rule (<q>no
               merge</q>, <q>as is</q> or <q>custom</q>) can work with any combination method
               (<q>keep</q>, <q>use-first</q> or <q>merge</q>).</p>
-          <p>The target catalog has a content model as follows <revisit>(DTD/RNC
-              notatation)</revisit>: <code>(metadata, param*, control*, back-matter?)</code></p>
+          <p>Conforming with canonical order, the target catalog has a content model as follows
+              <revisit>(DTD/RNC notatation)</revisit>: <code>(metadata, param*, control*,
+              back-matter?)</code></p>
           <p><revisit>BR: note we have Issue #523 about permitting param to appear at the
               top.</revisit></p>
         </li>
         <li>
           <p>If <src>merge/as-is</src> is used, the structure of the target will reflect the
             structure(s) of the source catalog(s).</p>
-          <p>The target catalog has the content model <code>(metadata, param*, control*, group*,
-              back-matter?)</code> where <code>group</code> has the model <code>(title?, param*,
-              control*, group*)</code></p>
+          <p>Conforming with canonical order, the target catalog has the content model
+              <code>(metadata, param*, control*, group*, back-matter?)</code> where
+              <code>group</code> has the model <code>(title?, prop*, part*, param*, control*,
+              group*)</code>.</p>
         </li>
         <li>
           <p>If <src>merge/custom</src> is used, see above. The content model of the target catalog
@@ -480,7 +559,7 @@
     </section>
   </section>
     <section id="full-mapping">
-    <head>Stages of profile resolution</head>
+    <head>Phases of profile resolution</head>
     <p>Considered as a <q>document</q> or integrated data set (object), a profile has three
       sections, each of which corresponds to a conceptual step in resolution. To resolve a catalog
       fully is to perform all these steps.</p>
@@ -494,22 +573,22 @@
     <ul>
       <li>
         <p><src>import</src> identifies one or more control sources (catalogs or profiles) and the
-          controls within them to be included in this profile;</p>
+          controls within them to be included in this (resolved) profile;</p>
       </li>
       <li>
-        <p><src>merge</src> produces the rules for how controls will be organized and merged (or
-          not);</p>
+        <p><src>merge</src> designates the rules for how controls will be organized and merged (or
+          not) in the result catalog;</p>
       </li>
       <li>
         <p><src>modify</src> indicates how parameters in the underlying catalog may be modified or
           set, and how control contents may be amended or modified.</p>
       </li>
     </ul>
-    <p>The <term>selection</term> stage provides the basis for a customized catalog by designating
+    <p>The <term>selection</term> phase provides the basis for a customized catalog by designating
       controls to be included in it; a profile that designates no controls, produces no catalog. The
-      selection stage is controlled by <src>profile/import</src> directives in the source
+      selection phase is controlled by <src>profile/import</src> directives in the source
       profile.</p>
-    <p>The <term>merge</term> stage addresses two questions: what a processor should produce in
+    <p>The <term>merge</term> phase addresses two questions: what a processor should produce in
       cases of (accidental or intentional) ambiguities in control identification in the selection
       phase; and how to structure the outputs, whether in a hierarchy (copied or created) or flat
       (without grouping). These two aspects of resolution are addressed by the <term>combination
@@ -517,7 +596,7 @@
       includes a <q>no merge option</q>). In source data (a valid profile document), a
         <src>profile/merge</src> directive is optional; when it or its child directives are absent,
       default combination and merge rules apply.</p>
-    <p>The <term>modification</term> stage is an opportunity for a profile to amend, alter or edit
+    <p>The <term>modification</term> phase is an opportunity for a profile to amend, alter or edit
       controls, and to set parameter values or constrain or qualify parameters as represented in the
       target. A profile can be valid and useful without making any modifications, only selections,
       so the <src>profile/modify</src> element (node) is optional in the profile model.</p>
@@ -525,29 +604,29 @@
       OSCAL catalog. The merge semantics described below will produce outputs conforming to this
       organization.</p>
     <section id="import-selections">
-      <head>Selection stage </head>
+      <head>Selection phase </head>
       <p>A profile begins by importing catalogs, all of whose controls are made available. The
         catalogs it references may be available as static resources, or they may be produced
         dynamically on request; accordingly a profile may also import profiles, to be resolved as
         catalogs, instead of or in addition to catalogs as such. Imports are given in sequence after
         the metadata:</p>
       <tagging whose="source_profile">&lt;profile>
-  &lt;metadata>[ Profile metadata ]&lt;/metadata>
-  &lt;import href="#catalog">... selection of controls ...&lt;/import>
-  &lt;import href="#catalog-supplemental">... selection of controls ...&lt;/import>
+  &lt;metadata><hi>{ Profile metadata }</hi>&lt;/metadata>
+  &lt;import href="#catalog"><hi>{ … selection of controls … }</hi>&lt;/import>
+  &lt;import href="#catalog-supplemental"><hi>{ … selection of controls … }</hi>&lt;/import>
 &lt;/profile>
 </tagging>
       <tagging whose="target_catalog">&lt;profile>
   &lt;metadata><hi>{ Profile metadata }</hi>&lt;/metadata>
-  &lt;selection href="#catalog" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ ... selection of controls … }</hi>&lt;/selection>
-  &lt;selection href="#catalog-supplemental" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ ... selection of controls … }</hi>&lt;/selection>
+  &lt;selection href="#catalog" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ … selection of controls … }</hi>&lt;/selection>
+  &lt;selection href="#catalog-supplemental" catalog-id="<hi>{ catalog-identifier }</hi>"><hi>{ … selection of controls … }</hi>&lt;/selection>
 &lt;/profile>
 </tagging>
       <p>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
         provides controls in their native form. An imported profile is resolved on import, using the
         same rules for profile resolution, so a catalog is presented to the importing profile.</p>
       <p>(The result of importing other endpoints or resources besides valid OSCAL catalogs and
-        profiles, is not defined by this specification.)</p>
+        profiles is not defined by this specification.)</p>
       <p>No profile may import itself either directly or indirectly. An import directive that
         indicates either the profile itself, or a profile into which it is being (currently)
         imported, must be ignored. Optionally, a processor may issue a warning.</p>
@@ -589,7 +668,7 @@
           a cross-reference to something other than a resource, is inoperative for purposes of
           importing. It may be signaled as an error [or warning] by a processor. <revisit>Allow
             processors to import other stuff as they like?</revisit></p>
-        <cf file="profile-resolution-examples/base2-test_profile.xml"/>
+        
       </section>
       <section id="stateless-URIs">
         <head>Availability of documents returned by given URIs</head>
@@ -654,7 +733,7 @@
             except it's missing by definition.</revisit></p>
         <p>An import that is not circular (refers to a document not already imported) results in a
           control selection, subject to merging with other control selections in the merge
-          stage.</p>
+          phase.</p>
         <mapping unit-test="profile-resolution-examples/home_profile.xml">
           <p>A profile identified as <code>home_profile.xml</code> imports another one identified as
               <code>circular_profile.xml</code>:</p>
@@ -692,9 +771,9 @@
       </section>
       <section>
         <head>Multiple imports</head>
-        <p>In the selection stage, each import directive is processed to produce a set of controls
+        <p>In the selection phase, each import directive is processed to produce a set of controls
           and (when they are referenced) parameters. These controls and parameters are represented
-          in the form of a control selection. Note that this occurs in the selection stage even if
+          in the form of a control selection. Note that this occurs in the selection phase even if
           the same catalog (resource) is imported multiple times: each distinct import collects
           controls into a <tgt>selection</tgt>:</p>
         <mapping unit-test="profile-resolution-examples/import-twice_profile.xml">
@@ -716,7 +795,7 @@
 &lt;/profile>
 </tagging>
         </mapping>
-        <p>The control selections are combined and collapsed in the next stage of processing,
+        <p>The control selections are combined and collapsed in the next phase of processing,
             <term>merge</term> (see below) .</p>
         <p>Multiple imports may result in outputs with clashing controls (see below). Typically this
           will be because a control has been selected twice (in selection or in the selections of
@@ -737,7 +816,7 @@
             <head>Selecting by ID</head>
             <p>Select individual controls or controls by groups using <src>control-id</src>
               selectors corresponding to their IDs.</p>
-            <cf file="profile-resolution-examples/base-test_profile.xml"/>
+            
             <tagging whose="source_profile">&lt;include>
   &lt;call control-id="ac-1"/>
 &lt;/include>
@@ -748,7 +827,7 @@
             <p>Controls may also be selected using match patterns against their IDs. This is useful
               because related controls (either in a hierarchy, or together in a group) frequently
               have related IDs as well.</p>
-            <cf file="profile-resolution-examples/include-match-test_profile.xml"/>
+            
             <tagging whose="source_profile">&lt;include>
   &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
 &lt;/include>
@@ -759,7 +838,7 @@
           <section id="include-all">
             <head>Selecting all controls</head>
             <p>Select all controls from a catalog by using an <src>include/all</src> rule:</p>
-            <cf file="profile-resolution-examples/include-all-test_profile.xml"/>
+            
             <tagging whose="source_profile">&lt;include>
   &lt;all/>
 &lt;/include>
@@ -779,7 +858,7 @@
               descendants) should be included with the applicable call(s) or match(es).</p>
             <p>Furthermore, <src>all[@with-child-controls='no']</src> may select all controls placed
               directly within a group, excluding all controls appearing inside other controls.</p>
-            <cf file="profile-resolution-examples/include-all-no-children-test_profile.xml"/>
+            
           </section>
           <section id="redundant-calls">
             <head>Redundant calls</head>
@@ -799,11 +878,12 @@
             irrespective of the specificity of the selection for inclusion or exclusion. For
             example, if AC-1 is included by id <code>ac-1</code> and excluded by matching
               <code>ac.*</code>, it is excluded. Selection for exclusion prevails.</p>
-          <p><revisit>What about when a control is excluded, but it has descendant controls that are
-              included? Under <src>include/all</src>, the descendants maybe would be excluded. If
-              the subcontrol is included by <src>call</src> or <src>match</src> perhaps the 'shells'
-              of its ancestors should be included. See section on "implicit inclusions under as-is",
-              below.</revisit></p>
+          <p><propose>One possible exception: what about when a control is excluded, but it has
+              descendant controls that are included? Under <src>include/all</src>, the descendants
+              maybe would be excluded. If the subcontrol is included by <src>call</src> or
+                <src>match</src> perhaps the 'shells' of its ancestors should be included despite
+              their nominal exclusion. See section on "implicit inclusions under as-is",
+              below.</propose></p>
         </section>
         <section id="implicit-all">
           <head>Implicit <src>all</src></head>
@@ -818,7 +898,7 @@
   &lt;/include>
 &lt;/import>
 </tagging>
-          <cf file="profile-resolution-examples/include-all-implicit-test_profile.xml"/>
+          
           <p>The same thing occurs if an <src>exclude</src> directive is given without an
               <src>include</src> directive.</p>
           <p>Example:</p>
@@ -839,11 +919,11 @@
 &lt;/import>
 </tagging>
           <p>Target: all controls from the catalog are included <em>except</em> AC-1.</p>
-          <cf file="profile-resolution-examples/exclude-call-test_profile.xml"/>
+          
         </section>
         <section id="controls-order">
           <head>Order of controls returned in selection</head>
-          <p>Because controls may be organized in the subsequence merge stage, order of controls
+          <p>Because controls may be organized in the subsequence merge phase, order of controls
             returned in the selection step is unimportant in most circumstances. If no merge
             directive is applied, however, or the <q>no merge</q> combination rule is used (see
             below), controls are returned for an import in the order of their appearance in their
@@ -882,7 +962,7 @@
     &lt;/part>
 &lt;/control></tagging>
           </mapping>
-          <cf file="profile-resolution-examples/include-all-test_profile.xml"/>
+          
         </section>
         <section id="loose-params">
           <head>Loose parameters</head>
@@ -891,41 +971,42 @@
             inside <tgt>catalog</tgt> or <tgt>group</tgt>. The first is when they have no control
             parent in the source catalog (or rendered profile): they are <q>inherently loose</q>.
             The second is when they <q>become loose</q> because the control in which they appear, is
-            not selected, but they are required for inclusion in any case, due to being referenced
-            for insertion elsewhere in the target.</p>
+            not selected, but they are needed in the target, due to being referenced for insertion
+            elsewhere. <revisit>(Examples)</revisit></p>
           <p>The same parameter, however, cannot be both loose and anchored. If it is invoked from
-            inside its parent control, it is anchored, even if it would be called (as loose) by
-            virtue of insertions made outside the parent control, were the parent control not
-            included. That is, a control only appears loose in the resolution target, if it is also
-            loose in its source catalog, or if its parent control in the source catalog is not
-            included in the profile.</p>
-          <p>Inherently loose parameters (parameter declarations, <src>param</src>) are permitted to
-            support flexibility for referencing, especially making multiple references to a
+            inside its parent control, it is considered as anchored, even if it would also be called
+            (as loose) by virtue of insertions made outside the parent control, were the parent
+            control not included. That is, a <tgt>param</tgt> only appears loose in the resolution
+            target, if it is also loose in its source catalog, or if its parent control in the
+            source catalog is not included in the profile.</p>
+          <p>In general, loose parameters (parameter declarations, <src>param</src>) are permitted
+            to support flexibility for referencing, especially making multiple references to a
             parameter. It may be convenient to represent a parameter that is referenced from inside
-            two different controls,  outside both of them, or to group parameters separately from
+            two different controls, outside both of them, or to group parameters separately from
             controls for simpler management. <revisit>(This does not occur in the SP800-53
               catalog.)</revisit></p>
-          <p>Loose parameters appear in the target if (only if) elsewhere in the target, some
-            content is also propagated, which after modification contains an <src>insert</src>
-            directive referencing this parameter. (The <src>param/@id</src> appears on an
+          <p>Loose parameters (that is, with <tgt>catalog</tgt> or <tgt>group</tgt> parents, not
+            controls) appear in the target if (only if) elsewhere in the target, some content is
+            also propagated, which after modification contains an <src>insert</src> directive
+            referencing this parameter. (The <src>param/@id</src> appears on an
               <src>insert/@param-id</src> elsewhere in the target document.) In the target, the
               <tgt>param</tgt> appears in the location corresponding to its location in the source,
             albeit ungrouped if no <src>merge/as-is</src> is given, and sorted with respect to
               <tgt>control</tgt> elements at the same level: all <tgt>param</tgt> elements first,
-            followed by all <tgt>control</tgt> elements. <revisit>this is a case where the XML and
-              JSON requirements are different.</revisit></p>
+            followed by all <tgt>control</tgt> elements, conforming to canonical order for the
+              <tgt>catalog</tgt> or <tgt>group</tgt> container. <revisit>this is a case where the
+              XML and JSON requirements are different.</revisit></p>
           <p>When a catalog is organized by a <src>merge/custom</src> directive, loose parameters
-            are copied into the resultting grouping structure directly preceding the first control
+            are copied into the resulting grouping structure directly preceding the first control
             appearing that contains an <src>insert</src> directive referencing that parameter.</p>
           <p>Parameters that are not referenced by an <src>insert</src> elsewhere in the target, do not appear
             in the target. While it is not formally invalid to include unreferenced (unused) parameters,
           profile resolution requires that none be included except as a special option.</p>
-          <mapping/>
         </section>
       </section>
     </section>
     <section id="merge-phase">
-      <head>Merge stage</head>
+      <head>Merge phase</head>
       <section id="merge-combine">
         <head><src>merge/combine</src> - handling control collisions</head>
         <p><term>Colliding controls</term> (or <term>clashing</term>) describes the condition that
@@ -1089,7 +1170,11 @@
             will merge all representations of a given control, as distinguished by ID, into a single
             unified representation.</p>
           <p>The single unified representation is assembled by aggregating all the contents of all
-            the (clashing) control instances and discarding duplicate branches.</p>
+            the (clashing) control instances and discarding replicated branches, so that only a
+            single instance of each distinctive element appears in the result. The order of the
+            copied contents will be their original order within their controls, given in the
+            original order of the controls in their source catalog, then sorted into canonical order
+            for control contents. </p>
           <p>Example:</p>
           <tagging whose="source_catalog">&lt;control id="a1">
   &lt;title>Control A1&lt;/title>
@@ -1130,14 +1215,17 @@
             validation errors in the result when an ID appears more than once.</p>
           <p>This situation is not remedied by the <q>no merge</q> combination rule. Under this
             rule, any citation or resource that is referenced from an imported catalog or profile,
-            is included in the resolution target.</p>
+            is included in the resolution target. This may result in replicated contents, where the
+            same element is given more than once in the target, producing violations of
+            ID-uniqueness constraints. For profiles that call controls from more than one import
+            pathway, the <q>no merge</q> combination may be most useful for debugging.</p>
           <p>Under the <q>use first</q> rule (with <src>merge/combine[@method='use-first']</src>),
             only the first <src>citation</src> with a given ID is kept from the set of citations
             (gathered from all sources). Likewise only the first <src>resource</src> with a given ID
             is kept from the set of resources. Note that uncontrolled identifiers may still clash –
             for example, this will not prevent a <tgt>citation</tgt> and <tgt>resource</tgt> from
             appearing in the result with the same ID (perhaps sourced from two different catalogs).
-            Control and possibly revision of upstream data sets is necessary to prevent such
+            Maintenance and possibly revision of upstream data sets is necessary to prevent such
             ambiguities.</p>
           <p><revisit>Examples</revisit></p>
           <p><revisit>How does the <src>merge/combine[@method='merge']</src> (<q>merge controls</q>)
@@ -1352,7 +1440,7 @@
                   <src>merge/custom</src>), but the control never referenced by a <src>call</src>
                 (or <src>match</src>) directive inside the custom structure.</p>
               <p>When a custom structure references a control that is not included in any control
-                selection (in the import stage), the reference is inoperative. A processor may
+                selection (in the import phase), the reference is inoperative. A processor may
                 signal a warning in this case.</p>
               <p>Similarly, no error occurs if a control is selected (appears in a control selection
                 or even more than one), but it is never referenced from the <src>custom</src>
@@ -1425,7 +1513,7 @@
       </section>
     </section>
     <section id="modify-phase">
-      <head>Modification stage</head>
+      <head>Modification phase</head>
       <p>(Aka <term>patching</term>) Explicit modification of control content</p>
       <p>There are two ways a control may need to be modified. Commonly, controls might be amended –
         new material might be added. (For example, the priority marker properties P1-P3 in the
@@ -1790,7 +1878,7 @@
         <p>diffing</p>
       </li>
       <li>
-        <p>deriving a profile as the delta of two catalogs ('base' and 'profile')</p>
+        <p>deriving a profile as the delta of two catalogs (<q>base</q> and <q>tailored</q>)</p>
       </li>
     </ul>
   </section>
