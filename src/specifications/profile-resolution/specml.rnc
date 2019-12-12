@@ -30,12 +30,13 @@ mapping.elem = element mapping {
 
 section.elem = element section { attribute id { xsd:ID }?, head.elem, misc, section.elem* }
 
-inline-mixed = (text | a | code | term | revisit | em | strong | q | src | tgt | xpath | xref )*
+inline-mixed = (text | a | code | term | revisit | propose | em | strong | q | src | tgt | xpath | xref )*
 
 a       = element a       { attribute href { text }, text }
 code    = element code    { text }
 term    = element term    { text }
 revisit = element revisit { inline-mixed }
+propose = element propose { inline-mixed }
 q       = element q       { inline-mixed }
 em      = element em      { text }
 strong  = element strong  { text }

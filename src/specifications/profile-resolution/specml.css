@@ -50,6 +50,8 @@ term { display: inline; font-family: sans-serif; font-weight: bold; font-size: 8
 
 revisit { display: inline; font-family: sans-serif; font-size: 90%; color: darkorange; background-color: yellow }
 
+propose { display: inline; font-family: sans-serif; font-size: 90%; color: steelblue; background-color: gainsboro }
+
 tagging { font-family: monospace; white-space: pre-wrap; padding: 0.5em; margin: 0.5em 0em; font-size: 80%; line-height: 130% }
 tagging[whose=source_catalog] { background-color: #FFF0F0 }
 tagging[whose=source_profile] { background-color: #F0FFF0 }
@@ -59,7 +61,6 @@ hi { display: inline; font-style: italic; font-weight: bold; color: grey }
 tagging[whose=source_catalog] hi { background-color: #FFCCCC }
 tagging[whose=source_profile] hi { background-color: #CCFFCC }
 tagging[whose=target_catalog] hi { background-color: #CCCCFF }
-
 
 tagging:after {
     content: 
