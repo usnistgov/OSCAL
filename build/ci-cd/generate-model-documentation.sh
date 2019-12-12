@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+  DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+  source "$DIR/include/common-environment.sh"
 fi
 source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
 
@@ -11,8 +11,8 @@ WORKING_DIR="${OSCALDIR}"
 VERBOSE=false
 HELP=false
 
-usage() {                                      # Function: Print a help message.
-  cat << EOF
+usage() { # Function: Print a help message.
+  cat <<EOF
 Usage: $0 [options] [metaschema paths]
 
 -h, --help                        Display help
@@ -23,33 +23,40 @@ Usage: $0 [options] [metaschema paths]
 EOF
 }
 
-OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
-if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+OPTS=$(getopt -o w:vh --long working-dir:,help -n "$0" -- "$@")
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  OPTS=$(getopt w:vh $*)
+fi
+if [ $? != 0 ]; then
+  echo "Failed parsing options." >&2
+  usage
+  exit 1
+fi
 
 # Process arguments
 eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
-    -w|--working-dir)
-      WORKING_DIR="$(realpath "$2")"
-      shift # past path
-      ;;
-    -v)
-      VERBOSE=true
-      ;;
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    --) # end of options
-      shift
-      break;
-      ;;
-    *)    # unknown option
-      echo "Unhandled option: $1"
-      exit 1
-      ;;
+  -w | --working-dir)
+    WORKING_DIR="$(realpath "$2")"
+    shift # past path
+    ;;
+  -v)
+    VERBOSE=true
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  --) # end of options
+    shift
+    break
+    ;;
+  *) # unknown option
+    echo "Unhandled option: $1"
+    exit 1
+    ;;
   esac
   shift # past argument
 done
@@ -77,19 +84,18 @@ else
     # remove leading space
     path="${path##+([[:space:]])}"
 
-    ([ -z "$path" ] || [ -z "$gen_docs" ]) && continue;
+    ([ -z "$path" ] || [ -z "$gen_docs" ]) && continue
 
     path_absolute="$OSCALDIR"/"$path"
 
     IFS_OLD=$IFS
     IFS= # disable word splitting
-    for metaschema in $path_absolute
-    do
+    for metaschema in $path_absolute; do
       paths+=("$metaschema")
       formats+=("$gen_converter")
     done
     IFS=$IFS_OLD
-  done < "$OSCALDIR/build/ci-cd/config/metaschema"
+  done <"$OSCALDIR/build/ci-cd/config/metaschema"
 fi
 
 # the stylesheet used to generate the documentation
@@ -129,7 +135,7 @@ for i in "${!paths[@]}"; do
   for format in ${gen_docs}; do
     if [ -z "$format" ]; then
       # skip blanks
-      continue;
+      continue
     fi
 
     # Run the XSL template for the format
@@ -143,13 +149,13 @@ for i in "${!paths[@]}"; do
       schema_url="${github_url}/json/schema/${base}_schema.json"
       ;;
     *)
-      echo -e "${P_WARN}Generating documentation for '${format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
-      continue;
+      echo -e "${P_WARN}Generating documentation for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
+      continue
       ;;
     esac
 
     if [ "$VERBOSE" = "true" ]; then
-      echo -e "  ${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+      echo -e "  ${P_INFO}Generating ${format} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
     fi
     result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
       "target-format=${format}" \
@@ -158,7 +164,7 @@ for i in "${!paths[@]}"; do
       "schema-path=${schema_url}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo -e "${P_ERROR}Generating ${format^^} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}Generating ${format} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
       continue
@@ -170,7 +176,7 @@ for i in "${!paths[@]}"; do
       model="${base/oscal_/}"
       touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
       touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
-      echo -e "${P_OK}Generated ${format^^} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+      echo -e "${P_OK}Generated ${format} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
     fi
   done
   IFS=$IFS_OLD

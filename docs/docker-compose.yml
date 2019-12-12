@@ -1,13 +1,10 @@
-version: '3.3'
+version: "3.7"
 
 services:
   docs:
     build:
-      dockerfile: Dockerfile.dev
       context: .
     ports:
-      - "4000:4000"
-    environment:
-      - JEKYLL_ENV=production
+      - "1313:1313"
     volumes:
-      - "./:/app"
+      - "./:/docs"
