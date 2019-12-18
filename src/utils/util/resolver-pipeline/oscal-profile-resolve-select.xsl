@@ -17,7 +17,7 @@
         profile import merge custom modify include exclude set alter add"/>
     
     <!--<xsl:param name="profile-origin-uri"   required="yes" as="xs:anyURI"/>-->
-    <xsl:param name="uri-stack-in" required="yes" as="xs:anyURI*"/>
+    <xsl:param name="uri-stack-in" select="()" as="xs:anyURI*"/>
     
 <!-- The default processing is to pass everything through.
      Note: The source catalog includes other contents besides selected controls
@@ -78,10 +78,10 @@
         </metadata>
     </xsl:template>-->
     
-    <xsl:key name="resource-by-id" match="resource" use="@id"/>
+    <xsl:key name="cross-reference" match="resource" use="'#' || @id"/>
     
     <xsl:template priority="2" mode="o:select" match="import[starts-with(@href,'#')]">
-        <xsl:apply-templates mode="o:import" select="key('resource-by-id',@href)">
+        <xsl:apply-templates mode="o:import" select="key('cross-reference',@href)">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>
     </xsl:template>
