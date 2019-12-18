@@ -162,16 +162,6 @@
    
    <xsl:template match="*[@required='yes']" mode="cardinality"> (<i>one</i>)</xsl:template>
    
-   <xsl:template  match="m:assemblies | m:fields">
-      <li class="assemblies">
-         <a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a>
-         <xsl:value-of select="concat(' ',local-name(),' (')"/>
-         <i>zero or more</i>)<xsl:text/>         
-         
-         <xsl:apply-templates select="m:description | m:remarks" mode="model"/>
-      </li>
-   </xsl:template>
-   
    <xsl:template  match="m:example">
       <div class="example">
          <xsl:apply-templates select="m:description"/>
