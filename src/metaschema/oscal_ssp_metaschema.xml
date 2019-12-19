@@ -214,7 +214,7 @@
       <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
       <json-key flag-name="system"/>
       <json-value-key>id</json-value-key>
-      <flag name="system" required="yes">
+      <flag name="system" required="yes" as-type="string">
          <formal-name>Information Type Identification System</formal-name>
          <description>Specifies the information type identification system used.</description>
          <allowed-values allow-other="yes">
@@ -901,7 +901,7 @@
       <formal-name>Inventory Item</formal-name>
       <description>A single managed inventory item within the system.</description>
       <flag ref="id" required="yes"/>
-      <flag name="asset-id" required="yes">
+      <flag name="asset-id" required="yes" as-type="string">
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
       </flag>
@@ -995,7 +995,7 @@
          <formal-name>Component Identifier Reference</formal-name>
          <description>A reference to a component that is implemented as part of an inventory item.</description>
       </flag>
-      <flag name="use">
+      <flag name="use" as-type="string">
          <formal-name>Implementation Use Type</formal-name>
          <description>The type of implementation</description>
          <allowed-values allow-other="yes">
