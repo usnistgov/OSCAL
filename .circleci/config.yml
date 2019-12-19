@@ -2,7 +2,7 @@ version: 2.1 # use CircleCI 2.1
 references:
   common_environment: &common_environment
     environment:
-      MAVEN_VERSION: 3.6.2
+      MAVEN_VERSION: 3.6.3
       SAXON_VERSION: 9.9.0-1
       JSON_CLI_VERSION: 0.0.1-SNAPSHOT
       CICD_DIR: git-oscal/build/ci-cd
@@ -75,7 +75,7 @@ commands:
           command: |
             # update maven version
             cd /opt
-            sudo wget "https://www-us.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+            sudo wget "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
             sudo tar -xvzf "apache-maven-${MAVEN_VERSION}-bin.tar.gz"
             sudo mv "apache-maven-${MAVEN_VERSION}" maven
             export M2_HOME=/opt/maven
