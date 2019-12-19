@@ -8,16 +8,7 @@
    
    <xsl:output method="html" omit-xml-declaration="yes"/>
    
-   <xsl:template name="yaml-header">
-      <xsl:text>---&#xA;</xsl:text>
-      <xsl:text>title: OSCAL Profile Resolution Specificatio&#xA;n</xsl:text>
-      <xsl:text>description: Transforming a profile into the modified catalog it represents&#xA;</xsl:text>
-      <xsl:text>custom_css: oscal-specs.css&#xA;</xsl:text>
-      <xsl:text>---&#xA;</xsl:text>      
-   </xsl:template>
-   
    <xsl:template match="o:SPECIFICATION">
-      <!--<xsl:call-template name="yaml-header"/>-->
       <body>
          <xsl:apply-templates/>
       </body>

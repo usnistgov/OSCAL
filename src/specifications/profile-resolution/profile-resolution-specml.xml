@@ -87,6 +87,13 @@
         even though no OSCAL processor is obliged to produce or recognize such XML at any point, as
         long as it produces the same results (final outputs) from the same inputs.</p>
     </section>
+    <section>
+      <head>RFC 2119 Keywords</head>
+      <p><revisit>When complete, this specification will conform to IETF RFC 2119 in its use of
+          keywords such as <q>must</q>
+          <q>required</q> and <q>shall</q>. At present (time of writing) an editorial pass to ensure
+          this consistency has <em>not</em> been conducted.</revisit></p>
+    </section>
     <section id="use-of-xpath">
       <head>Use of XPath</head>
       <p>Additionally, in these specifications XPath notation is used to identify elements and
