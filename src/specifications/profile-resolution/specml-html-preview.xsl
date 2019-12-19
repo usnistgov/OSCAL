@@ -125,20 +125,6 @@ a.linked {{ color: inherit }}
         </details>
     </xsl:template>
     
-    <xsl:template match="cf">
-        <details style="border: thin solid black; padding: 0.5em">
-            <summary>
-                <xsl:next-match/>
-            </summary>
-            <pre class="cf">
-               <xsl:variable name="cleaned-up-sample">
-                   <xsl:apply-templates mode="cleanup-sample" select="document(@file, /)"/>
-               </xsl:variable>
-               <xsl:sequence select="serialize($cleaned-up-sample)"/>
-      </pre>
-        </details>
-    </xsl:template>
-    
     <xsl:template match="mapping">
       <xsl:apply-templates/>
         <xsl:for-each select="attribute::unit-test">
