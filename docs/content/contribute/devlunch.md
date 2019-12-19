@@ -5,9 +5,9 @@ description: Contact Us
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}Global
 
-Note: We have had a change in the teleconferencing solution we are using for this meeting. We are switching from WebEx to Bluejeans. As a result, we have setup a single meeting for the Thursday, December 5th 2019 teleconference. Meeting info for the next teleconference on Thursday, December 19th, 2019 will be posted here in before that meeting. Please check back for updated details.
+Note: (12/19/2019) We have had a change in the teleconferencing solution we are using for this meeting. We are switching from WebEx to Bluejeans. As a result, we have setup a single meeting for the Thursday, December 5th 2019 teleconference. Meeting info for the next teleconference on Thursday, December 19th, 2019 will be posted here in before that meeting. Please check back for updated details.
 
-{{% usa-tag %}}Meeting Info{{% /usa-tag %}} [Bluejeans Details](https://bluejeans.com/446080647) including a calender link (ICS file)
+{{% usa-tag %}}Meeting Info{{% /usa-tag %}} [Bluejeans Details](https://bluejeans.com/855987397) including a calender link (ICS file)
 {{% usa-tag %}}Call-in Numbers{{% /usa-tag %}}:
 
 > +1.408.317.9254 (US (San Jose))
