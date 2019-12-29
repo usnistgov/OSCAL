@@ -836,7 +836,7 @@
               have related IDs as well.</p>
             
             <tagging whose="source_profile">&lt;include>
-  &lt;call match="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
+  &lt;match pattern="^ac"/>&lt;!-- matches any control whose ID matches regex '^ac' -->
 &lt;/include>
 </tagging>
             <p><revisit>The match pattern is evaluated as a regular expression using XPath regular
