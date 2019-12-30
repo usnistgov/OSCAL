@@ -27,7 +27,7 @@
     </merge>
     <back-matter>
         <resource id="catalog">
-            <rlink href="abc-simple_catalog.xml"/>
+            <rlink href="catalogs/abc-simple_catalog.xml"/>
         </resource>
     </back-matter>
 </profile>
