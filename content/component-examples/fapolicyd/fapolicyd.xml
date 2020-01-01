@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-definition xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd">
+    <metadata>
+        <title>File Access Policy Daemon (fapolicyd) Security Component Definition</title>
+        <last-modified>2020-01-01T09:55:00+11:00</last-modified>
+        <version>Draft A</version>
+        <oscal-version>1.0-milestone2</oscal-version>
+        <role id="bc64427b-9d15-4003-addf-730bfb519fd0">
+            <title>Developer</title>
+        </role>
+        <party id="c495e75b-e559-4e36-9792-47553b6883ea">
+            <person>
+                <short-name>Brad Hards</short-name>
+                <org-name>Sigma Bravo Pty Ltd</org-name>
+                <address type="work">
+                    <addr-line>15 Dundas Court</addr-line>
+                    <city>Phillip</city>
+                    <state>Australian Capital Territory</state>
+                    <postal-code>2606</postal-code>
+                    <country>Australia</country>
+                </address>
+            </person>
+        </party>
+        <responsible-party role-id="bc64427b-9d15-4003-addf-730bfb519fd0">
+            <party-id>c495e75b-e559-4e36-9792-47553b6883ea</party-id>
+        </responsible-party>
+    </metadata>
+    <component id="id-5d60fc1e-9aac-496e-b54f-2d2b875da044" name="fapolicyd component" component-type="software">
+        <title>File Access Policy Daemon (fapolicyd)</title>
+        <description>
+            <p>File Access Policy Daemon (fapolicyd) is a simple application whitelisting daemon for Linux.</p>
+        </description>
+        <!-- Doesn't look like there is a real mime type for OVAL -->
+        <link href="oval/package_fapolicyd_installed.xml" media-type="text/xml"/>
+        <link href="oval/service_fapolicyd_enabled.xml" media-type="text/xml"/>
+        <control-implementation>
+            <description>
+                <p>File Access Policy Daemon (fapolicyd) implements application whitelisting to decide file access rights. Applications that are known via a reputation source are allowed access while unknown applications are not.</p>
+                <p>The daemon makes use of the Linux kernel's fanotify interface to determine file access rights.</p>
+                <p>This component </p>
+            </description>
+            <can-meet-requirement-set source="https://raw.githubusercontent.com/bradh/ism-oscal/master/Australian_Government_Information_Security_Manual_NOV19_catalog.xml">
+                <description>
+                    <p>Australian Government Information Security Manual</p>
+                </description>
+                <implemented-requirement control-id="controlid-0843">
+                    <description>
+                        <p>This control relates to application whitelisting on workstations to restrict the execution of executables, software libraries, scripts and installers to an approved set.</p>
+                        <p>The <code>fapolicyd</code> daemon (service) implements execution restrictions in accordance with a configurable policy provided in the <code>fapolicyd.fules</code> file. The default policy is that:</p>
+                        <ul>
+                            <li>All approved executables are trusted (packaged). Untrusted programs can't run.</li>
+                            <li>No bypass of security by executing programs via ld.so.</li>
+                            <li>Elf binaries (using trusted libraries), python, and shell scripts are enabled for trusted applications/libraries. Other languages are not allowed.</li>
+                        </ul>
+                        <p>Allowing shell scripts is considered acceptable, because only applications that the user could run on the command line are available.</p>
+                        <p>Allowing python scripts is considered acceptable, because the user could run these via the command line in any case.</p>
+                        <p>Additional restrictions and exceptions can be set in the policy file.</p>
+                    </description>
+                </implemented-requirement>
+                <implemented-requirement control-id="controlid-1490">
+                    <description>
+                        <p>This control relates to application whitelisting on servers to restrict the execution of executables, software libraries, scripts and installers to an approved set.</p>
+                        <p>The <code>fapolicyd</code> daemon (service) implements execution restrictions in accordance with a configurable policy provided in the <code>fapolicyd.fules</code> file. The default policy is that:</p>
+                        <ul>
+                            <li>All approved executables are trusted (packaged). Untrusted programs can't run.</li>
+                            <li>No bypass of security by executing programs via ld.so.</li>
+                            <li>Elf binaries (using trusted libraries), python, and shell scripts are enabled for trusted applications/libraries. Other languages are not allowed.</li>
+                        </ul>
+                        <p>Allowing shell scripts is considered acceptable, because only applications that the user could run on the command line are available.</p>
+                        <p>Allowing python scripts is considered acceptable, because the user could run these via the command line in any case.</p>
+                        <p>Additional restrictions and exceptions can be set in the policy file.</p>
+                    </description>
+                </implemented-requirement>
+                <implemented-requirement control-id="controlid-0846">
+                    <description>
+                        <p>This control requires that all users (with the exception of privileged users when performing specific administrative activities) cannot disable, bypass or be exempted from application whitelisting mechanisms.</p>
+                        <p>The <code>fapolicyd</code> daemon (service) does not allow bypass by user. It is possible to configure a policy that allows different permissions by user (<code>auid</code> rules), however this is not used by the default policy.</p>
+                        <p>Only privileged users can disable and enable the service.</p>
+                    </description>
+                </implemented-requirement>
+                <implemented-requirement control-id="controlid-0957">
+                    <description>
+                        <p>This control requires that application whitelisting solutions are configured to generate event logs for failed execution attempts, including information such as the name of the blocked file, the date/time stamp and the username of the user attempting to execute the file.</p>
+                        <p>The <code>fapolicyd</code> daemon (service) can deny with or without generating events, corresponding to <code>deny</code> and <code>deny_audit</code> rules respectively. The default policy uses the <code>deny_audit</code> rules to generate a <code>FANOTIFY</code> audit event.</p>
+                        <p>The audit event has the name of the blocked file, date/time stamp, user information, and many additional fields. An example serialisation (e.g. to <code>auditd</code>) is shown below:</p>
+                        <pre>type=PATH msg=audit(1504310584.332:290): item=0 name="./evil-ls" inode=1319561 dev=fc:03 mode=0100755 ouid=1000 ogid=1000 rdev=00:00 obj=unconfined_u:object_r:user_home_t:s0 nametype=NORMAL type=CWD msg=audit(1504310584.332:290): cwd="/home/bradh" type=SYSCALL msg=audit(1504310584.332:290): arch=c000003e syscall=2 success=no exit=-1 a0=32cb3fca90 a1=0 a2=43 a3=8 items=1 ppid=901 pid=959 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="bash" exe="/usr/bin/bash" subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 key=(null) type=FANOTIFY msg=audit(1504310584.332:290): resp=2</pre>
+                    </description>
+                </implemented-requirement>
+            </can-meet-requirement-set>
+            <can-meet-requirement-set source="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+                <description><p>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</p></description>
+                <implemented-requirement control-id="cm-7.5">
+                    <only-statement statement-id="cm-7.5_smt.b">
+                        <description>
+                            <p>This statement requires the employment of a deny-all, permit-by-exception policy to allow the execution of authorized software programs on the information system.</p>
+                        </description>
+                    </only-statement>
+                    <description>
+                        <p>This control relates to application whitelisting and authorisation.</p>
+                        <p>The <code>fapolicyd</code> daemon (service) implements execution restrictions in accordance with a configurable policy provided in the <code>fapolicyd.fules</code> file. The default policy is that:</p>
+                        <ul>
+                            <li>All approved executables are trusted (packaged). Untrusted programs can't run.</li>
+                            <li>No bypass of security by executing programs via ld.so.</li>
+                            <li>Elf binaries (using trusted libraries), python, and shell scripts are enabled for trusted applications/libraries. Other languages are not allowed.</li>
+                        </ul>
+                        <p>Allowing shell scripts is considered acceptable, because only applications that the user could run on the command line are available.</p>
+                        <p>Allowing python scripts is considered acceptable, because the user could run these via the command line in any case.</p>
+                        <p>Additional restrictions and exceptions can be set in the policy file.</p>
+                    </description>
+                </implemented-requirement>
+            </can-meet-requirement-set>
+        </control-implementation>
+    </component>
+</component-definition>
