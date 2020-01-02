@@ -337,6 +337,10 @@ jobs: # a collection of
           command: |
             bash "$CICD_DIR/generate-model-documentation.sh" -w "$OSCAL_BUILD_DIR"
       - run:
+          name: Generate specification documentation
+          command: |
+            bash "$CICD_DIR/generate-specification-documentation.sh" -w "$OSCAL_BUILD_DIR"
+      - run:
           name: Compress built docs
           command: |
             tar -zcvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --remove-files "${OSCAL_BUILD_DIR}/docs"
