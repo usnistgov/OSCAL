@@ -8,4 +8,44 @@
       <prop name="resolution-timestamp">2019-12-10T15:21:22.039-05:00</prop>
       <link rel="resolution-source" href="../merge-keep_profile.xml">Test Profile</link>
    </metadata>
+   <group>
+        <title>Group A of C</title>
+        <control id="a1">
+            <title>Control A1</title>
+            <prop name="place">first</prop>
+            <part name="statement" id="a1-stmt">
+                <p>A1 aaaaa aaaaaaaaaa</p>
+            </part>
+        </control>
+    </group>
+    <group>
+        <title>Group B of C</title>
+        <control id="b1">
+            <title>Control B1</title>
+            <prop name="place">first</prop>
+            <part name="statement" id="b1-stmt">
+                <p>B1 bbbb bbbbbbb.</p>
+            </part>
+        </control>
+    </group>
+    <group>
+        <title>Group A of C</title>
+        <control id="a1">
+            <title>Control A1</title>
+            <prop name="place">first</prop>
+            <part name="statement" id="a1-stmt">
+                <p>A1 aaaaa aaaaaaaaaa</p>
+            </part>
+        </control>
+    </group>
+    <group>
+        <title>Group B of C</title>
+        <control id="b1">
+            <title>Control B1</title>
+            <prop name="place">first</prop>
+            <part name="statement" id="b1-stmt">
+                <p>B1 bbbb bbbbbbb.</p>
+            </part>
+        </control>
+    </group>
 </catalog>
