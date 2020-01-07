@@ -10,7 +10,7 @@
         <version>1.0</version>
         <oscal-version>1.0-MR2</oscal-version>
     </metadata>
-    <import href="catalogs/abc-simple_catalog.xml">
+    <import href="catalogs/abc-full_catalog.xml">
         <include >
             <!-- a1 includes an insert[@param-id="A.a"], so that parameter should be propagated. -->
             <call control-id="a1"/>
