@@ -1877,7 +1877,7 @@
                </part>
                <part id="ac-3.9_smt.b" name="item">
                   <prop name="label">(b)</prop>
-                  <p> <insert param-id="ac-3.9_prm_3"/> are used to validate the appropriateness of the information designated for release.</p>
+                  <p><insert param-id="ac-3.9_prm_3"/> are used to validate the appropriateness of the information designated for release.</p>
                </part>
             </part>
             <part id="ac-3.9_gdn" name="guidance">
@@ -3947,9 +3947,9 @@
          </param>
          <param id="ac-7_prm_3">
             <select>
-               <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/> </choice>
+               <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/></choice>
                <choice>locks the account/node until released by an administrator</choice>
-               <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/> </choice>
+               <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/></choice>
             </select>
          </param>
          <param id="ac-7_prm_4" depends-on="ac-7_prm_3">
@@ -4533,7 +4533,7 @@
             <p>Organizations may define the maximum number of concurrent sessions for information system accounts globally, by account type (e.g., privileged user, non-privileged user, domain, specific application), by account, or a combination. For example, organizations may limit the number of concurrent sessions for system administrators or individuals working in particularly sensitive domains or mission-critical applications. This control addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts.</p>
          </part>
          <part id="ac-10_obj" name="objective">
-            <p> Determine if:</p>
+            <p>Determine if:</p>
             <part id="ac-10_obj.1" name="objective">
                <prop name="label">AC-10[1]</prop>
                <p>the organization defines account and/or account types for the information system;</p>
@@ -4597,7 +4597,7 @@
             <link rel="related" href="#ac-7">AC-7</link>
          </part>
          <part id="ac-11_obj" name="objective">
-            <p> Determine if:</p>
+            <p>Determine if:</p>
             <part id="ac-11.a_obj" name="objective">
                <prop name="label">AC-11(a)</prop>
                <part id="ac-11.a_obj.1" name="objective">
@@ -6285,7 +6285,7 @@
             <link rel="related" href="#si-4">SI-4</link>
          </part>
          <part id="ac-19_obj" name="objective">
-            <p> Determine if the organization:</p>
+            <p>Determine if the organization:</p>
             <part id="ac-19.a_obj" name="objective">
                <prop name="label">AC-19(a)</prop>
                <p>establishes for organization-controlled mobile devices:</p>
@@ -7095,7 +7095,7 @@
             <p>Data storage objects include, for example, databases, database records, and database fields. Data mining prevention and detection techniques include, for example: (i) limiting the types of responses provided to database queries; (ii) limiting the number/frequency of database queries to increase the work factor needed to determine the contents of such databases; and (iii) notifying organizational personnel when atypical database queries or accesses occur. This control focuses on the protection of organizational information from data mining while such information resides in organizational data stores. In contrast, AU-13 focuses on monitoring for organizational information that may have been mined or otherwise obtained from data stores and is now available as open source information residing on external sites, for example, through social networking or social media websites.</p>
          </part>
          <part id="ac-23_obj" name="objective">
-            <p> Determine if the organization:</p>
+            <p>Determine if the organization:</p>
             <part id="ac-23_obj.1" name="objective">
                <prop name="label">AC-23[1]</prop>
                <p>defines data mining prevention and detection techniques to be employed for organization-defined storage objects to adequately detect and protect against data mining;</p>
@@ -7320,7 +7320,7 @@
             <link rel="related" href="#sc-39">SC-39</link>
          </part>
          <part id="ac-25_obj" name="objective">
-            <p> Determine if: </p>
+            <p>Determine if:</p>
             <part id="ac-25_obj.1" name="objective">
                <prop name="label">AC-25[1]</prop>
                <p>the organization defines access control policies for which the information system implements a reference monitor to enforce such policies; and</p>
@@ -7534,7 +7534,7 @@
             </part>
             <part id="at-2_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p> <insert param-id="at-2_prm_1"/> thereafter.</p>
+               <p><insert param-id="at-2_prm_1"/> thereafter.</p>
             </part>
          </part>
          <part id="at-2_gdn" name="guidance">
@@ -7695,7 +7695,7 @@
             </part>
             <part id="at-3_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p> <insert param-id="at-3_prm_1"/> thereafter.</p>
+               <p><insert param-id="at-3_prm_1"/> thereafter.</p>
             </part>
          </part>
          <part id="at-3_gdn" name="guidance">
@@ -13581,7 +13581,7 @@
                <p>The organization reviews and updates the baseline configuration of the information system:</p>
                <part id="cm-2.1_smt.a" name="item">
                   <prop name="label">(a)</prop>
-                  <p> <insert param-id="cm-2.1_prm_1"/>;</p>
+                  <p><insert param-id="cm-2.1_prm_1"/>;</p>
                </part>
                <part id="cm-2.1_smt.b" name="item">
                   <prop name="label">(b)</prop>
@@ -16230,7 +16230,7 @@
                <select how-many="one or more">
                   <choice>disables network access by such components</choice>
                   <choice>isolates the components</choice>
-                  <choice>notifies <insert param-id="cm-8.3_prm_3"/> </choice>
+                  <choice>notifies <insert param-id="cm-8.3_prm_3"/></choice>
                </select>
             </param>
             <param id="cm-8.3_prm_3" depends-on="cm-8.3_prm_2">
@@ -17913,7 +17913,7 @@
             </part>
             <part id="cp-3_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p> <insert param-id="cp-3_prm_2"/> thereafter.</p>
+               <p><insert param-id="cp-3_prm_2"/> thereafter.</p>
             </part>
          </part>
          <part id="cp-3_gdn" name="guidance">
@@ -23641,7 +23641,7 @@
             </part>
             <part id="ir-2_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p> <insert param-id="ir-2_prm_2"/> thereafter.</p>
+               <p><insert param-id="ir-2_prm_2"/> thereafter.</p>
             </part>
          </part>
          <part id="ir-2_gdn" name="guidance">
@@ -40891,7 +40891,7 @@
             <param id="sa-18.2_prm_2">
                <select how-many="one or more">
                   <choice>at random</choice>
-                  <choice>at <insert param-id="sa-18.2_prm_3"/>, upon <insert param-id="sa-18.2_prm_4"/> </choice>
+                  <choice>at <insert param-id="sa-18.2_prm_3"/>, upon <insert param-id="sa-18.2_prm_4"/></choice>
                </select>
             </param>
             <param id="sa-18.2_prm_3" depends-on="sa-18.2_prm_2">
@@ -49259,7 +49259,7 @@
                </part>
                <part id="si-3_smt.c.2" name="item">
                   <prop name="label">2.</prop>
-                  <p> <insert param-id="si-3_prm_3"/> in response to malicious code detection; and</p>
+                  <p><insert param-id="si-3_prm_3"/> in response to malicious code detection; and</p>
                </part>
             </part>
             <part id="si-3_smt.d" name="item">
@@ -51258,7 +51258,7 @@
             <param id="si-4.22_prm_2">
                <select how-many="one or more">
                   <choice>audits</choice>
-                  <choice>alerts <insert param-id="si-4.22_prm_3"/> </choice>
+                  <choice>alerts <insert param-id="si-4.22_prm_3"/></choice>
                </select>
             </param>
             <param id="si-4.22_prm_3" depends-on="si-4.22_prm_2">
@@ -51688,7 +51688,7 @@
             </part>
             <part id="si-6_smt.d" name="item">
                <prop name="label">d.</prop>
-               <p> <insert param-id="si-6_prm_6"/> when anomalies are discovered.</p>
+               <p><insert param-id="si-6_prm_6"/> when anomalies are discovered.</p>
             </part>
          </part>
          <part id="si-6_gdn" name="guidance">
@@ -51992,8 +51992,8 @@
             <param id="si-7.1_prm_2">
                <select how-many="one or more">
                   <choice>at startup</choice>
-                  <choice>at <insert param-id="si-7.1_prm_3"/> </choice>
-                  <choice> <insert param-id="si-7.1_prm_4"/> </choice>
+                  <choice>at <insert param-id="si-7.1_prm_3"/></choice>
+                  <choice><insert param-id="si-7.1_prm_4"/></choice>
                </select>
             </param>
             <param id="si-7.1_prm_3" depends-on="si-7.1_prm_2">
@@ -52213,7 +52213,7 @@
                <select how-many="one or more">
                   <choice>shuts the information system down</choice>
                   <choice>restarts the information system</choice>
-                  <choice>implements <insert param-id="si-7.5_prm_2"/> </choice>
+                  <choice>implements <insert param-id="si-7.5_prm_2"/></choice>
                </select>
             </param>
             <param id="si-7.5_prm_2" depends-on="si-7.5_prm_1">
@@ -52401,8 +52401,8 @@
                <select how-many="one or more">
                   <choice>generates an audit record</choice>
                   <choice>alerts current user</choice>
-                  <choice>alerts <insert param-id="si-7.8_prm_2"/> </choice>
-                  <choice> <insert param-id="si-7.8_prm_3"/> </choice>
+                  <choice>alerts <insert param-id="si-7.8_prm_2"/></choice>
+                  <choice><insert param-id="si-7.8_prm_3"/></choice>
                </select>
             </param>
             <param id="si-7.8_prm_2" depends-on="si-7.8_prm_1">
@@ -53868,7 +53868,7 @@
             </param>
             <param id="si-13.4_prm_2">
                <select how-many="one or more">
-                  <choice>activates <insert param-id="si-13.4_prm_3"/> </choice>
+                  <choice>activates <insert param-id="si-13.4_prm_3"/></choice>
                   <choice>automatically shuts down the information system</choice>
                </select>
             </param>
@@ -53885,7 +53885,7 @@
                </part>
                <part id="si-13.4_smt.b" name="item">
                   <prop name="label">(b)</prop>
-                  <p> <insert param-id="si-13.4_prm_2"/>.</p>
+                  <p><insert param-id="si-13.4_prm_2"/>.</p>
                </part>
             </part>
             <part id="si-13.4_gdn" name="guidance">
@@ -54032,7 +54032,7 @@
          <param id="si-14_prm_2">
             <select how-many="one or more">
                <choice>upon end of session of use</choice>
-               <choice>periodically at <insert param-id="si-14_prm_3"/> </choice>
+               <choice>periodically at <insert param-id="si-14_prm_3"/></choice>
             </select>
          </param>
          <param id="si-14_prm_3" depends-on="si-14_prm_2">
