@@ -2612,7 +2612,7 @@ catalog:
                       name:       item
                       properties: 
                         label: (b)
-                      prose:       {{ ac-3.9_prm_3 }} are used to validate the appropriateness of the information designated for release.
+                      prose:      {{ ac-3.9_prm_3 }} are used to validate the appropriateness of the information designated for release.
                 - 
                   id:    ac-3.9_gdn
                   name:  guidance
@@ -5192,7 +5192,7 @@ catalog:
             - 
               id:     ac-7_prm_3
               select: 
-                alternatives: locks the account/node for an {{ ac-7_prm_4 }} ,locks the account/node until released by an administrator,delays next logon prompt according to {{ ac-7_prm_5 }} 
+                alternatives: locks the account/node for an {{ ac-7_prm_4 }},locks the account/node until released by an administrator,delays next logon prompt according to {{ ac-7_prm_5 }}
             - 
               id:         ac-7_prm_4
               depends-on: ac-7_prm_3
@@ -5973,7 +5973,7 @@ catalog:
             - 
               id:    ac-10_obj
               name:  objective
-              prose:  Determine if:
+              prose: Determine if:
               parts: 
                 - 
                   id:         ac-10_obj.1
@@ -6059,7 +6059,7 @@ catalog:
             - 
               id:    ac-11_obj
               name:  objective
-              prose:  Determine if:
+              prose: Determine if:
               parts: 
                 - 
                   id:         ac-11.a_obj
@@ -8450,7 +8450,7 @@ catalog:
             - 
               id:    ac-19_obj
               name:  objective
-              prose:  Determine if the organization:
+              prose: Determine if the organization:
               parts: 
                 - 
                   id:         ac-19.a_obj
@@ -9539,7 +9539,7 @@ catalog:
             - 
               id:    ac-23_obj
               name:  objective
-              prose:  Determine if the organization:
+              prose: Determine if the organization:
               parts: 
                 - 
                   id:         ac-23_obj.1
@@ -9818,7 +9818,7 @@ catalog:
             - 
               id:    ac-25_obj
               name:  objective
-              prose:  Determine if: 
+              prose: Determine if:
               parts: 
                 - 
                   id:         ac-25_obj.1
@@ -10152,7 +10152,7 @@ catalog:
                   name:       item
                   properties: 
                     label: c.
-                  prose:       {{ at-2_prm_1 }} thereafter.
+                  prose:      {{ at-2_prm_1 }} thereafter.
             - 
               id:    at-2_gdn
               name:  guidance
@@ -10388,7 +10388,7 @@ catalog:
                   name:       item
                   properties: 
                     label: c.
-                  prose:       {{ at-3_prm_1 }} thereafter.
+                  prose:      {{ at-3_prm_1 }} thereafter.
             - 
               id:    at-3_gdn
               name:  guidance
@@ -18528,7 +18528,7 @@ catalog:
                       name:       item
                       properties: 
                         label: (a)
-                      prose:       {{ cm-2.1_prm_1 }};
+                      prose:      {{ cm-2.1_prm_1 }};
                     - 
                       id:         cm-2.1_smt.b
                       name:       item
@@ -22114,7 +22114,7 @@ catalog:
                   id:     cm-8.3_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: disables network access by such components,isolates the components,notifies {{ cm-8.3_prm_3 }} 
+                    alternatives: disables network access by such components,isolates the components,notifies {{ cm-8.3_prm_3 }}
                 - 
                   id:         cm-8.3_prm_3
                   depends-on: cm-8.3_prm_2
@@ -24402,7 +24402,7 @@ catalog:
                   name:       item
                   properties: 
                     label: c.
-                  prose:       {{ cp-3_prm_2 }} thereafter.
+                  prose:      {{ cp-3_prm_2 }} thereafter.
             - 
               id:    cp-3_gdn
               name:  guidance
@@ -31908,7 +31908,7 @@ catalog:
                   name:       item
                   properties: 
                     label: c.
-                  prose:       {{ ir-2_prm_2 }} thereafter.
+                  prose:      {{ ir-2_prm_2 }} thereafter.
             - 
               id:    ir-2_gdn
               name:  guidance
@@ -55466,7 +55466,7 @@ catalog:
                   id:     sa-18.2_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: at random,at {{ sa-18.2_prm_3 }}, upon {{ sa-18.2_prm_4 }} 
+                    alternatives: at random,at {{ sa-18.2_prm_3 }}, upon {{ sa-18.2_prm_4 }}
                 - 
                   id:         sa-18.2_prm_3
                   depends-on: sa-18.2_prm_2
@@ -66384,7 +66384,7 @@ catalog:
                       name:       item
                       properties: 
                         label: 2.
-                      prose:       {{ si-3_prm_3 }} in response to malicious code detection; and
+                      prose:      {{ si-3_prm_3 }} in response to malicious code detection; and
                 - 
                   id:         si-3_smt.d
                   name:       item
@@ -68887,7 +68887,7 @@ catalog:
                   id:     si-4.22_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: audits,alerts {{ si-4.22_prm_3 }} 
+                    alternatives: audits,alerts {{ si-4.22_prm_3 }}
                 - 
                   id:         si-4.22_prm_3
                   depends-on: si-4.22_prm_2
@@ -69416,7 +69416,7 @@ catalog:
                   name:       item
                   properties: 
                     label: d.
-                  prose:       {{ si-6_prm_6 }} when anomalies are discovered.
+                  prose:      {{ si-6_prm_6 }} when anomalies are discovered.
             - 
               id:    si-6_gdn
               name:  guidance
@@ -69841,7 +69841,7 @@ catalog:
                   id:     si-7.1_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: at startup,at {{ si-7.1_prm_3 }} , {{ si-7.1_prm_4 }} 
+                    alternatives: at startup,at {{ si-7.1_prm_3 }},{{ si-7.1_prm_4 }}
                 - 
                   id:         si-7.1_prm_3
                   depends-on: si-7.1_prm_2
@@ -70128,7 +70128,7 @@ catalog:
                   id:     si-7.5_prm_1
                   select: 
                     how-many:     one or more
-                    alternatives: shuts the information system down,restarts the information system,implements {{ si-7.5_prm_2 }} 
+                    alternatives: shuts the information system down,restarts the information system,implements {{ si-7.5_prm_2 }}
                 - 
                   id:         si-7.5_prm_2
                   depends-on: si-7.5_prm_1
@@ -70351,7 +70351,7 @@ catalog:
                   id:     si-7.8_prm_1
                   select: 
                     how-many:     one or more
-                    alternatives: generates an audit record,alerts current user,alerts {{ si-7.8_prm_2 }} , {{ si-7.8_prm_3 }} 
+                    alternatives: generates an audit record,alerts current user,alerts {{ si-7.8_prm_2 }},{{ si-7.8_prm_3 }}
                 - 
                   id:         si-7.8_prm_2
                   depends-on: si-7.8_prm_1
@@ -72190,7 +72190,7 @@ catalog:
                   id:     si-13.4_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: activates {{ si-13.4_prm_3 }} ,automatically shuts down the information system
+                    alternatives: activates {{ si-13.4_prm_3 }},automatically shuts down the information system
                 - 
                   id:         si-13.4_prm_3
                   depends-on: si-13.4_prm_2
@@ -72217,7 +72217,7 @@ catalog:
                       name:       item
                       properties: 
                         label: (b)
-                      prose:       {{ si-13.4_prm_2 }}.
+                      prose:      {{ si-13.4_prm_2 }}.
                 - 
                   id:    si-13.4_gdn
                   name:  guidance
@@ -72394,7 +72394,7 @@ catalog:
               id:     si-14_prm_2
               select: 
                 how-many:     one or more
-                alternatives: upon end of session of use,periodically at {{ si-14_prm_3 }} 
+                alternatives: upon end of session of use,periodically at {{ si-14_prm_3 }}
             - 
               id:         si-14_prm_3
               depends-on: si-14_prm_2
