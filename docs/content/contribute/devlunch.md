@@ -3,7 +3,7 @@ title: Lunch with the Devs
 description: Contact Us
 ---
 
-{{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}Global
+{{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}
 
 Note: (1/10/2020) The Bluejeans info below has changed.
 
@@ -16,9 +16,9 @@ Participant Passcode: 0183
 
 Phone Dial-in
 
-> +1.408.317.9254 (US (San Jose))
-> +1.408.740.7256 (US (San Jose))
-> [Global Numbers](https://www.bluejeans.com/premium-numbers)
++1.408.317.9254 (US (San Jose))
++1.408.740.7256 (US (San Jose))
+[Global Numbers](https://www.bluejeans.com/premium-numbers)
 
 {{% usa-tag %}}Who Can Attend{{% /usa-tag %}} Open to All Members of the Public
 {{% usa-tag %}}Format{{% /usa-tag %}} Question and Answer, Discussion
