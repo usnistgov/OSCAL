@@ -1,8 +1,0 @@
-{
-    "parent": {
-        "field-date": "2019-07-08TZ",
-        "field-plaintext": "Some *plain* text",
-        "field-richtext": "Some *rich* text",
-        "field-prose": "Here's some *extra prose*"
-    }
-}
