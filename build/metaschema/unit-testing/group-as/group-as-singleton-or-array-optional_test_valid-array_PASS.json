@@ -1,7 +1,0 @@
-{
-	"parent": {
-	   "props": [
-	      	"test1", "test2"
-	   ]
-	}
-}
