@@ -101,7 +101,7 @@
          <assembly ref="data-flow"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -593,7 +593,7 @@
          <p>Permissible values to be determined closer to the application, such as by a receiving authority.</p>
       </remarks>
    </define-assembly>
-   <define-field name="role-id">
+   <define-field name="role-id" as-type="NCName">
       <formal-name>Role Identifier Reference</formal-name>
       <description>A reference to the roles served by the user.</description>
       <allowed-values allow-other="yes">
@@ -711,7 +711,7 @@
          <assembly ref="responsible-role" max-occurs="unbounded">
             <description>Defines a role that has responsibility for the component.</description>
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -865,7 +865,7 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -964,7 +964,7 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -1053,7 +1053,7 @@
          </field>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -1118,7 +1118,7 @@
 -->
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -1168,7 +1168,7 @@
 -->            <!-- TODO: Implement parameters -->
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
@@ -1242,7 +1242,7 @@
          </field>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <flag name="role-id">
+            <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
                <allowed-values allow-other="yes">
