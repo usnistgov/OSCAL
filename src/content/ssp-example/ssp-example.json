@@ -190,25 +190,25 @@
             "by-components": {
               "component-logging-policy": {
                 "description": "The legal department develops, documents, and disseminates this policy to all staff and contractors within the organization.",
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_1": {"value": "all staff and contractors within the organization"}
                 }
               },
               "system-integration-process": {
                 "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.",
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_1": {"value": "all IT staff who administer this system when the staff member is assigned and annually through training"}
                 }
               },
               "inventory-management-process": {
                 "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.",
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_1": {"value": "all IT staff who administer this system when the staff member is assigned and annually through training"}
                 }
               },
               "configuration-management-guidance": {
                 "description": "The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.",
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_1": {"value": "all IT staff who administer this system when the staff member is assigned and annually through training"}
                 }
               }
@@ -230,7 +230,7 @@
           "au-1_smt.b.1": {
             "by-components": {
               "component-logging-policy": {
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_2": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
                 },
                 "description": "The legal department reviews this policy annually, and other times as necessary in response to regulatory or organizational changes. The legal department updates the policy as needed based on these reviews."
@@ -240,19 +240,19 @@
           "au-1_smt.b.2": {
             "by-components": {
               "system-integration-process": {
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
                 },
                 "description": "The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews."
               },
               "inventory-management-process": {
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
                 },
                 "description": "The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews."
               },
               "configuration-management-guidance": {
-                "set-params": {
+                "parameter-settings": {
                   "au-1_prm_3": {"value": "annually, and other times as necessary in response to regulatory or organizational changes"}
                 },
                 "description": "The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews"
