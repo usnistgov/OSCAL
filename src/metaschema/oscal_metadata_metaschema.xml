@@ -20,7 +20,7 @@
       <model>
          <assembly ref="metadata"/>
          <assembly ref="back-matter"/>
-         <field ref="description"/>
+         <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
          <field ref="party-id"/>
          <assembly ref="annotation"/>
@@ -68,7 +68,7 @@
                </allowed-values>
             </flag>
          </assembly>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="back-matter">
@@ -513,7 +513,7 @@
             <group-as name="rlinks"/>
          </assembly>
          <field ref="base64"/>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
          <p>Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p>
