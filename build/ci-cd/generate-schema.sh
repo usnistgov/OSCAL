@@ -1,23 +1,18 @@
 #!/bin/bash
 
 if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
-source "$OSCALDIR/build/ci-cd/include/init-validate-json.sh"
 
-# Option defaults
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
+#source "$OSCALDIR/build/metaschema/scripts/include/saxon-init.sh"
+source "$OSCALDIR/build/metaschema/scripts/include/init-validate-json.sh"
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options] [metaschema paths]
 
 -h, --help                        Display help
--w DIR, --working-dir DIR         Generate artifacts in DIR
+-w DIR, --working-dir DIR         Generate artifacts in DIR  (default: ${WORKING_DIR})
 -v                                Provide verbose output
 EOF
 }
@@ -71,6 +66,7 @@ if [ "$#" -ne 0 ]; then
     formats[$i]="xml,json"
   done
 else
+  IFS_OLD="$IFS"
   while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; do
     [[ "$path" =~ ^[[:space:]]*# ]] && continue
     # remove leading space
@@ -80,19 +76,18 @@ else
 
     path_absolute="$OSCALDIR"/"$path"
 
-    IFS_OLD=$IFS
     IFS= # disable word splitting
     for metaschema in $path_absolute
     do
-      paths+=("$metaschema")
-      formats+=("$gen_schema")
+      paths+=($metaschema)
+      formats+=($gen_schema)
     done
-    IFS=$IFS_OLD
   done < "$OSCALDIR/build/ci-cd/config/metaschema"
+  IFS="$IFS_OLD"
 fi
 
 exitcode=0
-for i in "${!paths[@]}"; do
+for i in ${!paths[@]}; do
   metaschema="${paths[$i]}"
   gen_schema="${formats[$i]}"
 
@@ -100,25 +95,26 @@ for i in "${!paths[@]}"; do
   extension="${filename##*.}"
   filename="${filename%.*}"
   base="${filename/_metaschema/}"
-  metaschema_relative=$(realpath --relative-to="${OSCALDIR}" "$metaschema")
+  metaschema_relative=$(get_rel_path "${OSCALDIR}" "${metaschema}")
 
   #split on commas
-  IFS_OLD=$IFS
-  IFS=, #read -a formats <<< "$gen_schema"
-  for format in ${gen_schema}; do
+
+  IFS_OLD="$IFS"
+  IFS=, gen_formats=($gen_schema)
+  IFS="$IFS_OLD"
+  for format in ${gen_formats[@]}; do
     if [ -z "$format" ]; then
       # skip blanks
       continue;
     fi
 
-    # Run the XSL template for the format
     case $format in
     xml)
-      transform="$OSCALDIR/build/metaschema/$format/produce-xsd.xsl"
+      generator_arg="--xml"
       schema="$WORKING_DIR/$format/schema/${base}_schema.xsd"
       ;;
     json)
-      transform="$OSCALDIR/build/metaschema/$format/produce-json-schema.xsl"
+      generator_arg="--json"
       schema="$WORKING_DIR/$format/schema/${base}_schema.json"
       ;;
     *)
@@ -126,15 +122,26 @@ for i in "${!paths[@]}"; do
       continue;
       ;;
     esac
+
     # ensure the schema directory exists before calling realpath
     mkdir -p "$(dirname "$schema")"
-    schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
+    schema_relative=$(get_rel_path "${WORKING_DIR}" "${schema}")
 
     if [ "$VERBOSE" = "true" ]; then
       echo -e "${P_INFO}Generating ${format^^} schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${schema_relative}${P_INFO}'.${P_END}"
     fi
 
-    result=$(xsl_transform "$transform" "$metaschema" "$schema" 2>&1)
+    args=()
+    args+=("${generator_arg}")
+    args+=("$metaschema")
+    args+=("$schema")
+    args+=("--validate")
+
+    if [ "$VERBOSE" == "true" ]; then
+      args+=("-v")
+    fi    
+
+    result=$(IFS=$' ' "$OSCALDIR/build/metaschema/scripts/generate-schema.sh" "${args[@]}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generation of ${format^^} schema failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
@@ -145,36 +152,7 @@ for i in "${!paths[@]}"; do
         echo -e "${P_OK}Generation of ${format^^} schema passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     fi
-
-    # validate generated schema
-    case $format in
-    xml)
-      result=$(xmllint --noout --schema "$OSCALDIR/build/ci-cd/support/XMLSchema.xsd" "$schema" 2>&1)
-      cmd_exitcode=$?
-      ;;
-    json)
-      result=$(validate_json "$OSCALDIR/build/ci-cd/support/json-schema-schema.json" "$schema")
-      cmd_exitcode=$?
-      ;;
-    *)
-      echo -e "${P_WARN}Unsupported validation of ${format^^} schema for '${P_END}${schema_relative}${P_WARN}'.${P_END}"
-      cmd_exitcode=0
-      ;;
-    esac
-
-    if [ $cmd_exitcode -ne 0 ]; then
-      echo -e "${P_ERROR}Schema validation failed for '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-      echo -e "${P_ERROR}${result}${P_END}"
-      exitcode=1
-    else
-      if [ "$VERBOSE" = "true" ]; then
-        echo -e "${P_OK}Schema validation passed for '${P_END}${schema_relative}${P_OK}'.${P_END}"
-      else
-        echo -e "${P_OK}Schema generation passed for '${P_END}${metaschema_relative}${P_OK}' as '${P_END}${schema_relative}${P_OK}', which is valid.${P_END}"
-      fi
-    fi
   done
-  IFS=$IFS_OLD
 done
 
 exit $exitcode
