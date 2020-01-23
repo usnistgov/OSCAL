@@ -2166,14 +2166,14 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
-          "set-params" : 
+          "parameter-settings" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/set-param" },
+                  "$ref" : "#/definitions/set" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -2335,24 +2335,24 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
-          "set-params" : 
+          "parameter-settings" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/set-param" },
+                  "$ref" : "#/definitions/set" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } } },
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "set-param" : 
+      "set" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be filled in by the enclosed value element.",
-        "$id" : "#/definitions/set-param",
+        "$id" : "#/definitions/set",
         "type" : "object",
         "properties" : 
         { "value" : 
