@@ -1134,10 +1134,10 @@
                </allowed-values>
             </flag>
          </assembly>
-         <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="set-params" in-json="BY_KEY"/>
+         <assembly ref="set" max-occurs="unbounded">
+            <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
-
+         
          <assembly ref="statement" max-occurs="unbounded">
             <group-as name="statements" in-json="BY_KEY"/>
          </assembly>
@@ -1258,13 +1258,13 @@
                </allowed-values>
             </flag>
          </assembly>
-         <assembly ref="set-param" max-occurs="unbounded">
-            <group-as name="set-params" in-json="BY_KEY"/>
+         <assembly ref="set" max-occurs="unbounded">
+            <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
       </model>
    </define-assembly>
 
-   <define-assembly name="set-param">
+   <define-assembly name="set">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value element.</description>
      <json-key flag-name="param-id"/>
