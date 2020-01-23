@@ -1,5 +1,5 @@
 {
-  "$schema": "file:/home/davidwal/github/david-waltermire-nist/OSCAL/json/schema/computer-build_schema.json",
+  "$schema": "../../../json/schema/computer-build_schema.json",
   "computer-build": {
     "id": "example-build",
     "components": [
