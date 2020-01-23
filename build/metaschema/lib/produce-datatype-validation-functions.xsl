@@ -10,8 +10,8 @@
     
 
     <!-- Runs on itself.
-         Calls data from file:/C:/Users/wap1/Documents/OSCAL/build/metaschema/xml/produce-xsd.xsl and
-                         file:/C:/Users/wap1/Documents/OSCAL/build/metaschema/xml/oscal-datatypes.xsd
+         Calls data from ../../../build/metaschema/xml/produce-xsd.xsl and
+                         ../../../build/metaschema/xml/oscal-datatypes.xsd
     
     to produce a function library for validating datatypes -->
     <xsl:output indent="yes"/>

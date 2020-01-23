@@ -15,7 +15,7 @@
     
     <xsl:mode name="promote" on-no-match="shallow-copy"/>
     
-    <xsl:variable name="metaschema" select="document('file:/home/wendell/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml')"/>
+    <xsl:variable name="metaschema" select="document('../../../../src/metaschema/oscal_catalog_metaschema.xml')"/>
    
     <xsl:variable name="write-options" as="map(*)" expand-text="true">
         <xsl:map>

@@ -90,7 +90,6 @@
     </xsl:variable>
 
     <xsl:template match="/">
-        <!--file:/C:/Users/wap1/Documents/usnistgov/OSCAL/docs/layouts/partials/generated/xml-schema-oscal-catalog.html-->
         <xsl:variable name="schema-docs-file" as="xs:string" expand-text="true">{$output-path}/{$metaschema-code}-{$target-format}-schema.html</xsl:variable>
         <xsl:variable name="schema-map-file"  as="xs:string" expand-text="true">{$output-path}/{$metaschema-code}-{$target-format}-map.html</xsl:variable>
         
