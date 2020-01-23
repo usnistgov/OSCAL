@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Profile Model on OSCAL</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/</link><description>Recent content in Profile Model on OSCAL</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://pages.nist.gov/OSCAL/documentation/schema/profile/index.xml" rel="self" type="application/rss+xml"/><item><title>Profile JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/json-model-map/</guid><description>+ profile: [1]{… }
 - profile: [1]{
-id: string [1],
+id: NCName [1],
 + metadata: [1]{… },
 - metadata: [1]{
 title: markup-line [1],
@@ -20,8 +20,8 @@ A profile designates a selection and configuration of controls from one or more 
 Switch to XML add Name Addition
 Description Specifies contents to be added into controls, in resolution
 This object appears as a property on: alter.
-The add object has the following members (properties):</description></item><item><title>Profile XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</guid><description>+ &amp;lt;profile id=&#34;string&#34;&amp;gt; [1]… &amp;lt;/profile&amp;gt;
-- &amp;lt;profile id=&#34;string&#34;&amp;gt; [1]
+The add object has the following members (properties):</description></item><item><title>Profile XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-model-map/</guid><description>+ &amp;lt;profile id=&#34;NCName&#34;&amp;gt; [1]… &amp;lt;/profile&amp;gt;
+- &amp;lt;profile id=&#34;NCName&#34;&amp;gt; [1]
 + &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
 - &amp;lt;metadata&amp;gt; [1]
 &amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
@@ -30,10 +30,10 @@ The add object has the following members (properties):</description></item><item
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
 &amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
-&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;NCName&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
 &amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
-+ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
-- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]
 &amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
 &amp;lt;short-name&amp;gt;string&amp;lt;/short-name&amp;gt; [0 or 1]</description></item><item><title>Profile XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile/xml-schema/</guid><description>Schema download oscal_profile_schema.xsd
 Schema version 1.0.0-milestone2

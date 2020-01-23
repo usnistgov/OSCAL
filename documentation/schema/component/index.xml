@@ -25,10 +25,10 @@ The OSCAL Implementation Component format can be used to describe the implementa
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
 &amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
-&amp;lt;prop name=&#34;NCName&#34; id=&#34;string&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
+&amp;lt;prop name=&#34;NCName&#34; id=&#34;NCName&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
 &amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
-+ &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
-- &amp;lt;role id=&#34;string&#34;&amp;gt; [0 to ∞]
++ &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
+- &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]
 &amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
 &amp;lt;short-name&amp;gt;string&amp;lt;/short-name&amp;gt; [0 or 1]
 &amp;lt;desc&amp;gt;string&amp;lt;/desc&amp;gt; [0 or 1]</description></item><item><title>Component XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/component/xml-schema/</guid><description>Schema download oscal_component_schema.xsd
