@@ -1,4 +1,4 @@
-Resolver pipeline
+## Resolver pipeline
 
 See folder OSCAL/docs/content/documentation/specification/processing for specification and examples.
 
@@ -53,7 +53,7 @@ P --> import2[Selection] --> catalog.A2[CPG from Catalog A]
 P --> import3[Selection] 
 import3 --> catalog.B[CPG from Catalog B]
 
-CPG is "controls, parameters and groups" remember parameters can be loose
+CPG is "controls, parameters and groups" remember parameters can be loose (i.e. not appearing in a control where it is invoked, or not directly in a control at all.)
 
 merging disparate controls with a single origin into an original order is a goal of 'as-is' but can only be achieved if controls have some idea of what a "single origin" is.
 

@@ -7,7 +7,7 @@
         <title>ABC Catalog</title>
         <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
         <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
+        <oscal-version>1.0-milestone2</oscal-version>
     </metadata>
     <group>
         <title>Group A of C</title>
