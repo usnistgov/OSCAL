@@ -286,7 +286,7 @@
                      </xs:union>
                   </xs:simpleType>
                </xs:attribute>
-               <xs:attribute name="id" type="xs:string">
+               <xs:attribute name="id" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Identifier</m:formal-name>
@@ -355,7 +355,7 @@
                   <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="id" type="xs:string">
+         <xs:attribute name="id" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -417,7 +417,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:string">
+         <xs:attribute name="id" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -907,7 +907,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:string">
+         <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -989,7 +989,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:string">
+         <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1108,7 +1108,7 @@
             <xs:element ref="oscal-profile:doc-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:prop" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:string">
+         <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1156,7 +1156,7 @@
             </xs:choice>
             <xs:element ref="oscal-profile:link" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:string">
+         <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1212,7 +1212,7 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal-profile:everything-inline"/>
-         <xs:attribute name="id" type="xs:string">
+         <xs:attribute name="id" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1333,7 +1333,7 @@
             <xs:element ref="oscal-profile:part" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:link" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:string">
+         <xs:attribute name="id" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1392,7 +1392,7 @@
             <xs:element ref="oscal-profile:modify" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-profile:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:string">
+         <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
@@ -1557,7 +1557,7 @@
                <xs:element ref="oscal-profile:match" minOccurs="0" maxOccurs="unbounded"/>
             </xs:choice>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:string">
+         <xs:attribute name="id" type="xs:NCName">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Identifier</m:formal-name>
