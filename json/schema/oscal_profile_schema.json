@@ -1234,7 +1234,7 @@
         "$id" : "#/definitions/modify",
         "type" : "object",
         "properties" : 
-        { "settings" : 
+        { "parameter-settings" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
