@@ -1,16 +1,9 @@
 # Profile resolver punchlist
 
-Things to sketch out and test:
+This folder contains is an experimental profile resolver, to be developed and unit tested.
 
-Import with no include - implicit all
+It works by generating an XSLT transformation from a profile, and then applying it to the imported catalogs.
 
-Sibling imports
-  - under no merge, all selections including clashes
-    - maintain order of controls
-  - under merge/as-is and merge/custom - merging, order is determined by source(s)
+The `../resolver-pipeline` folder (next to this folder) contains a profile resolver designed for purposes of demonstration, maintenance and testability. It should be tested and demonstrated first.
 
-@with-child-controls
-
-- call/@with-child-control
-- all/@with-child-control
-(allowed anywhere else?)
+This implementation is designed for efficiency and performance.
