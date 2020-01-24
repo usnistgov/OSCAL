@@ -1134,7 +1134,7 @@
                </allowed-values>
             </flag>
          </assembly>
-         <assembly ref="set" max-occurs="unbounded">
+         <assembly ref="set-parameter" max-occurs="unbounded">
             <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
          
@@ -1264,7 +1264,7 @@
       </model>
    </define-assembly>
 
-   <define-assembly name="set">
+   <define-assembly name="set-parameter">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be filled in by the enclosed value element.</description>
      <json-key flag-name="param-id"/>

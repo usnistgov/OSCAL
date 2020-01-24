@@ -170,7 +170,7 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assembly ref="set" max-occurs="unbounded">
+         <assembly ref="set-parameter" max-occurs="unbounded">
             <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="alter" max-occurs="unbounded">
@@ -258,7 +258,7 @@
       </remarks>
    </define-assembly>
    
-   <define-assembly name="set">
+   <define-assembly name="set-parameter">
       <formal-name>Parameter Setting</formal-name>
       <description>A parameter setting, to be propagated to points of insertion</description>
       <json-key flag-name="param-id"/>
