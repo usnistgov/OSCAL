@@ -2173,7 +2173,7 @@
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/set" },
+                  "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -2336,23 +2336,21 @@
                 { "not" : 
                   { "type" : "string" } } ] } },
           "parameter-settings" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/set" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } } },
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/set" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/set" },
+                "minItems" : 2 } ] } },
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "set" : 
+      "set-parameter" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be filled in by the enclosed value element.",
-        "$id" : "#/definitions/set",
+        "$id" : "#/definitions/set-parameter",
         "type" : "object",
         "properties" : 
         { "value" : 
