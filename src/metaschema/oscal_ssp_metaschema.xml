@@ -1258,7 +1258,7 @@
                </allowed-values>
             </flag>
          </assembly>
-         <assembly ref="set" max-occurs="unbounded">
+         <assembly ref="set-parameter" max-occurs="unbounded">
             <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
       </model>
