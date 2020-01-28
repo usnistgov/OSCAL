@@ -128,6 +128,13 @@ commands:
           name: Get ajv
           command: |
             sudo npm install -g ajv-cli
+  install-json-diff:
+    description: "Install json-diff"
+    steps:
+      - run:
+          name: Get json-diff
+          command: |
+            sudo npm install -g json-diff
   install-markdown-link-check:
     description: "Install markdown-link-check"
     steps:
@@ -326,6 +333,7 @@ jobs: # a collection of
       - install-maven-dependencies
       - install-lxml
       - install-xmllint
+      - install-json-diff
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
