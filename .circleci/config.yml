@@ -217,6 +217,7 @@ jobs: # a collection of
     executor: java-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-xmllint
@@ -235,6 +236,7 @@ jobs: # a collection of
     executor: java-executor
     steps: # a collection of executable commands
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
@@ -253,6 +255,7 @@ jobs: # a collection of
     executor: java-executor
     steps: # a collection of executable commands
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
@@ -270,6 +273,7 @@ jobs: # a collection of
     executor: java-executor
     steps: # a collection of executable commands
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
@@ -289,6 +293,7 @@ jobs: # a collection of
     executor: java-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-markdown-link-check
@@ -301,6 +306,7 @@ jobs: # a collection of
     executor: java-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-xmllint
@@ -313,6 +319,7 @@ jobs: # a collection of
     executor: python-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-maven
@@ -459,6 +466,7 @@ jobs: # a collection of
     executor: java-executor
     steps:
       - *checkout
+      - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
       - install-xmllint
