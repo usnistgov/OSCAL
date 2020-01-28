@@ -1,15 +1,8 @@
 #!/bin/bash
 
-if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
-
-# Option defaults
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -70,6 +63,7 @@ if [ "$#" -ne 0 ]; then
     formats[$i]="xml,json"
   done
 else
+  IFS_OLD="$IFS"
   while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; do
     [[ "$path" =~ ^[[:space:]]*# ]] && continue
     # remove leading space
@@ -79,19 +73,18 @@ else
 
     path_absolute="$OSCALDIR"/"$path"
 
-    IFS_OLD=$IFS
     IFS= # disable word splitting
     for metaschema in $path_absolute
     do
-      paths+=("$metaschema")
-      formats+=("$gen_converter")
+      paths+=($metaschema)
+      formats+=($gen_converter)
     done
-    IFS=$IFS_OLD
   done < "$OSCALDIR/build/ci-cd/config/metaschema"
+  IFS="$IFS_OLD"
 fi
 
 exitcode=0
-for i in "${!paths[@]}"; do
+for i in ${!paths[@]}; do
   metaschema="${paths[$i]}"
   gen_converter="${formats[$i]}"
 
@@ -99,19 +92,20 @@ for i in "${!paths[@]}"; do
   extension="${filename##*.}"
   filename="${filename%.*}"
   model="${filename/_metaschema/}"
-  metaschema_relative=$(realpath --relative-to="${OSCALDIR}" "$metaschema")
+  metaschema_relative=$(get_rel_path "${OSCALDIR}" "$metaschema")
 
   #split on commas
-  IFS_OLD=$IFS
-  IFS=, #read -a formats <<< "$gen_schema"
-  for target_format in ${gen_converter}; do
-    if [ -z "$target_format" ]; then
+  IFS_OLD="$IFS"
+  IFS=, gen_formats=($gen_converter)
+  IFS="$IFS_OLD"
+  for format in ${gen_formats[@]}; do
+    if [ -z "$format" ]; then
       # skip blanks
       continue;
     fi
 
-    # Run the XSL template for the format
-    case $target_format in
+    # setup source and target formats
+    case $format in
     xml)
       source_format="json"
       ;;
@@ -119,29 +113,45 @@ for i in "${!paths[@]}"; do
       source_format="xml"
       ;;
     *)
-      echo -e "${P_WARN}Generating converter from '${source_format^^}' to '${target_format^^}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
+      >&2 echo -e "${P_ERROR}Generating converter from '${P_END}${source_format^^}${P_ERROR}' to '${P_END}${target_format^^}${P_ERROR}' is unsupported for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       continue;
       ;;
     esac
+    target_format="$format"
 
     converter="$WORKING_DIR/${target_format}/convert/${model}_${source_format}-to-${target_format}-converter.xsl"
-    converter_relative=$(realpath --relative-to="${WORKING_DIR}" "$converter")
+    # ensure the converter directory exists
+    mkdir -p "$(dirname "$converter")"
+    converter_relative=$(get_rel_path "${WORKING_DIR}" "$converter")
 
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "${P_INFO}Generating ${source_format^^} to ${target_format^^} converter for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${converter_relative}${P_INFO}'.${P_END}"
-    fi
 
-    result=$(xsl_transform "$OSCALDIR/build/metaschema/$source_format/produce-${source_format}-converter.xsl" "$metaschema" "$converter" 2>&1)
+#    echo "source: ${source_format}"
+#    echo "target: ${target_format}"
+#    echo "metaschema: ${metaschema}"
+#    echo "converter: ${converter}"
+    args=()
+    args+=("--source-format" "${source_format}")
+    args+=("--target-format" "${target_format}")
+
+    if [ "$VERBOSE" == "true" ]; then
+      args+=("-v")
+    fi    
+
+    args+=("$metaschema")
+    args+=("$converter")
+
+    result=$("$OSCALDIR/build/metaschema/scripts/generate-content-converter.sh" "${args[@]}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-      echo -e "${P_ERROR}Generating ${source_format^^} to ${target_format^^} converter failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo -e "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Generation of ${source_format^^} to ${target_format^^} converter failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       exitcode=1
     else
-      echo -e "${P_OK}Generating ${source_format^^} to ${target_format^^} converter passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+      echo -e "${result}"
     fi
   done
   IFS=$IFS_OLD
 done
 
 exit $exitcode
+
