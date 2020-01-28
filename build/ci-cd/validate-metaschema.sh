@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-source "$OSCALDIR/build/ci-cd/include/schematron-init.sh"
+source "$OSCALDIR/build/metaschema/scripts/include/init-schematron.sh"
 
 # Option defaults
 KEEP_TEMP_SCRATCH_DIR=false
@@ -96,7 +96,7 @@ if [ "$VERBOSE" = "true" ]; then
 fi
 
 # compile the schematron
-metaschema_lib="$OSCALDIR/build/metaschema/lib"
+metaschema_lib="$OSCALDIR/build/metaschema/toolchains/oscal-m2/lib"
 schematron="$metaschema_lib/metaschema-check.sch"
 compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
 

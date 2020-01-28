@@ -1,15 +1,12 @@
 #!/bin/bash
 
-if [[ -z "$OSCALDIR" ]]; then
-  DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
-  source "$DIR/include/common-environment.sh"
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
+
+source "$OSCALDIR/build/metaschema/scripts/include/init-saxon.sh"
 
 # Option defaults
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
 
 usage() { # Function: Print a help message.
   cat <<EOF
@@ -99,7 +96,7 @@ else
 fi
 
 # the stylesheet used to generate the documentation
-stylesheet="$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl"
+stylesheet="$OSCALDIR/build/metaschema/toolchains/oscal-m2/xml/produce-and-run-either-documentor.xsl"
 
 # the URL of the github repo where generated artifacts will be accessible
 github_url="https://raw.githubusercontent.com/usnistgov/OSCAL/master"

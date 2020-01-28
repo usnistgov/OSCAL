@@ -1,11 +1,8 @@
 #!/bin/bash
 
-if [[ -z "$OSCALDIR" ]]; then
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-
-#source "$OSCALDIR/build/metaschema/scripts/include/saxon-init.sh"
-source "$OSCALDIR/build/metaschema/scripts/include/init-validate-json.sh"
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -98,7 +95,6 @@ for i in ${!paths[@]}; do
   metaschema_relative=$(get_rel_path "${OSCALDIR}" "${metaschema}")
 
   #split on commas
-
   IFS_OLD="$IFS"
   IFS=, gen_formats=($gen_schema)
   IFS="$IFS_OLD"
@@ -127,7 +123,7 @@ for i in ${!paths[@]}; do
     mkdir -p "$(dirname "$schema")"
     schema_relative=$(get_rel_path "${WORKING_DIR}" "${schema}")
 
-    if [ "$VERBOSE" = "true" ]; then
+    if [ "$VERBOSE" == "true" ]; then
       echo -e "${P_INFO}Generating ${format^^} schema for '${P_END}${metaschema_relative}${P_INFO}' as '${P_END}${schema_relative}${P_INFO}'.${P_END}"
     fi
 
@@ -141,14 +137,15 @@ for i in ${!paths[@]}; do
       args+=("-v")
     fi    
 
-    result=$(IFS=$' ' "$OSCALDIR/build/metaschema/scripts/generate-schema.sh" "${args[@]}" 2>&1)
+    result=$("$OSCALDIR/build/metaschema/scripts/generate-schema.sh" "${args[@]}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generation of ${format^^} schema failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
     else
-      if [ "$VERBOSE" = "true" ]; then
+      echo -e "${result}"
+      if [ "$VERBOSE" == "true" ]; then
         echo -e "${P_OK}Generation of ${format^^} schema passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
       fi
     fi

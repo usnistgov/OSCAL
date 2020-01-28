@@ -1,21 +1,17 @@
 #!/bin/bash
-# set the OSCAL directory and pass in common environment
-if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
 
-# initialize Saxon and get the path
-source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
+source "$OSCALDIR/build/metaschema/scripts/include/init-validate-content.sh"
+source "$OSCALDIR/build/ci-cd/include/convert-and-validate-content.sh"
 
 # Catalog round trip from XML -> JSON -> XML
 MSYS_NO_PATHCONV=1
 
 # Option defaults
 KEEP_TEMP_SCRATCH_DIR=false
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -103,122 +99,132 @@ fi
 #   XML->JSON Roundtrip conversions tests
 ###################################################################################################################
 
-# default to test passed at zero
-exitcode=0
-shopt -s nullglob
-shopt -s globstar
-while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
+IFS_OLD="$IFS"
+while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob" ]]; do
   shopt -s extglob
-  [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  [[ "$path_glob" =~ ^[[:space:]]*# ]] && continue
   # remove leading space
-  path="${path##+([[:space:]])}"
+  path_glo="${path_glob##+([[:space:]])}"
   # remove trailing space
   converttoformats="${converttoformats%%+([[:space:]])}"
   shopt -u extglob
 
-  if [[ ! -z "$path" ]]; then
-    files_to_process="$OSCALDIR/$path"
+  [ -z "$path_glob" ] && continue;
 
-    IFS= # disable word splitting
-    #loop through the files
-    for file in $files_to_process
-    do
-      # get the base file name
-      file_basename=$(basename $file)
-      file_relative=$(realpath --relative-to="$OSCALDIR" "$file")
+  path_absolute="$OSCALDIR"/"$path_glob"
 
-      # debuggging statements, shows what is processing
-      #printf 'path: %s\n' "$file"
-      #printf 'file name: %s\n' "$file_basename"
-      #printf 'format: %s\n' "$format"
-      #printf 'model: %s\n' "$model"
-      #printf 'convert-to: %s\n' "$converttoformats"
+  for path in $path_absolute; do
+#    echo "Path: $path"
+#    echo "Format: $format"
+#    echo "Model: $model"
+#    echo "Convert to: $converttoformats"
+    
+    paths+=("$path")
+    formats+=("$format")
+    models+=("$model")
+    conversion_formats+=("$converttoformats")
+  done
+done < "${OSCALDIR}/build/ci-cd/config/content"
+IFS="$IFS_OLD"
 
-      if [ "$format" == "xml" ]; then
-        # XML -> JSON -> XML round trip testing
-        # transformation from source XML to target JSON
-        converter="$WORKING_DIR/json/convert/oscal_${model}_xml-to-json-converter.xsl"
+#echo "Paths: ${paths[@]}"
+#echo "Formats: ${formats[@]}"
+#echo "Models: ${models[@]}"
+#echo "Convert To: ${conversion_formats[@]}"
 
-        to_json_file="${SCRATCH_DIR}/roundtrip/${file_basename}-to.json"
-        result=$(xsl_transform "$converter" "$file" "$to_json_file" 2>&1)
+shopt -s nullglob
+shopt -s globstar
 
-        # check the exit code for the conversion
-        cmd_exitcode=$?
-        if [ $cmd_exitcode != 0 ]; then
-            echo -e "${P_ERROR}XML->JSON conversion failed for '${P_END}${file_relative}${P_ERROR}'.${P_END}"
-            echo -e "${P_ERROR}${result}${P_END}"
-            exitcode=1
-            continue;
-        else
-          if [ "$VERBOSE" = "true" ]; then
-            echo -e "${P_OK}Converted XML '${P_END}${file_relative}${P_OK}' to JSON '${P_END}${to_json_file}${P_OK}'.${P_END}"
-          fi
+exitcode=0
+for i in ${!paths[@]}; do
+#  echo "Index: $i"
+  source_file="${paths[$i]}"
+  source_format="${formats[$i]}"
+  model="${models[$i]}"
+  converttoformats="${conversion_formats[$i]}"
+
+  # get the base file name
+  source_file_basename=$(basename $source_file)
+  source_file_relative=$(get_rel_path "$OSCALDIR" "$source_file")
+
+  # debuggging statements, shows what is processing
+#  printf 'path: %s\n' "$file"
+#  printf 'file name: %s\n' "$file_basename"
+#  printf 'Source format: %s\n' "$source_format"
+#  printf 'model: %s\n' "$model"
+#  printf 'convert-to: %s\n' "$converttoformats"
+
+  source_schema="$WORKING_DIR/$source_format/schema/oscal_${model}_schema.xsd"
+
+  #split on commas
+  IFS_OLD="$IFS"
+  IFS=, to_formats=($converttoformats)
+  IFS="$IFS_OLD"
+  for target_format in ${to_formats[@]}; do
+    if [ -z "$target_format" ]; then
+      # skip blanks
+      continue;
+    fi
+
+    # convert to target format
+    target_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to.${target_format}"
+    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model")
+    cmd_exitcode=$?
+    if [ -n "$result" ]; then
+      echo -e "${result}"
+    fi
+
+    if [ $cmd_exitcode != 0 ]; then
+      exitcode=1
+      continue;
+    else
+      echo -e "${P_OK}Converted ${source_format^^} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file}${P_OK}'.${P_END}"
+    fi
+
+    # convert back to source format
+    roundtrip_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to-${target_format}-back-to.${source_format}"
+    result=$(convert_to_format_and_validate "$target_file" "$roundtrip_file" "$target_format" "$source_format" "$model")
+    cmd_exitcode=$?
+    if [ -n "$result" ]; then
+      echo -e "${result}"
+    fi
+
+    if [ $cmd_exitcode != 0 ]; then
+      exitcode=1
+      continue;
+    else
+      echo -e "${P_OK}Converted ${source_format^^} '${P_END}${target_file}${P_OK}' to ${target_format^^} as '${P_END}${roundtrip_file}${P_OK}'.${P_END}"
+    fi
+
+    # compare the XML files to see if there is data loss
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Checking ${source_format^^}->${target_format^^}->${source_format^^} conversion for '${P_END}${source_file_relative}${P_INFO}'.${P_END}"
+    fi
+
+    case $source_format in
+    xml)
+      result=$(python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$roundtrip_file" "$source_file" 2>&1)
+      ;;
+    json)
+      result=$(json-diff "$source_file" "$roundtrip_file" 2>&1)
+      ;;
+    *)
+      echo -e "${P_WARN}Unsupported source compairison format '${source_format^^}'.${P_END}"
+      return 4;
+      ;;
+    esac
+    cmd_exitcode=$?
+    if [ $cmd_exitcode != 0 ]; then
+        echo -e "${P_ERROR}${result}${P_END}"
+        echo -e "${P_ERROR}${source_format^^}->${target_format^^}->${source_format^^} round-trip comparison failed for '${P_END}${source_file_relative}${P_ERROR}' against '${P_END}${roundtrip_file}${P_ERROR}'.${P_END}"
+        if [ "$VERBOSE" != "true" ]; then
+          echo -e "  ${P_ERROR}Using interim file '${P_END}${target_file}${P_ERROR}'.${P_END}"
         fi
-
-        back_to_xml_file="${SCRATCH_DIR}/roundtrip/${file_basename}-to-json-and-back-to.xml"
-
-        # transformation of JSON back to XML
-        converter="$WORKING_DIR/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
-        converter_path="$(realpath "$converter")"
-        back_to_xml_file_relative="$(realpath --relative-to="$PWD" "$back_to_xml_file")"
-
-        # Make the json file relative to the converter
-        converter_dir="$(dirname "$converter")"
-        json_file_path="$(realpath "$to_json_file")"
-
-        result=$(xsl_transform "$converter_path" "" "$back_to_xml_file" "-it" "json-file=${json_file_path}" 2>&1)
-
-        # check the exit code for the conversion
-        cmd_exitcode=$?
-        if [ $cmd_exitcode != 0 ]; then
-            echo -e "${P_ERROR}JSON->XML conversion failed for '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
-            echo -e "${P_ERROR}${result}${P_END}"
-            exitcode=1
-            continue;
-        else
-          if [ "$VERBOSE" = "true" ]; then
-            echo -e "${P_OK}Converted JSON '${P_END}${to_json_file}${P_OK}' to XML for '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
-          fi
-        fi
-
-        # Validate the resulting XML
-        schema="$WORKING_DIR/xml/schema/oscal_${model}_schema.xsd"
-        schema_relative="$(realpath --relative-to="${WORKING_DIR}" "$schema")"
-        result="$(xmllint --noout --schema "$schema" "$back_to_xml_file" 2>&1)"
-        cmd_exitcode=$?
-        if [ $cmd_exitcode -ne 0 ]; then
-          echo -e "${P_ERROR}XML Schema validation failed for '${P_END}${back_to_xml_file}${P_ERROR}' using schema '${P_END}${schema_relative}${P_ERROR}'.${P_END}"
-          echo -e "${P_ERROR}${result}${P_END}"
-          exitcode=1
-          continue;
-        else
-          if [ "$VERBOSE" = "true" ]; then
-            echo -e "${P_OK}XML Schema validation passed for '${P_END}${back_to_xml_file}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
-          fi
-        fi
-
-        # compare the XML files to see if there is data loss
-        if [ "$VERBOSE" = "true" ]; then
-          echo -e "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file_relative}${P_INFO}'.${P_END}"
-        fi
-
-        result=$(python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$back_to_xml_file" "$file" 2>&1)
-        cmd_exitcode=$?
-        if [ $cmd_exitcode != 0 ]; then
-            echo -e "${P_ERROR}XML round-trip comparison failed for '${P_END}${file_relative}${P_ERROR}' against '${P_END}${back_to_xml_file}${P_ERROR}'.${P_END}"
-            echo -e "${P_ERROR}${result}${P_END}"
-            if [ "$VERBOSE" != "true" ]; then
-              echo -e "  ${P_ERROR}Used interim JSON file '${P_END}${to_json_file}${P_ERROR}'.${P_END}"
-            fi
-            exitcode=1
-        else
-          echo -e "${P_OK}XML round-trip comparison succeeded for '${P_END}${file_relative}${P_OK}' against '${P_END}${back_to_xml_file}${P_OK}'.${P_END}"
-        fi
-      fi
-    done
-  fi
-done < "$OSCALDIR/build/ci-cd/config/content" #inserts the config of files to parse
-shopt -u nullglob
-shopt -u globstar
+        exitcode=1
+    else
+      echo -e "${P_OK}${source_format^^}->${target_format^^}->${source_format^^} round-trip comparison succeeded for '${P_END}${source_file_relative}${P_OK}' against '${P_END}${roundtrip_file}${P_OK}'.${P_END}"
+    fi
+  done
+done
 
 exit $exitcode

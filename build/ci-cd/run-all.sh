@@ -1,8 +1,7 @@
 #!/bin/bash
 # determines the OSCAL directory path
-if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
 
 # Option defaults
@@ -13,8 +12,6 @@ PERFORM_CONTENT_CONVERSION=YES
 RUN_UNITTESTS=YES
 KEEP_TEMP_SCRATCH_DIR=false
 WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
