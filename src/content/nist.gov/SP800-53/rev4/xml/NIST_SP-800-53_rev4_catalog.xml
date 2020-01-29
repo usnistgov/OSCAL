@@ -6,7 +6,7 @@
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       <last-modified>2019-09-23T14:19:17.649-04:00</last-modified>
-      <version>2015-01-22</version>
+      <version>rev4-updated-2015-01-22</version>
       <oscal-version>1.0.0-milestone1</oscal-version>
       <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
       <link rel="alternate" href="#resource-pdf-sp-800-53r4">NIST publication (PDF)</link>
