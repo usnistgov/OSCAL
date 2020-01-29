@@ -56,6 +56,9 @@
          <assembly ref="role" max-occurs="unbounded">
             <group-as name="roles"/>
          </assembly>
+         <assembly ref="location" max-occurs="unbounded">
+            <group-as name="locations"/>
+         </assembly>
          <assembly ref="party" max-occurs="unbounded">
             <group-as name="parties"/>
          </assembly>
@@ -180,7 +183,7 @@
       <description>Date and time of last modification.</description>
       <remarks>
          <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
-         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+         <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified value should indicate the modification time of the OSCAL document, not the source material.</p>
       </remarks>
    </define-field>
    <define-field name="version">
@@ -294,6 +297,37 @@
          <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
       </remarks>
    </define-flag>
+   <define-assembly name="location">
+      <formal-name>Location</formal-name>
+      <description>A location, with associated metadata that can be referenced.</description>
+      <flag ref="id"/>
+      <model>
+         <assembly ref="address" min-occurs="1"/>
+         <field ref="email" max-occurs="unbounded">
+            <group-as name="email-addresses"/>
+         </field>
+         <field ref="phone" max-occurs="unbounded">
+            <group-as name="telephone-numbers"/>
+         </field>
+         <field ref="url" max-occurs="unbounded">
+            <group-as name="URLs"/>
+         </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
+   <define-field name="location-id" as-type="NCName">
+      <formal-name>Location Reference</formal-name>
+      <description>References a <code>location</code> defined in <code>metadata</code>.</description>
+   </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
@@ -344,6 +378,9 @@
          <assembly ref="address" max-occurs="unbounded">
             <group-as name="addresses"/>
          </assembly>
+         <field ref="location-id" max-occurs="unbounded">
+            <group-as name="location-ids"/>
+         </field>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses"/>
          </field>
@@ -377,6 +414,9 @@
          <assembly ref="address" max-occurs="unbounded">
             <group-as name="addresses"/>
          </assembly>
+         <field ref="location-id" max-occurs="unbounded">
+            <group-as name="location-ids"/>
+         </field>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses"/>
          </field>
