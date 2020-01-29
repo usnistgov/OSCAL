@@ -41,6 +41,9 @@
          <field ref="last-modified" min-occurs="1"/>
          <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
+         <assembly ref="revision" max-occurs="unbounded">
+            <group-as name="revision-history" in-xml="GROUPED"/>
+         </assembly>
          <field ref="doc-id" max-occurs="unbounded">
             <group-as name="document-ids"/>
          </field>
@@ -102,6 +105,32 @@
             </o:back-matter>
          </o:profile>
       </example>
+   </define-assembly>
+   <define-assembly name="revision">
+      <formal-name>Revision History Entry</formal-name>
+      <description>An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</description>
+      <model>
+         <field ref="title"/>
+         <field ref="published"/>
+         <field ref="last-modified"/>
+         <field ref="version"/>
+         <field ref="oscal-version"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+            <flag ref="rel">
+               <allowed-values>
+                  <enum value="source">Indicates that the href points to the source resource for the revision entry.</enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <remarks>
+         <p>While <code>published</code>, <code>last-modified</code>, <code>oscal-version</code>, and <code>version</code> are not required, values for these entries should be provided if the information is known. For a revision entry to be considered valid, at least one of the following items must be provided: <code>published</code>, <code>last-modified</code>, <code>version</code>, or <code>link</code>.</p>
+      </remarks>
    </define-assembly>
    <define-field name="link" as-type="markup-line">
       <formal-name>Link</formal-name>
