@@ -93,12 +93,9 @@
          </remarks>
          <o:profile>
             <o:metadata>
-              <o:link rel="reference" href="#citation1">My citation</o:link>
+              <o:link rel="citation" href="#resource1">My citation</o:link>
             </o:metadata>
             <o:back-matter>
-               <o:citation id="citation1">
-                  <o:target>#resource1</o:target>
-               </o:citation>
                <o:resource id="resource1">
                   <o:rlink href="https://example.org/some-resource"/>
                </o:resource>
@@ -500,24 +497,58 @@
       <formal-name>Description</formal-name>
       <description>A short textual description</description>
    </define-field>
-   <define-assembly name="resource">
-      <formal-name>Resource</formal-name>
-      <description>A resource associated with the present document.</description>
+   <define-field name="text" as-type="markup-line">
+      <formal-name>Text</formal-name>
+      <description>A line of textual content whose semantic is determined by the context of use.</description>
+   </define-field>
+   <define-assembly name="biblio">
+      <formal-name>Bibliographic Definition</formal-name>
+      <description>A container in which a set of bibliographic information can included. The model of this information is undefined by OSCAL.</description>
+      <model>
+         <any/>
+      </model>
+   </define-assembly>
+   <define-assembly name="citation">
+      <formal-name>Citation</formal-name>
+      <description>A citation consisting of end note text and optional structured bibliographic data.</description>
       <flag ref="id" required="yes"/>
       <model>
+         <field ref="text" min-occurs="1"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="biblio"/>
+      </model>
+      <remarks>
+         <p>A <code>text</code> is used to define the endnote text, without any explicit bibliographic structure. If structured bibliographic data is needed, then the <code>biblio> can be used for this purpose.</code></p>
+         <p>A <code>biblio</code> can be used to capture a structured bibliograpical citation in an appropriate format.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="resource">
+      <formal-name>Resource</formal-name>
+      <description>A resource associated with the present document, which may be a pointer to other data or a citation.</description>
+      <flag ref="id" required="yes"/>
+      <model>
+         <field ref="title"/>
          <field ref="desc"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
          </field>
+         <field ref="doc-id" max-occurs="unbounded">
+            <group-as name="document-ids"/>
+         </field>
+         <assembly ref="citation"/>
          <assembly ref="rlink" max-occurs="unbounded">
             <group-as name="rlinks"/>
          </assembly>
          <field ref="base64"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
+         <any/>
       </model>
       <remarks>
          <p>Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p>
-         <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource, or 2) be included as an attachment.</p>
+         <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource using an rlink, and 2) be included as an attachment using a base64.</p>
+         <p>When a resource is used as a citation, then the <code>title</code> and <code>citation</code> properties must be included.</p>
       </remarks>
    </define-assembly>
    <define-field name="hash">
@@ -640,41 +671,6 @@
       <formal-name>File Name</formal-name>
       <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
    </define-flag>
-   <define-assembly name="citation">
-      <formal-name>Citation</formal-name>
-      <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
-      <flag ref="id" required="yes"/>
-      <model>
-         <field ref="target" max-occurs="unbounded">
-            <group-as name="targets"/>
-         </field>
-         <field ref="title"/>
-         <field ref="desc"/>
-         <field ref="doc-id" max-occurs="unbounded">
-            <group-as name="document-ids"/>
-         </field>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
-         </field>
-         <any/>
-      </model>
-      <remarks>
-         <p>The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information will be handled by use of a <code>doc-id</code>. Use of a canonical identifier such as a DOI is recommended for any citation.</p>
-         <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide it.</p>
-      </remarks>
-   </define-assembly>
-   <define-field name="target">
-      <formal-name>Citation target</formal-name>
-      <description>An address for retrieval of a citation</description>
-      <remarks>
-         <p>Semantically equivalent to an <code>href</code> (flag), this is represented as a field in order to permit citations to carry an extra target (for cross-check or fallback) and to permit further qualification (with flags of its own) in future.</p>
-         <p>This value is expected to be a URI, and may be an internal link to
-      another object such as a <code>resource</code> documented in back matter.</p>
-         <p>When a citation is given as a full (but unparsed) bibliographic citation, use <code>desc</code> instead
-      of <code>title</code> inside this object.</p>
-      </remarks>
-   </define-field>
-
    <define-field name="description" as-type="markup-multiline">
       <formal-name>Description</formal-name>
       <description>A description supporting the parent item.</description>
