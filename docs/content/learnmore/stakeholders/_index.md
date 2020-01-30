@@ -19,4 +19,4 @@ Please decide which roles you fit into, then go from there.
 
 ## Get Involved
 
-We are seeking [more collaboration](/contribute/) with our community. If you have questions about getting involved, please [contact us](/contact/).
+We are seeking [more collaboration](/contribute/) with our community. If you have questions about getting involved, please [contact us](/contribute/contact/).
