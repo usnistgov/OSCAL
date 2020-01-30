@@ -2,23 +2,24 @@
 <!-- XML produced by extraction/mapping from NVD XML 2018-11-02T16:55:46.916-04:00 -->
 <!-- Subsequently updated by hand (2018-12-10, 2019-05-16, 2019-05-29, 2019-08-17, 2019-08-23, 2019-09-13, 2019-09-23) -->
 <!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-47fdefdb-dc1a-4040-9f27-b517a16b06d2">
+<!-- Modified by conversion XSLT 2020-01-30T16:12:12.246-05:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-1d3a8de6-2e25-4fa9-b4fa-dac7801c53ed">
    <metadata>
-      <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-      <last-modified>2019-09-23T14:19:17.649-04:00</last-modified>
-      <version>rev4-updated-2015-01-22</version>
-      <oscal-version>1.0.0-milestone1</oscal-version>
-      <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
-      <link rel="alternate" href="#resource-pdf-sp-800-53r4">NIST publication (PDF)</link>
-      <link rel="canonical" href="#resource-doi-sp-800-53r4">NIST publication via DOI lookup</link>
-
-      <role id="creator">
+        <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
+        <last-modified>2020-01-30T16:12:12.246-05:00</last-modified>
+        <version>rev4-updated-2015-01-22</version>
+        <oscal-version>1.0.0-milestone3</oscal-version>
+        <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
+        <link rel="alternate" href="#resource-pdf-sp-800-53r4">NIST publication (PDF)</link>
+        <link rel="canonical" href="#resource-doi-sp-800-53r4">NIST publication via DOI lookup</link>
+        <role id="creator">
          <title>Document creator</title>
       </role>
-      <role id="contact">
+        <role id="contact">
          <title>Contact</title>
       </role>
-      <party id="IT-JTF">
+        <party id="IT-JTF">
          <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>
@@ -33,13 +34,13 @@
             <email>sec-cert@nist.gov</email>
          </org>
       </party>
-      <responsible-party role-id="creator">
+        <responsible-party role-id="creator">
          <party-id>IT-JTF</party-id>
       </responsible-party>
-      <responsible-party role-id="contact">
+        <responsible-party role-id="contact">
          <party-id>IT-JTF</party-id>
       </responsible-party>
-   </metadata>
+    </metadata>
    <group class="family" id="ac">
       <title>Access Control</title>
       <control class="SP800-53" id="ac-1">
@@ -1877,7 +1878,8 @@
                </part>
                <part id="ac-3.9_smt.b" name="item">
                   <prop name="label">(b)</prop>
-                  <p><insert param-id="ac-3.9_prm_3"/> are used to validate the appropriateness of the information designated for release.</p>
+                  <p>
+                     <insert param-id="ac-3.9_prm_3"/> are used to validate the appropriateness of the information designated for release.</p>
                </part>
             </part>
             <part id="ac-3.9_gdn" name="guidance">
@@ -2247,7 +2249,9 @@
                   <choice>decrypting the information</choice>
                   <choice>blocking the flow of the encrypted information</choice>
                   <choice>terminating communications sessions attempting to pass encrypted information</choice>
-                  <choice> <insert param-id="ac-4.4_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="ac-4.4_prm_2"/> 
+                  </choice>
                </select>
             </param>
             <param id="ac-4.4_prm_2" depends-on="ac-4.4_prm_1">
@@ -3947,9 +3951,11 @@
          </param>
          <param id="ac-7_prm_3">
             <select>
-               <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/></choice>
+               <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/>
+               </choice>
                <choice>locks the account/node until released by an administrator</choice>
-               <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/></choice>
+               <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/>
+               </choice>
             </select>
          </param>
          <param id="ac-7_prm_4" depends-on="ac-7_prm_3">
@@ -7534,7 +7540,8 @@
             </part>
             <part id="at-2_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p><insert param-id="at-2_prm_1"/> thereafter.</p>
+               <p>
+                  <insert param-id="at-2_prm_1"/> thereafter.</p>
             </part>
          </part>
          <part id="at-2_gdn" name="guidance">
@@ -7695,7 +7702,8 @@
             </part>
             <part id="at-3_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p><insert param-id="at-3_prm_1"/> thereafter.</p>
+               <p>
+                  <insert param-id="at-3_prm_1"/> thereafter.</p>
             </part>
          </part>
          <part id="at-3_gdn" name="guidance">
@@ -9311,7 +9319,9 @@
                   <choice>vulnerability scanning information</choice>
                   <choice>performance data</choice>
                   <choice>information system monitoring information</choice>
-                  <choice> <insert param-id="au-6.5_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="au-6.5_prm_2"/> 
+                  </choice>
                </select>
             </param>
             <param id="au-6.5_prm_2" depends-on="au-6.5_prm_1">
@@ -11140,7 +11150,8 @@
          <prop name="label">AU-13</prop>
          <prop name="sort-id">au-13</prop>
          <part id="au-13_smt" name="statement">
-            <p>The organization monitors <insert param-id="au-13_prm_1"/> <insert param-id="au-13_prm_2"/> for evidence of unauthorized disclosure of organizational information.</p>
+            <p>The organization monitors <insert param-id="au-13_prm_1"/> 
+               <insert param-id="au-13_prm_2"/> for evidence of unauthorized disclosure of organizational information.</p>
          </part>
          <part id="au-13_gdn" name="guidance">
             <p>Open source information includes, for example, social networking sites.</p>
@@ -11990,7 +12001,9 @@
                   <choice>malicious user testing</choice>
                   <choice>insider threat assessment</choice>
                   <choice>performance/load testing</choice>
-                  <choice> <insert param-id="ca-2.2_prm_4"/> </choice>
+                  <choice> 
+                     <insert param-id="ca-2.2_prm_4"/> 
+                  </choice>
                </select>
             </param>
             <param id="ca-2.2_prm_4" depends-on="ca-2.2_prm_3">
@@ -12822,7 +12835,8 @@
             </part>
             <part id="ca-7_smt.g" name="item">
                <prop name="label">g.</prop>
-               <p>Reporting the security status of organization and the information system to <insert param-id="ca-7_prm_4"/> <insert param-id="ca-7_prm_5"/>.</p>
+               <p>Reporting the security status of organization and the information system to <insert param-id="ca-7_prm_4"/> 
+                  <insert param-id="ca-7_prm_5"/>.</p>
             </part>
          </part>
          <part id="ca-7_gdn" name="guidance">
@@ -13581,7 +13595,8 @@
                <p>The organization reviews and updates the baseline configuration of the information system:</p>
                <part id="cm-2.1_smt.a" name="item">
                   <prop name="label">(a)</prop>
-                  <p><insert param-id="cm-2.1_prm_1"/>;</p>
+                  <p>
+                     <insert param-id="cm-2.1_prm_1"/>;</p>
                </part>
                <part id="cm-2.1_smt.b" name="item">
                   <prop name="label">(b)</prop>
@@ -13926,8 +13941,12 @@
          </param>
          <param id="cm-3_prm_3">
             <select how-many="one or more">
-               <choice> <insert param-id="cm-3_prm_4"/> </choice>
-               <choice> <insert param-id="cm-3_prm_5"/> </choice>
+               <choice> 
+                  <insert param-id="cm-3_prm_4"/> 
+               </choice>
+               <choice> 
+                  <insert param-id="cm-3_prm_5"/> 
+               </choice>
             </select>
          </param>
          <param id="cm-3_prm_4" depends-on="cm-3_prm_3">
@@ -15661,7 +15680,9 @@
             <title>Prevent Program Execution</title>
             <param id="cm-7.2_prm_1">
                <select how-many="one or more">
-                  <choice> <insert param-id="cm-7.2_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="cm-7.2_prm_2"/> 
+                  </choice>
                   <choice>rules authorizing the terms and conditions of software program usage</choice>
                </select>
             </param>
@@ -16230,7 +16251,8 @@
                <select how-many="one or more">
                   <choice>disables network access by such components</choice>
                   <choice>isolates the components</choice>
-                  <choice>notifies <insert param-id="cm-8.3_prm_3"/></choice>
+                  <choice>notifies <insert param-id="cm-8.3_prm_3"/>
+                  </choice>
                </select>
             </param>
             <param id="cm-8.3_prm_3" depends-on="cm-8.3_prm_2">
@@ -17913,7 +17935,8 @@
             </part>
             <part id="cp-3_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p><insert param-id="cp-3_prm_2"/> thereafter.</p>
+               <p>
+                  <insert param-id="cp-3_prm_2"/> thereafter.</p>
             </part>
          </part>
          <part id="cp-3_gdn" name="guidance">
@@ -23641,7 +23664,8 @@
             </part>
             <part id="ir-2_smt.c" name="item">
                <prop name="label">c.</prop>
-               <p><insert param-id="ir-2_prm_2"/> thereafter.</p>
+               <p>
+                  <insert param-id="ir-2_prm_2"/> thereafter.</p>
             </part>
          </part>
          <part id="ir-2_gdn" name="guidance">
@@ -29350,7 +29374,9 @@
                   <choice>security clearances for all information contained within the system</choice>
                   <choice>formal access authorizations for all information contained within the system</choice>
                   <choice>need for access to all information contained within the system</choice>
-                  <choice> <insert param-id="pe-2.3_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="pe-2.3_prm_2"/> 
+                  </choice>
                </select>
             </param>
             <param id="pe-2.3_prm_2" depends-on="pe-2.3_prm_1">
@@ -29430,7 +29456,9 @@
          </param>
          <param id="pe-3_prm_2">
             <select how-many="one or more">
-               <choice> <insert param-id="pe-3_prm_3"/> </choice>
+               <choice> 
+                  <insert param-id="pe-3_prm_3"/> 
+               </choice>
                <choice>guards</choice>
             </select>
          </param>
@@ -34686,7 +34714,9 @@
             <select>
                <choice>security plan</choice>
                <choice>risk assessment report</choice>
-               <choice> <insert param-id="ra-3_prm_2"/> </choice>
+               <choice> 
+                  <insert param-id="ra-3_prm_2"/> 
+               </choice>
             </select>
          </param>
          <param id="ra-3_prm_2" depends-on="ra-3_prm_1">
@@ -35107,7 +35137,9 @@
             <title>Update by Frequency / Prior to New Scan / When Identified</title>
             <param id="ra-5.2_prm_1">
                <select how-many="one or more">
-                  <choice> <insert param-id="ra-5.2_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="ra-5.2_prm_2"/> 
+                  </choice>
                   <choice>prior to a new scan</choice>
                   <choice>when new vulnerabilities are identified and reported</choice>
                </select>
@@ -35506,8 +35538,12 @@
          </param>
          <param id="ra-6_prm_2">
             <select how-many="one or more">
-               <choice> <insert param-id="ra-6_prm_3"/> </choice>
-               <choice> <insert param-id="ra-6_prm_4"/> </choice>
+               <choice> 
+                  <insert param-id="ra-6_prm_3"/> 
+               </choice>
+               <choice> 
+                  <insert param-id="ra-6_prm_4"/> 
+               </choice>
             </select>
          </param>
          <param id="ra-6_prm_3" depends-on="ra-6_prm_2">
@@ -35519,7 +35555,8 @@
          <prop name="label">RA-6</prop>
          <prop name="sort-id">ra-06</prop>
          <part id="ra-6_smt" name="statement">
-            <p>The organization employs a technical surveillance countermeasures survey at <insert param-id="ra-6_prm_1"/> <insert param-id="ra-6_prm_2"/>.</p>
+            <p>The organization employs a technical surveillance countermeasures survey at <insert param-id="ra-6_prm_1"/> 
+               <insert param-id="ra-6_prm_2"/>.</p>
          </part>
          <part id="ra-6_gdn" name="guidance">
             <p>Technical surveillance countermeasures surveys are performed by qualified personnel to detect the presence of technical surveillance devices/hazards and to identify technical security weaknesses that could aid in the conduct of technical penetrations of surveyed facilities. Such surveys provide evaluations of the technical security postures of organizations and facilities and typically include thorough visual, electronic, and physical examinations in and about surveyed facilities. The surveys also provide useful input into risk assessments and organizational exposure to potential adversaries.</p>
@@ -36075,7 +36112,9 @@
                   <choice>high-level design</choice>
                   <choice>low-level design</choice>
                   <choice>source code or hardware schematics</choice>
-                  <choice> <insert param-id="sa-4.2_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="sa-4.2_prm_2"/> 
+                  </choice>
                </select>
             </param>
             <param id="sa-4.2_prm_2" depends-on="sa-4.2_prm_1">
@@ -39504,8 +39543,12 @@
             <title>Quality Metrics</title>
             <param id="sa-15.1_prm_1">
                <select how-many="one or more">
-                  <choice> <insert param-id="sa-15.1_prm_2"/> </choice>
-                  <choice> <insert param-id="sa-15.1_prm_3"/> </choice>
+                  <choice> 
+                     <insert param-id="sa-15.1_prm_2"/> 
+                  </choice>
+                  <choice> 
+                     <insert param-id="sa-15.1_prm_3"/> 
+                  </choice>
                   <choice>upon delivery</choice>
                </select>
             </param>
@@ -40891,7 +40934,8 @@
             <param id="sa-18.2_prm_2">
                <select how-many="one or more">
                   <choice>at random</choice>
-                  <choice>at <insert param-id="sa-18.2_prm_3"/>, upon <insert param-id="sa-18.2_prm_4"/></choice>
+                  <choice>at <insert param-id="sa-18.2_prm_3"/>, upon <insert param-id="sa-18.2_prm_4"/>
+                  </choice>
                </select>
             </param>
             <param id="sa-18.2_prm_3" depends-on="sa-18.2_prm_2">
@@ -40903,7 +40947,8 @@
             <prop name="label">SA-18(2)</prop>
             <prop name="sort-id">sa-18.02</prop>
             <part id="sa-18.2_smt" name="statement">
-               <p>The organization inspects <insert param-id="sa-18.2_prm_1"/> <insert param-id="sa-18.2_prm_2"/> to detect tampering.</p>
+               <p>The organization inspects <insert param-id="sa-18.2_prm_1"/> 
+                  <insert param-id="sa-18.2_prm_2"/> to detect tampering.</p>
             </part>
             <part id="sa-18.2_gdn" name="guidance">
                <p>This control enhancement addresses both physical and logical tampering and is typically applied to mobile devices, notebook computers, or other system components taken out of organization-controlled areas. Indications of need for inspection include, for example, when individuals return from travel to high-risk locations.</p>
@@ -40973,8 +41018,12 @@
          <param id="sa-19_prm_1">
             <select how-many="one or more">
                <choice>source of counterfeit component</choice>
-               <choice> <insert param-id="sa-19_prm_2"/> </choice>
-               <choice> <insert param-id="sa-19_prm_3"/> </choice>
+               <choice> 
+                  <insert param-id="sa-19_prm_2"/> 
+               </choice>
+               <choice> 
+                  <insert param-id="sa-19_prm_3"/> 
+               </choice>
             </select>
          </param>
          <param id="sa-19_prm_2" depends-on="sa-19_prm_1">
@@ -41541,7 +41590,9 @@
             <param id="sa-22.1_prm_1">
                <select how-many="one or more">
                   <choice>in-house support</choice>
-                  <choice> <insert param-id="sa-22.1_prm_2"/> </choice>
+                  <choice> 
+                     <insert param-id="sa-22.1_prm_2"/> 
+                  </choice>
                </select>
             </param>
             <param id="sa-22.1_prm_2" depends-on="sa-22.1_prm_1">
@@ -42473,7 +42524,9 @@
             <select how-many="one or more">
                <choice>priority</choice>
                <choice>quota</choice>
-               <choice> <insert param-id="sc-6_prm_3"/> </choice>
+               <choice> 
+                  <insert param-id="sc-6_prm_3"/> 
+               </choice>
             </select>
          </param>
          <param id="sc-6_prm_3" depends-on="sc-6_prm_2">
@@ -46576,7 +46629,9 @@
             </param>
             <param id="sc-30.3_prm_2">
                <select>
-                  <choice> <insert param-id="sc-30.3_prm_3"/> </choice>
+                  <choice> 
+                     <insert param-id="sc-30.3_prm_3"/> 
+                  </choice>
                   <choice>at random time intervals</choice>
                </select>
             </param>
@@ -46586,7 +46641,8 @@
             <prop name="label">SC-30(3)</prop>
             <prop name="sort-id">sc-30.03</prop>
             <part id="sc-30.3_smt" name="statement">
-               <p>The organization changes the location of <insert param-id="sc-30.3_prm_1"/> <insert param-id="sc-30.3_prm_2"/>].</p>
+               <p>The organization changes the location of <insert param-id="sc-30.3_prm_1"/> 
+                  <insert param-id="sc-30.3_prm_2"/>].</p>
             </part>
             <part id="sc-30.3_gdn" name="guidance">
                <p>Adversaries target critical organizational missions/business functions and the information resources supporting those missions and functions while at the same time, trying to minimize exposure of their existence and tradecraft. The static, homogeneous, and deterministic nature of organizational information systems targeted by adversaries, make such systems more susceptible to cyber attacks with less adversary cost and effort to be successful. Changing organizational processing and storage locations (sometimes referred to as moving target defense) addresses the advanced persistent threat (APT) using techniques such as virtualization, distributed processing, and replication. This enables organizations to relocate the information resources (i.e., processing and/or storage) supporting critical missions and business functions. Changing locations of processing activities and/or storage sites introduces uncertainty into the targeting activities by adversaries. This uncertainty increases the work factor of adversaries making compromises or breaches to organizational information systems much more difficult and time-consuming, and increases the chances that adversaries may inadvertently disclose aspects of tradecraft while attempting to locate critical organizational resources.</p>
@@ -49231,7 +49287,9 @@
                <choice>block malicious code</choice>
                <choice>quarantine malicious code</choice>
                <choice>send alert to administrator</choice>
-               <choice> <insert param-id="si-3_prm_4"/> </choice>
+               <choice> 
+                  <insert param-id="si-3_prm_4"/> 
+               </choice>
             </select>
          </param>
          <param id="si-3_prm_4" depends-on="si-3_prm_3">
@@ -49259,7 +49317,8 @@
                </part>
                <part id="si-3_smt.c.2" name="item">
                   <prop name="label">2.</prop>
-                  <p><insert param-id="si-3_prm_3"/> in response to malicious code detection; and</p>
+                  <p>
+                     <insert param-id="si-3_prm_3"/> in response to malicious code detection; and</p>
                </part>
             </part>
             <part id="si-3_smt.d" name="item">
@@ -49905,7 +49964,9 @@
          <param id="si-4_prm_5">
             <select how-many="one or more">
                <choice>as needed</choice>
-               <choice> <insert param-id="si-4_prm_6"/> </choice>
+               <choice> 
+                  <insert param-id="si-4_prm_6"/> 
+               </choice>
             </select>
          </param>
          <param id="si-4_prm_6" depends-on="si-4_prm_5">
@@ -49962,7 +50023,8 @@
             </part>
             <part id="si-4_smt.g" name="item">
                <prop name="label">g.</prop>
-               <p>Provides <insert param-id="si-4_prm_3"/> to <insert param-id="si-4_prm_4"/> <insert param-id="si-4_prm_5"/>.</p>
+               <p>Provides <insert param-id="si-4_prm_3"/> to <insert param-id="si-4_prm_4"/> 
+                  <insert param-id="si-4_prm_5"/>.</p>
             </part>
          </part>
          <part id="si-4_gdn" name="guidance">
@@ -51258,7 +51320,8 @@
             <param id="si-4.22_prm_2">
                <select how-many="one or more">
                   <choice>audits</choice>
-                  <choice>alerts <insert param-id="si-4.22_prm_3"/></choice>
+                  <choice>alerts <insert param-id="si-4.22_prm_3"/>
+                  </choice>
                </select>
             </param>
             <param id="si-4.22_prm_3" depends-on="si-4.22_prm_2">
@@ -51467,9 +51530,15 @@
          </param>
          <param id="si-5_prm_2">
             <select how-many="one or more">
-               <choice> <insert param-id="si-5_prm_3"/> </choice>
-               <choice> <insert param-id="si-5_prm_4"/> </choice>
-               <choice> <insert param-id="si-5_prm_5"/> </choice>
+               <choice> 
+                  <insert param-id="si-5_prm_3"/> 
+               </choice>
+               <choice> 
+                  <insert param-id="si-5_prm_4"/> 
+               </choice>
+               <choice> 
+                  <insert param-id="si-5_prm_5"/> 
+               </choice>
             </select>
          </param>
          <param id="si-5_prm_3" depends-on="si-5_prm_2">
@@ -51646,9 +51715,13 @@
          </param>
          <param id="si-6_prm_2">
             <select how-many="one or more">
-               <choice> <insert param-id="si-6_prm_3"/> </choice>
+               <choice> 
+                  <insert param-id="si-6_prm_3"/> 
+               </choice>
                <choice>upon command by user with appropriate privilege</choice>
-               <choice> <insert param-id="si-6_prm_4"/> </choice>
+               <choice> 
+                  <insert param-id="si-6_prm_4"/> 
+               </choice>
             </select>
          </param>
          <param id="si-6_prm_3" depends-on="si-6_prm_2">
@@ -51664,7 +51737,9 @@
             <select how-many="one or more">
                <choice>shuts the information system down</choice>
                <choice>restarts the information system</choice>
-               <choice> <insert param-id="si-6_prm_7"/> </choice>
+               <choice> 
+                  <insert param-id="si-6_prm_7"/> 
+               </choice>
             </select>
          </param>
          <param id="si-6_prm_7" depends-on="si-6_prm_6">
@@ -51688,7 +51763,8 @@
             </part>
             <part id="si-6_smt.d" name="item">
                <prop name="label">d.</prop>
-               <p><insert param-id="si-6_prm_6"/> when anomalies are discovered.</p>
+               <p>
+                  <insert param-id="si-6_prm_6"/> when anomalies are discovered.</p>
             </part>
          </part>
          <part id="si-6_gdn" name="guidance">
@@ -51992,8 +52068,11 @@
             <param id="si-7.1_prm_2">
                <select how-many="one or more">
                   <choice>at startup</choice>
-                  <choice>at <insert param-id="si-7.1_prm_3"/></choice>
-                  <choice><insert param-id="si-7.1_prm_4"/></choice>
+                  <choice>at <insert param-id="si-7.1_prm_3"/>
+                  </choice>
+                  <choice>
+                     <insert param-id="si-7.1_prm_4"/>
+                  </choice>
                </select>
             </param>
             <param id="si-7.1_prm_3" depends-on="si-7.1_prm_2">
@@ -52005,7 +52084,8 @@
             <prop name="label">SI-7(1)</prop>
             <prop name="sort-id">si-07.01</prop>
             <part id="si-7.1_smt" name="statement">
-               <p>The information system performs an integrity check of <insert param-id="si-7.1_prm_1"/> <insert param-id="si-7.1_prm_2"/>.</p>
+               <p>The information system performs an integrity check of <insert param-id="si-7.1_prm_1"/> 
+                  <insert param-id="si-7.1_prm_2"/>.</p>
             </part>
             <part id="si-7.1_gdn" name="guidance">
                <p>Security-relevant events include, for example, the identification of a new threat to which organizational information systems are susceptible, and the installation of new hardware, software, or firmware. Transitional states include, for example, system startup, restart, shutdown, and abort.</p>
@@ -52213,7 +52293,8 @@
                <select how-many="one or more">
                   <choice>shuts the information system down</choice>
                   <choice>restarts the information system</choice>
-                  <choice>implements <insert param-id="si-7.5_prm_2"/></choice>
+                  <choice>implements <insert param-id="si-7.5_prm_2"/>
+                  </choice>
                </select>
             </param>
             <param id="si-7.5_prm_2" depends-on="si-7.5_prm_1">
@@ -52401,8 +52482,11 @@
                <select how-many="one or more">
                   <choice>generates an audit record</choice>
                   <choice>alerts current user</choice>
-                  <choice>alerts <insert param-id="si-7.8_prm_2"/></choice>
-                  <choice><insert param-id="si-7.8_prm_3"/></choice>
+                  <choice>alerts <insert param-id="si-7.8_prm_2"/>
+                  </choice>
+                  <choice>
+                     <insert param-id="si-7.8_prm_3"/>
+                  </choice>
                </select>
             </param>
             <param id="si-7.8_prm_2" depends-on="si-7.8_prm_1">
@@ -53868,7 +53952,8 @@
             </param>
             <param id="si-13.4_prm_2">
                <select how-many="one or more">
-                  <choice>activates <insert param-id="si-13.4_prm_3"/></choice>
+                  <choice>activates <insert param-id="si-13.4_prm_3"/>
+                  </choice>
                   <choice>automatically shuts down the information system</choice>
                </select>
             </param>
@@ -53885,7 +53970,8 @@
                </part>
                <part id="si-13.4_smt.b" name="item">
                   <prop name="label">(b)</prop>
-                  <p><insert param-id="si-13.4_prm_2"/>.</p>
+                  <p>
+                     <insert param-id="si-13.4_prm_2"/>.</p>
                </part>
             </part>
             <part id="si-13.4_gdn" name="guidance">
@@ -53970,7 +54056,8 @@
             <prop name="label">SI-13(5)</prop>
             <prop name="sort-id">si-13.05</prop>
             <part id="si-13.5_smt" name="statement">
-               <p>The organization provides <insert param-id="si-13.5_prm_1"/> <insert param-id="si-13.5_prm_2"/> for the information system.</p>
+               <p>The organization provides <insert param-id="si-13.5_prm_1"/> 
+                  <insert param-id="si-13.5_prm_2"/> for the information system.</p>
             </part>
             <part id="si-13.5_gdn" name="guidance">
                <p>Failover refers to the automatic switchover to an alternate information system upon the failure of the primary information system. Failover capability includes, for example, incorporating mirrored information system operations at alternate processing sites or periodic data mirroring at regular intervals defined by recovery time periods of organizations.</p>
@@ -54032,7 +54119,8 @@
          <param id="si-14_prm_2">
             <select how-many="one or more">
                <choice>upon end of session of use</choice>
-               <choice>periodically at <insert param-id="si-14_prm_3"/></choice>
+               <choice>periodically at <insert param-id="si-14_prm_3"/>
+               </choice>
             </select>
          </param>
          <param id="si-14_prm_3" depends-on="si-14_prm_2">
@@ -55469,485 +55557,840 @@
       </control>
    </group>
    <back-matter>
-       <citation id="ref001">
-          <target>http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html</target>
-          <title>5 C.F.R. 731.106</title>
-       </citation>
-       <citation id="ref002">
-          <target>http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html</target>
-          <title>C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</title>
-       </citation>
-       <citation id="ref003">
-          <target>https://www.cnss.gov/policies.html</target>
-          <title>CNSS Policy 15</title>
-       </citation>
-       <citation id="ref004">
-          <title>DoD Information Assurance Vulnerability Alerts</title>
-       </citation>
-       <citation id="ref005">
-          <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
-          <title>DoD Instruction 5200.39</title>
-       </citation>
-       <citation id="ref006">
-          <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
-          <title>DoD Instruction 8551.01</title>
-       </citation>
-       <citation id="ref007">
-          <target>http://www.dtic.mil/whs/directives/corres/ins1.html</target>
-          <title>DoD Instruction 8552.01</title>
-       </citation>
-       <citation id="ref008">
-          <target>http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net</target>
-          <title>Executive Order 13587</title>
-       </citation>
-       <citation id="ref009">
-          <target>https://acquisition.gov/far</target>
-          <title>Federal Acquisition Regulation</title>
-       </citation>
-       <citation id="ref010">
-          <target>http://www.fema.gov/pdf/about/offices/fcd1.pdf</target>
-          <title>Federal Continuity Directive 1</title>
-       </citation>
-       <citation id="ref011">
-          <target>http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance</target>
-          <title>FICAM Roadmap and Implementation Guidance</title>
-       </citation>
-       <citation id="ref012">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html</target>
-          <title>FIPS Publication 140</title>
-       </citation>
-       <citation id="ref013">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html#140-2</target>
-          <title>FIPS Publication 140-2</title>
-       </citation>
-       <citation id="ref014">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html#197</target>
-          <title>FIPS Publication 197</title>
-       </citation>
-       <citation id="ref015">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html#199</target>
-          <title>FIPS Publication 199</title>
-       </citation>
-       <citation id="ref016">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html#200</target>
-          <title>FIPS Publication 200</title>
-       </citation>
-       <citation id="ref017">
-          <target>http://csrc.nist.gov/publications/PubsFIPS.html#201</target>
-          <title>FIPS Publication 201</title>
-       </citation>
-       <citation id="ref018">
-          <target>http://www.dhs.gov/homeland-security-presidential-directive-12</target>
-          <title>HSPD-12</title>
-       </citation>
-       <citation id="ref019">
-          <target>http://www.fas.org/irp/offdocs/nspd/hspd-7.html</target>
-          <title>HSPD 7</title>
-       </citation>
-       <citation id="ref020">
-          <target>http://capec.mitre.org</target>
-          <title>http://capec.mitre.org</title>
-       </citation>
-       <citation id="ref021">
-          <target>http://checklists.nist.gov</target>
-          <title>http://checklists.nist.gov</title>
-       </citation>
-       <citation id="ref022">
-          <target>http://csrc.nist.gov/cryptval</target>
-          <title>http://csrc.nist.gov/cryptval</title>
-       </citation>
-       <citation id="ref023">
-          <target>http://csrc.nist.gov/groups/STM/cmvp/index.html</target>
-          <title>http://csrc.nist.gov/groups/STM/cmvp/index.html</title>
-       </citation>
-       <citation id="ref024">
-          <target>http://cve.mitre.org</target>
-          <title>http://cve.mitre.org</title>
-       </citation>
-       <citation id="ref025">
-          <target>http://cwe.mitre.org</target>
-          <title>http://cwe.mitre.org</title>
-       </citation>
-       <citation id="ref026">
-          <target>http://fips201ep.cio.gov</target>
-          <title>http://fips201ep.cio.gov</title>
-       </citation>
-       <citation id="ref027">
-          <target>http://idmanagement.gov</target>
-          <title>http://idmanagement.gov</title>
-       </citation>
-       <citation id="ref028">
-          <target>http://nvd.nist.gov</target>
-          <title>http://nvd.nist.gov</title>
-       </citation>
-       <citation id="ref029">
-          <target>http://www.acquisition.gov/far</target>
-          <title>http://www.acquisition.gov/far</title>
-       </citation>
-       <citation id="ref030">
-          <target>http://www.cnss.gov</target>
-          <title>http://www.cnss.gov</title>
-       </citation>
-       <citation id="ref031">
-          <target>http://www.dhs.gov/telecommunications-service-priority-tsp</target>
-          <title>http://www.dhs.gov/telecommunications-service-priority-tsp</title>
-       </citation>
-       <citation id="ref032">
-          <target>http://www.niap-ccevs.org</target>
-          <title>http://www.niap-ccevs.org</title>
-       </citation>
-       <citation id="ref033">
-          <target>http://www.nsa.gov</target>
-          <title>http://www.nsa.gov</title>
-       </citation>
-       <citation id="ref034">
-          <target>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</target>
-          <title>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</title>
-       </citation>
-       <citation id="ref035">
-          <target>http://www.omb.gov</target>
-          <title>http://www.omb.gov</title>
-       </citation>
-       <citation id="ref036">
-          <target>http://www.us-cert.gov</target>
-          <title>http://www.us-cert.gov</title>
-       </citation>
-       <citation id="ref037">
-          <target>http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives</target>
-          <title>ICD 704</title>
-       </citation>
-       <citation id="ref038">
-          <target>http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives</target>
-          <title>ICD 705</title>
-       </citation>
-       <citation id="ref039">
-          <target>http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341</target>
-          <title>ISO/IEC 15408</title>
-       </citation>
-       <citation id="ref040">
-          <title>National Communications Systems Directive 3-10</title>
-       </citation>
-       <citation id="ref041">
-          <target>https://www.dhs.gov/national-infrastructure-protection-plan</target>
-          <title>National Infrastructure Protection Plan</title>
-       </citation>
-       <citation id="ref042">
-          <target>http://www.nist.gov/nstic</target>
-          <title>National Strategy for Trusted Identities in Cyberspace</title>
-       </citation>
-       <citation id="ref043">
-          <target>http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622</target>
-          <title>NIST Interagency Report 7622</title>
-       </citation>
-       
-       <citation id="ref044">
-          <target>https://doi.org/10.6028/NIST.SP.800-100</target>
-          <title>NIST Special Publication 800-100</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-100</doc-id>
-       </citation>
-       <citation id="ref045">
-          <target>https://doi.org/10.6028/NIST.SP.800-111</target>
-          <title>NIST Special Publication 800-111</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-111</doc-id>
-       </citation>
-       <citation id="ref046">
-          <target>https://doi.org/10.6028/NIST.SP.800-113</target>
-          <title>NIST Special Publication 800-113</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-113</doc-id>
-       </citation>
-       <citation id="ref047">
-          <target>https://doi.org/10.6028/NIST.SP.800-114r1</target>
-          <title>NIST Special Publication 800-114 Rev. 1</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-114r1</doc-id>
-       </citation>
-       <citation id="ref048">
-          <target>https://doi.org/10.6028/NIST.SP.800-115</target>
-          <title>NIST Special Publication 800-115</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-115</doc-id>
-       </citation>
-       <citation id="ref049">
-          <target>https://doi.org/10.6028/NIST.SP.800-116r1</target>
-          <title>NIST Special Publication 800-116 Rev. 1</title>
-          <doc-id type="doi">10.6028/NIST.SP.800-116r1</doc-id>
-       </citation>
-<citation id="ref050">
- <target>https://doi.org/10.6028/NIST.SP.800-12r1</target>
- <title>NIST Special Publication 800-12 Rev. 1</title>
- <doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>
- <!--<doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>-->
-</citation>
-       
-       <citation id="ref051">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-121</target>
-          <title>NIST Special Publication 800-121</title>
-       </citation>
-       <citation id="ref052">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-124</target>
-          <title>NIST Special Publication 800-124</title>
-       </citation>
-       <citation id="ref053">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-128</target>
-          <title>NIST Special Publication 800-128</title>
-       </citation>
-       <citation id="ref054">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-137</target>
-          <title>NIST Special Publication 800-137</title>
-       </citation>
-       <citation id="ref055">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-147</target>
-          <title>NIST Special Publication 800-147</title>
-       </citation>
-       <citation id="ref056">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-155</target>
-          <title>NIST Special Publication 800-155</title>
-       </citation>
-       <citation id="ref057">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-16</target>
-          <title>NIST Special Publication 800-16</title>
-       </citation>
-       <citation id="ref058">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-161</target>
-          <title>NIST Special Publication 800-161</title>
-       </citation>
-       <citation id="ref059">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-164</target>
-          <title>NIST Special Publication 800-164</title>
-       </citation>
-       <citation id="ref060">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-18</target>
-          <title>NIST Special Publication 800-18</title>
-       </citation>
-       <citation id="ref061">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-23</target>
-          <title>NIST Special Publication 800-23</title>
-       </citation>
-       <citation id="ref062">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-27</target>
-          <title>NIST Special Publication 800-27</title>
-       </citation>
-       <citation id="ref063">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-28</target>
-          <title>NIST Special Publication 800-28</title>
-       </citation>
-       <citation id="ref064">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-30</target>
-          <title>NIST Special Publication 800-30</title>
-       </citation>
-       <citation id="ref065">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-32</target>
-          <title>NIST Special Publication 800-32</title>
-       </citation>
-       <citation id="ref066">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-34</target>
-          <title>NIST Special Publication 800-34</title>
-       </citation>
-       <citation id="ref067">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-35</target>
-          <title>NIST Special Publication 800-35</title>
-       </citation>
-       <citation id="ref068">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-36</target>
-          <title>NIST Special Publication 800-36</title>
-       </citation>
-       <citation id="ref069">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-37</target>
-          <title>NIST Special Publication 800-37</title>
-       </citation>
-       <citation id="ref070">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-39</target>
-          <title>NIST Special Publication 800-39</title>
-       </citation>
-       <citation id="ref071">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-40</target>
-          <title>NIST Special Publication 800-40</title>
-       </citation>
-       <citation id="ref072">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-41</target>
-          <title>NIST Special Publication 800-41</title>
-       </citation>
-       <citation id="ref073">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-45</target>
-          <title>NIST Special Publication 800-45</title>
-       </citation>
-       <citation id="ref074">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-46</target>
-          <title>NIST Special Publication 800-46</title>
-       </citation>
-       <citation id="ref075">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-47</target>
-          <title>NIST Special Publication 800-47</title>
-       </citation>
-       <citation id="ref076">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-48</target>
-          <title>NIST Special Publication 800-48</title>
-       </citation>
-       <citation id="ref077">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-50</target>
-          <title>NIST Special Publication 800-50</title>
-       </citation>
-       <citation id="ref078">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-52</target>
-          <title>NIST Special Publication 800-52</title>
-       </citation>
-       <citation id="ref079">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-53</target>
-          <title>NIST Special Publication 800-53</title>
-       </citation>
-       <citation id="ref080">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-53A</target>
-          <title>NIST Special Publication 800-53A</title>
-       </citation>
-       <citation id="ref081">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-55</target>
-          <title>NIST Special Publication 800-55</title>
-       </citation>
-       <citation id="ref082">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-56</target>
-          <title>NIST Special Publication 800-56</title>
-       </citation>
-       <citation id="ref083">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-57</target>
-          <title>NIST Special Publication 800-57</title>
-       </citation>
-       <citation id="ref084">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-58</target>
-          <title>NIST Special Publication 800-58</title>
-       </citation>
-       <citation id="ref085">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-60</target>
-          <title>NIST Special Publication 800-60</title>
-       </citation>
-       <citation id="ref086">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-61</target>
-          <title>NIST Special Publication 800-61</title>
-       </citation>
-       <citation id="ref087">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-63</target>
-          <title>NIST Special Publication 800-63</title>
-       </citation>
-       <citation id="ref088">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-64</target>
-          <title>NIST Special Publication 800-64</title>
-       </citation>
-       <citation id="ref089">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-65</target>
-          <title>NIST Special Publication 800-65</title>
-       </citation>
-       <citation id="ref090">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-70</target>
-          <title>NIST Special Publication 800-70</title>
-       </citation>
-       <citation id="ref091">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-73</target>
-          <title>NIST Special Publication 800-73</title>
-       </citation>
-       <citation id="ref092">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-76</target>
-          <title>NIST Special Publication 800-76</title>
-       </citation>
-       <citation id="ref093">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-77</target>
-          <title>NIST Special Publication 800-77</title>
-       </citation>
-       <citation id="ref094">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-78</target>
-          <title>NIST Special Publication 800-78</title>
-       </citation>
-       <citation id="ref095">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-81</target>
-          <title>NIST Special Publication 800-81</title>
-       </citation>
-       <citation id="ref096">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-83</target>
-          <title>NIST Special Publication 800-83</title>
-       </citation>
-       <citation id="ref097">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-84</target>
-          <title>NIST Special Publication 800-84</title>
-       </citation>
-       <citation id="ref098">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-88</target>
-          <title>NIST Special Publication 800-88</title>
-       </citation>
-       <citation id="ref099">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-92</target>
-          <title>NIST Special Publication 800-92</title>
-       </citation>
-       <citation id="ref100">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-94</target>
-          <title>NIST Special Publication 800-94</title>
-       </citation>
-       <citation id="ref101">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-95</target>
-          <title>NIST Special Publication 800-95</title>
-       </citation>
-       <citation id="ref102">
-          <target>http://csrc.nist.gov/publications/PubsSPs.html#800-97</target>
-          <title>NIST Special Publication 800-97</title>
-       </citation>
-       <citation id="ref103">
-          <target>http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf</target>
-          <title>NSTISSI No. 7003</title>
-       </citation>
-       <citation id="ref104">
-          <target>http://www.whitehouse.gov/omb/circulars_a130_a130trans4</target>
-          <title>OMB Circular A-130</title>
-       </citation>
-       <citation id="ref105">
-          <target>http://www.whitehouse.gov/omb/memoranda_m02-01</target>
-          <title>OMB Memorandum 02-01</title>
-       </citation>
-       <citation id="ref106">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf</target>
-          <title>OMB Memorandum 04-04</title>
-       </citation>
-       <citation id="ref107">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf</target>
-          <title>OMB Memorandum 05-24</title>
-       </citation>
-       <citation id="ref108">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf</target>
-          <title>OMB Memorandum 06-16</title>
-       </citation>
-       <citation id="ref109">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf</target>
-          <title>OMB Memorandum 07-11</title>
-       </citation>
-       <citation id="ref110">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf</target>
-          <title>OMB Memorandum 07-18</title>
-       </citation>
-       <citation id="ref111">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf</target>
-          <title>OMB Memorandum 08-22</title>
-       </citation>
-       <citation id="ref112">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf</target>
-          <title>OMB Memorandum 08-23</title>
-       </citation>
-       <citation id="ref113">
-          <title>OMB Memorandum 10-06-2011</title>
-       </citation>
-       <citation id="ref114">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf</target>
-          <title>OMB Memorandum 11-11</title>
-       </citation>
-       <citation id="ref115">
-          <target>http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf</target>
-          <title>OMB Memorandum 11-33</title>
-       </citation>
-       <citation id="ref116">
-          <title>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</title>
-       </citation>
-       <citation id="ref117">
-          <target>http://www.us-cert.gov/ncas/alerts</target>
-          <title>US-CERT Technical Cyber Security Alerts</title>
-       </citation>
+      <resource id="ref001">
+         <title>5 C.F.R. 731.106</title>
+         <citation>
+            <text>5 C.F.R. 731.106</text>
+         </citation>
+         <rlink href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html"/>
+      </resource>
+      <resource id="ref002">
+         <title>C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</title>
+         <citation>
+            <text>C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</text>
+         </citation>
+         <rlink href="http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html"/>
+      </resource>
+      <resource id="ref003">
+         <title>CNSS Policy 15</title>
+         <citation>
+            <text>CNSS Policy 15</text>
+         </citation>
+         <rlink href="https://www.cnss.gov/policies.html"/>
+      </resource>
+      <resource id="ref004">
+         <title>DoD Information Assurance Vulnerability Alerts</title>
+         <citation>
+            <text>DoD Information Assurance Vulnerability Alerts</text>
+         </citation>
+         <rlink href=""/>
+      </resource>
+      <resource id="ref005">
+         <title>DoD Instruction 5200.39</title>
+         <citation>
+            <text>DoD Instruction 5200.39</text>
+         </citation>
+         <rlink href="http://www.dtic.mil/whs/directives/corres/ins1.html"/>
+      </resource>
+      <resource id="ref006">
+         <title>DoD Instruction 8551.01</title>
+         <citation>
+            <text>DoD Instruction 8551.01</text>
+         </citation>
+         <rlink href="http://www.dtic.mil/whs/directives/corres/ins1.html"/>
+      </resource>
+      <resource id="ref007">
+         <title>DoD Instruction 8552.01</title>
+         <citation>
+            <text>DoD Instruction 8552.01</text>
+         </citation>
+         <rlink href="http://www.dtic.mil/whs/directives/corres/ins1.html"/>
+      </resource>
+      <resource id="ref008">
+         <title>Executive Order 13587</title>
+         <citation>
+            <text>Executive Order 13587</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net"/>
+      </resource>
+      <resource id="ref009">
+         <title>Federal Acquisition Regulation</title>
+         <citation>
+            <text>Federal Acquisition Regulation</text>
+         </citation>
+         <rlink href="https://acquisition.gov/far"/>
+      </resource>
+      <resource id="ref010">
+         <title>Federal Continuity Directive 1</title>
+         <citation>
+            <text>Federal Continuity Directive 1</text>
+         </citation>
+         <rlink href="http://www.fema.gov/pdf/about/offices/fcd1.pdf"/>
+      </resource>
+      <resource id="ref011">
+         <title>FICAM Roadmap and Implementation Guidance</title>
+         <citation>
+            <text>FICAM Roadmap and Implementation Guidance</text>
+         </citation>
+         <rlink href="http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance"/>
+      </resource>
+      <resource id="ref012">
+         <title>FIPS Publication 140</title>
+         <citation>
+            <text>FIPS Publication 140</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html"/>
+      </resource>
+      <resource id="ref013">
+         <title>FIPS Publication 140-2</title>
+         <citation>
+            <text>FIPS Publication 140-2</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html#140-2"/>
+      </resource>
+      <resource id="ref014">
+         <title>FIPS Publication 197</title>
+         <citation>
+            <text>FIPS Publication 197</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html#197"/>
+      </resource>
+      <resource id="ref015">
+         <title>FIPS Publication 199</title>
+         <citation>
+            <text>FIPS Publication 199</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html#199"/>
+      </resource>
+      <resource id="ref016">
+         <title>FIPS Publication 200</title>
+         <citation>
+            <text>FIPS Publication 200</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html#200"/>
+      </resource>
+      <resource id="ref017">
+         <title>FIPS Publication 201</title>
+         <citation>
+            <text>FIPS Publication 201</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsFIPS.html#201"/>
+      </resource>
+      <resource id="ref018">
+         <title>HSPD-12</title>
+         <citation>
+            <text>HSPD-12</text>
+         </citation>
+         <rlink href="http://www.dhs.gov/homeland-security-presidential-directive-12"/>
+      </resource>
+      <resource id="ref019">
+         <title>HSPD 7</title>
+         <citation>
+            <text>HSPD 7</text>
+         </citation>
+         <rlink href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html"/>
+      </resource>
+      <resource id="ref020">
+         <title>http://capec.mitre.org</title>
+         <citation>
+            <text>http://capec.mitre.org</text>
+         </citation>
+         <rlink href="http://capec.mitre.org"/>
+      </resource>
+      <resource id="ref021">
+         <title>http://checklists.nist.gov</title>
+         <citation>
+            <text>http://checklists.nist.gov</text>
+         </citation>
+         <rlink href="http://checklists.nist.gov"/>
+      </resource>
+      <resource id="ref022">
+         <title>http://csrc.nist.gov/cryptval</title>
+         <citation>
+            <text>http://csrc.nist.gov/cryptval</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/cryptval"/>
+      </resource>
+      <resource id="ref023">
+         <title>http://csrc.nist.gov/groups/STM/cmvp/index.html</title>
+         <citation>
+            <text>http://csrc.nist.gov/groups/STM/cmvp/index.html</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/groups/STM/cmvp/index.html"/>
+      </resource>
+      <resource id="ref024">
+         <title>http://cve.mitre.org</title>
+         <citation>
+            <text>http://cve.mitre.org</text>
+         </citation>
+         <rlink href="http://cve.mitre.org"/>
+      </resource>
+      <resource id="ref025">
+         <title>http://cwe.mitre.org</title>
+         <citation>
+            <text>http://cwe.mitre.org</text>
+         </citation>
+         <rlink href="http://cwe.mitre.org"/>
+      </resource>
+      <resource id="ref026">
+         <title>http://fips201ep.cio.gov</title>
+         <citation>
+            <text>http://fips201ep.cio.gov</text>
+         </citation>
+         <rlink href="http://fips201ep.cio.gov"/>
+      </resource>
+      <resource id="ref027">
+         <title>http://idmanagement.gov</title>
+         <citation>
+            <text>http://idmanagement.gov</text>
+         </citation>
+         <rlink href="http://idmanagement.gov"/>
+      </resource>
+      <resource id="ref028">
+         <title>http://nvd.nist.gov</title>
+         <citation>
+            <text>http://nvd.nist.gov</text>
+         </citation>
+         <rlink href="http://nvd.nist.gov"/>
+      </resource>
+      <resource id="ref029">
+         <title>http://www.acquisition.gov/far</title>
+         <citation>
+            <text>http://www.acquisition.gov/far</text>
+         </citation>
+         <rlink href="http://www.acquisition.gov/far"/>
+      </resource>
+      <resource id="ref030">
+         <title>http://www.cnss.gov</title>
+         <citation>
+            <text>http://www.cnss.gov</text>
+         </citation>
+         <rlink href="http://www.cnss.gov"/>
+      </resource>
+      <resource id="ref031">
+         <title>http://www.dhs.gov/telecommunications-service-priority-tsp</title>
+         <citation>
+            <text>http://www.dhs.gov/telecommunications-service-priority-tsp</text>
+         </citation>
+         <rlink href="http://www.dhs.gov/telecommunications-service-priority-tsp"/>
+      </resource>
+      <resource id="ref032">
+         <title>http://www.niap-ccevs.org</title>
+         <citation>
+            <text>http://www.niap-ccevs.org</text>
+         </citation>
+         <rlink href="http://www.niap-ccevs.org"/>
+      </resource>
+      <resource id="ref033">
+         <title>http://www.nsa.gov</title>
+         <citation>
+            <text>http://www.nsa.gov</text>
+         </citation>
+         <rlink href="http://www.nsa.gov"/>
+      </resource>
+      <resource id="ref034">
+         <title>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</title>
+         <citation>
+            <text>http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</text>
+         </citation>
+         <rlink href="http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml"/>
+      </resource>
+      <resource id="ref035">
+         <title>http://www.omb.gov</title>
+         <citation>
+            <text>http://www.omb.gov</text>
+         </citation>
+         <rlink href="http://www.omb.gov"/>
+      </resource>
+      <resource id="ref036">
+         <title>http://www.us-cert.gov</title>
+         <citation>
+            <text>http://www.us-cert.gov</text>
+         </citation>
+         <rlink href="http://www.us-cert.gov"/>
+      </resource>
+      <resource id="ref037">
+         <title>ICD 704</title>
+         <citation>
+            <text>ICD 704</text>
+         </citation>
+         <rlink href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives"/>
+      </resource>
+      <resource id="ref038">
+         <title>ICD 705</title>
+         <citation>
+            <text>ICD 705</text>
+         </citation>
+         <rlink href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives"/>
+      </resource>
+      <resource id="ref039">
+         <title>ISO/IEC 15408</title>
+         <citation>
+            <text>ISO/IEC 15408</text>
+         </citation>
+         <rlink href="http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341"/>
+      </resource>
+      <resource id="ref040">
+         <title>National Communications Systems Directive 3-10</title>
+         <citation>
+            <text>National Communications Systems Directive 3-10</text>
+         </citation>
+         <rlink href=""/>
+      </resource>
+      <resource id="ref041">
+         <title>National Infrastructure Protection Plan</title>
+         <citation>
+            <text>National Infrastructure Protection Plan</text>
+         </citation>
+         <rlink href="https://www.dhs.gov/national-infrastructure-protection-plan"/>
+      </resource>
+      <resource id="ref042">
+         <title>National Strategy for Trusted Identities in Cyberspace</title>
+         <citation>
+            <text>National Strategy for Trusted Identities in Cyberspace</text>
+         </citation>
+         <rlink href="http://www.nist.gov/nstic"/>
+      </resource>
+      <resource id="ref043">
+         <title>NIST Interagency Report 7622</title>
+         <citation>
+            <text>NIST Interagency Report 7622</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622"/>
+      </resource>
+      <resource id="ref044">
+         <title>NIST Special Publication 800-100</title>
+         <citation>
+            <text>NIST Special Publication 800-100</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-100</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-100"/>
+      </resource>
+      <resource id="ref045">
+         <title>NIST Special Publication 800-111</title>
+         <citation>
+            <text>NIST Special Publication 800-111</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-111</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-111"/>
+      </resource>
+      <resource id="ref046">
+         <title>NIST Special Publication 800-113</title>
+         <citation>
+            <text>NIST Special Publication 800-113</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-113</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-113"/>
+      </resource>
+      <resource id="ref047">
+         <title>NIST Special Publication 800-114 Rev. 1</title>
+         <citation>
+            <text>NIST Special Publication 800-114 Rev. 1</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-114r1</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-114r1"/>
+      </resource>
+      <resource id="ref048">
+         <title>NIST Special Publication 800-115</title>
+         <citation>
+            <text>NIST Special Publication 800-115</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-115</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-115"/>
+      </resource>
+      <resource id="ref049">
+         <title>NIST Special Publication 800-116 Rev. 1</title>
+         <citation>
+            <text>NIST Special Publication 800-116 Rev. 1</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-116r1</doc-id>
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-116r1"/>
+      </resource>
+      <resource id="ref050">
+         <title>NIST Special Publication 800-12 Rev. 1</title>
+         <citation>
+            <text>NIST Special Publication 800-12 Rev. 1</text>
+            <doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>
+            <!--<doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>-->
+         </citation>
+         <rlink href="https://doi.org/10.6028/NIST.SP.800-12r1"/>
+      </resource>
+      <resource id="ref051">
+         <title>NIST Special Publication 800-121</title>
+         <citation>
+            <text>NIST Special Publication 800-121</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-121"/>
+      </resource>
+      <resource id="ref052">
+         <title>NIST Special Publication 800-124</title>
+         <citation>
+            <text>NIST Special Publication 800-124</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-124"/>
+      </resource>
+      <resource id="ref053">
+         <title>NIST Special Publication 800-128</title>
+         <citation>
+            <text>NIST Special Publication 800-128</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-128"/>
+      </resource>
+      <resource id="ref054">
+         <title>NIST Special Publication 800-137</title>
+         <citation>
+            <text>NIST Special Publication 800-137</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-137"/>
+      </resource>
+      <resource id="ref055">
+         <title>NIST Special Publication 800-147</title>
+         <citation>
+            <text>NIST Special Publication 800-147</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-147"/>
+      </resource>
+      <resource id="ref056">
+         <title>NIST Special Publication 800-155</title>
+         <citation>
+            <text>NIST Special Publication 800-155</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-155"/>
+      </resource>
+      <resource id="ref057">
+         <title>NIST Special Publication 800-16</title>
+         <citation>
+            <text>NIST Special Publication 800-16</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-16"/>
+      </resource>
+      <resource id="ref058">
+         <title>NIST Special Publication 800-161</title>
+         <citation>
+            <text>NIST Special Publication 800-161</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-161"/>
+      </resource>
+      <resource id="ref059">
+         <title>NIST Special Publication 800-164</title>
+         <citation>
+            <text>NIST Special Publication 800-164</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-164"/>
+      </resource>
+      <resource id="ref060">
+         <title>NIST Special Publication 800-18</title>
+         <citation>
+            <text>NIST Special Publication 800-18</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-18"/>
+      </resource>
+      <resource id="ref061">
+         <title>NIST Special Publication 800-23</title>
+         <citation>
+            <text>NIST Special Publication 800-23</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-23"/>
+      </resource>
+      <resource id="ref062">
+         <title>NIST Special Publication 800-27</title>
+         <citation>
+            <text>NIST Special Publication 800-27</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-27"/>
+      </resource>
+      <resource id="ref063">
+         <title>NIST Special Publication 800-28</title>
+         <citation>
+            <text>NIST Special Publication 800-28</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-28"/>
+      </resource>
+      <resource id="ref064">
+         <title>NIST Special Publication 800-30</title>
+         <citation>
+            <text>NIST Special Publication 800-30</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-30"/>
+      </resource>
+      <resource id="ref065">
+         <title>NIST Special Publication 800-32</title>
+         <citation>
+            <text>NIST Special Publication 800-32</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-32"/>
+      </resource>
+      <resource id="ref066">
+         <title>NIST Special Publication 800-34</title>
+         <citation>
+            <text>NIST Special Publication 800-34</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-34"/>
+      </resource>
+      <resource id="ref067">
+         <title>NIST Special Publication 800-35</title>
+         <citation>
+            <text>NIST Special Publication 800-35</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-35"/>
+      </resource>
+      <resource id="ref068">
+         <title>NIST Special Publication 800-36</title>
+         <citation>
+            <text>NIST Special Publication 800-36</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-36"/>
+      </resource>
+      <resource id="ref069">
+         <title>NIST Special Publication 800-37</title>
+         <citation>
+            <text>NIST Special Publication 800-37</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-37"/>
+      </resource>
+      <resource id="ref070">
+         <title>NIST Special Publication 800-39</title>
+         <citation>
+            <text>NIST Special Publication 800-39</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-39"/>
+      </resource>
+      <resource id="ref071">
+         <title>NIST Special Publication 800-40</title>
+         <citation>
+            <text>NIST Special Publication 800-40</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-40"/>
+      </resource>
+      <resource id="ref072">
+         <title>NIST Special Publication 800-41</title>
+         <citation>
+            <text>NIST Special Publication 800-41</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-41"/>
+      </resource>
+      <resource id="ref073">
+         <title>NIST Special Publication 800-45</title>
+         <citation>
+            <text>NIST Special Publication 800-45</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-45"/>
+      </resource>
+      <resource id="ref074">
+         <title>NIST Special Publication 800-46</title>
+         <citation>
+            <text>NIST Special Publication 800-46</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-46"/>
+      </resource>
+      <resource id="ref075">
+         <title>NIST Special Publication 800-47</title>
+         <citation>
+            <text>NIST Special Publication 800-47</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-47"/>
+      </resource>
+      <resource id="ref076">
+         <title>NIST Special Publication 800-48</title>
+         <citation>
+            <text>NIST Special Publication 800-48</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-48"/>
+      </resource>
+      <resource id="ref077">
+         <title>NIST Special Publication 800-50</title>
+         <citation>
+            <text>NIST Special Publication 800-50</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-50"/>
+      </resource>
+      <resource id="ref078">
+         <title>NIST Special Publication 800-52</title>
+         <citation>
+            <text>NIST Special Publication 800-52</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-52"/>
+      </resource>
+      <resource id="ref079">
+         <title>NIST Special Publication 800-53</title>
+         <citation>
+            <text>NIST Special Publication 800-53</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-53"/>
+      </resource>
+      <resource id="ref080">
+         <title>NIST Special Publication 800-53A</title>
+         <citation>
+            <text>NIST Special Publication 800-53A</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-53A"/>
+      </resource>
+      <resource id="ref081">
+         <title>NIST Special Publication 800-55</title>
+         <citation>
+            <text>NIST Special Publication 800-55</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-55"/>
+      </resource>
+      <resource id="ref082">
+         <title>NIST Special Publication 800-56</title>
+         <citation>
+            <text>NIST Special Publication 800-56</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-56"/>
+      </resource>
+      <resource id="ref083">
+         <title>NIST Special Publication 800-57</title>
+         <citation>
+            <text>NIST Special Publication 800-57</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-57"/>
+      </resource>
+      <resource id="ref084">
+         <title>NIST Special Publication 800-58</title>
+         <citation>
+            <text>NIST Special Publication 800-58</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-58"/>
+      </resource>
+      <resource id="ref085">
+         <title>NIST Special Publication 800-60</title>
+         <citation>
+            <text>NIST Special Publication 800-60</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-60"/>
+      </resource>
+      <resource id="ref086">
+         <title>NIST Special Publication 800-61</title>
+         <citation>
+            <text>NIST Special Publication 800-61</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-61"/>
+      </resource>
+      <resource id="ref087">
+         <title>NIST Special Publication 800-63</title>
+         <citation>
+            <text>NIST Special Publication 800-63</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-63"/>
+      </resource>
+      <resource id="ref088">
+         <title>NIST Special Publication 800-64</title>
+         <citation>
+            <text>NIST Special Publication 800-64</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-64"/>
+      </resource>
+      <resource id="ref089">
+         <title>NIST Special Publication 800-65</title>
+         <citation>
+            <text>NIST Special Publication 800-65</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-65"/>
+      </resource>
+      <resource id="ref090">
+         <title>NIST Special Publication 800-70</title>
+         <citation>
+            <text>NIST Special Publication 800-70</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-70"/>
+      </resource>
+      <resource id="ref091">
+         <title>NIST Special Publication 800-73</title>
+         <citation>
+            <text>NIST Special Publication 800-73</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-73"/>
+      </resource>
+      <resource id="ref092">
+         <title>NIST Special Publication 800-76</title>
+         <citation>
+            <text>NIST Special Publication 800-76</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-76"/>
+      </resource>
+      <resource id="ref093">
+         <title>NIST Special Publication 800-77</title>
+         <citation>
+            <text>NIST Special Publication 800-77</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-77"/>
+      </resource>
+      <resource id="ref094">
+         <title>NIST Special Publication 800-78</title>
+         <citation>
+            <text>NIST Special Publication 800-78</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-78"/>
+      </resource>
+      <resource id="ref095">
+         <title>NIST Special Publication 800-81</title>
+         <citation>
+            <text>NIST Special Publication 800-81</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-81"/>
+      </resource>
+      <resource id="ref096">
+         <title>NIST Special Publication 800-83</title>
+         <citation>
+            <text>NIST Special Publication 800-83</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-83"/>
+      </resource>
+      <resource id="ref097">
+         <title>NIST Special Publication 800-84</title>
+         <citation>
+            <text>NIST Special Publication 800-84</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-84"/>
+      </resource>
+      <resource id="ref098">
+         <title>NIST Special Publication 800-88</title>
+         <citation>
+            <text>NIST Special Publication 800-88</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-88"/>
+      </resource>
+      <resource id="ref099">
+         <title>NIST Special Publication 800-92</title>
+         <citation>
+            <text>NIST Special Publication 800-92</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-92"/>
+      </resource>
+      <resource id="ref100">
+         <title>NIST Special Publication 800-94</title>
+         <citation>
+            <text>NIST Special Publication 800-94</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-94"/>
+      </resource>
+      <resource id="ref101">
+         <title>NIST Special Publication 800-95</title>
+         <citation>
+            <text>NIST Special Publication 800-95</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-95"/>
+      </resource>
+      <resource id="ref102">
+         <title>NIST Special Publication 800-97</title>
+         <citation>
+            <text>NIST Special Publication 800-97</text>
+         </citation>
+         <rlink href="http://csrc.nist.gov/publications/PubsSPs.html#800-97"/>
+      </resource>
+      <resource id="ref103">
+         <title>NSTISSI No. 7003</title>
+         <citation>
+            <text>NSTISSI No. 7003</text>
+         </citation>
+         <rlink href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf"/>
+      </resource>
+      <resource id="ref104">
+         <title>OMB Circular A-130</title>
+         <citation>
+            <text>OMB Circular A-130</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4"/>
+      </resource>
+      <resource id="ref105">
+         <title>OMB Memorandum 02-01</title>
+         <citation>
+            <text>OMB Memorandum 02-01</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/omb/memoranda_m02-01"/>
+      </resource>
+      <resource id="ref106">
+         <title>OMB Memorandum 04-04</title>
+         <citation>
+            <text>OMB Memorandum 04-04</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf"/>
+      </resource>
+      <resource id="ref107">
+         <title>OMB Memorandum 05-24</title>
+         <citation>
+            <text>OMB Memorandum 05-24</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf"/>
+      </resource>
+      <resource id="ref108">
+         <title>OMB Memorandum 06-16</title>
+         <citation>
+            <text>OMB Memorandum 06-16</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf"/>
+      </resource>
+      <resource id="ref109">
+         <title>OMB Memorandum 07-11</title>
+         <citation>
+            <text>OMB Memorandum 07-11</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf"/>
+      </resource>
+      <resource id="ref110">
+         <title>OMB Memorandum 07-18</title>
+         <citation>
+            <text>OMB Memorandum 07-18</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf"/>
+      </resource>
+      <resource id="ref111">
+         <title>OMB Memorandum 08-22</title>
+         <citation>
+            <text>OMB Memorandum 08-22</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf"/>
+      </resource>
+      <resource id="ref112">
+         <title>OMB Memorandum 08-23</title>
+         <citation>
+            <text>OMB Memorandum 08-23</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf"/>
+      </resource>
+      <resource id="ref113">
+         <title>OMB Memorandum 10-06-2011</title>
+         <citation>
+            <text>OMB Memorandum 10-06-2011</text>
+         </citation>
+         <rlink href=""/>
+      </resource>
+      <resource id="ref114">
+         <title>OMB Memorandum 11-11</title>
+         <citation>
+            <text>OMB Memorandum 11-11</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf"/>
+      </resource>
+      <resource id="ref115">
+         <title>OMB Memorandum 11-33</title>
+         <citation>
+            <text>OMB Memorandum 11-33</text>
+         </citation>
+         <rlink href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf"/>
+      </resource>
+      <resource id="ref116">
+         <title>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</title>
+         <citation>
+            <text>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</text>
+         </citation>
+         <rlink href=""/>
+      </resource>
+      <resource id="ref117">
+         <title>US-CERT Technical Cyber Security Alerts</title>
+         <citation>
+            <text>US-CERT Technical Cyber Security Alerts</text>
+         </citation>
+         <rlink href="http://www.us-cert.gov/ncas/alerts"/>
+      </resource>
       <resource id="resource-pdf-sp-800-53r4">
-         <rlink media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
+         <rlink media-type="application/pdf"
+                href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
       </resource>
       <resource id="resource-doi-sp-800-53r4">
-         <rlink media-type="application/pdf" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
+         <rlink media-type="application/pdf"
+                href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
       </resource>
    </back-matter>
 </catalog>
