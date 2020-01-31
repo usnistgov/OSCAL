@@ -1,0 +1,12 @@
+{
+  "replacementPatterns": [
+        {
+            "pattern": "^../../issues",
+            "replacement": "https://github.com/usnistgov/OSCAL/issues"
+        },
+        {
+            "pattern": "^../../projects",
+            "replacement": "https://github.com/usnistgov/OSCAL/projects"
+        }
+    ]
+}
