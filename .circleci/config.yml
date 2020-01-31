@@ -7,7 +7,7 @@ references:
       JSON_CLI_VERSION: 0.0.1-SNAPSHOT
       CICD_DIR: git-oscal/build/ci-cd
       REPO_DIR: git-oscal
-      REPO_WEBSITE_DIR: git-repo/docs
+      REPO_WEBSITE_DIR: git-oscal/docs
       OSCAL_BUILD_DIR: build_artifacts
       OSCAL_TOOLS_DIR: oscal_tools
       SCHEMATRON_HOME: git-schematron
