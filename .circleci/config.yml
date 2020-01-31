@@ -6,7 +6,8 @@ references:
       SAXON_VERSION: 9.9.0-1
       JSON_CLI_VERSION: 0.0.1-SNAPSHOT
       CICD_DIR: git-oscal/build/ci-cd
-      OSCAL_REPO_DIR: git-oscal
+      REPO_DIR: git-oscal
+      REPO_WEBSITE_DIR: git-repo/docs
       OSCAL_BUILD_DIR: build_artifacts
       OSCAL_TOOLS_DIR: oscal_tools
       SCHEMATRON_HOME: git-schematron
@@ -23,7 +24,7 @@ references:
     run:
       name: Checkout Submodules
       command: |
-        cd "$OSCAL_REPO_DIR"
+        cd "$REPO_DIR"
         git submodule sync --recursive
         git submodule update --recursive --init
   publish_artifacts: &publish_artifacts
@@ -169,7 +170,7 @@ commands:
       - run:
           name: Install with Bundler
           command: |
-            cd "$OSCAL_REPO_DIR/docs"
+            cd "$REPO_WEBSITE_DIR"
             gem update --system
             gem install bundler
             bundle install --path vendor/bundle --jobs=4 --retry=3 && bundle clean
@@ -308,7 +309,7 @@ jobs: # a collection of
           name: Validate repo Markdown content instances
           command: |
             # this command will filter out any docs Markdown files, which are checked in a different job
-            find "$OSCAL_REPO_DIR" -path "${OSCAL_REPO_DIR}/docs" -prune -o -name \*.md -print0 | xargs -0 -n1 markdown-link-check -q
+            git ls-files "*/*.md" -z | grep --null-data -v "^docs/" | xargs -0 -n1 markdown-link-check -q -c "$REPO_DIR/build/config/.markdown-link-check/config.json"
   job-validate-content:
     executor: java-executor
     steps:
@@ -369,7 +370,7 @@ jobs: # a collection of
       - deploy: # delete and copy artifacts before deploy
           name: Commit Artifacts
           command: |
-            cd "$OSCAL_REPO_DIR"
+            cd "$REPO_DIR"
             # Remove existing generated files
             git rm -r --ignore-unmatch xml/convert/*.xsl
             git rm -r --ignore-unmatch xml/schema/*.xsd
@@ -380,8 +381,8 @@ jobs: # a collection of
             git rm -r --ignore-unmatch content/**/*.yaml
             # Copy new built files to repo
             cd -
-            cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
-            cd "$OSCAL_REPO_DIR"
+            cp -r "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_DIR"
             # add the new files
             git add -f --all xml
             git add -f --all json
@@ -417,12 +418,12 @@ jobs: # a collection of
           name: Restore generated site content
           command: |
             # restore docs from tar
-            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
       - run:
           name: Build and Validate Hugo site
           command: |
-            # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
-            cd "$OSCAL_REPO_DIR/docs"
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_WEBSITE_DIR"
             hugo -v --debug --minify
             bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/documentation\/schemas\/[^/]+\/(?:json|xml)-(?:model-map|schema)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
       - *save_gem_cache
@@ -441,12 +442,12 @@ jobs: # a collection of
           name: Restore generated site content
           command: |
             # restore docs from tar
-            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${OSCAL_REPO_DIR}/docs" --strip-components=2
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
       - run:
           name: Build Site with Hugo
           command: |
-            # cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
-            cd "$OSCAL_REPO_DIR/docs"
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_WEBSITE_DIR"
             hugo -v --debug --minify
             mkdir -p public/.circleci
             # copy the circleci config
@@ -457,7 +458,7 @@ jobs: # a collection of
       - run:
           name: Run deploy script
           command: |
-            cd "$OSCAL_REPO_DIR/docs"
+            cd "$REPO_WEBSITE_DIR"
             git config user.name "Deployment Bot"
             bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
       - *publish_artifacts
