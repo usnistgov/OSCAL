@@ -310,7 +310,7 @@ jobs: # a collection of
           command: |
             cd "$REPO_DIR"
             # this command will filter out any docs Markdown files, which are checked in a different job
-            git ls-files "*/*.md" -z | grep --null-data -v "^docs/" | xargs -0 -n1 markdown-link-check -q -c "$REPO_DIR/build/config/.markdown-link-check/config.json"
+            git ls-files "*/*.md" -z | grep --null-data -v "^docs/" | xargs -0 -n1 markdown-link-check -q -c "build/config/.markdown-link-check/config.json"
   job-validate-content:
     executor: java-executor
     steps:
