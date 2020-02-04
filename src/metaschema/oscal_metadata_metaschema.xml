@@ -229,7 +229,11 @@
       <formal-name>Property</formal-name>
       <description>A value with a name, attributed to the containing control, part, or group.</description>
       <json-value-key flag-name="name"/>
-      <flag ref="name" required="yes"/>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
+         </allowed-values>
+      </flag>
       <flag ref="id"/>
       <flag ref="ns"/>
       <flag ref="class"/>
