@@ -2,13 +2,13 @@
 <!-- XML produced by extraction/mapping from NVD XML 2018-11-02T16:55:46.916-04:00 -->
 <!-- Subsequently updated by hand (2018-12-10, 2019-05-16, 2019-05-29, 2019-08-17, 2019-08-23, 2019-09-13, 2019-09-23) -->
 <!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
-<!-- Modified by conversion XSLT 2020-01-30T16:12:12.246-05:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
+<!-- Modified by conversion XSLT 2020-02-04T14:55:16.051-05:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-1d3a8de6-2e25-4fa9-b4fa-dac7801c53ed">
+         id="uuid-26a2a133-f395-432c-b2ad-77d23a23ca4e">
    <metadata>
         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-        <last-modified>2020-01-30T16:12:12.246-05:00</last-modified>
-        <version>rev4-updated-2015-01-22</version>
+        <last-modified>2020-02-04T14:55:16.051-05:00</last-modified>
+        <version>2015-01-22</version>
         <oscal-version>1.0.0-milestone3</oscal-version>
         <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
         <link rel="alternate" href="#resource-pdf-sp-800-53r4">NIST publication (PDF)</link>
@@ -55860,57 +55860,57 @@
       </resource>
       <resource id="ref044">
          <title>NIST Special Publication 800-100</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-100</doc-id>
          <citation>
             <text>NIST Special Publication 800-100</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-100</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-100"/>
       </resource>
       <resource id="ref045">
          <title>NIST Special Publication 800-111</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-111</doc-id>
          <citation>
             <text>NIST Special Publication 800-111</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-111</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-111"/>
       </resource>
       <resource id="ref046">
          <title>NIST Special Publication 800-113</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-113</doc-id>
          <citation>
             <text>NIST Special Publication 800-113</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-113</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-113"/>
       </resource>
       <resource id="ref047">
          <title>NIST Special Publication 800-114 Rev. 1</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-114r1</doc-id>
          <citation>
             <text>NIST Special Publication 800-114 Rev. 1</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-114r1</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-114r1"/>
       </resource>
       <resource id="ref048">
          <title>NIST Special Publication 800-115</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-115</doc-id>
          <citation>
             <text>NIST Special Publication 800-115</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-115</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-115"/>
       </resource>
       <resource id="ref049">
          <title>NIST Special Publication 800-116 Rev. 1</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-116r1</doc-id>
          <citation>
             <text>NIST Special Publication 800-116 Rev. 1</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-116r1</doc-id>
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-116r1"/>
       </resource>
       <resource id="ref050">
          <title>NIST Special Publication 800-12 Rev. 1</title>
+         <doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>
          <citation>
             <text>NIST Special Publication 800-12 Rev. 1</text>
-            <doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>
             <!--<doc-id type="doi">10.6028/NIST.SP.800-12r1</doc-id>-->
          </citation>
          <rlink href="https://doi.org/10.6028/NIST.SP.800-12r1"/>
