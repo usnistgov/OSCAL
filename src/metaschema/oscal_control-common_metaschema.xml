@@ -139,6 +139,11 @@
          <field ref="title"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="method">An assessment method.</enum>
+               </allowed-values>
+            </flag>
          </field>
          <field ref="prose" in-xml="UNWRAPPED"/>
          <assembly ref="part" max-occurs="unbounded">

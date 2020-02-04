@@ -109,6 +109,13 @@
          <!-- TODO: Need to be able to add valid values in context -->
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="label">A human-readable label for the parent context.</enum>
+                  <enum value="sort-id">An alternative identifier, whose value is easily sortable among other such values in the document.</enum>
+                  <enum value="status">The status of a <code>control</code>. For example, a value of 'Withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
+               </allowed-values>
+            </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations"/>
