@@ -72,6 +72,7 @@
     <xsl:template match="citation">
         <resource id="{@id}">
             <xsl:apply-templates select="title" mode="copy"/>
+            <xsl:apply-templates select="doc-id" mode="copy"/>
             <xsl:next-match/>
             <rlink href="{ target }"/>
         </resource>
@@ -83,7 +84,7 @@
         </text>
     </xsl:template>
     
-    <xsl:template match="citation/@id | citation/target | citation/text()"/>
+    <xsl:template match="citation/@id | citation/target | citation/text() | citation/doc-id"/>
     
     
 </xsl:stylesheet>
