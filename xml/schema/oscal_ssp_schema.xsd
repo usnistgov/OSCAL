@@ -3003,7 +3003,7 @@
             <xs:element ref="oscal-ssp:responsible-role"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:set-parameter" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:set-param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:statement" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -3048,8 +3048,8 @@
          <xs:selector xpath="oscal-ssp:responsible-role"/>
          <xs:field xpath="@role-id"/>
       </xs:unique>
-      <xs:unique name="implemented-requirement-set-parameter-keys">
-         <xs:selector xpath="oscal-ssp:set-parameter"/>
+      <xs:unique name="implemented-requirement-set-param-keys">
+         <xs:selector xpath="oscal-ssp:set-param"/>
          <xs:field xpath="@param-id"/>
       </xs:unique>
       <xs:unique name="implemented-requirement-statement-keys">
@@ -3192,7 +3192,7 @@
             <xs:element ref="oscal-ssp:responsible-role"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:set" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:set-param" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
          <xs:attribute name="component-id" use="required" type="xs:NCName">
             <xs:annotation>
@@ -3209,8 +3209,12 @@
          <xs:selector xpath="oscal-ssp:responsible-role"/>
          <xs:field xpath="@role-id"/>
       </xs:unique>
+      <xs:unique name="by-component-set-param-keys">
+         <xs:selector xpath="oscal-ssp:set-param"/>
+         <xs:field xpath="@param-id"/>
+      </xs:unique>
    </xs:element>
-   <xs:element name="set-parameter">
+   <xs:element name="set-param">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Set Parameter Value</m:formal-name>

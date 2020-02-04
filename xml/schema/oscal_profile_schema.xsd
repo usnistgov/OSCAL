@@ -1590,14 +1590,12 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-profile:set-parameter"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-profile:set" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:alter" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
-      <xs:unique name="modify-set-parameter-keys">
-         <xs:selector xpath="oscal-profile:set-parameter"/>
+      <xs:unique name="modify-set-keys">
+         <xs:selector xpath="oscal-profile:set"/>
          <xs:field xpath="@param-id"/>
       </xs:unique>
    </xs:element>
@@ -1799,7 +1797,7 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="set-parameter">
+   <xs:element name="set">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Parameter Setting</m:formal-name>
