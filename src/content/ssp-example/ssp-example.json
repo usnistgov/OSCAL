@@ -32,7 +32,7 @@
       "security-sensitivity-level": "moderate",
       "system-information": {
         "information-types": {
-          "name": "System and Network Monitoring",
+          "title": "System and Network Monitoring",
           "information-type-ids": {
             "https://doi.org/10.6028/NIST.SP.800-60v2r1": {"id": "C.3.5.8"}
           },
@@ -93,7 +93,7 @@
       },
       "components": {
         "component-logging-server": {
-          "name": "Logging Server",
+          "title": "Logging Server",
           "description": "Provides a means for hosts to publish logged events to a central server.",
           "status": {"state": "operational"},
           "component-type": "software",
@@ -104,7 +104,7 @@
           }
         },
         "component-logging-policy": {
-          "name": "Enterprise Logging, Monitoring, and Alerting Policy",
+          "title": "Enterprise Logging, Monitoring, and Alerting Policy",
           "component-type": "policy",
           "description": "Requires all components to send logs to the enterprise logging solution\n\u2014 Requires all components synchronize their time with the appropriate enterprise time service, and at what frequency.\n\u2014 Identifies the events that must be captured\n\u2014 Identifies who is responsible/accountable for performing these functions",
           "status": {"state": "operational"},
@@ -117,7 +117,7 @@
           }
         },
         "system-integration-process": {
-          "name": "System Integration Process",
+          "title": "System Integration Process",
           "component-type": "process",
           "description": "Ensures proper integration into the enterprise as new systems are brought into production.",
           "status": {"state": "operational"},
@@ -132,7 +132,7 @@
           }
         },
         "inventory-management-process": {
-          "name": "Inventory Management Process",
+          "title": "Inventory Management Process",
           "component-type": "process",
           "description": "Describes how new components are introduced into the system - ensures monitoring teams know about every asset that should be producing logs, thus should be monitored.",
           "status": {"state": "operational"},
@@ -147,7 +147,7 @@
           }
         },
         "configuration-management-guidance": {
-          "name": "Configuration Management",
+          "title": "Configuration Management",
           "component-type": "guidance",
           "description": "Describes how to configure a component to ensure its logs are transmitted to Splunk in the appropriate format. Also describes how to configure time synchronization.",
           "status": {"state": "operational"},

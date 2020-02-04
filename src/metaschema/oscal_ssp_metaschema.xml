@@ -191,12 +191,10 @@
       <formal-name>Information Type</formal-name>
       <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
       <flag ref="id"/>
-
-      <flag name="name" required="yes" as-type="string">
-         <formal-name>Information Type Name</formal-name>
-         <description>The name of the information type.</description>
-      </flag>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the information type. This title should be meaningful within the context of the system.</description>
+         </field>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="information-type-id" max-occurs="unbounded">
             <group-as name="information-type-ids" in-json="BY_KEY"/>
@@ -351,8 +349,10 @@
       <formal-name>Leveraged Authorization</formal-name>
       <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</description>
       <flag ref="id"/>
-      <flag ref="name" required="yes"/>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the leveraged authorization in the context of the system.</description>
+         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
             <!-- TODO: Model specific names? -->
@@ -610,11 +610,10 @@
    <define-assembly name="authorized-privilege">
       <formal-name>Privilege</formal-name>
       <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
-      <flag name="name" required="yes" as-type="string">
-         <formal-name>Privilege Name</formal-name>
-         <description>The name of the identified privilege.</description>
-      </flag>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the privilege.</description>
+         </field>
          <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="function-performed" min-occurs="1" max-occurs="unbounded">
             <group-as name="functions-performed"/>
@@ -634,12 +633,11 @@
          <formal-name>Component Identifier</formal-name>
          <description>A unique identifier for a component.</description>
       </flag>
-      <flag name="name" as-type="string" required="yes">
-         <formal-name>Component Name</formal-name>
-         <description>The component's human-readable name.</description>
-      </flag>
       <flag ref="component-type" required="yes"/>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the system component.</description>
+         </field>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
             <description>A description of the component, including information about its function.</description>
          </field>
@@ -745,8 +743,10 @@
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the system.</description>
       <flag ref="id"/>
-      <flag ref="name"/>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the system service.</description>
+         </field>
          <field ref="description" in-xml="WITH_WRAPPER">
             <description>A description of what the service provides.</description>
          </field>
@@ -784,8 +784,10 @@
    <define-assembly name="protocol">
       <formal-name>Protocol</formal-name>
       <description>Information about the protocol used to provide a service.</description>
-      <flag ref="name"/>
       <model>
+         <field ref="title" min-occurs="1">
+            <description>A human readable name for the protocol.</description>
+         </field>
          <field ref="port-range" max-occurs="unbounded">
             <group-as name="port-ranges"/>
          </field>
