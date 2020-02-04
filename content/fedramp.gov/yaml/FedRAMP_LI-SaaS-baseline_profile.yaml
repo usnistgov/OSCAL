@@ -1,9 +1,9 @@
 profile: 
-  id:       uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304
+  id:       uuid-24a8ac6e-b71a-40c1-a845-e9c640813134
   metadata: 
     title:               FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline
-    published:           2019-11-27T00:00:00.000-05:00
-    last-modified:       2019-11-24T10:00:00.000-05:00
+    published:           2020-02-02T00:00:00.000-05:00
+    last-modified:       2020-01-28T10:00:00.000-05:00
     version:             1.2
     oscal-version:       1.0.0-milestone2
     roles: 
@@ -280,7 +280,7 @@ profile:
       method: keep
     as-is:   true
   modify: 
-    settings: 
+    parameter-settings: 
       ac-22_prm_1: 
         constraints: 
           detail: at least quarterly

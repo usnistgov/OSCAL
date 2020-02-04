@@ -1234,14 +1234,14 @@
         "$id" : "#/definitions/modify",
         "type" : "object",
         "properties" : 
-        { "settings" : 
+        { "parameter-settings" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
                 { "type" : "object",
-                  "$ref" : "#/definitions/set" },
+                  "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1367,10 +1367,10 @@
                 { "$ref" : "#/definitions/match" },
                 "minItems" : 2 } ] } },
         "additionalProperties" : false },
-      "set" : 
+      "set-parameter" : 
       { "title" : "Parameter Setting",
         "description" : "A parameter setting, to be propagated to points of insertion",
-        "$id" : "#/definitions/set",
+        "$id" : "#/definitions/set-parameter",
         "type" : "object",
         "properties" : 
         { "class" : 

@@ -1,10 +1,10 @@
 {
   "catalog": {
-    "id": "uuid-4045631f-a7f3-48b7-9228-052cb2a2e8fe",
+    "id": "uuid-3827d9c8-bd61-46f6-9bad-8e2dd990b16b",
     "metadata": {
       "title": "FedRAMP High Baseline [RESOLVED]",
-      "published": "2019-11-27T00:00:00.000-05:00",
-      "last-modified": "2019-11-25T21:19:31.000000-05:00",
+      "published": "2020-02-02T00:00:00.000-05:00",
+      "last-modified": "2020-01-28T14:25:14.000000-05:00",
       "version": "1.2",
       "oscal-version": "1.0.0-milestone2",
       "roles": [
@@ -3919,9 +3919,9 @@
                 "id": "ac-7_prm_3",
                 "select": {
                   "alternatives": [
-                    "locks the account/node for an {{ ac-7_prm_4 }} ",
+                    "locks the account/node for an {{ ac-7_prm_4 }}",
                     "locks the account/node until released by an administrator",
-                    "delays next logon prompt according to {{ ac-7_prm_5 }} "
+                    "delays next logon prompt according to {{ ac-7_prm_5 }}"
                   ]
                 }
               },
@@ -4569,41 +4569,7 @@
                   "prose": "Automated mechanisms implementing system use notification"
                 }
               }
-            ],
-            "controls": {
-              "id": "ac-8.fr",
-              "class": "SP800-53",
-              "title": "AC-8 Additional FedRAMP Requirements and Guidance",
-              "properties": {
-                "label": "AC-8 Req"
-              },
-              "parts": [
-                {
-                  "id": "ac-8.fr_smt.1",
-                  "name": "item",
-                  "properties": {
-                    "label": "Requirement:"
-                  },
-                  "prose": "The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO."
-                },
-                {
-                  "id": "ac-8.fr_smt.2",
-                  "name": "item",
-                  "properties": {
-                    "label": "Requirement:"
-                  },
-                  "prose": "The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided."
-                },
-                {
-                  "id": "ac-8.fr_smt.3",
-                  "name": "item",
-                  "properties": {
-                    "label": "Requirement:"
-                  },
-                  "prose": "If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO."
-                }
-              ]
-            }
+            ]
           },
           {
             "id": "ac-10",
@@ -4644,7 +4610,7 @@
               {
                 "id": "ac-10_obj",
                 "name": "objective",
-                "prose": " Determine if:",
+                "prose": "Determine if:",
                 "parts": [
                   {
                     "id": "ac-10_obj.1",
@@ -4765,7 +4731,7 @@
               {
                 "id": "ac-11_obj",
                 "name": "objective",
-                "prose": " Determine if:",
+                "prose": "Determine if:",
                 "parts": [
                   {
                     "id": "ac-11.a_obj",
@@ -6671,7 +6637,7 @@
               {
                 "id": "ac-19_obj",
                 "name": "objective",
-                "prose": " Determine if the organization:",
+                "prose": "Determine if the organization:",
                 "parts": [
                   {
                     "id": "ac-19.a_obj",
@@ -15539,50 +15505,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "id": "ca-7.fr",
-                "class": "SP800-53-enhancement",
-                "title": "Additional FedRAMP Requirements and Guidance",
-                "properties": {
-                  "label": "CA-7 Req"
-                },
-                "parts": [
-                  {
-                    "id": "ca-7.fr_smt.1",
-                    "name": "item",
-                    "properties": {
-                      "label": "Requirement 1"
-                    },
-                    "prose": "Operating System Scans: at least monthly"
-                  },
-                  {
-                    "id": "ca-7.fr_smt.2",
-                    "name": "item",
-                    "properties": {
-                      "label": "Requirement 2"
-                    },
-                    "prose": "Database and Web Application Scans: at least monthly"
-                  },
-                  {
-                    "id": "ca-7.fr_smt.3",
-                    "name": "item",
-                    "properties": {
-                      "label": "Requirement 3"
-                    },
-                    "prose": "All scans performed by Independent Assessor: at least annually"
-                  },
-                  {
-                    "id": "ca-7.fr_gdn.1",
-                    "name": "guidance",
-                    "prose": "CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&M updates."
-                  },
-                  {
-                    "id": "ca-7.fr_gdn.2",
-                    "name": "guidance",
-                    "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/)"
-                  }
-                ]
               }
             ]
           },
@@ -20649,7 +20571,7 @@
                       "alternatives": [
                         "disables network access by such components",
                         "isolates the components",
-                        "notifies {{ cm-8.3_prm_3 }} "
+                        "notifies {{ cm-8.3_prm_3 }}"
                       ]
                     }
                   },
@@ -55072,23 +54994,7 @@
                   "prose": "Automated mechanisms supporting and/or implementing management of remote activation of collaborative computing devices\\n\\nautomated mechanisms providing an indication of use of collaborative computing devices"
                 }
               }
-            ],
-            "controls": {
-              "id": "sc-15.fr",
-              "class": "SP800-53-enhancement",
-              "title": "SC-15 Additional FedRAMP Requirements and Guidance",
-              "properties": {
-                "label": "SC-15 Req"
-              },
-              "parts": {
-                "id": "sc-15.fr_smt",
-                "name": "item",
-                "properties": {
-                  "label": "Requirement"
-                },
-                "prose": "The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use."
-              }
-            }
+            ]
           },
           {
             "id": "sc-17",
@@ -59653,7 +59559,7 @@
                       "how-many": "one or more",
                       "alternatives": [
                         "audits",
-                        "alerts {{ si-4.22_prm_3 }} "
+                        "alerts {{ si-4.22_prm_3 }}"
                       ]
                     }
                   },
@@ -60815,7 +60721,7 @@
                       "how-many": "one or more",
                       "alternatives": [
                         "at startup",
-                        "at {{ si-7.1_prm_3 }} ",
+                        "at {{ si-7.1_prm_3 }}",
                         "\n              {{ si-7.1_prm_4 }}\n            "
                       ]
                     }
@@ -61125,7 +61031,7 @@
                       "alternatives": [
                         "shuts the information system down",
                         "restarts the information system",
-                        "implements {{ si-7.5_prm_2 }} "
+                        "implements {{ si-7.5_prm_2 }}"
                       ]
                     }
                   },

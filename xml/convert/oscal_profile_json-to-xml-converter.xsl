@@ -289,7 +289,7 @@
    <!-- 000 Handling flag @class 000 -->
    <xsl:template match="*[@key='class']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | map[@key='properties']/*/*[@key='class'] | *[@key='param']/*[@key='class'] | *[@key='parameters']/*[@key='class'] | array[@key='parameters']/*/*[@key='class'] | map[@key='parameters']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class'] | map[@key='parts']/*/*[@key='class'] | *[@key='group']/*[@key='class'] | *[@key='groups']/*[@key='class'] | array[@key='groups']/*/*[@key='class'] | map[@key='groups']/*/*[@key='class'] | *[@key='set']/*[@key='class'] | *[@key='settings']/*[@key='class'] | array[@key='settings']/*/*[@key='class'] | map[@key='settings']/*/*[@key='class']"
+                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | map[@key='properties']/*/*[@key='class'] | *[@key='param']/*[@key='class'] | *[@key='parameters']/*[@key='class'] | array[@key='parameters']/*/*[@key='class'] | map[@key='parameters']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class'] | map[@key='parts']/*/*[@key='class'] | *[@key='group']/*[@key='class'] | *[@key='groups']/*[@key='class'] | array[@key='groups']/*/*[@key='class'] | map[@key='groups']/*/*[@key='class'] | *[@key='set-parameter']/*[@key='class'] | *[@key='parameter-settings']/*[@key='class'] | array[@key='parameter-settings']/*/*[@key='class'] | map[@key='parameter-settings']/*/*[@key='class']"
                  mode="as-attribute">
       <xsl:attribute name="class">
          <xsl:apply-templates mode="#current"/>
@@ -1237,7 +1237,7 @@
    <!-- 000 Handling flag @depends-on 000 -->
    <xsl:template match="*[@key='depends-on']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='param']/*[@key='depends-on'] | *[@key='parameters']/*[@key='depends-on'] | array[@key='parameters']/*/*[@key='depends-on'] | map[@key='parameters']/*/*[@key='depends-on'] | *[@key='set']/*[@key='depends-on'] | *[@key='settings']/*[@key='depends-on'] | array[@key='settings']/*/*[@key='depends-on'] | map[@key='settings']/*/*[@key='depends-on']"
+                 match="*[@key='param']/*[@key='depends-on'] | *[@key='parameters']/*[@key='depends-on'] | array[@key='parameters']/*/*[@key='depends-on'] | map[@key='parameters']/*/*[@key='depends-on'] | *[@key='set-parameter']/*[@key='depends-on'] | *[@key='parameter-settings']/*[@key='depends-on'] | array[@key='parameter-settings']/*/*[@key='depends-on'] | map[@key='parameter-settings']/*/*[@key='depends-on']"
                  mode="as-attribute">
       <xsl:attribute name="depends-on">
          <xsl:apply-templates mode="#current"/>
@@ -1350,7 +1350,8 @@
    <xsl:template match="*[@key='modify']" priority="4" mode="json2xml">
       <xsl:element name="modify" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('set', 'settings')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('set-parameter', 'parameter-settings')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('alter', 'alterations')]"/>
       </xsl:element>
    </xsl:template>
@@ -1459,10 +1460,10 @@
    </xsl:template>
    <!-- 000 Handling assembly "{ @name }" 000 -->
    <!-- 000 NB - template matching 'array' overrides this one 000 -->
-   <xsl:template match="*[@key='set'] | array[@key='settings']/* | map[@key='settings']"
+   <xsl:template match="*[@key='set-parameter'] | array[@key='parameter-settings']/* | map[@key='parameter-settings']"
                  priority="4"
                  mode="json2xml">
-      <xsl:element name="set" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="set-parameter" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
@@ -1474,18 +1475,22 @@
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="map[@key=('settings')]" priority="5" mode="json2xml">
+   <xsl:template match="map[@key=('parameter-settings')]"
+                 priority="5"
+                 mode="json2xml">
       <xsl:apply-templates mode="json2xml"/>
    </xsl:template>
    <xsl:template priority="2"
-                 match="map[@key=('settings')]/*/@key"
+                 match="map[@key=('parameter-settings')]/*/@key"
                  mode="as-attribute">
       <xsl:attribute name="param-id">
          <xsl:value-of select="."/>
       </xsl:attribute>
    </xsl:template>
-   <xsl:template match="map[@key=('settings')]/map" priority="3" mode="json2xml">
-      <xsl:element name="set" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <xsl:template match="map[@key=('parameter-settings')]/map"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:element name="set-parameter" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
@@ -1497,13 +1502,13 @@
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- 000 Handling flag "set/@param-id" 000 -->
+   <!-- 000 Handling flag "set-parameter/@param-id" 000 -->
    <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='set']/*[@key='param-id'] | *[@key='settings']/*[@key='param-id'] | array[@key='settings']/*/*[@key='param-id']"
+   <xsl:template match="*[@key='set-parameter']/*[@key='param-id'] | *[@key='parameter-settings']/*[@key='param-id'] | array[@key='parameter-settings']/*/*[@key='param-id']"
                  priority="7"
                  mode="json2xml"/>
    <xsl:template priority="3"
-                 match="*[@key='set']/*[@key='param-id'] | *[@key='settings']/*[@key='param-id'] | array[@key='settings']/*/*[@key='param-id']"
+                 match="*[@key='set-parameter']/*[@key='param-id'] | *[@key='parameter-settings']/*[@key='param-id'] | array[@key='parameter-settings']/*/*[@key='param-id']"
                  mode="as-attribute">
       <xsl:attribute name="param-id">
          <xsl:apply-templates mode="#current"/>

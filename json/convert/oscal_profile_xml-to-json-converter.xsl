@@ -959,8 +959,8 @@
    </xsl:template>
    <xsl:template match="modify" mode="xml2json">
       <map key="modify">
-         <xsl:for-each-group select="set" group-by="local-name()">
-            <map key="settings">
+         <xsl:for-each-group select="set-parameter" group-by="local-name()">
+            <map key="parameter-settings">
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
@@ -1021,7 +1021,7 @@
          </xsl:if>
       </map>
    </xsl:template>
-   <xsl:template match="set" mode="xml2json">
+   <xsl:template match="set-parameter" mode="xml2json">
       <map key="{@param-id}">
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>

@@ -1547,8 +1547,8 @@
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
-         <xsl:for-each-group select="set-param" group-by="local-name()">
-            <map key="set-params">
+         <xsl:for-each-group select="set-parameter" group-by="local-name()">
+            <map key="parameter-settings">
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
@@ -1654,14 +1654,14 @@
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
-         <xsl:for-each-group select="set-param" group-by="local-name()">
-            <map key="set-params">
+         <xsl:for-each-group select="set-parameter" group-by="local-name()">
+            <map key="parameter-settings">
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
       </map>
    </xsl:template>
-   <xsl:template match="set-param" mode="xml2json">
+   <xsl:template match="set-parameter" mode="xml2json">
       <map key="{@param-id}">
          <xsl:apply-templates select="value" mode="#current"/>
       </map>
