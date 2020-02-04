@@ -784,9 +784,13 @@
    <define-assembly name="protocol">
       <formal-name>Protocol</formal-name>
       <description>Information about the protocol used to provide a service.</description>
+      <flag ref="id"/>
+      <flag ref="name" required="yes">
+         <description>The short name of the protocol (e.g., TLS).</description>
+      </flag>
       <model>
-         <field ref="title" min-occurs="1">
-            <description>A human readable name for the protocol.</description>
+         <field ref="title">
+            <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
          </field>
          <field ref="port-range" max-occurs="unbounded">
             <group-as name="port-ranges"/>
