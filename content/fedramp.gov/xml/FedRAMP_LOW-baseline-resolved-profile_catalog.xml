@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-5456659f-da22-4d01-a1fa-f0e51f84e363">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-eeffbf3f-a798-49f7-9382-c13a7586eb7e">
   <metadata>
     <title>FedRAMP Low Baseline [RESOLVED]</title>
-    <published>2019-11-27T00:00:00.000-05:00</published>
-    <last-modified>2019-11-25T21:20:32.000000-05:00</last-modified>
+    <published>2020-02-02T00:00:00.000-05:00</published>
+    <last-modified>2020-01-28T14:26:08.000000-05:00</last-modified>
     <version>1.2</version>
     <oscal-version>1.0.0-milestone2</oscal-version>
     <role id="creator">
@@ -554,9 +554,9 @@
       </param>
       <param id="ac-7_prm_3">
         <select>
-          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/> </choice>
+          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/></choice>
           <choice>locks the account/node until released by an administrator</choice>
-          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/> </choice>
+          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/></choice>
         </select>
       </param>
       <param id="ac-7_prm_4" depends-on="ac-7_prm_3">
@@ -813,22 +813,6 @@
           <p>Automated mechanisms implementing system use notification</p>
         </part>
       </part>
-      <control class="SP800-53" id="ac-8.fr">
-        <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">AC-8 Req</prop>
-        <part id="ac-8.fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
-        </part>
-        <part id="ac-8.fr_smt.2" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
-        </part>
-        <part id="ac-8.fr_smt.3" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ac-14">
       <title>Permitted Actions Without Identification or Authentication</title>
@@ -1127,7 +1111,7 @@
         <link rel="related" href="#si-4">SI-4</link>
       </part>
       <part id="ac-19_obj" name="objective">
-        <p> Determine if the organization:</p>
+        <p>Determine if the organization:</p>
         <part id="ac-19.a_obj" name="objective">
           <prop name="label">AC-19(a)</prop>
           <p>establishes for organization-controlled mobile devices:</p>
@@ -3506,28 +3490,6 @@
           <p>Mechanisms implementing continuous monitoring</p>
         </part>
       </part>
-      <control class="SP800-53-enhancement" id="ca-7.fr">
-        <title>Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">CA-7 Req</prop>
-        <part id="ca-7.fr_smt.1" name="item">
-          <prop name="label">Requirement 1</prop>
-          <p>Operating System Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.2" name="item">
-          <prop name="label">Requirement 2</prop>
-          <p>Database and Web Application Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.3" name="item">
-          <prop name="label">Requirement 3</prop>
-          <p>All scans performed by Independent Assessor: at least annually</p>
-        </part>
-        <part id="ca-7.fr_gdn.1" name="guidance">
-          <p>CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates.</p>
-        </part>
-        <part id="ca-7.fr_gdn.2" name="guidance">
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ca-9">
       <title>Internal System Connections</title>
@@ -12698,14 +12660,6 @@
           <p>automated mechanisms providing an indication of use of collaborative computing devices</p>
         </part>
       </part>
-      <control class="SP800-53-enhancement" id="sc-15.fr">
-        <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">SC-15 Req</prop>
-        <part id="sc-15.fr_smt" name="item">
-          <prop name="label">Requirement</prop>
-          <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="sc-20">
       <title>Secure Name / Address Resolution Service (authoritative Source)</title>

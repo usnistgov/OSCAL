@@ -1,9 +1,9 @@
 catalog: 
-  id:       c16d4707-5f78-453f-b1e9-6639d7604c57
+  id:       ab28b535-6379-48c9-b5d6-463a39aa7576
   metadata: 
     title:               FedRAMP Moderate Baseline [RESOLVED]
-    published:           2019-11-27T00:00:00.000-05:00
-    last-modified:       2019-11-25T21:20:00.000000-05:00
+    published:           2020-02-02T00:00:00.000-05:00
+    last-modified:       2020-01-28T14:25:50.000000-05:00
     version:             1.2
     oscal-version:       1.0.0-milestone2
     roles: 
@@ -2379,7 +2379,7 @@ catalog:
             - 
               id:     ac-7_prm_3
               select: 
-                alternatives: locks the account/node for an {{ ac-7_prm_4 }} ,locks the account/node until released by an administrator,delays next logon prompt according to {{ ac-7_prm_5 }} 
+                alternatives: locks the account/node for an {{ ac-7_prm_4 }},locks the account/node until released by an administrator,delays next logon prompt according to {{ ac-7_prm_5 }}
             - 
               id:          ac-7_prm_4
               depends-on:  ac-7_prm_3
@@ -2749,31 +2749,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms implementing system use notification
-          controls: 
-            id:         ac-8.fr
-            class:      SP800-53
-            title:      AC-8 Additional FedRAMP Requirements and Guidance
-            properties: 
-              label: AC-8 Req
-            parts: 
-              - 
-                id:         ac-8.fr_smt.1
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.
-              - 
-                id:         ac-8.fr_smt.2
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.
-              - 
-                id:         ac-8.fr_smt.3
-                name:       item
-                properties: 
-                  label: Requirement:
-                prose:      If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.
         - 
           id:         ac-10
           class:      SP800-53
@@ -2804,7 +2779,7 @@ catalog:
             - 
               id:    ac-10_obj
               name:  objective
-              prose:  Determine if:
+              prose: Determine if:
               parts: 
                 - 
                   id:         ac-10_obj.1
@@ -2892,7 +2867,7 @@ catalog:
             - 
               id:    ac-11_obj
               name:  objective
-              prose:  Determine if:
+              prose: Determine if:
               parts: 
                 - 
                   id:         ac-11.a_obj
@@ -4010,7 +3985,7 @@ catalog:
             - 
               id:    ac-19_obj
               name:  objective
-              prose:  Determine if the organization:
+              prose: Determine if the organization:
               parts: 
                 - 
                   id:         ac-19.a_obj
@@ -9298,91 +9273,57 @@ catalog:
                 name:  objects
                 prose: Mechanisms implementing continuous monitoring
           controls: 
-            - 
-              id:         ca-7.1
-              class:      SP800-53-enhancement
-              title:      Independent Assessment
-              parameters: 
-                id:    ca-7.1_prm_1
-                label: organization-defined level of independence
-              properties: 
-                - 
-                  label: CA-7(1)
-                - 
-                  sort-id: ca-07.01
-              parts: 
-                - 
-                  id:    ca-7.1_smt
-                  name:  statement
-                  prose: The organization employs assessors or assessment teams with {{ ca-7.1_prm_1 }} to monitor the security controls in the information system on an ongoing basis.
-                - 
-                  id:    ca-7.1_gdn
-                  name:  guidance
-                  prose: Organizations can maximize the value of assessments of security controls during the continuous monitoring process by requiring that such assessments be conducted by assessors or assessment teams with appropriate levels of independence based on continuous monitoring strategies. Assessor independence provides a degree of impartiality to the monitoring process. To achieve such impartiality, assessors should not: (i) create a mutual or conflicting interest with the organizations where the assessments are being conducted; (ii) assess their own work; (iii) act as management or employees of the organizations they are serving; or (iv) place themselves in advocacy positions for the organizations acquiring their services.
-                - 
-                  id:    ca-7.1_obj
-                  name:  objective
-                  prose: Determine if the organization:
-                  parts: 
-                    - 
-                      id:         ca-7.1_obj.1
-                      name:       objective
-                      properties: 
-                        label: CA-7(1)[1]
-                      prose:      defines a level of independence to be employed to monitor the security controls in the information system on an ongoing basis; and
-                    - 
-                      id:         ca-7.1_obj.2
-                      name:       objective
-                      properties: 
-                        label: CA-7(1)[2]
-                      prose:      employs assessors or assessment teams with the organization-defined level of independence to monitor the security controls in the information system on an ongoing basis.
-                - 
-                  name:       assessment
-                  properties: 
-                    method: EXAMINE
-                  parts: 
-                    name:  objects
-                    prose: Security assessment and authorization policy\n\nprocedures addressing continuous monitoring of information system security controls\n\nsecurity plan\n\nsecurity assessment report\n\nplan of action and milestones\n\ninformation system monitoring records\n\nsecurity impact analyses\n\nstatus reports\n\nother relevant documents or records
-                - 
-                  name:       assessment
-                  properties: 
-                    method: INTERVIEW
-                  parts: 
-                    name:  objects
-                    prose: Organizational personnel with continuous monitoring responsibilities\n\norganizational personnel with information security responsibilities
-            - 
-              id:         ca-7.fr
-              class:      SP800-53-enhancement
-              title:      Additional FedRAMP Requirements and Guidance
-              properties: 
-                label: CA-7 Req
-              parts: 
-                - 
-                  id:         ca-7.fr_smt.1
-                  name:       item
-                  properties: 
-                    label: Requirement 1
-                  prose:      Operating System Scans: at least monthly
-                - 
-                  id:         ca-7.fr_smt.2
-                  name:       item
-                  properties: 
-                    label: Requirement 2
-                  prose:      Database and Web Application Scans: at least monthly
-                - 
-                  id:         ca-7.fr_smt.3
-                  name:       item
-                  properties: 
-                    label: Requirement 3
-                  prose:      All scans performed by Independent Assessor: at least annually
-                - 
-                  id:    ca-7.fr_gdn.1
-                  name:  guidance
-                  prose: CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&M updates.
-                - 
-                  id:    ca-7.fr_gdn.2
-                  name:  guidance
-                  prose: See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/)
+            id:         ca-7.1
+            class:      SP800-53-enhancement
+            title:      Independent Assessment
+            parameters: 
+              id:    ca-7.1_prm_1
+              label: organization-defined level of independence
+            properties: 
+              - 
+                label: CA-7(1)
+              - 
+                sort-id: ca-07.01
+            parts: 
+              - 
+                id:    ca-7.1_smt
+                name:  statement
+                prose: The organization employs assessors or assessment teams with {{ ca-7.1_prm_1 }} to monitor the security controls in the information system on an ongoing basis.
+              - 
+                id:    ca-7.1_gdn
+                name:  guidance
+                prose: Organizations can maximize the value of assessments of security controls during the continuous monitoring process by requiring that such assessments be conducted by assessors or assessment teams with appropriate levels of independence based on continuous monitoring strategies. Assessor independence provides a degree of impartiality to the monitoring process. To achieve such impartiality, assessors should not: (i) create a mutual or conflicting interest with the organizations where the assessments are being conducted; (ii) assess their own work; (iii) act as management or employees of the organizations they are serving; or (iv) place themselves in advocacy positions for the organizations acquiring their services.
+              - 
+                id:    ca-7.1_obj
+                name:  objective
+                prose: Determine if the organization:
+                parts: 
+                  - 
+                    id:         ca-7.1_obj.1
+                    name:       objective
+                    properties: 
+                      label: CA-7(1)[1]
+                    prose:      defines a level of independence to be employed to monitor the security controls in the information system on an ongoing basis; and
+                  - 
+                    id:         ca-7.1_obj.2
+                    name:       objective
+                    properties: 
+                      label: CA-7(1)[2]
+                    prose:      employs assessors or assessment teams with the organization-defined level of independence to monitor the security controls in the information system on an ongoing basis.
+              - 
+                name:       assessment
+                properties: 
+                  method: EXAMINE
+                parts: 
+                  name:  objects
+                  prose: Security assessment and authorization policy\n\nprocedures addressing continuous monitoring of information system security controls\n\nsecurity plan\n\nsecurity assessment report\n\nplan of action and milestones\n\ninformation system monitoring records\n\nsecurity impact analyses\n\nstatus reports\n\nother relevant documents or records
+              - 
+                name:       assessment
+                properties: 
+                  method: INTERVIEW
+                parts: 
+                  name:  objects
+                  prose: Organizational personnel with continuous monitoring responsibilities\n\norganizational personnel with information security responsibilities
         - 
           id:         ca-8
           class:      SP800-53
@@ -12359,7 +12300,7 @@ catalog:
                   id:     cm-8.3_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: disables network access by such components,isolates the components,notifies {{ cm-8.3_prm_3 }} 
+                    alternatives: disables network access by such components,isolates the components,notifies {{ cm-8.3_prm_3 }}
                 - 
                   id:         cm-8.3_prm_3
                   depends-on: cm-8.3_prm_2
@@ -34027,18 +33968,6 @@ catalog:
               parts: 
                 name:  objects
                 prose: Automated mechanisms supporting and/or implementing management of remote activation of collaborative computing devices\n\nautomated mechanisms providing an indication of use of collaborative computing devices
-          controls: 
-            id:         sc-15.fr
-            class:      SP800-53-enhancement
-            title:      SC-15 Additional FedRAMP Requirements and Guidance
-            properties: 
-              label: SC-15 Req
-            parts: 
-              id:         sc-15.fr_smt
-              name:       item
-              properties: 
-                label: Requirement
-              prose:      The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.
         - 
           id:         sc-17
           class:      SP800-53
@@ -37551,7 +37480,7 @@ catalog:
                   id:     si-7.1_prm_2
                   select: 
                     how-many:     one or more
-                    alternatives: at startup,at {{ si-7.1_prm_3 }} ,
+                    alternatives: at startup,at {{ si-7.1_prm_3 }},
               {{ si-7.1_prm_4 }}
             
                 - 

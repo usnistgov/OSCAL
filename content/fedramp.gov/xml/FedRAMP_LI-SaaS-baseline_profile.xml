@@ -1,9 +1,8 @@
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-	id="uuid-3ae02e88-e68f-434a-8ec6-83dbefadf304">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-24a8ac6e-b71a-40c1-a845-e9c640813134">
 	<metadata>
 		<title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
-		<published>2019-11-27T00:00:00.000-05:00</published>
-		<last-modified>2019-11-24T10:00:00.000-05:00</last-modified>
+		<published>2020-02-02T00:00:00.000-05:00</published>
+		<last-modified>2020-01-28T10:00:00.000-05:00</last-modified>
 		<version>1.2</version>
 		<oscal-version>1.0.0-milestone2</oscal-version>
 		
@@ -156,155 +155,155 @@
 	</merge>
 	<modify>
 		<!-- - - AC-22 - -  -->
-		<set param-id="ac-22_prm_1">
+		<set-parameter param-id="ac-22_prm_1">
 			<constraint>at least quarterly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - AU-5 - -  -->
-		<set param-id="au-5_prm_2">
+		<set-parameter param-id="au-5_prm_2">
 			<constraint>organization-defined actions to be taken (overwrite oldest record)</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - AU-6 - -  -->
-		<set param-id="au-6_prm_1">
+		<set-parameter param-id="au-6_prm_1">
 			<constraint>at least weekly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CA-2 - -  -->
-		<set param-id="ca-2_prm_1">
+		<set-parameter param-id="ca-2_prm_1">
 			<constraint>at least annually</constraint>
-		</set>
-		<set param-id="ca-2_prm_2">
+		</set-parameter>
+		<set-parameter param-id="ca-2_prm_2">
 			<constraint>individuals or roles to include FedRAMP PMO</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CA-2 (1) - -  -->
 		<!-- - - CA-3 - -  -->
-		<set param-id="ca-3_prm_1">
+		<set-parameter param-id="ca-3_prm_1">
 			<constraint>at least annually and on input from FedRAMP</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CA-5 - -  -->
-		<set param-id="ca-5_prm_1">
+		<set-parameter param-id="ca-5_prm_1">
 			<constraint>at least monthly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CA-6 - -  -->
-		<set param-id="ca-6_prm_1">
+		<set-parameter param-id="ca-6_prm_1">
 			<constraint>at least every three years or when a significant change occurs</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CA-7 - -  -->
-		<set param-id="ca-7_prm_4">
+		<set-parameter param-id="ca-7_prm_4">
 			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
-		</set>
-		<set param-id="ca-7_prm_5">
+		</set-parameter>
+		<set-parameter param-id="ca-7_prm_5">
 			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CM-6 - -  -->
-		<set param-id="cm-6_prm_1">
+		<set-parameter param-id="cm-6_prm_1">
 			<constraint>see CM-6(a) Additional FedRAMP Requirements and Guidance</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CM-8 - -  -->
-		<set param-id="cm-8_prm_2">
+		<set-parameter param-id="cm-8_prm_2">
 			<constraint>at least monthly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - CP-9 - -  -->
-		<set param-id="cp-9_prm_1">
+		<set-parameter param-id="cp-9_prm_1">
 			<constraint>daily incremental; weekly full</constraint>
-		</set>
-		<set param-id="cp-9_prm_2">
+		</set-parameter>
+		<set-parameter param-id="cp-9_prm_2">
 			<constraint>daily incremental; weekly full</constraint>
-		</set>
-		<set param-id="cp-9_prm_3">
+		</set-parameter>
+		<set-parameter param-id="cp-9_prm_3">
 			<constraint>daily incremental; weekly full</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - IR-6 - -  -->
-		<set param-id="ir-6_prm_1">
+		<set-parameter param-id="ir-6_prm_1">
 			<constraint>US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-2 - -  -->
-		<set param-id="pe-2_prm_1">
+		<set-parameter param-id="pe-2_prm_1">
 			<constraint>at least annually</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-3 - -  -->
-		<set param-id="pe-3_prm_2">
+		<set-parameter param-id="pe-3_prm_2">
 			<constraint>CSP defined physical access control systems/devices AND guards</constraint>
-		</set>
-		<set param-id="pe-3_prm_6">
+		</set-parameter>
+		<set-parameter param-id="pe-3_prm_6">
 			<constraint>in all circumstances within restricted access area where the information system resides</constraint>
-		</set>
-		<set param-id="pe-3_prm_8">
+		</set-parameter>
+		<set-parameter param-id="pe-3_prm_8">
 			<constraint>at least annually</constraint>
-		</set>
-		<set param-id="pe-3_prm_9">
+		</set-parameter>
+		<set-parameter param-id="pe-3_prm_9">
 			<constraint>at least annually</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-6 - -  -->
-		<set param-id="pe-6_prm_1">
+		<set-parameter param-id="pe-6_prm_1">
 			<constraint>at least monthly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-8 - -  -->
-		<set param-id="pe-8_prm_1">
+		<set-parameter param-id="pe-8_prm_1">
 			<constraint>for a minimum of one (1) year</constraint>
-		</set>
-		<set param-id="pe-8_prm_2">
+		</set-parameter>
+		<set-parameter param-id="pe-8_prm_2">
 			<constraint>at least monthly</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-14 - -  -->
-		<set param-id="pe-14_prm_1">
+		<set-parameter param-id="pe-14_prm_1">
 			<constraint>consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments</constraint>
-		</set>
-		<set param-id="pe-14_prm_2">
+		</set-parameter>
+		<set-parameter param-id="pe-14_prm_2">
 			<constraint>continuously</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PE-16 - -  -->
-		<set param-id="pe-16_prm_1">
+		<set-parameter param-id="pe-16_prm_1">
 			<constraint>all information system components</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PL-2 - -  -->
-		<set param-id="pl-2_prm_2">
+		<set-parameter param-id="pl-2_prm_2">
 			<constraint>at least annually</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - PS-3 - -  -->
-		<set param-id="ps-3_prm_1">
+		<set-parameter param-id="ps-3_prm_1">
 			<constraint>For national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year. There is no reinvestigation for other moderate risk positions or any low risk positions.</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - RA-3 - -  -->
-		<set param-id="ra-3_prm_2">
+		<set-parameter param-id="ra-3_prm_2">
 			<constraint>security assessment report</constraint>
-		</set>
-		<set param-id="ra-3_prm_3">
+		</set-parameter>
+		<set-parameter param-id="ra-3_prm_3">
 			<constraint>at least every three (3) years or when a significant change occurs</constraint>
-		</set>
-		<set param-id="ra-3_prm_5">
+		</set-parameter>
+		<set-parameter param-id="ra-3_prm_5">
 			<constraint>at least every three (3) years or when a significant change occurs</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - RA-5 - -  -->
-		<set param-id="ra-5_prm_1">
+		<set-parameter param-id="ra-5_prm_1">
 			<constraint>monthly operating system/infrastructure; monthly web applications and databases</constraint>
-		</set>
-		<set param-id="ra-5_prm_2">
+		</set-parameter>
+		<set-parameter param-id="ra-5_prm_2">
 			<constraint>[high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery.</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - SA-9 - -  -->
-		<set param-id="sa-9_prm_1">
+		<set-parameter param-id="sa-9_prm_1">
 			<constraint>FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system</constraint>
-		</set>
-		<set param-id="sa-9_prm_2">
+		</set-parameter>
+		<set-parameter param-id="sa-9_prm_2">
 			<constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - SC-13 - -  -->
-		<set param-id="sc-13_prm_1">
+		<set-parameter param-id="sc-13_prm_1">
 			<constraint>FIPS-validated or NSA-approved cryptography</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - SI-2 - -  -->
-		<set param-id="si-2_prm_1">
+		<set-parameter param-id="si-2_prm_1">
 			<constraint>within 30 days of release of updates</constraint>
-		</set>
+		</set-parameter>
 		<!-- - - SI-3 - -  -->
-		<set param-id="si-3_prm_1">
+		<set-parameter param-id="si-3_prm_1">
 			<constraint>at least weekly</constraint>
-		</set>
-		<set param-id="si-3_prm_2">
+		</set-parameter>
+		<set-parameter param-id="si-3_prm_2">
 			<constraint>to include endpoints</constraint>
-		</set>
-		<set param-id="si-3_prm_3">
+		</set-parameter>
+		<set-parameter param-id="si-3_prm_3">
 			<constraint>to include alerting administrator or defined security personnel</constraint>
-		</set>
+		</set-parameter>
 		<!-- - -     CONTROL MODIFICATIONS      - -  -->
 		<!-- - - AC-1 - -  -->
 		<alter control-id="ac-1">

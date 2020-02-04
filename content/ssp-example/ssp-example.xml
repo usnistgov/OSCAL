@@ -180,33 +180,33 @@
                <description>
                   <p>The legal department develops, documents, and disseminates this policy to all staff and contractors within the organization.</p>
                </description>
-               <set-param param-id="au-1_prm_1">
+               <set-parameter param-id="au-1_prm_1">
                   <value>all staff and contractors within the organization</value>
-               </set-param>
+               </set-parameter>
             </by-component>
             <by-component component-id="system-integration-process">
                <description>
                   <p>The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.</p>
                </description>
-               <set-param param-id="au-1_prm_1">
+               <set-parameter param-id="au-1_prm_1">
                   <value>all IT staff who administer this system when the staff member is assigned and annually through training</value>
-               </set-param>
+               </set-parameter>
             </by-component>
             <by-component component-id="inventory-management-process">
                <description>
                   <p>The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.</p>
                </description>
-               <set-param param-id="au-1_prm_1">
+               <set-parameter param-id="au-1_prm_1">
                   <value>all IT staff who administer this system when the staff member is assigned and annually through training</value>
-               </set-param>
+               </set-parameter>
             </by-component>
             <by-component component-id="configuration-management-guidance">
                <description>
                   <p>The IT department created and maintains this procedure. This department disseminates it to all IT staff who administer this system when the staff member is assigned and annually through training.</p>
                </description>
-               <set-param param-id="au-1_prm_1">
+               <set-parameter param-id="au-1_prm_1">
                   <value>all IT staff who administer this system when the staff member is assigned and annually through training</value>
-               </set-param>
+               </set-parameter>
             </by-component>
          </statement>
          <statement statement-id="au-1smt.a.1">
@@ -243,9 +243,9 @@
                <description>
                   <p>The legal department reviews this policy annually, and other times as necessary in response to regulatory or organizational changes. The legal department updates the policy as needed based on these reviews.</p>
                </description>
-               <set-param param-id="au-1_prm_2">
+               <set-parameter param-id="au-1_prm_2">
                   <value>annually, and other times as necessary in response to regulatory or organizational changes</value>
-               </set-param>
+               </set-parameter>
             </by-component>
          </statement>
          <statement statement-id="au-1_smt.b.2">
@@ -253,25 +253,25 @@
                <description>
                   <p>The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews.</p>
                </description>
-               <set-param param-id="au-1_prm_3">
+               <set-parameter param-id="au-1_prm_3">
                   <value>annually, and other times as necessary in response to regulatory or organizational changes</value>
-               </set-param>
+               </set-parameter>
             </by-component>
             <by-component component-id="inventory-management-process">
                <description>
                   <p>The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews.</p>
                </description>
-               <set-param param-id="au-1_prm_3">
+               <set-parameter param-id="au-1_prm_3">
                   <value>annually, and other times as necessary in response to regulatory or organizational changes</value>
-               </set-param>
+               </set-parameter>
             </by-component>
             <by-component component-id="configuration-management-guidance">
                <description>
                   <p>The IT department reviews this process annually, and other times as necessary in response to regulatory or organizational changes. The IT department updates the policy as needed based on these reviews</p>
                </description>
-               <set-param param-id="au-1_prm_3">
+               <set-parameter param-id="au-1_prm_3">
                   <value>annually, and other times as necessary in response to regulatory or organizational changes</value>
-               </set-param>
+               </set-parameter>
             </by-component>
          </statement>
       </implemented-requirement>
