@@ -108,10 +108,10 @@
           "component-type": "policy",
           "description": "Requires all components to send logs to the enterprise logging solution\n\u2014 Requires all components synchronize their time with the appropriate enterprise time service, and at what frequency.\n\u2014 Identifies the events that must be captured\n\u2014 Identifies who is responsible/accountable for performing these functions",
           "status": {"state": "operational"},
-          "properties": {
-            "version": "2.1",
-            "last-modified-date": "20181015"
-          },
+          "properties": [
+            {"version": "2.1"},
+            {"last-modified-date": "20181015"}
+          ],
           "responsible-roles": {
             "maintainer": {"party-ids": "legal-department"}
           }
