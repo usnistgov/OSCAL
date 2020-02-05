@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="8b898586-6ae4-4685-8e32-600755fe556b">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-63bc0594-54ed-49a1-8c74-5b51f6aeea3d">
   <metadata>
     <title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline [RESOLVED]</title>
-    <published>2019-11-27T00:00:00.000-05:00</published>
-    <last-modified>2019-11-25T22:23:42.000000-05:00</last-modified>
+    <published>2020-02-02T00:00:00.000-05:00</published>
+    <last-modified>2020-02-05T17:01:50.000000-05:00</last-modified>
     <version>1.2</version>
     <oscal-version>1.0.0-milestone2</oscal-version>
     <role id="author">
@@ -194,9 +194,9 @@
       </param>
       <param id="ac-7_prm_3">
         <select>
-          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/> </choice>
+          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/></choice>
           <choice>locks the account/node until released by an administrator</choice>
-          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/> </choice>
+          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/></choice>
         </select>
       </param>
       <param id="ac-7_prm_4" depends-on="ac-7_prm_3">

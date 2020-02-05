@@ -1,0 +1,2873 @@
+
+  { "profile" : 
+    { "id" : "uuid-4a4eae61-d11f-4e3e-97fb-af5e3e91d7c5",
+      "metadata" : 
+      { "title" : "FedRAMP High Baseline",
+        "published" : "2020-02-02T00:00:00.000-05:00",
+        "last-modified" : "2020-01-28T10:00:00.000-05:00",
+        "version" : "1.2",
+        "oscal-version" : "1.0.0-milestone2",
+        "roles" : 
+        [ 
+          { "id" : "creator",
+            "title" : "Document creator" },
+          
+          { "id" : "contact",
+            "title" : "Contact" } ],
+        "parties" : 
+        { "id" : "fedramp",
+          "org" : 
+          { "org-name" : "Federal Risk and Authorization Management Program (FedRAMP)",
+            "email-addresses" : "info@fedramp.gov",
+            "URLs" : "https:\/\/fedramp.gov" } },
+        "responsible-parties" : 
+        { "creator" : 
+          { "party-ids" : "fedramp" },
+          "contact" : 
+          { "party-ids" : "fedramp" } } },
+      "imports" : 
+      { "href" : "https:\/\/raw.githubusercontent.com\/usnistgov\/OSCAL\/master\/content\/nist.gov\/SP800-53\/rev4\/json\/NIST_SP-800-53_rev4_catalog.json",
+        "include" : 
+        { "id-selectors" : 
+          [ 
+            { "control-id" : "ac-1" },
+            
+            { "control-id" : "ac-2" },
+            
+            { "control-id" : "ac-2.1" },
+            
+            { "control-id" : "ac-2.2" },
+            
+            { "control-id" : "ac-2.3" },
+            
+            { "control-id" : "ac-2.4" },
+            
+            { "control-id" : "ac-2.5" },
+            
+            { "control-id" : "ac-2.7" },
+            
+            { "control-id" : "ac-2.9" },
+            
+            { "control-id" : "ac-2.10" },
+            
+            { "control-id" : "ac-2.11" },
+            
+            { "control-id" : "ac-2.12" },
+            
+            { "control-id" : "ac-2.13" },
+            
+            { "control-id" : "ac-3" },
+            
+            { "control-id" : "ac-4" },
+            
+            { "control-id" : "ac-4.8" },
+            
+            { "control-id" : "ac-4.21" },
+            
+            { "control-id" : "ac-5" },
+            
+            { "control-id" : "ac-6" },
+            
+            { "control-id" : "ac-6.1" },
+            
+            { "control-id" : "ac-6.2" },
+            
+            { "control-id" : "ac-6.3" },
+            
+            { "control-id" : "ac-6.5" },
+            
+            { "control-id" : "ac-6.7" },
+            
+            { "control-id" : "ac-6.8" },
+            
+            { "control-id" : "ac-6.9" },
+            
+            { "control-id" : "ac-6.10" },
+            
+            { "control-id" : "ac-7" },
+            
+            { "control-id" : "ac-7.2" },
+            
+            { "control-id" : "ac-8" },
+            
+            { "control-id" : "ac-10" },
+            
+            { "control-id" : "ac-11" },
+            
+            { "control-id" : "ac-11.1" },
+            
+            { "control-id" : "ac-12" },
+            
+            { "control-id" : "ac-12.1" },
+            
+            { "control-id" : "ac-14" },
+            
+            { "control-id" : "ac-17" },
+            
+            { "control-id" : "ac-17.1" },
+            
+            { "control-id" : "ac-17.2" },
+            
+            { "control-id" : "ac-17.3" },
+            
+            { "control-id" : "ac-17.4" },
+            
+            { "control-id" : "ac-17.9" },
+            
+            { "control-id" : "ac-18" },
+            
+            { "control-id" : "ac-18.1" },
+            
+            { "control-id" : "ac-18.3" },
+            
+            { "control-id" : "ac-18.4" },
+            
+            { "control-id" : "ac-18.5" },
+            
+            { "control-id" : "ac-19" },
+            
+            { "control-id" : "ac-19.5" },
+            
+            { "control-id" : "ac-20" },
+            
+            { "control-id" : "ac-20.1" },
+            
+            { "control-id" : "ac-20.2" },
+            
+            { "control-id" : "ac-21" },
+            
+            { "control-id" : "ac-22" },
+            
+            { "control-id" : "at-1" },
+            
+            { "control-id" : "at-2" },
+            
+            { "control-id" : "at-2.2" },
+            
+            { "control-id" : "at-3" },
+            
+            { "control-id" : "at-3.3" },
+            
+            { "control-id" : "at-3.4" },
+            
+            { "control-id" : "at-4" },
+            
+            { "control-id" : "au-1" },
+            
+            { "control-id" : "au-2" },
+            
+            { "control-id" : "au-2.3" },
+            
+            { "control-id" : "au-3" },
+            
+            { "control-id" : "au-3.1" },
+            
+            { "control-id" : "au-3.2" },
+            
+            { "control-id" : "au-4" },
+            
+            { "control-id" : "au-5" },
+            
+            { "control-id" : "au-5.1" },
+            
+            { "control-id" : "au-5.2" },
+            
+            { "control-id" : "au-6" },
+            
+            { "control-id" : "au-6.1" },
+            
+            { "control-id" : "au-6.3" },
+            
+            { "control-id" : "au-6.4" },
+            
+            { "control-id" : "au-6.5" },
+            
+            { "control-id" : "au-6.6" },
+            
+            { "control-id" : "au-6.7" },
+            
+            { "control-id" : "au-6.10" },
+            
+            { "control-id" : "au-7" },
+            
+            { "control-id" : "au-7.1" },
+            
+            { "control-id" : "au-8" },
+            
+            { "control-id" : "au-8.1" },
+            
+            { "control-id" : "au-9" },
+            
+            { "control-id" : "au-9.2" },
+            
+            { "control-id" : "au-9.3" },
+            
+            { "control-id" : "au-9.4" },
+            
+            { "control-id" : "au-10" },
+            
+            { "control-id" : "au-11" },
+            
+            { "control-id" : "au-12" },
+            
+            { "control-id" : "au-12.1" },
+            
+            { "control-id" : "au-12.3" },
+            
+            { "control-id" : "ca-1" },
+            
+            { "control-id" : "ca-2" },
+            
+            { "control-id" : "ca-2.1" },
+            
+            { "control-id" : "ca-2.2" },
+            
+            { "control-id" : "ca-2.3" },
+            
+            { "control-id" : "ca-3" },
+            
+            { "control-id" : "ca-3.3" },
+            
+            { "control-id" : "ca-3.5" },
+            
+            { "control-id" : "ca-5" },
+            
+            { "control-id" : "ca-6" },
+            
+            { "control-id" : "ca-7" },
+            
+            { "control-id" : "ca-7.1" },
+            
+            { "control-id" : "ca-7.3" },
+            
+            { "control-id" : "ca-8" },
+            
+            { "control-id" : "ca-8.1" },
+            
+            { "control-id" : "ca-9" },
+            
+            { "control-id" : "cm-1" },
+            
+            { "control-id" : "cm-2" },
+            
+            { "control-id" : "cm-2.1" },
+            
+            { "control-id" : "cm-2.2" },
+            
+            { "control-id" : "cm-2.3" },
+            
+            { "control-id" : "cm-2.7" },
+            
+            { "control-id" : "cm-3" },
+            
+            { "control-id" : "cm-3.1" },
+            
+            { "control-id" : "cm-3.2" },
+            
+            { "control-id" : "cm-3.4" },
+            
+            { "control-id" : "cm-3.6" },
+            
+            { "control-id" : "cm-4" },
+            
+            { "control-id" : "cm-4.1" },
+            
+            { "control-id" : "cm-5" },
+            
+            { "control-id" : "cm-5.1" },
+            
+            { "control-id" : "cm-5.2" },
+            
+            { "control-id" : "cm-5.3" },
+            
+            { "control-id" : "cm-5.5" },
+            
+            { "control-id" : "cm-6" },
+            
+            { "control-id" : "cm-6.1" },
+            
+            { "control-id" : "cm-6.2" },
+            
+            { "control-id" : "cm-7" },
+            
+            { "control-id" : "cm-7.1" },
+            
+            { "control-id" : "cm-7.2" },
+            
+            { "control-id" : "cm-7.5" },
+            
+            { "control-id" : "cm-8" },
+            
+            { "control-id" : "cm-8.1" },
+            
+            { "control-id" : "cm-8.2" },
+            
+            { "control-id" : "cm-8.3" },
+            
+            { "control-id" : "cm-8.4" },
+            
+            { "control-id" : "cm-8.5" },
+            
+            { "control-id" : "cm-9" },
+            
+            { "control-id" : "cm-10" },
+            
+            { "control-id" : "cm-10.1" },
+            
+            { "control-id" : "cm-11" },
+            
+            { "control-id" : "cm-11.1" },
+            
+            { "control-id" : "cp-1" },
+            
+            { "control-id" : "cp-2" },
+            
+            { "control-id" : "cp-2.1" },
+            
+            { "control-id" : "cp-2.2" },
+            
+            { "control-id" : "cp-2.3" },
+            
+            { "control-id" : "cp-2.4" },
+            
+            { "control-id" : "cp-2.5" },
+            
+            { "control-id" : "cp-2.8" },
+            
+            { "control-id" : "cp-3" },
+            
+            { "control-id" : "cp-3.1" },
+            
+            { "control-id" : "cp-4" },
+            
+            { "control-id" : "cp-4.1" },
+            
+            { "control-id" : "cp-4.2" },
+            
+            { "control-id" : "cp-6" },
+            
+            { "control-id" : "cp-6.1" },
+            
+            { "control-id" : "cp-6.2" },
+            
+            { "control-id" : "cp-6.3" },
+            
+            { "control-id" : "cp-7" },
+            
+            { "control-id" : "cp-7.1" },
+            
+            { "control-id" : "cp-7.2" },
+            
+            { "control-id" : "cp-7.3" },
+            
+            { "control-id" : "cp-7.4" },
+            
+            { "control-id" : "cp-8" },
+            
+            { "control-id" : "cp-8.1" },
+            
+            { "control-id" : "cp-8.2" },
+            
+            { "control-id" : "cp-8.3" },
+            
+            { "control-id" : "cp-8.4" },
+            
+            { "control-id" : "cp-9" },
+            
+            { "control-id" : "cp-9.1" },
+            
+            { "control-id" : "cp-9.2" },
+            
+            { "control-id" : "cp-9.3" },
+            
+            { "control-id" : "cp-9.5" },
+            
+            { "control-id" : "cp-10" },
+            
+            { "control-id" : "cp-10.2" },
+            
+            { "control-id" : "cp-10.4" },
+            
+            { "control-id" : "ia-1" },
+            
+            { "control-id" : "ia-2" },
+            
+            { "control-id" : "ia-2.1" },
+            
+            { "control-id" : "ia-2.2" },
+            
+            { "control-id" : "ia-2.3" },
+            
+            { "control-id" : "ia-2.4" },
+            
+            { "control-id" : "ia-2.5" },
+            
+            { "control-id" : "ia-2.8" },
+            
+            { "control-id" : "ia-2.9" },
+            
+            { "control-id" : "ia-2.11" },
+            
+            { "control-id" : "ia-2.12" },
+            
+            { "control-id" : "ia-3" },
+            
+            { "control-id" : "ia-4" },
+            
+            { "control-id" : "ia-4.4" },
+            
+            { "control-id" : "ia-5" },
+            
+            { "control-id" : "ia-5.1" },
+            
+            { "control-id" : "ia-5.2" },
+            
+            { "control-id" : "ia-5.3" },
+            
+            { "control-id" : "ia-5.4" },
+            
+            { "control-id" : "ia-5.6" },
+            
+            { "control-id" : "ia-5.7" },
+            
+            { "control-id" : "ia-5.8" },
+            
+            { "control-id" : "ia-5.11" },
+            
+            { "control-id" : "ia-5.13" },
+            
+            { "control-id" : "ia-6" },
+            
+            { "control-id" : "ia-7" },
+            
+            { "control-id" : "ia-8" },
+            
+            { "control-id" : "ia-8.1" },
+            
+            { "control-id" : "ia-8.2" },
+            
+            { "control-id" : "ia-8.3" },
+            
+            { "control-id" : "ia-8.4" },
+            
+            { "control-id" : "ir-1" },
+            
+            { "control-id" : "ir-2" },
+            
+            { "control-id" : "ir-2.1" },
+            
+            { "control-id" : "ir-2.2" },
+            
+            { "control-id" : "ir-3" },
+            
+            { "control-id" : "ir-3.2" },
+            
+            { "control-id" : "ir-4" },
+            
+            { "control-id" : "ir-4.1" },
+            
+            { "control-id" : "ir-4.2" },
+            
+            { "control-id" : "ir-4.3" },
+            
+            { "control-id" : "ir-4.4" },
+            
+            { "control-id" : "ir-4.6" },
+            
+            { "control-id" : "ir-4.8" },
+            
+            { "control-id" : "ir-5" },
+            
+            { "control-id" : "ir-5.1" },
+            
+            { "control-id" : "ir-6" },
+            
+            { "control-id" : "ir-6.1" },
+            
+            { "control-id" : "ir-7" },
+            
+            { "control-id" : "ir-7.1" },
+            
+            { "control-id" : "ir-7.2" },
+            
+            { "control-id" : "ir-8" },
+            
+            { "control-id" : "ir-9" },
+            
+            { "control-id" : "ir-9.1" },
+            
+            { "control-id" : "ir-9.2" },
+            
+            { "control-id" : "ir-9.3" },
+            
+            { "control-id" : "ir-9.4" },
+            
+            { "control-id" : "ma-1" },
+            
+            { "control-id" : "ma-2" },
+            
+            { "control-id" : "ma-2.2" },
+            
+            { "control-id" : "ma-3" },
+            
+            { "control-id" : "ma-3.1" },
+            
+            { "control-id" : "ma-3.2" },
+            
+            { "control-id" : "ma-3.3" },
+            
+            { "control-id" : "ma-4" },
+            
+            { "control-id" : "ma-4.2" },
+            
+            { "control-id" : "ma-4.3" },
+            
+            { "control-id" : "ma-4.6" },
+            
+            { "control-id" : "ma-5" },
+            
+            { "control-id" : "ma-5.1" },
+            
+            { "control-id" : "ma-6" },
+            
+            { "control-id" : "mp-1" },
+            
+            { "control-id" : "mp-2" },
+            
+            { "control-id" : "mp-3" },
+            
+            { "control-id" : "mp-4" },
+            
+            { "control-id" : "mp-5" },
+            
+            { "control-id" : "mp-5.4" },
+            
+            { "control-id" : "mp-6" },
+            
+            { "control-id" : "mp-6.1" },
+            
+            { "control-id" : "mp-6.2" },
+            
+            { "control-id" : "mp-6.3" },
+            
+            { "control-id" : "mp-7" },
+            
+            { "control-id" : "mp-7.1" },
+            
+            { "control-id" : "pe-1" },
+            
+            { "control-id" : "pe-2" },
+            
+            { "control-id" : "pe-3" },
+            
+            { "control-id" : "pe-3.1" },
+            
+            { "control-id" : "pe-4" },
+            
+            { "control-id" : "pe-5" },
+            
+            { "control-id" : "pe-6" },
+            
+            { "control-id" : "pe-6.1" },
+            
+            { "control-id" : "pe-6.4" },
+            
+            { "control-id" : "pe-8" },
+            
+            { "control-id" : "pe-8.1" },
+            
+            { "control-id" : "pe-9" },
+            
+            { "control-id" : "pe-10" },
+            
+            { "control-id" : "pe-11" },
+            
+            { "control-id" : "pe-11.1" },
+            
+            { "control-id" : "pe-12" },
+            
+            { "control-id" : "pe-13" },
+            
+            { "control-id" : "pe-13.1" },
+            
+            { "control-id" : "pe-13.2" },
+            
+            { "control-id" : "pe-13.3" },
+            
+            { "control-id" : "pe-14" },
+            
+            { "control-id" : "pe-14.2" },
+            
+            { "control-id" : "pe-15" },
+            
+            { "control-id" : "pe-15.1" },
+            
+            { "control-id" : "pe-16" },
+            
+            { "control-id" : "pe-17" },
+            
+            { "control-id" : "pe-18" },
+            
+            { "control-id" : "pl-1" },
+            
+            { "control-id" : "pl-2" },
+            
+            { "control-id" : "pl-2.3" },
+            
+            { "control-id" : "pl-4" },
+            
+            { "control-id" : "pl-4.1" },
+            
+            { "control-id" : "pl-8" },
+            
+            { "control-id" : "ps-1" },
+            
+            { "control-id" : "ps-2" },
+            
+            { "control-id" : "ps-3" },
+            
+            { "control-id" : "ps-3.3" },
+            
+            { "control-id" : "ps-4" },
+            
+            { "control-id" : "ps-4.2" },
+            
+            { "control-id" : "ps-5" },
+            
+            { "control-id" : "ps-6" },
+            
+            { "control-id" : "ps-7" },
+            
+            { "control-id" : "ps-8" },
+            
+            { "control-id" : "ra-1" },
+            
+            { "control-id" : "ra-2" },
+            
+            { "control-id" : "ra-3" },
+            
+            { "control-id" : "ra-5" },
+            
+            { "control-id" : "ra-5.1" },
+            
+            { "control-id" : "ra-5.2" },
+            
+            { "control-id" : "ra-5.3" },
+            
+            { "control-id" : "ra-5.4" },
+            
+            { "control-id" : "ra-5.5" },
+            
+            { "control-id" : "ra-5.6" },
+            
+            { "control-id" : "ra-5.8" },
+            
+            { "control-id" : "ra-5.10" },
+            
+            { "control-id" : "sa-1" },
+            
+            { "control-id" : "sa-2" },
+            
+            { "control-id" : "sa-3" },
+            
+            { "control-id" : "sa-4" },
+            
+            { "control-id" : "sa-4.1" },
+            
+            { "control-id" : "sa-4.2" },
+            
+            { "control-id" : "sa-4.8" },
+            
+            { "control-id" : "sa-4.9" },
+            
+            { "control-id" : "sa-4.10" },
+            
+            { "control-id" : "sa-5" },
+            
+            { "control-id" : "sa-8" },
+            
+            { "control-id" : "sa-9" },
+            
+            { "control-id" : "sa-9.1" },
+            
+            { "control-id" : "sa-9.2" },
+            
+            { "control-id" : "sa-9.4" },
+            
+            { "control-id" : "sa-9.5" },
+            
+            { "control-id" : "sa-10" },
+            
+            { "control-id" : "sa-10.1" },
+            
+            { "control-id" : "sa-11" },
+            
+            { "control-id" : "sa-11.1" },
+            
+            { "control-id" : "sa-11.2" },
+            
+            { "control-id" : "sa-11.8" },
+            
+            { "control-id" : "sa-12" },
+            
+            { "control-id" : "sa-15" },
+            
+            { "control-id" : "sa-16" },
+            
+            { "control-id" : "sa-17" },
+            
+            { "control-id" : "sc-1" },
+            
+            { "control-id" : "sc-2" },
+            
+            { "control-id" : "sc-3" },
+            
+            { "control-id" : "sc-4" },
+            
+            { "control-id" : "sc-5" },
+            
+            { "control-id" : "sc-6" },
+            
+            { "control-id" : "sc-7" },
+            
+            { "control-id" : "sc-7.3" },
+            
+            { "control-id" : "sc-7.4" },
+            
+            { "control-id" : "sc-7.5" },
+            
+            { "control-id" : "sc-7.7" },
+            
+            { "control-id" : "sc-7.8" },
+            
+            { "control-id" : "sc-7.10" },
+            
+            { "control-id" : "sc-7.12" },
+            
+            { "control-id" : "sc-7.13" },
+            
+            { "control-id" : "sc-7.18" },
+            
+            { "control-id" : "sc-7.20" },
+            
+            { "control-id" : "sc-7.21" },
+            
+            { "control-id" : "sc-8" },
+            
+            { "control-id" : "sc-8.1" },
+            
+            { "control-id" : "sc-10" },
+            
+            { "control-id" : "sc-12" },
+            
+            { "control-id" : "sc-12.1" },
+            
+            { "control-id" : "sc-12.2" },
+            
+            { "control-id" : "sc-12.3" },
+            
+            { "control-id" : "sc-13" },
+            
+            { "control-id" : "sc-15" },
+            
+            { "control-id" : "sc-17" },
+            
+            { "control-id" : "sc-18" },
+            
+            { "control-id" : "sc-19" },
+            
+            { "control-id" : "sc-20" },
+            
+            { "control-id" : "sc-21" },
+            
+            { "control-id" : "sc-22" },
+            
+            { "control-id" : "sc-23" },
+            
+            { "control-id" : "sc-23.1" },
+            
+            { "control-id" : "sc-24" },
+            
+            { "control-id" : "sc-28" },
+            
+            { "control-id" : "sc-28.1" },
+            
+            { "control-id" : "sc-39" },
+            
+            { "control-id" : "si-1" },
+            
+            { "control-id" : "si-2" },
+            
+            { "control-id" : "si-2.1" },
+            
+            { "control-id" : "si-2.2" },
+            
+            { "control-id" : "si-2.3" },
+            
+            { "control-id" : "si-3" },
+            
+            { "control-id" : "si-3.1" },
+            
+            { "control-id" : "si-3.2" },
+            
+            { "control-id" : "si-3.7" },
+            
+            { "control-id" : "si-4" },
+            
+            { "control-id" : "si-4.1" },
+            
+            { "control-id" : "si-4.2" },
+            
+            { "control-id" : "si-4.4" },
+            
+            { "control-id" : "si-4.5" },
+            
+            { "control-id" : "si-4.11" },
+            
+            { "control-id" : "si-4.14" },
+            
+            { "control-id" : "si-4.16" },
+            
+            { "control-id" : "si-4.18" },
+            
+            { "control-id" : "si-4.19" },
+            
+            { "control-id" : "si-4.20" },
+            
+            { "control-id" : "si-4.22" },
+            
+            { "control-id" : "si-4.23" },
+            
+            { "control-id" : "si-4.24" },
+            
+            { "control-id" : "si-5" },
+            
+            { "control-id" : "si-5.1" },
+            
+            { "control-id" : "si-6" },
+            
+            { "control-id" : "si-7" },
+            
+            { "control-id" : "si-7.1" },
+            
+            { "control-id" : "si-7.2" },
+            
+            { "control-id" : "si-7.5" },
+            
+            { "control-id" : "si-7.7" },
+            
+            { "control-id" : "si-7.14" },
+            
+            { "control-id" : "si-8" },
+            
+            { "control-id" : "si-8.1" },
+            
+            { "control-id" : "si-8.2" },
+            
+            { "control-id" : "si-10" },
+            
+            { "control-id" : "si-11" },
+            
+            { "control-id" : "si-12" },
+            
+            { "control-id" : "si-16" } ] } },
+      "merge" : 
+      { "combine" : 
+        { "method" : "keep" },
+        "as-is" : true },
+      "modify" : 
+      { "parameter-settings" : 
+        { "ac-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ac-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ac-2_prm_4" : 
+          { "constraints" : 
+            { "detail" : "monthly for privileged accessed, every six (6) months for non-privileged access" } },
+          "ac-2.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "Selection: disables" } },
+          "ac-2.2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "24 hours from last use" } },
+          "ac-2.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "35 days for user accounts" } },
+          "ac-2.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "organization and\/or service provider system owner" } },
+          "ac-2.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "inactivity is anticipated to exceed Fifteen (15) minutes" } },
+          "ac-2.7_prm_1" : 
+          { "constraints" : 
+            { "detail" : "disables\/revokes access within a organization-specified timeframe" } },
+          "ac-2.9_prm_1" : 
+          { "constraints" : 
+            { "detail" : "organization-defined need with justification statement that explains why such accounts are necessary" } },
+          "ac-2.12_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at a minimum, the ISSO and\/or similar role within the organization" } },
+          "ac-2.13_prm_1" : 
+          { "constraints" : 
+            { "detail" : "one (1) hour" } },
+          "ac-6.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all functions not publicly accessible and all security-relevant information not publicly available" } },
+          "ac-6.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all security functions" } },
+          "ac-6.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all privileged commands" } },
+          "ac-6.7_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at a minimum, annually" } },
+          "ac-6.7_prm_2" : 
+          { "constraints" : 
+            { "detail" : "all users with privileges" } },
+          "ac-6.8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "any software except software explicitly documented" } },
+          "ac-7_prm_1" : 
+          { "constraints" : 
+            { "detail" : "not more than three (3)" } },
+          "ac-7_prm_2" : 
+          { "constraints" : 
+            { "detail" : "fifteen (15) minutes" } },
+          "ac-7_prm_4" : 
+          { "constraints" : 
+            { "detail" : "locks the account\/node for a minimum of three (3) hours or until unlocked by an administrator" } },
+          "ac-7.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "mobile devices as defined by organization policy" } },
+          "ac-7.2_prm_3" : 
+          { "constraints" : 
+            { "detail" : "three (3)" } },
+          "ac-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "see additional Requirements and Guidance" } },
+          "ac-8_prm_2" : 
+          { "constraints" : 
+            { "detail" : "see additional Requirements and Guidance" } },
+          "ac-10_prm_2" : 
+          { "constraints" : 
+            { "detail" : "three (3) sessions for privileged access and two (2) sessions for non-privileged access" } },
+          "ac-11_prm_1" : 
+          { "constraints" : 
+            { "detail" : "fifteen (15) minutes" } },
+          "ac-17.9_prm_1" : 
+          { "constraints" : 
+            { "detail" : "fifteen (15) minutes" } },
+          "ac-22_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least quarterly" } },
+          "at-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "at-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "at-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "at-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "at-3.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "malicious code indicators as defined by organization incident policy\/capability." } },
+          "at-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "five (5) years or 5 years after completion of a specific training program" } },
+          "au-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "au-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "au-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes" } },
+          "au-2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event" } },
+          "au-2.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "annually or whenever there is a change in the threat environment" } },
+          "au-3.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands" } },
+          "au-3.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all network, data storage, and computing devices" } },
+          "au-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "organization-defined actions to be taken (overwrite oldest record)" } },
+          "au-5.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "real-time" } },
+          "au-5.2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "service provider personnel with authority to address failed audit events" } },
+          "au-5.2_prm_3" : 
+          { "constraints" : 
+            { "detail" : "audit failure events requiring real-time alerts, as defined by organization audit policy" } },
+          "au-6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least weekly" } },
+          "au-6.5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "Possibly to include penetration test data." } },
+          "au-6.7_prm_1" : 
+          { "constraints" : 
+            { "detail" : "information system process; role; user" } },
+          "au-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "one second granularity of time measurement" } },
+          "au-8.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "At least hourly" } },
+          "au-8.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "http:\/\/tf.nist.gov\/tf-cgi\/servers.cgi" } },
+          "au-9.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least weekly" } },
+          "au-10_prm_1" : 
+          { "constraints" : 
+            { "detail" : "minimum actions including the addition, modification, deletion, approval, sending, or receiving of data" } },
+          "au-11_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least one (1) year" } },
+          "au-12_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all information system and network components where audit capability is deployed\/available" } },
+          "au-12.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all network, data storage, and computing devices" } },
+          "au-12.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "service provider-defined individuals or roles with audit configuration responsibilities" } },
+          "au-12.3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "all network, data storage, and computing devices" } },
+          "ca-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ca-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ca-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ca-2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "individuals or roles to include FedRAMP PMO" } },
+          "ca-2.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ca-2.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "any FedRAMP Accredited 3PAO" } },
+          "ca-2.3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "any FedRAMP Accredited 3PAO" } },
+          "ca-2.3_prm_3" : 
+          { "constraints" : 
+            { "detail" : "the conditions of the JAB\/AO in the FedRAMP Repository" } },
+          "ca-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "At least annually and on input from FedRAMP" } },
+          "ca-3.3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "boundary protections which meet the Trusted Internet Connection (TIC) requirements" } },
+          "ca-3.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "deny-all, permit by exception" } },
+          "ca-3.5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "any systems" } },
+          "ca-5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "ca-6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every three (3) years or when a significant change occurs" } },
+          "ca-7_prm_4" : 
+          { "constraints" : 
+            { "detail" : "to meet Federal and FedRAMP requirements (See additional guidance)" } },
+          "ca-7_prm_5" : 
+          { "constraints" : 
+            { "detail" : "to meet Federal and FedRAMP requirements (See additional guidance)" } },
+          "ca-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cm-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cm-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "cm-2.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually or when a significant change occurs" } },
+          "cm-2.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "to include when directed by the JAB" } },
+          "cm-2.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "organization-defined previous versions of baseline configurations of the previously approved baseline configuration of IS components" } },
+          "cm-3.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "organization agreed upon time period" } },
+          "cm-3.1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "organization defined configuration management approval authorities" } },
+          "cm-3.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "Configuration control board (CCB) or similar (as defined in CM-3)" } },
+          "cm-3.6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "All security safeguards that rely on cryptography" } },
+          "cm-5.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every thirty (30) days" } },
+          "cm-5.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least quarterly" } },
+          "cm-6_prm_1" : 
+          { "guidance" : 
+            { "prose" : "See CM-6(a) Additional FedRAMP Requirements and Guidance" } },
+          "cm-7_prm_1" : 
+          { "constraints" : 
+            { "detail" : "United States Government Configuration Baseline (USGCB)" } },
+          "cm-7.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "cm-7.5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least quarterly or when there is a change" } },
+          "cm-8_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "cm-8.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "Continuously, using automated mechanisms with a maximum five-minute delay in detection." } },
+          "cm-8.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "position and role" } },
+          "cm-11_prm_3" : 
+          { "constraints" : 
+            { "detail" : "Continuously (via CM-7 (5))" } },
+          "cp-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cp-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "cp-2_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cp-2.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "time period defined in service provider and organization SLA" } },
+          "cp-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "ten (10) days" } },
+          "cp-3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cp-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "cp-4_prm_2" : 
+          { "constraints" : 
+            { "detail" : "functional exercises" } },
+          "cp-8.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "annually" } },
+          "cp-9_prm_1" : 
+          { "constraints" : 
+            { "detail" : "daily incremental; weekly full" } },
+          "cp-9_prm_2" : 
+          { "constraints" : 
+            { "detail" : "daily incremental; weekly full" } },
+          "cp-9_prm_3" : 
+          { "constraints" : 
+            { "detail" : "daily incremental; weekly full" } },
+          "cp-9.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "cp-9.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "time period and transfer rate consistent with the recovery time and recovery point objectives defined in the service provider and organization SLA" } },
+          "cp-10.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "time period consistent with the restoration time-periods defined in the service provider and organization SLA" } },
+          "ia-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ia-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ia-2.11_prm_1" : 
+          { "constraints" : 
+            { "detail" : "FIPS 140-2, NIAP Certification, or NSA approval" } },
+          "ia-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at a minimum, the ISSO (or similar role within the organization)" } },
+          "ia-4_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least two (2) years" } },
+          "ia-4_prm_3" : 
+          { "constraints" : 
+            { "detail" : "thirty-five (35) days (See additional requirements and guidance.)" } },
+          "ia-4.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "contractors; foreign nationals]" } },
+          "ia-5.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least fifty percent (50%)" } },
+          "ia-5.1_prm_4" : 
+          { "constraints" : 
+            { "detail" : "twenty four (24)" } },
+          "ia-5.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "All hardware\/biometric (multifactor authenticators)" } },
+          "ia-5.3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "in person" } },
+          "ia-5.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "complexity as identified in IA-5 (1) Control Enhancement Part (a)" } },
+          "ia-5.8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "different authenticators on different systems" } },
+          "ir-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ir-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ir-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "within ten (10) days" } },
+          "ir-2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ir-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every six (6) months" } },
+          "ir-4.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all network, data storage, and computing devices" } },
+          "ir-4.8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "external organizations including consumer incident responders and network defenders and the appropriate CIRT\/CERT (such as US-CERT, DOD CERT, IC CERT)" } },
+          "ir-6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)" } },
+          "ir-8_prm_2" : 
+          { "constraints" : 
+            { "detail" : "see additional FedRAMP Requirements and Guidance" } },
+          "ir-8_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ir-8_prm_4" : 
+          { "constraints" : 
+            { "detail" : "see additional FedRAMP Requirements and Guidance" } },
+          "ir-9.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ma-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ma-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ma-3.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "the information owner explicitly authorizing removal of the equipment from the facility" } },
+          "mp-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "mp-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "mp-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "any digital and non-digital media deemed sensitive" } },
+          "mp-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "no removable media types" } },
+          "mp-3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "organization-defined security safeguards not applicable" } },
+          "mp-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all types of digital and non-digital media with sensitive information" } },
+          "mp-4_prm_2" : 
+          { "constraints" : 
+            { "detail" : "see additional FedRAMP requirements and guidance" } },
+          "mp-5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all media with sensitive information" } },
+          "mp-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "prior to leaving secure\/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container" } },
+          "mp-6_prm_2" : 
+          { "constraints" : 
+            { "detail" : "techniques and procedures IAW NIST SP 800-88 R1, Appendix A - Minimum Sanitization Recommendations" } },
+          "mp-6.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every six (6) months" } },
+          "pe-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "pe-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "pe-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every ninety (90) days" } },
+          "pe-3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "CSP defined physical access control systems\/devices AND guards" } },
+          "pe-3_prm_3" : 
+          { "constraints" : 
+            { "detail" : "CSP defined physical access control systems\/devices" } },
+          "pe-3_prm_6" : 
+          { "constraints" : 
+            { "detail" : "in all circumstances within restricted access area where the information system resides" } },
+          "pe-3_prm_8" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "pe-3_prm_9" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "pe-6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "pe-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "for a minimum of one (1) year" } },
+          "pe-8_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "pe-13.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "service provider building maintenance\/physical security personnel" } },
+          "pe-13.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "service provider emergency responders with incident response responsibilities" } },
+          "pe-14_prm_1" : 
+          { "constraints" : 
+            { "detail" : "consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments" } },
+          "pe-14_prm_2" : 
+          { "constraints" : 
+            { "detail" : "continuously" } },
+          "pe-15.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "service provider building maintenance\/physical security personnel" } },
+          "pe-16_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all information system components" } },
+          "pe-18_prm_1" : 
+          { "constraints" : 
+            { "detail" : "physical and environmental hazards identified during threat assessment" } },
+          "pl-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "pl-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "pl-2_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "pl-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "annually" } },
+          "pl-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually or when a significant change occurs" } },
+          "ps-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ps-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ps-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ps-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions" } },
+          "ps-3.3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "personnel screening criteria - as required by specific information" } },
+          "ps-4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "eight (8) hours" } },
+          "ps-4.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "access control personnel responsible for disabling access to the system" } },
+          "ps-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "twenty-four (24) hours" } },
+          "ps-5_prm_4" : 
+          { "constraints" : 
+            { "detail" : "twenty-four (24) hours" } },
+          "ps-6_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ps-6_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually and any time there is a change to the user's level of access" } },
+          "ps-7_prm_2" : 
+          { "constraints" : 
+            { "detail" : "terminations: immediately; transfers: within twenty-four (24) hours" } },
+          "ps-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at a minimum, the ISSO and\/or similar role within the organization" } },
+          "ra-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "ra-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ra-3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "security assessment report" } },
+          "ra-3_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "ra-3_prm_5" : 
+          { "constraints" : 
+            { "detail" : "annually" } },
+          "ra-5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "monthly operating system\/infrastructure; monthly web applications and databases" } },
+          "ra-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery" } },
+          "ra-5.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "prior to a new scan" } },
+          "ra-5.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "notify appropriate service provider personnel and follow procedures for organization and service provider-defined corrective actions" } },
+          "ra-5.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "operating systems \/ web applications \/ databases" } },
+          "ra-5.5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "all scans" } },
+          "sa-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "sa-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "sa-4.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at a minimum to include security-relevant external system interfaces; high-level design; low-level design; source code or network and data flow diagram; [organization-defined design\/implementation information]" } },
+          "sa-4.8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least the minimum requirement as defined in control CA-7" } },
+          "sa-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at a minimum, the ISSO (or similar role within the organization)" } },
+          "sa-9_prm_1" : 
+          { "constraints" : 
+            { "detail" : "FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system" } },
+          "sa-9_prm_2" : 
+          { "constraints" : 
+            { "detail" : "Federal\/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored" } },
+          "sa-9.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "all external systems where Federal information is processed or stored" } },
+          "sa-9.4_prm_2" : 
+          { "constraints" : 
+            { "detail" : "all external systems where Federal information is processed or stored" } },
+          "sa-9.5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "information processing, information data, AND information services" } },
+          "sa-10_prm_1" : 
+          { "constraints" : 
+            { "detail" : "development, implementation, AND operation" } },
+          "sa-12_prm_1" : 
+          { "constraints" : 
+            { "detail" : "organization and service provider-defined personnel security requirements, approved HW\/SW vendor list\/process, and secure SDLC procedures" } },
+          "sa-15_prm_1" : 
+          { "constraints" : 
+            { "detail" : "as needed and as dictated by the current threat posture" } },
+          "sa-15_prm_2" : 
+          { "constraints" : 
+            { "detail" : "organization and service provider- defined security requirements" } },
+          "sc-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "sc-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "sc-7.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least every ninety (90) days or whenever there is a change in the threat environment that warrants a review of the exceptions" } },
+          "sc-7.12_prm_1" : 
+          { "constraints" : 
+            { "detail" : "Host Intrusion Prevention System (HIPS), Host Intrusion Detection System (HIDS), or minimally a host-based firewall" } },
+          "sc-8_prm_1" : 
+          { "constraints" : 
+            { "detail" : "confidentiality AND integrity" } },
+          "sc-8.1_prm_1" : 
+          { "constraints" : 
+            { "detail" : "prevent unauthorized disclosure of information AND detect changes to information" } },
+          "sc-8.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "a hardened or alarmed carrier Protective Distribution System (PDS)" } },
+          "sc-10_prm_1" : 
+          { "constraints" : 
+            { "detail" : "no longer than ten (10) minutes for privileged sessions and no longer than fifteen (15) minutes for user sessions" } },
+          "sc-12.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "NIST FIPS-compliant" } },
+          "sc-13_prm_1" : 
+          { "constraints" : 
+            { "detail" : "FIPS-validated or NSA-approved cryptography" } },
+          "sc-15_prm_1" : 
+          { "constraints" : 
+            { "detail" : "no exceptions" } },
+          "sc-28_prm_1" : 
+          { "constraints" : 
+            { "detail" : "confidentiality AND integrity" } },
+          "sc-28.1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "all information system components storing customer data deemed sensitive" } },
+          "si-1_prm_2" : 
+          { "constraints" : 
+            { "detail" : "at least annually" } },
+          "si-1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "at least annually or whenever a significant change occurs" } },
+          "si-2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "thirty (30) days of release of updates" } },
+          "si-2.2_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "si-3_prm_1" : 
+          { "constraints" : 
+            { "detail" : "at least weekly" } },
+          "si-3_prm_2" : 
+          { "constraints" : 
+            { "detail" : "to include endpoints" } },
+          "si-3_prm_3" : 
+          { "constraints" : 
+            { "detail" : "to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime" } },
+          "si-4.4_prm_1" : 
+          { "constraints" : 
+            { "detail" : "continuously" } },
+          "si-5_prm_1" : 
+          { "constraints" : 
+            { "detail" : "to include US-CERT" } },
+          "si-5_prm_2" : 
+          { "constraints" : 
+            { "detail" : "to include system security personnel and administrators with configuration\/patch-management responsibilities" } },
+          "si-6_prm_3" : 
+          { "constraints" : 
+            { "detail" : "to include upon system startup and\/or restart" } },
+          "si-6_prm_4" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } },
+          "si-6_prm_5" : 
+          { "constraints" : 
+            { "detail" : "to include system administrators and security personnel" } },
+          "si-6_prm_7" : 
+          { "constraints" : 
+            { "detail" : "to include notification of system administrators and security personnel" } },
+          "si-7.1_prm_3" : 
+          { "constraints" : 
+            { "detail" : "selection to include security relevant events" } },
+          "si-7.1_prm_4" : 
+          { "constraints" : 
+            { "detail" : "at least monthly" } } },
+        "alterations" : 
+        [ 
+          { "control-id" : "ac-2.3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-2.3_smt",
+              "parts" : 
+              { "id" : "ac-2.3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-2 (3) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-2.3_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB\/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available." } } } },
+          
+          { "control-id" : "ac-2.5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-2.5_smt",
+              "parts" : 
+              { "id" : "ac-2.5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-2 (5) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-2.5_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Should use a shorter timeframe than AC-12." } } } },
+          
+          { "control-id" : "ac-2.9",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-2.9_smt",
+              "parts" : 
+              { "id" : "ac-2.9_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-2 (9) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-2.9_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Required if shared\/group accounts are deployed" } } } },
+          
+          { "control-id" : "ac-2.10",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-2.10_smt",
+              "parts" : 
+              { "id" : "ac-2.10_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-2 (10) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-2.10_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Required if shared\/group accounts are deployed" } } } },
+          
+          { "control-id" : "ac-2.12",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-2.12_smt",
+              "parts" : 
+              { "id" : "ac-2.12_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-2 (12) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ac-2.12_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "(a) Guidance:" },
+                    "prose" : "Required for privileged accounts." },
+                  
+                  { "id" : "ac-2.12_fr_gdn.2",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "(b) Guidance:" },
+                    "prose" : "Required for privileged accounts." } ] } } },
+          
+          { "control-id" : "ac-5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-5_smt",
+              "parts" : 
+              { "id" : "ac-5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-5 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-5_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP." } } } },
+          
+          { "control-id" : "ac-6.2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-6.2_smt",
+              "parts" : 
+              { "id" : "ac-6.2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-6 (2) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-6.2_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions." } } } },
+          
+          { "control-id" : "ac-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-8_smt",
+              "parts" : 
+              { "id" : "ac-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ac-8_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB\/AO." },
+                  
+                  { "id" : "ac-8_fr_smt.2",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB\/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided." },
+                  
+                  { "id" : "ac-8_fr_smt.3",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB\/AO." } ] } } },
+          
+          { "control-id" : "ac-12.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ac-12.1_smt",
+              "parts" : 
+              { "id" : "ac-12.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AC-12 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ac-12.1_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "https:\/\/www.owasp.org\/index.php\/Testing_for_logout_functionality_%28OTG-SESS-006%29" } } } },
+          
+          { "control-id" : "au-2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-2_smt",
+              "parts" : 
+              { "id" : "au-2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-2 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "au-2_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Coordination between service provider and consumer shall be documented and accepted by the JAB\/AO." } } } },
+          
+          { "control-id" : "au-2.3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-2.3_smt",
+              "parts" : 
+              { "id" : "au-2.3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-2 (3) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "au-2.3_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Annually or whenever changes in the threat environment are communicated to the service provider by the JAB\/AO." } } } },
+          
+          { "control-id" : "au-3.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-3.1_smt",
+              "parts" : 
+              { "id" : "au-3.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-3 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "au-3.1_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider defines audit record types *[FedRAMP Assignment: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]*.  The audit record types are approved and accepted by the JAB\/AO." },
+                  
+                  { "id" : "au-3.1_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry." } ] } } },
+          
+          { "control-id" : "au-6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-6_smt",
+              "parts" : 
+              { "id" : "au-6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-6 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "au-6_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Coordination between service provider and consumer shall be documented and accepted by the JAB\/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented." } } } },
+          
+          { "control-id" : "au-6.6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-6.6_smt",
+              "parts" : 
+              { "id" : "au-6.6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-6 (6) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "au-6.6_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Coordination between service provider and consumer shall be documented and accepted by the JAB\/AO." } } } },
+          
+          { "control-id" : "au-8.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-8.1_smt",
+              "parts" : 
+              { "id" : "au-8.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-8 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "au-8.1_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server." },
+                  
+                  { "id" : "au-8.1_fr_smt.2",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server." },
+                  
+                  { "id" : "au-8.1_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "Synchronization of system clocks improves the accuracy of log analysis." } ] } } },
+          
+          { "control-id" : "au-11",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "au-11_smt",
+              "parts" : 
+              { "id" : "au-11_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "AU-11 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "au-11_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements." } } } },
+          
+          { "control-id" : "ca-2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-2_smt",
+              "parts" : 
+              { "id" : "ca-2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-2 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-2_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance [https:\/\/www.fedramp.gov\/documents\/](https:\/\/www.fedramp.gov\/documents\/)" } } } },
+          
+          { "control-id" : "ca-2.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-2.1_smt",
+              "parts" : 
+              { "id" : "ca-2.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-2 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-2.1_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO)." } } } },
+          
+          { "control-id" : "ca-2.2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-2.2_smt",
+              "parts" : 
+              { "id" : "ca-2.2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-2 (2) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-2.2_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "To include 'announced', 'vulnerability scanning'" } } } },
+          
+          { "control-id" : "ca-3.3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-3.3_smt",
+              "parts" : 
+              { "id" : "ca-3.3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-3 (3) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-3.3_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document." } } } },
+          
+          { "control-id" : "ca-3.5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-3.5_smt",
+              "parts" : 
+              { "id" : "ca-3.5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-3 (5) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-3.5_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing" } } } },
+          
+          { "control-id" : "ca-5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-5_smt",
+              "parts" : 
+              { "id" : "ca-5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-5 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ca-5_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "Plan of Action & Milestones (POA&M) must be provided at least monthly." },
+                  
+                  { "id" : "ca-5_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https:\/\/www.fedramp.gov\/documents\/](https:\/\/www.fedramp.gov\/documents\/)" } ] } } },
+          
+          { "control-id" : "ca-6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-6_smt",
+              "parts" : 
+              { "id" : "ca-6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-6(c) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-6_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB\/AO." } } } },
+          
+          { "control-id" : "ca-7",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-7_smt",
+              "parts" : 
+              { "id" : "ca-7_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-7 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ca-7_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually." },
+                  
+                  { "id" : "ca-7_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates." },
+                  
+                  { "id" : "ca-7_fr_gdn.2",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https:\/\/www.fedramp.gov\/documents\/](https:\/\/www.fedramp.gov\/documents\/)" } ] } } },
+          
+          { "control-id" : "ca-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ca-8_smt",
+              "parts" : 
+              { "id" : "ca-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CA-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ca-8_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Penetration Test Guidance [https:\/\/www.FedRAMP.gov\/documents\/](https:\/\/www.FedRAMP.gov\/documents\/)" } } } },
+          
+          { "control-id" : "cm-2.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-2.1_smt",
+              "parts" : 
+              { "id" : "cm-2.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cm-2.1_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "(a) Guidance:" },
+                  "prose" : "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7." } } } },
+          
+          { "control-id" : "cm-3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-3_smt",
+              "parts" : 
+              { "id" : "cm-3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-3 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "cm-3_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB\/AO." },
+                  
+                  { "id" : "cm-3_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "(e) Guidance:" },
+                    "prose" : "In accordance with record retention policies and procedures." } ] } } },
+          
+          { "control-id" : "cm-5.3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-5.3_smt",
+              "parts" : 
+              { "id" : "cm-5.3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-5 (3) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cm-5.3_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "If digital signatures\/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized." } } } },
+          
+          { "control-id" : "cm-6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-6_smt",
+              "parts" : 
+              { "id" : "cm-6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-6(a) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "cm-6_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement 1:" },
+                    "prose" : "The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. " },
+                  
+                  { "id" : "cm-6_fr_smt.2",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement 2:" },
+                    "prose" : "The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) ([http:\/\/scap.nist.gov\/](http:\/\/scap.nist.gov\/)) validated or SCAP compatible (if validated checklists are not available)." },
+                  
+                  { "id" : "cm-6_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "Information on the USGCB checklists can be found at: [https:\/\/csrc.nist.gov\/Projects\/United-States-Government-Configuration-Baseline](https:\/\/csrc.nist.gov\/Projects\/United-States-Government-Configuration-Baseline)." } ] } } },
+          
+          { "control-id" : "cm-7",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-7_smt",
+              "parts" : 
+              { "id" : "cm-7_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-7 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "cm-7_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and\/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and\/or services if USGCB is not available." },
+                  
+                  { "id" : "cm-7_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "Information on the USGCB checklists can be found at: [http:\/\/usgcb.nist.gov\/usgcb_faq.html#usgcbfaq_usgcbfdcc](http:\/\/usgcb.nist.gov\/usgcb_faq.html#usgcbfaq_usgcbfdcc). Partially derived from AC-17(8)." } ] } } },
+          
+          { "control-id" : "cm-7.2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-7.2_smt",
+              "parts" : 
+              { "id" : "cm-7.2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-7 (2) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cm-7.2_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run." } } } },
+          
+          { "control-id" : "cm-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cm-8_smt",
+              "parts" : 
+              { "id" : "cm-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CM-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cm-8_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Must be provided at least monthly or when there is a change." } } } },
+          
+          { "control-id" : "cp-2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-2_smt",
+              "parts" : 
+              { "id" : "cp-2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-2 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cp-2_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "CP-2 Requirement:" },
+                  "prose" : "For JAB authorizations the contingency lists include designated FedRAMP personnel." } } } },
+          
+          { "control-id" : "cp-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-4_smt",
+              "parts" : 
+              { "id" : "cp-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-4(a) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cp-4_fr_smt.a",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "CP-4(a) Requirement:" },
+                  "prose" : "The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB\/AO prior to initiating testing." } } } },
+          
+          { "control-id" : "cp-7",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-7_smt",
+              "parts" : 
+              { "id" : "cp-7_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-7 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cp-7_fr_smt.a",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "(a) Requirement:" },
+                  "prose" : "The service provider defines a time period consistent with the recovery time objectives and business impact analysis." } } } },
+          
+          { "control-id" : "cp-7.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-7.1_smt",
+              "parts" : 
+              { "id" : "cp-7.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-7 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cp-7.1_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant." } } } },
+          
+          { "control-id" : "cp-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-8_smt",
+              "parts" : 
+              { "id" : "cp-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "cp-8_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider defines a time period consistent with the recovery time objectives and business impact analysis." } } } },
+          
+          { "control-id" : "cp-9",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "cp-9_smt",
+              "parts" : 
+              { "id" : "cp-9_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "CP-9 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "cp-9_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check." },
+                  
+                  { "id" : "cp-9_fr_smt.a",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "CP-9(a) Requirement:" },
+                    "prose" : "The service provider maintains at least three backup copies of user-level information (at least one of which is available online)." },
+                  
+                  { "id" : "cp-9_fr_smt.b",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "CP-9(b)Requirement:" },
+                    "prose" : "The service provider maintains at least three backup copies of system-level information (at least one of which is available online)." },
+                  
+                  { "id" : "cp-9_fr_smt.c",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "CP-9(c)Requirement:" },
+                    "prose" : "The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online)." } ] } } },
+          
+          { "control-id" : "ia-2.11",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-2.11_smt",
+              "parts" : 
+              { "id" : "ia-2.11_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-2 (11) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ia-2.11_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials." } } } },
+          
+          { "control-id" : "ia-2.12",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-2.12_smt",
+              "parts" : 
+              { "id" : "ia-2.12_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-2 (12) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ia-2.12_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV\/FIPS 201\/HSPD-12." } } } },
+          
+          { "control-id" : "ia-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-4_smt",
+              "parts" : 
+              { "id" : "ia-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-4(e) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ia-4_fr_smt.e",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider defines the time period of inactivity for device identifiers." },
+                  
+                  { "id" : "ia-4_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP [http:\/\/iase.disa.mil\/cloud_security\/Pages\/index.aspx](http:\/\/iase.disa.mil\/cloud_security\/Pages\/index.aspx)." } ] } } },
+          
+          { "control-id" : "ia-5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-5_smt",
+              "parts" : 
+              { "id" : "ia-5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-5 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ia-5_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 3. Link [https:\/\/pages.nist.gov\/800-63-3](https:\/\/pages.nist.gov\/800-63-3)." } } } },
+          
+          { "control-id" : "ia-5.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-5.1_smt",
+              "parts" : 
+              { "id" : "ia-5.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-5 (1), (a) and (d) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ia-5.1_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "(a) (d) Guidance:" },
+                  "prose" : "If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant." } } } },
+          
+          { "control-id" : "ia-5.4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ia-5.4_smt",
+              "parts" : 
+              { "id" : "ia-5.4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IA-5 (4) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ia-5.4_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators." } } } },
+          
+          { "control-id" : "ir-3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ir-3_smt",
+              "parts" : 
+              { "id" : "ir-3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IR-3 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ir-3_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "IR-3 -2 Requirement:" },
+                  "prose" : "The service provider defines tests and\/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB\/AO annually. Test plans are approved and accepted by the JAB\/AO prior to test commencing." } } } },
+          
+          { "control-id" : "ir-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ir-4_smt",
+              "parts" : 
+              { "id" : "ir-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IR-4 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ir-4_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality\/sensitivity of the information being processed, stored, and transmitted by the information system." } } } },
+          
+          { "control-id" : "ir-6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ir-6_smt",
+              "parts" : 
+              { "id" : "ir-6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IR-6 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ir-6_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "Report security incident information according to FedRAMP Incident Communications Procedure." } } } },
+          
+          { "control-id" : "ir-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ir-8_smt",
+              "parts" : 
+              { "id" : "ir-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "IR-8 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ir-8_fr_smt.b",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "(b) Requirement:" },
+                    "prose" : "The service provider defines a list of incident response personnel (identified by name and\/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel." },
+                  
+                  { "id" : "ir-8_fr_smt.e",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "(e) Requirement:" },
+                    "prose" : "The service provider defines a list of incident response personnel (identified by name and\/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel." } ] } } },
+          
+          { "control-id" : "mp-3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "mp-3_smt",
+              "parts" : 
+              { "id" : "mp-3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "MP-3 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "mp-3_fr_gdn.b",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "(b) Guidance:" },
+                  "prose" : "Second parameter not-applicable" } } } },
+          
+          { "control-id" : "mp-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "mp-4_smt",
+              "parts" : 
+              { "id" : "mp-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "MP-4 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "mp-4_fr_smt.a",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "(a) Requirement:" },
+                  "prose" : "The service provider defines controlled areas within facilities where the information and information system reside." } } } },
+          
+          { "control-id" : "mp-5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "mp-5_smt",
+              "parts" : 
+              { "id" : "mp-5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "MP-5 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "mp-5_fr_smt.a",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "(a) Requirement:" },
+                  "prose" : "The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB." } } } },
+          
+          { "control-id" : "mp-6.2",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "mp-6.2_smt",
+              "parts" : 
+              { "id" : "mp-6.2_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "MP-6 (2) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "mp-6.2_fr_gdn.a",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "(a) Requirement:" },
+                  "prose" : "Equipment and procedures may be tested or validated for effectiveness" } } } },
+          
+          { "control-id" : "pe-14",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "pe-14_smt",
+              "parts" : 
+              { "id" : "pe-14_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "PE-14(a) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "pe-14_fr_smt.a",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "(a) Requirement:" },
+                  "prose" : "The service provider measures temperature at server inlets and humidity levels by dew point." } } } },
+          
+          { "control-id" : "pl-8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "pl-8_smt",
+              "parts" : 
+              { "id" : "pl-8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "PL-8(b) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "pl-8_fr_gdn.b",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "(b) Guidance:" },
+                  "prose" : "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7." } } } },
+          
+          { "control-id" : "ra-3",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ra-3_smt",
+              "parts" : 
+              { "id" : "ra-3_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "RA-3 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ra-3_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F" },
+                  
+                  { "id" : "ra-3_fr_smt.d",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "RA-3 (d) Requirement:" },
+                    "prose" : "Include all Authorizing Officials; for JAB authorizations to include FedRAMP." } ] } } },
+          
+          { "control-id" : "ra-5",
+            "additions" : 
+            { "id-ref" : "ra-5_smt",
+              "parts" : 
+              [ 
+                { "id" : "ra-5_fr_smt.a",
+                  "name" : "item",
+                  "title" : "RA-5(a) Additional FedRAMP Requirements and Guidance",
+                  "properties" : 
+                  { "label" : "RA-5 (a)Requirement:" },
+                  "prose" : "An accredited independent assessor scans operating systems\/infrastructure, web applications, and databases once annually." },
+                
+                { "id" : "ra-5_fr_smt.e",
+                  "name" : "item",
+                  "title" : "RA-5(e) Additional FedRAMP Requirements and Guidance",
+                  "properties" : 
+                  { "label" : "RA-5 (e)Requirement:" },
+                  "prose" : "To include all Authorizing Officials; for JAB authorizations to include FedRAMP." },
+                
+                { "id" : "ra-5_fr",
+                  "name" : "item",
+                  "ns" : "fedramp",
+                  "title" : "RA-5 Additional FedRAMP Requirements and Guidance",
+                  "parts" : 
+                  { "id" : "ra-5_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "**See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements** ([https:\/\/www.FedRAMP.gov\/documents\/](https:\/\/www.FedRAMP.gov\/documents\/))" } } ] } },
+          
+          { "control-id" : "ra-5.6",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ra-5.6_smt",
+              "parts" : 
+              { "id" : "ra-5.6_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "RA-5 (6) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ra-5.6_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Include in Continuous Monitoring ISSO digest\/report to JAB\/AO" } } } },
+          
+          { "control-id" : "ra-5.8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ra-5.8_smt",
+              "parts" : 
+              { "id" : "ra-5.8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "RA-5 (8) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "ra-5.8_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "This enhancement is required for all high vulnerability scan findings." },
+                  
+                  { "id" : "ra-5.8_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability." } ] } } },
+          
+          { "control-id" : "ra-5.10",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "ra-5.10_smt",
+              "parts" : 
+              { "id" : "ra-5.10_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "RA-5 (10) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "ra-5.10_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "If multiple tools are not used, this control is not applicable." } } } },
+          
+          { "control-id" : "sa-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sa-4_smt",
+              "parts" : 
+              { "id" : "sa-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SA-4 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sa-4_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "The use of Common Criteria (ISO\/IEC 15408) evaluated products is strongly preferred. See [http:\/\/www.niap-ccevs.org\/vpl](http:\/\/www.niap-ccevs.org\/vpl) or [http:\/\/www.commoncriteriaportal.org\/products.html](http:\/\/www.commoncriteriaportal.org\/products.html)." } } } },
+          
+          { "control-id" : "sa-4.8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sa-4.8_smt",
+              "parts" : 
+              { "id" : "sa-4.8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SA-4 (8) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sa-4.8_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "CSP must use the same security standards regardless of where the system component or information system service is acquired." } } } },
+          
+          { "control-id" : "sa-10",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sa-10_smt",
+              "parts" : 
+              { "id" : "sa-10_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SA-10 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sa-10_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "(e)  Requirement:" },
+                  "prose" : "For JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP." } } } },
+          
+          { "control-id" : "sa-11.1",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sa-11.1_smt",
+              "parts" : 
+              { "id" : "sa-11.1_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SA-11 (1) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sa-11.1_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed." } } } },
+          
+          { "control-id" : "sa-11.8",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sa-11.8_smt",
+              "parts" : 
+              { "id" : "sa-11.8_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SA-11 (8) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sa-11.8_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed." } } } },
+          
+          { "control-id" : "sc-7.13",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sc-7.13_smt",
+              "parts" : 
+              { "id" : "sc-7.13_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SC-7 (13) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                [ 
+                  { "id" : "sc-7.13_fr_smt.1",
+                    "name" : "item",
+                    "properties" : 
+                    { "label" : "Requirement:" },
+                    "prose" : "The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets." },
+                  
+                  { "id" : "sc-7.13_fr_gdn.1",
+                    "name" : "guidance",
+                    "properties" : 
+                    { "label" : "Guidance:" },
+                    "prose" : "Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative\/management traffic; Demilitarized Zones (DMZs), Server farms\/computing centers, centralized audit log servers etc." } ] } } },
+          
+          { "control-id" : "sc-12",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sc-12_smt",
+              "parts" : 
+              { "id" : "sc-12_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SC-12 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sc-12_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "Federally approved and validated cryptography." } } } },
+          
+          { "control-id" : "sc-15",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sc-15_smt",
+              "parts" : 
+              { "id" : "sc-15_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SC-15 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sc-15_fr_smt.1",
+                  "name" : "item",
+                  "properties" : 
+                  { "label" : "Requirement:" },
+                  "prose" : "The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use." } } } },
+          
+          { "control-id" : "sc-28",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "sc-28_smt",
+              "parts" : 
+              { "id" : "sc-28_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SC-28 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "sc-28_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "The organization supports the capability to use cryptographic mechanisms to protect information at rest." } } } },
+          
+          { "control-id" : "si-4",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "si-4_smt",
+              "parts" : 
+              { "id" : "si-4_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SI-4 Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "si-4_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "See US-CERT Incident Response Reporting Guidelines." } } } },
+          
+          { "control-id" : "si-4.5",
+            "additions" : 
+            { "position" : "ending",
+              "id-ref" : "si-4.5_smt",
+              "parts" : 
+              { "id" : "si-4.5_fr",
+                "name" : "item",
+                "ns" : "fedramp",
+                "title" : "SI-4 (5) Additional FedRAMP Requirements and Guidance",
+                "parts" : 
+                { "id" : "si-4.5_fr_gdn.1",
+                  "name" : "guidance",
+                  "properties" : 
+                  { "label" : "Guidance:" },
+                  "prose" : "In accordance with the incident response plan." } } } } ] } } }
+

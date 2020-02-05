@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="c16d4707-5f78-453f-b1e9-6639d7604c57">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-68008409-ee13-437e-a506-55f778f4ede0">
   <metadata>
     <title>FedRAMP Moderate Baseline [RESOLVED]</title>
-    <published>2019-11-27T00:00:00.000-05:00</published>
-    <last-modified>2019-11-25T21:20:00.000000-05:00</last-modified>
+    <published>2020-02-02T00:00:00.000-05:00</published>
+    <last-modified>2020-02-05T17:01:01.000000-05:00</last-modified>
     <version>1.2</version>
     <oscal-version>1.0.0-milestone2</oscal-version>
     <role id="prepared-by">
@@ -1688,9 +1688,9 @@
       </param>
       <param id="ac-7_prm_3">
         <select>
-          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/> </choice>
+          <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/></choice>
           <choice>locks the account/node until released by an administrator</choice>
-          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/> </choice>
+          <choice>delays next logon prompt according to <insert param-id="ac-7_prm_5"/></choice>
         </select>
       </param>
       <param id="ac-7_prm_4" depends-on="ac-7_prm_3">
@@ -1947,22 +1947,6 @@
           <p>Automated mechanisms implementing system use notification</p>
         </part>
       </part>
-      <control class="SP800-53" id="ac-8.fr">
-        <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">AC-8 Req</prop>
-        <part id="ac-8.fr_smt.1" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control.  The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
-        </part>
-        <part id="ac-8.fr_smt.2" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check.  The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.  If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
-        </part>
-        <part id="ac-8.fr_smt.3" name="item">
-          <prop name="label">Requirement:</prop>
-          <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider.  The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ac-10">
       <title>Concurrent Session Control</title>
@@ -1982,7 +1966,7 @@
         <p>Organizations may define the maximum number of concurrent sessions for information system accounts globally, by account type (e.g., privileged user, non-privileged user, domain, specific application), by account, or a combination. For example, organizations may limit the number of concurrent sessions for system administrators or individuals working in particularly sensitive domains or mission-critical applications. This control addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts.</p>
       </part>
       <part id="ac-10_obj" name="objective">
-        <p> Determine if:</p>
+        <p>Determine if:</p>
         <part id="ac-10_obj.1" name="objective">
           <prop name="label">AC-10[1]</prop>
           <p>the organization defines account and/or account types for the information system;</p>
@@ -2047,7 +2031,7 @@
         <link rel="related" href="#ac-7">AC-7</link>
       </part>
       <part id="ac-11_obj" name="objective">
-        <p> Determine if:</p>
+        <p>Determine if:</p>
         <part id="ac-11.a_obj" name="objective">
           <prop name="label">AC-11(a)</prop>
           <part id="ac-11.a_obj.1" name="objective">
@@ -2787,7 +2771,7 @@
         <link rel="related" href="#si-4">SI-4</link>
       </part>
       <part id="ac-19_obj" name="objective">
-        <p> Determine if the organization:</p>
+        <p>Determine if the organization:</p>
         <part id="ac-19.a_obj" name="objective">
           <prop name="label">AC-19(a)</prop>
           <p>establishes for organization-controlled mobile devices:</p>
@@ -6387,28 +6371,6 @@
           </part>
         </part>
       </control>
-      <control class="SP800-53-enhancement" id="ca-7.fr">
-        <title>Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">CA-7 Req</prop>
-        <part id="ca-7.fr_smt.1" name="item">
-          <prop name="label">Requirement 1</prop>
-          <p>Operating System Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.2" name="item">
-          <prop name="label">Requirement 2</prop>
-          <p>Database and Web Application Scans: at least monthly</p>
-        </part>
-        <part id="ca-7.fr_smt.3" name="item">
-          <prop name="label">Requirement 3</prop>
-          <p>All scans performed by Independent Assessor: at least annually</p>
-        </part>
-        <part id="ca-7.fr_gdn.1" name="guidance">
-          <p>CSPs must provide evidence of closure and remediation of a high vulnerability within the timeframe for standard POA&amp;M updates.</p>
-        </part>
-        <part id="ca-7.fr_gdn.2" name="guidance">
-          <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a></p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="ca-8">
       <title>Penetration Testing</title>
@@ -8482,7 +8444,7 @@
           <select how-many="one or more">
             <choice>disables network access by such components</choice>
             <choice>isolates the components</choice>
-            <choice>notifies <insert param-id="cm-8.3_prm_3"/> </choice>
+            <choice>notifies <insert param-id="cm-8.3_prm_3"/></choice>
           </select>
         </param>
         <param id="cm-8.3_prm_3" depends-on="cm-8.3_prm_2">
@@ -23569,14 +23531,6 @@
           <p>automated mechanisms providing an indication of use of collaborative computing devices</p>
         </part>
       </part>
-      <control class="SP800-53-enhancement" id="sc-15.fr">
-        <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-        <prop name="label">SC-15 Req</prop>
-        <part id="sc-15.fr_smt" name="item">
-          <prop name="label">Requirement</prop>
-          <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
-        </part>
-      </control>
     </control>
     <control class="SP800-53" id="sc-17">
       <title>Public Key Infrastructure Certificates</title>
@@ -26021,7 +25975,7 @@
         <param id="si-7.1_prm_2">
           <select how-many="one or more">
             <choice>at startup</choice>
-            <choice>at <insert param-id="si-7.1_prm_3"/> </choice>
+            <choice>at <insert param-id="si-7.1_prm_3"/></choice>
             <choice>
               <insert param-id="si-7.1_prm_4"/>
             </choice>
