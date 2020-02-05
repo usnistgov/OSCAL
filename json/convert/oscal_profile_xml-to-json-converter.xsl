@@ -66,9 +66,10 @@
    </xsl:template>
    <xsl:template name="prose">
       <xsl:param name="key" select="'PROSE'"/>
+      <xsl:param name="wrapped" select="false()"/>
       <xsl:variable name="blocks"
                     select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
-      <xsl:if test="exists($blocks)">
+      <xsl:if test="exists($blocks) or $wrapped">
          <xsl:variable name="string-sequence" as="element()*">
             <xsl:apply-templates mode="md" select="$blocks"/>
          </xsl:variable>
@@ -270,6 +271,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -353,6 +355,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -384,6 +387,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -446,6 +450,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -497,6 +502,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -629,6 +635,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -667,6 +674,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>
@@ -696,6 +704,7 @@
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
             </xsl:call-template>
          </xsl:for-each>
       </map>

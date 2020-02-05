@@ -1217,4 +1217,6 @@
         "additionalProperties" : false } },
     "properties" : 
     { "catalog" : 
-      { "$ref" : "#/definitions/catalog" } } }
+      { "$ref" : "#/definitions/catalog" } },
+    "required" : 
+    [ "catalog" ] }

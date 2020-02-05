@@ -1209,4 +1209,6 @@
         "additionalProperties" : false } },
     "properties" : 
     { "component-definition" : 
-      { "$ref" : "#/definitions/component-definition" } } }
+      { "$ref" : "#/definitions/component-definition" } },
+    "required" : 
+    [ "component-definition" ] }
