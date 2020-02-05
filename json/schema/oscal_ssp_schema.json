@@ -2367,4 +2367,6 @@
         "type" : "string" } },
     "properties" : 
     { "system-security-plan" : 
-      { "$ref" : "#/definitions/system-security-plan" } } }
+      { "$ref" : "#/definitions/system-security-plan" } },
+    "required" : 
+    [ "system-security-plan" ] }

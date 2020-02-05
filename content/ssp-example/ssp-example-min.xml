@@ -22,7 +22,9 @@
    <system-characteristics>
       <system-id identifier-type="https://ietf.org/rfc/rfc4122">d7456980-9277-4dcb-83cf-f8ff0442623b</system-id>
       <system-name>Enterprise Logging and Auditing System</system-name>
-      <description/>
+      <description>
+         <p>This is an example of a system that provides enterprise logging and log auditing capabilities.</p>
+      </description>
       <annotation name="deployment-model" value="private"/>
       <annotation name="service-models" value="iaas"/>
       <security-sensitivity-level>moderate</security-sensitivity-level>
@@ -31,7 +33,7 @@
             <description>
                <p>This system maintains historical logging and auditing information for all client devices connected to this system.</p>
             </description>
-            <information-type-id system="information-types"/>
+            <information-type-id system="https://doi.org/10.6028/NIST.SP.800-60v2r1">C.3.5.8</information-type-id>
             <confidentiality-impact>
                <base>fips-199-moderate</base>
             </confidentiality-impact>
@@ -101,7 +103,8 @@
 — Identifies the events that must be captured
 — Identifies who is responsible/accountable for performing these functions</p>
          </description>
-         <prop name="last-modified-date">2.120181015</prop>
+         <prop name="version">2.1</prop>
+         <prop name="last-modified-date">20181015</prop>
          <status state="operational"/>
          <responsible-role role-id="maintainer">
             <party-id>legal-department</party-id>
@@ -157,8 +160,8 @@
             <responsible-party role-id="asset-owner">
                <party-id>enterprise-asset-owners</party-id>
             </responsible-party>
-            <implemented-component component-id="component-logging-server"/>
-            <implemented-component component-id="component-logging-policy"/>
+            <implemented-component component-id="component-logging-server" use="runs-software"/>
+            <implemented-component component-id="component-logging-policy" use="enforces-policy"/>
          </inventory-item>
       </system-inventory>
       <remarks>

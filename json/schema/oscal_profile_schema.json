@@ -1545,4 +1545,6 @@
         "additionalProperties" : false } },
     "properties" : 
     { "profile" : 
-      { "$ref" : "#/definitions/profile" } } }
+      { "$ref" : "#/definitions/profile" } },
+    "required" : 
+    [ "profile" ] }
