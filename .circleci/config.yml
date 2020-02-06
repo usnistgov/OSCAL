@@ -268,7 +268,7 @@ jobs: # a collection of
       - check-skip-build
       - install-maven-dependencies
       - run:
-          name: Generate OSCAL schemas
+          name: Generate OSCAL content converters
           command: |
             bash "$CICD_DIR/generate-content-converters.sh" -w "$OSCAL_BUILD_DIR"
       - *publish_artifacts
@@ -289,7 +289,7 @@ jobs: # a collection of
       - install-prettyjson
       - install-xmllint
       - run:
-          name: Generate OSCAL converters
+          name: Copy and convert OSCAL content to alternate formats
           command: |
             bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR"
       - *publish_artifacts
