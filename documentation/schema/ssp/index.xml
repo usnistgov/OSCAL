@@ -8,12 +8,12 @@ published: dateTime-with-timezone [0 or 1],
 last-modified: dateTime-with-timezone [1],
 version: string [1],
 oscal-version: string [1],
-+ document-ids: [0 to ∞][ {… } ],
-- document-ids: [0 to ∞][ {
-identifier: string[0 or 1],
-type: string [1]
-} ],
-+ properties: [0 to ∞][ {… } ],</description></item><item><title>System Security Plan JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</guid><description>Schema download oscal_ssp_schema.json
++ revision-history: [0 to ∞]{… },
+- revision-history: [0 to ∞]{
+title: markup-line [0 or 1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [0 or 1],
+version: string [0 or 1],</description></item><item><title>System Security Plan JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/json-schema/</guid><description>Schema download oscal_ssp_schema.json
 Schema version 1.0.0-milestone2
 Short name oscal-ssp
 The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
@@ -30,12 +30,14 @@ This object appears as a property on: address.</description></item><item><title>
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-&amp;lt;doc-id type=&#34;string&#34;&amp;gt;string&amp;lt;/doc-id&amp;gt; [0 to ∞]
-&amp;lt;prop name=&#34;NCName&#34; id=&#34;NCName&#34; ns=&#34;string&#34; class=&#34;NCName&#34;&amp;gt;string&amp;lt;/prop&amp;gt; [0 to ∞]
-&amp;lt;link href=&#34;uri-reference&#34; rel=&#34;NCName&#34; media-type=&#34;string&#34;&amp;gt;markup-line&amp;lt;/link&amp;gt; [0 to ∞]
-+ &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]… &amp;lt;/role&amp;gt;
-- &amp;lt;role id=&#34;NCName&#34;&amp;gt; [0 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]</description></item><item><title>System Security Plan XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</guid><description>Schema download oscal_ssp_schema.xsd
++ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
+- &amp;lt;revision-history&amp;gt;[0 or 1]
++ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
+- &amp;lt;revision&amp;gt; [1 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]</description></item><item><title>System Security Plan XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/ssp/xml-schema/</guid><description>Schema download oscal_ssp_schema.xsd
 Schema version 1.0.0-milestone2
 Short name oscal-ssp
 XML namespace http://csrc.nist.gov/ns/oscal/1.0
