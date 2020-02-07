@@ -1,15 +1,9 @@
 #!/bin/bash
 
-if [[ -z "$OSCALDIR" ]]; then
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-    source "$DIR/include/common-environment.sh"
+if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
-source "$OSCALDIR/build/ci-cd/include/saxon-init.sh"
-
-# Option defaults
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/../metaschema/scripts/include/init-saxon.sh"
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -65,7 +59,7 @@ fi
 SPEC_SOURCE="${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-specml.xml"
 SPEC_OUTPUT="$WORKING_DIR/docs/content/documentation/specification/processing/profile-resolution.html"
 
-result=$(xsl_transform "$OSCALDIR/src/specifications/profile-resolution//specml-html-hugo-uswds.xsl" "${SPEC_SOURCE}" "${SPEC_OUTPUT}" 2>&1)
+result=$(xsl_transform "$OSCALDIR/src/specifications/profile-resolution/specml-html-hugo-uswds.xsl" "${SPEC_SOURCE}" "${SPEC_OUTPUT}" 2>&1)
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
   echo -e "${P_ERROR}Generating specification '${P_END}${SPEC_SOURCE}${P_ERROR}' to '${P_END}${SPEC_OUTPUT}${P_ERROR}'.${P_END}"
