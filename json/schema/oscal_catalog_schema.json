@@ -218,6 +218,15 @@
           { "$ref" : "#/definitions/version" },
           "oscal-version" : 
           { "$ref" : "#/definitions/oscal-version" },
+          "revision-history" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/revision" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/revision" },
+                "minItems" : 2 } ] },
           "document-ids" : 
           { "anyOf" : 
             [ 
@@ -254,6 +263,15 @@
                 "items" : 
                 { "$ref" : "#/definitions/role" },
                 "minItems" : 2 } ] },
+          "locations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/location" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/location" },
+                "minItems" : 2 } ] },
           "parties" : 
           { "anyOf" : 
             [ 
@@ -288,16 +306,7 @@
         "$id" : "#/definitions/back-matter",
         "type" : "object",
         "properties" : 
-        { "citations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/citation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/citation" },
-                "minItems" : 2 } ] },
-          "resources" : 
+        { "resources" : 
           { "anyOf" : 
             [ 
               { "$ref" : "#/definitions/resource" },
@@ -306,6 +315,43 @@
                 "items" : 
                 { "$ref" : "#/definitions/resource" },
                 "minItems" : 2 } ] } },
+        "additionalProperties" : false },
+      "revision" : 
+      { "title" : "Revision History Entry",
+        "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
+        "$id" : "#/definitions/revision",
+        "type" : "object",
+        "properties" : 
+        { "title" : 
+          { "$ref" : "#/definitions/title" },
+          "published" : 
+          { "$ref" : "#/definitions/published" },
+          "last-modified" : 
+          { "$ref" : "#/definitions/last-modified" },
+          "version" : 
+          { "$ref" : "#/definitions/version" },
+          "oscal-version" : 
+          { "$ref" : "#/definitions/oscal-version" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "link" : 
       { "title" : "Link",
@@ -418,6 +464,82 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
+      "location" : 
+      { "title" : "Location",
+        "description" : "A location, with associated metadata that can be referenced.",
+        "$id" : "#/definitions/location",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
+          "address" : 
+          { "$ref" : "#/definitions/address" },
+          "email-addresses" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/email" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/email" },
+                "minItems" : 2 } ] },
+          "telephone-numbers" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/phone" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/phone" },
+                "minItems" : 2 } ] },
+          "URLs" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/url" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/url" },
+                "minItems" : 2 } ] },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/link" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/link" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "address" ],
+        "additionalProperties" : false },
+      "location-id" : 
+      { "title" : "Location Reference",
+        "description" : "References a location defined in metadata.",
+        "$id" : "#/definitions/location-id",
+        "type" : "string" },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -513,6 +635,15 @@
                 "items" : 
                 { "$ref" : "#/definitions/address" },
                 "minItems" : 2 } ] },
+          "location-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/location-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/location-id" },
+                "minItems" : 2 } ] },
           "email-addresses" : 
           { "anyOf" : 
             [ 
@@ -597,6 +728,15 @@
               { "type" : "array",
                 "items" : 
                 { "$ref" : "#/definitions/address" },
+                "minItems" : 2 } ] },
+          "location-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/location-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/location-id" },
                 "minItems" : 2 } ] },
           "email-addresses" : 
           { "anyOf" : 
@@ -813,9 +953,20 @@
         "description" : "A short textual description",
         "$id" : "#/definitions/desc",
         "type" : "string" },
+      "text" : 
+      { "title" : "Text",
+        "description" : "A line of textual content whose semantic is determined by the context of use.",
+        "$id" : "#/definitions/text",
+        "type" : "string" },
+      "biblio" : 
+      { "title" : "Bibliographic Definition",
+        "description" : "A container in which a set of bibliographic information can included. The model of this information is undefined by OSCAL.",
+        "$id" : "#/definitions/biblio",
+        "type" : "object",
+        "additionalProperties" : false },
       "resource" : 
       { "title" : "Resource",
-        "description" : "A resource associated with the present document.",
+        "description" : "A resource associated with the present document, which may be a pointer to other data or a citation.",
         "$id" : "#/definitions/resource",
         "type" : "object",
         "properties" : 
@@ -823,6 +974,8 @@
           { "title" : "Identifier",
             "description" : "Unique identifier of the containing object",
             "type" : "string" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
           "desc" : 
           { "$ref" : "#/definitions/desc" },
           "properties" : 
@@ -834,6 +987,17 @@
                 "items" : 
                 { "$ref" : "#/definitions/prop" },
                 "minItems" : 2 } ] },
+          "document-ids" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/doc-id" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/doc-id" },
+                "minItems" : 2 } ] },
+          "citation" : 
+          { "$ref" : "#/definitions/citation" },
           "rlinks" : 
           { "anyOf" : 
             [ 
@@ -843,12 +1007,41 @@
                 "items" : 
                 { "$ref" : "#/definitions/rlink" },
                 "minItems" : 2 } ] },
-          "base64" : 
-          { "$ref" : "#/definitions/base64" },
+          "attachments" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/base64" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/base64" },
+                "minItems" : 2 } ] },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
+        "additionalProperties" : false },
+      "citation" : 
+      { "title" : "Citation",
+        "description" : "A citation consisting of end note text and optional structured bibliographic data.",
+        "$id" : "#/definitions/citation",
+        "type" : "object",
+        "properties" : 
+        { "text" : 
+          { "$ref" : "#/definitions/text" },
+          "properties" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/prop" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/prop" },
+                "minItems" : 2 } ] },
+          "biblio" : 
+          { "$ref" : "#/definitions/biblio" } },
+        "required" : 
+        [ "text" ],
         "additionalProperties" : false },
       "hash" : 
       { "title" : "Hash",
@@ -987,55 +1180,6 @@
         "required" : 
         [ "value" ],
         "additionalProperties" : false },
-      "citation" : 
-      { "title" : "Citation",
-        "description" : "A citation to resources, either external or internal (by means of internal cross-reference).",
-        "$id" : "#/definitions/citation",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "targets" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/target" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/target" },
-                "minItems" : 2 } ] },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "desc" : 
-          { "$ref" : "#/definitions/desc" },
-          "document-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/doc-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/doc-id" },
-                "minItems" : 2 } ] },
-          "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] } },
-        "required" : 
-        [ "id" ],
-        "additionalProperties" : false },
-      "target" : 
-      { "title" : "Citation target",
-        "description" : "An address for retrieval of a citation",
-        "$id" : "#/definitions/target",
-        "type" : "string" },
       "remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the parent item.",

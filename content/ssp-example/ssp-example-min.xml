@@ -29,7 +29,8 @@
       <annotation name="service-models" value="iaas"/>
       <security-sensitivity-level>moderate</security-sensitivity-level>
       <system-information>
-         <information-type name="System and Network Monitoring">
+         <information-type>
+            <title>System and Network Monitoring</title>
             <description>
                <p>This system maintains historical logging and auditing information for all client devices connected to this system.</p>
             </description>
@@ -77,9 +78,8 @@
          <annotation name="type" value="internal"/>
          <role-id>legal-officer</role-id>
       </user>
-      <component id="component-logging-server"
-                 name="Logging Server"
-                 component-type="software">
+      <component id="component-logging-server" component-type="software">
+         <title>Logging Server</title>
          <description>
             <p>Provides a means for hosts to publish logged events to a central server.</p>
          </description>
@@ -94,9 +94,8 @@
             <party-id>enterprise-asset-administrators</party-id>
          </responsible-role>
       </component>
-      <component id="component-logging-policy"
-                 name="Enterprise Logging, Monitoring, and Alerting Policy"
-                 component-type="policy">
+      <component id="component-logging-policy" component-type="policy">
+         <title>Enterprise Logging, Monitoring, and Alerting Policy</title>
          <description>
             <p>Requires all components to send logs to the enterprise logging solution
 — Requires all components synchronize their time with the appropriate enterprise time service, and at what frequency.
@@ -110,9 +109,8 @@
             <party-id>legal-department</party-id>
          </responsible-role>
       </component>
-      <component id="system-integration-process"
-                 name="System Integration Process"
-                 component-type="process">
+      <component id="system-integration-process" component-type="process">
+         <title>System Integration Process</title>
          <description>
             <p>Ensures proper integration into the enterprise as new systems are brought into production.</p>
          </description>
@@ -123,9 +121,8 @@
             <party-id>it-department</party-id>
          </responsible-role>
       </component>
-      <component id="inventory-management-process"
-                 name="Inventory Management Process"
-                 component-type="process">
+      <component id="inventory-management-process" component-type="process">
+         <title>Inventory Management Process</title>
          <description>
             <p>Describes how new components are introduced into the system - ensures monitoring teams know about every asset that should be producing logs, thus should be monitored.</p>
          </description>
@@ -136,9 +133,8 @@
             <party-id>it-department</party-id>
          </responsible-role>
       </component>
-      <component id="configuration-management-guidance"
-                 name="Configuration Management"
-                 component-type="guidance">
+      <component id="configuration-management-guidance" component-type="guidance">
+         <title>Configuration Management</title>
          <description>
             <p>Describes how to configure a component to ensure its logs are transmitted to Splunk in the appropriate format. Also describes how to configure time synchronization.</p>
          </description>
