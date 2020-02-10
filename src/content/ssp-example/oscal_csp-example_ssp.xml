@@ -2,16 +2,22 @@
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_ssp_schema.xsd" id="uusi-d28d7674-8463-42d9-8ff9-9d46a4460cae">
+    <metadata>
+        <title>CSP IaaS System Security Plan</title>
+        <last-modified>2020-02-10T14:53:53.476-05:00</last-modified>
+        <version>0.1</version>
+        <oscal-version>1.0.0-milestone3-pre</oscal-version>
+    </metadata>
     <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml"></import-profile>
     <system-characteristics>
-        <system-id>customer_bar_system</system-id>
-        <system-name>Customer Software System</system-name>
-        <description><p>A SaaS implementation build on top of the CSP Infrastructure Service.</p></description>
+        <system-id>csp_iaas_system</system-id>
+        <system-name>CSP IaaS System</system-name>
+        <description><p>A cloud-based IaaS environment.</p></description>
         <security-sensitivity-level>low</security-sensitivity-level>
         <system-information>
             <information-type>
                 <title>System and Network Monitoring</title>
-                <description><p>This system handles information pertaining to audit events.</p></description>
+                <description><p>This IaaS system handles information pertaining to audit events.</p></description>
                 <information-type-id system="https://doi.org/10.6028/NIST.SP.800-60v2r1">C.3.5.8</information-type-id>                
                 <confidentiality-impact>
                     <base>fips-199-moderate</base>

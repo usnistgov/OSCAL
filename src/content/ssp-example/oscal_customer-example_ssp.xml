@@ -2,34 +2,48 @@
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_ssp_schema.xsd" id="uusi-5b661bac-3f1f-4442-be27-2a472a4ce05c">
+    <metadata>
+        <title>SaaS System Security Plan</title>
+        <last-modified>2020-02-10T14:53:53.476-05:00</last-modified>
+        <version>0.1</version>
+        <oscal-version>1.0.0-milestone3-pre</oscal-version>
+    </metadata>
     <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml"></import-profile>
     <system-characteristics>
-        <system-id>csp_foo_system</system-id>
-        <system-name>CSP Infrastructure Service</system-name>
-        <description><p>A cloud-based IaaS environment.</p></description>
+        <system-id>iaas_customer_saas_system</system-id>
+        <system-name>SaaS System</system-name>
+        <description><p>A SaaS implementation build on top of the CSP IaaS supporting audit events.</p></description>
         <security-sensitivity-level>low</security-sensitivity-level>
         <system-information>
             <information-type>
-                "title": "System and Network Monitoring",
-                "information-type-ids": {
-                "https://doi.org/10.6028/NIST.SP.800-60v2r1": {"id": "C.3.5.8"}
-                },
                 <title>System and Network Monitoring</title>
+                <description><p>This system handles information pertaining to audit events.</p></description>
+                <information-type-id system="https://doi.org/10.6028/NIST.SP.800-60v2r1">C.3.5.8</information-type-id>                
                 <confidentiality-impact>
-                    <base></base>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
                 </confidentiality-impact>
                 <integrity-impact>
-                    <base></base>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
                 </integrity-impact>
                 <availability-impact>
-                    <base></base>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
                 </availability-impact>
             </information-type>
         </system-information>
-        <security-impact-level></security-impact-level>
-        <status state=""></status>
+        <security-impact-level>
+            <security-objective-confidentiality>fips-199-low</security-objective-confidentiality>
+            <security-objective-integrity>fips-199-low</security-objective-integrity>
+            <security-objective-availability>fips-199-low</security-objective-availability>
+        </security-impact-level>
+        <status state="operational"/>
         <authorization-boundary>
-            <description></description>
+            <description><p>The virtualized components deployed on the CSP IaaS.</p></description>
         </authorization-boundary>
     </system-characteristics>
 </system-security-plan>
