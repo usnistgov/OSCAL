@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_ssp_schema.xsd" id="uusi-5b661bac-3f1f-4442-be27-2a472a4ce05c">
+    <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml"></import-profile>
+    <system-characteristics>
+        <system-id>csp_foo_system</system-id>
+        <system-name>CSP Infrastructure Service</system-name>
+        <description><p>A cloud-based IaaS environment.</p></description>
+        <security-sensitivity-level>low</security-sensitivity-level>
+        <system-information>
+            <information-type>
+                "title": "System and Network Monitoring",
+                "information-type-ids": {
+                "https://doi.org/10.6028/NIST.SP.800-60v2r1": {"id": "C.3.5.8"}
+                },
+                <title>System and Network Monitoring</title>
+                <confidentiality-impact>
+                    <base></base>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base></base>
+                </integrity-impact>
+                <availability-impact>
+                    <base></base>
+                </availability-impact>
+            </information-type>
+        </system-information>
+        <security-impact-level></security-impact-level>
+        <status state=""></status>
+        <authorization-boundary>
+            <description></description>
+        </authorization-boundary>
+    </system-characteristics>
+</system-security-plan>

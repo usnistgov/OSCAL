@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_ssp_schema.xsd" id="uusi-d28d7674-8463-42d9-8ff9-9d46a4460cae">
+    <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml"></import-profile>
+    <system-characteristics>
+        <system-id>customer_bar_system</system-id>
+        <system-name>Customer Software System</system-name>
+        <description><p>A SaaS implementation build on top of the CSP Infrastructure Service.</p></description>
+        <security-sensitivity-level>low</security-sensitivity-level>
+        <system-information>
+            <information-type>
+                <title>System and Network Monitoring</title>
+                <description><p>This system handles information pertaining to audit events.</p></description>
+                <information-type-id system="https://doi.org/10.6028/NIST.SP.800-60v2r1">C.3.5.8</information-type-id>                
+                <confidentiality-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-low</selected>
+                    <adjustment-justification><p>This impact has been adjusted to low as an example of how to perform this type of adjustment.</p></adjustment-justification>
+                </availability-impact>
+            </information-type>
+        </system-information>
+        <security-impact-level>
+            <security-objective-confidentiality>fips-199-low</security-objective-confidentiality>
+            <security-objective-integrity>fips-199-low</security-objective-integrity>
+            <security-objective-availability>fips-199-low</security-objective-availability>
+        </security-impact-level>
+        <status state="operational"/>
+        <authorization-boundary>
+            <description><p>The hardware and software supporting the virtualized infrastructure supporting the IaaS.</p></description>
+        </authorization-boundary>
+    </system-characteristics>
+</system-security-plan>  
