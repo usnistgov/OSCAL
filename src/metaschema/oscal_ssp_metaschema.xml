@@ -539,7 +539,7 @@
             <group-as name="services" in-json="ARRAY"/>
          </assembly>
          <assembly ref="interconnection" max-occurs="unbounded">
-            <group-as name="ssp-interconnection" in-json="ARRAY"/>
+            <group-as name="interconnections" in-json="ARRAY"/>
          </assembly>
          <assembly ref="system-inventory"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -770,7 +770,7 @@
          </field>
          <assembly ref="protocol" max-occurs="unbounded">
             <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
-            <group-as name="ssp-protocol" in-json="ARRAY"/>
+            <group-as name="protocols" in-json="ARRAY"/>
          </assembly>
          <field ref="purpose">
             <description>A summary of the technological or business purpose of the service.</description>
