@@ -32,11 +32,11 @@
       <description>A system security plan, such as those described in NIST SP 800-18</description>
       <flag ref="id" required="yes"/>
       <model>
-         <assembly ref="metadata"/>
+         <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="import-profile" min-occurs="1"/>
          <assembly ref="system-characteristics" min-occurs="1"/>
-         <assembly ref="system-implementation"/>
-         <assembly ref="control-implementation"/>
+         <assembly ref="system-implementation" min-occurs="1"/>
+         <assembly ref="control-implementation" min-occurs="1"/>
          <assembly ref="back-matter"/>
       </model>
 
@@ -93,9 +93,6 @@
          <assembly ref="system-information" min-occurs="1"/>
          <assembly ref="security-impact-level" min-occurs="1"/>
          <assembly ref="status" min-occurs="1"/>
-         <assembly ref="leveraged-authorization" max-occurs="unbounded">
-            <group-as name="leveraged-authorizations" in-json="ARRAY"/>
-         </assembly>
          <assembly ref="authorization-boundary" min-occurs="1"/>
          <assembly ref="network-architecture"/>
          <assembly ref="data-flow"/>
@@ -525,6 +522,9 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
+         <assembly ref="leveraged-authorization" max-occurs="unbounded">
+            <group-as name="leveraged-authorizations" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="user" min-occurs="1" max-occurs="unbounded">
             <group-as name="users" in-json="BY_KEY"/>
          </assembly>
