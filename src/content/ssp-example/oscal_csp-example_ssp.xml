@@ -12,7 +12,39 @@
     <system-characteristics>
         <system-id>csp_iaas_system</system-id>
         <system-name>CSP IaaS System</system-name>
-        <description><p>A cloud-based IaaS environment.</p></description>
+        <description><p>A cloud-based IaaS environment.</p>
+            <p>An example of three customers leveraging an authorized SaaS, which is running on an authorized IaaS.</p>
+            <pre>
+Cust-A    Cust-B    Cust-C
+  |         |         |
+  +---------+---------+
+            |
+  +-------------------+
+  |       SaaS        |
+  +-------------------+
+            |
+            |
+  +-------------------+
+  |       IaaS        |
+  |    this file      |
+  +-------------------+
+            </pre>
+            <p>In this example, the IaaS SSP specifies customer responsibilities for certain controls.</p>
+            <p>The SaaS must address these for the control to be fully satisfied.</p>
+            <p>The SaaS provider may either implement these directly, or pass the responsiblity on to their customers. Often both are necessary.</p>
+                
+            <p>For any given control, the IaaS SSP must describe:</p>
+            <ol>
+                <li>HOW the IaaS is directly satisfying the control</li>
+                <li>WHAT responsibilities are left for the IaaS customer to implement. (The IaaS customer is the SaaS.) </li>
+            </ol>
+            <p>For any given control, the SaaS SSP must describe:</p>
+            <ol>
+                <li>WHAT is being inherited from the underlying IaaS</li>
+                <li>HOW the SaaS is directly satisfying the control.</li>
+                <li>WHAT responsibilities are left for the SaaS customer to implement. (The SaaS customers are Cust-A, B and C)</li>
+            </ol>
+        </description>
         <security-sensitivity-level>low</security-sensitivity-level>
         <system-information>
             <information-type>
@@ -46,4 +78,136 @@
             <description><p>The hardware and software supporting the virtualized infrastructure supporting the IaaS.</p></description>
         </authorization-boundary>
     </system-characteristics>
+    <system-implementation>
+        <user id="dummy">
+            <role-id></role-id>
+        </user>
+        <component id="system" component-type="system">
+            <title>This System</title>
+            <description><p>This IaaS.</p></description>
+            <status state="operational" />
+        </component>
+        <component id="customer" component-type="customer">
+            <title>Customer</title>
+            <description><p>The SaaS customers who use this IaaS.</p></description>
+            <status state="other" />
+        </component>
+        <component id="log-repo" component-type="system">
+            <title>Centralized Log Repo</title>
+            <description><p>.</p></description>
+            <status state="other" />
+        </component>
+        <component id="routers" component-type="infrastructure">
+            <title></title>
+            <description><p>.</p></description>
+            <status state="operational" />
+        </component>
+        <component id="switches" component-type="infrastructure">
+            <title>Managed Switches</title>
+            <description><p>.</p></description>
+            <status state="operational" />
+        </component>
+        <component id="firewall" component-type="infrastructure">
+            <title>Firewall</title>
+            <description><p>.</p></description>
+            <status state="operational" />
+        </component>
+        <component id="hypervisor" component-type="hypervisor">
+            <title>IaaS Hypervisor</title>
+            <description><p>.</p></description>
+            <status state="operational" />
+        </component>
+        <component id="au-proc" component-type="procedure">
+            <title>IaaS Audit, Logging, and Incident Response Procedure</title>
+            <description><p>.</p></description>
+            <link href="#au-proc" />
+            <status state="operational" />
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <description></description>
+        <implemented-requirement control-id="au-5">
+            <set-parameter param-id="au-5_prm_1">
+                <value>IaaS SOC Team, Customer POC</value>
+            </set-parameter>
+            <set-parameter param-id="au-5_prm_2">
+                <value>Fails over to alternate centralized logging component; Store logs locally/cache them; Overwrite oldest record.</value>
+            </set-parameter>
+            <statement statement-id="au-5_stmt.a">
+                <by-component component-id="log-repo">
+                    <description>
+                        <p>The centralized logging component is configured to alert the IaaS SOC of audit processing failure via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p>
+                        <p>All components communicate with the centralized logging server and the IaaS SOC via a private, dedicated administrative network.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="routers">
+                    <!-- !!! SUGGESTED DISCUSSION: Can "by-component" point to multiple components, then have a single description, such as for all infrastructure devices? -->
+                    <description>
+                        <p>The routers are configured to alert the IaaS SOC, if they are unable to transmit logs, via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p>
+                        <p>If routers lose network connectivity (thus are unable to notify the IaaS SOC), their off-line status will be recognized and alerted as described in control XX-#.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="switches">
+                    <description>
+                        <p>The switches are configured to alert the IaaS SOC, if they are unable to transmit logs, via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p>
+                        <p>If switches lose network connectivity (thus are unable to notify the IaaS SOC), their off-line status will be recognized and alerted as described in control XX-#.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="firewalls">
+                    <description>
+                        <p>The firewalls are configured to alert the IaaS SOC, if they are unable to transmit logs, via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p>
+                        <p>If firewalls lose network connectivity (thus are unable to notify the IaaS SOC), their off-line status will be recognized and alerted as described in control XX-#.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="hypervisor">
+                    <description><p>The Hypervisor is configured to alert the IaaS SOC, if they are unable to transmit logs, via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p></description>
+                </by-component>
+                <by-component component-id="au-proc">
+                    <description><p>As described in the IaaS Audit, Logging, and Incident Response Procedure, the IaaS SOC Team will allert each customer's designated POC of any logging outages that impact a customer's ability to maintain logging.</p></description>
+                </by-component>
+                <by-component component-id="customer">
+                    <description><p>The customer must configure all virtual components to alert appropriate customer POCs in the event of audit processing errors.</p></description>
+                </by-component>
+            </statement>
+            <statement statement-id="au-5_stmt.b">
+                <by-component component-id="log-repo">
+                    <description>
+                        <p>The centralized logging component logs any failures within its datastores if possible.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="au-proc">
+                    <description><p>In accordance with the IaaS Audit, Logging, and Incident Response Procedure, the SOC performs a failover to the alternate centralized logging capability.</p></description>
+                </by-component>
+                <by-component component-id="routers">
+                    <description>
+                        <p>Routers are configured to store logs locally until the centralized logging capability is restored. In the event of reaching local log capacity each router is configured to overwrite the oldest logs first.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="switches">
+                    <description>
+                        <p>Switches are configured to store logs locally until the centralized logging capability is restored. In the event of reaching local log capacity each switch is configured to overwrite the oldest logs first.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="firewalls">
+                    <description>
+                        <p>Firewalls are configured to store logs locally until the centralized logging capability is restored. In the event of reaching local log capacity each firewall is configured to overwrite the oldest logs first.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="hypervisor">
+                    <description>
+                        <p>The Hypervisor is configured to store logs locally until the centralized logging capability is restored. In the event of reaching local log capacity the hypervisor is configured to overwrite the oldest logs first.</p>
+                    </description>
+                </by-component>
+                <by-component component-id="customer">
+                    <description><p>The IaaS customer (SaaS Provider) must configure all virtual components to store logs locally until centralized logging can be restored. Customer must also ensure virtual components overwrite oldest logs first in the event local log stores reach capacity.</p></description>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+    <back-matter>
+        <resource id="au-proc">
+            <rlink href="./attachments/IaaS_au_proc.docx"></rlink>
+        </resource>
+    </back-matter>
+    
 </system-security-plan>  
