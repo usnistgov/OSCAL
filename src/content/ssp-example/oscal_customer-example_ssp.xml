@@ -7,8 +7,16 @@
         <last-modified>2020-02-10T14:53:53.476-05:00</last-modified>
         <version>0.1</version>
         <oscal-version>1.0.0-milestone3-pre</oscal-version>
+        <role id="audit-admin">
+            <title>Audit Administrator</title>
+        </role>
+        <party id="person-1">
+            <person>
+                <person-name>Annie Admin</person-name>
+            </person>
+        </party>
     </metadata>
-    <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml"></import-profile>
+    <import-profile href="../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml" />
     <system-characteristics>
         <system-id>iaas_customer_saas_system</system-id>
         <system-name>SaaS System</system-name>
@@ -79,8 +87,12 @@ Cust-A    Cust-B    Cust-C
         </authorization-boundary>
     </system-characteristics>
     <system-implementation>
-        <user id="dummy">
-            <role-id></role-id>
+        <user id="audit-administrators">
+            <role-id>audit-admin</role-id>
+            <authorized-privilege>
+                <title>Audit Administrators</title>
+                <function-performed>Manages the audit capabilities of the components within the SaaS.</function-performed>
+            </authorized-privilege>
         </user>
         <component id="system" component-type="system">
             <title>This System</title>
@@ -103,24 +115,24 @@ Cust-A    Cust-B    Cust-C
             <status state="other" />
         </component>
         <component id="web-server" component-type="virtual-machine">
-            <title></title>
+            <title>Web Server</title>
             <description><p>Open Source Web Server</p></description>
             <status state="operational" />
         </component>
         <component id="database" component-type="virtual-machine">
             <title>Open Source Relational Database Management System</title>
-            <description><p>.</p></description>
+            <description><p>This is an example database component.</p></description>
             <status state="operational" />
         </component>
         <component id="au-proc" component-type="procedure">
             <title>SaaS Audit, Logging, and Incident Response Procedure</title>
-            <description><p>.</p></description>
+            <description><p>This is an example of a process that satisfies a portion of a security control.</p></description>
             <link href="#au-proc" />
             <status state="operational" />
         </component>
     </system-implementation>
     <control-implementation>
-        <description></description>
+        <description><p>This is a collection of control responses. They describe how each control is implemented. This takes a component approach.</p></description>
         <implemented-requirement control-id="au-5">
             <set-parameter param-id="au-5_prm_1">
                 <value>SaaS SOC Team, Customer POC</value>
@@ -180,7 +192,7 @@ Cust-A    Cust-B    Cust-C
     </control-implementation>
     <back-matter>
         <resource id="au-proc">
-            <rlink href="./attachments/SaaS_au_proc.docx"></rlink>
+            <rlink href="./attachments/SaaS_au_proc.docx" />
         </resource>
     </back-matter>
     
