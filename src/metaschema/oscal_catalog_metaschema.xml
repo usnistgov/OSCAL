@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+            root="catalog">
+   <schema-name>OSCAL Control Catalog Format</schema-name>
+   <schema-version>1.0.0-milestone2</schema-version>
+   <short-name>oscal-catalog</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <remarks>
+      <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
+   </remarks>
+   <import href="oscal_control-common_metaschema.xml"/>
+   <import href="oscal_metadata_metaschema.xml"/>
+   <define-assembly name="catalog">
+      <formal-name>Catalog</formal-name>
+      <description>A collection of controls.</description>
+      <flag ref="id" required="yes"/>
+      <model>
+         <assembly ref="metadata" min-occurs="1"/>
+         <!--<field named="declarations"/>-->
+         <!--<assemblies named="section"/>-->
+         <choice>
+            <assembly ref="group" max-occurs="unbounded">
+               <group-as name="groups"/>
+            </assembly>
+            <assembly ref="control" max-occurs="unbounded">
+               <group-as name="controls"/>
+            </assembly>
+         </choice>
+         <assembly ref="back-matter">
+            <description>Back matter including references and resources.</description>
+         </assembly>
+      </model>
+      <remarks>
+         <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
+         <p>An OSCAL catalog model provides a structured representation of control information.</p>
+      </remarks>
+      <example>
+         <description>A small catalog with a single control</description>
+         <catalog xmlns="http://csrc.nist.gov/ns/oscal/example"
+                  id="simple-example"
+                  model-version="0.99">
+            <title>A Miniature Catalog</title>
+            <control id="single">
+               <title>A Single Control</title>
+            </control>
+         </catalog>
+      </example>
+   </define-assembly>
+   
+   <define-assembly name="group">
+      <formal-name>Control Group</formal-name>
+      <description>A group of controls, or of groups of controls.</description>
+      <flag ref="id"/>
+      <flag ref="class"/>
+      <model>
+         <field ref="title" min-occurs="1"/>
+         <assembly ref="param" max-occurs="unbounded">
+            <group-as name="parameters"/>
+         </assembly>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
+         <choice>
+            <assembly ref="group" max-occurs="unbounded">
+               <group-as name="groups"/>
+            </assembly>
+            <assembly ref="control" max-occurs="unbounded">
+               <group-as name="controls"/>
+            </assembly>
+         </choice>
+         <any/>
+      </model>
+      <remarks>
+         <p>Catalogs can use a <code>group</code> to collect related controls into a single grouping. That can be useful to group controls into a family or other logical grouping.</p>
+         <p>A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group.</p>
+      </remarks>
+      <example>
+         <group xmlns="http://csrc.nist.gov/ns/oscal/example" id="xyz">
+            <title>My Group</title>
+            <prop class="required">some property</prop>
+            <control id="xyz1">
+               <title>Control</title>
+            </control>
+         </group>
+      </example>
+   </define-assembly>
+   
+   <define-assembly name="control">
+      <formal-name>Control</formal-name>
+      <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
+      <flag ref="id" required="yes"/>
+      <flag ref="class"/>
+      <model>
+         <field ref="title" min-occurs="1"/>
+         <assembly ref="param" max-occurs="unbounded">
+            <group-as name="parameters"/>
+         </assembly>
+         <!-- TODO: Need to be able to add valid values in context -->
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="label">A human-readable label for the parent context.</enum>
+                  <enum value="sort-id">An alternative identifier, whose value is easily sortable among other such values in the document.</enum>
+                  <enum value="status">The status of a <code>control</code>. For example, a value of 'Withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
+         <assembly ref="control" max-occurs="unbounded">
+            <group-as name="controls"/>
+         </assembly>
+         <!--<assembly named="ref-list"/>-->
+         <any/>
+      </model>
+      <remarks>
+         <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
+        <code>part</code> or further enhanced (extended) using <code>control</code>.</p>
+      </remarks>
+      <example>
+         <control xmlns="http://csrc.nist.gov/ns/oscal/example" id="x">
+            <title>Control 1</title>
+         </control>
+      </example>
+   </define-assembly>
+
+</METASCHEMA>

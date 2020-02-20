@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6dc02d06-73e5-4bf6-83ac-f727fcbe15ee">
+
+   <!-- Invocation of catalog results in all controls (include/all is implicit)  -->
+   <title>Calling All Controls</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <include>
+         <!-- Doesn't include subcontrols since @with-child-controls defaults to 'no'. -->
+         <all/>
+      </include></import>
+</profile>

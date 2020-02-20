@@ -1,0 +1,130 @@
+
+
+/*.model-entry p { margin-top: units( 0.5 )*/
+
+.field-header, .assembly-header, .flag-header {
+  clear: inherit;
+}
+
+.label { @extend .usa-tag }
+
+li.model-entry p {
+  @extend .margin-top-05;
+  @extend .margin-bottom-0 }
+
+li.model-entry > *:not(:first-child) { @extend .font-body-xs }
+
+
+.definition-header { @extend .padding-1; @extend .bg-base-lightest }
+div.json-docs .definition-header { @extend .bg-primary-lighter }
+
+
+.definition-header h2 { @extend .text-accent-cool-darker;
+  @extend .margin-bottom-0;
+  @extend .margin-top-0 }
+
+.crosslink { @extend .float-right }
+
+div.definition { @extend .margin-top-105 }
+
+code.tagging { @extend .text-primary-darker }
+
+div.example { @extend .usa-accordion;
+  @extend .usa-accordion--bordered }
+
+div.example h3 { @extend .usa-accordion__heading }
+
+div.example h3 button { @extend .usa-accordion__button }
+
+div.example div.example-content { @extend .usa-accordion__content }
+
+span.model-description { @extend .font-body-xs }
+
+div.remarks-group h3 {
+  padding-top: 0.5rem;
+}
+
+div.remarks { @extend .measure-6;
+  @extend .border-base-light;
+  @extend .border-left-05;
+  @extend .padding-left-1;
+  @extend .font-body-xs }
+
+.occurrence { @extends .text-primary }
+
+button.schema-link { @extend .usa-button }
+
+/* For the model maps */
+
+/* Schema Model Map styles */
+div.OM-map {
+  margin-top: 0ex;
+  margin-bottom: 0ex;
+  @include u-font-family('mono');
+  font-weight: bold;
+  color: #212121;
+}
+
+div.usa-layout-docs-main_content > div.OM-map {
+  border: medium solid #d6d7d9; }
+
+div.OM-map div.OM-map {
+  margin-left: 2em; }
+
+.OM-entry {
+  border: medium solid #f1f1f1;
+  background-color: #f1f1f1;
+  padding-right: 0.5rem;
+  margin-top: 0rem;
+}
+
+.OM-entry:hover {
+  border: medium solid #aeb0b5; }
+
+.OM-entry.hide_me:hover {
+  border: medium solid #f1f1f1; }
+
+div.OM-map p {
+  margin: 0ex; }
+
+span.OM-lit {
+  @include u-font-family('sans');
+  font-weight: normal;
+  font-style: normal; }
+
+span.OM-emph {
+  @include u-font-family('sans');
+  font-weight: normal;
+  font-style: italic; }
+
+span.OM-cardinality {
+  @include u-font-family('sans');
+  font-weight: normal;
+  font-style: normal;
+  color: #205493; }
+
+.OM-name {
+  color: #0071bc; }
+
+.OM-map a {
+  text-decoration: none;
+  color: #0071bc; }
+
+OM-map a:visited {
+  color: #0071bc; }
+
+a.OM-name:hover {
+  text-decoration: underline; }
+
+.hide_me {
+  display: none; }
+
+a.expander-collapser {
+  font-size: 120%;
+  font-weight: normal;
+  width: 2em;
+  color: #212121;
+  font-weight: bold; }
+
+a.expander-collapser:hover {
+  text-decoration: none; }

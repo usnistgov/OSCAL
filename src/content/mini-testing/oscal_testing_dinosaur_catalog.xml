@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal-catalog-schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz" model-version="abc">
+    <metadata>
+        <title>Dinosaur Testing Catalog</title>
+    </metadata>
+    <section>
+        <title>This catalog</title>
+        <p>For use in testing, especially structural transformations.</p>
+    </section>
+    <!--<group>
+        <title>Alphabetic</title>
+        <group>
+            <control id="A1">
+                <control id="A1a"/>
+                <control id="A1b"/>
+                <control id="A1c"/>
+            </control>
+            <control id="A2"/>
+            <control id="A3"/>
+        </group>
+        <group class="family">
+            <control id="B1"/>
+            <control id="B2"/>
+            <control id="B3"/>
+        </group>
+    </group>-->
+    <group>
+        <title>Dinosaurs</title>
+        <group><title>Predators</title>
+            <control id="allosaur">
+                <title>Allosaurus</title>
+              <param id="scary">
+                <label>teeth, claws, tail for example</label>
+                  <desc>List anything scary about this dinosaur</desc></param>
+              <prop class="trans">Other Lizard</prop>
+              <part class="desc" id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
+            </control>
+            <control id="tyrannosaur">
+                <title>Tyrannosaurus</title>
+                <prop class="trans">Tyrant Lizard</prop>
+                <control id="tyrannosaurus-rex">
+                    <title>Tyrannosaurus Rex</title>
+                    <prop class="trans">King Tyrant Lizard</prop>
+                </control>
+            </control>
+            <control id="velociraptor">
+                <title>Velociraptor</title>
+            </control>
+        </group>
+        <group><title>Herbivores</title>
+            <control id="stegosaur">
+                <title>Stegosaurus</title>
+            </control>
+            <control id="triceratops">
+                <title>Triceratops</title>
+            </control>
+        </group>
+        <group><title>Proto-avians</title>
+            <control id="archeopteryx">
+                <title>Archaeopteryx</title>
+                <part>
+                    <p><img src="unoh" /></p>
+                </part>
+            </control>
+        </group>
+    </group>
+    
+</catalog>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+  root="component-definition">
+
+  <schema-name>OSCAL Implementation Component Format</schema-name>
+  <schema-version>1.0.0-milestone2</schema-version>
+  <short-name>oscal-component</short-name>
+  <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+
+
+  <remarks>
+    <p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
+    <p>The root of the OSCAL Implementation Component format is <code>component-definition</code>.</p>
+    <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
+  </remarks>
+
+  <import href="oscal_implementation-common_metaschema.xml"/>
+
+  <define-assembly name="component-definition">
+    <formal-name>Component Definition</formal-name>
+    <description>TBD</description>
+    <model>
+      <assembly ref="metadata" min-occurs="1"/>
+      <field ref="import-component-definition" max-occurs="unbounded">
+        <group-as name="import-component-definitions"/>
+      </field>
+      <assembly ref="component" max-occurs="unbounded">
+        <group-as name="components" in-json="BY_KEY"/>
+      </assembly>
+      <assembly ref="capability" max-occurs="unbounded">
+        <group-as name="capabilities" in-json="BY_KEY"/>
+      </assembly>
+      <assembly ref="back-matter"/>
+    </model>
+  </define-assembly>
+
+  <define-field name="import-component-definition" as-type="empty">
+    <formal-name>Import Component Definition</formal-name>
+    <description>Loads a component definition from another resource.</description>
+    <flag name="href" as-type="uri-reference" required="yes">
+      <formal-name>Hyperlink Reference</formal-name>
+      <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
+    </flag>
+  </define-field>
+
+  <define-assembly name="component">
+    <formal-name>Component</formal-name>
+    <description>A defined component that can be part of an implemented system.</description>
+    <json-key flag-name="id"/>
+    <flag name="id" as-type="NCName" required="yes">
+      <formal-name>Component Identifier</formal-name>
+      <description>A unique identifier for a component.</description>
+    </flag>
+    <flag name="name" as-type="string" required="yes">
+      <formal-name>Component Name</formal-name>
+      <description>The component's short, human-readable name.</description>
+    </flag>
+    <flag ref="component-type" required="yes"/>
+    <model>
+      <field ref="title" min-occurs="1">
+        <description>A longer name for the component.</description>
+      </field>
+      <field ref="description" min-occurs="1"/>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+        <flag ref="name">
+          <allowed-values allow-other="yes">
+            <enum value="version">The version of the component.</enum>
+            <enum value="model">The model of the component. Useful for 'software', 'hardware', and 'service' components.</enum>
+            <enum value="release-date">The date the component was released.</enum>
+          </allowed-values>
+        </flag>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <flag ref="rel">
+          <allowed-values allow-other="yes">
+            <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+            <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+            <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</enum>
+          </allowed-values>
+        </flag>
+      </field>
+      <assembly ref="responsible-party" max-occurs="unbounded">
+        <description>Defines a role associated with a party or parties that has responsibility for the component.</description>
+        <group-as name="responsible-parties" in-json="BY_KEY"/>
+<!--        <flag ref="role-id">
+          <allowed-values allow-other="yes">
+            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
+            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+          </allowed-values>
+        </flag>
+-->        <remarks>
+          <p>A role defined in this way can be associated with a party or parties here, or where the component is referenced (e.g., <code>inventory-item</code>, <code>implemented-requirement</code>/<code>by-component</code>).</p>
+          <p>The roles "maintainer" or "provider" can be used to define the supplier. In such cases party-id(s) can be used to associate the providing organization. For products, services, and APIs, this is the vendor and/or retailer information. For policies, processes, plans, standards, and guidance, this is the authoring organization.</p>
+        </remarks>
+      </assembly>
+<!--      <assembly ref="proof-of-compliance" max-occurs="unbounded">
+        <group-as name="proofs-of-compliance" />
+      </assembly>
+-->
+      <assembly ref="control-implementation" max-occurs="unbounded">
+        <group-as name="control-implementations" />
+      </assembly>
+<!--      <assembly ref="supported-profile" max-occurs="unbounded">
+        <group-as name="supported-profiles" />
+      </assembly>
+-->
+<!--      <assembly ref="configuration" max-occurs="unbounded">
+        <group-as name="configurations" in-json="BY_KEY" />
+      </assembly>
+      <assembly ref="artifact" max-occurs="unbounded">
+        <group-as name="artifacts" in-json="BY_KEY" />
+      </assembly>
+-->      <field ref="remarks"/>
+    </model>
+    <remarks>
+      <p>Components may be products, services, APIs, policies, processes, plans, guidance,
+        standards, or other tangible items that enable security and/or privacy.</p>
+      <p>The <code>type</code> indicates which of these component types is represented.</p>
+      <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+      <p>Capabilities are expressed by combining one or more components.</p>
+    </remarks>
+  </define-assembly>
+
+  <define-assembly name="capability">
+    <formal-name>Capability</formal-name>
+    <description>A grouping of other components and/or capabilities.</description>
+    <json-key flag-name="id"/>
+    <flag name="id" as-type="NCName" required="yes">
+      <formal-name>Capability Identifier</formal-name>
+      <description>A unique identifier for a capability.</description>
+    </flag>
+    <flag name="name" as-type="string" required="yes">
+      <formal-name>Capability Name</formal-name>
+      <description>The capability's human-readable name.</description>
+    </flag>
+    <model>
+      <field ref="description" min-occurs="1"/>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <!-- TODO: Model specific link relationships for:
+          depends-on: component has a dependency on another component
+          validated-by:, etc.
+        -->
+      </field>
+      <assembly ref="incorporates-capability" max-occurs="unbounded">
+        <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
+      </assembly>
+      <assembly ref="incorporates-component" max-occurs="unbounded">
+        <group-as name="incorporates-components" in-json="BY_KEY"/>
+      </assembly>
+      <assembly ref="control-implementation" max-occurs="unbounded">
+        <group-as name="control-implementations" />
+      </assembly>
+<!--      <assembly ref="supported-profile" max-occurs="unbounded">
+        <group-as name="supported-profiles" />
+      </assembly>
+-->
+      <field ref="remarks"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="control-implementation">
+    <formal-name>Control Implementation</formal-name>
+    <description>Defines how the component or capability supports a set of controls.</description>
+    <model>
+      <field ref="description" min-occurs="1"/>
+      <assembly ref="can-meet-requirement-set" max-occurs="unbounded">
+        <group-as name="can-meet-requirement-sets"/>
+      </assembly>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="can-meet-requirement-set">
+    <formal-name>Can Meet</formal-name>
+    <description>Defines what sets of controls are supported by the component.</description>
+    <flag ref="source" required="yes"/>
+    <model>
+      <field ref="description" min-occurs="1"/>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <!-- TODO: Model specific link relationships -->
+      </field>
+      <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
+        <group-as name="implemented-requirements"/>
+      </assembly>
+      <!-- TODO: allow a reference to a previously defined requirement -->
+<!--      <field ref="requirement-ref" min-occurs="1" max-occurs="unbounded">
+        <group-as name="requirement-refs"/>
+      </field>
+-->
+      <field ref="remarks"/>
+    </model>
+  </define-assembly>
+  
+  
+  <define-assembly name="implemented-requirement">
+    <formal-name>Control-based Requirement</formal-name>
+    <description>TBD</description>
+    <flag name="requirement-id" as-type="NCName">
+      <formal-name>Requirement Identifier Reference</formal-name>
+      <description>A reference to a requirement defined on another requirement set that should be included here.</description>
+    </flag>
+    <!-- TODO: instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
+    <flag ref="id"/>
+    <flag ref="control-id"/>
+    <model>
+      <assembly ref="only-statement" max-occurs="unbounded">
+        <group-as name="only-statements" in-json="BY_KEY"/>
+      </assembly>
+      <field ref="description"/>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <!-- TODO: Model specific link relationships -->
+      </field>
+      <!--            <assembly ref="using"/>
+-->            <!-- TODO: Implement parameters -->
+      <field ref="remarks"/>
+    </model>
+  </define-assembly>
+  
+<!--
+  <define-assembly name="supported-profile">
+    <formal-name>Supported Profile</formal-name>
+    <description>How the component supports a given baseline expressed as an OSCAL profile.</description>
+    <flag ref="source" required="yes"/>
+    <model>
+      <field ref="description" min-occurs="1"/>
+      <assembly ref="meets-requirement-set" max-occurs="unbounded">
+        <group-as name="meets-requirement-sets"/>
+      </assembly>
+      <field ref="prop" max-occurs="unbounded">
+        <group-as name="properties"/>
+      </field>
+      <field ref="link" max-occurs="unbounded">
+        <group-as name="links"/>
+        <!-\- TODO: Model specific link relationships -\->
+      </field>
+      <!-\- TODO: Implement parameters -\->
+      <field ref="remarks"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="meets-requirement-set">
+    <formal-name>Can Meet</formal-name>
+    <description>Defines what sets of controls are supported by the component.</description>
+    <flag ref="source" required="yes"/>
+    <model>
+      <assembly ref="requirement" min-occurs="1" max-occurs="unbounded">
+        <group-as name="requirements"/>
+      </assembly>
+      <assembly ref="using"/>
+    </model>
+  </define-assembly>
+-->
+
+</METASCHEMA>

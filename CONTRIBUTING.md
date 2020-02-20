@@ -11,28 +11,29 @@ We track our current work items using GitHub [project cards](https://github.com/
 ## Contribution options
 
 The OSCAL project is producing several types of deliverables, including the following:
-* *Schemas* for the OSCAL component models  
-* *Schematron definitions*, which are basically an extension of the XML schemas that provide more validation capabilities
-* *XSL templates* for production of human-readable versions of OSCAL XML content
-* *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface
-* *Documentation* to define the OSCAL component models, capture the operational model of how to use OSCAL, and explain how you can convert existing content (catalogs, profiles, etc.) into OSCAL formats
+- *Schemas* for the OSCAL component models  
+- *Schematron definitions*, which are basically an extension of the XML schemas that provide more validation capabilities
+- *XSL templates* for production of human-readable versions of OSCAL XML content
+- *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface
+- *Documentation* to define the OSCAL component models, capture the operational model of how to use OSCAL, and explain how you can convert existing content (catalogs, profiles, etc.) into OSCAL formats
 
 Contributions are welcome in any of these areas. For information on the project's current needs and priorities, see the project's GitHub issue tracker (discussed below). Please refer to the [guide on how to contribute to open source](https://opensource.guide/how-to-contribute/) for general information on contributing to an open source project.
 
 ## Issue reporting and handling
 
 All requests for changes and enhancements to OSCAL are initiated through the project's [GitHub issue tracker](https://github.com/usnistgov/OSCAL/issues). To initiate a request, please [create a new issue](https://help.github.com/articles/creating-an-issue/). The following issue templates exist for creating a new issue:
-* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=user-story_template.md&labels=User+Story): Use to describe a new feature or capability to be added to OSCAL.
-* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=defect-template.md&labels=bug): Use to report a problem with an existing OSCAL feature or capability.
-* [Question](https://github.com/usnistgov/OSCAL/issues/new?template=question_template.md&labels=question): Use to ask a question about OSCAL.
+* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story): Use to describe a new feature or capability to be added to OSCAL.
+* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=bug_report.md&labels=bug): Use to report a problem with an existing OSCAL feature or capability.
+* [Question](https://github.com/usnistgov/OSCAL/issues/new?labels=question&template=question.md): Use to ask a question about OSCAL.
 
 The core OSCAL project team regularly reviews the open issues, prioritizes their handling, and updates the issue statuses and comments as needed.
 
 ## Communications mechanisms
 
 There are two mailing lists for the project:
-* *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
-* *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
+
+- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
+- *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
 
 ## Contributing to the OSCAL repository
 
@@ -45,13 +46,30 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 1. Next, you must push your changes to your personal repo. You can do this with the command: ```git push```.
 1. Finally, you can [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
+### Repository structure
+
+This repository consists of the following directories and files pertaining to the OSCAL project:
+
+- [.github](.github): Contains GitHub issue and pull request templates for the OSCAL project.
+- [content](content): Provides numerous OSCAL examples in both, XML and JSON formats. Some examples are considered provisional "completed" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+- [json](json): Provides OSCAL JavaScript Object Notation (JSON) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL JSON-based formats.
+- [xml](xml): Provides OSCAL Extensible Markup Language (XML) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL XML-based formats.
+- [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
+- [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
+- [src](src): Stores source artifacts used to produce the content, JSON, and XML resources provided in this repository.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
+- [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
+- [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
+- [USERS.md](USERS.md): This file explains which types of users are most likely to benefit from consuming available OSCAL tools and content.
+
+
 ## Contributing to a Development Sprint
 
 The NIST OSCAL team is using the GitHub [project cards](https://github.com/usnistgov/OSCAL/projects) feature to track development sprints as part of the core OSCAL work stream. A typical development sprint lasts roughly a month, with some sprints lasting slightly less or more to work around major holidays or events attended by the core project team. The active sprint is typically the lowest numbered open project within the previously referenced page.
 
 ### User Stories
 
-Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=user-story_template.md&labels=User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
+Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
 
 The goals in a user story will be bulleted, indicating that each goal can be worked on in parallel, or numbered, indicating that each goal must be worked on sequentially. Each goal will be assigned to one or more individuals to accomplish.
 

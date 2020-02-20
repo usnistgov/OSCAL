@@ -1,9 +1,12 @@
-FROM ruby:2.3-alpine
-RUN apk add --update nodejs g++ make
-COPY Gemfile Gemfile.lock /usr/src/app/
-WORKDIR /usr/src/app
-RUN bundle install
-COPY . /usr/src/app
-VOLUME /usr/src/app
-EXPOSE 4567
-CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling"]
+FROM openjdk:13.0.1-jdk
+ARG HUGO_VERSION=0.61.0
+RUN mkdir /hugo && \
+  cd hugo && \
+  curl -L -O https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
+  tar -xzvf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
+  mv hugo /usr/local/bin && \
+  cd / && \
+  rm -rf hugo/
+WORKDIR /docs
+COPY . .
+ENTRYPOINT hugo server --enableGitInfo=false -v --debug --minify --bind 0.0.0.0 

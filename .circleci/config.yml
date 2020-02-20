@@ -1,68 +1,561 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build-metaschema:
-    working_directory: ~/oscal-metaschema # directory where steps will run
-
-    docker: # run the steps with Docker
-      - image: circleci/openjdk:8-jdk-browsers
-
-    steps: # a collection of executable commands
-      - checkout # check out source code to working directory
+version: 2.1 # use CircleCI 2.1
+references:
+  common_environment: &common_environment
+    environment:
+      MAVEN_VERSION: 3.6.3
+      SAXON_VERSION: 9.9.0-1
+      JSON_CLI_VERSION: 0.0.1-SNAPSHOT
+      CICD_DIR: git-oscal/build/ci-cd
+      REPO_DIR: git-oscal
+      REPO_WEBSITE_DIR: git-oscal/docs
+      OSCAL_BUILD_DIR: build_artifacts
+      OSCAL_TOOLS_DIR: oscal_tools
+      SCHEMATRON_HOME: git-schematron
+      TERM: xterm
+      BUNDLER_VERSION: 2.0.2
+    working_directory: ~/oscal
+  attach_build_workspace: &attach_build_workspace
+    attach_workspace:
+        at: build_artifacts
+  checkout: &checkout
+    checkout:
+      path: git-oscal
+  checkout-submodules: &checkout-submodules
+    run:
+      name: Checkout Submodules
+      command: |
+        cd "$REPO_DIR"
+        git submodule sync --recursive
+        git submodule update --recursive --init
+  publish_artifacts: &publish_artifacts
+    store_artifacts:
+      path: build_artifacts
+  restore_gem_cache: &restore_gem_cache
+    restore_cache:
+      keys:
+        - gem-cache-v10-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - gem-cache-v10-{{ arch }}-
+  save_gem_cache: &save_gem_cache
+    save_cache:
+      key: gem-cache-v10-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      paths:
+        - git-oscal/docs/vendor/bundle
+commands:
+  install-schematron:
+    description: "Install the schematron skeleton"
+    steps:
       - run:
-          name: Get Saxon
-          command: mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=9.9.0-1
-      - run:
-          name: Generate OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-catalog-metaschema.xml catalog
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
-      - run:
-          name: Generate OSCAL Profile Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-profile-metaschema.xml profile
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
-      - run:   
-          name: List Generated OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema
-          command: git status
-      - deploy:
-          name: Commit Artifacts
-          working_directory: ~/oscal-metaschema
+          name: Get schematron skeleton
           command: |
-            git config user.name "Deployment Bot"
-            git commit --allow-empty -m "Deploying built artifacts [ci skip]"
-            git push
-  build-docs:
-    working_directory: ~/oscal-docs # directory where steps will run
-
-    docker: # run the steps with Docker
-      - image: circleci/ruby:2.3.8-jessie-node
-
-    steps: # a collection of executable commands
-      - checkout # check out source code to working directory
+            git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
+            cd "$SCHEMATRON_HOME"
+            git checkout master -- trunk/schematron/code
+  install-maven-dependencies:
+    description: "Install Maven Dependencies"
+    steps:
       - run:
-          name: Install Bundler
+          name: Get OSCAL Tools
           command: |
-            cd ~/oscal-docs/docs
+            git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
+      - run:
+          name: Generate cache checksum
+          command: |
+            # Ensure we cache the necessary dependencies
+            cat "${OSCAL_TOOLS_DIR}/json-cli/pom.xml" > .maven-cache-checksum
+            echo "$SAXON_VERSION" >> .maven-cache-checksum
+      - restore_cache:
+          keys:
+            - mvn-m2-cache-V2-{{ checksum ".maven-cache-checksum" }}
+            - mvn-m2-cache-V2
+      - run:
+          name: Get Saxon-HE
+          command: |
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+      - run:
+          name: Build JSON Validation CLI
+          command: |
+            # update maven version
+            cd /opt
+            sudo wget "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+            sudo tar -xvzf "apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+            sudo mv "apache-maven-${MAVEN_VERSION}" maven
+            export M2_HOME=/opt/maven
+            export PATH=${M2_HOME}/bin:${PATH}
+            cd -
+            # now build
+            cd "${OSCAL_TOOLS_DIR}/json-cli"
+            /opt/maven/bin/mvn dependency:go-offline
+            /opt/maven/bin/mvn install
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: mvn-m2-cache-V2-{{ checksum ".maven-cache-checksum" }}
+  install-maven:
+    description: "Installs Maven"
+    steps:
+      - run:
+          name: Get Maven
+          command: |
+            sudo apt-get install maven
+  install-hugo:
+    description: "Installs Hugo"
+    steps:
+      - run:
+          name: Get Hugo
+          command: |
+            wget https://github.com/gohugoio/hugo/releases/download/v0.58.3/hugo_extended_0.58.3_Linux-64bit.deb
+      - run:
+          name: Install Hugo
+          command: |
+            sudo apt-get install ./hugo_extended_0.58.3_Linux-64bit.deb
+  install-lxml:
+    description: "Installs Python lxml package"
+    steps:
+      - run:
+          name: Get lxml
+          command: |
+            sudo pip install lxml
+  install-xmllint:
+    description: "Install xmllint"
+    steps:
+      - run:
+          name: Get xmllint
+          command: |
+            sudo apt-get install libxml2-utils
+  install-ajv:
+    description: "Install ajv"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
+  install-json-diff:
+    description: "Install json-diff"
+    steps:
+      - run:
+          name: Get json-diff
+          command: |
+            sudo npm install -g json-diff
+  install-markdown-link-check:
+    description: "Install markdown-link-check"
+    steps:
+      - run:
+          name: Get markdown-link-check
+          command: |
+            sudo npm install -g markdown-link-check
+  install-jq:
+    description: "Install jq"
+    steps:
+      - run:
+          name: Get jsome
+          command: |
+            sudo apt-get install jq
+  install-prettyjson:
+    description: "Install prettyjson"
+    steps:
+      - run:
+          name: Get prettyjson
+          command: |
+            sudo npm install -g prettyjson
+  install-github-release:
+    description: "Install Github Release"
+    steps:
+      - run:
+          name: Get Github Release
+          command: |
+            go get github.com/aktau/github-release
+  install-bundler:
+    description: "Install bundler and html-proofer"
+    steps:
+      - run:
+          name: Install with Bundler
+          command: |
+            cd "$REPO_WEBSITE_DIR"
+            gem update --system
             gem install bundler
-            bundle install
+            bundle install --path vendor/bundle --jobs=4 --retry=3 && bundle clean
+  check-skip-build:
+    steps:
       - run:
-          name: Middleman exec
+          name: Check if job should be skipped
           command: |
-            cd ~/oscal-docs/docs
-            bundle exec middleman build --clean
+            if [[ -f "$OSCAL_BUILD_DIR/.skipbuild" ]]; then
+              echo "Skipping job."
+              circleci step halt
+            fi
+executors:
+  java-executor:
+    docker: # run the java jobs with Docker
+      - image: circleci/openjdk:11-jdk-node-browsers
+    <<: *common_environment
+  ruby-node-executor:
+    docker: # run the ruby jobs with Docker
+      - image: circleci/ruby:2.6.5-node-browsers
+    <<: *common_environment
+  python-executor:
+    docker: #run the python jobs with Docker
+      - image: circleci/python:3.7.3-node-browsers
+    <<: *common_environment
+  go-executor:
+    docker: # run the steps with Docker
+      - image: circleci/golang:1.12.5
+    <<: *common_environment
+jobs: # a collection of
+  job-ci-skip-check:
+    executor: java-executor
+    steps:
+      - checkout
+      - run:
+          name: Check if skip build
+          command: |
+            mkdir -p "$OSCAL_BUILD_DIR/state"
+            COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+            if [[ $COMMIT_MSG == *"[ci deploy skip]"* ]]; then
+              echo "[ci deploy skip] detected. Stopping."
+              echo "branch: $CIRCLE_BRANCH" > "$OSCAL_BUILD_DIR/.skipbuild"
+            else
+              echo "branch: $CIRCLE_BRANCH" > "$OSCAL_BUILD_DIR/.runbuild"
+            fi
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - .runbuild
+            - .skipbuild
+  job-validate-metaschema:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-xmllint
+      - install-maven-dependencies
+      - install-schematron
+      - run:
+          name: Validate metaschema instances
+          command: |
+            bash "$CICD_DIR/validate-metaschema.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - svrl
+  job-generate-schema:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-maven-dependencies
+      - install-xmllint
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash "$CICD_DIR/generate-schema.sh" -w "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - xml
+            - json
+  job-generate-converters:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-maven-dependencies
+      - run:
+          name: Generate OSCAL content converters
+          command: |
+            bash "$CICD_DIR/generate-content-converters.sh" -w "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - xml
+            - json
+  job-copy-and-convert-content:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-maven-dependencies
+      - install-jq
+      - install-prettyjson
+      - install-xmllint
+      - run:
+          name: Copy and convert OSCAL content to alternate formats
+          command: |
+            bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - content # not needed?
+  job-validate-markdown:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-markdown-link-check
+      - run:
+          name: Validate repo Markdown content instances
+          command: |
+            cd "$REPO_DIR"
+            # this command will filter out any docs Markdown files, which are checked in a different job
+            git ls-files "*/*.md" -z | grep --null-data -v "^docs/" | xargs -0 -n1 markdown-link-check -q -c "build/config/.markdown-link-check/config.json"
+  job-validate-content:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-xmllint
+      - install-maven-dependencies
+      - run:
+          name: Validate content instances
+          command: |
+            bash "$CICD_DIR/validate-content.sh" -w "$OSCAL_BUILD_DIR"
+  job-roundtrip-conversions:
+    executor: python-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-maven
+      - install-maven-dependencies
+      - install-lxml
+      - install-xmllint
+      - install-json-diff
+      - run:
+          name: Generate round trip XML and JSON conversions
+          command: |
+            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+  job-generate-docs:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-maven-dependencies
+      - run:
+          name: Generate schema documentation
+          command: |
+            bash "$CICD_DIR/generate-model-documentation.sh" -w "$OSCAL_BUILD_DIR"
+      - run:
+          name: Compress built docs
+          command: |
+            tar -zcvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --remove-files "${OSCAL_BUILD_DIR}/docs"
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - docs.tar.gz
+  job-deploy-artifacts:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - deploy: # delete and copy artifacts before deploy
+          name: Commit Artifacts
+          command: |
+            cd "$REPO_DIR"
+            # Remove existing generated files
+            git rm -r --ignore-unmatch xml/convert/*.xsl
+            git rm -r --ignore-unmatch xml/schema/*.xsd
+            git rm -r --ignore-unmatch json/convert/*.xsl
+            git rm -r --ignore-unmatch json/schema/*.json
+            git rm -r --ignore-unmatch content/**/*.xml
+            git rm -r --ignore-unmatch content/**/*.json
+            git rm -r --ignore-unmatch content/**/*.yaml
+            # Copy new built files to repo
+            cd -
+            cp -r "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_DIR"
+            # add the new files
+            git add -f --all xml
+            git add -f --all json
+            git add -f --all content
+            # check for changes
+            echo "Changed files:"
+
+            if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
+              # Only deploy if something relevant has changed
+              # Setup deployment
+              git config user.name "Deployment Bot"
+              git commit --allow-empty -m "Deploying content [ci deploy skip]"
+              # Ensure we are deploying against the latest
+              git fetch
+              git rebase origin/master
+              # deploy
+              git push
+            else
+              echo "  No files changed"
+            fi
+      - *publish_artifacts
+  job-validate-site-content:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - *restore_gem_cache
+      - install-bundler
+      - install-hugo
+      - run:
+          name: Restore generated site content
+          command: |
+            # restore docs from tar
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
+      - run:
+          name: Build and Validate Hugo site
+          command: |
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_WEBSITE_DIR"
+            hugo -v --debug --minify
+            bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/documentation\/schemas\/[^/]+\/(?:json|xml)-(?:model-map|schema)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+      - *save_gem_cache
+      - *publish_artifacts
+  job-build-and-deploy-website:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - *restore_gem_cache
+      - install-bundler
+      - install-hugo
+      - run:
+          name: Restore generated site content
+          command: |
+            # restore docs from tar
+            tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
+      - run:
+          name: Build Site with Hugo
+          command: |
+            # cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+            cd "$REPO_WEBSITE_DIR"
+            hugo -v --debug --minify
+            mkdir -p public/.circleci
+            # copy the circleci config
+            cp ../.circleci/config.yml public/.circleci/config.yml
+          environment:
+            JEKYLL_ENV: production
+      - *save_gem_cache
       - run:
           name: Run deploy script
           command: |
-            cd ~/oscal-docs/docs
-            bash ./deploy.sh -v -m "Deploying site [ci skip]"
+            cd "$REPO_WEBSITE_DIR"
+            git config user.name "Deployment Bot"
+            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
+      - *publish_artifacts
+  package:
+    executor: go-executor
+    steps:
+      - *checkout
+      - install-github-release
+      - run:
+          name: Package Release
+          command: |
+            bash "$CICD_DIR/package-release.sh" "$OSCAL_BUILD_DIR"
+  job-run-unittests:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *checkout-submodules
+      - *attach_build_workspace
+      - check-skip-build
+      - install-xmllint
+      - install-maven-dependencies
+      - run:
+          name: Run unit tests
+          command: |
+            bash "$CICD_DIR/run-unittests.sh" -w "$OSCAL_BUILD_DIR"
 workflows:
   version: 2
   build:
     jobs:
-      - build-metaschema
-      - build-docs:
+      - package:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v\d+.+/
+      - job-ci-skip-check:
+          filters:
+            tags:
+              ignore: /.*/
+      - job-validate-markdown:
           requires:
-            - build-metaschema
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore:
+                - master
+                - nist-pages
+      - job-validate-metaschema:
+          requires:
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore: nist-pages
+      - job-generate-schema:
+          requires:
+            - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+      - job-validate-content:
+          requires:
+            - job-generate-schema
+      - job-roundtrip-conversions:
+          requires:
+            - job-generate-converters
+            - job-validate-content
+      - job-copy-and-convert-content:
+           requires:
+            - job-generate-converters
+            - job-validate-content
+      - job-generate-docs:
+          requires:
+            - job-validate-metaschema
+            - job-generate-converters
+      - job-validate-site-content:
+          requires:
+            - job-generate-docs
+          filters:
+            branches:
+              # only from PRs
+              ignore:
+                - master
+                - nist-pages
+      - job-deploy-artifacts:
+          requires:
+            - job-copy-and-convert-content
+          filters:
+            branches:
+              only: master
+      - job-build-and-deploy-website:
+          requires:
+            - job-generate-docs
+            - job-deploy-artifacts
+          filters:
+            branches:
+              only: master
+      - job-run-unittests:
+          requires:
+            - job-generate-schema

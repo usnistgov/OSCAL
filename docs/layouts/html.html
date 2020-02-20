@@ -1,0 +1,9 @@
+{{ define "main" }}
+
+{{ $pages := resources.Match "collections/collection1/*.md" }}
+
+{{ printf "%#v" $pages }}
+
+{{ .Content | safeHTML }}asd
+
+{{ end }}

@@ -22,8 +22,8 @@ Options:
 
 
 run_build() {
-  echo "Running middleman"
-  bundle exec middleman build --clean
+  echo "Running Hugo"
+  hugo -v --debug --minify
 }
 
 parse_args() {
@@ -63,7 +63,7 @@ parse_args() {
   # vars should be declared here, with sane defaults if applicable.
 
   # Source directory & target branch.
-  deploy_directory=build
+  deploy_directory=public
 
   if [[ -z $deploy_branch ]]; then
     deploy_branch=nist-pages

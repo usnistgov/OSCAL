@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+            root="nominal-catalog">
+   <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
+   <schema-version>1.0.0-milestone2</schema-version>
+   <short-name>oscal-catalog-common</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   
+   <import href="oscal_metadata_metaschema.xml"/>
+   
+   <define-assembly name="nominal-catalog">
+      <formal-name>Nominal catalog</formal-name>
+      <description>NOT TO BE USED FOR A BASE METASCHEMA ONLY FOR A MODULE</description>
+      <!--<flag ref="id" required="yes"/>-->
+      <model>
+         <assembly ref="param"/>
+         <assembly ref="part"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="param">
+      <formal-name>Parameter</formal-name>
+      <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
+      <flag ref="id" required="yes"/>
+      <flag ref="class"/>
+      <flag ref="depends-on"/>
+      <model>
+         <field ref="label">
+            <description>A short name for the parameter.</description>
+            <remarks>
+               <p>The label value should be suitable for inline display in a rendered catalog.</p>
+            </remarks>
+         </field>
+         <field ref="usage" max-occurs="unbounded">
+            <group-as name="descriptions"/>
+         </field>
+         <field ref="constraint" max-occurs="unbounded">
+            <group-as name="constraints"/>
+         </field>
+         <assembly ref="guideline" max-occurs="unbounded">
+            <group-as name="guidance"/>
+         </assembly>
+         <choice>
+            <field ref="value">
+               <description>A recommended parameter value or set of values.</description>
+               <remarks>
+                  <p>A value provided in a catalog can be redefined at any higher layer of OSCAL (e.g., Profile).</p>
+               </remarks>
+            </field>
+            <assembly ref="select">
+               <description>A set of parameter value choices, that may be picked from to set the parameter value.</description>
+               <remarks>
+                  <p>.</p>
+               </remarks>
+            </assembly>
+         </choice>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <any/>
+      </model>
+      <remarks>
+         <p>In a catalog, a parameter is typically used as a placeholder for the future assignment of a parameter value, although the OSCAL model allows for the direct assignment of a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then it is expected that the value will be provided at the Profile or Implementation layer.</p>
+         <p>A parameter can include a variety of metadata options that support the future solicitation of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
+      </remarks>
+   </define-assembly>
+   
+   <define-field name="label" as-type="markup-line">
+      <formal-name>Parameter label</formal-name>
+      <description>A placeholder for a missing value, in display.</description>
+   </define-field>
+   
+   <define-field name="usage" as-type="markup-line">
+      <formal-name>Parameter description</formal-name>
+      <description>Indicates and explains the purpose and use of a parameter</description>
+      <json-value-key>summary</json-value-key>
+      <flag ref="id"/>
+   </define-field>
+   
+   <define-field name="constraint">
+      <formal-name>Constraint</formal-name>
+      <description>A formal or informal expression of a constraint or test</description>
+      <json-value-key>detail</json-value-key>
+      <flag ref="test"/>
+   </define-field>
+   
+   <define-assembly name="guideline">
+      <formal-name>Guideline</formal-name>
+      <description>A prose statement that provides a recommendation for the use of a parameter.</description>
+      <model>
+         <field ref="prose" in-xml="UNWRAPPED"/>
+         <any/>
+      </model>
+   </define-assembly>
+   
+   <define-field name="value" as-type="markup-line">
+      <formal-name>Value constraint</formal-name>
+      <description>Indicates a permissible value for a parameter or property</description>
+      <remarks>
+         <p>In a parameter, a value represents a value assignment to the parameter, overriding any
+        value given at the point of insertion. When parameters are provided in OSCAL profiles, their
+        values will override any values assigned <q>lower down the stack</q>.</p>
+      </remarks>
+   </define-field>
+   
+   <define-assembly name="select">
+      <formal-name>Selection</formal-name>
+      <description>Presenting a choice among alternatives</description>
+      <flag ref="how-many"/>
+      <model>
+         <field ref="choice" max-occurs="unbounded">
+            <group-as name="alternatives"/>
+         </field>
+         <any/>
+      </model>
+   </define-assembly>
+   
+   <define-field name="choice" as-type="markup-line">
+      <formal-name>Choice</formal-name>
+      <description>A value selection among several such options</description>
+   </define-field>
+   
+   <define-assembly name="part">
+      <formal-name>Part</formal-name>
+      <description>A partition or component of a control or part</description>
+      <flag ref="id"/>
+      <flag ref="name" required="yes"/>
+      <flag ref="ns"/>
+      <flag ref="class"/>
+      <model>
+         <field ref="title"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="method">An assessment method.</enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <field ref="prose" in-xml="UNWRAPPED"/>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <any/>
+      </model>
+      <remarks>
+         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+      </remarks>
+      <example>
+         <description>Multiple Parts with Different Organization-Specific Names</description>
+         <o:part name="statement" id="statement-A">
+            <o:part ns="https://fedramp.gov" name="status" id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
+            <o:part ns="https://defense.gov" name="status" id="statement-A-DoD">Something DoD Cares About</o:part>
+         </o:part>
+      </example>
+   </define-assembly>
+   
+   <define-flag name="test" as-type="string">
+      <formal-name>Constraint test</formal-name>
+      <description>A formal (executable) expression of a constraint</description>
+   </define-flag>
+
+   <define-flag name="how-many" as-type="string">
+      <formal-name>Cardinality</formal-name>
+      <description>When selecting, a requirement such as one or more</description>
+   </define-flag>
+
+   <define-flag name="depends-on" as-type="NCName">
+      <formal-name>Depends on</formal-name>
+      <description>Another parameter invoking this one</description>
+   </define-flag>
+
+   <define-field name="prose" as-type="markup-multiline">
+      <formal-name>Prose</formal-name>
+      <description>Prose permits multiple paragraphs, lists, tables etc.</description>
+   </define-field>
+
+</METASCHEMA>

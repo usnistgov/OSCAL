@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+    root="VALIDATION_common_root">
+
+    <schema-name>OSCAL Implementation Common Information</schema-name>
+    <schema-version>1.0.0-milestone2</schema-version>
+    <short-name>oscal-implementation-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+
+    <import href="oscal_metadata_metaschema.xml"/>
+
+    <define-assembly name="VALIDATION_common_root">
+        <formal-name>(nominal root)</formal-name>
+        <description>NOT TO BE USED IN A METASCHEMA</description>
+        <flag ref="control-id"/>
+        <flag ref="component-id"/>
+        <flag ref="component-type"/>
+        <flag ref="capability-id"/>
+        <flag ref="source"/>
+        <model>
+            <field ref="description"/>
+<!--            <assembly ref="proof-of-compliance"/>
+-->
+            <assembly ref="incorporates-component" max-occurs="unbounded">
+                <group-as name="incorporates-components" in-json="BY_KEY"/>
+            </assembly>
+            <assembly ref="incorporates-capability" max-occurs="unbounded">
+                <group-as name="incorporates-capabilities" in-json="BY_KEY"/>
+            </assembly>
+            <assembly ref="only-statement" max-occurs="unbounded">
+                <group-as name="only-statements" in-json="BY_KEY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+        <remarks>
+            <p>This declaration provides a point of entry for validating the metaschema module standalone.</p>
+        </remarks>
+    </define-assembly>
+
+    <define-flag name="component-type" as-type="string">
+        <formal-name>Component Type</formal-name>
+        <description>A category describing the purpose of the component.</description>
+        <allowed-values allow-other="yes">
+            <enum value="software">Any software, operating system, or firmware</enum>
+            <enum value="hardware"></enum>
+            <enum value="service">A service that may provide APIs.</enum>
+            <enum value="policy"></enum>
+            <enum value="process"></enum>
+            <enum value="procedure"></enum>
+            <enum value="plan"></enum>
+            <enum value="guidance">Any guideline or recommendation</enum>
+            <enum value="standard"></enum>
+            <enum value="validation"></enum>
+        </allowed-values>
+    </define-flag>
+
+    <define-flag name="source" as-type="uri-reference">
+        <formal-name>Source Resource Reference</formal-name>
+        <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
+    </define-flag>
+    
+    <define-flag name="control-id" as-type="NCName">
+        <formal-name>Control Identifier Reference</formal-name>
+        <description>A reference to a control identifier.</description>
+    </define-flag>
+    
+    <define-assembly name="only-statement">
+        <formal-name>Specific Statement</formal-name>
+        <description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</description>
+        <json-key flag-name="statement-id"/>
+        <flag ref="statement-id">
+            <description>A reference to the specific implemented statement.</description>
+        </flag>
+        <model>
+            <field ref="description"/>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties"/>
+            </field>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links"/>
+                <!-- TODO: Model specific link relationships -->
+            </field>
+            <!--            <assembly ref="using"/>
+-->            <!-- TODO: Implement parameters -->
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+    </define-assembly>
+    
+    <define-flag name="statement-id" as-type="NCName">
+        <formal-name>Control Statement Reference</formal-name>
+        <description>A reference to a control statement by its identifier</description>
+    </define-flag>
+    
+    <define-flag name="component-id" as-type="NCName">
+        <formal-name>Component Reference</formal-name>
+        <description>A reference to a component by its identifier</description>
+    </define-flag>
+
+    <define-flag name="capability-id" as-type="NCName">
+        <formal-name>Capability Reference</formal-name>
+        <description>A reference to a capability by its identifier</description>
+    </define-flag>
+    <define-assembly name="incorporates-component">
+        <formal-name>Incorporates Component</formal-name>
+        <description>TBD</description>
+        <json-key flag-name="component-id"/>
+        <flag ref="component-id" required="yes"/>
+        <model>
+            <field ref="description" min-occurs="1"/>
+        </model>
+    </define-assembly>
+
+    <define-assembly name="incorporates-capability">
+        <formal-name>Incorporates Capability</formal-name>
+        <description>TBD</description>
+        <json-key flag-name="capability-id"/>
+        <flag name="capability-id" required="yes" as-type="NCName">
+            <formal-name>Capability Reference</formal-name>
+            <description>A reference to a capability by its identifier</description>
+        </flag>
+        <model>
+            <field ref="description" min-occurs="1"/>
+        </model>
+    </define-assembly>
+
+</METASCHEMA>

@@ -1,7 +1,6 @@
-Vagrantfile
-build/
-.gitignore
-.git/
-.travis.yml
+public/
+resources/
+docker-compose.yml
 deploy.sh
-.github/
+Gemfile*
+README.md

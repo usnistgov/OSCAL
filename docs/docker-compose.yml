@@ -1,10 +1,10 @@
-version: '3.4'
+version: "3.7"
 
 services:
   docs:
-    build: .
+    build:
+      context: .
     ports:
-      - 4567:4567
-      - 35729:35729
+      - "1313:1313"
     volumes:
-      - ./source:/usr/src/app/source
+      - "./:/docs"

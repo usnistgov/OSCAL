@@ -1,0 +1,15 @@
+//@import 'uswds';
+@import 'schema-docs';
+
+.nist-footer {
+  font-family: inherit;
+}
+
+@media print {
+  #nist-header {
+    display: none;
+  }
+  .nist-footer {
+    display: none;
+  }
+}

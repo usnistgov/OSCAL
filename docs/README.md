@@ -1,64 +1,84 @@
-# OSCAL Documentation
+# OSCAL Website
 
-## Documentation Development
+This subdirectory contains source code for the OSCAL website at https://pages.nist.gov/OSCAL. Below are instructions for building the site for local development if making any contributions to the documentation.
 
-The OSCAL documentation is developed using the [Slate](https://github.com/lord/slate) platform. Below are instructions for standing up your local development environment.
+The website is built using the [Hugo](https://gohugo.io/) static site generator and the [United States Web Design System](https://designsystem.digital.gov/) (USWDS).
 
-The [`source/`](source/) directory contains the editable markdown files. If you prefer, you can edit the markdown files directly without having to install any of the devlopment tooling described below.
+## Prerequisites
+
+If using Docker:
+
+- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Docker 19.03+](https://docs.docker.com/install/)
+
+If not using Docker:
+
+- macOS, Linux or Windows Subsystem for Linux (WSL) (model doc build scripts don't support Windows natively at this time)
+- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Hugo](https://gohugo.io/)
+
+## Generating the model documentation
+
+Before you can build and serve the site using Hugo directly or Docker, you must generate the OSCAL model documentation using the provided shell scripts. This step assumes that you've already downloaded Saxon-HE for Java and that you've set the `$SAXON_HOME` environment variable in your shell to the directory in which you extracted Saxon-HE.
+
+From the root directory of the repository, execute the following command to generate the model documentation:
+
+```
+./build/ci-cd/generate-model-documentation.sh
+```
+
+## Using Hugo
+
+[Hugo](https://gohugo.io/) is a popular open source static site generator that is used to develop all of the content for the OSCAL website. It is a general-purpose framework that builds pages when the content is created or updated.
+
+Instructions for installing the Hugo CLI on your OS can be found [here](https://gohugo.io/getting-started/installing).
+
+The website's visual styling is also backed by the U.S. Web Design System (USWDS) via an open source Hugo theme at https://github.com/usnistgov/hugo-uswds.
+
+The USWDS framework, a Jekyll customization we are using, is documented here: https://designsystem.digital.gov/.
+
+### Building the site with LiveReload
+
+Hugo provides built-in LiveReload which watches for any changes to the source content and automatically reloads the site when changes are detected.
+
+1. Pull the currently used USWDS Hugo theme revision to your locally cloned copy of the OSCAL repo by executing the following command from within the folder of the git repo
+
+ ```
+git submodule update --init
+```
+
+2. Verify that Hugo is installed
+
+```
+hugo version
+```
+
+3. Navigate into the `docs/` directory
+
+```
+cd docs
+```
+
+4. Start the Hugo server
+
+```
+hugo server -v --debug --minify
+```
+
+5. Open your browser and navigate to `http://localhost:1313/OSCAL` to view the locally built site
+
+
+Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.
+
 
 ## Developing with Docker
 
-You can quickly and easily get started with doc development using Docker. You can get Docker for your appropriate platform [here](https://www.docker.com/community-edition). Once you've installed Docker, you can use the included `Dockerfile` and `docker-compose.yml` files to spin up a documentation server that supports live reload.
+The website can also be developed and built using the included Docker resources.
 
-    $ docker-compose up
+Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
 
-You can then launch your web browser and connect to `http://localhost:4567` to view the documentation. As you make updates to the source, the browser will automatically refresh to reflect the changes.
+```
+docker-compose up
+```
 
-## Developing without Docker
-
-If you prefer not to use Docker for local development, you can also install the required components directly onto your machine. You'll need the following:
-
-- Ruby 2.3.1
-  - On macOS, it's best to install using [Homebrew](https://www.ruby-lang.org/en/documentation/installation/#homebrew) or [Ruby Version Manager (rvm)](https://rvm.io/)
-  - On Linux, you can install via your distro's [package manager](https://www.ruby-lang.org/en/documentation/installation/#package-management-systems) or with [Ruby Version Manager (rvm)](https://rvm.io/)
-  - On Windows, use [RubyInstaller](https://rubyinstaller.org/) (with Devkit) or Windows Subsystem for Linux (WSL)
-- [Bundler](http://bundler.io/) - `gem install bundler`
-
-Install the dependencies:
-
-    $ bundle install
-
-You can then initialize and start the development server as follows:
-
-    $ bundle exec middleman server --watcher-force-polling
-
-Launch your web browser and connect to `http://localhost:4567` to view the docs. As you make changes to the source, the web page will automatically refresh.
-
-## Publishing to pages.nist.gov
-
-In order to publish to pages.nist.gov, the static documents need to be built. The commands below will generate static documentation in the [`build/`](build/) directory.
-
-Using Docker:
-
-    $ docker build -t oscal-docs .
-    $ docker run --rm -v $PWD:/usr/src/app/source -w /usr/src/app/source oscal-docs bundle exec middleman build --clean
-
-Without Docker:
-
-    $ bundle exec middleman build --clean
-
-You can also use the included `deploy.sh` script to automate both the build and publishing to the `nist-pages` branch.
-
-Refer to the pages.nist.gov publishing [instructions](https://github.com/usnistgov/pages-root/wiki) for more information on how to configure the GitHub repo.
-
-## Updating Slate
-
-You'll need to take into account any customizations you've made to the core framework before updating. Nonetheless, if it is deemed that the Slate framework itself needs to be updated, you'll first need to fork the upstream [`lord/slate`](https://github.com/lord/slate) repository. You can then set an upstream remote (if you haven't already) to your fork and fetch the latest changes as follows:
-
-    $ git remote add slate-upstream <your-slate-fork.git>
-    $ git fetch slate-upstream
-
-Then, checkout the `docs` branch and create a merge commit from the `slate-upstream/master` branch, correcting any merge conflicts as necessary. Bear in mind that if you've made a substantial number of framework/theming customizations, you may have a lot of merge conflicts to resolve.
-
-    $ git checkout docs
-    $ git merge slate-upstream/master
+Once the site is running, it can be accessed at http://localhost:1313/OSCAL. Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.
