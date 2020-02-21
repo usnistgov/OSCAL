@@ -27,7 +27,7 @@
     <model>
       <assembly ref="metadata" min-occurs="1"/>
       <field ref="import-component-definition" max-occurs="unbounded">
-        <group-as name="import-component-definitions"/>
+        <group-as name="import-component-definitions" in-json="ARRAY"/>
       </field>
       <assembly ref="component" max-occurs="unbounded">
         <group-as name="components" in-json="BY_KEY"/>
@@ -67,7 +67,7 @@
       </field>
       <field ref="description" min-occurs="1"/>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties"/>
+        <group-as name="properties" in-json="ARRAY"/>
         <flag ref="name">
           <allowed-values allow-other="yes">
             <enum value="version">The version of the component.</enum>
@@ -77,7 +77,7 @@
         </flag>
       </field>
       <field ref="link" max-occurs="unbounded">
-        <group-as name="links"/>
+        <group-as name="links" in-json="ARRAY"/>
         <flag ref="rel">
           <allowed-values allow-other="yes">
             <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
@@ -105,7 +105,7 @@
       </assembly>
 -->
       <assembly ref="control-implementation" max-occurs="unbounded">
-        <group-as name="control-implementations" />
+        <group-as name="control-implementations" in-json="ARRAY" />
       </assembly>
 <!--      <assembly ref="supported-profile" max-occurs="unbounded">
         <group-as name="supported-profiles" />
@@ -143,10 +143,10 @@
     <model>
       <field ref="description" min-occurs="1"/>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties"/>
+        <group-as name="properties" in-json="ARRAY"/>
       </field>
       <field ref="link" max-occurs="unbounded">
-        <group-as name="links"/>
+        <group-as name="links" in-json="ARRAY"/>
         <!-- TODO: Model specific link relationships for:
           depends-on: component has a dependency on another component
           validated-by:, etc.
@@ -159,7 +159,7 @@
         <group-as name="incorporates-components" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="control-implementation" max-occurs="unbounded">
-        <group-as name="control-implementations" />
+        <group-as name="control-implementations" in-json="ARRAY" />
       </assembly>
 <!--      <assembly ref="supported-profile" max-occurs="unbounded">
         <group-as name="supported-profiles" />
@@ -175,7 +175,7 @@
     <model>
       <field ref="description" min-occurs="1"/>
       <assembly ref="can-meet-requirement-set" max-occurs="unbounded">
-        <group-as name="can-meet-requirement-sets"/>
+        <group-as name="can-meet-requirement-sets" in-json="ARRAY"/>
       </assembly>
     </model>
   </define-assembly>
@@ -187,14 +187,14 @@
     <model>
       <field ref="description" min-occurs="1"/>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties"/>
+        <group-as name="properties" in-json="ARRAY"/>
       </field>
       <field ref="link" max-occurs="unbounded">
-        <group-as name="links"/>
+        <group-as name="links" in-json="ARRAY"/>
         <!-- TODO: Model specific link relationships -->
       </field>
       <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
-        <group-as name="implemented-requirements"/>
+        <group-as name="implemented-requirements" in-json="ARRAY"/>
       </assembly>
       <!-- TODO: allow a reference to a previously defined requirement -->
 <!--      <field ref="requirement-ref" min-occurs="1" max-occurs="unbounded">
@@ -222,10 +222,10 @@
       </assembly>
       <field ref="description"/>
       <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties"/>
+        <group-as name="properties" in-json="ARRAY"/>
       </field>
       <field ref="link" max-occurs="unbounded">
-        <group-as name="links"/>
+        <group-as name="links" in-json="ARRAY"/>
         <!-- TODO: Model specific link relationships -->
       </field>
       <!--            <assembly ref="using"/>

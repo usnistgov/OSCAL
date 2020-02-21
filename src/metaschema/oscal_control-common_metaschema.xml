@@ -40,13 +40,13 @@
             </remarks>
          </field>
          <field ref="usage" max-occurs="unbounded">
-            <group-as name="descriptions"/>
+            <group-as name="descriptions" in-json="ARRAY"/>
          </field>
          <field ref="constraint" max-occurs="unbounded">
-            <group-as name="constraints"/>
+            <group-as name="constraints" in-json="ARRAY"/>
          </field>
          <assembly ref="guideline" max-occurs="unbounded">
-            <group-as name="guidance"/>
+            <group-as name="guidance" in-json="ARRAY"/>
          </assembly>
          <choice>
             <field ref="value">
@@ -63,7 +63,7 @@
             </assembly>
          </choice>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <any/>
       </model>
@@ -117,7 +117,7 @@
       <flag ref="how-many"/>
       <model>
          <field ref="choice" max-occurs="unbounded">
-            <group-as name="alternatives"/>
+            <group-as name="alternatives" in-json="ARRAY"/>
          </field>
          <any/>
       </model>
@@ -138,7 +138,7 @@
       <model>
          <field ref="title"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="method">An assessment method.</enum>
@@ -147,10 +147,10 @@
          </field>
          <field ref="prose" in-xml="UNWRAPPED"/>
          <assembly ref="part" max-occurs="unbounded">
-            <group-as name="parts"/>
+            <group-as name="parts" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <any/>
       </model>

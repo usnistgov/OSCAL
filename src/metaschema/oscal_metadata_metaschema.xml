@@ -42,13 +42,13 @@
          <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
          <assembly ref="revision" max-occurs="unbounded">
-            <group-as name="revision-history" in-xml="GROUPED"/>
+            <group-as name="revision-history" in-xml="GROUPED" in-json="ARRAY"/>
          </assembly>
          <field ref="doc-id" max-occurs="unbounded">
-            <group-as name="document-ids"/>
+            <group-as name="document-ids" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</enum>
@@ -56,16 +56,16 @@
             </flag>
          </field>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <assembly ref="role" max-occurs="unbounded">
-            <group-as name="roles"/>
+            <group-as name="roles" in-json="ARRAY"/>
          </assembly>
          <assembly ref="location" max-occurs="unbounded">
-            <group-as name="locations"/>
+            <group-as name="locations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="party" max-occurs="unbounded">
-            <group-as name="parties"/>
+            <group-as name="parties" in-json="ARRAY"/>
          </assembly>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
@@ -87,7 +87,7 @@
       <description>A collection of citations and resource references.</description>
       <model><!--<assemblies named="section"/>-->
          <assembly ref="resource" max-occurs="unbounded">
-            <group-as name="resources"/>
+            <group-as name="resources" in-json="ARRAY"/>
          </assembly>
       </model>
       <remarks>
@@ -121,10 +121,10 @@
          <field ref="version"/>
          <field ref="oscal-version"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <allowed-values>
                   <enum value="source">Indicates that the href points to the source resource for the revision entry.</enum>
@@ -228,7 +228,7 @@
    <define-field name="prop">
       <formal-name>Property</formal-name>
       <description>A value with a name, attributed to the containing control, part, or group.</description>
-      <json-value-key flag-name="name"/>
+      <json-value-key>value</json-value-key>
       <flag ref="name" required="yes">
          <allowed-values allow-other="yes">
             <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
@@ -300,22 +300,22 @@
       <model>
          <assembly ref="address" min-occurs="1"/>
          <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses"/>
+            <group-as name="email-addresses" in-json="ARRAY"/>
          </field>
          <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers"/>
+            <group-as name="telephone-numbers" in-json="ARRAY"/>
          </field>
          <field ref="url" max-occurs="unbounded">
-            <group-as name="URLs"/>
+            <group-as name="URLs" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -330,17 +330,17 @@
       <flag ref="id"/>
       <model>
          <assembly ref="person" max-occurs="unbounded">
-            <group-as name="persons"/>
+            <group-as name="persons" in-json="ARRAY"/>
          </assembly>
          <assembly ref="org"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -366,34 +366,34 @@
             <description>Affiliated organization</description>
          </field>
          <field ref="person-id" max-occurs="unbounded">
-            <group-as name="person-ids"/>
+            <group-as name="person-ids" in-json="ARRAY"/>
          </field>
          <field ref="org-id" max-occurs="unbounded">
-            <group-as name="organization-ids"/>
+            <group-as name="organization-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="address" max-occurs="unbounded">
-            <group-as name="addresses"/>
+            <group-as name="addresses" in-json="ARRAY"/>
          </assembly>
          <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids"/>
+            <group-as name="location-ids" in-json="ARRAY"/>
          </field>
          <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses"/>
+            <group-as name="email-addresses" in-json="ARRAY"/>
          </field>
          <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers"/>
+            <group-as name="telephone-numbers" in-json="ARRAY"/>
          </field>
          <field ref="url" max-occurs="unbounded">
-            <group-as name="URLs"/>
+            <group-as name="URLs" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -405,31 +405,31 @@
          <field ref="org-name" min-occurs="1"/>
          <field ref="short-name"/>
          <field ref="org-id" max-occurs="unbounded">
-            <group-as name="organization-ids"/>
+            <group-as name="organization-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="address" max-occurs="unbounded">
-            <group-as name="addresses"/>
+            <group-as name="addresses" in-json="ARRAY"/>
          </assembly>
          <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids"/>
+            <group-as name="location-ids" in-json="ARRAY"/>
          </field>
          <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses"/>
+            <group-as name="email-addresses" in-json="ARRAY"/>
          </field>
          <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers"/>
+            <group-as name="telephone-numbers" in-json="ARRAY"/>
          </field>
          <field ref="url" max-occurs="unbounded">
-            <group-as name="URLs"/>
+            <group-as name="URLs" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -453,7 +453,7 @@
       <flag ref="media-type"/>
       <model>
          <field ref="hash" max-occurs="unbounded">
-            <group-as name="hashes"/>
+            <group-as name="hashes" in-json="ARRAY"/>
          </field>
       </model>
       <remarks>
@@ -508,7 +508,7 @@
       </flag>
       <model>
          <field ref="addr-line" max-occurs="unbounded">
-            <group-as name="postal-address"/>
+            <group-as name="postal-address" in-json="ARRAY"/>
          </field>
          <field ref="city"/>
          <field ref="state"/>
@@ -581,17 +581,17 @@
          <field ref="title"/>
          <field ref="desc"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="doc-id" max-occurs="unbounded">
-            <group-as name="document-ids"/>
+            <group-as name="document-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="citation"/>
          <assembly ref="rlink" max-occurs="unbounded">
-            <group-as name="rlinks"/>
+            <group-as name="rlinks" in-json="ARRAY"/>
          </assembly>
          <field ref="base64" max-occurs="unbounded">
-            <group-as name="attachments" in-xml="UNGROUPED" in-json="SINGLETON_OR_ARRAY"/>
+            <group-as name="attachments" in-xml="UNGROUPED" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
          <any/>
@@ -608,7 +608,7 @@
       <model>
          <field ref="text" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="biblio"/>
       </model>
@@ -650,13 +650,13 @@
          <field ref="short-name"/>
          <field ref="desc"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -675,16 +675,16 @@
       </flag>
       <model>
          <field ref="party-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="party-ids"/>
+            <group-as name="party-ids" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
