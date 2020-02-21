@@ -28,10 +28,10 @@
          <!--<assemblies named="section"/>-->
          <choice>
             <assembly ref="group" max-occurs="unbounded">
-               <group-as name="groups"/>
+               <group-as name="groups" in-json="ARRAY"/>
             </assembly>
             <assembly ref="control" max-occurs="unbounded">
-               <group-as name="controls"/>
+               <group-as name="controls" in-json="ARRAY"/>
             </assembly>
          </choice>
          <assembly ref="back-matter">
@@ -63,20 +63,20 @@
       <model>
          <field ref="title" min-occurs="1"/>
          <assembly ref="param" max-occurs="unbounded">
-            <group-as name="parameters"/>
+            <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="part" max-occurs="unbounded">
-            <group-as name="parts"/>
+            <group-as name="parts" in-json="ARRAY"/>
          </assembly>
          <choice>
             <assembly ref="group" max-occurs="unbounded">
-               <group-as name="groups"/>
+               <group-as name="groups" in-json="ARRAY"/>
             </assembly>
             <assembly ref="control" max-occurs="unbounded">
-               <group-as name="controls"/>
+               <group-as name="controls" in-json="ARRAY"/>
             </assembly>
          </choice>
          <any/>
@@ -104,11 +104,11 @@
       <model>
          <field ref="title" min-occurs="1"/>
          <assembly ref="param" max-occurs="unbounded">
-            <group-as name="parameters"/>
+            <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
          <!-- TODO: Need to be able to add valid values in context -->
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="label">A human-readable label for the parent context.</enum>
@@ -118,16 +118,16 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <assembly ref="part" max-occurs="unbounded">
-            <group-as name="parts"/>
+            <group-as name="parts" in-json="ARRAY"/>
          </assembly>
          <assembly ref="control" max-occurs="unbounded">
-            <group-as name="controls"/>
+            <group-as name="controls" in-json="ARRAY"/>
          </assembly>
          <!--<assembly named="ref-list"/>-->
          <any/>

@@ -21,68 +21,40 @@
           "oscal-version" : 
           { "$ref" : "#/definitions/oscal-version" },
           "revision-history" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/revision" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/revision" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/revision" } },
           "document-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/doc-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/doc-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/doc-id" } },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "roles" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/role" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/role" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/role" } },
           "locations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/location" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/location" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/location" } },
           "parties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/party" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/party" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/party" } },
           "responsible-parties" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -109,14 +81,10 @@
         "type" : "object",
         "properties" : 
         { "resources" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/resource" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/resource" },
-                "minItems" : 2 } ] } },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/resource" } } },
         "additionalProperties" : false },
       "revision" : 
       { "title" : "Revision History Entry",
@@ -135,23 +103,15 @@
           "oscal-version" : 
           { "$ref" : "#/definitions/oscal-version" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -225,7 +185,11 @@
         "$id" : "#/definitions/prop",
         "type" : "object",
         "properties" : 
-        { "id" : 
+        { "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "id" : 
           { "title" : "Identifier",
             "description" : "Unique identifier of the containing object",
             "type" : "string" },
@@ -236,9 +200,13 @@
           "class" : 
           { "title" : "Class",
             "description" : "Indicating the type or classification of the containing object",
-            "type" : "string" } },
-        "minProperties" : 1,
-        "maxProperties" : 4 },
+            "type" : "string" },
+          "value" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "value",
+          "name" ],
+        "additionalProperties" : false },
       "annotation" : 
       { "title" : "Annotation",
         "description" : "A name/value pair with optional explanatory remarks.",
@@ -279,59 +247,35 @@
           "address" : 
           { "$ref" : "#/definitions/address" },
           "email-addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/email" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/email" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
           "telephone-numbers" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/phone" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/phone" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
           "URLs" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/url" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/url" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/url" } },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -353,43 +297,27 @@
             "description" : "Unique identifier of the containing object",
             "type" : "string" },
           "persons" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/person" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/person" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/person" } },
           "org" : 
           { "$ref" : "#/definitions/org" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -411,95 +339,55 @@
           "org-name" : 
           { "$ref" : "#/definitions/org-name" },
           "person-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/person-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/person-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/person-id" } },
           "organization-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/org-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/org-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/org-id" } },
           "addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/address" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/address" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/address" } },
           "location-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/location-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/location-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/location-id" } },
           "email-addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/email" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/email" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
           "telephone-numbers" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/phone" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/phone" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
           "URLs" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/url" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/url" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/url" } },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -514,86 +402,50 @@
           "short-name" : 
           { "$ref" : "#/definitions/short-name" },
           "organization-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/org-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/org-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/org-id" } },
           "addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/address" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/address" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/address" } },
           "location-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/location-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/location-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/location-id" } },
           "email-addresses" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/email" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/email" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
           "telephone-numbers" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/phone" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/phone" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
           "URLs" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/url" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/url" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/url" } },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -645,14 +497,10 @@
             "description" : "Describes the media type of the linked resource",
             "type" : "string" },
           "hashes" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/hash" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/hash" },
-                "minItems" : 2 } ] } },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/hash" } } },
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
@@ -681,14 +529,10 @@
           { "description" : "Indicates the type of address.",
             "type" : "string" },
           "postal-address" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/addr-line" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/addr-line" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/addr-line" } },
           "city" : 
           { "$ref" : "#/definitions/city" },
           "state" : 
@@ -781,43 +625,27 @@
           "desc" : 
           { "$ref" : "#/definitions/desc" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "document-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/doc-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/doc-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/doc-id" } },
           "citation" : 
           { "$ref" : "#/definitions/citation" },
           "rlinks" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/rlink" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/rlink" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/rlink" } },
           "attachments" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/base64" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/base64" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/base64" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -832,14 +660,10 @@
         { "text" : 
           { "$ref" : "#/definitions/text" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "biblio" : 
           { "$ref" : "#/definitions/biblio" } },
         "required" : 
@@ -878,32 +702,20 @@
           "desc" : 
           { "$ref" : "#/definitions/desc" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -917,41 +729,25 @@
         "type" : "object",
         "properties" : 
         { "party-ids" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/party-id" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/party-id" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/party-id" } },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "annotations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/annotation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/annotation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1001,23 +797,15 @@
         { "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -1052,14 +840,10 @@
         { "metadata" : 
           { "$ref" : "#/definitions/metadata" },
           "import-component-definitions" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/import-component-definition" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/import-component-definition" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/import-component-definition" } },
           "components" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1120,23 +904,15 @@
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "responsible-parties" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1149,14 +925,10 @@
                 { "not" : 
                   { "type" : "string" } } ] } },
           "control-implementations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/control-implementation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/control-implementation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/control-implementation" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1178,23 +950,15 @@
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "incorporates-capabilities" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1218,14 +982,10 @@
                 { "not" : 
                   { "type" : "string" } } ] } },
           "control-implementations" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/control-implementation" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/control-implementation" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/control-implementation" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1241,14 +1001,10 @@
         { "description" : 
           { "$ref" : "#/definitions/description" },
           "can-meet-requirement-sets" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/can-meet-requirement-set" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/can-meet-requirement-set" },
-                "minItems" : 2 } ] } },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/can-meet-requirement-set" } } },
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
@@ -1266,32 +1022,20 @@
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "implemented-requirements" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/implemented-requirement" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/implemented-requirement" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/implemented-requirement" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1331,23 +1075,15 @@
           "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/prop" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/prop" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
-          { "anyOf" : 
-            [ 
-              { "$ref" : "#/definitions/link" },
-              
-              { "type" : "array",
-                "items" : 
-                { "$ref" : "#/definitions/link" },
-                "minItems" : 2 } ] },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false } },

@@ -36,7 +36,7 @@
         <description>The set of implementations needed to support the control requirements.</description>
         <model>
             <assembly ref="implementation" min-occurs="1" max-occurs="unbounded">
-                <group-as name="implementations"/>
+                <group-as name="implementations" in-json="ARRAY"/>
             </assembly>
         </model>
     </define-assembly>
@@ -51,10 +51,10 @@
         <model>
             <field ref="description"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="with-argument" max-occurs="unbounded">
@@ -104,17 +104,17 @@
         <model>
             <field ref="description" min-occurs="1"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="argument" max-occurs="unbounded">
                 <group-as name="arguments" in-json="BY_KEY"/>
             </assembly>
             <assembly ref="mechanism" max-occurs="unbounded">
-                <group-as name="mechanisms"/>
+                <group-as name="mechanisms" in-json="ARRAY"/>
             </assembly>
         </model>
     </define-assembly>
@@ -129,10 +129,10 @@
         <model>
             <field ref="description"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="configuration-method" min-occurs="1"/>
@@ -211,10 +211,10 @@
         <model>
             <field ref="description" min-occurs="1"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <assembly ref="implementation-source" min-occurs="1"/>
@@ -233,10 +233,10 @@
         <model>
             <field ref="description" min-occurs="1"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <field ref="remarks"/>
@@ -253,10 +253,10 @@
         <model>
             <field ref="description" min-occurs="1"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <field ref="remarks"/>
