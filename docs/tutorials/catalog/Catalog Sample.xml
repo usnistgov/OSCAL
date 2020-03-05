@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" 
          id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
-   <metadata>
+  <metadata>
       <title>Sample Security Catalog</title>
       <published>2020-02-02T11:01:04.736-04:00</published>
       <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
-      <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
+      <prop name="keywords">Assurance, computer security, FISM, security controls, security requirements</prop>
       <role id="creator">
          <title>Document creator</title>
       </role>
