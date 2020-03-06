@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><html xmlns="http://www.w3.org/1999/xhtml"><head><style type="text/css">
+         html, body { background-color: lightsteelblue }
+         
+         pre { color: darkgrey }
+         .tag { color: black; font-family: monospace; font-size: 80%; font-weight: bold }
+         
+         .METASCHEMA { }
+         
+         .title { }
+         
+         .define-assembly,
+         .define-field,
+         .define-flag      { margin-top: 1ex; margin-bottom: 1ex; border: thin inset black; padding: 0.5em }
+         
+         .define-assembly *,
+         .define-field    *,
+         .define-flag     *  { margin: 0em }
+         
+         .define-assembly &gt; div { margin-top: 1em }
+         
+         pre { padding: 0.5em; background-color: gainsboro }
+         
+         .define-assembly { }
+         
+         .define-field { }
+         
+         .define-flag { }
+         
+         .flag { }
+         
+         .formal-name { font-size: 120%; font-weight: bold; font-family: sans-serif; margin: 0.5em 0em }
+         
+         .description { font-size: 90% }
+         
+         .remarks { }
+         
+         .remarks p { margin-top: 0.5em }
+         // .remarks &gt; p:first-child { margin-top: 0em }
+         
+         .model { margin-top: 1em }
+         
+         .field { }
+         
+         .fields { }
+         
+         .assembly { }
+         
+         .assemblies { }
+         
+         .choice { }
+         
+         .example { margin-top: 1em }
+         
+         .prose { }
+         
+         
+         .p { }
+         
+         .code {  display: inline; }
+         .q {  display: inline; }
+         .em {  display: inline; }
+         .strong {  display: inline; }
+         
+         .name { color: midnightblue; background-color: lavender;
+         font-family: monospace }
+         
+         a { text-decoration:none }
+         a:hover { text-decoration: underline }
+         
+         
+      </style></head><body><div class="METASCHEMA">
+   <h2 class="title">OSCAL Security Assessment Results (SAR) Format</h2>
+   1.0.0-milestone2
+   <p>The short name (file identifier) for this schema shall be <i>oscal-sar</i>. It is used internally when an
+         identifier is called for, and may appear in file names of schema artifacts.</p>
+   http://csrc.nist.gov/ns/oscal/1.0
+   <div class="remarks">
+      <p class="p">The OSCAL Control SSP format can be used to describe the information typically specified
+			in a system security plan, such as those defined in NIST SP 800-18.</p>
+      <p class="p">The root of the OSCAL System Security Plan (SSP) format is <a href="#system-security-plan" class="name">system-security-plan</a>.</p>
+   </div>
+   
+   
+   
+   
+
+   
+   <div class="define-assembly" id="system-security-plan"><h3><b class="formal-name">Security Assessment Report (SAR)</b>:
+            <code class="name">system-security-plan</code> assembly</h3><p class="description">A system security plan, such as those described in NIST SP 800-18</p><div class="model"><p>The <code class="name">system-security-plan</code> assembly has the following contents  (in order):</p><ul><li>Flag <a href="#" class="name"/><i> (required)</i></li>
+         <li>An <a class="name" href="#"/> assembly  (<i>zero or one</i>)</li>
+        <li>An <a class="name" href="#"/> assembly  (<i>zero or one</i>)</li>
+         <li>An <a class="name" href="#"/> assembly  (<i>zero or one</i>)</li>
+         
+      </ul></div></div>
+   
+   
+   <div class="define-assembly" id="import-ssp"><h3><b class="formal-name">Import System Security Plan</b>:
+            <code class="name">import-ssp</code> assembly</h3><p class="description">Used to import the OSCAL profile representing the system's control baseline.</p><div class="model"><p>The <code class="name">import-ssp</code> assembly has the following contents :</p><ul><li>Flag <a href="#" class="name"/><i> (required)</i></li>
+         <li>An <a class="name" href="#"/> field  (<i>zero or one</i>)</li>
+      </ul></div></div>
+
+   <div class="define-assembly" id="scope"><h3><b class="formal-name">Scope of Assessment</b>:
+            <code class="name">scope</code> assembly</h3><p class="description">.</p><div class="model"><p>The <code class="name">scope</code> assembly has the following contents :</p><ul><li>Flag <a href="#" class="name"/><i> (required)</i></li>
+         <li>An <a class="name" href="#"/> field  (<i>zero or one</i>)</li>
+      </ul></div></div>
+   
+
+</div></body></html>
