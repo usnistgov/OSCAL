@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_ssp_schema.xsd" id="uusi-d28d7674-8463-42d9-8ff9-9d46a4460cae">
+<system-security-plan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../metaschema/oscal_ssp_metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uusi-d28d7674-8463-42d9-8ff9-9d46a4460cae">
     <metadata>
         <title>CSP IaaS System Security Plan</title>
         <last-modified>2020-02-10T14:53:53.476-05:00</last-modified>
@@ -99,15 +99,13 @@ Cust-A    Cust-B    Cust-C
             <description><p>This IaaS.</p></description>
             <status state="operational" />
         </component>
-        <component id="customer" component-type="customer">
-            <title>Customer</title>
-            <description><p>The SaaS customers who use this IaaS.</p></description>
-            <status state="other" />
-        </component>
         <component id="log-repo" component-type="system">
             <title>Centralized Log Repo</title>
             <description><p>This is the centralized log repository product. There is a primary and a backup.</p></description>
-            <status state="other" />
+            <status state="operational" />
+            <responsible-role role-id="administrator">
+                <party-id>person-1</party-id>
+            </responsible-role>
         </component>
         <component id="routers" component-type="infrastructure">
             <title>ABC Routers</title>
@@ -123,6 +121,12 @@ Cust-A    Cust-B    Cust-C
             <title>Firewall</title>
             <description><p>The is the perimeter firewall. There is one at the primary site and one at the alternate site.</p></description>
             <status state="operational" />
+            <responsible-role role-id="administrator">
+                <party-id>person-1</party-id>
+            </responsible-role>
+            <responsible-role role-id="customer-administrator">
+                <remarks><p>Must be assigned by customer to manage firewall rules.</p></remarks>
+            </responsible-role>
         </component>
         <component id="hypervisor" component-type="hypervisor">
             <title>IaaS Hypervisor</title>
@@ -146,6 +150,9 @@ Cust-A    Cust-B    Cust-C
                 <value>Fails over to alternate centralized logging component; Store logs locally/cache them; Overwrite oldest record.</value>
             </set-parameter>
             <statement statement-id="au-5_stmt.a">
+                <annotation name="customer-responsibility">
+                    <remarks><p>The customer must configure all virtual components to alert appropriate customer POCs in the event of audit processing errors.</p></remarks>
+                </annotation>
                 <by-component component-id="log-repo">
                     <description>
                         <p>The centralized logging component is configured to alert the IaaS SOC of audit processing failure via email to <a href="mailto:soc@big-iaas.cloud">soc@big-iaas.cloud</a>.</p>
@@ -177,11 +184,11 @@ Cust-A    Cust-B    Cust-C
                 <by-component component-id="au-proc">
                     <description><p>As described in the IaaS Audit, Logging, and Incident Response Procedure, the IaaS SOC Team will allert each customer's designated POC of any logging outages that impact a customer's ability to maintain logging.</p></description>
                 </by-component>
-                <by-component component-id="customer">
-                    <description><p>The customer must configure all virtual components to alert appropriate customer POCs in the event of audit processing errors.</p></description>
-                </by-component>
             </statement>
             <statement statement-id="au-5_stmt.b">
+                <annotation name="responsibility" value="customer">
+                    <remarks><p>The IaaS customer (SaaS Provider) must configure all virtual components to store logs locally until centralized logging can be restored. Customer must also ensure virtual components overwrite oldest logs first in the event local log stores reach capacity.</p></remarks>
+                </annotation>
                 <by-component component-id="log-repo">
                     <description>
                         <p>The centralized logging component logs any failures within its datastores if possible.</p>
@@ -209,9 +216,6 @@ Cust-A    Cust-B    Cust-C
                     <description>
                         <p>The Hypervisor is configured to store logs locally until the centralized logging capability is restored. In the event of reaching local log capacity the hypervisor is configured to overwrite the oldest logs first.</p>
                     </description>
-                </by-component>
-                <by-component component-id="customer">
-                    <description><p>The IaaS customer (SaaS Provider) must configure all virtual components to store logs locally until centralized logging can be restored. Customer must also ensure virtual components overwrite oldest logs first in the event local log stores reach capacity.</p></description>
                 </by-component>
             </statement>
         </implemented-requirement>

@@ -1166,6 +1166,9 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->

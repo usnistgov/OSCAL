@@ -10,7 +10,7 @@
         <role id="audit-admin">
             <title>Audit Administrator</title>
         </role>
-        <party id="person-1">
+        <party id="person-2">
             <person>
                 <person-name>Annie Admin</person-name>
             </person>
@@ -130,6 +130,16 @@ Cust-A    Cust-B    Cust-C
             <link href="#au-proc" />
             <status state="operational" />
         </component>
+        <system-inventory>
+            <inventory-item id="firewall-1" asset-id="test">
+                <description><p>The perimeter firewall for the VDC.</p></description>
+                <implemented-component component-id="firewall">
+                    <responsible-party role-id="customer-administrator">
+                        <party-id>person-2</party-id>
+                    </responsible-party>
+                </implemented-component>
+            </inventory-item>
+        </system-inventory>
     </system-implementation>
     <control-implementation>
         <description><p>This is a collection of control responses. They describe how each control is implemented. This takes a component approach.</p></description>
