@@ -6,15 +6,15 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
- xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="security-assessment-report">
-   <schema-name>OSCAL Security Assessment Results (SAR) Format</schema-name>
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="security-assessment-plan">
+   <schema-name>OSCAL Security Assessment Plan (SAP) Format</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
-   <short-name>oscal-sar</short-name>
+   <short-name>oscal-sap</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
-      <p>The OSCAL security assessment report (SAR) format is used to describe the information typically 
-         provided by an assessor following an assessment.</p>
-      <p>The root of the OSCAL Security Assessment Report (SAR) format is <code>security-assessment-report</code>.</p>
+      <p>The OSCAL security assessment plan (SAP) format is used to describe the information typically 
+			provided by an assessor during the preparation for an assessment.</p>
+      <p>The root of the OSCAL Security Assessment Plan (SAP) format is <code>security-assessment-plan</code>.</p>
    </remarks>
    
    <!-- IMPORT STATEMENTS -->
@@ -23,9 +23,9 @@
    <import href="oscal_assessment-common_metaschema.xml"/>
    
    <!-- TOP LEVEL ASSEMBLY -->
-   <define-assembly name="security-assessment-report">
-      <formal-name>Security Assessment Report (SAR)</formal-name>
-      <description>A security assessment report, such as those provided by a FedRAMP assessor.</description>
+   <define-assembly name="security-assessment-plan">
+      <formal-name>Security Assessment Plan (SAP)</formal-name>
+      <description>An assessment plan, such as those provided by a FedRAMP assessor.</description>
       <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata"/>
@@ -33,10 +33,8 @@
          <assembly ref="scope" min-occurs="1" max-occurs="1" />
          <assembly ref="assets"/>
          <assembly ref="activities"/>
-         <assembly ref="evidence"/>
-         <assembly ref="results"/>
          <assembly ref="back-matter"/>
       </model>
    </define-assembly>
-   
+
 </METASCHEMA>
