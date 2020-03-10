@@ -61,8 +61,8 @@
       <formal-name>Scope of Assessment</formal-name>
       <description>Used by the SAP and SAR to clarify the scope of the assessment. In the SAP, this is the planned scope. In the SAR this is the actual scope, including any changes from the SAP.</description>
       <model>
-         <assembly ref="scope-include" />
-         <assembly ref="scope-exclude"/>
+         <assembly ref="scope-include" min-occurs="1" max-occurs="1"/>
+         <assembly ref="scope-exclude" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
  
@@ -70,16 +70,125 @@
       <formal-name>Include in Scope</formal-name>
       <description>Identifies exactly what is within the scope of this assessment. Anything not explicitly defined here is out-of-scope.</description>
       <model>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A free-text description of the included scope.</description>
+         </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name" />
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+            <flag ref="name" />
+         </assembly>
+         <assembly ref="controls" min-occurs="0" max-occurs="1" />
+         <assembly ref="objectives" min-occurs="0" max-occurs="1" />
+         <assembly ref="components" min-occurs="0" max-occurs="1" />
+         <assembly ref="inventory-items" min-occurs="0" max-occurs="1" />
+         <assembly ref="locations" min-occurs="0" max-occurs="1" />
+         <assembly ref="roles" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" />
       </model>
    </define-assembly>
+   
+   <define-assembly name="controls">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="control-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="objectives">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="objective-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+
+
+   <define-assembly name="components">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="component-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="inventory-items">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="inventory-item-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="locations">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="location-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="roles">
+      <formal-name></formal-name>
+      <description></description>
+      <model>
+         <field ref="all" />
+         <field ref="id-ref" >
+            <flag ref="role-id" required="yes" />
+         </field>
+      </model>
+   </define-assembly>
+
+   <define-flag name="location-id">
+      <formal-name>Location ID Reference</formal-name>
+      <description>Points to a location using its assigned ID.</description>
+   </define-flag>
+   
+   <define-flag name="role-id">
+      <formal-name>Role ID Reference</formal-name>
+      <description>Points to a role using its assigned ID.</description>
+   </define-flag>
+   
+   <define-field name="all">
+      <formal-name>All</formal-name>
+      <description></description>
+   </define-field>
+   
+   <define-field name="id-ref">
+      <formal-name>ID Reference</formal-name>
+      <description>Uses an ID flag to reference a field or assembly defined elsewhere.</description>
+   </define-field>
    
    <define-assembly name="scope-exclude">
       <formal-name>Exclude from Scope</formal-name>
       <description>Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from the above scope-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
       <model>
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A free-text description of the excluded scope.</description>
+         </field>
       </model>
    </define-assembly>
-   
+
+   <!-- ********** ASSET Assembly ********** -->
    <define-assembly name="assets">
       <formal-name>Assessment Assets</formal-name>
       <description>.</description>
@@ -87,6 +196,7 @@
       </model>
    </define-assembly>
    
+   <!-- ********** ACTIVITIES Assembly ********** -->
    <define-assembly name="activities">
       <formal-name>Assessment Activities</formal-name>
       <description>Used by the SAP and SAR. In the SAP, this defines the planned activities. In the SAR, this provides the actual activities performed.</description>
@@ -94,6 +204,7 @@
       </model>
    </define-assembly>
    
+   <!-- ********** EVIDENCE Assembly ********** -->
    <define-assembly name="evidence">
       <formal-name>Assessment Evidence</formal-name>
       <description>Used by the SAR and POA&amp;M. In the SAR, this identifies all evidence associated with the assessment. In the POA&amp;M, this identifies evidence associated with deviation requests.</description>
@@ -101,6 +212,7 @@
       </model>
    </define-assembly>
    
+   <!-- ********** RESULTS Assembly ********** -->
    <define-assembly name="results">
       <formal-name>Assessment Results</formal-name>
       <description>Used by the SAR and POA&amp;M. In the SAR, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>

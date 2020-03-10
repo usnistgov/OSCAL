@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-           xmlns:oscal-sar="http://csrc.nist.gov/ns/oscal/1.0"
+           xmlns:oscal-poam="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
            version="1.0.0-milestone3">
    <xs:annotation>
       <xs:appinfo>
-         <m:schema-name>OSCAL Security Assessment Results (SAR) Format</m:schema-name>
+         <m:schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Format</m:schema-name>
          <m:schema-version>1.0.0-milestone3</m:schema-version>
-         <m:short-name>oscal-sar</m:short-name>
+         <m:short-name>oscal-poam</m:short-name>
          <m:remarks>
-            <m:p>The OSCAL security assessment report (SAR) format is used to describe the information typically provided by an assessor following an assessment.</m:p>
-            <m:p>The root of the OSCAL Security Assessment Report (SAR) format is <m:code>security-assessment-report</m:code>.</m:p>
+            <m:p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.</m:p>
+            <m:p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <m:code>plan-action-milestones</m:code>.</m:p>
          </m:remarks>
-         <m:root>security-assessment-report</m:root>
+         <m:root>plan-action-milestones</m:root>
       </xs:appinfo>
    </xs:annotation>
    <xs:element name="metadata">
@@ -29,11 +29,11 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:published" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:last-modified" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:version" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:oscal-version" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:published" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:last-modified" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:version" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:oscal-version" minOccurs="1" maxOccurs="1"/>
             <xs:element name="revision-history" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -45,17 +45,17 @@
                </xs:annotation>
                <xs:complexType>
                   <xs:sequence>
-                     <xs:element ref="oscal-sar:revision" minOccurs="0" maxOccurs="unbounded"/>
+                     <xs:element ref="oscal-poam:revision" minOccurs="0" maxOccurs="unbounded"/>
                   </xs:sequence>
                </xs:complexType>
             </xs:element>
-            <xs:element ref="oscal-sar:doc-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:role" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:location" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:party" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:responsible-party"
+            <xs:element ref="oscal-poam:doc-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:role" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:location" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:party" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:responsible-party"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -68,13 +68,13 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
       </xs:complexType>
       <xs:unique name="metadata-responsible-party-keys">
-         <xs:selector xpath="oscal-sar:responsible-party"/>
+         <xs:selector xpath="oscal-poam:responsible-party"/>
          <xs:field xpath="@role-id"/>
       </xs:unique>
    </xs:element>
@@ -89,7 +89,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:resource" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:resource" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -104,13 +104,13 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:title" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:published" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:last-modified" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:version" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:oscal-version" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:published" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:last-modified" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:version" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:oscal-version" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -121,7 +121,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -137,8 +137,8 @@
             <b>Link</b>: A reference to a local or remote resource</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:group ref="oscal-sar:everything-inline"/>
-         <xs:attribute name="href" use="required" type="oscal-sar:uri-reference">
+         <xs:group ref="oscal-poam:everything-inline"/>
+         <xs:attribute name="href" use="required" type="oscal-poam:uri-reference">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>hypertext reference</m:formal-name>
@@ -181,7 +181,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="oscal-sar:dateTime-with-timezone"/>
+            <xs:extension base="oscal-poam:dateTime-with-timezone"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -196,7 +196,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="oscal-sar:dateTime-with-timezone"/>
+            <xs:extension base="oscal-poam:dateTime-with-timezone"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -363,7 +363,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -420,13 +420,13 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:address" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:email" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:phone" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:address" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:email" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:phone" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:url" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -437,7 +437,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -479,11 +479,11 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:person" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:org" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:person" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:org" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -494,7 +494,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -536,19 +536,19 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:person-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:short-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:org-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:person-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:org-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:address" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:location-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:email" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:phone" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:person-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:short-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:org-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:person-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:org-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:address" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:location-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:email" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:phone" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:url" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -559,7 +559,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -576,17 +576,17 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:org-name" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:short-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:org-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:address" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:location-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:email" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:phone" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:org-name" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:short-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:org-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:address" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:location-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:email" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:phone" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:url" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -597,7 +597,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -666,9 +666,9 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:hash" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:hash" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="href" use="required" type="oscal-sar:uri-reference">
+         <xs:attribute name="href" use="required" type="oscal-poam:uri-reference">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>hypertext reference</m:formal-name>
@@ -746,11 +746,11 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:addr-line" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:city" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:state" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:postal-code" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:country" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:addr-line" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:city" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:state" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:postal-code" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:country" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="type">
             <xs:annotation>
@@ -872,7 +872,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="oscal-sar:email"/>
+            <xs:extension base="oscal-poam:email"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -942,7 +942,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="oscal-sar:uri"/>
+            <xs:extension base="oscal-poam:uri"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -971,7 +971,7 @@
             <b>Text</b>: A line of textual content whose semantic is determined by the context of use.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:group ref="oscal-sar:everything-inline"/>
+         <xs:group ref="oscal-poam:everything-inline"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="biblio">
@@ -998,13 +998,13 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:title" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:desc" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:doc-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:citation" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:rlink" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:base64" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:desc" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:doc-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:citation" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:rlink" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:base64" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -1015,7 +1015,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -1042,9 +1042,9 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:text" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:biblio" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:text" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:biblio" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -1098,12 +1098,12 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:short-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:desc" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:short-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:desc" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -1114,7 +1114,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -1141,10 +1141,10 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:party-id" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:party-id" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -1155,7 +1155,7 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
@@ -1181,7 +1181,7 @@
             <b>Title</b>: A title for display and navigation</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:group ref="oscal-sar:everything-inline"/>
+         <xs:group ref="oscal-poam:everything-inline"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="base64">
@@ -1196,7 +1196,7 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:base64Binary">
-               <xs:attribute name="filename" type="oscal-sar:uri-reference">
+               <xs:attribute name="filename" type="oscal-poam:uri-reference">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>File Name</m:formal-name>
@@ -1220,14 +1220,14 @@
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="import-sap">
+   <xs:element name="import-ssp">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Import Security Assessment Plan</m:formal-name>
-            <m:description>Used by the SAR to import information about the original plan for assessing the system.</m:description>
+            <m:formal-name>Import System Security Plan</m:formal-name>
+            <m:description>Used by the SAP and POA&amp;M to import information about the system being assessed.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Import Security Assessment Plan</b>: Used by the SAR to import information about the original plan for assessing the system.</xs:documentation>
+            <b>Import System Security Plan</b>: Used by the SAP and POA&amp;M to import information about the system being assessed.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1241,11 +1241,11 @@
                      <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
                </xs:annotation>
                <xs:complexType>
-                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="href" use="required" type="oscal-sar:uri-reference">
+         <xs:attribute name="href" use="required" type="oscal-poam:uri-reference">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>hypertext reference</m:formal-name>
@@ -1255,74 +1255,6 @@
                   <b>hypertext reference</b>: A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="scope">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Scope of Assessment</m:formal-name>
-            <m:description>Used by the SAP and SAR to clarify the scope of the assessment. In the SAP, this is the planned scope. In the SAR this is the actual scope, including any changes from the SAP.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Scope of Assessment</b>: Used by the SAP and SAR to clarify the scope of the assessment. In the SAP, this is the planned scope. In the SAR this is the actual scope, including any changes from the SAP.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-sar:scope-include" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:scope-exclude" minOccurs="0" maxOccurs="1"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="scope-include">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Include in Scope</m:formal-name>
-            <m:description>Identifies exactly what is within the scope of this assessment. Anything not explicitly defined here is out-of-scope.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Include in Scope</b>: Identifies exactly what is within the scope of this assessment. Anything not explicitly defined here is out-of-scope.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="scope-exclude">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Exclude from Scope</m:formal-name>
-            <m:description>Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from the above scope-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Exclude from Scope</b>: Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from the above scope-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="assets">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Assessment Assets</m:formal-name>
-            <m:description>.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Assessment Assets</b>: .</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="activities">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Assessment Activities</m:formal-name>
-            <m:description>Used by the SAP and SAR. In the SAP, this defines the planned activities. In the SAR, this provides the actual activities performed.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Assessment Activities</b>: Used by the SAP and SAR. In the SAP, this defines the planned activities. In the SAR, this provides the actual activities performed.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence/>
       </xs:complexType>
    </xs:element>
    <xs:element name="evidence">
@@ -1351,25 +1283,22 @@
          <xs:sequence/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="security-assessment-report" m:root="yes">
+   <xs:element name="plan-action-milestones" m:root="yes">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Security Assessment Report (SAR)</m:formal-name>
-            <m:description>A security assessment report, such as those provided by a FedRAMP assessor.</m:description>
+            <m:formal-name>Plan of Action and Milestones (POA&amp;M)</m:formal-name>
+            <m:description>A plan of action and milestones, such as those required by FedRAMP.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Security Assessment Report (SAR)</b>: A security assessment report, such as those provided by a FedRAMP assessor.</xs:documentation>
+            <b>Plan of Action and Milestones (POA&amp;M)</b>: A plan of action and milestones, such as those required by FedRAMP.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sar:metadata" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:import-sap" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:scope" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:assets" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:activities" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:evidence" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:results" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-sar:back-matter" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:metadata" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:import-ssp" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:evidence" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:results" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="id" use="required" type="xs:NCName">
             <xs:annotation>

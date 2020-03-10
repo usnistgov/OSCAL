@@ -28,14 +28,14 @@
       <description>A security assessment report, such as those provided by a FedRAMP assessor.</description>
       <flag ref="id" required="yes"/>
       <model>
-         <assembly ref="metadata"/>
-         <assembly ref="import-ssp" min-occurs="1"/>
-         <assembly ref="scope" min-occurs="1" max-occurs="1" />
-         <assembly ref="assets"/>
-         <assembly ref="activities"/>
-         <assembly ref="evidence"/>
-         <assembly ref="results"/>
-         <assembly ref="back-matter"/>
+         <assembly ref="metadata" min-occurs="1"  max-occurs="1" />
+         <assembly ref="import-sap" min-occurs="0"  max-occurs="1" />
+         <assembly ref="scope" min-occurs="0" max-occurs="1" />
+         <assembly ref="assets" min-occurs="0"  max-occurs="1" />
+         <assembly ref="activities" min-occurs="0"  max-occurs="1" />
+         <assembly ref="evidence" min-occurs="0"  max-occurs="1" />
+         <assembly ref="results" min-occurs="1"  max-occurs="1" />
+         <assembly ref="back-matter" min-occurs="0"  max-occurs="1" />
       </model>
    </define-assembly>
    

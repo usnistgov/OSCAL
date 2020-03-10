@@ -1,6 +1,6 @@
-<security-assessment-report xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+<plan-action-milestones xmlns="http://csrc.nist.gov/ns/oscal/1.0"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 oscal_sar_metaschema.xsd"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 oscal_poam_metaschema.xsd"
     id="UUID-xx">
     
     <metadata>
@@ -10,9 +10,5 @@
         <oscal-version></oscal-version>
     </metadata>
     <import-ssp href="" />
-    <scope>
-        <scope-include></scope-include>
-        <scope-exclude></scope-exclude>
-    </scope>
     
-</security-assessment-report>
+</plan-action-milestones>
