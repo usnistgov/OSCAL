@@ -10,20 +10,33 @@
         <oscal-version></oscal-version>
     </metadata>
     <import-ssp href="" />
-    <scope>
-        <scope-include>
+    <assessment-subject>
+        <subject-include name="controls">
+            <description><p>Include all controls in the SSP's baseline, except as explicitly excluded elsewhere.</p></description>
+            <all />
+        </subject-include>
+        <subject-include name="objectives">
             <description></description>
-            <controls>
-                <id-ref />
-            </controls>
-            <locations>
-                <all />
-            </locations>
-        </scope-include>
-        <scope-exclude>
+            <all />
+        </subject-include>
+        <subject-include name="components">
             <description></description>
-        </scope-exclude>
-    </scope>
+            <id-ref id="sap-comp-1" name="component" />
+        </subject-include>
+
+        <subject-exclude name="controls">
+            <description><p>Exclude AC-1 from assessment testing.</p></description>
+            <id-ref name="controls" id="ac-1"/>
+        </subject-exclude>
+
+        <local-definitions>
+            <component id="sap-comp-1" component-type="hardware">
+                <title>Windows Laptop</title>
+                <description><p>A Windows laptop, which is not defiend in the SSP.</p></description>
+                <status state="operational" />
+            </component>
+        </local-definitions>
+    </assessment-subject>
     <assets />
     <activities />
     <back-matter />

@@ -30,7 +30,7 @@
       <model>
          <assembly ref="metadata" min-occurs="1"  max-occurs="1" />
          <assembly ref="import-sap" min-occurs="0"  max-occurs="1" />
-         <assembly ref="scope" min-occurs="0" max-occurs="1" />
+         <assembly ref="assessment-subject" min-occurs="0" max-occurs="1" />
          <assembly ref="assets" min-occurs="0"  max-occurs="1" />
          <assembly ref="activities" min-occurs="0"  max-occurs="1" />
          <assembly ref="evidence" min-occurs="0"  max-occurs="1" />

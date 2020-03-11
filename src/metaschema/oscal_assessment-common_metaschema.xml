@@ -17,10 +17,12 @@
       <p>The root of the OSCAL Security Assessment Report (SAR) format is <code>security-assessment-report</code>.</p>
       <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-action-milestones</code>.</p>
    </remarks>
-   
+
    <!-- IMPORT STATEMENTS -->
-   <import href="oscal_metadata_metaschema.xml"/>
+   <import href="oscal_control-common_metaschema.xml"/>
    <import href="oscal_implementation-common_metaschema.xml"/>
+   <import href="oscal_ssp_metaschema.xml"/>
+   <import href="oscal_metadata_metaschema.xml"/>
 
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="assessment-common">
@@ -29,14 +31,14 @@
       <model>
          <assembly ref="import-ssp" min-occurs="1"/>
          <assembly ref="import-sap" min-occurs="1"/>
-         <assembly ref="scope" min-occurs="1" />
+         <assembly ref="assessment-subject" min-occurs="1" />
          <assembly ref="assets"/>
          <assembly ref="activities"/>
          <assembly ref="evidence"/>
          <assembly ref="results"/>
       </model>
    </define-assembly>
-   
+
    <!-- SSP Import -->
    <define-assembly name="import-ssp">
       <formal-name>Import System Security Plan</formal-name>
@@ -56,22 +58,39 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   
-   <define-assembly name="scope">
-      <formal-name>Scope of Assessment</formal-name>
-      <description>Used by the SAP and SAR to clarify the scope of the assessment. In the SAP, this is the planned scope. In the SAR this is the actual scope, including any changes from the SAP.</description>
+
+   <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
+   <define-assembly name="assessment-subject">
+      <formal-name>Subject of Assessment</formal-name>
+      <description>Used by the SAP and SAR to clarify the focus of the assessment. In the SAP, this identifies the planned controls, control-objectives, components, inventory-items, locations, . In the SAR this is the actual subject, and reflects any changes from the SAP.</description>
       <model>
-         <assembly ref="scope-include" min-occurs="1" max-occurs="1"/>
-         <assembly ref="scope-exclude" min-occurs="0" max-occurs="1"/>
+         <assembly ref="subject-include" min-occurs="1" max-occurs="unbounded">
+            <group-as name="includes"/>
+         </assembly>
+         <assembly ref="subject-exclude" min-occurs="0" max-occurs="unbounded">
+            <group-as name="controls"/>
+         </assembly>
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
- 
-   <define-assembly name="scope-include">
-      <formal-name>Include in Scope</formal-name>
-      <description>Identifies exactly what is within the scope of this assessment. Anything not explicitly defined here is out-of-scope.</description>
+
+   <define-assembly name="subject-include">
+      <formal-name>Include in Assessment</formal-name>
+      <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="controls" />
+            <enum value="objectives">Assessment objectives</enum>
+            <enum value="components" />
+            <enum value="inventory-items" />
+            <enum value="locations" />
+            <enum value="users" />
+         </allowed-values>
+      </flag>
+      <flag ref="class" />
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
-            <description>A free-text description of the included scope.</description>
+            <description>A free-text description of the included subject items.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties"/>
@@ -81,110 +100,91 @@
             <group-as name="annotations"/>
             <flag ref="name" />
          </assembly>
-         <assembly ref="controls" min-occurs="0" max-occurs="1" />
-         <assembly ref="objectives" min-occurs="0" max-occurs="1" />
-         <assembly ref="components" min-occurs="0" max-occurs="1" />
-         <assembly ref="inventory-items" min-occurs="0" max-occurs="1" />
-         <assembly ref="locations" min-occurs="0" max-occurs="1" />
-         <assembly ref="roles" min-occurs="0" max-occurs="1" />
+         <field ref="all" />
+         <field ref="id-ref" />
          <field ref="remarks" />
       </model>
    </define-assembly>
-   
-   <define-assembly name="controls">
-      <formal-name></formal-name>
-      <description></description>
+
+   <define-assembly name="subject-exclude">
+      <formal-name>Exclude from Assessment</formal-name>
+      <description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from the above subject-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="controls" />
+            <enum value="objectives">Assessment objectives</enum>
+            <enum value="components" />
+            <enum value="inventory-items" />
+            <enum value="locations" />
+            <enum value="users" />
+         </allowed-values>
+      </flag>
+      <flag ref="class" />
       <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="control-id" required="yes" />
+         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A free-text description of the included subject items.</description>
          </field>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties"/>
+            <flag ref="name" />
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+            <flag ref="name" />
+         </assembly>
+         <field ref="all" />
+         <field ref="id-ref" />
+         <field ref="remarks" />
       </model>
    </define-assembly>
 
-   <define-assembly name="objectives">
+   <define-field name="id-ref">
       <formal-name></formal-name>
       <description></description>
-      <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="objective-id" required="yes" />
-         </field>
-      </model>
-   </define-assembly>
+      <flag ref="id" required="yes" />
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="control" />
+            <enum value="objective">Assessment objective</enum>
+            <enum value="component" />
+            <enum value="inventory-item" />
+            <enum value="user" />
+         </allowed-values>
+      </flag>
+   </define-field>
 
-
-   <define-assembly name="components">
-      <formal-name></formal-name>
-      <description></description>
-      <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="component-id" required="yes" />
-         </field>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="inventory-items">
-      <formal-name></formal-name>
-      <description></description>
-      <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="inventory-item-id" required="yes" />
-         </field>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="locations">
-      <formal-name></formal-name>
-      <description></description>
-      <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="location-id" required="yes" />
-         </field>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="roles">
-      <formal-name></formal-name>
-      <description></description>
-      <model>
-         <field ref="all" />
-         <field ref="id-ref" >
-            <flag ref="role-id" required="yes" />
-         </field>
-      </model>
-   </define-assembly>
-
-   <define-flag name="location-id">
-      <formal-name>Location ID Reference</formal-name>
-      <description>Points to a location using its assigned ID.</description>
-   </define-flag>
-   
-   <define-flag name="role-id">
-      <formal-name>Role ID Reference</formal-name>
-      <description>Points to a role using its assigned ID.</description>
-   </define-flag>
-   
    <define-field name="all">
       <formal-name>All</formal-name>
       <description></description>
    </define-field>
-   
-   <define-field name="id-ref">
-      <formal-name>ID Reference</formal-name>
-      <description>Uses an ID flag to reference a field or assembly defined elsewhere.</description>
-   </define-field>
-   
-   <define-assembly name="scope-exclude">
-      <formal-name>Exclude from Scope</formal-name>
-      <description>Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from the above scope-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
+
+   <define-assembly name="local-definitions">
+      <formal-name>Local Definitions</formal-name>
+      <description>Allows control objectives, users, components, and inventory-items to be defined within the SAP or SAR for circumstances where differences are needed (control objectives) or where they are not appropriately defined in the SSP (components and inventory-items). Use metadata to define additional locations if needed. It is not appropriate to define controls in the SAP or SAR.</description>
       <model>
-         <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
-            <description>A free-text description of the excluded scope.</description>
-         </field>
+         <assembly ref="control-objective" min-occurs="0" max-occurs="unbounded">
+            <group-as name="control-objectives"/>
+         </assembly>
+         <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
+            <description>Used to add any components, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <group-as name="components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
+            <description>Used to add any inventory-items, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <group-as name="inventory-items"/>
+         </assembly>
+         <assembly ref="user" min-occurs="0" max-occurs="unbounded">
+            <description>Used to add any users, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <group-as name="users" in-json="BY_KEY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="control-objective">
+      <formal-name>Control Objective</formal-name>
+      <description>Used to add any control objectives, not defined via the control baseline (SAR->SAP->SSP->Profile->catalog)</description>
+      <model>
+         <assembly ref="part" />
       </model>
    </define-assembly>
 
@@ -195,7 +195,7 @@
       <model>
       </model>
    </define-assembly>
-   
+
    <!-- ********** ACTIVITIES Assembly ********** -->
    <define-assembly name="activities">
       <formal-name>Assessment Activities</formal-name>
@@ -203,7 +203,7 @@
       <model>
       </model>
    </define-assembly>
-   
+
    <!-- ********** EVIDENCE Assembly ********** -->
    <define-assembly name="evidence">
       <formal-name>Assessment Evidence</formal-name>
@@ -211,7 +211,7 @@
       <model>
       </model>
    </define-assembly>
-   
+
    <!-- ********** RESULTS Assembly ********** -->
    <define-assembly name="results">
       <formal-name>Assessment Results</formal-name>
@@ -219,8 +219,7 @@
       <model>
       </model>
    </define-assembly>
-   
-   
+
    <!--  
 
    <!-\- SYSTEM CHARACTERISTICS -\->
