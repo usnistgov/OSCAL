@@ -41,6 +41,13 @@ references:
       paths:
         - git-oscal/docs/vendor/bundle
 commands:
+  apt-update:
+    description: "Update APT cache"
+    steps:
+      - run:
+          name: Get latest APT package metadata
+          command: |
+            apt-get update
   install-schematron:
     description: "Install the schematron skeleton"
     steps:
@@ -90,14 +97,14 @@ commands:
           paths:
             - ~/.m2
           key: mvn-m2-cache-V2-{{ checksum ".maven-cache-checksum" }}
-  install-maven:
+  install-apt-maven:
     description: "Installs Maven"
     steps:
       - run:
           name: Get Maven
           command: |
             sudo apt-get install maven
-  install-hugo:
+  install-apt-hugo:
     description: "Installs Hugo"
     steps:
       - run:
@@ -108,63 +115,63 @@ commands:
           name: Install Hugo
           command: |
             sudo apt-get install ./hugo_extended_0.58.3_Linux-64bit.deb
-  install-lxml:
+  install-pip-lxml:
     description: "Installs Python lxml package"
     steps:
       - run:
           name: Get lxml
           command: |
             sudo pip install lxml
-  install-xmllint:
+  install-apt-xmllint:
     description: "Install xmllint"
     steps:
       - run:
           name: Get xmllint
           command: |
             sudo apt-get install libxml2-utils
-  install-ajv:
-    description: "Install ajv"
-    steps:
-      - run:
-          name: Get ajv
-          command: |
-            sudo npm install -g ajv-cli
-  install-json-diff:
+  #install-npm-ajv:
+  #  description: "Install ajv"
+  #  steps:
+  #    - run:
+  #        name: Get ajv
+  #        command: |
+  #          sudo npm install -g ajv-cli
+  install-npm-json-diff:
     description: "Install json-diff"
     steps:
       - run:
           name: Get json-diff
           command: |
             sudo npm install -g json-diff
-  install-markdown-link-check:
+  install-npm-markdown-link-check:
     description: "Install markdown-link-check"
     steps:
       - run:
           name: Get markdown-link-check
           command: |
             sudo npm install -g markdown-link-check
-  install-jq:
+  install-apt-jq:
     description: "Install jq"
     steps:
       - run:
           name: Get jsome
           command: |
             sudo apt-get install jq
-  install-prettyjson:
+  install-npm-prettyjson:
     description: "Install prettyjson"
     steps:
       - run:
           name: Get prettyjson
           command: |
             sudo npm install -g prettyjson
-  install-github-release:
+  install-go-github-release:
     description: "Install Github Release"
     steps:
       - run:
           name: Get Github Release
           command: |
             go get github.com/aktau/github-release
-  install-bundler:
+  install-gem-bundler:
     description: "Install bundler and html-proofer"
     steps:
       - run:
@@ -228,7 +235,8 @@ jobs: # a collection of
       - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
-      - install-xmllint
+      - apt-update
+      - install-apt-xmllint
       - install-maven-dependencies
       - install-schematron
       - run:
@@ -248,7 +256,8 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
-      - install-xmllint
+      - apt-update
+      - install-apt-xmllint
       - run:
           name: Generate OSCAL schemas
           command: |
@@ -285,9 +294,10 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-maven-dependencies
-      - install-jq
-      - install-prettyjson
-      - install-xmllint
+      - apt-update
+      - install-apt-jq
+      - install-npm-prettyjson
+      - install-apt-xmllint
       - run:
           name: Copy and convert OSCAL content to alternate formats
           command: |
@@ -304,7 +314,7 @@ jobs: # a collection of
       - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
-      - install-markdown-link-check
+      - install-npm-markdown-link-check
       - run:
           name: Validate repo Markdown content instances
           command: |
@@ -318,7 +328,8 @@ jobs: # a collection of
       - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
-      - install-xmllint
+      - apt-update
+      - install-apt-xmllint
       - install-maven-dependencies
       - run:
           name: Validate content instances
@@ -331,11 +342,12 @@ jobs: # a collection of
       - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
-      - install-maven
+      - apt-update
+      - install-apt-maven
       - install-maven-dependencies
-      - install-lxml
-      - install-xmllint
-      - install-json-diff
+      - install-pip-lxml
+      - install-apt-xmllint
+      - install-npm-json-diff
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
@@ -413,8 +425,9 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - *restore_gem_cache
-      - install-bundler
-      - install-hugo
+      - install-gem-bundler
+      - apt-update
+      - install-apt-hugo
       - run:
           name: Restore generated site content
           command: |
@@ -437,8 +450,9 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - *restore_gem_cache
-      - install-bundler
-      - install-hugo
+      - install-gem-bundler
+      - apt-update
+      - install-apt-hugo
       - run:
           name: Restore generated site content
           command: |
@@ -467,7 +481,7 @@ jobs: # a collection of
     executor: go-executor
     steps:
       - *checkout
-      - install-github-release
+      - install-go-github-release
       - run:
           name: Package Release
           command: |
@@ -479,7 +493,8 @@ jobs: # a collection of
       - *checkout-submodules
       - *attach_build_workspace
       - check-skip-build
-      - install-xmllint
+      - apt-update
+      - install-apt-xmllint
       - install-maven-dependencies
       - run:
           name: Run unit tests
