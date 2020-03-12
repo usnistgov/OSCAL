@@ -28,11 +28,15 @@
       <description>A plan of action and milestones, such as those required by FedRAMP.</description>
       <flag ref="id" required="yes"/>
       <model>
-         <assembly ref="metadata"/>
-         <assembly ref="import-ssp" min-occurs="1"/>
-         <assembly ref="evidence"/>
-         <assembly ref="results"/>
-         <assembly ref="back-matter"/>
+         <assembly ref="metadata"  min-occurs="1" max-occurs="1" />
+         <assembly ref="import-ssp" min-occurs="1" max-occurs="1">
+            <description>Used by the POA&amp;M to import information about the system.</description>
+         </assembly>
+         <assembly ref="evidence"  min-occurs="0" max-occurs="1">
+            <description>This enumerates evidence associated with deviation requests.</description>
+         </assembly>
+         <assembly ref="results"  min-occurs="1" max-occurs="1" />
+         <assembly ref="back-matter" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
    

@@ -1,4 +1,4 @@
-<security-assessment-report xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+<security-assessment-results xmlns="http://csrc.nist.gov/ns/oscal/1.0"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 oscal_sar_metaschema.xsd"
     id="UUID-xx">
@@ -6,15 +6,106 @@
     <metadata>
         <title>Test File</title>
         <last-modified>2020-05-03T00:00:00Z</last-modified>
-        <version></version>
-        <oscal-version></oscal-version>
+        <version>TEST</version>
+        <oscal-version>1.0.0-milestone3</oscal-version>
     </metadata>
     <import-sap href="" />
-    <scope>
-        <scope-include></scope-include>
-        <scope-exclude></scope-exclude>
-    </scope>
-    <assets />
-    <activities />
-    <results />
-</security-assessment-report>
+    <objectives>
+        <controls>
+            <description><p>Include all controls in the SSP's baseline, except as explicitly excluded elsewhere.</p></description>
+            <prop name="OSCAL-extension" ns="http://csrc.nist.gov/ns/oscal/1.0" id="test" class="test" />
+            <annotation name="OSCAL-extension" ns="http://csrc.nist.gov/ns/oscal/1.0" value="OSCAL Extension" id="test"><remarks><p>OSCAL Extension</p></remarks></annotation>
+            <all />
+            <exclude-control control-id="ac-1" />
+        </controls>
+        <control-objectives>
+            <description><p>Includes all objectives for all in-scope controls as defined in the controls assembly.</p></description>
+            <all />
+        </control-objectives>
+        <objective id="sap-obj-1">
+            <control-link control-id="ac-2" />
+            <part name="objective">
+                <title>SAP Inserted Objective</title>
+                <prop name="lable">AC-2 SAP-1</prop>
+            </part>
+        </objective>
+    </objectives>
+    <assessment-subject>
+        <include-subject name="components">
+            <description><p>A description of the included components.</p></description>
+            <all />
+        </include-subject>
+        <include-subject name="inventory-items">
+            <description><p>A description of the included inventory-items.</p></description>
+            <all />
+        </include-subject>
+        <include-subject name="locations">
+            <description><p>A description of the included locaitons.</p></description>
+            <all />
+        </include-subject>
+        <include-subject name="users">
+            <description><p>A description of the included users.</p></description>
+            <all />
+        </include-subject>
+        
+        <exclude-subject name="inventory-items">
+            <description><p>Exclude identified Windows laptop from scans.</p></description>
+            <id-ref name="inventory-item" id="sap-inventory-1"/>
+        </exclude-subject>
+        
+        <local-definitions>
+            <inventory-item id="sap-inventory-1" asset-id="none">
+                <description><p>A Windows laptop, which is not defined in the SSP inventory.</p></description>
+                <prop name="ipv4-address">10.1.1.99</prop>
+            </inventory-item>
+        </local-definitions>
+    </assessment-subject>
+    
+    <assets >
+        <tools>
+            <component id="tool-1" component-type="software">
+                <title>XYZ Vulnerability Scanning Tool</title>
+                <description></description>
+                <prop name="vendor">Vendor Name</prop>
+                <prop name="name">Tool Name</prop>
+                <prop name="version">1.2.3</prop>
+                <status state="operational" />
+            </component>
+        </tools>
+        
+        <origination>
+            <title>Assessment Laptop</title>
+            <prop name="ipv4-address">10.10.10.10</prop>
+        </origination>
+        
+        <prop name="results-delivery">10 business days after completion of assessment</prop>
+        <annotation name="disclosure">
+            <remarks><p>This is a disclosure statement that would appear in the rules of engagement.</p></remarks>
+        </annotation>
+        <annotation name="limitation">
+            <remarks>
+                <p><b>Limitation of Liability</b></p>
+                <p>This is a limitation statement, such as a liability limitation, that would appear in the rules of engagement.</p>
+            </remarks>
+        </annotation>
+        
+    </assets>
+    
+    <assessment-activities />
+    
+    <evidence>
+        <artifact id="ev-1">
+            <title>Test</title>
+            <description><p>This represents a piece of assessment evidence.</p></description>
+            <link href="#back-matter-id-1" rel="tool-output" />
+        </artifact>
+        <artifact id="ev-2">
+            <title>Test</title>
+            <description><p>This represents a piece of assessment evidence.</p></description>
+            <link rel="interview-notes" href="#bm-2" />
+        </artifact>
+    </evidence>
+    
+    <results/>
+    
+</security-assessment-results>

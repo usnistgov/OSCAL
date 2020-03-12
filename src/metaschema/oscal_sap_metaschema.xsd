@@ -1855,10 +1855,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Import System Security Plan</m:formal-name>
-            <m:description>Used by the SAP and POA&amp;M to import information about the system being assessed.</m:description>
+            <m:description>Used by the SAP and POA&amp;M to import information about the system.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Import System Security Plan</b>: Used by the SAP and POA&amp;M to import information about the system being assessed.</xs:documentation>
+            <b>Import System Security Plan</b>: Used by the SAP and POA&amp;M to import information about the system.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1888,31 +1888,314 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
+   <xs:element name="objectives">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Objectives of Assessment</m:formal-name>
+            <m:description>Identifies the controls and control being assessed and their control objectives. In the SAP, these are the planned controls and objectives. In the SAR, these are the actual controls and objectives, and reflects any changes from the SAP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Objectives of Assessment</b>: Identifies the controls and control being assessed and their control objectives. In the SAP, these are the planned controls and objectives. In the SAR, these are the actual controls and objectives, and reflects any changes from the SAP.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:controls" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:control-objectives"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:objective" minOccurs="0" maxOccurs="1"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="controls">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessed Controls</m:formal-name>
+            <m:description>Identifies the controls being assessed. In the SAP, these are the planned controls. In the SAR, these are the actual controls, and reflects any changes from the SAP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessed Controls</b>: Identifies the controls being assessed. In the SAP, these are the planned controls. In the SAR, these are the actual controls, and reflects any changes from the SAP.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:all" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:include-control" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:exclude-control" minOccurs="0" maxOccurs="1"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="control-objectives">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control Objectives</m:formal-name>
+            <m:description>Identifies the control objectives of the assessment. In the SAP, these are the planned objectives. In the SAR, these are the actual objectives, and reflects any changes from the SAP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control Objectives</b>: Identifies the control objectives of the assessment. In the SAP, these are the planned objectives. In the SAR, these are the actual objectives, and reflects any changes from the SAP.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:all" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:include-objective" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:exclude-objective" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:objective" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="include-control">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include Control</m:formal-name>
+            <m:description>Identifies an individual control to include.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include Control</b>: Identifies an individual control to include.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="control-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A reference to a control identifier.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="exclude-control">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Exclude Control</m:formal-name>
+            <m:description>Identifies an individual control to exclude.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Exclude Control</b>: Identifies an individual control to exclude.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="control-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A reference to a control identifier.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="include-objective">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include Objective</m:formal-name>
+            <m:description>Identifies an individual control objective to include.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include Objective</b>: Identifies an individual control objective to include.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="control-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A reference to a control identifier.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="exclude-objective">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Exclude Objective</m:formal-name>
+            <m:description>Identifies an individual control objective to exclude.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Exclude Objective</b>: Identifies an individual control objective to exclude.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="control-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A reference to a control identifier.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="objective">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control Objective</m:formal-name>
+            <m:description>A local definition of a control objective.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control Objective</b>: A local definition of a control objective.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:control-link" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:part" minOccurs="1" maxOccurs="1"/>
+         </xs:sequence>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="control-link">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control Link</m:formal-name>
+            <m:description>Identifies a control to which this control objective is related.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control Link</b>: Identifies a control to which this control objective is related.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="control-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A reference to a control identifier.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="assessment-subject">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Subject of Assessment</m:formal-name>
-            <m:description>Used by the SAP and SAR to clarify the focus of the assessment. In the SAP, this identifies the planned controls, control-objectives, components, inventory-items, locations, . In the SAR this is the actual subject, and reflects any changes from the SAP.</m:description>
+            <m:description>Identifies system elements being assessed, such as components, inventory items, and locations. In the SAP, this identifies the planned assessment subject. In the SAR this is the actual assessment subject, and reflects any changes from the SAP.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Subject of Assessment</b>: Used by the SAP and SAR to clarify the focus of the assessment. In the SAP, this identifies the planned controls, control-objectives, components, inventory-items, locations, . In the SAR this is the actual subject, and reflects any changes from the SAP.</xs:documentation>
+            <b>Subject of Assessment</b>: Identifies system elements being assessed, such as components, inventory items, and locations. In the SAP, this identifies the planned assessment subject. In the SAR this is the actual assessment subject, and reflects any changes from the SAP.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sap:subject-include" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-sap:subject-exclude" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:include-subject" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:exclude-subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:local-definitions" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="subject-include">
+   <xs:element name="include-subject">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Include in Assessment</m:formal-name>
+            <m:formal-name>Included Assessment Subject</m:formal-name>
             <m:description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Include in Assessment</b>: Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</xs:documentation>
+            <b>Included Assessment Subject</b>: Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1960,14 +2243,6 @@
                <xs:union memberTypes="xs:NCName">
                   <xs:simpleType>
                      <xs:restriction base="xs:NCName">
-                        <xs:enumeration value="controls"/>
-                        <xs:enumeration value="objectives">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>Assessment objectives</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
                         <xs:enumeration value="components"/>
                         <xs:enumeration value="inventory-items"/>
                         <xs:enumeration value="locations"/>
@@ -1989,14 +2264,14 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="subject-exclude">
+   <xs:element name="exclude-subject">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Exclude from Assessment</m:formal-name>
-            <m:description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from the above subject-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</m:description>
+            <m:formal-name>Excluded Assessment Subject</m:formal-name>
+            <m:description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Exclude from Assessment</b>: Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from the above subject-include assembly. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</xs:documentation>
+            <b>Excluded Assessment Subject</b>: Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2044,14 +2319,6 @@
                <xs:union memberTypes="xs:NCName">
                   <xs:simpleType>
                      <xs:restriction base="xs:NCName">
-                        <xs:enumeration value="controls"/>
-                        <xs:enumeration value="objectives">
-                           <xs:annotation>
-                              <xs:documentation>
-                                 <p>Assessment objectives</p>
-                              </xs:documentation>
-                           </xs:annotation>
-                        </xs:enumeration>
                         <xs:enumeration value="components"/>
                         <xs:enumeration value="inventory-items"/>
                         <xs:enumeration value="locations"/>
@@ -2108,18 +2375,10 @@
                      <xs:union memberTypes="xs:NCName">
                         <xs:simpleType>
                            <xs:restriction base="xs:NCName">
-                              <xs:enumeration value="controls"/>
-                              <xs:enumeration value="objectives">
-                                 <xs:annotation>
-                                    <xs:documentation>
-                                       <p>Assessment objectives</p>
-                                    </xs:documentation>
-                                 </xs:annotation>
-                              </xs:enumeration>
-                              <xs:enumeration value="components"/>
-                              <xs:enumeration value="inventory-items"/>
-                              <xs:enumeration value="locations"/>
-                              <xs:enumeration value="users"/>
+                              <xs:enumeration value="component"/>
+                              <xs:enumeration value="inventory-item"/>
+                              <xs:enumeration value="location"/>
+                              <xs:enumeration value="user"/>
                            </xs:restriction>
                         </xs:simpleType>
                      </xs:union>
@@ -2155,12 +2414,22 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-sap:control-objective"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:component" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:inventory-item" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:user" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
          </xs:sequence>
       </xs:complexType>
       <xs:unique name="local-definitions-component-keys">
@@ -2172,21 +2441,6 @@
          <xs:field xpath="@id"/>
       </xs:unique>
    </xs:element>
-   <xs:element name="control-objective">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Control Objective</m:formal-name>
-            <m:description>Used to add any control objectives, not defined via the control baseline (SAR-&gt;SAP-&gt;SSP-&gt;Profile-&gt;catalog)</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Control Objective</b>: Used to add any control objectives, not defined via the control baseline (SAR-&gt;SAP-&gt;SSP-&gt;Profile-&gt;catalog)</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-sap:part" minOccurs="0" maxOccurs="1"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="assets">
       <xs:annotation>
          <xs:appinfo>
@@ -2197,20 +2451,411 @@
             <b>Assessment Assets</b>: .</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:sequence/>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:tools" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:origination" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="activities">
+   <xs:element name="tools">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment Assets</m:formal-name>
+            <m:description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the SAP these are the intended tools. In the SAR, these are the actual tools used, including any differences from the SAP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment Assets</b>: The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the SAP these are the intended tools. In the SAR, these are the actual tools used, including any differences from the SAP.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:component" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+      <xs:unique name="tools-component-keys">
+         <xs:selector xpath="oscal-sap:component"/>
+         <xs:field xpath="@id"/>
+      </xs:unique>
+   </xs:element>
+   <xs:element name="origination">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment Origination</m:formal-name>
+            <m:description>Identifies the origination of network-based assessment activities, such as the IP address of the tool performing assessment scans.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment Origination</b>: Identifies the origination of network-based assessment activities, such as the IP address of the tool performing assessment scans.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="assessment-activities">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Assessment Activities</m:formal-name>
-            <m:description>Used by the SAP and SAR. In the SAP, this defines the planned activities. In the SAR, this provides the actual activities performed.</m:description>
+            <m:description>Identifies the assessment activities and schedule. In the SAP, these are planned activities. In the SAR, these are the actual activities performed.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Assessment Activities</b>: Used by the SAP and SAR. In the SAP, this defines the planned activities. In the SAR, this provides the actual activities performed.</xs:documentation>
+            <b>Assessment Activities</b>: Identifies the assessment activities and schedule. In the SAP, these are planned activities. In the SAR, these are the actual activities performed.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:sequence/>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:test-method" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:schedule" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:included-activity"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:excluded-activity"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="test-method">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Test Method</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Test Method</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:test-step" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="test-step">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Test Steps</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Test Steps</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:sequence" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="sequence">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Sequence Number</m:formal-name>
+            <m:description>Identifies the sequence number for the test step.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Sequence Number</b>: Identifies the sequence number for the test step.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:integer"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="schedule">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Schedule</m:formal-name>
+            <m:description>Identifies the schedule for the assessment activities.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Schedule</b>: Identifies the schedule for the assessment activities.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:task" minOccurs="1" maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="task">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Task</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Task</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:start" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:end" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="start">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Start</m:formal-name>
+            <m:description>Identifies the start of a task.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Start</b>: Identifies the start of a task.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-sap:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="end">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>End</m:formal-name>
+            <m:description>Identifies the end of a task.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>End</b>: Identifies the end of a task.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-sap:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="included-activity">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Included Activity</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Included Activity</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="excluded-activity">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Included Activity</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Included Activity</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sap:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="security-assessment-plan" m:root="yes">
@@ -2226,9 +2871,10 @@
          <xs:sequence>
             <xs:element ref="oscal-sap:metadata" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-sap:import-ssp" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:objectives" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-sap:assessment-subject" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-sap:assets" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-sap:activities" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:assessment-activities" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-sap:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="id" use="required" type="xs:NCName">
