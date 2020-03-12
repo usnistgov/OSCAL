@@ -47,7 +47,7 @@ commands:
       - run:
           name: Get latest APT package metadata
           command: |
-            sudo apt-get update
+            sudo rm -rf /var/lib/apt/lists/* && sudo apt-get update
   install-schematron:
     description: "Install the schematron skeleton"
     steps:
