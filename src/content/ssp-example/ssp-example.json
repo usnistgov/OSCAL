@@ -1,5 +1,4 @@
 {
-  "$schema": "../../../json/schema/oscal_ssp_schema.json",
   "system-security-plan": {
     "id": "example-ssp",
     "metadata": {
