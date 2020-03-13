@@ -106,6 +106,27 @@
         </artifact>
     </evidence>
     
-    <results/>
+    <results id="results-1">
+        <title>Initial Assessment</title>
+        <description></description>
+        <start>2020-03-01T00:00:00Z</start>
+        <end>2020-03-12T00:00:00Z</end>
+        <finding id="finding-1">
+            <title></title>
+            <description></description>
+            <date-time-stamp>2020-03-01T10:11:12Z</date-time-stamp>
+            <objective-status objective-id="ac-1.1_obj.1">
+                <satisfaction></satisfaction>
+                <implementation-status></implementation-status>
+            </objective-status>
+            <observation id="ob-1">
+                <title></title>
+                <description><p>The AC procedure's title, date, and version in the SSP do not match the actual procedure in use.</p></description>
+                <observation-type>implementation-statement</observation-type>
+                <reference ref-id="ac-1_imp.01" type="implementation-statement" />
+            </observation>
+            <risk id="risk-1" ></risk>
+        </finding>
+    </results>
     
 </security-assessment-results>

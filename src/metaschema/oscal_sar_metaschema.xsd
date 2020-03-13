@@ -783,10 +783,10 @@
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Relationship</m:formal-name>
-                  <m:description/>
+                  <m:description>Describes a relationship of a link.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Relationship</b>: </xs:documentation>
+                  <b>Relationship</b>: Describes a relationship of a link.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:union memberTypes="xs:string">
@@ -2750,6 +2750,9 @@
             <xs:element ref="oscal-sar:start" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-sar:end" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-sar:activitiy-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2838,6 +2841,9 @@
             </xs:element>
             <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2891,6 +2897,9 @@
             </xs:element>
             <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2944,7 +2953,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-sar:title" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Description</m:formal-name>
@@ -2996,7 +3005,655 @@
             <b>Assessment Results</b>: Used by the SAR and POA&amp;M. In the SAR, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:start" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:end" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:finding" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="finding">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Finding</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Finding</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:date-time-stamp" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:objective-status" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:observation" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:threat-id" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:risk" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="date-time-stamp">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Date/Time Stamp</m:formal-name>
+            <m:description>Date/time stamp identifying when the information was collected.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Date/Time Stamp</b>: Date/time stamp identifying when the information was collected.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-sar:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="objective-status">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Implementation Status</m:formal-name>
+            <m:description>Captures an assessors conclusions as to whether an objective is fully satisfied.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Implementation Status</b>: Captures an assessors conclusions as to whether an objective is fully satisfied.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sar:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sar:satisfaction" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-sar:implementation-status" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="objective-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Objective ID</m:formal-name>
+                  <m:description/>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Objective ID</b>: </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="control-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Control Identifier Reference</m:formal-name>
+                  <m:description>A reference to a control identifier.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="satisfaction">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Satisfaction</m:formal-name>
+            <m:description>An brief indication as to whether the objective is satisfied or not.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Satisfaction</b>: An brief indication as to whether the objective is satisfied or not.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="system">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Assessment System</m:formal-name>
+                        <m:description>Identifies the framework or rules to which this value conforms.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Assessment System</b>: Identifies the framework or rules to which this value conforms.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:union memberTypes="oscal-sar:uri">
+                        <xs:simpleType>
+                           <xs:restriction base="oscal-sar:uri">
+                              <xs:enumeration value="https://fedramp.gov">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>The value conforms to FedRAMP definitions.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="https://www.nist.gov/">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>A value conforms to NIST definitions.</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="implementation-status">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Implementation Status</m:formal-name>
+            <m:description>Identifies the implementation status of the control or control objective.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Implementation Status</b>: Identifies the implementation status of the control or control objective.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="observation">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Objective</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Objective</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:observation-type"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:reference" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:target" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:assessor" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:relevant-evidence"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="relevant-evidence">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Relevant Evidence</m:formal-name>
+            <m:description>Links this observation to relevant evidence.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Relevant Evidence</b>: Links this observation to relevant evidence.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-sar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="evidence-id" use="required" type="xs:string">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Evidence ID</m:formal-name>
+                  <m:description>Links to evidence information using its unique identifier.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Evidence ID</b>: Links to evidence information using its unique identifier.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="type" use="required">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Evidence Type</m:formal-name>
+                  <m:description/>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Evidence Type</b>: </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="observation">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Observation</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="vulnerability">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Vulnerability</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="false-positive">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>False Positive (FP)</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="operational-requirement">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Operational Requirement (OR)</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="risk-adjustment">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>Risk Adjustment (RA)</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="assessor">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessor</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessor</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="party-id" use="required" type="xs:NCName">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Party ID</m:formal-name>
+                        <m:description>The party-id of the assessor who collected the evidence or made the observation.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Party ID</b>: The party-id of the assessor who collected the evidence or made the observation.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="target">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Target</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Target</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-sar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:component-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sar:inventory-item-id"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="component-id">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Component ID</m:formal-name>
+            <m:description>Identifies the component that was examined or tested.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Component ID</b>: Identifies the component that was examined or tested.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="inventory-item-id">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Inventory Item ID</m:formal-name>
+            <m:description>Identifies the inventory item that was examined or tested.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Inventory Item ID</b>: Identifies the inventory item that was examined or tested.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="reference">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Reference</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Reference</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="ref-id" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Reference ID</m:formal-name>
+                        <m:description/>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Reference ID</b>: </xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="type">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Reference ID Type</m:formal-name>
+                        <m:description/>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Reference ID Type</b>: </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:union memberTypes="xs:string">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="tool">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Tool</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="party">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Person</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="test-method">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Test Method</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="implementation-statement">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Implementation Statement</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
+                  </xs:simpleType>
+               </xs:attribute>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="observation-type">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Observation Type</m:formal-name>
+            <m:description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Observation Type</b>: Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-sar:observation-type-enumeration"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:simpleType name="observation-type-enumeration">
+      <xs:union memberTypes="xs:string">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="implementation-statement">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A difference between the SSP implementation statement, and actual implementation</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="missconfiguration">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A system miss-configuration was identified</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="vulnerability">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A vulnerability was identified</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="threat">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A threat was identified</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="mitigation">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A mitigating factor was identified</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="test-result">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>A test yielding a finding</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="report">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>The reporting of a fact</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:union>
+   </xs:simpleType>
+   <xs:element name="threat-id">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Threat ID</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Threat ID</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="risk">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Identified Risk</m:formal-name>
+            <m:description/>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Identified Risk</b>: </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
          <xs:sequence/>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="security-assessment-results" m:root="yes">

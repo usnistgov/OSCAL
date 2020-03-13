@@ -779,15 +779,58 @@
                   <b>hypertext reference</b>: A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="rel" type="xs:NCName">
+         <xs:attribute name="rel">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Relation</m:formal-name>
-                  <m:description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</m:description>
+                  <m:formal-name>Relationship</m:formal-name>
+                  <m:description>Describes a relationship of a link.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Relation</b>: Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</xs:documentation>
+                  <b>Relationship</b>: Describes a relationship of a link.</xs:documentation>
             </xs:annotation>
+            <xs:simpleType>
+               <xs:union memberTypes="xs:string">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:enumeration value="interview-notes">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Interview Notes</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="tool-output">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Tool Output</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="photograph">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Photograph</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="questionnaire">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Questionnaire</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="screen-shot">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Screen Shot</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:union>
+            </xs:simpleType>
          </xs:attribute>
          <xs:attribute name="media-type" type="xs:string">
             <xs:annotation>
@@ -2706,6 +2749,10 @@
             <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:start" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-sap:end" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-sap:activitiy-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2752,6 +2799,21 @@
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
+   <xs:element name="activitiy-id">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Activity ID</m:formal-name>
+            <m:description>Links the task to a defined activity.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Activity ID</b>: Links the task to a defined activity.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:NCName"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="included-activity">
       <xs:annotation>
          <xs:appinfo>
@@ -2779,6 +2841,9 @@
             </xs:element>
             <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2832,6 +2897,9 @@
             </xs:element>
             <xs:element ref="oscal-sap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-sap:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:role-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:party-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-sap:location-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>

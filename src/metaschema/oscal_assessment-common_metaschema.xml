@@ -634,7 +634,7 @@
          <field ref="date-time-stamp" min-occurs="1" max-occurs="1" >
             <description>Date/time stamp identifying when the finding information was collected.</description>
          </field>
-         <assembly ref="implementation-status" />
+         <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
          <assembly ref="observation" />
          <field ref="threat-id" />
          <assembly ref="risk"></assembly>
@@ -642,9 +642,6 @@
             <description>The person who collected the evidence or made the observation.</description>
             <group-as name="party-ids"/>
          </field>
-         <assembly ref="finding" min-occurs="1" max-occurs="unbounded">
-            <group-as name="findings"/>
-         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" />
       </model>
    </define-assembly>
@@ -654,25 +651,175 @@
       <description>Date/time stamp identifying when the information was collected.</description>
    </define-field>
 
-   <define-assembly name="implementation-status">
+   <define-assembly name="objective-status">
       <formal-name>Implementation Status</formal-name>
-      <description></description>
-      <flag ref="objective-id"/>
-      <flag ref="control-id"/>
+      <description>Captures an assessors conclusions as to whether an objective is fully satisfied.</description>
+      <flag ref="objective-id" />
+      <flag ref="control-id" />
       <model>
-         <!-- **** -->
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="0" max-occurs="1" />
+         <field ref="satisfaction" min-occurs="1" max-occurs="1" />
+         <field ref="implementation-status" min-occurs="1" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER" />
       </model>
    </define-assembly>
+
+   <define-field name="satisfaction">
+      <formal-name>Satisfaction</formal-name>
+      <description>An brief indication as to whether the objective is satisfied or not.</description>
+      <flag name="system" as-type="uri">
+         <formal-name>Assessment System</formal-name>
+         <description>Identifies the framework or rules to which this value conforms.</description>
+         <allowed-values allow-other="yes">
+            <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
+            <enum value="https://www.nist.gov/">A value conforms to NIST definitions.</enum>
+         </allowed-values>
+      </flag>
+   </define-field>
+   
+   <define-field name="implementation-status">
+      <formal-name>Implementation Status</formal-name>
+      <description>Identifies the implementation status of the control or control objective.</description>
+   </define-field>
 
    <define-assembly name="observation">
       <formal-name>Objective</formal-name>
       <description></description>
-      <flag ref="objective-id"/>
+      <flag ref="id"/>
       <model>
-         
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <remarks>
+               <p>For the FedRAMP SAP, must have prop @name='priority' @ns='fedramp'.</p>
+            </remarks>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="observation-type" min-occurs="1" max-occurs="unbounded">
+            <group-as name="observation-types"/>
+         </field>
+         <field ref="reference" min-occurs="0" max-occurs="unbounded">
+            <group-as name="references" />
+         </field>
+         <assembly ref="target" min-occurs="0" max-occurs="unbounded">
+            <group-as name="targets"/>
+         </assembly>
+         <field ref="assessor" min-occurs="0" max-occurs="unbounded">
+            <group-as name="assessors"/>
+         </field>
+         <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
+            <group-as name="evidence-group"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" />
       </model>
    </define-assembly>
    
+   <define-assembly name="relevant-evidence">
+      <formal-name>Relevant Evidence</formal-name>
+      <description>Links this observation to relevant evidence.</description>
+      <flag ref="evidence-id" required="yes" />
+      <flag name="type" required="yes">
+         <formal-name>Evidence Type</formal-name>
+         <description></description>
+         <allowed-values>
+            <enum value="observation">Observation</enum>
+            <enum value="vulnerability">Vulnerability</enum>
+            <enum value="false-positive">False Positive (FP)</enum>
+            <enum value="operational-requirement">Operational Requirement (OR)</enum>
+            <enum value="risk-adjustment">Risk Adjustment (RA)</enum>
+         </allowed-values>
+      </flag>
+      <model>
+         <field ref="description"  min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-flag name="evidence-id">
+      <formal-name>Evidence ID</formal-name>
+      <description>Links to evidence information using its unique identifier.</description>
+   </define-flag>
+
+   <define-field name="assessor">
+      <formal-name>Assessor</formal-name>
+      <description></description>
+      <flag name="party-id" required="yes">
+         <formal-name>Party ID</formal-name>
+         <description>The party-id of the assessor who collected the evidence or made the observation.</description>
+      </flag>
+   </define-field>
+   
+   <define-assembly name="target">
+      <formal-name>Target</formal-name>
+      <description></description>
+      <model>
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <allowed-values allow-other="yes">
+               <enum value="authenticated-scan">Authenticated Scan (yes/no)</enum>
+            </allowed-values>
+            <remarks>
+               <p>For the FedRAMP SAP, must have prop @name='priority' @ns='fedramp'.</p>
+            </remarks>
+         </field>
+         <field ref="component-id" min-occurs="0"  max-occurs="unbounded">
+            <group-as name="components"/>
+         </field>
+         <field ref="inventory-item-id" min-occurs="0"  max-occurs="unbounded">
+            <group-as name="items"/>
+         </field>
+      </model>
+   </define-assembly>
+   
+   <define-field name="component-id">
+      <formal-name>Component ID</formal-name>
+      <description>Identifies the component that was examined or tested.</description>
+   </define-field>
+   
+   <define-field name="inventory-item-id">
+      <formal-name>Inventory Item ID</formal-name>
+      <description>Identifies the inventory item that was examined or tested.</description>
+   </define-field>
+   
+   <define-field name="reference">
+      <formal-name>Reference</formal-name>
+      <description></description>
+      <flag name="ref-id">
+         <formal-name>Reference ID</formal-name>
+         <description></description>
+      </flag>
+      <flag name="type">
+         <formal-name>Reference ID Type</formal-name>
+         <description></description>
+         <allowed-values allow-other="yes">
+            <enum value="tool">Tool</enum>
+            <enum value="party">Person</enum>
+            <enum value="test-method">Test Method</enum>
+            <enum value="implementation-statement">Implementation Statement</enum>
+         </allowed-values>
+      </flag>
+   </define-field>
+   
+   <define-field name="observation-type">
+      <formal-name>Observation Type</formal-name>
+      <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
+      <allowed-values allow-other="yes">
+         <enum value="implementation-statement">A difference between the SSP implementation statement, and actual implementation</enum>
+         <enum value="missconfiguration">A system miss-configuration was identified</enum>
+         <enum value="vulnerability">A vulnerability was identified</enum>
+         <enum value="threat">A threat was identified</enum>
+         <enum value="mitigation">A mitigating factor was identified</enum>
+         <enum value="test-result">A test yielding a finding</enum>
+         <enum value="report">The reporting of a fact</enum>
+      </allowed-values>
+   </define-field>
+
    <define-field name="threat-id">
       <formal-name>Threat ID</formal-name>
       <description></description>
@@ -683,7 +830,7 @@
       <description></description>
       <flag ref="id" required="yes" />
       <model>
-         
+         <!-- **** -->
       </model>
    </define-assembly>
    
