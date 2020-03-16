@@ -6,15 +6,15 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
- xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="security-assessment-plan">
-   <schema-name>OSCAL Security Assessment Plan (SAP) Format</schema-name>
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="assessment-plan">
+   <schema-name>OSCAL Assessment Plan Format</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
-   <short-name>oscal-sap</short-name>
+   <short-name>oscal-ap</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
-      <p>The OSCAL security assessment plan (SAP) format is used to describe the information typically 
+      <p>The OSCAL assessment plan format is used to describe the information typically 
 			provided by an assessor during the preparation for an assessment.</p>
-      <p>The root of the OSCAL Security Assessment Plan (SAP) format is <code>security-assessment-plan</code>.</p>
+      <p>The root of the OSCAL assessment plan format is <code>assessment-plan</code>.</p>
    </remarks>
    
    <!-- IMPORT STATEMENTS -->
@@ -23,7 +23,7 @@
    <import href="oscal_assessment-common_metaschema.xml"/>
    
    <!-- TOP LEVEL ASSEMBLY -->
-   <define-assembly name="security-assessment-plan">
+   <define-assembly name="assessment-plan">
       <formal-name>Security Assessment Plan (SAP)</formal-name>
       <description>An assessment plan, such as those provided by a FedRAMP assessor.</description>
       <flag ref="id" required="yes"/>

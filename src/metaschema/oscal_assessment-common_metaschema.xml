@@ -12,10 +12,10 @@
    <short-name>oscal-assessment-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
-      <p>This contains all modules common to the SAP, SAR, and POAM models. </p>
-      <p>The root of the OSCAL Security Assessment Plan (SAP) format is <code>security-assessment-plan</code>.</p>
-      <p>The root of the OSCAL Security Assessment Results (SAR) format is <code>security-assessment-report</code>.</p>
-      <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-action-milestones</code>.</p>
+      <p>This contains all modules common to the assessment plan, assessment results, and POAM models. </p>
+      <p>The root of the OSCAL Assessment Plan format is <code>assessment-plan</code>.</p>
+      <p>The root of the OSCAL Assessment Results format is <code>assessment-results</code>.</p>
+      <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-of-action-and-milestones</code>.</p>
    </remarks>
 
    <!-- IMPORT STATEMENTS -->
@@ -30,12 +30,12 @@
       <description>NOT TO BE USED FOR A BASE METASCHEMA ONLY FOR A MODULE</description>
       <model>
          <assembly ref="import-ssp" min-occurs="1" />
-         <assembly ref="import-sap" min-occurs="1" />
+         <assembly ref="import-ap" min-occurs="1" />
          <assembly ref="objectives" min-occurs="1" />
          <assembly ref="assessment-subject" min-occurs="1" />
          <assembly ref="assets" />
          <assembly ref="assessment-activities" />
-         <assembly ref="evidence" />
+         <assembly ref="evidence-inventory" />
          <assembly ref="results" />
       </model>
    </define-assembly>
@@ -43,17 +43,17 @@
    <!-- SSP Import -->
    <define-assembly name="import-ssp">
       <formal-name>Import System Security Plan</formal-name>
-      <description>Used by the SAP and POA&amp;M to import information about the system.</description>
+      <description>Used by the assessment plan and POA&amp;M to import information about the system.</description>
       <flag ref="href" required="yes"/>
       <model>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
-   <!-- SAP Import -->
-   <define-assembly name="import-sap">
-      <formal-name>Import Security Assessment Plan</formal-name>
-      <description>Used by the SAR to import information about the original plan for assessing the system.</description>
+   <!-- Assessment Plan Import -->
+   <define-assembly name="import-ap">
+      <formal-name>Import Assessment Plan</formal-name>
+      <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
       <flag ref="href" required="yes"/>
       <model>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -63,7 +63,7 @@
    <!-- ********** OBJECTIVES Assembly ********** -->
    <define-assembly name="objectives">
       <formal-name>Objectives of Assessment</formal-name>
-      <description>Identifies the controls and control being assessed and their control objectives. In the SAP, these are the planned controls and objectives. In the SAR, these are the actual controls and objectives, and reflects any changes from the SAP.</description>
+      <description>Identifies the controls and control being assessed and their control objectives. In the assessment plans, these are the planned controls and objectives. In the assessment results, these are the actual controls and objectives, and reflects any changes from the plan.</description>
       <model>
          <field ref="description" min-occurs="0" in-xml="WITH_WRAPPER">
             <description>A human-readable description of assessment objectives.</description>
@@ -88,7 +88,7 @@
 
    <define-assembly name="controls">
       <formal-name>Assessed Controls</formal-name>
-      <description>Identifies the controls being assessed. In the SAP, these are the planned controls. In the SAR, these are the actual controls, and reflects any changes from the SAP.</description>
+      <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
       <model>
          <field ref="description" min-occurs="0" in-xml="WITH_WRAPPER">
             <description>A human-readable description of controls specified for assessment.</description>
@@ -113,7 +113,7 @@
    
    <define-assembly name="control-objectives">
       <formal-name>Control Objectives</formal-name>
-      <description>Identifies the control objectives of the assessment. In the SAP, these are the planned objectives. In the SAR, these are the actual objectives, and reflects any changes from the SAP.</description>
+      <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
       <model>
          <field ref="description" min-occurs="0" in-xml="WITH_WRAPPER">
             <description>A human-readable description of assessment objectives specified for assessment.</description>
@@ -193,7 +193,7 @@
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
    <define-assembly name="assessment-subject">
       <formal-name>Subject of Assessment</formal-name>
-      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the SAP, this identifies the planned assessment subject. In the SAR this is the actual assessment subject, and reflects any changes from the SAP.</description>
+      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
       <model>
          <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
             <group-as name="includes"/>
@@ -287,18 +287,18 @@
 
    <define-assembly name="local-definitions">
       <formal-name>Local Definitions</formal-name>
-      <description>Allows control objectives, users, components, and inventory-items to be defined within the SAP or SAR for circumstances where differences are needed (control objectives) or where they are not appropriately defined in the SSP (components and inventory-items). Use metadata to define additional locations if needed. It is not appropriate to define controls in the SAP or SAR.</description>
+      <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
       <model>
          <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
-            <description>Used to add any components, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
             <group-as name="components" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
-            <description>Used to add any inventory-items, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
             <group-as name="inventory-items"/>
          </assembly>
          <assembly ref="user" min-occurs="0" max-occurs="unbounded">
-            <description>Used to add any users, not defined via the System Security Plan (SAR->SAP->SSP)</description>
+            <description>Used to add any users, not defined via the System Security Plan (AR->AP->SSP)</description>
             <group-as name="users" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -541,8 +541,8 @@
    </define-assembly>
 
    <!-- ********** EVIDENCE Assembly ********** -->
-   <define-assembly name="evidence">
-      <formal-name>Assessment Evidence</formal-name>
+   <define-assembly name="evidence-inventory">
+      <formal-name>Evidence Inventory</formal-name>
       <description>Used by the SAR and POA&amp;M. In the SAR, this enumerates all evidence associated with the assessment. In the POA&amp;M, this enumerates evidence associated with deviation requests.</description>
       <model>
          <assembly ref="artifact" min-occurs="1" max-occurs="unbounded">
