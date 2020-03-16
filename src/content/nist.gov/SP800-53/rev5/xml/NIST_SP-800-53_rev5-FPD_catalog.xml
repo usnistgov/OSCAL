@@ -8,7 +8,7 @@
          Systems and Organizations, Revision 5 Final Public Draft</title>
       <last-modified>2020-03-16T13:24:48.516-04:00</last-modified>
       <version>Revision 5</version>
-      <oscal-version>1.0.0-Milestone2</oscal-version>
+      <oscal-version>1.0.0-Milestone3</oscal-version>
       <prop name="keywords">assurance, availability, computer security, confidentiality, control,
          cybersecurity, FISMA, information security, information system, integrity, personally
          identifiable information, Privacy Act, privacy controls, privacy functions, privacy
@@ -20508,7 +20508,7 @@ Organizations relying on commercial providers offering transmission services as 
          <prop name="sort-id">SC-19</prop>
          <part name="statement" id="sc-19_smt">
             <p>
-               <em4>Technology-specific; addressed by other controls for protocols.</em4>
+               <em>Technology-specific; addressed by other controls for protocols.</em>
             </p>
          </part>
       </control>
