@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by extraction/mapping from NVD XML :2020-03-16T13:24:48.668-04:00 -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
@@ -8164,7 +8165,7 @@ In addition to availability, contingency plans address other security-related ev
             <prop name="sort-id">CP-10(03)</prop>
             <part name="statement" id="cp-10.3_smt">
                <p>
-                  <i>Addressed through tailoring procedures.</i>
+                  <em>Addressed through tailoring procedures.</em>
                </p>
             </part>
          </control>
@@ -20507,7 +20508,7 @@ Organizations relying on commercial providers offering transmission services as 
          <prop name="sort-id">SC-19</prop>
          <part name="statement" id="sc-19_smt">
             <p>
-               <i>Technology-specific; addressed by other controls for protocols.</i>
+               <em4>Technology-specific; addressed by other controls for protocols.</em4>
             </p>
          </part>
       </control>
