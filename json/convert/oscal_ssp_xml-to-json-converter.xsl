@@ -240,38 +240,38 @@
          <xsl:apply-templates select="oscal-version" mode="#current"/>
          <xsl:for-each select="revision-history">
             <xsl:if test="exists(revision)">
-               <array key="revision-history">
+               <array key="revision-history" m:in-json="ARRAY">
                   <xsl:apply-templates select="revision" mode="#current"/>
                </array>
             </xsl:if>
          </xsl:for-each>
          <xsl:if test="exists(doc-id)">
-            <array key="document-ids">
+            <array key="document-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="doc-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(role)">
-            <array key="roles">
+            <array key="roles" m:in-json="ARRAY">
                <xsl:apply-templates select="role" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(location)">
-            <array key="locations">
+            <array key="locations" m:in-json="ARRAY">
                <xsl:apply-templates select="location" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(party)">
-            <array key="parties">
+            <array key="parties" m:in-json="ARRAY">
                <xsl:apply-templates select="party" mode="#current"/>
             </array>
          </xsl:if>
@@ -291,7 +291,7 @@
    <xsl:template match="back-matter" mode="xml2json">
       <map key="back-matter">
          <xsl:if test="exists(resource)">
-            <array key="resources">
+            <array key="resources" m:in-json="ARRAY">
                <xsl:apply-templates select="resource" mode="#current"/>
             </array>
          </xsl:if>
@@ -305,12 +305,12 @@
          <xsl:apply-templates select="version" mode="#current"/>
          <xsl:apply-templates select="oscal-version" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -365,10 +365,9 @@
       </map>
    </xsl:template>
    <xsl:template match="prop" mode="xml2json">
-      <xsl:variable name="text-key">
-         <xsl:value-of select="@name"/>
-      </xsl:variable>
+      <xsl:variable name="text-key">value</xsl:variable>
       <map key="prop">
+         <xsl:apply-templates mode="as-string" select="@name"/>
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
@@ -397,32 +396,32 @@
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="address" mode="#current"/>
          <xsl:if test="exists(email)">
-            <array key="email-addresses">
+            <array key="email-addresses" m:in-json="ARRAY">
                <xsl:apply-templates select="email" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(phone)">
-            <array key="telephone-numbers">
+            <array key="telephone-numbers" m:in-json="ARRAY">
                <xsl:apply-templates select="phone" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(url)">
-            <array key="URLs">
+            <array key="URLs" m:in-json="ARRAY">
                <xsl:apply-templates select="url" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -443,23 +442,23 @@
       <map key="party">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(person)">
-            <array key="persons">
+            <array key="persons" m:in-json="ARRAY">
                <xsl:apply-templates select="person" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:apply-templates select="org" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -482,52 +481,52 @@
          <xsl:apply-templates select="short-name" mode="#current"/>
          <xsl:apply-templates select="org-name" mode="#current"/>
          <xsl:if test="exists(person-id)">
-            <array key="person-ids">
+            <array key="person-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="person-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(org-id)">
-            <array key="organization-ids">
+            <array key="organization-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="org-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(address)">
-            <array key="addresses">
+            <array key="addresses" m:in-json="ARRAY">
                <xsl:apply-templates select="address" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(location-id)">
-            <array key="location-ids">
+            <array key="location-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="location-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(email)">
-            <array key="email-addresses">
+            <array key="email-addresses" m:in-json="ARRAY">
                <xsl:apply-templates select="email" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(phone)">
-            <array key="telephone-numbers">
+            <array key="telephone-numbers" m:in-json="ARRAY">
                <xsl:apply-templates select="phone" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(url)">
-            <array key="URLs">
+            <array key="URLs" m:in-json="ARRAY">
                <xsl:apply-templates select="url" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -544,47 +543,47 @@
          <xsl:apply-templates select="org-name" mode="#current"/>
          <xsl:apply-templates select="short-name" mode="#current"/>
          <xsl:if test="exists(org-id)">
-            <array key="organization-ids">
+            <array key="organization-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="org-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(address)">
-            <array key="addresses">
+            <array key="addresses" m:in-json="ARRAY">
                <xsl:apply-templates select="address" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(location-id)">
-            <array key="location-ids">
+            <array key="location-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="location-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(email)">
-            <array key="email-addresses">
+            <array key="email-addresses" m:in-json="ARRAY">
                <xsl:apply-templates select="email" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(phone)">
-            <array key="telephone-numbers">
+            <array key="telephone-numbers" m:in-json="ARRAY">
                <xsl:apply-templates select="phone" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(url)">
-            <array key="URLs">
+            <array key="URLs" m:in-json="ARRAY">
                <xsl:apply-templates select="url" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -621,7 +620,7 @@
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:apply-templates mode="as-string" select="@media-type"/>
          <xsl:if test="exists(hash)">
-            <array key="hashes">
+            <array key="hashes" m:in-json="ARRAY">
                <xsl:apply-templates select="hash" mode="#current"/>
             </array>
          </xsl:if>
@@ -646,7 +645,7 @@
       <map key="address">
          <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:if test="exists(addr-line)">
-            <array key="postal-address">
+            <array key="postal-address" m:in-json="ARRAY">
                <xsl:apply-templates select="addr-line" mode="#current"/>
             </array>
          </xsl:if>
@@ -720,23 +719,23 @@
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:apply-templates select="desc" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(doc-id)">
-            <array key="document-ids">
+            <array key="document-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="doc-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:apply-templates select="citation" mode="#current"/>
          <xsl:if test="exists(rlink)">
-            <array key="rlinks">
+            <array key="rlinks" m:in-json="ARRAY">
                <xsl:apply-templates select="rlink" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(base64)">
-            <array key="attachments" in-json="SINGLETON_OR_ARRAY">
+            <array key="attachments" m:in-json="ARRAY">
                <xsl:apply-templates select="base64" mode="#current"/>
             </array>
          </xsl:if>
@@ -752,7 +751,7 @@
       <map key="citation">
          <xsl:apply-templates select="text" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
@@ -776,17 +775,17 @@
          <xsl:apply-templates select="short-name" mode="#current"/>
          <xsl:apply-templates select="desc" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -801,22 +800,22 @@
    <xsl:template match="responsible-party" mode="xml2json">
       <map key="{@role-id}">
          <xsl:if test="exists(party-id)">
-            <array key="party-ids">
+            <array key="party-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="party-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -879,7 +878,7 @@
    <xsl:template match="system-characteristics" mode="xml2json">
       <map key="system-characteristics">
          <xsl:if test="exists(system-id)">
-            <array key="system-ids">
+            <array key="system-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="system-id" mode="#current"/>
             </array>
          </xsl:if>
@@ -892,17 +891,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -912,7 +911,7 @@
          <xsl:apply-templates select="security-impact-level" mode="#current"/>
          <xsl:apply-templates select="status" mode="#current"/>
          <xsl:if test="exists(leveraged-authorization)">
-            <array key="leveraged-authorizations">
+            <array key="leveraged-authorizations" m:in-json="ARRAY">
                <xsl:apply-templates select="leveraged-authorization" mode="#current"/>
             </array>
          </xsl:if>
@@ -960,22 +959,22 @@
    <xsl:template match="system-information" mode="xml2json">
       <map key="system-information">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(information-type)">
-            <array key="information-types">
+            <array key="information-types" m:in-json="ARRAY">
                <xsl:apply-templates select="information-type" mode="#current"/>
             </array>
          </xsl:if>
@@ -997,7 +996,7 @@
             </map>
          </xsl:for-each-group>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
@@ -1018,7 +1017,7 @@
    <xsl:template match="confidentiality-impact" mode="xml2json">
       <map key="confidentiality-impact">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
@@ -1035,7 +1034,7 @@
    <xsl:template match="integrity-impact" mode="xml2json">
       <map key="integrity-impact">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
@@ -1052,7 +1051,7 @@
    <xsl:template match="availability-impact" mode="xml2json">
       <map key="availability-impact">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
@@ -1119,17 +1118,17 @@
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1157,17 +1156,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1193,12 +1192,12 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1225,17 +1224,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1261,17 +1260,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1291,17 +1290,17 @@
    <xsl:template match="system-implementation" mode="xml2json">
       <map key="system-implementation">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1316,12 +1315,12 @@
             </map>
          </xsl:for-each-group>
          <xsl:if test="exists(service)">
-            <array key="services">
+            <array key="services" m:in-json="ARRAY">
                <xsl:apply-templates select="service" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(interconnection)">
-            <array key="ssp-interconnection">
+            <array key="ssp-interconnection" m:in-json="ARRAY">
                <xsl:apply-templates select="interconnection" mode="#current"/>
             </array>
          </xsl:if>
@@ -1345,27 +1344,27 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(role-id)">
-            <array key="role-ids">
+            <array key="role-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="role-id" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(authorized-privilege)">
-            <array key="authorized-privileges">
+            <array key="authorized-privileges" m:in-json="ARRAY">
                <xsl:apply-templates select="authorized-privilege" mode="#current"/>
             </array>
          </xsl:if>
@@ -1392,7 +1391,7 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(function-performed)">
-            <array key="functions-performed">
+            <array key="functions-performed" m:in-json="ARRAY">
                <xsl:apply-templates select="function-performed" mode="#current"/>
             </array>
          </xsl:if>
@@ -1414,17 +1413,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1453,22 +1452,22 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(protocol)">
-            <array key="ssp-protocol">
+            <array key="ssp-protocol" m:in-json="ARRAY">
                <xsl:apply-templates select="protocol" mode="#current"/>
             </array>
          </xsl:if>
@@ -1487,7 +1486,7 @@
          <xsl:apply-templates mode="as-string" select="@name"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:if test="exists(port-range)">
-            <array key="port-ranges">
+            <array key="port-ranges" m:in-json="ARRAY">
                <xsl:apply-templates select="port-range" mode="#current"/>
             </array>
          </xsl:if>
@@ -1511,17 +1510,17 @@
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="remote-system-name" mode="#current"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1546,7 +1545,7 @@
    <xsl:template match="system-inventory" mode="xml2json">
       <map key="system-inventory">
          <xsl:if test="exists(inventory-item)">
-            <array key="inventory-items">
+            <array key="inventory-items" m:in-json="ARRAY">
                <xsl:apply-templates select="inventory-item" mode="#current"/>
             </array>
          </xsl:if>
@@ -1569,17 +1568,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1605,17 +1604,17 @@
       <map key="{@component-id}">
          <xsl:apply-templates mode="as-string" select="@use"/>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1641,7 +1640,7 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(implemented-requirement)">
-            <array key="implemented-requirements">
+            <array key="implemented-requirements" m:in-json="ARRAY">
                <xsl:apply-templates select="implemented-requirement" mode="#current"/>
             </array>
          </xsl:if>
@@ -1658,17 +1657,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1709,12 +1708,12 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
@@ -1739,22 +1738,22 @@
    <xsl:template match="responsible-role" mode="xml2json">
       <map key="{@role-id}">
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(party-id)">
-            <array key="party-ids">
+            <array key="party-ids" m:in-json="ARRAY">
                <xsl:apply-templates select="party-id" mode="#current"/>
             </array>
          </xsl:if>
@@ -1775,17 +1774,17 @@
             </xsl:call-template>
          </xsl:for-each>
          <xsl:if test="exists(prop)">
-            <array key="properties">
+            <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(annotation)">
-            <array key="annotations">
+            <array key="annotations" m:in-json="ARRAY">
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
-            <array key="links">
+            <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
             </array>
          </xsl:if>

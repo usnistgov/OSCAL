@@ -57,7 +57,7 @@
       <description>Contains the characteristics of the system, such as its name, purpose, and security impact level.</description>
       <model>
          <field ref="system-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="system-ids"/>
+            <group-as name="system-ids" in-json="ARRAY"/>
          </field>
          <field ref="system-name" min-occurs="1"/>
          <field ref="system-name-short"/>
@@ -65,7 +65,7 @@
             <description>A free-text description of the system.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
@@ -76,7 +76,7 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
@@ -85,7 +85,7 @@
             </flag>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </field>
          <field ref="date-authorized"/>
@@ -94,7 +94,7 @@
          <assembly ref="security-impact-level" min-occurs="1"/>
          <assembly ref="status" min-occurs="1"/>
          <assembly ref="leveraged-authorization" max-occurs="unbounded">
-            <group-as name="leveraged-authorizations"/>
+            <group-as name="leveraged-authorizations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="authorization-boundary" min-occurs="1"/>
          <assembly ref="network-architecture"/>
@@ -159,7 +159,7 @@
       <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
@@ -168,12 +168,12 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model other specific names? -->
          </assembly>
 
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <allowed-values allow-other="yes">
                   <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
@@ -182,7 +182,7 @@
             </flag>
          </field>
          <assembly ref="information-type" min-occurs="1" max-occurs="unbounded">
-            <group-as name="information-types"/>
+            <group-as name="information-types" in-json="ARRAY"/>
          </assembly>
       </model>
 
@@ -200,7 +200,7 @@
             <group-as name="information-type-ids" in-json="BY_KEY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="confidentiality-impact" min-occurs="1"/>
          <assembly ref="integrity-impact" min-occurs="1"/>
@@ -227,7 +227,7 @@
       <description>The expected level of impact resulting from the unauthorized disclosure of information.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -240,7 +240,7 @@
       <description>The expected level of impact resulting from the unauthorized modification of information.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -253,7 +253,7 @@
       <description>The expected level of impact resulting from the disruption of access to or use of information or the information system.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="base" min-occurs="1"/>
          <field ref="selected"/>
@@ -354,15 +354,15 @@
             <description>A human readable name for the leveraged authorization in the context of the system.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
             <flag ref="rel">
                <allowed-values>
@@ -389,15 +389,15 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -424,11 +424,11 @@
             <description>A description of the diagram (e.g., alternate text). This can be used to support compliance with requirements from Section 508 of the United States Workforce Rehabilitation Act of 1973.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
             <flag ref="rel">
                <allowed-values allow-other="yes">
@@ -464,15 +464,15 @@
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -489,15 +489,15 @@
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
          <assembly ref="diagram" max-occurs="unbounded">
@@ -514,15 +514,15 @@
       <description>Provides information as to how the system is implemented.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
          <assembly ref="user" min-occurs="1" max-occurs="unbounded">
@@ -536,10 +536,10 @@
          </assembly>
 -->         <assembly ref="service" max-occurs="unbounded">
             <description>A collection of the ports, protocols, and services used within the system.</description>
-            <group-as name="services"/>
+            <group-as name="services" in-json="ARRAY"/>
          </assembly>
          <assembly ref="interconnection" max-occurs="unbounded">
-            <group-as name="ssp-interconnection"/>
+            <group-as name="ssp-interconnection" in-json="ARRAY"/>
          </assembly>
          <assembly ref="system-inventory"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -563,12 +563,12 @@
          <field ref="short-name"/>
          <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
             <!-- TODO: future: for FedRAMP, have current/future user counts -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
             <flag ref="name">
                <allowed-values allow-other="yes">
@@ -578,14 +578,14 @@
             </flag>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
          <field ref="role-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="role-ids"/>
+            <group-as name="role-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="authorized-privilege" max-occurs="unbounded">
-            <group-as name="authorized-privileges"/>
+            <group-as name="authorized-privileges" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -616,7 +616,7 @@
          </field>
          <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="function-performed" min-occurs="1" max-occurs="unbounded">
-            <group-as name="functions-performed"/>
+            <group-as name="functions-performed" in-json="ARRAY"/>
          </field>
       </model>
    </define-assembly>
@@ -642,7 +642,7 @@
             <description>A description of the component, including information about its function.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <!-- local names -->
@@ -664,7 +664,7 @@
             </remarks>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <flag ref="name">
                <!-- TODO: Model specific names -->
                <allowed-values allow-other="yes">
@@ -681,7 +681,7 @@
          </assembly>
 
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <allowed-values allow-other="yes">
                   <!-- local rel -->
@@ -751,15 +751,15 @@
             <description>A description of what the service provides.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific prop names -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific characteristic names -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <!-- TODO: Model specific link relationships -->
                <allowed-values allow-other="yes">
@@ -770,7 +770,7 @@
          </field>
          <assembly ref="protocol" max-occurs="unbounded">
             <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
-            <group-as name="ssp-protocol"/>
+            <group-as name="ssp-protocol" in-json="ARRAY"/>
          </assembly>
          <field ref="purpose">
             <description>A summary of the technological or business purpose of the service.</description>
@@ -793,7 +793,7 @@
             <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
          </field>
          <field ref="port-range" max-occurs="unbounded">
-            <group-as name="port-ranges"/>
+            <group-as name="port-ranges" in-json="ARRAY"/>
          </field>
       </model>
 
@@ -848,7 +848,7 @@
       <model>
          <field ref="remote-system-name"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <allowed-values allow-other="yes">
                   <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
@@ -857,11 +857,11 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific characteristic names -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <allowed-values allow-other="yes">
                   <enum value="agreement">A link to the system interconnection agreement.</enum>
@@ -898,7 +898,7 @@
       <description>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</description>
       <model>
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
-            <group-as name="inventory-items"/>
+            <group-as name="inventory-items" in-json="ARRAY"/>
          </assembly>
         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -914,7 +914,7 @@
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <!-- TODO: Model specific names? -->
                <allowed-values allow-other="yes">
@@ -947,7 +947,7 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <flag ref="name">
                <!-- TODO: Model specific names -->
                <allowed-values allow-other="yes">
@@ -960,7 +960,7 @@
             </flag>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <!-- TODO: Model specific link relationships -->
                <allowed-values allow-other="yes">
@@ -1013,7 +1013,7 @@
       </flag>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
             <flag ref="name">
                <!-- TODO: Model specific names? -->
                <allowed-values allow-other="yes">
@@ -1036,7 +1036,7 @@
             </flag>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <flag ref="name">
                <!-- TODO: Model specific names -->
                <allowed-values allow-other="yes">
@@ -1049,7 +1049,7 @@
             </flag>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <flag ref="rel">
                <!-- TODO: Model specific link relationships -->
                <allowed-values allow-other="yes">
@@ -1089,7 +1089,7 @@
       <model>
          <field ref="description" min-occurs="1"/>
          <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
-            <group-as name="implemented-requirements"/>
+            <group-as name="implemented-requirements" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
@@ -1102,16 +1102,16 @@
       <model>
          <field ref="description"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific characteristic names -->
             <!-- TODO: add: status -->
             <!-- TODO: add: control-implementation -->
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </field>
          <assembly ref="by-component" max-occurs="unbounded">
@@ -1164,10 +1164,10 @@
          <field ref="description"/>
 
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </field>
          <!--            <assembly ref="using"/>
@@ -1211,16 +1211,16 @@
       </flag>
       <model>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
          </field>
          <field ref="party-id" max-occurs="unbounded">
-            <group-as name="party-ids"/>
+            <group-as name="party-ids" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -1237,13 +1237,13 @@
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties"/>
+            <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
-            <group-as name="links"/>
+            <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </field>
          <assembly ref="responsible-role" max-occurs="unbounded">
