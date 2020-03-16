@@ -3,10 +3,45 @@
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-419d31dd-746d-4dc2-89ad-1d13cc2326ca">
    <metadata>
-      <title>NIST Special Publication 800-53: Security and Privacy Controls for Federal Information Systems and Organizations, Revision 5 Final Public Draft</title>
+      <title>NIST Special Publication 800-53: Security and Privacy Controls for Federal Information
+         Systems and Organizations, Revision 5 Final Public Draft</title>
       <last-modified>2020-03-16T13:24:48.516-04:00</last-modified>
       <version>Revision 5</version>
       <oscal-version>1.0.0-Milestone2</oscal-version>
+      <prop name="keywords">assurance, availability, computer security, confidentiality, control,
+         cybersecurity, FISMA, information security, information system, integrity, personally
+         identifiable information, Privacy Act, privacy controls, privacy functions, privacy
+         requirements, Risk Management Framework, security controls, security functions, security
+         requirements, system, system security</prop>
+      <link rel="alternate" href="#resource-pdf-sp-800-53r5">NIST publication (PDF)</link>
+      <link rel="canonical" href="#resource-doi-sp-800-53r5">NIST publication via DOI lookup</link>
+      <role id="creator">
+         <title>Document creator</title>
+      </role>
+      <role id="contact">
+         <title>Contact</title>
+      </role>
+      <party id="IT-JTF">
+         <org>
+            <org-name>Joint Task Force, Interagency Working Group</org-name>
+            <address>
+               <addr-line>National Institute of Standards and Technology</addr-line>
+               <addr-line>Attn: Computer Security Division</addr-line>
+               <addr-line>Information Technology Laboratory</addr-line>
+               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+               <city>Gaithersburg</city>
+               <state>MD</state>
+               <postal-code>20899-8930</postal-code>
+            </address>
+            <email>sec-cert@nist.gov</email>
+         </org>
+      </party>
+      <responsible-party role-id="creator">
+         <party-id>IT-JTF</party-id>
+      </responsible-party>
+      <responsible-party role-id="contact">
+         <party-id>IT-JTF</party-id>
+      </responsible-party>
    </metadata>
    <group class="family" id="ac">
       <title>Access Control</title>
@@ -26030,6 +26065,14 @@ Because supply chains can differ significantly across and within organizations, 
             <text>National Institute of Standards and Technology (2020) <em>United States Government Configuration Baseline</em>. Available at</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/projects/united-states-government-configuration-baseline"/>
+      </resource>
+      <resource id="resource-pdf-sp-800-53r5">
+         <rlink media-type="application/pdf"
+            href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5-draft.pdf"/>
+      </resource>
+      <resource id="resource-doi-sp-800-53r5">
+         <rlink media-type="application/pdf"
+            href="https://doi.org/10.6028/NIST.SP.800-53r5-draft"/>
       </resource>
    </back-matter>
 </catalog>
