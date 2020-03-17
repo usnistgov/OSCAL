@@ -325,7 +325,7 @@
 
    <define-assembly name="tools">
       <formal-name>Assessment Assets</formal-name>
-      <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the SAP these are the intended tools. In the SAR, these are the actual tools used, including any differences from the SAP.</description>
+      <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
       <model>
          <assembly ref="component" min-occurs="0" max-occurs="unbounded">
             <group-as name="components" in-json="BY_KEY" />
@@ -355,7 +355,7 @@
    <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
    <define-assembly name="assessment-activities">
       <formal-name>Assessment Activities</formal-name>
-      <description>Identifies the assessment activities and schedule. In the SAP, these are planned activities. In the SAR, these are the actual activities performed.</description>
+      <description>Identifies the assessment activities and schedule. In the assessment plan, these are planned activities. In the assessment results, these are the actual activities performed.</description>
       <model>
          <assembly ref="test-method" min-occurs="0" max-occurs="unbounded" >
             <group-as name="test-methods"/>
@@ -543,7 +543,7 @@
    <!-- ********** EVIDENCE Assembly ********** -->
    <define-assembly name="evidence-inventory">
       <formal-name>Evidence Inventory</formal-name>
-      <description>Used by the SAR and POA&amp;M. In the SAR, this enumerates all evidence associated with the assessment. In the POA&amp;M, this enumerates evidence associated with deviation requests.</description>
+      <description>Used by the assessment results and the POA&amp;M. In the assessment results, this enumerates all evidence associated with the assessment. In the POA&amp;M, this enumerates evidence associated with deviation requests.</description>
       <model>
          <assembly ref="artifact" min-occurs="1" max-occurs="unbounded">
             <group-as name="artifacts"/>
@@ -553,7 +553,7 @@
 
    <define-assembly name="artifact">
       <formal-name>Evidence Artifact</formal-name>
-      <description>Describes and links to an individual artifact used as evidence. In the SAR, this relates to the assessment. In the POA&amp;M, this relates to deviation requests.</description>
+      <description>Describes and links to an individual artifact used as evidence. In the assessment results, this relates to the assessment. In the POA&amp;M, this relates to deviation requests.</description>
       <flag ref="id" required="yes" />
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
@@ -587,7 +587,7 @@
    <!-- ********** RESULTS Assembly ********** -->
    <define-assembly name="results">
       <formal-name>Assessment Results</formal-name>
-      <description>Used by the SAR and POA&amp;M. In the SAR, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
+      <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
       <flag ref="id" required="no" />
       <model>
          <field ref="title"  min-occurs="1" max-occurs="1" />
@@ -624,7 +624,7 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="properties"/>
             <remarks>
-               <p>For the FedRAMP SAP, must have prop @name='priority' @ns='fedramp'.</p>
+               <p>For the FedRAMP SAR, must have prop @name='priority' @ns='fedramp', with a numeric value, where '1' is the highest priority.</p>
             </remarks>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -693,9 +693,6 @@
          <field ref="prop" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="properties"/>
-            <remarks>
-               <p>For the FedRAMP SAP, must have prop @name='priority' @ns='fedramp'.</p>
-            </remarks>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
@@ -765,7 +762,7 @@
                <enum value="authenticated-scan">Authenticated Scan (yes/no)</enum>
             </allowed-values>
             <remarks>
-               <p>For the FedRAMP SAP, must have prop @name='priority' @ns='fedramp'.</p>
+               <p>For the FedRAMP SAR: Must have prop @name='authenticated-scan' @ns='fedramp'.</p>
             </remarks>
          </field>
          <field ref="component-id" min-occurs="0"  max-occurs="unbounded">
@@ -830,9 +827,64 @@
       <description></description>
       <flag ref="id" required="yes" />
       <model>
-         <!-- **** -->
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <flag ref="name" required="yes">
+               <allowed-values allow-other="yes">
+                  <enum value="impacted-control"></enum>
+                  <enum value="vulnerability-id"></enum>
+                  <enum value="source-id"></enum>
+                  <enum value="likelihood"></enum>
+                  <enum value="impact"></enum>
+                  <enum value="risk"></enum>
+                  <enum value="cvss-metrics"></enum>
+               </allowed-values>
+            </flag>
+            <flag ref="class">
+               <allowed-values allow-other="yes">
+                  <enum value="tool-name"></enum>
+                  <enum value="cve"></enum>
+                  <enum value="initial"></enum>
+                  <enum value="residual"></enum>
+                  <enum value="CVSSv2"></enum>
+                  <enum value="CVSSv3"></enum>
+                  <enum value="CVSSv3.1"></enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="risk-statement" min-occurs="1" max-occurs="1" />
+         <field ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
+            <group-as name="mitigating-factors"/>
+         </field>
       </model>
+      <remarks>
+         <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
+      </remarks>
    </define-assembly>
+
+   <define-field name="mitigating-factor" as-type="markup-multiline">
+      <formal-name>Mitigating Factor</formal-name>
+      <description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="implementation-id" required="no" />
+   </define-field>
+
+   <define-field name="risk-statement" as-type="markup-multiline">
+      <formal-name>Risk Statement</formal-name>
+      <description>Describes the risk.</description>
+   </define-field>
+
+   <define-flag name="implementation-id" as-type="NCName">
+      <formal-name>Implementation ID</formal-name>
+      <description></description>
+   </define-flag>
    
    <define-flag name="objective-id" as-type="NCName">
       <formal-name>Objective ID</formal-name>
