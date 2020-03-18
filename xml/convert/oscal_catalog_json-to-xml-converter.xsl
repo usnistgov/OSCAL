@@ -491,19 +491,40 @@
                  mode="json2xml">
       <xsl:element name="prop" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[not(@key=('id','ns','class'))]" mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='value']" mode="json2xml"/>
+         <xsl:for-each select="self::string | self::boolean | self::number">
+            <xsl:apply-templates mode="json2xml"/>
+         </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template priority="6"
-                 match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[not(@key=('id','ns','class','STRVALUE','RICHTEXT'))]"
+   <xsl:template match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[@key='value']"
+                 mode="as-attribute"/>
+   <xsl:template priority="8"
+                 match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[@key='value']"
                  mode="json2xml">
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[not(@key=('id','ns','class','STRVALUE','RICHTEXT'))]"
-                 mode="as-attribute">
-      <xsl:attribute name="name">
-         <xsl:value-of select="@key"/>
-      </xsl:attribute>
+   <xsl:template priority="3"
+                 mode="json2xml"
+                 match="map[@key = 'properties']/array[@key = 'value'] | array[@key = 'properties']/map/array[@key = 'value']">
+      <xsl:variable name="expanded" as="element()*">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="properties">
+            <xsl:apply-templates mode="expand" select="array[@key = 'value']/string"/>
+         </array>
+      </xsl:variable>
+      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+   </xsl:template>
+   <xsl:template mode="expand"
+                 match="map[@key = 'properties']/array[@key = 'value']/string | array[@key = 'properties']/map/array[@key = 'value']/string">
+      <xsl:variable name="me" select="."/>
+      <xsl:for-each select="parent::array/parent::map">
+         <xsl:copy>
+            <xsl:copy-of select="* except array[@key = 'value']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="value">
+               <xsl:value-of select="$me"/>
+            </string>
+         </xsl:copy>
+      </xsl:for-each>
    </xsl:template>
    <!-- *** Handling assembly "annotation" *** -->
    <!-- *** NB - template matching 'array' overrides this one *** -->
@@ -530,7 +551,7 @@
    <!-- *** Handling flag @name *** -->
    <xsl:template match="*[@key='name']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='part']/*[@key='name'] | *[@key='parts']/*[@key='name'] | array[@key='parts']/*/*[@key='name'] | map[@key='parts']/*/*[@key='name'] | *[@key='annotation']/*[@key='name'] | *[@key='annotations']/*[@key='name'] | array[@key='annotations']/*/*[@key='name'] | map[@key='annotations']/*/*[@key='name']"
+                 match="*[@key='part']/*[@key='name'] | *[@key='parts']/*[@key='name'] | array[@key='parts']/*/*[@key='name'] | map[@key='parts']/*/*[@key='name'] | *[@key='prop']/*[@key='name'] | *[@key='properties']/*[@key='name'] | array[@key='properties']/*/*[@key='name'] | map[@key='properties']/*/*[@key='name'] | *[@key='annotation']/*[@key='name'] | *[@key='annotations']/*[@key='name'] | array[@key='annotations']/*/*[@key='name'] | map[@key='annotations']/*/*[@key='name']"
                  mode="as-attribute">
       <xsl:attribute name="name">
          <xsl:apply-templates mode="#current"/>

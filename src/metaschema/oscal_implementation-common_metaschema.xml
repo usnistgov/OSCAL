@@ -80,10 +80,10 @@
         <model>
             <field ref="description"/>
             <field ref="prop" max-occurs="unbounded">
-                <group-as name="properties"/>
+                <group-as name="properties" in-json="ARRAY"/>
             </field>
             <field ref="link" max-occurs="unbounded">
-                <group-as name="links"/>
+                <group-as name="links" in-json="ARRAY"/>
                 <!-- TODO: Model specific link relationships -->
             </field>
             <!--            <assembly ref="using"/>

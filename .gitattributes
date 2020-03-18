@@ -1,0 +1,10 @@
+# default
+* text=auto
+
+# script files
+*.sh text eol=lf
+/build/ci-cd/config/* text eol=lf
+
+# other binary files
+*.png binary
+*.jpg binary
