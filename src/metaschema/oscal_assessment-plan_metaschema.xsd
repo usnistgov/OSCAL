@@ -2256,7 +2256,7 @@
             <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:id-ref" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:id-ref" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2332,7 +2332,7 @@
             <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:id-ref" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:id-ref" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2384,11 +2384,11 @@
    <xs:element name="id-ref">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name/>
+            <m:formal-name>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</m:formal-name>
             <m:description/>
          </xs:appinfo>
          <xs:documentation>
-            <b/>: </xs:documentation>
+            <b>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</b>: </xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -2403,19 +2403,19 @@
                         <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
-               <xs:attribute name="name" use="required">
+               <xs:attribute name="type" use="required">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Name</m:formal-name>
-                        <m:description>Identifying the purpose and intended use of the property, part or other object.</m:description>
+                        <m:formal-name>Type</m:formal-name>
+                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
                   </xs:annotation>
                   <xs:simpleType>
-                     <xs:union memberTypes="xs:NCName">
+                     <xs:union memberTypes="xs:string">
                         <xs:simpleType>
-                           <xs:restriction base="xs:NCName">
+                           <xs:restriction base="xs:string">
                               <xs:enumeration value="component"/>
                               <xs:enumeration value="inventory-item"/>
                               <xs:enumeration value="location"/>
@@ -2433,10 +2433,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>All</m:formal-name>
-            <m:description/>
+            <m:description>A key word to indicate all </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>All</b>: </xs:documentation>
+            <b>All</b>: A key word to indicate all </xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>

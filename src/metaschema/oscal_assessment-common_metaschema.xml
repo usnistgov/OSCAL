@@ -230,8 +230,10 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations"/>
          </assembly>
-         <field ref="all" />
-         <field ref="id-ref" />
+         <field ref="all" min-occurs="0" max-occurs="1" />
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
@@ -260,17 +262,19 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations"/>
          </assembly>
-         <field ref="all" />
-         <field ref="id-ref" />
+         <field ref="all" min-occurs="0" max-occurs="1" />
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
    <define-field name="id-ref">
-      <formal-name></formal-name>
+      <formal-name>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</formal-name>
       <description></description>
       <flag ref="id" required="yes" />
-      <flag ref="name" required="yes">
+      <flag ref="type" required="yes">
          <allowed-values allow-other="yes">
             <enum value="component" />
             <enum value="inventory-item" />
@@ -282,7 +286,7 @@
 
    <define-field name="all">
       <formal-name>All</formal-name>
-      <description></description>
+      <description>A key word to indicate all </description>
    </define-field>
 
    <define-assembly name="local-definitions">
@@ -834,21 +838,75 @@
             <group-as name="properties"/>
             <flag ref="name" required="yes">
                <allowed-values allow-other="yes">
-                  <enum value="impacted-control"></enum>
-                  <enum value="vulnerability-id"></enum>
-                  <enum value="source-id"></enum>
-                  <enum value="likelihood"></enum>
-                  <enum value="impact"></enum>
-                  <enum value="risk"></enum>
-                  <enum value="cvss-metrics"></enum>
+                  <enum value="impacted-control">Impacted Control</enum>
+                  <enum value="vulnerability-id">Vulnerability ID</enum>
+                  <enum value="source-id">Source ID</enum>
+                  <!-- Risk Metrics -->
+                  <enum value="likelihood">Likelihood</enum>
+                  <enum value="impact">Impact</enum>
+                  <enum value="risk">Risk</enum>
+                  <!-- CVSS Metrics Values -->
+                  <enum value="AC">Access Complexity</enum>
+                  <enum value="Au">Authentication</enum>
+                  <enum value="C">Confidentiality Impact</enum>
+                  <enum value="I">Integrity Impact</enum>
+                  <enum value="A">Availability Impact</enum>
+                  <enum value="RL">Remediation Level</enum>
+                  <enum value="RC">Report Confidence</enum>
+                  <enum value="CDP">Collateral Damage Potential</enum>
+                  <enum value="TD">Target Distribution</enum>
+                  <enum value="CR">Confidentiality Requirement</enum>
+                  <enum value="IR">Integrity Requirement</enum>
+                  <enum value="AR">Availability Requirement</enum>
+                  <enum value="PR">Privileges Required</enum>
+                  <enum value="UI">User Interaction</enum>
+                  <enum value="S">Scope</enum>
+                  <enum value="E">Exploit Maturity</enum>
+                  <enum value="MAV">Modified Attack Vector</enum>
+                  <enum value="MAC">Modified Attack Complexity</enum>
+                  <enum value="MPR">Modified Privileges Required</enum>
+                  <enum value="MUI">Modified User Interaction</enum>
+                  <enum value="MS">Modified Scope</enum>
+                  <enum value="MC">Modified Confidentiality</enum>
+                  <enum value="MI">Modified Integrity</enum>
+                  <enum value="MA">Modified Availability</enum>
+                  <enum value="access-vector">Access Vector</enum>
+                  <enum value="access-complexity">Access Complexity</enum>
+                  <enum value="authentication">Authentication</enum>
+                  <enum value="confidentiality-impact">Confidentiality Impact</enum>
+                  <enum value="integrity-impact">Integrity Impact</enum>
+                  <enum value="availability-impact">Availability Impact</enum>
+                  <enum value="exploitability">Exploitability</enum>
+                  <enum value="remediation-level">Remediation Level</enum>
+                  <enum value="report-confidence">Report Confidence</enum>
+                  <enum value="collateral-damage-potential">Collateral Damage Potential</enum>
+                  <enum value="target-distribution">Target Distribution</enum>
+                  <enum value="confidentiality-requirement">Confidentiality Requirement</enum>
+                  <enum value="integrity-requirement">Integrity Requirement</enum>
+                  <enum value="availability-requirement">Availability Requirement</enum>
+                  <enum value="privileges-required">Privileges Required</enum>
+                  <enum value="user-interaction">User Interaction</enum>
+                  <enum value="scope">Scope</enum>
+                  <enum value="exploit-code-maturity">Exploit Code Maturity</enum>
+                  <enum value="modified-attack-vector">Modified Attack Vector</enum>
+                  <enum value="modified-attack-complexity">Modified Attack Complexity</enum>
+                  <enum value="modified-privileges-required">Modified Privileges Required</enum>
+                  <enum value="modified-user-interaction">Modified User Interaction</enum>
+                  <enum value="modified-scope">Modified Scope</enum>
+                  <enum value="modified-confidentiality">Modified Confidentiality</enum>
+                  <enum value="modified-integrity">Modified Integrity</enum>
+                  <enum value="modified-availability">Modified Availability</enum>
                </allowed-values>
             </flag>
             <flag ref="class">
                <allowed-values allow-other="yes">
+                  <!-- For values related to initial and residual (mitigated) risk --> 
+                  <enum value="initial">Initial</enum>
+                  <enum value="residual">Residual</enum>
+                  <!-- Other values -->
                   <enum value="tool-name"></enum>
                   <enum value="cve"></enum>
-                  <enum value="initial"></enum>
-                  <enum value="residual"></enum>
+                  <!-- To identify which CVSS values to use -->
                   <enum value="CVSSv2"></enum>
                   <enum value="CVSSv3"></enum>
                   <enum value="CVSSv3.1"></enum>
@@ -863,12 +921,125 @@
          <field ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
             <group-as name="mitigating-factors"/>
          </field>
+         <field ref="remediation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="remediation-group"/>
+         </field>
+         <assembly ref="risk-status" min-occurs="0" max-occurs="1" />
+         <field ref="closure-actions" min-occurs="0" max-occurs="1" />
+         <assembly ref="remediation-planning" min-occurs="0" max-occurs="1"  />
+         <assembly ref="remediation-tracking" min-occurs="0" max-occurs="1"  />
+         <!-- ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="party-ids"/>
+         </field>
       </model>
       <remarks>
          <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
       </remarks>
    </define-assembly>
 
+   <define-assembly name="remediation-tracking">
+      <formal-name>Remediation Tracking</formal-name>
+      <description>A log of events and actions taken towards the remediation of the associated risk.</description>
+      <model>
+         <assembly ref="tracking-entry" min-occurs="1" max-occurs="unbounded">
+            <group-as name="tracking-entries"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="tracking-entry">
+      <formal-name>Tracking Entry</formal-name>
+      <description>Individual remediation tracking entry, which logs an event or action taken towards the remediation of the associated risk.</description>
+      <flag ref="id" required="no" />
+      <flag ref="type" required="no">
+         <allowed-values allow-other="yes">
+            <enum value="vendor-check-in">Vendor Check-In</enum>
+            <enum value="status-update">Status Update</enum>
+            <enum value="milestone-complete">Milestone Complete</enum>
+            <enum value="mitigation">Mitigation Implemented</enum>
+            <enum value="remediated">Risk is Remediated</enum>
+            <enum value="closed">Closed</enum>
+            <enum value="dr-submission">Deviation Request Submission</enum>
+            <enum value="dr-updated">Deviation Requested Updated</enum>
+            <enum value="dr-approved">Deviation Request Approved</enum>
+            <enum value="dr-rejected">Deviation Request Rejected</enum>
+         </allowed-values>
+      </flag>
+      <model>
+         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" />
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="remediation-planning">
+      <formal-name>Remediation Planning</formal-name>
+      <description></description>
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <assembly ref="required-resource" min-occurs="0" max-occurs="unbounded">
+            <group-as name="required-resources"/>
+         </assembly>
+         <assembly ref="schedule" />
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="required-resource">
+      <formal-name>Required Resource</formal-name>
+      <description>.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="risk-status">
+      <formal-name>Status</formal-name>
+      <description>Describes the .</description>
+      <model>
+         <!--**** date, description, prop, annotation -->
+      </model>
+   </define-assembly>
+   
+   <define-field name="closure-actions" as-type="markup-multiline">
+      <formal-name>Closer Actions</formal-name>
+      <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
+   </define-field>
+   
+   
    <define-field name="mitigating-factor" as-type="markup-multiline">
       <formal-name>Mitigating Factor</formal-name>
       <description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</description>
@@ -876,6 +1047,21 @@
       <flag ref="implementation-id" required="no" />
    </define-field>
 
+   <define-field name="remediation" as-type="markup-multiline">
+      <formal-name>Mitigating Factor</formal-name>
+      <description>Describes a recommended remediation, or a plan for actual remediation.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="type" required="no">
+         <allowed-values allow-other="yes">
+            <enum value="recommendation">Recommendation</enum>
+            <enum value="planned">Planned Remediation</enum>
+         </allowed-values>
+      </flag>
+      <flag ref="source-id" required="no">
+         <description>Points to the source of the remediation information, such as a recommendation from a scanning tool.</description>
+      </flag>
+   </define-field>
+   
    <define-field name="risk-statement" as-type="markup-multiline">
       <formal-name>Risk Statement</formal-name>
       <description>Describes the risk.</description>
@@ -883,7 +1069,12 @@
 
    <define-flag name="implementation-id" as-type="NCName">
       <formal-name>Implementation ID</formal-name>
-      <description></description>
+      <description>Points to an implementation statement in the SSP.</description>
+   </define-flag>
+   
+   <define-flag name="source-id" as-type="NCName">
+      <formal-name>Source ID</formal-name>
+      <description>Points to a source of the finding, such as a scanning tool, interviewed person, or examined configuration.</description>
    </define-flag>
    
    <define-flag name="objective-id" as-type="NCName">
