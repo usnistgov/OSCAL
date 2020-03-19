@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" 
+    id="uuid-ed364452-47f8-4e70-b3a4-ef54de6254ef">
+    <metadata>
+        <title>Sample Security Catalog</title>
+        <published>2020-03-18T11:01:04.736-04:00</published>
+        <last-modified>2020-03-18T11:01:04.736-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0.0</oscal-version>
+        <prop name="keywords">Assurance, computer security, FISM, security controls, security requirements</prop>
+        <role id="creator">
+            <title>Document creator</title>
+        </role>
+        <role id="contact">
+            <title>Contact</title>
+        </role>
+        <party id="NIST">
+            <org>
+                <org-name>National Institute ofStandards and Technology</org-name>
+                <email>oscal@nist.gov</email>
+                <url>https://www.nist.gov/oscal</url>
+            </org>
+        </party>
+        <responsible-party role-id="creator">
+            <party-id>NIST</party-id>
+        </responsible-party>
+        <responsible-party role-id="contact">
+            <party-id>NIST</party-id>
+        </responsible-party>
+    </metadata>
+    <import href="https://github.com/iMichaela/OSCAL/blob/master/docs/tutorials/catalog/Catalog%20Sample.xml">
+        <include>
+            <call control-id="s1.1.1"/>
+            <call control-id="s2.1.1"/>
+            <call control-id="s2.1.2"/>
+        </include>
+    </import>
+    <import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+        <include>
+            <call control-id="ac-2"/>
+            <call control-id="ac-2.5"/>
+            <call control-id="ac-2.12"/>
+            <call control-id="ac-12"/>
+        </include>
+    </import>
+    <merge>
+        <combine method="keep"/>
+        <as-is>true</as-is>
+    </merge>
+    <modify>
+        <!-- - SET PARAMETERS - -->
+        <!-- - - AC-2 - -  -->
+        <set-parameter param-id="ac-2_prm_4">
+            <constraint>at least annually</constraint>
+        </set-parameter>
+        <!-- - - AC-2 (5) - -  -->
+        <!-- - - AC-2 (12) - -  -->
+        <!-- - - AC-12 - -  -->
+        <!-- - ALTER CONTROLS - -->
+        <!-- - - AC-2 - -  -->
+        <!-- - - AC-2 (5) - -  -->
+        <alter control-id="ac-2.5">
+            <add position="ending" id-ref="ac-2.5_smt">
+                <part id="ac-2.5_smp" name="item" ns="sample">
+                    <title>AC-2 (5) Additional Sample Profile Requirements and Guidance</title>
+                    <part id="ac-2.5_smp_gdn.1" name="guidance">
+                        <prop name="label">Supplemental Guidance:</prop>
+                        <p>The control enhancement should be implemented for all priviliged accountsThe organization-defined time-period of inactivity should be shorter 
+                            than the session termination or disconnect set by AC-12</p>
+                    </part>
+                </part>
+            </add>
+        </alter>
+        <!-- - - AC-2 (12) - -  -->
+        <alter control-id="ac-2.12">
+            <add position="ending" id-ref="ac-2.12_smt">
+                <part id="ac-2.12_smp" name="item" ns="fedramp">
+                    <title>AC-2 (12) Additional Sample Profile Requirements and Guidance</title>
+                    <part id="ac-2.12_smp_gdn.1" name="guidance">
+                        <prop name="label">(a) Supplemental Guidance:</prop>
+                        <p>The control enhancement should be implemented for all priviliged accounts.</p>
+                    </part>
+                    <part id="ac-2.12_smp_gdn.2" name="guidance">
+                        <prop name="label">(b) Supplemental Guidance:</prop>
+                        <p>The control enhancement should be implemented for all priviliged accounts.</p>
+                    </part>
+                </part>
+            </add>
+        </alter>
+    </modify>
+    
+
