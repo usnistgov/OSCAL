@@ -1375,11 +1375,11 @@
    <xs:element name="id-ref">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</m:formal-name>
-            <m:description/>
+            <m:formal-name>ID Reference</m:formal-name>
+            <m:description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</b>: </xs:documentation>
+            <b>ID Reference</b>: A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -1449,10 +1449,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Task</m:formal-name>
-            <m:description/>
+            <m:description>Identifies an individual task.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Task</b>: </xs:documentation>
+            <b>Task</b>: Identifies an individual task.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1668,10 +1668,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Finding</m:formal-name>
-            <m:description/>
+            <m:description>Describes an individual finding.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Finding</b>: </xs:documentation>
+            <b>Finding</b>: Describes an individual finding.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1783,10 +1783,10 @@
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Objective ID</m:formal-name>
-                  <m:description/>
+                  <m:description>Points to an assessment objective.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Objective ID</b>: </xs:documentation>
+                  <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="control-id" type="xs:NCName">
@@ -1868,10 +1868,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Objective</m:formal-name>
-            <m:description/>
+            <m:description>Describes an individual observation.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Objective</b>: </xs:documentation>
+            <b>Objective</b>: Describes an individual observation.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -1965,10 +1965,10 @@
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Evidence Type</m:formal-name>
-                  <m:description/>
+                  <m:description>Points to a piece of evidence, relevant to this finding or risk.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Evidence Type</b>: </xs:documentation>
+                  <b>Evidence Type</b>: Points to a piece of evidence, relevant to this finding or risk.</xs:documentation>
             </xs:annotation>
             <xs:simpleType>
                <xs:restriction base="xs:string">
@@ -2016,10 +2016,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Assessor</m:formal-name>
-            <m:description/>
+            <m:description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Assessor</b>: </xs:documentation>
+            <b>Assessor</b>: Identifies an individual who gathered the evidence resulting in the observation or risk identification.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -2042,10 +2042,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Target</m:formal-name>
-            <m:description/>
+            <m:description>Identifies, on a granular level, what was examined or tested.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Target</b>: </xs:documentation>
+            <b>Target</b>: Identifies, on a granular level, what was examined or tested.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2312,7 +2312,7 @@
                   <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
-            <xs:element ref="oscal-poam:risk-status" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:risk-status" minOccurs="1" maxOccurs="1"/>
             <xs:element name="closure-actions" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2604,15 +2604,39 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Status</m:formal-name>
-            <m:description>Describes the .</m:description>
+            <m:description>Describes the status of the associated risk.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Status</b>: Describes the .</xs:documentation>
+            <b>Status</b>: Describes the status of the associated risk.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
-         <xs:sequence/>
+         <xs:simpleContent>
+            <xs:extension base="oscal-poam:risk-status-enumeration"/>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
+   <xs:simpleType name="risk-status-enumeration">
+      <xs:union memberTypes="xs:string">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="open">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>Open</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="closed">
+                  <xs:annotation>
+                     <xs:documentation>
+                        <p>Closed</p>
+                     </xs:documentation>
+                  </xs:annotation>
+               </xs:enumeration>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:union>
+   </xs:simpleType>
    <xs:element name="plan-of-action-and-milestones" m:root="yes">
       <xs:annotation>
          <xs:appinfo>

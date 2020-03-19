@@ -271,8 +271,8 @@
    </define-assembly>
 
    <define-field name="id-ref">
-      <formal-name>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</formal-name>
-      <description></description>
+      <formal-name>ID Reference</formal-name>
+      <description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
       <flag ref="id" required="yes" />
       <flag ref="type" required="yes">
          <allowed-values allow-other="yes">
@@ -312,7 +312,7 @@
    <!-- ********** ASSET Assembly ********** -->
    <define-assembly name="assets">
       <formal-name>Assessment Assets</formal-name>
-      <description>.</description>
+      <description>Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.</description>
       <model>
          <assembly ref="tools" min-occurs="0" max-occurs="1" />
          <assembly ref="origination" min-occurs="0" max-occurs="1" />
@@ -376,7 +376,7 @@
 
    <define-assembly name="test-method">
       <formal-name>Test Method</formal-name>
-      <description></description>
+      <description>Identifies an individual test method.</description>
       <flag ref="id" required="yes" />
       <model>
          <field ref="title" min-occurs="0" max-occurs="1" />
@@ -401,7 +401,7 @@
 
    <define-assembly name="test-step">
       <formal-name>Test Steps</formal-name>
-      <description></description>
+      <description>Identifies an individual test step.</description>
       <flag ref="id" />
       <model>
          <field ref="sequence"  min-occurs="0" max-occurs="1" />
@@ -434,7 +434,7 @@
 
    <define-assembly name="task">
       <formal-name>Task</formal-name>
-      <description></description>
+      <description>Identifies an individual task.</description>
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
          <field ref="description"  min-occurs="1" max-occurs="1" />
@@ -484,7 +484,7 @@
    
    <define-assembly name="included-activity">
       <formal-name>Included Activity</formal-name>
-      <description></description>
+      <description>Identifies an assessment activity. In the assessment plan, this is an intended/in-scope activity. In the assessment results, this identifies an activity that was actually performed.</description>
       <flag ref="id" />
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
@@ -515,7 +515,7 @@
    
    <define-assembly name="excluded-activity">
       <formal-name>Included Activity</formal-name>
-      <description></description>
+      <description>Identifies an activity explicitly excluded from the assessment. In the assessment plan, this clarifies activities that are out-of-scope or prohibited. In the assessment results, this could be used to explicitly identify an activity that was planned, but not performed.</description>
       <flag ref="id" />
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
@@ -619,7 +619,7 @@
 
    <define-assembly name="finding">
       <formal-name>Finding</formal-name>
-      <description></description>
+      <description>Describes an individual finding.</description>
       <flag ref="id" required="yes" />
       <model>
          <field ref="title"  min-occurs="1" max-occurs="1" />
@@ -689,7 +689,7 @@
 
    <define-assembly name="observation">
       <formal-name>Objective</formal-name>
-      <description></description>
+      <description>Describes an individual observation.</description>
       <flag ref="id"/>
       <model>
          <field ref="title"  min-occurs="1" max-occurs="1" />
@@ -727,7 +727,7 @@
       <flag ref="evidence-id" required="yes" />
       <flag name="type" required="yes">
          <formal-name>Evidence Type</formal-name>
-         <description></description>
+         <description>Points to a piece of evidence, relevant to this finding or risk.</description>
          <allowed-values>
             <enum value="observation">Observation</enum>
             <enum value="vulnerability">Vulnerability</enum>
@@ -748,7 +748,7 @@
 
    <define-field name="assessor">
       <formal-name>Assessor</formal-name>
-      <description></description>
+      <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
       <flag name="party-id" required="yes">
          <formal-name>Party ID</formal-name>
          <description>The party-id of the assessor who collected the evidence or made the observation.</description>
@@ -757,7 +757,7 @@
    
    <define-assembly name="target">
       <formal-name>Target</formal-name>
-      <description></description>
+      <description>Identifies, on a granular level, what was examined or tested.</description>
       <model>
          <field ref="prop" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
@@ -924,7 +924,7 @@
          <field ref="remediation" min-occurs="0" max-occurs="unbounded">
             <group-as name="remediation-group"/>
          </field>
-         <assembly ref="risk-status" min-occurs="0" max-occurs="1" />
+         <field ref="risk-status" min-occurs="1" max-occurs="1" />
          <field ref="closure-actions" min-occurs="0" max-occurs="1" />
          <assembly ref="remediation-planning" min-occurs="0" max-occurs="1"  />
          <assembly ref="remediation-tracking" min-occurs="0" max-occurs="1"  />
@@ -1026,13 +1026,14 @@
       </model>
    </define-assembly>
 
-   <define-assembly name="risk-status">
+   <define-field name="risk-status">
       <formal-name>Status</formal-name>
-      <description>Describes the .</description>
-      <model>
-         <!--**** date, description, prop, annotation -->
-      </model>
-   </define-assembly>
+      <description>Describes the status of the associated risk.</description>
+      <allowed-values allow-other="yes">
+         <enum value="open">Open</enum>
+         <enum value="closed">Closed</enum>
+      </allowed-values>
+   </define-field>
    
    <define-field name="closure-actions" as-type="markup-multiline">
       <formal-name>Closer Actions</formal-name>
@@ -1079,7 +1080,7 @@
    
    <define-flag name="objective-id" as-type="NCName">
       <formal-name>Objective ID</formal-name>
-      <description></description>
+      <description>Points to an assessment objective.</description>
    </define-flag>
 
 </METASCHEMA>
