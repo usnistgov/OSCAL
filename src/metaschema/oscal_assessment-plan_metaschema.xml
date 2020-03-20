@@ -32,7 +32,7 @@
          <assembly ref="import-ssp" min-occurs="1" max-occurs="1" >
             <description>Used by the SAP to import information about the system being assessed.</description>
          </assembly>
-         <assembly ref="objectives" min-occurs="1" />
+         <assembly ref="objectives" min-occurs="1" max-occurs="1" />
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="1" />
          <assembly ref="assets" min-occurs="0" max-occurs="1" />
          <assembly ref="assessment-activities" min-occurs="0" max-occurs="1" />

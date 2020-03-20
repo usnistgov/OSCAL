@@ -1990,8 +1990,8 @@
             <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:include-control" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:exclude-control" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:include-control" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ap:exclude-control" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -2022,8 +2022,12 @@
             <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:include-objective" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:exclude-objective" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:include-objective"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ap:exclude-objective"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:objective" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
@@ -2092,14 +2096,14 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:string">
-               <xs:attribute name="control-id" use="required" type="xs:NCName">
+               <xs:attribute name="objective-id" use="required" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Control Identifier Reference</m:formal-name>
-                        <m:description>A reference to a control identifier.</m:description>
+                        <m:formal-name>Objective ID</m:formal-name>
+                        <m:description>Points to an assessment objective.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                        <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:extension>
@@ -2118,14 +2122,14 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:string">
-               <xs:attribute name="control-id" use="required" type="xs:NCName">
+               <xs:attribute name="objective-id" use="required" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Control Identifier Reference</m:formal-name>
-                        <m:description>A reference to a control identifier.</m:description>
+                        <m:formal-name>Objective ID</m:formal-name>
+                        <m:description>Points to an assessment objective.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                        <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:extension>
@@ -2136,10 +2140,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control Objective</m:formal-name>
-            <m:description>A local definition of a control objective.</m:description>
+            <m:description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Control Objective</b>: A local definition of a control objective.</xs:documentation>
+            <b>Control Objective</b>: A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

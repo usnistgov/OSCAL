@@ -1990,8 +1990,8 @@
             <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:include-control" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:exclude-control" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:include-control" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:exclude-control" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -2022,8 +2022,12 @@
             <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:all" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:include-objective" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:exclude-objective" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:include-objective"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:exclude-objective"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:objective" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
@@ -2092,14 +2096,14 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:string">
-               <xs:attribute name="control-id" use="required" type="xs:NCName">
+               <xs:attribute name="objective-id" use="required" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Control Identifier Reference</m:formal-name>
-                        <m:description>A reference to a control identifier.</m:description>
+                        <m:formal-name>Objective ID</m:formal-name>
+                        <m:description>Points to an assessment objective.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                        <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:extension>
@@ -2118,14 +2122,14 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:string">
-               <xs:attribute name="control-id" use="required" type="xs:NCName">
+               <xs:attribute name="objective-id" use="required" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Control Identifier Reference</m:formal-name>
-                        <m:description>A reference to a control identifier.</m:description>
+                        <m:formal-name>Objective ID</m:formal-name>
+                        <m:description>Points to an assessment objective.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+                        <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:extension>
@@ -2136,10 +2140,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control Objective</m:formal-name>
-            <m:description>A local definition of a control objective.</m:description>
+            <m:description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Control Objective</b>: A local definition of a control objective.</xs:documentation>
+            <b>Control Objective</b>: A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -2950,8 +2954,8 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-ar:title" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:element ref="oscal-ar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Description</m:formal-name>
@@ -2966,7 +2970,7 @@
             </xs:element>
             <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:link" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -3078,9 +3082,9 @@
             <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:date-time-stamp" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ar:objective-status" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:observation" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:threat-id" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:risk" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:observation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:threat-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:risk" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:party-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -3474,10 +3478,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Reference</m:formal-name>
-            <m:description/>
+            <m:description>Identifies the tool, interviewed person (party), test-method, implementation statement, or other relevant item.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Reference</b>: </xs:documentation>
+            <b>Reference</b>: Identifies the tool, interviewed person (party), test-method, implementation statement, or other relevant item.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -3486,20 +3490,20 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Reference ID</m:formal-name>
-                        <m:description/>
+                        <m:description>A pointer, by ID, to a tool, interviewed person (party), test-method, implementation statement or other relevant item.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Reference ID</b>: </xs:documentation>
+                        <b>Reference ID</b>: A pointer, by ID, to a tool, interviewed person (party), test-method, implementation statement or other relevant item.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="type">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Reference ID Type</m:formal-name>
-                        <m:description/>
+                        <m:description>Indicates whether the reference points to a tool, person (party), test method, or implementation statement.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Reference ID Type</b>: </xs:documentation>
+                        <b>Reference ID Type</b>: Indicates whether the reference points to a tool, person (party), test method, or implementation statement.</xs:documentation>
                   </xs:annotation>
                   <xs:simpleType>
                      <xs:union memberTypes="xs:string">
@@ -3618,14 +3622,50 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Threat ID</m:formal-name>
-            <m:description/>
+            <m:description>A pointer, by ID, to an externally-defined threat.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Threat ID</b>: </xs:documentation>
+            <b>Threat ID</b>: A pointer, by ID, to an externally-defined threat.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="xs:string"/>
+            <xs:extension base="xs:string">
+               <xs:attribute name="system" use="required">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Threat Type Identification System</m:formal-name>
+                        <m:description>Specifies the source of the threat information.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Threat Type Identification System</b>: Specifies the source of the threat information.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                     <xs:union memberTypes="xs:string">
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+                                 <xs:annotation>
+                                    <xs:documentation>
+                                       <p>Based on the section identifiers in NIST Special Publication 800-60 Volume II Revision 1</p>
+                                    </xs:documentation>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:union>
+                  </xs:simpleType>
+               </xs:attribute>
+               <xs:attribute name="uri" type="oscal-ar:uri">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>URI</m:formal-name>
+                        <m:description>An optional location for the threat data, from which this ID originates.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>URI</b>: An optional location for the threat data, from which this ID originates.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:extension>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -3633,10 +3673,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Identified Risk</m:formal-name>
-            <m:description/>
+            <m:description>An identified risk.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Identified Risk</b>: </xs:documentation>
+            <b>Identified Risk</b>: An identified risk.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -3709,7 +3749,7 @@
                   <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
-            <xs:element ref="oscal-ar:remediation-planning" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:remediation-plan" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ar:remediation-tracking" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ar:party-id" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
@@ -3882,14 +3922,14 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="remediation-planning">
+   <xs:element name="remediation-plan">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Remediation Planning</m:formal-name>
-            <m:description/>
+            <m:description>Describes the plan for addressing the identified risk.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Remediation Planning</b>: </xs:documentation>
+            <b>Remediation Planning</b>: Describes the plan for addressing the identified risk.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -4032,7 +4072,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-ar:metadata" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:import-ap" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:import-ap" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ar:objectives" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ar:assessment-subject" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ar:assets" minOccurs="0" maxOccurs="1"/>
