@@ -32,8 +32,10 @@ g) coordination and oversight of information security aspects of supplier relati
 
 **Other information**
 
-Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.
-However, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection. 
+Many organizations appoint an information security manager to take overall responsibility for the development and implementation 
+of information security and to support the identification of controls.
+However, responsibility for resourcing and implementing the controls will often remain with individual managers. 
+One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection. 
 
 #### 1.1.2 Segregation of duties
 

@@ -17,7 +17,7 @@ The [OSCAL](https://www.nist.gov/oscal) website provides comprehensive informati
 
 An OSCAL catalog (in XML or JSON) uses the respective schemas that describe the XML tag sets or the JSON data objects.
 However, this tutorial is not focusing on the schemas themselves but rather on the formatting in OSCAL of the proprietary control catalog listed above. 
-For more detail information on each schemas, the reader is referred to [XML Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/) 
+For more information on each schemas, the reader is referred to [XML Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/) 
 and [JSON Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/), respectively.
 
 The root of the Control Catalog format is `catalog`. 
@@ -85,7 +85,7 @@ When necessary, revision history can be also documented. See additional informat
 
 
 The `metadata` is also designed to accommodate the representation of other information related to the content of the catalog and the entity (individual or organization) that created it in OSCAL. 
-For example, we can select and represent *keywords* using the property tag <prop></prop>, for which we define the `name` of the property as being *keywords*. 
+For example, we can select and represent *keywords* using the property tag `<prop></prop>`, for which we define the `name` of the property as being *keywords*. 
 The *keywords* will be a `string` comprised of a comma-separated list of significant words, in alphabetical order.
 
 The information will look as follows:
@@ -93,8 +93,8 @@ The information will look as follows:
        <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
 ```
 
-To do so, one can use the tags <role></role> and <party></party> each instance with a distinct `id`, and the tag <responsible-party></responsible-party> with the field `role-id` that identifies the id of the pointed role and the tag <party-id></party-id> that points to the `id` of the defined <party>.
-In this example the <party> is an organization (NIST) for which the name is provided using the tag <or-name></org-name>, an email address is listed using the tag <email></email> and the URL using the tag <url>. 
+To do so, one can use the tags `<role></role`> and `<party></party>` each instance with a distinct `id`, and the tag `<responsible-party></responsible-party>` with the field `role-id` that identifies the id of the pointed role and the tag `<party-id></party-id>` that points to the `id` of the defined `<party>`.
+In this example the `<party>` is an organization (NIST) for which the name is provided using the tag `<org-name></org-name>`, an email address is listed using the tag `<email></email>` and the URL using the tag `<url>`. 
 Below is all this information assembled in OSCAL.
 
 ```xml
@@ -173,9 +173,9 @@ Analyzing the body of the [Catalog Sample](./Catalog%20Sample.md), we observe th
 ```
 
 The above formatting of the document will be represented using nested `groups` for Section 1 with the nested Subsection 1.1 and for Section 2 with the nested Subsection 2.1.
-A `group` tag <group> has an `id` and a `class`. 
+A `group` tag `<group>` has an `id` and a `class`. 
 
-Each `group` must contain a `title` identified by the tag <title></title> and may have none or many of the following elements:
+Each `group` must contain a `title` identified by the tag `<title></title>` and may have none or many of the following elements:
 
 ```    
     * `parameters` identified by the tags <param></param>
@@ -286,8 +286,8 @@ The structure of the first control, *1.1.1 Information security roles* is repres
         Many organizations appoint an [...]
 ```
 
-To represent a *Control* and its content, the OSCAL element `control` identified by the tag <control></control> is used. 
-The element `control` must have a <title></title>, and it may have none or many of the following elements:
+To represent a *Control* and its content, the OSCAL element `control` identified by the tag `<control></control>` is used. 
+The element `control` must have a `<title></title>`, and it may have none or many of the following elements:
  
 ```   
     * `parameter` identified by the tags <param></param>,
@@ -332,8 +332,8 @@ OSCAL defines elements that can be used to represent such information.
 
 Back-matters are optional elements and therefore often the OSCAL Catalogs will not contain any.
 
-A back-matter element is identified by the tag <back-matter></back-matter>. 
-This element may have `resources` which are identified with the tag <resources></resources>.     
+A back-matter element is identified by the tag `<back-matter></back-matter>`. 
+This element may have `resources` which are identified with the tag `<resources></resources>`.     
 
 Each `resource` may have:
 

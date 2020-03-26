@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" 
-         id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
+  id="uuid-956c32af-8a15-4732-a4d9-f976a1149c4b">
   <metadata>
       <title>Sample Security Catalog</title>
       <published>2020-02-02T11:01:04.736-04:00</published>
-      <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
+      <last-modified>2020-02-10T11:01:04.736-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
-      <prop name="keywords">Assurance, computer security, FISM, security controls, security requirements</prop>
+      <prop name="keywords">Assurance, computer security, FISMA, security controls, security requirements</prop>
       <role id="creator">
          <title>Document creator</title>
       </role>
@@ -51,7 +51,9 @@
           <prop name="label">Implementation guidance</prop>
           <part id="s1.1.1_gdn.1" name="guidance">
             <p>Allocation of information security responsibilities should be done in
-                accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management
+                accordance with the information security policies. Responsibilities for the protection
+                of individual assets and for carrying out specific information security processes 
+                should be identified. Responsibilities for information security risk management
                 activities and in particular for acceptance of residual risks should be
                 defined. These responsibilities should be supplemented, where necessary,
                 with more detailed guidance for specific sites and information
