@@ -27,7 +27,7 @@
 			<party-id>fedramp</party-id>
 		</responsible-party>
 	</metadata>
-	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
@@ -14,6 +13,7 @@ PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/o
 CATALOG_SCHEMA="$(get_abs_path "${OSCALDIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 # Option defaults
+RESOLVE_PROFILES=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -22,10 +22,11 @@ Usage: $0 [options]
 -h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
+--resolve-profiles                Resolve profiles
 EOF
 }
 
-OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
+OPTS=`getopt -o w:vh --long working-dir:,help,resolve-profiles -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -35,6 +36,10 @@ while [ $# -gt 0 ]; do
   case "$arg" in
     -w|--working-dir)
       WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --resolve-profiles)
+      RESOLVE_PROFILES=true
       shift # past path
       ;;
     -v)
@@ -88,7 +93,7 @@ while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob"
   path_absolute="$OSCALDIR"/"$path_glob"
 
   for path in $path_absolute; do
-    echo "Path: $path"
+#    echo "Path: $path"
 #    echo "Format: $format"
 #    echo "Model: $model"
 #    echo "Convert to: $converttoformats"
@@ -116,10 +121,6 @@ post_process_content() {
   local target_dir=${target_file%/*} # remove filename
   local target_filename=${target_file##*/} # remove dir
   local target_file_relative=$(get_rel_path "${working_dir}" "$target_file")
-
-  echo "################"
-  echo "# Post Process #"
-  echo "################"
 
   # Format specific post-processing
   case $target_format in
@@ -164,7 +165,7 @@ post_process_content() {
     local yaml_file="${target_file/\/json\///yaml/}" # change path
     yaml_file="${yaml_file%.json}.yaml"
     local yaml_dir="${yaml_file%/*}" # remove filename
-    printf 'yaml dir: %s\n' "$yaml_dir"
+#    printf 'yaml dir: %s\n' "$yaml_dir"
     mkdir -p "$yaml_dir"
     yaml_file_relative="$(get_rel_path "${working_dir}" "$yaml_file")"
     if [ "$VERBOSE" = "true" ]; then
@@ -207,26 +208,23 @@ copy_or_convert_content() {
   local working_dir="$1"; shift
   local result
 
-  echo "###################"
-  echo "# Convert Content #"
-  echo "###################"
-  printf 'source file: %s\n' "$source_file"
-  printf 'source dir: %s\n' "$source_dir"
-  printf 'source base dir: %s\n' "$source_base_dir"
-  printf 'source format: %s\n' "$source_format"
-  printf 'model: %s\n' "$model"
-  printf 'target format: %s\n' "$target_format"
-  printf 'working dir: %s\n' "$working_dir"
+#  printf 'source file: %s\n' "$source_file"
+#  printf 'source dir: %s\n' "$source_dir"
+#  printf 'source base dir: %s\n' "$source_base_dir"
+#  printf 'source format: %s\n' "$source_format"
+#  printf 'model: %s\n' "$model"
+#  printf 'target format: %s\n' "$target_format"
+#  printf 'working dir: %s\n' "$working_dir"
 
   local source_path="${source_file/$source_base_dir\//}"
-  printf 'source path: %s\n' "$source_path"
   local source_filename="${source_file##*/}"
-  printf 'source filename: %s\n' "$source_filename"
   local source_file_relative="$(get_rel_path "${source_dir}" "$source_file")"
-  printf 'source file (rel): %s\n' "$source_file_relative"
-
   local target_dir="${working_dir}/${source_path%/${source_format}/*}/${target_format}" # remove filename
-  printf 'target dir: %s\n' "$target_dir"
+
+#  printf 'source path: %s\n' "$source_path"
+#  printf 'source filename: %s\n' "$source_filename"
+#  printf 'source file (rel): %s\n' "$source_file_relative"
+#  printf 'target dir: %s\n' "$target_dir"
 
   local target_filename;
   case $target_format in
@@ -237,13 +235,14 @@ copy_or_convert_content() {
     target_filename="${source_filename%.${source_format}}-min.${target_format}"
     ;;
   *)
-    echo -e "${P_WARN}Conversion from '${source_format} to '${target_format^^}' is unsupported for '${P_END}${source_file_relative}${P_OK}'.${P_END}"
+    echo -e "${P_WARN}Conversion from '${source_format^^} to '${target_format^^}' is unsupported for '${P_END}${source_file_relative}${P_OK}'.${P_END}"
     return 1;
   esac
   local target_file="${target_dir}/${target_filename}"
-  printf 'target file: %s\n' "$target_file"
   local target_file_relative="$(get_rel_path "${working_dir}" "$target_file")";
-  printf 'target file (rel): %s\n' "$target_file_relative"
+
+#  printf 'target file: %s\n' "$target_file"
+#  printf 'target file (rel): %s\n' "$target_file_relative"
 
   if [ "$source_format" = "$target_format" ]; then
     if [ "$VERBOSE" = "true" ]; then
@@ -290,50 +289,50 @@ copy_or_convert_content() {
   # Perform model-specific conversions
   case $model in
   profile)
-    # handle profile resolution
-    if [ "$source_format" = "xml" ] && [ "$target_format" = "xml" ]; then
-      if [ "$VERBOSE" = "true" ]; then
-        echo -e "${P_INFO}Resolving profile '${P_END}${source_file_relative}${P_INFO}'.${P_END}"
-      fi
-      resolved_profile="${target_dir}/${source_filename%_profile.xml}-resolved-profile_catalog.xml"
-      printf 'resolved profile: %s\n' "$resolved_profile"
-  
-      result=$(xsl_transform "${PROFILE_RESOLVER}" "$source_file" "${resolved_profile}" 2>&1)
-      cmd_exitcode=$?
-      if [ $cmd_exitcode -ne 0 ]; then
-        if [ -n "$result" ]; then
-          echo -e "${P_ERROR}${result}${P_END}"
+    if [ "$RESOLVE_PROFILES" = "true" ]; then
+      # handle profile resolution
+      if [ "$source_format" = "xml" ] && [ "$target_format" = "xml" ]; then
+        if [ "$VERBOSE" = "true" ]; then
+          echo -e "${P_INFO}Resolving profile '${P_END}${source_file_relative}${P_INFO}'.${P_END}"
         fi
-        echo -e "${P_ERROR}Failed to resolve profile '${P_END}${resolved_profile}${P_ERROR}'.${P_END}"
-        return 1;
-      fi
-      
-      result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
-      if [ $cmd_exitcode -ne 0 ]; then
-        if [ -n "$result" ]; then
-          echo -e "${P_ERROR}${result}${P_END}"
+        resolved_profile="${target_dir}/${source_filename%_profile.xml}-resolved-profile_catalog.xml"
+#        printf 'resolved profile: %s\n' "$resolved_profile"
+    
+        result=$(xsl_transform "${PROFILE_RESOLVER}" "$source_file" "${resolved_profile}" 2>&1)
+        cmd_exitcode=$?
+        if [ $cmd_exitcode -ne 0 ]; then
+          if [ -n "$result" ]; then
+            echo -e "${P_ERROR}${result}${P_END}"
+          fi
+          echo -e "${P_ERROR}Failed to resolve profile '${P_END}${resolved_profile}${P_ERROR}'.${P_END}"
+          return 1;
         fi
-        echo -e "${P_ERROR}Resolved profile '${P_END}${resolved_profile}${P_ERROR}' is not a valid OSCAL catalog.${P_END}"
-        return 1;
-      else
-        echo -e "${P_OK}Resolved profile '${P_END}${target_filename}${P_OK}' to '${P_END}${resolved_profile}${P_OK}'.${P_END}"
+        
+        result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
+        if [ $cmd_exitcode -ne 0 ]; then
+          if [ -n "$result" ]; then
+            echo -e "${P_ERROR}${result}${P_END}"
+          fi
+          echo -e "${P_ERROR}Resolved profile '${P_END}${resolved_profile}${P_ERROR}' is not a valid OSCAL catalog.${P_END}"
+          return 1;
+        else
+          echo -e "${P_OK}Resolved profile '${P_END}${target_filename}${P_OK}' to '${P_END}${resolved_profile}${P_OK}'.${P_END}"
+        fi
+      elif [[ ! "$source_file" =~ -resolved-profile_catalog\.xml$ ]] && [ "$source_format" = "xml" ] && [ "$target_format" = "json" ]; then
+        resolved_profile="${working_dir}/${source_path%_profile.xml}-resolved-profile_catalog.xml"
+ #       printf 'resolved profile: %s\n' "$resolved_profile"
+        if [ "$VERBOSE" = "true" ]; then
+          echo -e "${P_INFO}Converting resolved profile '${P_END}${resolved_profile}${P_INFO}' to JSON.${P_END}"
+        fi
+        result="$(copy_or_convert_content "$OSCALDIR" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$WORKING_DIR")"
+        if [ -n "$result" ]; then
+          echo -e "${result}"
+        fi
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
+          return 1;
+        fi
       fi
-    elif [[ ! "$source_file" =~ -resolved-profile_catalog\.xml$ ]] && [ "$source_format" = "xml" ] && [ "$target_format" = "json" ]; then
-      resolved_profile="${working_dir}/${source_path%_profile.xml}-resolved-profile_catalog.xml"
-      printf 'resolved profile: %s\n' "$resolved_profile"
-      if [ "$VERBOSE" = "true" ]; then
-        echo -e "${P_INFO}Converting resolved profile '${P_END}${resolved_profile}${P_INFO}' to JSON.${P_END}"
-      fi
-      result="$(copy_or_convert_content "$OSCALDIR" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$WORKING_DIR")"
-      if [ -n "$result" ]; then
-        echo -e "${result}"
-      fi
-      cmd_exitcode=$?
-      if [ $cmd_exitcode != 0 ]; then
-          exitcode=1
-          continue;
-      fi
-
     fi
     ;;
   esac
@@ -342,10 +341,15 @@ copy_or_convert_content() {
 }
 
 process_paths() {
-  local paths="$1"; shift
-  local formats="$1"; shift
-  local models="$1"; shift
-  local patconversion_formatshs="$1"; shift
+#  local -n paths=$1; shift
+#  local -n formats=$1; shift
+#  local -n models=$1; shift
+#  local -n conversion_formats=$1; shift
+
+#  printf 'paths: %s\n' "${paths[@]}"
+#  printf 'formats: %s\n' "${formats[@]}"
+#  printf 'models: %s\n' "${models[@]}"
+#  printf 'converttoformats: %s\n' "${conversion_formats[@]}"
 
   local cmd_exitcode=0;
   #shopt -s nullglob
@@ -358,6 +362,11 @@ process_paths() {
     local model="${models[$i]}"
     local converttoformats="${conversion_formats[$i]}"
     local result
+
+#    printf 'source file: %s\n' "$src_file"
+#    printf 'source format: %s\n' "$src_format"
+#    printf 'model: %s\n' "$model"
+#    printf 'converttoformats: %s\n' "${converttoformats[@]}"
 
     result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "$OSCALDIR/src" $src_format $model $src_format "$WORKING_DIR")"
     if [ -n "$result" ]; then
@@ -379,8 +388,6 @@ process_paths() {
         continue;
       fi
 
-      echo "XXXX${to_format}"
-
       result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "${OSCALDIR}/src" $src_format $model $to_format "$WORKING_DIR")"
       if [ -n "$result" ]; then
         echo -e "${result}"
@@ -396,5 +403,5 @@ process_paths() {
   return $cmd_exitcode;
 }
 
-process_paths "${paths[@]}" "${formats[@]}" "${models[@]}" "${conversion_formats[@]}"
+process_paths #"${paths[@]}" "${formats[@]}" "${models[@]}" "${conversion_formats[@]}"
 exit $?
