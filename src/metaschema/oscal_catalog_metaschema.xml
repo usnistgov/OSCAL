@@ -31,7 +31,7 @@
                <group-as name="controls" in-json="ARRAY"/>
          </assembly>
          <assembly ref="group" max-occurs="unbounded">
-            <group-as name="groups"/>
+            <group-as name="groups" in-json="ARRAY"/>
          </assembly>
          <assembly ref="back-matter">
             <description>Back matter including references and resources.</description>
