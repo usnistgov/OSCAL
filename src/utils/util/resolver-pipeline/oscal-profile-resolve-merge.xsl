@@ -11,6 +11,7 @@
     
     <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
     
+    
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="node() | @*"/>
@@ -53,7 +54,7 @@
             </xsl:variable>
             <!-- not copying the selection elements only their contents -->
             <xsl:for-each select="$merged-selections/selection">
-                <xsl:sequence select="*"/>
+                <xsl:sequence select="* except back-matter"/>
             </xsl:for-each>
             <!-- copying 'modify' unchanged through this transformation --> 
             <xsl:apply-templates select="modify"/>
