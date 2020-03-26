@@ -3152,8 +3152,8 @@
                   <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
-            <xs:element ref="oscal-ar:satisfaction" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-ar:implementation-status" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:satisfaction" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:implementation-status" minOccurs="0" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -3264,7 +3264,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-ar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-ar:title" minOccurs="0" maxOccurs="1"/>
             <xs:element name="description" minOccurs="1" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -3709,32 +3709,10 @@
                   <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
-            <xs:element name="mitigating-factor" minOccurs="0" maxOccurs="unbounded">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Mitigating Factor</m:formal-name>
-                     <m:description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Mitigating Factor</b>: Describes a mitigating factor with an optional link to an implementation statement in the SSP.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-            <xs:element name="remediation" minOccurs="0" maxOccurs="unbounded">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Mitigating Factor</m:formal-name>
-                     <m:description>Describes a recommended remediation, or a plan for actual remediation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Mitigating Factor</b>: Describes a recommended remediation, or a plan for actual remediation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
+            <xs:element ref="oscal-ar:mitigating-factor"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:remediation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ar:risk-status" minOccurs="1" maxOccurs="1"/>
             <xs:element name="closure-actions" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -3749,7 +3727,6 @@
                   <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
-            <xs:element ref="oscal-ar:remediation-plan" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ar:remediation-tracking" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ar:party-id" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
@@ -3922,53 +3899,6 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="remediation-plan">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Remediation Planning</m:formal-name>
-            <m:description>Describes the plan for addressing the identified risk.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Remediation Planning</b>: Describes the plan for addressing the identified risk.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ar:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="1" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-            <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:required-resource"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:schedule" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="required-resource">
       <xs:annotation>
          <xs:appinfo>
@@ -4060,6 +3990,144 @@
          </xs:simpleType>
       </xs:union>
    </xs:simpleType>
+   <xs:element name="mitigating-factor">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Mitigating Factor</m:formal-name>
+            <m:description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Mitigating Factor</b>: Describes a mitigating factor with an optional link to an implementation statement in the SSP.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ar:id-ref" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="implementation-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Implementation ID</m:formal-name>
+                  <m:description>Points to an implementation statement in the SSP.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Implementation ID</b>: Points to an implementation statement in the SSP.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="remediation">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Remediation</m:formal-name>
+            <m:description>Describes either recommendation or an actual plan for remediating the risk.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Remediation</b>: Describes either recommendation or an actual plan for remediating the risk.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-ar:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:id-ref" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:required-resource"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:schedule" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Identifier</m:formal-name>
+                  <m:description>Unique identifier of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="type">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Type</m:formal-name>
+                  <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:union memberTypes="xs:string">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:enumeration value="recommendation">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Recommendation</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="planned">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Planned Remediation</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:union>
+            </xs:simpleType>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="assessment-results" m:root="yes">
       <xs:annotation>
          <xs:appinfo>
