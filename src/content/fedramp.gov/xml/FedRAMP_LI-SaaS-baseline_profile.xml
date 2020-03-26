@@ -19,7 +19,7 @@
 		</responsible-party>
 		<remarks><p>This is a DRAFT OSCAL profile intended to reflect the FedRAMP Tailored Baseline for Low Impact Software as a Service (LI-SaaS). Currently this reflects FedRAMP's parameters, additional requirements/guidance, and control designations (Fed, NSO, Attest, etc.) Assessment objectives and actions have not been vetted and may not align. This also has not been peer reviewed. Use with caution. FedRAMP is not responsible for inaccuracies resulting from the use of this draft profile.</p></remarks>
 	</metadata>
-	<import href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
+	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
