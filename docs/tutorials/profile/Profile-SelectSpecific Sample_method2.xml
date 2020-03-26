@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" 
+    id="uuid-8b16079e-27c5-4360-85db-1d6438e8e9c2">
+    <metadata>
+        <title>Sample Security Profile - Select Specific Controls - Method 2</title>
+        <published>2020-03-24T12:30:04.736-04:00</published>
+        <last-modified>2020-03-24T12:30:04.736-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0.0</oscal-version>
+        <prop name="keywords">Assurance, computer security, FISMA, security controls, security requirements</prop>
+        <role id="creator">
+            <title>Document creator</title>
+        </role>
+        <role id="contact">
+            <title>Contact</title>
+        </role>
+        <party id="NIST">
+            <org>
+                <org-name>National Institute ofStandards and Technology</org-name>
+                <email>oscal@nist.gov</email>
+                <url>https://www.nist.gov/oscal</url>
+            </org>
+        </party>
+        <responsible-party role-id="creator">
+            <party-id>NIST</party-id>
+        </responsible-party>
+        <responsible-party role-id="contact">
+            <party-id>NIST</party-id>
+        </responsible-party>
+    </metadata>
+    <import href="#profile-selectall">
+        <!-- IMPORT ONLY SPECIFIC CONTROLS -->
+        <include>
+            <call control-id="s1.1.1"></call>
+            <call control-id="s2.1.1"></call>
+        </include>
+   </import>
+    <merge>
+        <as-is>true</as-is>
+    </merge>
+    <back-matter>
+        <resource id="profile-selectall">
+            <desc>Profile SelectAll Sample (Derived from ISO/IEC 27002)</desc>
+            <rlink href="../profile/Catalog%20Sample.xml" media-type="application/oscal.profile+xml"/>
+        </resource>
+    </back-matter>
+</profile>
+
+    
+
