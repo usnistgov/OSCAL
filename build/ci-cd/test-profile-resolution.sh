@@ -7,12 +7,6 @@ fi
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/../metaschema/scripts/include/init-saxon.sh"
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/../metaschema/scripts/include/init-validate-content.sh"
 
-# configuration
-UNIT_TESTS_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples")"
-EXPECTED_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples/output-expected")"
-PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
-CATALOG_SCHEMA="$(get_abs_path "${OSCALDIR}/xml/schema/oscal_catalog_schema.xsd")"
-
 # Option defaults
 KEEP_TEMP_SCRATCH_DIR=false
 
@@ -21,6 +15,7 @@ usage() {                                      # Function: Print a help message.
 Usage: $0 [options] [metaschema paths]
 
 -h, --help                        Display help
+-w DIR, --working-dir DIR         Generate artifacts in DIR
 --scratch-dir DIR                 Generate temporary artifacts in DIR
                                   If not provided a new directory will be
                                   created under \$TMPDIR if set or in /tmp.
@@ -31,7 +26,7 @@ EOF
 }
 
 
-OPTS=`getopt -o w:vh --long scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@"`
+OPTS=`getopt -o w:vh --long working-dir:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo -e "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -39,6 +34,10 @@ eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
     --scratch-dir)
       SCRATCH_DIR="$(realpath "$2")"
       shift # past unit_test_dir
@@ -89,9 +88,19 @@ echo -e ""
 echo -e "${P_INFO}Testing Profile Resolution${P_END}"
 echo -e "${P_INFO}==============================${P_END}"
 
+if [ "$VERBOSE" = "true" ] || [ "$KEEP_TEMP_SCRATCH_DIR" = "true" ]; then
+  echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+fi
+
 if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
+
+# configuration
+UNIT_TESTS_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples")"
+EXPECTED_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples/output-expected")"
+PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
+CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 test_files=()
 while read -r -d $'\0' file; do
