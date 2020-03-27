@@ -301,7 +301,7 @@ jobs: # a collection of
       - run:
           name: Copy and convert OSCAL content to alternate formats
           command: |
-            bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR" -v --resolve-profiles
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts
@@ -501,9 +501,13 @@ jobs: # a collection of
       - install-apt-xmllint
       - install-maven-dependencies
       - run:
-          name: Run unit tests
+          name: Run Content Unit Tests
           command: |
             bash "$CICD_DIR/run-unittests.sh" -w "$OSCAL_BUILD_DIR"
+      - run:
+          name: Run Profile Resolution Unit Tests
+          command: |
+            bash "$CICD_DIR/test-profile-resolution.sh"
 workflows:
   version: 2
   build:
