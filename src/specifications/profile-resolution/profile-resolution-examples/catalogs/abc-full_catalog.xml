@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog id="abc-full_catalog" xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../xml/schema/oscal_catalog_schema.xsd">
     <metadata>
         <title>ABC Catalog</title>
-        <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
+        <last-modified>2020-03-26T10:16:22.939-04:00</last-modified>
         <version>1.0</version>
         <oscal-version>1.0-milestone2</oscal-version>
     </metadata>
@@ -114,8 +114,10 @@
         </control>
     </group>
     <back-matter>
-        <citation id="citation">
-            <desc>A citation to an out of line document.</desc>
-        </citation>
+        <resource id="citation">
+            <citation>
+                <text>A citation to an out of line document.</text>
+            </citation>
+        </resource>
     </back-matter>
 </catalog>
