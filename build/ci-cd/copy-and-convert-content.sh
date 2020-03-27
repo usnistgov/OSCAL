@@ -159,6 +159,8 @@ post_process_content() {
       echo -e "${P_ERROR}${result}${P_END}"
       echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
       return 1;
+    else
+      echo -e "${P_OK}Created pretty JSON '${P_END}${target_file_pretty_relative}${P_OK}'.${P_END}"
     fi
 
     # produce yaml
@@ -180,6 +182,8 @@ post_process_content() {
     perl -pi -e 's,(application/oscal\.[a-z]+\+)json\",\1yaml\",g' "${yaml_file}"
     # translate path names for local references
     perl -pi -e 's,((?:\.\./)+(?:(?!json/)[^\s/"'']+/)+)json/((?:(?!.json)[^\s"'']+)+).json,\1yaml/\2.yaml,g' "${yaml_file}"
+
+    echo -e "${P_OK}Created YAML '${P_END}${yaml_file_relative}${P_OK}'.${P_END}"
     ;;
   xml)
     if [ "$source_format" = "json" ]; then
@@ -270,6 +274,8 @@ copy_or_convert_content() {
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       return 1;
+    else
+      echo -e "${P_OK}Converted ${source_format^^} ${model} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file_relative}${P_OK}'.${P_END}"
     fi
   fi
 

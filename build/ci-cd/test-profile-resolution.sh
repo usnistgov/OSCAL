@@ -101,19 +101,23 @@ done < <(find "$UNIT_TESTS_DIR" -mindepth 1 -maxdepth 1 -type f -name "*_profile
 unit_test_scratch_dir="$SCRATCH_DIR/profile-resolution"
 mkdir -p "$unit_test_scratch_dir"
 
-
 for file in ${test_files[@]}; do
   filename="$(basename -- "$file")"
   extension="${filename##*.}"
   filename_minus_extension="${filename%.*}"
-  echo "${extension}"
-  echo "${filename_minus_extension}"
+#  echo "${extension}"
+#  echo "${filename_minus_extension}"
+
+  echo -e "${P_INFO}Resolving profile '${P_END}${filename}${P_INFO}'.${P_END}"
 
   resolved_profile="${unit_test_scratch_dir}/${filename_minus_extension}_RESOLVED.${extension}"
-  echo "${resolved_profile}"
+#  echo "${resolved_profile}"
   
   result=$(xsl_transform "${PROFILE_RESOLVER}" "$file" "${resolved_profile}" 2>&1)
   cmd_exitcode=$?
+  if [ -n "$result" ]; then
+    echo -e "${result}"
+  fi
   if [ $cmd_exitcode -ne 0 ]; then
     echo -e "  ${P_ERROR}Failed to resolve profile '${P_END}${filename}${P_ERROR}'.${P_END}"
     exitcode=1
@@ -121,7 +125,11 @@ for file in ${test_files[@]}; do
   fi
   
   result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
+  cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then
+    if [ -n "$result" ]; then
+      echo -e "${result}"
+    fi
     echo -e "  ${P_ERROR}Resolved profile '${P_END}${filename}${P_ERROR}' is not a valid OSCAL catalog.${P_END}"
     exitcode=1
     continue;
@@ -131,9 +139,14 @@ for file in ${test_files[@]}; do
 
   result=$(diff "${resolved_profile}" "${expected_resolved_profile}")
   if [ $cmd_exitcode -ne 0 ]; then
+    if [ -n "$result" ]; then
+      echo -e "${result}"
+    fi
     echo -e "  ${P_ERROR}Resolved profile '${P_END}${filename}${P_ERROR}' does not match the expected resolved profile.${P_END}"
     exitcode=1
     continue;
+  else
+    echo -e "  ${P_OK}Profile '${P_END}${filename}${P_OK}' resolved successfully.${P_END}"
   fi
 done
 
