@@ -8,10 +8,6 @@ fi
 source "$OSCALDIR/build/metaschema/scripts/include/init-validate-content.sh"
 source "$OSCALDIR/build/ci-cd/include/convert-and-validate-content.sh"
 
-# configuration
-PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
-CATALOG_SCHEMA="$(get_abs_path "${OSCALDIR}/xml/schema/oscal_catalog_schema.xsd")"
-
 # Option defaults
 RESOLVE_PROFILES=false
 
@@ -70,6 +66,10 @@ echo -e "${P_INFO}==============================${P_END}"
 if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
+
+# configuration
+PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
+CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 # check for perl
 result=$(which perl 2>&1)
