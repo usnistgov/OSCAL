@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-2bb4b4e9-b350-4ce3-9dec-6768214e4f2f-RESOLVED">
+         id="uuid-13172679-d468-4a88-8d7f-3afdeffedff8-RESOLVED">
    <metadata>
-      <title>FedRAMP Low Baseline</title>
-      <published>2020-02-02T00:00:00.000-05:00</published>
-      <last-modified>2020-01-28T10:00:00.000-05:00</last-modified>
-      <version>1.2</version>
-      <oscal-version>1.0.0-milestone2</oscal-version>
-      <prop name="resolution-timestamp">2020-03-27T04:35:16.680116Z</prop>
-      <link rel="resolution-source" href="FedRAMP_LOW-baseline_profile.xml">FedRAMP Low Baseline</link>
+      <title>NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</title>
+      <last-modified>2019-09-23T14:24:06.243-04:00</last-modified>
+      <version>2015-01-22</version>
+      <oscal-version>1.0.0-milestone1</oscal-version>
+      <prop name="resolution-timestamp">2020-03-27T04:35:53.757272Z</prop>
+      <link rel="resolution-source"
+            href="NIST_SP-800-53_rev4_LOW-baseline_profile.xml">NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</link>
       <role id="creator">
-         <title>Document creator</title>
+         <title>Document Creator</title>
       </role>
       <role id="contact">
          <title>Contact</title>
       </role>
-      <party id="fedramp">
+      <party id="IT-JTF">
          <org>
-            <org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
-            <email>info@fedramp.gov</email>
-            <url>https://fedramp.gov</url>
+            <org-name>Joint Task Force, Transformation Initiative</org-name>
+            <address>
+               <addr-line>National Institute of Standards and Technology</addr-line>
+               <addr-line>Attn: Computer Security Division</addr-line>
+               <addr-line>Information Technology Laboratory</addr-line>
+               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+               <city>Gaithersburg</city>
+               <state>MD</state>
+               <postal-code>20899-8930</postal-code>
+            </address>
+            <email>sec-cert@nist.gov</email>
          </org>
       </party>
       <responsible-party role-id="creator">
-         <party-id>fedramp</party-id>
+         <party-id>IT-JTF</party-id>
       </responsible-party>
       <responsible-party role-id="contact">
-         <party-id>fedramp</party-id>
+         <party-id>IT-JTF</party-id>
       </responsible-party>
    </metadata>
    <group class="family" id="ac">
@@ -42,6 +50,7 @@
          <param id="ac-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-1</prop>
          <prop name="sort-id">ac-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -195,6 +204,7 @@
          <param id="ac-2_prm_4">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-2</prop>
          <prop name="sort-id">ac-02</prop>
          <part id="ac-2_smt" name="statement">
@@ -484,6 +494,7 @@
       </control>
       <control class="SP800-53" id="ac-3">
          <title>Access Enforcement</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-3</prop>
          <prop name="sort-id">ac-03</prop>
          <part id="ac-3_smt" name="statement">
@@ -565,6 +576,7 @@
          <param id="ac-7_prm_5" depends-on="ac-7_prm_3">
             <label>organization-defined delay algorithm</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">AC-7</prop>
          <prop name="sort-id">ac-07</prop>
          <part id="ac-7_smt" name="statement">
@@ -661,6 +673,7 @@
          <param id="ac-8_prm_2">
             <label>organization-defined conditions</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-8</prop>
          <prop name="sort-id">ac-08</prop>
          <part id="ac-8_smt" name="statement">
@@ -703,21 +716,6 @@
                <part id="ac-8_smt.c.3" name="item">
                   <prop name="label">3.</prop>
                   <p>Includes a description of the authorized uses of the system.</p>
-               </part>
-            </part>
-            <part id="ac-8_fr" name="item" ns="fedramp">
-               <title>AC-8 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ac-8_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
-               </part>
-               <part id="ac-8_fr_smt.2" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
-               </part>
-               <part id="ac-8_fr_smt.3" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
                </part>
             </part>
          </part>
@@ -816,6 +814,7 @@
          <param id="ac-14_prm_1">
             <label>organization-defined user actions</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">AC-14</prop>
          <prop name="sort-id">ac-14</prop>
          <part id="ac-14_smt" name="statement">
@@ -874,6 +873,7 @@
       </control>
       <control class="SP800-53" id="ac-17">
          <title>Remote Access</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-17</prop>
          <prop name="sort-id">ac-17</prop>
          <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
@@ -987,6 +987,7 @@
       </control>
       <control class="SP800-53" id="ac-18">
          <title>Wireless Access</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-18</prop>
          <prop name="sort-id">ac-18</prop>
          <link href="#ref076" rel="reference">NIST Special Publication 800-48</link>
@@ -1071,6 +1072,7 @@
       </control>
       <control class="SP800-53" id="ac-19">
          <title>Access Control for Mobile Devices</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-19</prop>
          <prop name="sort-id">ac-19</prop>
          <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
@@ -1161,6 +1163,7 @@
       </control>
       <control class="SP800-53" id="ac-20">
          <title>Use of External Information Systems</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AC-20</prop>
          <prop name="sort-id">ac-20</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -1227,6 +1230,7 @@
          <param id="ac-22_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">AC-22</prop>
          <prop name="sort-id">ac-22</prop>
          <part id="ac-22_smt" name="statement">
@@ -1328,6 +1332,7 @@
          <param id="at-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AT-1</prop>
          <prop name="sort-id">at-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -1474,6 +1479,7 @@
          <param id="at-2_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AT-2</prop>
          <prop name="sort-id">at-02</prop>
          <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
@@ -1556,6 +1562,7 @@
          <param id="at-3_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AT-3</prop>
          <prop name="sort-id">at-03</prop>
          <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
@@ -1641,6 +1648,7 @@
          <param id="at-4_prm_1">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">AT-4</prop>
          <prop name="sort-id">at-04</prop>
          <part id="at-4_smt" name="statement">
@@ -1738,6 +1746,7 @@
          <param id="au-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-1</prop>
          <prop name="sort-id">au-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -1885,6 +1894,7 @@
          <param id="au-2_prm_2">
             <label>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-2</prop>
          <prop name="sort-id">au-02</prop>
          <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
@@ -1906,13 +1916,6 @@
             <part id="au-2_smt.d" name="item">
                <prop name="label">d.</prop>
                <p>Determines that the following events are to be audited within the information system: <insert param-id="au-2_prm_2"/>.</p>
-            </part>
-            <part id="au-2_fr" name="item" ns="fedramp">
-               <title>AU-2 Additional FedRAMP Requirements and Guidance</title>
-               <part id="au-2_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
-               </part>
             </part>
          </part>
          <part id="au-2_gdn" name="guidance">
@@ -1993,6 +1996,7 @@
       </control>
       <control class="SP800-53" id="au-3">
          <title>Content of Audit Records</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-3</prop>
          <prop name="sort-id">au-03</prop>
          <part id="au-3_smt" name="statement">
@@ -2065,6 +2069,7 @@
          <param id="au-4_prm_1">
             <label>organization-defined audit record storage requirements</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-4</prop>
          <prop name="sort-id">au-04</prop>
          <part id="au-4_smt" name="statement">
@@ -2127,6 +2132,7 @@
          <param id="au-5_prm_2">
             <label>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-5</prop>
          <prop name="sort-id">au-05</prop>
          <part id="au-5_smt" name="statement">
@@ -2210,6 +2216,7 @@
          <param id="au-6_prm_3">
             <label>organization-defined personnel or roles</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-6</prop>
          <prop name="sort-id">au-06</prop>
          <part id="au-6_smt" name="statement">
@@ -2221,13 +2228,6 @@
             <part id="au-6_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Reports findings to <insert param-id="au-6_prm_3"/>.</p>
-            </part>
-            <part id="au-6_fr" name="item" ns="fedramp">
-               <title>AU-6 Additional FedRAMP Requirements and Guidance</title>
-               <part id="au-6_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
-               </part>
             </part>
          </part>
          <part id="au-6_gdn" name="guidance">
@@ -2313,6 +2313,7 @@
          <param id="au-8_prm_1">
             <label>organization-defined granularity of time measurement</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-8</prop>
          <prop name="sort-id">au-08</prop>
          <part id="au-8_smt" name="statement">
@@ -2381,6 +2382,7 @@
       </control>
       <control class="SP800-53" id="au-9">
          <title>Protection of Audit Information</title>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-9</prop>
          <prop name="sort-id">au-09</prop>
          <part id="au-9_smt" name="statement">
@@ -2464,17 +2466,11 @@
          <param id="au-11_prm_1">
             <label>organization-defined time period consistent with records retention policy</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">AU-11</prop>
          <prop name="sort-id">au-11</prop>
          <part id="au-11_smt" name="statement">
             <p>The organization retains audit records for <insert param-id="au-11_prm_1"/> to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.</p>
-            <part id="au-11_fr" name="item" ns="fedramp">
-               <title>AU-11 Additional FedRAMP Requirements and Guidance</title>
-               <part id="au-11_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
-               </part>
-            </part>
          </part>
          <part id="au-11_gdn" name="guidance">
             <p>Organizations retain audit records until it is determined that they are no longer needed for administrative, legal, audit, or other operational purposes. This includes, for example, retention and availability of audit records relative to Freedom of Information Act (FOIA) requests, subpoenas, and law enforcement actions. Organizations develop standard categories of audit records relative to such types of actions and standard response processes for each type of action. The National Archives and Records Administration (NARA) General Records Schedules provide federal policy on record retention.</p>
@@ -2532,6 +2528,7 @@
          <param id="au-12_prm_2">
             <label>organization-defined personnel or roles</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">AU-12</prop>
          <prop name="sort-id">au-12</prop>
          <part id="au-12_smt" name="statement">
@@ -2629,6 +2626,7 @@
          <param id="ca-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CA-1</prop>
          <prop name="sort-id">ca-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -2778,6 +2776,7 @@
          <param id="ca-2_prm_2">
             <label>organization-defined individuals or roles</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CA-2</prop>
          <prop name="sort-id">ca-02</prop>
          <link href="#ref008" rel="reference">Executive Order 13587</link>
@@ -2816,14 +2815,6 @@
             <part id="ca-2_smt.d" name="item">
                <prop name="label">d.</prop>
                <p>Provides the results of the security control assessment to <insert param-id="ca-2_prm_2"/>.</p>
-            </part>
-            <part id="ca-2_fr" name="item" ns="fedramp">
-               <title>CA-2 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ca-2_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a>
-                  </p>
-               </part>
             </part>
          </part>
          <part id="ca-2_gdn" name="guidance">
@@ -2916,60 +2907,13 @@
                <p>Automated mechanisms supporting security assessment, security assessment plan development, and/or security assessment reporting</p>
             </part>
          </part>
-         <control class="SP800-53-enhancement" id="ca-2.1">
-            <title>Independent Assessors</title>
-            <param id="ca-2.1_prm_1">
-               <label>organization-defined level of independence</label>
-            </param>
-            <prop name="label">CA-2(1)</prop>
-            <prop name="sort-id">ca-02.01</prop>
-            <part id="ca-2.1_smt" name="statement">
-               <p>The organization employs assessors or assessment teams with <insert param-id="ca-2.1_prm_1"/> to conduct security control assessments.</p>
-               <part id="ca-2.1_fr" name="item" ns="fedramp">
-                  <title>CA-2 (1) Additional FedRAMP Requirements and Guidance</title>
-                  <part id="ca-2.1_fr_smt.1" name="item">
-                     <prop name="label">Requirement:</prop>
-                     <p>For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO).</p>
-                  </part>
-               </part>
-            </part>
-            <part id="ca-2.1_gdn" name="guidance">
-               <p>Independent assessors or assessment teams are individuals or groups who conduct impartial assessments of organizational information systems. Impartiality implies that assessors are free from any perceived or actual conflicts of interest with regard to the development, operation, or management of the organizational information systems under assessment or to the determination of security control effectiveness. To achieve impartiality, assessors should not: (i) create a mutual or conflicting interest with the organizations where the assessments are being conducted; (ii) assess their own work; (iii) act as management or employees of the organizations they are serving; or (iv) place themselves in positions of advocacy for the organizations acquiring their services. Independent assessments can be obtained from elements within organizations or can be contracted to public or private sector entities outside of organizations. Authorizing officials determine the required level of independence based on the security categories of information systems and/or the ultimate risk to organizational operations, organizational assets, or individuals. Authorizing officials also determine if the level of assessor independence provides sufficient assurance that the results are sound and can be used to make credible, risk-based decisions. This includes determining whether contracted security assessment services have sufficient independence, for example, when information system owners are not directly involved in contracting processes or cannot unduly influence the impartiality of assessors conducting assessments. In special situations, for example, when organizations that own the information systems are small or organizational structures require that assessments are conducted by individuals that are in the developmental, operational, or management chain of system owners, independence in assessment processes can be achieved by ensuring that assessment results are carefully reviewed and analyzed by independent teams of experts to validate the completeness, accuracy, integrity, and reliability of the results. Organizations recognize that assessments performed for purposes other than direct support to authorization decisions are, when performed by assessors with sufficient independence, more likely to be useable for such decisions, thereby reducing the need to repeat assessments.</p>
-            </part>
-            <part id="ca-2.1_obj" name="objective">
-               <p>Determine if the organization:</p>
-               <part id="ca-2.1_obj.1" name="objective">
-                  <prop name="label">CA-2(1)[1]</prop>
-                  <p>defines the level of independence to be employed to conduct security control assessments; and</p>
-               </part>
-               <part id="ca-2.1_obj.2" name="objective">
-                  <prop name="label">CA-2(1)[2]</prop>
-                  <p>employs assessors or assessment teams with the organization-defined level of independence to conduct security control assessments.</p>
-               </part>
-            </part>
-            <part name="assessment">
-               <prop name="method">EXAMINE</prop>
-               <part name="objects">
-                  <p>Security assessment and authorization policy</p>
-                  <p>procedures addressing security assessments</p>
-                  <p>security authorization package (including security plan, security assessment plan, security assessment report, plan of action and milestones, authorization statement)</p>
-                  <p>other relevant documents or records</p>
-               </part>
-            </part>
-            <part name="assessment">
-               <prop name="method">INTERVIEW</prop>
-               <part name="objects">
-                  <p>Organizational personnel with security assessment responsibilities</p>
-                  <p>organizational personnel with information security responsibilities</p>
-               </part>
-            </part>
-         </control>
       </control>
       <control class="SP800-53" id="ca-3">
          <title>System Interconnections</title>
          <param id="ca-3_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CA-3</prop>
          <prop name="sort-id">ca-03</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -3064,6 +3008,7 @@
          <param id="ca-5_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">CA-5</prop>
          <prop name="sort-id">ca-05</prop>
          <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
@@ -3077,18 +3022,6 @@
             <part id="ca-5_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Updates existing plan of action and milestones <insert param-id="ca-5_prm_1"/> based on the findings from security controls assessments, security impact analyses, and continuous monitoring activities.</p>
-            </part>
-            <part id="ca-5_fr" name="item" ns="fedramp">
-               <title>CA-5 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ca-5_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Plan of Action &amp; Milestones (POA&amp;M) must be provided at least monthly.</p>
-               </part>
-               <part id="ca-5_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action &amp; Milestones (POA&amp;M) Template Completion Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a>
-                  </p>
-               </part>
             </part>
          </part>
          <part id="ca-5_gdn" name="guidance">
@@ -3168,6 +3101,7 @@
          <param id="ca-6_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CA-6</prop>
          <prop name="sort-id">ca-06</prop>
          <link href="#ref104" rel="reference">OMB Circular A-130</link>
@@ -3187,13 +3121,6 @@
             <part id="ca-6_smt.c" name="item">
                <prop name="label">c.</prop>
                <p>Updates the security authorization <insert param-id="ca-6_prm_1"/>.</p>
-            </part>
-            <part id="ca-6_fr" name="item" ns="fedramp">
-               <title>CA-6(c) Additional FedRAMP Requirements and Guidance</title>
-               <part id="ca-6_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
-               </part>
             </part>
          </part>
          <part id="ca-6_gdn" name="guidance">
@@ -3268,6 +3195,7 @@
          <param id="ca-7_prm_5">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CA-7</prop>
          <prop name="sort-id">ca-07</prop>
          <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
@@ -3308,22 +3236,6 @@
                <prop name="label">g.</prop>
                <p>Reporting the security status of organization and the information system to <insert param-id="ca-7_prm_4"/>
                   <insert param-id="ca-7_prm_5"/>.</p>
-            </part>
-            <part id="ca-7_fr" name="item" ns="fedramp">
-               <title>CA-7 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ca-7_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually.</p>
-               </part>
-               <part id="ca-7_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
-               </part>
-               <part id="ca-7_fr_gdn.2" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide <a href="https://www.fedramp.gov/documents/">https://www.fedramp.gov/documents/</a>
-                  </p>
-               </part>
             </part>
          </part>
          <part id="ca-7_gdn" name="guidance">
@@ -3476,6 +3388,7 @@
          <param id="ca-9_prm_1">
             <label>organization-defined information system components or classes of components</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CA-9</prop>
          <prop name="sort-id">ca-09</prop>
          <part id="ca-9_smt" name="statement">
@@ -3570,6 +3483,7 @@
          <param id="cm-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-1</prop>
          <prop name="sort-id">cm-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -3712,6 +3626,7 @@
       </control>
       <control class="SP800-53" id="cm-2">
          <title>Baseline Configuration</title>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-2</prop>
          <prop name="sort-id">cm-02</prop>
          <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -3771,6 +3686,7 @@
       </control>
       <control class="SP800-53" id="cm-4">
          <title>Security Impact Analysis</title>
+         <prop name="priority">P2</prop>
          <prop name="label">CM-4</prop>
          <prop name="sort-id">cm-04</prop>
          <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -3830,6 +3746,7 @@
          <param id="cm-6_prm_3">
             <label>organization-defined operational requirements</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-6</prop>
          <prop name="sort-id">cm-06</prop>
          <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
@@ -3857,21 +3774,6 @@
             <part id="cm-6_smt.d" name="item">
                <prop name="label">d.</prop>
                <p>Monitors and controls changes to the configuration settings in accordance with organizational policies and procedures.</p>
-            </part>
-            <part id="cm-6_fr" name="item" ns="fedramp">
-               <title>CM-6(a) Additional FedRAMP Requirements and Guidance</title>
-               <part id="cm-6_fr_smt.1" name="item">
-                  <prop name="label">Requirement 1:</prop>
-                  <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. </p>
-               </part>
-               <part id="cm-6_fr_smt.2" name="item">
-                  <prop name="label">Requirement 2:</prop>
-                  <p>The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) (<a href="http://scap.nist.gov/">http://scap.nist.gov/</a>) validated or SCAP compatible (if validated checklists are not available).</p>
-               </part>
-               <part id="cm-6_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Information on the USGCB checklists can be found at: <a href="https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline">https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline</a>.</p>
-               </part>
             </part>
          </part>
          <part id="cm-6_gdn" name="guidance">
@@ -4000,6 +3902,7 @@
          <param id="cm-7_prm_1">
             <label>organization-defined prohibited or restricted functions, ports, protocols, and/or services</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-7</prop>
          <prop name="sort-id">cm-07</prop>
          <link href="#ref006" rel="reference">DoD Instruction 8551.01</link>
@@ -4012,18 +3915,6 @@
             <part id="cm-7_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Prohibits or restricts the use of the following functions, ports, protocols, and/or services: <insert param-id="cm-7_prm_1"/>.</p>
-            </part>
-            <part id="cm-7_fr" name="item" ns="fedramp">
-               <title>CM-7 Additional FedRAMP Requirements and Guidance</title>
-               <part id="cm-7_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
-               </part>
-               <part id="cm-7_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Information on the USGCB checklists can be found at: <a href="http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc">http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</a>
-							Partially derived from AC-17(8).</p>
-               </part>
             </part>
          </part>
          <part id="cm-7_gdn" name="guidance">
@@ -4121,6 +4012,7 @@
          <param id="cm-8_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-8</prop>
          <prop name="sort-id">cm-08</prop>
          <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
@@ -4149,13 +4041,6 @@
             <part id="cm-8_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Reviews and updates the information system component inventory <insert param-id="cm-8_prm_2"/>.</p>
-            </part>
-            <part id="cm-8_fr" name="item" ns="fedramp">
-               <title>CM-8 Additional FedRAMP Requirements and Guidance</title>
-               <part id="cm-8_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Must be provided at least monthly or when there is a change.</p>
-               </part>
             </part>
          </part>
          <part id="cm-8_gdn" name="guidance">
@@ -4234,6 +4119,7 @@
       </control>
       <control class="SP800-53" id="cm-10">
          <title>Software Usage Restrictions</title>
+         <prop name="priority">P2</prop>
          <prop name="label">CM-10</prop>
          <prop name="sort-id">cm-10</prop>
          <part id="cm-10_smt" name="statement">
@@ -4316,6 +4202,7 @@
          <param id="cm-11_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CM-11</prop>
          <prop name="sort-id">cm-11</prop>
          <part id="cm-11_smt" name="statement">
@@ -4428,6 +4315,7 @@
          <param id="cp-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CP-1</prop>
          <prop name="sort-id">cp-01</prop>
          <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4583,6 +4471,7 @@
          <param id="cp-2_prm_4">
             <label>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CP-2</prop>
          <prop name="sort-id">cp-02</prop>
          <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4640,13 +4529,6 @@
             <part id="cp-2_smt.g" name="item">
                <prop name="label">g.</prop>
                <p>Protects the contingency plan from unauthorized disclosure and modification.</p>
-            </part>
-            <part id="cp-2_fr" name="item" ns="fedramp">
-               <title>CP-2 Additional FedRAMP Requirements and Guidance</title>
-               <part id="cp-2_fr_smt.1" name="item">
-                  <prop name="label">CP-2 Requirement:</prop>
-                  <p>For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
-               </part>
             </part>
          </part>
          <part id="cp-2_gdn" name="guidance">
@@ -4813,6 +4695,7 @@
          <param id="cp-3_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CP-3</prop>
          <prop name="sort-id">cp-03</prop>
          <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4905,6 +4788,7 @@
          <param id="cp-4_prm_2">
             <label>organization-defined tests</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">CP-4</prop>
          <prop name="sort-id">cp-04</prop>
          <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -4924,13 +4808,6 @@
             <part id="cp-4_smt.c" name="item">
                <prop name="label">c.</prop>
                <p>Initiates corrective actions, if needed.</p>
-            </part>
-            <part id="cp-4_fr" name="item" ns="fedramp">
-               <title>CP-4(a) Additional FedRAMP Requirements and Guidance</title>
-               <part id="cp-4_fr_smt.a" name="item">
-                  <prop name="label">CP-4(a) Requirement:</prop>
-                  <p>The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
-               </part>
             </part>
          </part>
          <part id="cp-4_gdn" name="guidance">
@@ -5003,6 +4880,7 @@
          <param id="cp-9_prm_3">
             <label>organization-defined frequency consistent with recovery time and recovery point objectives</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">CP-9</prop>
          <prop name="sort-id">cp-09</prop>
          <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
@@ -5023,25 +4901,6 @@
             <part id="cp-9_smt.d" name="item">
                <prop name="label">d.</prop>
                <p>Protects the confidentiality, integrity, and availability of backup information at storage locations.</p>
-            </part>
-            <part id="cp-9_fr" name="item" ns="fedramp">
-               <title>CP-9 Additional FedRAMP Requirements and Guidance</title>
-               <part id="cp-9_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
-               </part>
-               <part id="cp-9_fr_smt.a" name="item">
-                  <prop name="label">CP-9(a) Requirement:</prop>
-                  <p>The service provider maintains at least three backup copies of user-level information (at least one of which is available online).</p>
-               </part>
-               <part id="cp-9_fr_smt.b" name="item">
-                  <prop name="label">CP-9(b)Requirement:</prop>
-                  <p>The service provider maintains at least three backup copies of system-level information (at least one of which is available online).</p>
-               </part>
-               <part id="cp-9_fr_smt.c" name="item">
-                  <prop name="label">CP-9(c)Requirement:</prop>
-                  <p>The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online).</p>
-               </part>
             </part>
          </part>
          <part id="cp-9_gdn" name="guidance">
@@ -5120,6 +4979,7 @@
       </control>
       <control class="SP800-53" id="cp-10">
          <title>Information System Recovery and Reconstitution</title>
+         <prop name="priority">P1</prop>
          <prop name="label">CP-10</prop>
          <prop name="sort-id">cp-10</prop>
          <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
@@ -5216,6 +5076,7 @@
          <param id="ia-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-1</prop>
          <prop name="sort-id">ia-01</prop>
          <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -5362,6 +5223,7 @@
       </control>
       <control class="SP800-53" id="ia-2">
          <title>Identification and Authentication (organizational Users)</title>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-2</prop>
          <prop name="sort-id">ia-02</prop>
          <link href="#ref018" rel="reference">HSPD-12</link>
@@ -5469,13 +5331,6 @@
             <prop name="sort-id">ia-02.12</prop>
             <part id="ia-2.12_smt" name="statement">
                <p>The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.</p>
-               <part id="ia-2.12_fr" name="item" ns="fedramp">
-                  <title>IA-2 (12) Additional FedRAMP Requirements and Guidance</title>
-                  <part id="ia-2.12_fr_gdn.1" name="guidance">
-                     <prop name="label">Guidance:</prop>
-                     <p>Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
-                  </part>
-               </part>
             </part>
             <part id="ia-2.12_gdn" name="guidance">
                <p>This control enhancement applies to organizations implementing logical access control systems (LACS) and physical access control systems (PACS). Personal Identity Verification (PIV) credentials are those credentials issued by federal agencies that conform to FIPS Publication 201 and supporting guidance documents. OMB Memorandum 11-11 requires federal agencies to continue implementing the requirements specified in HSPD-12 to enable agency-wide use of PIV credentials.</p>
@@ -5537,6 +5392,7 @@
          <param id="ia-4_prm_3">
             <label>organization-defined time period of inactivity</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-4</prop>
          <prop name="sort-id">ia-04</prop>
          <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -5564,17 +5420,6 @@
             <part id="ia-4_smt.e" name="item">
                <prop name="label">e.</prop>
                <p>Disabling the identifier after <insert param-id="ia-4_prm_3"/>.</p>
-            </part>
-            <part id="ia-4_fr" name="item" ns="fedramp">
-               <title>IA-4(e) Additional FedRAMP Requirements and Guidance</title>
-               <part id="ia-4_fr_smt.e" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider defines the time period of inactivity for device identifiers.</p>
-               </part>
-               <part id="ia-4_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP <a href="http://iase.disa.mil/cloud_security/Pages/index.aspx">http://iase.disa.mil/cloud_security/Pages/index.aspx</a>.</p>
-               </part>
             </part>
          </part>
          <part id="ia-4_gdn" name="guidance">
@@ -5729,6 +5574,7 @@
          <param id="ia-5_prm_1">
             <label>organization-defined time period by authenticator type</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-5</prop>
          <prop name="sort-id">ia-05</prop>
          <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -5781,13 +5627,6 @@
             <part id="ia-5_smt.j" name="item">
                <prop name="label">j.</prop>
                <p>Changing authenticators for group/role accounts when membership to those accounts changes.</p>
-            </part>
-            <part id="ia-5_fr" name="item" ns="fedramp">
-               <title>IA-5 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ia-5_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 1. Link <a href="https://pages.nist.gov/800-63-3">https://pages.nist.gov/800-63-3</a>.</p>
-               </part>
             </part>
          </part>
          <part id="ia-5_gdn" name="guidance">
@@ -5979,13 +5818,6 @@
                   <prop name="label">(f)</prop>
                   <p>Allows the use of a temporary password for system logons with an immediate change to a permanent password.</p>
                </part>
-               <part id="ia-5.1_fr" name="item" ns="fedramp">
-                  <title>IA-5 (1) (a) and (d) Additional FedRAMP Requirements and Guidance</title>
-                  <part id="ia-5.1_fr_gdn.1" name="guidance">
-                     <prop name="label">Guidance (a) (d):</prop>
-                     <p>If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant.</p>
-                  </part>
-               </part>
             </part>
             <part id="ia-5.1_gdn" name="guidance">
                <p>This control enhancement applies to single-factor authentication of individuals using passwords as individual or group authenticators, and in a similar manner, when passwords are part of multifactor authenticators. This control enhancement does not apply when passwords are used to unlock hardware authenticators (e.g., Personal Identity Verification cards). The implementation of such password mechanisms may not meet all of the requirements in the enhancement. Cryptographically-protected passwords include, for example, encrypted versions of passwords and one-way cryptographic hashes of passwords. The number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. Password lifetime restrictions do not apply to temporary passwords. To mitigate certain brute force attacks against passwords, organizations may also consider salting passwords.</p>
@@ -6158,6 +5990,7 @@
       </control>
       <control class="SP800-53" id="ia-6">
          <title>Authenticator Feedback</title>
+         <prop name="priority">P2</prop>
          <prop name="label">IA-6</prop>
          <prop name="sort-id">ia-06</prop>
          <part id="ia-6_smt" name="statement">
@@ -6198,6 +6031,7 @@
       </control>
       <control class="SP800-53" id="ia-7">
          <title>Cryptographic Module Authentication</title>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-7</prop>
          <prop name="sort-id">ia-07</prop>
          <link href="#ref012" rel="reference">FIPS Publication 140</link>
@@ -6242,6 +6076,7 @@
       </control>
       <control class="SP800-53" id="ia-8">
          <title>Identification and Authentication (non-organizational Users)</title>
+         <prop name="priority">P1</prop>
          <prop name="label">IA-8</prop>
          <prop name="sort-id">ia-08</prop>
          <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -6526,6 +6361,7 @@
          <param id="ir-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IR-1</prop>
          <prop name="sort-id">ir-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -6675,6 +6511,7 @@
          <param id="ir-2_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">IR-2</prop>
          <prop name="sort-id">ir-02</prop>
          <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
@@ -6754,6 +6591,7 @@
       </control>
       <control class="SP800-53" id="ir-4">
          <title>Incident Handling</title>
+         <prop name="priority">P1</prop>
          <prop name="label">IR-4</prop>
          <prop name="sort-id">ir-04</prop>
          <link href="#ref008" rel="reference">Executive Order 13587</link>
@@ -6771,13 +6609,6 @@
             <part id="ir-4_smt.c" name="item">
                <prop name="label">c.</prop>
                <p>Incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly.</p>
-            </part>
-            <part id="ir-4_fr" name="item" ns="fedramp">
-               <title>IR-4 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ir-4_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
-               </part>
             </part>
          </part>
          <part id="ir-4_gdn" name="guidance">
@@ -6891,6 +6722,7 @@
       </control>
       <control class="SP800-53" id="ir-5">
          <title>Incident Monitoring</title>
+         <prop name="priority">P1</prop>
          <prop name="label">IR-5</prop>
          <prop name="sort-id">ir-05</prop>
          <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -6953,6 +6785,7 @@
          <param id="ir-6_prm_2">
             <label>organization-defined authorities</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IR-6</prop>
          <prop name="sort-id">ir-06</prop>
          <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -6966,13 +6799,6 @@
             <part id="ir-6_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Reports security incident information to <insert param-id="ir-6_prm_2"/>.</p>
-            </part>
-            <part id="ir-6_fr" name="item" ns="fedramp">
-               <title>IR-6 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ir-6_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>Report security incident information according to FedRAMP Incident Communications Procedure.</p>
-               </part>
             </part>
          </part>
          <part id="ir-6_gdn" name="guidance">
@@ -7036,6 +6862,7 @@
       </control>
       <control class="SP800-53" id="ir-7">
          <title>Incident Response Assistance</title>
+         <prop name="priority">P2</prop>
          <prop name="label">IR-7</prop>
          <prop name="sort-id">ir-07</prop>
          <part id="ir-7_smt" name="statement">
@@ -7100,6 +6927,7 @@
          <param id="ir-8_prm_4">
             <label>organization-defined incident response personnel (identified by name and/or by role) and organizational elements</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">IR-8</prop>
          <prop name="sort-id">ir-08</prop>
          <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -7160,17 +6988,6 @@
             <part id="ir-8_smt.f" name="item">
                <prop name="label">f.</prop>
                <p>Protects the incident response plan from unauthorized disclosure and modification.</p>
-            </part>
-            <part id="ir-8_fr" name="item" ns="fedramp">
-               <title>IR-8 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ir-8_fr_smt.b" name="item">
-                  <prop name="label">(b) Requirement:</prop>
-                  <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
-               </part>
-               <part id="ir-8_fr_smt.e" name="item">
-                  <prop name="label">(e) Requirement:</prop>
-                  <p>The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</p>
-               </part>
             </part>
          </part>
          <part id="ir-8_gdn" name="guidance">
@@ -7346,6 +7163,7 @@
          <param id="ma-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">MA-1</prop>
          <prop name="sort-id">ma-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -7493,6 +7311,7 @@
          <param id="ma-2_prm_2">
             <label>organization-defined maintenance-related information</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">MA-2</prop>
          <prop name="sort-id">ma-02</prop>
          <part id="ma-2_smt" name="statement">
@@ -7660,6 +7479,7 @@
       </control>
       <control class="SP800-53" id="ma-4">
          <title>Nonlocal Maintenance</title>
+         <prop name="priority">P2</prop>
          <prop name="label">MA-4</prop>
          <prop name="sort-id">ma-04</prop>
          <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
@@ -7789,6 +7609,7 @@
       </control>
       <control class="SP800-53" id="ma-5">
          <title>Maintenance Personnel</title>
+         <prop name="priority">P2</prop>
          <prop name="label">MA-5</prop>
          <prop name="sort-id">ma-05</prop>
          <part id="ma-5_smt" name="statement">
@@ -7880,6 +7701,7 @@
          <param id="mp-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">MP-1</prop>
          <prop name="sort-id">mp-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -8027,6 +7849,7 @@
          <param id="mp-2_prm_2">
             <label>organization-defined personnel or roles</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">MP-2</prop>
          <prop name="sort-id">mp-02</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -8094,6 +7917,7 @@
          <param id="mp-6_prm_2">
             <label>organization-defined sanitization techniques and procedures</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">MP-6</prop>
          <prop name="sort-id">mp-06</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -8210,6 +8034,7 @@
          <param id="mp-7_prm_4">
             <label>organization-defined security safeguards</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">MP-7</prop>
          <prop name="sort-id">mp-07</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -8301,6 +8126,7 @@
          <param id="pe-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-1</prop>
          <prop name="sort-id">pe-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -8445,6 +8271,7 @@
          <param id="pe-2_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-2</prop>
          <prop name="sort-id">pe-02</prop>
          <part id="pe-2_smt" name="statement">
@@ -8572,6 +8399,7 @@
          <param id="pe-3_prm_9">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-3</prop>
          <prop name="sort-id">pe-03</prop>
          <link href="#ref017" rel="reference">FIPS Publication 201</link>
@@ -8815,6 +8643,7 @@
          <param id="pe-6_prm_2">
             <label>organization-defined events or potential indications of events</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-6</prop>
          <prop name="sort-id">pe-06</prop>
          <part id="pe-6_smt" name="statement">
@@ -8901,6 +8730,7 @@
          <param id="pe-8_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">PE-8</prop>
          <prop name="sort-id">pe-08</prop>
          <part id="pe-8_smt" name="statement">
@@ -8970,6 +8800,7 @@
       </control>
       <control class="SP800-53" id="pe-12">
          <title>Emergency Lighting</title>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-12</prop>
          <prop name="sort-id">pe-12</prop>
          <part id="pe-12_smt" name="statement">
@@ -9018,6 +8849,7 @@
       </control>
       <control class="SP800-53" id="pe-13">
          <title>Fire Protection</title>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-13</prop>
          <prop name="sort-id">pe-13</prop>
          <part id="pe-13_smt" name="statement">
@@ -9070,6 +8902,7 @@
          <param id="pe-14_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-14</prop>
          <prop name="sort-id">pe-14</prop>
          <part id="pe-14_smt" name="statement">
@@ -9081,13 +8914,6 @@
             <part id="pe-14_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Monitors temperature and humidity levels <insert param-id="pe-14_prm_2"/>.</p>
-            </part>
-            <part id="pe-14_fr" name="item" ns="fedramp">
-               <title>PE-14(a) Additional FedRAMP Requirements and Guidance</title>
-               <part id="pe-14_fr_smt.a" name="item">
-                  <prop name="label">(a) Requirement:</prop>
-                  <p>The service provider measures temperature at server inlets and humidity levels by dew point.</p>
-               </part>
             </part>
          </part>
          <part id="pe-14_gdn" name="guidance">
@@ -9164,6 +8990,7 @@
       </control>
       <control class="SP800-53" id="pe-15">
          <title>Water Damage Protection</title>
+         <prop name="priority">P1</prop>
          <prop name="label">PE-15</prop>
          <prop name="sort-id">pe-15</prop>
          <part id="pe-15_smt" name="statement">
@@ -9220,6 +9047,7 @@
          <param id="pe-16_prm_1">
             <label>organization-defined types of information system components</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">PE-16</prop>
          <prop name="sort-id">pe-16</prop>
          <part id="pe-16_smt" name="statement">
@@ -9312,6 +9140,7 @@
          <param id="pl-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PL-1</prop>
          <prop name="sort-id">pl-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -9460,6 +9289,7 @@
          <param id="pl-2_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PL-2</prop>
          <prop name="sort-id">pl-02</prop>
          <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
@@ -9674,6 +9504,7 @@
          <param id="pl-4_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">PL-4</prop>
          <prop name="sort-id">pl-04</prop>
          <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
@@ -9791,6 +9622,7 @@
          <param id="ps-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PS-1</prop>
          <prop name="sort-id">ps-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -9935,6 +9767,7 @@
          <param id="ps-2_prm_1">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PS-2</prop>
          <prop name="sort-id">ps-02</prop>
          <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
@@ -10013,6 +9846,7 @@
          <param id="ps-3_prm_1">
             <label>organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PS-3</prop>
          <prop name="sort-id">ps-03</prop>
          <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
@@ -10101,6 +9935,7 @@
          <param id="ps-4_prm_4">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PS-4</prop>
          <prop name="sort-id">ps-04</prop>
          <part id="ps-4_smt" name="statement">
@@ -10234,6 +10069,7 @@
          <param id="ps-5_prm_4">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">PS-5</prop>
          <prop name="sort-id">ps-05</prop>
          <part id="ps-5_smt" name="statement">
@@ -10347,6 +10183,7 @@
          <param id="ps-6_prm_2">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">PS-6</prop>
          <prop name="sort-id">ps-06</prop>
          <part id="ps-6_smt" name="statement">
@@ -10451,6 +10288,7 @@
          <param id="ps-7_prm_2">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">PS-7</prop>
          <prop name="sort-id">ps-07</prop>
          <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
@@ -10559,6 +10397,7 @@
          <param id="ps-8_prm_2">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P3</prop>
          <prop name="label">PS-8</prop>
          <prop name="sort-id">ps-08</prop>
          <part id="ps-8_smt" name="statement">
@@ -10638,6 +10477,7 @@
          <param id="ra-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">RA-1</prop>
          <prop name="sort-id">ra-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -10780,6 +10620,7 @@
       </control>
       <control class="SP800-53" id="ra-2">
          <title>Security Categorization</title>
+         <prop name="priority">P1</prop>
          <prop name="label">RA-2</prop>
          <prop name="sort-id">ra-02</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -10871,6 +10712,7 @@
          <param id="ra-3_prm_5">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">RA-3</prop>
          <prop name="sort-id">ra-03</prop>
          <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -10898,17 +10740,6 @@
             <part id="ra-3_smt.e" name="item">
                <prop name="label">e.</prop>
                <p>Updates the risk assessment <insert param-id="ra-3_prm_5"/> or whenever there are significant changes to the information system or environment of operation (including the identification of new threats and vulnerabilities), or other conditions that may impact the security state of the system.</p>
-            </part>
-            <part id="ra-3_fr" name="item" ns="fedramp">
-               <title>RA-3 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ra-3_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F</p>
-               </part>
-               <part id="ra-3_fr_smt.d" name="item">
-                  <prop name="label">RA-3 (d) Requirement:</prop>
-                  <p>Include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
-               </part>
             </part>
          </part>
          <part id="ra-3_gdn" name="guidance">
@@ -11039,6 +10870,7 @@
          <param id="ra-5_prm_3">
             <label>organization-defined personnel or roles</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">RA-5</prop>
          <prop name="sort-id">ra-05</prop>
          <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -11079,24 +10911,6 @@
             <part id="ra-5_smt.e" name="item">
                <prop name="label">e.</prop>
                <p>Shares information obtained from the vulnerability scanning process and security control assessments with <insert param-id="ra-5_prm_3"/> to help eliminate similar vulnerabilities in other information systems (i.e., systemic weaknesses or deficiencies).</p>
-            </part>
-            <part id="ra-5_fr_smt.a" name="item">
-               <title>RA-5(a) Additional FedRAMP Requirements and Guidance</title>
-               <prop name="label">RA-5 (a)Requirement:</prop>
-               <p>An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
-            </part>
-            <part id="ra-5_fr_smt.e" name="item">
-               <title>RA-5(e) Additional FedRAMP Requirements and Guidance</title>
-               <prop name="label">RA-5 (e)Requirement:</prop>
-               <p>To include all Authorizing Officials; for JAB authorizations to include FedRAMP.</p>
-            </part>
-            <part id="ra-5_fr" name="item" ns="fedramp">
-               <title>RA-5 Additional FedRAMP Requirements and Guidance</title>
-               <part id="ra-5_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>
-                     <strong>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Vulnerability Scanning Requirements</strong> (<a href="https://www.FedRAMP.gov/documents/">https://www.FedRAMP.gov/documents/</a>)</p>
-               </part>
             </part>
          </part>
          <part id="ra-5_gdn" name="guidance">
@@ -11268,6 +11082,7 @@
          <param id="sa-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SA-1</prop>
          <prop name="sort-id">sa-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -11409,6 +11224,7 @@
       </control>
       <control class="SP800-53" id="sa-2">
          <title>Allocation of Resources</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SA-2</prop>
          <prop name="sort-id">sa-02</prop>
          <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
@@ -11491,6 +11307,7 @@
          <param id="sa-3_prm_1">
             <label>organization-defined system development life cycle</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SA-3</prop>
          <prop name="sort-id">sa-03</prop>
          <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -11576,6 +11393,7 @@
       </control>
       <control class="SP800-53" id="sa-4">
          <title>Acquisition Process</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SA-4</prop>
          <prop name="sort-id">sa-04</prop>
          <link href="#ref018" rel="reference">HSPD-12</link>
@@ -11622,13 +11440,6 @@
             <part id="sa-4_smt.g" name="item">
                <prop name="label">g.</prop>
                <p>Acceptance criteria.</p>
-            </part>
-            <part id="sa-4_fr" name="item" ns="fedramp">
-               <title>SA-4 Additional FedRAMP Requirements and Guidance</title>
-               <part id="sa-4_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See <a href="http://www.niap-ccevs.org/vpl">http://www.niap-ccevs.org/vpl</a> or <a href="http://www.commoncriteriaportal.org/products.html">http://www.commoncriteriaportal.org/products.html</a>.</p>
-               </part>
             </part>
          </part>
          <part id="sa-4_gdn" name="guidance">
@@ -11708,6 +11519,48 @@
                <p>automated mechanisms supporting and/or implementing acquisitions and inclusion of security requirements in contracts</p>
             </part>
          </part>
+         <control class="SP800-53-enhancement" id="sa-4.10">
+            <title>Use of Approved PIV Products</title>
+            <prop name="label">SA-4(10)</prop>
+            <prop name="sort-id">sa-04.10</prop>
+            <part id="sa-4.10_smt" name="statement">
+               <p>The organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems.</p>
+            </part>
+            <part id="sa-4.10_gdn" name="guidance">
+               <link rel="related" href="#ia-2">IA-2</link>
+               <link rel="related" href="#ia-8">IA-8</link>
+            </part>
+            <part id="sa-4.10_obj" name="objective">
+               <p>Determine if the organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems. </p>
+            </part>
+            <part name="assessment">
+               <prop name="method">EXAMINE</prop>
+               <part name="objects">
+                  <p>System and services acquisition policy</p>
+                  <p>procedures addressing the integration of information security requirements, descriptions, and criteria into the acquisition process</p>
+                  <p>solicitation documentation</p>
+                  <p>acquisition documentation</p>
+                  <p>acquisition contracts for the information system, system component, or information system service</p>
+                  <p>service-level agreements</p>
+                  <p>other relevant documents or records</p>
+               </part>
+            </part>
+            <part name="assessment">
+               <prop name="method">INTERVIEW</prop>
+               <part name="objects">
+                  <p>Organizational personnel with acquisition/contracting responsibilities</p>
+                  <p>organizational personnel with responsibility for determining information system security requirements</p>
+                  <p>organizational personnel with responsibility for ensuring only FIPS 201-approved products are implemented</p>
+                  <p>organizational personnel with information security responsibilities</p>
+               </part>
+            </part>
+            <part name="assessment">
+               <prop name="method">TEST</prop>
+               <part name="objects">
+                  <p>Organizational processes for selecting and employing FIPS 201-approved products</p>
+               </part>
+            </part>
+         </control>
       </control>
       <control class="SP800-53" id="sa-5">
          <title>Information System Documentation</title>
@@ -11717,6 +11570,7 @@
          <param id="sa-5_prm_2">
             <label>organization-defined personnel or roles</label>
          </param>
+         <prop name="priority">P2</prop>
          <prop name="label">SA-5</prop>
          <prop name="sort-id">sa-05</prop>
          <part id="sa-5_smt" name="statement">
@@ -11904,6 +11758,7 @@
          <param id="sa-9_prm_2">
             <label>organization-defined processes, methods, and techniques</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SA-9</prop>
          <prop name="sort-id">sa-09</prop>
          <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
@@ -11920,18 +11775,6 @@
             <part id="sa-9_smt.c" name="item">
                <prop name="label">c.</prop>
                <p>Employs <insert param-id="sa-9_prm_2"/> to monitor security control compliance by external service providers on an ongoing basis.</p>
-            </part>
-            <part id="sa-9_fr" name="item" ns="fedramp">
-               <title>SA-9 Additional FedRAMP Requirements and Guidance</title>
-               <part id="sa-9_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents&gt; Continuous Monitoring Strategy Guide <a href="https://www.FedRAMP.gov/documents">https://www.FedRAMP.gov/documents</a>
-                  </p>
-               </part>
-               <part id="sa-9_fr_gdn.2" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Independent Assessors should assess the risk associated with the use of external services. See the FedRAMP page under Key Cloud Service Provider (CSP) Documents&gt;FedRAMP Authorization Boundary Guidance</p>
-               </part>
             </part>
          </part>
          <part id="sa-9_gdn" name="guidance">
@@ -12022,6 +11865,7 @@
          <param id="sc-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-1</prop>
          <prop name="sort-id">sc-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -12169,6 +12013,7 @@
          <param id="sc-5_prm_2">
             <label>organization-defined security safeguards</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-5</prop>
          <prop name="sort-id">sc-05</prop>
          <part id="sc-5_smt" name="statement">
@@ -12232,6 +12077,7 @@
                <choice>logically</choice>
             </select>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-7</prop>
          <prop name="sort-id">sc-07</prop>
          <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -12337,19 +12183,13 @@
          <param id="sc-12_prm_1">
             <label>organization-defined requirements for key generation, distribution, storage, access, and destruction</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-12</prop>
          <prop name="sort-id">sc-12</prop>
          <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
          <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
          <part id="sc-12_smt" name="statement">
             <p>The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with <insert param-id="sc-12_prm_1"/>.</p>
-            <part id="sc-12_fr" name="item" ns="fedramp">
-               <title>SC-12 Additional FedRAMP Requirements and Guidance</title>
-               <part id="sc-12_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>Federally approved and validated cryptography.</p>
-               </part>
-            </part>
          </part>
          <part id="sc-12_gdn" name="guidance">
             <p>Cryptographic key management and establishment can be performed using manual procedures or automated mechanisms with supporting manual procedures. Organizations define key management requirements in accordance with applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance, specifying appropriate options, levels, and parameters. Organizations manage trust stores to ensure that only approved trust anchors are in such trust stores. This includes certificates with visibility external to organizational information systems and certificates related to the internal operations of systems.</p>
@@ -12419,6 +12259,7 @@
          <param id="sc-13_prm_1">
             <label>organization-defined cryptographic uses and type of cryptography required for each use</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-13</prop>
          <prop name="sort-id">sc-13</prop>
          <link href="#ref012" rel="reference">FIPS Publication 140</link>
@@ -12499,6 +12340,7 @@
          <param id="sc-15_prm_1">
             <label>organization-defined exceptions where remote activation is to be allowed</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-15</prop>
          <prop name="sort-id">sc-15</prop>
          <part id="sc-15_smt" name="statement">
@@ -12510,13 +12352,6 @@
             <part id="sc-15_smt.b" name="item">
                <prop name="label">b.</prop>
                <p>Provides an explicit indication of use to users physically present at the devices.</p>
-            </part>
-            <part id="sc-15_fr" name="item" ns="fedramp">
-               <title>SC-15 Additional FedRAMP Requirements and Guidance</title>
-               <part id="sc-15_fr_smt.1" name="item">
-                  <prop name="label">Requirement:</prop>
-                  <p>The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
-               </part>
             </part>
          </part>
          <part id="sc-15_gdn" name="guidance">
@@ -12572,6 +12407,7 @@
       </control>
       <control class="SP800-53" id="sc-20">
          <title>Secure Name / Address Resolution Service (authoritative Source)</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-20</prop>
          <prop name="sort-id">sc-20</prop>
          <link href="#ref112" rel="reference">OMB Memorandum 08-23</link>
@@ -12642,6 +12478,7 @@
       </control>
       <control class="SP800-53" id="sc-21">
          <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-21</prop>
          <prop name="sort-id">sc-21</prop>
          <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
@@ -12700,6 +12537,7 @@
       </control>
       <control class="SP800-53" id="sc-22">
          <title>Architecture and Provisioning for Name / Address Resolution Service</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-22</prop>
          <prop name="sort-id">sc-22</prop>
          <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
@@ -12754,6 +12592,7 @@
       </control>
       <control class="SP800-53" id="sc-39">
          <title>Process Isolation</title>
+         <prop name="priority">P1</prop>
          <prop name="label">SC-39</prop>
          <prop name="sort-id">sc-39</prop>
          <part id="sc-39_smt" name="statement">
@@ -12810,6 +12649,7 @@
          <param id="si-1_prm_3">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SI-1</prop>
          <prop name="sort-id">si-01</prop>
          <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -12954,6 +12794,7 @@
          <param id="si-2_prm_1">
             <label>organization-defined time period</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SI-2</prop>
          <prop name="sort-id">si-02</prop>
          <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -13100,6 +12941,7 @@
          <param id="si-3_prm_4" depends-on="si-3_prm_3">
             <label>organization-defined action</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SI-3</prop>
          <prop name="sort-id">si-03</prop>
          <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
@@ -13283,6 +13125,7 @@
          <param id="si-4_prm_6" depends-on="si-4_prm_5">
             <label>organization-defined frequency</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SI-4</prop>
          <prop name="sort-id">si-04</prop>
          <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -13336,13 +13179,6 @@
                <prop name="label">g.</prop>
                <p>Provides <insert param-id="si-4_prm_3"/> to <insert param-id="si-4_prm_4"/>
                   <insert param-id="si-4_prm_5"/>.</p>
-            </part>
-            <part id="si-4_fr" name="item" ns="fedramp">
-               <title>SI-4 Additional FedRAMP Requirements and Guidance</title>
-               <part id="si-4_fr_gdn.1" name="guidance">
-                  <prop name="label">Guidance:</prop>
-                  <p>See US-CERT Incident Response Reporting Guidelines.</p>
-               </part>
             </part>
          </part>
          <part id="si-4_gdn" name="guidance">
@@ -13539,6 +13375,7 @@
          <param id="si-5_prm_5" depends-on="si-5_prm_2">
             <label>organization-defined external organizations</label>
          </param>
+         <prop name="priority">P1</prop>
          <prop name="label">SI-5</prop>
          <prop name="sort-id">si-05</prop>
          <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
@@ -13655,6 +13492,7 @@
       </control>
       <control class="SP800-53" id="si-12">
          <title>Information Handling and Retention</title>
+         <prop name="priority">P2</prop>
          <prop name="label">SI-12</prop>
          <prop name="sort-id">si-12</prop>
          <part id="si-12_smt" name="statement">
@@ -13709,60 +13547,6 @@
             <part name="objects">
                <p>Organizational processes for information handling and retention</p>
                <p>automated mechanisms supporting and/or implementing information handling and retention</p>
-            </part>
-         </part>
-      </control>
-      <control class="SP800-53" id="si-16">
-         <title>Memory Protection</title>
-         <param id="si-16_prm_1">
-            <label>organization-defined security safeguards</label>
-         </param>
-         <prop name="label">SI-16</prop>
-         <prop name="sort-id">si-16</prop>
-         <part id="si-16_smt" name="statement">
-            <p>The information system implements <insert param-id="si-16_prm_1"/> to protect its memory from unauthorized code execution.</p>
-         </part>
-         <part id="si-16_gdn" name="guidance">
-            <p>Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.</p>
-            <link rel="related" href="#ac-25">AC-25</link>
-            <link rel="related" href="#sc-3">SC-3</link>
-         </part>
-         <part id="si-16_obj" name="objective">
-            <p>Determine if:</p>
-            <part id="si-16_obj.1" name="objective">
-               <prop name="label">SI-16[1]</prop>
-               <p>the organization defines security safeguards to be implemented to protect information system memory from unauthorized code execution; and</p>
-            </part>
-            <part id="si-16_obj.2" name="objective">
-               <prop name="label">SI-16[2]</prop>
-               <p>the information system implements organization-defined security safeguards to protect its memory from unauthorized code execution.</p>
-            </part>
-         </part>
-         <part name="assessment">
-            <prop name="method">EXAMINE</prop>
-            <part name="objects">
-               <p>System and information integrity policy</p>
-               <p>procedures addressing memory protection for the information system</p>
-               <p>information system design documentation</p>
-               <p>information system configuration settings and associated documentation</p>
-               <p>list of security safeguards protecting information system memory from unauthorized code execution</p>
-               <p>information system audit records</p>
-               <p>other relevant documents or records</p>
-            </part>
-         </part>
-         <part name="assessment">
-            <prop name="method">INTERVIEW</prop>
-            <part name="objects">
-               <p>Organizational personnel with responsibility for memory protection</p>
-               <p>organizational personnel with information security responsibilities</p>
-               <p>system/network administrators</p>
-               <p>system developer</p>
-            </part>
-         </part>
-         <part name="assessment">
-            <prop name="method">TEST</prop>
-            <part name="objects">
-               <p>Automated mechanisms supporting and/or implementing safeguards to protect information system memory from unauthorized code execution</p>
             </part>
          </part>
       </control>

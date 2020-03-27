@@ -966,14 +966,19 @@
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="metadata" mode="#current"/>
-         <xsl:if test="exists(group)">
-            <array key="groups" m:in-json="ARRAY">
-               <xsl:apply-templates select="group" mode="#current"/>
+         <xsl:if test="exists(param)">
+            <array key="parameters" m:in-json="ARRAY">
+               <xsl:apply-templates select="param" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(control)">
             <array key="controls" m:in-json="ARRAY">
                <xsl:apply-templates select="control" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(group)">
+            <array key="groups" m:in-json="ARRAY">
+               <xsl:apply-templates select="group" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:apply-templates select="back-matter" mode="#current"/>

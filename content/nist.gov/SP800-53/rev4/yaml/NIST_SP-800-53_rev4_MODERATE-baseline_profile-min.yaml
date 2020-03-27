@@ -2002,5 +2002,5 @@ profile:
           """
         rlinks: 
           - 
-            href:       NIST_SP-800-53_rev4_catalog.json
-            media-type: application/oscal.catalog+xml
+            href:       NIST_SP-800-53_rev4_catalog.xml
+            media-type: application/oscal.catalog+json

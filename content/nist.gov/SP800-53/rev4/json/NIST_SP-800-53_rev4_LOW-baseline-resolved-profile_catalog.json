@@ -1,29 +1,28 @@
 {
   "catalog": {
-    "id": "uuid-2bb4b4e9-b350-4ce3-9dec-6768214e4f2f-RESOLVED",
+    "id": "uuid-13172679-d468-4a88-8d7f-3afdeffedff8-RESOLVED",
     "metadata": {
-      "title": "FedRAMP Low Baseline",
-      "published": "2020-02-02T00:00:00.000-05:00",
-      "last-modified": "2020-01-28T10:00:00.000-05:00",
-      "version": "1.2",
-      "oscal-version": "1.0.0-milestone2",
+      "title": "NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE",
+      "last-modified": "2019-09-23T14:24:06.243-04:00",
+      "version": "2015-01-22",
+      "oscal-version": "1.0.0-milestone1",
       "properties": [
         {
           "name": "resolution-timestamp",
-          "value": "2020-03-27T04:35:16.680116Z"
+          "value": "2020-03-27T04:35:53.757272Z"
         }
       ],
       "links": [
         {
-          "href": "FedRAMP_LOW-baseline_profile.xml",
+          "href": "NIST_SP-800-53_rev4_LOW-baseline_profile.xml",
           "rel": "resolution-source",
-          "text": "FedRAMP Low Baseline"
+          "text": "NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE"
         }
       ],
       "roles": [
         {
           "id": "creator",
-          "title": "Document creator"
+          "title": "Document Creator"
         },
         {
           "id": "contact",
@@ -32,14 +31,24 @@
       ],
       "parties": [
         {
-          "id": "fedramp",
+          "id": "IT-JTF",
           "org": {
-            "org-name": "Federal Risk and Authorization Management Program (FedRAMP)",
-            "email-addresses": [
-              "info@fedramp.gov"
+            "org-name": "Joint Task Force, Transformation Initiative",
+            "addresses": [
+              {
+                "postal-address": [
+                  "National Institute of Standards and Technology",
+                  "Attn: Computer Security Division",
+                  "Information Technology Laboratory",
+                  "100 Bureau Drive (Mail Stop 8930)"
+                ],
+                "city": "Gaithersburg",
+                "state": "MD",
+                "postal-code": "20899-8930"
+              }
             ],
-            "URLs": [
-              "https://fedramp.gov"
+            "email-addresses": [
+              "sec-cert@nist.gov"
             ]
           }
         }
@@ -47,12 +56,12 @@
       "responsible-parties": {
         "creator": {
           "party-ids": [
-            "fedramp"
+            "IT-JTF"
           ]
         },
         "contact": {
           "party-ids": [
-            "fedramp"
+            "IT-JTF"
           ]
         }
       }
@@ -82,6 +91,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AC-1"
@@ -516,6 +529,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AC-2"
@@ -1339,6 +1356,10 @@
             "title": "Access Enforcement",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AC-3"
               },
@@ -1542,6 +1563,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P2"
+              },
               {
                 "name": "label",
                 "value": "AC-7"
@@ -1792,6 +1817,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AC-8"
               },
@@ -1917,47 +1946,6 @@
                           }
                         ],
                         "prose": "Includes a description of the authorized uses of the system."
-                      }
-                    ]
-                  },
-                  {
-                    "id": "ac-8_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "AC-8 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ac-8_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO."
-                      },
-                      {
-                        "id": "ac-8_fr_smt.2",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided."
-                      },
-                      {
-                        "id": "ac-8_fr_smt.3",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO."
                       }
                     ]
                   }
@@ -2194,6 +2182,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "AC-14"
               },
@@ -2338,6 +2330,10 @@
             "class": "SP800-53",
             "title": "Remote Access",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AC-17"
@@ -2677,6 +2673,10 @@
             "title": "Wireless Access",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AC-18"
               },
@@ -2915,6 +2915,10 @@
             "class": "SP800-53",
             "title": "Access Control for Mobile Devices",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AC-19"
@@ -3180,6 +3184,10 @@
             "title": "Use of External Information Systems",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AC-20"
               },
@@ -3349,6 +3357,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P3"
+              },
               {
                 "name": "label",
                 "value": "AC-22"
@@ -3600,6 +3612,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AT-1"
@@ -4033,6 +4049,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AT-2"
               },
@@ -4242,6 +4262,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AT-3"
@@ -4472,6 +4496,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P3"
+              },
               {
                 "name": "label",
                 "value": "AT-4"
@@ -4729,6 +4757,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AU-1"
@@ -5156,6 +5188,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AU-2"
               },
@@ -5225,25 +5261,6 @@
                       }
                     ],
                     "prose": "Determines that the following events are to be audited within the information system: {{ au-2_prm_2 }}."
-                  },
-                  {
-                    "id": "au-2_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "AU-2 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "au-2_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Coordination between service provider and consumer shall be documented and accepted by the JAB/AO."
-                      }
-                    ]
                   }
                 ]
               },
@@ -5455,6 +5472,10 @@
             "title": "Content of Audit Records",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AU-3"
               },
@@ -5628,6 +5649,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AU-4"
               },
@@ -5770,6 +5795,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AU-5"
@@ -5968,6 +5997,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AU-6"
               },
@@ -6003,25 +6036,6 @@
                       }
                     ],
                     "prose": "Reports findings to {{ au-6_prm_3 }}."
-                  },
-                  {
-                    "id": "au-6_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "AU-6 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "au-6_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented."
-                      }
-                    ]
                   }
                 ]
               },
@@ -6302,6 +6316,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "AU-8"
               },
@@ -6472,6 +6490,10 @@
             "class": "SP800-53",
             "title": "Protection of Audit Information",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AU-9"
@@ -6687,6 +6709,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "AU-11"
               },
@@ -6699,28 +6725,7 @@
               {
                 "id": "au-11_smt",
                 "name": "statement",
-                "prose": "The organization retains audit records for {{ au-11_prm_1 }} to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.",
-                "parts": [
-                  {
-                    "id": "au-11_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "AU-11 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "au-11_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements."
-                      }
-                    ]
-                  }
-                ]
+                "prose": "The organization retains audit records for {{ au-11_prm_1 }} to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements."
               },
               {
                 "id": "au-11_gdn",
@@ -6849,6 +6854,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "AU-12"
@@ -7090,6 +7099,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CA-1"
@@ -7527,6 +7540,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CA-2"
               },
@@ -7656,25 +7673,6 @@
                       }
                     ],
                     "prose": "Provides the results of the security control assessment to {{ ca-2_prm_2 }}."
-                  },
-                  {
-                    "id": "ca-2_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CA-2 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ca-2_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Annual Assessment Guidance [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)\n                  "
-                      }
-                    ]
                   }
                 ]
               },
@@ -7936,121 +7934,6 @@
                   }
                 ]
               }
-            ],
-            "controls": [
-              {
-                "id": "ca-2.1",
-                "class": "SP800-53-enhancement",
-                "title": "Independent Assessors",
-                "parameters": [
-                  {
-                    "id": "ca-2.1_prm_1",
-                    "label": "organization-defined level of independence"
-                  }
-                ],
-                "properties": [
-                  {
-                    "name": "label",
-                    "value": "CA-2(1)"
-                  },
-                  {
-                    "name": "sort-id",
-                    "value": "ca-02.01"
-                  }
-                ],
-                "parts": [
-                  {
-                    "id": "ca-2.1_smt",
-                    "name": "statement",
-                    "prose": "The organization employs assessors or assessment teams with {{ ca-2.1_prm_1 }} to conduct security control assessments.",
-                    "parts": [
-                      {
-                        "id": "ca-2.1_fr",
-                        "name": "item",
-                        "ns": "fedramp",
-                        "title": "CA-2 (1) Additional FedRAMP Requirements and Guidance",
-                        "parts": [
-                          {
-                            "id": "ca-2.1_fr_smt.1",
-                            "name": "item",
-                            "properties": [
-                              {
-                                "name": "label",
-                                "value": "Requirement:"
-                              }
-                            ],
-                            "prose": "For JAB Authorization, must use an accredited Third Party Assessment Organization (3PAO)."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "id": "ca-2.1_gdn",
-                    "name": "guidance",
-                    "prose": "Independent assessors or assessment teams are individuals or groups who conduct impartial assessments of organizational information systems. Impartiality implies that assessors are free from any perceived or actual conflicts of interest with regard to the development, operation, or management of the organizational information systems under assessment or to the determination of security control effectiveness. To achieve impartiality, assessors should not: (i) create a mutual or conflicting interest with the organizations where the assessments are being conducted; (ii) assess their own work; (iii) act as management or employees of the organizations they are serving; or (iv) place themselves in positions of advocacy for the organizations acquiring their services. Independent assessments can be obtained from elements within organizations or can be contracted to public or private sector entities outside of organizations. Authorizing officials determine the required level of independence based on the security categories of information systems and/or the ultimate risk to organizational operations, organizational assets, or individuals. Authorizing officials also determine if the level of assessor independence provides sufficient assurance that the results are sound and can be used to make credible, risk-based decisions. This includes determining whether contracted security assessment services have sufficient independence, for example, when information system owners are not directly involved in contracting processes or cannot unduly influence the impartiality of assessors conducting assessments. In special situations, for example, when organizations that own the information systems are small or organizational structures require that assessments are conducted by individuals that are in the developmental, operational, or management chain of system owners, independence in assessment processes can be achieved by ensuring that assessment results are carefully reviewed and analyzed by independent teams of experts to validate the completeness, accuracy, integrity, and reliability of the results. Organizations recognize that assessments performed for purposes other than direct support to authorization decisions are, when performed by assessors with sufficient independence, more likely to be useable for such decisions, thereby reducing the need to repeat assessments."
-                  },
-                  {
-                    "id": "ca-2.1_obj",
-                    "name": "objective",
-                    "prose": "Determine if the organization:",
-                    "parts": [
-                      {
-                        "id": "ca-2.1_obj.1",
-                        "name": "objective",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CA-2(1)[1]"
-                          }
-                        ],
-                        "prose": "defines the level of independence to be employed to conduct security control assessments; and"
-                      },
-                      {
-                        "id": "ca-2.1_obj.2",
-                        "name": "objective",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CA-2(1)[2]"
-                          }
-                        ],
-                        "prose": "employs assessors or assessment teams with the organization-defined level of independence to conduct security control assessments."
-                      }
-                    ]
-                  },
-                  {
-                    "name": "assessment",
-                    "properties": [
-                      {
-                        "name": "method",
-                        "value": "EXAMINE"
-                      }
-                    ],
-                    "parts": [
-                      {
-                        "name": "objects",
-                        "prose": "Security assessment and authorization policy\\n\\nprocedures addressing security assessments\\n\\nsecurity authorization package (including security plan, security assessment plan, security assessment report, plan of action and milestones, authorization statement)\\n\\nother relevant documents or records"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "assessment",
-                    "properties": [
-                      {
-                        "name": "method",
-                        "value": "INTERVIEW"
-                      }
-                    ],
-                    "parts": [
-                      {
-                        "name": "objects",
-                        "prose": "Organizational personnel with security assessment responsibilities\\n\\norganizational personnel with information security responsibilities"
-                      }
-                    ]
-                  }
-                ]
-              }
             ]
           },
           {
@@ -8064,6 +7947,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CA-3"
@@ -8330,6 +8217,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "CA-5"
               },
@@ -8377,36 +8268,6 @@
                       }
                     ],
                     "prose": "Updates existing plan of action and milestones {{ ca-5_prm_1 }} based on the findings from security controls assessments, security impact analyses, and continuous monitoring activities."
-                  },
-                  {
-                    "id": "ca-5_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CA-5 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ca-5_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Plan of Action & Milestones (POA&M) must be provided at least monthly."
-                      },
-                      {
-                        "id": "ca-5_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Plan of Action & Milestones (POA&M) Template Completion Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)\n                  "
-                      }
-                    ]
                   }
                 ]
               },
@@ -8607,6 +8468,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CA-6"
               },
@@ -8675,25 +8540,6 @@
                       }
                     ],
                     "prose": "Updates the security authorization {{ ca-6_prm_1 }}."
-                  },
-                  {
-                    "id": "ca-6_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CA-6(c) Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ca-6_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO."
-                      }
-                    ]
                   }
                 ]
               },
@@ -8862,6 +8708,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CA-7"
               },
@@ -8994,47 +8844,6 @@
                       }
                     ],
                     "prose": "Reporting the security status of organization and the information system to {{ ca-7_prm_4 }}\n                  {{ ca-7_prm_5 }}."
-                  },
-                  {
-                    "id": "ca-7_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CA-7 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ca-7_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Operating System Scans: at least monthly. Database and Web Application Scans: at least monthly. All scans performed by Independent Assessor: at least annually."
-                      },
-                      {
-                        "id": "ca-7_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&M updates."
-                      },
-                      {
-                        "id": "ca-7_fr_gdn.2",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents, Continuous Monitoring Strategy Guide [https://www.fedramp.gov/documents/](https://www.fedramp.gov/documents/)\n                  "
-                      }
-                    ]
                   }
                 ]
               },
@@ -9464,6 +9273,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CA-9"
               },
@@ -9709,6 +9522,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CM-1"
@@ -10126,6 +9943,10 @@
             "title": "Baseline Configuration",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CM-2"
               },
@@ -10271,6 +10092,10 @@
             "title": "Security Impact Analysis",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CM-4"
               },
@@ -10411,6 +10236,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CM-6"
               },
@@ -10510,47 +10339,6 @@
                       }
                     ],
                     "prose": "Monitors and controls changes to the configuration settings in accordance with organizational policies and procedures."
-                  },
-                  {
-                    "id": "cm-6_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CM-6(a) Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cm-6_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement 1:"
-                          }
-                        ],
-                        "prose": "The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. "
-                      },
-                      {
-                        "id": "cm-6_fr_smt.2",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement 2:"
-                          }
-                        ],
-                        "prose": "The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) ([http://scap.nist.gov/](http://scap.nist.gov/)) validated or SCAP compatible (if validated checklists are not available)."
-                      },
-                      {
-                        "id": "cm-6_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Information on the USGCB checklists can be found at: [https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline](https://csrc.nist.gov/Projects/United-States-Government-Configuration-Baseline)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -10879,6 +10667,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CM-7"
               },
@@ -10921,36 +10713,6 @@
                       }
                     ],
                     "prose": "Prohibits or restricts the use of the following functions, ports, protocols, and/or services: {{ cm-7_prm_1 }}."
-                  },
-                  {
-                    "id": "cm-7_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CM-7 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cm-7_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available."
-                      },
-                      {
-                        "id": "cm-7_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Information on the USGCB checklists can be found at: [http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc](http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc)\n\t\t\t\t\t\t\tPartially derived from AC-17(8)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -11193,6 +10955,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CM-8"
               },
@@ -11281,25 +11047,6 @@
                       }
                     ],
                     "prose": "Reviews and updates the information system component inventory {{ cm-8_prm_2 }}."
-                  },
-                  {
-                    "id": "cm-8_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CM-8 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cm-8_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Must be provided at least monthly or when there is a change."
-                      }
-                    ]
                   }
                 ]
               },
@@ -11498,6 +11245,10 @@
             "title": "Software Usage Restrictions",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CM-10"
               },
@@ -11675,6 +11426,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CM-11"
@@ -11949,6 +11704,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CP-1"
@@ -12394,6 +12153,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CP-2"
               },
@@ -12564,25 +12327,6 @@
                       }
                     ],
                     "prose": "Protects the contingency plan from unauthorized disclosure and modification."
-                  },
-                  {
-                    "id": "cp-2_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CP-2 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cp-2_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CP-2 Requirement:"
-                          }
-                        ],
-                        "prose": "For JAB authorizations the contingency lists include designated FedRAMP personnel."
-                      }
-                    ]
                   }
                 ]
               },
@@ -13057,6 +12801,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CP-3"
               },
@@ -13299,6 +13047,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "CP-4"
               },
@@ -13367,25 +13119,6 @@
                       }
                     ],
                     "prose": "Initiates corrective actions, if needed."
-                  },
-                  {
-                    "id": "cp-4_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CP-4(a) Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cp-4_fr_smt.a",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CP-4(a) Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing."
-                      }
-                    ]
                   }
                 ]
               },
@@ -13552,6 +13285,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "CP-9"
               },
@@ -13616,58 +13353,6 @@
                       }
                     ],
                     "prose": "Protects the confidentiality, integrity, and availability of backup information at storage locations."
-                  },
-                  {
-                    "id": "cp-9_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "CP-9 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "cp-9_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check."
-                      },
-                      {
-                        "id": "cp-9_fr_smt.a",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CP-9(a) Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider maintains at least three backup copies of user-level information (at least one of which is available online)."
-                      },
-                      {
-                        "id": "cp-9_fr_smt.b",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CP-9(b)Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider maintains at least three backup copies of system-level information (at least one of which is available online)."
-                      },
-                      {
-                        "id": "cp-9_fr_smt.c",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "CP-9(c)Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -13875,6 +13560,10 @@
             "class": "SP800-53",
             "title": "Information System Recovery and Reconstitution",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "CP-10"
@@ -14121,6 +13810,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "IA-1"
@@ -14563,6 +14256,10 @@
             "title": "Identification and Authentication (organizational Users)",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IA-2"
               },
@@ -14834,28 +14531,7 @@
                   {
                     "id": "ia-2.12_smt",
                     "name": "statement",
-                    "prose": "The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials.",
-                    "parts": [
-                      {
-                        "id": "ia-2.12_fr",
-                        "name": "item",
-                        "ns": "fedramp",
-                        "title": "IA-2 (12) Additional FedRAMP Requirements and Guidance",
-                        "parts": [
-                          {
-                            "id": "ia-2.12_fr_gdn.1",
-                            "name": "guidance",
-                            "properties": [
-                              {
-                                "name": "label",
-                                "value": "Guidance:"
-                              }
-                            ],
-                            "prose": "Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12."
-                          }
-                        ]
-                      }
-                    ]
+                    "prose": "The information system accepts and electronically verifies Personal Identity Verification (PIV) credentials."
                   },
                   {
                     "id": "ia-2.12_gdn",
@@ -14977,6 +14653,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IA-4"
               },
@@ -15067,36 +14747,6 @@
                       }
                     ],
                     "prose": "Disabling the identifier after {{ ia-4_prm_3 }}."
-                  },
-                  {
-                    "id": "ia-4_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "IA-4(e) Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ia-4_fr_smt.e",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider defines the time period of inactivity for device identifiers."
-                      },
-                      {
-                        "id": "ia-4_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP [http://iase.disa.mil/cloud_security/Pages/index.aspx](http://iase.disa.mil/cloud_security/Pages/index.aspx)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -15511,6 +15161,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IA-5"
               },
@@ -15681,25 +15335,6 @@
                       }
                     ],
                     "prose": "Changing authenticators for group/role accounts when membership to those accounts changes."
-                  },
-                  {
-                    "id": "ia-5_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "IA-5 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ia-5_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Authenticators must be compliant with NIST SP 800-63-3 Digital Identity Guidelines IAL, AAL, FAL level 1. Link [https://pages.nist.gov/800-63-3](https://pages.nist.gov/800-63-3)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -16231,25 +15866,6 @@
                           }
                         ],
                         "prose": "Allows the use of a temporary password for system logons with an immediate change to a permanent password."
-                      },
-                      {
-                        "id": "ia-5.1_fr",
-                        "name": "item",
-                        "ns": "fedramp",
-                        "title": "IA-5 (1) (a) and (d) Additional FedRAMP Requirements and Guidance",
-                        "parts": [
-                          {
-                            "id": "ia-5.1_fr_gdn.1",
-                            "name": "guidance",
-                            "properties": [
-                              {
-                                "name": "label",
-                                "value": "Guidance (a) (d):"
-                              }
-                            ],
-                            "prose": "If password policies are compliant with NIST SP 800-63B Memorized Secret (Section 5.1.1) Guidance, the control may be considered compliant."
-                          }
-                        ]
                       }
                     ]
                   },
@@ -16689,6 +16305,10 @@
             "title": "Authenticator Feedback",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "IA-6"
               },
@@ -16772,6 +16392,10 @@
             "class": "SP800-53",
             "title": "Cryptographic Module Authentication",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "IA-7"
@@ -16873,6 +16497,10 @@
             "class": "SP800-53",
             "title": "Identification and Authentication (non-organizational Users)",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "IA-8"
@@ -17478,6 +17106,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IR-1"
               },
@@ -17914,6 +17546,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "IR-2"
               },
@@ -18121,6 +17757,10 @@
             "title": "Incident Handling",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IR-4"
               },
@@ -18179,25 +17819,6 @@
                       }
                     ],
                     "prose": "Incorporates lessons learned from ongoing incident handling activities into incident response procedures, training, and testing, and implements the resulting changes accordingly."
-                  },
-                  {
-                    "id": "ir-4_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "IR-4 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ir-4_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system."
-                      }
-                    ]
                   }
                 ]
               },
@@ -18516,6 +18137,10 @@
             "title": "Incident Monitoring",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IR-5"
               },
@@ -18676,6 +18301,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "IR-6"
               },
@@ -18723,25 +18352,6 @@
                       }
                     ],
                     "prose": "Reports security incident information to {{ ir-6_prm_2 }}."
-                  },
-                  {
-                    "id": "ir-6_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "IR-6 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ir-6_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "Report security incident information according to FedRAMP Incident Communications Procedure."
-                      }
-                    ]
                   }
                 ]
               },
@@ -18895,6 +18505,10 @@
             "title": "Incident Response Assistance",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "IR-7"
               },
@@ -19040,6 +18654,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "IR-8"
@@ -19217,36 +18835,6 @@
                       }
                     ],
                     "prose": "Protects the incident response plan from unauthorized disclosure and modification."
-                  },
-                  {
-                    "id": "ir-8_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "IR-8 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ir-8_fr_smt.b",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "(b) Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel."
-                      },
-                      {
-                        "id": "ir-8_fr_smt.e",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "(e) Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel."
-                      }
-                    ]
                   }
                 ]
               },
@@ -19728,6 +19316,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "MA-1"
               },
@@ -20153,6 +19745,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P2"
+              },
               {
                 "name": "label",
                 "value": "MA-2"
@@ -20614,6 +20210,10 @@
             "title": "Nonlocal Maintenance",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "MA-4"
               },
@@ -20994,6 +20594,10 @@
             "title": "Maintenance Personnel",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "MA-5"
               },
@@ -21221,6 +20825,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "MP-1"
@@ -21648,6 +21256,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "MP-2"
               },
@@ -21813,6 +21425,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "MP-6"
@@ -22110,6 +21726,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "MP-7"
               },
@@ -22325,6 +21945,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PE-1"
@@ -22748,6 +22372,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-2"
               },
@@ -23035,6 +22663,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PE-3"
@@ -23746,6 +23378,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-6"
               },
@@ -23954,6 +23590,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "PE-8"
               },
@@ -24125,6 +23765,10 @@
             "title": "Emergency Lighting",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-12"
               },
@@ -24238,6 +23882,10 @@
             "title": "Fire Protection",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-13"
               },
@@ -24349,6 +23997,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-14"
               },
@@ -24384,25 +24036,6 @@
                       }
                     ],
                     "prose": "Monitors temperature and humidity levels {{ pe-14_prm_2 }}."
-                  },
-                  {
-                    "id": "pe-14_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "PE-14(a) Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "pe-14_fr_smt.a",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "(a) Requirement:"
-                          }
-                        ],
-                        "prose": "The service provider measures temperature at server inlets and humidity levels by dew point."
-                      }
-                    ]
                   }
                 ]
               },
@@ -24590,6 +24223,10 @@
             "title": "Water Damage Protection",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PE-15"
               },
@@ -24714,6 +24351,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P2"
+              },
               {
                 "name": "label",
                 "value": "PE-16"
@@ -24940,6 +24581,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PL-1"
@@ -25371,6 +25016,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PL-2"
@@ -26005,6 +25654,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "PL-4"
               },
@@ -26339,6 +25992,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PS-1"
@@ -26762,6 +26419,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "PS-2"
               },
@@ -26961,6 +26622,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PS-3"
@@ -27202,6 +26867,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PS-4"
@@ -27541,6 +27210,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "PS-5"
               },
@@ -27834,6 +27507,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "PS-6"
               },
@@ -28110,6 +27787,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "PS-7"
@@ -28390,6 +28071,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P3"
+              },
+              {
                 "name": "label",
                 "value": "PS-8"
               },
@@ -28581,6 +28266,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "RA-1"
@@ -29003,6 +28692,10 @@
             "title": "Security Categorization",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "RA-2"
               },
@@ -29223,6 +28916,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "RA-3"
               },
@@ -29313,36 +29010,6 @@
                       }
                     ],
                     "prose": "Updates the risk assessment {{ ra-3_prm_5 }} or whenever there are significant changes to the information system or environment of operation (including the identification of new threats and vulnerabilities), or other conditions that may impact the security state of the system."
-                  },
-                  {
-                    "id": "ra-3_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "RA-3 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ra-3_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F"
-                      },
-                      {
-                        "id": "ra-3_fr_smt.d",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "RA-3 (d) Requirement:"
-                          }
-                        ],
-                        "prose": "Include all Authorizing Officials; for JAB authorizations to include FedRAMP."
-                      }
-                    ]
                   }
                 ]
               },
@@ -29678,6 +29345,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "RA-5"
               },
@@ -29808,49 +29479,6 @@
                       }
                     ],
                     "prose": "Shares information obtained from the vulnerability scanning process and security control assessments with {{ ra-5_prm_3 }} to help eliminate similar vulnerabilities in other information systems (i.e., systemic weaknesses or deficiencies)."
-                  },
-                  {
-                    "id": "ra-5_fr_smt.a",
-                    "name": "item",
-                    "title": "RA-5(a) Additional FedRAMP Requirements and Guidance",
-                    "properties": [
-                      {
-                        "name": "label",
-                        "value": "RA-5 (a)Requirement:"
-                      }
-                    ],
-                    "prose": "An accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually."
-                  },
-                  {
-                    "id": "ra-5_fr_smt.e",
-                    "name": "item",
-                    "title": "RA-5(e) Additional FedRAMP Requirements and Guidance",
-                    "properties": [
-                      {
-                        "name": "label",
-                        "value": "RA-5 (e)Requirement:"
-                      }
-                    ],
-                    "prose": "To include all Authorizing Officials; for JAB authorizations to include FedRAMP."
-                  },
-                  {
-                    "id": "ra-5_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "RA-5 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "ra-5_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "\n                     **See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Vulnerability Scanning Requirements** ([https://www.FedRAMP.gov/documents/](https://www.FedRAMP.gov/documents/))"
-                      }
-                    ]
                   }
                 ]
               },
@@ -30314,6 +29942,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SA-1"
               },
@@ -30730,6 +30362,10 @@
             "title": "Allocation of Resources",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SA-2"
               },
@@ -30936,6 +30572,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SA-3"
@@ -31158,6 +30798,10 @@
             "title": "Acquisition Process",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SA-4"
               },
@@ -31325,25 +30969,6 @@
                       }
                     ],
                     "prose": "Acceptance criteria."
-                  },
-                  {
-                    "id": "sa-4_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "SA-4 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "sa-4_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See [http://www.niap-ccevs.org/vpl](http://www.niap-ccevs.org/vpl) or [http://www.commoncriteriaportal.org/products.html](http://www.commoncriteriaportal.org/products.html)."
-                      }
-                    ]
                   }
                 ]
               },
@@ -31547,6 +31172,96 @@
                   }
                 ]
               }
+            ],
+            "controls": [
+              {
+                "id": "sa-4.10",
+                "class": "SP800-53-enhancement",
+                "title": "Use of Approved PIV Products",
+                "properties": [
+                  {
+                    "name": "label",
+                    "value": "SA-4(10)"
+                  },
+                  {
+                    "name": "sort-id",
+                    "value": "sa-04.10"
+                  }
+                ],
+                "parts": [
+                  {
+                    "id": "sa-4.10_smt",
+                    "name": "statement",
+                    "prose": "The organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems."
+                  },
+                  {
+                    "id": "sa-4.10_gdn",
+                    "name": "guidance",
+                    "links": [
+                      {
+                        "href": "#ia-2",
+                        "rel": "related",
+                        "text": "IA-2"
+                      },
+                      {
+                        "href": "#ia-8",
+                        "rel": "related",
+                        "text": "IA-8"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "sa-4.10_obj",
+                    "name": "objective",
+                    "prose": "Determine if the organization employs only information technology products on the FIPS 201-approved products list for Personal Identity Verification (PIV) capability implemented within organizational information systems. "
+                  },
+                  {
+                    "name": "assessment",
+                    "properties": [
+                      {
+                        "name": "method",
+                        "value": "EXAMINE"
+                      }
+                    ],
+                    "parts": [
+                      {
+                        "name": "objects",
+                        "prose": "System and services acquisition policy\\n\\nprocedures addressing the integration of information security requirements, descriptions, and criteria into the acquisition process\\n\\nsolicitation documentation\\n\\nacquisition documentation\\n\\nacquisition contracts for the information system, system component, or information system service\\n\\nservice-level agreements\\n\\nother relevant documents or records"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "assessment",
+                    "properties": [
+                      {
+                        "name": "method",
+                        "value": "INTERVIEW"
+                      }
+                    ],
+                    "parts": [
+                      {
+                        "name": "objects",
+                        "prose": "Organizational personnel with acquisition/contracting responsibilities\\n\\norganizational personnel with responsibility for determining information system security requirements\\n\\norganizational personnel with responsibility for ensuring only FIPS 201-approved products are implemented\\n\\norganizational personnel with information security responsibilities"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "assessment",
+                    "properties": [
+                      {
+                        "name": "method",
+                        "value": "TEST"
+                      }
+                    ],
+                    "parts": [
+                      {
+                        "name": "objects",
+                        "prose": "Organizational processes for selecting and employing FIPS 201-approved products"
+                      }
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
@@ -31564,6 +31279,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P2"
+              },
               {
                 "name": "label",
                 "value": "SA-5"
@@ -32080,6 +31799,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SA-9"
               },
@@ -32133,36 +31856,6 @@
                       }
                     ],
                     "prose": "Employs {{ sa-9_prm_2 }} to monitor security control compliance by external service providers on an ongoing basis."
-                  },
-                  {
-                    "id": "sa-9_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "SA-9 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "sa-9_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "See the FedRAMP Documents page under Key Cloud Service Provider (CSP) Documents> Continuous Monitoring Strategy Guide [https://www.FedRAMP.gov/documents](https://www.FedRAMP.gov/documents)\n                  "
-                      },
-                      {
-                        "id": "sa-9_fr_gdn.2",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Independent Assessors should assess the risk associated with the use of external services. See the FedRAMP page under Key Cloud Service Provider (CSP) Documents>FedRAMP Authorization Boundary Guidance"
-                      }
-                    ]
                   }
                 ]
               },
@@ -32381,6 +32074,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SC-1"
@@ -32808,6 +32505,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SC-5"
               },
@@ -32942,6 +32643,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SC-7"
@@ -33229,6 +32934,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SC-12"
               },
@@ -33253,28 +32962,7 @@
               {
                 "id": "sc-12_smt",
                 "name": "statement",
-                "prose": "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with {{ sc-12_prm_1 }}.",
-                "parts": [
-                  {
-                    "id": "sc-12_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "SC-12 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "sc-12_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "Federally approved and validated cryptography."
-                      }
-                    ]
-                  }
-                ]
+                "prose": "The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with {{ sc-12_prm_1 }}."
               },
               {
                 "id": "sc-12_gdn",
@@ -33437,6 +33125,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SC-13"
@@ -33675,6 +33367,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SC-15"
               },
@@ -33710,25 +33406,6 @@
                       }
                     ],
                     "prose": "Provides an explicit indication of use to users physically present at the devices."
-                  },
-                  {
-                    "id": "sc-15_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "SC-15 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "sc-15_fr_smt.1",
-                        "name": "item",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Requirement:"
-                          }
-                        ],
-                        "prose": "The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use."
-                      }
-                    ]
                   }
                 ]
               },
@@ -33848,6 +33525,10 @@
             "class": "SP800-53",
             "title": "Secure Name / Address Resolution Service (authoritative Source)",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SC-20"
@@ -34042,6 +33723,10 @@
             "title": "Secure Name / Address Resolution Service (recursive or Caching Resolver)",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SC-21"
               },
@@ -34184,6 +33869,10 @@
             "title": "Architecture and Provisioning for Name / Address Resolution Service",
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SC-22"
               },
@@ -34313,6 +34002,10 @@
             "class": "SP800-53",
             "title": "Process Isolation",
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SC-39"
@@ -34453,6 +34146,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SI-1"
@@ -34876,6 +34573,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SI-2"
               },
@@ -35248,6 +34949,10 @@
               }
             ],
             "properties": [
+              {
+                "name": "priority",
+                "value": "P1"
+              },
               {
                 "name": "label",
                 "value": "SI-3"
@@ -35718,6 +35423,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SI-4"
               },
@@ -35883,25 +35592,6 @@
                       }
                     ],
                     "prose": "Provides {{ si-4_prm_3 }} to {{ si-4_prm_4 }}\n                  {{ si-4_prm_5 }}."
-                  },
-                  {
-                    "id": "si-4_fr",
-                    "name": "item",
-                    "ns": "fedramp",
-                    "title": "SI-4 Additional FedRAMP Requirements and Guidance",
-                    "parts": [
-                      {
-                        "id": "si-4_fr_gdn.1",
-                        "name": "guidance",
-                        "properties": [
-                          {
-                            "name": "label",
-                            "value": "Guidance:"
-                          }
-                        ],
-                        "prose": "See US-CERT Incident Response Reporting Guidelines."
-                      }
-                    ]
                   }
                 ]
               },
@@ -36427,6 +36117,10 @@
             ],
             "properties": [
               {
+                "name": "priority",
+                "value": "P1"
+              },
+              {
                 "name": "label",
                 "value": "SI-5"
               },
@@ -36736,6 +36430,10 @@
             "title": "Information Handling and Retention",
             "properties": [
               {
+                "name": "priority",
+                "value": "P2"
+              },
+              {
                 "name": "label",
                 "value": "SI-12"
               },
@@ -36875,125 +36573,6 @@
                   {
                     "name": "objects",
                     "prose": "Organizational processes for information handling and retention\\n\\nautomated mechanisms supporting and/or implementing information handling and retention"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "si-16",
-            "class": "SP800-53",
-            "title": "Memory Protection",
-            "parameters": [
-              {
-                "id": "si-16_prm_1",
-                "label": "organization-defined security safeguards"
-              }
-            ],
-            "properties": [
-              {
-                "name": "label",
-                "value": "SI-16"
-              },
-              {
-                "name": "sort-id",
-                "value": "si-16"
-              }
-            ],
-            "parts": [
-              {
-                "id": "si-16_smt",
-                "name": "statement",
-                "prose": "The information system implements {{ si-16_prm_1 }} to protect its memory from unauthorized code execution."
-              },
-              {
-                "id": "si-16_gdn",
-                "name": "guidance",
-                "prose": "Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.",
-                "links": [
-                  {
-                    "href": "#ac-25",
-                    "rel": "related",
-                    "text": "AC-25"
-                  },
-                  {
-                    "href": "#sc-3",
-                    "rel": "related",
-                    "text": "SC-3"
-                  }
-                ]
-              },
-              {
-                "id": "si-16_obj",
-                "name": "objective",
-                "prose": "Determine if:",
-                "parts": [
-                  {
-                    "id": "si-16_obj.1",
-                    "name": "objective",
-                    "properties": [
-                      {
-                        "name": "label",
-                        "value": "SI-16[1]"
-                      }
-                    ],
-                    "prose": "the organization defines security safeguards to be implemented to protect information system memory from unauthorized code execution; and"
-                  },
-                  {
-                    "id": "si-16_obj.2",
-                    "name": "objective",
-                    "properties": [
-                      {
-                        "name": "label",
-                        "value": "SI-16[2]"
-                      }
-                    ],
-                    "prose": "the information system implements organization-defined security safeguards to protect its memory from unauthorized code execution."
-                  }
-                ]
-              },
-              {
-                "name": "assessment",
-                "properties": [
-                  {
-                    "name": "method",
-                    "value": "EXAMINE"
-                  }
-                ],
-                "parts": [
-                  {
-                    "name": "objects",
-                    "prose": "System and information integrity policy\\n\\nprocedures addressing memory protection for the information system\\n\\ninformation system design documentation\\n\\ninformation system configuration settings and associated documentation\\n\\nlist of security safeguards protecting information system memory from unauthorized code execution\\n\\ninformation system audit records\\n\\nother relevant documents or records"
-                  }
-                ]
-              },
-              {
-                "name": "assessment",
-                "properties": [
-                  {
-                    "name": "method",
-                    "value": "INTERVIEW"
-                  }
-                ],
-                "parts": [
-                  {
-                    "name": "objects",
-                    "prose": "Organizational personnel with responsibility for memory protection\\n\\norganizational personnel with information security responsibilities\\n\\nsystem/network administrators\\n\\nsystem developer"
-                  }
-                ]
-              },
-              {
-                "name": "assessment",
-                "properties": [
-                  {
-                    "name": "method",
-                    "value": "TEST"
-                  }
-                ],
-                "parts": [
-                  {
-                    "name": "objects",
-                    "prose": "Automated mechanisms supporting and/or implementing safeguards to protect information system memory from unauthorized code execution"
                   }
                 ]
               }
