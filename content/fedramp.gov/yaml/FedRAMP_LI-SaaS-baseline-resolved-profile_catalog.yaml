@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-03-27T04:35:07.171842Z
+        value: 2020-03-28T06:51:39.918054Z
     links: 
       - 
         href: FedRAMP_LI-SaaS-baseline_profile.xml
