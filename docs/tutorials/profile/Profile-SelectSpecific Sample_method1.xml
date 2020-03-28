@@ -28,7 +28,7 @@
             <party-id>NIST</party-id>
         </responsible-party>
     </metadata>
-    <import href="#profile-selectall">
+    <import href="#catalog">
         <!-- IMPORT ALL CONTROLS & EXCLUDE THE ONES NOT NEEDED -->
         <exclude>
             <call control-id="s1.1.2"></call>
@@ -39,9 +39,9 @@
         <as-is>true</as-is>
     </merge>
     <back-matter>
-        <resource id="profile-selectall">
-            <desc>Profile SelectAll Sample (Derived from ISO/IEC 27002)</desc>
-            <rlink href="../profile/Catalog%20Sample.xml" media-type="application/oscal.profile+xml"/>
+        <resource id="catalog">
+            <desc>Catalog Sample (Derived from ISO/IEC 27002)</desc>
+            <rlink href="../catalog/Catalog%20Sample.xml" media-type="application/oscal.catalog+xml"/>
         </resource>
     </back-matter>
 </profile>
