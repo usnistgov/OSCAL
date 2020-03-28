@@ -18,7 +18,13 @@ Various and miscellaneous utilities, in various stages of documentation and poli
 
 Transformations (stylesheets) for converting OSCAL catalogs or (resolved) profiles into published outputs such as HTML and markdown.
 
-## [resolve](resolve)
+## [resolver-pipeline](resolver-pipeline)
 
-An XSLT transformation that provides for resolution of OSCAL profiles into catalog-like XML documents. Under development.
+An XSLT transformation combining a pipeline of smaller transformations implementing OSCAL profile resolution. This implementation has unit tests for the phases of resolution.
+
+
+## [resolver-experimental](resolver-experimental)
+
+An experimental XSLT transformation that produces a custom profile resolver XSLT, which is then applied to the original profile to resolve it into its tailored catalog. Experimental and not feature complete (at time of writing).
+
 

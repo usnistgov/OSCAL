@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../author/CSS/oscal.css"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+    id="full-test_profile">
+    <!-- Same as base-text, except the 'full' catalog has parameters and subcontrols  -->
+    <metadata>
+        <title>Full test Profile</title>
+        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0-MR2</oscal-version>
+    </metadata>
+    <import href="catalogs/abc-full_catalog.xml">
+        <include>
+            <call control-id="a1"/>
+            <call control-id="b1"/>
+            <call control-id="c1"/>
+            <call control-id="c3"/>
+        </include>
+    </import>
+</profile>

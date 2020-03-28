@@ -961,16 +961,21 @@
             "type" : "string" },
           "metadata" : 
           { "$ref" : "#/definitions/metadata" },
-          "groups" : 
+          "parameters" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/group" } },
+            { "$ref" : "#/definitions/param" } },
           "controls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/control" } },
+          "groups" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/group" } },
           "back-matter" : 
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 

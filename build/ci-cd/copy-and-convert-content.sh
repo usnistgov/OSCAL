@@ -1,14 +1,15 @@
 #!/bin/bash
 
-
 if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
 
+# also inits saxon
 source "$OSCALDIR/build/metaschema/scripts/include/init-validate-content.sh"
 source "$OSCALDIR/build/ci-cd/include/convert-and-validate-content.sh"
 
 # Option defaults
+RESOLVE_PROFILES=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
@@ -17,10 +18,11 @@ Usage: $0 [options]
 -h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
+--resolve-profiles                Resolve profiles
 EOF
 }
 
-OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
+OPTS=`getopt -o w:vh --long working-dir:,help,resolve-profiles -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -30,6 +32,10 @@ while [ $# -gt 0 ]; do
   case "$arg" in
     -w|--working-dir)
       WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --resolve-profiles)
+      RESOLVE_PROFILES=true
       shift # past path
       ;;
     -v)
@@ -60,6 +66,10 @@ echo -e "${P_INFO}==============================${P_END}"
 if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
+
+# configuration
+PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
+CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 # check for perl
 result=$(which perl 2>&1)
@@ -101,83 +111,270 @@ IFS="$IFS_OLD"
 #echo "Models: ${models[@]}"
 #echo "Convert To: ${conversion_formats[@]}"
 
-shopt -s nullglob
-shopt -s globstar
+post_process_content() {
+  local source_format="$1"; shift
+  local target_format="$1"; shift
+  local target_file="$1"; shift
+  local working_dir="$1"; shift
+  local result
 
-exitcode=0
-for i in ${!paths[@]}; do
-#  echo "Index: $i"
-  source_file="${paths[$i]}"
-  source_format="${formats[$i]}"
-  model="${models[$i]}"
-  converttoformats="${conversion_formats[$i]}"
+  local target_dir=${target_file%/*} # remove filename
+  local target_filename=${target_file##*/} # remove dir
+  local target_file_relative=$(get_rel_path "${working_dir}" "$target_file")
 
-  # get the base file name
-  source_file_basename=$(basename $source_file)
-  source_file_relative=$(get_rel_path "$OSCALDIR" "$source_file")
+  # Format specific post-processing
+  case $target_format in
+  json)
+    if [ "$source_format" = "xml" ]; then
+      if [ "$VERBOSE" = "true" ]; then
+        echo -e "${P_INFO}Translating relative XML paths to JSON paths in '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
+      fi
+      # Remove extra slashes
+      perl -pi -e 's,\\/,/,g' "${target_file}"
+      # translate OSCAL mime types
+      perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${target_file}"
+      # relative content paths
+      # translate path names for local references
+      perl -pi -e 's,((?:\.\./)+(?:(?!xml/)[^\s/"'']+/)+)xml/((?:(?!.xml)[^\s"'']+)+).xml,\1json/\2.json,g' "${target_file}"
+    fi
 
-  # debuggging statements, shows what is processing
-#  printf 'path: %s\n' "$file"
-#  printf 'file name: %s\n' "$file_basename"
-#  printf 'Source format: %s\n' "$source_format"
+    # produce pretty JSON
+    local target_file_pretty="${target_file%-min.json}.json"
+    local target_file_pretty_relative="$(get_rel_path "${working_dir}" "$target_file_pretty")"
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Producing pretty JSON '${P_END}${target_file_pretty_relative}${P_INFO}'.${P_END}"
+    fi
+    result=$(jq . "$target_file" > "$target_file_pretty" 2>&1)
+    if [ $? -ne 0 ]; then
+      echo -e "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
+      return 1;
+    fi
+
+    # remove carriage returns
+    perl -pi -e 's,\r,,g' "$target_file_pretty"
+
+    result=$(validate_content "$target_file_pretty" "json" "$model")
+    if [ $? -ne 0 ]; then
+      echo -e "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
+      return 1;
+    else
+      echo -e "${P_OK}Created pretty JSON '${P_END}${target_file_pretty_relative}${P_OK}'.${P_END}"
+    fi
+
+    # produce yaml
+    local yaml_file="${target_file/\/json\///yaml/}" # change path
+    yaml_file="${yaml_file%.json}.yaml"
+    local yaml_dir="${yaml_file%/*}" # remove filename
+#    printf 'yaml dir: %s\n' "$yaml_dir"
+    mkdir -p "$yaml_dir"
+    yaml_file_relative="$(get_rel_path "${working_dir}" "$yaml_file")"
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Producing YAML '${P_END}${yaml_file_relative}${P_INFO}'.${P_END}"
+    fi
+    prettyjson --nocolor=1 --indent=2 --inline-arrays=1 "$target_file" > "$yaml_file"
+
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Translating relative paths in '${P_END}${yaml_file_relative}${P_INFO}'.${P_END}"
+    fi
+    # translate OSCAL mime types
+    perl -pi -e 's,(application/oscal\.[a-z]+\+)json\",\1yaml\",g' "${yaml_file}"
+    # translate path names for local references
+    perl -pi -e 's,((?:\.\./)+(?:(?!json/)[^\s/"'']+/)+)json/((?:(?!.json)[^\s"'']+)+).json,\1yaml/\2.yaml,g' "${yaml_file}"
+
+    echo -e "${P_OK}Created YAML '${P_END}${yaml_file_relative}${P_OK}'.${P_END}"
+    ;;
+  xml)
+    if [ "$source_format" = "json" ]; then
+      echo -e "${P_INFO}Translating relative paths in '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
+      # translate OSCAL mime types
+      perl -pi -e 's,(application/oscal\.[a-z]+\+)json\",\1xml\",g' "${target_file}"
+      # relative content paths
+      # translate path names for local references
+      perl -pi -e 's,((?:\.\./)+(?:(?!json/)[^\s/"'']+/)+)json/((?:(?!.json)[^\s"'']+)+).json,\1xml/\2.xml,g' "${target_file}"
+    fi
+    ;;
+  *)
+    echo -e "${P_WARN}Post processing of '${target_format^^}' is unsupported for '${P_END}${target_file_relative}${P_WARN}'.${P_END}"
+    return 2;
+  esac
+  return 0;
+}
+
+copy_or_convert_content() {
+  local source_dir="$1"; shift
+  local source_file="$1"; shift
+  local source_base_dir="$1"; shift
+  local source_format="$1"; shift
+  local model="$1"; shift
+  local target_format="$1"; shift
+  local working_dir="$1"; shift
+  local result
+
+#  printf 'source file: %s\n' "$source_file"
+#  printf 'source dir: %s\n' "$source_dir"
+#  printf 'source base dir: %s\n' "$source_base_dir"
+#  printf 'source format: %s\n' "$source_format"
 #  printf 'model: %s\n' "$model"
-#  printf 'convert-to: %s\n' "$converttoformats"
+#  printf 'target format: %s\n' "$target_format"
+#  printf 'working dir: %s\n' "$working_dir"
 
-  source_schema="$WORKING_DIR/$source_format/schema/oscal_${model}_schema.xsd"
+  local source_path="${source_file/$source_base_dir\//}"
+  local source_filename="${source_file##*/}"
+  local source_file_relative="$(get_rel_path "${source_dir}" "$source_file")"
+  local target_dir="${working_dir}/${source_path%/${source_format}/*}/${target_format}" # remove filename
 
-  # copy source to destination
-  # --------------------------
-  target_file="$WORKING_DIR/${source_file/$OSCALDIR\/src\//}"
-  target_dir=${target_file%/*} # remove filename
-  mkdir -p "$target_dir"
-  target_file_relative=$(get_rel_path "${WORKING_DIR}" "$target_file")
+#  printf 'source path: %s\n' "$source_path"
+#  printf 'source filename: %s\n' "$source_filename"
+#  printf 'source file (rel): %s\n' "$source_file_relative"
+#  printf 'target dir: %s\n' "$target_dir"
 
-  result=$(cp "$source_file" "$target_file" 2>&1)
-  cmd_exitcode=$?
-  if [ $cmd_exitcode -ne 0 ]; then
-    echo -e "${P_ERROR}Unable to copy '${P_END}${source_file_relative}${P_ERROR}' to '${P_END}${target_file_relative}${P_ERROR}'.${P_END}"
-    echo -e "${P_ERROR}${result}${P_END}"
+  local target_filename;
+  case $target_format in
+  xml)
+    target_filename="${source_filename%.${source_format}}.${target_format}"
+    ;;
+  json)
+    target_filename="${source_filename%.${source_format}}-min.${target_format}"
+    ;;
+  *)
+    echo -e "${P_WARN}Conversion from '${source_format^^} to '${target_format^^}' is unsupported for '${P_END}${source_file_relative}${P_OK}'.${P_END}"
+    return 1;
+  esac
+  local target_file="${target_dir}/${target_filename}"
+  local target_file_relative="$(get_rel_path "${working_dir}" "$target_file")";
+
+#  printf 'target file: %s\n' "$target_file"
+#  printf 'target file (rel): %s\n' "$target_file_relative"
+
+  if [ "$source_format" = "$target_format" ]; then
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Copying ${source_format^^} ${model} from '${P_END}${source_file_relative}${P_INFO}' to '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
+    fi
+    mkdir -p "$target_dir"
+    result=$(cp "$source_file" "$target_file" 2>&1)
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      echo -e "${P_ERROR}${result}${P_END}"
+      echo -e "${P_ERROR}Unable to copy '${P_END}${source_file_relative}${P_ERROR}' to '${P_END}${target_file_relative}${P_ERROR}'.${P_END}"
+      return 1;
+    else
+      echo -e "${P_OK}Copied '${P_END}${source_file_relative}${P_OK}' to '${P_END}${target_file_relative}${P_OK}'.${P_END}"
+    fi
   else
-    echo -e "${P_OK}Copied '${P_END}${source_file_relative}${P_OK}' to '${P_END}${target_file_relative}${P_OK}'.${P_END}"
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}Converting ${source_format^^} ${model} '${P_END}${source_file_relative}${P_INFO}' to ${target_format^^} as '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
+    fi
+
+    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model")
+    if [ -n "$result" ]; then
+      echo -e "${result}"
+    fi
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      return 1;
+    else
+      echo -e "${P_OK}Converted ${source_format^^} ${model} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file_relative}${P_OK}'.${P_END}"
+    fi
   fi
 
-  #split on commas
-  IFS_OLD="$IFS"
-  IFS=, to_formats=($converttoformats)
-  IFS="$IFS_OLD"
-  for target_format in ${to_formats[@]}; do
-    if [ -z "$target_format" ]; then
-      # skip blanks
-      continue;
-    fi
+  # post process copied/converted file
+  if [ "$VERBOSE" = "true" ]; then
+    echo -e "${P_INFO}Post processing ${target_format^^} content '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
+  fi
+  result=$(post_process_content $source_format $target_format $target_file $working_dir)
+  if [ -n "$result" ]; then
+    echo -e "${result}"
+  fi
+  cmd_exitcode=$?
+  if [ $cmd_exitcode != 0 ]; then
+    return 1;
+  fi
 
-    # convert to target format
-    # ------------------------
-    newpath="${source_file/$OSCALDIR\/src\//}" # strip off src
-    newpath="${newpath/\/$source_format\///$target_format/}" # change path from old to new format dir
-    newpath="${newpath%.*}" # strip extension
-
-    case $target_format in
-    xml)
-      target_file="$WORKING_DIR/${newpath}-min.${target_format}"
-      ;;
-    json)
-      target_file="$WORKING_DIR/${newpath}-min.${target_format}"
-      ;;
-    *)
-      echo -e "${P_WARN}Conversion from '${source_format} to '${target_format^^}' is unsupported for '${P_END}${source_file_relative}${P_OK}'.${P_END}"
-      continue;
-    esac
-
-    target_dir=${target_file%/*} # remove filename
-    mkdir -p "$target_dir"
-
-    target_file_relative=$(get_rel_path "${WORKING_DIR}" "$target_file")
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "${P_INFO}Performing ${source_format^^}->${target_format^^} conversion of '${P_END}${source_file_relative}${P_INFO}' to '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
-    fi
+  # Perform model-specific conversions
+  case $model in
+  profile)
+    if [ "$RESOLVE_PROFILES" = "true" ]; then
+      # handle profile resolution
+      if [ "$source_format" = "xml" ] && [ "$target_format" = "xml" ]; then
+        if [ "$VERBOSE" = "true" ]; then
+          echo -e "${P_INFO}Resolving profile '${P_END}${source_file_relative}${P_INFO}'.${P_END}"
+        fi
+        resolved_profile="${target_dir}/${source_filename%_profile.xml}-resolved-profile_catalog.xml"
+#        printf 'resolved profile: %s\n' "$resolved_profile"
     
-    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model")
+        result=$(xsl_transform "${PROFILE_RESOLVER}" "$source_file" "${resolved_profile}" 2>&1)
+        cmd_exitcode=$?
+        if [ $cmd_exitcode -ne 0 ]; then
+          if [ -n "$result" ]; then
+            echo -e "${P_ERROR}${result}${P_END}"
+          fi
+          echo -e "${P_ERROR}Failed to resolve profile '${P_END}${resolved_profile}${P_ERROR}'.${P_END}"
+          return 1;
+        fi
+        
+        result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
+        if [ $cmd_exitcode -ne 0 ]; then
+          if [ -n "$result" ]; then
+            echo -e "${P_ERROR}${result}${P_END}"
+          fi
+          echo -e "${P_ERROR}Resolved profile '${P_END}${resolved_profile}${P_ERROR}' is not a valid OSCAL catalog.${P_END}"
+          return 1;
+        else
+          echo -e "${P_OK}Resolved profile '${P_END}${target_filename}${P_OK}' to '${P_END}${resolved_profile}${P_OK}'.${P_END}"
+        fi
+      elif [[ ! "$source_file" =~ -resolved-profile_catalog\.xml$ ]] && [ "$source_format" = "xml" ] && [ "$target_format" = "json" ]; then
+        resolved_profile="${working_dir}/${source_path%_profile.xml}-resolved-profile_catalog.xml"
+ #       printf 'resolved profile: %s\n' "$resolved_profile"
+        if [ "$VERBOSE" = "true" ]; then
+          echo -e "${P_INFO}Converting resolved profile '${P_END}${resolved_profile}${P_INFO}' to JSON.${P_END}"
+        fi
+        result="$(copy_or_convert_content "$OSCALDIR" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$WORKING_DIR")"
+        if [ -n "$result" ]; then
+          echo -e "${result}"
+        fi
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
+          return 1;
+        fi
+      fi
+    fi
+    ;;
+  esac
+
+  return 0;
+}
+
+process_paths() {
+#  local -n paths=$1; shift
+#  local -n formats=$1; shift
+#  local -n models=$1; shift
+#  local -n conversion_formats=$1; shift
+
+#  printf 'paths: %s\n' "${paths[@]}"
+#  printf 'formats: %s\n' "${formats[@]}"
+#  printf 'models: %s\n' "${models[@]}"
+#  printf 'converttoformats: %s\n' "${conversion_formats[@]}"
+
+  local cmd_exitcode=0;
+  #shopt -s nullglob
+  #shopt -s globstar
+
+  for i in ${!paths[@]}; do
+  #  echo "Index: $i"
+    local src_file="${paths[$i]}"
+    local src_format="${formats[$i]}"
+    local model="${models[$i]}"
+    local converttoformats="${conversion_formats[$i]}"
+    local result
+
+#    printf 'source file: %s\n' "$src_file"
+#    printf 'source format: %s\n' "$src_format"
+#    printf 'model: %s\n' "$model"
+#    printf 'converttoformats: %s\n' "${converttoformats[@]}"
+
+    result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "$OSCALDIR/src" $src_format $model $src_format "$WORKING_DIR")"
     if [ -n "$result" ]; then
       echo -e "${result}"
     fi
@@ -185,60 +382,32 @@ for i in ${!paths[@]}; do
     if [ $cmd_exitcode != 0 ]; then
         exitcode=1
         continue;
-    else
-      echo -e "${P_OK}Converted ${source_format^^} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file_relative}${P_OK}'.${P_END}"
     fi
 
-    # Format specific post-processing
-    case $target_format in
-    json)
-      # Remove extra slashes
-      # perl -pi -e 's,\\/,/,g' "${dest}"
-      # translate OSCAL mime types
-      perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${target_file}"
-      # relative content paths
-      # translate path names, starting first with the xml directory, then the filename
-      perl -pi -e 's,(\.\./[^\"]+(?=/xml/))/xml/,\1/json/,g' "${target_file}"
-      perl -pi -e 's,(\.\./[^\"]+(?=/json/)[^\"]+(?=.xml\")).xml\",\1.json\",g' "${target_file}"
-      perl -pi -e 's,(\"[^/\"]+(?=\.xml\")).xml\",\1.json\",g' "${target_file}"
-
-      # produce pretty JSON
-      target_file_pretty="$WORKING_DIR/${newpath}.${target_format}"
-      target_file_pretty_relative=$(get_rel_path "${WORKING_DIR}" "$target_file_pretty")
-      result=$(jq . "$target_file" > "$target_file_pretty" 2>&1)
-      if [ $? -ne 0 ]; then
-        echo -e "${P_ERROR}${result}${P_END}"
-        echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
-        exitcode=1
-        continue
+    #split on commas
+    IFS_OLD="$IFS"
+    IFS=, to_formats=($converttoformats)
+    IFS="$IFS_OLD"
+    for to_format in ${to_formats[@]}; do
+      if [ -z "$to_format" ]; then
+        # skip blanks
+        continue;
       fi
 
-      # remove carriage returns
-      perl -pi -e 's,\r,,g' "$target_file_pretty"
-
-      result=$(validate_content "$target_file_pretty" "json" "$model")
-      if [ $? -ne 0 ]; then
-        echo -e "${P_ERROR}${result}${P_END}"
-        echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
-        exitcode=1
-        continue
+      result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "${OSCALDIR}/src" $src_format $model $to_format "$WORKING_DIR")"
+      if [ -n "$result" ]; then
+        echo -e "${result}"
+      fi
+      cmd_exitcode=$?
+      if [ $cmd_exitcode != 0 ]; then
+          exitcode=1
+          continue;
       fi
 
-      # produce yaml
-      newpath="${newpath/\/json\///yaml/}" # change path
-      target_file_yaml="$WORKING_DIR/${newpath}.yaml"
-      target_file_yaml_dir=${target_file_yaml%/*} # remove filename
-      mkdir -p "$target_file_yaml_dir"
-      prettyjson --nocolor=1 --indent=2 --inline-arrays=1 "$target_file" > "$target_file_yaml"
-      ;;
-    xml)
-      # do nothing
-      ;;
-    *)
-      echo -e "${P_WARN}Post processing of '${altformat^^}' is unsupported for '${P_END}${dest_relative}${P_OK}'.${P_END}"
-      continue;
-    esac
+    done
   done
-done
+  return $cmd_exitcode;
+}
 
-exit $exitcode
+process_paths #"${paths[@]}" "${formats[@]}" "${models[@]}" "${conversion_formats[@]}"
+exit $?

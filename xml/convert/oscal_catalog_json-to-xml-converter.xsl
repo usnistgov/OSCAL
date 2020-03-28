@@ -1366,8 +1366,9 @@
       <xsl:element name="catalog" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('metadata')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('back-matter')]"/>
       </xsl:element>
    </xsl:template>

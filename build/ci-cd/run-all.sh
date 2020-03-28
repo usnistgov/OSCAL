@@ -195,3 +195,9 @@ if [ "$RUN_UNITTESTS" == "YES" ] && "${script_path}/run-unittests.sh" -w "$WORKI
     exit 8
   fi
 fi
+if [ "$RUN_UNITTESTS" == "YES" ] && "${script_path}/test-profile-resolution.sh" -w "$WORKING_DIR" ${extra_args}; then
+  if [ $? -ne 0 ]; then
+    echo "${P_ERROR}*** Failed to run all unit tests${P_END}"
+    exit 8
+  fi
+fi

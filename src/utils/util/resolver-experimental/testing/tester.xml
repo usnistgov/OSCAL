@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tester>
+    <nodes>
+        <p n="1">Paragraph One</p>
+        <p n="2">Paragraph Two</p>
+        <p n="3">Paragraph Three</p>
+    </nodes>
+    <traverse>
+        <get p="1"/>
+        <get p="2"/>
+    </traverse>
+    <traverse>
+        <get p="2"/>
+        <get p="3"/>
+    </traverse>
+</tester>
