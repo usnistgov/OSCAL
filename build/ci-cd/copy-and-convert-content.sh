@@ -165,7 +165,7 @@ post_process_content() {
 
     # produce yaml
     local yaml_file="${target_file/\/json\///yaml/}" # change path
-    yaml_file="${yaml_file%.json}.yaml"
+    yaml_file="${yaml_file%-min.json}.yaml"
     local yaml_dir="${yaml_file%/*}" # remove filename
 #    printf 'yaml dir: %s\n' "$yaml_dir"
     mkdir -p "$yaml_dir"
