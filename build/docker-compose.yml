@@ -1,0 +1,18 @@
+version: '3'
+services:
+  cli:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      args:
+        saxonversion: 9.9.1-3
+        schematrondir: /home/user/git-schematron
+        oscaltoolsdir: /home/user/oscal-tools
+    volumes:
+      - "../:/oscal"
+    environment:
+      - SAXON_VERSION=9.9.1-3
+      - JSON_CLI_VERSION=0.0.1-SNAPSHOT
+      - SCHEMATRON_HOME=/home/user/git-schematron
+      - OSCAL_TOOLS_DIR=/home/user/oscal-tools

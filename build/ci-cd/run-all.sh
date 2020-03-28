@@ -118,9 +118,9 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
       rc=$?
       if [ "$VERBOSE" = "true" ]; then
         echo ""
-        echo "${P_INFO}Cleanup${P_END}"
-        echo "${P_INFO}=======${P_END}"
-        echo "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
       fi
       rm -rf "${SCRATCH_DIR}"
       exit $rc
@@ -133,13 +133,13 @@ extra_params=()
 
 if [ "$VERBOSE" = "true" ]; then
   extra_params+=('-v')
-  echo "${P_INFO}Using scratch directory:${P_END}    ${SCRATCH_DIR}"
-  echo "${P_INFO}Using working directory:${P_END}    ${WORKING_DIR}"
-  echo "${P_INFO}Perform Validation:${P_END}         ${PERFORM_VALIDATION}"
-  echo "${P_INFO}Perform Content Generation:${P_END} ${PERFORM_CONTENT_GENERATION}"
-  echo "${P_INFO}Perform Content Conversion:${P_END} ${PERFORM_CONTENT_CONVERSION}"
-  echo "${P_INFO}Perform Site Generation:${P_END}    ${PERFORM_SITE_GENERATION}"
-  echo "${P_INFO}Run unit tests:${P_END}             ${RUN_UNITTESTS}"
+  echo -e "${P_INFO}Using scratch directory:${P_END}    ${SCRATCH_DIR}"
+  echo -e "${P_INFO}Using working directory:${P_END}    ${WORKING_DIR}"
+  echo -e "${P_INFO}Perform Validation:${P_END}         ${PERFORM_VALIDATION}"
+  echo -e "${P_INFO}Perform Content Generation:${P_END} ${PERFORM_CONTENT_GENERATION}"
+  echo -e "${P_INFO}Perform Content Conversion:${P_END} ${PERFORM_CONTENT_CONVERSION}"
+  echo -e "${P_INFO}Perform Site Generation:${P_END}    ${PERFORM_SITE_GENERATION}"
+  echo -e "${P_INFO}Run unit tests:${P_END}             ${RUN_UNITTESTS}"
 fi
 
 extra_args=$( IFS=" "; echo "${extra_params[*]}" )
