@@ -7,7 +7,7 @@
             Last Modified: 03.24.2020
 
 
-This profile imports two of the security controls defined in the [Profile SelectAll Sample](./Profile-SelectAll%20Sample.md), version 1.0.
+This profile imports two of the security controls defined in the [Catalog Sample](../catalog/Catalog%20Sample.md), version 1.0.
 
 ### List of Controls
 

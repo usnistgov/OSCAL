@@ -4,27 +4,24 @@
 
 **Prerequisite:** [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md)
 
-We introduced in the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md) the 
-`OSCAL Profile` and highlighed that "OSCAL Profiles can be based on one or more 
-catalogs of controls, or on other OSCAL Profiles." 
+We introduced the `OSCAL Profile` in the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md), and the reader
+is referred to the [part 1 tutorial](./Profile-SelectAll%20Tutorial.md) for the overlapping information, such as the `metadata`
+and the `back-matter`.
 
-In this tutorial we will discuss the formating in OSCAL of the a *profile* that contains a subset of 
-controls existing in the [Profile SelectAll Sample](./Profile-SelectAll%20Sample.md). 
+In this tutorial we will only discuss two approaches of formatting in OSCAL a *profile* that contains a subset of 
+controls existing in the [Catalog Sample](../catalog/Catalog%20Sample.md), focusing exclusively on the selection of the controls.
 
 ##	Formatting the Profile into an OSCAL Profile
 
-The OSCAL Model supports representation of a *profile* in either XML or JSON.
-This tutorial describes the formatting of such *profile* in XML.
+Even though the `OSCAL Profile model` supports representation of a *profile* in either XML or JSON,
+this tutorial focuses only on the XML representation of the *profile*.
 
 ###	Profile Catalog Model
 
-For the sake of brevity, the formating of the `metadata`, will not discuss again in this tutorial. 
-The redear is referred to the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md), section ** Profile's Metadata**.
+The 2 distinct approaches of generating this new [Profile-SelectSpecific%20Sample.md](./Profile-SelectAll%20Sample.md) are focusing on:
 
-We will illustrate in this tutorial 2 distinct approached of generating this new [Profile-SelectSpecific%20Sample.md](./Profile-SelectAll%20Sample.md):
-
-- by including all the controls using the same approach described in the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md) and then excluding explicitly the controls that are not needed.
-- by explicitly including only the desired controls.
+1. including all the controls using the same approach described in the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md) and then excluding explicitly the controls that are not needed.
+1. explicitly including only the desired controls.
 
 #### Method 1
 
@@ -32,11 +29,11 @@ In the [Profile-SelectAll Tutorial](./Profile-SelectAll%20Tutorial.md) we descri
 used the default `include/all` assumption of the element when no specific `<include>` is specified. 
 
 In this method of generating the `OSCAL Profile` we will use the same approach of importing all 
-controls (modifications include ) from the [Profile-SelectAll%20Sample.md](./Profile-SelectAll%20Sample.md), and 
-exclude the non-desire controls indicating them specifically.
+controls from the [Catalog Sample](../catalog/Catalog%20Sample.md), and specifically
+exclude the non-desired controls.
 
 ```xml
-    <import href="#profile-selectall">
+    <import href="#catalog">
         <!-- IMPORT ALL CONTROLS & EXCLUDE THE ONES NOT NEEDED -->
         <exclude>
             <call control-id="s1.1.2"></call>
@@ -44,11 +41,12 @@ exclude the non-desire controls indicating them specifically.
         </exclude>
    </import>
 ```
+
 The rest of the [Profile SelectSpecific Sample](./Profile-SelectSpecific%20Sample.md) is generated identical to the
 [OSCAL Profile SelectAll Sample](./Profile-SelectAll%20Sample.xml).
 
-It is important to note that the modifications done to the `Control` **1.1.1** will be 
-available in the current `Profile` too, if no other changes are deemed necessary..
+It is important to note that the modifications done to the `Control` **1.1.1** are not applied 
+in the current `Profile`.
 
 The overall OSCAL Profile with this method will become:
 
@@ -82,7 +80,7 @@ The overall OSCAL Profile with this method will become:
             <party-id>NIST</party-id>
         </responsible-party>
     </metadata>
-    <import href="#profile-selectall">
+    <import href="#catalog">
         <!-- IMPORT ALL CONTROLS & EXCLUDE THE ONES NOT NEEDED -->
         <exclude>
             <call control-id="s1.1.2"></call>
@@ -110,7 +108,7 @@ We need to reiterate that the `import/all` default assumption is no longer appli
 Therefore, we will have to explicitly list all controls that are needed.
 
 ```xml
-    <import href="#profile-selectall">
+    <import href="#catalog">
         <!-- IMPORT ONLY SPECIFIC CONTROLS -->
         <include>
             <call control-id="s1.1.1"></call>
@@ -153,7 +151,7 @@ the [Profile SelectSpecific Sample](./Profile-SelectSpecific%20Sample.md) can be
             <party-id>NIST</party-id>
         </responsible-party>
     </metadata>
-    <import href="#profile-selectall">
+    <import href="#catalog">
         <!-- IMPORT ONLY SPECIFIC CONTROLS -->
         <include>
             <call control-id="s1.1.1"></call>
@@ -164,9 +162,9 @@ the [Profile SelectSpecific Sample](./Profile-SelectSpecific%20Sample.md) can be
         <as-is>true</as-is>
     </merge>
     <back-matter>
-        <resource id="profile-selectall">
-            <desc>Profile SelectAll Sample (Derived from ISO/IEC 27002)</desc>
-            <rlink href="../profile/Catalog%20Sample.xml" media-type="application/oscal.profile+xml"/>
+        <resource id="catalog">
+            <desc>Catalog Sample (Derived from ISO/IEC 27002)</desc>
+            <rlink href="../profile/Catalog%20Sample.xml" media-type="application/oscal.catalog+xml"/>
         </resource>
     </back-matter>
 </profile>
