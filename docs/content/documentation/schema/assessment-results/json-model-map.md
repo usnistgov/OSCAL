@@ -9,4 +9,4 @@ sidenav:
   title: JSON Schema Map
 ---
 
-{{<partial "generated/oscal-assessment-results-json-map.html" >}}
+{{<partial "generated/oscal-ar-json-map.html" >}}

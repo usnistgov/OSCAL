@@ -9,4 +9,4 @@ sidenav:
     headingselectors: "h2.assembly-header"
 ---
 
-{{<partialCached "generated/oscal-assessment-plan-json-schema.html" >}}
+{{<partialCached "generated/oscal-ap-json-schema.html" >}}

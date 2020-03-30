@@ -9,4 +9,4 @@ sidenav:
     headingselectors: "h2.assembly-header"
 ---
 
-{{<partial "generated/oscal-assessment-results-xml-schema.html" >}}
+{{<partial "generated/oscal-ar-xml-schema.html" >}}

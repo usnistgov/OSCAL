@@ -9,4 +9,4 @@ sidenav:
   title: XML Schema Map
 ---
 
-{{<partial "generated/oscal-assessment-plan-xml-map.html" >}}
+{{<partial "generated/oscal-ap-xml-map.html" >}}
