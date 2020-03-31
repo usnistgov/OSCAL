@@ -1,19 +1,24 @@
-# OSCAL Catalog Tutorial
+---
+title: Creating a Basic OSCAL Catalog
+description: A tutorial on creating a basic OSCAL catalog.
+weight: 5
+---
 
-## What is an OSCAL Catalog
-##	Example of a Proprietary Catalog 
+## What is an OSCAL Catalog?
 
-An [OSCAL](https://www.nist.gov/oscal) Control Catalog is a machine-readable representation of a *catalog of security controls* which is a collection of *security controls* and related *control enhancements*, along with contextualizing documentation and metadata.
+A [catalog][catalog-definition] is a collection of *security and privacy controls*, and related *control enhancements*.
 
-For the purpose of this tutorial, a proprietary catalog is created. The file is available for download [here](./Catalog%20Sample.md)
+An OSCAL Control Catalog is a machine-readable representation of a catalog, expressed using the OSCAL [Catalog model][catalog-docs], which includes contextualizing documentation and metadata.
 
-##	Formatting the Control Catalog into an OSCAL Catalog 
+The OSCAL Catalog model provides machine-readable formats in XML, JSON, and YAML, which support representing an equivalent set of catalog information.
 
-The OSCAL Catalog Model supports representation of a *catalog of security controls* in either XML or JSON.
-This tutorial describes the formatting of such catalog in XML.
-The [OSCAL](https://www.nist.gov/oscal) website provides comprehensive information about the [OSCAL Catalog Model](https://pages.nist.gov/OSCAL/documentation/schema/catalog/)
+This tutorial describes the formatting of such a catalog using the OSCAL Catalog model XML format.
 
-###	Control Catalog Model
+##	Use of an Example Catalog 
+
+For the purpose of this tutorial, an [example prose catalog][catalog-prose-sample] has been created.
+
+##	Control Catalog Model
 
 An OSCAL catalog (in XML or JSON) uses the respective schemas that describe the XML tag sets or the JSON data objects.
 However, this tutorial is not focusing on the schemas themselves but rather on the formatting in OSCAL of the proprietary control catalog listed above. 
@@ -21,20 +26,54 @@ For more information on each schemas, the reader is referred to [XML Schema Refe
 and [JSON Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/), respectively.
 
 The root of the Control Catalog format is `catalog`. 
-The tag also captures the document's *universally unique identifier* (`uuid`), a unique 128-bit number made of hexadecimal digits displayed as 32 characters with four hyphens in between.
 
-```xml
-       <?xml version="1.0" encoding="UTF-8"?>
-       <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-            id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
-```
+In the example below, the contents of the `catalog` are provided as empty data items. These are included to illustrate the content model of `catalog`, and we will be covering their syntax later in this tutorial.
+
+{{< tabs XML JSON >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
+    <metadata/>
+    <group/>
+    <control/>
+    <back-matter/>
+</catalog>
+{{< /highlight >}}
+
+The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `catalog` contains:
 
-- `metadata`    – it is mandatory to have one metadata
-- `groups`      – may have none, or as many as necessary, and they can be nested
-- `controls`    – may have none, or as many as necessary, and they can be nested
-- `back-matter` – may have none, or as many as necessary 
+- `metadata` (required) - Provides docoment metadata for the catalog.
+- `group` (optional) - Allows for grouping of `control` and other `group` elements. Zero or more `group` elements may be used.
+- `control` (optional) - Defines a given control in the catalog. Zero or more `control` elements may be used, and a `control` can be nested within another `control`.
+- `back-matter` (optional) – Contains references used within the catalog.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "catalog": {
+    "id": "uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef",
+    "metadata": {},
+    "groups": {},
+    "controls": {},
+    "back-matter": {}
+  }
+}
+{{< /highlight >}}
+
+The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+
+A `catalog` contains:
+
+- `metadata` (required) - Provides docoment metadata for the catalog.
+- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects.
+- `controls` (optional) - Contains one or more control objects, which can nest other control objects.
+- `back-matter` (optional) – Contains references used within the catalog.
+{{% /tab %}}
+{{< /tabs >}}
 
 Let's discuss each of these elements in the following sections and identify which ones can be used to represent our catalog.
 
@@ -42,120 +81,67 @@ Let's discuss each of these elements in the following sections and identify whic
 
 The `metadata` has identical structure for all OSCAL files. 
 
-A separate tutorial focuses on the elements of the `metadata`. 
-Current tutorial will only illustrate next the mandatory elements used to represent the information available in the [Sample Security Catalog](./Catalog%20Sample.md)
+This tutorial focuses only on the mandatory elements for `metadata`.  A separate tutorial will focus on the full `metadata` syntax.
 
-```
-# Sample Security Catalog
-            Version 1.0
-            Published: 02.02.2020
-            Last Modified: 02.10.2020
-```
-The `metadata` must include the `title` of the catalog using the <title></title> tag.
+The `metadata` must ainclude:
 
-```xml
-      <title>Sample Security Catalog</title>
-```
+- the title of the catalog
+- the time the catalog was last modified
+- the version of OSCAL used
 
-To represent the date when the document was published we use the tag <published></published>. 
-The date needs to include the time zone. The published date is not a mandatory field for the `OSCAL Catalog`
+The following additional data items from the [sample security catalog][catalog-prose-sample] also need to be defined in the OSCAL catalog.
 
-```xml
-      <published>2020-02-02T11:01:04.736-04:00</published>
+```text
+Version: 1.0
+Published: 02.02.2020
+Last Modified: 02.10.2020
 ```
 
-The `OSCAL Catalog Model` requires the file to contain in the `metadata` the date and time with the timezone of the last modification of the file. This information is represented using the tag <last-modified></last-modified>
+All of these data items can be represented as follows:
 
-```xml
-       <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
-```
+{{< tabs XML JSON >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<metadata>
+  <title>Sample Security Catalog</title>
+  <published>2020-02-02T11:01:04.736-04:00</published>
+  <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
+  <version>1.0</version>
+  <oscal-version>1.0.0-milestone3</oscal-version>
+</metadata>
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "metadata": {
+    "title": "Sample Security Catalog",
+    "published": "2020-02-02T11:01:04.736-04:00",
+    "last-modified": "2020-10-02T11:01:04.736-04:00",
+    "version": "1.0",
+    "oscal-version": "1.0.0-milestone3"
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
 
-Another mandatory field for the `metadata` is the `version` of the file which must be included using the tag <version>/<version>
+The document's title `Sample Security Catalog` is provided using `title`. The document's title is a mandatory field for an OSCAL Catalog.
 
-```xml
-      <version>1.0</version>
-```
-Even though we finished representing the information available in the header of the file, the `metadata` has one other field that is mandatory - the OSCAL version. 
-Current OSCAL version is 1.0.0 and the tag <oscal-version></oscal-version> is used to represent it.
+The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using `published`. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
 
-```xml
-      <oscal-version>1.0.0</oscal-version>
-```
-When necessary, revision history can be also documented. See additional information [here](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/)
+The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using `last-modified`. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
 
+The version of the document `1.0` is provided using `version`. This can be a numeric version, commit hash, or any other suitable version identifer. The document version is a mandatory field for an OSCAL Catalog.
 
-The `metadata` is also designed to accommodate the representation of other information related to the content of the catalog and the entity (individual or organization) that created it in OSCAL. 
-For example, we can select and represent *keywords* using the property tag `<prop></prop>`, for which we define the `name` of the property as being *keywords*. 
-The *keywords* will be a `string` comprised of a comma-separated list of significant words, in alphabetical order.
-
-The information will look as follows:
-```xml
-       <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
-```
-
-To do so, one can use the tags `<role></role`> and `<party></party>` each instance with a distinct `id`, and the tag `<responsible-party></responsible-party>` with the field `role-id` that identifies the id of the pointed role and the tag `<party-id></party-id>` that points to the `id` of the defined `<party>`.
-In this example the `<party>` is an organization (NIST) for which the name is provided using the tag `<org-name></org-name>`, an email address is listed using the tag `<email></email>` and the URL using the tag `<url>`. 
-Below is all this information assembled in OSCAL.
-
-```xml
-      <role id="creator">
-         <title>Document creator</title>
-      </role>
-      <role id="contact">
-         <title>Contact</title>
-      </role>
-      <party id="NIST">
-         <org>
-            <org-name>National Institute of Standards and Technology</org-name>
-            <email>oscal@nist.gov</email>
-            <url>https://www.nist.gov/oscal</url>
-         </org>
-      </party>
-      <responsible-party role-id="creator">
-         <party-id>NIST</party-id>
-      </responsible-party>
-      <responsible-party role-id="contact">
-         <party-id>NIST</party-id>
-      </responsible-party>
-```
-We managed so far to complete the `metadata` of the [Sample Security Catalog](./Catalog%20Sample.md). 
-Putting together all the `metadata` information, we get:
-
-```xml
-   <metadata>
-      <title>Sample Security Catalog</title>
-      <published>2020-02-02T11:01:04.736-04:00</published>
-      <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
-      <version>1.0</version>
-      <oscal-version>1.0.0</oscal-version>
-      <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
-      <role id="creator">
-         <title>Document creator</title>
-      </role>
-      <role id="contact">
-         <title>Contact</title>
-      </role>
-      <party id="NIST">
-         <org>
-            <org-name>National Institute of Standards and Technology</org-name>
-            <email>oscal@nist.gov</email>
-            <url>https://www.nist.gov/oscal</url>
-         </org>
-      </party>
-      <responsible-party role-id="creator">
-         <party-id>NIST</party-id>
-      </responsible-party>
-      <responsible-party role-id="contact">
-         <party-id>NIST</party-id>
-      </responsible-party>
-   </metadata>
-```
+Finally, the OSCAL version is provided using `oscal-version`, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
 
 #### Formatting the Body of the Control Catalog in OSCAL
 
-Analyzing the body of the [Catalog Sample](./Catalog%20Sample.md), we observe that the catalog has two sections:
+Analyzing the body of the [Catalog Sample][catalog-prose-sample], we observe that the catalog has two sections:
 1 and 2, each section contains subsections 1.1 and 2.1, which have an *Objective* and group together *Controls* that meet the same *Objective*. 
-```
+
+```text
 1 Organization of Information Security
   1.1 Internal Organization
       Objective: [...]
@@ -172,7 +158,8 @@ Analyzing the body of the [Catalog Sample](./Catalog%20Sample.md), we observe th
             [...]     
 ```
 
-The above formatting of the document will be represented using nested `groups` for Section 1 with the nested Subsection 1.1 and for Section 2 with the nested Subsection 2.1.
+The above formatting of the document will be represented using nested `groups` for Section 1, with the nested Subsection 1.1, and for Section 2, with the nested Subsection 2.1.
+
 A `group` tag `<group>` has an `id` and a `class`. 
 
 Each `group` must contain a `title` identified by the tag `<title></title>` and may have none or many of the following elements:
@@ -523,4 +510,6 @@ Assembling all the elements described above, we obtain the arching structure of 
 </catalog>
 ```
 
-
+[catalog-docs]: /documentation/schema/catalog/
+[catalog-definition]: /learnmore/concepts/catalog/
+[catalog-prose-sample]: catalog-sample/
