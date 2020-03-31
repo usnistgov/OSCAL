@@ -99,7 +99,7 @@ fi
 stylesheet="$OSCALDIR/build/metaschema/toolchains/oscal-m2/xml/produce-and-run-either-documentor.xsl"
 
 # the URL of the github repo where generated artifacts will be accessible
-github_url="https://raw.githubusercontent.com/usnistgov/OSCAL/master"
+github_url="/artifacts"
 
 # the directory to generate the documentation in
 schema_doc_dir="${WORKING_DIR}/docs/layouts/partials/generated"
