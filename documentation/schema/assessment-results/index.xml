@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Assessment Results Model on OSCAL</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/</link><description>Recent content in Assessment Results Model on OSCAL</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/index.xml" rel="self" type="application/rss+xml"/><item><title>Assessment Results JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/json-model-map/</guid><description>+ assessment-results: [1]{… }
+- assessment-results: [1]{
+id: NCName [1],
++ metadata: [1]{… },
+- metadata: [1]{
+title: markup-line [1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [1],
+version: string [1],
+oscal-version: string [1],
++ revision-history: [0 to ∞]{… },
+- revision-history: [0 to ∞]{
+title: markup-line [0 or 1],
+published: dateTime-with-timezone [0 or 1],
+last-modified: dateTime-with-timezone [0 or 1],
+version: string [0 or 1],</description></item><item><title>Assessment Results JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/json-schema/</guid><description>Schema download oscal_assessment-results_schema.json
+Schema version 1.0.0-milestone3
+Short name oscal-ar
+The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
+The root of the OSCAL assessment results format is assessment-results.
+Switch to XML activitiy-id Name Activity ID
+Description Links the task to a defined activity.
+A string property (type NCName).
+This object appears as a property on: task.
+Switch to XML addr-line Name Address line</description></item><item><title>Assessment Results XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/xml-model-map/</guid><description>+ &amp;lt;assessment-results id=&#34;NCName&#34;&amp;gt; [1]… &amp;lt;/assessment-results&amp;gt;
+- &amp;lt;assessment-results id=&#34;NCName&#34;&amp;gt; [1]
++ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
+- &amp;lt;metadata&amp;gt; [1]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
++ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
+- &amp;lt;revision-history&amp;gt;[0 or 1]
++ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
+- &amp;lt;revision&amp;gt; [1 to ∞]
+&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>Assessment Results XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results/xml-schema/</guid><description>Schema download oscal_assessment-results_schema.xsd
+Schema version 1.0.0-milestone3
+Short name oscal-ar
+XML namespace http://csrc.nist.gov/ns/oscal/1.0
+The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
+The root of the OSCAL assessment results format is assessment-results.
+Switch to JSON activitiy-id Name Activity ID
+Description Links the task to a defined activity.
+An element (NCName) This element appears inside: task.
+Switch to JSON addr-line Name Address line</description></item></channel></rss>

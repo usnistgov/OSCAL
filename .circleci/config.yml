@@ -435,12 +435,14 @@ jobs: # a collection of
       - run:
           name: Restore generated site content
           command: |
+            # copy built artifacts
+            cp -vr "$OSCAL_BUILD_DIR"/xml "$REPO_DIR"
+            cp -vr "$OSCAL_BUILD_DIR"/json "$REPO_DIR"
             # restore docs from tar
             tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
       - run:
           name: Build and Validate Hugo site
           command: |
-            # cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
             cd "$REPO_WEBSITE_DIR"
             hugo -v --debug --minify
             bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/documentation\/schemas\/[^/]+\/(?:json|xml)-(?:model-map|schema)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
@@ -460,6 +462,8 @@ jobs: # a collection of
       - run:
           name: Restore generated site content
           command: |
+            # copy built artifacts
+            cp -vr "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
             # restore docs from tar
             tar -zxvf "${OSCAL_BUILD_DIR}/docs.tar.gz" --directory "${REPO_WEBSITE_DIR}" --strip-components=2
       - run:
@@ -555,7 +559,7 @@ workflows:
             - job-validate-content
       - job-generate-docs:
           requires:
-            - job-validate-metaschema
+            - job-generate-schema
             - job-generate-converters
       - job-validate-site-content:
           requires:
