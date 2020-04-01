@@ -8,7 +8,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-03-28T06:52:21.843166Z
+        value: 2020-04-01T03:44:39.647781Z
     links: 
       - 
         href: NIST_SP-800-53_rev4_LOW-baseline_profile.xml
