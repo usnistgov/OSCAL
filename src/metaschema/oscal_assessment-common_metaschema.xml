@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="assessment-common">
+   <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
+   <schema-version>1.0.0-milestone3</schema-version>
+   <short-name>oscal-assessment-common</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <remarks>
+      <p>This contains all modules common to the assessment plan, assessment results, and POAM models. </p>
+      <p>The root of the OSCAL Assessment Plan format is <code>assessment-plan</code>.</p>
+      <p>The root of the OSCAL Assessment Results format is <code>assessment-results</code>.</p>
+      <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-of-action-and-milestones</code>.</p>
+   </remarks>
+
+   <!-- IMPORT STATEMENTS -->
+   <import href="oscal_control-common_metaschema.xml"/>
+   <import href="oscal_implementation-common_metaschema.xml"/>
+   <import href="oscal_ssp_metaschema.xml"/>
+   <import href="oscal_metadata_metaschema.xml"/>
+
+   <!-- TOP LEVEL ASSEMBLY -->
+   <define-assembly name="assessment-common">
+      <formal-name>Assessment Common</formal-name>
+      <description>NOT TO BE USED FOR A BASE METASCHEMA ONLY FOR A MODULE</description>
+      <model>
+         <assembly ref="import-ssp" />
+         <assembly ref="import-ap" />
+         <assembly ref="objectives" />
+         <assembly ref="assessment-subject" />
+         <assembly ref="assets" />
+         <assembly ref="assessment-activities" />
+         <assembly ref="evidence-inventory" />
+         <assembly ref="results" />
+      </model>
+   </define-assembly>
+
+   <!-- SSP Import -->
+   <define-assembly name="import-ssp">
+      <formal-name>Import System Security Plan</formal-name>
+      <description>Used by the assessment plan and POA&amp;M to import information about the system.</description>
+      <flag ref="href" required="yes"/>
+      <model>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <!-- Assessment Plan Import -->
+   <define-assembly name="import-ap">
+      <formal-name>Import Assessment Plan</formal-name>
+      <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
+      <flag ref="href" required="yes"/>
+      <model>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <!-- ********** OBJECTIVES Assembly ********** -->
+   <define-assembly name="objectives">
+      <formal-name>Objectives of Assessment</formal-name>
+      <description>Identifies the controls and control being assessed and their control objectives. In the assessment plans, these are the planned controls and objectives. In the assessment results, these are the actual controls and objectives, and reflects any changes from the plan.</description>
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of assessment objectives.</description>
+         </field>
+         <field ref="prop" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <assembly ref="controls" min-occurs="1" max-occurs="unbounded">
+            <group-as name="control-group"/>
+         </assembly>
+         <assembly ref="control-objectives" min-occurs="0" max-occurs="unbounded">
+            <group-as name="control-objective-group"/>
+         </assembly>
+         <assembly ref="objective" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="controls">
+      <formal-name>Assessed Controls</formal-name>
+      <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of controls specified for assessment.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="all" min-occurs="0" max-occurs="1" />
+         <field ref="include-control" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies a specific control to include.</description>
+            <group-as name="include-controls"/>
+         </field>
+         <field ref="exclude-control" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies a specific control to include.</description>
+            <group-as name="exclude-controls"/>
+         </field>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="control-objectives">
+      <formal-name>Control Objectives</formal-name>
+      <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of assessment objectives specified for assessment.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="all" min-occurs="0" max-occurs="1"  />
+         <field ref="include-objective" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies a specific control to include.</description>
+            <group-as name="include-objectives"/>
+         </field>
+         <field ref="exclude-objective" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies a specific control to include.</description>
+            <group-as name="exclude-objectives"/>
+         </field>
+         <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
+            <group-as name="objective-definitions"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-field name="include-control">
+      <formal-name>Include Control</formal-name>
+      <description>Identifies an individual control to include.</description>
+      <flag ref="control-id" required="yes" />
+   </define-field>
+   
+   <define-field name="exclude-control">
+      <formal-name>Exclude Control</formal-name>
+      <description>Identifies an individual control to exclude.</description>
+      <flag ref="control-id" required="yes" />
+   </define-field>
+   
+   <define-field name="include-objective">
+      <formal-name>Include Objective</formal-name>
+      <description>Identifies an individual control objective to include.</description>
+      <flag ref="objective-id" required="yes" />
+   </define-field>
+   
+   <define-field name="exclude-objective">
+      <formal-name>Exclude Objective</formal-name>
+      <description>Identifies an individual control objective to exclude.</description>
+      <flag ref="objective-id" required="yes" />
+   </define-field>
+   
+   <define-assembly name="objective">
+      <formal-name>Control Objective</formal-name>
+      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of the defined objective.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="control-link" min-occurs="1" max-occurs="1" />
+         <assembly ref="part" min-occurs="1" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   <define-field name="control-link">
+      <formal-name>Control Link</formal-name>
+      <description>Identifies a control to which this control objective is related.</description>
+      <flag ref="control-id" required="yes" />
+   </define-field>
+   
+   <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
+   <define-assembly name="assessment-subject">
+      <formal-name>Subject of Assessment</formal-name>
+      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
+      <model>
+         <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
+            <group-as name="includes"/>
+         </assembly>
+         <assembly ref="exclude-subject" min-occurs="0" max-occurs="unbounded">
+            <group-as name="excludes"/>
+         </assembly>
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="include-subject">
+      <formal-name>Included Assessment Subject</formal-name>
+      <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="components" />
+            <enum value="inventory-items" />
+            <enum value="locations" />
+            <enum value="users" />
+         </allowed-values>
+      </flag>
+      <flag ref="class" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of subjects being included.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="all" min-occurs="0" max-occurs="1" />
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="exclude-subject">
+      <formal-name>Excluded Assessment Subject</formal-name>
+      <description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="components" />
+            <enum value="inventory-items" />
+            <enum value="locations" />
+            <enum value="users" />
+         </allowed-values>
+      </flag>
+      <flag ref="class" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of subjects being excluded.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="all" min-occurs="0" max-occurs="1" />
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-field name="id-ref">
+      <formal-name>ID Reference</formal-name>
+      <description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="type" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="component" />
+            <enum value="inventory-item" />
+            <enum value="location" />
+            <enum value="user" />
+         </allowed-values>
+      </flag>
+   </define-field>
+
+   <define-field name="all">
+      <formal-name>All</formal-name>
+      <description>A key word to indicate all </description>
+   </define-field>
+
+   <define-assembly name="local-definitions">
+      <formal-name>Local Definitions</formal-name>
+      <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
+      <model>
+         <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
+            <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
+            <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="inventory-items"/>
+         </assembly>
+         <assembly ref="user" min-occurs="0" max-occurs="unbounded">
+            <description>Used to add any users, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="users" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <!-- ********** ASSET Assembly ********** -->
+   <define-assembly name="assets">
+      <formal-name>Assessment Assets</formal-name>
+      <description>Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.</description>
+      <model>
+         <assembly ref="tools" min-occurs="0" max-occurs="1" />
+         <assembly ref="origination" min-occurs="0" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="tools">
+      <formal-name>Assessment Assets</formal-name>
+      <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
+      <model>
+         <assembly ref="component" min-occurs="0" max-occurs="unbounded">
+            <group-as name="components" in-json="BY_KEY" />
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="origination">
+      <formal-name>Assessment Origination</formal-name>
+      <description>Identifies the origination of network-based assessment activities, such as the IP address of the tool performing assessment scans.</description>
+      <model>
+         <field ref="title" min-occurs="1" max-occurs="1" />
+         <field ref="description" min-occurs="0" max-occurs="1" />
+         <field ref="prop" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="properties"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="ipv4-address" >Internet Protocol Address (Version 4)</enum>
+                  <enum value="ipv6-address" >Internet Protocol Address (Version 6)</enum>
+                  <enum value="fqdn" >Fully Qualified Domain Name</enum>
+               </allowed-values>
+            </flag>
+         </field>
+      </model>
+   </define-assembly>
+   
+   <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
+   <define-assembly name="assessment-activities">
+      <formal-name>Assessment Activities</formal-name>
+      <description>Identifies the assessment activities and schedule. In the assessment plan, these are planned activities. In the assessment results, these are the actual activities performed.</description>
+      <model>
+         <assembly ref="test-method" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="test-methods"/>
+         </assembly>
+         <assembly ref="schedule" min-occurs="0" max-occurs="1" />
+         <assembly ref="included-activity" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="included-activities"/>
+         </assembly>
+         <assembly ref="excluded-activity" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="excluded-activities"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="test-method">
+      <formal-name>Test Method</formal-name>
+      <description>Identifies an individual test method.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="title" min-occurs="0" max-occurs="1" />
+         <field ref="description" min-occurs="0" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" min-occurs="0" max-occurs="unbounded">
+            <group-as name="links"/>
+         </field>
+         <assembly ref="test-step" min-occurs="0" max-occurs="unbounded">
+            <group-as name="test-steps"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="test-step">
+      <formal-name>Test Steps</formal-name>
+      <description>Identifies an individual test step.</description>
+      <flag ref="id" />
+      <model>
+         <field ref="sequence"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1"  />
+         <field ref="role-id"  min-occurs="0" max-occurs="unbounded">
+            <group-as name="role-ids"/>
+         </field>
+         <field ref="party-id"  min-occurs="0" max-occurs="unbounded">
+            <group-as name="party-ids"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-field name="sequence" as-type="integer">
+      <formal-name>Sequence Number</formal-name>
+      <description>Identifies the sequence number for the test step.</description>
+   </define-field>
+
+   <define-assembly name="schedule">
+      <formal-name>Schedule</formal-name>
+      <description>Identifies the schedule for the assessment activities.</description>
+      <flag ref="id" />
+      <model>
+         <assembly ref="task" min-occurs="1" max-occurs="unbounded">
+            <group-as name="tasks"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="task">
+      <formal-name>Task</formal-name>
+      <description>Identifies an individual task.</description>
+      <model>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="start" min-occurs="0" max-occurs="1" />
+         <field ref="end"  min-occurs="0" max-occurs="1" />
+         <field ref="activitiy-id" min-occurs="0" max-occurs="unbounded">
+            <group-as name="activity-ids"/>
+         </field>
+         <field ref="role-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies roles associated with performing this task.</description>
+            <group-as name="role-ids"/>
+         </field>
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies people or organizations associated with performing this task.</description>
+            <group-as name="party-ids"/>
+         </field>
+         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies locations associated with performing this task.</description>
+            <group-as name="location-ids"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-field name="start" as-type="dateTime-with-timezone">
+      <formal-name>Start</formal-name>
+      <description>Identifies the start of a task.</description>
+   </define-field>
+
+   <define-field name="end" as-type="dateTime-with-timezone">
+      <formal-name>End</formal-name>
+      <description>Identifies the end of a task.</description>
+   </define-field>
+   
+   <define-field name="activitiy-id" as-type="NCName">
+      <formal-name>Activity ID</formal-name>
+      <description>Links the task to a defined activity.</description>
+   </define-field>
+   
+   <define-assembly name="included-activity">
+      <formal-name>Included Activity</formal-name>
+      <description>Identifies an assessment activity. In the assessment plan, this is an intended/in-scope activity. In the assessment results, this identifies an activity that was actually performed.</description>
+      <flag ref="id" />
+      <model>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="role-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies roles associated with performing this activity.</description>
+            <group-as name="role-ids"/>
+         </field>
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies people or organizations associated with performing this activity.</description>
+            <group-as name="party-ids"/>
+         </field>
+         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies locations associated with performing this activity.</description>
+            <group-as name="location-ids"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="excluded-activity">
+      <formal-name>Included Activity</formal-name>
+      <description>Identifies an activity explicitly excluded from the assessment. In the assessment plan, this clarifies activities that are out-of-scope or prohibited. In the assessment results, this could be used to explicitly identify an activity that was planned, but not performed.</description>
+      <flag ref="id" />
+      <model>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="role-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies roles associated with this activity exclusion.</description>
+            <group-as name="role-ids"/>
+         </field>
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies people or organizations associated with this activity exclusion.</description>
+            <group-as name="party-ids"/>
+         </field>
+         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies locations associated with this activity exclusion.</description>
+            <group-as name="location-ids"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <!-- ********** EVIDENCE Assembly ********** -->
+   <define-assembly name="evidence-inventory">
+      <formal-name>Evidence Inventory</formal-name>
+      <description>Used by the assessment results and the POA&amp;M. In the assessment results, this enumerates all evidence associated with the assessment. In the POA&amp;M, this enumerates evidence associated with deviation requests.</description>
+      <model>
+         <assembly ref="artifact" min-occurs="1" max-occurs="unbounded">
+            <group-as name="artifacts"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="artifact">
+      <formal-name>Evidence Artifact</formal-name>
+      <description>Describes and links to an individual artifact used as evidence. In the assessment results, this relates to the assessment. In the POA&amp;M, this relates to deviation requests.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link"  min-occurs="0" max-occurs="unbounded">
+            <description>A link to the described evidence.</description>
+            <group-as name="links"/>
+            <remarks>
+               <p>Use of this field is a recommended practice, and should only be ignored when a link is not practical, such as with physical evidence.</p>
+            </remarks>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-flag name="rel">
+      <formal-name>Relationship</formal-name>
+      <description>Describes a relationship of a link.</description>
+      <allowed-values allow-other="yes">
+         <enum value="interview-notes">Interview Notes</enum>
+         <enum value="tool-output">Tool Output</enum>
+         <enum value="photograph">Photograph</enum>
+         <enum value="questionnaire">Questionnaire</enum>
+         <enum value="screen-shot">Screen Shot</enum>
+      </allowed-values>
+   </define-flag>
+   
+   <!-- ********** RESULTS Assembly ********** -->
+   <define-assembly name="results">
+      <formal-name>Assessment Results</formal-name>
+      <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
+      <flag ref="id" required="no" />
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="start" min-occurs="1" max-occurs="1" >
+            <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
+         </field>
+         <field ref="end" min-occurs="1" max-occurs="1">
+            <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
+         </field>
+         <assembly ref="finding" min-occurs="1" max-occurs="unbounded">
+            <group-as name="findings"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="finding">
+      <formal-name>Finding</formal-name>
+      <description>Describes an individual finding.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <remarks>
+               <p>For the FedRAMP SAR, must have prop @name='priority' @ns='fedramp', with a numeric value, where '1' is the highest priority.</p>
+            </remarks>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" >
+            <description>Date/time stamp identifying when the finding information was collected.</description>
+         </field>
+         <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
+         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="observations"/>
+         </assembly>
+         <field ref="threat-id"  min-occurs="0" max-occurs="unbounded">
+            <group-as name="threat-ids"/>
+         </field>
+         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
+            <group-as name="risks"/>
+         </assembly>
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+            <description>The person who collected the evidence or made the observation.</description>
+            <group-as name="party-ids"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-field name="date-time-stamp" as-type="dateTime-with-timezone">
+      <formal-name>Date/Time Stamp</formal-name>
+      <description>Date/time stamp identifying when the information was collected.</description>
+   </define-field>
+
+   <define-assembly name="objective-status">
+      <formal-name>Implementation Status</formal-name>
+      <description>Captures an assessors conclusions as to whether an objective is fully satisfied.</description>
+      <flag ref="objective-id" />
+      <flag ref="control-id" />
+      <model>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="0" max-occurs="1" />
+         <field ref="satisfaction" min-occurs="0" max-occurs="1" />
+         <field ref="implementation-status" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-field name="satisfaction">
+      <formal-name>Satisfaction</formal-name>
+      <description>An brief indication as to whether the objective is satisfied or not.</description>
+      <flag name="system" as-type="uri">
+         <formal-name>Assessment System</formal-name>
+         <description>Identifies the framework or rules to which this value conforms.</description>
+         <allowed-values allow-other="yes">
+            <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
+            <enum value="https://www.nist.gov/">A value conforms to NIST definitions.</enum>
+         </allowed-values>
+      </flag>
+   </define-field>
+   
+   <define-field name="implementation-status">
+      <formal-name>Implementation Status</formal-name>
+      <description>Identifies the implementation status of the control or control objective.</description>
+   </define-field>
+
+   <define-assembly name="observation">
+      <formal-name>Objective</formal-name>
+      <description>Describes an individual observation.</description>
+      <flag ref="id"/>
+      <model>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="observation-type" min-occurs="1" max-occurs="unbounded">
+            <group-as name="observation-types"/>
+         </field>
+         <field ref="reference" min-occurs="0" max-occurs="unbounded">
+            <group-as name="references" />
+         </field>
+         <assembly ref="target" min-occurs="0" max-occurs="unbounded">
+            <group-as name="targets"/>
+         </assembly>
+         <field ref="assessor" min-occurs="0" max-occurs="unbounded">
+            <group-as name="assessors"/>
+         </field>
+         <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
+            <group-as name="evidence-group"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="relevant-evidence">
+      <formal-name>Relevant Evidence</formal-name>
+      <description>Links this observation to relevant evidence.</description>
+      <flag ref="evidence-id" required="yes" />
+      <flag name="type" required="yes">
+         <formal-name>Evidence Type</formal-name>
+         <description>Points to a piece of evidence, relevant to this finding or risk.</description>
+         <allowed-values>
+            <enum value="observation">Observation</enum>
+            <enum value="vulnerability">Vulnerability</enum>
+            <enum value="false-positive">False Positive (FP)</enum>
+            <enum value="operational-requirement">Operational Requirement (OR)</enum>
+            <enum value="risk-adjustment">Risk Adjustment (RA)</enum>
+         </allowed-values>
+      </flag>
+      <model>
+         <field ref="description"  min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-flag name="evidence-id">
+      <formal-name>Evidence ID</formal-name>
+      <description>Links to evidence information using its unique identifier.</description>
+   </define-flag>
+
+   <define-field name="assessor">
+      <formal-name>Assessor</formal-name>
+      <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
+      <flag name="party-id" required="yes">
+         <formal-name>Party ID</formal-name>
+         <description>The party-id of the assessor who collected the evidence or made the observation.</description>
+      </flag>
+   </define-field>
+   
+   <define-assembly name="target">
+      <formal-name>Target</formal-name>
+      <description>Identifies, on a granular level, what was examined or tested.</description>
+      <model>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <allowed-values allow-other="yes">
+               <enum value="authenticated-scan">Authenticated Scan (yes/no)</enum>
+            </allowed-values>
+            <remarks>
+               <p>For the FedRAMP SAR: Must have prop @name='authenticated-scan' @ns='fedramp'.</p>
+            </remarks>
+         </field>
+         <field ref="component-id" min-occurs="0"  max-occurs="unbounded">
+            <group-as name="components"/>
+         </field>
+         <field ref="inventory-item-id" min-occurs="0"  max-occurs="unbounded">
+            <group-as name="items"/>
+         </field>
+      </model>
+      <remarks>
+         <p>Must have either one component-id or one inventory-item-id.</p>
+         <p>May not have both. Where both are desired, just provide the inventory-item-id, and ensure its related component is identified in the linked inventory-item content.</p>
+      </remarks>
+   </define-assembly>
+   
+   <define-field name="component-id">
+      <formal-name>Component ID</formal-name>
+      <description>Identifies the component that was examined or tested.</description>
+   </define-field>
+   
+   <define-field name="inventory-item-id">
+      <formal-name>Inventory Item ID</formal-name>
+      <description>Identifies the inventory item that was examined or tested.</description>
+   </define-field>
+   
+   <define-field name="reference">
+      <formal-name>Reference</formal-name>
+      <description>Identifies the tool, interviewed person (party), test-method, implementation statement, or other relevant item.</description>
+      <flag name="ref-id">
+         <formal-name>Reference ID</formal-name>
+         <description>A pointer, by ID, to a tool, interviewed person (party), test-method, implementation statement or other relevant item.</description>
+      </flag>
+      <flag name="type">
+         <formal-name>Reference ID Type</formal-name>
+         <description>Indicates whether the reference points to a tool, person (party), test method, or implementation statement.</description>
+         <allowed-values allow-other="yes">
+            <enum value="tool">Tool</enum>
+            <enum value="party">Person</enum>
+            <enum value="test-method">Test Method</enum>
+            <enum value="implementation-statement">Implementation Statement</enum>
+         </allowed-values>
+      </flag>
+   </define-field>
+   
+   <define-field name="observation-type">
+      <formal-name>Observation Type</formal-name>
+      <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
+      <allowed-values allow-other="yes">
+         <enum value="implementation-statement">A difference between the SSP implementation statement, and actual implementation</enum>
+         <enum value="missconfiguration">A system miss-configuration was identified</enum>
+         <enum value="vulnerability">A vulnerability was identified</enum>
+         <enum value="threat">A threat was identified</enum>
+         <enum value="mitigation">A mitigating factor was identified</enum>
+         <enum value="test-result">A test yielding a finding</enum>
+         <enum value="report">The reporting of a fact</enum>
+      </allowed-values>
+   </define-field>
+
+   <define-field name="threat-id">
+      <formal-name>Threat ID</formal-name>
+      <description>A pointer, by ID, to an externally-defined threat.</description>
+      <flag name="system" required="yes">
+         <formal-name>Threat Type Identification System</formal-name>
+         <description>Specifies the source of the threat information.</description>
+         <allowed-values allow-other="yes">
+            <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST Special Publication 800-60 Volume II Revision 1</enum>
+         </allowed-values>
+      </flag>
+      <flag name="uri" as-type="uri" required="no">
+         <formal-name>URI</formal-name>
+         <description>An optional location for the threat data, from which this ID originates.</description>
+      </flag>
+   </define-field>
+   
+   <define-assembly name="risk">
+      <formal-name>Identified Risk</formal-name>
+      <description>An identified risk.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+            <flag ref="name" required="yes">
+               <allowed-values allow-other="yes">
+                  <enum value="impacted-control">Impacted Control</enum>
+                  <enum value="vulnerability-id">Vulnerability ID</enum>
+                  <enum value="source-id">Source ID</enum>
+                  <!-- Risk Metrics -->
+                  <enum value="likelihood">Likelihood</enum>
+                  <enum value="impact">Impact</enum>
+                  <enum value="risk">Risk</enum>
+                  <!-- CVSS Metrics Values -->
+                  <enum value="AV">Access Vector</enum>
+                  <enum value="AC">Access Complexity</enum>
+                  <enum value="Au">Authentication</enum>
+                  <enum value="C">Confidentiality Impact</enum>
+                  <enum value="I">Integrity Impact</enum>
+                  <enum value="A">Availability Impact</enum>
+                  <enum value="RL">Remediation Level</enum>
+                  <enum value="RC">Report Confidence</enum>
+                  <enum value="CDP">Collateral Damage Potential</enum>
+                  <enum value="TD">Target Distribution</enum>
+                  <enum value="CR">Confidentiality Requirement</enum>
+                  <enum value="IR">Integrity Requirement</enum>
+                  <enum value="AR">Availability Requirement</enum>
+                  <enum value="PR">Privileges Required</enum>
+                  <enum value="UI">User Interaction</enum>
+                  <enum value="S">Scope</enum>
+                  <enum value="E">Exploit Maturity</enum>
+                  <enum value="MAV">Modified Attack Vector</enum>
+                  <enum value="MAC">Modified Attack Complexity</enum>
+                  <enum value="MPR">Modified Privileges Required</enum>
+                  <enum value="MUI">Modified User Interaction</enum>
+                  <enum value="MS">Modified Scope</enum>
+                  <enum value="MC">Modified Confidentiality</enum>
+                  <enum value="MI">Modified Integrity</enum>
+                  <enum value="MA">Modified Availability</enum>
+                  <enum value="access-vector">Access Vector</enum>
+                  <enum value="access-complexity">Access Complexity</enum>
+                  <enum value="authentication">Authentication</enum>
+                  <enum value="confidentiality-impact">Confidentiality Impact</enum>
+                  <enum value="integrity-impact">Integrity Impact</enum>
+                  <enum value="availability-impact">Availability Impact</enum>
+                  <enum value="exploitability">Exploitability</enum>
+                  <enum value="remediation-level">Remediation Level</enum>
+                  <enum value="report-confidence">Report Confidence</enum>
+                  <enum value="collateral-damage-potential">Collateral Damage Potential</enum>
+                  <enum value="target-distribution">Target Distribution</enum>
+                  <enum value="confidentiality-requirement">Confidentiality Requirement</enum>
+                  <enum value="integrity-requirement">Integrity Requirement</enum>
+                  <enum value="availability-requirement">Availability Requirement</enum>
+                  <enum value="privileges-required">Privileges Required</enum>
+                  <enum value="user-interaction">User Interaction</enum>
+                  <enum value="scope">Scope</enum>
+                  <enum value="exploit-code-maturity">Exploit Code Maturity</enum>
+                  <enum value="modified-attack-vector">Modified Attack Vector</enum>
+                  <enum value="modified-attack-complexity">Modified Attack Complexity</enum>
+                  <enum value="modified-privileges-required">Modified Privileges Required</enum>
+                  <enum value="modified-user-interaction">Modified User Interaction</enum>
+                  <enum value="modified-scope">Modified Scope</enum>
+                  <enum value="modified-confidentiality">Modified Confidentiality</enum>
+                  <enum value="modified-integrity">Modified Integrity</enum>
+                  <enum value="modified-availability">Modified Availability</enum>
+               </allowed-values>
+            </flag>
+            <flag ref="class">
+               <allowed-values allow-other="yes">
+                  <!-- For values related to initial and residual (mitigated) risk --> 
+                  <enum value="initial">Initial</enum>
+                  <enum value="residual">Residual</enum>
+                  <!-- Other values -->
+                  <enum value="tool-name"></enum>
+                  <enum value="cve"></enum>
+                  <!-- To identify which CVSS values to use -->
+                  <enum value="CVSSv2"></enum>
+                  <enum value="CVSSv3"></enum>
+                  <enum value="CVSSv3.1"></enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="risk-statement" min-occurs="1" max-occurs="1" />
+         <assembly ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
+            <group-as name="mitigating-factors"/>
+         </assembly>
+         <assembly ref="remediation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="remediation-group"/>
+         </assembly>
+         <field ref="risk-status" min-occurs="1" max-occurs="1" />
+         <field ref="closure-actions" min-occurs="0" max-occurs="1" />
+         <assembly ref="remediation-tracking" min-occurs="0" max-occurs="1"  />
+         <!-- ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
+         <field ref="party-id" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="party-ids"/>
+         </field>
+      </model>
+      <remarks>
+         <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
+      </remarks>
+   </define-assembly>
+
+   <define-assembly name="remediation-tracking">
+      <formal-name>Remediation Tracking</formal-name>
+      <description>A log of events and actions taken towards the remediation of the associated risk.</description>
+      <model>
+         <assembly ref="tracking-entry" min-occurs="1" max-occurs="unbounded">
+            <group-as name="tracking-entries"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="tracking-entry">
+      <formal-name>Tracking Entry</formal-name>
+      <description>Individual remediation tracking entry, which logs an event or action taken towards the remediation of the associated risk.</description>
+      <flag ref="id" required="no" />
+      <flag ref="type" required="no">
+         <allowed-values allow-other="yes">
+            <enum value="vendor-check-in">Vendor Check-In</enum>
+            <enum value="status-update">Status Update</enum>
+            <enum value="milestone-complete">Milestone Complete</enum>
+            <enum value="mitigation">Mitigation Implemented</enum>
+            <enum value="remediated">Risk is Remediated</enum>
+            <enum value="closed">Closed</enum>
+            <enum value="dr-submission">Deviation Request Submission</enum>
+            <enum value="dr-updated">Deviation Requested Updated</enum>
+            <enum value="dr-approved">Deviation Request Approved</enum>
+            <enum value="dr-rejected">Deviation Request Rejected</enum>
+         </allowed-values>
+      </flag>
+      <model>
+         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" />
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="required-resource">
+      <formal-name>Required Resource</formal-name>
+      <description>.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
+         <field ref="title"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+
+   <define-field name="risk-status">
+      <formal-name>Status</formal-name>
+      <description>Describes the status of the associated risk.</description>
+      <allowed-values allow-other="yes">
+         <enum value="open">Open</enum>
+         <enum value="closed">Closed</enum>
+      </allowed-values>
+   </define-field>
+   
+   <define-field name="closure-actions" as-type="markup-multiline">
+      <formal-name>Closer Actions</formal-name>
+      <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
+   </define-field>
+   
+   <define-assembly name="mitigating-factor">
+      <formal-name>Mitigating Factor</formal-name>
+      <description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="implementation-id" required="no" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" />
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <group-as name="id-refs"/>
+         </field>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="remediation">
+      <formal-name>Remediation</formal-name>
+      <description>Describes either recommendation or an actual plan for remediating the risk.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="type" required="no">
+         <allowed-values allow-other="yes">
+            <enum value="recommendation">Recommendation</enum>
+            <enum value="planned">Planned Remediation</enum>
+         </allowed-values>
+      </flag>
+      <model>
+         <field ref="title"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="id-ref" min-occurs="0" max-occurs="unbounded">
+            <description>Points to the source of the recommendation</description>
+            <group-as name="id-refs" />
+         </field>
+         <assembly ref="required-resource" min-occurs="0" max-occurs="unbounded">
+            <group-as name="required-resources"/>
+         </assembly>
+         <assembly ref="schedule" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
+      </model>
+   </define-assembly>
+   
+   <define-field name="risk-statement" as-type="markup-multiline">
+      <formal-name>Risk Statement</formal-name>
+      <description>Describes the risk.</description>
+   </define-field>
+
+   <define-flag name="implementation-id" as-type="NCName">
+      <formal-name>Implementation ID</formal-name>
+      <description>Points to an implementation statement in the SSP.</description>
+   </define-flag>
+   
+   <define-flag name="source-id" as-type="NCName">
+      <formal-name>Source ID</formal-name>
+      <description>Points to a source of the finding, such as a scanning tool, interviewed person, or examined configuration.</description>
+   </define-flag>
+   
+   <define-flag name="objective-id" as-type="NCName">
+      <formal-name>Objective ID</formal-name>
+      <description>Points to an assessment objective.</description>
+   </define-flag>
+
+</METASCHEMA>
