@@ -1,4 +1,8 @@
-# OSCAL Profile Tutorial
+---
+title: Creating an OSCAL Profile
+description: A tutorial on creating an OSCAL Profile.
+weight: 10
+---
 
 ## What is an OSCAL Profile
 

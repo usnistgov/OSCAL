@@ -1,4 +1,7 @@
-# OSCAL Profile Tutorial - Part2
+---
+title: OSCAL Profile Tutorial - Part2
+description: A sample security control baseline.
+---
 
 ## Generating a Profile By Explicitly Selecting Controls
 

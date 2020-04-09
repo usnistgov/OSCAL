@@ -15,7 +15,7 @@
    <xsl:character-map name="delimiters"/>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <!-- Pass $diagnostic as 'rough' for first pass, 'rectified' for second pass -->
-   <xsl:param name="diagnostic" as="xs:string">no</xsl:param>
+   <xsl:param name="diagnostic" as="xs:string">yes</xsl:param>
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(., '([`~\^\*&#34;])', '\\$1')"/>
    </xsl:template>

@@ -1,4 +1,7 @@
-# Sample Security Profile 
+---
+title: Sample Security Profile
+description: A sample security control baseline.
+---
 
 ## Case 2: Select Specific Controls
 

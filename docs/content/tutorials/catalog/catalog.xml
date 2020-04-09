@@ -9,27 +9,23 @@
     <version>1.0</version>
     <oscal-version>1.0.0</oscal-version>
   </metadata>
-  <group class="section" id="s1">
+  <group id="s1">
     <title>Organization of Information Security</title>
     <prop name="label">1</prop>
-    <group class="ssc-iso-sc27" id="s1.1">
+    <group id="s1.1">
       <title>Internal Organization</title>
       <prop name="label">1.1</prop>
       <part id="s1.1_smt" name="objective">
-        <prop name="label">Objective:</prop>
         <p>To establish a management framework to initiate and control the implementation and
           operation of information security within the organization.</p>
       </part>
-      <control class="ssc-iso-sc27" id="s1.1.1">
+      <control id="s1.1.1">
         <title>Information security roles and responsibilities</title>
         <prop name="label">1.1.1</prop>
-        <prop name="sort-id">c01</prop>
         <part id="s1.1.1_stm" name="statement">
-          <prop name="label">Control</prop>
           <p>All information security responsibilities should be defined and allocated.</p>
         </part>
         <part id="s1.1.1_gdn" name="guidance">
-          <prop name="label">Implementation guidance</prop>
           <part id="s1.1.1_gdn.1" name="item">
             <p>Allocation of information security responsibilities should be done in accordance with
               the information security policies. Responsibilities for the protection of individual
@@ -73,18 +69,15 @@
             then becomes responsible for its day-to-day protection.</p>
         </part>
       </control>
-      <control class="ssc-iso-sc27" id="s1.1.2">
+      <control id="s1.1.2">
         <title>Segregation of duties</title>
         <prop name="label">1.1.2</prop>
-        <prop name="sort-id">c02</prop>
         <part id="s1.1.2_stm" name="statement">
-          <prop name="label">Control</prop>
           <p>Conflicting duties and areas of responsibility should be segregated to reduce
             opportunities for unauthorized or unintentional modification or misuse of the
             organization’s assets.</p>
         </part>
         <part id="s1.1.2_gdn" name="guidance">
-          <prop name="label">Implementation guidance</prop>
           <part id="s1.1.2_gdn.1" name="item">
             <p>Care should be taken that no single person can access, modify or use assets without
               authorization or detection. The initiation of an event should be separated from its
@@ -99,34 +92,29 @@
           </part>
         </part>
         <part id="s1.1.2_inf" name="information">
-          <prop name="label">Other information</prop>
           <p>Segregation of duties is a method for reducing the risk of accidental or deliberate
             misuse of an organization’s assets.</p>
         </part>
       </control>
     </group>
   </group>
-  <group class="section" id="s2">
+  <group id="s2">
     <title>Access control</title>
     <prop name="label">2</prop>
-    <group class="ssc-iso-sc27" id="s2.1">
+    <group id="s2.1">
       <title>Business requirements of access control</title>
       <prop name="label">2.1</prop>
-      <part id="s2.1_smt" name="statement">
-        <prop name="label">Objective:</prop>
+      <part id="s2.1_smt" name="objective">
         <p>To limit access to information and information processing facilities.</p>
       </part>
-      <control class="ssc-iso-sc27" id="s2.1.1">
+      <control id="s2.1.1">
         <title>Access control policy</title>
         <prop name="label">2.1.1</prop>
-        <prop name="sort-id">c03</prop>
         <part id="s2.1.1_stm" name="statement">
-          <prop name="label">Control</prop>
           <p>An access control policy should be established, documented and reviewed based on
             business and information security requirements.</p>
         </part>
         <part id="s2.1.1_gdn" name="guidance">
-          <prop name="label">Implementation guidance</prop>
           <part id="s2.1.1_gdn.1" name="item">
             <p>Asset owners should determine appropriate access control rules, access rights and
               restrictions for specific user roles towards their assets, with the amount of detail
@@ -165,7 +153,6 @@
           </part>
         </part>
         <part id="s2.1.1_stm" name="information">
-          <prop name="label">Other information</prop>
           <part id="s2.1.1_stm.1" name="item">
             <p>Care should be taken when specifying access control rules to consider:</p>
             <ol>
@@ -201,17 +188,14 @@
           </part>
         </part>
       </control>
-      <control class="ssc-iso-sc27" id="s2.1.2">
+      <control id="s2.1.2">
         <title>Access to networks and network services</title>
         <prop name="label">2.1.2</prop>
-        <prop name="sort-id">c04</prop>
         <part id="s2.1.2_stm" name="statement">
-          <prop name="label">Control</prop>
           <p>Users should only be provided with access to the network and network services that they
             have been specifically authorized to use.</p>
         </part>
         <part id="s2.1.2_gdn" name="guidance">
-          <prop name="label">Implementation guidance</prop>
           <part id="s2.1.2_gdn.1" name="item">
             <p>A policy should be formulated concerning the use of networks and network services.
               This policy should cover:</p>
