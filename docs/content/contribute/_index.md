@@ -6,7 +6,7 @@ aliases:
 menu:
   primary:
     name: Contribute
-    weight: 50
+    weight: 90
   secondary:
     name: Get involved
     url: /contribute/

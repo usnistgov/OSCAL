@@ -1,6 +1,6 @@
 ---
 title: Catalog Examples
-description: OSCAL Catalog Example
+description: OSCAL Catalog Examples
 aliases:
   - /resources/examples/catalogs/
 sidenav:

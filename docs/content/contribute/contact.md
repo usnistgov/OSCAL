@@ -16,5 +16,5 @@ menu:
 
 We also offer a couple of mailing lists.
 
-- [oscal-dev@nist.gov](mailto:oscal-dev@nist.gov) for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
-- [oscal-updates@nist.gov](mailto:oscal-updates@nist.gov) for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
+- [oscal-dev@nist.gov](mailto:oscal-dev@nist.gov) for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-subscribe@nist.gov](mailto:oscal-dev-subscribe@nist.gov). To unsubscribe send an email to [oscal-dev-unsubscribe@nist.gov](mailto:oscal-dev-unsubscribe@nist.gov).
+- [oscal-updates@nist.gov](mailto:oscal-updates@nist.gov) for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-subscribe@nist.gov](mailto:oscal-updates-subscribe@nist.gov). To unsubscribe send an email to [oscal-updates-unsubscribe@nist.gov](mailto:oscal-updates-unsubscribe@nist.gov).

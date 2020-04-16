@@ -10,12 +10,6 @@ aliases:
 * [GitHub Repository for OSCAL](https://github.com/usnistgov/OSCAL)
 * [NIST Computer Security Resource Center: OSCAL](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language)
 
-## Tools
-
-* [OSCALkit - Converts XML -> JSON (and vice versa)](https://github.com/docker/oscalkit)
-
-If you have a tool that supports the OSCAL formats that you would like to have listed here, please [contact us](/contribute/contact/).
-
 ## Videos and Presentations
 
 * [NIST OSCAL Workshop](../OSCAL-workshop-20191105.pdf) -  November 5, 2019

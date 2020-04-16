@@ -5,7 +5,7 @@ aliases:
 menu:
   primary:
     name: Documentation
-    weight: 30
+    weight: 40
 ---
 
 The following documentation for OSCAL is provided:

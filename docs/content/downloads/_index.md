@@ -3,7 +3,7 @@ title: "Downloads"
 menu:
   primary:
     name: Downloads
-    weight: 40
+    weight: 50
 ---
 
 Official releases of the OSCAL Project are available on the project's [GitHub repository](https://github.com/usnistgov/OSCAL/releases). These releases align with the project's [roadmap](/contribute/roadmap/).
