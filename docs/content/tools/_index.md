@@ -24,10 +24,10 @@ See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more inf
 
 ## OSCAL Project: Open Source Tools and Libraries
 
-- **[OSCAL Java Library](https://github.com/usnistgov/liboscal-java):** Provides a Java-based programming API for reading and writing content conformant to the OSCAL XML, JSON, and YAML based models. This library is kept up-to-date with the [latest formats](/documentation/schema/) provided by the OSCAL project.
-- **[XSLT Tooling](https://github.com/usnistgov/oscal-tools/tree/master/xslt):** A variety of Extensible Stylesheet Language (XSL) Transformations (XSLT), Cascading Style Sheets (CSS), and related utilities for authoring, converting, and publishing OSCAL content in various forms.
+- **[OSCAL Java Library:](https://github.com/usnistgov/liboscal-java)** Provides a Java-based programming API for reading and writing content conformant to the OSCAL XML, JSON, and YAML based models. This library is kept up-to-date with the [latest formats](/documentation/schema/) provided by the OSCAL project.
+- **[XSLT Tooling:](https://github.com/usnistgov/oscal-tools/tree/master/xslt)** A variety of Extensible Stylesheet Language (XSL) Transformations (XSLT), Cascading Style Sheets (CSS), and related utilities for authoring, converting, and publishing OSCAL content in various forms.
 
 ## Community: Open Source Tools and Libraries
 
-- **[OSCALkit](https://github.com/docker/oscalkit):** Provides a GoLang SDK for OSCAL. Converts OSCAL XML -> JSON (and vice versa). Converts [OpenControl](https://open-control.org/) projects into OSCAL.
-- **[OSCAL GUI](https://github.com/brianrufgsa/OSCAL-GUI):** A proof of concept GUI tool for interacting with OSCAL content based on [OSCAL milestone 2](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2).
+- **[OSCALkit:](https://github.com/docker/oscalkit)** Provides a GoLang SDK for OSCAL. Converts OSCAL XML -> JSON (and vice versa). Converts [OpenControl](https://open-control.org/) projects into OSCAL.
+- **[OSCAL GUI:](https://github.com/brianrufgsa/OSCAL-GUI)** A proof of concept GUI tool for interacting with OSCAL content based on [OSCAL milestone 2](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2).
