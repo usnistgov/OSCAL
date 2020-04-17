@@ -14,3 +14,9 @@
     display: none;
   }
 }
+
+.usa-nav__secondary-links {
+  @include at-media($theme-header-min-width) {
+    float: inherit;
+  }
+}

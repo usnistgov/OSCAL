@@ -58,7 +58,7 @@ The OSCAL assessment layer defines two models:
 
 1.  The **[assessment results model](/documentation/schema/assessment-results-layer/assessment-results/)**, which represents information produced from a set of assessment activities, to include when the assessment was performed, the assessment scope, evidence collected during an assessment, and any assessment findings. The assessment model supports information from periodic and continuous assessments.
 
-1. The **[plan of action and milestones (POA&M) model](http://localhost:1313/OSCAL/documentation/schema/assessment-results-layer/poam/), which represents a set of findings for a periodic or continuous assessment that need to be addressed by the system owner/maintainers.
+1. The **[plan of action and milestones (POA&M) model](/documentation/schema/assessment-results-layer/poam/), which represents a set of findings for a periodic or continuous assessment that need to be addressed by the system owner/maintainers.
 
 ## Status of the OSCAL Layers
 
