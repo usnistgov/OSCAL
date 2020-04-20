@@ -1,6 +1,9 @@
 # default
 * text=auto
 
+# markdown
+*.md text eol=lf
+
 # script files
 *.sh text eol=lf
 /build/ci-cd/config/* text eol=lf
@@ -8,3 +11,4 @@
 # other binary files
 *.png binary
 *.jpg binary
+
