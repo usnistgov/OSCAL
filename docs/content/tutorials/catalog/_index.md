@@ -182,7 +182,7 @@ Breaking this down line-by-line you will notice the following:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Using Groups in a Catalog
+## Representing Groups in a Catalog
 
 An OSCAL catalog allows for the organization of related controls using groups. A catalog group can represent families of controls or other organizational structures, such as sections in a control catalog.
 
@@ -209,7 +209,7 @@ In the above, controls are organized into two top-level groups: 1 *Organization 
 
 The first top-level section can be represented in an OSCAL Catalog as follows:
 
-{{< tabs XML >}}
+{{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <group class="section" id="s1">
@@ -233,7 +233,7 @@ Breaking this down line-by-line you will notice the following:
 - Line 2 provides the group's title using the `<title>` element. A title can be simple text or can include [html markup](http://localhost:1313/OSCAL/documentation/schema/datatypes/#markup-line).
 - Line 3 defines a property of the group using the `<prop>` element. This property element has a `@name="label`, which defines the name of the property (i.e. `label`), and textual content `1`, which defines the property's value. A property with the name `label` provides the text label that can be prepended to the title when formatting the content for human readability.  
 
-    Properties are a commonly used constructs within OSCAL content that allow for arbitrary name/value data to be defined. This name/value data helps to describe the containing element. Most major elements within OSCAL allow for properties to be defined. Names, like identifiers, are strings that may not contain spaces or colons.
+   In OSCAL properties are commonly used constructs that allow for arbitrary name/value data to be defined. This name/value data helps to describe the containing element. Most major XML elements within OSCAL allow for properties to be defined. Names, like identifiers, are strings that may not contain spaces or colons.
 
 - Lines 4 thru 6 declare a new child group of the group defined on line 1, and is nested/indented within the context of the parent group to indicate it is a child. This child group represents the sub-section `1.1 Internal Organization`, along with its title (line 5) and label (line 6). Notice that the title and label are declared in the same way as the parent section, using `<title>` and `<prop>` elements.
 - Lines 7 thru 10 define the sub-section's objective using a `<part>` element and child content. A part requires:
@@ -241,7 +241,100 @@ Breaking this down line-by-line you will notice the following:
   - a name specified by the `@name` attribute, which identifies the type of the part. The name `objective` is used to indicate that the part represents an objective.
   - A sequence of child HTML [prose block elements](/documentation/schema/datatypes/#markup-multiline). In this example, the `<p>` element is used to represent a paragraph of text. The prose model allows for other [structural markup](/documentation/schema/datatypes/#markup-line) to be included within each block, to indicate emphasis (italics), importance (bold), etc.
 
-  While not shown here, a `<part>` element can also include child parts.
+    While not illustrated here, a `<part>` element can also include child parts to denote a hierarchy of text. This will be covered in a future tutorial.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "groups": [ {
+    "id" : "s1",
+    "title" : "Organization of Information Security",
+    "properties" : [ {
+      "name" : "label",
+      "value" : "1"
+    } ],
+    "groups" : [ {
+      "id" : "s1.1",
+      "title" : "Internal Organization",
+      "properties" : [ {
+        "name" : "label",
+        "value" : "1.1"
+      } ],
+      "parts" : [ {
+        "id" : "s1.1_smt",
+        "name" : "objective",
+        "prose" : "To establish a management framework to initiate and control the implementation and\noperation of information security within the organization."
+      } ],
+      "controls" : [ ]
+    } ]
+  } ]
+}
+{{< /highlight >}}
+
+Breaking this down line-by-line you will notice the following:
+
+- Line 2 declares a new group using a group object in the `groups` array.
+- Line 3 where the `id` property defines the group's required unique identifier `s1`. A group's unique identifier must be unique within the document. An identifier in OSCAL is a string that may not contain spaces or colons.
+- Line 4 provides the group's title using the `title` property. A title can be simple text or can include [Markdown](http://localhost:1313/OSCAL/documentation/schema/datatypes/#markup-line).
+- Lines 5 thru 8 define an array of properties for the group using the `properties` property.
+  - On line 6 the property's name `label` is provided using the `name` property. A property with the name `label` provides the text label that can be prepended to the title when formatting the content for human readability.
+  - On line 7 the property's value `1` is provided using the `value` property.  
+
+    In OSCAL properties are commonly used constructs that allow for arbitrary name/value data to be defined. This name/value data helps to describe the containing object. Most major JSON objects within OSCAL allow for properties to be defined. Names, like identifiers, are strings that may not contain spaces or colons.
+
+- Lines 9 thru 22 declare a new child group of the group defined on line 1, and is nested/indented within the context of the parent group to indicate it is a child. This child group represents the sub-section `1.1 Internal Organization`, along with its title (line 11) and label (lines 12 thru 15). Notice that the title and label are declared in the same way as the parent section, using `title` and `properties` properties.
+- Lines 16 thru 20 define the sub-section's objective using the `parts` property and associated array of objects. In this case we have a single part object. A part requires:
+  - a unique identifier specified by the `id` property (line 17), which identifies the part. 
+  - a name specified by the `name` property (line 18), which identifies the type of the part. The name `objective` is used to indicate that the part represents an objective.
+  - A string of Markdown [prose](/documentation/schema/datatypes/#markup-multiline) content (line 19) contained by the `prose` property. In Markdown double newlines are used to delineate different paragraphs of text. These newlines are escaped in JSON, since all string content needs to be on a single line. 
+  
+    The OSCAL prose model allows for other [structural markup](/documentation/schema/datatypes/#markup-line) to be included within a Markdown string, to indicate emphasis (italics), importance (bold), etc.
+
+    While not illustrated here, a `part` can also include child parts to denote a hierarchy of text. This will be covered in a future tutorial.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+groups:
+- id: s1
+  title: Organization of Information Security
+  properties:
+  - name: label
+    value: 1
+  groups:
+  - id: s1.1
+    title: Internal Organization
+    properties:
+    - name: label
+      value: 1.1
+    parts:
+    - id: s1.1_smt
+      name: objective
+      prose: |-
+        To establish a management framework to initiate and control the implementation and
+        operation of information security within the organization.
+    controls:
+{{< /highlight >}}
+
+Breaking this down line-by-line you will notice the following:
+
+- Line 1 declares a list of group items using the `groups` key.
+- Line 2 starts a new group item and the `id` key defines the group's required unique identifier `s1`. A group's unique identifier must be unique within the document. An identifier in OSCAL is a string that may not contain spaces or colons.
+- Line 3 provides the group's title using the `title` key. A title can be simple text or can include [Markdown](http://localhost:1313/OSCAL/documentation/schema/datatypes/#markup-line).
+- Lines 4 thru 6 define a list of properties for the group using the `properties` key.
+  - Line 5 starts a new property item and the `name` key provides the name `label` for the property. A property with the name `label` provides the text label that can be prepended to the title when formatting the content for human readability.
+  - On line 6 the key `value` provides the property's value `1`. 
+
+    In OSCAL properties are commonly used constructs that allow for arbitrary name/value data to be defined. This name/value data helps to describe the containing item. Most major YAML items within OSCAL allow for properties to be defined. Names, like identifiers, are strings that may not contain spaces or colons.
+
+- Lines 7 thru 19 declare a new child group of the group defined on line 1, and is nested/indented within the context of the parent group to indicate it is a child. This child group represents the sub-section `1.1 Internal Organization`, along with its title (line 11) and label (lines 12 thru 15). Notice that the title and label are declared in the same way as the parent section, using `title` and `properties` properties.
+- Lines 16 thru 20 define the sub-section's objective using the `parts` property and associated array of objects. In this case we have a single part object. A part requires:
+  - a unique identifier specified by the `id` property (line 17), which identifies the part. 
+  - a name specified by the `name` property (line 18), which identifies the type of the part. The name `objective` is used to indicate that the part represents an objective.
+  - A string of Markdown [prose](/documentation/schema/datatypes/#markup-multiline) content (line 19) contained by the `prose` property. In Markdown double newlines are used to delineate different paragraphs of text. These newlines are escaped in JSON, since all string content needs to be on a single line. 
+  
+    The OSCAL prose model allows for other [structural markup](/documentation/schema/datatypes/#markup-line) to be included within a Markdown string, to indicate emphasis (italics), importance (bold), etc.
+
+    While not illustrated here, a `part` can also include child parts to denote a hierarchy of text. This will be covered in a future tutorial.
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -369,8 +462,7 @@ Section 2 follows suit, resulting in the following representation of both sectio
 
 ## Representing Control Information
 
-Controls are defined in the [catalog sample][catalog-prose-sample] following the **Objective** in each section. Each control in the sample provides a **control statement** expressing the control's requirement, **Implementation Guidance**, and often
-some additional information titled **Other information**. 
+In the [catalog sample][catalog-prose-sample], controls are defined following the **Objective** in each section. Each control in the sample provides a **control statement**, expressing the control's requirement; a **Implementation Guidance**; and often some additional information titled **Other information**.
 
 The structure of the first control, `1.1.1 Information security roles` is represented below:
 

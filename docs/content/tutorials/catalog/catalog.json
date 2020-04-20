@@ -10,28 +10,30 @@
     },
     "groups" : [ {
       "id" : "s1",
-      "class" : "section",
       "title" : "Organization of Information Security",
-      "properties" : {
-        "label" : "1"
-      },
-      "groups" : {
+      "properties" : [ {
+        "name" : "label",
+        "value" : "1"
+      } ],
+      "groups" : [ {
         "id" : "s1.1",
         "title" : "Internal Organization",
-        "properties" : {
-          "label" : "1.1"
-        },
-        "parts" : {
+        "properties" : [ {
+          "name" : "label",
+          "value" : "1.1"
+        } ],
+        "parts" : [ {
           "id" : "s1.1_smt",
           "name" : "objective",
           "prose" : "To establish a management framework to initiate and control the implementation and\noperation of information security within the organization."
-        },
+        } ],
         "controls" : [ {
           "id" : "s1.1.1",
           "title" : "Information security roles and responsibilities",
-          "properties" : {
-            "label" : "1.1.1"
-          },
+          "properties" : [ {
+            "name" : "label",
+            "value" : "1.1.1"
+          } ],
           "parts" : [ {
             "id" : "s1.1.1_stm",
             "name" : "statement",
@@ -55,17 +57,19 @@
           }, {
             "id" : "s1.1.1_inf",
             "name" : "information",
-            "properties" : {
-              "label" : "Other information"
-            },
+            "properties" : [ {
+              "name" : "label",
+              "value" : "Other information"
+            } ],
             "prose" : "Many organizations appoint an information security manager to take overall\nresponsibility for the development and implementation of information security and to\nsupport the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain\nwith individual managers. One common practice is to appoint an owner for each asset who\nthen becomes responsible for its day-to-day protection."
           } ]
         }, {
           "id" : "s1.1.2",
           "title" : "Segregation of duties",
-          "properties" : {
-            "label" : "1.1.2"
-          },
+          "properties" : [ {
+            "name" : "label",
+            "value" : "1.1.2"
+          } ],
           "parts" : [ {
             "id" : "s1.1.2_stm",
             "name" : "statement",
@@ -88,31 +92,33 @@
             "prose" : "Segregation of duties is a method for reducing the risk of accidental or deliberate\nmisuse of an organization’s assets."
           } ]
         } ]
-      }
+      } ]
     }, {
       "id" : "s2",
-      "class" : "section",
       "title" : "Access control",
-      "properties" : {
-        "label" : "2"
-      },
-      "groups" : {
+      "properties" : [ {
+        "name" : "label",
+        "value" : "2"
+      } ],
+      "groups" : [ {
         "id" : "s2.1",
         "title" : "Business requirements of access control",
-        "properties" : {
-          "label" : "2.1"
-        },
-        "parts" : {
+        "properties" : [ {
+          "name" : "label",
+          "value" : "2.1"
+        } ],
+        "parts" : [ {
           "id" : "s2.1_smt",
           "name" : "objective",
           "prose" : "To limit access to information and information processing facilities."
-        },
+        } ],
         "controls" : [ {
           "id" : "s2.1.1",
           "title" : "Access control policy",
-          "properties" : {
-            "label" : "2.1.1"
-          },
+          "properties" : [ {
+            "name" : "label",
+            "value" : "2.1.1"
+          } ],
           "parts" : [ {
             "id" : "s2.1.1_stm",
             "name" : "statement",
@@ -161,9 +167,10 @@
         }, {
           "id" : "s2.1.2",
           "title" : "Access to networks and network services",
-          "properties" : {
-            "label" : "2.1.2"
-          },
+          "properties" : [ {
+            "name" : "label",
+            "value" : "2.1.2"
+          } ],
           "parts" : [ {
             "id" : "s2.1.2_stm",
             "name" : "statement",
@@ -182,7 +189,7 @@
             } ]
           } ]
         } ]
-      }
+      } ]
     } ],
     "back-matter" : { }
   }
