@@ -2,7 +2,7 @@
 title: Assessment Layer
 heading: "OSCAL Assessment Layer"
 description: Provides the OSCAL [assessment plan model](/documentation/schema/assessment-layer/assessment-plan/), which represents assessment planning information such as how and when a system assessment is intended to be performed, the scope of the assessment, and what assessment activities should be conducted.
-weight: 60
+weight: 40
 
 ---
 

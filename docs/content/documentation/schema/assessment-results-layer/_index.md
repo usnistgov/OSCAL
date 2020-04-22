@@ -2,7 +2,7 @@
 title: Assessment Results Layer
 heading: "OSCAL Assessment Results Layer"
 description: Provides the OSCAL [assessment results](/documentation/schema/assessment-results-layer/assessment-results/) and the [plan of action and milestones](/documentation/schema/assessment-results-layer/poam/) models, which represent assessment result information.
-weight: 70
+weight: 30
 ---
 
 The OSCAL assessment results layer provides models for describing or reporting the results of assessment activities.

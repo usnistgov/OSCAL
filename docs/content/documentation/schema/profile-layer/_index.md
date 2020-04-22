@@ -2,7 +2,7 @@
 title: Profile Layer
 heading: "OSCAL Profile Layer"
 description: Provides the OSCAL [profile model](/documentation/schema/profile-layer/profile/), which represents a [profile](/learnmore/concepts/profile/), also known as a *baseline* or *overlay*.
-weight: 40
+weight: 60
 ---
 
 A **profile** defines a specific set of selected security control requirements from one or more control catalogs. The term "[profile](/learnmore/concepts/profile/)" in OSCAL is also called a *baseline* or *overlay* in other terminology.

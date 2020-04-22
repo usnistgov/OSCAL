@@ -2,7 +2,7 @@
 title: Catalog Layer
 heading: "OSCAL Catalog Layer"
 description: Provides the OSCAL [catalog model](/documentation/schema/catalog-layer/catalog/), which represents a [control catalog](/learnmore/concepts/catalog/).
-weight: 30
+weight: 70
 ---
 
 Privacy and security documentation today often discusses **controls** and **catalogs**. A [control](/learnmore/concepts/control/) represents a security requirement, guideline, procedure or activity. A [control catalog](/learnmore/concepts/catalog/) is an organized collection of controls.
