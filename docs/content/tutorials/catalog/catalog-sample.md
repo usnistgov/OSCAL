@@ -1,9 +1,9 @@
 ---
 title: Sample Security Catalog
-description: A sample secruity control catalog.
+description: A sample security control catalog.
 ---
 
-QUESTION: Is this from ISO 27002? If so, we should cite that this example is an excerpt.
+> The following is a short excerpt from [ISO/IEC 27002:2013](https://www.iso.org/standard/54533.html), _Information technology — Security techniques — Code of practice for information security controls_. This work is provided here under copyright "fair use" for non-profit, educational purposes only. Copyrights for this work are held by the publisher, the International Organization for Standardization (ISO).
 
 - Version 1.0
 - Published: 02.02.2020

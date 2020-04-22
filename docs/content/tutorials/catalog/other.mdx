@@ -51,3 +51,28 @@ Below is all this information assembled in OSCAL.
          <party-id>NIST</party-id>
       </responsible-party>
 ```
+
+#### Formatting a Back-matter
+
+Often documents have references, links to other documents, diagrams/images, citations, remarks. 
+OSCAL defines elements that can be used to represent such information.
+
+Back-matters are optional elements and therefore often the OSCAL Catalogs will not contain any.
+
+A back-matter element is identified by the tag `<back-matter></back-matter>`. 
+This element may have `resources` which are identified with the tag `<resources></resources>`.     
+
+Each `resource` may have:
+
+```
+    * `title` identified by the tags <title></title>
+    * `description` identified by the tags <desc></desc>
+    * `property` identified by the tags <prop></prop>
+    * `document id` identified by the tags <doc-id></doc-id>
+    * `citation` identified by the tags <citation></citation>
+    * `link` identified by the tags <rlink></rlink>
+    * `base64-binary-data` identified by the tags <base64></base64>
+    * `remarks` identified by the tags <remarks></remarks>
+```
+Our catalog does not contain any back-matter, but additional information about the available 
+elements and their fields, can be found [here](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/)
