@@ -78,6 +78,7 @@ The website can also be developed and built using the included Docker resources.
 Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
 
 ```
+docker-compose build
 docker-compose up
 ```
 

@@ -4,7 +4,7 @@ heading: Learn more about OSCAL
 menu:
   primary:
     name: Learn More
-    weight: 20
+    weight: 10
 ---
 
 NIST is developing the Open Security Controls Assessment Language (OSCAL) as a standardized, data-centric framework that can be applied to an information system for documenting and assessing its security controls. Today, security controls and control baselines are represented in proprietary formats, requiring data conversion and manual effort to describe their implementation. An important goal of OSCAL is to move the security controls and control baselines from a text-based and manual approach (using word processors or spreadsheets) to a set of standardized and machine-readable formats. With systems security information represented in OSCAL, security professionals will be able to automate security assessment, auditing, and continuous monitoring processes.

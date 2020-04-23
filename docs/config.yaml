@@ -14,6 +14,12 @@ enableGitInfo: true
 pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: true
 pygmentsUseClasses: true
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    guessSyntax: true
 params:
   header:
     project_shortname: "OSCAL"

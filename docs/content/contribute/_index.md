@@ -6,7 +6,7 @@ aliases:
 menu:
   primary:
     name: Contribute
-    weight: 50
+    weight: 90
   secondary:
     name: Get involved
     url: /contribute/
@@ -25,10 +25,10 @@ We use GitHub as a collaboration platform for the development of the OSCAL model
 
 ## Tools
 
-All users, but especially tool developers, should consider reaching out and connecting with others using your technology stack or platform. See our [resources page](/downloads/other-resources/) for more information.
+All users, but especially tool developers, should consider reaching out and connecting with others using your technology stack or platform. See our [tools page](/tools/) for more information.
 
-You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby).
+You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [osacl-dev@nist.gov mailing list](/contribute/contact/).
 
 ## Contact
 
-To learn more about how OSCAL can help you, [contact us](contact/)!
+If you are interested in contributing, please feel free to [contact us](contact/)!

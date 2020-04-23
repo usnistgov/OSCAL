@@ -1,26 +1,33 @@
 ---
 title: Lunch with the Devs
-description: Contact Us
+description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL work.
+layout: devlunch
+aliases:
+- /contribute/devlunch/
+sidenav:
+  toc:
+    headingselectors: "h3,h4"
 ---
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}
 
 Note: (1/10/2020) The Bluejeans info below has changed.
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} [Bluejeans Details](https://bluejeans.com/187858571/0183)
-{{% usa-tag %}}Call-in Numbers{{% /usa-tag %}}:
+{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/187858571/0183 ([ICS file](../lunch-with-the-devs.ics))
 
-https://nist.bluejeans.com/
-Meeting ID: 187 858 571
+{{% usa-tag %}}Meeting Details{{% /usa-tag %}}
+
+Meeting ID: 187 858 571<br>
 Participant Passcode: 0183
 
-Phone Dial-in
+{{% usa-tag %}}Phone Dial-in{{% /usa-tag %}}
 
-+1.408.317.9254 (US (San Jose))
-+1.408.740.7256 (US (San Jose))
++1.408.317.9254 (US (San Jose))<br>
++1.408.740.7256 (US (San Jose))<br>
 [Global Numbers](https://www.bluejeans.com/premium-numbers)
 
-{{% usa-tag %}}Who Can Attend{{% /usa-tag %}} Open to All Members of the Public
+{{% usa-tag %}}Who Can Attend?{{% /usa-tag %}} Open to all members of the public
+
 {{% usa-tag %}}Format{{% /usa-tag %}} Question and Answer, Discussion
 
 Each teleconference will cover the following:

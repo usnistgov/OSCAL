@@ -1,5 +1,6 @@
 ---
 title: Relations to Documentary Encoding Standards
+description: Explanation of how OSCAL relates to various documentary standards.
 weight: 100
 aliases:
   - /docs/relations/

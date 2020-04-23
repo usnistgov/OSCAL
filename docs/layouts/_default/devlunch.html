@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ with .Params.usabanner }}{{ partial "components/banner.html" . }}{{ end }}
+{{ partial "components/header-basic.html" . }}
+<main class="usa-layout-docs padding-top-2">
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+{{ $firstSection := .Page.FirstSection.Pages }}
+
+{{/* includeTopLevel is used to determine if the top-level section should appear
+  in the side navigation */}}
+{{ $includeTopLevel := true }}
+{{ with .Site.Params.sidenav }}
+  {{ if isset . "includetoplevel" }}
+  {{ $includeTopLevel = .includetoplevel }}
+  {{ end }}
+{{ end }}
+{{ if and .Page.FirstSection (or ($includeTopLevel) (gt (len .Page.FirstSection.Pages) 0)) }}
+      <aside class="usa-layout-docs__sidenav widescreen:grid-col-2 desktop:grid-col-3">
+    {{ partial "components/sidenav.html" . }}
+      </aside>
+{{ end -}}
+      <div id="main-content" class="usa-layout-docs__main {{ if and .Page.FirstSection (or ($includeTopLevel) (gt (len .Page.FirstSection.Pages) 0)) }}widescreen:grid-col-10 desktop:grid-col-9{{else}}widescreen:grid-col-12 desktop:grid-col-12{{end}}">
+        <article>
+          <header>
+            {{ if isset .Params "heading" }}<h1>{{ .Params.heading }}</h1>{{else}}<h1>{{ .Title }}</h1>{{ end }}
+          </header>
+          {{ .Content }}
+        </article>
+        {{ if gt (len .Pages) 0 }}
+        <h2>Meeting Archive:</h2>
+        {{ range .Pages.GroupByDate "2006" }}
+        <h3>{{ .Key }}</h3>
+        {{ range .Pages.ByDate.Reverse }}
+            {{ .Render "devlunch-summary" }}
+            <hr>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}
