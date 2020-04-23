@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-04-01T03:43:27.77486Z
+        value: 2020-04-23T20:39:25.475681Z
     links: 
       - 
         href: FedRAMP_HIGH-baseline_profile.xml
