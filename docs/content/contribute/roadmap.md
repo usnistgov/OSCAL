@@ -1,5 +1,6 @@
 ---
 title: OSCAL Development Roadmap
+description: Information on the OSCAL development roadmap, which is taking place over a series of milestones.
 aliases:
   - /learnmore/roadmap/
 ---
