@@ -1,6 +1,6 @@
 ---
 title: Lunch with the Devs
-description: Contact Us
+description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL work.
 layout: devlunch
 aliases:
 - /contribute/devlunch/

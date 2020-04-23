@@ -31,4 +31,4 @@ You can connect with us and other developers working on OSCAL related projects o
 
 ## Contact
 
-To learn more about how OSCAL can help you, [contact us](contact/)!
+If you are interested in contributing, please feel free to [contact us](contact/)!
