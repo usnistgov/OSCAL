@@ -16,7 +16,7 @@ Currently, some concepts are covered in the [Learn More](/learnmore/concepts) se
 
 ## Models
 
-The models are documented in the OSCAL [Layers and Models Reference](documentation/schema/).
+The models are documented in the OSCAL [Layers and Models Reference](/documentation/schema/).
 
 ## Processing
 
