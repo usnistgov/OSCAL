@@ -24,7 +24,7 @@ However, this tutorial is not focusing on the schemas themselves but rather on t
 For more information on each schemas, the reader is referred to [XML Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/) 
 and [JSON Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/), respectively.
 
-The root of the Control Catalog format is `catalog`. 
+The root of the Control Catalog format is `catalog`.
 
 In the example below, the contents of the `catalog` are provided as empty data items. These are included to illustrate the content model of `catalog`, and we will be covering their syntax later in this tutorial.
 
