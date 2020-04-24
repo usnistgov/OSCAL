@@ -2,7 +2,7 @@
 title: Creating a Basic OSCAL Catalog
 description: A tutorial on creating a basic OSCAL catalog.
 weight: 5
-
+suppresstopiclist: true
 ---
 
 ## What is an OSCAL Catalog?
@@ -513,7 +513,7 @@ Another required piece of information for a control is the control's title provi
 
 While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property with the name `label` can be used to provide the label value. This is illustrated on line 3.
 
-Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group.
+Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `@id` attribute. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -534,13 +534,13 @@ Finally, a control must have a set of control statements. Shown on lines 4 thru 
 }
 {{< /highlight >}}
 
-A control is represented using the `<control>` element as shown on line 1. Like most major elements in OSCAL, a control is required to have an identifier provided using the `@id` attribute.
+A control is represented as a JSON object with the array value of the `controls` property as shown on line 2. Like most major JSON objects in OSCAL, a control is required to have an identifier provided using the `id` property (line 3).
 
-Another required piece of information for a control is the control's title provided by the `<title>` element (line 2).
+Another required piece of information for a control is the control's title provided by the `title` property (line 4).
 
-While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property with the name `label` can be used to provide the label value. This is illustrated on line 3.
+While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property with the name `label` can be used to provide the label value. This is illustrated on lines 5 thru 8.
 
-Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group.
+Finally, a control must have a set of control statements. Shown on lines 9 thru 13, the `parts` property allows an array of part JSON objects to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -555,59 +555,23 @@ controls:
     name: statement
     prose: All information security responsibilities should be defined and allocated.
 {{< /highlight >}}
+
+
+A control is represented as a YAML list item, with the list having the key `controls` as shown on line 1. Like most major YAML objects in OSCAL, a control is required to have an identifier provided using the `id` key (line 2).
+
+Another required piece of information for a control is the control's title provided by the `title` key (line 4).
+
+While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property is defined on lines 5 thru 6, with a name `label` and the value `1.1.1`.
+
+Finally, a control must have a set of control statements. Shown on lines 8 thru 10, a list of parts identified using the `parts` key allows a list of part YAML items to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{< /tabs >}}
 
-This represents the minimum information for defining a control. The next two sections discuss how to provide some additional control-related information.
+This represents the minimum information for defining a control. The next section discuss how to provide additional control-related information.
 
-### Including Implementation Guidance
+### Including Implementation Guidance and Other Supplemental Information
 
-
-### Providing Supplemental Information
-
-represented as follows:
-
-
-
-
-, the OSCAL element `control` identified by the tag `<control></control>` is used. 
-The element `control` must have a `<title></title>`, and it may have none or many of the following elements:
- 
-```   
-    * `parameter` identified by the tags <param></param>,
-    * `property` identified by the tags <prop></prop>,
-    * `annotation` identified by the tags <annotation></annotation>,
-    * `link` identified by the tags <link</link>, and
-    * `part` identified by the tags <part></part>.
-```
-
-Using the OSCAL elements in the same manner as for the `group`, the first *Control* in the *Sample Security Catalog* can be 
-represented as below:
-
-
-```
-      <control class="ssc-iso-sc27" id="s1.1.1">
-        <title>Information security roles and responsibilities</title>
-        <prop name="label">1.1.1</prop>
-        <prop name="sort-id">c01</prop>
-        <part id="s1.1.1_stm" name="statement">
-          <prop name="label">Control</prop>
-            <p>All information security [...].</p>
-        </part>
-        <part id="s1.1.1_gdn" name="guidance">
-          <prop name="label">Implementation guidance</prop>
-          <part id="s1.1.1_gdn.1" name="guidance">
-            <p>Allocation of information security [...]</p>
-          </part>
-          [...]
-        </part>
-        <part id="s1.1.1_inf" name="information">
-          <prop name="lable">Other information</prop>
-          <p>Many organizations appoint an [...]</p>
-        </part>
-      </control>
-```
-
+The sample security catalog also has the `Implementation Guidance` and `Other Information` sections within the control. These sections can be expressed in an OSCAL control as additional markup content as follows:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -653,7 +617,6 @@ represented as below:
     </part>
   </part>
   <part id="s1.1.1_inf" name="information">
-    <prop name="label">Other information</prop>
     <p>Many organizations appoint an information security manager to take overall
       responsibility for the development and implementation of information security and to
       support the identification of controls.</p>
@@ -696,10 +659,6 @@ represented as below:
   }, {
     "id" : "s1.1.1_inf",
     "name" : "information",
-    "properties" : [ {
-      "name" : "label",
-      "value" : "Other information"
-    } ],
     "prose" : "Many organizations appoint an information security manager to take overall\nresponsibility for the development and implementation of information security and to\nsupport the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain\nwith individual managers. One common practice is to appoint an owner for each asset who\nthen becomes responsible for its day-to-day protection."
   } ]
 } ]
@@ -751,9 +710,6 @@ controls:
         5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.
   - id: s1.1.1_inf
     name: information
-    properties:
-    - name: label
-      value: Other information
     prose: |-
       Many organizations appoint an information security manager to take overall
       responsibility for the development and implementation of information security and to
@@ -766,16 +722,16 @@ controls:
 {{% /tab %}}
 {{< /tabs >}}
 
-A similar approach of expressing the data is used to reformat the rest of all the `Controls` (1.1.2, 2.1.1 and 2.2.1)
-
-
+Using additional parts, all of the additional content is included. The `Implementation Guidance` section is contained within a part named `guidance` and the `Other Information` section is contained within a part named `information`. Notice in the above that each part has a unique identifier, and that the `guidance` part has child parts, which contain distinct areas of guidance.
 
 ## The Final Catalog
 
+The same control approach can also be applied to the rest of the controls in the *Sample Security Catalog* (i.e., 1.1.2, 2.1.1 and 2.2.1).
+
+Assembling all of the control content described in this tutorial, we obtain the final structure of the *Sample Security Catalog* ([XML](catalog.xml), [JSON](catalog.json), [YAML](catalog.yml)):
+
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-Assembling all of the XML elements described above, we obtain the final structure of the *Sample Security Catalog*: 
-
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -839,7 +795,6 @@ Assembling all of the XML elements described above, we obtain the final structur
           </part>
         </part>
         <part id="s1.1.1_inf" name="information">
-          <prop name="label">Other information</prop>
           <p>Many organizations appoint an information security manager to take overall
             responsibility for the development and implementation of information security and to
             support the identification of controls.</p>
@@ -1002,8 +957,6 @@ Assembling all of the XML elements described above, we obtain the final structur
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
-Assembling all of the JSON objects described above, we obtain the final structure of the *Sample Security Catalog*: 
-
 {{< highlight json "linenos=table" >}}
 {
   "catalog" : {
@@ -1203,8 +1156,6 @@ Assembling all of the JSON objects described above, we obtain the final structur
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
-Assembling all of the YAML items described above, we obtain the final structure of the *Sample Security Catalog*: 
-
 {{< highlight yaml "linenos=table" >}}
 ---
 catalog:
@@ -1449,20 +1400,17 @@ catalog:
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< tabs XML JSON YAML >}}
-{{% tab %}}
-{{< highlight xml "linenos=table" >}}
-{{< /highlight >}}
-{{% /tab %}}
-{{% tab %}}
-{{< highlight json "linenos=table" >}}
-{{< /highlight >}}
-{{% /tab %}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
-{{< /highlight >}}
-{{% /tab %}}
-{{< /tabs >}}
+## Summary
+
+This concludes the tutorial. At this point you should be familiar with:
+
+- The basic structure of a catalog of controls expressed in OSCAL.
+- How to provide the basic metadata required to be included in an OSCAL control catalog.
+- How to define a group and a collection of controls.
+- How to use parts to provide additional control text.
+
+For more information you can review the [OSCAL catalog model documentation](/documentation/schema/catalog-layer/catalog/).
+
 
 [catalog-docs]: /documentation/schema/catalog/
 [catalog-definition]: /learnmore/concepts/catalog/

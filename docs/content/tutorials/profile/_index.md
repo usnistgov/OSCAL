@@ -424,3 +424,18 @@ Assembling all the elements described above, we obtain the arching structure of 
 ```
 
 
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
