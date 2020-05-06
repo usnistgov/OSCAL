@@ -22,7 +22,7 @@
       <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
-         <assembly ref="import" max-occurs="unbounded">
+         <assembly ref="import" min-occurs="1" max-occurs="unbounded">
             <group-as name="imports" in-json="ARRAY"/>
          </assembly>
          <assembly ref="merge"/>

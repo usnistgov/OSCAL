@@ -6,6 +6,9 @@ menu:
   primary:
     name: Documentation
     weight: 40
+sidenav:
+  inactiverenderdepth: 1
+  activerenderdepth: 2
 ---
 
 The following documentation for OSCAL is provided:

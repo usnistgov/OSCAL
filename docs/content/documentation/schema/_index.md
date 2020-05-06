@@ -3,10 +3,11 @@ title: OSCAL Layers and Models Reference
 description: OSCAL Schema Reference
 weight: 50
 sidenav:
-  activerenderdepth: 2
-  inactiverenderdepth: 2
+  activerenderdepth: 1
 aliases:
   - /docs/model/ssp/
+sidenav:
+  inactiverenderdepth: 1
 ---
 
 The OSCAL project is developing each OSCAL [layer](/learnmore/architecture/) as one or more models, which are each defined in multiple formats. The following image dipicts each layer and the corresponding model(s) for each layer.

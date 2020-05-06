@@ -18,7 +18,7 @@ If you have produced a tool that supports the OSCAL formats that you would like 
 
 ## Disclaimer
 
-**Any mention of commercial products within NIST web pages is for information only; it does not imply recommendation or endorsement by NIST.**
+**Certain products may be identified on this web page, but such identification doesn’t imply recommendation by the US National Institute of Standards and Technology or other agencies of the US Government, nor does it imply that the products identified are necessarily the best available for the purpose.**
 
 See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more information.
 

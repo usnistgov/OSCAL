@@ -10,7 +10,6 @@ menu:
     name: Contact Us
     url: /contact/
     weight: 50
-
 aliases:
 - /contribute/contact/
 ---

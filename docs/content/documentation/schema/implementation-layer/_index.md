@@ -3,6 +3,9 @@ title: Implementation Layer
 heading: "OSCAL Implementation Layer"
 description: Provides models that support the description of how controls are [implemented](/documentation/schema/implementation-layer/ssp/) in a given information system or a [distributed component](/documentation/schema/implementation-layer/component/) that can be incorporated into an information system.
 weight: 50
+sidenav:
+    activerenderdepth: 2
+    inactiverenderdepth: 2
 ---
 
 The OSCAL implementation layer provides models for describing how controls are implemented in a specific system or in distributed component that can be incorporated into a system.
