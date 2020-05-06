@@ -974,7 +974,8 @@
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "id",
-          "metadata" ],
+          "metadata",
+          "imports" ],
         "additionalProperties" : false },
       "import" : 
       { "title" : "Import resource",
