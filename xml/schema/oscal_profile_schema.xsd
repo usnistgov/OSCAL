@@ -1471,7 +1471,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element ref="oscal-profile:metadata" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-profile:import" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-profile:import" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="oscal-profile:merge" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-profile:modify" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-profile:back-matter" minOccurs="0" maxOccurs="1"/>
