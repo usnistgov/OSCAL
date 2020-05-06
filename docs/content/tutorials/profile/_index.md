@@ -4,27 +4,185 @@ description: A tutorial on creating an OSCAL Profile.
 weight: 10
 ---
 
-## What is an OSCAL Profile
+This tutorial covers creating a basic OSCAL profile using three different methods.
 
-The OSCAL Profile layer defines a [model](https://pages.nist.gov/OSCAL/documentation/schema/profile/)  for selecting a specific set of security 
-control requirements from one or more control catalogs. The term *profile* in OSCAL
-is also called a *baseline* in the NIST SP 800-53 catalog or in FedRAMP's documentation. 
-Additionally, the term *profile* in OSCAL covers the overlay concept defined in the 
-NIST SP 800-53 catalog allowing for further tailoring of controls, modification of the requirements,
-customization, interpretation and parameter values assignment. 
+Before reading this tutorial you should:
 
-An OSCAL Profiles can be based on one or more catalogs of controls, or on other OSCAL Profiles.
- [OSCAL](https://www.nist.gov/oscal) website provides comprehensive information about the [OSCAL Profile Model](https://pages.nist.gov/OSCAL/documentation/schema/profile/)
+- Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/) formats.
+- Read the OSCAL catalog layer [overview](/documentation/schema/catalog-layer/).
 
-Current tutorial focuses solely on a proprietary profile that **selects all the controls** from a catalog of security controls. 
-The catalog of security controls used in this tutorial is the [Sample Security Catalog](../catalog/Catalog%20Tutorial.md), version 1.0, created for educational purpose.
-The profile also *tailors* (modifies) control **1.1.1** to add additional *implementation guidance* and additional *information*.
-This profile can be viewed [here](./Profile-SelectAll%20Sample.md).
+## What is an OSCAL Profile?
 
-##	Formatting the Profile into an OSCAL Profile
+The term **profile** in OSCAL is also called a *baseline* in the NIST SP 800-53 catalog or in FedRAMP's documentation.  Additionally, the term *profile* in OSCAL covers the *overlay* concept defined in the NIST SP 800-53 revision 4.
 
-The OSCAL Model supports representation of a *profile* in either XML or JSON.
-This tutorial describes the formatting of such *profile* in XML.
+A profile in OSCAL is a data file expressed using the OSCAL [profile model](/documentation/schema/profile-layer/profile/). An OSCAL profile provides a mechanism for selecting and customizing a specific set of security control requirements from one or more control catalogs expressed using the OSCAL [catalog model](/documentation/schema/catalog-layer/catalog). An OSCAL profile also provides mechanisms for further tailoring of controls, modification of the requirements, customization, interpretation and parameter values assignment.
+
+This tutorial uses the [sample control catalog](/tutorials/catalog/catalog-sample/) we created during the [creating a basic OSCAL control catalog](/tutorials/catalog/) tutorial.
+
+This tutorial illustrates how to create an OSCAL profile using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL [profile model](/documentation/schema/profile-layer/profile/). The OSCAL project provides an [XML Schema and documentation](/documentation/schema/profile-layer/profile/xml-schema/), which is useful for validating an XML catalog, and a [JSON Schema and documentation](/documentation/schema/profile-layer/profile/json-schema/), which is useful for validating JSON and YAML profiles. However, this tutorial is not focusing on the schemas themselves, but rather on the formatting the sample control catalog listed above in OSCAL.
+
+## Creating an OSCAL Profile
+
+The root of the OSCAL control catalog model is `profile`.
+
+In the example below, the contents of the `profile` are provided as empty data items. These are included to illustrate the content model of `profile`, and we will be covering their syntax later in this tutorial.
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
+    <metadata/>
+    <import/>
+    <merge/>
+    <modify/>
+    <back-matter/>
+</catalog>
+{{< /highlight >}}
+
+The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+
+A `<profile>` contains:
+
+- `metadata` (required) - Provides document metadata for the catalog.
+- `import` (optional) - Allows for grouping of `control` and other `group` elements. Zero or more `group` elements may be used.
+- `merge` (optional) - Defines
+= `modify`
+ a given control in the catalog. Zero or more `control` elements may be used, and a `control` can be nested within another `control`.
+- `back-matter` (optional) – Contains references used within the catalog. Use of `<back-matter>` is not covered in this tutorial.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "catalog": {
+    "id": "uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef",
+    "metadata": {},
+    "groups": {},
+    "controls": {},
+    "back-matter": {}
+  }
+}
+{{< /highlight >}}
+
+The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+
+A `catalog` contains:
+
+- `metadata` (required) - Provides document metadata for the catalog.
+- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects.
+- `controls` (optional) - Contains one or more control objects, which can nest other control objects.
+- `back-matter` (optional) – Contains references used within the catalog.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+catalog:
+  id: uuid-956c32af-8a15-4732-a4d9-f976a1149c4b
+  metadata:
+  groups:
+  controls:
+  back-matter:
+{{< /highlight >}}
+
+The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+
+A `catalog` contains:
+
+- `metadata` (required) - Provides document metadata for the catalog.
+- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects.
+- `controls` (optional) - Contains one or more control objects, which can nest other control objects.
+- `back-matter` (optional) – Contains references used within the catalog.
+{{% /tab %}}
+{{< /tabs >}}
+
+Let's discuss each of these elements in the following sections and identify they can be used to represent our catalog.
+
+## Defining the Catalog's Metadata
+
+The `metadata` has identical structure for all OSCAL files. 
+
+This tutorial focuses only on the mandatory elements for `metadata`.  A separate tutorial will focus on the full `metadata` syntax.
+
+The `metadata` must include:
+
+- the title of the catalog
+- the time the catalog was last modified
+- the version of OSCAL used
+
+The following additional data items from the [sample security catalog][catalog-prose-sample] also need to be defined in the OSCAL catalog.
+
+```text
+Version: 1.0
+Published: 02.02.2020
+Last Modified: 02.10.2020
+```
+
+All of these data items can be represented as follows:
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<metadata>
+  <title>Sample Security Catalog</title>
+  <published>2020-02-02T11:01:04.736-04:00</published>
+  <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
+  <version>1.0</version>
+  <oscal-version>1.0.0-milestone3</oscal-version>
+</metadata>
+{{< /highlight >}}
+
+Breaking this down line-by-line you will notice the following:
+
+- Line 1: The `<metadata>` [element](/documentation/schema/catalog/xml-schema/#oscal-catalog-xml_metadata), which contains the document's metadata.
+- Line 2: The document's title `Sample Security Catalog` is provided using `<title>` element. The document's title is a mandatory field for an OSCAL Catalog.
+- Line 3: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using `<published>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using `<last-modified>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 5: The version of the document `1.0` is provided using the `<version>` element. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 6: Finally, the OSCAL version is provided using the `<oscal-version>` element, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "metadata": {
+    "title": "Sample Security Catalog",
+    "published": "2020-02-02T11:01:04.736-04:00",
+    "last-modified": "2020-10-02T11:01:04.736-04:00",
+    "version": "1.0",
+    "oscal-version": "1.0.0-milestone3"
+  }
+}
+{{< /highlight >}}
+
+Breaking this down line-by-line you will notice the following:
+
+- Line 2: The `metadata` [property](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata), who's value is a metadata object which contains the document's metadata.
+- Line 3: The document's title `Sample Security Catalog` is provided using `title` property. The document's title is a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using the `published` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 5: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 6: The version of the document `1.0` is provided using the `version` property. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 7: Finally, the OSCAL version is provided using the `oscal-version` property, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+metadata:
+  title: Sample Security Catalog
+  published: '2020-02-02T11:01:04.736-04:00'
+  last-modified: '2020-02-10T11:01:04.736-04:00'
+  version: '1.0'
+  oscal-version: 1.0.0
+{{< /highlight >}}
+
+Breaking this down line-by-line you will notice the following:
+
+- Line 1: The `metadata` [block](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata), who's value is a metadata object which contains the document's metadata.
+- Line 2: The document's title `Sample Security Catalog` is provided using `title` key. The document's title is a mandatory field for an OSCAL Catalog.
+- Line 3: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using the `published` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using the `last-modified` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 5: The version of the document `1.0` is provided using the `version` key. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 6: Finally, the OSCAL version is provided using the `oscal-version` key, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+{{% /tab %}}
+{{< /tabs >}}
 
 ###	Profile Catalog Model
 

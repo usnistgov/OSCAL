@@ -1,9 +1,14 @@
 ---
-title: Creating a Basic OSCAL Catalog
-description: A tutorial on creating a basic OSCAL catalog.
+title: Creating a Basic Control Catalog
+description: A tutorial on creating a basic OSCAL control catalog.
 weight: 5
 suppresstopiclist: true
 ---
+
+This tutorial covers creating a basic OSCAL control catalog. Before reading this tutorial you should:
+
+- Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
+- Read the OSCAL catalog layer [overview](/documentation/schema/catalog-layer/).
 
 ## What is an OSCAL Catalog?
 
@@ -17,16 +22,11 @@ This tutorial describes the formatting of such a catalog using the OSCAL Catalog
 
 For the purpose of this tutorial, an [example prose catalog][catalog-prose-sample] has been created based on a short excerpt from [ISO/IEC 27002:2013](https://www.iso.org/standard/54533.html), _Information technology — Security techniques — Code of practice for information security controls_. This work is provided here under copyright "fair use" for non-profit, educational purposes only. Copyrights for this work are held by the publisher, the International Organization for Standardization (ISO).
 
+This tutorial illustrates how to create an OSCAL control catalog using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL [catalog model](/documentation/schema/catalog-layer/catalog/). The OSCAL project provides an [XML Schema and documentation](/documentation/schema/catalog-layer/catalog/xml-schema/), which is useful for validating an XML catalog, and a [JSON Schema and documentation](/documentation/schema/catalog-layer/catalog/json-schema/), which is useful for validating JSON and YAML catalogs. However, this tutorial is not focusing on the schemas themselves, but rather on the formatting the sample control catalog listed above in OSCAL.
+
 ## Creating an OSCAL Catalog
 
-An OSCAL catalog (in XML or JSON) uses the respective schemas that describe the XML tag sets or the JSON data objects.
-However, this tutorial is not focusing on the schemas themselves but rather on the formatting in OSCAL of the proprietary control catalog listed above. 
-For more information on each schemas, the reader is referred to [XML Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-schema/) 
-and [JSON Schema Reference](https://pages.nist.gov/OSCAL/documentation/schema/catalog/json-schema/), respectively.
-
-The root of the Control Catalog format is `catalog`.
-
-In the example below, the contents of the `catalog` are provided as empty data items. These are included to illustrate the content model of `catalog`, and we will be covering their syntax later in this tutorial.
+The examples below illustrate the top-level structure of the OSCAL control catalog model.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -41,14 +41,18 @@ In the example below, the contents of the `catalog` are provided as empty data i
 </catalog>
 {{< /highlight >}}
 
+The root of the OSCAL control catalog model is [`<catalog>`](/documentation/schema/catalog-layer/catalog/xml-schema/#oscal-catalog-xml_catalog).
+
+In the example above, the contents of the `<catalog>` element is provided as empty data items. These are included to illustrate the content model of an OSCAL catalog, and we will be covering each element's syntax later in this tutorial.
+
 The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
-A `catalog` contains:
+A `<catalog>` contains:
 
-- `metadata` (required) - Provides document metadata for the catalog.
-- `group` (optional) - Allows for grouping of `control` and other `group` elements. Zero or more `group` elements may be used.
-- `control` (optional) - Defines a given control in the catalog. Zero or more `control` elements may be used, and a `control` can be nested within another `control`.
-- `back-matter` (optional) – Contains references used within the catalog.
+- `<metadata>` (required) - Provides document metadata for the catalog. This is explored below in the [defining the catalog's metadata](#defining-the-catalogs-metadata) section of this tutorial.
+- `<group>` (optional) - Allows for grouping of `<control>` and other `<group>` elements. Zero or more `<group>` elements may be used. This is explored below in the [representing groups in a catalog](#representing-groups-in-a-catalog) section of this tutorial.
+- `<control>` (optional) - Defines a given control in the catalog. Zero or more `<control>` elements may be used, and a `<control>` can be nested within another `<control>` element to identify an optional portion of a control that can be managed as a discrete unit (e.g., a control enhancement). This is explored below in the [representing control information](#representing-control-information) section of this tutorial.
+- `<back-matter>` (optional) – Contains references used within the catalog. Use of `<back-matter>` is not covered in this tutorial.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -63,14 +67,18 @@ A `catalog` contains:
 }
 {{< /highlight >}}
 
+The root of the OSCAL control catalog model is the [`catalog`](/documentation/schema/catalog-layer/catalog/json-schema/#oscal-catalog-json_catalog) property.
+
+In the example above, the contents of the `catalog` property is provided as empty object properties. These are included to illustrate the content model of an OSCAL catalog, and we will be covering each child property's syntax later in this tutorial.
+
 The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
-A `catalog` contains:
+A `catalog` contains the following properties:
 
-- `metadata` (required) - Provides document metadata for the catalog.
-- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects.
-- `controls` (optional) - Contains one or more control objects, which can nest other control objects.
-- `back-matter` (optional) – Contains references used within the catalog.
+- `metadata` (required) - Provides document metadata for the catalog. This is explored below in the [defining the catalog's metadata](#defining-the-catalogs-metadata) section of this tutorial.
+- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects. This is explored below in the [representing groups in a catalog](#representing-groups-in-a-catalog) section of this tutorial.
+- `controls` (optional) - Contains one or more control objects, which can nest other control objects to identify an optional portion of a control that can be managed as a discrete unit (e.g., a control enhancement). This is explored below in the [representing control information](#representing-control-information) section of this tutorial.
+- `back-matter` (optional) – Contains references used within the catalog. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -83,26 +91,30 @@ catalog:
   back-matter:
 {{< /highlight >}}
 
-The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The root of the OSCAL control catalog model is the `catalog` item.
+
+In the example above, the contents of the `catalog` item is provided as keys with empty collections. These are included to illustrate the content model of an OSCAL catalog, and we will be covering their syntax later in this tutorial.
+
+The `id` key (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `catalog` contains:
 
-- `metadata` (required) - Provides document metadata for the catalog.
-- `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects.
-- `controls` (optional) - Contains one or more control objects, which can nest other control objects.
-- `back-matter` (optional) – Contains references used within the catalog.
+- `metadata` (required) - Provides document metadata for the catalog. This is explored below in the [defining the catalog's metadata](#defining-the-catalogs-metadata) section of this tutorial.
+- `groups` (optional) - Allows for grouping of `controls` and other `groups` keys. Contains one or more group items. This is explored below in the [representing groups in a catalog](#representing-groups-in-a-catalog) section of this tutorial.
+- `controls` (optional) - Contains one or more control items, which can nest other control items to identify an optional portion of a control that can be managed as a discrete unit (e.g., a control enhancement). This is explored below in the [representing control information](#representing-control-information) section of this tutorial.
+- `back-matter` (optional) – Contains references used within the catalog. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}
 {{< /tabs >}}
 
-Let's discuss each of these elements in the following sections and identify which ones can be used to represent our catalog.
+We will now discuss each of these data structures in the following sections and identify how they each can be used to represent our catalog.
 
 ## Defining the Catalog's Metadata
 
-The `metadata` has identical structure for all OSCAL files. 
+The *metadata* section of the control catalog contains data about the catalog document. This section has an identical structure which is used consistently across all OSCAL models.
 
-This tutorial focuses only on the mandatory elements for `metadata`.  A separate tutorial will focus on the full `metadata` syntax.
+This tutorial focuses only on the mandatory data required in the metadata section. A separate tutorial will focus on the full syntax available in the metadata section.
 
-The `metadata` must include:
+The metadata section must include:
 
 - the title of the catalog
 - the time the catalog was last modified
@@ -132,11 +144,11 @@ All of these data items can be represented as follows:
 
 Breaking this down line-by-line you will notice the following:
 
-- Line 1: The `<metadata>` [element](/documentation/schema/catalog/xml-schema/#oscal-catalog-xml_metadata), which contains the document's metadata.
-- Line 2: The document's title `Sample Security Catalog` is provided using `<title>` element. The document's title is a mandatory field for an OSCAL Catalog.
-- Line 3: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using `<published>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 4: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using `<last-modified>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
-- Line 5: The version of the document `1.0` is provided using the `<version>` element. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 1: The [`<metadata>`](/documentation/schema/catalog/xml-schema/#oscal-catalog-xml_metadata) element, which contains the document's metadata.
+- Line 2: The document's title (i.e., `Sample Security Catalog`) is provided using `<title>` element. The document's title is a mandatory field for an OSCAL Catalog.
+- Line 3: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using `<published>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using `<last-modified>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 5: The version of the document (i.e., `1.0`) is provided using the `<version>` element. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
 - Line 6: Finally, the OSCAL version is provided using the `<oscal-version>` element, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
 {{% /tab %}}
 {{% tab %}}
@@ -154,11 +166,11 @@ Breaking this down line-by-line you will notice the following:
 
 Breaking this down line-by-line you will notice the following:
 
-- Line 2: The `metadata` [property](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata), who's value is a metadata object which contains the document's metadata.
-- Line 3: The document's title `Sample Security Catalog` is provided using `title` property. The document's title is a mandatory field for an OSCAL Catalog.
-- Line 4: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using the `published` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 5: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
-- Line 6: The version of the document `1.0` is provided using the `version` property. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 2: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) property, who's value is an objec which contains properties representing the document's metadata.
+- Line 3: The document's title (i.e., `Sample Security Catalog`) is provided using `title` property. The document's title is a mandatory field for an OSCAL catalog.
+- Line 4: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using the `published` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 5: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 6: The version of the document (i.e., `1.0`) is provided using the `version` property. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
 - Line 7: Finally, the OSCAL version is provided using the `oscal-version` property, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
 {{% /tab %}}
 {{% tab %}}
@@ -173,11 +185,11 @@ metadata:
 
 Breaking this down line-by-line you will notice the following:
 
-- Line 1: The `metadata` [block](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata), who's value is a metadata object which contains the document's metadata.
-- Line 2: The document's title `Sample Security Catalog` is provided using `title` key. The document's title is a mandatory field for an OSCAL Catalog.
-- Line 3: The date when the document was published `2020-02-02T11:01:04.736-04:00` is provided using the `published` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 4: The date when the document was last modified `2020-10-02T11:01:04.736-04:00` is provided using the `last-modified` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
-- Line 5: The version of the document `1.0` is provided using the `version` key. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
+- Line 1: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) block, who's value is a mapping of keys representing the document's metadata.
+- Line 2: The document's title (i.e., `Sample Security Catalog`) is provided using `title` key. The document's title is a mandatory field for an OSCAL Catalog.
+- Line 3: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using the `published` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using the `last-modified` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 5: The version of the document (i.e., `1.0`) is provided using the `version` key. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
 - Line 6: Finally, the OSCAL version is provided using the `oscal-version` key, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
 {{% /tab %}}
 {{< /tabs >}}
@@ -205,9 +217,9 @@ Analyzing the body of the [Catalog Sample][catalog-prose-sample], we observe tha
             [...]     
 ```
 
-In the above, controls are organized into two top-level groups: 1 *Organization of Information Security* and 2 *Access Control*. Each of these top-level groups have sub-sections that define an *Objective*, and these sub-sections then define a series of controls.
+In the above, controls are organized into two top-level groups: 1 *Organization of Information Security* and 2 *Access Control*. Each of these sections have sub-sections that define an *Objective*, and these sub-sections then define a series of controls.
 
-The first top-level section can be represented in an OSCAL Catalog as follows:
+The first section in the example catalog is represented in an OSCAL catalog as follows:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -338,7 +350,7 @@ Breaking this down line-by-line you will notice the following:
 {{% /tab %}}
 {{< /tabs >}}
 
-The Sections of the original document have numbers, and therefore, we base the identifier values for each group on the heading numbers of the sections and the subsections, with a leading character such as *s* in front as a way to avoid any potential id conflicts.
+The sections of the original document have numbers, and therefore, we base the identifier values for each group on the heading numbers of the sections and the subsections, with a leading character such as *s* in front as a way to avoid any potential id conflicts.
 
 Section 2 follows suit, resulting in the following representation of both sections:
 
@@ -462,7 +474,7 @@ Section 2 follows suit, resulting in the following representation of both sectio
 
 ## Representing Control Information
 
-In the [catalog sample][catalog-prose-sample], controls are defined following the **Objective** in each section. Each control in the sample provides a **control statement**, expressing the control's requirement; an **Implementation Guidance**, providing guidelines to consider when implementing the control; and often some additional information titled **Other information**.
+In the [catalog sample][catalog-prose-sample], controls are defined following the **Objective** in each section. Each control in the sample provides a **control statement**, expressing the control's requirement; an **Implementation Guidance** section, providing guidelines to consider when implementing the control; and often some additional information titled **Other information**.
 
 The structure of the first control, `1.1.1 Information security roles` is represented below:
 
@@ -511,7 +523,7 @@ A control is represented using the `<control>` element as shown on line 1. Like 
 
 Another required piece of information for a control is the control's title provided by the `<title>` element (line 2).
 
-While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property with the name `label` can be used to provide the label value. This is illustrated on line 3.
+While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. Using the `<prop>` element, an OSCAL property with the name `label` is used to provide the section number label value. This is illustrated on line 3.
 
 Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `@id` attribute. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
@@ -538,7 +550,7 @@ A control is represented as a JSON object with the array value of the `controls`
 
 Another required piece of information for a control is the control's title provided by the `title` property (line 4).
 
-While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property with the name `label` can be used to provide the label value. This is illustrated on lines 5 thru 8.
+While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. The `properties` JSON property provides an array of OSCAL property objects. An OSCAL property with the name `label` is used to provide the section number label value. This is illustrated on lines 5 thru 8.
 
 Finally, a control must have a set of control statements. Shown on lines 9 thru 13, the `parts` property allows an array of part JSON objects to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
@@ -561,7 +573,7 @@ A control is represented as a YAML list item, with the list having the key `cont
 
 Another required piece of information for a control is the control's title provided by the `title` key (line 4).
 
-While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. An OSCAL property is defined on lines 5 thru 6, with a name `label` and the value `1.1.1`.
+While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. The `properties` key provides an array of OSCAL property items. An OSCAL property is defined on lines 5 thru 6, with a name `label` and the value `1.1.1` to provide the section number label value.
 
 Finally, a control must have a set of control statements. Shown on lines 8 thru 10, a list of parts identified using the `parts` key allows a list of part YAML items to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](](/documentation/schema/datatypes/#markup-multiline)). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
@@ -874,7 +886,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
               <li>relevant legislation and any contractual obligations regarding limitation of
                 access to data or services;</li>
               <li>management of access rights in a distributed and networked environment which
-                recognizes all types of connections availabel;</li>
+                recognizes all types of connections available;</li>
               <li>segregation of access control roles, e.g. access request, access authorization,
                 access administration;</li>
               <li>requirements for formal authorization of access requests;</li>
@@ -1101,7 +1113,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
             }, {
               "id" : "s2.1.1_gdn.4",
               "name" : "item",
-              "prose" : "The policy should take account of the following:\n\n1. security requirements of business applications;\n2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;\n3. consistency between the access rights and information classification policies of systems and networks;\n4. relevant legislation and any contractual obligations regarding limitation of access to data or services;\n5. management of access rights in a distributed and networked environment which recognizes all types of connections availabel;\n6. segregation of access control roles, e.g. access request, access authorization, access administration;\n7. requirements for formal authorization of access requests;\n8. requirements for periodic review of access rights;\n9. removal of access rights;\n10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,\n11. roles with privileged access."
+              "prose" : "The policy should take account of the following:\n\n1. security requirements of business applications;\n2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;\n3. consistency between the access rights and information classification policies of systems and networks;\n4. relevant legislation and any contractual obligations regarding limitation of access to data or services;\n5. management of access rights in a distributed and networked environment which recognizes all types of connections available;\n6. segregation of access control roles, e.g. access request, access authorization, access administration;\n7. requirements for formal authorization of access requests;\n8. requirements for periodic review of access rights;\n9. removal of access rights;\n10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,\n11. roles with privileged access."
             } ]
           }, {
             "id" : "s2.1.1_stm",
@@ -1410,7 +1422,6 @@ This concludes the tutorial. At this point you should be familiar with:
 - How to use parts to provide additional control text.
 
 For more information you can review the [OSCAL catalog model documentation](/documentation/schema/catalog-layer/catalog/).
-
 
 [catalog-docs]: /documentation/schema/catalog/
 [catalog-definition]: /learnmore/concepts/catalog/
