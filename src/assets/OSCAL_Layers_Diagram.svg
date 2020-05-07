@@ -32,14 +32,6 @@
 		<title>Page-1</title>
 		<v:pageProperties v:drawingScale="1" v:pageScale="1" v:drawingUnits="0" v:shadowOffsetX="9.00001"
 				v:shadowOffsetY="-9.00001"/>
-		<a xlink:href="https://pages.nist.gov/OSCAL/learnmore/architecture/#governance-layer" xlink:title="Governance Layer">
-			<g id="group1-1" transform="translate(0.999999,-1.00086)" v:mID="1" v:groupContext="group">
-				<title>Sheet.1</title>
-				<g id="group2-2" v:mID="2" v:groupContext="group">
-					<title>Sheet.2</title>
-				</g>
-			</g>
-		</a>
 		<a xlink:href="https://pages.nist.gov/OSCAL/learnmore/architecture/#profile-layer" xlink:title="Profile Layer">
 			<g id="group9-3" transform="translate(28.145,-128.575)" v:mID="9" v:groupContext="group">
 				<title>Sheet.9</title>
