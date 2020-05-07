@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ARG HUGO_VERSION=0.69.0
+ARG HUGO_VERSION=0.69.2
 
 RUN mkdir /hugo && \
   cd /hugo && \

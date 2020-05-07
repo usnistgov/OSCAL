@@ -13,6 +13,7 @@ references:
       SCHEMATRON_HOME: git-schematron
       TERM: xterm
       BUNDLER_VERSION: 2.0.2
+      HUGO_VERSION: 0.69.2
     working_directory: ~/oscal
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
@@ -110,11 +111,11 @@ commands:
       - run:
           name: Get Hugo
           command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.69.0/hugo_extended_0.69.0_Linux-64bit.deb
+            wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
       - run:
           name: Install Hugo
           command: |
-            sudo apt-get install ./hugo_extended_0.69.0_Linux-64bit.deb
+            sudo apt-get install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
   install-pip-lxml:
     description: "Installs Python lxml package"
     steps:
