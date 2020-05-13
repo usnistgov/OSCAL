@@ -28,5 +28,5 @@ The OSCAL specification is split into multiple sections:
 
 Additionally, the following other OSCAL documentation is provided:
 
-- Real-world and constructed examples of the OSCAL models in XML, JSON, and YAML formats.
+- Real-world and constructed [examples](examples/) of the OSCAL models in XML, JSON, and YAML formats.
 - A discussion of how OSCAL relates to and draws inspiration from [other documentary formats](relations-to-other/).

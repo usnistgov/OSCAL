@@ -2,9 +2,10 @@
 title: OSCAL Data Types
 heading: Data Types Used in OSCAL
 description: A description of the data types used in the OSCAL formats.
-weight: 10
+weight: 20
 aliases:
   - /docs/schemas/datatypes/
+  - /documentation/schema/datatypes/
 ---
 
 The OSCAL models share a set of data type primitives. These data types are documented in the following sections.
