@@ -99,8 +99,8 @@
                 <modify>
                     <alter control-id="a123">
                         <add position="ending">
-                            <part name="statement"><p>Statement</p></part>
                             <prop name="due_date">2020-02-20</prop>
+                            <part name="statement"><p>Statement</p></part>
                         </add>
                     </alter>
                 </modify>
@@ -111,10 +111,43 @@
                 <control id="a123">
                     <title>Control A</title>
                     <prop name="rating">AAA</prop>
-                    <part name="statement"><p>Statement</p></part>
                     <prop name="due_date">2020-02-20</prop>
+                    <part name="statement"><p>Statement</p></part>
                 </control>
             </catalog>
         </x:expect>
+    </x:scenario>
+    <x:scenario label="Add a constraint to a parameter">
+        <x:context>
+            <catalog id="abc">
+                <param id="p1">
+                    <label>Parameter #1</label>
+                </param>
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                </control>
+                <modify>
+                    <set-parameter param-id="p1">
+                        <constraint>at least every 3 years</constraint>
+                    </set-parameter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="With the constraint added">
+            <catalog id="abc">
+                <param id="p1">
+                    <label>Parameter #1</label>
+                    <constraint>at least every 3 years</constraint>
+                </param>
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop name="rating">AAA</prop>
+                </control>
+            </catalog>
+        </x:expect>
+        
+        
+        
     </x:scenario>
 </x:description>
