@@ -50,7 +50,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="control">
+    <xsl:template match="control" priority="2">
         <xsl:param name="modifications" tunnel="yes" as="element(modify)?" required="yes"/>
         <!--<xsl:variable name="modifications" select="/*/modify"/>-->
         <xsl:variable name="id" select="@id"/>
