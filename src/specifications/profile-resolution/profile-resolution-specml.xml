@@ -1833,24 +1833,32 @@
           <li>
             <p><src>resource</src> elements copied from imported baseline into a
               resolved catalog (result baseline) are preserved as is, with no
-              modification.</p>
+              modification. New resources can be added in a profile by including
+              them in its <src>back-matter</src>, but resources cannot be
+              targeted for modification. Resources either propagated from source
+              catalogs, or included in the importing catalog, are treated the
+              same for these purposes.</p>
           </li>
           <li>
-            <p>The elements are given in the order they occur in the imported
-              baselines, with the baselines given in imported order.</p>
+            <p>In the result catalog, <tgt>resource</tgt> data objects are given
+              in the order they occur in the imported baselines, with the
+              baselines given in imported order, and the importing profiles
+              .</p>
           </li>
           <li>
             <p>Where <term>node identity</term> can be established between
-                <src>resource</src> elements, only the first of the duplicate
-              resources is included, within the given total order of baselines
-              and resources within those baselines, or if a
+                <src>resource</src> elements, only the <em>last</em> of the
+              duplicate resources is included, within the given total order of
+              baselines and resources within those baselines, or if a
                 <xpath>prop[@name='keep']</xpath> with value <code>always</code>
-              is given on any such <src>resource</src>, the first of these, as
-              noted below.</p>
+              is given on any such <src>resource</src>, the last of these, as
+              noted below. That is, each imported catalog or baseline overrides
+              any imported before it, while a profile's own resources are
+              preferred (as coming last).</p>
           </li>
           <li>
-            <p>Additionally, resources are discarded if they are not designated
-              as the target of any link (<term>link</term> or <term>a</term>
+            <p>However, resources are discarded if they are not designated as
+              the target of any link (<term>link</term> or <term>a</term>
               element) somewhere in the metadata or body of the resulting
               resolved catalog, by means of an ID reference taking the form of
               the reference's <tgt>id</tgt> value prepended with <code>#</code>,
@@ -1858,17 +1866,40 @@
             <ul>
               <li>
                 <p>Any <src>resource</src> given in either an imported catalog
-                  (baseline), or in the back-matter of the soruce profile, is
-                  kept (appears in the result) if it is marked in source with a
-                    <src>prop</src> element whose <src>@name</src> is given as
-                    <code>keep</code> and whose value is
-                  <code>always</code>.</p>
-                <p>When resource elements are grouped as <term>identical</term>,
-                  this property (<src>prop</src> element) has the effect if
-                    <em>any</em> of the grouped <src>resource</src> elements has
-                    <xpath>prop[@name='keep']='always'</xpath>. In this case,
-                  the resource element copied to the result is not the first
-                  resource altogether, but the first marked to <q>keep</q>. </p>
+                  (baseline), or in the <src>back-matter </src>of the soruce
+                  profile, is kept (appears in the result) if it is marked in
+                  source with a <src>prop</src> element whose <src>@name</src>
+                  is given as <code>keep</code> and whose value is
+                    <code>always</code>.</p>
+                <p>Within a group of <src>resource</src> objects considered to
+                  be identical, this property (<src>prop</src> element) given on
+                  any member has the effect of excluding from the group, any
+                  that do not. In other words, only the resources marked as
+                    <q>always keep</q> with that identity, are selected from,
+                  and the last of these (only) is propagated.</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Marking a resource as <code>name='keep'</code> and value
+                <code>always</code> thus has a couple of uses:</p>
+            <ul>
+              <li>
+                <p>Placing such a property on a resource in a catalog, has the
+                  effect of ensuring it will always appear in the baseline
+                  produced by any profile importing that catalog, even if
+                  nothing links to the resource. This version of the resource
+                  will also be the one copied, unless a later-imported catalog
+                  or importing profile offers its own version marked to
+                    <q>always keep</q>.</p>
+              </li>
+              <li>
+                <p>Placing such a property on a resource in a profile, ensures
+                  both that the resource appears (even if not cross-referenced)
+                  in the resulting baseline catalog, and that its version is
+                  used, unless when imported into another profile, in which case
+                  it may be overridden by another one (also marked as always
+                  keep).</p>
               </li>
             </ul>
           </li>
