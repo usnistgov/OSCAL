@@ -1810,6 +1810,77 @@
         </section>
       </section>
     </section>
+    <section id="anyphase">
+      <head>Operations irrespective of phase</head>
+      <p>In addition to selecting, merging and modifying, certainl operations
+        are conducted in profile resolution that occur irrespective of phases,
+        that is in any profile resolution. These include rewriting the profile
+        metadata into the resolved baseline (catalog), and filtering and
+        rewriting back matter.</p>
+      <section id="metadata-rewrite">
+        <head>Metadata in the resolved (baseline) catalog</head>
+      </section>
+      <section id="back-matter-rewrite">
+        <head>Back matter in the resolved (baseline) catalog</head>
+        <p><tgt>back-matter</tgt> in the result is produced by combining all
+          elements within <src>back-matter</src> in all source catalogs, with
+          the <src>back-matter</src> in the input profile. Since catalog
+          resolution is defined to operate recursively, when profiles import
+          profiles, the back matter to be merged is defined by the resolution of
+          the imported profile. These elements are combined in order and
+          filtered according to the following:</p>
+        <ul>
+          <li>
+            <p><src>resource</src> elements copied from imported baseline into a
+              resolved catalog (result baseline) are preserved as is, with no
+              modification.</p>
+          </li>
+          <li>
+            <p>The elements are given in the order they occur in the imported
+              baselines, with the baselines given in imported order.</p>
+          </li>
+          <li>
+            <p>Where <term>node identity</term> can be established between
+                <src>resource</src> elements, only the first of the duplicate
+              resources is included, within the given total order of baselines
+              and resources within those baselines, or if a
+                <xpath>prop[@name='keep']</xpath> with value <code>always</code>
+              is given on any such <src>resource</src>, the first of these, as
+              noted below.</p>
+          </li>
+          <li>
+            <p>Additionally, resources are discarded if they are not designated
+              as the target of any link (<term>link</term> or <term>a</term>
+              element) somewhere in the metadata or body of the resulting
+              resolved catalog, by means of an ID reference taking the form of
+              the reference's <tgt>id</tgt> value prepended with <code>#</code>,
+              with the following exception:</p>
+            <ul>
+              <li>
+                <p>Any <src>resource</src> given in either an imported catalog
+                  (baseline), or in the back-matter of the soruce profile, is
+                  kept (appears in the result) if it is marked in source with a
+                    <src>prop</src> element whose <src>@name</src> is given as
+                    <code>keep</code> and whose value is
+                  <code>always</code>.</p>
+                <p>When resource elements are grouped as <term>identical</term>,
+                  this property (<src>prop</src> element) has the effect if
+                    <em>any</em> of the grouped <src>resource</src> elements has
+                    <xpath>prop[@name='keep']='always'</xpath>. In this case,
+                  the resource element copied to the result is not the first
+                  resource altogether, but the first marked to <q>keep</q>. </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <tagging whose="target_catalog">&lt;resource id="fedramp-1">
+   &lt;title>FedRAMP Applicable Laws and Regulations&lt;/title>
+   &lt;prop name="keep">always&lt;/prop>
+   &lt;prop name="conformity" ns="https://fedramp.gov/ns/oscal">fedramp-citations&lt;/prop>
+   &lt;rlink href="https://www.fedramp.gov/assets/resources/templates/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx"/>
+/resource> </tagging>
+      </section>
+    </section>
   </section>
   <section id="null-profile">
     <head>Null profile</head>
