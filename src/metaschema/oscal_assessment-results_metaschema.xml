@@ -35,10 +35,9 @@
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="1" />
          <assembly ref="assets" min-occurs="0"  max-occurs="1" />
          <assembly ref="assessment-activities" min-occurs="0"  max-occurs="1" />
-         <assembly ref="evidence-inventory" min-occurs="0"  max-occurs="1">
-            <description>This enumerates all evidence associated with the assessment findings and identified risks.</description>
+         <assembly ref="results" min-occurs="1"  max-occurs="unbounded">
+            <group-as name="results_group"/>
          </assembly>
-         <assembly ref="results" min-occurs="1"  max-occurs="1" />
          <assembly ref="back-matter" min-occurs="0"  max-occurs="1" />
       </model>
    </define-assembly>

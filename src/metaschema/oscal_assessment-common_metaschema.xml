@@ -82,6 +82,10 @@
             <group-as name="control-objective-group"/>
          </assembly>
          <assembly ref="objective" min-occurs="0" max-occurs="1" />
+         <assembly ref="method" min-occurs="0" max-occurs="unbounded">
+            <group-as name="method-definitions"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
@@ -109,6 +113,7 @@
             <description>Identifies a specific control to include.</description>
             <group-as name="exclude-controls"/>
          </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
    
@@ -136,9 +141,7 @@
             <description>Identifies a specific control to include.</description>
             <group-as name="exclude-objectives"/>
          </field>
-         <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
-            <group-as name="objective-definitions"/>
-         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
    
@@ -170,6 +173,7 @@
       <formal-name>Control Objective</formal-name>
       <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
       <flag ref="id" required="yes" />
+      <flag ref="control-id" required="yes" />
       <model>
          <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
             <description>A human-readable description of the defined objective.</description>
@@ -182,16 +186,45 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations"/>
          </assembly>
-         <field ref="control-link" min-occurs="1" max-occurs="1" />
          <assembly ref="part" min-occurs="1" max-occurs="1" />
+         <field ref="assessment-method" min-occurs="0" max-occurs="unbounded">
+            <group-as name="methods"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
    
-   <define-field name="control-link">
-      <formal-name>Control Link</formal-name>
-      <description>Identifies a control to which this control objective is related.</description>
-      <flag ref="control-id" required="yes" />
+   <define-field name="assessment-method">
+      <formal-name>Assessment Method</formal-name>
+      <description>Identifies a method for assessing the satisfaction of this objective.</description>
+      <flag ref="method-id" required="yes" />
    </define-field>
+   
+   <define-flag name="method-id">
+      <formal-name>Method ID</formal-name>
+      <description>Identifies the assessment method.</description>
+   </define-flag>
+
+   <define-assembly name="method">
+      <formal-name>Assessment Method</formal-name>
+      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
+      <flag ref="id" required="yes" />
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+            <description>A human-readable description of the defined method.</description>
+         </field>
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
+         <assembly ref="part" min-occurs="1" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
    
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
    <define-assembly name="assessment-subject">
@@ -214,10 +247,11 @@
       <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
       <flag ref="name" required="yes">
          <allowed-values allow-other="yes">
-            <enum value="components" />
-            <enum value="inventory-items" />
-            <enum value="locations" />
-            <enum value="users" />
+            <enum value="component">Component</enum>
+            <enum value="inventory-item">Inventory Item</enum>
+            <enum value="location">Location</enum>
+            <enum value="interview-party">Interview Party</enum>
+            <enum value="user">User</enum>
          </allowed-values>
       </flag>
       <flag ref="class" />
@@ -246,10 +280,11 @@
       <description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
       <flag ref="name" required="yes">
          <allowed-values allow-other="yes">
-            <enum value="components" />
-            <enum value="inventory-items" />
-            <enum value="locations" />
-            <enum value="users" />
+            <enum value="component">Component</enum>
+            <enum value="inventory-item">Inventory Item</enum>
+            <enum value="location">Location</enum>
+            <enum value="interview-party">Interview Party</enum>
+            <enum value="user">User</enum>
          </allowed-values>
       </flag>
       <flag ref="class" />
@@ -277,12 +312,13 @@
       <formal-name>ID Reference</formal-name>
       <description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
       <flag ref="id" required="yes" />
-      <flag ref="type" required="yes">
+      <flag ref="type" required="no">
          <allowed-values allow-other="yes">
-            <enum value="component" />
-            <enum value="inventory-item" />
-            <enum value="location" />
-            <enum value="user" />
+            <enum value="component">Component</enum>
+            <enum value="inventory-item">Inventory Item</enum>
+            <enum value="location">Location</enum>
+            <enum value="interview-party">Interview Party</enum>
+            <enum value="user">User</enum>
          </allowed-values>
       </flag>
    </define-field>
@@ -325,7 +361,11 @@
          </field>
          <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
-            <group-as name="annotations"/>
+            <group-as name="annotations" />
+         </assembly>
+         <assembly ref="part" min-occurs="0" max-occurs="unbounded">
+            <description>Provided to allow content such as assumptions and disclosures.</description>
+            <group-as name="parts" />
          </assembly>
       </model>
    </define-assembly>
@@ -368,11 +408,11 @@
             <group-as name="test-methods"/>
          </assembly>
          <assembly ref="schedule" min-occurs="0" max-occurs="1" />
-         <assembly ref="included-activity" min-occurs="0" max-occurs="unbounded" >
-            <group-as name="included-activities"/>
+         <assembly ref="include-activity" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="include-activities"/>
          </assembly>
-         <assembly ref="excluded-activity" min-occurs="0" max-occurs="unbounded" >
-            <group-as name="excluded-activities"/>
+         <assembly ref="exclude-activity" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="exclude-activities"/>
          </assembly>
       </model>
    </define-assembly>
@@ -440,7 +480,7 @@
       <description>Identifies an individual task.</description>
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
-         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="description"  min-occurs="0" max-occurs="1" />
          <field ref="prop"  min-occurs="0" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="properties"/>
@@ -485,7 +525,7 @@
       <description>Links the task to a defined activity.</description>
    </define-field>
    
-   <define-assembly name="included-activity">
+   <define-assembly name="include-activity">
       <formal-name>Included Activity</formal-name>
       <description>Identifies an assessment activity. In the assessment plan, this is an intended/in-scope activity. In the assessment results, this identifies an activity that was actually performed.</description>
       <flag ref="id" />
@@ -516,7 +556,7 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="excluded-activity">
+   <define-assembly name="exclude-activity">
       <formal-name>Included Activity</formal-name>
       <description>Identifies an activity explicitly excluded from the assessment. In the assessment plan, this clarifies activities that are out-of-scope or prohibited. In the assessment results, this could be used to explicitly identify an activity that was planned, but not performed.</description>
       <flag ref="id" />
@@ -726,26 +766,37 @@
    <define-assembly name="relevant-evidence">
       <formal-name>Relevant Evidence</formal-name>
       <description>Links this observation to relevant evidence.</description>
-      <flag ref="evidence-id" required="yes" />
+      <flag ref="resource-id" required="no">
+         <description>Links to evidence as an attached or cited resource using its unique identifier.</description>
+      </flag>
       <flag name="type" required="yes">
          <formal-name>Evidence Type</formal-name>
          <description>Points to a piece of evidence, relevant to this finding or risk.</description>
          <allowed-values>
             <enum value="observation">Observation</enum>
             <enum value="vulnerability">Vulnerability</enum>
+            <enum value="non-compliance">Non-Compliance</enum>
             <enum value="false-positive">False Positive (FP)</enum>
             <enum value="operational-requirement">Operational Requirement (OR)</enum>
             <enum value="risk-adjustment">Risk Adjustment (RA)</enum>
          </allowed-values>
       </flag>
       <model>
-         <field ref="description"  min-occurs="0" max-occurs="1" />
+         <field ref="description"  min-occurs="1" max-occurs="1" />
+         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="properties"/>
+         </field>
+         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
+            <description>Provided as means of extending the OSCAL syntax.</description>
+            <group-as name="annotations"/>
+         </assembly>
       </model>
    </define-assembly>
 
-   <define-flag name="evidence-id">
-      <formal-name>Evidence ID</formal-name>
-      <description>Links to evidence information using its unique identifier.</description>
+   <define-flag name="resource-id">
+      <formal-name>Resource ID</formal-name>
+      <description>Links to an attached or cited resource using its unique identifier.</description>
    </define-flag>
 
    <define-field name="assessor">

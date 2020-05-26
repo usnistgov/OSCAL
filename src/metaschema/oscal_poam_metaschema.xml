@@ -18,7 +18,7 @@
    
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
-   <import href="oscal_implementation-common_metaschema.xml"/>
+   <import href="oscal_ssp_metaschema.xml"/>
    <import href="oscal_assessment-common_metaschema.xml"/>
    
    <!-- TOP LEVEL ASSEMBLY -->
@@ -28,15 +28,16 @@
       <flag ref="id" required="yes"/>
       <model>
          <assembly ref="metadata"  min-occurs="1" max-occurs="1" />
-         <assembly ref="import-ssp" min-occurs="1" max-occurs="1">
+         <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
             <description>Used by the POA&amp;M to import information about the system.</description>
          </assembly>
-         <assembly ref="evidence-inventory"  min-occurs="0" max-occurs="1">
-            <description>This enumerates evidence associated with POA&amp;M entries and deviation requests.</description>
-         </assembly>
+         <field ref="system-id" min-occurs="0" max-occurs="1" />
          <assembly ref="results"  min-occurs="1" max-occurs="1" />
          <assembly ref="back-matter" min-occurs="0" max-occurs="1" />
       </model>
+      <remarks>
+         <p>Either an OSCAL-based SSP must be imported, or a unique system-id must be specified. Both may be present.</p>
+      </remarks>
    </define-assembly>
    
 </METASCHEMA>
