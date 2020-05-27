@@ -1,6 +1,6 @@
 ## Providing feedback on this specification
 
-The OSCAL team welcomes feedback on the work in progress in this subdirectory, whether it be questions, points for clarification, critiques or suggestions.
+The OSCAL team welcomes feedback on the work in progress in this subdirectory, whether it be questions, points for clarification, critiques or suggestions. A rendered version of the Profile Resolution specification maintained here appears on the OSCAL web site, at location https://pages.nist.gov/OSCAL/documentation/specification/processing/profile-resolution/.
 
 Please post Issues in Github or questions to the OSCAL mailing list, or ask about them on our Gitter channel. (See https://pages.nist.gov/OSCAL/contact/ for links.)
 
