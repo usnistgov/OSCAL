@@ -1,29 +1,7 @@
-## Editing this specification
+## Providing feedback on this specification
 
-Find an oXygen project file inside the file `profile-resolution-spec.xpr`.
+The OSCAL team welcomes feedback on the work in progress in this subdirectory, whether it be questions, points for clarification, critiques or suggestions.
 
-Features of the setup:
+Please post Issues in Github or questions to the OSCAL mailing list, or ask about them on our Gitter channel. (See https://pages.nist.gov/OSCAL/contact/ for links.)
 
-* XML authoring using raw tags or alternatively, in a structured editing environment with outlining, layout, formatting and UI widgets
-* One-button production of a self-contained HTML file for preview in a browser
-* Another button for production of a version for the web site (targeting NIST/USWDS/Hugo - in development
-* Schematron support for ad-hoc rules
-* Lightweight tagging is an HTML core plus a little healthy XML goodness for a few specification-oriented semantics
-
-## Setup:
-
-Extract the contents of `profile-resolution-spec-xpr.zip`: it is an `xpr` (oXygen project) file
-
-Open the project in oXygen
-
-Open the Specification working file in oXygen `profile=resolution-working-specml.xml`
-
-Use the View tab buttons at the bottom of the screen to switch between 'Text' and 'Author' views.
-
-Don't forget other oXygen features such as the outline view, support for editing the CSS, etc. etc.
-
-## Schematron
-
-So far, the Schematron performs only one test: it complains if the section numbering goes too deep.
-
-The RNC schema does introduce ID/IDREF relations, which oXygen exploits
+The specifications are being edited in an ad-hoc XML back end format, a lightweight extension to HTML tagging. If you wish to edit the files directly, we have stylesheets for presentation and HTML conversion along with Schematron for validation (runtime or at check points); please contact us.
