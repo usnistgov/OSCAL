@@ -3,66 +3,34 @@
 See folder OSCAL/docs/content/documentation/specification/processing for specification and examples.
 
 
-Resolution is conceived as a sequence of three XSLT transformations to be performed in sequence
+Resolution is conceived as a set of XSLT transformations to be performed in sequence, applied to defined inputs (a **source profile** with imported **catalog** sources) to produce defined outputs (a **profile resolution result** in the form of a catalog, also called a **baseline**).
 
-on defined inputs for defined outputs
+The sequence reflects and roughly corresponds to the three steps in profile resolution described for OSCAL in the [Profile Resolution Specification](https://pages.nist.gov/OSCAL/documentation/specification/processing/profile-resolution/):
 
-the sequence corresponds to the three steps in profile resolution for OSCAL:
+- **selection** (importing catalogs or profiles and selecting controls from them)
 
-**selection** (importing catalogs or profiles and selecting controls from them)
+- **organization (merging)** i.e. specifying how selected controls are to be organized in representation
 
-**organization (merging)** i.e. specifying how selected controls are to be organized in representation
+- **modification** - setting parameters and potentially supplementing, amending or editing control text
 
-**modification** - setting parameters and potentially amending/editing control text
-
-The expected interim results for test files are kept in the testing/\* folders
+For demonstration, the expected interim results for test files are kept in the testing/\* folders
 
 Note that these interim results are *not always valid to any OSCAL schema* while at the same time they are quite close to OSCAL profile and catalog syntax.
 
+### Invoking the XSLT:
 
-graph LR
+Use a recent version of Saxon for best results -- although we would also be *very interested* to hear from users of other XSLT engines conformant to the 3.1 family of XML standards (XSLT/XPath/XDM/XQuery).
 
-P --> metadata
-P --> import1
-P --> import2
-P --> import3
-P --> merge
-P --> modify
-P --> back-matter
+Load Saxon with your document and stylesheet as follows (for example):
 
-P --> import1--> profile.A1
-profile.A1 --> catalog.A
-P --> import2 --> catalog.A
-P --> import3 
-import3 --> catalog.B
+```bash
+>  java -cp saxon-he-10.0.jar net.sf.saxon.Transform -t -s:YOUR_PROFILE_DOCUMENT.xml% -xsl:path/to/oscal-profile-RESOLVE.xsl -o:YOUR_RESULT_BASELINE.xml
+```
 
-graph LR
+Alternatively, set up the bindings in an IDE or programmed environment that has XSLT 3.1 support.
 
-P --> import1[Selection]--> profile.A1[Selection]
-profile.A1 --> catalog.A[CPG from Catalog A]
-P --> import2[Selection] --> catalog.A
-P --> import3[Selection] 
-import3 --> catalog.B[CPG from Catalog B]
+Note that URIs (addresses) given in a profile document must link correctly as absolute or relative paths to their imported catalogs, as demonstrated in examples.
 
-graph LR
+###
 
-P[Profile] --> import1[Selection]--> profile.A1[Profile]
-profile.A1 --> importA1.1[Selection]
-importA1.1 --> catalog.A1[CPG from Catalog A]
-P --> import2[Selection] --> catalog.A2[CPG from Catalog A]
-P --> import3[Selection] 
-import3 --> catalog.B[CPG from Catalog B]
-
-CPG is "controls, parameters and groups" remember parameters can be loose (i.e. not appearing in a control where it is invoked, or not directly in a control at all.)
-
-merging disparate controls with a single origin into an original order is a goal of 'as-is' but can only be achieved if controls have some idea of what a "single origin" is.
-
-Processors can define for themselves what constitutes "document identity" for these purposes, but any of these might serve:
-document URI
-instance ID
-canonical (catalog) ID
-document property such as DOI
-
-
-
-
+A captured and serialized profile resolution will take the same form as an OSCAL catalog, and be valid to the catalog schema for correctly formed inputs.
