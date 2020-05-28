@@ -4,12 +4,13 @@ description: Provides details on the layers, models, and formats that comprise O
 weight: 50
 aliases:
   - /docs/model/ssp/
+  - /learnmore/architecture/
 sidenav:
   activerenderdepth: 1
   inactiverenderdepth: 1
 ---
 
-OSCAL is comprised of a stack of layers, where each lower layer in the stack provides information structures that are referenced and used by each higher layer. Each layer is composed of one or more models, which represent a information structure supporting a specific operational purpose. Each model is defined in multiple formats.
+The OSCAL architecture is organized in a stack of *layers*. Each lower layer in the stack provides information structures that are referenced and used by each higher layer. Each layer is composed of one or more *models*, which represent a information structure supporting a specific operational purpose. Each model in OSCAL is intended to build on the information provided by the model(s) in the lower layers.
 
 The following image depicts each layer and the corresponding model(s) for each layer.
 
@@ -27,6 +28,48 @@ The following image depicts each layer and the corresponding model(s) for each l
   {{<area href="assessment-results-layer/poam/" alt="Plan of Actions and Milestones Model" title="Plan of Actions and Milestones Model" shape="rect" coords="399,77,1785,125">}}
   {{<area href="assessment-results-layer/" alt="Assessment Results Layer" title="Assessment Results Layer" shape="rect" coords="17,3,1858,201">}}
 {{</imagemap>}}
+
+Each OSCAL model is represented in multiple, machine readable *formats* (e.g., XML, JSON, YAML), which provide a serialization and encoding mechanism for representing and exchanging OSCAL data, also referred to as *OSCAL content*.
+
+## The OSCAL Layers
+
+The following layers are defined in the OSCAL architecture, which are listed from the bottom up.
+
+### Catalog Layer
+
+Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](/catalog-layer/catalog/) who's information structures allow a control catalog and it's collection of controls to be represented in a structured, machine readable form.
+
+### Profile Layer
+
+The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting a specific set of security control requirements from one or more control catalogs. The term "[profile](../concepts/profile/)" in OSCAL is also called a *baseline* or *overlay* in other terminology. The OSCAL Profile model allows for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements).
+
+A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs. OSCAL Profiles can also be based on other OSCAL Profiles, allowing baselines to be established based on the customization of another baseline. This is something we see in the real world quite a bit.
+
+In OSCAL, profiles are generalized to be applicable to any set of information presented in catalog form. Thus, the idea of tailoring in application can be applied not only to security guidelines in general, but also in mixed environments that have to address requirements in more than one catalog at a time.
+
+### Implementation Layer
+
+The [OSCAL implementation layer](implementation-layer/) provides models for describing how controls are implemented in a specific system or in distributed component that can be incorporated into a system.
+
+The OSCAL implementation layer defines two models:
+
+1. The **[component definition model](implementation-layer/component/)**, which is currently under development, will allow for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+
+1. The **[system security plan (SSP) model](implementation-layer/ssp/)** that allows the security implementation of an information system to be defined based on an OSCAL profile (or baseline). SSPs expressed in a machine-readable format that can be easily imported into a tool, allowing for increased automation of SSP validation and system assessment. An OSCAL SSP can also be transformed from the machine-readable form to a human-readable version.
+
+### Assessment Layer
+
+The [OSCAL assessment layer](assessment-layer/) supports structured, machine-readable assessment planning information. The **[assessment plan model](assessment-layer/assessment-plan/)** allows assessment plan information to be described, including how and when a system assessment is intended to be performed, the scope of the assessment, and what assessment activities should be conducted.
+
+### Assessment Results Layer
+
+The [OSCAL assessment results layer](assessment-results-layer/) provides models for representing specific artifacts related to conducting an assessment and capturing the assessment results and findings.
+
+The OSCAL assessment layer defines two models:
+
+1.  The **[assessment results model](assessment-results-layer/assessment-results/)**, which represents information produced from a set of assessment activities, to include when the assessment was performed, the assessment scope, evidence collected during an assessment, and any assessment findings. The assessment model supports information from periodic and continuous assessments.
+
+1. The **[plan of action and milestones (POA&M) model](assessment-results-layer/poam/)**, which represents a set of findings for a periodic or continuous assessment that need to be addressed by the system owner/maintainers.
 
 ## Status of the OSCAL Layers
 
