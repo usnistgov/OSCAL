@@ -1125,12 +1125,71 @@ elements should be removed from the target catalog, applies only to <code class=
 catalog, may no longer be effective in catalogs produced from profiles, which have not
 included the elements (controls or other) to which the links refer.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Either: expand the links to refer back to the source catalogs; or remove the
 links.</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Note: we could also expand links to point back to the (resolved) source,
-particularly if it is described in back-matter as a resource...</span></p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e1894-head>Null profile</h2><p xmlns=http://www.w3.org/1999/xhtml>A <b class=term>null profile</b> is a profile that imports a catalog and selects all its controls
+particularly if it is described in back-matter as a resource...</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1894-head>Operations irrespective of phase</h3><p xmlns=http://www.w3.org/1999/xhtml>In addition to selecting, merging and modifying, certainl operations
+are conducted in profile resolution that occur irrespective of phases,
+that is in any profile resolution. These include rewriting the profile
+metadata into the resolved baseline (catalog), and filtering and
+rewriting back matter.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1897-head>Metadata in the resolved (baseline) catalog</h4><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1899-head>Back matter in the resolved (baseline) catalog</h4><p xmlns=http://www.w3.org/1999/xhtml><code class=tgt>back-matter</code> in the result is produced by combining all
+elements within <code class=src>back-matter</code> in all source catalogs, with
+the <code class=src>back-matter</code> in the input profile. Since catalog
+resolution is defined to operate recursively, when profiles import
+profiles, the back matter to be merged is defined by the resolution of
+the imported profile. These elements are combined in order and
+filtered according to the following:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p><code class=src>resource</code> elements copied from imported baseline into a
+resolved catalog (result baseline) are preserved as is, with no
+modification. New resources can be added in a profile by including
+them in its <code class=src>back-matter</code>, but resources cannot be
+targeted for modification. Resources either propagated from source
+catalogs, or included in the importing catalog, are treated the
+same for these purposes.</p></li><li><p>In the result catalog, <code class=tgt>resource</code> data objects are given
+in the order they occur in the imported baselines, with the
+baselines given in imported order, and the importing profiles
+.</p></li><li><p>Where <b class=term>node identity</b> can be established between
+<code class=src>resource</code> elements, only the <em class=em>last</em> of the
+duplicate resources is included, within the given total order of
+baselines and resources within those baselines, or if a
+<b class=xpath>prop[@name='keep']</b> with value <code class=code>always</code>
+is given on any such <code class=src>resource</code>, the last of these, as
+noted below. That is, each imported catalog or baseline overrides
+any imported before it, while a profile's own resources are
+preferred (as coming last).</p></li><li><p>However, resources are discarded if they are not designated as
+the target of any link (<b class=term>link</b> or <b class=term>a</b>
+element) somewhere in the metadata or body of the resulting
+resolved catalog, by means of an ID reference taking the form of
+the reference's <code class=tgt>id</code> value prepended with <code class=code>#</code>,
+with the following exception:</p><ul><li><p>Any <code class=src>resource</code> given in either an imported catalog
+(baseline), or in the <code class=src>back-matter </code>of the soruce
+profile, is kept (appears in the result) if it is marked in
+source with a <code class=src>prop</code> element whose <code class=src>@name</code>
+is given as <code class=code>keep</code> and whose value is
+<code class=code>always</code>.</p><p>Within a group of <code class=src>resource</code> objects considered to
+be identical, this property (<code class=src>prop</code> element) given on
+any member has the effect of excluding from the group, any
+that do not. In other words, only the resources marked as
+<q class=q>always keep</q> with that identity, are selected from,
+and the last of these (only) is propagated.</p></li></ul></li><li><p>Marking a resource as <code class=code>name='keep'</code> and value
+<code class=code>always</code> thus has a couple of uses:</p><ul><li><p>Placing such a property on a resource in a catalog, has the
+effect of ensuring it will always appear in the baseline
+produced by any profile importing that catalog, even if
+nothing links to the resource. This version of the resource
+will also be the one copied, unless a later-imported catalog
+or importing profile offers its own version marked to
+<q class=q>always keep</q>.</p></li><li><p>Placing such a property on a resource in a profile, ensures
+both that the resource appears (even if not cross-referenced)
+in the resulting baseline catalog, and that its version is
+used, unless when imported into another profile, in which case
+it may be overridden by another one (also marked as always
+keep).</p></li></ul></li></ul><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;resource</span> <span class=na>id=</span><span class=s>&#34;fedramp-1&#34;</span><span class=nt>&gt;</span>
+   <span class=nt>&lt;title&gt;</span>FedRAMP Applicable Laws and Regulations<span class=nt>&lt;/title&gt;</span>
+   <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;keep&#34;</span><span class=nt>&gt;</span>always<span class=nt>&lt;/prop&gt;</span>
+   <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;conformity&#34;</span> <span class=na>ns=</span><span class=s>&#34;https://fedramp.gov/ns/oscal&#34;</span><span class=nt>&gt;</span>fedramp-citations<span class=nt>&lt;/prop&gt;</span>
+   <span class=nt>&lt;rlink</span> <span class=na>href=</span><span class=s>&#34;https://www.fedramp.gov/assets/resources/templates/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx&#34;</span><span class=nt>/&gt;</span>
+/resource&gt; </code></pre></div><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e1989-head>Null profile</h2><p xmlns=http://www.w3.org/1999/xhtml>A <b class=term>null profile</b> is a profile that imports a catalog and selects all its controls
 without modification. A truly <q class=q>null</q> profile – that is, with only an import and nothing
 else – does not return its imported catalog unchanged. But the changes it makes can be useful.
 This makes a null profile or its <b class=term>near-null</b> variants, as described in this
 section, potentially useful for catalog management, design and use, as described in this
-section.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1904-head>Importing and nothing else</h3><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+section.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1999-head>Importing and nothing else</h3><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
   <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
   <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;catalog.xml&#34;</span><span class=nt>/&gt;</span>
 <span class=nt>&lt;/profile&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>In the target, the catalog group structure and all hierarchy is removed; its controls are
@@ -1145,14 +1204,14 @@ are dropped.</p><p xmlns=http://www.w3.org/1999/xhtml>This is the same as</p><di
   <span class=nt>&lt;merge&gt;</span>
     <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;keep&#34;</span><span class=nt>/&gt;</span>
   <span class=nt>&lt;/merge&gt;</span>
-<span class=nt>&lt;/profile&gt;</span></code></pre></div><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1912-head>all/with-child-controls='no'</h3><p xmlns=http://www.w3.org/1999/xhtml>The same, except that only top-level controls are included, not descendants.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1917-head>including merge directives</h3><p xmlns=http://www.w3.org/1999/xhtml>Using merge <code class=src>as-is='true'</code>, the grouping hierarchy of a source catalog can be
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e2007-head>all/with-child-controls='no'</h3><p xmlns=http://www.w3.org/1999/xhtml>The same, except that only top-level controls are included, not descendants.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e2012-head>including merge directives</h3><p xmlns=http://www.w3.org/1999/xhtml>Using merge <code class=src>as-is='true'</code>, the grouping hierarchy of a source catalog can be
 reflected in the target.</p><p xmlns=http://www.w3.org/1999/xhtml>This enables a near-null profile to define a normalization or cleanup pass on a catalog, as
 it will have the result of removing dangling references and orphan parameters, without
 otherwise affecting controls.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this too, especially with more than two levels of control hierarchy as
-well as groups</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e1928-head>Options</h2><p xmlns=http://www.w3.org/1999/xhtml>For conformance, an OSCAL processor must deliver results of profile processing, in a basic
+well as groups</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e2023-head>Options</h2><p xmlns=http://www.w3.org/1999/xhtml>For conformance, an OSCAL processor must deliver results of profile processing, in a basic
 configuration, exactly as described in these specifications with no elaboration.</p><p xmlns=http://www.w3.org/1999/xhtml>Conformance does not preclude providing additional features, however, including elaborated
 outputs, in an optional mode. Such features could include offering warning or process
 exception handling (appropriate to workflow) not described here; outputs provided with
 comments or extra structure to support tracing or analytics; or <q class=q>gateway</q> or
 <q class=q>Draconian</q> modes that would provide user assistance or refuse to deliver results for
-inputs considered erroneous in a workflow.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e1937-head>Profile tools and utilities</h2><ul xmlns=http://www.w3.org/1999/xhtml><li><p>rendering - showing both unresolved (raw) and resolved profiles</p></li><li><p>editing / integrity checking</p></li><li><p>rewriting/normalization</p></li><li><p>diffing</p></li><li><p>deriving a profile as the delta of two catalogs (<q class=q>base</q> and <q class=q>tailored</q>)</p></li></ul></article></div></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on January 2, 2020. <button id=main-improve-page onclick="window.location.href='https:\/\/github.com\/usnistgov\/OSCAL\/tree\/master\/docs\/content/documentation\/specification\/processing\/profile-resolution.html';" class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js integrity=sha384-S2Sj9dbj135Vzm4xwOrcyOA/FlODQj514E6Il+ayOB/Y0YClPg5BpCy7lG2G8wtV crossorigin=anonymous></script><script type=text/javascript src=https://pages.nist.gov/OSCAL/js/site.min.js integrity="sha512-jQyHaE6yz/5a3qAMJZ/QxGXQSotKG9mrQEqxgyXRilAQeH5muW+znGxYOy63LqwTbcl8sPNRosqdROMtsHsIKA=="></script><script>$(document).ready(function(e){});tocbot.init({tocSelector:'#js-toc',contentSelector:'#main-content',headingSelector:'h2,h3,h4',includeHtml:false,collapseDepth:0,hasInnerContainers:true,orderedList:false,listClass:'usa-sidenav',listItemClass:'toc-item',extraLinkClasses:'usa-sidenav__item',activeLinkClass:'usa-current'});</script><script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script><script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');$('a.usa-link--external').leaveNotice();});</script></body></html>
+inputs considered erroneous in a workflow.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e2032-head>Profile tools and utilities</h2><ul xmlns=http://www.w3.org/1999/xhtml><li><p>rendering - showing both unresolved (raw) and resolved profiles</p></li><li><p>editing / integrity checking</p></li><li><p>rewriting/normalization</p></li><li><p>diffing</p></li><li><p>deriving a profile as the delta of two catalogs (<q class=q>base</q> and <q class=q>tailored</q>)</p></li></ul></article></div></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on January 2, 2020. <button id=main-improve-page onclick="window.location.href='https:\/\/github.com\/usnistgov\/OSCAL\/tree\/master\/docs\/content/documentation\/specification\/processing\/profile-resolution.html';" class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js integrity=sha384-S2Sj9dbj135Vzm4xwOrcyOA/FlODQj514E6Il+ayOB/Y0YClPg5BpCy7lG2G8wtV crossorigin=anonymous></script><script type=text/javascript src=https://pages.nist.gov/OSCAL/js/site.min.js integrity="sha512-jQyHaE6yz/5a3qAMJZ/QxGXQSotKG9mrQEqxgyXRilAQeH5muW+znGxYOy63LqwTbcl8sPNRosqdROMtsHsIKA=="></script><script>$(document).ready(function(e){});tocbot.init({tocSelector:'#js-toc',contentSelector:'#main-content',headingSelector:'h2,h3,h4',includeHtml:false,collapseDepth:0,hasInnerContainers:true,orderedList:false,listClass:'usa-sidenav',listItemClass:'toc-item',extraLinkClasses:'usa-sidenav__item',activeLinkClass:'usa-current'});</script><script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script><script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');$('a.usa-link--external').leaveNotice();});</script></body></html>
