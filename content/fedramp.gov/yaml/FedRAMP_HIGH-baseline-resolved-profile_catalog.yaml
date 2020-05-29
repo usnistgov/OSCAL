@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-05-07T15:50:35.708866Z
+        value: 2020-05-29T19:08:07.722549Z
     links: 
       - 
         href: FedRAMP_HIGH-baseline_profile.xml
@@ -49,11 +49,17 @@ catalog:
               id:    ac-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ac-1_prm_2
-              label: organization-defined frequency
+              id:          ac-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ac-1_prm_3
-              label: organization-defined frequency
+              id:          ac-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -360,8 +366,11 @@ catalog:
               id:    ac-2_prm_3
               label: organization-defined procedures or conditions
             - 
-              id:    ac-2_prm_4
-              label: organization-defined frequency
+              id:          ac-2_prm_4
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: monthly for privileged accessed, every six (6) months for non-privileged access
           properties: 
             - 
               name:  label
@@ -1015,12 +1024,16 @@ catalog:
               title:      Removal of Temporary / Emergency Accounts
               parameters: 
                 - 
-                  id:     ac-2.2_prm_1
-                  select: 
-                    alternatives: removes,disables
+                  id:          ac-2.2_prm_1
+                  constraints: 
+                    - 
+                      detail: Selection: disables
                 - 
-                  id:    ac-2.2_prm_2
-                  label: organization-defined time period for each type of account
+                  id:          ac-2.2_prm_2
+                  label:       organization-defined time period for each type of account
+                  constraints: 
+                    - 
+                      detail: 24 hours from last use
               properties: 
                 - 
                   name:  label
@@ -1094,8 +1107,11 @@ catalog:
               title:      Disable Inactive Accounts
               parameters: 
                 - 
-                  id:    ac-2.3_prm_1
-                  label: organization-defined time period
+                  id:          ac-2.3_prm_1
+                  label:       organization-defined time period
+                  constraints: 
+                    - 
+                      detail: 35 days for user accounts
               properties: 
                 - 
                   name:  label
@@ -1180,8 +1196,11 @@ catalog:
               title:      Automated Audit Actions
               parameters: 
                 - 
-                  id:    ac-2.4_prm_1
-                  label: organization-defined personnel or roles
+                  id:          ac-2.4_prm_1
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: organization and/or service provider system owner
               properties: 
                 - 
                   name:  label
@@ -1394,8 +1413,11 @@ catalog:
               title:      Inactivity Logout
               parameters: 
                 - 
-                  id:    ac-2.5_prm_1
-                  label: organization-defined time-period of expected inactivity or description of when to log out
+                  id:          ac-2.5_prm_1
+                  label:       organization-defined time-period of expected inactivity or description of when to log out
+                  constraints: 
+                    - 
+                      detail: inactivity is anticipated to exceed Fifteen (15) minutes
               properties: 
                 - 
                   name:  label
@@ -1478,8 +1500,11 @@ catalog:
               title:      Role-based Schemes
               parameters: 
                 - 
-                  id:    ac-2.7_prm_1
-                  label: organization-defined actions
+                  id:          ac-2.7_prm_1
+                  label:       organization-defined actions
+                  constraints: 
+                    - 
+                      detail: disables/revokes access within a organization-specified timeframe
               properties: 
                 - 
                   name:  label
@@ -1617,8 +1642,11 @@ catalog:
               title:      Restrictions On Use of Shared / Group Accounts
               parameters: 
                 - 
-                  id:    ac-2.9_prm_1
-                  label: organization-defined conditions for establishing shared/group accounts
+                  id:          ac-2.9_prm_1
+                  label:       organization-defined conditions for establishing shared/group accounts
+                  constraints: 
+                    - 
+                      detail: organization-defined need with justification statement that explains why such accounts are necessary
               properties: 
                 - 
                   name:  label
@@ -1857,8 +1885,11 @@ catalog:
                   id:    ac-2.12_prm_1
                   label: organization-defined atypical usage
                 - 
-                  id:    ac-2.12_prm_2
-                  label: organization-defined personnel or roles
+                  id:          ac-2.12_prm_2
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: at a minimum, the ISSO and/or similar role within the organization
               properties: 
                 - 
                   name:  label
@@ -2018,8 +2049,11 @@ catalog:
               title:      Disable Accounts for High-risk Individuals
               parameters: 
                 - 
-                  id:    ac-2.13_prm_1
-                  label: organization-defined time period
+                  id:          ac-2.13_prm_1
+                  label:       organization-defined time period
+                  constraints: 
+                    - 
+                      detail: one (1) hour
               properties: 
                 - 
                   name:  label
@@ -2761,8 +2795,11 @@ catalog:
               title:      Authorize Access to Security Functions
               parameters: 
                 - 
-                  id:    ac-6.1_prm_1
-                  label: organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information
+                  id:          ac-6.1_prm_1
+                  label:       organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information
+                  constraints: 
+                    - 
+                      detail: all functions not publicly accessible and all security-relevant information not publicly available
               properties: 
                 - 
                   name:  label
@@ -2899,8 +2936,11 @@ catalog:
               title:      Non-privileged Access for Nonsecurity Functions
               parameters: 
                 - 
-                  id:    ac-6.2_prm_1
-                  label: organization-defined security functions or security-relevant information
+                  id:          ac-6.2_prm_1
+                  label:       organization-defined security functions or security-relevant information
+                  constraints: 
+                    - 
+                      detail: all security functions
               properties: 
                 - 
                   name:  label
@@ -2994,8 +3034,11 @@ catalog:
               title:      Network Access to Privileged Commands
               parameters: 
                 - 
-                  id:    ac-6.3_prm_1
-                  label: organization-defined privileged commands
+                  id:          ac-6.3_prm_1
+                  label:       organization-defined privileged commands
+                  constraints: 
+                    - 
+                      detail: all privileged commands
                 - 
                   id:    ac-6.3_prm_2
                   label: organization-defined compelling operational needs
@@ -3173,11 +3216,17 @@ catalog:
               title:      Review of User Privileges
               parameters: 
                 - 
-                  id:    ac-6.7_prm_1
-                  label: organization-defined frequency
+                  id:          ac-6.7_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at a minimum, annually
                 - 
-                  id:    ac-6.7_prm_2
-                  label: organization-defined roles or classes of users
+                  id:          ac-6.7_prm_2
+                  label:       organization-defined roles or classes of users
+                  constraints: 
+                    - 
+                      detail: all users with privileges
               properties: 
                 - 
                   name:  label
@@ -3307,8 +3356,11 @@ catalog:
               title:      Privilege Levels for Code Execution
               parameters: 
                 - 
-                  id:    ac-6.8_prm_1
-                  label: organization-defined software
+                  id:          ac-6.8_prm_1
+                  label:       organization-defined software
+                  constraints: 
+                    - 
+                      detail: any software except software explicitly documented
               properties: 
                 - 
                   name:  label
@@ -3520,30 +3572,26 @@ catalog:
           title:      Unsuccessful Logon Attempts
           parameters: 
             - 
-              id:    ac-7_prm_1
-              label: organization-defined number
+              id:          ac-7_prm_1
+              label:       organization-defined number
+              constraints: 
+                - 
+                  detail: not more than three (3)
             - 
-              id:    ac-7_prm_2
-              label: organization-defined time period
+              id:          ac-7_prm_2
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: fifteen (15) minutes
             - 
-              id:     ac-7_prm_3
-              select: 
-                alternatives: 
-                  - 
-                    """
-                      locks the account/node for an {{ ac-7_prm_4 }}
-                                     
-                    """
-                  - locks the account/node until released by an administrator
-                  - 
-                    """
-                      delays next logon prompt according to {{ ac-7_prm_5 }}
-                                     
-                    """
+              id: ac-7_prm_3
             - 
-              id:         ac-7_prm_4
-              depends-on: ac-7_prm_3
-              label:      organization-defined time period
+              id:          ac-7_prm_4
+              depends-on:  ac-7_prm_3
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: locks the account/node for a minimum of three (3) hours or until unlocked by an administrator
             - 
               id:         ac-7_prm_5
               depends-on: ac-7_prm_3
@@ -3721,14 +3769,20 @@ catalog:
               title:      Purge / Wipe Mobile Device
               parameters: 
                 - 
-                  id:    ac-7.2_prm_1
-                  label: organization-defined mobile devices
+                  id:          ac-7.2_prm_1
+                  label:       organization-defined mobile devices
+                  constraints: 
+                    - 
+                      detail: mobile devices as defined by organization policy
                 - 
                   id:    ac-7.2_prm_2
                   label: organization-defined purging/wiping requirements/techniques
                 - 
-                  id:    ac-7.2_prm_3
-                  label: organization-defined number
+                  id:          ac-7.2_prm_3
+                  label:       organization-defined number
+                  constraints: 
+                    - 
+                      detail: three (3)
               properties: 
                 - 
                   name:  label
@@ -3835,11 +3889,17 @@ catalog:
           title:      System Use Notification
           parameters: 
             - 
-              id:    ac-8_prm_1
-              label: organization-defined system use notification message or banner
+              id:          ac-8_prm_1
+              label:       organization-defined system use notification message or banner
+              constraints: 
+                - 
+                  detail: see additional Requirements and Guidance
             - 
-              id:    ac-8_prm_2
-              label: organization-defined conditions
+              id:          ac-8_prm_2
+              label:       organization-defined conditions
+              constraints: 
+                - 
+                  detail: see additional Requirements and Guidance
           properties: 
             - 
               name:  label
@@ -4127,8 +4187,11 @@ catalog:
               id:    ac-10_prm_1
               label: organization-defined account and/or account type
             - 
-              id:    ac-10_prm_2
-              label: organization-defined number
+              id:          ac-10_prm_2
+              label:       organization-defined number
+              constraints: 
+                - 
+                  detail: three (3) sessions for privileged access and two (2) sessions for non-privileged access
           properties: 
             - 
               name:  label
@@ -4210,8 +4273,11 @@ catalog:
           title:      Session Lock
           parameters: 
             - 
-              id:    ac-11_prm_1
-              label: organization-defined time period
+              id:          ac-11_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: fifteen (15) minutes
           properties: 
             - 
               name:  label
@@ -5288,8 +5354,11 @@ catalog:
               title:      Disconnect / Disable Access
               parameters: 
                 - 
-                  id:    ac-17.9_prm_1
-                  label: organization-defined time period
+                  id:          ac-17.9_prm_1
+                  label:       organization-defined time period
+                  constraints: 
+                    - 
+                      detail: fifteen (15) minutes
               properties: 
                 - 
                   name:  label
@@ -5539,10 +5608,7 @@ catalog:
               title:      Authentication and Encryption
               parameters: 
                 - 
-                  id:     ac-18.1_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: users,devices
+                  id: ac-18.1_prm_1
               properties: 
                 - 
                   name:  label
@@ -6034,9 +6100,7 @@ catalog:
               title:      Full Device / Container-based Encryption
               parameters: 
                 - 
-                  id:     ac-19.5_prm_1
-                  select: 
-                    alternatives: full-device encryption,container encryption
+                  id: ac-19.5_prm_1
                 - 
                   id:    ac-19.5_prm_2
                   label: organization-defined mobile devices
@@ -6348,9 +6412,7 @@ catalog:
               title:      Portable Storage Devices
               parameters: 
                 - 
-                  id:     ac-20.2_prm_1
-                  select: 
-                    alternatives: restricts,prohibits
+                  id: ac-20.2_prm_1
               properties: 
                 - 
                   name:  label
@@ -6539,8 +6601,11 @@ catalog:
           title:      Publicly Accessible Content
           parameters: 
             - 
-              id:    ac-22_prm_1
-              label: organization-defined frequency
+              id:          ac-22_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least quarterly
           properties: 
             - 
               name:  label
@@ -6716,11 +6781,17 @@ catalog:
               id:    at-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    at-1_prm_2
-              label: organization-defined frequency
+              id:          at-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
             - 
-              id:    at-1_prm_3
-              label: organization-defined frequency
+              id:          at-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -7026,8 +7097,11 @@ catalog:
           title:      Security Awareness Training
           parameters: 
             - 
-              id:    at-2_prm_1
-              label: organization-defined frequency
+              id:          at-2_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -7242,8 +7316,11 @@ catalog:
           title:      Role-based Security Training
           parameters: 
             - 
-              id:    at-3_prm_1
-              label: organization-defined frequency
+              id:          at-3_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -7457,8 +7534,11 @@ catalog:
               title:      Suspicious Communications and Anomalous System Behavior
               parameters: 
                 - 
-                  id:    at-3.4_prm_1
-                  label: organization-defined indicators of malicious code
+                  id:          at-3.4_prm_1
+                  label:       organization-defined indicators of malicious code
+                  constraints: 
+                    - 
+                      detail: malicious code indicators as defined by organization incident policy/capability.
               properties: 
                 - 
                   name:  label
@@ -7522,8 +7602,11 @@ catalog:
           title:      Security Training Records
           parameters: 
             - 
-              id:    at-4_prm_1
-              label: organization-defined time period
+              id:          at-4_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: five (5) years or 5 years after completion of a specific training program
           properties: 
             - 
               name:  label
@@ -7701,11 +7784,17 @@ catalog:
               id:    au-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    au-1_prm_2
-              label: organization-defined frequency
+              id:          au-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    au-1_prm_3
-              label: organization-defined frequency
+              id:          au-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -8003,11 +8092,17 @@ catalog:
           title:      Audit Events
           parameters: 
             - 
-              id:    au-2_prm_1
-              label: organization-defined auditable events
+              id:          au-2_prm_1
+              label:       organization-defined auditable events
+              constraints: 
+                - 
+                  detail: successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes
             - 
-              id:    au-2_prm_2
-              label: organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event
+              id:          au-2_prm_2
+              label:       organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event
+              constraints: 
+                - 
+                  detail: organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event
           properties: 
             - 
               name:  label
@@ -8227,8 +8322,11 @@ catalog:
               title:      Reviews and Updates
               parameters: 
                 - 
-                  id:    au-2.3_prm_1
-                  label: organization-defined frequency
+                  id:          au-2.3_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: annually or whenever there is a change in the threat environment
               properties: 
                 - 
                   name:  label
@@ -8438,8 +8536,11 @@ catalog:
               title:      Additional Audit Information
               parameters: 
                 - 
-                  id:    au-3.1_prm_1
-                  label: organization-defined additional, more detailed information
+                  id:          au-3.1_prm_1
+                  label:       organization-defined additional, more detailed information
+                  constraints: 
+                    - 
+                      detail: session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands
               properties: 
                 - 
                   name:  label
@@ -8536,8 +8637,11 @@ catalog:
               title:      Centralized Management of Planned Audit Record Content
               parameters: 
                 - 
-                  id:    au-3.2_prm_1
-                  label: organization-defined information system components
+                  id:          au-3.2_prm_1
+                  label:       organization-defined information system components
+                  constraints: 
+                    - 
+                      detail: all network, data storage, and computing devices
               properties: 
                 - 
                   name:  label
@@ -8723,8 +8827,11 @@ catalog:
               id:    au-5_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    au-5_prm_2
-              label: organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)
+              id:          au-5_prm_2
+              label:       organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)
+              constraints: 
+                - 
+                  detail: organization-defined actions to be taken (overwrite oldest record)
           properties: 
             - 
               name:  label
@@ -8979,14 +9086,23 @@ catalog:
               title:      Real-time Alerts
               parameters: 
                 - 
-                  id:    au-5.2_prm_1
-                  label: organization-defined real-time period
+                  id:          au-5.2_prm_1
+                  label:       organization-defined real-time period
+                  constraints: 
+                    - 
+                      detail: real-time
                 - 
-                  id:    au-5.2_prm_2
-                  label: organization-defined personnel, roles, and/or locations
+                  id:          au-5.2_prm_2
+                  label:       organization-defined personnel, roles, and/or locations
+                  constraints: 
+                    - 
+                      detail: service provider personnel with authority to address failed audit events
                 - 
-                  id:    au-5.2_prm_3
-                  label: organization-defined audit failure events requiring real-time alerts
+                  id:          au-5.2_prm_3
+                  label:       organization-defined audit failure events requiring real-time alerts
+                  constraints: 
+                    - 
+                      detail: audit failure events requiring real-time alerts, as defined by organization audit policy
               properties: 
                 - 
                   name:  label
@@ -9101,8 +9217,11 @@ catalog:
           title:      Audit Review, Analysis, and Reporting
           parameters: 
             - 
-              id:    au-6_prm_1
-              label: organization-defined frequency
+              id:          au-6_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least weekly
             - 
               id:    au-6_prm_2
               label: organization-defined inappropriate or unusual activity
@@ -9605,16 +9724,14 @@ catalog:
               title:      Integration / Scanning and Monitoring Capabilities
               parameters: 
                 - 
-                  id:     au-6.5_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: vulnerability scanning information,performance data,information system monitoring information,
-                     {{ au-6.5_prm_2 }}
-                  
+                  id: au-6.5_prm_1
                 - 
-                  id:         au-6.5_prm_2
-                  depends-on: au-6.5_prm_1
-                  label:      organization-defined data/information collected from other sources
+                  id:          au-6.5_prm_2
+                  depends-on:  au-6.5_prm_1
+                  label:       organization-defined data/information collected from other sources
+                  constraints: 
+                    - 
+                      detail: Possibly to include penetration test data.
               properties: 
                 - 
                   name:  label
@@ -9811,10 +9928,10 @@ catalog:
               title:      Permitted Actions
               parameters: 
                 - 
-                  id:     au-6.7_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: information system process,role,user
+                  id:          au-6.7_prm_1
+                  constraints: 
+                    - 
+                      detail: information system process; role; user
               properties: 
                 - 
                   name:  label
@@ -10185,8 +10302,11 @@ catalog:
           title:      Time Stamps
           parameters: 
             - 
-              id:    au-8_prm_1
-              label: organization-defined granularity of time measurement
+              id:          au-8_prm_1
+              label:       organization-defined granularity of time measurement
+              constraints: 
+                - 
+                  detail: one second granularity of time measurement
           properties: 
             - 
               name:  label
@@ -10311,11 +10431,17 @@ catalog:
               title:      Synchronization with Authoritative Time Source
               parameters: 
                 - 
-                  id:    au-8.1_prm_1
-                  label: organization-defined frequency
+                  id:          au-8.1_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: At least hourly
                 - 
-                  id:    au-8.1_prm_2
-                  label: organization-defined authoritative time source
+                  id:          au-8.1_prm_2
+                  label:       organization-defined authoritative time source
+                  constraints: 
+                    - 
+                      detail: http://tf.nist.gov/tf-cgi/servers.cgi
                 - 
                   id:    au-8.1_prm_3
                   label: organization-defined time period
@@ -10640,8 +10766,11 @@ catalog:
               title:      Audit Backup On Separate Physical Systems / Components
               parameters: 
                 - 
-                  id:    au-9.2_prm_1
-                  label: organization-defined frequency
+                  id:          au-9.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least weekly
               properties: 
                 - 
                   name:  label
@@ -10892,8 +11021,11 @@ catalog:
           title:      Non-repudiation
           parameters: 
             - 
-              id:    au-10_prm_1
-              label: organization-defined actions to be covered by non-repudiation
+              id:          au-10_prm_1
+              label:       organization-defined actions to be covered by non-repudiation
+              constraints: 
+                - 
+                  detail: minimum actions including the addition, modification, deletion, approval, sending, or receiving of data
           properties: 
             - 
               name:  label
@@ -10992,8 +11124,11 @@ catalog:
           title:      Audit Record Retention
           parameters: 
             - 
-              id:    au-11_prm_1
-              label: organization-defined time period consistent with records retention policy
+              id:          au-11_prm_1
+              label:       organization-defined time period consistent with records retention policy
+              constraints: 
+                - 
+                  detail: at least one (1) year
           properties: 
             - 
               name:  label
@@ -11106,8 +11241,11 @@ catalog:
           title:      Audit Generation
           parameters: 
             - 
-              id:    au-12_prm_1
-              label: organization-defined information system components
+              id:          au-12_prm_1
+              label:       organization-defined information system components
+              constraints: 
+                - 
+                  detail: all information system and network components where audit capability is deployed/available
             - 
               id:    au-12_prm_2
               label: organization-defined personnel or roles
@@ -11271,8 +11409,11 @@ catalog:
               title:      System-wide / Time-correlated Audit Trail
               parameters: 
                 - 
-                  id:    au-12.1_prm_1
-                  label: organization-defined information system components
+                  id:          au-12.1_prm_1
+                  label:       organization-defined information system components
+                  constraints: 
+                    - 
+                      detail: all network, data storage, and computing devices
                 - 
                   id:    au-12.1_prm_2
                   label: organization-defined level of tolerance for the relationship between time stamps of individual records in the audit trail
@@ -11366,11 +11507,17 @@ catalog:
               title:      Changes by Authorized Individuals
               parameters: 
                 - 
-                  id:    au-12.3_prm_1
-                  label: organization-defined individuals or roles
+                  id:          au-12.3_prm_1
+                  label:       organization-defined individuals or roles
+                  constraints: 
+                    - 
+                      detail: service provider-defined individuals or roles with audit configuration responsibilities
                 - 
-                  id:    au-12.3_prm_2
-                  label: organization-defined information system components
+                  id:          au-12.3_prm_2
+                  label:       organization-defined information system components
+                  constraints: 
+                    - 
+                      detail: all network, data storage, and computing devices
                 - 
                   id:    au-12.3_prm_3
                   label: organization-defined selectable event criteria
@@ -11487,11 +11634,17 @@ catalog:
               id:    ca-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ca-1_prm_2
-              label: organization-defined frequency
+              id:          ca-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ca-1_prm_3
-              label: organization-defined frequency
+              id:          ca-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -11797,11 +11950,17 @@ catalog:
           title:      Security Assessments
           parameters: 
             - 
-              id:    ca-2_prm_1
-              label: organization-defined frequency
+              id:          ca-2_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ca-2_prm_2
-              label: organization-defined individuals or roles
+              id:          ca-2_prm_2
+              label:       organization-defined individuals or roles
+              constraints: 
+                - 
+                  detail: individuals or roles to include FedRAMP PMO
           properties: 
             - 
               name:  label
@@ -12191,19 +12350,15 @@ catalog:
               title:      Specialized Assessments
               parameters: 
                 - 
-                  id:    ca-2.2_prm_1
-                  label: organization-defined frequency
+                  id:          ca-2.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least annually
                 - 
-                  id:     ca-2.2_prm_2
-                  select: 
-                    alternatives: announced,unannounced
+                  id: ca-2.2_prm_2
                 - 
-                  id:     ca-2.2_prm_3
-                  select: 
-                    how-many:     one or more
-                    alternatives: in-depth monitoring,vulnerability scanning,malicious user testing,insider threat assessment,performance/load testing,
-                     {{ ca-2.2_prm_4 }}
-                  
+                  id: ca-2.2_prm_3
                 - 
                   id:         ca-2.2_prm_4
                   depends-on: ca-2.2_prm_3
@@ -12370,14 +12525,23 @@ catalog:
               title:      External Organizations
               parameters: 
                 - 
-                  id:    ca-2.3_prm_1
-                  label: organization-defined information system
+                  id:          ca-2.3_prm_1
+                  label:       organization-defined information system
+                  constraints: 
+                    - 
+                      detail: any FedRAMP Accredited 3PAO
                 - 
-                  id:    ca-2.3_prm_2
-                  label: organization-defined external organization
+                  id:          ca-2.3_prm_2
+                  label:       organization-defined external organization
+                  constraints: 
+                    - 
+                      detail: any FedRAMP Accredited 3PAO
                 - 
-                  id:    ca-2.3_prm_3
-                  label: organization-defined requirements
+                  id:          ca-2.3_prm_3
+                  label:       organization-defined requirements
+                  constraints: 
+                    - 
+                      detail: the conditions of the JAB/AO in the FedRAMP Repository
               properties: 
                 - 
                   name:  label
@@ -12457,8 +12621,11 @@ catalog:
           title:      System Interconnections
           parameters: 
             - 
-              id:    ca-3_prm_1
-              label: organization-defined frequency
+              id:          ca-3_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: At least annually and on input from FedRAMP
           properties: 
             - 
               name:  label
@@ -12654,8 +12821,11 @@ catalog:
                   id:    ca-3.3_prm_1
                   label: organization-defined unclassified, non-national security system
                 - 
-                  id:    ca-3.3_prm_2
-                  label: Assignment; organization-defined boundary protection device
+                  id:          ca-3.3_prm_2
+                  label:       Assignment; organization-defined boundary protection device
+                  constraints: 
+                    - 
+                      detail: boundary protections which meet the Trusted Internet Connection (TIC) requirements
               properties: 
                 - 
                   name:  label
@@ -12752,12 +12922,16 @@ catalog:
               title:      Restrictions On External System Connections
               parameters: 
                 - 
-                  id:     ca-3.5_prm_1
-                  select: 
-                    alternatives: allow-all, deny-by-exception,deny-all, permit-by-exception
+                  id:          ca-3.5_prm_1
+                  constraints: 
+                    - 
+                      detail: deny-all, permit by exception
                 - 
-                  id:    ca-3.5_prm_2
-                  label: organization-defined information systems
+                  id:          ca-3.5_prm_2
+                  label:       organization-defined information systems
+                  constraints: 
+                    - 
+                      detail: any systems
               properties: 
                 - 
                   name:  label
@@ -12884,8 +13058,11 @@ catalog:
           title:      Plan of Action and Milestones
           parameters: 
             - 
-              id:    ca-5_prm_1
-              label: organization-defined frequency
+              id:          ca-5_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least monthly
           properties: 
             - 
               name:  label
@@ -13086,8 +13263,11 @@ catalog:
           title:      Security Authorization
           parameters: 
             - 
-              id:    ca-6_prm_1
-              label: organization-defined frequency
+              id:          ca-6_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least every three (3) years or when a significant change occurs
           properties: 
             - 
               name:  label
@@ -13267,11 +13447,17 @@ catalog:
               id:    ca-7_prm_3
               label: organization-defined frequencies
             - 
-              id:    ca-7_prm_4
-              label: organization-defined personnel or roles
+              id:          ca-7_prm_4
+              label:       organization-defined personnel or roles
+              constraints: 
+                - 
+                  detail: to meet Federal and FedRAMP requirements (See additional guidance)
             - 
-              id:    ca-7_prm_5
-              label: organization-defined frequency
+              id:          ca-7_prm_5
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: to meet Federal and FedRAMP requirements (See additional guidance)
           properties: 
             - 
               name:  label
@@ -13849,8 +14035,11 @@ catalog:
           title:      Penetration Testing
           parameters: 
             - 
-              id:    ca-8_prm_1
-              label: organization-defined frequency
+              id:          ca-8_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
               id:    ca-8_prm_2
               label: organization-defined information systems or system components
@@ -14185,11 +14374,17 @@ catalog:
               id:    cm-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    cm-1_prm_2
-              label: organization-defined frequency
+              id:          cm-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    cm-1_prm_3
-              label: organization-defined frequency
+              id:          cm-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -14593,11 +14788,17 @@ catalog:
               title:      Reviews and Updates
               parameters: 
                 - 
-                  id:    cm-2.1_prm_1
-                  label: organization-defined frequency
+                  id:          cm-2.1_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least annually or when a significant change occurs
                 - 
-                  id:    cm-2.1_prm_2
-                  label: Assignment organization-defined circumstances
+                  id:          cm-2.1_prm_2
+                  label:       Assignment organization-defined circumstances
+                  constraints: 
+                    - 
+                      detail: to include when directed by the JAB
               properties: 
                 - 
                   name:  label
@@ -14869,8 +15070,11 @@ catalog:
               title:      Retention of Previous Configurations
               parameters: 
                 - 
-                  id:    cm-2.3_prm_1
-                  label: organization-defined previous versions of baseline configurations of the information system
+                  id:          cm-2.3_prm_1
+                  label:       organization-defined previous versions of baseline configurations of the information system
+                  constraints: 
+                    - 
+                      detail: organization-defined previous versions of baseline configurations of the previously approved baseline configuration of IS components
               properties: 
                 - 
                   name:  label
@@ -15098,22 +15302,7 @@ catalog:
               id:    cm-3_prm_2
               label: organization-defined configuration change control element (e.g., committee, board)
             - 
-              id:     cm-3_prm_3
-              select: 
-                how-many:     one or more
-                alternatives: 
-                  - 
-                    """
-                      
-                                        {{ cm-3_prm_4 }}
-                                     
-                    """
-                  - 
-                    """
-                      
-                                        {{ cm-3_prm_5 }}
-                                     
-                    """
+              id: cm-3_prm_3
             - 
               id:         cm-3_prm_4
               depends-on: cm-3_prm_3
@@ -15408,11 +15597,17 @@ catalog:
                   id:    cm-3.1_prm_1
                   label: organized-defined approval authorities
                 - 
-                  id:    cm-3.1_prm_2
-                  label: organization-defined time period
+                  id:          cm-3.1_prm_2
+                  label:       organization-defined time period
+                  constraints: 
+                    - 
+                      detail: organization agreed upon time period
                 - 
-                  id:    cm-3.1_prm_3
-                  label: organization-defined personnel
+                  id:          cm-3.1_prm_3
+                  label:       organization-defined personnel
+                  constraints: 
+                    - 
+                      detail: organization defined configuration management approval authorities
               properties: 
                 - 
                   name:  label
@@ -15720,8 +15915,11 @@ catalog:
               title:      Security Representative
               parameters: 
                 - 
-                  id:    cm-3.4_prm_1
-                  label: organization-defined configuration change control element
+                  id:          cm-3.4_prm_1
+                  label:       organization-defined configuration change control element
+                  constraints: 
+                    - 
+                      detail: Configuration control board (CCB) or similar (as defined in CM-3)
               properties: 
                 - 
                   name:  label
@@ -15795,8 +15993,11 @@ catalog:
               title:      Cryptography Management
               parameters: 
                 - 
-                  id:    cm-3.6_prm_1
-                  label: organization-defined security safeguards
+                  id:          cm-3.6_prm_1
+                  label:       organization-defined security safeguards
+                  constraints: 
+                    - 
+                      detail: All security safeguards that rely on cryptography
               properties: 
                 - 
                   name:  label
@@ -16309,8 +16510,11 @@ catalog:
               title:      Review System Changes
               parameters: 
                 - 
-                  id:    cm-5.2_prm_1
-                  label: organization-defined frequency
+                  id:          cm-5.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least every thirty (30) days
                 - 
                   id:    cm-5.2_prm_2
                   label: organization-defined circumstances
@@ -16531,8 +16735,11 @@ catalog:
               title:      Limit Production / Operational Privileges
               parameters: 
                 - 
-                  id:    cm-5.5_prm_1
-                  label: organization-defined frequency
+                  id:          cm-5.5_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least quarterly
               properties: 
                 - 
                   name:  label
@@ -16654,8 +16861,11 @@ catalog:
           title:      Configuration Settings
           parameters: 
             - 
-              id:    cm-6_prm_1
-              label: organization-defined security configuration checklists
+              id:       cm-6_prm_1
+              label:    organization-defined security configuration checklists
+              guidance: 
+                - 
+                  prose: See CM-6(a) Additional FedRAMP Requirements and Guidance
             - 
               id:    cm-6_prm_2
               label: organization-defined information system components
@@ -17227,8 +17437,11 @@ catalog:
           title:      Least Functionality
           parameters: 
             - 
-              id:    cm-7_prm_1
-              label: organization-defined prohibited or restricted functions, ports, protocols, and/or services
+              id:          cm-7_prm_1
+              label:       organization-defined prohibited or restricted functions, ports, protocols, and/or services
+              constraints: 
+                - 
+                  detail: United States Government Configuration Baseline (USGCB)
           properties: 
             - 
               name:  label
@@ -17450,8 +17663,11 @@ catalog:
               title:      Periodic Review
               parameters: 
                 - 
-                  id:    cm-7.1_prm_1
-                  label: organization-defined frequency
+                  id:          cm-7.1_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least monthly
                 - 
                   id:    cm-7.1_prm_2
                   label: organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure
@@ -17732,17 +17948,7 @@ catalog:
               title:      Prevent Program Execution
               parameters: 
                 - 
-                  id:     cm-7.2_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: 
-                      - 
-                        """
-                          
-                                               {{ cm-7.2_prm_2 }}
-                                            
-                        """
-                      - rules authorizing the terms and conditions of software program usage
+                  id: cm-7.2_prm_1
                 - 
                   id:         cm-7.2_prm_2
                   depends-on: cm-7.2_prm_1
@@ -17863,8 +18069,11 @@ catalog:
                   id:    cm-7.5_prm_1
                   label: organization-defined software programs authorized to execute on the information system
                 - 
-                  id:    cm-7.5_prm_2
-                  label: organization-defined frequency
+                  id:          cm-7.5_prm_2
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least quarterly or when there is a change
               properties: 
                 - 
                   name:  label
@@ -18034,8 +18243,11 @@ catalog:
               id:    cm-8_prm_1
               label: organization-defined information deemed necessary to achieve effective information system component accountability
             - 
-              id:    cm-8_prm_2
-              label: organization-defined frequency
+              id:          cm-8_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least monthly
           properties: 
             - 
               name:  label
@@ -18423,14 +18635,13 @@ catalog:
               title:      Automated Unauthorized Component Detection
               parameters: 
                 - 
-                  id:    cm-8.3_prm_1
-                  label: organization-defined frequency
+                  id:          cm-8.3_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: Continuously, using automated mechanisms with a maximum five-minute delay in detection.
                 - 
-                  id:     cm-8.3_prm_2
-                  select: 
-                    how-many:     one or more
-                    alternatives: disables network access by such components,isolates the components,notifies {{ cm-8.3_prm_3 }}
-                  
+                  id: cm-8.3_prm_2
                 - 
                   id:         cm-8.3_prm_3
                   depends-on: cm-8.3_prm_2
@@ -18675,10 +18886,10 @@ catalog:
               title:      Accountability Information
               parameters: 
                 - 
-                  id:     cm-8.4_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: name,position,role
+                  id:          cm-8.4_prm_1
+                  constraints: 
+                    - 
+                      detail: position and role
               properties: 
                 - 
                   name:  label
@@ -19237,8 +19448,11 @@ catalog:
               id:    cm-11_prm_2
               label: organization-defined methods
             - 
-              id:    cm-11_prm_3
-              label: organization-defined frequency
+              id:          cm-11_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: Continuously (via CM-7 (5))
           properties: 
             - 
               name:  label
@@ -19514,11 +19728,17 @@ catalog:
               id:    cp-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    cp-1_prm_2
-              label: organization-defined frequency
+              id:          cp-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    cp-1_prm_3
-              label: organization-defined frequency
+              id:          cp-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -19830,8 +20050,11 @@ catalog:
               id:    cp-2_prm_2
               label: organization-defined key contingency personnel (identified by name and/or by role) and organizational elements
             - 
-              id:    cp-2_prm_3
-              label: organization-defined frequency
+              id:          cp-2_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
               id:    cp-2_prm_4
               label: organization-defined key contingency personnel (identified by name and/or by role) and organizational elements
@@ -20502,8 +20725,11 @@ catalog:
               title:      Resume All Missions / Business Functions
               parameters: 
                 - 
-                  id:    cp-2.4_prm_1
-                  label: organization-defined time period
+                  id:          cp-2.4_prm_1
+                  label:       organization-defined time period
+                  constraints: 
+                    - 
+                      detail: time period defined in service provider and organization SLA
               properties: 
                 - 
                   name:  label
@@ -20711,11 +20937,17 @@ catalog:
           title:      Contingency Training
           parameters: 
             - 
-              id:    cp-3_prm_1
-              label: organization-defined time period
+              id:          cp-3_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: ten (10) days
             - 
-              id:    cp-3_prm_2
-              label: organization-defined frequency
+              id:          cp-3_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -20939,11 +21171,17 @@ catalog:
           title:      Contingency Plan Testing
           parameters: 
             - 
-              id:    cp-4_prm_1
-              label: organization-defined frequency
+              id:          cp-4_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    cp-4_prm_2
-              label: organization-defined tests
+              id:          cp-4_prm_2
+              label:       organization-defined tests
+              constraints: 
+                - 
+                  detail: functional exercises
           properties: 
             - 
               name:  label
@@ -22287,8 +22525,11 @@ catalog:
               title:      Provider Contingency Plan
               parameters: 
                 - 
-                  id:    cp-8.4_prm_1
-                  label: organization-defined frequency
+                  id:          cp-8.4_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: annually
               properties: 
                 - 
                   name:  label
@@ -22432,14 +22673,23 @@ catalog:
           title:      Information System Backup
           parameters: 
             - 
-              id:    cp-9_prm_1
-              label: organization-defined frequency consistent with recovery time and recovery point objectives
+              id:          cp-9_prm_1
+              label:       organization-defined frequency consistent with recovery time and recovery point objectives
+              constraints: 
+                - 
+                  detail: daily incremental; weekly full
             - 
-              id:    cp-9_prm_2
-              label: organization-defined frequency consistent with recovery time and recovery point objectives
+              id:          cp-9_prm_2
+              label:       organization-defined frequency consistent with recovery time and recovery point objectives
+              constraints: 
+                - 
+                  detail: daily incremental; weekly full
             - 
-              id:    cp-9_prm_3
-              label: organization-defined frequency consistent with recovery time and recovery point objectives
+              id:          cp-9_prm_3
+              label:       organization-defined frequency consistent with recovery time and recovery point objectives
+              constraints: 
+                - 
+                  detail: daily incremental; weekly full
           properties: 
             - 
               name:  label
@@ -22675,8 +22925,11 @@ catalog:
               title:      Testing for Reliability / Integrity
               parameters: 
                 - 
-                  id:    cp-9.1_prm_1
-                  label: organization-defined frequency
+                  id:          cp-9.1_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least monthly
               properties: 
                 - 
                   name:  label
@@ -22902,8 +23155,11 @@ catalog:
               title:      Transfer to Alternate Storage Site
               parameters: 
                 - 
-                  id:    cp-9.5_prm_1
-                  label: organization-defined time period and transfer rate consistent with the recovery time and recovery point objectives
+                  id:          cp-9.5_prm_1
+                  label:       organization-defined time period and transfer rate consistent with the recovery time and recovery point objectives
+                  constraints: 
+                    - 
+                      detail: time period and transfer rate consistent with the recovery time and recovery point objectives defined in the service provider and organization SLA
               properties: 
                 - 
                   name:  label
@@ -23203,8 +23459,11 @@ catalog:
               title:      Restore Within Time Period
               parameters: 
                 - 
-                  id:    cp-10.4_prm_1
-                  label: organization-defined restoration time-periods
+                  id:          cp-10.4_prm_1
+                  label:       organization-defined restoration time-periods
+                  constraints: 
+                    - 
+                      detail: time period consistent with the restoration time-periods defined in the service provider and organization SLA
               properties: 
                 - 
                   name:  label
@@ -23291,11 +23550,17 @@ catalog:
               id:    ia-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ia-1_prm_2
-              label: organization-defined frequency
+              id:          ia-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ia-1_prm_3
-              label: organization-defined frequency
+              id:          ia-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -24124,8 +24389,11 @@ catalog:
               title:      Remote Access - Separate Device
               parameters: 
                 - 
-                  id:    ia-2.11_prm_1
-                  label: organization-defined strength of mechanism requirements
+                  id:          ia-2.11_prm_1
+                  label:       organization-defined strength of mechanism requirements
+                  constraints: 
+                    - 
+                      detail: FIPS 140-2, NIAP Certification, or NSA approval
               properties: 
                 - 
                   name:  label
@@ -24353,10 +24621,7 @@ catalog:
               id:    ia-3_prm_1
               label: organization-defined specific and/or types of devices
             - 
-              id:     ia-3_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: local,remote,network
+              id: ia-3_prm_2
           properties: 
             - 
               name:  label
@@ -24505,14 +24770,23 @@ catalog:
           title:      Identifier Management
           parameters: 
             - 
-              id:    ia-4_prm_1
-              label: organization-defined personnel or roles
+              id:          ia-4_prm_1
+              label:       organization-defined personnel or roles
+              constraints: 
+                - 
+                  detail: at a minimum, the ISSO (or similar role within the organization)
             - 
-              id:    ia-4_prm_2
-              label: organization-defined time period
+              id:          ia-4_prm_2
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: at least two (2) years
             - 
-              id:    ia-4_prm_3
-              label: organization-defined time period of inactivity
+              id:          ia-4_prm_3
+              label:       organization-defined time period of inactivity
+              constraints: 
+                - 
+                  detail: thirty-five (35) days (See additional requirements and guidance.)
           properties: 
             - 
               name:  label
@@ -24896,8 +25170,11 @@ catalog:
               title:      Identify User Status
               parameters: 
                 - 
-                  id:    ia-4.4_prm_1
-                  label: organization-defined characteristic identifying individual status
+                  id:          ia-4.4_prm_1
+                  label:       organization-defined characteristic identifying individual status
+                  constraints: 
+                    - 
+                      detail: contractors; foreign nationals]
               properties: 
                 - 
                   name:  label
@@ -25438,14 +25715,20 @@ catalog:
                   id:    ia-5.1_prm_1
                   label: organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type
                 - 
-                  id:    ia-5.1_prm_2
-                  label: organization-defined number
+                  id:          ia-5.1_prm_2
+                  label:       organization-defined number
+                  constraints: 
+                    - 
+                      detail: at least fifty percent (50%)
                 - 
                   id:    ia-5.1_prm_3
                   label: organization-defined numbers for lifetime minimum, lifetime maximum
                 - 
-                  id:    ia-5.1_prm_4
-                  label: organization-defined number
+                  id:          ia-5.1_prm_4
+                  label:       organization-defined number
+                  constraints: 
+                    - 
+                      detail: twenty four (24)
               properties: 
                 - 
                   name:  label
@@ -25922,12 +26205,16 @@ catalog:
               title:      In-person or Trusted Third-party Registration
               parameters: 
                 - 
-                  id:    ia-5.3_prm_1
-                  label: organization-defined types of and/or specific authenticators
+                  id:          ia-5.3_prm_1
+                  label:       organization-defined types of and/or specific authenticators
+                  constraints: 
+                    - 
+                      detail: All hardware/biometric (multifactor authenticators)
                 - 
-                  id:     ia-5.3_prm_2
-                  select: 
-                    alternatives: in person,by a trusted third party
+                  id:          ia-5.3_prm_2
+                  constraints: 
+                    - 
+                      detail: in person
                 - 
                   id:    ia-5.3_prm_3
                   label: organization-defined registration authority
@@ -26034,8 +26321,11 @@ catalog:
               title:      Automated Support for Password Strength Determination
               parameters: 
                 - 
-                  id:    ia-5.4_prm_1
-                  label: organization-defined requirements
+                  id:          ia-5.4_prm_1
+                  label:       organization-defined requirements
+                  constraints: 
+                    - 
+                      detail: complexity as identified in IA-5 (1) Control Enhancement Part (a)
               properties: 
                 - 
                   name:  label
@@ -26270,8 +26560,11 @@ catalog:
               title:      Multiple Information System Accounts
               parameters: 
                 - 
-                  id:    ia-5.8_prm_1
-                  label: organization-defined security safeguards
+                  id:          ia-5.8_prm_1
+                  label:       organization-defined security safeguards
+                  constraints: 
+                    - 
+                      detail: different authenticators on different systems
               properties: 
                 - 
                   name:  label
@@ -27049,11 +27342,17 @@ catalog:
               id:    ir-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ir-1_prm_2
-              label: organization-defined frequency
+              id:          ir-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ir-1_prm_3
-              label: organization-defined frequency
+              id:          ir-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -27359,11 +27658,17 @@ catalog:
           title:      Incident Response Training
           parameters: 
             - 
-              id:    ir-2_prm_1
-              label: organization-defined time period
+              id:          ir-2_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: within ten (10) days
             - 
-              id:    ir-2_prm_2
-              label: organization-defined frequency
+              id:          ir-2_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -27619,8 +27924,11 @@ catalog:
           title:      Incident Response Testing
           parameters: 
             - 
-              id:    ir-3_prm_1
-              label: organization-defined frequency
+              id:          ir-3_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least every six (6) months
             - 
               id:    ir-3_prm_2
               label: organization-defined tests
@@ -28115,8 +28423,11 @@ catalog:
               title:      Dynamic Reconfiguration
               parameters: 
                 - 
-                  id:    ir-4.2_prm_1
-                  label: organization-defined information system components
+                  id:          ir-4.2_prm_1
+                  label:       organization-defined information system components
+                  constraints: 
+                    - 
+                      detail: all network, data storage, and computing devices
               properties: 
                 - 
                   name:  label
@@ -28409,8 +28720,11 @@ catalog:
               title:      Correlation with External Organizations
               parameters: 
                 - 
-                  id:    ir-4.8_prm_1
-                  label: organization-defined external organizations
+                  id:          ir-4.8_prm_1
+                  label:       organization-defined external organizations
+                  constraints: 
+                    - 
+                      detail: external organizations including consumer incident responders and network defenders and the appropriate CIRT/CERT (such as US-CERT, DOD CERT, IC CERT)
                 - 
                   id:    ir-4.8_prm_2
                   label: organization-defined incident information
@@ -28693,8 +29007,11 @@ catalog:
           title:      Incident Reporting
           parameters: 
             - 
-              id:    ir-6_prm_1
-              label: organization-defined time period
+              id:          ir-6_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)
             - 
               id:    ir-6_prm_2
               label: organization-defined authorities
@@ -29153,14 +29470,23 @@ catalog:
               id:    ir-8_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ir-8_prm_2
-              label: organization-defined incident response personnel (identified by name and/or by role) and organizational elements
+              id:          ir-8_prm_2
+              label:       organization-defined incident response personnel (identified by name and/or by role) and organizational elements
+              constraints: 
+                - 
+                  detail: see additional FedRAMP Requirements and Guidance
             - 
-              id:    ir-8_prm_3
-              label: organization-defined frequency
+              id:          ir-8_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ir-8_prm_4
-              label: organization-defined incident response personnel (identified by name and/or by role) and organizational elements
+              id:          ir-8_prm_4
+              label:       organization-defined incident response personnel (identified by name and/or by role) and organizational elements
+              constraints: 
+                - 
+                  detail: see additional FedRAMP Requirements and Guidance
           properties: 
             - 
               name:  label
@@ -29900,8 +30226,11 @@ catalog:
               title:      Training
               parameters: 
                 - 
-                  id:    ir-9.2_prm_1
-                  label: organization-defined frequency
+                  id:          ir-9.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least annually
               properties: 
                 - 
                   name:  label
@@ -30119,11 +30448,17 @@ catalog:
               id:    ma-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ma-1_prm_2
-              label: organization-defined frequency
+              id:          ma-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ma-1_prm_3
-              label: organization-defined frequency
+              id:          ma-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -31138,8 +31473,11 @@ catalog:
               title:      Prevent Unauthorized Removal
               parameters: 
                 - 
-                  id:    ma-3.3_prm_1
-                  label: organization-defined personnel or roles
+                  id:          ma-3.3_prm_1
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: the information owner explicitly authorizing removal of the equipment from the facility
               properties: 
                 - 
                   name:  label
@@ -32318,11 +32656,17 @@ catalog:
               id:    mp-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    mp-1_prm_2
-              label: organization-defined frequency
+              id:          mp-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    mp-1_prm_3
-              label: organization-defined frequency
+              id:          mp-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -32620,8 +32964,11 @@ catalog:
           title:      Media Access
           parameters: 
             - 
-              id:    mp-2_prm_1
-              label: organization-defined types of digital and/or non-digital media
+              id:          mp-2_prm_1
+              label:       organization-defined types of digital and/or non-digital media
+              constraints: 
+                - 
+                  detail: any digital and non-digital media deemed sensitive
             - 
               id:    mp-2_prm_2
               label: organization-defined personnel or roles
@@ -32740,11 +33087,17 @@ catalog:
           title:      Media Marking
           parameters: 
             - 
-              id:    mp-3_prm_1
-              label: organization-defined types of information system media
+              id:          mp-3_prm_1
+              label:       organization-defined types of information system media
+              constraints: 
+                - 
+                  detail: no removable media types
             - 
-              id:    mp-3_prm_2
-              label: organization-defined controlled areas
+              id:          mp-3_prm_2
+              label:       organization-defined controlled areas
+              constraints: 
+                - 
+                  detail: organization-defined security safeguards not applicable
           properties: 
             - 
               name:  label
@@ -32916,11 +33269,17 @@ catalog:
           title:      Media Storage
           parameters: 
             - 
-              id:    mp-4_prm_1
-              label: organization-defined types of digital and/or non-digital media
+              id:          mp-4_prm_1
+              label:       organization-defined types of digital and/or non-digital media
+              constraints: 
+                - 
+                  detail: all types of digital and non-digital media with sensitive information
             - 
-              id:    mp-4_prm_2
-              label: organization-defined controlled areas
+              id:          mp-4_prm_2
+              label:       organization-defined controlled areas
+              constraints: 
+                - 
+                  detail: see additional FedRAMP requirements and guidance
           properties: 
             - 
               name:  label
@@ -33095,11 +33454,17 @@ catalog:
           title:      Media Transport
           parameters: 
             - 
-              id:    mp-5_prm_1
-              label: organization-defined types of information system media
+              id:          mp-5_prm_1
+              label:       organization-defined types of information system media
+              constraints: 
+                - 
+                  detail: all media with sensitive information
             - 
-              id:    mp-5_prm_2
-              label: organization-defined security safeguards
+              id:          mp-5_prm_2
+              label:       organization-defined security safeguards
+              constraints: 
+                - 
+                  detail: prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container
           properties: 
             - 
               name:  label
@@ -33365,8 +33730,11 @@ catalog:
               id:    mp-6_prm_1
               label: organization-defined information system media
             - 
-              id:    mp-6_prm_2
-              label: organization-defined sanitization techniques and procedures
+              id:          mp-6_prm_2
+              label:       organization-defined sanitization techniques and procedures
+              constraints: 
+                - 
+                  detail: techniques and procedures IAW NIST SP 800-88 R1, Appendix A - Minimum Sanitization Recommendations
           properties: 
             - 
               name:  label
@@ -33666,8 +34034,11 @@ catalog:
               title:      Equipment Testing
               parameters: 
                 - 
-                  id:    mp-6.2_prm_1
-                  label: organization-defined frequency
+                  id:          mp-6.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least every six (6) months
               properties: 
                 - 
                   name:  label
@@ -33836,9 +34207,7 @@ catalog:
           title:      Media Use
           parameters: 
             - 
-              id:     mp-7_prm_1
-              select: 
-                alternatives: restricts,prohibits
+              id: mp-7_prm_1
             - 
               id:    mp-7_prm_2
               label: organization-defined types of information system media
@@ -34057,11 +34426,17 @@ catalog:
               id:    pe-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    pe-1_prm_2
-              label: organization-defined frequency
+              id:          pe-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    pe-1_prm_3
-              label: organization-defined frequency
+              id:          pe-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -34359,8 +34734,11 @@ catalog:
           title:      Physical Access Authorizations
           parameters: 
             - 
-              id:    pe-2_prm_1
-              label: organization-defined frequency
+              id:          pe-2_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least every ninety (90) days
           properties: 
             - 
               name:  label
@@ -34539,21 +34917,17 @@ catalog:
               id:    pe-3_prm_1
               label: organization-defined entry/exit points to the facility where the information system resides
             - 
-              id:     pe-3_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: 
-                  - 
-                    """
-                      
-                                        {{ pe-3_prm_3 }}
-                                     
-                    """
-                  - guards
+              id:          pe-3_prm_2
+              constraints: 
+                - 
+                  detail: CSP defined physical access control systems/devices AND guards
             - 
-              id:         pe-3_prm_3
-              depends-on: pe-3_prm_2
-              label:      organization-defined physical access control systems/devices
+              id:          pe-3_prm_3
+              depends-on:  pe-3_prm_2
+              label:       organization-defined physical access control systems/devices
+              constraints: 
+                - 
+                  detail: CSP defined physical access control systems/devices
             - 
               id:    pe-3_prm_4
               label: organization-defined entry/exit points
@@ -34561,17 +34935,26 @@ catalog:
               id:    pe-3_prm_5
               label: organization-defined security safeguards
             - 
-              id:    pe-3_prm_6
-              label: organization-defined circumstances requiring visitor escorts and monitoring
+              id:          pe-3_prm_6
+              label:       organization-defined circumstances requiring visitor escorts and monitoring
+              constraints: 
+                - 
+                  detail: in all circumstances within restricted access area where the information system resides
             - 
               id:    pe-3_prm_7
               label: organization-defined physical access devices
             - 
-              id:    pe-3_prm_8
-              label: organization-defined frequency
+              id:          pe-3_prm_8
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    pe-3_prm_9
-              label: organization-defined frequency
+              id:          pe-3_prm_9
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -35350,8 +35733,11 @@ catalog:
           title:      Monitoring Physical Access
           parameters: 
             - 
-              id:    pe-6_prm_1
-              label: organization-defined frequency
+              id:          pe-6_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least monthly
             - 
               id:    pe-6_prm_2
               label: organization-defined events or potential indications of events
@@ -35633,11 +36019,17 @@ catalog:
           title:      Visitor Access Records
           parameters: 
             - 
-              id:    pe-8_prm_1
-              label: organization-defined time period
+              id:          pe-8_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: for a minimum of one (1) year
             - 
-              id:    pe-8_prm_2
-              label: organization-defined frequency
+              id:          pe-8_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least monthly
           properties: 
             - 
               name:  label
@@ -35999,10 +36391,7 @@ catalog:
           title:      Emergency Power
           parameters: 
             - 
-              id:     pe-11_prm_1
-              select: 
-                how-many:     one or more
-                alternatives: an orderly shutdown of the information system,transition of the information system to long-term alternate power
+              id: pe-11_prm_1
           properties: 
             - 
               name:  label
@@ -36295,11 +36684,17 @@ catalog:
               title:      Detection Devices / Systems
               parameters: 
                 - 
-                  id:    pe-13.1_prm_1
-                  label: organization-defined personnel or roles
+                  id:          pe-13.1_prm_1
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: service provider building maintenance/physical security personnel
                 - 
-                  id:    pe-13.1_prm_2
-                  label: organization-defined emergency responders
+                  id:          pe-13.1_prm_2
+                  label:       organization-defined emergency responders
+                  constraints: 
+                    - 
+                      detail: service provider emergency responders with incident response responsibilities
               properties: 
                 - 
                   name:  label
@@ -36559,11 +36954,17 @@ catalog:
           title:      Temperature and Humidity Controls
           parameters: 
             - 
-              id:    pe-14_prm_1
-              label: organization-defined acceptable levels
+              id:          pe-14_prm_1
+              label:       organization-defined acceptable levels
+              constraints: 
+                - 
+                  detail: consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments
             - 
-              id:    pe-14_prm_2
-              label: organization-defined frequency
+              id:          pe-14_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: continuously
           properties: 
             - 
               name:  label
@@ -36906,8 +37307,11 @@ catalog:
               title:      Automation Support
               parameters: 
                 - 
-                  id:    pe-15.1_prm_1
-                  label: organization-defined personnel or roles
+                  id:          pe-15.1_prm_1
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: service provider building maintenance/physical security personnel
               properties: 
                 - 
                   name:  label
@@ -36989,8 +37393,11 @@ catalog:
           title:      Delivery and Removal
           parameters: 
             - 
-              id:    pe-16_prm_1
-              label: organization-defined types of information system components
+              id:          pe-16_prm_1
+              label:       organization-defined types of information system components
+              constraints: 
+                - 
+                  detail: all information system components
           properties: 
             - 
               name:  label
@@ -37279,8 +37686,11 @@ catalog:
           title:      Location of Information System Components
           parameters: 
             - 
-              id:    pe-18_prm_1
-              label: organization-defined physical and environmental hazards
+              id:          pe-18_prm_1
+              label:       organization-defined physical and environmental hazards
+              constraints: 
+                - 
+                  detail: physical and environmental hazards identified during threat assessment
           properties: 
             - 
               name:  label
@@ -37391,11 +37801,17 @@ catalog:
               id:    pl-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    pl-1_prm_2
-              label: organization-defined frequency
+              id:          pl-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    pl-1_prm_3
-              label: organization-defined frequency
+              id:          pl-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -37700,8 +38116,11 @@ catalog:
               id:    pl-2_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    pl-2_prm_2
-              label: organization-defined frequency
+              id:          pl-2_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -38237,8 +38656,11 @@ catalog:
           title:      Rules of Behavior
           parameters: 
             - 
-              id:    pl-4_prm_1
-              label: organization-defined frequency
+              id:          pl-4_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: annually
           properties: 
             - 
               name:  label
@@ -38543,8 +38965,11 @@ catalog:
           title:      Information Security Architecture
           parameters: 
             - 
-              id:    pl-8_prm_1
-              label: organization-defined frequency
+              id:          pl-8_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or when a significant change occurs
           properties: 
             - 
               name:  label
@@ -38793,11 +39218,17 @@ catalog:
               id:    ps-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ps-1_prm_2
-              label: organization-defined frequency
+              id:          ps-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ps-1_prm_3
-              label: organization-defined frequency
+              id:          ps-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -39095,8 +39526,11 @@ catalog:
           title:      Position Risk Designation
           parameters: 
             - 
-              id:    ps-2_prm_1
-              label: organization-defined frequency
+              id:          ps-2_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
           properties: 
             - 
               name:  label
@@ -39237,8 +39671,11 @@ catalog:
           title:      Personnel Screening
           parameters: 
             - 
-              id:    ps-3_prm_1
-              label: organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening
+              id:          ps-3_prm_1
+              label:       organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening
+              constraints: 
+                - 
+                  detail: for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions
           properties: 
             - 
               name:  label
@@ -39404,8 +39841,11 @@ catalog:
               title:      Information with Special Protection Measures
               parameters: 
                 - 
-                  id:    ps-3.3_prm_1
-                  label: organization-defined additional personnel screening criteria
+                  id:          ps-3.3_prm_1
+                  label:       organization-defined additional personnel screening criteria
+                  constraints: 
+                    - 
+                      detail: personnel screening criteria - as required by specific information
               properties: 
                 - 
                   name:  label
@@ -39522,8 +39962,11 @@ catalog:
           title:      Personnel Termination
           parameters: 
             - 
-              id:    ps-4_prm_1
-              label: organization-defined time period
+              id:          ps-4_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: eight (8) hours
             - 
               id:    ps-4_prm_2
               label: organization-defined information security topics
@@ -39765,8 +40208,11 @@ catalog:
               title:      Automated Notification
               parameters: 
                 - 
-                  id:    ps-4.2_prm_1
-                  label: organization-defined personnel or roles
+                  id:          ps-4.2_prm_1
+                  label:       organization-defined personnel or roles
+                  constraints: 
+                    - 
+                      detail: access control personnel responsible for disabling access to the system
               properties: 
                 - 
                   name:  label
@@ -39843,14 +40289,20 @@ catalog:
               id:    ps-5_prm_1
               label: organization-defined transfer or reassignment actions
             - 
-              id:    ps-5_prm_2
-              label: organization-defined time period following the formal transfer action
+              id:          ps-5_prm_2
+              label:       organization-defined time period following the formal transfer action
+              constraints: 
+                - 
+                  detail: twenty-four (24) hours
             - 
               id:    ps-5_prm_3
               label: organization-defined personnel or roles
             - 
-              id:    ps-5_prm_4
-              label: organization-defined time period
+              id:          ps-5_prm_4
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: twenty-four (24) hours
           properties: 
             - 
               name:  label
@@ -40055,11 +40507,17 @@ catalog:
           title:      Access Agreements
           parameters: 
             - 
-              id:    ps-6_prm_1
-              label: organization-defined frequency
+              id:          ps-6_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ps-6_prm_2
-              label: organization-defined frequency
+              id:          ps-6_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually and any time there is a change to the user's level of access
           properties: 
             - 
               name:  label
@@ -40255,8 +40713,11 @@ catalog:
               id:    ps-7_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ps-7_prm_2
-              label: organization-defined time period
+              id:          ps-7_prm_2
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: terminations: immediately; transfers: within twenty-four (24) hours
           properties: 
             - 
               name:  label
@@ -40453,8 +40914,11 @@ catalog:
           title:      Personnel Sanctions
           parameters: 
             - 
-              id:    ps-8_prm_1
-              label: organization-defined personnel or roles
+              id:          ps-8_prm_1
+              label:       organization-defined personnel or roles
+              constraints: 
+                - 
+                  detail: at a minimum, the ISSO and/or similar role within the organization
             - 
               id:    ps-8_prm_2
               label: organization-defined time period
@@ -40589,11 +41053,17 @@ catalog:
               id:    ra-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    ra-1_prm_2
-              label: organization-defined frequency
+              id:          ra-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    ra-1_prm_3
-              label: organization-defined frequency
+              id:          ra-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -41033,24 +41503,29 @@ catalog:
           title:      Risk Assessment
           parameters: 
             - 
-              id:     ra-3_prm_1
-              select: 
-                alternatives: security plan,risk assessment report,
-                  {{ ra-3_prm_2 }}
-               
+              id: ra-3_prm_1
             - 
-              id:         ra-3_prm_2
-              depends-on: ra-3_prm_1
-              label:      organization-defined document
+              id:          ra-3_prm_2
+              depends-on:  ra-3_prm_1
+              label:       organization-defined document
+              constraints: 
+                - 
+                  detail: security assessment report
             - 
-              id:    ra-3_prm_3
-              label: organization-defined frequency
+              id:          ra-3_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
             - 
               id:    ra-3_prm_4
               label: organization-defined personnel or roles
             - 
-              id:    ra-3_prm_5
-              label: organization-defined frequency
+              id:          ra-3_prm_5
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: annually
           properties: 
             - 
               name:  label
@@ -41368,11 +41843,17 @@ catalog:
           title:      Vulnerability Scanning
           parameters: 
             - 
-              id:    ra-5_prm_1
-              label: organization-defined frequency and/or randomly in accordance with organization-defined process
+              id:          ra-5_prm_1
+              label:       organization-defined frequency and/or randomly in accordance with organization-defined process
+              constraints: 
+                - 
+                  detail: monthly operating system/infrastructure; monthly web applications and databases
             - 
-              id:    ra-5_prm_2
-              label: organization-defined response times
+              id:          ra-5_prm_2
+              label:       organization-defined response times
+              constraints: 
+                - 
+                  detail: high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery; low risk vulnerabilities mitigated within one hundred and eighty (180) days from date of discovery
             - 
               id:    ra-5_prm_3
               label: organization-defined personnel or roles
@@ -41888,18 +42369,10 @@ catalog:
               title:      Update by Frequency / Prior to New Scan / When Identified
               parameters: 
                 - 
-                  id:     ra-5.2_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: 
-                      - 
-                        """
-                          
-                                               {{ ra-5.2_prm_2 }}
-                                            
-                        """
-                      - prior to a new scan
-                      - when new vulnerabilities are identified and reported
+                  id:          ra-5.2_prm_1
+                  constraints: 
+                    - 
+                      detail: prior to a new scan
                 - 
                   id:         ra-5.2_prm_2
                   depends-on: ra-5.2_prm_1
@@ -42077,8 +42550,11 @@ catalog:
               title:      Discoverable Information
               parameters: 
                 - 
-                  id:    ra-5.4_prm_1
-                  label: organization-defined corrective actions
+                  id:          ra-5.4_prm_1
+                  label:       organization-defined corrective actions
+                  constraints: 
+                    - 
+                      detail: notify appropriate service provider personnel and follow procedures for organization and service provider-defined corrective actions
               properties: 
                 - 
                   name:  label
@@ -42165,11 +42641,17 @@ catalog:
               title:      Privileged Access
               parameters: 
                 - 
-                  id:    ra-5.5_prm_1
-                  label: organization-identified information system components
+                  id:          ra-5.5_prm_1
+                  label:       organization-identified information system components
+                  constraints: 
+                    - 
+                      detail: operating systems / web applications / databases
                 - 
-                  id:    ra-5.5_prm_2
-                  label: organization-defined vulnerability scanning activities
+                  id:          ra-5.5_prm_2
+                  label:       organization-defined vulnerability scanning activities
+                  constraints: 
+                    - 
+                      detail: all scans
               properties: 
                 - 
                   name:  label
@@ -42486,11 +42968,17 @@ catalog:
               id:    sa-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    sa-1_prm_2
-              label: organization-defined frequency
+              id:          sa-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    sa-1_prm_3
-              label: organization-defined frequency
+              id:          sa-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -43446,12 +43934,10 @@ catalog:
               title:      Design / Implementation Information for Security Controls
               parameters: 
                 - 
-                  id:     sa-4.2_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: security-relevant external system interfaces,high-level design,low-level design,source code or hardware schematics,
-                     {{ sa-4.2_prm_2 }}
-                  
+                  id:          sa-4.2_prm_1
+                  constraints: 
+                    - 
+                      detail: at a minimum to include security-relevant external system interfaces; high-level design; low-level design; source code or network and data flow diagram; [organization-defined design/implementation information]
                 - 
                   id:         sa-4.2_prm_2
                   depends-on: sa-4.2_prm_1
@@ -43594,8 +44080,11 @@ catalog:
               title:      Continuous Monitoring Plan
               parameters: 
                 - 
-                  id:    sa-4.8_prm_1
-                  label: organization-defined level of detail
+                  id:          sa-4.8_prm_1
+                  label:       organization-defined level of detail
+                  constraints: 
+                    - 
+                      detail: at least the minimum requirement as defined in control CA-7
               properties: 
                 - 
                   name:  label
@@ -43840,8 +44329,11 @@ catalog:
               id:    sa-5_prm_1
               label: organization-defined actions
             - 
-              id:    sa-5_prm_2
-              label: organization-defined personnel or roles
+              id:          sa-5_prm_2
+              label:       organization-defined personnel or roles
+              constraints: 
+                - 
+                  detail: at a minimum, the ISSO (or similar role within the organization)
           properties: 
             - 
               name:  label
@@ -44330,11 +44822,17 @@ catalog:
           title:      External Information System Services
           parameters: 
             - 
-              id:    sa-9_prm_1
-              label: organization-defined security controls
+              id:          sa-9_prm_1
+              label:       organization-defined security controls
+              constraints: 
+                - 
+                  detail: FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system
             - 
-              id:    sa-9_prm_2
-              label: organization-defined processes, methods, and techniques
+              id:          sa-9_prm_2
+              label:       organization-defined processes, methods, and techniques
+              constraints: 
+                - 
+                  detail: Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored
           properties: 
             - 
               name:  label
@@ -44643,8 +45141,11 @@ catalog:
               title:      Identification of Functions / Ports / Protocols / Services
               parameters: 
                 - 
-                  id:    sa-9.2_prm_1
-                  label: organization-defined external information system services
+                  id:          sa-9.2_prm_1
+                  label:       organization-defined external information system services
+                  constraints: 
+                    - 
+                      detail: all external systems where Federal information is processed or stored
               properties: 
                 - 
                   name:  label
@@ -44749,8 +45250,11 @@ catalog:
                   id:    sa-9.4_prm_1
                   label: organization-defined security safeguards
                 - 
-                  id:    sa-9.4_prm_2
-                  label: organization-defined external service providers
+                  id:          sa-9.4_prm_2
+                  label:       organization-defined external service providers
+                  constraints: 
+                    - 
+                      detail: all external systems where Federal information is processed or stored
               properties: 
                 - 
                   name:  label
@@ -44832,10 +45336,10 @@ catalog:
               title:      Processing, Storage, and Service Location
               parameters: 
                 - 
-                  id:     sa-9.5_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: information processing,information/data,information system services
+                  id:          sa-9.5_prm_1
+                  constraints: 
+                    - 
+                      detail: information processing, information data, AND information services
                 - 
                   id:    sa-9.5_prm_2
                   label: organization-defined locations
@@ -44948,10 +45452,10 @@ catalog:
           title:      Developer Configuration Management
           parameters: 
             - 
-              id:     sa-10_prm_1
-              select: 
-                how-many:     one or more
-                alternatives: design,development,implementation,operation
+              id:          sa-10_prm_1
+              constraints: 
+                - 
+                  detail: development, implementation, AND operation
             - 
               id:    sa-10_prm_2
               label: organization-defined configuration items under configuration management
@@ -45328,10 +45832,7 @@ catalog:
           title:      Developer Security Testing and Evaluation
           parameters: 
             - 
-              id:     sa-11_prm_1
-              select: 
-                how-many:     one or more
-                alternatives: unit,integration,system,regression
+              id: sa-11_prm_1
             - 
               id:    sa-11_prm_2
               label: organization-defined depth and coverage
@@ -45824,8 +46325,11 @@ catalog:
           title:      Supply Chain Protection
           parameters: 
             - 
-              id:    sa-12_prm_1
-              label: organization-defined security safeguards
+              id:          sa-12_prm_1
+              label:       organization-defined security safeguards
+              constraints: 
+                - 
+                  detail: organization and service provider-defined personnel security requirements, approved HW/SW vendor list/process, and secure SDLC procedures
           properties: 
             - 
               name:  label
@@ -45977,11 +46481,17 @@ catalog:
           title:      Development Process, Standards, and Tools
           parameters: 
             - 
-              id:    sa-15_prm_1
-              label: organization-defined frequency
+              id:          sa-15_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: as needed and as dictated by the current threat posture
             - 
-              id:    sa-15_prm_2
-              label: organization-defined security requirements
+              id:          sa-15_prm_2
+              label:       organization-defined security requirements
+              constraints: 
+                - 
+                  detail: organization and service provider- defined security requirements
           properties: 
             - 
               name:  label
@@ -46447,11 +46957,17 @@ catalog:
               id:    sc-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    sc-1_prm_2
-              label: organization-defined frequency
+              id:          sc-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    sc-1_prm_3
-              label: organization-defined frequency
+              id:          sc-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -47072,12 +47588,7 @@ catalog:
               id:    sc-6_prm_1
               label: organization-defined resources
             - 
-              id:     sc-6_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: priority,quota,
-                  {{ sc-6_prm_3 }}
-               
+              id: sc-6_prm_2
             - 
               id:         sc-6_prm_3
               depends-on: sc-6_prm_2
@@ -47188,9 +47699,7 @@ catalog:
           title:      Boundary Protection
           parameters: 
             - 
-              id:     sc-7_prm_1
-              select: 
-                alternatives: physically,logically
+              id: sc-7_prm_1
           properties: 
             - 
               name:  label
@@ -47451,8 +47960,11 @@ catalog:
               title:      External Telecommunications Services
               parameters: 
                 - 
-                  id:    sc-7.4_prm_1
-                  label: organization-defined frequency
+                  id:          sc-7.4_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least every ninety (90) days or whenever there is a change in the threat environment that warrants a review of the exceptions
               properties: 
                 - 
                   name:  label
@@ -47940,8 +48452,11 @@ catalog:
               title:      Host-based Protection
               parameters: 
                 - 
-                  id:    sc-7.12_prm_1
-                  label: organization-defined host-based boundary protection mechanisms
+                  id:          sc-7.12_prm_1
+                  label:       organization-defined host-based boundary protection mechanisms
+                  constraints: 
+                    - 
+                      detail: Host Intrusion Prevention System (HIPS), Host Intrusion Detection System (HIDS), or minimally a host-based firewall
                 - 
                   id:    sc-7.12_prm_2
                   label: organization-defined information system components
@@ -48370,10 +48885,10 @@ catalog:
           title:      Transmission Confidentiality and Integrity
           parameters: 
             - 
-              id:     sc-8_prm_1
-              select: 
-                how-many:     one or more
-                alternatives: confidentiality,integrity
+              id:          sc-8_prm_1
+              constraints: 
+                - 
+                  detail: confidentiality AND integrity
           properties: 
             - 
               name:  label
@@ -48490,13 +49005,16 @@ catalog:
               title:      Cryptographic or Alternate Physical Protection
               parameters: 
                 - 
-                  id:     sc-8.1_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: prevent unauthorized disclosure of information,detect changes to information
+                  id:          sc-8.1_prm_1
+                  constraints: 
+                    - 
+                      detail: prevent unauthorized disclosure of information AND detect changes to information
                 - 
-                  id:    sc-8.1_prm_2
-                  label: organization-defined alternative physical safeguards
+                  id:          sc-8.1_prm_2
+                  label:       organization-defined alternative physical safeguards
+                  constraints: 
+                    - 
+                      detail: a hardened or alarmed carrier Protective Distribution System (PDS)
               properties: 
                 - 
                   name:  label
@@ -48592,8 +49110,11 @@ catalog:
           title:      Network Disconnect
           parameters: 
             - 
-              id:    sc-10_prm_1
-              label: organization-defined time period
+              id:          sc-10_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: no longer than ten (10) minutes for privileged sessions and no longer than fifteen (15) minutes for user sessions
           properties: 
             - 
               name:  label
@@ -48871,9 +49392,10 @@ catalog:
               title:      Symmetric Keys
               parameters: 
                 - 
-                  id:     sc-12.2_prm_1
-                  select: 
-                    alternatives: NIST FIPS-compliant,NSA-approved
+                  id:          sc-12.2_prm_1
+                  constraints: 
+                    - 
+                      detail: NIST FIPS-compliant
               properties: 
                 - 
                   name:  label
@@ -48943,9 +49465,7 @@ catalog:
               title:      Asymmetric Keys
               parameters: 
                 - 
-                  id:     sc-12.3_prm_1
-                  select: 
-                    alternatives: NSA-approved key management technology and processes,approved PKI Class 3 certificates or prepositioned keying material,approved PKI Class 3 or Class 4 certificates and hardware security tokens that protect the user’s private key
+                  id: sc-12.3_prm_1
               properties: 
                 - 
                   name:  label
@@ -49023,8 +49543,11 @@ catalog:
           title:      Cryptographic Protection
           parameters: 
             - 
-              id:    sc-13_prm_1
-              label: organization-defined cryptographic uses and type of cryptography required for each use
+              id:          sc-13_prm_1
+              label:       organization-defined cryptographic uses and type of cryptography required for each use
+              constraints: 
+                - 
+                  detail: FIPS-validated or NSA-approved cryptography
           properties: 
             - 
               name:  label
@@ -49200,8 +49723,11 @@ catalog:
           title:      Collaborative Computing Devices
           parameters: 
             - 
-              id:    sc-15_prm_1
-              label: organization-defined exceptions where remote activation is to be allowed
+              id:          sc-15_prm_1
+              label:       organization-defined exceptions where remote activation is to be allowed
+              constraints: 
+                - 
+                  detail: no exceptions
           properties: 
             - 
               name:  label
@@ -50350,10 +50876,10 @@ catalog:
           title:      Protection of Information at Rest
           parameters: 
             - 
-              id:     sc-28_prm_1
-              select: 
-                how-many:     one or more
-                alternatives: confidentiality,integrity
+              id:          sc-28_prm_1
+              constraints: 
+                - 
+                  detail: confidentiality AND integrity
             - 
               id:    sc-28_prm_2
               label: organization-defined information at rest
@@ -50541,8 +51067,11 @@ catalog:
                   id:    sc-28.1_prm_1
                   label: organization-defined information
                 - 
-                  id:    sc-28.1_prm_2
-                  label: organization-defined information system components
+                  id:          sc-28.1_prm_2
+                  label:       organization-defined information system components
+                  constraints: 
+                    - 
+                      detail: all information system components storing customer data deemed sensitive
               properties: 
                 - 
                   name:  label
@@ -50728,11 +51257,17 @@ catalog:
               id:    si-1_prm_1
               label: organization-defined personnel or roles
             - 
-              id:    si-1_prm_2
-              label: organization-defined frequency
+              id:          si-1_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually
             - 
-              id:    si-1_prm_3
-              label: organization-defined frequency
+              id:          si-1_prm_3
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least annually or whenever a significant change occurs
           properties: 
             - 
               name:  label
@@ -51030,8 +51565,11 @@ catalog:
           title:      Flaw Remediation
           parameters: 
             - 
-              id:    si-2_prm_1
-              label: organization-defined time period
+              id:          si-2_prm_1
+              label:       organization-defined time period
+              constraints: 
+                - 
+                  detail: thirty (30) days of release of updates
           properties: 
             - 
               name:  label
@@ -51335,8 +51873,11 @@ catalog:
               title:      Automated Flaw Remediation Status
               parameters: 
                 - 
-                  id:    si-2.2_prm_1
-                  label: organization-defined frequency
+                  id:          si-2.2_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least monthly
               properties: 
                 - 
                   name:  label
@@ -51536,20 +52077,21 @@ catalog:
           title:      Malicious Code Protection
           parameters: 
             - 
-              id:    si-3_prm_1
-              label: organization-defined frequency
+              id:          si-3_prm_1
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least weekly
             - 
-              id:     si-3_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: endpoint,network entry/exit points
+              id:          si-3_prm_2
+              constraints: 
+                - 
+                  detail: to include endpoints
             - 
-              id:     si-3_prm_3
-              select: 
-                how-many:     one or more
-                alternatives: block malicious code,quarantine malicious code,send alert to administrator,
-                  {{ si-3_prm_4 }}
-               
+              id:          si-3_prm_3
+              constraints: 
+                - 
+                  detail: to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime
             - 
               id:         si-3_prm_4
               depends-on: si-3_prm_3
@@ -52063,12 +52605,7 @@ catalog:
               id:    si-4_prm_4
               label: organization-defined personnel or roles
             - 
-              id:     si-4_prm_5
-              select: 
-                how-many:     one or more
-                alternatives: as needed,
-                  {{ si-4_prm_6 }}
-               
+              id: si-4_prm_5
             - 
               id:         si-4_prm_6
               depends-on: si-4_prm_5
@@ -52692,8 +53229,11 @@ catalog:
               title:      Inbound and Outbound Communications Traffic
               parameters: 
                 - 
-                  id:    si-4.4_prm_1
-                  label: organization-defined frequency
+                  id:          si-4.4_prm_1
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: continuously
               properties: 
                 - 
                   name:  label
@@ -53402,11 +53942,7 @@ catalog:
                   id:    si-4.22_prm_1
                   label: organization-defined authorization or approval processes
                 - 
-                  id:     si-4.22_prm_2
-                  select: 
-                    how-many:     one or more
-                    alternatives: audits,alerts {{ si-4.22_prm_3 }}
-                  
+                  id: si-4.22_prm_2
                 - 
                   id:         si-4.22_prm_3
                   depends-on: si-4.22_prm_2
@@ -53699,31 +54235,16 @@ catalog:
           title:      Security Alerts, Advisories, and Directives
           parameters: 
             - 
-              id:    si-5_prm_1
-              label: organization-defined external organizations
+              id:          si-5_prm_1
+              label:       organization-defined external organizations
+              constraints: 
+                - 
+                  detail: to include US-CERT
             - 
-              id:     si-5_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: 
-                  - 
-                    """
-                      
-                                        {{ si-5_prm_3 }}
-                                     
-                    """
-                  - 
-                    """
-                      
-                                        {{ si-5_prm_4 }}
-                                     
-                    """
-                  - 
-                    """
-                      
-                                        {{ si-5_prm_5 }}
-                                     
-                    """
+              id:          si-5_prm_2
+              constraints: 
+                - 
+                  detail: to include system security personnel and administrators with configuration/patch-management responsibilities
             - 
               id:         si-5_prm_3
               depends-on: si-5_prm_2
@@ -54015,45 +54536,36 @@ catalog:
               id:    si-6_prm_1
               label: organization-defined security functions
             - 
-              id:     si-6_prm_2
-              select: 
-                how-many:     one or more
-                alternatives: 
-                  - 
-                    """
-                      
-                                        {{ si-6_prm_3 }}
-                                     
-                    """
-                  - upon command by user with appropriate privilege
-                  - 
-                    """
-                      
-                                        {{ si-6_prm_4 }}
-                                     
-                    """
+              id: si-6_prm_2
             - 
-              id:         si-6_prm_3
-              depends-on: si-6_prm_2
-              label:      organization-defined system transitional states
+              id:          si-6_prm_3
+              depends-on:  si-6_prm_2
+              label:       organization-defined system transitional states
+              constraints: 
+                - 
+                  detail: to include upon system startup and/or restart
             - 
-              id:         si-6_prm_4
-              depends-on: si-6_prm_2
-              label:      organization-defined frequency
+              id:          si-6_prm_4
+              depends-on:  si-6_prm_2
+              label:       organization-defined frequency
+              constraints: 
+                - 
+                  detail: at least monthly
             - 
-              id:    si-6_prm_5
-              label: organization-defined personnel or roles
+              id:          si-6_prm_5
+              label:       organization-defined personnel or roles
+              constraints: 
+                - 
+                  detail: to include system administrators and security personnel
             - 
-              id:     si-6_prm_6
-              select: 
-                how-many:     one or more
-                alternatives: shuts the information system down,restarts the information system,
-                  {{ si-6_prm_7 }}
-               
+              id: si-6_prm_6
             - 
-              id:         si-6_prm_7
-              depends-on: si-6_prm_6
-              label:      organization-defined alternative action(s)
+              id:          si-6_prm_7
+              depends-on:  si-6_prm_6
+              label:       organization-defined alternative action(s)
+              constraints: 
+                - 
+                  detail: to include notification of system administrators and security personnel
           properties: 
             - 
               name:  label
@@ -54465,21 +54977,21 @@ catalog:
                   id:    si-7.1_prm_1
                   label: organization-defined software, firmware, and information
                 - 
-                  id:     si-7.1_prm_2
-                  select: 
-                    how-many:     one or more
-                    alternatives: at startup,at {{ si-7.1_prm_3 }}
-                  ,
-                     {{ si-7.1_prm_4 }}
-                  
+                  id: si-7.1_prm_2
                 - 
-                  id:         si-7.1_prm_3
-                  depends-on: si-7.1_prm_2
-                  label:      organization-defined transitional states or security-relevant events
+                  id:          si-7.1_prm_3
+                  depends-on:  si-7.1_prm_2
+                  label:       organization-defined transitional states or security-relevant events
+                  constraints: 
+                    - 
+                      detail: selection to include security relevant events
                 - 
-                  id:         si-7.1_prm_4
-                  depends-on: si-7.1_prm_2
-                  label:      organization-defined frequency
+                  id:          si-7.1_prm_4
+                  depends-on:  si-7.1_prm_2
+                  label:       organization-defined frequency
+                  constraints: 
+                    - 
+                      detail: at least monthly
               properties: 
                 - 
                   name:  label
@@ -54748,11 +55260,7 @@ catalog:
               title:      Automated Response to Integrity Violations
               parameters: 
                 - 
-                  id:     si-7.5_prm_1
-                  select: 
-                    how-many:     one or more
-                    alternatives: shuts the information system down,restarts the information system,implements {{ si-7.5_prm_2 }}
-                  
+                  id: si-7.5_prm_1
                 - 
                   id:         si-7.5_prm_2
                   depends-on: si-7.5_prm_1
@@ -55728,230 +56236,308 @@ catalog:
   back-matter: 
     resources: 
       - 
-        id:     ref001
-        title:  5 C.F.R. 731.106
+        id:       ref001
+        title:    5 C.F.R. 731.106
+        citation: 
+          text: Code of Federal Regulations, Title 5, Administrative Personnel, Section 731.106, Designation of Public Trust Positions and Investigative Requirements (5 C.F.R. 731.106).
         rlinks: 
           - 
             href: http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html
       - 
-        id:     ref002
-        title:  C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)
+        id:       ref002
+        title:    C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)
+        citation: 
+          text: C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)
         rlinks: 
           - 
             href: http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html
       - 
-        id:     ref003
-        title:  CNSS Policy 15
+        id:       ref003
+        title:    CNSS Policy 15
+        citation: 
+          text: CNSS Policy 15
         rlinks: 
           - 
             href: https://www.cnss.gov/policies.html
       - 
-        id:    ref004
-        title: DoD Information Assurance Vulnerability Alerts
+        id:       ref004
+        title:    DoD Information Assurance Vulnerability Alerts
+        citation: 
+          text: DoD Information Assurance Vulnerability Alerts
       - 
-        id:     ref005
-        title:  DoD Instruction 5200.39
+        id:       ref005
+        title:    DoD Instruction 5200.39
+        citation: 
+          text: DoD Instruction 5200.39
         rlinks: 
           - 
             href: http://www.dtic.mil/whs/directives/corres/ins1.html
       - 
-        id:     ref006
-        title:  DoD Instruction 8551.01
+        id:       ref006
+        title:    DoD Instruction 8551.01
+        citation: 
+          text: DoD Instruction 8551.01
         rlinks: 
           - 
             href: http://www.dtic.mil/whs/directives/corres/ins1.html
       - 
-        id:     ref007
-        title:  DoD Instruction 8552.01
+        id:       ref007
+        title:    DoD Instruction 8552.01
+        citation: 
+          text: DoD Instruction 8552.01
         rlinks: 
           - 
             href: http://www.dtic.mil/whs/directives/corres/ins1.html
       - 
-        id:     ref008
-        title:  Executive Order 13587
+        id:       ref008
+        title:    Executive Order 13587
+        citation: 
+          text: Executive Order 13587
         rlinks: 
           - 
             href: http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net
       - 
-        id:     ref009
-        title:  Federal Acquisition Regulation
+        id:       ref009
+        title:    Federal Acquisition Regulation
+        citation: 
+          text: Federal Acquisition Regulation
         rlinks: 
           - 
             href: https://acquisition.gov/far
       - 
-        id:     ref010
-        title:  Federal Continuity Directive 1
+        id:       ref010
+        title:    Federal Continuity Directive 1
+        citation: 
+          text: Federal Continuity Directive 1
         rlinks: 
           - 
             href: http://www.fema.gov/pdf/about/offices/fcd1.pdf
       - 
-        id:     ref011
-        title:  FICAM Roadmap and Implementation Guidance
+        id:       ref011
+        title:    FICAM Roadmap and Implementation Guidance
+        citation: 
+          text: FICAM Roadmap and Implementation Guidance
         rlinks: 
           - 
             href: http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance
       - 
-        id:     ref012
-        title:  FIPS Publication 140
+        id:       ref012
+        title:    FIPS Publication 140
+        citation: 
+          text: FIPS Publication 140
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsFIPS.html
       - 
-        id:     ref013
-        title:  FIPS Publication 140-2
+        id:       ref013
+        title:    FIPS Publication 140-2
+        citation: 
+          text: FIPS Publication 140-2
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsFIPS.html#140-2
       - 
-        id:     ref014
-        title:  FIPS Publication 197
+        id:       ref014
+        title:    FIPS Publication 197
+        citation: 
+          text: FIPS Publication 197
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsFIPS.html#197
       - 
-        id:     ref015
-        title:  FIPS Publication 199
+        id:       ref015
+        title:    FIPS Publication 199
+        citation: 
+          text: FIPS Publication 199
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsFIPS.html#199
       - 
-        id:     ref017
-        title:  FIPS Publication 201
+        id:       ref017
+        title:    FIPS Publication 201
+        citation: 
+          text: FIPS Publication 201
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsFIPS.html#201
       - 
-        id:     ref018
-        title:  HSPD-12
+        id:       ref018
+        title:    HSPD-12
+        citation: 
+          text: HSPD-12
         rlinks: 
           - 
             href: http://www.dhs.gov/homeland-security-presidential-directive-12
       - 
-        id:     ref020
-        title:  http://capec.mitre.org
+        id:       ref020
+        title:    http://capec.mitre.org
+        citation: 
+          text: http://capec.mitre.org
         rlinks: 
           - 
             href: http://capec.mitre.org
       - 
-        id:     ref021
-        title:  http://checklists.nist.gov
+        id:       ref021
+        title:    http://checklists.nist.gov
+        citation: 
+          text: http://checklists.nist.gov
         rlinks: 
           - 
             href: http://checklists.nist.gov
       - 
-        id:     ref022
-        title:  http://csrc.nist.gov/cryptval
+        id:       ref022
+        title:    http://csrc.nist.gov/cryptval
+        citation: 
+          text: http://csrc.nist.gov/cryptval
         rlinks: 
           - 
             href: http://csrc.nist.gov/cryptval
       - 
-        id:     ref023
-        title:  http://csrc.nist.gov/groups/STM/cmvp/index.html
+        id:       ref023
+        title:    http://csrc.nist.gov/groups/STM/cmvp/index.html
+        citation: 
+          text: http://csrc.nist.gov/groups/STM/cmvp/index.html
         rlinks: 
           - 
             href: http://csrc.nist.gov/groups/STM/cmvp/index.html
       - 
-        id:     ref024
-        title:  http://cve.mitre.org
+        id:       ref024
+        title:    http://cve.mitre.org
+        citation: 
+          text: http://cve.mitre.org
         rlinks: 
           - 
             href: http://cve.mitre.org
       - 
-        id:     ref025
-        title:  http://cwe.mitre.org
+        id:       ref025
+        title:    http://cwe.mitre.org
+        citation: 
+          text: http://cwe.mitre.org
         rlinks: 
           - 
             href: http://cwe.mitre.org
       - 
-        id:     ref026
-        title:  http://fips201ep.cio.gov
+        id:       ref026
+        title:    http://fips201ep.cio.gov
+        citation: 
+          text: http://fips201ep.cio.gov
         rlinks: 
           - 
             href: http://fips201ep.cio.gov
       - 
-        id:     ref027
-        title:  http://idmanagement.gov
+        id:       ref027
+        title:    http://idmanagement.gov
+        citation: 
+          text: http://idmanagement.gov
         rlinks: 
           - 
             href: http://idmanagement.gov
       - 
-        id:     ref028
-        title:  http://nvd.nist.gov
+        id:       ref028
+        title:    http://nvd.nist.gov
+        citation: 
+          text: http://nvd.nist.gov
         rlinks: 
           - 
             href: http://nvd.nist.gov
       - 
-        id:     ref029
-        title:  http://www.acquisition.gov/far
+        id:       ref029
+        title:    http://www.acquisition.gov/far
+        citation: 
+          text: http://www.acquisition.gov/far
         rlinks: 
           - 
             href: http://www.acquisition.gov/far
       - 
-        id:     ref030
-        title:  http://www.cnss.gov
+        id:       ref030
+        title:    http://www.cnss.gov
+        citation: 
+          text: http://www.cnss.gov
         rlinks: 
           - 
             href: http://www.cnss.gov
       - 
-        id:     ref031
-        title:  http://www.dhs.gov/telecommunications-service-priority-tsp
+        id:       ref031
+        title:    http://www.dhs.gov/telecommunications-service-priority-tsp
+        citation: 
+          text: http://www.dhs.gov/telecommunications-service-priority-tsp
         rlinks: 
           - 
             href: http://www.dhs.gov/telecommunications-service-priority-tsp
       - 
-        id:     ref032
-        title:  http://www.niap-ccevs.org
+        id:       ref032
+        title:    http://www.niap-ccevs.org
+        citation: 
+          text: http://www.niap-ccevs.org
         rlinks: 
           - 
             href: http://www.niap-ccevs.org
       - 
-        id:     ref033
-        title:  http://www.nsa.gov
+        id:       ref033
+        title:    http://www.nsa.gov
+        citation: 
+          text: http://www.nsa.gov
         rlinks: 
           - 
             href: http://www.nsa.gov
       - 
-        id:     ref034
-        title:  http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml
+        id:       ref034
+        title:    http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml
+        citation: 
+          text: http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml
         rlinks: 
           - 
             href: http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml
       - 
-        id:     ref036
-        title:  http://www.us-cert.gov
+        id:       ref036
+        title:    http://www.us-cert.gov
+        citation: 
+          text: http://www.us-cert.gov
         rlinks: 
           - 
             href: http://www.us-cert.gov
       - 
-        id:     ref037
-        title:  ICD 704
+        id:       ref037
+        title:    ICD 704
+        citation: 
+          text: ICD 704
         rlinks: 
           - 
             href: http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives
       - 
-        id:     ref038
-        title:  ICD 705
+        id:       ref038
+        title:    ICD 705
+        citation: 
+          text: ICD 705
         rlinks: 
           - 
             href: http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives
       - 
-        id:     ref039
-        title:  ISO/IEC 15408
+        id:       ref039
+        title:    ISO/IEC 15408
+        citation: 
+          text: ISO/IEC 15408
         rlinks: 
           - 
             href: http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341
       - 
-        id:    ref040
-        title: National Communications Systems Directive 3-10
+        id:       ref040
+        title:    National Communications Systems Directive 3-10
+        citation: 
+          text: National Communications Systems Directive 3-10
       - 
-        id:     ref042
-        title:  National Strategy for Trusted Identities in Cyberspace
+        id:       ref042
+        title:    National Strategy for Trusted Identities in Cyberspace
+        citation: 
+          text: National Strategy for Trusted Identities in Cyberspace
         rlinks: 
           - 
             href: http://www.nist.gov/nstic
       - 
-        id:     ref043
-        title:  NIST Interagency Report 7622
+        id:       ref043
+        title:    NIST Interagency Report 7622
+        citation: 
+          text: NIST Interagency Report 7622
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622
@@ -55962,6 +56548,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-100
+        citation: 
+          text: NIST Special Publication 800-100
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-100
@@ -55972,6 +56560,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-111
+        citation: 
+          text: NIST Special Publication 800-111
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-111
@@ -55982,6 +56572,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-113
+        citation: 
+          text: NIST Special Publication 800-113
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-113
@@ -55992,6 +56584,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-114r1
+        citation: 
+          text: NIST Special Publication 800-114 Rev. 1
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-114r1
@@ -56002,6 +56596,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-115
+        citation: 
+          text: NIST Special Publication 800-115
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-115
@@ -56012,6 +56608,8 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-116r1
+        citation: 
+          text: NIST Special Publication 800-116 Rev. 1
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-116r1
@@ -56022,390 +56620,522 @@ catalog:
           - 
             type:       doi
             identifier: 10.6028/NIST.SP.800-12r1
+        citation: 
+          text: NIST Special Publication 800-12 Rev. 1
         rlinks: 
           - 
             href: https://doi.org/10.6028/NIST.SP.800-12r1
       - 
-        id:     ref051
-        title:  NIST Special Publication 800-121
+        id:       ref051
+        title:    NIST Special Publication 800-121
+        citation: 
+          text: NIST Special Publication 800-121
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-121
       - 
-        id:     ref052
-        title:  NIST Special Publication 800-124
+        id:       ref052
+        title:    NIST Special Publication 800-124
+        citation: 
+          text: NIST Special Publication 800-124
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-124
       - 
-        id:     ref053
-        title:  NIST Special Publication 800-128
+        id:       ref053
+        title:    NIST Special Publication 800-128
+        citation: 
+          text: NIST Special Publication 800-128
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-128
       - 
-        id:     ref054
-        title:  NIST Special Publication 800-137
+        id:       ref054
+        title:    NIST Special Publication 800-137
+        citation: 
+          text: NIST Special Publication 800-137
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-137
       - 
-        id:     ref055
-        title:  NIST Special Publication 800-147
+        id:       ref055
+        title:    NIST Special Publication 800-147
+        citation: 
+          text: NIST Special Publication 800-147
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-147
       - 
-        id:     ref056
-        title:  NIST Special Publication 800-155
+        id:       ref056
+        title:    NIST Special Publication 800-155
+        citation: 
+          text: NIST Special Publication 800-155
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-155
       - 
-        id:     ref057
-        title:  NIST Special Publication 800-16
+        id:       ref057
+        title:    NIST Special Publication 800-16
+        citation: 
+          text: NIST Special Publication 800-16
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-16
       - 
-        id:     ref058
-        title:  NIST Special Publication 800-161
+        id:       ref058
+        title:    NIST Special Publication 800-161
+        citation: 
+          text: NIST Special Publication 800-161
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-161
       - 
-        id:     ref059
-        title:  NIST Special Publication 800-164
+        id:       ref059
+        title:    NIST Special Publication 800-164
+        citation: 
+          text: NIST Special Publication 800-164
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-164
       - 
-        id:     ref060
-        title:  NIST Special Publication 800-18
+        id:       ref060
+        title:    NIST Special Publication 800-18
+        citation: 
+          text: NIST Special Publication 800-18
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-18
       - 
-        id:     ref061
-        title:  NIST Special Publication 800-23
+        id:       ref061
+        title:    NIST Special Publication 800-23
+        citation: 
+          text: NIST Special Publication 800-23
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-23
       - 
-        id:     ref062
-        title:  NIST Special Publication 800-27
+        id:       ref062
+        title:    NIST Special Publication 800-27
+        citation: 
+          text: NIST Special Publication 800-27
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-27
       - 
-        id:     ref063
-        title:  NIST Special Publication 800-28
+        id:       ref063
+        title:    NIST Special Publication 800-28
+        citation: 
+          text: NIST Special Publication 800-28
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-28
       - 
-        id:     ref064
-        title:  NIST Special Publication 800-30
+        id:       ref064
+        title:    NIST Special Publication 800-30
+        citation: 
+          text: NIST Special Publication 800-30
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-30
       - 
-        id:     ref065
-        title:  NIST Special Publication 800-32
+        id:       ref065
+        title:    NIST Special Publication 800-32
+        citation: 
+          text: NIST Special Publication 800-32
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-32
       - 
-        id:     ref066
-        title:  NIST Special Publication 800-34
+        id:       ref066
+        title:    NIST Special Publication 800-34
+        citation: 
+          text: NIST Special Publication 800-34
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-34
       - 
-        id:     ref067
-        title:  NIST Special Publication 800-35
+        id:       ref067
+        title:    NIST Special Publication 800-35
+        citation: 
+          text: NIST Special Publication 800-35
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-35
       - 
-        id:     ref068
-        title:  NIST Special Publication 800-36
+        id:       ref068
+        title:    NIST Special Publication 800-36
+        citation: 
+          text: NIST Special Publication 800-36
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-36
       - 
-        id:     ref069
-        title:  NIST Special Publication 800-37
+        id:       ref069
+        title:    NIST Special Publication 800-37
+        citation: 
+          text: NIST Special Publication 800-37
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-37
       - 
-        id:     ref070
-        title:  NIST Special Publication 800-39
+        id:       ref070
+        title:    NIST Special Publication 800-39
+        citation: 
+          text: NIST Special Publication 800-39
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-39
       - 
-        id:     ref071
-        title:  NIST Special Publication 800-40
+        id:       ref071
+        title:    NIST Special Publication 800-40
+        citation: 
+          text: NIST Special Publication 800-40
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-40
       - 
-        id:     ref072
-        title:  NIST Special Publication 800-41
+        id:       ref072
+        title:    NIST Special Publication 800-41
+        citation: 
+          text: NIST Special Publication 800-41
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-41
       - 
-        id:     ref073
-        title:  NIST Special Publication 800-45
+        id:       ref073
+        title:    NIST Special Publication 800-45
+        citation: 
+          text: NIST Special Publication 800-45
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-45
       - 
-        id:     ref074
-        title:  NIST Special Publication 800-46
+        id:       ref074
+        title:    NIST Special Publication 800-46
+        citation: 
+          text: NIST Special Publication 800-46
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-46
       - 
-        id:     ref075
-        title:  NIST Special Publication 800-47
+        id:       ref075
+        title:    NIST Special Publication 800-47
+        citation: 
+          text: NIST Special Publication 800-47
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-47
       - 
-        id:     ref076
-        title:  NIST Special Publication 800-48
+        id:       ref076
+        title:    NIST Special Publication 800-48
+        citation: 
+          text: NIST Special Publication 800-48
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-48
       - 
-        id:     ref077
-        title:  NIST Special Publication 800-50
+        id:       ref077
+        title:    NIST Special Publication 800-50
+        citation: 
+          text: NIST Special Publication 800-50
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-50
       - 
-        id:     ref078
-        title:  NIST Special Publication 800-52
+        id:       ref078
+        title:    NIST Special Publication 800-52
+        citation: 
+          text: NIST Special Publication 800-52
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-52
       - 
-        id:     ref080
-        title:  NIST Special Publication 800-53A
+        id:       ref080
+        title:    NIST Special Publication 800-53A
+        citation: 
+          text: NIST Special Publication 800-53A
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-53A
       - 
-        id:     ref082
-        title:  NIST Special Publication 800-56
+        id:       ref082
+        title:    NIST Special Publication 800-56
+        citation: 
+          text: NIST Special Publication 800-56
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-56
       - 
-        id:     ref083
-        title:  NIST Special Publication 800-57
+        id:       ref083
+        title:    NIST Special Publication 800-57
+        citation: 
+          text: NIST Special Publication 800-57
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-57
       - 
-        id:     ref084
-        title:  NIST Special Publication 800-58
+        id:       ref084
+        title:    NIST Special Publication 800-58
+        citation: 
+          text: NIST Special Publication 800-58
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-58
       - 
-        id:     ref085
-        title:  NIST Special Publication 800-60
+        id:       ref085
+        title:    NIST Special Publication 800-60
+        citation: 
+          text: NIST Special Publication 800-60
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-60
       - 
-        id:     ref086
-        title:  NIST Special Publication 800-61
+        id:       ref086
+        title:    NIST Special Publication 800-61
+        citation: 
+          text: NIST Special Publication 800-61
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-61
       - 
-        id:     ref087
-        title:  NIST Special Publication 800-63
+        id:       ref087
+        title:    NIST Special Publication 800-63
+        citation: 
+          text: NIST Special Publication 800-63
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-63
       - 
-        id:     ref088
-        title:  NIST Special Publication 800-64
+        id:       ref088
+        title:    NIST Special Publication 800-64
+        citation: 
+          text: NIST Special Publication 800-64
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-64
       - 
-        id:     ref089
-        title:  NIST Special Publication 800-65
+        id:       ref089
+        title:    NIST Special Publication 800-65
+        citation: 
+          text: NIST Special Publication 800-65
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-65
       - 
-        id:     ref090
-        title:  NIST Special Publication 800-70
+        id:       ref090
+        title:    NIST Special Publication 800-70
+        citation: 
+          text: NIST Special Publication 800-70
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-70
       - 
-        id:     ref091
-        title:  NIST Special Publication 800-73
+        id:       ref091
+        title:    NIST Special Publication 800-73
+        citation: 
+          text: NIST Special Publication 800-73
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-73
       - 
-        id:     ref092
-        title:  NIST Special Publication 800-76
+        id:       ref092
+        title:    NIST Special Publication 800-76
+        citation: 
+          text: NIST Special Publication 800-76
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-76
       - 
-        id:     ref093
-        title:  NIST Special Publication 800-77
+        id:       ref093
+        title:    NIST Special Publication 800-77
+        citation: 
+          text: NIST Special Publication 800-77
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-77
       - 
-        id:     ref094
-        title:  NIST Special Publication 800-78
+        id:       ref094
+        title:    NIST Special Publication 800-78
+        citation: 
+          text: NIST Special Publication 800-78
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-78
       - 
-        id:     ref095
-        title:  NIST Special Publication 800-81
+        id:       ref095
+        title:    NIST Special Publication 800-81
+        citation: 
+          text: NIST Special Publication 800-81
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-81
       - 
-        id:     ref096
-        title:  NIST Special Publication 800-83
+        id:       ref096
+        title:    NIST Special Publication 800-83
+        citation: 
+          text: NIST Special Publication 800-83
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-83
       - 
-        id:     ref097
-        title:  NIST Special Publication 800-84
+        id:       ref097
+        title:    NIST Special Publication 800-84
+        citation: 
+          text: NIST Special Publication 800-84
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-84
       - 
-        id:     ref098
-        title:  NIST Special Publication 800-88
+        id:       ref098
+        title:    NIST Special Publication 800-88
+        citation: 
+          text: NIST Special Publication 800-88
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-88
       - 
-        id:     ref099
-        title:  NIST Special Publication 800-92
+        id:       ref099
+        title:    NIST Special Publication 800-92
+        citation: 
+          text: NIST Special Publication 800-92
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-92
       - 
-        id:     ref100
-        title:  NIST Special Publication 800-94
+        id:       ref100
+        title:    NIST Special Publication 800-94
+        citation: 
+          text: NIST Special Publication 800-94
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-94
       - 
-        id:     ref101
-        title:  NIST Special Publication 800-95
+        id:       ref101
+        title:    NIST Special Publication 800-95
+        citation: 
+          text: NIST Special Publication 800-95
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-95
       - 
-        id:     ref102
-        title:  NIST Special Publication 800-97
+        id:       ref102
+        title:    NIST Special Publication 800-97
+        citation: 
+          text: NIST Special Publication 800-97
         rlinks: 
           - 
             href: http://csrc.nist.gov/publications/PubsSPs.html#800-97
       - 
-        id:     ref103
-        title:  NSTISSI No. 7003
+        id:       ref103
+        title:    NSTISSI No. 7003
+        citation: 
+          text: NSTISSI No. 7003
         rlinks: 
           - 
             href: http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf
       - 
-        id:     ref104
-        title:  OMB Circular A-130
+        id:       ref104
+        title:    OMB Circular A-130
+        citation: 
+          text: OMB Circular A-130
         rlinks: 
           - 
             href: http://www.whitehouse.gov/omb/circulars_a130_a130trans4
       - 
-        id:     ref105
-        title:  OMB Memorandum 02-01
+        id:       ref105
+        title:    OMB Memorandum 02-01
+        citation: 
+          text: OMB Memorandum 02-01
         rlinks: 
           - 
             href: http://www.whitehouse.gov/omb/memoranda_m02-01
       - 
-        id:     ref106
-        title:  OMB Memorandum 04-04
+        id:       ref106
+        title:    OMB Memorandum 04-04
+        citation: 
+          text: OMB Memorandum 04-04
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf
       - 
-        id:     ref107
-        title:  OMB Memorandum 05-24
+        id:       ref107
+        title:    OMB Memorandum 05-24
+        citation: 
+          text: OMB Memorandum 05-24
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf
       - 
-        id:     ref108
-        title:  OMB Memorandum 06-16
+        id:       ref108
+        title:    OMB Memorandum 06-16
+        citation: 
+          text: OMB Memorandum 06-16
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf
       - 
-        id:     ref109
-        title:  OMB Memorandum 07-11
+        id:       ref109
+        title:    OMB Memorandum 07-11
+        citation: 
+          text: OMB Memorandum 07-11
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf
       - 
-        id:     ref110
-        title:  OMB Memorandum 07-18
+        id:       ref110
+        title:    OMB Memorandum 07-18
+        citation: 
+          text: OMB Memorandum 07-18
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf
       - 
-        id:     ref111
-        title:  OMB Memorandum 08-22
+        id:       ref111
+        title:    OMB Memorandum 08-22
+        citation: 
+          text: OMB Memorandum 08-22
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf
       - 
-        id:     ref112
-        title:  OMB Memorandum 08-23
+        id:       ref112
+        title:    OMB Memorandum 08-23
+        citation: 
+          text: OMB Memorandum 08-23
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf
       - 
-        id:    ref113
-        title: OMB Memorandum 10-06-2011
+        id:       ref113
+        title:    OMB Memorandum 10-06-2011
+        citation: 
+          text: OMB Memorandum 10-06-2011
       - 
-        id:     ref114
-        title:  OMB Memorandum 11-11
+        id:       ref114
+        title:    OMB Memorandum 11-11
+        citation: 
+          text: OMB Memorandum 11-11
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf
       - 
-        id:     ref115
-        title:  OMB Memorandum 11-33
+        id:       ref115
+        title:    OMB Memorandum 11-33
+        citation: 
+          text: OMB Memorandum 11-33
         rlinks: 
           - 
             href: http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf
       - 
-        id:    ref116
-        title: Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)
+        id:       ref116
+        title:    Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)
+        citation: 
+          text: Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)
       - 
-        id:     ref117
-        title:  US-CERT Technical Cyber Security Alerts
+        id:       ref117
+        title:    US-CERT Technical Cyber Security Alerts
+        citation: 
+          text: US-CERT Technical Cyber Security Alerts
         rlinks: 
           - 
             href: http://www.us-cert.gov/ncas/alerts
