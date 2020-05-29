@@ -1810,6 +1810,108 @@
         </section>
       </section>
     </section>
+    <section id="anyphase">
+      <head>Operations irrespective of phase</head>
+      <p>In addition to selecting, merging and modifying, certainl operations
+        are conducted in profile resolution that occur irrespective of phases,
+        that is in any profile resolution. These include rewriting the profile
+        metadata into the resolved baseline (catalog), and filtering and
+        rewriting back matter.</p>
+      <section id="metadata-rewrite">
+        <head>Metadata in the resolved (baseline) catalog</head>
+      </section>
+      <section id="back-matter-rewrite">
+        <head>Back matter in the resolved (baseline) catalog</head>
+        <p><tgt>back-matter</tgt> in the result is produced by combining all
+          elements within <src>back-matter</src> in all source catalogs, with
+          the <src>back-matter</src> in the input profile. Since catalog
+          resolution is defined to operate recursively, when profiles import
+          profiles, the back matter to be merged is defined by the resolution of
+          the imported profile. These elements are combined in order and
+          filtered according to the following:</p>
+        <ul>
+          <li>
+            <p><src>resource</src> elements copied from imported baseline into a
+              resolved catalog (result baseline) are preserved as is, with no
+              modification. New resources can be added in a profile by including
+              them in its <src>back-matter</src>, but resources cannot be
+              targeted for modification. Resources either propagated from source
+              catalogs, or included in the importing catalog, are treated the
+              same for these purposes.</p>
+          </li>
+          <li>
+            <p>In the result catalog, <tgt>resource</tgt> data objects are given
+              in the order they occur in the imported baselines, with the
+              baselines given in imported order, and the importing profiles
+              .</p>
+          </li>
+          <li>
+            <p>Where <term>node identity</term> can be established between
+                <src>resource</src> elements, only the <em>last</em> of the
+              duplicate resources is included, within the given total order of
+              baselines and resources within those baselines, or if a
+                <xpath>prop[@name='keep']</xpath> with value <code>always</code>
+              is given on any such <src>resource</src>, the last of these, as
+              noted below. That is, each imported catalog or baseline overrides
+              any imported before it, while a profile's own resources are
+              preferred (as coming last).</p>
+          </li>
+          <li>
+            <p>However, resources are discarded if they are not designated as
+              the target of any link (<term>link</term> or <term>a</term>
+              element) somewhere in the metadata or body of the resulting
+              resolved catalog, by means of an ID reference taking the form of
+              the reference's <tgt>id</tgt> value prepended with <code>#</code>,
+              with the following exception:</p>
+            <ul>
+              <li>
+                <p>Any <src>resource</src> given in either an imported catalog
+                  (baseline), or in the <src>back-matter </src>of the soruce
+                  profile, is kept (appears in the result) if it is marked in
+                  source with a <src>prop</src> element whose <src>@name</src>
+                  is given as <code>keep</code> and whose value is
+                    <code>always</code>.</p>
+                <p>Within a group of <src>resource</src> objects considered to
+                  be identical, this property (<src>prop</src> element) given on
+                  any member has the effect of excluding from the group, any
+                  that do not. In other words, only the resources marked as
+                    <q>always keep</q> with that identity, are selected from,
+                  and the last of these (only) is propagated.</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Marking a resource as <code>name='keep'</code> and value
+                <code>always</code> thus has a couple of uses:</p>
+            <ul>
+              <li>
+                <p>Placing such a property on a resource in a catalog, has the
+                  effect of ensuring it will always appear in the baseline
+                  produced by any profile importing that catalog, even if
+                  nothing links to the resource. This version of the resource
+                  will also be the one copied, unless a later-imported catalog
+                  or importing profile offers its own version marked to
+                    <q>always keep</q>.</p>
+              </li>
+              <li>
+                <p>Placing such a property on a resource in a profile, ensures
+                  both that the resource appears (even if not cross-referenced)
+                  in the resulting baseline catalog, and that its version is
+                  used, unless when imported into another profile, in which case
+                  it may be overridden by another one (also marked as always
+                  keep).</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <tagging whose="target_catalog">&lt;resource id="fedramp-1">
+   &lt;title>FedRAMP Applicable Laws and Regulations&lt;/title>
+   &lt;prop name="keep">always&lt;/prop>
+   &lt;prop name="conformity" ns="https://fedramp.gov/ns/oscal">fedramp-citations&lt;/prop>
+   &lt;rlink href="https://www.fedramp.gov/assets/resources/templates/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx"/>
+/resource> </tagging>
+      </section>
+    </section>
   </section>
   <section id="null-profile">
     <head>Null profile</head>

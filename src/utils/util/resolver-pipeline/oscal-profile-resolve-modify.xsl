@@ -10,6 +10,10 @@
     
 <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
     
+    <xsl:key name="alteration-for-control-id" match="alter"         use="@control-id"/>
+    <xsl:key name="addition-by-id-ref"        match="add"           use="@id-ref"/>
+    <xsl:key name="parameter-setting-for-id"  match="set-parameter" use="@param-id"/>
+    
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
@@ -27,7 +31,26 @@
     
     <xsl:template match="modify"/>
     
-    <xsl:template match="control">
+    <!-- priority to override template match="control//*" -->
+    <xsl:template priority="2" match="param">
+        <xsl:param name="modifications" tunnel="yes" as="element(modify)?" required="yes"/>
+        <xsl:variable name="id" select="@id"/>
+<!-- depending on 'merge' behavior there could be multiple settings. combine/use-first should keep only the first setting in the first profile with such a setting. combine/merge should remove all duplicates by value. combine/keep should keep all parameter settings contents even when results are invalid. These operations are assumed to be performed in the merge phase. -->
+        <xsl:variable name="settings" select="$modifications/key('parameter-setting-for-id',$id,.)"/>
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <!--param contains: label, usage, constraint, guideline, value, link
+            set-parameter contains: label, usage, constraint, value, link-->
+            <xsl:sequence select="label,     $settings/label"/>
+            <xsl:sequence select="usage,     $settings/usage"/>
+            <xsl:sequence select="constraint,$settings/constraint"/>
+            <xsl:sequence select="guideline, $settings/guideline"/>
+            <xsl:sequence select="value,     $settings/value"/>
+            <xsl:sequence select="link,      $settings/link"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="control" priority="2">
         <xsl:param name="modifications" tunnel="yes" as="element(modify)?" required="yes"/>
         <!--<xsl:variable name="modifications" select="/*/modify"/>-->
         <xsl:variable name="id" select="@id"/>
@@ -35,12 +58,13 @@
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="title" mode="#current"/>
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][@position=('before','starting')]/*"/>
+            <!-- condition not(@id-ref != $id) includes any addition without an @id-ref, or whose @id-ref is the control id -->
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@id-ref != $id)][@position=('before','starting')]/*"/>
             
             <xsl:apply-templates select="* except title" mode="#current"/>
             <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
             
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[empty(@id-ref)][not(@position = ('before','starting'))]/*"/>      
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@id-ref != $id)][not(@position = ('before','starting'))]/*"/>      
         </xsl:copy>
     </xsl:template>
     
@@ -78,9 +102,6 @@
         <xsl:copy-of select="$patches-after/*"/>
         
     </xsl:template>
-    
-    <xsl:key name="alteration-for-control-id" match="alter" use="@control-id"/>
-    <xsl:key name="addition-by-id-ref"   match="add"   use="@id-ref"/>
     
     <xsl:function name="oscal:classes" as="xs:string*">
         <xsl:param name="who" as="element()"/>

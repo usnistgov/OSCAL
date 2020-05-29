@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+   id="modify-adds_profile">
+   <metadata>
+      <title>Example</title>
+      <published>2020-06-01T00:00:00.000-04:00</published>
+      <last-modified>2020-06-01T10:00:00.000-04:00</last-modified>
+      <version>1.2</version>
+      <oscal-version>1.0.0-milestone3</oscal-version>
+   </metadata>
+   <import href="#catalog">
+      <include>
+         <call control-id="a1"/>
+         <call control-id="a3"/>
+      </include>
+   </import>
+   <merge>
+      <combine method="keep"/>
+      <as-is>true</as-is>
+   </merge>
+   <modify>
+      <set-parameter param-id="a1_prm1">
+         <constraint>at least every 3 years</constraint>
+      </set-parameter>
+      <set-parameter param-id="a3_prm1">
+         <constraint>at least annually</constraint>
+      </set-parameter>
+      <alter control-id="a1">
+         <add position="starting" id-ref="a1">
+            <prop name="CORE" ns="https://fedramp.gov/ns/oscal"/>
+         </add>
+         <add position="starting" id-ref="a1-stmt">
+            <prop name="conformity" ns="https://fedramp.gov/ns/oscal">assessment-objective</prop>
+            <prop name="method" class="fedramp">EXAMINE</prop>
+         </add>
+      </alter>
+   </modify>
+   <back-matter>
+      <resource id="catalog">
+         <rlink href="catalogs/abc-simple_catalog.xml"/>
+      </resource>
+	  </back-matter>
+</profile>
