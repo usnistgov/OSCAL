@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-2bb4b4e9-b350-4ce3-9dec-6768214e4f2f">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="2bb4b4e9-b350-4ce3-9dec-6768214e4f2f">
 	<metadata>
 		<title>FedRAMP Low Baseline</title>
 		<published>2020-02-02T00:00:00.000-05:00</published>
-		<last-modified>2020-01-28T10:00:00.000-05:00</last-modified>
+		<last-modified>2020-05-29T23:29:27.272-04:00</last-modified>
 		<version>1.2</version>
-		<oscal-version>1.0.0-milestone2</oscal-version>
+		<oscal-version>1.0.0-milestone3</oscal-version>
 		
 		<role id="creator">
 			<title>Document creator</title>
@@ -13,7 +13,7 @@
 		<role id="contact">
 			<title>Contact</title>
 		</role>
-		<party id="fedramp">
+		<party uuid="422f5487-dae7-4daf-8b94-7470150c5e62">
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>
@@ -21,10 +21,10 @@
 			</org>
 		</party>
 		<responsible-party role-id="creator">
-			<party-id>fedramp</party-id>
+			<party-uuid>422f5487-dae7-4daf-8b94-7470150c5e62</party-uuid>
 		</responsible-party>
 		<responsible-party role-id="contact">
-			<party-id>fedramp</party-id>
+			<party-uuid>422f5487-dae7-4daf-8b94-7470150c5e62</party-uuid>
 		</responsible-party>
 	</metadata>
 	<import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">

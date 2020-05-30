@@ -582,7 +582,10 @@
    <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document, which may be a pointer to other data or a citation.</description>
-      <flag ref="uuid" required="yes"/>
+      <flag name="uuid" required="yes" as-type="string">
+         <formal-name>A Pseudo-UUID</formal-name>
+         <description>TODO: This needs to be changed back to a reference to a uuid.</description>
+      </flag>
       <model>
          <field ref="title"/>
          <field ref="desc"/>

@@ -2,18 +2,18 @@
         runtime parameter settings: $baseline='MODERATE'-->
 <profile
    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
+   uuid="f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
 
-      <last-modified>2019-09-23T14:25:40.027-04:00</last-modified>
+      <last-modified>2020-05-29T23:29:27.272-04:00</last-modified>
       <version>2015-01-22</version>
-      <oscal-version>1.0.0-milestone1</oscal-version>
+      <oscal-version>1.0.0-milestone3</oscal-version>
       
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
       
-      <party id="IT-JTF">
+      <party uuid="316876e2-5c7b-4a60-a488-2ed977238f04">
          <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>
@@ -29,10 +29,10 @@
          </org>
       </party>
       <responsible-party role-id="creator">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>316876e2-5c7b-4a60-a488-2ed977238f04</party-uuid>
       </responsible-party>
       <responsible-party role-id="contact">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>316876e2-5c7b-4a60-a488-2ed977238f04</party-uuid>
       </responsible-party>
    </metadata>
    
@@ -1102,7 +1102,7 @@
       </alter>
    </modify>
    <back-matter>
-      <resource id="catalog">
+      <resource uuid="catalog">
          <desc>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</desc>
          <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
