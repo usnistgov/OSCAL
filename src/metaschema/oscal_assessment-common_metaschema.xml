@@ -1128,30 +1128,4 @@
       <description>Points to an assessment objective.</description>
    </define-flag>
 
-   <!--DELETE THESE ONCE REMAINING METASCHEMA FILES CATCH UP-->
-<!--
-   <define-flag name="uuid" as-type="string">
-      <formal-name>Universally Unique Identifier</formal-name>
-      <description>A generated universally unique identifier.</description>
-   </define-flag>
-   
-   <define-field name="party-uuid" as-type="string">
-      <formal-name>.</formal-name>
-      <description>.</description>
-   </define-field>
-   
-   <define-field name="location-uuid" as-type="string">
-      <formal-name>.</formal-name>
-      <description>.</description>
-   </define-field>
-   
-   <define-flag name="ns" as-type="string">
-      <formal-name>Temporary Namespace</formal-name>
-      <description>Temporary namespace field.</description>
-      <allowed-values allow-other="yes">
-         <enum value="https://fedramp.gov/ns/oscal" />
-      </allowed-values>
-   </define-flag>
-   
-   -->
 </METASCHEMA>
