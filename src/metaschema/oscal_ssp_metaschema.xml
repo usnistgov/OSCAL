@@ -5,13 +5,13 @@
 -->
 <!-- OSCAL Implementation Layer: System Security Plan (SSP) METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
             xmlns:o="http://csrc.nist.gov/ns/oscal/example"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
             root="system-security-plan">
    <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
    <schema-version>1.0.0-milestone2</schema-version>
@@ -367,7 +367,7 @@
                </allowed-values>
             </flag>
          </field>
-         <field ref="party-id" min-occurs="1">
+         <field ref="party-uuid" min-occurs="1">
             <description>A reference to the party that manages the leveraged system.</description>
          </field>
          <field ref="date-authorized" min-occurs="1"/>
@@ -411,10 +411,10 @@
    <define-assembly name="diagram">
       <formal-name>Diagram</formal-name>
       <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>Diagram ID</formal-name>
-         <description>An identifier for this diagram.</description>
+         <description>The identifier for this diagram.</description>
       </flag>
       <model>
          <field ref="description" in-xml="WITH_WRAPPER">
@@ -550,10 +550,10 @@
    <define-assembly name="user">
       <formal-name>System User Class</formal-name>
       <description>A type of user that interacts with the system based on an associated role.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>User Identifier</formal-name>
-         <description>A unique identifier that references this user class.</description>
+         <description>The unique identifier for the user class.</description>
       </flag>
      <!-- <flag name="name" required="yes" as-type="string">
          <formal-name></formal-name>
@@ -628,10 +628,10 @@
    <define-assembly name="component">
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>Component Identifier</formal-name>
-         <description>A unique identifier for a component.</description>
+         <description>The unique identifier for the component.</description>
       </flag>
       <flag ref="component-type" required="yes"/>
       <model>
@@ -742,7 +742,7 @@
    <define-assembly name="service">
       <formal-name>Service</formal-name>
       <description>Information about an individual service within the system.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="title" min-occurs="1">
             <description>A human readable name for the system service.</description>
@@ -784,7 +784,7 @@
    <define-assembly name="protocol">
       <formal-name>Protocol</formal-name>
       <description>Information about the protocol used to provide a service.</description>
-      <flag ref="id"/>
+      <flag ref="uuid"/>
       <flag ref="name" required="yes">
          <description>The short name of the protocol (e.g., TLS).</description>
       </flag>
@@ -844,7 +844,7 @@
    <define-assembly name="interconnection">
       <formal-name>Interconnection</formal-name>
       <description>Details on an individual system interconnection.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="remote-system-name"/>
          <field ref="prop" max-occurs="unbounded">
@@ -906,7 +906,7 @@
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>A single managed inventory item within the system.</description>
-      <flag ref="id" required="yes"/>
+      <flag ref="uuid" required="yes"/>
       <flag name="asset-id" required="yes">
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
@@ -1097,7 +1097,7 @@
    <define-assembly name="implemented-requirement">
       <formal-name>Control-based Requirement</formal-name>
       <description>Describes how the system satisfies an individual control.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <flag ref="control-id" required="yes"/>
       <model>
          <field ref="description"/>
@@ -1160,6 +1160,7 @@
       <flag ref="statement-id">
          <description>A reference to the specific implemented statement associated with a control.</description>
       </flag>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="description"/>
 
@@ -1222,7 +1223,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </field>
-         <field ref="party-id" max-occurs="unbounded">
+         <field ref="party-uuid" max-occurs="unbounded">
             <group-as name="party-ids" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -1237,6 +1238,7 @@
          <formal-name>Component Reference</formal-name>
          <description>A reference to the component that is implementing a given control or control statement.</description>
       </flag>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">

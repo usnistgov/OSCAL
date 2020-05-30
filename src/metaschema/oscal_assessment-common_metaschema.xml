@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
-<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
@@ -20,9 +19,9 @@
 
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_control-common_metaschema.xml"/>
-   <import href="oscal_implementation-common_metaschema.xml"/>
+<!--   <import href="oscal_implementation-common_metaschema.xml"/>-->
    <import href="oscal_ssp_metaschema.xml"/>
-   <import href="oscal_metadata_metaschema.xml"/>
+<!--   <import href="oscal_metadata_metaschema.xml"/>-->
 
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="assessment-common">
@@ -413,8 +412,8 @@
          <field ref="role-id"  min-occurs="0" max-occurs="unbounded">
             <group-as name="role-ids"/>
          </field>
-         <field ref="party-id"  min-occurs="0" max-occurs="unbounded">
-            <group-as name="party-ids"/>
+         <field ref="party-uuid"  min-occurs="0" max-occurs="unbounded">
+            <group-as name="party-uuids"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -459,13 +458,13 @@
             <description>Identifies roles associated with performing this task.</description>
             <group-as name="role-ids"/>
          </field>
-         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies people or organizations associated with performing this task.</description>
-            <group-as name="party-ids"/>
+            <group-as name="party-uuids"/>
          </field>
-         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="location-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies locations associated with performing this task.</description>
-            <group-as name="location-ids"/>
+            <group-as name="location-uuids"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -505,13 +504,13 @@
             <description>Identifies roles associated with performing this activity.</description>
             <group-as name="role-ids"/>
          </field>
-         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies people or organizations associated with performing this activity.</description>
-            <group-as name="party-ids"/>
+            <group-as name="party-uuids"/>
          </field>
-         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="location-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies locations associated with performing this activity.</description>
-            <group-as name="location-ids"/>
+            <group-as name="location-uuids"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -536,13 +535,13 @@
             <description>Identifies roles associated with this activity exclusion.</description>
             <group-as name="role-ids"/>
          </field>
-         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies people or organizations associated with this activity exclusion.</description>
-            <group-as name="party-ids"/>
+            <group-as name="party-uuids"/>
          </field>
-         <field ref="location-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="location-uuid" min-occurs="0" max-occurs="unbounded">
             <description>Identifies locations associated with this activity exclusion.</description>
-            <group-as name="location-ids"/>
+            <group-as name="location-uuids"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -584,18 +583,6 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
-
-   <define-flag name="rel">
-      <formal-name>Relationship</formal-name>
-      <description>Describes a relationship of a link.</description>
-      <allowed-values allow-other="yes">
-         <enum value="interview-notes">Interview Notes</enum>
-         <enum value="tool-output">Tool Output</enum>
-         <enum value="photograph">Photograph</enum>
-         <enum value="questionnaire">Questionnaire</enum>
-         <enum value="screen-shot">Screen Shot</enum>
-      </allowed-values>
-   </define-flag>
    
    <!-- ********** RESULTS Assembly ********** -->
    <define-assembly name="results">
@@ -657,9 +644,9 @@
          <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
             <group-as name="risks"/>
          </assembly>
-         <field ref="party-id" min-occurs="0" max-occurs="unbounded">
+         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
             <description>The person who collected the evidence or made the observation.</description>
-            <group-as name="party-ids"/>
+            <group-as name="party-uuids"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -770,6 +757,11 @@
       </flag>
    </define-field>
    
+   <define-field name="component-uuid">
+      <formal-name>Component ID</formal-name>
+      <description>Identifies the component that was examined or tested.</description>
+   </define-field>
+   
    <define-assembly name="target">
       <formal-name>Target</formal-name>
       <description>Identifies, on a granular level, what was examined or tested.</description>
@@ -784,8 +776,9 @@
                <p>For the FedRAMP SAR: Must have prop @name='authenticated-scan' @ns='fedramp'.</p>
             </remarks>
          </field>
-         <field ref="component-id" min-occurs="0"  max-occurs="unbounded">
-            <group-as name="components"/>
+         <field ref="component-uuid" min-occurs="0"  max-occurs="unbounded">
+            <description>Identifies the component that was examined or tested.</description>
+            <group-as name="component-uuids"/>
          </field>
          <field ref="inventory-item-id" min-occurs="0"  max-occurs="unbounded">
             <group-as name="items"/>
@@ -796,11 +789,6 @@
          <p>May not have both. Where both are desired, just provide the inventory-item-id, and ensure its related component is identified in the linked inventory-item content.</p>
       </remarks>
    </define-assembly>
-   
-   <define-field name="component-id">
-      <formal-name>Component ID</formal-name>
-      <description>Identifies the component that was examined or tested.</description>
-   </define-field>
    
    <define-field name="inventory-item-id">
       <formal-name>Inventory Item ID</formal-name>
@@ -959,8 +947,8 @@
          <field ref="closure-actions" min-occurs="0" max-occurs="1" />
          <assembly ref="remediation-tracking" min-occurs="0" max-occurs="1"  />
          <!-- ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
-         <field ref="party-id" min-occurs="0" max-occurs="unbounded" >
-            <group-as name="party-ids"/>
+         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded" >
+            <group-as name="party-uuids"/>
          </field>
       </model>
       <remarks>

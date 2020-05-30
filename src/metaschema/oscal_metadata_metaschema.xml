@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
-            root="VALIDATION_root">
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="VALIDATION_root">
    <schema-name>OSCAL Document Metadata Description</schema-name>
-   <schema-version>1.0.0-milestone2</schema-version>
+   <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-metadata</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 
@@ -22,7 +21,7 @@
          <assembly ref="back-matter"/>
          <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
-         <field ref="party-id"/>
+         <field ref="party-uuid"/>
          <assembly ref="annotation"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
@@ -296,7 +295,7 @@
    <define-assembly name="location">
       <formal-name>Location</formal-name>
       <description>A location, with associated metadata that can be referenced.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <assembly ref="address" min-occurs="1"/>
          <field ref="email" max-occurs="unbounded">
@@ -320,14 +319,14 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   <define-field name="location-id" as-type="NCName">
+   <define-field name="location-uuid" as-type="uuid">
       <formal-name>Location Reference</formal-name>
       <description>References a <code>location</code> defined in <code>metadata</code>.</description>
    </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <assembly ref="person" max-occurs="unbounded">
             <group-as name="persons" in-json="ARRAY"/>
@@ -352,7 +351,7 @@
       organization as such serves as a documented party.</p>
       </remarks>
    </define-assembly>
-   <define-field name="party-id" as-type="NCName">
+   <define-field name="party-uuid" as-type="uuid">
       <formal-name>Party Reference</formal-name>
       <description>References a <code>party</code> defined in <code>metadata</code>.</description>
    </define-field>
@@ -374,8 +373,8 @@
          <assembly ref="address" max-occurs="unbounded">
             <group-as name="addresses" in-json="ARRAY"/>
          </assembly>
-         <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids" in-json="ARRAY"/>
+         <field ref="location-uuid" max-occurs="unbounded">
+            <group-as name="location-uuids" in-json="ARRAY"/>
          </field>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses" in-json="ARRAY"/>
@@ -410,8 +409,8 @@
          <assembly ref="address" max-occurs="unbounded">
             <group-as name="addresses" in-json="ARRAY"/>
          </assembly>
-         <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids" in-json="ARRAY"/>
+         <field ref="location-uuid" max-occurs="unbounded">
+            <group-as name="location-uuids" in-json="ARRAY"/>
          </field>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses" in-json="ARRAY"/>
@@ -463,6 +462,13 @@
    <define-flag name="rel" as-type="NCName">
       <formal-name>Relation</formal-name>
       <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
+      <allowed-values allow-other="yes">
+         <enum value="interview-notes">Interview Notes</enum>
+         <enum value="tool-output">Tool Output</enum>
+         <enum value="photograph">Photograph</enum>
+         <enum value="questionnaire">Questionnaire</enum>
+         <enum value="screen-shot">Screen Shot</enum>
+      </allowed-values>
       <remarks>
          <p>TO DO: discuss IANA link relation registry.</p>
       </remarks>
@@ -576,7 +582,7 @@
    <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document, which may be a pointer to other data or a citation.</description>
-      <flag ref="id" required="yes"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="desc"/>
@@ -674,8 +680,8 @@
          <description>The role that the party is responsible for.</description>
       </flag>
       <model>
-         <field ref="party-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="party-ids" in-json="ARRAY"/>
+         <field ref="party-uuid" min-occurs="1" max-occurs="unbounded">
+            <group-as name="party-uuids" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
@@ -710,7 +716,11 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-<!--   <define-field name="role-id" as-type="NCName">
+   <define-flag name="uuid" as-type="uuid">
+      <formal-name>Universally Unique Identifier</formal-name>
+      <description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</description>
+   </define-flag>
+   <!--   <define-field name="role-id" as-type="NCName">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <allowed-values allow-other="yes">
