@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2020-05-30T14:39:50.536-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-   id="modify-adds_profile">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+         uuid="e95e9984-c271-4154-a89c-00f1bd4a3f3b">
    <metadata>
       <title>Example</title>
-      <published>2020-06-01T00:00:00.000-04:00</published>
-      <last-modified>2020-06-01T10:00:00.000-04:00</last-modified>
+      <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
       <version>1.2</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
    </metadata>
@@ -39,8 +39,8 @@
       </alter>
    </modify>
    <back-matter>
-      <resource id="catalog">
+      <resource uuid="catalog">
          <rlink href="catalogs/abc-simple_catalog.xml"/>
       </resource>
-	  </back-matter>
+   </back-matter>
 </profile>
