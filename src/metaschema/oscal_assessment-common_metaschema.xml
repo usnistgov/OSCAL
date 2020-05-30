@@ -199,7 +199,7 @@
       <flag ref="method-uuid" required="yes" />
    </define-field>
    
-   <define-flag name="method-uuid" as-type="string">
+   <define-flag name="method-uuid" as-type="uuid">
       <formal-name>Method ID</formal-name>
       <description>Identifies the assessment method.</description>
    </define-flag>
@@ -333,15 +333,15 @@
       <model>
          <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
             <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
-            <group-as name="components" in-json="ARRAY"/>
+            <group-as name="components" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
             <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
-            <group-as name="inventory-items" in-json="ARRAY"/>
+            <group-as name="inventory-items" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="user" min-occurs="0" max-occurs="unbounded">
             <description>Used to add any users, not defined via the System Security Plan (AR->AP->SSP)</description>
-            <group-as name="users" in-json="ARRAY"/>
+            <group-as name="users" in-json="BY_KEY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
@@ -374,7 +374,7 @@
       <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
       <model>
          <assembly ref="component" min-occurs="0" max-occurs="unbounded">
-            <group-as name="components" in-json="ARRAY" />
+            <group-as name="components" in-json="BY_KEY" />
          </assembly>
       </model>
    </define-assembly>
@@ -528,7 +528,7 @@
       <description>Identifies the end of a task.</description>
    </define-field>
    
-   <define-field name="activity-uuid" as-type="string">
+   <define-field name="activity-uuid" as-type="uuid">
       <formal-name>Activity ID</formal-name>
       <description>Links the task to a defined activity.</description>
    </define-field>
@@ -781,7 +781,7 @@
       </flag>
    </define-field>
    
-   <define-field name="component-uuid">
+   <define-field name="component-uuid" as-type="uuid">
       <formal-name>Component ID</formal-name>
       <description>Identifies the component that was examined or tested.</description>
    </define-field>
@@ -814,7 +814,7 @@
       </remarks>
    </define-assembly>
    
-   <define-field name="inventory-item-uuid">
+   <define-field name="inventory-item-uuid" as-type="uuid">
       <formal-name>Inventory Item ID</formal-name>
       <description>Identifies the inventory item that was examined or tested.</description>
    </define-field>
@@ -1118,7 +1118,7 @@
       <description>Describes the risk.</description>
    </define-field>
 
-   <define-flag name="implementation-uuid" as-type="string">
+   <define-flag name="implementation-uuid" as-type="uuid">
       <formal-name>Implementation UUID</formal-name>
       <description>Points to an implementation statement in the SSP.</description>
    </define-flag>

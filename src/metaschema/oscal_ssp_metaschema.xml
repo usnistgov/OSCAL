@@ -821,7 +821,7 @@
       <description>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</description>
       <model>
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
-            <group-as name="inventory-items" in-json="ARRAY"/>
+            <group-as name="inventory-items" in-json="BY_KEY"/>
          </assembly>
         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -829,6 +829,7 @@
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>A single managed inventory item within the system.</description>
+      <json-key flag-name="uuid" /> 
       <flag ref="uuid" required="yes"/>
       <flag name="asset-id" required="yes">
          <formal-name>Asset Identifier</formal-name>
