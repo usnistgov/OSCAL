@@ -31,7 +31,7 @@
          <assembly ref="import-ssp" />
          <assembly ref="import-ap" />
          <assembly ref="objectives" />
-         <assembly ref="assessment-subject" />
+         <assembly ref="assessment-subjects" />
          <assembly ref="assets" />
          <assembly ref="assessment-activities" />
          <assembly ref="results" />
@@ -226,7 +226,7 @@
    </define-assembly>
    
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
-   <define-assembly name="assessment-subject">
+   <define-assembly name="assessment-subjects">
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
       <model>
@@ -267,9 +267,9 @@
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="all" min-occurs="0" max-occurs="1" />
-         <field ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <group-as name="subject-references" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
@@ -300,27 +300,38 @@
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="all" min-occurs="0" max-occurs="1" />
-         <field ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <group-as name="subject-references" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
-   <define-field name="subject-reference">
+   <define-assembly name="subject-reference">
       <formal-name>Identifies the Subject</formal-name>
       <description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
       <flag ref="uuid" required="yes" />
-      <flag ref="type" required="no">
+      <flag ref="type" required="yes">
          <allowed-values allow-other="yes">
             <enum value="component">Component</enum>
             <enum value="inventory-item">Inventory Item</enum>
             <enum value="location">Location</enum>
             <enum value="party">Interview Party</enum>
             <enum value="user">User</enum>
+            <enum value="resource">Resource or Artifact</enum>
          </allowed-values>
       </flag>
-   </define-field>
+      <model>
+         <field ref="title" min-occurs="0"  max-occurs="1" />
+         <field ref="prop" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY" />
+         </field>
+      </model>
+      <remarks>
+         <p>The subject reference UUID could point to an item defined in the SSP, AP, or AR.</p>
+         <p>Tools should check look for the ID in every file imported directly or indirectly.</p>
+      </remarks>
+   </define-assembly>
 
    <define-field name="all">
       <formal-name>All</formal-name>
@@ -366,6 +377,7 @@
             <description>Provided to allow content such as assumptions and disclosures.</description>
             <group-as name="parts" in-json="ARRAY" />
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
@@ -413,6 +425,7 @@
          <assembly ref="exclude-activity" min-occurs="0" max-occurs="unbounded" >
             <group-as name="exclude-activities" in-json="ARRAY"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
@@ -649,6 +662,7 @@
             <description>Date/time stamp identifying when the finding information was collected.</description>
          </field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
+         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1" />
          <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
             <group-as name="observations" in-json="ARRAY"/>
          </assembly>
@@ -665,6 +679,11 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
+
+   <define-field name="implementation-statement-uuid" as-type="uuid">
+      <formal-name>Implementation Statement UUID</formal-name>
+      <description>Identifies the implementation statement in the SSP to which this finding is related. </description>
+   </define-field>
 
    <define-field name="date-time-stamp" as-type="dateTime-with-timezone">
       <formal-name>Date/Time Stamp</formal-name>
@@ -722,17 +741,21 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="observation-type" min-occurs="1" max-occurs="unbounded">
+         <field ref="observation-method" min-occurs="1" max-occurs="unbounded">
+            <group-as name="observation-methods" in-json="ARRAY"/>
+         </field>
+         <field ref="observation-type" min-occurs="0" max-occurs="unbounded">
             <group-as name="observation-types" in-json="ARRAY"/>
          </field>
-         <field ref="reference" min-occurs="0" max-occurs="unbounded">
-            <group-as name="references" in-json="ARRAY" />
-         </field>
-         <assembly ref="target" min-occurs="0" max-occurs="unbounded">
-            <group-as name="targets" in-json="ARRAY"/>
-         </assembly>
          <field ref="assessor" min-occurs="0" max-occurs="unbounded">
             <group-as name="assessors" in-json="ARRAY"/>
+         </field>
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded" >
+            <description>Identifies who was interviewed, or what was tested or inspected.</description>
+            <group-as name="subject-references" in-json="ARRAY"/>
+         </assembly>
+         <field ref="observation-source" min-occurs="0" max-occurs="unbounded">
+            <group-as name="references" in-json="ARRAY" />
          </field>
          <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
             <group-as name="evidence-group" in-json="ARRAY"/>
@@ -747,18 +770,6 @@
       <flag ref="href" required="no">
          <description>Links to evidence as URI. May use a URI fragment to point to a resource in the back-matter.</description>
       </flag>
-      <flag name="type" required="yes">
-         <formal-name>Evidence Type</formal-name>
-         <description>Points to a piece of evidence, relevant to this finding or risk.</description>
-         <allowed-values>
-            <enum value="observation">Observation</enum>
-            <enum value="vulnerability">Vulnerability</enum>
-            <enum value="non-compliance">Non-Compliance</enum>
-            <enum value="false-positive">False Positive (FP)</enum>
-            <enum value="operational-requirement">Operational Requirement (OR)</enum>
-            <enum value="risk-adjustment">Risk Adjustment (RA)</enum>
-         </allowed-values>
-      </flag>
       <model>
          <field ref="description"  min-occurs="1" max-occurs="1" />
          <field ref="prop"  min-occurs="0" max-occurs="unbounded">
@@ -769,6 +780,7 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
@@ -781,73 +793,48 @@
       </flag>
    </define-field>
    
-   <define-field name="component-uuid" as-type="uuid">
-      <formal-name>Component ID</formal-name>
-      <description>Identifies the component that was examined or tested.</description>
-   </define-field>
-   
-   <define-assembly name="target">
-      <formal-name>Target</formal-name>
-      <description>Identifies, on a granular level, what was examined or tested.</description>
-      <model>
-         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
-            <description>Provided as means of extending the OSCAL syntax.</description>
-            <group-as name="properties" in-json="ARRAY"/>
-            <allowed-values allow-other="yes">
-               <enum value="authenticated-scan">Authenticated Scan (yes/no)</enum>
-            </allowed-values>
-            <remarks>
-               <p>For the FedRAMP SAR: Must have prop @name='authenticated-scan' @ns='fedramp'.</p>
-            </remarks>
-         </field>
-         <field ref="component-uuid" min-occurs="0"  max-occurs="unbounded">
-            <description>Identifies the component that was examined or tested.</description>
-            <group-as name="component-uuids" in-json="ARRAY" />
-         </field>
-         <field ref="inventory-item-uuid" min-occurs="0"  max-occurs="unbounded">
-            <group-as name="items" in-json="ARRAY"/>
-         </field>
-      </model>
-      <remarks>
-         <p>Must have either one component-uuid or one inventory-item-uuid.</p>
-         <p>May not have both. Where both are desired, just provide the inventory-item-uuid, and ensure its related component is identified in the linked inventory-item content.</p>
-      </remarks>
-   </define-assembly>
-   
-   <define-field name="inventory-item-uuid" as-type="uuid">
-      <formal-name>Inventory Item ID</formal-name>
-      <description>Identifies the inventory item that was examined or tested.</description>
-   </define-field>
-   
-   <define-field name="reference">
-      <formal-name>Reference</formal-name>
-      <description>Identifies the tool, interviewed person (party), test-method, implementation statement, or other relevant item.</description>
-      <flag name="uuid-ref">
+   <define-field name="observation-source">
+      <formal-name>Source</formal-name>
+      <description>Identifies the tool or activity that resulted in the observation.</description>
+      <flag name="uuid-ref" required="yes">
          <formal-name>UUID Reference</formal-name>
-         <description>A pointer to a tool, interviewed person (party), test-method, implementation statement, or other relevant item, using it's UUID.</description>
+         <description>A pointer to a tool, test-method, or other relevant item, using it's UUID.</description>
       </flag>
-      <flag name="type">
+      <flag name="type" required="yes">
          <formal-name>Reference ID Type</formal-name>
          <description>Indicates whether the reference points to a tool, person (party), test method, or implementation statement.</description>
-         <allowed-values allow-other="yes">
-            <enum value="tool">Tool</enum>
-            <enum value="party">Person</enum>
-            <enum value="method">Test Method</enum>
+         <allowed-values allow-other="no">
+            <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
+            <enum value="test-method">A test method defined in the assessment-activities section of the assessment plan or results.</enum>
+            <enum value="task">A task defined in the schedule of the assessment plan or results.</enum>
+            <enum value="included-activity">An assessment activity defined in the assessment-activities section of the assessment plan or results.</enum>
+            <enum value="other">The UUID points elsewhere in the this file or an imported file.</enum>
          </allowed-values>
       </flag>
+   </define-field>
+   
+   <define-field name="observation-method">
+      <formal-name>Observation Method</formal-name>
+      <description>Identifies how the observation was made.</description>
+      <allowed-values allow-other="yes">
+         <enum value="EXAMINE">An inspection was performed.</enum>
+         <enum value="INTERVIEW">An interview was performed.</enum>
+         <enum value="TEST">A manual or automated test was performed.</enum>
+         <enum value="TEST-MANUAL">A manual test was performed.</enum>
+         <enum value="TEST-AUTOMATED">An automated test was performed.</enum>
+         <enum value="MIXED">Only use for historic conversion of old assessment observations that may include a mix of methods.</enum>
+      </allowed-values>
    </define-field>
    
    <define-field name="observation-type">
       <formal-name>Observation Type</formal-name>
       <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
       <allowed-values allow-other="yes">
-         <enum value="implementation-statement">A difference between the SSP implementation statement, and actual implementation</enum>
-         <enum value="misconfiguration">A system misconfiguration was identified</enum>
-         <enum value="vulnerability">A vulnerability was identified</enum>
-         <enum value="threat">A threat was identified</enum>
-         <enum value="mitigation">A mitigating factor was identified</enum>
-         <enum value="test-result">A test yielding a finding</enum>
-         <enum value="report">The reporting of a fact</enum>
+         <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
+         <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
+         <enum value="mitigation">A mitigating factor was identified.</enum>
+         <enum value="finding">An assessment finding. Used for observations made by tools, penetration testing, and other means.</enum>
+         <enum value="historic">An observation from a past assessment, which was converted to OSCAL at a later date.</enum>
       </allowed-values>
    </define-field>
 
@@ -1028,10 +1015,10 @@
       <description>Identifies something required to achieve remediation.</description>
       <flag ref="uuid" required="yes" />
       <model>
-         <field ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <description>Identifies a subject associated with this requirement, such as a party, system component, or inventory-item.</description>
             <group-as name="subject-references" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <field ref="title"  min-occurs="0" max-occurs="1" />
          <field ref="description"  min-occurs="1" max-occurs="1" />
          <field ref="prop"  min-occurs="0" max-occurs="unbounded">
@@ -1067,10 +1054,10 @@
       <flag ref="implementation-uuid" required="no" />
       <model>
          <field ref="description" min-occurs="1" max-occurs="1" />
-         <field ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <description>Links identifiable elements of the system to this mitigating factor, such as an inventory-item or component.</description>
             <group-as name="subject-references" in-json="ARRAY"/>
-         </field>
+         </assembly>
       </model>
    </define-assembly>
 
@@ -1095,7 +1082,7 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <description>Points to the source of the recommendation</description>
             <group-as name="subject-references" in-json="ARRAY" />
             <flag ref="type">
@@ -1104,7 +1091,7 @@
                   <enum value="tool">The UUID of the tool that made the recommendation</enum>
                </allowed-values>
             </flag>
-         </field>
+         </assembly>
          <assembly ref="required" min-occurs="0" max-occurs="unbounded">
             <group-as name="requirements" in-json="ARRAY"/>
          </assembly>

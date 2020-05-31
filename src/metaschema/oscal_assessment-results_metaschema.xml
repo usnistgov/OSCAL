@@ -25,14 +25,14 @@
    <define-assembly name="assessment-results">
       <formal-name>Security Assessment Results (SAR)</formal-name>
       <description>Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.</description>
-      <flag ref="id" required="yes"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"  max-occurs="1" />
          <assembly ref="import-ap" min-occurs="1"  max-occurs="1" >
             <description>Used by the SAR to import information about the original plan for assessing the system.</description>
          </assembly>
          <assembly ref="objectives" min-occurs="1" max-occurs="1" />
-         <assembly ref="assessment-subject" min-occurs="0" max-occurs="1" />
+         <assembly ref="assessment-subjects" min-occurs="0" max-occurs="1" />
          <assembly ref="assets" min-occurs="0"  max-occurs="1" />
          <assembly ref="assessment-activities" min-occurs="0"  max-occurs="1" />
          <assembly ref="results" min-occurs="1"  max-occurs="unbounded">

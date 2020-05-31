@@ -25,7 +25,7 @@
    <define-assembly name="plan-of-action-and-milestones">
       <formal-name>Plan of Action and Milestones (POA&amp;M)</formal-name>
       <description>A plan of action and milestones, such as those required by FedRAMP.</description>
-      <flag ref="id" required="yes"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <assembly ref="metadata"  min-occurs="1" max-occurs="1" />
          <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
