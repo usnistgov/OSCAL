@@ -344,21 +344,6 @@
          <field ref="external-id" max-occurs="unbounded">
             <group-as name="external-ids" in-json="ARRAY"/>
          </field>
-         <assembly ref="address" max-occurs="unbounded">
-            <group-as name="addresses" in-json="ARRAY"/>
-         </assembly>
-         <field ref="member-of-organization" max-occurs="unbounded">
-            <group-as name="member-of-organizations" in-json="ARRAY"/>
-         </field>   
-         <field ref="location-uuid" max-occurs="unbounded">
-            <group-as name="location-uuids" in-json="ARRAY"/>
-         </field>
-         <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses" in-json="ARRAY"/>
-         </field>
-         <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers" in-json="ARRAY"/>
-         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
@@ -367,6 +352,21 @@
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
+         </field>
+         <assembly ref="address" max-occurs="unbounded">
+            <group-as name="addresses" in-json="ARRAY"/>
+         </assembly>
+         <field ref="email" max-occurs="unbounded">
+            <group-as name="email-addresses" in-json="ARRAY"/>
+         </field>
+         <field ref="phone" max-occurs="unbounded">
+            <group-as name="telephone-numbers" in-json="ARRAY"/>
+         </field>
+         <field ref="member-of-organization" max-occurs="unbounded">
+            <group-as name="member-of-organizations" in-json="ARRAY"/>
+         </field>   
+         <field ref="location-uuid" max-occurs="unbounded">
+            <group-as name="location-uuids" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
