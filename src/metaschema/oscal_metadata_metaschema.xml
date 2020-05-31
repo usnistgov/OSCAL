@@ -407,6 +407,7 @@
       <formal-name>Relation</formal-name>
       <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
       <allowed-values allow-other="yes">
+         <enum value="homepage">A link to a homepage related to the containing object.</enum>
          <enum value="interview-notes">Interview Notes</enum>
          <enum value="tool-output">Tool Output</enum>
          <enum value="photograph">Photograph</enum>
