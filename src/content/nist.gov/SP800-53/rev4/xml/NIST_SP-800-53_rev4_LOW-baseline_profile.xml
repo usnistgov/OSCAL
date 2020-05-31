@@ -1,8 +1,6 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='LOW'-->
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal_profile_schema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="13172679-d468-4a88-8d7f-3afdeffedff8">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="13172679-d468-4a88-8d7f-3afdeffedff8">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</title>
       
