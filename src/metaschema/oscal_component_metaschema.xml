@@ -8,7 +8,7 @@
   root="component-definition">
 
   <schema-name>OSCAL Implementation Component Format</schema-name>
-  <schema-version>1.0.0-milestone2</schema-version>
+  <schema-version>1.0.0-milestone3</schema-version>
   <short-name>oscal-component</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 

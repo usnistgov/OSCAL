@@ -15,23 +15,28 @@
             "parties": [
                 {
                     "uuid": "3b2a5599-cc37-403f-ae36-5708fa804b27",
-                    "org": {"org-name": "Enterprise Asset Owners"}
+                    "type": "organization",
+                    "party-name": "Enterprise Asset Owners"
                 },
                 {
                     "uuid": "833ac398-5c9a-4e6b-acba-2a9c11399da0",
-                    "org": {"org-name": "Enterprise Asset Administrators"}
+                    "type": "organization",
+                    "party-name": "Enterprise Asset Administrators"
                 },
                 {
                     "uuid": "ec485dcf-2519-43f5-8e7d-014cc315332d",
-                    "org": {"org-name": "Legal Department"}
+                    "type": "organization",
+                    "party-name": "Legal Department"
                 },
                 {
                     "uuid": "0f0c15ed-565e-4ce9-8670-b54853d0bf03",
-                    "org": {"org-name": "IT Department"}
+                    "type": "organization",
+                    "party-name": "IT Department"
                 },
                 {
                     "uuid": "96c362ee-a012-4e07-92f3-486ab303b0e7",
-                    "org": {"org-name": "Acme Corp"}
+                    "type": "organization",
+                    "party-name": "Acme Corp"
                 }
             ]
         },

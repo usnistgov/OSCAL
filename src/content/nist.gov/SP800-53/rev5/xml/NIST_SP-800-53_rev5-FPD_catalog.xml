@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by extraction/mapping from NVD XML :2020-03-16T13:24:48.668-04:00 -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="419d31dd-746d-4dc2-89ad-1d13cc2326ca">
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal_catalog_schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="419d31dd-746d-4dc2-89ad-1d13cc2326ca">
    <metadata>
       <title>NIST Special Publication 800-53: Security and Privacy Controls for Federal Information
          Systems and Organizations, Revision 5 Final Public Draft</title>
@@ -22,20 +23,18 @@
       <role id="contact">
          <title>Contact</title>
       </role>
-      <party uuid="4ae7292e-6d8e-4735-86ea-11047c575e87">
-         <org>
-            <org-name>Joint Task Force, Interagency Working Group</org-name>
-            <address>
-               <addr-line>National Institute of Standards and Technology</addr-line>
-               <addr-line>Attn: Computer Security Division</addr-line>
-               <addr-line>Information Technology Laboratory</addr-line>
-               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
-               <city>Gaithersburg</city>
-               <state>MD</state>
-               <postal-code>20899-8930</postal-code>
-            </address>
-            <email>sec-cert@nist.gov</email>
-         </org>
+      <party uuid="4ae7292e-6d8e-4735-86ea-11047c575e87" type="organization">
+         <party-name>Joint Task Force, Interagency Working Group</party-name>
+         <address>
+            <addr-line>National Institute of Standards and Technology</addr-line>
+            <addr-line>Attn: Computer Security Division</addr-line>
+            <addr-line>Information Technology Laboratory</addr-line>
+            <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+            <city>Gaithersburg</city>
+            <state>MD</state>
+            <postal-code>20899-8930</postal-code>
+         </address>
+         <email>sec-cert@nist.gov</email>
       </party>
       <responsible-party role-id="creator">
          <party-uuid>4ae7292e-6d8e-4735-86ea-11047c575e87</party-uuid>

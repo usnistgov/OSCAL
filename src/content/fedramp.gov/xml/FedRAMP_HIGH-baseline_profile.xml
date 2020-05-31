@@ -13,12 +13,10 @@
 		<role id="contact">
 			<title>Contact</title>
 		</role>
-		<party uuid="c4cff125-196c-4c4d-9a77-8cb7c2b4f600">
-			<org>
-				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
-				<email>info@fedramp.gov</email>
-				<url>https://fedramp.gov</url>
-			</org>
+		<party uuid="c4cff125-196c-4c4d-9a77-8cb7c2b4f600" type="organization">
+			<party-name>Federal Risk and Authorization Management Program (FedRAMP)</party-name>
+			<email>info@fedramp.gov</email>
+			<link rel="homepage" href="https://fedramp.gov"/>
 		</party>
 		<responsible-party role-id="creator">
 			<party-uuid>c4cff125-196c-4c4d-9a77-8cb7c2b4f600</party-uuid>

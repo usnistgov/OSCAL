@@ -1,8 +1,8 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='MODERATE'-->
-<profile
-   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   uuid="f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal_profile_schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
 
@@ -13,20 +13,18 @@
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
       
-      <party uuid="316876e2-5c7b-4a60-a488-2ed977238f04">
-         <org>
-            <org-name>Joint Task Force, Transformation Initiative</org-name>
-            <address>
-               <addr-line>National Institute of Standards and Technology</addr-line>
-               <addr-line>Attn: Computer Security Division</addr-line>
-               <addr-line>Information Technology Laboratory</addr-line>
-               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
-               <city>Gaithersburg</city>
-               <state>MD</state>
-               <postal-code>20899-8930</postal-code>
-            </address>
-            <email>sec-cert@nist.gov</email>
-         </org>
+      <party uuid="316876e2-5c7b-4a60-a488-2ed977238f04" type="organization">
+         <party-name>Joint Task Force, Transformation Initiative</party-name>
+         <address>
+            <addr-line>National Institute of Standards and Technology</addr-line>
+            <addr-line>Attn: Computer Security Division</addr-line>
+            <addr-line>Information Technology Laboratory</addr-line>
+            <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+            <city>Gaithersburg</city>
+            <state>MD</state>
+            <postal-code>20899-8930</postal-code>
+         </address>
+         <email>sec-cert@nist.gov</email>
       </party>
       <responsible-party role-id="creator">
          <party-uuid>316876e2-5c7b-4a60-a488-2ed977238f04</party-uuid>

@@ -9,7 +9,7 @@
     root="VALIDATION_common_root">
 
     <schema-name>OSCAL Implementation Common Information</schema-name>
-    <schema-version>1.0.0-milestone2</schema-version>
+    <schema-version>1.0.0-milestone3</schema-version>
     <short-name>oscal-implementation-common</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 
@@ -45,13 +45,14 @@
             <enum value="software">Any software, operating system, or firmware</enum>
             <enum value="hardware"></enum>
             <enum value="service">A service that may provide APIs.</enum>
+            <enum value="interconnection">A connection to something outside this system.</enum>
             <enum value="policy"></enum>
             <enum value="process"></enum>
             <enum value="procedure"></enum>
             <enum value="plan"></enum>
             <enum value="guidance">Any guideline or recommendation</enum>
             <enum value="standard"></enum>
-            <enum value="validation"></enum>
+            <enum value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>
         </allowed-values>
     </define-flag>
 
