@@ -920,7 +920,7 @@
       <formal-name>Implemented Component</formal-name>
       <description>The set of componenets that are implemented in a given system inventory item.</description>
       <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="NCName">
+      <flag name="component-id" required="yes" as-type="uuid">
          <formal-name>Component Identifier Reference</formal-name>
          <description>A reference to a component that is implemented as part of an inventory item.</description>
       </flag>
@@ -1157,7 +1157,7 @@
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
       <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="NCName">
+      <flag name="component-id" required="yes" as-type="uuid">
          <formal-name>Component Reference</formal-name>
          <description>A reference to the component that is implementing a given control or control statement.</description>
       </flag>

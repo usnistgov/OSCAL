@@ -89,7 +89,7 @@
         "system-implementation": {
             "remarks": "This is a partial implementation that addresses the logging server portion of the auditing system.",
             "users": {
-                "user-asset-administrator": {
+                "9824089b-322c-456f-86c4-4111c4200f69": {
                     "title": "System Administrator",
                     "role-ids": ["asset-administrator"],
                     "annotations": [
@@ -99,7 +99,7 @@
                         }
                     ]
                 },
-                "user-service-owner": {
+                "ae8de94c-835d-4303-83b1-114b6a117a07": {
                     "title": "Audit Team",
                     "role-ids": ["asset-owner"],
                     "annotations": [
@@ -109,7 +109,7 @@
                         }
                     ]
                 },
-                "user-legal": {
+                "372ce7a3-92b0-437e-a98c-24d29f9bfab8": {
                     "title": "Legal Department",
                     "role-ids": ["legal-officer"],
                     "annotations": [
