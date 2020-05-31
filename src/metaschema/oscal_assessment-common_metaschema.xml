@@ -698,15 +698,15 @@
       <model>
          <field ref="title"  min-occurs="0" max-occurs="1" />
          <field ref="description"  min-occurs="0" max-occurs="1" />
-         <field ref="satisfaction" min-occurs="0" max-occurs="1" />
+         <field ref="result" min-occurs="0" max-occurs="1" />
          <field ref="implementation-status" min-occurs="0" max-occurs="1" />
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
       </model>
    </define-assembly>
 
-   <define-field name="satisfaction">
-      <formal-name>Satisfaction</formal-name>
-      <description>An brief indication as to whether the objective is satisfied or not.</description>
+   <define-field name="result">
+      <formal-name>Result</formal-name>
+      <description>A brief indication as to whether the objective is satisfied or not.</description>
       <flag ref="system" />
       
    </define-field>
