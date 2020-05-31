@@ -297,6 +297,7 @@
       <description>A location, with associated metadata that can be referenced.</description>
       <flag ref="uuid" required="yes"/>
       <model>
+         <field ref="title"/>
          <assembly ref="address" min-occurs="1"/>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses" in-json="ARRAY"/>
