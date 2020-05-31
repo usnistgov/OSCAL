@@ -310,7 +310,10 @@
    <define-assembly name="subject-reference">
       <formal-name>Identifies the Subject</formal-name>
       <description>A pointer to a resource based on its ID. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
-      <flag ref="uuid" required="yes" />
+      <flag name="uuid-ref" required="yes">
+         <formal-name>UUID Reference</formal-name>
+         <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
+      </flag>
       <flag ref="type" required="yes">
          <allowed-values allow-other="yes">
             <enum value="component">Component</enum>
