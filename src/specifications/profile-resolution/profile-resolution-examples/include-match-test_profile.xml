@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile id="include-match-test_profile" xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd">
-    <metadata>
-        <title>Test Profile</title>
-        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
-        <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
-    </metadata>
-    <import href="catalogs/abc-simple_catalog.xml">
-        <include>
-            <match pattern="^a"/>
-        </include>
-    </import>
+<!-- Modified by conversion XSLT 2020-05-30T14:39:47.217-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+         uuid="54a15c30-a10f-4265-9d3c-2341d9d10899">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:47.217-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-milestone3</oscal-version>
+   </metadata>
+   <import href="catalogs/abc-simple_catalog.xml">
+      <include>
+         <match pattern="^a"/>
+      </include>
+   </import>
 </profile>

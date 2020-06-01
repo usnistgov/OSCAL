@@ -193,7 +193,7 @@ for i in ${!paths[@]}; do
       exitcode=1
       continue;
     else
-      echo -e "${P_OK}Converted ${source_format^^} '${P_END}${target_file}${P_OK}' to ${target_format^^} as '${P_END}${roundtrip_file}${P_OK}'.${P_END}"
+      echo -e "${P_OK}Converted ${target_format^^} '${P_END}${target_file}${P_OK}' to ${source_format^^} as '${P_END}${roundtrip_file}${P_OK}'.${P_END}"
     fi
 
     # compare the XML files to see if there is data loss

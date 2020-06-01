@@ -116,6 +116,6 @@
     
     <xsl:key name="cross-reference" match="*[starts-with(@href,'#')]" use="substring-after(@href,'#')"/>
     
-    <xsl:template match="resource[empty(key('cross-reference',@id))][not(prop[@name='keep']='always')]"/>
+    <xsl:template match="resource[empty(key('cross-reference',(@id,@uuid)))][not(prop[@name='keep']='always')]"/>
     
 </xsl:stylesheet>

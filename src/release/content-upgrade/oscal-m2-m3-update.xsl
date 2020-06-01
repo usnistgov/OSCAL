@@ -25,7 +25,7 @@
     
     <!-- Rewriting top-level @id -->
     <xsl:template match="/*/@id[function-available('uuid:randomUUID')]" xmlns:uuid="java:java.util.UUID">
-        <xsl:attribute name="id" select="'uuid-' || uuid:randomUUID()"/>
+        <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
     </xsl:template>
     
     <!-- copy metadata, mostly -->
@@ -69,13 +69,23 @@
         </set-parameter>
     </xsl:template>
     
-    <xsl:template match="citation">
-        <resource id="{@id}">
+    <xsl:template match="back-matter/citation">
+        <resource uuid="{@id}">
             <xsl:apply-templates select="title" mode="copy"/>
             <xsl:apply-templates select="doc-id" mode="copy"/>
             <xsl:next-match/>
-            <rlink href="{ target }"/>
+            <xsl:apply-templates select="target"/>
         </resource>
+    </xsl:template>
+    
+    <xsl:template match="citation/desc">
+        <text>
+            <xsl:apply-templates/>
+        </text>
+    </xsl:template>
+    
+    <xsl:template name="target">
+        <rlink href="{ . }"/>
     </xsl:template>
     
     <xsl:template match="citation/title">
@@ -86,5 +96,12 @@
     
     <xsl:template match="citation/@id | citation/target | citation/text() | citation/doc-id"/>
     
+    <!-- @id to @uuid migration ... does *not* rewrite UUID values ... see rewrite-uuid for this ...   -->
+    
+    
+<!-- changing to 'uuid' but keeping the value  -->
+    <xsl:template match="resource/@id">
+        <xsl:attribute name="uuid" select="."/>
+    </xsl:template>
     
 </xsl:stylesheet>

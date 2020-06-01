@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
-            root="VALIDATION_root">
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+ xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="VALIDATION_root">
    <schema-name>OSCAL Document Metadata Description</schema-name>
-   <schema-version>1.0.0-milestone2</schema-version>
+   <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-metadata</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 
@@ -22,7 +21,7 @@
          <assembly ref="back-matter"/>
          <field ref="description" in-xml="WITH_WRAPPER"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
-         <field ref="party-id"/>
+         <field ref="party-uuid"/>
          <assembly ref="annotation"/>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
@@ -296,8 +295,9 @@
    <define-assembly name="location">
       <formal-name>Location</formal-name>
       <description>A location, with associated metadata that can be referenced.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <model>
+         <field ref="title"/>
          <assembly ref="address" min-occurs="1"/>
          <field ref="email" max-occurs="unbounded">
             <group-as name="email-addresses" in-json="ARRAY"/>
@@ -320,19 +320,30 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   <define-field name="location-id" as-type="NCName">
+   <define-field name="location-uuid" as-type="uuid">
       <formal-name>Location Reference</formal-name>
       <description>References a <code>location</code> defined in <code>metadata</code>.</description>
    </define-field>
    <define-assembly name="party">
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
+      
+      <flag name="type" as-type="string" required="yes">
+         <formal-name>Party Type</formal-name>
+         <description>A category describing the kind of party the object describes.</description>
+         <allowed-values allow-other="no" >
+            <enum value="person">An individual.</enum>
+            <enum value="organization">A group of individuals formed for a specific purpose.</enum>
+         </allowed-values>
+      </flag>
+      
       <model>
-         <assembly ref="person" max-occurs="unbounded">
-            <group-as name="persons" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="org"/>
+         <field ref="party-name" min-occurs="1"/>
+         <field ref="short-name"/>
+         <field ref="external-id" max-occurs="unbounded">
+            <group-as name="external-ids" in-json="ARRAY"/>
+         </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
@@ -341,110 +352,42 @@
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
+         </field>
+         <assembly ref="address" max-occurs="unbounded">
+            <group-as name="addresses" in-json="ARRAY"/>
+         </assembly>
+         <field ref="email" max-occurs="unbounded">
+            <group-as name="email-addresses" in-json="ARRAY"/>
+         </field>
+         <field ref="phone" max-occurs="unbounded">
+            <group-as name="telephone-numbers" in-json="ARRAY"/>
+         </field>
+         <field ref="member-of-organization" max-occurs="unbounded">
+            <group-as name="member-of-organizations" in-json="ARRAY"/>
+         </field>   
+         <field ref="location-uuid" max-occurs="unbounded">
+            <group-as name="location-uuids" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <remarks>
-         <p>As contents one of <code>org</code> or <code>person</code> is required, or both; there may be only one <code>org</code>, but many <code>person</code>s.</p>
-         <p>Note that persons can also be indicated with organizational affiliations by using
-        <code>orgname</code> inside <code>person</code>. Contact information in that
-        case belongs to the person, not the organization: use <code>org</code> when an
-      organization as such serves as a documented party.</p>
+         <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
       </remarks>
    </define-assembly>
-   <define-field name="party-id" as-type="NCName">
+   <define-field name="party-uuid" as-type="uuid">
       <formal-name>Party Reference</formal-name>
       <description>References a <code>party</code> defined in <code>metadata</code>.</description>
    </define-field>
-   <define-assembly name="person">
-      <formal-name>Person</formal-name>
-      <description>A person, with contact information</description>
-      <model>
-         <field ref="person-name"/>
-         <field ref="short-name"/>
-         <field ref="org-name">
-            <description>Affiliated organization</description>
-         </field>
-         <field ref="person-id" max-occurs="unbounded">
-            <group-as name="person-ids" in-json="ARRAY"/>
-         </field>
-         <field ref="org-id" max-occurs="unbounded">
-            <group-as name="organization-ids" in-json="ARRAY"/>
-         </field>
-         <assembly ref="address" max-occurs="unbounded">
-            <group-as name="addresses" in-json="ARRAY"/>
-         </assembly>
-         <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids" in-json="ARRAY"/>
-         </field>
-         <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses" in-json="ARRAY"/>
-         </field>
-         <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers" in-json="ARRAY"/>
-         </field>
-         <field ref="url" max-occurs="unbounded">
-            <group-as name="URLs" in-json="ARRAY"/>
-         </field>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </field>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-assembly name="org">
-      <formal-name>Organization</formal-name>
-      <description>An organization or legal entity (not a person), with contact information</description>
-      <model>
-         <field ref="org-name" min-occurs="1"/>
-         <field ref="short-name"/>
-         <field ref="org-id" max-occurs="unbounded">
-            <group-as name="organization-ids" in-json="ARRAY"/>
-         </field>
-         <assembly ref="address" max-occurs="unbounded">
-            <group-as name="addresses" in-json="ARRAY"/>
-         </assembly>
-         <field ref="location-id" max-occurs="unbounded">
-            <group-as name="location-ids" in-json="ARRAY"/>
-         </field>
-         <field ref="email" max-occurs="unbounded">
-            <group-as name="email-addresses" in-json="ARRAY"/>
-         </field>
-         <field ref="phone" max-occurs="unbounded">
-            <group-as name="telephone-numbers" in-json="ARRAY"/>
-         </field>
-         <field ref="url" max-occurs="unbounded">
-            <group-as name="URLs" in-json="ARRAY"/>
-         </field>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </field>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-field name="person-id">
+
+   <define-field name="external-id">
       <formal-name>Personal Identifier</formal-name>
       <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
       <json-value-key>id</json-value-key>
-      <flag ref="type"/>
+      <flag ref="type" required="yes"/>
    </define-field>
-   <define-field name="org-id">
-      <formal-name>Organization Identifier</formal-name>
-      <description>An identifier for an organization using a designated scheme.</description>
-      <json-value-key>id</json-value-key>
-      <flag ref="type"/>
+   <define-field name="member-of-organization" as-type="uuid">
+      <formal-name>Organizational Affiliation</formal-name>
+      <description>Identifies that the containing object is a member of the organization associated with the provided UUID.</description>
    </define-field>
    <define-assembly name="rlink">
       <formal-name>Resource link</formal-name>
@@ -463,6 +406,14 @@
    <define-flag name="rel" as-type="NCName">
       <formal-name>Relation</formal-name>
       <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
+      <allowed-values allow-other="yes">
+         <enum value="homepage">A link to a homepage related to the containing object.</enum>
+         <enum value="interview-notes">Interview Notes</enum>
+         <enum value="tool-output">Tool Output</enum>
+         <enum value="photograph">Photograph</enum>
+         <enum value="questionnaire">Questionnaire</enum>
+         <enum value="screen-shot">Screen Shot</enum>
+      </allowed-values>
       <remarks>
          <p>TO DO: discuss IANA link relation registry.</p>
       </remarks>
@@ -474,19 +425,9 @@
          <p>TO DO: discuss IANA media type registry.</p>
       </remarks>
    </define-flag>
-   <define-field name="person-name">
-      <formal-name>Person Name</formal-name>
-      <description>Full (legal) name of an individual</description>
-   </define-field>
-   <define-field name="org-name">
-      <formal-name>Organization Name</formal-name>
-      <description>Full (legal) name of an organization</description>
-      <remarks>
-         <p>Only when this element is used directly within <code>org</code> can it be accepted of the name of the thing to which it is attached. This element may also be used directly on <code>person</code> to name an affiliated organization.</p>
-         <p>
-            <code>href</code> can be used to provide external links or internal links to other elements. The sibling <code>org-id</code> element
-        (similarly for <em>affiliated</em> organizations) can also be used to link (for example to organizations listed elsewhere as parties.)</p>
-      </remarks>
+   <define-field name="party-name">
+      <formal-name>Party Name</formal-name>
+      <description>The full (legal) name of the party.</description>
    </define-field>
    <define-field name="short-name">
       <formal-name>short-name</formal-name>
@@ -576,7 +517,10 @@
    <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document, which may be a pointer to other data or a citation.</description>
-      <flag ref="id" required="yes"/>
+      <flag name="uuid" required="yes" as-type="string">
+         <formal-name>A Pseudo-UUID</formal-name>
+         <description>TODO: This needs to be changed back to a reference to a uuid.</description>
+      </flag>
       <model>
          <field ref="title"/>
          <field ref="desc"/>
@@ -635,7 +579,10 @@
          <enum value="SHA-256"/>
          <enum value="SHA-384"/>
          <enum value="SHA-512"/>
-         <enum value="RIPEMD-160"/>
+         <enum value="SHA3-224"/>
+         <enum value="SHA3-256"/>
+         <enum value="SHA3-384"/>
+         <enum value="SHA3-512"/>
       </allowed-values>
       <remarks>
          <p>Valid values MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p>
@@ -674,8 +621,8 @@
          <description>The role that the party is responsible for.</description>
       </flag>
       <model>
-         <field ref="party-id" min-occurs="1" max-occurs="unbounded">
-            <group-as name="party-ids" in-json="ARRAY"/>
+         <field ref="party-uuid" min-occurs="1" max-occurs="unbounded">
+            <group-as name="party-uuids" in-json="ARRAY"/>
          </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
@@ -710,7 +657,11 @@
          <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
       </example>
    </define-flag>
-<!--   <define-field name="role-id" as-type="NCName">
+   <define-flag name="uuid" as-type="uuid">
+      <formal-name>Universally Unique Identifier</formal-name>
+      <description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</description>
+   </define-flag>
+   <!--   <define-field name="role-id" as-type="NCName">
       <formal-name>Role identifier</formal-name>
       <description>References a <code>role</code> element defined in metadata.</description>
       <allowed-values allow-other="yes">

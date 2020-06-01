@@ -5,16 +5,16 @@
 -->
 <!-- OSCAL Implementation Layer: System Security Plan (SSP) METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
             xmlns:o="http://csrc.nist.gov/ns/oscal/example"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
             root="system-security-plan">
    <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
-   <schema-version>1.0.0-milestone2</schema-version>
+   <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-ssp</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
@@ -32,11 +32,11 @@
       <description>A system security plan, such as those described in NIST SP 800-18</description>
       <flag ref="id" required="yes"/>
       <model>
-         <assembly ref="metadata"/>
+         <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="import-profile" min-occurs="1"/>
          <assembly ref="system-characteristics" min-occurs="1"/>
-         <assembly ref="system-implementation"/>
-         <assembly ref="control-implementation"/>
+         <assembly ref="system-implementation" min-occurs="1"/>
+         <assembly ref="control-implementation" min-occurs="1"/>
          <assembly ref="back-matter"/>
       </model>
 
@@ -93,9 +93,6 @@
          <assembly ref="system-information" min-occurs="1"/>
          <assembly ref="security-impact-level" min-occurs="1"/>
          <assembly ref="status" min-occurs="1"/>
-         <assembly ref="leveraged-authorization" max-occurs="unbounded">
-            <group-as name="leveraged-authorizations" in-json="ARRAY"/>
-         </assembly>
          <assembly ref="authorization-boundary" min-occurs="1"/>
          <assembly ref="network-architecture"/>
          <assembly ref="data-flow"/>
@@ -370,7 +367,7 @@
                </allowed-values>
             </flag>
          </field>
-         <field ref="party-id" min-occurs="1">
+         <field ref="party-uuid" min-occurs="1">
             <description>A reference to the party that manages the leveraged system.</description>
          </field>
          <field ref="date-authorized" min-occurs="1"/>
@@ -414,10 +411,10 @@
    <define-assembly name="diagram">
       <formal-name>Diagram</formal-name>
       <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>Diagram ID</formal-name>
-         <description>An identifier for this diagram.</description>
+         <description>The identifier for this diagram.</description>
       </flag>
       <model>
          <field ref="description" in-xml="WITH_WRAPPER">
@@ -525,6 +522,9 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships? -->
          </field>
+         <assembly ref="leveraged-authorization" max-occurs="unbounded">
+            <group-as name="leveraged-authorizations" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="user" min-occurs="1" max-occurs="unbounded">
             <group-as name="users" in-json="BY_KEY"/>
          </assembly>
@@ -534,13 +534,7 @@
          <!--         <assembly ref="capability" max-occurs="unbounded">
             <group-as name="capabilities" in-json="BY_KEY"/>
          </assembly>
--->         <assembly ref="service" max-occurs="unbounded">
-            <description>A collection of the ports, protocols, and services used within the system.</description>
-            <group-as name="services" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="interconnection" max-occurs="unbounded">
-            <group-as name="ssp-interconnection" in-json="ARRAY"/>
-         </assembly>
+         -->
          <assembly ref="system-inventory"/>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -550,10 +544,10 @@
    <define-assembly name="user">
       <formal-name>System User Class</formal-name>
       <description>A type of user that interacts with the system based on an associated role.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>User Identifier</formal-name>
-         <description>A unique identifier that references this user class.</description>
+         <description>The unique identifier for the user class.</description>
       </flag>
      <!-- <flag name="name" required="yes" as-type="string">
          <formal-name></formal-name>
@@ -628,10 +622,10 @@
    <define-assembly name="component">
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
-      <json-key flag-name="id"/>
-      <flag name="id" as-type="NCName" required="yes">
+      <json-key flag-name="uuid"/>
+      <flag ref="uuid" required="yes">
          <formal-name>Component Identifier</formal-name>
-         <description>A unique identifier for a component.</description>
+         <description>The unique identifier for the component.</description>
       </flag>
       <flag ref="component-type" required="yes"/>
       <model>
@@ -640,6 +634,9 @@
          </field>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER">
             <description>A description of the component, including information about its function.</description>
+         </field>
+         <field ref="purpose">
+            <description>A summary of the technological or business purpose of the component.</description>
          </field>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
@@ -657,6 +654,9 @@
                   <enum value="virtual">Identifies whether the component is virtualized (yes/no)</enum>
                   <enum value="vlan-id">Virtual LAN identifier of the component.</enum>
                   <enum value="asset-tag">An asset tag that is unique within the organization for the component.</enum>
+                  <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
+                  <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
+                  <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
                </allowed-values>
             </flag>
             <remarks>
@@ -690,6 +690,10 @@
                   <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
                   <!-- rel values to also be allowed in implemented-component -->
                   <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+                  <enum value="used-by">This service is used by the referenced component identifier.</enum>
+                  <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
+                  <enum value="agreement">A link to the system interconnection agreement.</enum>
+                  <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
                </allowed-values>
             </flag>
          </field>
@@ -712,6 +716,9 @@
             <flag name="role-id" as-type="NCName">
                <formal-name>Role identifier</formal-name>
                <description>Indicates the role assigned to the responsible party.</description>
+               <remarks>
+                  <p>The built in roles starting with <code>isa-</code> are used identify the parties that are establishing, authorizing and managing the system interconnection agreement. This allows the authorizing and managing parties on both sides of the interconnection to be defined.</p>
+               </remarks>
                <allowed-values allow-other="yes">
                   <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
                   <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
@@ -722,12 +729,21 @@
                   <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
                   <enum value="maintainer">The organization responsible for the creation and maintenance of the component.</enum>
                   <enum value="provider">The organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+                  <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
+                  <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
+                  <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
+                  <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
                </allowed-values>
             </flag>
             <remarks>
                <p>A role defined in this way can be associated with a party or parties here, or where the component is referenced (e.g., <code>inventory-item</code>, <code>implemented-requirement</code>/<code>by-component</code>).</p>
                <p>The roles "maintainer" or "provider" can be used to define the supplier. In such cases party-id(s) can be used to associate the providing organization. For products, services, and APIs, this is the vendor and/or retailer information. For policies, processes, plans, standards, and guidance, this is the authoring organization.</p>
             </remarks>
+         </assembly>
+         <assembly ref="protocol" max-occurs="unbounded">
+            <description>Used for <code>service</code> components to define the protocols supported by the service.</description>
+            <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
+            <group-as name="protocols" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -736,55 +752,14 @@
          <p>The <code>type</code> indicates which of these component types is represented.</p>
         <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>-->
+         <p>When defining a <code>service</code> compoenent where are relationship to other components is known, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifer(s) that provide and use the service respectively.</p>
       </remarks>
    </define-assembly>
 
-   <define-assembly name="service">
-      <formal-name>Service</formal-name>
-      <description>Information about an individual service within the system.</description>
-      <flag ref="id"/>
-      <model>
-         <field ref="title" min-occurs="1">
-            <description>A human readable name for the system service.</description>
-         </field>
-         <field ref="description" in-xml="WITH_WRAPPER">
-            <description>A description of what the service provides.</description>
-         </field>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
-            <!-- TODO: Model specific prop names -->
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-            <!-- TODO: Model specific characteristic names -->
-         </assembly>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-            <flag ref="rel">
-               <!-- TODO: Model specific link relationships -->
-               <allowed-values allow-other="yes">
-                  <enum value="used-by">This service is used by the referenced component identifier.</enum>
-                  <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
-               </allowed-values>
-            </flag>
-         </field>
-         <assembly ref="protocol" max-occurs="unbounded">
-            <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
-            <group-as name="ssp-protocol" in-json="ARRAY"/>
-         </assembly>
-         <field ref="purpose">
-            <description>A summary of the technological or business purpose of the service.</description>
-         </field>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
-      <remarks>
-         <p>When defining a service where component details are also provided, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifer(s) that provide and use the service respectively.</p>
-      </remarks>
-   </define-assembly>
    <define-assembly name="protocol">
       <formal-name>Protocol</formal-name>
       <description>Information about the protocol used to provide a service.</description>
-      <flag ref="id"/>
+      <flag ref="uuid"/>
       <flag ref="name" required="yes">
          <description>The short name of the protocol (e.g., TLS).</description>
       </flag>
@@ -841,64 +816,12 @@
       <description>Describes the purpose for the service within the system.</description>
    </define-field>
 
-   <define-assembly name="interconnection">
-      <formal-name>Interconnection</formal-name>
-      <description>Details on an individual system interconnection.</description>
-      <flag ref="id"/>
-      <model>
-         <field ref="remote-system-name"/>
-         <field ref="prop" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
-            <flag ref="name">
-               <allowed-values allow-other="yes">
-                  <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
-                  <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
-               </allowed-values>
-            </flag>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-            <!-- TODO: Model specific characteristic names -->
-         </assembly>
-         <field ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-            <flag ref="rel">
-               <allowed-values allow-other="yes">
-                  <enum value="agreement">A link to the system interconnection agreement.</enum>
-                  <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
-               </allowed-values>
-            </flag>
-         </field>
-         <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <flag name="role-id" as-type="NCName">
-               <formal-name>Role identifier</formal-name>
-               <description>Indicates the role assigned to the responsible party.</description>
-               <allowed-values allow-other="yes">
-                  <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
-                  <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
-                  <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
-                  <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
-               </allowed-values>
-            </flag>
-            <remarks>
-               <p>This construct is used to define the roles that relate to establishing, authorizing and managing the system interconnection agreement.</p>
-               <p>This construct allows the authorizing and managing parties on both sides of the interconnection to be defined.</p>
-            </remarks>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-field name="remote-system-name" as-type="string">
-      <formal-name>Remote Interconnected System Name</formal-name>
-      <description>The name of the remote interconnected system.</description>
-   </define-field>
    <define-assembly name="system-inventory">
       <formal-name>System Inventory</formal-name>
       <description>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</description>
       <model>
          <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
-            <group-as name="inventory-items" in-json="ARRAY"/>
+            <group-as name="inventory-items" in-json="BY_KEY"/>
          </assembly>
         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -906,7 +829,8 @@
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>A single managed inventory item within the system.</description>
-      <flag ref="id" required="yes"/>
+      <json-key flag-name="uuid" /> 
+      <flag ref="uuid" required="yes"/>
       <flag name="asset-id" required="yes">
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
@@ -997,7 +921,7 @@
       <formal-name>Implemented Component</formal-name>
       <description>The set of componenets that are implemented in a given system inventory item.</description>
       <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="NCName">
+      <flag name="component-id" required="yes" as-type="uuid">
          <formal-name>Component Identifier Reference</formal-name>
          <description>A reference to a component that is implemented as part of an inventory item.</description>
       </flag>
@@ -1097,7 +1021,7 @@
    <define-assembly name="implemented-requirement">
       <formal-name>Control-based Requirement</formal-name>
       <description>Describes how the system satisfies an individual control.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes"/>
       <flag ref="control-id" required="yes"/>
       <model>
          <field ref="description"/>
@@ -1160,12 +1084,16 @@
       <flag ref="statement-id">
          <description>A reference to the specific implemented statement associated with a control.</description>
       </flag>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="description"/>
 
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
@@ -1219,7 +1147,7 @@
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </field>
-         <field ref="party-id" max-occurs="unbounded">
+         <field ref="party-uuid" max-occurs="unbounded">
             <group-as name="party-ids" in-json="ARRAY"/>
          </field>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -1230,10 +1158,11 @@
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
       <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="NCName">
+      <flag name="component-id" required="yes" as-type="uuid">
          <formal-name>Component Reference</formal-name>
          <description>A reference to the component that is implementing a given control or control statement.</description>
       </flag>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER"/>
          <field ref="prop" max-occurs="unbounded">

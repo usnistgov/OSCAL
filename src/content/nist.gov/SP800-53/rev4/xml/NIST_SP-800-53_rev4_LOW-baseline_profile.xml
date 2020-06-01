@@ -1,38 +1,34 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='LOW'-->
-<profile
-   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-13172679-d468-4a88-8d7f-3afdeffedff8">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="13172679-d468-4a88-8d7f-3afdeffedff8">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</title>
       
-      <last-modified>2019-09-23T14:24:06.243-04:00</last-modified>
+      <last-modified>2020-05-29T23:29:27.272-04:00</last-modified>
       <version>2015-01-22</version>
-      <oscal-version>1.0.0-milestone1</oscal-version>
+      <oscal-version>1.0.0-milestone3</oscal-version>
       
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
       
-      <party id="IT-JTF">
-         <org>
-            <org-name>Joint Task Force, Transformation Initiative</org-name>
-            <address>
-               <addr-line>National Institute of Standards and Technology</addr-line>
-               <addr-line>Attn: Computer Security Division</addr-line>
-               <addr-line>Information Technology Laboratory</addr-line>
-               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
-               <city>Gaithersburg</city>
-               <state>MD</state>
-               <postal-code>20899-8930</postal-code>
-            </address>
-            <email>sec-cert@nist.gov</email>
-         </org>
+      <party uuid="fcde62b1-8cce-4a57-a26b-b07ad2865ae1" type="organization">
+         <party-name>Joint Task Force, Transformation Initiative</party-name>
+         <address>
+            <addr-line>National Institute of Standards and Technology</addr-line>
+            <addr-line>Attn: Computer Security Division</addr-line>
+            <addr-line>Information Technology Laboratory</addr-line>
+            <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+            <city>Gaithersburg</city>
+            <state>MD</state>
+            <postal-code>20899-8930</postal-code>
+         </address>
+         <email>sec-cert@nist.gov</email>
       </party>
       <responsible-party role-id="creator">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>fcde62b1-8cce-4a57-a26b-b07ad2865ae1</party-uuid>
       </responsible-party>
       <responsible-party role-id="contact">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>fcde62b1-8cce-4a57-a26b-b07ad2865ae1</party-uuid>
       </responsible-party>
    </metadata>
    <import href="#catalog">
@@ -744,7 +740,7 @@
       </alter>
    </modify>
    <back-matter>
-      <resource id="catalog">
+      <resource uuid="catalog">
          <desc>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</desc>
          <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
