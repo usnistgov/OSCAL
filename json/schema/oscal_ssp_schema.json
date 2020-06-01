@@ -240,10 +240,13 @@
         "$id" : "#/definitions/location",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
           "address" : 
           { "$ref" : "#/definitions/address" },
           "email-addresses" : 
@@ -279,30 +282,42 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "address" ],
+        [ "uuid",
+          "address" ],
         "additionalProperties" : false },
-      "location-id" : 
+      "location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
-        "$id" : "#/definitions/location-id",
-        "type" : "string" },
+        "$id" : "#/definitions/location-uuid",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
         "$id" : "#/definitions/party",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "persons" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "type" : 
+          { "title" : "Party Type",
+            "description" : "A category describing the kind of party the object describes.",
+            "type" : "string",
+            "enum" : 
+            [ "person",
+              "organization" ] },
+          "party-name" : 
+          { "$ref" : "#/definitions/party-name" },
+          "short-name" : 
+          { "$ref" : "#/definitions/short-name" },
+          "external-ids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/person" } },
-          "org" : 
-          { "$ref" : "#/definitions/org" },
+            { "$ref" : "#/definitions/external-id" } },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -318,143 +333,48 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
+          "addresses" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/address" } },
+          "email-addresses" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
+          "telephone-numbers" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
+          "member-of-organizations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/member-of-organization" } },
+          "location-uuids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/location-uuid" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "type",
+          "party-name" ],
         "additionalProperties" : false },
-      "party-id" : 
+      "party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
-        "$id" : "#/definitions/party-id",
-        "type" : "string" },
-      "person" : 
-      { "title" : "Person",
-        "description" : "A person, with contact information",
-        "$id" : "#/definitions/person",
-        "type" : "object",
-        "properties" : 
-        { "person-name" : 
-          { "$ref" : "#/definitions/person-name" },
-          "short-name" : 
-          { "$ref" : "#/definitions/short-name" },
-          "org-name" : 
-          { "$ref" : "#/definitions/org-name" },
-          "person-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/person-id" } },
-          "organization-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "location-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/location-id" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "org" : 
-      { "title" : "Organization",
-        "description" : "An organization or legal entity (not a person), with contact information",
-        "$id" : "#/definitions/org",
-        "type" : "object",
-        "properties" : 
-        { "org-name" : 
-          { "$ref" : "#/definitions/org-name" },
-          "short-name" : 
-          { "$ref" : "#/definitions/short-name" },
-          "organization-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "location-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/location-id" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "org-name" ],
-        "additionalProperties" : false },
-      "person-id" : 
+        "$id" : "#/definitions/party-uuid",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+      "external-id" : 
       { "title" : "Personal Identifier",
         "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
-        "$id" : "#/definitions/person-id",
+        "$id" : "#/definitions/external-id",
         "type" : "object",
         "properties" : 
         { "type" : 
@@ -464,23 +384,15 @@
           "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "id" ],
+        [ "id",
+          "type" ],
         "additionalProperties" : false },
-      "org-id" : 
-      { "title" : "Organization Identifier",
-        "description" : "An identifier for an organization using a designated scheme.",
-        "$id" : "#/definitions/org-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
-            "type" : "string" },
-          "id" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "id" ],
-        "additionalProperties" : false },
+      "member-of-organization" : 
+      { "title" : "Organizational Affiliation",
+        "description" : "Identifies that the containing object is a member of the organization associated with the provided UUID.",
+        "$id" : "#/definitions/member-of-organization",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "rlink" : 
       { "title" : "Resource link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
@@ -504,15 +416,10 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "person-name" : 
-      { "title" : "Person Name",
-        "description" : "Full (legal) name of an individual",
-        "$id" : "#/definitions/person-name",
-        "type" : "string" },
-      "org-name" : 
-      { "title" : "Organization Name",
-        "description" : "Full (legal) name of an organization",
-        "$id" : "#/definitions/org-name",
+      "party-name" : 
+      { "title" : "Party Name",
+        "description" : "The full (legal) name of the party.",
+        "$id" : "#/definitions/party-name",
         "type" : "string" },
       "short-name" : 
       { "title" : "short-name",
@@ -616,9 +523,9 @@
         "$id" : "#/definitions/resource",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
+        { "uuid" : 
+          { "title" : "A Pseudo-UUID",
+            "description" : "TODO: This needs to be changed back to a reference to a uuid.",
             "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
@@ -649,7 +556,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "id" ],
+        [ "uuid" ],
         "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
@@ -728,11 +635,11 @@
         "$id" : "#/definitions/responsible-party",
         "type" : "object",
         "properties" : 
-        { "party-ids" : 
+        { "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/party-id" } },
+            { "$ref" : "#/definitions/party-uuid" } },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -751,7 +658,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "party-ids" ],
+        [ "party-uuids" ],
         "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
@@ -812,8 +719,11 @@
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "id",
+          "metadata",
           "import-profile",
-          "system-characteristics" ],
+          "system-characteristics",
+          "system-implementation",
+          "control-implementation" ],
         "additionalProperties" : false },
       "import-profile" : 
       { "title" : "Import Profile",
@@ -873,11 +783,6 @@
           { "$ref" : "#/definitions/security-impact-level" },
           "status" : 
           { "$ref" : "#/definitions/status" },
-          "leveraged-authorizations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/leveraged-authorization" } },
           "authorization-boundary" : 
           { "$ref" : "#/definitions/authorization-boundary" },
           "network-architecture" : 
@@ -1196,15 +1101,15 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "party-id" : 
-          { "$ref" : "#/definitions/party-id" },
+          "party-uuid" : 
+          { "$ref" : "#/definitions/party-uuid" },
           "date-authorized" : 
           { "$ref" : "#/definitions/date-authorized" },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "title",
-          "party-id",
+          "party-uuid",
           "date-authorized" ],
         "additionalProperties" : false },
       "date-authorized" : 
@@ -1379,6 +1284,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
+          "leveraged-authorizations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/leveraged-authorization" } },
           "users" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1401,16 +1311,6 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
-          "services" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/service" } },
-          "ssp-interconnection" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/interconnection" } },
           "system-inventory" : 
           { "$ref" : "#/definitions/system-inventory" },
           "remarks" : 
@@ -1503,6 +1403,8 @@
           { "$ref" : "#/definitions/title" },
           "description" : 
           { "$ref" : "#/definitions/description" },
+          "purpose" : 
+          { "$ref" : "#/definitions/purpose" },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1531,6 +1433,11 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
+          "protocols" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/protocol" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1539,57 +1446,17 @@
           "description",
           "status" ],
         "additionalProperties" : false },
-      "service" : 
-      { "title" : "Service",
-        "description" : "Information about an individual service within the system.",
-        "$id" : "#/definitions/service",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "ssp-protocol" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/protocol" } },
-          "purpose" : 
-          { "$ref" : "#/definitions/purpose" },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "title" ],
-        "additionalProperties" : false },
       "protocol" : 
       { "title" : "Protocol",
         "description" : "Information about the protocol used to provide a service.",
         "$id" : "#/definitions/protocol",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "name" : 
           { "description" : "The short name of the protocol (e.g., TLS).",
             "type" : "string" },
@@ -1634,52 +1501,6 @@
         "description" : "Describes the purpose for the service within the system.",
         "$id" : "#/definitions/purpose",
         "type" : "string" },
-      "interconnection" : 
-      { "title" : "Interconnection",
-        "description" : "Details on an individual system interconnection.",
-        "$id" : "#/definitions/interconnection",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "remote-system-name" : 
-          { "$ref" : "#/definitions/remote-system-name" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "responsible-parties" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "remote-system-name" : 
-      { "title" : "Remote Interconnected System Name",
-        "description" : "The name of the remote interconnected system.",
-        "$id" : "#/definitions/remote-system-name",
-        "type" : "string" },
       "system-inventory" : 
       { "title" : "System Inventory",
         "description" : "A set of inventory-item entries that represent the managed inventory instances of the system.",
@@ -1687,10 +1508,16 @@
         "type" : "object",
         "properties" : 
         { "inventory-items" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/inventory-item" } },
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "type" : "object",
+                  "$ref" : "#/definitions/inventory-item" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1702,11 +1529,7 @@
         "$id" : "#/definitions/inventory-item",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "asset-id" : 
+        { "asset-id" : 
           { "title" : "Asset Identifier",
             "description" : "Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.",
             "type" : "string" },
@@ -1752,8 +1575,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "id",
-          "asset-id",
+        [ "asset-id",
           "description" ],
         "additionalProperties" : false },
       "implemented-component" : 
@@ -1818,10 +1640,11 @@
         "$id" : "#/definitions/implemented-requirement",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "control-id" : 
           { "title" : "Control Identifier Reference",
             "description" : "A reference to a control identifier.",
@@ -1890,7 +1713,8 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "control-id" ],
+        [ "uuid",
+          "control-id" ],
         "additionalProperties" : false },
       "statement" : 
       { "title" : "Specific Statement",
@@ -1898,13 +1722,27 @@
         "$id" : "#/definitions/statement",
         "type" : "object",
         "properties" : 
-        { "description" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1934,6 +1772,8 @@
                   { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid" ],
         "additionalProperties" : false },
       "responsible-role" : 
       { "title" : "Responsible Role",
@@ -1960,7 +1800,7 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/party-id" } },
+            { "$ref" : "#/definitions/party-uuid" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -1970,7 +1810,12 @@
         "$id" : "#/definitions/by-component",
         "type" : "object",
         "properties" : 
-        { "description" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "description" : 
           { "$ref" : "#/definitions/description" },
           "properties" : 
           { "type" : "array",
@@ -2010,7 +1855,8 @@
                 { "not" : 
                   { "type" : "string" } } ] } } },
         "required" : 
-        [ "description" ],
+        [ "uuid",
+          "description" ],
         "additionalProperties" : false },
       "set-parameter" : 
       { "title" : "Set Parameter Value",

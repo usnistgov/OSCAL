@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by extraction/mapping from NVD XML :2020-03-16T13:24:48.668-04:00 -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-419d31dd-746d-4dc2-89ad-1d13cc2326ca">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="419d31dd-746d-4dc2-89ad-1d13cc2326ca">
    <metadata>
       <title>NIST Special Publication 800-53: Security and Privacy Controls for Federal Information
          Systems and Organizations, Revision 5 Final Public Draft</title>
@@ -22,26 +21,24 @@
       <role id="contact">
          <title>Contact</title>
       </role>
-      <party id="IT-JTF">
-         <org>
-            <org-name>Joint Task Force, Interagency Working Group</org-name>
-            <address>
-               <addr-line>National Institute of Standards and Technology</addr-line>
-               <addr-line>Attn: Computer Security Division</addr-line>
-               <addr-line>Information Technology Laboratory</addr-line>
-               <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
-               <city>Gaithersburg</city>
-               <state>MD</state>
-               <postal-code>20899-8930</postal-code>
-            </address>
-            <email>sec-cert@nist.gov</email>
-         </org>
+      <party uuid="4ae7292e-6d8e-4735-86ea-11047c575e87" type="organization">
+         <party-name>Joint Task Force, Interagency Working Group</party-name>
+         <address>
+            <addr-line>National Institute of Standards and Technology</addr-line>
+            <addr-line>Attn: Computer Security Division</addr-line>
+            <addr-line>Information Technology Laboratory</addr-line>
+            <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+            <city>Gaithersburg</city>
+            <state>MD</state>
+            <postal-code>20899-8930</postal-code>
+         </address>
+         <email>sec-cert@nist.gov</email>
       </party>
       <responsible-party role-id="creator">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>4ae7292e-6d8e-4735-86ea-11047c575e87</party-uuid>
       </responsible-party>
       <responsible-party role-id="contact">
-         <party-id>IT-JTF</party-id>
+         <party-uuid>4ae7292e-6d8e-4735-86ea-11047c575e87</party-uuid>
       </responsible-party>
    </metadata>
    <group class="family" id="ac">
@@ -24870,140 +24867,140 @@ Because supply chains can differ significantly across and within organizations, 
       </control>
    </group>
    <back-matter>
-      <resource id="ATOM54">
+      <resource uuid="ATOM54">
          <title>[ATOM54]</title>
          <citation>
             <text>Atomic Energy Act (P.L. 107), August 1954.</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/STATUTE-68/pdf/STATUTE-68-Pg919.pdf"/>
       </resource>
-      <resource id="PRIVACT">
+      <resource uuid="PRIVACT">
          <title>[PRIVACT]</title>
          <citation>
             <text>Privacy Act (P.L. 93-579), December 1974.</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/STATUTE-88/pdf/STATUTE-88-Pg1896.pdf"/>
       </resource>
-      <resource id="CMPPA">
+      <resource uuid="CMPPA">
          <title>[CMPPA]</title>
          <citation>
             <text>Computer Matching and Privacy Protection Act of 1988 (P.L. 100-503), October 1988.</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/STATUTE-102/pdf/STATUTE-102-Pg2507.pdf"/>
       </resource>
-      <resource id="EGOV">
+      <resource uuid="EGOV">
          <title>[EGOV]</title>
          <citation>
             <text>E-Government Act [includes FISMA] (P.L. 107-347), December 2002.</text>
          </citation>  
          <rlink href="https://www.congress.gov/107/plaws/publ347/PLAW-107publ347.pdf"/>
       </resource>
-      <resource id="EVIDACT">
+      <resource uuid="EVIDACT">
          <title>[EVIDACT]</title>
          <citation>
             <text>Foundations for Evidence-Based Policymaking Act of 2018 (P.L. 115-435), January 2019.</text>
          </citation>  
          <rlink href="https://www.congress.gov/115/plaws/publ435/PLAW-115publ435.pdf"/>
       </resource>
-      <resource id="FOIA96">
+      <resource uuid="FOIA96">
          <title>[FOIA96]</title>
          <citation>
             <text>Freedom of Information Act (FOIA), 5 U.S.C. § 552, As Amended By Public Law No. 104-231, 110 Stat. 3048, Electronic Freedom of Information Act Amendments of 1996.</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/PLAW-104publ231/pdf/PLAW-104publ231.pdf"/>
       </resource>
-      <resource id="USA_PATRIOT">
+      <resource uuid="USA_PATRIOT">
          <title>[USA PATRIOT]</title>
          <citation>
             <text>USA Patriot Act (P.L. 107-56), October 2001.</text>
          </citation>  
          <rlink href="https://www.congress.gov/107/plaws/publ56/PLAW-107publ56.pdf"/>
       </resource>
-      <resource id="EO_13526">
+      <resource uuid="EO_13526">
          <title>[EO 13526]</title>
          <citation>
             <text>Executive Order 13526, <em>Classified National Security Information</em>, December 2009.</text>
          </citation>  
          <rlink href="https://www.archives.gov/isoo/policy-documents/cnsi-eo.html"/>
       </resource>
-      <resource id="EO_13556">
+      <resource uuid="EO_13556">
          <title>[EO 13556]</title>
          <citation>
             <text>Executive Order 13556, <em>Controlled Unclassified Information</em>, November 2010.</text>
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/the-press-office/2010/11/04/executive-order-13556-controlled-unclassified-information"/>
       </resource>
-      <resource id="FISMA">
+      <resource uuid="FISMA">
          <title>[FISMA]</title>
          <citation>
             <text>Federal Information Security Modernization Act (P.L. 113-283), December 2014.</text>
          </citation>  
          <rlink href="https://www.congress.gov/113/plaws/publ283/PLAW-113publ283.pdf"/>
       </resource>
-      <resource id="EO_13587">
+      <resource uuid="EO_13587">
          <title>[EO 13587]</title>
          <citation>
             <text>Executive Order 13587, <em>Structural Reforms to Improve the Security of Classified Networks and the Responsible Sharing and Safeguarding of Classified Information</em>, October 2011.</text>
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net"/>
       </resource>
-      <resource id="EO_13636">
+      <resource uuid="EO_13636">
          <title>[EO 13636]</title>
          <citation>
             <text>Executive Order 13636, <em>Improving Critical Infrastructure Cybersecurity</em>, February 2013.</text>
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/the-press-office/2013/02/12/executive-order-improving-critical-infrastructure-cybersecurity"/>
       </resource>
-      <resource id="EO_13800">
+      <resource uuid="EO_13800">
          <title>[EO 13800]</title>
          <citation>
             <text>Executive Order 13800, <em>Strengthening the Cybersecurity of Federal Networks and Critical Infrastructure</em>, May 2017.</text>
          </citation>  
          <rlink href="https://www.whitehouse.gov/presidential-actions/presidential-executive-order-strengthening-cybersecurity-federal-networks-critical-infrastructure"/>
       </resource>
-      <resource id="USC_552">
+      <resource uuid="USC_552">
          <title>[USC 552]</title>
          <citation>
             <text>United States Code, 2006 Edition, Supplement 4, Title 5 - <em>Government Organization and Employees</em>, January 2011.</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/USCODE-2010-title5/pdf/USCODE-2010-title5-partI-chap5-subchapII-sec552a.pdf"/>
       </resource>
-      <resource id="HSPD_7">
+      <resource uuid="HSPD_7">
          <title>[HSPD 7]</title>
          <citation>
             <text>Homeland Security Presidential Directive 7, <em>Critical Infrastructure Identification, Prioritization, and Protection</em>, December 2003.</text>
          </citation>  
          <rlink href="https://www.dhs.gov/homeland-security-presidential-directive-7"/>
       </resource>
-      <resource id="HSPD_12">
+      <resource uuid="HSPD_12">
          <title>[HSPD 12]</title>
          <citation>
             <text>Homeland Security Presidential Directive 12, Policy for a Common Identification Standard for Federal Employees and Contractors, August 2004.</text>
          </citation>  
          <rlink href="https://www.dhs.gov/homeland-security-presidential-directive-12"/>
       </resource>
-      <resource id="NITP12">
+      <resource uuid="NITP12">
          <title>[NITP12]</title>
          <citation>
             <text>Presidential Memorandum for the Heads of Executive Departments and Agencies, <em>National Insider Threat Policy and Minimum Standards for Executive Branch Insider Threat Programs</em>, November 2012.</text>
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/the-press-office/2012/11/21/presidential-memorandum-national-insider-threat-policy-and-minimum-stand"/>
       </resource>
-      <resource id="_5_CFR_731">
+      <resource uuid="_5_CFR_731">
          <title>[5 CFR 731]</title>
          <citation>
             <text>Code of Federal Regulations, Title 5, <em>Administrative Personnel</em>, Section 731.106, <em>Designation of Public Trust Positions and Investigative Requirements</em>(5 C.F.R. 731.106).</text>
          </citation>  
          <rlink href="https://www.govinfo.gov/content/pkg/CFR-2012-title5-vol2/pdf/CFR-2012-title5-vol2-sec731-106.pdf"/>
       </resource>
-      <resource id="_32_CFR_2002">
+      <resource uuid="_32_CFR_2002">
          <title>[32 CFR 2002]</title>
          <citation>
             <text>Code of Federal Regulations, Title 32, <em>Controlled Unclassified Information</em>(32 C.F.R 2002).</text>
          </citation>  
          <rlink href="https://www.federalregister.gov/documents/2016/09/14/2016-21665/controlled-unclassified-information"/>
       </resource>
-      <resource id="ODNI_NITP">
+      <resource uuid="ODNI_NITP">
          <title>[ODNI NITP]</title>
          <citation>
             <text>Office of the Director National Intelligence, <em>National Insider Threat Policy</em>
@@ -25011,7 +25008,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.dni.gov/files/NCSC/documents/nittf/National_Insider_Threat_Policy.pdf"/>
       </resource>
-      <resource id="OMB_A-108">
+      <resource uuid="OMB_A-108">
          <title>[OMB A-108]</title>
          <citation>
             <text>Office of Management and Budget Memorandum Circular A-108, <em>Federal Agency Responsibilities for Review, Reporting, and Publication under the Privacy Act</em>, December 2016. <em/>
@@ -25019,14 +25016,14 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/circulars/A108/omb_circular_a-108.pdf"/>
       </resource>
-      <resource id="OMB_A-130">
+      <resource uuid="OMB_A-130">
          <title>[OMB A-130]</title>
          <citation>
             <text>Office of Management and Budget Memorandum Circular A-130, <em>Managing Information as a Strategic Resource</em>, July 2016.</text>
          </citation>  
          <rlink href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/circulars/A130/a130revised.pdf"/>
       </resource>
-      <resource id="OMB_M-08-05">
+      <resource uuid="OMB_M-08-05">
          <title>[OMB M-08-05]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-08-05, <em>Implementation of Trusted Internet Connections (TIC)</em>, November 2007. <em/>
@@ -25034,7 +25031,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-05.pdf"/>
       </resource>
-      <resource id="OMB_M-17-06">
+      <resource uuid="OMB_M-17-06">
          <title>[OMB M-17-06]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-17-06, <em>Policies for Federal Agency Public Websites and Digital Services</em>, November 2016. <em/>
@@ -25042,7 +25039,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/memoranda/2017/m-17-06.pdf"/>
       </resource>
-      <resource id="OMB_M-17-12">
+      <resource uuid="OMB_M-17-12">
          <title>[OMB M-17-12]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-17-12, <em>Preparing for and Responding to a Breach of Personally Identifiable Information</em>, January 2017. <em/>
@@ -25050,7 +25047,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://obamawhitehouse.archives.gov/sites/default/files/omb/memoranda/2017/m-17-12_0.pdf"/>
       </resource>
-      <resource id="OMB_M-17-25">
+      <resource uuid="OMB_M-17-25">
          <title>[OMB M-17-25]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-17-25, <em>Reporting Guidance for Executive Order on Strengthening the Cybersecurity of Federal Networks and Critical Infrastructure</em>, May 2017. <em/>
@@ -25058,21 +25055,21 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/memoranda/2017/M-17-25.pdf"/>
       </resource>
-      <resource id="OMB_M-19-03">
+      <resource uuid="OMB_M-19-03">
          <title>[OMB M-19-03]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-19-03, <em>Strengthening the Cybersecurity of Federal Agencies by Enhancing the High Value Asset Program</em>, December 2018.</text>
          </citation>  
          <rlink href="https://www.whitehouse.gov/wp-content/uploads/2018/12/M-19-03.pdf"/>
       </resource>
-      <resource id="OMB_M-19-15">
+      <resource uuid="OMB_M-19-15">
          <title>[OMB M-19-15]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-19-15, <em>Improving Implementation of the Information Quality Act</em>, April 2019.</text>
          </citation>  
          <rlink href="https://www.whitehouse.gov/wp-content/uploads/2019/04/M-19-15.pdf"/>
       </resource>
-      <resource id="OMB_M-19-23">
+      <resource uuid="OMB_M-19-23">
          <title>[OMB M-19-23]</title>
          <citation>
             <text>Office of Management and Budget Memorandum M-19-23, <em>Phase 1 Implementation of the Foundations for Evidence-Based Policymaking Act of 2018: Learning Agendas, Personnel, and Planning Guidance</em>, July 2019. <em/>
@@ -25080,56 +25077,56 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.whitehouse.gov/wp-content/uploads/2019/07/M-19-23.pdf"/>
       </resource>
-      <resource id="CNSSD_505">
+      <resource uuid="CNSSD_505">
          <title>[CNSSD 505]</title>
          <citation>
             <text>Committee on National Security Systems Directive No. 505, <em>Supply Chain Risk Management (SCRM)</em>, August 2017.</text>
          </citation>  
          <rlink href="https://www.cnss.gov/CNSS/issuances/Directives.cfm"/>
       </resource>
-      <resource id="CNSSP_22">
+      <resource uuid="CNSSP_22">
          <title>[CNSSP 22]</title>
          <citation>
             <text>Committee on National Security Systems Policy No. 22, <em>Cybersecurity Risk Management Policy</em>, August 2016.</text>
          </citation>  
          <rlink href="https://www.cnss.gov/CNSS/issuances/Policies.cfm"/>
       </resource>
-      <resource id="CNSSI_1253">
+      <resource uuid="CNSSI_1253">
          <title>[CNSSI 1253]</title>
          <citation>
             <text>Committee on National Security Systems Instruction No. 1253, <em>Security Categorization and Control Selection for National Security Systems</em>, March 2014.</text>
          </citation>  
          <rlink href="https://www.cnss.gov/CNSS/issuances/Instructions.cfm"/>
       </resource>
-      <resource id="CNSSI_4009">
+      <resource uuid="CNSSI_4009">
          <title>[CNSSI 4009]</title>
          <citation>
             <text>Committee on National Security Systems Instruction No. 4009, <em>Committee on National Security Systems (CNSS) Glossary</em>, April 2015.</text>
          </citation>  
          <rlink href="https://www.cnss.gov/CNSS/issuances/Instructions.cfm"/>
       </resource>
-      <resource id="DODI_8510-01">
+      <resource uuid="DODI_8510-01">
          <title>[DODI 8510.01]</title>
          <citation>
             <text>Department of Defense Instruction 8510.01, <em>Risk Management Framework (RMF) for DoD Information Technology (IT)</em>, March 2014.</text>
          </citation>  
          <rlink href="https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/851001_2014.pdf"/>
       </resource>
-      <resource id="DHS_NIPP">
+      <resource uuid="DHS_NIPP">
          <title>[DHS NIPP]</title>
          <citation>
             <text>Department of Homeland Security, <em>National Infrastructure Protection Plan (NIPP)</em>, 2009.</text>
          </citation>  
          <rlink href="https://www.dhs.gov/xlibrary/assets/NIPP_Plan.pdf"/>
       </resource>
-      <resource id="ISO_15026-1">
+      <resource uuid="ISO_15026-1">
          <title>[ISO 15026-1]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission (ISO/IEC) 15026-1:2013, <em>Systems and software engineering -- Systems and software assurance -- Part 1: Concepts and vocabulary</em>, November 2013.</text>
          </citation>  
          <rlink href="https://www.iso.org/standard/62526.html"/>
       </resource>
-      <resource id="ISO_15408-1">
+      <resource uuid="ISO_15408-1">
          <title>[ISO 15408-1]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 15408-1:2009, <em>Information technology—Security techniques— Evaluation criteria for IT security—Part 1: Introduction and general model</em>, April 2017. <em/>
@@ -25137,7 +25134,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R5.pdf"/>
       </resource>
-      <resource id="ISO_15408-2">
+      <resource uuid="ISO_15408-2">
          <title>[ISO 15408-2]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 15408-2:2008, <em>Information technology—Security techniques— Evaluation criteria for IT security—Part 2: Security functional requirements</em>, April 2017. <em/>
@@ -25145,7 +25142,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R5.pdf"/>
       </resource>
-      <resource id="ISO_15408-3">
+      <resource uuid="ISO_15408-3">
          <title>[ISO 15408-3]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 15408-3:2008, <em>Information technology—Security techniques— Evaluation criteria for IT security—Part 3: Security assurance requirements</em>, April 2017. <em/>
@@ -25153,14 +25150,14 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R5.pdf"/>
       </resource>
-      <resource id="ISO_15288">
+      <resource uuid="ISO_15288">
          <title>[ISO 15288]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission/Institute of Electrical and Electronics Engineers (ISO/IEC/IEEE) 15288:2015, <em>Systems and software engineering—Systems life cycle processes</em>, May 2015.</text>
          </citation>  
          <rlink href="https://www.iso.org/standard/63711.html"/>
       </resource>
-      <resource id="ISO_25237">
+      <resource uuid="ISO_25237">
          <title>[ISO 25237]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 25237:2017, <em>Health informatics</em> 
@@ -25169,7 +25166,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.iso.org/standard/63553.html"/>
       </resource>
-      <resource id="ISO_28001">
+      <resource uuid="ISO_28001">
          <title>[ISO 28001]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 28001:2007, <em>Security management systems for the supply chain</em> 
@@ -25178,7 +25175,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.iso.org/standard/45654.html"/>
       </resource>
-      <resource id="ISO_29100">
+      <resource uuid="ISO_29100">
          <title>[ISO 29100]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission 29100:2011, <em>Information technology</em> 
@@ -25187,70 +25184,70 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://www.iso.org/standard/45123.html"/>
       </resource>
-      <resource id="ISO_29148">
+      <resource uuid="ISO_29148">
          <title>[ISO 29148]</title>
          <citation>
             <text>International Organization for Standardization/International Electrotechnical Commission/Institute of Electrical and Electronics Engineers (ISO/IEC/IEEE) 29148:2011, <em>Systems and software engineering—Life cycle processes—Requirements engineering</em>, December 2011.</text>
          </citation>  
          <rlink href="https://www.iso.org/standard/45171.html"/>
       </resource>
-      <resource id="FIPS_140-3">
+      <resource uuid="FIPS_140-3">
          <title>[FIPS 140-3]</title>
          <citation>
             <text>National Institute of Standards and Technology (2019) Security Requirements for Cryptographic Modules. (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 140-3.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.140-3"/>
       </resource>
-      <resource id="FIPS_180-4">
+      <resource uuid="FIPS_180-4">
          <title>[FIPS 180-4]</title>
          <citation>
             <text>National Institute of Standards and Technology (2015) Secure Hash Standard (SHS). (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 180-4.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.180-4"/>
       </resource>
-      <resource id="FIPS_186-4">
+      <resource uuid="FIPS_186-4">
          <title>[FIPS 186-4]</title>
          <citation>
             <text>National Institute of Standards and Technology (2013) Digital Signature Standard (DSS). (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 186-4.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.186-4"/>
       </resource>
-      <resource id="FIPS_197">
+      <resource uuid="FIPS_197">
          <title>[FIPS 197]</title>
          <citation>
             <text>National Institute of Standards and Technology (2001) Advanced Encryption Standard (AES). (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 197.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.197"/>
       </resource>
-      <resource id="FIPS_199">
+      <resource uuid="FIPS_199">
          <title>[FIPS 199]</title>
          <citation>
             <text>National Institute of Standards and Technology (2004) Standards for Security Categorization of Federal Information and Information Systems. (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 199.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.199"/>
       </resource>
-      <resource id="FIPS_200">
+      <resource uuid="FIPS_200">
          <title>[FIPS 200]</title>
          <citation>
             <text>National Institute of Standards and Technology (2006) Minimum Security Requirements for Federal Information and Information Systems. (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 200.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.200"/>
       </resource>
-      <resource id="FIPS_201-2">
+      <resource uuid="FIPS_201-2">
          <title>[FIPS 201-2]</title>
          <citation>
             <text>National Institute of Standards and Technology (2013) Personal Identity Verification (PIV) of Federal Employees and Contractors. (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 201-2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.201-2"/>
       </resource>
-      <resource id="FIPS_202">
+      <resource uuid="FIPS_202">
          <title>[FIPS 202]</title>
          <citation>
             <text>National Institute of Standards and Technology (2015) SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions. (U.S. Department of Commerce, Washington, D.C.), Federal Information Processing Standards Publication (FIPS) 202.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.FIPS.202"/>
       </resource>
-      <resource id="SP_800-12">
+      <resource uuid="SP_800-12">
          <title>[SP 800-12]</title>
          <citation>
             <text>Nieles M, Pillitteri VY, Dempsey KL (2017) An Introduction to Information Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-12, Rev. 1. <em/>
@@ -25258,7 +25255,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-12r1"/>
       </resource>
-      <resource id="SP_800-18">
+      <resource uuid="SP_800-18">
          <title>[SP 800-18]</title>
          <citation>
             <text>Swanson MA, Hash J, Bowen P (2006) Guide for Developing Security Plans for Federal Information Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-18, Rev. 1. <em/>
@@ -25266,7 +25263,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-18r1"/>
       </resource>
-      <resource id="SP_800-28">
+      <resource uuid="SP_800-28">
          <title>[SP 800-28]</title>
          <citation>
             <text>Jansen W, Winograd T, Scarfone KA (2008) Guidelines on Active Content and Mobile Code. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-28, Version 2. <em/>
@@ -25274,216 +25271,216 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-28ver2"/>
       </resource>
-      <resource id="SP_800-30">
+      <resource uuid="SP_800-30">
          <title>[SP 800-30]</title>
          <citation>
             <text>Joint Task Force Transformation Initiative (2012) Guide for Conducting Risk Assessments. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-30, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-30r1"/>
       </resource>
-      <resource id="SP_800-32">
+      <resource uuid="SP_800-32">
          <title>[SP 800-32]</title>
          <citation>
             <text>Kuhn R, Hu VC, Polk T, Chang S-jH (2001) Introduction to Public Key Technology and the Federal PKI Infrastructure. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-32.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-32"/>
       </resource>
-      <resource id="SP_800-34">
+      <resource uuid="SP_800-34">
          <title>[SP 800-34]</title>
          <citation>
             <text>Swanson MA, Bowen P, Phillips AW, Gallup D, Lynes D (2010) Contingency Planning Guide for Federal Information Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-34, Rev. 1, Includes updates as of November 11, 2010.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-34r1"/>
       </resource>
-      <resource id="SP_800-35">
+      <resource uuid="SP_800-35">
          <title>[SP 800-35]</title>
          <citation>
             <text>Grance T, Hash J, Stevens M, O'Neal K, Bartol N (2003) Guide to Information Technology Security Services. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-35.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-35"/>
       </resource>
-      <resource id="SP_800-37">
+      <resource uuid="SP_800-37">
          <title>[SP 800-37]</title>
          <citation>
             <text>Joint Task Force (2018) Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-37, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-37r2"/>
       </resource>
-      <resource id="SP_800-39">
+      <resource uuid="SP_800-39">
          <title>[SP 800-39]</title>
          <citation>
             <text>Joint Task Force Transformation Initiative (2011) Managing Information Security Risk: Organization, Mission, and Information System View. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-39.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-39"/>
       </resource>
-      <resource id="SP_800-40">
+      <resource uuid="SP_800-40">
          <title>[SP 800-40]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2013) Guide to Enterprise Patch Management Technologies. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-40, Rev. 3.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-40r3"/>
       </resource>
-      <resource id="SP_800-41">
+      <resource uuid="SP_800-41">
          <title>[SP 800-41]</title>
          <citation>
             <text>Scarfone KA, Hoffman P (2009) Guidelines on Firewalls and Firewall Policy. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-41, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-41r1"/>
       </resource>
-      <resource id="SP_800-45">
+      <resource uuid="SP_800-45">
          <title>[SP 800-45]</title>
          <citation>
             <text>Tracy MC, Jansen W, Scarfone KA, Butterfield J (2007) Guidelines on Electronic Mail Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-45, Version 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-45ver2"/>
       </resource>
-      <resource id="SP_800-46">
+      <resource uuid="SP_800-46">
          <title>[SP 800-46]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2016) Guide to Enterprise Telework, Remote Access, and Bring Your Own Device (BYOD) Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-46, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-46r2"/>
       </resource>
-      <resource id="SP_800-47">
+      <resource uuid="SP_800-47">
          <title>[SP 800-47]</title>
          <citation>
             <text>Grance T, Hash J, Peck S, Smith J, Korow-Diks K (2002) Security Guide for Interconnecting Information Technology Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-47.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-47"/>
       </resource>
-      <resource id="SP_800-50">
+      <resource uuid="SP_800-50">
          <title>[SP 800-50]</title>
          <citation>
             <text>Wilson M, Hash J (2003) Building an Information Technology Security Awareness and Training Program. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-50.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-50"/>
       </resource>
-      <resource id="SP_800-52">
+      <resource uuid="SP_800-52">
          <title>[SP 800-52]</title>
          <citation>
             <text>McKay KA, Cooper DA (2019) Guidelines for the Selection, Configuration, and Use of Transport Layer Security (TLS) Implementations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-52, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-52r2"/>
       </resource>
-      <resource id="SP_800-53A">
+      <resource uuid="SP_800-53A">
          <title>[SP 800-53A]</title>
          <citation>
             <text>Joint Task Force Transformation Initiative (2014) Assessing Security and Privacy Controls in Federal Information Systems and Organizations: Building Effective Assessment Plans. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-53A, Rev. 4, Includes updates as of December 18, 2014.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-53Ar4"/>
       </resource>
-      <resource id="SP_800-53B">
+      <resource uuid="SP_800-53B">
          <title>[SP 800-53B]</title>
          <citation>
             <text>National Institute of Standards and Technology Special Publication 800-53B, <em>Control Baselines and Tailoring Guidance for Federal Information Systems and Organizations</em>. Projected for publication in 2020.</text>
          </citation>
       </resource>
-      <resource id="SP_800-55">
+      <resource uuid="SP_800-55">
          <title>[SP 800-55]</title>
          <citation>
             <text>Chew E, Swanson MA, Stine KM, Bartol N, Brown A, Robinson W (2008) Performance Measurement Guide for Information Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-55, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-55r1"/>
       </resource>
-      <resource id="SP_800-56A">
+      <resource uuid="SP_800-56A">
          <title>[SP 800-56A]</title>
          <citation>
             <text>Barker EB, Chen L, Roginsky A, Vassilev A, Davis R (2018) Recommendation for Pair-Wise Key-Establishment Schemes Using Discrete Logarithm Cryptography. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-56A, Rev. 3.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-56Ar3"/>
       </resource>
-      <resource id="SP_800-56B">
+      <resource uuid="SP_800-56B">
          <title>[SP 800-56B]</title>
          <citation>
             <text>Barker EB, Chen L, Roginsky A, Vassilev A, Davis R, Simon S (2019) Recommendation for Pair-Wise Key-Establishment Using Integer Factorization Cryptography. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-56B, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-56Br2"/>
       </resource>
-      <resource id="SP_800-56C">
+      <resource uuid="SP_800-56C">
          <title>[SP 800-56C]</title>
          <citation>
             <text>Barker EB, Chen L, Davis R (2018) Recommendation for Key-Derivation Methods in Key-Establishment Schemes. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-56C, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-56Cr1"/>
       </resource>
-      <resource id="SP_800-57-1">
+      <resource uuid="SP_800-57-1">
          <title>[SP 800-57-1]</title>
          <citation>
             <text>Barker EB (2016) Recommendation for Key Management, Part 1: General. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-57 Part 1, Rev. 4.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-57pt1r4"/>
       </resource>
-      <resource id="SP_800-57-2">
+      <resource uuid="SP_800-57-2">
          <title>[SP 800-57-2]</title>
          <citation>
             <text>Barker EB, Barker WC (2019) Recommendation for Key Management: Part 2 – Best Practices for Key Management Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-57 Part 2, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-57pt2r1"/>
       </resource>
-      <resource id="SP_800-57-3">
+      <resource uuid="SP_800-57-3">
          <title>[SP 800-57-3]</title>
          <citation>
             <text>Barker EB, Dang QH (2015) Recommendation for Key Management, Part 3: Application-Specific Key Management Guidance. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-57 Part 3, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-57pt3r1"/>
       </resource>
-      <resource id="SP_800-58">
+      <resource uuid="SP_800-58">
          <title>[SP 800-58]</title>
          <citation>
             <text>Kuhn R, Walsh TJ, Fries S (2005) Security Considerations for Voice Over IP Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-58.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-58"/>
       </resource>
-      <resource id="SP_800-60_v1">
+      <resource uuid="SP_800-60_v1">
          <title>[SP 800-60 v1]</title>
          <citation>
             <text>Stine KM, Kissel RL, Barker WC, Fahlsing J, Gulick J (2008) Guide for Mapping Types of Information and Information Systems to Security Categories. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-60, Vol. 1, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-60v1r1"/>
       </resource>
-      <resource id="SP_800-60_v2">
+      <resource uuid="SP_800-60_v2">
          <title>[SP 800-60 v2]</title>
          <citation>
             <text>Stine KM, Kissel RL, Barker WC, Lee A, Fahlsing J (2008) Guide for Mapping Types of Information and Information Systems to Security Categories: Appendices. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-60, Vol. 2, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-60v2r1"/>
       </resource>
-      <resource id="SP_800-61">
+      <resource uuid="SP_800-61">
          <title>[SP 800-61]</title>
          <citation>
             <text>Cichonski PR, Millar T, Grance T, Scarfone KA (2012) Computer Security Incident Handling Guide. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-61, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-61r2"/>
       </resource>
-      <resource id="SP_800-63-3">
+      <resource uuid="SP_800-63-3">
          <title>[SP 800-63-3]</title>
          <citation>
             <text>Grassi PA, Garcia ME, Fenton JL (2017) Digital Identity Guidelines. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-63-3, Includes updates as of March 2, 2020.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-63-3"/>
       </resource>
-      <resource id="SP_800-63A">
+      <resource uuid="SP_800-63A">
          <title>[SP 800-63A]</title>
          <citation>
             <text>Grassi PA, Fenton JL, Lefkovitz NB, Danker JM, Choong Y-Y, Greene KK, Theofanos MF (2017) Digital Identity Guidelines: Enrollment and Identity Proofing. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-63A, Includes updates as of March 2, 2020.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-63a"/>
       </resource>
-      <resource id="SP_800-70">
+      <resource uuid="SP_800-70">
          <title>[SP 800-70]</title>
          <citation>
             <text>Quinn SD, Souppaya MP, Cook MR, Scarfone KA (2018) National Checklist Program for IT Products: Guidelines for Checklist Users and Developers. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-70, Rev. 4.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-70r4"/>
       </resource>
-      <resource id="SP_800-73-4">
+      <resource uuid="SP_800-73-4">
          <title>[SP 800-73-4]</title>
          <citation>
             <text>Cooper DA, Ferraiolo H, Mehta KL, Francomacaro S, Chandramouli R, Mohler J (2015) Interfaces for Personal Identity Verification. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-73-4, Includes updates as of February 8, 2016.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-73-4"/>
       </resource>
-      <resource id="SP_800-76-2">
+      <resource uuid="SP_800-76-2">
          <title>[SP 800-76-2]</title>
          <citation>
             <text>Grother PJ, Salamon WJ, Chandramouli R (2013) Biometric Specifications for Personal Identity Verification. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-76-2. <em/>
@@ -25491,14 +25488,14 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-76-2"/>
       </resource>
-      <resource id="SP_800-77">
+      <resource uuid="SP_800-77">
          <title>[SP 800-77]</title>
          <citation>
             <text>Frankel SE, Kent K, Lewkowski R, Orebaugh AD, Ritchey RW, Sharma SR (2005) Guide to IPsec VPNs. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-77.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-77"/>
       </resource>
-      <resource id="SP_800-78-4">
+      <resource uuid="SP_800-78-4">
          <title>[SP 800-78-4]</title>
          <citation>
             <text>Polk T, Dodson DF, Burr WE, Ferraiolo H, Cooper DA (2015) Cryptographic Algorithms and Key Sizes for Personal Identity Verification. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-78-4. <em/>
@@ -25506,7 +25503,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-78-4"/>
       </resource>
-      <resource id="SP_800-79-2">
+      <resource uuid="SP_800-79-2">
          <title>[SP 800-79-2]</title>
          <citation>
             <text>Ferraiolo H, Chandramouli R, Ghadiali N, Mohler J, Shorter S (2015) Guidelines for the Authorization of Personal Identity Verification Card Issuers (PCI) and Derived PIV Credential Issuers (DPCI). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-79-2. <em/>
@@ -25514,7 +25511,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-79-2"/>
       </resource>
-      <resource id="SP_800-81-2">
+      <resource uuid="SP_800-81-2">
          <title>[SP 800-81-2]</title>
          <citation>
             <text>Chandramouli R, Rose SW (2013) Secure Domain Name System (DNS) Deployment Guide. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-81-2. <em/>
@@ -25522,77 +25519,77 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-81-2"/>
       </resource>
-      <resource id="SP_800-82">
+      <resource uuid="SP_800-82">
          <title>[SP 800-82]</title>
          <citation>
             <text>Stouffer KA, Lightman S, Pillitteri VY, Abrams M, Hahn A (2015) Guide to Industrial Control Systems (ICS) Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-82, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-82r2"/>
       </resource>
-      <resource id="SP_800-83">
+      <resource uuid="SP_800-83">
          <title>[SP 800-83]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2013) Guide to Malware Incident Prevention and Handling for Desktops and Laptops. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-83, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-83r1"/>
       </resource>
-      <resource id="SP_800-84">
+      <resource uuid="SP_800-84">
          <title>[SP 800-84]</title>
          <citation>
             <text>Grance T, Nolan T, Burke K, Dudley R, White G, Good T (2006) Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-84.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-84"/>
       </resource>
-      <resource id="SP_800-86">
+      <resource uuid="SP_800-86">
          <title>[SP 800-86]</title>
          <citation>
             <text>Kent K, Chevalier S, Grance T, Dang H (2006) Guide to Integrating Forensic Techniques into Incident Response. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-86.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-86"/>
       </resource>
-      <resource id="SP_800-88">
+      <resource uuid="SP_800-88">
          <title>[SP 800-88]</title>
          <citation>
             <text>Kissel RL, Regenscheid AR, Scholl MA, Stine KM (2014) Guidelines for Media Sanitization. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-88, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-88r1"/>
       </resource>
-      <resource id="SP_800-92">
+      <resource uuid="SP_800-92">
          <title>[SP 800-92]</title>
          <citation>
             <text>Kent K, Souppaya MP (2006) Guide to Computer Security Log Management. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-92.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-92"/>
       </resource>
-      <resource id="SP_800-94">
+      <resource uuid="SP_800-94">
          <title>[SP 800-94]</title>
          <citation>
             <text>Scarfone KA, Mell PM (2007) Guide to Intrusion Detection and Prevention Systems (IDPS). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-94.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-94"/>
       </resource>
-      <resource id="SP_800-95">
+      <resource uuid="SP_800-95">
          <title>[SP 800-95]</title>
          <citation>
             <text>Singhal A, Winograd T, Scarfone KA (2007) Guide to Secure Web Services. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-95.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-95"/>
       </resource>
-      <resource id="SP_800-97">
+      <resource uuid="SP_800-97">
          <title>[SP 800-97]</title>
          <citation>
             <text>Frankel SE, Eydt B, Owens L, Scarfone KA (2007) Establishing Wireless Robust Security Networks: A Guide to IEEE 802.11i. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-97.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-97"/>
       </resource>
-      <resource id="SP_800-100">
+      <resource uuid="SP_800-100">
          <title>[SP 800-100]</title>
          <citation>
             <text>Bowen P, Hash J, Wilson M (2006) Information Security Handbook: A Guide for Managers. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-100, Includes updates as of March 7, 2007.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-100"/>
       </resource>
-      <resource id="SP_800-101">
+      <resource uuid="SP_800-101">
          <title>[SP 800-101]</title>
          <citation>
             <text>Ayers RP, Brothers S, Jansen W (2014) Guidelines on Mobile Device Forensics. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-101, Rev. 1. <em/>
@@ -25600,7 +25597,7 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-101r1"/>
       </resource>
-      <resource id="SP_800-111">
+      <resource uuid="SP_800-111">
          <title>[SP 800-111]</title>
          <citation>
             <text>Scarfone KA, Souppaya MP, Sexton M (2007) Guide to Storage Encryption Technologies for End User Devices. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-111. <em/>
@@ -25608,425 +25605,425 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-111"/>
       </resource>
-      <resource id="SP_800-113">
+      <resource uuid="SP_800-113">
          <title>[SP 800-113]</title>
          <citation>
             <text>Frankel SE, Hoffman P, Orebaugh AD, Park R (2008) Guide to SSL VPNs. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-113.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-113"/>
       </resource>
-      <resource id="SP_800-114">
+      <resource uuid="SP_800-114">
          <title>[SP 800-114]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2016) User's Guide to Telework and Bring Your Own Device (BYOD) Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-114, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-114r1"/>
       </resource>
-      <resource id="SP_800-115">
+      <resource uuid="SP_800-115">
          <title>[SP 800-115]</title>
          <citation>
             <text>Scarfone KA, Souppaya MP, Cody A, Orebaugh AD (2008) Technical Guide to Information Security Testing and Assessment. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-115.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-115"/>
       </resource>
-      <resource id="SP_800-116">
+      <resource uuid="SP_800-116">
          <title>[SP 800-116]</title>
          <citation>
             <text>Ferraiolo H, Mehta KL, Ghadiali N, Mohler J, Johnson V, Brady S (2018) A Recommendation for the Use of PIV Credentials in Physical Access Control Systems (PACS). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-116, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-116r1"/>
       </resource>
-      <resource id="SP_800-121">
+      <resource uuid="SP_800-121">
          <title>[SP 800-121]</title>
          <citation>
             <text>Padgette J, Bahr J, Holtmann M, Batra M, Chen L, Smithbey R, Scarfone KA (2017) Guide to Bluetooth Security. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-121, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-121r2"/>
       </resource>
-      <resource id="SP_800-124">
+      <resource uuid="SP_800-124">
          <title>[SP 800-124]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2013) Guidelines for Managing the Security of Mobile Devices in the Enterprise. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-124, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-124r1"/>
       </resource>
-      <resource id="SP_800-125B">
+      <resource uuid="SP_800-125B">
          <title>[SP 800-125B]</title>
          <citation>
             <text>Chandramouli R (2016) Secure Virtual Network Configuration for Virtual Machine (VM) Protection. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-125B.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-125B"/>
       </resource>
-      <resource id="SP_800-126">
+      <resource uuid="SP_800-126">
          <title>[SP 800-126]</title>
          <citation>
             <text>Waltermire DA, Quinn SD, Booth H, III, Scarfone KA, Prisaca D (2018) The Technical Specification for the Security Content Automation Protocol (SCAP): SCAP Version 1.3. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-126, Rev. 3.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-126r3"/>
       </resource>
-      <resource id="SP_800-128">
+      <resource uuid="SP_800-128">
          <title>[SP 800-128]</title>
          <citation>
             <text>Johnson LA, Dempsey KL, Ross RS, Gupta S, Bailey D (2011) Guide for Security-Focused Configuration Management of Information Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-128.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-128"/>
       </resource>
-      <resource id="SP_800-130">
+      <resource uuid="SP_800-130">
          <title>[SP 800-130]</title>
          <citation>
             <text>Barker EB, Smid ME, Branstad DK, Chokhani S (2013) A Framework for Designing Cryptographic Key Management Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-130.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-130"/>
       </resource>
-      <resource id="SP_800-137">
+      <resource uuid="SP_800-137">
          <title>[SP 800-137]</title>
          <citation>
             <text>Dempsey KL, Chawla NS, Johnson LA, Johnston R, Jones AC, Orebaugh AD, Scholl MA, Stine KM (2011) Information Security Continuous Monitoring (ISCM) for Federal Information Systems and Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-137.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-137"/>
       </resource>
-      <resource id="SP_800-147">
+      <resource uuid="SP_800-147">
          <title>[SP 800-147]</title>
          <citation>
             <text>Cooper DA, Polk T, Regenscheid AR, Souppaya MP (2011) BIOS Protection Guidelines. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-147.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-147"/>
       </resource>
-      <resource id="SP_800-150">
+      <resource uuid="SP_800-150">
          <title>[SP 800-150]</title>
          <citation>
             <text>Johnson CS, Waltermire DA, Badger ML, Skorupka C, Snyder J (2016) Guide to Cyber Threat Information Sharing. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-150.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-150"/>
       </resource>
-      <resource id="SP_800-152">
+      <resource uuid="SP_800-152">
          <title>[SP 800-152]</title>
          <citation>
             <text>Barker EB, Branstad DK, Smid ME (2015) A Profile for U.S. Federal Cryptographic Key Management Systems (CKMS). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-152.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-152"/>
       </resource>
-      <resource id="SP_800-154">
+      <resource uuid="SP_800-154">
          <title>[SP 800-154]</title>
          <citation>
             <text>Souppaya MP, Scarfone KA (2016) Guide to Data-Centric System Threat Modeling. (National Institute of Standards and Technology, Gaithersburg, MD), Draft NIST Special Publication (SP) 800-154.</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/publications/detail/sp/800-154/draft"/>
       </resource>
-      <resource id="SP_800-156">
+      <resource uuid="SP_800-156">
          <title>[SP 800-156]</title>
          <citation>
             <text>Ferraiolo H, Chandramouli R, Mehta KL, Mohler J, Skordinski S, Brady S (2016) Representation of PIV Chain-of-Trust for Import and Export. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-156.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-156"/>
       </resource>
-      <resource id="SP_800-160_v1">
+      <resource uuid="SP_800-160_v1">
          <title>[SP 800-160 v1]</title>
          <citation>
             <text>Ross RS, Oren JC, McEvilley M (2016) Systems Security Engineering: Considerations for a Multidisciplinary Approach in the Engineering of Trustworthy Secure Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-160, Vol. 1, Includes updates as of March 21, 2018.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-160v1"/>
       </resource>
-      <resource id="SP_800-160_v2">
+      <resource uuid="SP_800-160_v2">
          <title>[SP 800-160 v2]</title>
          <citation>
             <text>Ross RS, Pillitteri VY, Graubart R, Bodeau D, McQuaid R (2019) Developing Cyber Resilient Systems: A Systems Security Engineering Approach. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-160, Vol. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-160v2"/>
       </resource>
-      <resource id="SP_800-161">
+      <resource uuid="SP_800-161">
          <title>[SP 800-161]</title>
          <citation>
             <text>Boyens JM, Paulsen C, Moorthy R, Bartol N (2015) Supply Chain Risk Management Practices for Federal Information Systems and Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-161.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-161"/>
       </resource>
-      <resource id="SP_800-162">
+      <resource uuid="SP_800-162">
          <title>[SP 800-162]</title>
          <citation>
             <text>Hu VC, Ferraiolo DF, Kuhn R, Schnitzer A, Sandlin K, Miller R, Scarfone KA (2014) Guide to Attribute Based Access Control (ABAC) Definition and Considerations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-162, Includes updates as of February 25, 2019.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-162"/>
       </resource>
-      <resource id="SP_800-166">
+      <resource uuid="SP_800-166">
          <title>[SP 800-166]</title>
          <citation>
             <text>Cooper DA, Ferraiolo H, Chandramouli R, Ghadiali N, Mohler J, Brady S (2016) Derived PIV Application and Data Model Test Guidelines. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-166.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-166"/>
       </resource>
-      <resource id="SP_800-167">
+      <resource uuid="SP_800-167">
          <title>[SP 800-167]</title>
          <citation>
             <text>Sedgewick A, Souppaya MP, Scarfone KA (2015) Guide to Application Whitelisting. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-167.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-167"/>
       </resource>
-      <resource id="SP_800-171">
+      <resource uuid="SP_800-171">
          <title>[SP 800-171]</title>
          <citation>
             <text>Ross RS, Pillitteri VY, Dempsey KL, Riddle M, Guissanie G (2020) Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-171, Rev. 2.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-171r2"/>
       </resource>
-      <resource id="SP_800-171B">
+      <resource uuid="SP_800-171B">
          <title>[SP 800-171B]</title>
          <citation>
             <text>Ross RS, Pillitteri VY, Graubart RD, Guissanie G, Wagner R, Bodeau D (2019) Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations: Enhanced Security Requirements for Critical Programs and High Value Assets. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-171B.</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/CSRC/media/Publications/sp/800-171b/draft/documents/sp800-171B-draft-ipd.pdf"/>
       </resource>
-      <resource id="SP_800-177">
+      <resource uuid="SP_800-177">
          <title>[SP 800-177]</title>
          <citation>
             <text>Rose SW, Nightingale S, Garfinkel SL, Chandramouli R (2019) Trustworthy Email. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-177, Rev. 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-177r1"/>
       </resource>
-      <resource id="SP_800-178">
+      <resource uuid="SP_800-178">
          <title>[SP 800-178]</title>
          <citation>
             <text>Ferraiolo DF, Hu VC, Kuhn R, Chandramouli R (2016) A Comparison of Attribute Based Access Control (ABAC) Standards for Data Service Applications: Extensible Access Control Markup Language (XACML) and Next Generation Access Control (NGAC). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-178.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-178"/>
       </resource>
-      <resource id="SP_800-181">
+      <resource uuid="SP_800-181">
          <title>[SP 800-181]</title>
          <citation>
             <text>Newhouse WD, Witte GA, Scribner B, Keith S (2017) National Initiative for Cybersecurity Education (NICE) Cybersecurity Workforce Framework. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-181.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-181"/>
       </resource>
-      <resource id="SP_800-184">
+      <resource uuid="SP_800-184">
          <title>[SP 800-184]</title>
          <citation>
             <text>Bartock M, Scarfone KA, Smith MC, Witte GA, Cichonski JA, Souppaya MP (2016) Guide for Cybersecurity Event Recovery. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-184.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-184"/>
       </resource>
-      <resource id="SP_800-188">
+      <resource uuid="SP_800-188">
          <title>[SP 800-188]</title>
          <citation>
             <text>Garfinkel S (2016) De-Identifying Government Datasets. <em/>(National Institute of Standards and Technology, Gaithersburg, MD), Second Draft NIST Special Publication (SP) 800-188.</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/publications/detail/sp/800-188/draft"/>
       </resource>
-      <resource id="SP_800-189">
+      <resource uuid="SP_800-189">
          <title>[SP 800-189]</title>
          <citation>
             <text>Sriram K, Montgomery D (2019) Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-189.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-189"/>
       </resource>
-      <resource id="SP_800-192">
+      <resource uuid="SP_800-192">
          <title>[SP 800-192]</title>
          <citation>
             <text>Yaga DJ, Kuhn R, Hu VC (2017) Verification and Test Methods for Access Control Policies/Models. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Special Publication (SP) 800-192.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.SP.800-192"/>
       </resource>
-      <resource id="IR_7539">
+      <resource uuid="IR_7539">
          <title>[IR 7539]</title>
          <citation>
             <text>Cooper DA, MacGregor WI (2008) Symmetric Key Injection onto Smart Cards. <em/>(National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7539.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7539"/>
       </resource>
-      <resource id="IR_7559">
+      <resource uuid="IR_7559">
          <title>[IR 7559]</title>
          <citation>
             <text>Singhal A, Gunestas M, Wijesekera D (2010) Forensics Web Services (FWS). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7559.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7559"/>
       </resource>
-      <resource id="IR_7622">
+      <resource uuid="IR_7622">
          <title>[IR 7622]</title>
          <citation>
             <text>Boyens JM, Paulsen C, Bartol N, Shankles S, Moorthy R (2012) Notional Supply Chain Risk Management Practices for Federal Information Systems. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7622.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7622"/>
       </resource>
-      <resource id="IR_7676">
+      <resource uuid="IR_7676">
          <title>[IR 7676]</title>
          <citation>
             <text>Cooper DA (2010) Maintaining and Using Key History on Personal Identity Verification (PIV) Cards. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7676.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7676"/>
       </resource>
-      <resource id="IR_7788">
+      <resource uuid="IR_7788">
          <title>[IR 7788]</title>
          <citation>
             <text>Singhal A, Ou X (2011) Security Risk Analysis of Enterprise Networks Using Probabilistic Attack Graphs. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7788.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7788"/>
       </resource>
-      <resource id="IR_7817">
+      <resource uuid="IR_7817">
          <title>[IR 7817]</title>
          <citation>
             <text>Ferraiolo H (2012) A Credential Reliability and Revocation Model for Federated Identities. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7817.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7817"/>
       </resource>
-      <resource id="IR_7849">
+      <resource uuid="IR_7849">
          <title>[IR 7849]</title>
          <citation>
             <text>Chandramouli R (2014) A Methodology for Developing Authentication Assurance Level Taxonomy for Smart Card-based Identity Verification. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7849.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7849"/>
       </resource>
-      <resource id="IR_7870">
+      <resource uuid="IR_7870">
          <title>[IR 7870]</title>
          <citation>
             <text>Cooper DA (2012) NIST Test Personal Identity Verification (PIV) Cards. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7870.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7870"/>
       </resource>
-      <resource id="IR_7874">
+      <resource uuid="IR_7874">
          <title>[IR 7874]</title>
          <citation>
             <text>Hu VC, Scarfone KA (2012) Guidelines for Access Control System Evaluation Metrics. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7874.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7874"/>
       </resource>
-      <resource id="IR_7956">
+      <resource uuid="IR_7956">
          <title>[IR 7956]</title>
          <citation>
             <text>Chandramouli R, Iorga M, Chokhani S (2013) Cryptographic Key Management Issues &amp; Challenges in Cloud Services. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7956.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7956"/>
       </resource>
-      <resource id="IR_7966">
+      <resource uuid="IR_7966">
          <title>[IR 7966]</title>
          <citation>
             <text>Ylonen T, Turner P, Scarfone KA, Souppaya MP (2015) Security of Interactive and Automated Access Management Using Secure Shell (SSH). (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 7966.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.7966"/>
       </resource>
-      <resource id="IR_8011_v1">
+      <resource uuid="IR_8011_v1">
          <title>[IR 8011 v1]</title>
          <citation>
             <text>Dempsey KL, Eavy P, Moore G (2017) Automation Support for Security Control Assessments: Volume 1: Overview. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal (IR) 8011, Volume 1.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.8011-1"/>
       </resource>
-      <resource id="IR_8023">
+      <resource uuid="IR_8023">
          <title>[IR 8023]</title>
          <citation>
             <text>Dempsey KL, Paulsen C (2015) Risk Management for Replication Devices. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 8023.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.8023"/>
       </resource>
-      <resource id="IR_8040">
+      <resource uuid="IR_8040">
          <title>[IR 8040]</title>
          <citation>
             <text>Greene KK, Kelsey JM, Franklin JM (2016) Measuring the Usability and Security of Permuted Passwords on Mobile Platforms. <em/>(National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 8040.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.8040"/>
       </resource>
-      <resource id="IR_8062">
+      <resource uuid="IR_8062">
          <title>[IR 8062]</title>
          <citation>
             <text>Brooks S, Garcia M, Lefkovitz N, Lightman S, Nadeau E (2017) An Introduction to Privacy Engineering and Risk Management in Federal Systems. <em/>(National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 8062.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.8062"/>
       </resource>
-      <resource id="IR_8179">
+      <resource uuid="IR_8179">
          <title>[IR 8179]</title>
          <citation>
             <text>Paulsen C, Boyens JM, Bartol N, Winkler K (2018) Criticality Analysis Process Model: Prioritizing Systems and Components. <em/>(National Institute of Standards and Technology, Gaithersburg, MD), NIST Interagency or Internal Report (IR) 8179.</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.IR.8179"/>
       </resource>
-      <resource id="DHS_TIC">
+      <resource uuid="DHS_TIC">
          <title>[DHS TIC]</title>
          <citation>
             <text>Department of Homeland Security, <em>Trusted Internet Connections (TIC)</em>.</text>
          </citation>  
          <rlink href="https://www.dhs.gov/trusted-internet-connections"/>
       </resource>
-      <resource id="DSB_2017">
+      <resource uuid="DSB_2017">
          <title>[DSB 2017]</title>
          <citation>
             <text>Department of Defense, Defense Science Board, <em>Task Force on Cyber Deterrence</em>, February 2017.</text>
          </citation>  
          <rlink href="https://www.acq.osd.mil/dsb/reports/2010s/DSB-CyberDeterrenceReport_02-28-17_Final.pdf"/>
       </resource>
-      <resource id="DOD_STIG">
+      <resource uuid="DOD_STIG">
          <title>[DOD STIG]</title>
          <citation>
             <text>Defense Information Systems Agency, <em>Security Technical Implementation Guides (STIG)</em>.</text>
          </citation>  
          <rlink href="https://iase.disa.mil/stigs/Pages/index.aspx"/>
       </resource>
-      <resource id="DODTERMS">
+      <resource uuid="DODTERMS">
          <title>[DODTERMS]</title>
          <citation>
             <text>Department of Defense, <em>Dictionary of Military and Associated Terms</em>.</text>
          </citation>  
          <rlink href="http://www.dtic.mil/dtic/tr/fulltext/u2/a485800.pdf"/>
       </resource>
-      <resource id="IETF_5905">
+      <resource uuid="IETF_5905">
          <title>[IETF 5905]</title>
          <citation>
             <text/>
          </citation>
       </resource>
-      <resource id="LAMPSON73">
+      <resource uuid="LAMPSON73">
          <title>[LAMPSON73]</title>
          <citation>
             <text>B. W. Lampson, <em>A Note on the Confinement Problem</em>, Communications of the ACM 16, 10, pp. 613-615, October 1973.</text>
          </citation>
       </resource>
-      <resource id="NARA_CUI">
+      <resource uuid="NARA_CUI">
          <title>[NARA CUI]</title>
          <citation>
             <text>National Archives and Records Administration, Controlled Unclassified Information (CUI) Registry.</text>
          </citation>  
          <rlink href="https://www.archives.gov/cui"/>
       </resource>
-      <resource id="NIAP_CCEVS">
+      <resource uuid="NIAP_CCEVS">
          <title>[NIAP CCEVS]</title>
          <citation>
             <text>National Information Assurance Partnership, <em>Common Criteria Evaluation and Validation Scheme</em>.</text>
          </citation>  
          <rlink href="https://www.niap-ccevs.org/"/>
       </resource>
-      <resource id="NIST_CAVP">
+      <resource uuid="NIST_CAVP">
          <title>[NIST CAVP]</title>
          <citation>
             <text>National Institute of Standards and Technology (2020) <em>Cryptographic Algorithm Validation Program</em>. Available at</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program"/>
       </resource>
-      <resource id="NIST_CMVP">
+      <resource uuid="NIST_CMVP">
          <title>[NIST CMVP]</title>
          <citation>
             <text>National Institute of Standards and Technology (2020) <em>Cryptographic Module Validation Program</em>. Available at</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/projects/cryptographic-module-validation-program"/>
       </resource>
-      <resource id="NIST_CSF">
+      <resource uuid="NIST_CSF">
          <title>[NIST CSF]</title>
          <citation>
             <text>National Institute of Standards and Technology (2018) Framework for Improving Critical Infrastructure Cybersecurity, Version 1.1. (National Institute of Standards and Technology, Gaithersburg, MD).</text>
          </citation>  
          <rlink href="https://doi.org/10.6028/NIST.CSWP.04162018"/>
       </resource>
-      <resource id="NCPR">
+      <resource uuid="NCPR">
          <title>[NCPR]</title>
          <citation>
             <text>National Institute of Standards and Technology (2020) <em>National Checklist Program Repository</em>. Available at</text>
          </citation>  
          <rlink href="https://nvd.nist.gov/ncp/repository"/>
       </resource>
-      <resource id="NVD_800-53">
+      <resource uuid="NVD_800-53">
          <title>[NVD 800-53]</title>
          <citation>
             <text>National Institute of Standards and Technology (2020) <em>National Vulnerability Database: NIST Special Publication 800-53 [database of controls].</em> Available at</text>
          </citation>  
          <rlink href="https://nvd.nist.gov/800-53"/>
       </resource>
-      <resource id="NEUM04">
+      <resource uuid="NEUM04">
          <title>[NEUM04]</title>
          <citation>
             <text>
@@ -26034,44 +26031,44 @@ Because supply chains can differ significantly across and within organizations, 
          </citation>  
          <rlink href="http://www.csl.sri.com/users/neumann/chats4.pdf"/>
       </resource>
-      <resource id="NSA_CSFC">
+      <resource uuid="NSA_CSFC">
          <title>[NSA CSFC]</title>
          <citation>
             <text>National Security Agency, <em>Commercial Solutions for Classified Program (CSfC)</em>.</text>
          </citation>  
          <rlink href="https://www.nsa.gov/resources/everyone/csfc"/>
       </resource>
-      <resource id="NSA_MEDIA">
+      <resource uuid="NSA_MEDIA">
          <title>[NSA MEDIA]</title>
          <citation>
             <text>National Security Agency, <em>Media Destruction Guidance</em>.</text>
          </citation>  
          <rlink href="https://www.nsa.gov/resources/everyone/media-destruction"/>
       </resource>
-      <resource id="POPEK74">
+      <resource uuid="POPEK74">
          <title>[POPEK74]</title>
          <citation>
             <text>G. Popek, <em>The Principle of Kernel Design</em>, in 1974 NCC, AFIPS Cong. Proc., Vol. 43, pp. 977-978.</text>
          </citation>
       </resource>
-      <resource id="SALTZER75">
+      <resource uuid="SALTZER75">
          <title>[SALTZER75]</title>
          <citation>
             <text>J. Saltzer and M. Schroeder, <em>The Protection of Information in Computer Systems</em>, in Proceedings of the IEEE 63(9), September 1975, pp. 1278-1308.</text>
          </citation>
       </resource>
-      <resource id="USGCB">
+      <resource uuid="USGCB">
          <title>[USGCB]</title>
          <citation>
             <text>National Institute of Standards and Technology (2020) <em>United States Government Configuration Baseline</em>. Available at</text>
          </citation>  
          <rlink href="https://csrc.nist.gov/projects/united-states-government-configuration-baseline"/>
       </resource>
-      <resource id="resource-pdf-sp-800-53r5">
+      <resource uuid="resource-pdf-sp-800-53r5">
          <rlink media-type="application/pdf"
             href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5-draft.pdf"/>
       </resource>
-      <resource id="resource-doi-sp-800-53r5">
+      <resource uuid="resource-doi-sp-800-53r5">
          <rlink media-type="application/pdf"
             href="https://doi.org/10.6028/NIST.SP.800-53r5-draft"/>
       </resource>
