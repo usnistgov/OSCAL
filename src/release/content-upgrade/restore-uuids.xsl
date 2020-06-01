@@ -11,7 +11,7 @@
     <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:template match="/">
-        <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - UUIDs refreshed </xsl:comment>
+        <!--<xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - UUIDs refreshed </xsl:comment>-->
         <xsl:apply-templates/>
     </xsl:template>
     
