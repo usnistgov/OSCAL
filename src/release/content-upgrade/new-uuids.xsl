@@ -27,7 +27,7 @@
     </xsl:template>
     
     <!-- Copying and adding uuid -->
-    <xsl:template match="resource/@uuid | party-id/@uuid" xmlns:uuid="java:java.util.UUID">
+    <xsl:template match="resource/@uuid | party/@uuid" xmlns:uuid="java:java.util.UUID">
         <xsl:copy-of select="."/>
         <xsl:call-template name="new-uuid"/>
     </xsl:template>

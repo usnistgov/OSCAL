@@ -25,7 +25,9 @@
     
     <xsl:key name="resource-as-internal-link" match="back-matter/resource" use="(@id | @uuid)/('#' || .)"/>
     
-    <xsl:template match="link[exists(key('resource-as-internal-link',@href))]/@href | a[exists(key('resource-as-internal-link',@href))]/@href">
+    <xsl:template match="import[exists(key('resource-as-internal-link',@href))]/@href |
+        link[exists(key('resource-as-internal-link',@href))]/@href |
+        a[exists(key('resource-as-internal-link',@href))]/@href">
         <xsl:variable name="target" select="key('resource-as-internal-link',.)"/>
         <xsl:attribute name="href" select="'#' || $target/@new-uuid"/>
     </xsl:template>

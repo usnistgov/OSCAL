@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Modified by conversion XSLT 2020-06-01T15:56:57.937-04:00 - UUIDs refreshed -->
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- Modified by conversion XSLT 2020-05-30T14:39:49.443-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
          uuid="7b09976d-7948-46af-9f9a-3ac50b4170b4">
    <metadata>
       <title>Test Profile</title>
@@ -11,13 +10,13 @@
       <version>1.0</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
    </metadata>
-   <import href="#catalog">
+   <import href="#a097e626-2606-4213-8ae0-390e3d3d2aaa">
       <include>
          <call control-id="a1"/>
          <call control-id="b1"/>
       </include>
    </import>
-   <import href="#catalog">
+   <import href="#a097e626-2606-4213-8ae0-390e3d3d2aaa">
       <include>
          <call control-id="a1"/>
          <call control-id="b1"/>
@@ -27,7 +26,7 @@
       <combine method="keep"/>
    </merge>
    <back-matter>
-      <resource uuid="catalog">
+      <resource uuid="a097e626-2606-4213-8ae0-390e3d3d2aaa">
          <rlink href="catalogs/abc-simple_catalog.xml"/>
       </resource>
    </back-matter>

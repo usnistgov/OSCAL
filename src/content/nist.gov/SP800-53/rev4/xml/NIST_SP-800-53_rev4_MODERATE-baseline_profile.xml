@@ -1,17 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Modified by conversion XSLT 2020-06-01T15:50:56.121-04:00 - UUIDs refreshed -->
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='MODERATE'-->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
-
       <last-modified>2020-05-29T23:29:27.272-04:00</last-modified>
       <version>2015-01-22</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      
-      <role id="creator"><title>Document Creator</title></role>
-      <role id="contact"><title>Contact</title></role>
-      
-      <party uuid="316876e2-5c7b-4a60-a488-2ed977238f04" type="organization">
+      <role id="creator">
+         <title>Document Creator</title>
+      </role>
+      <role id="contact">
+         <title>Contact</title>
+      </role>
+      <party uuid="29dd471e-7206-4388-857b-47673c04c4c9" type="organization">
          <party-name>Joint Task Force, Transformation Initiative</party-name>
          <address>
             <addr-line>National Institute of Standards and Technology</addr-line>
@@ -31,8 +35,7 @@
          <party-uuid>316876e2-5c7b-4a60-a488-2ed977238f04</party-uuid>
       </responsible-party>
    </metadata>
-   
-   <import href="#catalog">
+   <import href="#dc380596-027f-423b-83f2-82757554ee27">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -1098,10 +1101,11 @@
       </alter>
    </modify>
    <back-matter>
-      <resource uuid="catalog">
+      <resource uuid="dc380596-027f-423b-83f2-82757554ee27">
          <desc>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</desc>
-         <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
+         <rlink href="NIST_SP-800-53_rev4_catalog.xml"
+                media-type="application/oscal.catalog+xml"/>
       </resource>
-   </back-matter></profile>
-
+   </back-matter>
+</profile>
