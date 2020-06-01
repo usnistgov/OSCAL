@@ -1736,7 +1736,7 @@
          <title>FedRAMP Low Baseline</title>
          <prop name="keep">always</prop>
          <rlink media-type="application/xml"
-            href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/fedramp.gov/xml/FedRAMP_LOW-baseline_profile.xml"
+         <rlink media-type="application/xml" href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
          />
       </resource>
    </back-matter>
