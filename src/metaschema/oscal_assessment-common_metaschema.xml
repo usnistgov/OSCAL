@@ -812,7 +812,7 @@
       </flag>
    </define-field>
    
-   <define-flag name="uuid-ref" >
+   <define-flag name="uuid-ref" as-type="uuid">
       <formal-name>UUID Reference</formal-name>
       <description>A pointer to a relevant item, using it's UUID.</description>
    </define-flag>
@@ -1072,7 +1072,7 @@
       <flag ref="uuid" required="yes" />
       <flag ref="type" required="no">
          <allowed-values allow-other="yes">
-            <enum value="recommendation">Recommendation</enum>
+            <enum value="recommendation">Recommended Remediation</enum>
             <enum value="planned">Planned Remediation</enum>
          </allowed-values>
       </flag>
@@ -1087,7 +1087,7 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="recommendation-origin" min-occurs="0" max-occurs="unbounded">
+         <field ref="remediation-origin" min-occurs="0" max-occurs="unbounded">
             <description>Points to the source of the recommendation</description>
             <group-as name="origins" in-json="ARRAY" />
          </field>
@@ -1099,9 +1099,9 @@
       </model>
    </define-assembly>
 
-   <define-field name="recommendation-origin">
-      <formal-name>Recommendation Origin</formal-name>
-      <description>Points to the source of the recommendation</description>
+   <define-field name="remediation-origin">
+      <formal-name>Remediation Origin</formal-name>
+      <description>Points to the source of the remediation recommendation or plan</description>
       <flag ref="uuid-ref" required="yes" />
       <flag ref="type">
          <allowed-values allow-other="yes">
