@@ -573,9 +573,8 @@
         "type" : "object",
         "properties" : 
         { "uuid" : 
-          { "title" : "A Pseudo-UUID",
-            "description" : "TODO: This needs to be changed back to a reference to a uuid.",
-            "type" : "string" },
+          { "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
           { "$ref" : "#/definitions/title" },
           "desc" : 
