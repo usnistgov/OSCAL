@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Catalog Model on OSCAL</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/</link><description>Recent content in Catalog Model on OSCAL</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/index.xml" rel="self" type="application/rss+xml"/><item><title>Catalog JSON Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</guid><description>+ catalog: [1]{… }
 - catalog: [1]{
-id: NCName [1],
+uuid: uuid [1],
 + metadata: [1]{… },
 - metadata: [1]{
 title: markup-line [1],
@@ -14,14 +14,14 @@ title: markup-line [0 or 1],
 published: dateTime-with-timezone [0 or 1],
 last-modified: dateTime-with-timezone [0 or 1],
 version: string [0 or 1],</description></item><item><title>Catalog JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</guid><description>Schema download oscal_catalog_schema.json
-Schema version 1.0.0-milestone2
+Schema version 1.0.0-milestone3
 Short name oscal-catalog
 The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
 Switch to XML addr-line Name Address line
 Description A single line of an address.
 A string property.
-This object appears as a property on: address.</description></item><item><title>Catalog XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>+ &amp;lt;catalog id="NCName"&amp;gt; [1]… &amp;lt;/catalog&amp;gt;
-- &amp;lt;catalog id="NCName"&amp;gt; [1]
+This object appears as a property on: address.</description></item><item><title>Catalog XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>+ &amp;lt;catalog uuid="uuid"&amp;gt; [1]… &amp;lt;/catalog&amp;gt;
+- &amp;lt;catalog uuid="uuid"&amp;gt; [1]
 + &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
 - &amp;lt;metadata&amp;gt; [1]
 &amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
@@ -38,7 +38,7 @@ This object appears as a property on: address.</description></item><item><title>
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>Catalog XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</guid><description>Schema download oscal_catalog_schema.xsd
-Schema version 1.0.0-milestone2
+Schema version 1.0.0-milestone3
 Short name oscal-catalog
 XML namespace http://csrc.nist.gov/ns/oscal/1.0
 The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.

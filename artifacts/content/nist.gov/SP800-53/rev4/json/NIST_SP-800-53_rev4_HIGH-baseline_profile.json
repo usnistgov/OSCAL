@@ -1,11 +1,11 @@
 {
   "profile": {
-    "id": "uuid-9d0593f5-c6ed-44b8-9127-ad5c310f8e34",
+    "uuid": "9d0593f5-c6ed-44b8-9127-ad5c310f8e34",
     "metadata": {
       "title": "NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE",
-      "last-modified": "2019-09-23T14:22:55.113-04:00",
+      "last-modified": "2020-05-29T23:29:27.272-04:00",
       "version": "2015-01-22",
-      "oscal-version": "1.0.0-milestone1",
+      "oscal-version": "1.0.0-milestone3",
       "roles": [
         {
           "id": "creator",
@@ -18,37 +18,36 @@
       ],
       "parties": [
         {
-          "id": "IT-JTF",
-          "org": {
-            "org-name": "Joint Task Force, Transformation Initiative",
-            "addresses": [
-              {
-                "postal-address": [
-                  "National Institute of Standards and Technology",
-                  "Attn: Computer Security Division",
-                  "Information Technology Laboratory",
-                  "100 Bureau Drive (Mail Stop 8930)"
-                ],
-                "city": "Gaithersburg",
-                "state": "MD",
-                "postal-code": "20899-8930"
-              }
-            ],
-            "email-addresses": [
-              "sec-cert@nist.gov"
-            ]
-          }
+          "uuid": "31a5dd8f-978a-4558-8ade-846211607d40",
+          "type": "organization",
+          "party-name": "Joint Task Force, Transformation Initiative",
+          "addresses": [
+            {
+              "postal-address": [
+                "National Institute of Standards and Technology",
+                "Attn: Computer Security Division",
+                "Information Technology Laboratory",
+                "100 Bureau Drive (Mail Stop 8930)"
+              ],
+              "city": "Gaithersburg",
+              "state": "MD",
+              "postal-code": "20899-8930"
+            }
+          ],
+          "email-addresses": [
+            "sec-cert@nist.gov"
+          ]
         }
       ],
       "responsible-parties": {
         "creator": {
-          "party-ids": [
-            "IT-JTF"
+          "party-uuids": [
+            "31a5dd8f-978a-4558-8ade-846211607d40"
           ]
         },
         "contact": {
-          "party-ids": [
-            "IT-JTF"
+          "party-uuids": [
+            "31a5dd8f-978a-4558-8ade-846211607d40"
           ]
         }
       }
@@ -3481,7 +3480,7 @@
     "back-matter": {
       "resources": [
         {
-          "id": "catalog",
+          "uuid": "catalog",
           "desc": "NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal\n            Information Systems and Organizations",
           "rlinks": [
             {

@@ -14,7 +14,7 @@ published: dateTime-with-timezone [0 or 1],
 last-modified: dateTime-with-timezone [0 or 1],
 version: string [0 or 1],
 oscal-version: string [0 or 1],</description></item><item><title>Component JSON Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</guid><description>Schema download oscal_component_schema.json
-Schema version 1.0.0-milestone2
+Schema version 1.0.0-milestone3
 Short name oscal-component
 The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</description></item><item><title>Component XML Model Map</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</guid><description>+ &amp;lt;component-definition&amp;gt; [1]… &amp;lt;/component-definition&amp;gt;
 - &amp;lt;component-definition&amp;gt; [1]
@@ -34,7 +34,7 @@ The OSCAL Implementation Component format can be used to describe the implementa
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>Component XML Schema Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</guid><description>Schema download oscal_component_schema.xsd
-Schema version 1.0.0-milestone2
+Schema version 1.0.0-milestone3
 Short name oscal-component
 XML namespace http://csrc.nist.gov/ns/oscal/1.0
 The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</description></item></channel></rss>

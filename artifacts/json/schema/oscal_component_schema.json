@@ -240,10 +240,13 @@
         "$id" : "#/definitions/location",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
           "address" : 
           { "$ref" : "#/definitions/address" },
           "email-addresses" : 
@@ -279,30 +282,42 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "address" ],
+        [ "uuid",
+          "address" ],
         "additionalProperties" : false },
-      "location-id" : 
+      "location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
-        "$id" : "#/definitions/location-id",
-        "type" : "string" },
+        "$id" : "#/definitions/location-uuid",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
         "$id" : "#/definitions/party",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "persons" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "type" : 
+          { "title" : "Party Type",
+            "description" : "A category describing the kind of party the object describes.",
+            "type" : "string",
+            "enum" : 
+            [ "person",
+              "organization" ] },
+          "party-name" : 
+          { "$ref" : "#/definitions/party-name" },
+          "short-name" : 
+          { "$ref" : "#/definitions/short-name" },
+          "external-ids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/person" } },
-          "org" : 
-          { "$ref" : "#/definitions/org" },
+            { "$ref" : "#/definitions/external-id" } },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -318,143 +333,48 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
+          "addresses" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/address" } },
+          "email-addresses" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
+          "telephone-numbers" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
+          "member-of-organizations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/member-of-organization" } },
+          "location-uuids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/location-uuid" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "type",
+          "party-name" ],
         "additionalProperties" : false },
-      "party-id" : 
+      "party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
-        "$id" : "#/definitions/party-id",
-        "type" : "string" },
-      "person" : 
-      { "title" : "Person",
-        "description" : "A person, with contact information",
-        "$id" : "#/definitions/person",
-        "type" : "object",
-        "properties" : 
-        { "person-name" : 
-          { "$ref" : "#/definitions/person-name" },
-          "short-name" : 
-          { "$ref" : "#/definitions/short-name" },
-          "org-name" : 
-          { "$ref" : "#/definitions/org-name" },
-          "person-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/person-id" } },
-          "organization-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "location-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/location-id" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "org" : 
-      { "title" : "Organization",
-        "description" : "An organization or legal entity (not a person), with contact information",
-        "$id" : "#/definitions/org",
-        "type" : "object",
-        "properties" : 
-        { "org-name" : 
-          { "$ref" : "#/definitions/org-name" },
-          "short-name" : 
-          { "$ref" : "#/definitions/short-name" },
-          "organization-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "location-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/location-id" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "org-name" ],
-        "additionalProperties" : false },
-      "person-id" : 
+        "$id" : "#/definitions/party-uuid",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+      "external-id" : 
       { "title" : "Personal Identifier",
         "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
-        "$id" : "#/definitions/person-id",
+        "$id" : "#/definitions/external-id",
         "type" : "object",
         "properties" : 
         { "type" : 
@@ -464,23 +384,15 @@
           "id" : 
           { "type" : "string" } },
         "required" : 
-        [ "id" ],
+        [ "id",
+          "type" ],
         "additionalProperties" : false },
-      "org-id" : 
-      { "title" : "Organization Identifier",
-        "description" : "An identifier for an organization using a designated scheme.",
-        "$id" : "#/definitions/org-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
-            "type" : "string" },
-          "id" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "id" ],
-        "additionalProperties" : false },
+      "member-of-organization" : 
+      { "title" : "Organizational Affiliation",
+        "description" : "Identifies that the containing object is a member of the organization associated with the provided UUID.",
+        "$id" : "#/definitions/member-of-organization",
+        "type" : "string",
+        "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "rlink" : 
       { "title" : "Resource link",
         "description" : "A pointer to an external copy of a document with optional hash for verification",
@@ -504,15 +416,10 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "person-name" : 
-      { "title" : "Person Name",
-        "description" : "Full (legal) name of an individual",
-        "$id" : "#/definitions/person-name",
-        "type" : "string" },
-      "org-name" : 
-      { "title" : "Organization Name",
-        "description" : "Full (legal) name of an organization",
-        "$id" : "#/definitions/org-name",
+      "party-name" : 
+      { "title" : "Party Name",
+        "description" : "The full (legal) name of the party.",
+        "$id" : "#/definitions/party-name",
         "type" : "string" },
       "short-name" : 
       { "title" : "short-name",
@@ -616,9 +523,9 @@
         "$id" : "#/definitions/resource",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
+        { "uuid" : 
+          { "title" : "A Pseudo-UUID",
+            "description" : "TODO: This needs to be changed back to a reference to a uuid.",
             "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
@@ -649,7 +556,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "id" ],
+        [ "uuid" ],
         "additionalProperties" : false },
       "citation" : 
       { "title" : "Citation",
@@ -728,11 +635,11 @@
         "$id" : "#/definitions/responsible-party",
         "type" : "object",
         "properties" : 
-        { "party-ids" : 
+        { "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/party-id" } },
+            { "$ref" : "#/definitions/party-uuid" } },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -751,7 +658,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "party-ids" ],
+        [ "party-uuids" ],
         "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
@@ -813,17 +720,6 @@
       { "title" : "Incorporates Component",
         "description" : "TBD",
         "$id" : "#/definitions/incorporates-component",
-        "type" : "object",
-        "properties" : 
-        { "description" : 
-          { "$ref" : "#/definitions/description" } },
-        "required" : 
-        [ "description" ],
-        "additionalProperties" : false },
-      "incorporates-capability" : 
-      { "title" : "Incorporates Capability",
-        "description" : "TBD",
-        "$id" : "#/definitions/incorporates-capability",
         "type" : "object",
         "properties" : 
         { "description" : 
@@ -959,17 +855,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "incorporates-capabilities" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/incorporates-capability" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
           "incorporates-components" : 
           { "type" : "object",
             "minProperties" : 1,

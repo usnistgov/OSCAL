@@ -1,10 +1,10 @@
 profile: 
-  id:          uuid-f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b
+  uuid:        f5c7fb3c-b4d8-49ff-9ebf-cd6d484c2d7b
   metadata: 
     title:               NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE
-    last-modified:       2019-09-23T14:25:40.027-04:00
+    last-modified:       2020-05-29T23:29:27.272-04:00
     version:             2015-01-22
-    oscal-version:       1.0.0-milestone1
+    oscal-version:       1.0.0-milestone3
     roles: 
       - 
         id:    creator
@@ -14,21 +14,21 @@ profile:
         title: Contact
     parties: 
       - 
-        id:  IT-JTF
-        org: 
-          org-name:        Joint Task Force, Transformation Initiative
-          addresses: 
-            - 
-              postal-address: National Institute of Standards and Technology,Attn: Computer Security Division,Information Technology Laboratory,100 Bureau Drive (Mail Stop 8930)
-              city:           Gaithersburg
-              state:          MD
-              postal-code:    20899-8930
-          email-addresses: sec-cert@nist.gov
+        uuid:            316876e2-5c7b-4a60-a488-2ed977238f04
+        type:            organization
+        party-name:      Joint Task Force, Transformation Initiative
+        addresses: 
+          - 
+            postal-address: National Institute of Standards and Technology,Attn: Computer Security Division,Information Technology Laboratory,100 Bureau Drive (Mail Stop 8930)
+            city:           Gaithersburg
+            state:          MD
+            postal-code:    20899-8930
+        email-addresses: sec-cert@nist.gov
     responsible-parties: 
       creator: 
-        party-ids: IT-JTF
+        party-uuids: 316876e2-5c7b-4a60-a488-2ed977238f04
       contact: 
-        party-ids: IT-JTF
+        party-uuids: 316876e2-5c7b-4a60-a488-2ed977238f04
   imports: 
     - 
       href:    #catalog
@@ -1994,7 +1994,7 @@ profile:
   back-matter: 
     resources: 
       - 
-        id:     catalog
+        uuid:   catalog
         desc: 
           """
             NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
