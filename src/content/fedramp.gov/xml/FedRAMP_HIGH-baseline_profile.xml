@@ -9677,7 +9677,7 @@
          <title>NIST Special Publication (SP) 800-53</title>
          <prop name="version" ns="https://fedramp.gov/ns/oscal">Revision 4</prop>
          <prop name="keep">always</prop>
-         <rlink media-type="application/xml" href="../../../../content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
+         <rlink media-type="application/xml" href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
       </resource>
    </back-matter>
 </profile>
