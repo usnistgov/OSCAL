@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Modified by conversion XSLT 2020-06-01T15:56:54.872-04:00 - UUIDs refreshed -->
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- Modified by conversion XSLT 2020-05-30T14:39:47.217-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
          uuid="54a15c30-a10f-4265-9d3c-2341d9d10899">
    <metadata>
       <title>Test Profile</title>

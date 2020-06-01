@@ -8,9 +8,16 @@
      will produce a similar XML document, valid or closer to valid to the Milestone 3 OSCAL schema.
     We say 'closer to valid' in this case because we implement only necessary mappings we have seen, not all conceivable, given Issue ; plus of course we depend on valid inputs. -->
     
-    <xsl:strip-space elements="catalog group control subcontrol part param resource
-        metadata back-matter revision annotation location party person org rlink address biblio resource citation role responsible-party
-        profile import merge custom group modify include exclude set alter add"/>
+    
+    
+    <!-- Catalog, M2 and M3   -->
+    <xsl:strip-space elements="param guideline select part metadata back-matter revision annotation location party rlink address biblio resource citation role responsible-party catalog group control person org"/>
+    
+    <!-- Profile, M2 and M3   -->
+    <xsl:strip-space elements="metadata back-matter revision annotation location party rlink address biblio resource citation role responsible-party param guideline select part profile import merge custom group modify include exclude set-parameter alter add person org set"/>
+   
+    <!-- SSP, M2 and M3   -->
+    <xsl:strip-space elements="metadata back-matter revision annotation location party rlink address biblio resource citation role responsible-party system-security-plan import-profile system-characteristics system-information information-type confidentiality-impact integrity-impact availability-impact security-impact-level status leveraged-authorization authorization-boundary diagram network-architecture data-flow system-implementation user authorized-privilege component protocol system-inventory inventory-item implemented-component control-implementation implemented-requirement statement responsible-role by-component set-parameter person org service interconnection set-param"/>
     
     <xsl:output indent="yes"/>
     
