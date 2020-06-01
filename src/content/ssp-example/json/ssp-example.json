@@ -1,4 +1,5 @@
 {
+    "$schema": "../../../../json/schema/oscal_ssp_schema.json",
     "system-security-plan": {
         "id": "example-ssp",
         "metadata": {
@@ -233,9 +234,8 @@
                 }
             },
             "system-inventory": {
-                "inventory-items": [
-                    {
-                        "uuid": "c9c32657-a0eb-4cf2-b5c1-20928983063c",
+                "inventory-items": {
+                    "c9c32657-a0eb-4cf2-b5c1-20928983063c": {
                         "description": "The logging server.",
                         "asset-id": "asset-id-logging-server",
                         "responsible-parties": {
@@ -251,7 +251,7 @@
                             "795533ab-9427-4abe-820f-0b571bacfe6d": {"use": "enforces-policy"}
                         }
                     }
-                ]
+                }
             }
         },
         "control-implementation": {
