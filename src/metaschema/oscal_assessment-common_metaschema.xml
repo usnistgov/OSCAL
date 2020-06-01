@@ -757,8 +757,9 @@
             <description>Identifies who was interviewed, or what was tested or inspected.</description>
             <group-as name="subject-references" in-json="ARRAY"/>
          </assembly>
-         <field ref="observation-source" min-occurs="0" max-occurs="unbounded">
-            <group-as name="references" in-json="ARRAY" />
+         <field ref="origin" min-occurs="0" max-occurs="unbounded">
+            <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
+            <group-as name="origins" in-json="ARRAY" />
          </field>
          <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
             <group-as name="evidence-group" in-json="ARRAY"/>
@@ -796,16 +797,11 @@
       </flag>
    </define-field>
    
-   <define-field name="observation-source">
-      <formal-name>Source</formal-name>
+   <define-field name="origin">
+      <formal-name>Origin</formal-name>
       <description>Identifies the tool or activity that resulted in the observation.</description>
-      <flag name="uuid-ref" required="yes">
-         <formal-name>UUID Reference</formal-name>
-         <description>A pointer to a tool, test-method, or other relevant item, using it's UUID.</description>
-      </flag>
-      <flag name="type" required="yes">
-         <formal-name>Reference ID Type</formal-name>
-         <description>Indicates whether the reference points to a tool, person (party), test method, or implementation statement.</description>
+      <flag ref="uuid-ref" required="yes" />
+      <flag ref="type" required="yes">
          <allowed-values allow-other="no">
             <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
             <enum value="test-method">A test method defined in the assessment-activities section of the assessment plan or results.</enum>
@@ -815,6 +811,12 @@
          </allowed-values>
       </flag>
    </define-field>
+   
+   <define-flag name="uuid-ref" >
+      <formal-name>UUID Reference</formal-name>
+      <description>A pointer to a relevant item, using it's UUID.</description>
+   </define-flag>
+   
    
    <define-field name="observation-method">
       <formal-name>Observation Method</formal-name>
@@ -1085,16 +1087,10 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+         <field ref="recommendation-origin" min-occurs="0" max-occurs="unbounded">
             <description>Points to the source of the recommendation</description>
-            <group-as name="subject-references" in-json="ARRAY" />
-            <flag ref="type">
-               <allowed-values allow-other="yes">
-                  <enum value="party">The UUID of the person or organization who made the recommendation</enum>
-                  <enum value="tool">The UUID of the tool that made the recommendation</enum>
-               </allowed-values>
-            </flag>
-         </assembly>
+            <group-as name="origins" in-json="ARRAY" />
+         </field>
          <assembly ref="required" min-occurs="0" max-occurs="unbounded">
             <group-as name="requirements" in-json="ARRAY"/>
          </assembly>
@@ -1102,7 +1098,20 @@
          <field ref="remarks" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" />
       </model>
    </define-assembly>
+
+   <define-field name="recommendation-origin">
+      <formal-name>Recommendation Origin</formal-name>
+      <description>Points to the source of the recommendation</description>
+      <flag ref="uuid-ref" required="yes" />
+      <flag ref="type">
+         <allowed-values allow-other="yes">
+            <enum value="party">The UUID of the person or organization who made the recommendation</enum>
+            <enum value="tool">The UUID of the tool that made the recommendation</enum>
+         </allowed-values>
+      </flag>
+   </define-field>
    
+
    <define-field name="risk-statement" as-type="markup-multiline">
       <formal-name>Risk Statement</formal-name>
       <description>Describes the risk.</description>
