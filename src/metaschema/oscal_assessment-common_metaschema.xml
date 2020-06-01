@@ -725,7 +725,7 @@
       <description>Identifies the framework or rules to which this value conforms.</description>
       <allowed-values allow-other="yes">
          <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
-         <enum value="https://www.nist.gov/">A value conforms to NIST definitions.</enum>
+         <enum value="https://www.nist.gov">A value conforms to NIST definitions.</enum>
       </allowed-values>
    </define-flag>
 
@@ -869,88 +869,14 @@
          <field ref="prop"  min-occurs="0" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="properties" in-json="ARRAY"/>
-            <flag ref="name" required="yes">
-               <allowed-values allow-other="yes">
-                  <enum value="impacted-control">Impacted Control</enum>
-                  <enum value="vulnerability-id">Vulnerability ID</enum>
-                  <enum value="source-id">Source ID</enum>
-                  <!-- Risk Metrics -->
-                  <enum value="likelihood">Likelihood</enum>
-                  <enum value="impact">Impact</enum>
-                  <enum value="risk">Risk</enum>
-                  <!-- CVSS Metrics Values -->
-                  <enum value="AV">Access Vector</enum>
-                  <enum value="AC">Access Complexity</enum>
-                  <enum value="Au">Authentication</enum>
-                  <enum value="C">Confidentiality Impact</enum>
-                  <enum value="I">Integrity Impact</enum>
-                  <enum value="A">Availability Impact</enum>
-                  <enum value="RL">Remediation Level</enum>
-                  <enum value="RC">Report Confidence</enum>
-                  <enum value="CDP">Collateral Damage Potential</enum>
-                  <enum value="TD">Target Distribution</enum>
-                  <enum value="CR">Confidentiality Requirement</enum>
-                  <enum value="IR">Integrity Requirement</enum>
-                  <enum value="AR">Availability Requirement</enum>
-                  <enum value="PR">Privileges Required</enum>
-                  <enum value="UI">User Interaction</enum>
-                  <enum value="S">Scope</enum>
-                  <enum value="E">Exploit Maturity</enum>
-                  <enum value="MAV">Modified Attack Vector</enum>
-                  <enum value="MAC">Modified Attack Complexity</enum>
-                  <enum value="MPR">Modified Privileges Required</enum>
-                  <enum value="MUI">Modified User Interaction</enum>
-                  <enum value="MS">Modified Scope</enum>
-                  <enum value="MC">Modified Confidentiality</enum>
-                  <enum value="MI">Modified Integrity</enum>
-                  <enum value="MA">Modified Availability</enum>
-                  <enum value="access-vector">Access Vector</enum>
-                  <enum value="access-complexity">Access Complexity</enum>
-                  <enum value="authentication">Authentication</enum>
-                  <enum value="confidentiality-impact">Confidentiality Impact</enum>
-                  <enum value="integrity-impact">Integrity Impact</enum>
-                  <enum value="availability-impact">Availability Impact</enum>
-                  <enum value="exploitability">Exploitability</enum>
-                  <enum value="remediation-level">Remediation Level</enum>
-                  <enum value="report-confidence">Report Confidence</enum>
-                  <enum value="collateral-damage-potential">Collateral Damage Potential</enum>
-                  <enum value="target-distribution">Target Distribution</enum>
-                  <enum value="confidentiality-requirement">Confidentiality Requirement</enum>
-                  <enum value="integrity-requirement">Integrity Requirement</enum>
-                  <enum value="availability-requirement">Availability Requirement</enum>
-                  <enum value="privileges-required">Privileges Required</enum>
-                  <enum value="user-interaction">User Interaction</enum>
-                  <enum value="scope">Scope</enum>
-                  <enum value="exploit-code-maturity">Exploit Code Maturity</enum>
-                  <enum value="modified-attack-vector">Modified Attack Vector</enum>
-                  <enum value="modified-attack-complexity">Modified Attack Complexity</enum>
-                  <enum value="modified-privileges-required">Modified Privileges Required</enum>
-                  <enum value="modified-user-interaction">Modified User Interaction</enum>
-                  <enum value="modified-scope">Modified Scope</enum>
-                  <enum value="modified-confidentiality">Modified Confidentiality</enum>
-                  <enum value="modified-integrity">Modified Integrity</enum>
-                  <enum value="modified-availability">Modified Availability</enum>
-               </allowed-values>
-            </flag>
-            <flag ref="class">
-               <allowed-values allow-other="yes">
-                  <!-- For values related to initial and residual (mitigated) risk --> 
-                  <enum value="initial">Initial</enum>
-                  <enum value="residual">Residual</enum>
-                  <!-- Other values -->
-                  <enum value="tool-name"></enum>
-                  <enum value="cve"></enum>
-                  <!-- To identify which CVSS values to use -->
-                  <enum value="CVSSv2"></enum>
-                  <enum value="CVSSv3"></enum>
-                  <enum value="CVSSv3.1"></enum>
-               </allowed-values>
-            </flag>
          </field>
          <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
+         <field ref="risk-metric" min-occurs="0" max-occurs="unbounded">
+            <group-as name="risk-metrics" in-json="ARRAY"/>
+         </field>
          <field ref="risk-statement" min-occurs="1" max-occurs="1" />
          <assembly ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
             <group-as name="mitigating-factors" in-json="ARRAY"/>
@@ -970,6 +896,95 @@
          <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
       </remarks>
    </define-assembly>
+
+   <define-field name="risk-metric">
+      <formal-name>Risk Metric</formal-name>
+      <description>An individual risk metric from a specified system.</description>
+      <flag ref="name" required="yes">
+         <allowed-values allow-other="yes">
+            <enum value="impacted-control">Impacted Control</enum>
+            <enum value="vulnerability-id">Vulnerability ID</enum>
+            <enum value="source-id">Source ID</enum>
+            <!-- Risk Metrics -->
+            <enum value="likelihood">Likelihood</enum>
+            <enum value="impact">Impact</enum>
+            <enum value="risk">Risk</enum>
+            <!-- CVSS Metrics Values -->
+            <enum value="AV">Access Vector</enum>
+            <enum value="AC">Access Complexity</enum>
+            <enum value="Au">Authentication</enum>
+            <enum value="C">Confidentiality Impact</enum>
+            <enum value="I">Integrity Impact</enum>
+            <enum value="A">Availability Impact</enum>
+            <enum value="RL">Remediation Level</enum>
+            <enum value="RC">Report Confidence</enum>
+            <enum value="CDP">Collateral Damage Potential</enum>
+            <enum value="TD">Target Distribution</enum>
+            <enum value="CR">Confidentiality Requirement</enum>
+            <enum value="IR">Integrity Requirement</enum>
+            <enum value="AR">Availability Requirement</enum>
+            <enum value="PR">Privileges Required</enum>
+            <enum value="UI">User Interaction</enum>
+            <enum value="S">Scope</enum>
+            <enum value="E">Exploit Maturity</enum>
+            <enum value="MAV">Modified Attack Vector</enum>
+            <enum value="MAC">Modified Attack Complexity</enum>
+            <enum value="MPR">Modified Privileges Required</enum>
+            <enum value="MUI">Modified User Interaction</enum>
+            <enum value="MS">Modified Scope</enum>
+            <enum value="MC">Modified Confidentiality</enum>
+            <enum value="MI">Modified Integrity</enum>
+            <enum value="MA">Modified Availability</enum>
+            <enum value="access-vector">Access Vector</enum>
+            <enum value="access-complexity">Access Complexity</enum>
+            <enum value="authentication">Authentication</enum>
+            <enum value="confidentiality-impact">Confidentiality Impact</enum>
+            <enum value="integrity-impact">Integrity Impact</enum>
+            <enum value="availability-impact">Availability Impact</enum>
+            <enum value="exploitability">Exploitability</enum>
+            <enum value="remediation-level">Remediation Level</enum>
+            <enum value="report-confidence">Report Confidence</enum>
+            <enum value="collateral-damage-potential">Collateral Damage Potential</enum>
+            <enum value="target-distribution">Target Distribution</enum>
+            <enum value="confidentiality-requirement">Confidentiality Requirement</enum>
+            <enum value="integrity-requirement">Integrity Requirement</enum>
+            <enum value="availability-requirement">Availability Requirement</enum>
+            <enum value="privileges-required">Privileges Required</enum>
+            <enum value="user-interaction">User Interaction</enum>
+            <enum value="scope">Scope</enum>
+            <enum value="exploit-code-maturity">Exploit Code Maturity</enum>
+            <enum value="modified-attack-vector">Modified Attack Vector</enum>
+            <enum value="modified-attack-complexity">Modified Attack Complexity</enum>
+            <enum value="modified-privileges-required">Modified Privileges Required</enum>
+            <enum value="modified-user-interaction">Modified User Interaction</enum>
+            <enum value="modified-scope">Modified Scope</enum>
+            <enum value="modified-confidentiality">Modified Confidentiality</enum>
+            <enum value="modified-integrity">Modified Integrity</enum>
+            <enum value="modified-availability">Modified Availability</enum>
+         </allowed-values>
+      </flag>
+      <flag ref="class">
+         <allowed-values allow-other="yes">
+            <!-- For values related to initial and residual (mitigated) risk --> 
+            <enum value="initial">Initial</enum>
+            <enum value="residual">Residual</enum>
+         </allowed-values>
+      </flag>
+      <flag name="system" as-type="string">
+         <formal-name>System</formal-name>
+         <description>Specifies the system represented by this risk metric.</description>
+         <allowed-values allow-other="yes">
+            <!-- Other values -->
+            <enum value="https://www.nist.gov"></enum>
+            <enum value="https://fedramp.gov"></enum>
+            <enum value="cve"></enum>
+            <!-- To identify which CVSS values to use -->
+            <enum value="CVSSv2"></enum>
+            <enum value="CVSSv3"></enum>
+            <enum value="CVSSv3.1"></enum>
+         </allowed-values>
+      </flag>
+   </define-field>
 
    <define-assembly name="remediation-tracking">
       <formal-name>Remediation Tracking</formal-name>

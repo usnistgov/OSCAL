@@ -32,6 +32,7 @@
             <description>Used by the POA&amp;M to import information about the system.</description>
          </assembly>
          <field ref="system-id" min-occurs="0" max-occurs="1" />
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1" />
          <assembly ref="results"  min-occurs="1" max-occurs="1" />
          <assembly ref="back-matter" min-occurs="0" max-occurs="1" />
       </model>
@@ -39,5 +40,23 @@
          <p>Either an OSCAL-based SSP must be imported, or a unique system-id must be specified. Both may be present.</p>
       </remarks>
    </define-assembly>
+   
+   <define-assembly name="local-definitions">
+      <formal-name>Local Definitions</formal-name>
+      <description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</description>
+      <model>
+         <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
+            <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
+            <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="inventory-items" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   
    
 </METASCHEMA>
