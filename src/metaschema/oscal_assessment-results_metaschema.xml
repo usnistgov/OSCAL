@@ -42,4 +42,38 @@
       </model>
    </define-assembly>
    
+      <define-assembly name="assessment-subjects">
+      <formal-name>Subject of Assessment</formal-name>
+      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
+      <model>
+         <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
+            <group-as name="includes" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="exclude-subject" min-occurs="0" max-occurs="unbounded">
+            <group-as name="excludes" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="local-definitions">
+      <formal-name>Local Definitions</formal-name>
+      <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
+      <model>
+         <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
+            <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
+            <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="inventory-items" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="user" min-occurs="0" max-occurs="unbounded">
+            <description>Used to add any users, not defined via the System Security Plan (AR->AP->SSP)</description>
+            <group-as name="users" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
 </METASCHEMA>
