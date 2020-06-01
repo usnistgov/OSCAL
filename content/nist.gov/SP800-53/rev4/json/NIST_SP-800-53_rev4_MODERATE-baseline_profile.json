@@ -18,7 +18,7 @@
       ],
       "parties": [
         {
-          "uuid": "316876e2-5c7b-4a60-a488-2ed977238f04",
+          "uuid": "29dd471e-7206-4388-857b-47673c04c4c9",
           "type": "organization",
           "party-name": "Joint Task Force, Transformation Initiative",
           "addresses": [
@@ -54,7 +54,7 @@
     },
     "imports": [
       {
-        "href": "#catalog",
+        "href": "#dc380596-027f-423b-83f2-82757554ee27",
         "include": {
           "id-selectors": [
             {
@@ -3080,7 +3080,7 @@
     "back-matter": {
       "resources": [
         {
-          "uuid": "catalog",
+          "uuid": "dc380596-027f-423b-83f2-82757554ee27",
           "desc": "NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal\n            Information Systems and Organizations",
           "rlinks": [
             {

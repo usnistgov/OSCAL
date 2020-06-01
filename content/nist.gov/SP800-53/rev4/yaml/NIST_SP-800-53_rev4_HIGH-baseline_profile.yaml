@@ -14,7 +14,7 @@ profile:
         title: Contact
     parties: 
       - 
-        uuid:            31a5dd8f-978a-4558-8ade-846211607d40
+        uuid:            71c97c27-4f09-4d06-a6a4-065a54c19a1f
         type:            organization
         party-name:      Joint Task Force, Transformation Initiative
         addresses: 
@@ -31,7 +31,7 @@ profile:
         party-uuids: 31a5dd8f-978a-4558-8ade-846211607d40
   imports: 
     - 
-      href:    #catalog
+      href:    #f52e1458-7a97-49fd-8189-6af6a4e7051b
       include: 
         id-selectors: 
           - 
@@ -2257,7 +2257,7 @@ profile:
   back-matter: 
     resources: 
       - 
-        uuid:   catalog
+        uuid:   f52e1458-7a97-49fd-8189-6af6a4e7051b
         desc: 
           """
             NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal

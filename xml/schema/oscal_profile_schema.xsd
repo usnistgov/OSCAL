@@ -1003,16 +1003,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>A Pseudo-UUID</m:formal-name>
-                  <m:description>TODO: This needs to be changed back to a reference to a uuid.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>A Pseudo-UUID</b>: TODO: This needs to be changed back to a reference to a uuid.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="uuid" use="required" type="oscal-profile:uuid"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="citation">
