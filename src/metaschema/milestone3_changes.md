@@ -1,31 +1,5 @@
 # Changes from Milestone 2 to Milestone 3 OSCAL
 
-## Reading the change log
-
-The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON) or as an element or attribute (XML). Similarly, in either case it may be an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network), or alternatively a composite of other objects.
-
-Refer to docs on Metaschema language and mappings into data objects, especially  
-[Terminology](https://pages.nist.gov/metaschema/specification/concepts/terminology/)
-and 
-[Mapping](https://pages.nist.gov/metaschema/specification/mapping/)
-
-In the change log below there are several types of entries. One type describes structures or data objects (assemblies, fields and flags) defined for the Milestone 3 (latest) version of the schemas, which have changed definitions from the earlier (Milestone 2) version of the schema(s) in question. Note that many of these changes (especially to `metadata` and `back-matter`) occur in shared metaschema modules, so they take effect across schemas.
-
-Another type of entry described a new structure (field, flag or assembly) added to the Milestone 3 schemas, that has no direct correlate in Milestone 2.
-
-Several global changes have been described in another type of entry.
-
-Users of object notations should take note that individual objects described in the metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a *grouping* key) being assigned to the group of like objects. So a `prop` object defined in the metaschema appears in the JSON as a member of an object `properties`.
-
-### Notation
-
-In the change log, `[M2]` refers to the Milestone 2 model. Flags, assemblies and fields that have been removed *appear in italics*.
-
-`[M3]` refers to the Milestone 3 model. Flags, assemblies and fields that have been added (do not appear in M2) are in **bold**.
-
-
------
-
 ## `metadata` changes (all models)
 
 Milestone 3 has two assemblies in the metadata, **revision** for tracking a revision history, and **location**, an abstraction (and alternative) to the older address modeling.
@@ -74,7 +48,11 @@ We also have new fields for linking to other assemblies, including `member-of-or
 
 ## New field `party-uuid`: Party Reference
 
+This replaces the old `party-id`.
+
 ## New field `external-id`: Personal Identifier
+
+This attaches to the new `member-of-organization` field.
  
 ## New field `member-of-organization`: Organizational Affiliation
 
