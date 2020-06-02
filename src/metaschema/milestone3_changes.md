@@ -2,7 +2,7 @@
 
 ## Reading the change log
 
-The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON), an element or attribute (XML), an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network).
+The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON) or as an element or attribute (XML). Similarly, in either case it may be an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network), or alternatively a composite of other objects.
 
 Refer to docs on Metaschema language and mappings into data objects, especially  
 [Terminology](https://pages.nist.gov/metaschema/specification/concepts/terminology/)
@@ -161,6 +161,6 @@ On several assemblies, what had been represented with a `name` flag is now repre
 
 ## Changes of ID to UUID
 
-A number of assemblies that used to carry `id` flags now carry `uuid` flags instead. These include (in the SSP model) : `location`, `party`, `resource`, `diagram`, `user`, `component`, `protocol`, `inventory-item`, `implemented-requirement`, `statement`, and `by-component`.
+A number of assemblies that used to carry `id` flags now carry `uuid` flags instead. These include (in the SSP model) : `location`, `party`, `resource`, `diagram`, `user`, `component`, `protocol`, `inventory-item`, `implemented-requirement`, `statement`, and `by-component`. In all models, it includes `location`, `party`, and `resource`. Finally, the full assemblies `catalog`, `profile` and `system-security-plan` fall into this category.
 
 Similarly, flags and fields that are named to indicate they provide a point of reference, are now renamed `-uuid` reflecting when their references is given specifically as a `uuid` (and validated as such) not as an `id`. These include `location-uuid` and `party-uuid`.
