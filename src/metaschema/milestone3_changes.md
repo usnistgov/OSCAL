@@ -112,7 +112,7 @@ A `citation` now appears only as a child of a `resource`.
 
 \[M3] flag: \[none]
 
-\[M2] model: *target\* (field), title? (field), desc? (field), doc-id\* (field)*, prop* (field), ? (any)
+\[M2] model: *target* (field), title? (field), desc? (field), doc-id\* (field)*, prop* (field), ? (any)
 
 \[M3] model: **text (field)**, prop* (field), biblio? (assembly)
 
