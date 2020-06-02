@@ -31,7 +31,7 @@
     </xsl:template>
     
     <!-- Rewriting top-level @id -->
-    <xsl:template match="/(catalog|profile)/@id[function-available('uuid:randomUUID')]" xmlns:uuid="java:java.util.UUID">
+    <xsl:template match="/*/@id[function-available('uuid:randomUUID')]" xmlns:uuid="java:java.util.UUID">
         <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
     </xsl:template>
     
