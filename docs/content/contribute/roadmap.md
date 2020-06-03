@@ -25,7 +25,7 @@ The first major version of OSCAL, OSCAL v1, will be developed over a series of m
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Catalog and Profile Models.
 
-This initial OSCAL work encompasses the [catalog](/documentation/schema/profile-layer/#catalog) and [profile](/documentation/schema/profile-layer/#profile) concepts of the OSCAL [architecture](/learnmore/architecture/).
+This initial OSCAL work encompasses the [catalog](/documentation/schema/profile-layer/#catalog) and [profile](/documentation/schema/profile-layer/#profile) concepts of the OSCAL architecture.
 
 The following stakeholders can benefit from control catalogs and control baselines defined using the OSCAL catalog and profile models respectively.
 
