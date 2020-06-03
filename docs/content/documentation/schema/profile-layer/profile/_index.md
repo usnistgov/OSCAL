@@ -8,7 +8,7 @@ aliases:
   - /documentation/schema/profile/
 ---
 
-The OSCAL Profile model represents a baseline of selected controls from one or more control catalogs, which is referred to as a "[profile](/learnmore/architecture/profile/)" in OSCAL. The Profile model is the sole model in the OSCAL [Profile](../) layer.
+The OSCAL Profile model represents a baseline of selected controls from one or more control catalogs, which is referred to as a "[profile](/documentation/schema/profile-layer/#profile)" in OSCAL. The Profile model is the sole model in the OSCAL [Profile](../) layer.
 
 OSCAL profiles define a set of operations that are to be performed on one or more control catalogs to suffeciently reduce and tailor the catalog for use as a system implementation baseline. As such, an OSCAL profile can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
 

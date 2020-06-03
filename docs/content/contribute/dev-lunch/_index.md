@@ -30,7 +30,7 @@ Participant Passcode: 0183
 
 {{% usa-tag %}}Format{{% /usa-tag %}} Question and Answer, Discussion
 
-Each teleconference will cover the following:
+After a brief introduction to the meeting, each teleconference will cover the following:
 
 - The OSCAL team will provide a *short summary* of **what we are currently working on**. (5 to 10 minutes)
 - The OSCAL team will **discuss issues** that we need **community feedback** on or **help with**, if we have any for that week. (0 to 10 minutes)
