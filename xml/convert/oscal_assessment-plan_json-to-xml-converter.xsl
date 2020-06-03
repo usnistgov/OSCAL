@@ -924,18 +924,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- *** Handling flag "resource/@uuid" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | *[@key='resources']/*/*[@key='uuid']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | *[@key='resources']/*/*[@key='uuid']"
-                 mode="as-attribute">
-      <xsl:attribute name="uuid">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
    <!-- *** Handling assembly "citation" *** -->
    <!-- *** NB - template matching 'array' overrides this one *** -->
    <xsl:template match="*[@key='citation']" priority="4" mode="json2xml">
@@ -1194,6 +1182,58 @@
                  match="*[@key='include-control']/*[@key='control-id'] | *[@key='include-controls']/*[@key='control-id'] | array[@key='include-controls']/*/*[@key='control-id'] | map[@key='include-controls']/*/*[@key='control-id'] | *[@key='exclude-control']/*[@key='control-id'] | *[@key='exclude-controls']/*[@key='control-id'] | array[@key='exclude-controls']/*/*[@key='control-id'] | map[@key='exclude-controls']/*/*[@key='control-id'] | *[@key='objective']/*[@key='control-id']"
                  mode="as-attribute">
       <xsl:attribute name="control-id">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling assembly "responsible-role" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='responsible-role'] | array[@key='responsible-roles']/* | map[@key='responsible-roles']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="responsible-role" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="@key" mode="as-attribute"/>
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template match="map[@key=('responsible-roles')]"
+                 priority="5"
+                 mode="json2xml">
+      <xsl:apply-templates mode="json2xml"/>
+   </xsl:template>
+   <xsl:template priority="2"
+                 match="map[@key=('responsible-roles')]/*/@key"
+                 mode="as-attribute">
+      <xsl:attribute name="role-id">
+         <xsl:value-of select="."/>
+      </xsl:attribute>
+   </xsl:template>
+   <xsl:template match="map[@key=('responsible-roles')]/map"
+                 priority="3"
+                 mode="json2xml">
+      <xsl:element name="responsible-role" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates select="@key" mode="as-attribute"/>
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling flag "responsible-role/@role-id" *** -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='responsible-role']/*[@key='role-id'] | *[@key='responsible-roles']/*[@key='role-id'] | *[@key='responsible-roles']/*/*[@key='role-id']"
+                 priority="7"
+                 mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='responsible-role']/*[@key='role-id'] | *[@key='responsible-roles']/*[@key='role-id'] | *[@key='responsible-roles']/*/*[@key='role-id']"
+                 mode="as-attribute">
+      <xsl:attribute name="role-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -1615,58 +1655,6 @@
                  match="*[@key='implemented-component']/*[@key='use'] | *[@key='implemented-components']/*[@key='use'] | *[@key='implemented-components']/*/*[@key='use']"
                  mode="as-attribute">
       <xsl:attribute name="use">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "responsible-role" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='responsible-role'] | array[@key='responsible-roles']/* | map[@key='responsible-roles']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="responsible-role" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('responsible-roles')]"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('responsible-roles')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="role-id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('responsible-roles')]/map"
-                 priority="3"
-                 mode="json2xml">
-      <xsl:element name="responsible-role" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "responsible-role/@role-id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='responsible-role']/*[@key='role-id'] | *[@key='responsible-roles']/*[@key='role-id'] | *[@key='responsible-roles']/*/*[@key='role-id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='responsible-role']/*[@key='role-id'] | *[@key='responsible-roles']/*[@key='role-id'] | *[@key='responsible-roles']/*/*[@key='role-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="role-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>

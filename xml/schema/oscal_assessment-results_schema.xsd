@@ -1061,7 +1061,16 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="oscal-ar:uuid"/>
+         <xs:attribute name="uuid" use="required" type="oscal-ar:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="citation">
@@ -1254,6 +1263,47 @@
                </xs:attribute>
             </xs:extension>
          </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="responsible-role">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Responsible Role</m:formal-name>
+            <m:description>A reference to one or more roles with responsibility for performing a function relative to the control.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the control.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ar:party-uuid" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="role-id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Responsible Role ID</m:formal-name>
+                  <m:description>The role that is responsible for the business function.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="status">
@@ -1908,47 +1958,6 @@
          <xs:selector xpath="oscal-ar:responsible-party"/>
          <xs:field xpath="@role-id"/>
       </xs:unique>
-   </xs:element>
-   <xs:element name="responsible-role">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Responsible Role</m:formal-name>
-            <m:description>A reference to one or more roles with responsibility for performing a function relative to the control.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the control.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ar:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ar:party-uuid" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="role-id" use="required" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Responsible Role ID</m:formal-name>
-                  <m:description>The role that is responsible for the business function.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
    </xs:element>
    <xs:element name="import-ap">
       <xs:annotation>

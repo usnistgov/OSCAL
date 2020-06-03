@@ -1243,7 +1243,16 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="oscal-catalog:uuid"/>
+         <xs:attribute name="uuid" use="required" type="oscal-catalog:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="citation">
@@ -1481,6 +1490,8 @@
             <xs:element ref="oscal-catalog:title" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-catalog:param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-catalog:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-catalog:part" minOccurs="0" maxOccurs="unbounded"/>
             <xs:choice>
                <xs:element ref="oscal-catalog:group" minOccurs="0" maxOccurs="unbounded"/>

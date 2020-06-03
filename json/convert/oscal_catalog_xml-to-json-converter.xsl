@@ -897,6 +897,16 @@
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations" m:in-json="ARRAY">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:if test="exists(part)">
             <array key="parts" m:in-json="ARRAY">
                <xsl:apply-templates select="part" mode="#current"/>

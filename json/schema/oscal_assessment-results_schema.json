@@ -573,7 +573,9 @@
         "type" : "object",
         "properties" : 
         { "uuid" : 
-          { "type" : "string",
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
           { "$ref" : "#/definitions/title" },
@@ -743,6 +745,35 @@
         "description" : "Additional commentary on the parent item.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
+      "responsible-role" : 
+      { "title" : "Responsible Role",
+        "description" : "A reference to one or more roles with responsibility for performing a function relative to the control.",
+        "$id" : "#/definitions/responsible-role",
+        "type" : "object",
+        "properties" : 
+        { "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "party-ids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/party-uuid" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
       "status" : 
       { "title" : "Status",
         "description" : "Describes the operational status of the system.",
@@ -1038,35 +1069,6 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "responsible-role" : 
-      { "title" : "Responsible Role",
-        "description" : "A reference to one or more roles with responsibility for performing a function relative to the control.",
-        "$id" : "#/definitions/responsible-role",
-        "type" : "object",
-        "properties" : 
-        { "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "party-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
