@@ -10,10 +10,6 @@ sidenav:
 
 The OSCAL catalog layer provides a structured catalog model for representing a **catalog** of **controls**.
 
-This documentation for the OSCAL catalog layer will review:
-
-- The key concepts covered by the catalog layer
-
 ## Concepts
 
 Privacy and security documentation today often discuss **controls** and **catalogs**. The following subsections describe each of these concepts.
@@ -130,10 +126,8 @@ Typically, catalogs are represented in human readable documentary form, in which
 
 Additionally, catalogs may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls is supported in OSCAL because some control catalog formats, such as COBIT 5, address assessment information directly. Others, like 800-53A, have it separately. 
 
-The OSCAL [catalog model](catalog/) defines structured, machine-readable XML, JSON, and YAML representations of the information contained within a control catalog. It is important to note that the OSCAL catalog model is not a catalog document format. This means that the introductory prose included in many control catalogs is not present in the OSCAL catalog model. Instead, the OSCAL catalog formats provide a robust syntax for representing collections of controls, including control statements, assessment objectives, and other control details. This structured form of a control catalog allows control information to be easily imported, exported, indexed, and searched by applications.
+## Layer Organization
 
-The OSCAL Catalog layer provides the OSCAL [catalog model](catalog/), which . The OSCAL catalog model is the sole model in the OSCAL catalog layer of the OSCAL [architecture](/learnmore/architecture/).
+The OSCAL [catalog model](catalog/) provides a structured, machine-readable XML, JSON, and YAML representations of the information contained within a control catalog. It is important to note that the OSCAL catalog model is not a catalog document format. This means that the introductory prose included in many control catalogs is not present in the OSCAL catalog model. Instead, the OSCAL catalog formats provide a robust syntax for representing collections of controls, including control statements, assessment objectives, and other control details. This structured form of a control catalog allows control information to be easily imported, exported, indexed, and searched by applications.
 
-The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model [examples](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/) in the OSCAL GitHub repository.
-
-OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using the [catalog model](catalog/). This structured form of a control catalog allows control information to be easily searched, imported, and exported by applications.
+The OSCAL catalog model is the sole model in the OSCAL catalog layer of the OSCAL [architecture](/learnmore/architecture/).
