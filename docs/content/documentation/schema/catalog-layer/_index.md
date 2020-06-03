@@ -1,7 +1,7 @@
 ---
 title: Catalog Layer
 heading: "OSCAL Catalog Layer"
-description: Provides the OSCAL [catalog model](/documentation/schema/catalog-layer/catalog/), which represents a [control catalog](/learnmore/concepts/catalog/).
+description: Provides the OSCAL [catalog model](/documentation/schema/catalog-layer/catalog/), which represents a [control catalog](/documentation/schema/catalog-layer/#catalog).
 weight: 70
 sidenav:
     activerenderdepth: 2
