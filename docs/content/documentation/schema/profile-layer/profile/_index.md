@@ -1,7 +1,7 @@
 ---
 title: Profile Model
 heading: "OSCAL Profile Layer: Profile Model"
-description: XML and JSON format documentation for the OSCAL [Profile model](.), which is the sole model in the OSCAL [Profile](../) layer. These formats model a [control baseline](/learnmore/architecture/profile/).
+description: XML and JSON format documentation for the OSCAL [Profile model](.), which is the sole model in the OSCAL [Profile](../) layer. These formats model a [profile](/documentation/schema/profile-layer/#profile).
 weight: 40
 aliases:
   - /docs/model/profile/
@@ -36,6 +36,8 @@ Multiple examples of baselines expressed using the OSCAL profile model can be fo
 |:---|:---|
 | NIST SP 800-53 rev 4 | \[[XML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/)\] \[[JSON](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/json/)\] \[[YAML](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/yaml/)\]
 | FedRAMP Baselines | \[[XML](https://github.com/usnistgov/OSCAL/blob/master/content/fedramp.gov/xml/)\] \[[JSON](https://github.com/usnistgov/OSCAL/blob/master/content/fedramp.gov/json/)\] \[[YAML](https://github.com/usnistgov/OSCAL/blob/master/content/fedramp.gov/yaml/)\]
+
+You will also find the "resolved" version of the profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/documentation/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.
 
 The following OSCAL profile model examples are provided by the above.
 

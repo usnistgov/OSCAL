@@ -134,4 +134,4 @@ Additionally, catalogs may also define objectives and methods for assessing the 
 
 The OSCAL [catalog model](catalog/) provides a structured, machine-readable XML, JSON, and YAML representations of the information contained within a control catalog. It is important to note that the OSCAL catalog model is not a catalog document format. This means that the introductory prose included in many control catalogs is not present in the OSCAL catalog model. Instead, the OSCAL catalog formats provide a robust syntax for representing collections of controls, including control statements, assessment objectives, and other control details. This structured form of a control catalog allows control information to be easily imported, exported, indexed, and searched by applications.
 
-The OSCAL catalog model is the sole model in the OSCAL catalog layer of the OSCAL [architecture](/learnmore/architecture/).
+The OSCAL catalog model is the sole model in the OSCAL catalog layer of the OSCAL architecture.
