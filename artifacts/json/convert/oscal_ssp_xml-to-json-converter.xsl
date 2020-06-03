@@ -751,6 +751,46 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
+   <xsl:template match="responsible-role" mode="xml2json">
+      <map key="{@role-id}">
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations" m:in-json="ARRAY">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(party-uuid)">
+            <array key="party-ids" m:in-json="ARRAY">
+               <xsl:apply-templates select="party-uuid" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="set-parameter" mode="xml2json">
+      <map key="{@param-id}">
+         <xsl:apply-templates select="value" mode="#current"/>
+      </map>
+   </xsl:template>
+   <xsl:template match="value" mode="xml2json">
+      <string key="value">
+         <xsl:apply-templates mode="#current"/>
+      </string>
+   </xsl:template>
    <xsl:template match="system-security-plan" mode="xml2json">
       <map key="system-security-plan">
          <xsl:apply-templates mode="as-string" select="@uuid"/>
@@ -1558,36 +1598,6 @@
          </xsl:for-each>
       </map>
    </xsl:template>
-   <xsl:template match="responsible-role" mode="xml2json">
-      <map key="{@role-id}">
-         <xsl:if test="exists(prop)">
-            <array key="properties" m:in-json="ARRAY">
-               <xsl:apply-templates select="prop" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(annotation)">
-            <array key="annotations" m:in-json="ARRAY">
-               <xsl:apply-templates select="annotation" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(link)">
-            <array key="links" m:in-json="ARRAY">
-               <xsl:apply-templates select="link" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(party-uuid)">
-            <array key="party-ids" m:in-json="ARRAY">
-               <xsl:apply-templates select="party-uuid" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:for-each select="remarks">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">remarks</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
-      </map>
-   </xsl:template>
    <xsl:template match="by-component" mode="xml2json">
       <map key="{@component-id}">
          <xsl:apply-templates mode="as-string" select="@uuid"/>
@@ -1623,15 +1633,5 @@
             </map>
          </xsl:for-each-group>
       </map>
-   </xsl:template>
-   <xsl:template match="set-parameter" mode="xml2json">
-      <map key="{@param-id}">
-         <xsl:apply-templates select="value" mode="#current"/>
-      </map>
-   </xsl:template>
-   <xsl:template match="value" mode="xml2json">
-      <string key="value">
-         <xsl:apply-templates mode="#current"/>
-      </string>
    </xsl:template>
 </xsl:stylesheet>

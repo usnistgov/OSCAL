@@ -1095,18 +1095,6 @@
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- *** Handling flag "resource/@uuid" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | *[@key='resources']/*/*[@key='uuid']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | *[@key='resources']/*/*[@key='uuid']"
-                 mode="as-attribute">
-      <xsl:attribute name="uuid">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
    <!-- *** Handling assembly "citation" *** -->
    <!-- *** NB - template matching 'array' overrides this one *** -->
    <xsl:template match="*[@key='citation']" priority="4" mode="json2xml">
@@ -1364,6 +1352,8 @@
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>

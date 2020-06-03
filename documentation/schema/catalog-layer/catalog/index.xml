@@ -44,6 +44,4 @@ XML namespace http://csrc.nist.gov/ns/oscal/1.0
 The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
 Switch to JSON addr-line Name Address line
 Description A single line of an address.
-An element (string) This element appears inside: address.</description></item><item><title>Catalog Examples</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/examples/</guid><description>The following OSCAL Catalog model examples are provided.
-NIST SP 800-53 Note: Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL XML, JSON, and YAML formats in the OSCAL GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.
-Here is a non-normative, partial illustration showing how control AC1 from NIST SP 800-53 rev 4 can be rendered in OSCAL Catalog XML format with a &amp;lt;control&amp;gt; element.</description></item></channel></rss>
+An element (string) This element appears inside: address.</description></item></channel></rss>

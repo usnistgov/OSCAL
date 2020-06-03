@@ -1003,7 +1003,16 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="oscal-profile:uuid"/>
+         <xs:attribute name="uuid" use="required" type="oscal-profile:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="citation">
