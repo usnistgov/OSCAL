@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="84cd0983-a0f3-4aa0-919f-f45854303e1b">
+         uuid="030648b4-f02a-4395-ab11-50a73e2494c9">
    <metadata>
       <title>FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</title>
       <published>2020-02-02T00:00:00.000-05:00</published>
       <last-modified>2020-06-01T10:00:00.000-05:00</last-modified>
       <version>1.2</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-06-01T21:36:48.015926Z</prop>
+      <prop name="resolution-timestamp">2020-06-03T00:45:50.244153Z</prop>
       <link rel="resolution-source" href="FedRAMP_LI-SaaS-baseline_profile.xml">FedRAMP Tailored Low Impact Software as a Service (LI-SaaS) Baseline</link>
       <role id="parpared-by">
          <title>Document creator</title>

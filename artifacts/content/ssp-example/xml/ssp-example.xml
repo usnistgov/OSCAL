@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="example-ssp">
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+                      uuid="66c2a1c8-5830-48bd-8fdd-55a1c3a52888">
    <metadata>
       <title>Enterprise Logging and Auditing System Security Plan</title>
       <last-modified>2019-09-23T18:14:50.591Z</last-modified>

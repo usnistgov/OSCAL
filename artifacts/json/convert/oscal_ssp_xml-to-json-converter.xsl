@@ -753,7 +753,7 @@
    </xsl:template>
    <xsl:template match="system-security-plan" mode="xml2json">
       <map key="system-security-plan">
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates select="metadata" mode="#current"/>
          <xsl:apply-templates select="import-profile" mode="#current"/>
          <xsl:apply-templates select="system-characteristics" mode="#current"/>
