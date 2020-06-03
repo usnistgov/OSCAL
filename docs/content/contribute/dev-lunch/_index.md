@@ -13,7 +13,7 @@ sidenav:
 
 Note: (1/10/2020) The Bluejeans info below has changed.
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/187858571/0183 ([ICS file](../lunch-with-the-devs.ics))
+{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/187858571/0183 ([ICS file](lunch-with-the-devs.ics))
 
 {{% usa-tag %}}Meeting Details{{% /usa-tag %}}
 
