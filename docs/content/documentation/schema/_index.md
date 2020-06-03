@@ -37,11 +37,11 @@ The following layers are defined in the OSCAL architecture, which are listed fro
 
 ### Catalog Layer
 
-Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](/catalog-layer/catalog/) who's information structures allow a control catalog and it's collection of controls to be represented in a structured, machine readable form.
+Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](catalog-layer/catalog/) who's information structures allow a control catalog and it's collection of controls to be represented in a structured, machine readable form.
 
 ### Profile Layer
 
-The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting a specific set of security control requirements from one or more control catalogs. The term "[profile](../concepts/profile/)" in OSCAL is also called a *baseline* or *overlay* in other terminology. The OSCAL Profile model allows for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements).
+The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting a specific set of security control requirements from one or more control catalogs. The term "profile" in OSCAL is also called a *baseline* or *overlay* in other terminology. The OSCAL Profile model allows for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements).
 
 A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs. OSCAL Profiles can also be based on other OSCAL Profiles, allowing baselines to be established based on the customization of another baseline. This is something we see in the real world quite a bit.
 

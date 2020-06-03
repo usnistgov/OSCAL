@@ -6,6 +6,10 @@ weight: 70
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2
+aliases:
+ - /learnmore/concepts/
+ - /learnmore/concepts/control/
+ - /learnmore/concepts/catalog/
 ---
 
 The OSCAL catalog layer provides a structured catalog model for representing a **catalog** of **controls**.
