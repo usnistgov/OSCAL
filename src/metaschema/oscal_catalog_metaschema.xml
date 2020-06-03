@@ -67,6 +67,12 @@
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </field>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts" in-json="ARRAY"/>
          </assembly>

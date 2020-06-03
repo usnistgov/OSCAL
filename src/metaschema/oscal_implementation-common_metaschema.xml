@@ -31,6 +31,12 @@
             <assembly ref="only-statement" max-occurs="unbounded">
                 <group-as name="only-statements" in-json="BY_KEY"/>
             </assembly>
+            <assembly ref="responsible-role" max-occurs="unbounded">
+                <group-as name="responsible-roles" in-json="BY_KEY"/>
+            </assembly>
+            <assembly ref="set-parameter" max-occurs="unbounded">
+                <group-as name="parameter-settings" in-json="BY_KEY"/>
+            </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
@@ -105,5 +111,56 @@
             <field ref="description" min-occurs="1"/>
         </model>
     </define-assembly>
-
+    
+    <define-assembly name="responsible-role">
+        <formal-name>Responsible Role</formal-name>
+        <description>A reference to one or more roles with responsibility for performing a function relative to the control.</description>
+        <json-key flag-name="role-id"/>
+        <flag name="role-id" required="yes" as-type="NCName">
+            <formal-name>Responsible Role ID</formal-name>
+            <description>The role that is responsible for the business function.</description>
+        </flag>
+        <model>
+            <field ref="prop" max-occurs="unbounded">
+                <group-as name="properties" in-json="ARRAY"/>
+            </field>
+            <assembly ref="annotation" max-occurs="unbounded">
+                <group-as name="annotations" in-json="ARRAY"/>
+            </assembly>
+            <field ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </field>
+            <field ref="party-uuid" max-occurs="unbounded">
+                <group-as name="party-ids" in-json="ARRAY"/>
+            </field>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+    </define-assembly>
+    
+    <define-assembly name="set-parameter">
+        <formal-name>Set Parameter Value</formal-name>
+        <description>Identifies the parameter that will be filled in by the enclosed value element.</description>
+        <json-key flag-name="param-id"/>
+        <flag ref="param-id" required="yes"/>
+        <!--      <flag ref="target" as-type="string"/>
+-->      <model>
+            <field ref="value" min-occurs="1"/>
+        </model>
+        
+    </define-assembly>
+    <define-field name="value" as-type="string">
+        <formal-name>Value</formal-name>
+        <description>The phrase or string that fills-in the parameter and completes the requirement statement.</description>
+    </define-field>
+    <!-- ===== FLAGS ===== -->
+    <define-flag name="param-id" as-type="NCName">
+        <formal-name>Parameter ID</formal-name>
+        <description>Points to a parameter within a control, to which the contained value will be assigned.</description>
+        <example>
+            <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
+                <enum>System ISSO</enum>
+            </set-param>
+        </example>
+    </define-flag>
+    
 </METASCHEMA>

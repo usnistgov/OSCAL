@@ -517,7 +517,7 @@
    <define-assembly name="resource">
       <formal-name>Resource</formal-name>
       <description>A resource associated with the present document, which may be a pointer to other data or a citation.</description>
-      <flag name="uuid" required="yes" as-type="uuid"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="title"/>
          <field ref="desc"/>
