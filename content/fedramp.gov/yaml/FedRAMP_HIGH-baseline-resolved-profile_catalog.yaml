@@ -1,5 +1,5 @@
 catalog: 
-  uuid:        4b73c6bb-ba29-4070-9b8c-f7588c624e6a
+  uuid:        a8927ef8-9d0a-4115-9e7d-2d5361b01755
   metadata: 
     title:               FedRAMP High Baseline
     published:           2020-06-01T00:00:00.000-04:00
@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-06-03T21:31:30.605295Z
+        value: 2020-06-03T21:49:54.489142Z
     links: 
       - 
         href: FedRAMP_HIGH-baseline_profile.xml
