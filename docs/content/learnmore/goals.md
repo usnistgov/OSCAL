@@ -1,6 +1,6 @@
 ---
 title: Project Goals and Design Principles
-description: OSCAL is being developed to address a number of challeges faced by information security professionals.
+description: OSCAL is being developed to address a number of challenges faced by information security professionals.
 heading:
 weight: 30
 ---
@@ -46,5 +46,5 @@ Produce a set of interoperable, extensible, machine-readable formats through a c
 
 Align OSCAL models with current, practical information, and support advanced structures that provide for greater automation and verification.
 
-- Ensure security controls, implementation, and assessment processes have full traceability to the selected control baseline and accross system boundaries for interconnected systems and common control providers.
+- Ensure security controls, implementation, and assessment processes have full traceability to the selected control baseline and across system boundaries for interconnected systems and common control providers.
 - Provide a path for early adoption and ongoing evolution around how OSCAL will be used.

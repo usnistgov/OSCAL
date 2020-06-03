@@ -25,7 +25,7 @@ The first major version of OSCAL, OSCAL v1, will be developed over a series of m
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Catalog and Profile Models.
 
-This initial OSCAL work encompasses the [catalog](/learnmore/architecture/catalog/) and [profile](/learnmore/architecture/profile/) concepts of the OSCAL [architecture](/learnmore/architecture/).
+This initial OSCAL work encompasses the [catalog](/documentation/schema/profile-layer/#catalog) and [profile](/documentation/schema/profile-layer/#profile) concepts of the OSCAL architecture.
 
 The following stakeholders can benefit from control catalogs and control baselines defined using the OSCAL catalog and profile models respectively.
 
@@ -43,7 +43,7 @@ The following stakeholders can benefit from control catalogs and control baselin
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL System Security Plan (SSP) Model.
 
-This next phase of OSCAL work encompasses the SSP concepts that are part of the implementation layer of the OSCAL [architecture](/learnmore/architecture/). Updates to the catalog and profile models are also provided with this release.
+In this development phase the system security plan (SSP) model was developed as part of the [implementation layer](/documentation/schema/implementation-layer/) of the OSCAL architecture. Updates to the [catalog](/documentation/schema/catalog-layer/catalog/) and [profile](/documentation/schema/profile-layer/profile/) models are also provided with this release.
 
 The following additional stakeholders can benefit from SSPs formatted based on the OSCAL SSP model.
 
@@ -57,11 +57,15 @@ The following additional stakeholders can benefit from SSPs formatted based on t
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Under development](https://github.com/usnistgov/OSCAL/)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/)
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model.
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model and drafts of the assessment and assessment result layer models.
 
-This current phase of OSCAL work involves completing development of the OSCAL component definition model that is part of the implementation layer of the OSCAL [architecture](/learnmore/architecture/). Updates to the catalog, profile, and SSP models will also be provided with this release.
+This development phase focused on three major areas:
+
+1. The OSCAL [component definition model](/documentation/schema/implementation-layer/component/), which is part of the [implementation layer](/documentation/schema/implementation-layer/) of the OSCAL architecture.
+1. Creation of draft models for the [assessment](/documentation/schema/assessment-layer/) and [assessment result](/documentation/schema/assessment-results-layer/) layers. Drafts of the [assessment plan](/documentation/schema/assessment-layer/assessment-plan/), [assessment results](/documentation/schema/assessment-results-layer/assessment-results/), and [plan of action and milestones](/documentation/schema/assessment-results-layer/poam/) (POA&M) models were created.
+1. Updates to the [catalog](/documentation/schema/catalog-layer/catalog/), [profile](/documentation/schema/profile-layer/profile/), and [SSP](/documentation/schema/implementation-layer/ssp/) models are also provided with this release.
 
 The following additional stakeholders can benefit from component definitions formatted based on the OSCAL component definitions model. They include the following producers of OSCAL catalogs, profiles, and/or tools:
 
@@ -93,8 +97,8 @@ Similar to OSCAL v1, the second major version of OSCAL, OSCAL v2, will be develo
 
 {{<usa-tag>}}Status{{</usa-tag>}} Planned
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Develop the OSCAL Assessment and Assessment Results models.
+{{<usa-tag>}}Focus{{</usa-tag>}} Further development of the OSCAL Assessment and Assessment Results models.
 
-The OSCAL Assessment and Assessment Results models will be developed as part of the OSCAL 2.0.0 release. This development will address the Assessment and Assessment Results layers of the OSCAL [architecture](/learnmore/architecture/).
+The OSCAL Assessment and Assessment Results layers of the OSCAL architecture will continue to be developed as part of the OSCAL 2.0.0 release. This phase of development will focus on integrating automated means of collecting assessment data using existing assessment technologies.
 
-This assessment work has been split from the earlier OSCAL v1 epic to allow a stable version of OSCAL formats to be released and maintained that provide a solid foundation for publishing control catalog and baseline information, and to allow organizations to automate the documentation and maintenance of system implementations. This will allow tool vendors to develop against stable OSCAL v1 releases, while ongoing development of OSCAL v2 continues.
+This assessment development work has been split from the earlier OSCAL v1 epic to allow a stable version of OSCAL formats to be released and maintained that provide a solid foundation for publishing control catalog and baseline information, and to allow organizations to automate the documentation, maintenance, and human-focused assessment of system implementations. This will allow tool vendors to develop against stable OSCAL v1 releases, while ongoing development of OSCAL v2 continues.

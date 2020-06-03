@@ -9,6 +9,7 @@ This tutorial covers creating a basic OSCAL control catalog. Before reading this
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Read the OSCAL catalog layer [overview](/documentation/schema/catalog-layer/).
+- Review the OSCAL [catalog model documentation](/documentation/schema/catalog-layer/catalog/).
 
 ## What is an OSCAL Catalog?
 
