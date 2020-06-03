@@ -37,7 +37,7 @@ The following layers are defined in the OSCAL architecture, which are listed fro
 
 ### Catalog Layer
 
-Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](catalog-layer/catalog/) who's information structures allow a control catalog and it's collection of controls to be represented in a structured, machine readable form.
+Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](catalog-layer/catalog/) whose information structures allow a control catalog and its collection of controls to be represented in a structured, machine readable form.
 
 ### Profile Layer
 
@@ -49,7 +49,7 @@ In OSCAL, profiles are generalized to be applicable to any set of information pr
 
 ### Implementation Layer
 
-The [OSCAL implementation layer](implementation-layer/) provides models for describing how controls are implemented in a specific system or in distributed component that can be incorporated into a system.
+The [OSCAL implementation layer](implementation-layer/) provides models for describing how controls are implemented in a specific system or in a distributed component that can be incorporated into a system.
 
 The OSCAL implementation layer defines two models:
 
@@ -73,7 +73,7 @@ The OSCAL assessment layer defines two models:
 
 ## Status of the OSCAL Layers
 
-The OSCAL layers described above provide a high-level explanation of the OSCAL models. As the OSCAL project [progresses](/contribute/roadmap/), the features of these models are expected to evolve and expand; the layer descriptions above are included here to indicate the current status of the related models within OSCAL and may not represent the final features supported by each model. XML, JSON, and YAML formats for each model will be provided when the model is released.
+The OSCAL layers described above provide a framework for organizing the OSCAL models. As the OSCAL project [progresses](/contribute/roadmap/), the features of these models are expected to evolve and expand; the layer descriptions above are included here to indicate the current status of the related models within OSCAL and may not represent the final features supported by each layer and their corrisponding model(s). XML, JSON, and YAML formats for each model will be provided when the model is released.
 
 The OSCAL models above are in various states of readiness for release:
 
@@ -87,10 +87,10 @@ The following is the release state of each model, along with download links for 
 
 | Layer | Model | Current State | Next [Milestone](/contribute/roadmap/) | Formats |
 |:--- |:--- |:--- |:--- |:--- |
-| Catalog | Catalog | Draft | Pre-Final (1.0.0 M3) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_catalog_schema.json), YAML |
-| Profile | Profile | Draft | Pre-Final (1.0.0 M3) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json), YAML |
-| Implementation | Component Definition | Early Access Draft | Draft (1.0.0 M3) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_component_schema.json), YAML |
-| Implementation | System Security Plan | Draft | Pre-Final (1.0.0 M3) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_ssp_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_ssp_schema.json), YAML |
-| Assessment | Assessment Plan | Early Access Draft | Draft (1.0.0 FINAL) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-plan_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-plan_schema.json), YAML |
-| Assessment Results | Assessment Results | Early Access Draft | Draft (1.0.0 FINAL) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json), YAML |
-| Assessment Results | Plan of Action and Milestones | Early Access Draft | Draft (1.0.0 FINAL) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json), YAML |
+| Catalog | Catalog | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_catalog_schema.json), YAML |
+| Profile | Profile | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json), YAML |
+| Implementation | Component Definition | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_component_schema.json), YAML |
+| Implementation | System Security Plan | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_ssp_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_ssp_schema.json), YAML |
+| Assessment | Assessment Plan | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-plan_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-plan_schema.json), YAML |
+| Assessment Results | Assessment Results | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json), YAML |
+| Assessment Results | Plan of Action and Milestones | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json), YAML |
