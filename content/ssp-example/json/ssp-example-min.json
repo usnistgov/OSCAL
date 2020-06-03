@@ -1,6 +1,6 @@
 {
     "system-security-plan": {
-        "id": "example-ssp",
+        "uuid": "66c2a1c8-5830-48bd-8fdd-55a1c3a52888",
         "metadata": {
             "title": "Enterprise Logging and Auditing System Security Plan",
             "last-modified": "2019-09-23T18:14:50.591Z",

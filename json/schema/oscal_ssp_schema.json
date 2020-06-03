@@ -700,10 +700,11 @@
         "$id" : "#/definitions/system-security-plan",
         "type" : "object",
         "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "metadata" : 
           { "$ref" : "#/definitions/metadata" },
           "import-profile" : 
@@ -717,7 +718,7 @@
           "back-matter" : 
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
-        [ "id",
+        [ "uuid",
           "metadata",
           "import-profile",
           "system-characteristics",

@@ -1215,14 +1215,14 @@
             <xs:element ref="oscal-ssp:control-implementation" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
