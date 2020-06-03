@@ -30,7 +30,7 @@
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
       <description>A system security plan, such as those described in NIST SP 800-18</description>
-      <flag ref="id" required="yes"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="import-profile" min-occurs="1"/>

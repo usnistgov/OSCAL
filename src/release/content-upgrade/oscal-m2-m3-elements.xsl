@@ -26,7 +26,7 @@
     <xsl:mode name="copy" on-no-match="shallow-copy"/>
     
     <xsl:template match="/*">
-        <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - </xsl:comment>
+        <!--<xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - </xsl:comment>-->
         <xsl:next-match/>
     </xsl:template>
     
@@ -41,7 +41,6 @@
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="title"/>
             <!-- time stamp it at runtime -->
-            <xsl:apply-templates select="child::*[1]" mode="ws"/>
             <last-modified xsl:expand-text="true">{ current-dateTime() }</last-modified>
             <xsl:apply-templates select="* except title | version"/>
         </xsl:copy>
@@ -55,12 +54,48 @@
     </xsl:template>
     
     <xsl:template match="metadata/*" priority="5">
-        <xsl:apply-templates select="." mode="ws"/>
         <xsl:next-match/>
         <xsl:if test="empty(following-sibling::*)">
             <xsl:apply-templates select=".." mode="ws"/>
         </xsl:if>
     </xsl:template>
+    
+    <xsl:template match="party">
+        <party>
+            <xsl:apply-templates select="." mode="party-type"/>
+            <!-- doing uuid in a later step -->
+            <xsl:copy-of select="@id"/>
+            <xsl:apply-templates/>
+            <xsl:if test="empty(*)" expand-text="true">
+                <party-name>{ @id }</party-name>
+            </xsl:if>
+        </party>
+    </xsl:template>
+    
+    <xsl:template match="party[empty(org) and count(person) = 1]" mode="party-type">
+        <xsl:attribute name="type">person</xsl:attribute>
+    </xsl:template>
+    
+    <xsl:template match="party" mode="party-type">
+        <xsl:attribute name="type">organization</xsl:attribute>
+    </xsl:template>
+    
+    <xsl:template match="party/org | party/person">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+    <xsl:template match="person-name | org-name">
+        <party-name>
+            <xsl:apply-templates/>
+        </party-name>
+    </xsl:template>
+    
+    <xsl:template match="party-id">
+        <party-uuid>
+            <xsl:apply-templates/>
+        </party-uuid>
+    </xsl:template>
+    
     
     <xsl:template match="*" mode="ws">
         <xsl:text>&#xA;</xsl:text>
@@ -77,7 +112,8 @@
     </xsl:template>
     
     <xsl:template match="back-matter/citation">
-        <resource uuid="{@id}">
+        <!-- leaving an @id as link target to be mapped to uuid in a next stage       -->
+        <resource id="{@id}">
             <xsl:apply-templates select="title" mode="copy"/>
             <xsl:apply-templates select="doc-id" mode="copy"/>
             <xsl:next-match/>
@@ -105,10 +141,25 @@
     
     <!-- @id to @uuid migration ... does *not* rewrite UUID values ... see rewrite-uuid for this ...   -->
     
+<!-- Following are mappings for SSP elements  -->
     
-<!-- changing to 'uuid' but keeping the value  -->
-    <xsl:template match="resource/@id">
-        <xsl:attribute name="uuid" select="."/>
+    <xsl:template match="information-type | component">
+        <xsl:copy>
+            <xsl:apply-templates select="@* except @name, @name"/>
+            <xsl:apply-templates/>
+        </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="information-type/@name | component/@name">
+        <title>
+            <xsl:sequence select="string(.)"/>
+        </title>
+    </xsl:template>
+    
+    <xsl:template match="implemented-component">
+        <xsl:copy>
+            <xsl:comment> @use value? </xsl:comment>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
 </xsl:stylesheet>

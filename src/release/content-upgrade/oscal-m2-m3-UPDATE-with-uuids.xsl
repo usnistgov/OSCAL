@@ -43,8 +43,9 @@
 
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
-        <opr:transform version="2.0">new-uuids.xsl</opr:transform>
-        <opr:transform version="2.0">restore-uuids.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-m2-m3-elements.xsl</opr:transform>
+        <opr:transform version="2.0">add-uuids.xsl</opr:transform>
+        <opr:transform version="2.0">rewrite-links.xsl</opr:transform>
         <opr:finalize/>
     </xsl:variable>
 

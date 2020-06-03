@@ -15,18 +15,23 @@
     <p:pipe        port="result"       step="input"/>
   </p:output>
   
-  <p:serialization port="b.add-uuids" indent="true"/>
-  <p:output        port="b.add-uuids" primary="false">
+  <p:serialization port="b.update-structures" indent="true"/>
+  <p:output        port="b.update-structures" primary="false">
+    <p:pipe        port="result"      step="M2-M3-update"/>
+  </p:output>
+  
+  <p:serialization port="c.add-uuids" indent="true"/>
+  <p:output        port="c.add-uuids" primary="false">
     <p:pipe        port="result"      step="add-uuids"/>
   </p:output>
   
-  <p:serialization port="c.rewrite-links" indent="true"/>
-  <p:output        port="c.rewrite-links" primary="false">
+  <p:serialization port="d.rewrite-links" indent="true"/>
+  <p:output        port="d.rewrite-links" primary="false">
     <p:pipe        port="result"          step="rewrite-links"/>
   </p:output>
   
-  <p:serialization port="f.finish" indent="true"/>
-  <p:output        port="f.finish" primary="false">
+  <p:serialization port="f.final" indent="true"/>
+  <p:output        port="f.final" primary="false">
     <p:pipe        port="result"   step="final"/>
   </p:output>
   
@@ -48,26 +53,43 @@
   
   <p:identity name="input"/>
   
+  <p:xslt name="M2-M3-update">
+    <p:input port="stylesheet">
+      <p:document href="oscal-m2-m3-elements.xsl"/>
+    </p:input>
+  </p:xslt>
+  
   <p:xslt name="add-uuids">
     <p:input port="stylesheet">
-      <p:document href="new-uuids.xsl"/>
+      <p:document href="add-uuids.xsl"/>
     </p:input>
   </p:xslt>
   
   <p:xslt name="rewrite-links">
     <p:input port="stylesheet">
-      <p:document href="restore-uuids.xsl"/>
+      <p:document href="rewrite-links.xsl"/>
     </p:input>
   </p:xslt>
   
-  
-  
-  <!--<p:xslt name="finish">
+  <p:xslt name="final">
     <p:input port="stylesheet">
-      <p:document href="oscal-profile-resolve-finish.xsl"/>
+      <p:inline>
+        <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+          
+          <xsl:mode on-no-match="shallow-copy"/>
+          <xsl:template match="/">
+            <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - M2-M3 update w/ uuids </xsl:comment>
+            <xsl:text>&#xA;</xsl:text>
+            <xsl:apply-templates/>
+          </xsl:template>
+          
+          <xsl:template match="/comment()">
+            <xsl:copy-of select="."/>
+            <xsl:text>&#xA;</xsl:text>
+          </xsl:template>
+        </xsl:stylesheet>
+      </p:inline>
     </p:input>
-  </p:xslt>-->
+  </p:xslt>
   
-  <p:identity name="final"/>
- 
 </p:declare-step>

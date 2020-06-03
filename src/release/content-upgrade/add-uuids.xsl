@@ -22,19 +22,29 @@
     <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:template match="/">
-        <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - UUIDs refreshed </xsl:comment>
+        <!--<xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - UUIDs refreshed </xsl:comment>-->
         <xsl:apply-templates/>
     </xsl:template>
     
     <!-- Copying and adding uuid -->
-    <xsl:template match="resource/@id | party-id/@id" xmlns:uuid="java:java.util.UUID">
+    <xsl:template xmlns:uuid="java:java.util.UUID" match="resource/@id | party/@id |
+        location/@id | party/@id | resource/@id | diagram/@id | user/@id | component/@id |
+        protocol/@id | inventory-item/@id | implemented-requirement/@id | statement/@id | by-component/@id">
         <xsl:copy-of select="."/>
         <xsl:call-template name="uuid"/>
     </xsl:template>
+    
     
     <!-- Fresh uuid -->
     <xsl:template match="*[empty(@id)]/@uuid" name="uuid" xmlns:uuid="java:java.util.UUID">
         <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
     </xsl:template>
 
+    <xsl:template match="implemented-component | implemented-requirement">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:call-template name="uuid"/>
+        </xsl:copy>
+    </xsl:template>
+    
 </xsl:stylesheet>
