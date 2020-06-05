@@ -12,7 +12,7 @@ The OSCAL implementation layer provides models for describing how controls are i
 
 The OSCAL models comprising the implementation layer are:
 
-1. A **[Component Definition model](component/)**, which is currently under development, allows for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+1. A **[Component Definition model](component/)**, allows for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
 
 1. A **[System Security Plan (SSP) model](ssp/)** that allows the security implementation of an information system to be defined based on an OSCAL profile (or baseline). OSCAL-based SSPs are expressed in a machine-readable formats that can be easily imported into a tool, allowing for increased automation of SSP validation and system assessment. An OSCAL SSP can also be transformed from the machine-readable form to a human-readable version.
 

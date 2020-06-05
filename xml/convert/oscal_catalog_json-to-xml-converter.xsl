@@ -477,7 +477,7 @@
    <!-- *** Handling flag @type *** -->
    <xsl:template match="*[@key='type']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*[@key='type'] | array[@key='document-ids']/*/*[@key='type'] | map[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*[@key='type'] | array[@key='person-ids']/*/*[@key='type'] | map[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*[@key='type'] | array[@key='organization-ids']/*/*[@key='type'] | map[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*[@key='type'] | array[@key='addresses']/*/*[@key='type'] | map[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*[@key='type'] | array[@key='telephone-numbers']/*/*[@key='type'] | map[@key='telephone-numbers']/*/*[@key='type']"
+                 match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*[@key='type'] | array[@key='document-ids']/*/*[@key='type'] | map[@key='document-ids']/*/*[@key='type'] | *[@key='party']/*[@key='type'] | *[@key='parties']/*[@key='type'] | array[@key='parties']/*/*[@key='type'] | map[@key='parties']/*/*[@key='type'] | *[@key='external-id']/*[@key='type'] | *[@key='external-ids']/*[@key='type'] | array[@key='external-ids']/*/*[@key='type'] | map[@key='external-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*[@key='type'] | array[@key='addresses']/*/*[@key='type'] | map[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*[@key='type'] | array[@key='telephone-numbers']/*/*[@key='type'] | map[@key='telephone-numbers']/*/*[@key='type']"
                  mode="as-attribute">
       <xsl:attribute name="type">
          <xsl:apply-templates mode="#current"/>
@@ -582,6 +582,7 @@
                  mode="json2xml">
       <xsl:element name="location" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('address')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
@@ -592,13 +593,13 @@
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- *** Handling field "location-id" *** -->
-   <!--*[@key='location-id'] | *[@key='location-ids']  | *[@key='location-ids']/*-->
+   <!-- *** Handling field "location-uuid" *** -->
+   <!--*[@key='location-uuid'] | *[@key='location-uuids']  | *[@key='location-uuids']/*-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='location-id'] | *[@key='location-ids']  | *[@key='location-ids']/*"
+   <xsl:template match="*[@key='location-uuid'] | *[@key='location-uuids']  | *[@key='location-uuids']/*"
                  priority="5"
                  mode="json2xml">
-      <xsl:element name="location-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="location-uuid" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
          <xsl:for-each select="self::string | self::boolean | self::number">
@@ -608,16 +609,16 @@
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
-                 match="map[@key = 'location-ids']/array[@key = 'STRVALUE'] | array[@key = 'location-ids']/map/array[@key = 'STRVALUE']">
+                 match="map[@key = 'location-uuids']/array[@key = 'STRVALUE'] | array[@key = 'location-uuids']/map/array[@key = 'STRVALUE']">
       <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="location-ids">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="location-uuids">
             <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key = 'location-ids']/array[@key = 'STRVALUE']/string | array[@key = 'location-ids']/map/array[@key = 'STRVALUE']/string">
+                 match="map[@key = 'location-uuids']/array[@key = 'STRVALUE']/string | array[@key = 'location-uuids']/map/array[@key = 'STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -635,21 +636,40 @@
                  mode="json2xml">
       <xsl:element name="party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person', 'persons')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('external-id', 'external-ids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('member-of-organization', 'member-of-organizations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('location-uuid', 'location-uuids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- *** Handling field "party-id" *** -->
-   <!--*[@key='party-id'] | *[@key='party-ids']  | *[@key='party-ids']/*-->
+   <!-- *** Handling flag "party/@type" *** -->
+   <!-- suppressing when matched in json2xml traversal-->
+   <xsl:template match="*[@key='party']/*[@key='type'] | *[@key='parties']/*[@key='type'] | *[@key='parties']/*/*[@key='type']"
+                 priority="7"
+                 mode="json2xml"/>
+   <xsl:template priority="3"
+                 match="*[@key='party']/*[@key='type'] | *[@key='parties']/*[@key='type'] | *[@key='parties']/*/*[@key='type']"
+                 mode="as-attribute">
+      <xsl:attribute name="type">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling field "party-uuid" *** -->
+   <!--*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/*-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='party-id'] | *[@key='party-ids']  | *[@key='party-ids']/*"
+   <xsl:template match="*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/*"
                  priority="5"
                  mode="json2xml">
-      <xsl:element name="party-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="party-uuid" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
          <xsl:for-each select="self::string | self::boolean | self::number">
@@ -659,16 +679,16 @@
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE'] | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']">
+                 match="map[@key = 'party-uuids']/array[@key = 'STRVALUE'] | array[@key = 'party-uuids']/map/array[@key = 'STRVALUE']">
       <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="party-ids">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="party-uuids">
             <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE']/string | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']/string">
+                 match="map[@key = 'party-uuids']/array[@key = 'STRVALUE']/string | array[@key = 'party-uuids']/map/array[@key = 'STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -679,55 +699,13 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
-   <!-- *** Handling assembly "person" *** -->
+   <!-- *** Handling field "external-id" *** -->
+   <!--*[@key='external-id'] | *[@key='external-ids']  | *[@key='external-ids']/*-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person'] | array[@key='persons']/* | map[@key='persons']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="person" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person-id', 'person-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-id', 'organization-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('location-id', 'location-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "org" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org']" priority="4" mode="json2xml">
-      <xsl:element name="org" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-id', 'organization-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('location-id', 'location-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "person-id" *** -->
-   <!--*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*"
+   <xsl:template match="*[@key='external-id'] | *[@key='external-ids']  | *[@key='external-ids']/*"
                  priority="5"
                  mode="json2xml">
-      <xsl:element name="person-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="external-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='id']" mode="json2xml"/>
          <xsl:for-each select="self::string | self::boolean | self::number">
@@ -735,25 +713,25 @@
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="(*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*)/string[@key='id']"
+   <xsl:template match="(*[@key='external-id'] | *[@key='external-ids']  | *[@key='external-ids']/*)/string[@key='id']"
                  mode="as-attribute"/>
    <xsl:template priority="8"
-                 match="(*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*)/string[@key='id']"
+                 match="(*[@key='external-id'] | *[@key='external-ids']  | *[@key='external-ids']/*)/string[@key='id']"
                  mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
-                 match="map[@key = 'person-ids']/array[@key = 'id'] | array[@key = 'person-ids']/map/array[@key = 'id']">
+                 match="map[@key = 'external-ids']/array[@key = 'id'] | array[@key = 'external-ids']/map/array[@key = 'id']">
       <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="person-ids">
+         <array xmlns="http://www.w3.org/2005/xpath-functions" key="external-ids">
             <xsl:apply-templates mode="expand" select="array[@key = 'id']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key = 'person-ids']/array[@key = 'id']/string | array[@key = 'person-ids']/map/array[@key = 'id']/string">
+                 match="map[@key = 'external-ids']/array[@key = 'id']/string | array[@key = 'external-ids']/map/array[@key = 'id']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -764,44 +742,39 @@
          </xsl:copy>
       </xsl:for-each>
    </xsl:template>
-   <!-- *** Handling field "org-id" *** -->
-   <!--*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*-->
+   <!-- *** Handling field "member-of-organization" *** -->
+   <!--*[@key='member-of-organization'] | *[@key='member-of-organizations']  | *[@key='member-of-organizations']/*-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*"
+   <xsl:template match="*[@key='member-of-organization'] | *[@key='member-of-organizations']  | *[@key='member-of-organizations']/*"
                  priority="5"
                  mode="json2xml">
-      <xsl:element name="org-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="member-of-organization"
+                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='id']" mode="json2xml"/>
+         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
          <xsl:for-each select="self::string | self::boolean | self::number">
             <xsl:apply-templates mode="json2xml"/>
          </xsl:for-each>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="(*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*)/string[@key='id']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*)/string[@key='id']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
    <xsl:template priority="3"
                  mode="json2xml"
-                 match="map[@key = 'organization-ids']/array[@key = 'id'] | array[@key = 'organization-ids']/map/array[@key = 'id']">
+                 match="map[@key = 'member-of-organizations']/array[@key = 'STRVALUE'] | array[@key = 'member-of-organizations']/map/array[@key = 'STRVALUE']">
       <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="organization-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'id']/string"/>
+         <array xmlns="http://www.w3.org/2005/xpath-functions"
+                key="member-of-organizations">
+            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
          </array>
       </xsl:variable>
       <xsl:apply-templates select="$expanded" mode="json2xml"/>
    </xsl:template>
    <xsl:template mode="expand"
-                 match="map[@key = 'organization-ids']/array[@key = 'id']/string | array[@key = 'organization-ids']/map/array[@key = 'id']/string">
+                 match="map[@key = 'member-of-organizations']/array[@key = 'STRVALUE']/string | array[@key = 'member-of-organizations']/map/array[@key = 'STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'id']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="id">
+            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
+            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
                <xsl:value-of select="$me"/>
             </string>
          </xsl:copy>
@@ -835,23 +808,11 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- *** Handling field "person-name" *** -->
-   <!--*[@key='person-name']-->
+   <!-- *** Handling field "party-name" *** -->
+   <!--*[@key='party-name']-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person-name']" priority="5" mode="json2xml">
-      <xsl:element name="person-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "org-name" *** -->
-   <!--*[@key='org-name']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org-name']" priority="5" mode="json2xml">
-      <xsl:element name="org-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <xsl:template match="*[@key='party-name']" priority="5" mode="json2xml">
+      <xsl:element name="party-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="*" mode="as-attribute"/>
          <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
          <xsl:for-each select="self::string | self::boolean | self::number">
@@ -1220,7 +1181,7 @@
       <xsl:element name="responsible-party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-id', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-uuids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -1245,7 +1206,7 @@
       <xsl:element name="responsible-party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-id', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-uuids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -1276,9 +1237,18 @@
    <!-- *** Handling flag @id *** -->
    <xsl:template match="*[@key='id']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='param']/*[@key='id'] | *[@key='parameters']/*[@key='id'] | array[@key='parameters']/*/*[@key='id'] | map[@key='parameters']/*/*[@key='id'] | *[@key='usage']/*[@key='id'] | *[@key='descriptions']/*[@key='id'] | array[@key='descriptions']/*/*[@key='id'] | map[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*[@key='id'] | array[@key='parts']/*/*[@key='id'] | map[@key='parts']/*/*[@key='id'] | *[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | map[@key='properties']/*/*[@key='id'] | *[@key='annotation']/*[@key='id'] | *[@key='annotations']/*[@key='id'] | array[@key='annotations']/*/*[@key='id'] | map[@key='annotations']/*/*[@key='id'] | *[@key='location']/*[@key='id'] | *[@key='locations']/*[@key='id'] | array[@key='locations']/*/*[@key='id'] | map[@key='locations']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*[@key='id'] | array[@key='parties']/*/*[@key='id'] | map[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*[@key='id'] | array[@key='resources']/*/*[@key='id'] | map[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | map[@key='roles']/*/*[@key='id'] | *[@key='catalog']/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*[@key='id'] | array[@key='groups']/*/*[@key='id'] | map[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*[@key='id'] | array[@key='controls']/*/*[@key='id'] | map[@key='controls']/*/*[@key='id']"
+                 match="*[@key='param']/*[@key='id'] | *[@key='parameters']/*[@key='id'] | array[@key='parameters']/*/*[@key='id'] | map[@key='parameters']/*/*[@key='id'] | *[@key='usage']/*[@key='id'] | *[@key='descriptions']/*[@key='id'] | array[@key='descriptions']/*/*[@key='id'] | map[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*[@key='id'] | array[@key='parts']/*/*[@key='id'] | map[@key='parts']/*/*[@key='id'] | *[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | map[@key='properties']/*/*[@key='id'] | *[@key='annotation']/*[@key='id'] | *[@key='annotations']/*[@key='id'] | array[@key='annotations']/*/*[@key='id'] | map[@key='annotations']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | map[@key='roles']/*/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*[@key='id'] | array[@key='groups']/*/*[@key='id'] | map[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*[@key='id'] | array[@key='controls']/*/*[@key='id'] | map[@key='controls']/*/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling flag @uuid *** -->
+   <xsl:template match="*[@key='uuid']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='location']/*[@key='uuid'] | *[@key='locations']/*[@key='uuid'] | array[@key='locations']/*/*[@key='uuid'] | map[@key='locations']/*/*[@key='uuid'] | *[@key='party']/*[@key='uuid'] | *[@key='parties']/*[@key='uuid'] | array[@key='parties']/*/*[@key='uuid'] | map[@key='parties']/*/*[@key='uuid'] | *[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | array[@key='resources']/*/*[@key='uuid'] | map[@key='resources']/*/*[@key='uuid'] | *[@key='catalog']/*[@key='uuid']"
+                 mode="as-attribute">
+      <xsl:attribute name="uuid">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -1382,6 +1352,8 @@
          <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('param', 'parameters')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
@@ -1619,7 +1591,8 @@
    <xsl:template match="m:replace" expand-text="true">
       <xsl:param name="str" as="xs:string"/>
       <!--<xsl:value-of>replace({$str},{@match},{string(.)})</xsl:value-of>-->
-      <xsl:sequence select="replace($str, @match, string(.))"/>
+      <!-- 's' sets dot-matches-all       -->
+      <xsl:sequence select="replace($str, @match, string(.),'s')"/>
       <!--<xsl:copy-of select="."/>-->
    </xsl:template>
    <xsl:variable xmlns="http://csrc.nist.gov/ns/oscal/1.0/md-convertor"

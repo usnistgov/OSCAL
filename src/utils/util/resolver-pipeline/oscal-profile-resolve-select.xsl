@@ -79,6 +79,7 @@
     </xsl:template>-->
     
     <xsl:key name="cross-reference" match="resource" use="'#' || @id"/>
+    <xsl:key name="cross-reference" match="resource" use="'#' || @uuid"/>
     
     <xsl:template priority="2" mode="o:select" match="import[starts-with(@href,'#')]">
         <xsl:apply-templates mode="o:import" select="key('cross-reference',@href)">

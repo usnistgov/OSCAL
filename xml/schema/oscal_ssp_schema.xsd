@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-milestone2">
+           version="1.0.0-milestone3">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL System Security Plan (SSP) Format</m:schema-name>
-         <m:schema-version>1.0.0-milestone2</m:schema-version>
+         <m:schema-version>1.0.0-milestone3</m:schema-version>
          <m:short-name>oscal-ssp</m:short-name>
          <m:remarks>
             <m:p>The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.</m:p>
@@ -148,7 +148,7 @@
                   <b>hypertext reference</b>: A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="rel" type="xs:NCName">
+         <xs:attribute name="rel">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Relation</m:formal-name>
@@ -157,6 +157,56 @@
                <xs:documentation>
                   <b>Relation</b>: Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</xs:documentation>
             </xs:annotation>
+            <xs:simpleType>
+               <xs:union memberTypes="xs:NCName">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:NCName">
+                        <xs:enumeration value="homepage">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>A link to a homepage related to the containing object.</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="interview-notes">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Interview Notes</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="tool-output">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Tool Output</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="photograph">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Photograph</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="questionnaire">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Questionnaire</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="screen-shot">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>Screen Shot</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:union>
+            </xs:simpleType>
          </xs:attribute>
          <xs:attribute name="media-type" type="xs:string">
             <xs:annotation>
@@ -420,6 +470,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
+            <xs:element ref="oscal-ssp:title" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:address" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:email" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:phone" minOccurs="0" maxOccurs="unbounded"/>
@@ -441,19 +492,19 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="location-id">
+   <xs:element name="location-uuid">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location Reference</m:formal-name>
@@ -464,7 +515,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="xs:NCName"/>
+            <xs:extension base="oscal-ssp:uuid"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -479,11 +530,19 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-ssp:person" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:org" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:party-name" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:short-name" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:external-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:address" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:email" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:phone" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:member-of-organization"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:location-uuid" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -498,19 +557,47 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="type" use="required">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Party Type</m:formal-name>
+                  <m:description>A category describing the kind of party the object describes.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Party Type</b>: A category describing the kind of party the object describes.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:enumeration value="person">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>An individual.</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="organization">
+                     <xs:annotation>
+                        <xs:documentation>
+                           <p>A group of individuals formed for a specific purpose.</p>
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+               </xs:restriction>
+            </xs:simpleType>
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="party-id">
+   <xs:element name="party-uuid">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party Reference</m:formal-name>
@@ -521,89 +608,11 @@
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="xs:NCName"/>
+            <xs:extension base="oscal-ssp:uuid"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="person">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Person</m:formal-name>
-            <m:description>A person, with contact information</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Person</b>: A person, with contact information</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:person-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:short-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:org-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:person-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:org-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:address" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:location-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:email" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:phone" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="org">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Organization</m:formal-name>
-            <m:description>An organization or legal entity (not a person), with contact information</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Organization</b>: An organization or legal entity (not a person), with contact information</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:org-name" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:short-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:org-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:address" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:location-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:email" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:phone" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:url" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="person-id">
+   <xs:element name="external-id">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Personal Identifier</m:formal-name>
@@ -615,7 +624,7 @@
       <xs:complexType>
          <xs:simpleContent>
             <xs:extension base="xs:string">
-               <xs:attribute name="type" type="xs:string">
+               <xs:attribute name="type" use="required" type="xs:string">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Type</m:formal-name>
@@ -629,29 +638,18 @@
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="org-id">
+   <xs:element name="member-of-organization">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Organization Identifier</m:formal-name>
-            <m:description>An identifier for an organization using a designated scheme.</m:description>
+            <m:formal-name>Organizational Affiliation</m:formal-name>
+            <m:description>Identifies that the containing object is a member of the organization associated with the provided UUID.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Organization Identifier</b>: An identifier for an organization using a designated scheme.</xs:documentation>
+            <b>Organizational Affiliation</b>: Identifies that the containing object is a member of the organization associated with the provided UUID.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
-            <xs:extension base="xs:string">
-               <xs:attribute name="type" type="xs:string">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Type</m:formal-name>
-                        <m:description>Indicating the type of identifier, address, email or other data item.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Type</b>: Indicating the type of identifier, address, email or other data item.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:extension>
+            <xs:extension base="oscal-ssp:uuid"/>
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
@@ -690,29 +688,14 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="person-name">
+   <xs:element name="party-name">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Person Name</m:formal-name>
-            <m:description>Full (legal) name of an individual</m:description>
+            <m:formal-name>Party Name</m:formal-name>
+            <m:description>The full (legal) name of the party.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Person Name</b>: Full (legal) name of an individual</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:simpleContent>
-            <xs:extension base="xs:string"/>
-         </xs:simpleContent>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="org-name">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Organization Name</m:formal-name>
-            <m:description>Full (legal) name of an organization</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Organization Name</b>: Full (legal) name of an organization</xs:documentation>
+            <b>Party Name</b>: The full (legal) name of the party.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -1019,14 +1002,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -1077,7 +1060,10 @@
                               <xs:enumeration value="SHA-256"/>
                               <xs:enumeration value="SHA-384"/>
                               <xs:enumeration value="SHA-512"/>
-                              <xs:enumeration value="RIPEMD-160"/>
+                              <xs:enumeration value="SHA3-224"/>
+                              <xs:enumeration value="SHA3-256"/>
+                              <xs:enumeration value="SHA3-384"/>
+                              <xs:enumeration value="SHA3-512"/>
                            </xs:restriction>
                         </xs:simpleType>
                      </xs:union>
@@ -1141,7 +1127,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-ssp:party-id" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:party-uuid" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
@@ -1220,6 +1206,87 @@
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
+   <xs:element name="responsible-role">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Responsible Role</m:formal-name>
+            <m:description>A reference to one or more roles with responsibility for performing a function relative to the control.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the control.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:party-uuid" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="role-id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Responsible Role ID</m:formal-name>
+                  <m:description>The role that is responsible for the business function.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="set-parameter">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Set Parameter Value</m:formal-name>
+            <m:description>Identifies the parameter that will be filled in by the enclosed value element.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Set Parameter Value</b>: Identifies the parameter that will be filled in by the enclosed value element.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-ssp:value" minOccurs="1" maxOccurs="1"/>
+         </xs:sequence>
+         <xs:attribute name="param-id" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Parameter ID</m:formal-name>
+                  <m:description>Points to a parameter within a control, to which the contained value will be assigned.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Parameter ID</b>: Points to a parameter within a control, to which the contained value will be assigned.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="value">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Value</m:formal-name>
+            <m:description>The phrase or string that fills-in the parameter and completes the requirement statement.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Value</b>: The phrase or string that fills-in the parameter and completes the requirement statement.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="system-security-plan" m:root="yes">
       <xs:annotation>
          <xs:appinfo>
@@ -1231,21 +1298,21 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element ref="oscal-ssp:metadata" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:metadata" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:import-profile" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:system-characteristics" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:system-implementation" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:control-implementation" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:system-implementation" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:control-implementation" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -1324,9 +1391,6 @@
             <xs:element ref="oscal-ssp:system-information" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:security-impact-level" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:status" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:leveraged-authorization"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:authorization-boundary" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:network-architecture" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:data-flow" minOccurs="0" maxOccurs="1"/>
@@ -1985,7 +2049,7 @@
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:party-id" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:party-uuid" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:date-authorized" minOccurs="1" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -2073,7 +2137,7 @@
       </xs:complexType>
       <xs:unique name="authorization-boundary-diagram-keys">
          <xs:selector xpath="oscal-ssp:diagram"/>
-         <xs:field xpath="@id"/>
+         <xs:field xpath="@uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="diagram">
@@ -2117,14 +2181,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Diagram ID</m:formal-name>
-                  <m:description>An identifier for this diagram.</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Diagram ID</b>: An identifier for this diagram.</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -2187,7 +2251,7 @@
       </xs:complexType>
       <xs:unique name="network-architecture-diagram-keys">
          <xs:selector xpath="oscal-ssp:diagram"/>
-         <xs:field xpath="@id"/>
+         <xs:field xpath="@uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="data-flow">
@@ -2235,7 +2299,7 @@
       </xs:complexType>
       <xs:unique name="data-flow-diagram-keys">
          <xs:selector xpath="oscal-ssp:diagram"/>
-         <xs:field xpath="@id"/>
+         <xs:field xpath="@uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="system-implementation">
@@ -2252,10 +2316,11 @@
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:leveraged-authorization"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:user" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:component" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:service" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:interconnection" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:system-inventory" minOccurs="0" maxOccurs="1"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -2274,11 +2339,11 @@
       </xs:complexType>
       <xs:unique name="system-implementation-user-keys">
          <xs:selector xpath="oscal-ssp:user"/>
-         <xs:field xpath="@id"/>
+         <xs:field xpath="@uuid"/>
       </xs:unique>
       <xs:unique name="system-implementation-component-keys">
          <xs:selector xpath="oscal-ssp:component"/>
-         <xs:field xpath="@id"/>
+         <xs:field xpath="@uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="user">
@@ -2328,14 +2393,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>User Identifier</m:formal-name>
-                  <m:description>A unique identifier that references this user class.</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>User Identifier</b>: A unique identifier that references this user class.</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -2483,6 +2548,7 @@
                   <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                </xs:complexType>
             </xs:element>
+            <xs:element ref="oscal-ssp:purpose" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
@@ -2490,6 +2556,7 @@
             <xs:element ref="oscal-ssp:responsible-role"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:protocol" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
                   <xs:appinfo>
@@ -2504,14 +2571,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Component Identifier</m:formal-name>
-                  <m:description>A unique identifier for a component.</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Component Identifier</b>: A unique identifier for a component.</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="component-type" use="required">
@@ -2542,6 +2609,13 @@
                               </xs:documentation>
                            </xs:annotation>
                         </xs:enumeration>
+                        <xs:enumeration value="interconnection">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>A connection to something outside this system.</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
                         <xs:enumeration value="policy"/>
                         <xs:enumeration value="process"/>
                         <xs:enumeration value="procedure"/>
@@ -2554,7 +2628,13 @@
                            </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="standard"/>
-                        <xs:enumeration value="validation"/>
+                        <xs:enumeration value="validation">
+                           <xs:annotation>
+                              <xs:documentation>
+                                 <p>An external assessment performed on some other component, that has been validated by a third-party.</p>
+                              </xs:documentation>
+                           </xs:annotation>
+                        </xs:enumeration>
                      </xs:restriction>
                   </xs:simpleType>
                </xs:union>
@@ -2565,62 +2645,6 @@
          <xs:selector xpath="oscal-ssp:responsible-role"/>
          <xs:field xpath="@role-id"/>
       </xs:unique>
-   </xs:element>
-   <xs:element name="service">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Service</m:formal-name>
-            <m:description>Information about an individual service within the system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Service</b>: Information about an individual service within the system.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:protocol" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:purpose" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
    </xs:element>
    <xs:element name="protocol">
       <xs:annotation>
@@ -2636,14 +2660,14 @@
             <xs:element ref="oscal-ssp:title" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-ssp:port-range" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="name" use="required" type="xs:NCName">
@@ -2731,69 +2755,6 @@
          <xs:group ref="oscal-ssp:everything-inline"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="interconnection">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Interconnection</m:formal-name>
-            <m:description>Details on an individual system interconnection.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Interconnection</b>: Details on an individual system interconnection.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:remote-system-name" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:responsible-party"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-      <xs:unique name="interconnection-responsible-party-keys">
-         <xs:selector xpath="oscal-ssp:responsible-party"/>
-         <xs:field xpath="@role-id"/>
-      </xs:unique>
-   </xs:element>
-   <xs:element name="remote-system-name">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Remote Interconnected System Name</m:formal-name>
-            <m:description>The name of the remote interconnected system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Remote Interconnected System Name</b>: The name of the remote interconnected system.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:simpleContent>
-            <xs:extension base="xs:string"/>
-         </xs:simpleContent>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="system-inventory">
       <xs:annotation>
          <xs:appinfo>
@@ -2821,6 +2782,10 @@
             </xs:element>
          </xs:sequence>
       </xs:complexType>
+      <xs:unique name="system-inventory-inventory-item-keys">
+         <xs:selector xpath="oscal-ssp:inventory-item"/>
+         <xs:field xpath="@uuid"/>
+      </xs:unique>
    </xs:element>
    <xs:element name="inventory-item">
       <xs:annotation>
@@ -2869,14 +2834,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="asset-id" use="required" type="xs:string">
@@ -2930,7 +2895,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="component-id" use="required" type="xs:NCName">
+         <xs:attribute name="component-id" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Component Identifier Reference</m:formal-name>
@@ -3069,14 +3034,14 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="control-id" use="required" type="xs:NCName">
@@ -3132,6 +3097,7 @@
                </xs:complexType>
             </xs:element>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:responsible-role"
                         minOccurs="0"
@@ -3161,6 +3127,16 @@
                   <b>Control Statement Reference</b>: A reference to a control statement by its identifier</xs:documentation>
             </xs:annotation>
          </xs:attribute>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
       <xs:unique name="statement-responsible-role-keys">
          <xs:selector xpath="oscal-ssp:responsible-role"/>
@@ -3170,47 +3146,6 @@
          <xs:selector xpath="oscal-ssp:by-component"/>
          <xs:field xpath="@component-id"/>
       </xs:unique>
-   </xs:element>
-   <xs:element name="responsible-role">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Responsible Role</m:formal-name>
-            <m:description>A reference to one or more roles with responsibility for performing a function relative to the control.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the control.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ssp:party-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="role-id" use="required" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Responsible Role ID</m:formal-name>
-                  <m:description>The role that is responsible for the business function.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
    </xs:element>
    <xs:element name="by-component">
       <xs:annotation>
@@ -3244,7 +3179,7 @@
                         maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:set-parameter" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
-         <xs:attribute name="component-id" use="required" type="xs:NCName">
+         <xs:attribute name="component-id" use="required" type="oscal-ssp:uuid">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Component Reference</m:formal-name>
@@ -3252,6 +3187,16 @@
                </xs:appinfo>
                <xs:documentation>
                   <b>Component Reference</b>: A reference to the component that is implementing a given control or control statement.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -3263,46 +3208,6 @@
          <xs:selector xpath="oscal-ssp:set-parameter"/>
          <xs:field xpath="@param-id"/>
       </xs:unique>
-   </xs:element>
-   <xs:element name="set-parameter">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Set Parameter Value</m:formal-name>
-            <m:description>Identifies the parameter that will be filled in by the enclosed value element.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Set Parameter Value</b>: Identifies the parameter that will be filled in by the enclosed value element.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ssp:value" minOccurs="1" maxOccurs="1"/>
-         </xs:sequence>
-         <xs:attribute name="param-id" use="required" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Parameter ID</m:formal-name>
-                  <m:description>Points to a parameter within a control, to which the contained value will be assigned.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Parameter ID</b>: Points to a parameter within a control, to which the contained value will be assigned.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="value">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Value</m:formal-name>
-            <m:description>The phrase or string that fills-in the parameter and completes the requirement statement.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Value</b>: The phrase or string that fills-in the parameter and completes the requirement statement.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:simpleContent>
-            <xs:extension base="xs:string"/>
-         </xs:simpleContent>
-      </xs:complexType>
    </xs:element>
    <xs:group name="PROSE">
       <xs:choice>
@@ -3583,6 +3488,19 @@
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:whiteSpace value="collapse"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="uuid">
+      <xs:annotation>
+         <xs:documentation>A Type 4 ('random' or 'pseudorandom' UUID per RFC 4122</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:whiteSpace value="collapse"/>
+         <xs:pattern value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}">
+            <xs:annotation>
+               <xs:documentation>A sequence of 8-4-4-4-12 hex digits, with extra constraints in the 13th and 17-18th places for version 4</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
       </xs:restriction>
    </xs:simpleType>
 </xs:schema>

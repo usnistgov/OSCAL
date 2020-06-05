@@ -16,6 +16,8 @@ pygmentsCodefencesGuessSyntax: true
 pygmentsUseClasses: true
 markup:
   goldmark:
+    extensions:
+      typographer: false
     renderer:
       unsafe: true
   highlight:

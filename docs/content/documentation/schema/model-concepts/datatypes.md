@@ -2,9 +2,10 @@
 title: OSCAL Data Types
 heading: Data Types Used in OSCAL
 description: A description of the data types used in the OSCAL formats.
-weight: 10
+weight: 20
 aliases:
   - /docs/schemas/datatypes/
+  - /documentation/schema/datatypes/
 ---
 
 The OSCAL models share a set of data type primitives. These data types are documented in the following sections.
@@ -76,6 +77,25 @@ In JSON Schema, this is represented as:
 ```
 
 ## Formatted String Data types
+
+The following are data types based on strings.
+
+### base64Binary
+
+A string representing arbitrary Base64-encoded binary data.
+
+In XML Schema this is represented as the built in type [base64Binary](https://www.w3.org/TR/xmlschema11-2/#base64Binary) until a suitable pattern can be developed.
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "contentEncoding": "base64"
+}
+```
+
+Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
 
 ### date
 
@@ -284,22 +304,9 @@ In JSON Schema, this is represented as:
 
 Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
 
-### base64Binary
+### uuid
 
-A string representing arbitrary Base64-encoded binary data.
-
-In XML Schema this is represented as the built in type [base64Binary](https://www.w3.org/TR/xmlschema11-2/#base64Binary) until a suitable pattern can be developed.
-
-In JSON Schema, this is represented as:
-
-```JSON
-{
-  "type": "string",
-  "contentEncoding": "base64"
-}
-```
-
-Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
+A version 4 Universally Unique Identifier (UUID) as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).
 
 ## Markup Data Types
 
@@ -363,7 +370,7 @@ The following characters have special handling in their HTML and/or Markdown for
 | ---                                            | ---                                  | ---              | ---              | ---              |
 | &amp; (ampersand)                              | &amp;amp;                            | &amp;            | &amp;            | &amp;            |
 | &lt; (less-than sign or left angle bracket)    | &amp;lt;                             | &lt;             | &lt;             | &lt;             |
-| &gt; (greater-than sign or right angle bracket | &gt; **or** &amp;gt;                 | &gt;             | &gt;             | &gt;             |
+| &gt; (greater-than sign or right angle bracket) | &gt; **or** &amp;gt;                 | &gt;             | &gt;             | &gt;             |
 | &#34; (straight double quotation mark)         | &#34; **or** &amp;quot;              | \\&#34;          |  \\\\&#34;       | \\\\&#34;        |
 | &#39; (straight apostrophe)                    | &#39; **or** &amp;apos;              | \\&#39;          | \\\\&#39;        | \\\\&#39;        |
 | \* (asterisk)                                  | \*                                   | \\\*             | \\\\\*           | \\\\\*           |
@@ -397,7 +404,7 @@ The following additional constructs are also supported. Note that the syntax for
 
 #### Paragraphs
 
-Additionally, the use of &lt;p&gt; tags in HTML is mapped to Markdown as two double, escaped newlines within a JSON or YAML string (i.e., "\\\\n\\\\n"). This allows Mardown text to be split into paragraphs when this data type is used.
+Additionally, the use of `p` tags in HTML is mapped to Markdown as two double, escaped newlines within a JSON or YAML string (i.e., "\\\\n\\\\n"). This allows Markdown text to be split into paragraphs when this data type is used.
 
 #### Tables
 

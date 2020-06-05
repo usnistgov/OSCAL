@@ -13,6 +13,7 @@
     
     <xsl:param name="profile-origin-uri">urn:UNKNOWN</xsl:param>
     
+    <xsl:variable name="uuid-service" select="'https://www.uuidgenerator.net/api/version4'"/>
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
@@ -20,7 +21,12 @@
     </xsl:template>
  
     <xsl:template match="profile" priority="1">
-        <catalog id="{@id}-RESOLVED">
+        <xsl:variable name="uuid" select="unparsed-text($uuid-service)"/>
+        <catalog uuid="{ $uuid }">
+            <!-- Rewriting top-level @id -->
+            <!--<xsl:if test="function-available('uuid:randomUUID')" xmlns:uuid="java:java.util.UUID">
+                <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
+            </xsl:if>-->
             <xsl:apply-templates/>
         </catalog>
     </xsl:template>

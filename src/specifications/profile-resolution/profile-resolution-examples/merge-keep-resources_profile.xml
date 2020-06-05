@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Modified by conversion XSLT 2020-06-01T15:56:56.909-04:00 - UUIDs refreshed -->
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2020-05-30T14:39:48.703-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="d1217a30-92b7-49c0-a318-0de608f27f75">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:48.703-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-milestone3</oscal-version>
+   </metadata>
+   <import href="#01ecd6cc-e281-472c-bb7a-0394bdf938f2">
+      <include>
+         <call control-id="a1"/>
+         <call control-id="b1"/>
+      </include>
+   </import>
+   <back-matter>
+      <resource uuid="01ecd6cc-e281-472c-bb7a-0394bdf938f2">
+         <rlink href="catalogs/abc-simple_catalog.xml"/>
+      </resource>
+      <resource uuid="761205f0-fd61-42d3-9c66-2fb89e844a19">
+         <title>Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy</title>
+         <prop name="keep">always</prop>
+         <doc-id type="nist-id">SP 800-37 Rev. 2</doc-id>
+         <rlink href="https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final"/>
+      </resource>
+   </back-matter>
+</profile>

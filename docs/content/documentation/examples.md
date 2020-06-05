@@ -1,6 +1,6 @@
 ---
 title: OSCAL Content Examples
-description: OSCAL Examples
+description: Provides information on where to find OSCAL content examples.
 aliases:
   - /resources/examples/
 weight: 90
