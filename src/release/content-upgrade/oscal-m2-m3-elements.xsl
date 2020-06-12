@@ -169,6 +169,19 @@
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="service | interconnection">
+        <component component-type="{ local-name() }">
+            <xsl:apply-templates select="@* except @name, @name"/>
+            <xsl:apply-templates/>
+        </component>
+    </xsl:template>
+    
+    <xsl:template match="interconnection/remote-system-name">
+        <title>
+            <xsl:apply-templates/>
+        </title>
+    </xsl:template>
+    
     <xsl:template match="information-type/@name | component/@name">
         <title>
             <xsl:sequence select="string(.)"/>
@@ -180,5 +193,23 @@
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="system-characteristics/leveraged-authorization"/>
+    
+    <xsl:template match="system-implementation">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="prop, annotation, link"/>
+            <xsl:for-each select="../system-characteristics/leveraged-authorization">
+                <xsl:copy>
+                    <xsl:apply-templates select="@*"/>
+                    <xsl:apply-templates/>
+                </xsl:copy>
+            </xsl:for-each>
+            <xsl:apply-templates select="* except (prop | annotation | link)"/>
+            
+        </xsl:copy>
+        
     </xsl:template>
 </xsl:stylesheet>
