@@ -29,10 +29,10 @@ JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specific
 - [Catalog JSON Schema](schema/oscal_catalog_schema.json): Supports the validation of OSCAL JSON-based control catalogs.
 - [Profile JSON Schema](schema/oscal_profile_schema.json): Supports the validation of OSCAL JSON-based control baselines.
 - [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.json): (Experimental) Supports the validation of OSCAL JSON-based SSPs.
-- [System Component XML Schema](schema/oscal_component_schema.xsd): (Experimental) Supports the validation of OSCAL XML-based SSPs.
-- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.xsd): (Experimental)
-- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.xsd): (Experimental)
-- [System POA&M XML Schema](schema/oscal_poam_schema.xsd): (Experimental)
+- [System Component XML Schema](schema/oscal_component_schema.json): (Experimental) Supports the validation of OSCAL XML-based SSPs.
+- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.json): (Experimental)
+- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.json): (Experimental)
+- [System POA&M XML Schema](schema/oscal_poam_schema.json): (Experimental)
 
 ## Validating OSCAL JSON Content
 
