@@ -23,7 +23,7 @@ The following directories provide:
 
 # XML Schema for OSCAL Models 
 
-XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
+XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
 - [Catalog XML Schema](schema/oscal_catalog_schema.xsd): Supports the validation of OSCAL XML-based control catalogs.
 - [Profile XML Schema](schema/oscal_profile_schema.xsd): Supports the validation of OSCAL XML-based control baselines.
