@@ -29,8 +29,8 @@ XML schemas based on the [XML Schema Definition Language (XSD) 1.1](https://www.
 - [Profile XML Schema](schema/oscal_profile_schema.xsd): Supports the validation of OSCAL XML-based control baselines.
 - [System Security Plan (SSP) XML Schema](schema/oscal_ssp_schema.xsd): (Experimental) Supports the validation of OSCAL XML-based SSPs.
 - [System Component XML Schema](schema/oscal_component_schema.xsd): (Experimental) Supports the validation of OSCAL XML-based SSPs.
-- [System Assessment Plan (SAP) XML Schema](schema/oscal_sap_schema.xsd): (Experimental)
-- [System Assessment Report (SAR) XML Schema](schema/oscal_sar_schema.xsd): (Experimental)
+- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.xsd): (Experimental)
+- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.xsd): (Experimental)
 - [System POA&M XML Schema](schema/oscal_poam_schema.xsd): (Experimental)
 
 ## Validating OSCAL XML Content
