@@ -1,6 +1,6 @@
 {
   "catalog": {
-    "uuid": "85f077a0-a3ba-4986-8d3d-8e61df6bce2d",
+    "uuid": "bbadb54e-f7be-450e-8654-425aff6f7b06",
     "metadata": {
       "title": "NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE",
       "last-modified": "2020-05-29T23:29:27.272-04:00",
@@ -9,7 +9,7 @@
       "properties": [
         {
           "name": "resolution-timestamp",
-          "value": "2020-06-03T21:50:53.104052Z"
+          "value": "2020-06-23T14:02:09.921253Z"
         }
       ],
       "links": [
