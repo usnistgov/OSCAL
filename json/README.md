@@ -24,11 +24,15 @@ The following directories provide:
 
 # JSON Schema for OSCAL Models
 
-JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
+JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
 - [Catalog JSON Schema](schema/oscal_catalog_schema.json): Supports the validation of OSCAL JSON-based control catalogs.
 - [Profile JSON Schema](schema/oscal_profile_schema.json): Supports the validation of OSCAL JSON-based control baselines.
 - [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.json): (Experimental) Supports the validation of OSCAL JSON-based SSPs.
+- [System Component XML Schema](schema/oscal_component_schema.json): (Experimental) Supports the validation of OSCAL XML-based SSPs.
+- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.json): (Experimental)
+- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.json): (Experimental)
+- [System POA&M XML Schema](schema/oscal_poam_schema.json): (Experimental)
 
 ## Validating OSCAL JSON Content
 
@@ -44,11 +48,12 @@ The [online documentation](https://github.com/jessedc/ajv-cli) for *ajv-cli* pro
 
 # OSCAL XML to JSON Converters
 
-The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
+The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
 - [Catalog XML-to-JSON](convert/oscal_catalog_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control catalogs to the OSCAL JSON catalog format.
 - [Profile XML-to-JSON](convert/oscal_profile_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control baselines to the OSCAL JSON profile format.
 - [System Security Plan (SSP) XML-to-JSON](convert/oscal_ssp_xml-to-json-converter.xsl): (Experimental) Supports the conversion of OSCAL XML-based SSPs to the OSCAL JSON SSP format.
+- Other experimental formats, as applicable.
 
 **IMPORTANT** : XSLT 3.0 and XPath 3.1 are only required when using the NIST provided tools for converting OSCAL content between JSON and XML. Any version of XSLT or XPath may be used when transforming or querying OSCAL files for other reasons. These newer versions of XSLT and XPath offer more robust capabilities, that are needed to support the OSCAL converters.
 

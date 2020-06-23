@@ -2,7 +2,7 @@
 
 Profile resolution is implemented here as a set of XSLT transformations to be performed in sequence, applied to defined inputs (a **source profile** with imported **catalog** sources) to produce defined outputs (a **profile resolution result** in the form of a catalog). The word **baseline** is also used to refer to a particular profile in application, whether in its unprocessed form or its resolved, serialized form.
 
-The sequence reflects and roughly corresponds to the three steps in profile resolution described for OSCAL in the [Profile Resolution Specification](https://pages.nist.gov/OSCAL/documentation/specification/processing/profile-resolution/):
+The sequence reflects and roughly corresponds to the three steps in profile resolution described for OSCAL in the [Profile Resolution Specification](https://pages.nist.gov/OSCAL/documentation/processing/profile-resolution/):
 
 - **selection** (importing catalogs or profiles and selecting controls from them)
 

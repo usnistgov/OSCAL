@@ -26,6 +26,8 @@
     
     <xsl:key name="resource-as-internal-link" match="back-matter/resource" use="'#' || @id"/>
     <xsl:key name="party-link"                match="party"                use="@id"/>
+    <xsl:key name="location-link"             match="location"             use="@id"/>
+    <xsl:key name="component-link"            match="component"            use="@id"/>
     
     <xsl:template match="
         import[exists(key('resource-as-internal-link',@href))]/@href |
@@ -35,13 +37,25 @@
     </xsl:template>
     
     <xsl:template match="party-uuid" expand-text="true">
-      <xsl:variable name="target" select="key('party-link',string(.))"/>
-        <party-uuid>{ $target/@uuid }</party-uuid>
+        <xsl:variable name="target" select="key('party-link',string(.))"/>
+        <party-uuid>{ if (exists($target)) then $target/@uuid else 'no target found' }</party-uuid>
     </xsl:template>
     
-    <xsl:template match="implemented-component">
+    <xsl:template match="member-of-organization" expand-text="true">
+        <xsl:variable name="target" select="key('party-link',string(.))"/>
+        <member-of-organization>{ if (exists($target)) then $target/@uuid else 'no target found' }</member-of-organization>
+    </xsl:template>
+    
+    <xsl:template match="location-uuid" expand-text="true">
+        <xsl:variable name="target" select="key('location-link',string(.))"/>
+        <location-uuid>{ if (exists($target)) then $target/@uuid else 'no target found' }</location-uuid>
+    </xsl:template>
+    
+    <xsl:template match="implemented-component | by-component">
+        <xsl:variable name="target" select="key('component-link',string(@component-id))"/>
         <xsl:copy>
-            <xsl:attribute name="component-id" select="@uuid"/>
+            <xsl:copy-of select="@* except self::implemented-component/@uuid"/>
+            <xsl:attribute name="component-id" select="if (exists($target)) then $target/@uuid else 'no target found'"/>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>

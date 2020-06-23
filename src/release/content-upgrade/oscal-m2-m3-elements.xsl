@@ -39,10 +39,10 @@
     <xsl:template match="metadata">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:apply-templates select="title"/>
+            <xsl:apply-templates select="title, published"/>
             <!-- time stamp it at runtime -->
             <last-modified xsl:expand-text="true">{ current-dateTime() }</last-modified>
-            <xsl:apply-templates select="* except title | version"/>
+            <xsl:apply-templates select="* except (title | published)"/>
         </xsl:copy>
     </xsl:template>
     
@@ -81,7 +81,14 @@
     </xsl:template>
     
     <xsl:template match="party/org | party/person">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="person-name, org-name, short-name, prop, annotation, url, address, email, phone, org-id"/>
+        <xsl:apply-templates select="* except (person-name | org-name | short-name | prop | url | address | email | phone | org-id )"/>
+    </xsl:template>
+    
+    <xsl:template match="party/*/url">
+        <link rel="homepage" href="{.}">
+            <xsl:apply-templates/>
+        </link>
     </xsl:template>
     
     <xsl:template match="person-name | org-name">
@@ -94,6 +101,18 @@
         <party-uuid>
             <xsl:apply-templates/>
         </party-uuid>
+    </xsl:template>
+    
+    <xsl:template match="location-id">
+        <location-uuid>
+            <xsl:apply-templates/>
+        </location-uuid>
+    </xsl:template>
+    
+    <xsl:template match="org-id">
+        <member-of-organization>
+            <xsl:apply-templates/>
+        </member-of-organization>
     </xsl:template>
     
     
@@ -150,6 +169,19 @@
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="service | interconnection">
+        <component component-type="{ local-name() }">
+            <xsl:apply-templates select="@* except @name, @name"/>
+            <xsl:apply-templates/>
+        </component>
+    </xsl:template>
+    
+    <xsl:template match="interconnection/remote-system-name">
+        <title>
+            <xsl:apply-templates/>
+        </title>
+    </xsl:template>
+    
     <xsl:template match="information-type/@name | component/@name">
         <title>
             <xsl:sequence select="string(.)"/>
@@ -158,8 +190,26 @@
     
     <xsl:template match="implemented-component">
         <xsl:copy>
-            <xsl:comment> @use value? </xsl:comment>
+            <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="system-characteristics/leveraged-authorization"/>
+    
+    <xsl:template match="system-implementation">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="prop, annotation, link"/>
+            <xsl:for-each select="../system-characteristics/leveraged-authorization">
+                <xsl:copy>
+                    <xsl:apply-templates select="@*"/>
+                    <xsl:apply-templates/>
+                </xsl:copy>
+            </xsl:for-each>
+            <xsl:apply-templates select="* except (prop | annotation | link)"/>
+            
+        </xsl:copy>
+        
     </xsl:template>
 </xsl:stylesheet>
