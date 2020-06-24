@@ -23,7 +23,7 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 2. Build the Docker container
 
-    You can build the Docker conatiner for the build environment using Docker Compose as follows:
+    You can build the Docker conatiner for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
 
     ```
     docker-compose build
@@ -61,7 +61,7 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
     - OSCAL_TOOLS_DIR - Defines the directory where the OSCAL tools will be checked out. The OSCAL Java Validation API is one of the needed tools located in this repo.
     - JSON_CLI_VERSION - Defines the version of the OSCAL Java Validation API
 
-    The following is an example of how to configure the environment. You will need to customize the `SCHEMATRON_HOME` and `OSCAL_TOOLS_DIR` variables for your own environment.
+    The following is an example of how to configure the environment. You will need to customize the `SCHEMATRON_HOME` and `OSCAL_TOOLS_DIR` variables for your own environment. The path `/home/user` should be updated to point to the home directory of the current user.
 
     ```bash
     export SAXON_VERSION="9.9.1-3"
@@ -77,16 +77,25 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
     To install the required Linux packages, run the following:
 
     ```bash
-    apt-get update && apt-get install -y apt-utils libxml2-utils jq maven hugo nodejs npm build-essential python3-pip git && apt-get clean
+    sudo apt-get update
+    sudo apt-get install -y apt-utils libxml2-utils jq maven hugo nodejs npm build-essential python3-pip git
+    sudo apt-get clean
     ```
 
 1. Install Node.js modules
 
-    To install the required Node.js modules, run the following:
+    To install the required Node.js modules globally (for all users), run the following:
 
     ```bash
-    npm install -g prettyjson markdown-link-check json-diff
+    sudo npm install -g prettyjson markdown-link-check json-diff
     ```
+
+    Or to install locally
+
+    ```bash
+    npm install prettyjson markdown-link-check json-diff
+    ```
+
 
 1. Install Python modules
 
@@ -104,7 +113,7 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
 
     ```bash
     mkdir -p "${SCHEMATRON_HOME}"
-    git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git ."${SCHEMATRON_HOME}"
+    git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "${SCHEMATRON_HOME}"
     cd "${SCHEMATRON_HOME}"
     git checkout master -- trunk/schematron/code
     ```
