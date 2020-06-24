@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="5ef50945-8762-4c99-a6e9-c6587fdab044">
+         uuid="8ce94058-1696-4045-9dbb-a26ec2ce502a">
    <metadata>
       <title>FedRAMP Moderate Baseline</title>
       <published>2020-06-01T00:00:00.000-04:00</published>
       <last-modified>2020-06-01T10:00:00.000-04:00</last-modified>
       <version>1.2</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-06-23T14:01:50.982967Z</prop>
+      <prop name="resolution-timestamp">2020-06-24T18:13:42.469427Z</prop>
       <link rel="resolution-source" href="FedRAMP_MODERATE-baseline_profile.xml">FedRAMP Moderate Baseline</link>
       <role id="parpared-by">
          <title>Document creator</title>
