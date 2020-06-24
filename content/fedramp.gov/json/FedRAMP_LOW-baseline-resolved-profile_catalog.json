@@ -1,6 +1,6 @@
 {
   "catalog": {
-    "uuid": "71d1ac5d-01d3-4591-a548-dd463e31c819",
+    "uuid": "05be89c8-f1bf-40b9-937a-ad5ebd5ab973",
     "metadata": {
       "title": "FedRAMP Low Baseline",
       "published": "2020-06-01T00:00:00.000-04:00",
@@ -10,7 +10,7 @@
       "properties": [
         {
           "name": "resolution-timestamp",
-          "value": "2020-06-23T14:01:39.811329Z"
+          "value": "2020-06-24T18:13:30.865345Z"
         }
       ],
       "links": [
