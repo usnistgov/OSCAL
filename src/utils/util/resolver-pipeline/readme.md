@@ -14,7 +14,7 @@ For demonstration, the expected interim results for test files are kept in the t
 
 Note that these interim results are *not always valid to any OSCAL schema* while at the same time they are quite close to OSCAL profile and catalog syntax.
 
-Testing files for profile resolution in general are kept [with the specification](../../../src/specifications/profile-resolution). The testing files in this subdirectory are only for this implementation.
+Testing files for profile resolution in general are kept [with the specification](../../../specifications/profile-resolution). The testing files in this subdirectory are only for this implementation.
 
 ### Invoking the XSLT:
 
