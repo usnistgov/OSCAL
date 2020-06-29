@@ -45,7 +45,4 @@ A profile designates a selection and configuration of controls from one or more 
 Switch to JSON add Name Addition
 Description Specifies contents to be added into controls, in resolution
 This element appears inside: alter.
-The add element has the following contents (in order):</description></item><item><title>Profile Examples</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/examples/</guid><description>The following OSCAL Profile model examples are provided.
-NIST SP 800-53 Revision 4 Baselines The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available in our GitHub repository:
-HIGH MODERATE LOW There are also JSON and YAML versions of the NIST SP 800-53 rev4 profiles.
-FedRAMP Baselines Also find examples representing the FedRAMP baselines (again for the HIGH, MODERATE and LOW impact levels) on our web site.</description></item></channel></rss>
+The add element has the following contents (in order):</description></item></channel></rss>

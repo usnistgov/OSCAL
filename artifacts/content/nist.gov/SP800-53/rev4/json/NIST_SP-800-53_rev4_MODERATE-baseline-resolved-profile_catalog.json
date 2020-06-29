@@ -1,6 +1,6 @@
 {
   "catalog": {
-    "uuid": "5a1a4ba1-3dd4-48e9-bb57-de819c4db69b",
+    "uuid": "79a8a615-f49f-4379-81cd-07d415f01059",
     "metadata": {
       "title": "NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE",
       "last-modified": "2020-05-29T23:29:27.272-04:00",
@@ -9,7 +9,7 @@
       "properties": [
         {
           "name": "resolution-timestamp",
-          "value": "2020-06-24T18:14:18.373285Z"
+          "value": "2020-06-29T19:37:24.118756Z"
         }
       ],
       "links": [
