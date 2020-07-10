@@ -1,0 +1,28 @@
+{
+  "name": "oscal-project",
+  "version": "1.0.0",
+  "description": "OSCAL project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./build/ci-cd-v2/generate-schema",
+    "build": "tsc -p .",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "author": "Avril Douglas",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "commander": "^5.1.0"
+  },
+  "nodemonConfig": {
+    "watch": "src/**/*.ts",
+    "execMap": {
+      "ts": "ts-node"
+    }
+  }
+}
