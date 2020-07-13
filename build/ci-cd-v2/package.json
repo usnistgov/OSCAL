@@ -4,7 +4,8 @@
   "description": "OSCAL project",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/ci-cd-v2/generate-schema",
+    "old": "node ./build/ci-cd-v2/generate-schema",
+    "start": "node generate-schema",
     "build": "tsc -p .",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
