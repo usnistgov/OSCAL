@@ -8,13 +8,13 @@ export const populateSchema = (oscalRootDirectory: string, format: string, base:
 
     const getXMLSourceFiles = sourceFiles.filter(file => file.endsWith('xml'));
 
-    console.log('TARGET_FILES', targetFiles);
+    //console.log('TARGET_FILES', targetFiles);
       
     const source = getXMLSourceFiles.find(file => file.startsWith(base));
     const target = targetFiles.find(file => file.startsWith(base));
 
-    console.log('SOURCE_FILE', source);
-    console.log('TARGET_FILE', target);
+    //console.log('SOURCE_FILE', source);
+    //console.log('TARGET_FILE', target);
 
     if (source && target) {
       // ['--format', 'source', 'target', '--validate']
@@ -25,7 +25,7 @@ export const populateSchema = (oscalRootDirectory: string, format: string, base:
         '--validate'
       ]
 
-      console.log('scriptArguments:', scriptArguments)
+      //console.log('scriptArguments:', scriptArguments)
 
       // spawnSync('command', ['arg1', 'arg2', 'arg3'], spawn_option)
       const result = spawnSync(`${oscalRootDirectory}/build/metaschema/scripts/generate-schema.sh`, scriptArguments, {shell: true, stdio: 'inherit'});
