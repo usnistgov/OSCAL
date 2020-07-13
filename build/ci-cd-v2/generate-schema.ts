@@ -25,7 +25,7 @@ try {
     const formatOptions = schemaPathFormatConverterDocArray[1];
     const convertOptions = schemaPathFormatConverterDocArray[2];
 
-    console.log('BASE:', base);
+    //console.log('BASE:', base);
 
     if (formatOptions) {
       const formatArray = formatOptions.split(',');
@@ -48,11 +48,11 @@ try {
         // console.log('HERE')
         // fsSystem();
 
-        if (convertOptions) {
+      /* if (convertOptions) {
           // Conditional to create a convert file in a target folder.
-          index === 0 ? fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[1]}-to-${arr[0]}.xsl`, 'w')
-                              : fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[0]}-to-${arr[1]}.xsl`, 'w');
-        }
+          index === 0 ? fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[1]}-to-${arr[0]}-converter.xsl`, 'w')
+                      : fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[0]}-to-${arr[1]}-converter.xsl`, 'w');
+        }*/
 
         // populate the schema files
         populateSchema(oscalRootDirectory, format, base);
