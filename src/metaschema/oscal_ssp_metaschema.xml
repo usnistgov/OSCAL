@@ -187,7 +187,7 @@
    <define-assembly name="information-type">
       <formal-name>Information Type</formal-name>
       <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
-      <flag ref="uuid"/>
+      <flag ref="uuid" required="yes"/>
       <model>
          <field ref="title" min-occurs="1">
             <description>A human readable name for the information type. This title should be meaningful within the context of the system.</description>

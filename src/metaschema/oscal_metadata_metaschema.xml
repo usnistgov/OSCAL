@@ -233,7 +233,7 @@
             <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
          </allowed-values>
       </flag>
-      <flag ref="uuid"/>
+      <flag ref="uuid" required="no"/>
       <flag ref="ns"/>
       <flag ref="class"/>
       <remarks>
@@ -252,7 +252,7 @@
       <!-- TODO: Add support for this -->
 <!--      <json-value-key key-flag-name="name" value-flag-name="value" /> -->
       <flag ref="name" required="yes"/>
-      <flag ref="uuid"/>
+      <flag ref="uuid" required="no"/>
       <flag ref="ns"/>
       <flag name="value" as-type="string">
          <formal-name>Value</formal-name>
