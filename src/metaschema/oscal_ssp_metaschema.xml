@@ -187,7 +187,7 @@
    <define-assembly name="information-type">
       <formal-name>Information Type</formal-name>
       <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
-      <flag ref="id"/>
+      <flag ref="uuid"/>
       <model>
          <field ref="title" min-occurs="1">
             <description>A human readable name for the information type. This title should be meaningful within the context of the system.</description>
@@ -345,7 +345,7 @@
    <define-assembly name="leveraged-authorization">
       <formal-name>Leveraged Authorization</formal-name>
       <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</description>
-      <flag ref="id"/>
+      <flag ref="uuid" required="yes" />
       <model>
          <field ref="title" min-occurs="1">
             <description>A human readable name for the leveraged authorization in the context of the system.</description>
@@ -920,8 +920,8 @@
    <define-assembly name="implemented-component">
       <formal-name>Implemented Component</formal-name>
       <description>The set of componenets that are implemented in a given system inventory item.</description>
-      <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="uuid">
+      <json-key flag-name="component-uuid"/>
+      <flag name="component-uuid" required="yes" as-type="uuid">
          <formal-name>Component Identifier Reference</formal-name>
          <description>A reference to a component that is implemented as part of an inventory item.</description>
       </flag>
@@ -1132,8 +1132,8 @@
    <define-assembly name="by-component">
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
-      <json-key flag-name="component-id"/>
-      <flag name="component-id" required="yes" as-type="uuid">
+      <json-key flag-name="component-uuid"/>
+      <flag name="component-uuid" required="yes" as-type="uuid">
          <formal-name>Component Reference</formal-name>
          <description>A reference to the component that is implementing a given control or control statement.</description>
       </flag>
