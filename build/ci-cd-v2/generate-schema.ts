@@ -1,65 +1,164 @@
+process.chdir(__dirname);
+
 import fs from 'fs';
 import path from 'path'
+import {argv} from 'yargs'
 import {populateSchema} from './populate-schema';
 
-// set the current working directory 
-const oscalRootDirectory = path.join(__dirname, '../..');
+// set console log colors
+const P_INFO = '\x1b[37m\x1b[1m'; // White
+const P_OK = '\x1b[32m\x1b[1m' // Green
+const P_PATH = '\x1b[50m'; // Faded white
+const P_WARN = '\x1b[33m\x1b[1m'; // Yellow
+const P_ERROR = '\x1b[31m\x1b[1m' // Red
+const P_END = '\x1b[0m'; // Reset
 
-// locate the config file
-const configFile = `${oscalRootDirectory}/build/ci-cd-v2/config/config-file`;
+// Setup the commandline argument parsing via yargs argv
+const optionsFromCLI = Object.keys(argv)
+const options = ['_', '$0', 'v', 'w', 'working-dir', 'workingDir', 'h', 'help']
 
-try {
-  // reads the config file
-  const readConfigFile = fs.readFileSync(configFile, 'utf8');
+// set the current working directory
+let oscalRootDirectory: any = path.join(__dirname, '../..');
 
-  // replace comments with empty string and convert readConfigFile to an array. Then remove empty strings
-  const arrayOfConfigFile = readConfigFile.toString().replace(/#.*\s/g, '').split('\n').filter(Boolean);
+const usage = () => `
+  Usage: node ${argv.$0} [options] [metaschema paths]
 
-  arrayOfConfigFile.forEach((schema) => {
-    const schemaPathFormatConverterDocArray = schema.split('|');
-    // path to meta schemas
-    const metaSchemaPath = schemaPathFormatConverterDocArray[0]
-    const metaSchemaPathArray = metaSchemaPath.split('/');
-    // get the base file
-    const base = metaSchemaPathArray[metaSchemaPathArray.length - 1].replace(/(_metaschema).*/g, '');
-    const formatOptions = schemaPathFormatConverterDocArray[1];
-    const convertOptions = schemaPathFormatConverterDocArray[2];
+  -h, --help                        Display help
+  -w DIR, --working-dir DIR         Generate artifacts in DIR  (default: ${oscalRootDirectory})
+  -v                                Provide verbose output
+`;
 
-    //console.log('BASE:', base);
+const optionDifference = optionsFromCLI.find(option => !options.includes(option))
 
-    if (formatOptions) {
-      const formatArray = formatOptions.split(',');
-      let convertArray: any;
-
-      if (convertOptions) {
-        // Conditional to check whether the convert pipe contains xml. If yes, use xsd as the extension for the file to be created in xml folder
-        convertArray = convertOptions.includes('xml') ? convertOptions.replace(/xml/g, 'xsd').split(',')
-                                                    : convertOptions.split(',');
-      }
-
-      formatArray.forEach((format, index, arr) => {
-        // create the schema directories. recursive option helps to create a folder inside and folder. This only works for node 10^
-        fs.mkdirSync(`${oscalRootDirectory}/${format}/schema`, {recursive: true});
-        fs.mkdirSync(`${oscalRootDirectory}/${format}/convert`, {recursive: true});
-
-        // create the schema files in the created directories
-        fs.openSync(`${oscalRootDirectory}/${format}/schema/${base}_schema.${convertArray[index]}`, 'w');
-
-        // console.log('HERE')
-        // fsSystem();
-
-      /* if (convertOptions) {
-          // Conditional to create a convert file in a target folder.
-          index === 0 ? fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[1]}-to-${arr[0]}-converter.xsl`, 'w')
-                      : fs.openSync(`${oscalRootDirectory}/${format}/convert/${base}_${arr[0]}-to-${arr[1]}-converter.xsl`, 'w');
-        }*/
-
-        // populate the schema files
-        populateSchema(oscalRootDirectory, format, base);
-      });
-    }
-  }); 
-} catch (error) {
-  console.error(error.message)
+if (optionDifference || argv['w'] === true || argv['working-dir'] === true) {
+  // unknown option
+  // const invalid = optionDifference.length === 1 ? `-${optionDifference}` : `--${optionDifference}`
+  // console.log(`${P_ERROR}Unhandled option: ${invalid}${P_END}`)
+  console.log('Failed parsing options.')
+  process.stdout.write(usage());
+  process.exit(1)
 }
 
+if (optionsFromCLI.includes('h') || optionsFromCLI.includes('help')) {
+  process.stderr.write(usage())
+  process.exit(0)
+}
+
+try {
+  let workingDirectory: any;
+
+  if (argv['w'] || argv['working-dir']) { // any directory name that is specified
+    const parsedWorkingDir = argv['w'] || argv['working-dir']
+    const currentDirectory = path.join(__dirname, '.')
+    // set the working directory
+    fs.mkdirSync(`${parsedWorkingDir}`,{recursive: true});
+    workingDirectory = `${currentDirectory}/${parsedWorkingDir}`
+    //workingDirectory = fs.mkdirSync(`${currentDirectory}/${parsedWorkingDir}`);
+    console.log('Show Current Directory', currentDirectory)
+    console.log('Show Working Directory', workingDirectory)
+    console.log('Show parsedWorkingDir', parsedWorkingDir)
+  }
+
+  // Read the metaschema directory
+  const sourceFiles = fs.readdirSync(`${oscalRootDirectory}/src/metaschema`)
+
+  // get only files with xml extensions in the metaschema directory
+  const getXMLSourceFiles = sourceFiles.filter(file => file.endsWith('xml'));
+
+  console.log('')
+  console.log(`${P_INFO}Generating XML and JSON Schema${P_END}`)
+  console.log(`${P_INFO}==============================${P_END}`)
+
+  // if verbose, have the generation script generate verbose messages
+  const verbose: any = argv.v
+
+  if (verbose === true) {
+    console.log(`${P_INFO}Using working directory:${P_END} ${P_PATH}${oscalRootDirectory}${P_END}`)
+  }
+
+  // Establish which metaschema to process, either: the commandline argument or the config file
+  let metaSchemaArray: string[];
+  const readConfigFilesFromCLI = argv._
+
+  if (readConfigFilesFromCLI.length) {
+    // if a metaschema is provided as a commandline argument, use it
+    metaSchemaArray = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json`)
+  } else {
+    // locate the config file
+    const configFile = `${oscalRootDirectory}/build/ci-cd-v2/config/config-file`;
+    // use the paths defined in the config file
+    const readConfigFile = fs.readFileSync(configFile, 'utf8');
+    // replace comments with empty string and convert readConfigFile to an array. Then remove empty strings
+    metaSchemaArray = readConfigFile.toString().replace(/#.*\s/g, '').split('\n').filter(Boolean);
+  }
+
+  metaSchemaArray.forEach((schema) => {
+    const schemaPathWithFormat = schema.split('|');
+    // path to metaschemas files
+    const metaSchemaPath = schemaPathWithFormat[0]
+    const metaSchemaPathArray = metaSchemaPath.split('/');
+    // get metaschema file
+    const metaschemaFile = metaSchemaPathArray[metaSchemaPathArray.length - 1]
+    // get the base of each metaschema file
+    const base = metaschemaFile.replace(/(_metaschema).*/g, '');
+    const formatOptions = schemaPathWithFormat[1];
+
+    if (formatOptions) {
+      // split on commas to determine which schema to generate and iterate
+      const formatArray = formatOptions.split(',');
+
+      formatArray.forEach((format) => {
+        const validFormats = ['xml', 'json'];
+
+        if (!validFormats.includes(format)) {
+          return console.log(`${P_WARN}Unsupported schema format '${format.toUpperCase()}' schema for '${P_PATH}${metaSchemaPath}${P_END}${P_WARN}'${P_END}.`)
+        }
+
+        let fileExtension = format;
+
+        if (format === 'xml') {
+          fileExtension = 'xsd'
+        }
+        // create the schema directories. recursive option helps to create a folder within a folder. This only works for node 10^
+        if (workingDirectory) {
+          fs.mkdirSync(`${workingDirectory}/${format}/schema`, {recursive: true});
+        } else {
+          fs.mkdirSync(`${oscalRootDirectory}/${format}/schema`, {recursive: true});
+        }
+
+        const schemaFile = `${format}/schema/${base}_schema.${fileExtension}`
+
+        if (verbose === true) {
+          console.log('')
+          console.log(`${P_INFO}Generating ${format.toUpperCase()} schema for '${P_END}${P_PATH}${metaSchemaPath}${P_END}' as '${P_PATH}${schemaFile}${P_END}'.`)
+        }
+
+        const metaSchemaExist = getXMLSourceFiles.includes(metaschemaFile);
+
+        if (metaSchemaExist) {
+          if (workingDirectory) {
+            // create the schema files in the respective XML and JSON directories
+            fs.openSync(`${workingDirectory}/${schemaFile}`, 'w');
+            // populate the schema files
+            populateSchema(oscalRootDirectory, workingDirectory, format, base, verbose);
+          } else {
+            // create the schema files in the respective XML and JSON directories
+            fs.openSync(`${oscalRootDirectory}/${schemaFile}`, 'w');
+            // populate the schema files
+            populateSchema(oscalRootDirectory, '', format, base, verbose);
+          }
+
+          // console.log(`${P_OK}Schema validation passed for '${P_END}${P_PATH}${oscalRootDirectory}/${schemaFile}${P_END}${P_OK}'${P_END}.`)
+          if (verbose === true) {
+            console.log(`${P_OK}Generation of ${format.toUpperCase()} schema passed for '${P_END}${P_PATH}${metaSchemaPath}${P_END}${P_OK}'${P_END}.`)
+          }
+        } else {
+          console.log(`${P_ERROR}Generation of ${format.toUpperCase()} schema failed for '${P_END}${P_PATH}${metaSchemaPath}${P_END}${P_ERROR}'${P_END}.`)
+          console.log(`${P_ERROR}Metaschema does not exist: ${P_END}${P_PATH}${oscalRootDirectory}/${metaSchemaPath}${P_END}`)
+        }
+      });
+    }
+  });
+} catch (error) {
+  console.error(error.message);
+}
