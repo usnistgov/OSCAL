@@ -9,31 +9,30 @@ The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCA
 
 If you are interested in supporting the development of the standard, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) for more information.
 
-## Architecture
-
-![OSCAL diagram](https://github.com/usnistgov/OSCAL/raw/master/docs/content/learnmore/architecture/oscal-components.png)
-
-OSCAL is comprised of multiple components which have been highlighted in the architecture diagram above. For more information about each of these components, refer to the [website](https://www.nist.gov/oscal).
-
 ## Project Status
 
-OSCAL 1.0.0 Milestone 1 was released on June 15, 2019. The full announcement can be found below:
+OSCAL 1.0.0 Milestone 3 was released on June 3, 2020. The full announcement can be found below:
 
 <blockquote>
-We are pleased to announce the release of OSCAL 1.0.0 Milestone 1. This release marks an important milestone for the OSCAL project, as this represents the first official release of OSCAL.
 
-The release contains:
+We are pleased to announce the release of OSCAL 1.0.0 Milestone 3. This is the third official milestone pre-release of OSCAL, and marks the last pre-release milestone for OSCAL v1. At this point we have drafts of all the models we intended to produce for OSCAL v1 and will now start working towards producing a full initial release of OSCAL v1, which will be v1.0.0.
 
-- Stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.
-- Includes draft versions of the NIST SP 800-53 revision 4 OSCAL content and FedRAMP baselines in OSCAL XML, JSON, and YAML formats.
-- Provides content converters that are capable of accurately converting between OSCAL catalog and profile content in OSCAL XML to OSCAL JSON format and vice versa.
+This release contains:
 
-You can find this and future releases here: https://github.com/usnistgov/OSCAL/releases.
-More information on the OSCAL project can be found on the OSCAL website: https://www.nist.gov/oscal.
+- A new [component definition model](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/), which allows for the definition of a set of components that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+- Creation of draft models for the [assessment](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/) and [assessment result](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/) layers. Drafts of the [assessment plan](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/), [assessment results](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/), and [plan of action and milestones](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/) (POA&M) models were created. These drafts were slated for the OSCAL v2 release cycle and are being released early as drafts ahead of schedule.
+- Updated stable versions of the OSCAL [catalog](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/), [profile](https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/), and [system security plan](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/) (SSP) models, along with associated XML and JSON schemas. These changes were made based on all of the feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+- New OSCAL content in XML, JSON, and YAML formats for the [draft NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/OSCAL/tree/master/content/nist.gov/SP800-53).
+- Updated content in OSCAL XML, JSON, and YAML formats for the [NIST SP 800-53 revision 4 catalog](https://github.com/usnistgov/OSCAL/tree/master/content/nist.gov/SP800-53), and for the three NIST and four [FedRAMP baselines](https://github.com/usnistgov/OSCAL/tree/master/content/fedramp.gov).
+- Provides tools to convert OSCAL catalog, profile, and SSP content between OSCAL XML and JSON formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from milestone 2 to milestone 3.
 
-The OSCAL team will continue the development of OSCAL focusing our full attention on finalizing the OSCAL implementation layer. The current vision for the OSCAL implementation layer is to support expressing system security plans (SSPs) in machine-readable OSCAL formats, and to allow software and service vendors to document the controls implemented in their software and service offerings. Stable versions of this work will be featured in our next release, OSCAL 1.0.0 Milestone 2.
+To download this release, click on "Assets" below and download either the .zip or the .tar.bz2 bundle. These bundles contain the resources described above. There are also [release notes](https://github.com/usnistgov/OSCAL/blob/master/src/release/release-notes.txt) containing a summary of changes in this and previous releases.
 
-Our current experimental OSCAL implementation layer is being validated as part of a pilot with GSA/FedRAMP, to ensure the necessary functionality and enough flexibility is provided to support a wide variety of SSPs provided by different organizations. To further validate the implementation layer's functionality and flexibility, NIST is seeking software and service providers that are willing to work with us to represent control implementation information about their products. Please email us at oscal@nist.gov if you are interested.
+The OSCAL team will continue the development of OSCAL focusing our full attention on providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials. We will continue to collect feedback from the community on the OSCAL models. We are also seeking tool developers, vendors, and service providers that would like to implement the OSCAL models in commercial and open source offerings. To provide feedback, to ask questions, or to let us know about an OSCAL implementation you are working on, please email the NIST OSCAL team at oscal@nist.gov. You can also post publicly to the OSCAL development list: oscal-dev@list.nist.gov.
 
-If you have any questions about OSCAL in general or the Milestone 1 release specifically, or if you would like to get involved in the OSCAL project, please contact us at: oscal@nist.gov.
+There are instructions for joining the OSCAL development and update lists on our [contacts page](https://pages.nist.gov/OSCAL/contact/).
 </blockquote>
+
+NIST is seeking software and service providers that are willing to work with us to represent control implementation information about their products. Please email us at [oscal@nist.gov](mailto:oscal@nist.gov) if you are interested.
+
+If you have any questions about OSCAL in general or the Milestone 3 release specifically, or if you would like to get involved in the OSCAL project, please contact us at: [oscal@nist.gov](mailto:oscal@nist.gov).
