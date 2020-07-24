@@ -74,7 +74,7 @@
          <field ref="start" min-occurs="1" max-occurs="1" >
             <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
          </field>
-         <field ref="end" min-occurs="1" max-occurs="1">
+         <field ref="end" min-occurs="0" max-occurs="1">
             <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
          </field>
          <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
