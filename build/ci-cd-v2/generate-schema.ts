@@ -1,4 +1,7 @@
-process.chdir(__dirname);
+//allow to run js file from anywhere using the path where the script file is located
+//process.chdir(__dirname);
+//allow to run js script processes from the current workingDirectory and creates files in the current directory
+process.cwd();
 
 import fs from 'fs';
 import path from 'path'
@@ -49,12 +52,12 @@ try {
 
   if (argv['w'] || argv['working-dir']) { // any directory name that is specified
     const parsedWorkingDir = argv['w'] || argv['working-dir']
-    const currentDirectory = path.join(__dirname, '.')
+   // const currentDirectory = path.join(__dirname, '.')
     // set the working directory
     fs.mkdirSync(`${parsedWorkingDir}`,{recursive: true});
-    workingDirectory = `${currentDirectory}/${parsedWorkingDir}`
+    workingDirectory = `${process.cwd()}/${parsedWorkingDir}`
     //workingDirectory = fs.mkdirSync(`${currentDirectory}/${parsedWorkingDir}`);
-    console.log('Show Current Directory', currentDirectory)
+   console.log('Show Current Directory', process.cwd())
     console.log('Show Working Directory', workingDirectory)
     console.log('Show parsedWorkingDir', parsedWorkingDir)
   }
