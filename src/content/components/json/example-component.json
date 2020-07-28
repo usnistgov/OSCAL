@@ -1,5 +1,4 @@
 {
-    "$schema": "../../../json/schema/oscal_component_schema.json",
     "component-definition": {
         "metadata": {
             "title": "Test Component Defintion",
