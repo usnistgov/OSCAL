@@ -99,8 +99,11 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" >
+         <field ref="collected" min-occurs="1" max-occurs="1" >
             <description>Date/time stamp identifying when the finding information was collected.</description>
+         </field>
+         <field ref="expires" min-occurs="0" max-occurs="1" >
+            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
          <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1" />

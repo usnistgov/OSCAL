@@ -626,8 +626,11 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" >
+         <field ref="collected" min-occurs="1" max-occurs="1" >
             <description>Date/time stamp identifying when the finding information was collected.</description>
+         </field>
+         <field ref="expires" min-occurs="0" max-occurs="1" >
+            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
          <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1" />
@@ -650,14 +653,24 @@
 
    <define-field name="implementation-statement-uuid" as-type="uuid">
       <formal-name>Implementation Statement UUID</formal-name>
-      <description>Identifies the implementation statement in the SSP to which this finding is related. </description>
+      <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
    </define-field>
 
    <define-field name="date-time-stamp" as-type="dateTime-with-timezone">
       <formal-name>Date/Time Stamp</formal-name>
-      <description>Date/time stamp identifying when the information was collected.</description>
+      <description>Date/time stamp of the associated information.</description>
    </define-field>
 
+   <define-field name="collected" as-type="dateTime-with-timezone">
+      <formal-name>Date/Time Collected</formal-name>
+      <description>Date/time stamp identifying when the information was collected.</description>
+   </define-field>
+   
+   <define-field name="expires" as-type="dateTime-with-timezone">
+      <formal-name>Date/Time Expires</formal-name>
+      <description>Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</description>
+   </define-field>
+   
    <define-assembly name="objective-status">
       <formal-name>Implementation Status</formal-name>
       <description>Captures an assessors conclusions as to whether an objective is fully satisfied.</description>
@@ -782,7 +795,6 @@
       <description>A pointer to a relevant item, using it's UUID.</description>
    </define-flag>
    
-   
    <define-field name="observation-method">
       <formal-name>Observation Method</formal-name>
       <description>Identifies how the observation was made.</description>
@@ -846,6 +858,7 @@
          <assembly ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
             <group-as name="mitigating-factors" in-json="ARRAY"/>
          </assembly>
+         <field ref="remediation-deadline" min-occurs="0" max-occurs="1" />
          <assembly ref="remediation" min-occurs="0" max-occurs="unbounded">
             <group-as name="remediation-group" in-json="ARRAY"/>
          </assembly>
@@ -861,6 +874,11 @@
          <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
       </remarks>
    </define-assembly>
+
+   <define-field name="remediation-deadline" as-type="dateTime-with-timezone">
+      <formal-name>Remediation Deadline</formal-name>
+      <description>The date/time by which the risk must be closed.</description>
+   </define-field>
 
    <define-field name="risk-metric">
       <formal-name>Risk Metric</formal-name>
