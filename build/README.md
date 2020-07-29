@@ -107,7 +107,7 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
 
 1. Install Schematron Skeleton
 
-    The build environment uses the [ISO Schematron](https://www.google.com/search?q=schematron.com) Skeleton to generate Schematron schemas used for some validation operations.
+    The build environment uses the [ISO Schematron](http://schematron.com) Skeleton to generate Schematron schemas used for some validation operations.
 
     To install the Schematron Skeleton, run the following:
 
