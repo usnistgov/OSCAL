@@ -1,5 +1,5 @@
 ---
-title: Lunch with the Devs
+title: Lunch with the OSCAL Developers Meeting
 description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL work.
 layout: devlunch
 aliases:
