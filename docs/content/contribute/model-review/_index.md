@@ -1,10 +1,12 @@
 ---
-title: OSCAL Model Review Meeting
+title: OSCAL Model Review
 description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL model issues.
 layout: devlunch
 sidenav:
   toc:
     headingselectors: "h3,h4"
+    includeHtml: true
+weight: 20
 ---
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks to discuss OSCAL model issues with the OSCAL community. This provides a means for the OSCAL team to update OSCAL adopters on the latest improvements to the OSCAL models, and for community members to provide high-bandwidth feedback on concerns, gaps, and other issues with the OSCAL models.{{% /usa-intro %}}
