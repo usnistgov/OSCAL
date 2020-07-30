@@ -131,7 +131,7 @@
                 <group-as name="links" in-json="ARRAY"/>
             </field>
             <field ref="party-uuid" max-occurs="unbounded">
-                <group-as name="party-ids" in-json="ARRAY"/>
+                <group-as name="party-uuids" in-json="ARRAY"/>
             </field>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
