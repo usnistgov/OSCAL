@@ -189,10 +189,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -217,10 +218,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -717,7 +719,7 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "party-ids" : 
+          "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
@@ -1115,109 +1117,6 @@
         "$id" : "#/definitions/activity-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "results" : 
-      { "title" : "Assessment Results",
-        "description" : "Used by the assessment results and POA&M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&M, this identifies initial and residual risks, deviations, and disposition.",
-        "$id" : "#/definitions/results",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Universally Unique Identifier",
-            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "start" : 
-          { "$ref" : "#/definitions/start" },
-          "end" : 
-          { "$ref" : "#/definitions/end" },
-          "findings" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/finding" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "title",
-          "description",
-          "start",
-          "end",
-          "findings" ],
-        "additionalProperties" : false },
-      "finding" : 
-      { "title" : "Finding",
-        "description" : "Describes an individual finding.",
-        "$id" : "#/definitions/finding",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Universally Unique Identifier",
-            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "date-time-stamp" : 
-          { "$ref" : "#/definitions/date-time-stamp" },
-          "objective-status" : 
-          { "$ref" : "#/definitions/objective-status" },
-          "implementation-statement-uuid" : 
-          { "$ref" : "#/definitions/implementation-statement-uuid" },
-          "observations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/observation" } },
-          "threat-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/threat-id" } },
-          "risks" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/risk" } },
-          "party-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "title",
-          "description",
-          "date-time-stamp" ],
-        "additionalProperties" : false },
       "implementation-statement-uuid" : 
       { "title" : "Implementation Statement UUID",
         "description" : "Identifies the implementation statement in the SSP to which this finding is related.",
@@ -1226,8 +1125,22 @@
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "date-time-stamp" : 
       { "title" : "Date/Time Stamp",
-        "description" : "Date/time stamp identifying when the information was collected.",
+        "description" : "Date/time stamp of the associated information.",
         "$id" : "#/definitions/date-time-stamp",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "collected" : 
+      { "title" : "Date/Time Collected",
+        "description" : "Date/time stamp identifying when the information was collected.",
+        "$id" : "#/definitions/collected",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "expires" : 
+      { "title" : "Date/Time Expires",
+        "description" : "Date/time identifying when the information expires. Typically used with continuous assessment scenarios.",
+        "$id" : "#/definitions/expires",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
@@ -1491,6 +1404,8 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/mitigating-factor" } },
+          "remediation-deadline" : 
+          { "$ref" : "#/definitions/remediation-deadline" },
           "remediation-group" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1514,6 +1429,13 @@
           "risk-statement",
           "risk-status" ],
         "additionalProperties" : false },
+      "remediation-deadline" : 
+      { "title" : "Remediation Deadline",
+        "description" : "The date/time by which the risk must be closed.",
+        "$id" : "#/definitions/remediation-deadline",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
       "risk-metric" : 
       { "title" : "Risk Metric",
         "description" : "An individual risk metric from a specified system.",
@@ -1756,14 +1678,14 @@
           { "$ref" : "#/definitions/system-id" },
           "local-definitions" : 
           { "$ref" : "#/definitions/local-definitions" },
-          "results" : 
-          { "$ref" : "#/definitions/results" },
+          "poam-items" : 
+          { "$ref" : "#/definitions/poam-items" },
           "back-matter" : 
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "uuid",
           "metadata",
-          "results" ],
+          "poam-items" ],
         "additionalProperties" : false },
       "local-definitions" : 
       { "title" : "Local Definitions",
@@ -1795,6 +1717,104 @@
                   { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
+      "poam-items" : 
+      { "title" : "POA&M Items",
+        "description" : "This identifies initial and residual risks, deviations, and disposition.",
+        "$id" : "#/definitions/poam-items",
+        "type" : "object",
+        "properties" : 
+        { "title" : 
+          { "$ref" : "#/definitions/title" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "start" : 
+          { "$ref" : "#/definitions/start" },
+          "end" : 
+          { "$ref" : "#/definitions/end" },
+          "poam-item-group" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/poam-item" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "title",
+          "description",
+          "start",
+          "poam-item-group" ],
+        "additionalProperties" : false },
+      "poam-item" : 
+      { "title" : "POA&M Item",
+        "description" : "Describes an individual POA&M item.",
+        "$id" : "#/definitions/poam-item",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "collected" : 
+          { "$ref" : "#/definitions/collected" },
+          "expires" : 
+          { "$ref" : "#/definitions/expires" },
+          "objective-status" : 
+          { "$ref" : "#/definitions/objective-status" },
+          "implementation-statement-uuid" : 
+          { "$ref" : "#/definitions/implementation-statement-uuid" },
+          "observations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/observation" } },
+          "threat-ids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/threat-id" } },
+          "risks" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/risk" } },
+          "party-uuids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/party-uuid" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "title",
+          "description",
+          "collected" ],
         "additionalProperties" : false } },
     "properties" : 
     { "plan-of-action-and-milestones" : 

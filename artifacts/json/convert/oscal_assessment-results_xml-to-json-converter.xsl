@@ -231,33 +231,6 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
-   <xsl:template match="part" mode="xml2json">
-      <map key="part">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@ns"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:if test="exists(prop)">
-            <array key="properties" m:in-json="ARRAY">
-               <xsl:apply-templates select="prop" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:call-template name="prose">
-            <xsl:with-param name="key">prose</xsl:with-param>
-         </xsl:call-template>
-         <xsl:if test="exists(part)">
-            <array key="parts" m:in-json="ARRAY">
-               <xsl:apply-templates select="part" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(link)">
-            <array key="links" m:in-json="ARRAY">
-               <xsl:apply-templates select="link" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
    <xsl:template match="prose" mode="xml2json">
       <string key="prose">
          <xsl:apply-templates mode="md"/>
@@ -400,7 +373,7 @@
       <xsl:variable name="text-key">value</xsl:variable>
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
@@ -412,7 +385,7 @@
    <xsl:template match="annotation" mode="xml2json">
       <map key="annotation">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@value"/>
          <xsl:for-each select="remarks">
@@ -801,7 +774,7 @@
             </array>
          </xsl:if>
          <xsl:if test="exists(party-uuid)">
-            <array key="party-ids" m:in-json="ARRAY">
+            <array key="party-uuids" m:in-json="ARRAY">
                <xsl:apply-templates select="party-uuid" mode="#current"/>
             </array>
          </xsl:if>
@@ -1006,7 +979,7 @@
       </map>
    </xsl:template>
    <xsl:template match="implemented-component" mode="xml2json">
-      <map key="{@component-id}">
+      <map key="{@component-uuid}">
          <xsl:apply-templates mode="as-string" select="@use"/>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
@@ -1075,7 +1048,11 @@
                <xsl:apply-templates select="control-objectives" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="objective" mode="#current"/>
+         <xsl:if test="exists(objective)">
+            <array key="objectives">
+               <xsl:apply-templates select="objective" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:if test="exists(method)">
             <array key="method-definitions" m:in-json="ARRAY">
                <xsl:apply-templates select="method" mode="#current"/>
@@ -1735,7 +1712,8 @@
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="date-time-stamp" mode="#current"/>
+         <xsl:apply-templates select="collected" mode="#current"/>
+         <xsl:apply-templates select="expires" mode="#current"/>
          <xsl:apply-templates select="objective-status" mode="#current"/>
          <xsl:apply-templates select="implementation-statement-uuid" mode="#current"/>
          <xsl:if test="exists(observation)">
@@ -1773,6 +1751,16 @@
    </xsl:template>
    <xsl:template match="date-time-stamp" mode="xml2json">
       <string key="date-time-stamp">
+         <xsl:apply-templates mode="#current"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="collected" mode="xml2json">
+      <string key="collected">
+         <xsl:apply-templates mode="#current"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="expires" mode="xml2json">
+      <string key="expires">
          <xsl:apply-templates mode="#current"/>
       </string>
    </xsl:template>
@@ -1980,6 +1968,7 @@
                <xsl:apply-templates select="mitigating-factor" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:apply-templates select="remediation-deadline" mode="#current"/>
          <xsl:if test="exists(remediation)">
             <array key="remediation-group" m:in-json="ARRAY">
                <xsl:apply-templates select="remediation" mode="#current"/>
@@ -1999,6 +1988,11 @@
             </array>
          </xsl:if>
       </map>
+   </xsl:template>
+   <xsl:template match="remediation-deadline" mode="xml2json">
+      <string key="remediation-deadline">
+         <xsl:apply-templates mode="#current"/>
+      </string>
    </xsl:template>
    <xsl:template match="risk-metric" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
@@ -2166,6 +2160,33 @@
       <string key="risk-statement">
          <xsl:apply-templates mode="md"/>
       </string>
+   </xsl:template>
+   <xsl:template match="part" mode="xml2json">
+      <map key="part">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:apply-templates mode="as-string" select="@name"/>
+         <xsl:apply-templates mode="as-string" select="@ns"/>
+         <xsl:apply-templates mode="as-string" select="@class"/>
+         <xsl:apply-templates select="title" mode="#current"/>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:call-template name="prose">
+            <xsl:with-param name="key">prose</xsl:with-param>
+         </xsl:call-template>
+         <xsl:if test="exists(part)">
+            <array key="parts" m:in-json="ARRAY">
+               <xsl:apply-templates select="part" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+      </map>
    </xsl:template>
    <xsl:template match="assessment-results" mode="xml2json">
       <map key="assessment-results">
