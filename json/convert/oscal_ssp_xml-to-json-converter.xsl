@@ -171,16 +171,16 @@
    </xsl:template>
    <xsl:template mode="md" priority="1" match="ul | ol">
       <xsl:call-template name="conditional-lf"/>
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
       <string/>
    </xsl:template>
    <xsl:template mode="md" match="ul//ul | ol//ol | ol//ul | ul//ol">
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template mode="md" match="li">
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>* </xsl:text>
          <xsl:apply-templates mode="md"/>
@@ -190,7 +190,7 @@
       <string/>
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>1. </xsl:text>
          <xsl:apply-templates mode="md"/>
