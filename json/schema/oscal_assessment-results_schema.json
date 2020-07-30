@@ -4,51 +4,7 @@
     "$comment" : "OSCAL Assessment Results Format: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "part" : 
-      { "title" : "Part",
-        "description" : "A partition or component of a control or part",
-        "$id" : "#/definitions/part",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "name" : 
-          { "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object.",
-            "type" : "string" },
-          "ns" : 
-          { "title" : "Namespace",
-            "description" : "A namespace qualifying the name.",
-            "type" : "string" },
-          "class" : 
-          { "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object",
-            "type" : "string" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "prose" : 
-          { "$ref" : "#/definitions/prose" },
-          "parts" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/part" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } } },
-        "required" : 
-        [ "name" ],
-        "additionalProperties" : false },
-      "prose" : 
+    { "prose" : 
       { "title" : "Prose",
         "description" : "Prose permits multiple paragraphs, lists, tables etc.",
         "$id" : "#/definitions/prose",
@@ -238,10 +194,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -266,10 +223,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -766,7 +724,7 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "party-ids" : 
+          "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
@@ -1116,8 +1074,15 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/control-objectives" } },
-          "objective" : 
-          { "$ref" : "#/definitions/objective" },
+          "objectives" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/objective" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/objective" },
+                "minItems" : 2 } ] },
           "method-definitions" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1890,8 +1855,10 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/annotation" } },
-          "date-time-stamp" : 
-          { "$ref" : "#/definitions/date-time-stamp" },
+          "collected" : 
+          { "$ref" : "#/definitions/collected" },
+          "expires" : 
+          { "$ref" : "#/definitions/expires" },
           "objective-status" : 
           { "$ref" : "#/definitions/objective-status" },
           "implementation-statement-uuid" : 
@@ -1922,7 +1889,7 @@
         [ "uuid",
           "title",
           "description",
-          "date-time-stamp" ],
+          "collected" ],
         "additionalProperties" : false },
       "implementation-statement-uuid" : 
       { "title" : "Implementation Statement UUID",
@@ -1932,8 +1899,22 @@
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "date-time-stamp" : 
       { "title" : "Date/Time Stamp",
-        "description" : "Date/time stamp identifying when the information was collected.",
+        "description" : "Date/time stamp of the associated information.",
         "$id" : "#/definitions/date-time-stamp",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "collected" : 
+      { "title" : "Date/Time Collected",
+        "description" : "Date/time stamp identifying when the information was collected.",
+        "$id" : "#/definitions/collected",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "expires" : 
+      { "title" : "Date/Time Expires",
+        "description" : "Date/time identifying when the information expires. Typically used with continuous assessment scenarios.",
+        "$id" : "#/definitions/expires",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
@@ -2197,6 +2178,8 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/mitigating-factor" } },
+          "remediation-deadline" : 
+          { "$ref" : "#/definitions/remediation-deadline" },
           "remediation-group" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2220,6 +2203,13 @@
           "risk-statement",
           "risk-status" ],
         "additionalProperties" : false },
+      "remediation-deadline" : 
+      { "title" : "Remediation Deadline",
+        "description" : "The date/time by which the risk must be closed.",
+        "$id" : "#/definitions/remediation-deadline",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
       "risk-metric" : 
       { "title" : "Risk Metric",
         "description" : "An individual risk metric from a specified system.",
@@ -2443,6 +2433,51 @@
         "description" : "Describes the risk.",
         "$id" : "#/definitions/risk-statement",
         "type" : "string" },
+      "part" : 
+      { "title" : "Part",
+        "description" : "A partition or component of a control or part",
+        "$id" : "#/definitions/part",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "ns" : 
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
+          "class" : 
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" },
+          "parts" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/part" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } } },
+        "required" : 
+        [ "name" ],
+        "additionalProperties" : false },
       "assessment-results" : 
       { "title" : "Security Assessment Results (SAR)",
         "description" : "Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.",

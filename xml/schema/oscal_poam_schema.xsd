@@ -358,14 +358,14 @@
                      </xs:union>
                   </xs:simpleType>
                </xs:attribute>
-               <xs:attribute name="id" type="xs:NCName">
+               <xs:attribute name="uuid" type="oscal-poam:uuid">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Identifier</m:formal-name>
-                        <m:description>Unique identifier of the containing object</m:description>
+                        <m:formal-name>Universally Unique Identifier</m:formal-name>
+                        <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                        <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="ns" type="xs:string">
@@ -427,14 +427,14 @@
                   <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" type="oscal-poam:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="ns" type="xs:string">
@@ -1749,7 +1749,7 @@
       </xs:unique>
       <xs:unique name="inventory-item-implemented-component-keys">
          <xs:selector xpath="oscal-poam:implemented-component"/>
-         <xs:field xpath="@component-id"/>
+         <xs:field xpath="@component-uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="implemented-component">
@@ -1783,7 +1783,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="component-id" use="required" type="oscal-poam:uuid">
+         <xs:attribute name="component-uuid" use="required" type="oscal-poam:uuid">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Component Identifier Reference</m:formal-name>
@@ -2113,132 +2113,14 @@
          </xs:simpleContent>
       </xs:complexType>
    </xs:element>
-   <xs:element name="results">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Assessment Results</m:formal-name>
-            <m:description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Assessment Results</b>: Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="1" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:start" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-poam:end" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-poam:finding" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Universally Unique Identifier</m:formal-name>
-                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="finding">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Finding</m:formal-name>
-            <m:description>Describes an individual finding.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Finding</b>: Describes an individual finding.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="description" minOccurs="1" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:date-time-stamp" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="oscal-poam:objective-status" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-poam:implementation-statement-uuid"
-                        minOccurs="0"
-                        maxOccurs="1"/>
-            <xs:element ref="oscal-poam:observation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:threat-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:risk" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-poam:party-uuid" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Remarks</m:formal-name>
-                     <m:description>Additional commentary on the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:sequence>
-         <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Universally Unique Identifier</m:formal-name>
-                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="implementation-statement-uuid">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Implementation Statement UUID</m:formal-name>
-            <m:description>Identifies the implementation statement in the SSP to which this finding is related. </m:description>
+            <m:description>Identifies the implementation statement in the SSP to which this finding is related.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Implementation Statement UUID</b>: Identifies the implementation statement in the SSP to which this finding is related. </xs:documentation>
+            <b>Implementation Statement UUID</b>: Identifies the implementation statement in the SSP to which this finding is related.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -2250,10 +2132,40 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Date/Time Stamp</m:formal-name>
+            <m:description>Date/time stamp of the associated information.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Date/Time Stamp</b>: Date/time stamp of the associated information.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-poam:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="collected">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Date/Time Collected</m:formal-name>
             <m:description>Date/time stamp identifying when the information was collected.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Date/Time Stamp</b>: Date/time stamp identifying when the information was collected.</xs:documentation>
+            <b>Date/Time Collected</b>: Date/time stamp identifying when the information was collected.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-poam:dateTime-with-timezone"/>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="expires">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Date/Time Expires</m:formal-name>
+            <m:description>Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Date/Time Expires</b>: Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:simpleContent>
@@ -2858,6 +2770,7 @@
             <xs:element ref="oscal-poam:mitigating-factor"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:remediation-deadline" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-poam:remediation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-poam:risk-status" minOccurs="1" maxOccurs="1"/>
             <xs:element name="closure-actions" minOccurs="0" maxOccurs="1">
@@ -2886,6 +2799,21 @@
                   <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="remediation-deadline">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Remediation Deadline</m:formal-name>
+            <m:description>The date/time by which the risk must be closed.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Remediation Deadline</b>: The date/time by which the risk must be closed.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="oscal-poam:dateTime-with-timezone"/>
+         </xs:simpleContent>
       </xs:complexType>
    </xs:element>
    <xs:element name="risk-metric">
@@ -3840,7 +3768,7 @@
             <xs:element ref="oscal-poam:import-ssp" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-poam:system-id" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="oscal-poam:local-definitions" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-poam:results" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:poam-items" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="oscal-poam:back-matter" minOccurs="0" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
@@ -3891,6 +3819,115 @@
          <xs:selector xpath="oscal-poam:inventory-item"/>
          <xs:field xpath="@uuid"/>
       </xs:unique>
+   </xs:element>
+   <xs:element name="poam-items">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>POA&amp;M Items</m:formal-name>
+            <m:description>This identifies initial and residual risks, deviations, and disposition.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>POA&amp;M Items</b>: This identifies initial and residual risks, deviations, and disposition.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:start" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:end" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:poam-item" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="poam-item">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>POA&amp;M Item</m:formal-name>
+            <m:description>Describes an individual POA&amp;M item.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>POA&amp;M Item</b>: Describes an individual POA&amp;M item.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-poam:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-poam:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:collected" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:expires" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:objective-status" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-poam:implementation-statement-uuid"
+                        minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element ref="oscal-poam:observation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:threat-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:risk" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-poam:party-uuid" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
    </xs:element>
    <xs:group name="PROSE">
       <xs:choice>

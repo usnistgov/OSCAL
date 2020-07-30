@@ -18,65 +18,6 @@
          <m:root>assessment-plan</m:root>
       </xs:appinfo>
    </xs:annotation>
-   <xs:element name="part">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Part</m:formal-name>
-            <m:description>A partition or component of a control or part</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Part</b>: A partition or component of a control or part</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="oscal-ap:title" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:group ref="oscal-ap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element ref="oscal-ap:part" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ap:link" minOccurs="0" maxOccurs="unbounded"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="name" use="required" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Name</m:formal-name>
-                  <m:description>Identifying the purpose and intended use of the property, part or other object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="ns" type="xs:string">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Namespace</m:formal-name>
-                  <m:description>A namespace qualifying the name.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Namespace</b>: A namespace qualifying the name.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="class" type="xs:NCName">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Class</m:formal-name>
-                  <m:description>Indicating the type or classification of the containing object</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Class</b>: Indicating the type or classification of the containing object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="metadata">
       <xs:annotation>
          <xs:appinfo>
@@ -417,14 +358,14 @@
                      </xs:union>
                   </xs:simpleType>
                </xs:attribute>
-               <xs:attribute name="id" type="xs:NCName">
+               <xs:attribute name="uuid" type="oscal-ap:uuid">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Identifier</m:formal-name>
-                        <m:description>Unique identifier of the containing object</m:description>
+                        <m:formal-name>Universally Unique Identifier</m:formal-name>
+                        <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                        <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="ns" type="xs:string">
@@ -486,14 +427,14 @@
                   <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" type="oscal-ap:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="ns" type="xs:string">
@@ -1863,7 +1804,7 @@
       </xs:unique>
       <xs:unique name="inventory-item-implemented-component-keys">
          <xs:selector xpath="oscal-ap:implemented-component"/>
-         <xs:field xpath="@component-id"/>
+         <xs:field xpath="@component-uuid"/>
       </xs:unique>
    </xs:element>
    <xs:element name="implemented-component">
@@ -1897,7 +1838,7 @@
                </xs:complexType>
             </xs:element>
          </xs:sequence>
-         <xs:attribute name="component-id" use="required" type="oscal-ap:uuid">
+         <xs:attribute name="component-uuid" use="required" type="oscal-ap:uuid">
             <xs:annotation>
                <xs:appinfo>
                   <m:formal-name>Component Identifier Reference</m:formal-name>
@@ -2026,7 +1967,7 @@
             <xs:element ref="oscal-ap:control-objectives"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
-            <xs:element ref="oscal-ap:objective" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:objective" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ap:method" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                <xs:annotation>
@@ -3197,6 +3138,65 @@
                </xs:appinfo>
                <xs:documentation>
                   <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="part">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Part</m:formal-name>
+            <m:description>A partition or component of a control or part</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Part</b>: A partition or component of a control or part</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal-ap:title" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ap:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:group ref="oscal-ap:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element ref="oscal-ap:part" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ap:link" minOccurs="0" maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attribute name="uuid" type="oscal-ap:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="name" use="required" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Name</m:formal-name>
+                  <m:description>Identifying the purpose and intended use of the property, part or other object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="ns" type="xs:string">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Namespace</m:formal-name>
+                  <m:description>A namespace qualifying the name.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Namespace</b>: A namespace qualifying the name.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:NCName">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Class</m:formal-name>
+                  <m:description>Indicating the type or classification of the containing object</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Class</b>: Indicating the type or classification of the containing object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>

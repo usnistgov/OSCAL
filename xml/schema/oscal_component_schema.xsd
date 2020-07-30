@@ -359,14 +359,14 @@
                      </xs:union>
                   </xs:simpleType>
                </xs:attribute>
-               <xs:attribute name="id" type="xs:NCName">
+               <xs:attribute name="uuid" type="oscal-component:uuid">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Identifier</m:formal-name>
-                        <m:description>Unique identifier of the containing object</m:description>
+                        <m:formal-name>Universally Unique Identifier</m:formal-name>
+                        <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                        <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="ns" type="xs:string">
@@ -428,14 +428,14 @@
                   <b>Name</b>: Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="id" type="xs:NCName">
+         <xs:attribute name="uuid" type="oscal-component:uuid">
             <xs:annotation>
                <xs:appinfo>
-                  <m:formal-name>Identifier</m:formal-name>
-                  <m:description>Unique identifier of the containing object</m:description>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
                </xs:appinfo>
                <xs:documentation>
-                  <b>Identifier</b>: Unique identifier of the containing object</xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="ns" type="xs:string">

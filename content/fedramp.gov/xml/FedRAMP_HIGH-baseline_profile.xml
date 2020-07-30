@@ -1098,6 +1098,12 @@
       <set-parameter param-id="sa-9.5_prm_1">
          <constraint>information processing, information data, AND information services</constraint>
       </set-parameter>
+      <set-parameter param-id="sa-9.5_prm_2">
+         <constraint>U.S./U.S. Territories or geographic locations where there is U.S. jurisdiction</constraint>
+      </set-parameter>
+      <set-parameter param-id="sa-9.5_prm_3">
+         <constraint>all High Impact Data, Systems, or Services</constraint>
+      </set-parameter>
       <set-parameter param-id="sa-10_prm_1">
          <constraint>development, implementation, AND operation</constraint>
       </set-parameter>
@@ -9677,7 +9683,7 @@
          <title>NIST Special Publication (SP) 800-53</title>
          <prop name="version" ns="https://fedramp.gov/ns/oscal">Revision 4</prop>
          <prop name="keep">always</prop>
-         <rlink media-type="application/xml" href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
+         <rlink media-type="application/xml" href="https://raw.githubusercontent.com/usnistgov/OSCAL/v1.0.0-milestone3/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
       </resource>
    </back-matter>
 </profile>

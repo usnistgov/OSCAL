@@ -50,20 +50,6 @@
       </xsl:attribute>
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <!-- *** Handling assembly "part" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='part'] | array[@key='parts']/* | map[@key='parts']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-      </xsl:element>
-   </xsl:template>
    <!--*[@key='prose']-->
    <xsl:template match="*[@key='prose']" priority="5" mode="json2xml">
       <xsl:for-each select="string[@key='prose'], self::string">
@@ -358,7 +344,7 @@
    <!-- *** Handling flag @name *** -->
    <xsl:template match="*[@key='name']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='part']/*[@key='name'] | *[@key='parts']/*[@key='name'] | array[@key='parts']/*/*[@key='name'] | map[@key='parts']/*/*[@key='name'] | *[@key='prop']/*[@key='name'] | *[@key='properties']/*[@key='name'] | array[@key='properties']/*/*[@key='name'] | map[@key='properties']/*/*[@key='name'] | *[@key='props']/*[@key='name'] | array[@key='props']/*/*[@key='name'] | map[@key='props']/*/*[@key='name'] | *[@key='annotation']/*[@key='name'] | *[@key='annotations']/*[@key='name'] | array[@key='annotations']/*/*[@key='name'] | map[@key='annotations']/*/*[@key='name'] | *[@key='protocol']/*[@key='name'] | *[@key='protocols']/*[@key='name'] | array[@key='protocols']/*/*[@key='name'] | map[@key='protocols']/*/*[@key='name'] | *[@key='include-subject']/*[@key='name'] | *[@key='includes']/*[@key='name'] | array[@key='includes']/*/*[@key='name'] | map[@key='includes']/*/*[@key='name'] | *[@key='exclude-subject']/*[@key='name'] | *[@key='excludes']/*[@key='name'] | array[@key='excludes']/*/*[@key='name'] | map[@key='excludes']/*/*[@key='name']"
+                 match="*[@key='prop']/*[@key='name'] | *[@key='properties']/*[@key='name'] | array[@key='properties']/*/*[@key='name'] | map[@key='properties']/*/*[@key='name'] | *[@key='props']/*[@key='name'] | array[@key='props']/*/*[@key='name'] | map[@key='props']/*/*[@key='name'] | *[@key='annotation']/*[@key='name'] | *[@key='annotations']/*[@key='name'] | array[@key='annotations']/*/*[@key='name'] | map[@key='annotations']/*/*[@key='name'] | *[@key='protocol']/*[@key='name'] | *[@key='protocols']/*[@key='name'] | array[@key='protocols']/*/*[@key='name'] | map[@key='protocols']/*/*[@key='name'] | *[@key='include-subject']/*[@key='name'] | *[@key='includes']/*[@key='name'] | array[@key='includes']/*/*[@key='name'] | map[@key='includes']/*/*[@key='name'] | *[@key='exclude-subject']/*[@key='name'] | *[@key='excludes']/*[@key='name'] | array[@key='excludes']/*/*[@key='name'] | map[@key='excludes']/*/*[@key='name'] | *[@key='part']/*[@key='name'] | *[@key='parts']/*[@key='name'] | array[@key='parts']/*/*[@key='name'] | map[@key='parts']/*/*[@key='name']"
                  mode="as-attribute">
       <xsl:attribute name="name">
          <xsl:apply-templates mode="#current"/>
@@ -367,7 +353,7 @@
    <!-- *** Handling flag @ns *** -->
    <xsl:template match="*[@key='ns']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='part']/*[@key='ns'] | *[@key='parts']/*[@key='ns'] | array[@key='parts']/*/*[@key='ns'] | map[@key='parts']/*/*[@key='ns'] | *[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns'] | map[@key='properties']/*/*[@key='ns'] | *[@key='props']/*[@key='ns'] | array[@key='props']/*/*[@key='ns'] | map[@key='props']/*/*[@key='ns'] | *[@key='annotation']/*[@key='ns'] | *[@key='annotations']/*[@key='ns'] | array[@key='annotations']/*/*[@key='ns'] | map[@key='annotations']/*/*[@key='ns']"
+                 match="*[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns'] | map[@key='properties']/*/*[@key='ns'] | *[@key='props']/*[@key='ns'] | array[@key='props']/*/*[@key='ns'] | map[@key='props']/*/*[@key='ns'] | *[@key='annotation']/*[@key='ns'] | *[@key='annotations']/*[@key='ns'] | array[@key='annotations']/*/*[@key='ns'] | map[@key='annotations']/*/*[@key='ns'] | *[@key='part']/*[@key='ns'] | *[@key='parts']/*[@key='ns'] | array[@key='parts']/*/*[@key='ns'] | map[@key='parts']/*/*[@key='ns']"
                  mode="as-attribute">
       <xsl:attribute name="ns">
          <xsl:apply-templates mode="#current"/>
@@ -376,7 +362,7 @@
    <!-- *** Handling flag @class *** -->
    <xsl:template match="*[@key='class']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class'] | map[@key='parts']/*/*[@key='class'] | *[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | map[@key='properties']/*/*[@key='class'] | *[@key='props']/*[@key='class'] | array[@key='props']/*/*[@key='class'] | map[@key='props']/*/*[@key='class'] | *[@key='include-subject']/*[@key='class'] | *[@key='includes']/*[@key='class'] | array[@key='includes']/*/*[@key='class'] | map[@key='includes']/*/*[@key='class'] | *[@key='exclude-subject']/*[@key='class'] | *[@key='excludes']/*[@key='class'] | array[@key='excludes']/*/*[@key='class'] | map[@key='excludes']/*/*[@key='class']"
+                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | map[@key='properties']/*/*[@key='class'] | *[@key='props']/*[@key='class'] | array[@key='props']/*/*[@key='class'] | map[@key='props']/*/*[@key='class'] | *[@key='include-subject']/*[@key='class'] | *[@key='includes']/*[@key='class'] | array[@key='includes']/*/*[@key='class'] | map[@key='includes']/*/*[@key='class'] | *[@key='exclude-subject']/*[@key='class'] | *[@key='excludes']/*[@key='class'] | array[@key='excludes']/*/*[@key='class'] | map[@key='excludes']/*/*[@key='class'] | *[@key='part']/*[@key='class'] | *[@key='parts']/*[@key='class'] | array[@key='parts']/*/*[@key='class'] | map[@key='parts']/*/*[@key='class']"
                  mode="as-attribute">
       <xsl:attribute name="class">
          <xsl:apply-templates mode="#current"/>
@@ -471,9 +457,9 @@
       </xsl:attribute>
    </xsl:template>
    <!-- *** Handling field "party-uuid" *** -->
-   <!--*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/* | *[@key='party-ids']  | *[@key='party-ids']/*-->
+   <!--*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/*-->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/* | *[@key='party-ids']  | *[@key='party-ids']/*"
+   <xsl:template match="*[@key='party-uuid'] | *[@key='party-uuids']  | *[@key='party-uuids']/*"
                  priority="5"
                  mode="json2xml">
       <xsl:element name="party-uuid" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -496,28 +482,6 @@
    </xsl:template>
    <xsl:template mode="expand"
                  match="map[@key = 'party-uuids']/array[@key = 'STRVALUE']/string | array[@key = 'party-uuids']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE'] | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="party-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE']/string | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']/string">
       <xsl:variable name="me" select="."/>
       <xsl:for-each select="parent::array/parent::map">
          <xsl:copy>
@@ -1066,7 +1030,7 @@
    <!-- *** Handling flag @id *** -->
    <xsl:template match="*[@key='id']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='part']/*[@key='id'] | *[@key='parts']/*[@key='id'] | array[@key='parts']/*/*[@key='id'] | map[@key='parts']/*/*[@key='id'] | *[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | map[@key='properties']/*/*[@key='id'] | *[@key='props']/*[@key='id'] | array[@key='props']/*/*[@key='id'] | map[@key='props']/*/*[@key='id'] | *[@key='annotation']/*[@key='id'] | *[@key='annotations']/*[@key='id'] | array[@key='annotations']/*/*[@key='id'] | map[@key='annotations']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | map[@key='roles']/*/*[@key='id'] | *[@key='objective']/*[@key='id']"
+                 match="*[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | map[@key='roles']/*/*[@key='id'] | *[@key='objective']/*[@key='id'] | *[@key='objectives']/*[@key='id'] | array[@key='objectives']/*/*[@key='id'] | map[@key='objectives']/*/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>
@@ -1075,7 +1039,7 @@
    <!-- *** Handling flag @uuid *** -->
    <xsl:template match="*[@key='uuid']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='location']/*[@key='uuid'] | *[@key='locations']/*[@key='uuid'] | array[@key='locations']/*/*[@key='uuid'] | map[@key='locations']/*/*[@key='uuid'] | *[@key='party']/*[@key='uuid'] | *[@key='parties']/*[@key='uuid'] | array[@key='parties']/*/*[@key='uuid'] | map[@key='parties']/*/*[@key='uuid'] | *[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | array[@key='resources']/*/*[@key='uuid'] | map[@key='resources']/*/*[@key='uuid'] | *[@key='user']/*[@key='uuid'] | *[@key='users']/*[@key='uuid'] | array[@key='users']/*/*[@key='uuid'] | map[@key='users']/*/*[@key='uuid'] | *[@key='component']/*[@key='uuid'] | *[@key='components']/*[@key='uuid'] | array[@key='components']/*/*[@key='uuid'] | map[@key='components']/*/*[@key='uuid'] | *[@key='protocol']/*[@key='uuid'] | *[@key='protocols']/*[@key='uuid'] | array[@key='protocols']/*/*[@key='uuid'] | map[@key='protocols']/*/*[@key='uuid'] | *[@key='inventory-item']/*[@key='uuid'] | *[@key='inventory-items']/*[@key='uuid'] | array[@key='inventory-items']/*/*[@key='uuid'] | map[@key='inventory-items']/*/*[@key='uuid'] | *[@key='method']/*[@key='uuid'] | *[@key='method-definitions']/*[@key='uuid'] | array[@key='method-definitions']/*/*[@key='uuid'] | map[@key='method-definitions']/*/*[@key='uuid'] | *[@key='test-method']/*[@key='uuid'] | *[@key='test-methods']/*[@key='uuid'] | array[@key='test-methods']/*/*[@key='uuid'] | map[@key='test-methods']/*/*[@key='uuid'] | *[@key='test-step']/*[@key='uuid'] | *[@key='test-steps']/*[@key='uuid'] | array[@key='test-steps']/*/*[@key='uuid'] | map[@key='test-steps']/*/*[@key='uuid'] | *[@key='schedule']/*[@key='uuid'] | *[@key='task']/*[@key='uuid'] | *[@key='tasks']/*[@key='uuid'] | array[@key='tasks']/*/*[@key='uuid'] | map[@key='tasks']/*/*[@key='uuid'] | *[@key='include-activity']/*[@key='uuid'] | *[@key='include-activities']/*[@key='uuid'] | array[@key='include-activities']/*/*[@key='uuid'] | map[@key='include-activities']/*/*[@key='uuid'] | *[@key='exclude-activity']/*[@key='uuid'] | *[@key='exclude-activities']/*[@key='uuid'] | array[@key='exclude-activities']/*/*[@key='uuid'] | map[@key='exclude-activities']/*/*[@key='uuid'] | *[@key='assessment-plan']/*[@key='uuid']"
+                 match="*[@key='prop']/*[@key='uuid'] | *[@key='properties']/*[@key='uuid'] | array[@key='properties']/*/*[@key='uuid'] | map[@key='properties']/*/*[@key='uuid'] | *[@key='props']/*[@key='uuid'] | array[@key='props']/*/*[@key='uuid'] | map[@key='props']/*/*[@key='uuid'] | *[@key='annotation']/*[@key='uuid'] | *[@key='annotations']/*[@key='uuid'] | array[@key='annotations']/*/*[@key='uuid'] | map[@key='annotations']/*/*[@key='uuid'] | *[@key='location']/*[@key='uuid'] | *[@key='locations']/*[@key='uuid'] | array[@key='locations']/*/*[@key='uuid'] | map[@key='locations']/*/*[@key='uuid'] | *[@key='party']/*[@key='uuid'] | *[@key='parties']/*[@key='uuid'] | array[@key='parties']/*/*[@key='uuid'] | map[@key='parties']/*/*[@key='uuid'] | *[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | array[@key='resources']/*/*[@key='uuid'] | map[@key='resources']/*/*[@key='uuid'] | *[@key='user']/*[@key='uuid'] | *[@key='users']/*[@key='uuid'] | array[@key='users']/*/*[@key='uuid'] | map[@key='users']/*/*[@key='uuid'] | *[@key='component']/*[@key='uuid'] | *[@key='components']/*[@key='uuid'] | array[@key='components']/*/*[@key='uuid'] | map[@key='components']/*/*[@key='uuid'] | *[@key='protocol']/*[@key='uuid'] | *[@key='protocols']/*[@key='uuid'] | array[@key='protocols']/*/*[@key='uuid'] | map[@key='protocols']/*/*[@key='uuid'] | *[@key='inventory-item']/*[@key='uuid'] | *[@key='inventory-items']/*[@key='uuid'] | array[@key='inventory-items']/*/*[@key='uuid'] | map[@key='inventory-items']/*/*[@key='uuid'] | *[@key='method']/*[@key='uuid'] | *[@key='method-definitions']/*[@key='uuid'] | array[@key='method-definitions']/*/*[@key='uuid'] | map[@key='method-definitions']/*/*[@key='uuid'] | *[@key='test-method']/*[@key='uuid'] | *[@key='test-methods']/*[@key='uuid'] | array[@key='test-methods']/*/*[@key='uuid'] | map[@key='test-methods']/*/*[@key='uuid'] | *[@key='test-step']/*[@key='uuid'] | *[@key='test-steps']/*[@key='uuid'] | array[@key='test-steps']/*/*[@key='uuid'] | map[@key='test-steps']/*/*[@key='uuid'] | *[@key='schedule']/*[@key='uuid'] | *[@key='task']/*[@key='uuid'] | *[@key='tasks']/*[@key='uuid'] | array[@key='tasks']/*/*[@key='uuid'] | map[@key='tasks']/*/*[@key='uuid'] | *[@key='include-activity']/*[@key='uuid'] | *[@key='include-activities']/*[@key='uuid'] | array[@key='include-activities']/*/*[@key='uuid'] | map[@key='include-activities']/*/*[@key='uuid'] | *[@key='exclude-activity']/*[@key='uuid'] | *[@key='exclude-activities']/*[@key='uuid'] | array[@key='exclude-activities']/*/*[@key='uuid'] | map[@key='exclude-activities']/*/*[@key='uuid'] | *[@key='part']/*[@key='uuid'] | *[@key='parts']/*[@key='uuid'] | array[@key='parts']/*/*[@key='uuid'] | map[@key='parts']/*/*[@key='uuid'] | *[@key='assessment-plan']/*[@key='uuid']"
                  mode="as-attribute">
       <xsl:attribute name="uuid">
          <xsl:apply-templates mode="#current"/>
@@ -1179,7 +1143,7 @@
    <!-- *** Handling flag @control-id *** -->
    <xsl:template match="*[@key='control-id']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='include-control']/*[@key='control-id'] | *[@key='include-controls']/*[@key='control-id'] | array[@key='include-controls']/*/*[@key='control-id'] | map[@key='include-controls']/*/*[@key='control-id'] | *[@key='exclude-control']/*[@key='control-id'] | *[@key='exclude-controls']/*[@key='control-id'] | array[@key='exclude-controls']/*/*[@key='control-id'] | map[@key='exclude-controls']/*/*[@key='control-id'] | *[@key='objective']/*[@key='control-id']"
+                 match="*[@key='include-control']/*[@key='control-id'] | *[@key='include-controls']/*[@key='control-id'] | array[@key='include-controls']/*/*[@key='control-id'] | map[@key='include-controls']/*/*[@key='control-id'] | *[@key='exclude-control']/*[@key='control-id'] | *[@key='exclude-controls']/*[@key='control-id'] | array[@key='exclude-controls']/*/*[@key='control-id'] | map[@key='exclude-controls']/*/*[@key='control-id'] | *[@key='objective']/*[@key='control-id'] | *[@key='objectives']/*[@key='control-id'] | array[@key='objectives']/*/*[@key='control-id'] | map[@key='objectives']/*/*[@key='control-id']"
                  mode="as-attribute">
       <xsl:attribute name="control-id">
          <xsl:apply-templates mode="#current"/>
@@ -1196,7 +1160,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-uuids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
@@ -1221,7 +1185,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-ids')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party-uuid', 'party-uuids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
@@ -1615,7 +1579,7 @@
    <xsl:template priority="2"
                  match="map[@key=('implemented-components')]/*/@key"
                  mode="as-attribute">
-      <xsl:attribute name="component-id">
+      <xsl:attribute name="component-uuid">
          <xsl:value-of select="."/>
       </xsl:attribute>
    </xsl:template>
@@ -1634,15 +1598,15 @@
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- *** Handling flag "implemented-component/@component-id" *** -->
+   <!-- *** Handling flag "implemented-component/@component-uuid" *** -->
    <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='implemented-component']/*[@key='component-id'] | *[@key='implemented-components']/*[@key='component-id'] | *[@key='implemented-components']/*/*[@key='component-id']"
+   <xsl:template match="*[@key='implemented-component']/*[@key='component-uuid'] | *[@key='implemented-components']/*[@key='component-uuid'] | *[@key='implemented-components']/*/*[@key='component-uuid']"
                  priority="7"
                  mode="json2xml"/>
    <xsl:template priority="3"
-                 match="*[@key='implemented-component']/*[@key='component-id'] | *[@key='implemented-components']/*[@key='component-id'] | *[@key='implemented-components']/*/*[@key='component-id']"
+                 match="*[@key='implemented-component']/*[@key='component-uuid'] | *[@key='implemented-components']/*[@key='component-uuid'] | *[@key='implemented-components']/*/*[@key='component-uuid']"
                  mode="as-attribute">
-      <xsl:attribute name="component-id">
+      <xsl:attribute name="component-uuid">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
@@ -1677,7 +1641,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('controls', 'control-group')]"/>
          <xsl:apply-templates mode="#current"
                               select="*[@key=('control-objectives', 'control-objective-group')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('objective')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('objective', 'objectives')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('method', 'method-definitions')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
       </xsl:element>
@@ -1864,7 +1828,9 @@
    </xsl:template>
    <!-- *** Handling assembly "objective" *** -->
    <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='objective']" priority="4" mode="json2xml">
+   <xsl:template match="*[@key='objective'] | array[@key='objectives']/* | map[@key='objectives']"
+                 priority="4"
+                 mode="json2xml">
       <xsl:element name="objective" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
@@ -2238,6 +2204,20 @@
       <xsl:attribute name="objective-id">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling assembly "part" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='part'] | array[@key='parts']/* | map[@key='parts']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prose')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+      </xsl:element>
    </xsl:template>
    <!-- *** Handling assembly "assessment-plan" *** -->
    <!-- *** NB - template matching 'array' overrides this one *** -->

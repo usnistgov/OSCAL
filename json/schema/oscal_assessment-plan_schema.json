@@ -4,51 +4,7 @@
     "$comment" : "OSCAL Assessment Plan Format: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "part" : 
-      { "title" : "Part",
-        "description" : "A partition or component of a control or part",
-        "$id" : "#/definitions/part",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
-          "name" : 
-          { "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object.",
-            "type" : "string" },
-          "ns" : 
-          { "title" : "Namespace",
-            "description" : "A namespace qualifying the name.",
-            "type" : "string" },
-          "class" : 
-          { "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object",
-            "type" : "string" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "prose" : 
-          { "$ref" : "#/definitions/prose" },
-          "parts" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/part" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } } },
-        "required" : 
-        [ "name" ],
-        "additionalProperties" : false },
-      "prose" : 
+    { "prose" : 
       { "title" : "Prose",
         "description" : "Prose permits multiple paragraphs, lists, tables etc.",
         "$id" : "#/definitions/prose",
@@ -238,10 +194,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -266,10 +223,11 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "id" : 
-          { "title" : "Identifier",
-            "description" : "Unique identifier of the containing object",
-            "type" : "string" },
+          "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -766,7 +724,7 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "party-ids" : 
+          "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
@@ -1116,8 +1074,15 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/control-objectives" } },
-          "objective" : 
-          { "$ref" : "#/definitions/objective" },
+          "objectives" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/objective" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/objective" },
+                "minItems" : 2 } ] },
           "method-definitions" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1820,6 +1785,51 @@
         "required" : 
         [ "uuid",
           "description" ],
+        "additionalProperties" : false },
+      "part" : 
+      { "title" : "Part",
+        "description" : "A partition or component of a control or part",
+        "$id" : "#/definitions/part",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "name" : 
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+            "type" : "string" },
+          "ns" : 
+          { "title" : "Namespace",
+            "description" : "A namespace qualifying the name.",
+            "type" : "string" },
+          "class" : 
+          { "title" : "Class",
+            "description" : "Indicating the type or classification of the containing object",
+            "type" : "string" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" },
+          "parts" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/part" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } } },
+        "required" : 
+        [ "name" ],
         "additionalProperties" : false },
       "assessment-plan" : 
       { "title" : "Security Assessment Plan (SAP)",

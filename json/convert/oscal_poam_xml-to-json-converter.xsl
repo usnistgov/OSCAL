@@ -368,7 +368,7 @@
       <xsl:variable name="text-key">value</xsl:variable>
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
@@ -380,7 +380,7 @@
    <xsl:template match="annotation" mode="xml2json">
       <map key="annotation">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@value"/>
          <xsl:for-each select="remarks">
@@ -769,7 +769,7 @@
             </array>
          </xsl:if>
          <xsl:if test="exists(party-uuid)">
-            <array key="party-ids" m:in-json="ARRAY">
+            <array key="party-uuids" m:in-json="ARRAY">
                <xsl:apply-templates select="party-uuid" mode="#current"/>
             </array>
          </xsl:if>
@@ -920,7 +920,7 @@
       </map>
    </xsl:template>
    <xsl:template match="implemented-component" mode="xml2json">
-      <map key="{@component-id}">
+      <map key="{@component-uuid}">
          <xsl:apply-templates mode="as-string" select="@use"/>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
@@ -1054,92 +1054,6 @@
          <xsl:apply-templates mode="#current"/>
       </string>
    </xsl:template>
-   <xsl:template match="results" mode="xml2json">
-      <map key="results">
-         <xsl:apply-templates mode="as-string" select="@uuid"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:for-each select="description">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">description</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
-         <xsl:if test="exists(prop)">
-            <array key="properties" m:in-json="ARRAY">
-               <xsl:apply-templates select="prop" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(annotation)">
-            <array key="annotations" m:in-json="ARRAY">
-               <xsl:apply-templates select="annotation" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:apply-templates select="start" mode="#current"/>
-         <xsl:apply-templates select="end" mode="#current"/>
-         <xsl:if test="exists(finding)">
-            <array key="findings" m:in-json="ARRAY">
-               <xsl:apply-templates select="finding" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:for-each select="remarks">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">remarks</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
-      </map>
-   </xsl:template>
-   <xsl:template match="finding" mode="xml2json">
-      <map key="finding">
-         <xsl:apply-templates mode="as-string" select="@uuid"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:for-each select="description">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">description</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
-         <xsl:if test="exists(prop)">
-            <array key="properties" m:in-json="ARRAY">
-               <xsl:apply-templates select="prop" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(annotation)">
-            <array key="annotations" m:in-json="ARRAY">
-               <xsl:apply-templates select="annotation" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:apply-templates select="date-time-stamp" mode="#current"/>
-         <xsl:apply-templates select="objective-status" mode="#current"/>
-         <xsl:apply-templates select="implementation-statement-uuid" mode="#current"/>
-         <xsl:if test="exists(observation)">
-            <array key="observations" m:in-json="ARRAY">
-               <xsl:apply-templates select="observation" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(threat-id)">
-            <array key="threat-ids" m:in-json="ARRAY">
-               <xsl:apply-templates select="threat-id" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(risk)">
-            <array key="risks" m:in-json="ARRAY">
-               <xsl:apply-templates select="risk" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(party-uuid)">
-            <array key="party-uuids" m:in-json="ARRAY">
-               <xsl:apply-templates select="party-uuid" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:for-each select="remarks">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">remarks</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
-      </map>
-   </xsl:template>
    <xsl:template match="implementation-statement-uuid" mode="xml2json">
       <string key="implementation-statement-uuid">
          <xsl:apply-templates mode="#current"/>
@@ -1147,6 +1061,16 @@
    </xsl:template>
    <xsl:template match="date-time-stamp" mode="xml2json">
       <string key="date-time-stamp">
+         <xsl:apply-templates mode="#current"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="collected" mode="xml2json">
+      <string key="collected">
+         <xsl:apply-templates mode="#current"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="expires" mode="xml2json">
+      <string key="expires">
          <xsl:apply-templates mode="#current"/>
       </string>
    </xsl:template>
@@ -1354,6 +1278,7 @@
                <xsl:apply-templates select="mitigating-factor" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:apply-templates select="remediation-deadline" mode="#current"/>
          <xsl:if test="exists(remediation)">
             <array key="remediation-group" m:in-json="ARRAY">
                <xsl:apply-templates select="remediation" mode="#current"/>
@@ -1373,6 +1298,11 @@
             </array>
          </xsl:if>
       </map>
+   </xsl:template>
+   <xsl:template match="remediation-deadline" mode="xml2json">
+      <string key="remediation-deadline">
+         <xsl:apply-templates mode="#current"/>
+      </string>
    </xsl:template>
    <xsl:template match="risk-metric" mode="xml2json">
       <xsl:variable name="text-key">STRVALUE</xsl:variable>
@@ -1548,7 +1478,7 @@
          <xsl:apply-templates select="import-ssp" mode="#current"/>
          <xsl:apply-templates select="system-id" mode="#current"/>
          <xsl:apply-templates select="local-definitions" mode="#current"/>
-         <xsl:apply-templates select="results" mode="#current"/>
+         <xsl:apply-templates select="poam-items" mode="#current"/>
          <xsl:apply-templates select="back-matter" mode="#current"/>
       </map>
    </xsl:template>
@@ -1564,6 +1494,92 @@
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="poam-items" mode="xml2json">
+      <map key="poam-items">
+         <xsl:apply-templates select="title" mode="#current"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations" m:in-json="ARRAY">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:apply-templates select="start" mode="#current"/>
+         <xsl:apply-templates select="end" mode="#current"/>
+         <xsl:if test="exists(poam-item)">
+            <array key="poam-item-group" m:in-json="ARRAY">
+               <xsl:apply-templates select="poam-item" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="poam-item" mode="xml2json">
+      <map key="poam-item">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:apply-templates select="title" mode="#current"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations" m:in-json="ARRAY">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:apply-templates select="collected" mode="#current"/>
+         <xsl:apply-templates select="expires" mode="#current"/>
+         <xsl:apply-templates select="objective-status" mode="#current"/>
+         <xsl:apply-templates select="implementation-statement-uuid" mode="#current"/>
+         <xsl:if test="exists(observation)">
+            <array key="observations" m:in-json="ARRAY">
+               <xsl:apply-templates select="observation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(threat-id)">
+            <array key="threat-ids" m:in-json="ARRAY">
+               <xsl:apply-templates select="threat-id" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(risk)">
+            <array key="risks" m:in-json="ARRAY">
+               <xsl:apply-templates select="risk" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(party-uuid)">
+            <array key="party-uuids" m:in-json="ARRAY">
+               <xsl:apply-templates select="party-uuid" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:for-each select="remarks">
             <xsl:call-template name="prose">
                <xsl:with-param name="key">remarks</xsl:with-param>
