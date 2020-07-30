@@ -1,5 +1,5 @@
 catalog: 
-  uuid:        a0a0d923-1cc6-4491-aa77-a79d9544ac9f
+  uuid:        394a4b75-6957-4267-abd5-3ad62ffd0a51
   metadata: 
     title:               FedRAMP Moderate Baseline
     published:           2020-06-01T00:00:00.000-04:00
@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-07-29T11:44:29.977835Z
+        value: 2020-07-30T15:38:19.958716Z
     links: 
       - 
         href: FedRAMP_MODERATE-baseline_profile.xml
