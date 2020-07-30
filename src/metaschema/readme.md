@@ -71,7 +71,7 @@ To support this, flags used as addresses should be declared as type `ID`, provid
 ```
 
 ```
-<title>Water (H<sub>2</sub>0</title>
+<title>Water (H<sub>2</sub>0)</title>
 ```
  
 ```
