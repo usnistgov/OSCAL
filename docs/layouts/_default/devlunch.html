@@ -27,12 +27,20 @@
           {{ .Content }}
         </article>
         {{ if gt (len .Pages) 0 }}
-        <h2>Meeting Archive:</h2>
+        <h2>Meeting Archive</h2>
         {{ range .Pages.GroupByDate "2006" }}
         <h3>{{ .Key }}</h3>
         {{ range .Pages.ByDate.Reverse }}
-            {{ .Render "devlunch-summary" }}
-            <hr>
+          <article class="post">
+            <header>
+                <h4 id="{{ anchorize ( .Date.Format "2006-01-02" ) }}">{{ .Date.Format "Jan 2, 2006" }}</h4>
+            </header>
+            {{ .Summary }}
+            <footer>
+                <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
+            </footer>
+          </article>
+          <hr>
         {{ end }}
         {{ end }}
         {{ end }}

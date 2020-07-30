@@ -1,5 +1,5 @@
 ---
-title: Lunch with the Devs
+title: Lunch with the OSCAL Developers
 description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL work.
 layout: devlunch
 aliases:
@@ -7,6 +7,7 @@ aliases:
 sidenav:
   toc:
     headingselectors: "h3,h4"
+weight: 10
 ---
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks starting on Thursday, December 5th 2019 @ noon EST.{{% /usa-intro %}}

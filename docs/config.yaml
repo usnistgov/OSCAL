@@ -18,6 +18,9 @@ markup:
   goldmark:
     extensions:
       typographer: false
+    parser:
+      autoHeadingID: true
+#      autoHeadingIDType: blackfriday
     renderer:
       unsafe: true
   highlight:
