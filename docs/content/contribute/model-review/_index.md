@@ -11,7 +11,9 @@ weight: 20
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference every two weeks to discuss OSCAL model issues with the OSCAL community. This provides a means for the OSCAL team to update OSCAL adopters on the latest improvements to the OSCAL models, and for community members to provide high-bandwidth feedback on concerns, gaps, and other issues with the OSCAL models.{{% /usa-intro %}}
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/479977594/4584 ([ICS file](oscal-model-review.ics))
+{{% usa-tag %}}Day and Time{{% /usa-tag %}} Every other Friday at 10am EST/EDT ([ICS file](oscal-model-review.ics))
+
+{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/479977594/4584
 
 {{% usa-tag %}}Meeting Details{{% /usa-tag %}}
 
