@@ -22,11 +22,11 @@ When a working directory option is not specified, the schemas will be created in
 
 - ## arguments
 
-Arguments are used to pass the metaschema through command line interface. This is an alternative to using the config file. You can pass as many arguments as you wish.\
+Arguments are used to pass the metaschema through command line interface. This is an alternative to using the config file. You can pass as many arguments as you wish.
 
-Please note that argument is only needed when you do not want to use the config file. The argument passed through CLI should not contain the pipes with format, convert or doc as in the regular schema path defined in the config file.\
+Please note that argument is only needed when you do not want to use the config file. The argument passed through CLI should not contain the pipes with format, convert or doc as in the regular schema path defined in the config file.
 
-For example: \
+For example:
 
 Instead of `src/metaschema/file_metaschema.xml|xml,json|xml,json|xml,json` use `src/metaschema/file_metaschema.xml`.
 
@@ -52,7 +52,7 @@ Instead of `src/metaschema/file_metaschema.xml|xml,json|xml,json|xml,json` use `
   $ node generate-schema src/metaschema/file1_metaschema.xml src/metaschema/file2_metaschema.xml
 ```
 
-- Run from another directory. Change to a different directory and locate and run the generate-schema file from the current directory.
+- Run from another directory. Change to a different directory and locate and run the generate-schema file from the current directory. This option determines where the JSON and XML schemas get created.
 
 ```sh
   $ node myDirectory/generate-schema
