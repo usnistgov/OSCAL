@@ -171,16 +171,16 @@
    </xsl:template>
    <xsl:template mode="md" priority="1" match="ul | ol">
       <xsl:call-template name="conditional-lf"/>
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
       <string/>
    </xsl:template>
    <xsl:template mode="md" match="ul//ul | ol//ol | ol//ul | ul//ol">
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template mode="md" match="li">
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>* </xsl:text>
          <xsl:apply-templates mode="md"/>
@@ -190,7 +190,7 @@
       <string/>
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>1. </xsl:text>
          <xsl:apply-templates mode="md"/>
@@ -368,7 +368,7 @@
       <xsl:variable name="text-key">value</xsl:variable>
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
@@ -380,7 +380,7 @@
    <xsl:template match="annotation" mode="xml2json">
       <map key="annotation">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@value"/>
          <xsl:for-each select="remarks">

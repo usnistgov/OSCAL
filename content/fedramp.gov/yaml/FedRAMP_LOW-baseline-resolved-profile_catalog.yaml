@@ -1,5 +1,5 @@
 catalog: 
-  uuid:        049bb843-5e84-4b04-a51e-fde9fd52bf94
+  uuid:        4f99e54f-f0bb-42ed-86ed-5c255dc88726
   metadata: 
     title:               FedRAMP Low Baseline
     published:           2020-06-01T00:00:00.000-04:00
@@ -9,7 +9,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-06-03T21:50:20.466315Z
+        value: 2020-07-30T20:52:39.466438Z
     links: 
       - 
         href: FedRAMP_LOW-baseline_profile.xml

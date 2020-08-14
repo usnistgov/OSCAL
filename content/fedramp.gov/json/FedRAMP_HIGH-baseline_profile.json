@@ -2800,6 +2800,20 @@
             }
           ]
         },
+        "sa-9.5_prm_2": {
+          "constraints": [
+            {
+              "detail": "U.S./U.S. Territories or geographic locations where there is U.S. jurisdiction"
+            }
+          ]
+        },
+        "sa-9.5_prm_3": {
+          "constraints": [
+            {
+              "detail": "all High Impact Data, Systems, or Services"
+            }
+          ]
+        },
         "sa-10_prm_1": {
           "constraints": [
             {
@@ -35449,7 +35463,7 @@
           ],
           "rlinks": [
             {
-              "href": "../../nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json",
+              "href": "https://raw.githubusercontent.com/usnistgov/OSCAL/v1.0.0-milestone3/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml",
               "media-type": "application/xml"
             }
           ]

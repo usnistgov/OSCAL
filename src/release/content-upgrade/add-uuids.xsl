@@ -40,10 +40,11 @@
         <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
     </xsl:template>
 
-    <xsl:template match="implemented-component | implemented-requirement">
+    <xsl:template match="implemented-component | implemented-requirement | statement | by-component">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:call-template name="uuid"/>
+            <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
     

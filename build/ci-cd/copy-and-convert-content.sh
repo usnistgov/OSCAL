@@ -379,7 +379,7 @@ process_paths() {
       echo -e "${result}"
     fi
     cmd_exitcode=$?
-    if [ $cmd_exitcode != 0 ]; then
+    if [ $cmd_exitcode -ne 0 ]; then
         exitcode=1
         continue;
     fi
@@ -399,7 +399,7 @@ process_paths() {
         echo -e "${result}"
       fi
       cmd_exitcode=$?
-      if [ $cmd_exitcode != 0 ]; then
+      if [ $cmd_exitcode -ne 0 ]; then
           exitcode=1
           continue;
       fi

@@ -43,6 +43,7 @@ system-security-plan:
     system-information: 
       information-types: 
         - 
+          uuid:                   7d28ac6e-5970-4f4c-a508-5a3715f0f02b
           title:                  System and Network Monitoring
           information-type-ids: 
             https://doi.org/10.6028/NIST.SP.800-60v2r1: 
@@ -103,11 +104,11 @@ system-security-plan:
         component-type:    software
         responsible-roles: 
           provider: 
-            party-ids: 96c362ee-a012-4e07-92f3-486ab303b0e7
+            party-uuids: 96c362ee-a012-4e07-92f3-486ab303b0e7
           asset-owner: 
-            party-ids: 3b2a5599-cc37-403f-ae36-5708fa804b27
+            party-uuids: 3b2a5599-cc37-403f-ae36-5708fa804b27
           asset-administrator: 
-            party-ids: 833ac398-5c9a-4e6b-acba-2a9c11399da0
+            party-uuids: 833ac398-5c9a-4e6b-acba-2a9c11399da0
       795533ab-9427-4abe-820f-0b571bacfe6d: 
         title:             Enterprise Logging, Monitoring, and Alerting Policy
         component-type:    policy
@@ -129,7 +130,7 @@ system-security-plan:
             value: 20181015
         responsible-roles: 
           maintainer: 
-            party-ids: ec485dcf-2519-43f5-8e7d-014cc315332d
+            party-uuids: ec485dcf-2519-43f5-8e7d-014cc315332d
       941e2a87-46f4-4b3e-9e87-bbd187091ca1: 
         title:             System Integration Process
         component-type:    process
@@ -142,7 +143,7 @@ system-security-plan:
             value: 20181015
         responsible-roles: 
           maintainer: 
-            party-ids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
+            party-uuids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
         links: 
           - 
             rel:  implements-policy
@@ -160,7 +161,7 @@ system-security-plan:
             value: 20181015
         responsible-roles: 
           maintainer: 
-            party-ids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
+            party-uuids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
         links: 
           - 
             rel:  implements-policy
@@ -178,7 +179,7 @@ system-security-plan:
             value: 20181015
         responsible-roles: 
           maintainer: 
-            party-ids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
+            party-uuids: 0f0c15ed-565e-4ce9-8670-b54853d0bf03
         links: 
           - 
             rel:  implements-policy

@@ -171,16 +171,16 @@
    </xsl:template>
    <xsl:template mode="md" priority="1" match="ul | ol">
       <xsl:call-template name="conditional-lf"/>
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
       <string/>
    </xsl:template>
    <xsl:template mode="md" match="ul//ul | ol//ol | ol//ul | ul//ol">
-      <xsl:apply-templates mode="md"/>
+      <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template mode="md" match="li">
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>* </xsl:text>
          <xsl:apply-templates mode="md"/>
@@ -190,7 +190,7 @@
       <string/>
       <string>
          <xsl:for-each select="../ancestor::ul">
-            <xsl:text/>
+            <xsl:text xml:space="preserve">  </xsl:text>
          </xsl:for-each>
          <xsl:text>1. </xsl:text>
          <xsl:apply-templates mode="md"/>
@@ -368,7 +368,7 @@
       <xsl:variable name="text-key">value</xsl:variable>
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
@@ -380,7 +380,7 @@
    <xsl:template match="annotation" mode="xml2json">
       <map key="annotation">
          <xsl:apply-templates mode="as-string" select="@name"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@ns"/>
          <xsl:apply-templates mode="as-string" select="@value"/>
          <xsl:for-each select="remarks">
@@ -769,7 +769,7 @@
             </array>
          </xsl:if>
          <xsl:if test="exists(party-uuid)">
-            <array key="party-ids" m:in-json="ARRAY">
+            <array key="party-uuids" m:in-json="ARRAY">
                <xsl:apply-templates select="party-uuid" mode="#current"/>
             </array>
          </xsl:if>
@@ -915,7 +915,7 @@
    </xsl:template>
    <xsl:template match="information-type" mode="xml2json">
       <map key="information-type">
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:for-each select="description">
             <xsl:call-template name="prose">
@@ -1048,7 +1048,7 @@
    </xsl:template>
    <xsl:template match="leveraged-authorization" mode="xml2json">
       <map key="leveraged-authorization">
-         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
@@ -1458,7 +1458,7 @@
       </map>
    </xsl:template>
    <xsl:template match="implemented-component" mode="xml2json">
-      <map key="{@component-id}">
+      <map key="{@component-uuid}">
          <xsl:apply-templates mode="as-string" select="@use"/>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
@@ -1599,7 +1599,7 @@
       </map>
    </xsl:template>
    <xsl:template match="by-component" mode="xml2json">
-      <map key="{@component-id}">
+      <map key="{@component-uuid}">
          <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:for-each select="description">
             <xsl:call-template name="prose">
@@ -1632,6 +1632,12 @@
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
       </map>
    </xsl:template>
 </xsl:stylesheet>

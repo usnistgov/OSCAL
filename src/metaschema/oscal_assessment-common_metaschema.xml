@@ -31,7 +31,6 @@
          <assembly ref="import-ssp" />
          <assembly ref="import-ap" />
          <assembly ref="objectives" />
-         <assembly ref="assessment-subjects" />
          <assembly ref="assets" />
          <assembly ref="assessment-activities" />
          <assembly ref="results" />
@@ -80,7 +79,9 @@
          <assembly ref="control-objectives" min-occurs="0" max-occurs="unbounded">
             <group-as name="control-objective-group" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="objective" min-occurs="0" max-occurs="1" />
+         <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
+            <group-as name="objectives"/>
+         </assembly>
          <assembly ref="method" min-occurs="0" max-occurs="unbounded">
             <group-as name="method-definitions" in-json="ARRAY"/>
          </assembly>
@@ -627,8 +628,11 @@
             <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="date-time-stamp" min-occurs="1" max-occurs="1" >
+         <field ref="collected" min-occurs="1" max-occurs="1" >
             <description>Date/time stamp identifying when the finding information was collected.</description>
+         </field>
+         <field ref="expires" min-occurs="0" max-occurs="1" >
+            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
          <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1" />
@@ -651,14 +655,24 @@
 
    <define-field name="implementation-statement-uuid" as-type="uuid">
       <formal-name>Implementation Statement UUID</formal-name>
-      <description>Identifies the implementation statement in the SSP to which this finding is related. </description>
+      <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
    </define-field>
 
    <define-field name="date-time-stamp" as-type="dateTime-with-timezone">
       <formal-name>Date/Time Stamp</formal-name>
-      <description>Date/time stamp identifying when the information was collected.</description>
+      <description>Date/time stamp of the associated information.</description>
    </define-field>
 
+   <define-field name="collected" as-type="dateTime-with-timezone">
+      <formal-name>Date/Time Collected</formal-name>
+      <description>Date/time stamp identifying when the information was collected.</description>
+   </define-field>
+   
+   <define-field name="expires" as-type="dateTime-with-timezone">
+      <formal-name>Date/Time Expires</formal-name>
+      <description>Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</description>
+   </define-field>
+   
    <define-assembly name="objective-status">
       <formal-name>Implementation Status</formal-name>
       <description>Captures an assessors conclusions as to whether an objective is fully satisfied.</description>
@@ -783,7 +797,6 @@
       <description>A pointer to a relevant item, using it's UUID.</description>
    </define-flag>
    
-   
    <define-field name="observation-method">
       <formal-name>Observation Method</formal-name>
       <description>Identifies how the observation was made.</description>
@@ -847,6 +860,7 @@
          <assembly ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
             <group-as name="mitigating-factors" in-json="ARRAY"/>
          </assembly>
+         <field ref="remediation-deadline" min-occurs="0" max-occurs="1" />
          <assembly ref="remediation" min-occurs="0" max-occurs="unbounded">
             <group-as name="remediation-group" in-json="ARRAY"/>
          </assembly>
@@ -862,6 +876,11 @@
          <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
       </remarks>
    </define-assembly>
+
+   <define-field name="remediation-deadline" as-type="dateTime-with-timezone">
+      <formal-name>Remediation Deadline</formal-name>
+      <description>The date/time by which the risk must be closed.</description>
+   </define-field>
 
    <define-field name="risk-metric">
       <formal-name>Risk Metric</formal-name>
@@ -1107,5 +1126,47 @@
       <formal-name>Objective ID</formal-name>
       <description>Points to an assessment objective.</description>
    </define-flag>
+   
+   <define-assembly name="part">
+      <formal-name>Part</formal-name>
+      <description>A partition or component of a control or part</description>
+      <flag ref="uuid"/>
+      <flag ref="name" required="yes"/>
+      <flag ref="ns"/>
+      <flag ref="class"/>
+      <model>
+         <field ref="title"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+            <flag ref="name">
+               <allowed-values allow-other="yes">
+                  <enum value="method">An assessment method.</enum>
+               </allowed-values>
+            </flag>
+         </field>
+         <field ref="prose" in-xml="UNWRAPPED"/>
+         <assembly ref="part" max-occurs="unbounded">
+            <group-as name="parts" in-json="ARRAY"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </field>
+         <any/>
+      </model>
+      <remarks>
+         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+         <p>A <code>part</code> can be assigned an optional <code>uuid</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+      </remarks>
+      <example>
+         <description>Multiple Parts with Different Organization-Specific Names</description>
+         <o:part name="statement" id="statement-A">
+            <o:part ns="https://fedramp.gov" name="status" id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
+            <o:part ns="https://defense.gov" name="status" id="statement-A-DoD">Something DoD Cares About</o:part>
+         </o:part>
+      </example>
+   </define-assembly>   
 
 </METASCHEMA>

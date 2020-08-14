@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="a8927ef8-9d0a-4115-9e7d-2d5361b01755">
+         uuid="f13b98a2-2c72-4f3f-af44-8caed092e9e6">
    <metadata>
       <title>FedRAMP High Baseline</title>
       <published>2020-06-01T00:00:00.000-04:00</published>
       <last-modified>2020-06-01T10:00:00.000-04:00</last-modified>
       <version>1.2</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-06-03T21:49:54.489142Z</prop>
+      <prop name="resolution-timestamp">2020-07-30T20:52:20.623256Z</prop>
       <link rel="resolution-source" href="FedRAMP_HIGH-baseline_profile.xml">FedRAMP High Baseline</link>
       <role id="parpared-by">
          <title>Document creator</title>
@@ -33431,9 +33431,11 @@
             </param>
             <param id="sa-9.5_prm_2">
                <label>organization-defined locations</label>
+               <constraint>U.S./U.S. Territories or geographic locations where there is U.S. jurisdiction</constraint>
             </param>
             <param id="sa-9.5_prm_3">
                <label>organization-defined requirements or conditions</label>
+               <constraint>all High Impact Data, Systems, or Services</constraint>
             </param>
             <prop name="label">SA-9(5)</prop>
             <prop name="sort-id">sa-09.05</prop>
@@ -42706,7 +42708,7 @@
          <prop name="version" ns="https://fedramp.gov/ns/oscal">Revision 4</prop>
          <prop name="keep">always</prop>
          <rlink media-type="application/xml"
-                href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
+                href="https://raw.githubusercontent.com/usnistgov/OSCAL/v1.0.0-milestone3/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
       </resource>
    </back-matter>
 </catalog>

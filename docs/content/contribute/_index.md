@@ -23,6 +23,15 @@ We use GitHub as a collaboration platform for the development of the OSCAL model
 - [Guidelines](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) on contributing to this project.
 - A [project board](https://github.com/usnistgov/OSCAL/projects) that shows the issues the team is currently working on.
 
+## Community Meetings
+
+The NIST OSCAL team hosts meetings with the OSCAL community on different topics.
+
+- **Lunch with the OSCAL Developers**: A [bi-weekly meeting](dev-lunch/) hosted by the NIST OSCAL development team to share information about current development efforts, discuss issues, collect feedback on priorities, and to answer development-related questions.
+- **OSCAL Model Review**: A [bi-weekly meeting](model-review/) hosted by the NIST OSCAL development team to update adopters on the latest improvements to the OSCAL models, and for community members to provide high-bandwidth feedback on concerns, gaps, and other issues with the OSCAL models.
+
+We encourage you to attend these meetings.
+
 ## Tools
 
 All users, but especially tool developers, should consider reaching out and connecting with others using your technology stack or platform. See our [tools page](/tools/) for more information.

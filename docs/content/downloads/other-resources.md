@@ -5,6 +5,10 @@ aliases:
   - /resources/
 ---
 
+## Community Provided OSCAL Content
+
+- Federal Risk and Authorization Management Program (FedRAMP) [Automation GitHub Repository](https://github.com/GSA/fedramp-automation)
+
 ## Useful Links
 
 * [GitHub Repository for OSCAL](https://github.com/usnistgov/OSCAL)
@@ -12,9 +16,11 @@ aliases:
 
 ## Videos and Presentations
 
-* [NIST OSCAL Workshop](../OSCAL-workshop-20191105.pdf) -  November 5, 2019
-* [Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore](https://www.youtube.com/watch?v=eP8K7piU5UQ)
-* [Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards](https://www.youtube.com/watch?v=mo3J0tFxixg)
+- Using Leveraged Authorizations in OSCAL ([PDF](/presentations/oscal-leveraged-authorizations-v2.pdf)) [OSCAL Model Review](/contribute/model-review/) - July 24, 2020
+- OSCAL Assessment Models Overview ([PDF](/presentations/oscal-ap-ar-poam-v3.pdf)) [Lunch with the OSCAL Developers](/contribute/dev-lunch/) - July 2, 2020
+- [NIST OSCAL Workshop](../OSCAL-workshop-20191105.pdf) - November 5, 2019
+- [Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore](https://www.youtube.com/watch?v=eP8K7piU5UQ)
+- [Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards](https://www.youtube.com/watch?v=mo3J0tFxixg)
 
 ## News
 
