@@ -1,9 +1,9 @@
-<!-- Produced by SP800-53-profile-extract.xsl 2020-08-13-04:00; runtime parameter settings: $baseline='MODERATE'-->
+<!-- Produced by SP800-53-profile-extract.xsl 2020-08-18-04:00; runtime parameter settings: $baseline='MODERATE'-->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="e5f4ae93-bd5f-41c3-84bc-a5957b99ffc2">
+         uuid="37b283a4-926f-41cd-9d88-92e4d9211cc1">
    <metadata>
       <title>SP800-53 MODERATE IMPACTBASELINE</title>
-      <last-modified>2020-08-13T15:17:16.374-04:00</last-modified>
+      <last-modified>2020-08-18T14:59:11.136-04:00</last-modified>
       <version>FPD</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
       <role id="creator">
@@ -12,7 +12,7 @@
       <role id="contact">
          <title>Contact</title>
       </role>
-      <party uuid="d5b0d8d6-15ea-44af-aa5a-bb29bd0b28d3" type="organization">
+      <party uuid="134f5f9d-0450-4d22-9433-caa22da4599a" type="organization">
          <party-name>Joint Task Force, Transformation Initiative</party-name>
          <address>
             <addr-line>National Institute of Standards and Technology</addr-line>
@@ -26,13 +26,13 @@
          <email>sec-cert@nist.gov</email>
       </party>
       <responsible-party role-id="creator">
-         <party-uuid>d5b0d8d6-15ea-44af-aa5a-bb29bd0b28d3</party-uuid>
+         <party-uuid>134f5f9d-0450-4d22-9433-caa22da4599a</party-uuid>
       </responsible-party>
       <responsible-party role-id="contact">
-         <party-uuid>d5b0d8d6-15ea-44af-aa5a-bb29bd0b28d3</party-uuid>
+         <party-uuid>134f5f9d-0450-4d22-9433-caa22da4599a</party-uuid>
       </responsible-party>
    </metadata>
-   <import href="sp800-53-rev5-FPD-oscal.xml">
+   <import href="NIST_SP-800-53_rev5-FPD_catalog.xml">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
