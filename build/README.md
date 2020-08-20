@@ -50,7 +50,7 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 ## Manual Setup of the Build Environment
 
-The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04.4/).
+The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/18.04.4/).
 
 1. Setup environment variables
 
@@ -107,7 +107,7 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
 
 1. Install Schematron Skeleton
 
-    The build environment uses the [ISO Schematron](http://schematron.com) Skeleton to generate Schematron schemas used for some validation operations.
+    The build environment uses the [ISO Schematron](https://github.com/Schematron/schematron) Skeleton to generate Schematron schemas used for some validation operations. (Schematron is a query-based validation technology typically leveraging [XPath](https://www.w3.org/TR/xpath-31/) for precise and targeted testing of constraints and business rules in documentary datasets.)
 
     To install the Schematron Skeleton, run the following:
 
