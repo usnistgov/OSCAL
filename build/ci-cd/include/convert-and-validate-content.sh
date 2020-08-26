@@ -8,11 +8,11 @@ validate_content() {
   # validate target
   case $target_format in
   xml)
-    target_schema="$WORKING_DIR/$target_format/schema/oscal_${model}_schema.xsd"
+    target_schema="$OSCAL_DIR/$target_format/schema/oscal_${model}_schema.xsd"
     result=$(validate_xml "$target_schema" "$target_file")
     ;;
   json)
-    target_schema="$WORKING_DIR/$target_format/schema/oscal_${model}_schema.json"
+    target_schema="$OSCAL_DIR/$target_format/schema/oscal_${model}_schema.json"
     result=$(validate_json "$target_schema" "$target_file")
     ;;
   *)
@@ -44,10 +44,10 @@ convert_to_format_and_validate() {
   # get the schema to use for validating the target
   case $target_format in
   xml)
-    target_converter="$WORKING_DIR/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
+    target_converter="$OSCAL_DIR/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
     ;;
   json)
-    target_converter="$WORKING_DIR/json/convert/oscal_${model}_xml-to-json-converter.xsl"
+    target_converter="$OSCAL_DIR/json/convert/oscal_${model}_xml-to-json-converter.xsl"
     ;;
   *)
     echo -e "${P_WARN}Unsupported target format '${target_format^^}'.${P_END}"

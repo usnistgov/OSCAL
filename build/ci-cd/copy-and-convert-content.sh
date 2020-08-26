@@ -10,19 +10,26 @@ source "$OSCALDIR/build/ci-cd/include/convert-and-validate-content.sh"
 
 # Option defaults
 RESOLVE_PROFILES=false
+ARTIFACT_DIR="${OSCALDIR}"
+OSCAL_DIR="${OSCALDIR}"
+CONFIG_FILE="${OSCALDIR}/build/ci-cd/config/content"
+WORKING_DIR="${OSCALDIR}"
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options]
 
--h, --help                        Display help
--w DIR, --working-dir DIR         Generate artifacts in DIR
--v                                Provide verbose output
 --resolve-profiles                Resolve profiles
+-a DIR, --artifact-dir DIR        Build source artifacts are stored in DIR.
+-o DIR, --oscal-dir DIR           OSCAL schema are located in DIR.
+-w DIR, --working-dir DIR         Generate artifacts in DIR
+-c FILE, --config-file FILE       The config file location is FILE.
+-h, --help                        Display help
+-v                                Provide verbose output
 EOF
 }
 
-OPTS=`getopt -o w:vh --long working-dir:,help,resolve-profiles -n "$0" -- "$@"`
+OPTS=`getopt -o w:o:c:a:vh --long resolve-profiles,working-dir:,artifact-dir:,oscal-dir:,config-file:,help -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -36,6 +43,18 @@ while [ $# -gt 0 ]; do
       ;;
     --resolve-profiles)
       RESOLVE_PROFILES=true
+      shift # past path
+      ;;
+    -o|--oscal-dir)
+      OSCAL_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -c|--config-file)
+      CONFIG_FILE="$(realpath "$2")"
+      shift # past path
+      ;;
+    -a|--artifact-dir)
+      ARTIFACT_DIR="$(realpath "$2")"
       shift # past path
       ;;
     -v)
@@ -64,12 +83,15 @@ echo -e "${P_INFO}Copying and Converting Content${P_END}"
 echo -e "${P_INFO}==============================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
+  echo -e "${P_INFO}Using config file:${P_END} ${CONFIG_FILE}"
+  echo -e "${P_INFO}Using OSCAL directory:${P_END} ${OSCAL_DIR}"
+  echo -e "${P_INFO}Using artifact directory:${P_END} ${ARTIFACT_DIR}"
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
 
 # configuration
-PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
-CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
+PROFILE_RESOLVER="$(get_abs_path "${OSCAL_DIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
+CATALOG_SCHEMA="$(get_abs_path "${OSCAL_DIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 # check for perl
 result=$(which perl 2>&1)
@@ -90,7 +112,7 @@ while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob"
 
   [ -z "$path_glob" ] && continue;
 
-  path_absolute="$OSCALDIR"/"$path_glob"
+  path_absolute="$ARTIFACT_DIR"/"$path_glob"
 
   for path in $path_absolute; do
 #    echo "Path: $path"
@@ -103,7 +125,7 @@ while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob"
     models+=("$model")
     conversion_formats+=("$converttoformats")
   done
-done < "${OSCALDIR}/build/ci-cd/config/content"
+done < "${CONFIG_FILE}"
 IFS="$IFS_OLD"
 
 #echo "Paths: ${paths[@]}"
@@ -116,6 +138,8 @@ post_process_content() {
   local target_format="$1"; shift
   local target_file="$1"; shift
   local working_dir="$1"; shift
+  local oscal_dir="$1"; shift
+
   local result
 
   local target_dir=${target_file%/*} # remove filename
@@ -154,13 +178,13 @@ post_process_content() {
     # remove carriage returns
     perl -pi -e 's,\r,,g' "$target_file_pretty"
 
-    result=$(validate_content "$target_file_pretty" "json" "$model")
+    result=$(validate_content "$target_file_pretty" "json" "$model" "$oscal_dir")
     if [ $? -ne 0 ]; then
       echo -e "${P_ERROR}${result}${P_END}"
-      echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}Unable to validate content '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
       return 1;
     else
-      echo -e "${P_OK}Created pretty JSON '${P_END}${target_file_pretty_relative}${P_OK}'.${P_END}"
+      echo -e "${P_OK}JSON '${P_END}${target_file_pretty_relative}${P_OK}' is valid.${P_END}"
     fi
 
     # produce yaml
@@ -210,6 +234,7 @@ copy_or_convert_content() {
   local model="$1"; shift
   local target_format="$1"; shift
   local working_dir="$1"; shift
+  local oscal_dir="$1"; shift
   local result
 
 #  printf 'source file: %s\n' "$source_file"
@@ -267,7 +292,7 @@ copy_or_convert_content() {
       echo -e "${P_INFO}Converting ${source_format^^} ${model} '${P_END}${source_file_relative}${P_INFO}' to ${target_format^^} as '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
     fi
 
-    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model")
+    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model" "$oscal_dir")
     if [ -n "$result" ]; then
       echo -e "${result}"
     fi
@@ -330,7 +355,7 @@ copy_or_convert_content() {
         if [ "$VERBOSE" = "true" ]; then
           echo -e "${P_INFO}Converting resolved profile '${P_END}${resolved_profile}${P_INFO}' to JSON.${P_END}"
         fi
-        result="$(copy_or_convert_content "$OSCALDIR" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$WORKING_DIR")"
+        result="$(copy_or_convert_content "$source_dir" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$working_dir" "$oscal_dir")"
         if [ -n "$result" ]; then
           echo -e "${result}"
         fi
@@ -374,7 +399,7 @@ process_paths() {
 #    printf 'model: %s\n' "$model"
 #    printf 'converttoformats: %s\n' "${converttoformats[@]}"
 
-    result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "$OSCALDIR/src" $src_format $model $src_format "$WORKING_DIR")"
+    result="$(copy_or_convert_content "$ARTIFACT_DIR" "$src_file" "${ARTIFACT_DIR}/src" $src_format $model $src_format "$WORKING_DIR" "$OSCAL_DIR")"
     if [ -n "$result" ]; then
       echo -e "${result}"
     fi
@@ -394,7 +419,7 @@ process_paths() {
         continue;
       fi
 
-      result="$(copy_or_convert_content "$OSCALDIR" "$src_file" "${OSCALDIR}/src" $src_format $model $to_format "$WORKING_DIR")"
+      result="$(copy_or_convert_content "$ARTIFACT_DIR" "$src_file" "${ARTIFACT_DIR}/src" $src_format $model $to_format "$WORKING_DIR" "$OSCAL_DIR")"
       if [ -n "$result" ]; then
         echo -e "${result}"
       fi
