@@ -107,7 +107,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
 1. Install Schematron Skeleton
 
-    The build environment uses the [ISO Schematron](https://github.com/Schematron/schematron) Skeleton to generate Schematron schemas used for some validation operations. (Schematron is a query-based validation technology typically leveraging [XPath](https://www.w3.org/TR/xpath-31/) for precise and targeted testing of constraints and business rules in documentary datasets.)
+    The build environment uses the [ISO Schematron](https://github.com/Schematron/schematron) Skeleton to generate Schematron schemas used for some validation operations. Schematron is a query-based validation technology typically leveraging [XPath](https://www.w3.org/TR/xpath-31/) for precise and targeted testing of constraints and business rules in documentary datasets.
 
     To install the Schematron Skeleton, run the following:
 
