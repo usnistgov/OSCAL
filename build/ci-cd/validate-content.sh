@@ -8,23 +8,25 @@ fi
 source "$OSCALDIR/build/metaschema/scripts/include/init-validate-content.sh"
 
 # Option defaults
-WORKING_DIR="${OSCALDIR}"
-VERBOSE=false
-HELP=false
+ARTIFACT_DIR="${OSCALDIR}"
+OSCAL_DIR="${OSCALDIR}"
+CONFIG_FILE="${OSCALDIR}/build/ci-cd/config/content"
+#VERBOSE=false
+#HELP=false
 
 usage() {                                      # Function: Print a help message.
   cat << EOF
 Usage: $0 [options]
 
+-a DIR, --artifact-dir            Build source artifacts are stored in DIR.
+-o DIR, --oscal-dir DIR           OSCAL schema are located in DIR.
+-c FILE, --config-file FILE       The config file location is FILE.
 -h, --help                        Display help
--w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
---keep-temp-scratch-dir           If a scratch directory is automatically
-                                  created, it will not be automatically removed.
 EOF
 }
 
-OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
+OPTS=`getopt -o o:vhc:a: --long artifact-dir:,oscal-dir:,help,config-file: -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -32,8 +34,16 @@ eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
-    -w|--working-dir)
-      WORKING_DIR="$(realpath "$2")"
+    -o|--oscal-dir)
+      OSCAL_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -c|--config-file)
+      CONFIG_FILE="$(realpath "$2")"
+      shift # past path
+      ;;
+    -a|--artifact-dir)
+      ARTIFACT_DIR="$(realpath "$2")"
       shift # past path
       ;;
     -v)
@@ -62,7 +72,9 @@ echo -e "${P_INFO}Validating Content${P_END}"
 echo -e "${P_INFO}==================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using OSCAL directory:${P_END} ${OSCAL_DIR}"
+  echo -e "${P_INFO}Using artifact directory:${P_END} ${ARTIFACT_DIR}"
+  echo -e "${P_INFO}Using config file:${P_END} ${CONFIG_FILE}"
 fi
 
 exitcode=0
@@ -79,20 +91,20 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
   shopt -u extglob
 
   if [[ ! -z "$path" ]]; then
-    files_to_process="${OSCALDIR}/${path}"
+    files_to_process="${ARTIFACT_DIR}/${path}"
 
     IFS= # disable word splitting
     for file in $files_to_process
     do
-      file_relative=$(realpath --relative-to="$OSCALDIR" "$file")
+      file_relative=$(realpath --relative-to="$ARTIFACT_DIR" "$file")
       if [ "$VERBOSE" = "true" ]; then
         echo -e "${P_INFO}Validating $model $format file '${P_END}${file_relative}${P_INFO}'.${P_END}"
       fi
 
       case $format in
       xml)
-          schema="$WORKING_DIR/xml/schema/oscal_${model}_schema.xsd"
-          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
+          schema="$OSCAL_DIR/xml/schema/oscal_${model}_schema.xsd"
+          schema_relative=$(realpath --relative-to="${OSCAL_DIR}" "$schema")
           result=$(xmllint --noout --schema "$schema" "$file" 2>&1)
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
@@ -105,7 +117,7 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
         ;;
       json)
           schema="$WORKING_DIR/json/schema/oscal_${model}_schema.json"
-          schema_relative=$(realpath --relative-to="${WORKING_DIR}" "$schema")
+          schema_relative=$(realpath --relative-to="${OSCAL_DIR}" "$schema")
           result=$(validate_json "$schema" "$file")
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
@@ -119,7 +131,7 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
       esac
     done
   fi
-done < "${OSCALDIR}/build/ci-cd/config/content"
+done < "${CONFIG_FILE}"
 shopt -u nullglob
 shopt -u globstar
 
