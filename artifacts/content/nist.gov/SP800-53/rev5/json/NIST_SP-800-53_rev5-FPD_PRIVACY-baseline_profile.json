@@ -1,0 +1,326 @@
+{
+  "profile": {
+    "uuid": "fcd0e29e-74e3-4f59-9834-f72a98fa2519",
+    "metadata": {
+      "title": "SP800-53 PRIVACY BASELINE",
+      "last-modified": "2020-08-26T16:28:37.032-04:00",
+      "version": "FPD",
+      "oscal-version": "1.0.0-milestone3",
+      "roles": [
+        {
+          "id": "creator",
+          "title": "Document Creator"
+        },
+        {
+          "id": "contact",
+          "title": "Contact"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "d8bc8fc4-0f2e-4bfd-983f-e2ec9dc64696",
+          "type": "organization",
+          "party-name": "Joint Task Force, Transformation Initiative",
+          "addresses": [
+            {
+              "postal-address": [
+                "National Institute of Standards and Technology",
+                "Attn: Computer Security Division",
+                "Information Technology Laboratory",
+                "100 Bureau Drive (Mail Stop 8930)"
+              ],
+              "city": "Gaithersburg",
+              "state": "MD",
+              "postal-code": "20899-8930"
+            }
+          ],
+          "email-addresses": [
+            "sec-cert@nist.gov"
+          ]
+        }
+      ],
+      "responsible-parties": {
+        "creator": {
+          "party-uuids": [
+            "d8bc8fc4-0f2e-4bfd-983f-e2ec9dc64696"
+          ]
+        },
+        "contact": {
+          "party-uuids": [
+            "d8bc8fc4-0f2e-4bfd-983f-e2ec9dc64696"
+          ]
+        }
+      }
+    },
+    "imports": [
+      {
+        "href": "NIST_SP-800-53_rev5-FPD_catalog.xml",
+        "include": {
+          "id-selectors": [
+            {
+              "control-id": "ac-1"
+            },
+            {
+              "control-id": "ac-3.14"
+            },
+            {
+              "control-id": "at-1"
+            },
+            {
+              "control-id": "at-2"
+            },
+            {
+              "control-id": "at-2.5"
+            },
+            {
+              "control-id": "at-3"
+            },
+            {
+              "control-id": "at-3.5"
+            },
+            {
+              "control-id": "at-4"
+            },
+            {
+              "control-id": "au-1"
+            },
+            {
+              "control-id": "au-2"
+            },
+            {
+              "control-id": "au-11"
+            },
+            {
+              "control-id": "ca-1"
+            },
+            {
+              "control-id": "ca-2"
+            },
+            {
+              "control-id": "ca-5"
+            },
+            {
+              "control-id": "ca-6"
+            },
+            {
+              "control-id": "ca-7"
+            },
+            {
+              "control-id": "ca-7.4"
+            },
+            {
+              "control-id": "cm-1"
+            },
+            {
+              "control-id": "cm-4"
+            },
+            {
+              "control-id": "ir-1"
+            },
+            {
+              "control-id": "ir-3"
+            },
+            {
+              "control-id": "ir-4"
+            },
+            {
+              "control-id": "ir-6"
+            },
+            {
+              "control-id": "ir-7"
+            },
+            {
+              "control-id": "ir-8"
+            },
+            {
+              "control-id": "ir-8.1"
+            },
+            {
+              "control-id": "mp-1"
+            },
+            {
+              "control-id": "mp-6"
+            },
+            {
+              "control-id": "pl-1"
+            },
+            {
+              "control-id": "pl-2"
+            },
+            {
+              "control-id": "pl-4"
+            },
+            {
+              "control-id": "pl-4.1"
+            },
+            {
+              "control-id": "pl-8"
+            },
+            {
+              "control-id": "pl-9"
+            },
+            {
+              "control-id": "pm-3"
+            },
+            {
+              "control-id": "pm-4"
+            },
+            {
+              "control-id": "pm-5.1"
+            },
+            {
+              "control-id": "pm-6"
+            },
+            {
+              "control-id": "pm-7"
+            },
+            {
+              "control-id": "pm-8"
+            },
+            {
+              "control-id": "pm-9"
+            },
+            {
+              "control-id": "pm-10"
+            },
+            {
+              "control-id": "pm-11"
+            },
+            {
+              "control-id": "pm-13"
+            },
+            {
+              "control-id": "pm-14"
+            },
+            {
+              "control-id": "pm-18"
+            },
+            {
+              "control-id": "pm-19"
+            },
+            {
+              "control-id": "pm-20"
+            },
+            {
+              "control-id": "pm-21"
+            },
+            {
+              "control-id": "pm-22"
+            },
+            {
+              "control-id": "pm-24"
+            },
+            {
+              "control-id": "pm-25"
+            },
+            {
+              "control-id": "pm-26"
+            },
+            {
+              "control-id": "pm-27"
+            },
+            {
+              "control-id": "pm-31"
+            },
+            {
+              "control-id": "pm-33"
+            },
+            {
+              "control-id": "pt-1"
+            },
+            {
+              "control-id": "pt-2"
+            },
+            {
+              "control-id": "pt-3"
+            },
+            {
+              "control-id": "pt-4"
+            },
+            {
+              "control-id": "pt-5"
+            },
+            {
+              "control-id": "pt-6"
+            },
+            {
+              "control-id": "pt-6.2"
+            },
+            {
+              "control-id": "pt-7"
+            },
+            {
+              "control-id": "pt-7.1"
+            },
+            {
+              "control-id": "pt-7.2"
+            },
+            {
+              "control-id": "pt-8"
+            },
+            {
+              "control-id": "pt-8.1"
+            },
+            {
+              "control-id": "pt-8.2"
+            },
+            {
+              "control-id": "pt-9"
+            },
+            {
+              "control-id": "ra-1"
+            },
+            {
+              "control-id": "ra-3"
+            },
+            {
+              "control-id": "ra-7"
+            },
+            {
+              "control-id": "ra-8"
+            },
+            {
+              "control-id": "sa-1"
+            },
+            {
+              "control-id": "sa-4"
+            },
+            {
+              "control-id": "sa-9"
+            },
+            {
+              "control-id": "sa-11"
+            },
+            {
+              "control-id": "si-1"
+            },
+            {
+              "control-id": "si-12"
+            },
+            {
+              "control-id": "si-12.1"
+            },
+            {
+              "control-id": "si-12.2"
+            },
+            {
+              "control-id": "si-12.3"
+            },
+            {
+              "control-id": "si-18"
+            },
+            {
+              "control-id": "si-18.4"
+            },
+            {
+              "control-id": "si-19"
+            }
+          ]
+        }
+      }
+    ],
+    "merge": {
+      "as-is": true
+    }
+  }
+}
