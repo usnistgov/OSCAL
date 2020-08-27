@@ -5,4 +5,5 @@ src/content/fedramp.gov/xml/*profile.xml|xml|profile|json
 src/content/nist.gov/SP800-53/rev4/xml/*catalog.xml|xml|catalog|json
 src/content/nist.gov/SP800-53/rev4/xml/*profile.xml|xml|profile|json
 src/content/nist.gov/SP800-53/rev5/xml/*catalog.xml|xml|catalog|json
+src/content/nist.gov/SP800-53/rev5/xml/*profile.xml|xml|profile|json
 #src/content/fedramp.gov/xml/*_MODERATE-baseline_profile.xml|xml|profile|json
