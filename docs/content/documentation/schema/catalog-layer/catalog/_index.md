@@ -9,9 +9,33 @@ aliases:
   - /documentation/schema/catalog-layer/catalog/examples/
 ---
 
-The OSCAL catalog model represents the information contained within a [control catalog](../#catalog). The catalog model is the sole model in the OSCAL [catalog layer](../).
+## Purpose
+
+The OSCAL catalog model represents the information contained within a [control catalog](../#catalog). 
 
 OSCAL is designed to support the standardized representation of control definitions from different sources. The OSCAL catalog model can be used to express different control catalogs in a standardized way, allowing control information to be easily searched, imported, and exported by applications.
+
+A *control* is a requirement or guideline intended to reduce  if implemented. An OSCAL catalog also allows parameters, control objectives, and assessment methods to be expressed.
+
+### Concepts
+
+
+
+
+### Catalog Authors
+
+Compliance Framework Bodies 
+
+
+### Catalog Consumers
+
+Baseline Authors, System Security Plan Authors, Auditors, Authorizing Officials 
+
+## Catalog Organization
+
+Baseline Authors, System Security Plan Authors, Auditors, Authorizing Officials 
+
+
 
 ## Content Examples
 

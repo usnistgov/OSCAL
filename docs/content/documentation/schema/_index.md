@@ -33,29 +33,45 @@ Each OSCAL model is represented in multiple, machine readable *formats* (e.g., X
 
 ## The OSCAL Layers
 
-The following layers are defined in the OSCAL architecture, which are listed from the bottom up.
+The following layers are defined in the OSCAL architecture, which are listed from the bottom up:
+- Catalog layer
+- Profile layer
+- Implementation Layer
+- Assessment Layer
+- Assessment Results Layer
 
 ### Catalog Layer
 
-Privacy and security documentation often discusses **controls** and **catalogs**. A *control* represents a requirement, guideline, procedure or activity, which when implemented will reduce an aspect of information system related risk. A control catalog is an organized collection of controls. These concepts are addressed by the [OSCAL catalog layer](catalog-layer/), which provides a [catalog model](catalog-layer/catalog/) whose information structures allow a control catalog and its collection of controls to be represented in a structured, machine readable form.
+Cybersecurity frameworks often define a set of **controls** intended to reduce the risk to a system. Framework authors typically organize these controls into a **catalog**. 
+
+The [OSCAL catalog layer](catalog-layer/) provides a [model](catalog-layer/catalog/) for expressing and organizing these controls in a standard, machine-readable format. 
+Controls from any control-based framework can be expressed in an OSCAL catalog.
+
+The OSCAL catalog layer defines one model:
+1. The **[catalog model](catalog-layer/catalog/)**. A control used in any other OSCAL model must first be defined in this model.
 
 ### Profile Layer
 
-The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting a specific set of security control requirements from one or more control catalogs. The term "profile" in OSCAL is also called a *baseline* or *overlay* in other terminology. The OSCAL Profile model allows for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements).
+Organizations and system owners identify which controls are applicable to a system, which may include controls from more than one framework. These are often referred to as a *baseline* or *overlay*.
 
-A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs. OSCAL Profiles can also be based on other OSCAL Profiles, allowing baselines to be established based on the customization of another baseline. This is something we see in the real world quite a bit.
+The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting, organizing, and tailoring a specific set of controls.
 
-In OSCAL, profiles are generalized to be applicable to any set of information presented in catalog form. Thus, the idea of tailoring in application can be applied not only to security guidelines in general, but also in mixed environments that have to address requirements in more than one catalog at a time.
+The OSCAL profile layer defines one model:
+
+1. The **[profile model](profile-layer/profile/)**. A control used in any other OSCAL moderl must first be defined in this model. An organization could have a single profile that references controls from several catalogs. OSCAL profiles can also reference other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
 
 ### Implementation Layer
 
-The [OSCAL implementation layer](implementation-layer/) provides models for describing how controls are implemented in a specific system or in a distributed component that can be incorporated into a system.
+The [OSCAL implementation layer](implementation-layer/) focuses on the implementation of a system under a specific baseline as well as the individual components that may be incorporated into a system. A component is anything that can satisfy a control, such as a policy, process, compliance artifact (such as FIPS 140-2 validation), as well as hardware, software, and services.
 
 The OSCAL implementation layer defines two models:
 
-1. The **[component definition model](implementation-layer/component/)**, which is currently under development, will allow for the definition of a set of *components* that each provide a description of the controls supported by a specific implementation of a hardware, software, or service; or by a given policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+1. The **[system security plan (SSP) model](implementation-layer/ssp/)** enables a system owner to express the security implementation of an information system within the context of a specific baseline (OSCAL profile). 
+SSPs expressed in a machine-readable format can be easily imported into a tool, allowing for increased automation of SSP validation and authorization. 
+An OSCAL SSP can also be transformed from the machine-readable form to a human-readable version.
 
-1. The **[system security plan (SSP) model](implementation-layer/ssp/)** that allows the security implementation of an information system to be defined based on an OSCAL profile (or baseline). SSPs expressed in a machine-readable format that can be easily imported into a tool, allowing for increased automation of SSP validation and system assessment. An OSCAL SSP can also be transformed from the machine-readable form to a human-readable version.
+1. The **[component definition model](implementation-layer/component/)** is intended to define information about an individual *component*, such that its contents can be imported into an OSCAL SSP.
+The model enables an organization or component creator to provide a description of the component and applicable security configuration information. It can also describe how a specific configuration satisfies the controls of an identified baseline. SSP authoring tools will be able to pre-populate significant portions of an SSP by importing this content and allowing it to be tailored to reflect the actual implementation within the system.
 
 ### Assessment Layer
 
