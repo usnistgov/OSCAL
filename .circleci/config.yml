@@ -305,6 +305,7 @@ jobs: # a collection of
       - apt-update
       - install-apt-jq
       - install-npm-prettyjson
+      - install-npm-ajv
       - install-apt-xmllint
       - run:
           name: Copy and convert OSCAL content to alternate formats
@@ -343,7 +344,7 @@ jobs: # a collection of
       - run:
           name: Validate content instances
           command: |
-            bash "$CICD_DIR/validate-content.sh" -v -o "$OSCAL_BUILD_DIR" -a ./
+            bash "$CICD_DIR/validate-content.sh" -v -o "$OSCAL_BUILD_DIR"
   job-roundtrip-conversions:
     executor: python-executor
     steps:
