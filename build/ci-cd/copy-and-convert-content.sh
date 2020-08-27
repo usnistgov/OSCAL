@@ -250,6 +250,8 @@ copy_or_convert_content() {
   local source_file_relative="$(get_rel_path "${source_dir}" "$source_file")"
   local target_dir="${working_dir}/${source_path%/${source_format}/*}/${target_format}" # remove filename
 
+  mkdir -p "$target_dir"
+
 #  printf 'source path: %s\n' "$source_path"
 #  printf 'source filename: %s\n' "$source_filename"
 #  printf 'source file (rel): %s\n' "$source_file_relative"
@@ -277,7 +279,6 @@ copy_or_convert_content() {
     if [ "$VERBOSE" = "true" ]; then
       echo -e "${P_INFO}Copying ${source_format^^} ${model} from '${P_END}${source_file_relative}${P_INFO}' to '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
     fi
-    mkdir -p "$target_dir"
     result=$(cp "$source_file" "$target_file" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
