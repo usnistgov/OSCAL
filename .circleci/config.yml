@@ -335,7 +335,7 @@ jobs: # a collection of
       - run:
           name: Validate content instances
           command: |
-            bash "$CICD_DIR/validate-content.sh" -a "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/validate-content.sh" -v -o ./ -a "$OSCAL_BUILD_DIR"
   job-roundtrip-conversions:
     executor: python-executor
     steps:
