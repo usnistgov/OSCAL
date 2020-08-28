@@ -36,7 +36,7 @@ We encourage you to attend these meetings.
 
 All users, but especially tool developers, should consider reaching out and connecting with others using your technology stack or platform. See our [tools page](/tools/) for more information.
 
-You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [osacl-dev@nist.gov mailing list](/contribute/contact/).
+You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [oscal-dev@nist.gov mailing list](/contribute/contact/).
 
 ## Contact
 
