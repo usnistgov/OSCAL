@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="137ccba7-86a8-47a8-a401-b0a670ba0e0e">
+         uuid="9c407281-40f0-4c8b-9e99-7cee1529b5b1">
    <metadata>
       <title>SP800-53 PRIVACY BASELINE</title>
       <last-modified>2020-08-26T16:28:37.032-04:00</last-modified>
       <version>FPD</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-08-31T16:00:46.80906Z</prop>
+      <prop name="resolution-timestamp">2020-08-31T17:39:57.58205Z</prop>
       <link rel="resolution-source"
             href="NIST_SP-800-53_rev5-FPD_PRIVACY-baseline_profile.xml">SP800-53 PRIVACY BASELINE</link>
       <role id="creator">

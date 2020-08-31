@@ -144,6 +144,13 @@ commands:
           name: Get json-diff
           command: |
             sudo npm install -g json-diff
+  install-npm-ajv:
+    description: "Install ajv"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
   install-npm-markdown-link-check:
     description: "Install markdown-link-check"
     steps:
@@ -298,6 +305,7 @@ jobs: # a collection of
       - apt-update
       - install-apt-jq
       - install-npm-prettyjson
+      - install-npm-ajv
       - install-apt-xmllint
       - run:
           name: Copy and convert OSCAL content to alternate formats
@@ -332,10 +340,11 @@ jobs: # a collection of
       - apt-update
       - install-apt-xmllint
       - install-maven-dependencies
+      - install-npm-ajv
       - run:
           name: Validate content instances
           command: |
-            bash "$CICD_DIR/validate-content.sh" -w "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/validate-content.sh" -v -o "$OSCAL_BUILD_DIR"
   job-roundtrip-conversions:
     executor: python-executor
     steps:
@@ -349,10 +358,11 @@ jobs: # a collection of
       - install-pip-lxml
       - install-apt-xmllint
       - install-npm-json-diff
+      - install-npm-ajv
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
+            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -v -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
       - *publish_artifacts
   job-generate-docs:
     executor: java-executor

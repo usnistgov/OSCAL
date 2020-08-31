@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="e9d4bf12-caea-4818-87e2-7ed15999de7e">
+         uuid="b50ea9d9-e0b8-4e91-a6b8-1ad84fb0488e">
    <metadata>
       <title>SP800-53 MODERATE IMPACT BASELINE</title>
       <last-modified>2020-08-26T16:28:37.775-04:00</last-modified>
       <version>FPD</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-08-31T16:00:38.39747Z</prop>
+      <prop name="resolution-timestamp">2020-08-31T17:39:50.308351Z</prop>
       <link rel="resolution-source"
             href="NIST_SP-800-53_rev5-FPD_MODERATE-baseline_profile.xml">SP800-53 MODERATE IMPACT BASELINE</link>
       <role id="creator">

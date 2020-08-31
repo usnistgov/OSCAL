@@ -61,8 +61,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1020,8 +1019,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/set-parameter" },
+                { "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },

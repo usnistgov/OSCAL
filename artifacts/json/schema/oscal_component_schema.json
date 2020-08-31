@@ -61,8 +61,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -773,8 +772,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/component" },
+                { "$ref" : "#/definitions/component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -784,8 +782,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/capability" },
+                { "$ref" : "#/definitions/capability" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -842,8 +839,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -893,8 +889,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/incorporates-component" },
+                { "$ref" : "#/definitions/incorporates-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -990,8 +985,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1001,8 +995,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/set-parameter" },
+                { "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1012,8 +1005,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/statement" },
+                { "$ref" : "#/definitions/statement" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1060,8 +1052,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
