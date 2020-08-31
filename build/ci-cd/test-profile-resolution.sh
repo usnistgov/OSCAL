@@ -146,6 +146,12 @@ for file in ${test_files[@]}; do
 
   expected_resolved_profile="${EXPECTED_DIR}/${filename_minus_extension}_RESOLVED.${extension}"
 
+  if [[ -z "$expected_resolved_profile" ]]; then
+    echo -e "  ${P_ERROR}The extpected resolved profile '${P_END}${expected_resolved_profile}${P_ERROR}' does not exist.${P_END}"
+    exitcode=1
+    continue;
+  fi
+
   result=$(diff "${resolved_profile}" "${expected_resolved_profile}")
   if [ $cmd_exitcode -ne 0 ]; then
     if [ -n "$result" ]; then

@@ -168,7 +168,7 @@ for i in ${!paths[@]}; do
 
     # convert to target format
     target_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to.${target_format}"
-    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model")
+    result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model" "$WORKING_DIR")
     cmd_exitcode=$?
     if [ -n "$result" ]; then
       echo -e "${result}"
@@ -183,7 +183,7 @@ for i in ${!paths[@]}; do
 
     # convert back to source format
     roundtrip_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to-${target_format}-back-to.${source_format}"
-    result=$(convert_to_format_and_validate "$target_file" "$roundtrip_file" "$target_format" "$source_format" "$model")
+    result=$(convert_to_format_and_validate "$target_file" "$roundtrip_file" "$target_format" "$source_format" "$model" "$WORKING_DIR")
     cmd_exitcode=$?
     if [ -n "$result" ]; then
       echo -e "${result}"
