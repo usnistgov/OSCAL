@@ -1,5 +1,5 @@
 catalog: 
-  uuid:        137ccba7-86a8-47a8-a401-b0a670ba0e0e
+  uuid:        9c407281-40f0-4c8b-9e99-7cee1529b5b1
   metadata: 
     title:               SP800-53 PRIVACY BASELINE
     last-modified:       2020-08-26T16:28:37.032-04:00
@@ -8,7 +8,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-08-31T16:00:46.80906Z
+        value: 2020-08-31T17:39:57.58205Z
     links: 
       - 
         href: NIST_SP-800-53_rev5-FPD_PRIVACY-baseline_profile.xml

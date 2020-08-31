@@ -66,8 +66,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -863,8 +862,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -969,8 +967,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -980,8 +977,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/implemented-component" },
+                { "$ref" : "#/definitions/implemented-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1022,8 +1018,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1460,8 +1455,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/component" },
+                { "$ref" : "#/definitions/component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } } },
@@ -1897,8 +1891,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/component" },
+                { "$ref" : "#/definitions/component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1908,8 +1901,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/inventory-item" },
+                { "$ref" : "#/definitions/inventory-item" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1919,8 +1911,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/user" },
+                { "$ref" : "#/definitions/user" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },

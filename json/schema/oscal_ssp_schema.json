@@ -61,8 +61,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -844,8 +843,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -946,8 +944,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/information-type-id" },
+                { "$ref" : "#/definitions/information-type-id" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1199,8 +1196,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/diagram" },
+                { "$ref" : "#/definitions/diagram" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1266,8 +1262,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/diagram" },
+                { "$ref" : "#/definitions/diagram" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1305,8 +1300,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/diagram" },
+                { "$ref" : "#/definitions/diagram" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1347,8 +1341,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/user" },
+                { "$ref" : "#/definitions/user" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1358,8 +1351,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/component" },
+                { "$ref" : "#/definitions/component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1480,8 +1472,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1565,8 +1556,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/inventory-item" },
+                { "$ref" : "#/definitions/inventory-item" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1608,8 +1598,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1619,8 +1608,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/implemented-component" },
+                { "$ref" : "#/definitions/implemented-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1661,8 +1649,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-party" },
+                { "$ref" : "#/definitions/responsible-party" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1724,8 +1711,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/by-component" },
+                { "$ref" : "#/definitions/by-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1735,8 +1721,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1746,8 +1731,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/set-parameter" },
+                { "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1757,8 +1741,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/statement" },
+                { "$ref" : "#/definitions/statement" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1806,8 +1789,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1817,8 +1799,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/by-component" },
+                { "$ref" : "#/definitions/by-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1861,8 +1842,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/responsible-role" },
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1872,8 +1852,7 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "type" : "object",
-                  "$ref" : "#/definitions/set-parameter" },
+                { "$ref" : "#/definitions/set-parameter" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
