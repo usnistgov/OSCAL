@@ -47,8 +47,9 @@ Cybersecurity frameworks often define a set of **controls** intended to reduce t
 The [OSCAL catalog layer](catalog-layer/) provides a [model](catalog-layer/catalog/) for expressing and organizing these controls in a standard, machine-readable format. 
 Controls from any control-based framework can be expressed in an OSCAL catalog.
 
-The OSCAL catalog layer defines one model:
-1. The **[catalog model](catalog-layer/catalog/)**. A control used in any other OSCAL model must first be defined in this model.
+#### The OSCAL catalog layer contains one model.
+
+The **[catalog model](catalog-layer/catalog/)**. A control used in any other OSCAL model must first be defined in this model.
 
 ### Profile Layer
 
@@ -56,36 +57,46 @@ Organizations and system owners identify which controls are applicable to a syst
 
 The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profile/) for selecting, organizing, and tailoring a specific set of controls.
 
-The OSCAL profile layer defines one model:
+#### The OSCAL profile layer contains one model.
 
-1. The **[profile model](profile-layer/profile/)**. A control used in any other OSCAL moderl must first be defined in this model. An organization could have a single profile that references controls from several catalogs. OSCAL profiles can also reference other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
+The **[profile model](profile-layer/profile/)**. A control used in any other OSCAL moderl must first be defined in this model. An organization could have a single profile that references controls from several catalogs. OSCAL profiles can also reference other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
 
 ### Implementation Layer
 
 The [OSCAL implementation layer](implementation-layer/) focuses on the implementation of a system under a specific baseline as well as the individual components that may be incorporated into a system. A component is anything that can satisfy a control, such as a policy, process, compliance artifact (such as FIPS 140-2 validation), as well as hardware, software, and services.
 
-The OSCAL implementation layer defines two models:
+#### The OSCAL implementation layer contains two models.
 
-1. The **[system security plan (SSP) model](implementation-layer/ssp/)** enables a system owner to express the security implementation of an information system within the context of a specific baseline (OSCAL profile). 
+The **[system security plan (SSP) model](implementation-layer/ssp/)** enables a system owner to express the security implementation of an information system within the context of a specific baseline (OSCAL profile). 
 SSPs expressed in a machine-readable format can be easily imported into a tool, allowing for increased automation of SSP validation and authorization. 
 An OSCAL SSP can also be transformed from the machine-readable form to a human-readable version.
 
-1. The **[component definition model](implementation-layer/component/)** is intended to define information about an individual *component*, such that its contents can be imported into an OSCAL SSP.
+The **[component definition model](implementation-layer/component/)** is intended to define information about an individual *component*, such that its contents can be imported into an OSCAL SSP.
 The model enables an organization or component creator to provide a description of the component and applicable security configuration information. It can also describe how a specific configuration satisfies the controls of an identified baseline. SSP authoring tools will be able to pre-populate significant portions of an SSP by importing this content and allowing it to be tailored to reflect the actual implementation within the system.
 
 ### Assessment Layer
 
-The [OSCAL assessment layer](assessment-layer/) supports structured, machine-readable assessment planning information. The **[assessment plan model](assessment-layer/assessment-plan/)** allows assessment plan information to be described, including how and when a system assessment is intended to be performed, the scope of the assessment, and what assessment activities should be conducted.
+The [OSCAL assessment layer](assessment-layer/) focuses on assessment activities. Currently, only assessment planning is supported. 
+The assessment layer will be expanded in OSCAL 2.0 to support the automation of assessment activities.
+
+Under OSCAL, assessments are always expressed in the context of a specific system implementation relative to a defined set of controls.
+OSCAL supports both continuous assessment as well as traditional "snapshot in time" assessments.
+
+#### The OSCAL assessment layer contains one model.
+
+The **[assessment plan model](assessment-layer/assessment-plan/)** allows assessment plan information to be described, including how and when a system assessment is intended to be performed, the scope of the assessment, and what assessment activities should be conducted.
 
 ### Assessment Results Layer
 
-The [OSCAL assessment results layer](assessment-results-layer/) provides models for representing specific artifacts related to conducting an assessment and capturing the assessment results and findings.
+The [OSCAL assessment results layer](assessment-results-layer/) focuses on communicating all assessment findings including supporting evidence, as well identifying and managing the remediaiton of identified risks
+ to a system identified as a result of activities in the assessment layer. 
+This includes the ability to report all findings 
 
-The OSCAL assessment layer defines two models:
+#### The OSCAL assessment results layer contains two models.
 
-1.  The **[assessment results model](assessment-results-layer/assessment-results/)**, which represents information produced from a set of assessment activities, to include when the assessment was performed, the assessment scope, evidence collected during an assessment, and any assessment findings. The assessment model supports information from periodic and continuous assessments.
+The **[assessment results model](assessment-results-layer/assessment-results/)**, which represents information produced from a set of assessment activities, to include when the assessment was performed, the assessment scope, evidence collected during an assessment, and any assessment findings. The assessment model supports information from periodic and continuous assessments.
 
-1. The **[plan of action and milestones (POA&M) model](assessment-results-layer/poam/)**, which represents a set of findings for a periodic or continuous assessment that need to be addressed by the system owner/maintainers.
+The **[plan of action and milestones (POA&M) model](assessment-results-layer/poam/)**, which represents a set of findings for a periodic or continuous assessment that need to be addressed by the system owner/maintainers.
 
 ## Status of the OSCAL Layers
 

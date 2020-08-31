@@ -52,6 +52,7 @@ git submodule update --init
 ```
 hugo version
 ```
+NOTE: The extended version of Hugo is required. The reported version should include the word "extended".
 
 3. Navigate into the `docs/` directory
 

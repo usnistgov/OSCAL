@@ -24,16 +24,21 @@ A *control* is a requirement or guideline intended to reduce  if implemented. An
 
 ### Catalog Authors
 
-Compliance Framework Bodies 
+> Compliance Framework Authors and Requirements Authors 
+
+Catalogs are authored by an organization that defines controls, such as NIST's definition of the NIST SP 800-53 controls. 
+Organizations may also author a catalog when they need to define a control not found in an applicable framework. 
 
 
 ### Catalog Consumers
 
-Baseline Authors, System Security Plan Authors, Auditors, Authorizing Officials 
+> Baseline Authors and Consumers, Component Definition Authors and Consumers, System Security Plan Authors and Consumers, Auditors, Authorizing Officials
+
+As the catalog forms the foundation for OSCAL, the authors and consumers of all other OSCAL artifacts are catalog consumers. 
 
 ## Catalog Organization
 
-Baseline Authors, System Security Plan Authors, Auditors, Authorizing Officials 
+<img src='catalog-model.svg'>
 
 
 
