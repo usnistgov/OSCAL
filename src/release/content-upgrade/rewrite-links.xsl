@@ -19,7 +19,7 @@
     
     <!-- Removing resource/@id -->
     <xsl:template match="resource/@id | party/@id |
-        location/@id | party/@id | resource/@id | diagram/@id | user/@id | component/@id |
+        location/@id | party/@id | resource/@id | diagram/@id | user/@id | component/@id | information-type/@id |
         protocol/@id | inventory-item/@id | implemented-requirement/@id | statement/@id | by-component/@id"/>
     
     <!-- Wherever a link or anchor points to a resource, it will point to its UUID -->

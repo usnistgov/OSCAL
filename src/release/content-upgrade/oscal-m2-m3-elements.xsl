@@ -110,9 +110,11 @@
     </xsl:template>
     
     <xsl:template match="org-id">
-        <member-of-organization>
-            <xsl:apply-templates/>
-        </member-of-organization>
+        <xsl:if test="matches(., '\S')">
+            <member-of-organization>
+                <xsl:apply-templates/>
+            </member-of-organization>
+        </xsl:if>
     </xsl:template>
     
     
@@ -162,7 +164,7 @@
     
 <!-- Following are mappings for SSP elements  -->
     
-    <xsl:template match="information-type | component">
+    <xsl:template match="information-type | component | authorized-privilege">
         <xsl:copy>
             <xsl:apply-templates select="@* except @name, @name"/>
             <xsl:apply-templates/>
@@ -182,7 +184,7 @@
         </title>
     </xsl:template>
     
-    <xsl:template match="information-type/@name | component/@name">
+    <xsl:template match="information-type/@name | component/@name | authorized-privilege/@name">
         <title>
             <xsl:sequence select="string(.)"/>
         </title>

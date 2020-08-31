@@ -28,7 +28,7 @@
     
     <!-- Copying and adding uuid -->
     <xsl:template xmlns:uuid="java:java.util.UUID" match="resource/@id | party/@id |
-        location/@id | party/@id | resource/@id | diagram/@id | user/@id | component/@id |
+        location/@id | party/@id | resource/@id | diagram/@id | user/@id | component/@id | information-type/@id |
         protocol/@id | inventory-item/@id | implemented-requirement/@id | statement/@id | by-component/@id">
         <xsl:copy-of select="."/>
         <xsl:call-template name="uuid"/>
