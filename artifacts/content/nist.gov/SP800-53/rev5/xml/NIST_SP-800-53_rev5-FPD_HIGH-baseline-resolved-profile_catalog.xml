@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="6f8521c3-4b66-4c4d-ae52-6df8af3d4a6d">
+         uuid="1ea1614b-c4d6-4bd5-9c8b-c3e9c32c0fb3">
    <metadata>
       <title>SP800-53 HIGH IMPACT BASELINE</title>
       <last-modified>2020-08-26T16:28:38.111-04:00</last-modified>
       <version>FPD</version>
       <oscal-version>1.0.0-milestone3</oscal-version>
-      <prop name="resolution-timestamp">2020-08-27T15:50:40.743946Z</prop>
+      <prop name="resolution-timestamp">2020-08-31T16:00:20.764725Z</prop>
       <link rel="resolution-source"
             href="NIST_SP-800-53_rev5-FPD_HIGH-baseline_profile.xml">SP800-53 HIGH IMPACT BASELINE</link>
       <role id="creator">

@@ -1,5 +1,5 @@
 catalog: 
-  uuid:        ee26dcc7-eb57-4b2b-9457-62b3e5e2be10
+  uuid:        1e0b85fa-804a-4633-bfe1-15a75225122e
   metadata: 
     title:               NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE
     last-modified:       2020-05-29T23:29:27.272-04:00
@@ -8,7 +8,7 @@ catalog:
     properties: 
       - 
         name:  resolution-timestamp
-        value: 2020-08-27T15:50:23.944394Z
+        value: 2020-08-31T16:00:06.121708Z
     links: 
       - 
         href: NIST_SP-800-53_rev4_MODERATE-baseline_profile.xml
