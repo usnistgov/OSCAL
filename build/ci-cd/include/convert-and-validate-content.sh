@@ -73,8 +73,11 @@ convert_to_format_and_validate() {
   fi
 
   result=$(validate_content "$target_file" "$target_format" "$model" "$oscal_dir")
-  echo -ne "${result}"
   cmd_exitcode=$?
+  if [ -n "$result" ]; then
+    echo -ne "${result}"
+  fi
+
   if [ $cmd_exitcode != 0 ]; then
       return 1;
   fi

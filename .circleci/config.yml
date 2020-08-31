@@ -358,10 +358,11 @@ jobs: # a collection of
       - install-pip-lxml
       - install-apt-xmllint
       - install-npm-json-diff
+      - install-npm-ajv
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
+            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -v -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
       - *publish_artifacts
   job-generate-docs:
     executor: java-executor
