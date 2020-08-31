@@ -159,7 +159,7 @@ if [ "$PERFORM_CONTENT_GENERATION" == "YES" ] && "${script_path}/generate-schema
     exit 2
   fi
 fi
-if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content.sh" -w "$WORKING_DIR" ${extra_args}; then
+if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content.sh" ${extra_args}; then
   if [ $? -ne 0 ]; then
     echo "${P_ERROR}*** Failed to validate all content${P_END}"
     exit 3

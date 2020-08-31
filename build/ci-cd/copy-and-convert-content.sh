@@ -309,7 +309,7 @@ copy_or_convert_content() {
   if [ "$VERBOSE" = "true" ]; then
     echo -e "${P_INFO}Post processing ${target_format^^} content '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
   fi
-  result=$(post_process_content $source_format $target_format $target_file $working_dir)
+  result=$(post_process_content $source_format $target_format $target_file $working_dir $oscal_dir)
   if [ -n "$result" ]; then
     echo -e "${result}"
   fi
