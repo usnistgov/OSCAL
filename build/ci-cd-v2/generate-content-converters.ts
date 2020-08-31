@@ -71,9 +71,9 @@ try {
   }
 
   // Get all files in the metaschema directory
-  // const sourceFiles = fs.readdirSync(`${oscalRootDirectory}/src/metaschema`); // "abcd/metaschema/schema_file_metaschema.xml|xml,json|xml,json"
+  const sourceFiles = fs.readdirSync(`${oscalRootDirectory}/src/metaschema`);
   // // Get only files with xml extensions in the metaschema directory
-  // const getXMLSourceFiles = sourceFiles.filter((file) => file.endsWith('xml'));
+  const getXMLSourceFiles = sourceFiles.filter((file) => file.endsWith('xml'));
 
   console.log('');
   console.log(`${P_INFO}Generating XML <-> JSON Content Converters${P_END}`);
@@ -106,14 +106,12 @@ try {
   metaSchemaArray.forEach((schema) => {
     const schemaPathWithFormat = schema.split('|');
     // Each Metaschema path is read from the config
-    const metaSchemaFullPath = schemaPathWithFormat[0]; // src/metaschema/file1.xml
+    const metaSchemaRelativePath = schemaPathWithFormat[0]; // src/metaschema/file1.xml
     // Split each metaschema path into an array
-    const metaSchemaFullPathArray = metaSchemaFullPath.split('/');
-    const lengthOfPathArray = metaSchemaFullPathArray.length
+    const metaSchemaRelativePathArray = metaSchemaRelativePath.split('/');
+    const lengthOfPathArray = metaSchemaRelativePathArray.length
     // Get metaschema file name
-    const metaschemaFile = metaSchemaFullPathArray[lengthOfPathArray - 1];
-    // Get the root directory of the metaschema
-    const metaschemaFileRootDir = metaSchemaFullPathArray.slice(0, lengthOfPathArray - 1).join('/');
+    const metaschemaFile = metaSchemaRelativePathArray[lengthOfPathArray - 1];
     // Get the base of each metaschema file from the metaschema file name
     const base = metaschemaFile.replace(/(_metaschema).*/g, '');
 
@@ -141,7 +139,7 @@ try {
         const validFormats = ['xml', 'json'];
 
         if (!validFormats.includes(format)) {
-          return console.log(`${P_ERROR}Generating converter from '${P_END}${sourceFormat.toUpperCase()}${P_ERROR}' to '${P_END}${targetFormat.toUpperCase()}${P_ERROR}' is unsupported for '${P_END}${P_PATH}${metaschemaFileRootDir}${P_END}${P_ERROR}'${P_END}.`);
+          return console.log(`${P_ERROR}Generating converter from '${P_END}${sourceFormat.toUpperCase()}${P_ERROR}' to '${P_END}${targetFormat.toUpperCase()}${P_ERROR}' is unsupported for '${P_END}${P_PATH}${metaSchemaRelativePath}${P_END}${P_ERROR}'${P_END}.`);
         }
 
         /*
@@ -159,11 +157,6 @@ try {
         // Assign the convert file path to a variable for reusability purpose
         const convertFile = `${format}/convert/${base}_${sourceFormat}-to-${targetFormat}-converter.xsl`
 
-        // Get all files in the metaschema directory
-        const sourceFiles = fs.readdirSync(`${oscalRootDirectory}/${metaschemaFileRootDir}`); // src/metaschema
-        // Get only files with xml extensions in the metaschema directory
-        const getXMLSourceFiles = sourceFiles.filter((file) => file.endsWith('xml'));
-
         // Check if the metaschama defined in the config exists as a file in the metaschema directory
         const metaSchemaExist = getXMLSourceFiles.includes(metaschemaFile);
 
@@ -176,7 +169,7 @@ try {
             */
             fs.openSync(`${workingDirectory}/${convertFile}`, 'w');
             // populate the convert files
-            populateConvert(oscalRootDirectory, workingDirectory, metaschemaFileRootDir, format, metaschemaFile, convertFile, verbose);
+            populateConvert(oscalRootDirectory, workingDirectory, format, metaschemaFile, convertFile, verbose);
           } else { // If working directory is not defined
             /*
               Create the convert files in the respective XML and JSON directories, using project root directory as default.
@@ -184,15 +177,11 @@ try {
             */
             fs.openSync(`${oscalRootDirectory}/${convertFile}`, 'w');
             // populate the schema files
-            populateConvert(oscalRootDirectory, '', metaschemaFileRootDir, format, metaschemaFile, convertFile, verbose);
+            populateConvert(oscalRootDirectory, '', format, metaschemaFile, convertFile, verbose);
           }
-
-          // if (verbose === true) {
-          //   console.log(`${P_OK}Generation of ${format.toUpperCase()} schema passed for '${P_END}${P_PATH}${metaschemaFileRootDir}${P_END}${P_OK}'${P_END}.`);
-          // }
         } else { // If metaschema does not exist
-          console.log(`${P_ERROR}Generation of ${sourceFormat.toUpperCase()} to ${targetFormat.toUpperCase()} converter failed for '${P_END}${P_PATH}${metaschemaFileRootDir}${P_END}${P_ERROR}'${P_END}.`);
-          console.log(`${P_ERROR}Metaschema does not exist: ${P_END}${P_PATH}${oscalRootDirectory}/${metaschemaFileRootDir}${P_END}`);
+          console.log(`${P_ERROR}Metaschema does not exist: ${P_END}${P_PATH}${oscalRootDirectory}/${metaSchemaRelativePath}${P_END}`);
+          console.log(`${P_ERROR}Generation of ${sourceFormat.toUpperCase()} to ${targetFormat.toUpperCase()} converter failed for '${P_END}${P_PATH}${metaSchemaRelativePath}${P_END}${P_ERROR}'${P_END}.`);
         }
       });
     }
