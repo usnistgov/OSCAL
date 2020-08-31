@@ -3,7 +3,6 @@ import {spawnSync} from 'child_process';
 export const populateConvert = (
   oscalRootDirectory: string,
   generatedConvertsDirectory: string,
-  metaschemaFileRootDir: string,
   format: string,
   metaschemaFile: string,
   convertFile: string,
@@ -36,7 +35,7 @@ export const populateConvert = (
     const scriptArguments = [
       `--source-format ${sourceFormat}`,
       `--target-format ${targetFormat}`,
-      `${oscalRootDirectory}/${metaschemaFileRootDir}/${metaschemaFile}`,
+      `${oscalRootDirectory}/src/metaschema/${metaschemaFile}`,
       `${workingDirectory}/${convertFile}`,
       `${runMode}`
     ];
