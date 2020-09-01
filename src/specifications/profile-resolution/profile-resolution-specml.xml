@@ -667,7 +667,7 @@
 &lt;back-matter>
   &lt;resource id="nist-sp800-53_catalog">
     &lt;desc>SP 800-53 catalog (OSCAL format) on Github&lt;/desc>
-    &lt;rlink href="https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
+    &lt;rlink href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"/>
   &lt;/resource>
 &lt;/back-matter>
 </tagging>
