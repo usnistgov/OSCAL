@@ -144,13 +144,6 @@ commands:
           name: Get json-diff
           command: |
             sudo npm install -g json-diff
-  install-npm-ajv:
-    description: "Install ajv"
-    steps:
-      - run:
-          name: Get ajv
-          command: |
-            sudo npm install -g ajv-cli
   install-npm-markdown-link-check:
     description: "Install markdown-link-check"
     steps:
@@ -294,28 +287,6 @@ jobs: # a collection of
           paths:
             - xml
             - json
-  job-copy-and-convert-content:
-    executor: java-executor
-    steps: # a collection of executable commands
-      - *checkout
-      - *checkout-submodules
-      - *attach_build_workspace
-      - check-skip-build
-      - install-maven-dependencies
-      - apt-update
-      - install-apt-jq
-      - install-npm-prettyjson
-      - install-npm-ajv
-      - install-apt-xmllint
-      - run:
-          name: Copy and convert OSCAL content to alternate formats
-          command: |
-            bash "$CICD_DIR/copy-and-convert-content.sh" -w "$OSCAL_BUILD_DIR" -v --resolve-profiles
-      - *publish_artifacts
-      - persist_to_workspace:
-          root: build_artifacts
-          paths:
-            - content # not needed?
   job-validate-markdown:
     executor: java-executor
     steps:
@@ -330,40 +301,6 @@ jobs: # a collection of
             cd "$REPO_DIR"
             # this command will filter out any docs Markdown files, which are checked in a different job
             git ls-files "*/*.md" -z | grep --null-data -v "^docs/" | xargs -0 -n1 markdown-link-check -q -c "build/config/.markdown-link-check/config.json"
-  job-validate-content:
-    executor: java-executor
-    steps:
-      - *checkout
-      - *checkout-submodules
-      - *attach_build_workspace
-      - check-skip-build
-      - apt-update
-      - install-apt-xmllint
-      - install-maven-dependencies
-      - install-npm-ajv
-      - run:
-          name: Validate content instances
-          command: |
-            bash "$CICD_DIR/validate-content.sh" -v -o "$OSCAL_BUILD_DIR"
-  job-roundtrip-conversions:
-    executor: python-executor
-    steps:
-      - *checkout
-      - *checkout-submodules
-      - *attach_build_workspace
-      - check-skip-build
-      - apt-update
-      - install-apt-maven
-      - install-maven-dependencies
-      - install-pip-lxml
-      - install-apt-xmllint
-      - install-npm-json-diff
-      - install-npm-ajv
-      - run:
-          name: Generate round trip XML and JSON conversions
-          command: |
-            bash "${CICD_DIR}/validate-content-conversion-round-trips.sh" -v -w "$OSCAL_BUILD_DIR" --scratch-dir "$OSCAL_BUILD_DIR"
-      - *publish_artifacts
   job-generate-docs:
     executor: java-executor
     steps:
@@ -404,9 +341,6 @@ jobs: # a collection of
             git rm -r --ignore-unmatch xml/schema/*.xsd
             git rm -r --ignore-unmatch json/convert/*.xsl
             git rm -r --ignore-unmatch json/schema/*.json
-            git rm -r --ignore-unmatch content/**/*.xml
-            git rm -r --ignore-unmatch content/**/*.json
-            git rm -r --ignore-unmatch content/**/*.yaml
             # Copy new built files to repo
             cd -
             cp -r "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
@@ -414,7 +348,6 @@ jobs: # a collection of
             # add the new files
             git add -f --all xml
             git add -f --all json
-            git add -f --all content
             # check for changes
             echo "Changed files:"
 
@@ -557,17 +490,6 @@ workflows:
       - job-generate-converters:
           requires:
             - job-validate-metaschema
-      - job-validate-content:
-          requires:
-            - job-generate-schema
-      - job-roundtrip-conversions:
-          requires:
-            - job-generate-converters
-            - job-validate-content
-      - job-copy-and-convert-content:
-           requires:
-            - job-generate-converters
-            - job-validate-content
       - job-generate-docs:
           requires:
             - job-generate-schema
@@ -582,8 +504,6 @@ workflows:
                 - master
                 - nist-pages
       - job-deploy-artifacts:
-          requires:
-            - job-copy-and-convert-content
           filters:
             branches:
               only: master
