@@ -66,8 +66,15 @@ cd docs
 hugo server -v --debug --minify
 ```
 
-5. Open your browser and navigate to `http://localhost:1313/OSCAL` to view the locally built site
+alternatively, you may bind Hugo to a network adapter on your workstation using its assigned IP address
 
+```
+hugo server -v --debug --minify --bind [ipv4-address] -b http://[ipv4-address]:1313/OSCAL
+```
+
+5. Open your browser and navigate to `http://localhost:1313/OSCAL` to view the locally built site.
+
+If you bound Hugo to an IP address, navigate to `http://[ipv4-address]:1313/OSCAL` either locally or with another device on the network.
 
 Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.
 

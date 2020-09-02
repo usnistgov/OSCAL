@@ -8,7 +8,12 @@ aliases:
   - /documentation/schema/profile/
 ---
 
+## Purpose
+
 The OSCAL Profile model represents a baseline of selected controls from one or more control catalogs, which is referred to as a "[profile](/documentation/schema/profile-layer/#profile)" in OSCAL. The Profile model is the sole model in the OSCAL [Profile](../) layer.
+
+## Concepts
+
 
 OSCAL profiles define a set of operations that are to be performed on one or more control catalogs to suffeciently reduce and tailor the catalog for use as a system implementation baseline. As such, an OSCAL profile can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
 
@@ -28,18 +33,57 @@ The figure below sketches how OSCAL relates profiles to catalogs. This example r
 
 ![profile-catalog-mapping](profile-catalog-mapping-trivial-example.png)
 
+## Authors and Consumers
+
+### Profile Authors
+
+<table><tr><td style="background-color:#cccccc; border:none">
+Control Baseline Authors, Authorizing Officials, and System Owners 
+</td></tr></table>
+
+Profiles are authored by an organization that defines or governs control baselines, such as the High, Moderate, and Low baselines defined for NIST's Special Publication (SP) 800-53 controls.
+Organizations may also author a profiles when they need to define or tailor a set of controls applicable to their organization. 
+Finally, system owners or authorizing officials may author profiles to establish a baseline of tailored controls applicable to a specific system.
+
+### Profile Consumers
+
+<table><tr><td style="background-color:#cccccc; border:none">
+System Security Plan Authors and Consumers, Auditors, Authorizing Officials and Component Definition Authors and Consumers
+</td></tr></table>
+
+Proifles are consumed by system owners and authorizing officials as the basis for the System Security Plan (SSP). 
+An auditor uses a profile to assess a system in the context of its control baseline.
+Component definition authors may use profiles to establish context for how a component could satisfy a control requirement.
+
+## Profile Organization
+
+{{% usa-grid-container %}}
+{{% usa-grid-row %}}
+{{% usa-grid-column class="col-4" %}}
+&nbsp;
+
+![This is the alt text.](profile-model.svg)
+{{% /usa-grid-column %}}
+{{% usa-grid-column class="col-8, padding-left-2" %}}
+An OSCAL catalog is organized as follows:
+- **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publicaiton date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
+- **Import**: Identifies a catalog or other profile from which controls are to be imported. A control must be imported to be included in a baseline. All parameters and back-matter resources cited by an imported control are also imported.
+- **Merge**: Provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multple import statements.
+- **Modify**: Provides the ability to tailor imported controls, including their parameters, control requirement definitions, references, control objectives, and assessment actions. 
+- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embeded content such as graphics. 
+{{% /usa-grid-column %}}
+{{% /usa-grid-row %}}
+
+{{% /usa-grid-container %}}
+
 ## Content Examples
 
 Multiple examples of baselines expressed using the OSCAL profile model can be found in the OSCAL GitHub repository in multiple formats:
 
 | Source | Formats |
 |:---|:---|
-| NIST SP 800-53 rev 4 | \[[XML](189:<p>The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/">examples</a> in the OSCAL content GitHub repository. These examples are provided in OSCAL XML, JSON, and YAML formats.</p>
-193:    <strong>Note:</strong> Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">XML</a>, <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json">JSON</a>, and <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml">YAML</a> formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.
-docs/public/documentation/schema/catalog-layer/catalog/index.html
-184:<p>The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4">in our OSCAL content GitHub repository</a>:</p>
-/nist.gov/SP800-53/rev4/xml/)\] \[[JSON](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/)\] \[[YAML](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/)\]
-| FedRAMP Baselines | \[[XML](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/xml/)\] \[[JSON](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/json/)\] \[[YAML](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/yaml/)\]
+| NIST SP 800-53 rev 4 | \[[XML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/xml/)\] \[[JSON](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/json/)\] \[[YAML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/yaml/)\]
+| FedRAMP Baselines | \[[XML](https://github.com/gsa/fedramp-automation/blob/master/baselines/xml/)\] \[[JSON](https://github.com/gsa/fedramp-automation/blob/master/baselines/json/)\] \[[YAML](https://github.com/gsa/fedramp-automation/blob/master/baselines/yaml/)\]
 
 You will also find the "resolved" version of each profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/documentation/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.
 
