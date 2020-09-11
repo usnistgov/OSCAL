@@ -34,20 +34,20 @@ Multiple examples of baselines expressed using the OSCAL profile model can be fo
 
 | Source | Formats |
 |:---|:---|
-| NIST SP 800-53 rev 4 | \[[XML](189:<p>The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/">examples</a> in the OSCAL GitHub repository. These examples are provided in OSCAL XML, JSON, and YAML formats.</p>
-193:    <strong>Note:</strong> Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">XML</a>, <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json">JSON</a>, and <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml">YAML</a> formats in the OSCAL GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.
+| NIST SP 800-53 rev 4 | \[[XML](189:<p>The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/">examples</a> in the OSCAL content GitHub repository. These examples are provided in OSCAL XML, JSON, and YAML formats.</p>
+193:    <strong>Note:</strong> Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">XML</a>, <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json">JSON</a>, and <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml">YAML</a> formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.
 docs/public/documentation/schema/catalog-layer/catalog/index.html
-184:<p>The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4">in our GitHub repository</a>:</p>
+184:<p>The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available <a href="https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4">in our OSCAL content GitHub repository</a>:</p>
 /nist.gov/SP800-53/rev4/xml/)\] \[[JSON](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/)\] \[[YAML](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/)\]
 | FedRAMP Baselines | \[[XML](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/xml/)\] \[[JSON](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/json/)\] \[[YAML](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/yaml/)\]
 
-You will also find the "resolved" version of the profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/documentation/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.
+You will also find the "resolved" version of each profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/documentation/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.
 
 The following OSCAL profile model examples are provided by the above.
 
 ### NIST SP 800-53 Revision 4 Baselines
 
-The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available [in our GitHub repository](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4):
+The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available [in the OSCAL content GitHub repository](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4):
 
 * [HIGH](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_HIGH-baseline_profile.xml)
 * [MODERATE](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_MODERATE-baseline_profile.xml)
