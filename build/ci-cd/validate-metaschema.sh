@@ -96,9 +96,10 @@ if [ "$VERBOSE" = "true" ]; then
 fi
 
 # compile the schematron
-metaschema_lib="$OSCALDIR/build/metaschema/toolchains/oscal-m2/lib"
-schematron="$metaschema_lib/metaschema-check.sch"
+metaschema_toolchain="${OSCALDIR}/build/metaschema/toolchains/xslt-M4"
+schematron="${metaschema_toolchain}/validate/metaschema-check.sch"
 compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
+metaschema_xsd="${metaschema_toolchain}/validate/metaschema.xsd"
 
 build_schematron "$schematron" "$compiled_schematron"
 cmd_exitcode=$?
@@ -107,8 +108,14 @@ if [ $cmd_exitcode -ne 0 ]; then
   exit 1
 fi
 # the following is needed by the compiled template
-cp "${metaschema_lib}/metaschema-compose.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_lib}/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-validation-support.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-metaprocess.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-collect.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-reduce1.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-digest.xsl" "${SCRATCH_DIR}"
+cp "${metaschema_toolchain}/validate/metaschema-reduce2.xsl" "${SCRATCH_DIR}"
+
 
 exitcode=0
 shopt -s nullglob
@@ -134,7 +141,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       echo -e "${P_INFO}Validating metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
     fi
 
-    result=$(xmllint --nowarning --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema" 2>&1)
+    result=$(xmllint --nowarning --noout --schema "${metaschema_xsd}" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
