@@ -335,35 +335,41 @@ jobs: # a collection of
       - deploy: # delete and copy artifacts before deploy
           name: Commit Artifacts
           command: |
-            cd "$REPO_DIR"
-            # Remove existing generated files
-            git rm -r --ignore-unmatch xml/convert/*.xsl
-            git rm -r --ignore-unmatch xml/schema/*.xsd
-            git rm -r --ignore-unmatch json/convert/*.xsl
-            git rm -r --ignore-unmatch json/schema/*.json
-            # Copy new built files to repo
-            cd -
-            cp -r "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
-            cd "$REPO_DIR"
-            # add the new files
-            git add -f --all xml
-            git add -f --all json
-            # check for changes
-            echo "Changed files:"
+            if ls ${OSCAL_BUILD_DIR}/*  1> /dev/null 2>&1 ; then
+              cd "$REPO_DIR"
+              # Remove existing generated files
+              git rm -r --ignore-unmatch xml/convert/*.xsl
+              git rm -r --ignore-unmatch xml/schema/*.xsd
+              git rm -r --ignore-unmatch json/convert/*.xsl
+              git rm -r --ignore-unmatch json/schema/*.json
+              # Copy new built files to repo
+              cd -
+              cp -r "$OSCAL_BUILD_DIR"/* "$REPO_DIR"
+              cd "$REPO_DIR"
+              # add the new files
+              git add -f --all xml
+              git add -f --all json
 
-            if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
-              # Only deploy if something relevant has changed
-              # Setup deployment
-              git config user.name "Deployment Bot"
-              git commit --allow-empty -m "Deploying content [ci deploy skip]"
-              # Ensure we are deploying against the latest
-              git fetch
-              git rebase origin/master
-              # deploy
-              git push
+              # check for changes
+              echo "Changed files:"
+
+              if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
+                # Only deploy if something relevant has changed
+                # Setup deployment
+                git config user.name "Deployment Bot"
+                git commit --allow-empty -m "Deploying content [ci deploy skip]"
+                # Ensure we are deploying against the latest
+                git fetch
+                git rebase origin/master
+                # deploy
+                git push
+              else
+                echo "  No files changed"
+              fi
             else
-              echo "  No files changed"
+              echo "  No changes to process"
             fi
+
       - *publish_artifacts
   job-validate-site-content:
     executor: ruby-node-executor
