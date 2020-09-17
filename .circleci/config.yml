@@ -513,6 +513,9 @@ workflows:
           filters:
             branches:
               only: master
+          requires:
+            - job-generate-schema
+            - job-generate-converters
       - job-build-and-deploy-website:
           requires:
             - job-generate-docs
