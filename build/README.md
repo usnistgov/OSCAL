@@ -48,29 +48,25 @@ A Docker container configuration is provided that establishes the runtime enviro
 
     This should launch an interactive shell.
 
-## Manual Setup of the Build Environment
+## Manual Setup of the Build Environment (Linux)
 
-The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/bionic/).
+The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/bionic/) and [20.04 LTS](http://old-releases.ubuntu.com/releases/focal/).
 
 1. Setup environment variables
 
-    A few environment variables are used to configure the runtime environment.
+    Environment variables are used to configure the runtime environment.
 
     - SAXON_VERSION - Defines which version of Saxon-HE to use
-    - SCHEMATRON_HOME - Defines the directory where the Schematron Skeleton will be checked out
-    - OSCAL_TOOLS_DIR - Defines the directory where the OSCAL tools will be checked out. The OSCAL Java Validation API is one of the needed tools located in this repo.
-    - JSON_CLI_VERSION - Defines the version of the OSCAL Java Validation API
+    - HUGO_VERSION - Defines which version of Hugo to use
 
-    The following is an example of how to configure the environment. You will need to customize the `SCHEMATRON_HOME` and `OSCAL_TOOLS_DIR` variables for your own environment. The path `/home/user` should be updated to point to the home directory of the current user.
+    The following is an example of how to configure the environment.
 
     ```bash
     export SAXON_VERSION="9.9.1-3"
-    export SCHEMATRON_HOME=/home/user/git-schematron
-    export OSCAL_TOOLS_DIR=/home/user/oscal-tools
-    export JSON_CLI_VERSION=0.0.1-SNAPSHOT
+    export HUGO_VERSION="0.74.3"
     ```
 
-    You may want to add these exports to your `~/.bashrc` to persist the configuration.
+    You may want to add this export to your `~/.bashrc` to persist the configuration.
 
 1. Install required packages
 
@@ -78,8 +74,17 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
     ```bash
     sudo apt-get update
-    sudo apt-get install -y apt-utils libxml2-utils jq maven hugo nodejs npm build-essential python3-pip git
+    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git
     sudo apt-get clean
+    ```
+
+1. Install Hugo
+
+    The version of Hugo available on Ubuntu is outdated. To install a current version of Hugo, run the following:
+
+    ```bash
+    wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+    sudo apt install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
     ```
 
 1. Install Node.js modules
@@ -96,7 +101,6 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     npm install prettyjson markdown-link-check json-diff
     ```
 
-
 1. Install Python modules
 
     To install the required Python modules, run the following:
@@ -105,31 +109,6 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     pip3 install lxml
     ```
 
-1. Install Schematron Skeleton
-
-    The build environment uses the [ISO Schematron](https://github.com/Schematron/schematron) Skeleton to generate Schematron schemas used for some validation operations. Schematron is a query-based validation technology typically leveraging [XPath](https://www.w3.org/TR/xpath-31/) for precise and targeted testing of constraints and business rules in documentary datasets.
-
-    To install the Schematron Skeleton, run the following:
-
-    ```bash
-    mkdir -p "${SCHEMATRON_HOME}"
-    git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "${SCHEMATRON_HOME}"
-    cd "${SCHEMATRON_HOME}"
-    git checkout master -- trunk/schematron/code
-    ```
-
-1. Install and Build the Java JSON Validation CLI
-
-    The build environment uses a custom JSON validation API command line tool to validate JSON content.
-
-    To install the JSON validation API command line tool, run the following:
-
-    ```bash
-    mkdir -p "${OSCAL_TOOLS_DIR}"
-    git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
-    cd "${OSCAL_TOOLS_DIR}/json-cli"
-    mvn install
-    ```
 1. Install Saxon-HE
 
     To install Saxon-HE, run the following:
