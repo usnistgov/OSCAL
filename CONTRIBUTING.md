@@ -102,3 +102,39 @@ The project cards for each sprint will be in one of the following states:
 - "Done" - Once the contributed work has been reviewed and the pull request has been merged, the user story will be marked as "Done".
 
 Note: A pull request must be submitted for all goals before an issue will be moved to the "under review" status. If any goals or acceptance criteria have not been met, then the user story will be commented on to provide feedback, and the issue will be returned to the "In progress" state.
+
+## Git Client Setup
+
+### Initializing Git submodules
+
+This GitHub repository makes use of Git submodules to mount other repositories as subdirectories.
+
+When cloning this repo for the first time, you need to initialize the submodules that this repository depends on. To do this you must execute the following command:
+
+```
+git submodule update --init
+```
+
+You can perform the clone and submodule initialization in a single step by using the following command:
+
+```
+git clone --recurse-submodules https://github.com/usnistgov/OSCAL.git
+```
+
+### Configuring Submodules to Use SSH
+
+Some clients will make use of Git over SSH with a private SSH key for GitHub projects. For convenience, the submodules are configured to use HTTP instead of SSH. To override this default behavior, you will need to configure your Git client to use SSH instead of HTTP using the following command:
+
+```
+git config --global url."git@github.com:".insteadOf https://github.com/
+```
+
+This instructs your Git client to dynamically replace the HTTP-based URLs with the proper SSH URL when using GitHub.
+
+### Updating submodules
+
+Submodule contents will be periodically updated. To ensure you have the latest commits for a configured submodule, you will need to run the following command:
+
+```
+git submodule update --init --recursive
+```
