@@ -50,7 +50,7 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 ## Manual Setup of the Build Environment
 
-The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/18.04.4/).
+The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/bionic/).
 
 1. Setup environment variables
 
