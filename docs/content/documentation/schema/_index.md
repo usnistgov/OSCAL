@@ -33,7 +33,7 @@ Each OSCAL model is represented in multiple, machine readable *formats* (e.g., X
 
 ## The OSCAL Layers
 
-The following layers are defined in the OSCAL architecture, which are listed from the bottom up:
+The diagram above identifies the OSCAL layers from the bottom up because each higher layer relies on the layer beneath it. The following OSCAL layer discussion begins with the bottom layer in the diagram and address each in order moving toward the top of the diagram: 
 - Catalog layer
 - Profile layer
 - Implementation Layer
@@ -49,7 +49,8 @@ Controls from any control-based framework can be expressed in an OSCAL catalog.
 
 #### The OSCAL catalog layer contains one model.
 
-The **[catalog model](catalog-layer/catalog/)**. A control used in any other OSCAL model must first be defined in this model.
+The **[catalog model](catalog-layer/catalog/)**. The catalog model is the basis for all other OSCAL models. Controls used in any other OSCAL model must first be _defined_ in this model.
+Controls may include statements (requirement definitions), parameters, references, objectives, and assessment methods. The model also enables the controls to be organized.
 
 ### Profile Layer
 
@@ -59,7 +60,12 @@ The [OSCAL profile layer](profile-layer/) provides a [model](profile-layer/profi
 
 #### The OSCAL profile layer contains one model.
 
-The **[profile model](profile-layer/profile/)**. A control used in any other OSCAL moderl must first be defined in this model. An organization could have a single profile that references controls from several catalogs. OSCAL profiles can also reference other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
+The **[profile model](profile-layer/profile/)**. A profile enables controls to be selected and tailored to express a baseline of controls. A control used in the implementation, assessment, and assessment results layers must first be imported by a profile. 
+After importing a control, a profile may be used to tailor the control. This includes additions, changes, and removal of statements, parameters, control objective, and assessment actions.
+
+OSCAL profiles can import controls from catalogs or other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. This approach provides full transparency and traceability of control tailoring from a baseline back to the original catalog's control definition. Every control imported by a profile must originate within a catalog.
+
+Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
 
 ### Implementation Layer
 
