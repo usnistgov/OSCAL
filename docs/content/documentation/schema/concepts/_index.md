@@ -95,25 +95,4 @@ The figure below sketches how OSCAL relates profiles to catalogs. This example r
 
 ![profile-catalog-mapping](profile-catalog-mapping-trivial-example.png)
 
-## Component Model Concepts
-
-_coming soon_
-
-## System Security Plan (SSP) Model Concepts
-
-_coming soon_
-
-## Assessment Plan (AP) Model Concepts
-
-_coming soon_
-
-## Assessment Results (AR) Model Concepts
-
-_coming soon_
-
-## Plan of Action and Milestones (POA&M) Model Concepts
-
-_coming soon_
-
-
 
