@@ -1146,6 +1146,13 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
+         <assembly ref="export" min-occurs="0" max-occurs="1" />
+         <assembly ref="inherited" min-occurs="0" max-occurs="unbounded">
+            <group-as name="inherited-group"/>
+         </assembly>
+         <assembly ref="satisfied" min-occurs="0" max-occurs="unbounded">
+            <group-as name="satisfied-group"/>
+         </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
@@ -1174,4 +1181,80 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
+   
+   <define-assembly name="export">
+      <formal-name>Export</formal-name>
+      <description>Identifies content intended for external consumption, such as with leveraged organizations.</description>
+      <model>
+         <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <assembly ref="provided" min-occurs="0" max-occurs="unbounded">
+            <group-as name="provided-group"/>
+         </assembly>
+         <assembly ref="responsibility" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsibilities"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="provided">
+      <formal-name>Provided</formal-name>
+      <description>Describes a capability which may be inherited by a leveraging system.</description>
+      <flag ref="uuid" required="yes" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="responsibility">
+      <formal-name>Responsibility</formal-name>
+      <description>Describes a responsibiity imposed on a leveraging system.</description>
+      <flag ref="uuid" required="yes" />
+      <flag ref="provided-uuid" required="no" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-flag name="provided-uuid">
+      <formal-name>Provided UUID</formal-name>
+      <description>Identifies a 'provided' assembly associated with this assembly.</description>
+   </define-flag>
+
+   <define-assembly name="inherited">
+      <formal-name>Inherited</formal-name>
+      <description>Describes a responsibiity imposed on a leveraging system.</description>
+      <flag ref="uuid" required="yes" />
+      <flag ref="provided-uuid" required="no" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="satisfied">
+      <formal-name>Satisfied</formal-name>
+      <description>Describes how this system satisfies a responsibiity imposed by a leveraged system.</description>
+      <flag ref="uuid" required="yes" />
+      <flag ref="responsibility-uuid" required="no" />
+      <model>
+         <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-flag name="responsibility-uuid">
+      <formal-name>Provided UUID</formal-name>
+      <description>Identifies a 'provided' assembly associated with this assembly.</description>
+   </define-flag>
+
 </METASCHEMA>
