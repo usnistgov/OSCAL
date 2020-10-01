@@ -65,30 +65,11 @@ Multiple examples of baselines expressed using the OSCAL profile model can be fo
 
 | Source | Formats |
 |:---|:---|
+| NIST SP 800-53 rev 5 | \[[XML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev5/xml/)\] \[[JSON](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev5/json/)\] \[[YAML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev5/yaml/)\]
 | NIST SP 800-53 rev 4 | \[[XML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/xml/)\] \[[JSON](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/json/)\] \[[YAML](https://github.com/usnistgov/OSCAL-content/blob/master/nist.gov/SP800-53/rev4/yaml/)\]
 | FedRAMP Baselines | \[[XML](https://github.com/gsa/fedramp-automation/blob/master/baselines/xml/)\] \[[JSON](https://github.com/gsa/fedramp-automation/blob/master/baselines/json/)\] \[[YAML](https://github.com/gsa/fedramp-automation/blob/master/baselines/yaml/)\]
 
 You will also find the "resolved" version of each profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/documentation/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.
 
 The following OSCAL profile model examples are provided by the above.
-
-### NIST SP 800-53 Revision 4 Baselines
-
-The NIST HIGH, MODERATE and LOW baselines for the SP800-53 rev4 catalog are available [in the OSCAL content GitHub repository](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4):
-
-* [HIGH](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_HIGH-baseline_profile.xml)
-* [MODERATE](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_MODERATE-baseline_profile.xml)
-* [LOW](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_LOW-baseline_profile.xml)
-
-There are also [JSON](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json) and [YAML](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml) versions of the NIST SP 800-53 rev4 profiles.
-
-### FedRAMP Baselines
-
-Also find examples representing the FedRAMP baselines (again for the HIGH, MODERATE and LOW impact levels) on [our web site](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov).
-
-* [HIGH](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/xml/FedRAMP_HIGH-baseline_profile.xml)
-* [MODERATE](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/xml/FedRAMP_MODERATE-baseline_profile.xml)
-* [LOW](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/xml/FedRAMP_LOW-baseline_profile.xml)
-
-There are also [JSON](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/json) and [YAML](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov/yaml) versions of the FedRAMP profiles.
 
