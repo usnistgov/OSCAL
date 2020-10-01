@@ -14,24 +14,7 @@ The OSCAL Profile model represents a baseline of selected controls from one or m
 
 ## Concepts
 
-
-OSCAL profiles define a set of operations that are to be performed on one or more control catalogs to suffeciently reduce and tailor the catalog for use as a system implementation baseline. As such, an OSCAL profile can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
-
-* Which controls are *selected* from the catalog and thereby considered to be in scope for the application;
-* How the control selection should be *organized* and represented, including whether and how competing control definitions are to be resolved and merged;
-* Whether and where any controls are to be *configured* or modified; this includes setting parameter values for a catalog but also potentially amending the language given in controls to describe their application in the system.
-
-See [examples](#content-examples) of OSCAL profiles.
-
-These three functions are reflected in the organization of a profile document, which may contain (in addition to document metadata) any of three sections, `import`, `merge`, and `modify`:
-
-* `import` (required) - indicates which controls to include or exclude from catalogs
-* `merge` - what merge rules to follow and how to organize outputs
-* `modify` - how to configure and/or modify parameters and control languages (statements, guidance etc.)
-
-The figure below sketches how OSCAL relates profiles to catalogs. This example represents the NIST SP 800-53 low baseline. The profile indicates which controls from the NIST SP 800-53 catalog are required to for compliance with this baseline. Using OSCAL formats for these baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.
-
-![profile-catalog-mapping](profile-catalog-mapping-trivial-example.png)
+Profile model concepts are described in [concepts](../../concepts/#profile-model-concepts).
 
 ## Authors and Consumers
 

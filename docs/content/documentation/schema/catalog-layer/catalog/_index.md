@@ -19,34 +19,7 @@ A *control* is a requirement or guideline intended to reduce  if implemented. An
 
 ## Concepts
 
-Many privacy and security compliance frameworks are based on **controls**. 
-Framework authors provide control requirements, system owners impliment the controls, and assessors validate the implemented control against the requirement. 
-
-Framework providers organize control requirements into a **catalog**.
-The OSCAL catalog model is designed to represent control requirement information and its catalog organization in a machine-readable format with a high degree of fidelity and granularity.
-
-An OSCAL catalog allows control requirements to be grouped, and allows individual control requirements to contain subordinate control requirements (enhancements), control objectives, assessment methods, references, and other content as may be necessary in some frameworks. 
-
-The control model is the foundation for all other OSCAL models. 
-
-### Control
-
-In OSCAL, a control is *a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.*
-
-
-{{% callout %}}
-A **security control** is defined in NIST Special Publication (SP) [SP 800-53 revision 5 (draft)](https://doi.org/10.6028/NIST.SP.800-53r5-draft) and the Office of Management and Budget Memorandum Circular [A-130](https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/circulars/A130/a130revised.pdf), *Managing Information as a Strategic Resource*, as:
-
-> The safeguards or countermeasures prescribed for an information system or an organization to protect the confidentiality, integrity, and availability of the system and its information.
-
-These documents also define a **privacy control** as:
-
-> The administrative, technical, and physical safeguards employed within an agency to ensure compliance with applicable privacy requirements and manage privacy risks.
-
-These definitions align well to the control concept in OSCAL.
-{{% /callout %}}
-
-OSCAL has been built for applications of controls that relate to privacy or security safeguards or countermeasures, such as in the two following examples. However, it may be possible to apply OSCAL beyond security or privacy controls for applications related to safety, health, or other purposes. These other applications have not been explored so far.
+Catalog model concepts are described in [concepts](../../concepts/#catalog-model-concepts).
 
 ## Authors and Consumers
 
