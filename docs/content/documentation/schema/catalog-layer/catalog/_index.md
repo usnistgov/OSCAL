@@ -50,11 +50,11 @@ As the catalog forms the foundation for OSCAL, the authors and consumers of all 
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="col-8, padding-left-2" %}}
 An OSCAL catalog is organized as follows:
-- **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publicaiton date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
+- **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Parameter**: Any parameter applicable to more than one control requirement statement in the catalog may be defined here.
 - **Control**: Each control may contain control-specific parameters, control requirement statements, control objectives, assessment methods, references, and subordinate controls.
 - **Group**: Related controls may be grouped. Parameters related to this group may be defined here. 
-- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embeded content such as graphics. 
+- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
 {{% /usa-grid-column %}}
 {{% /usa-grid-row %}}
 
