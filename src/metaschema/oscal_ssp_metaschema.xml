@@ -1024,7 +1024,6 @@
       <flag ref="uuid" required="yes"/>
       <flag ref="control-id" required="yes"/>
       <model>
-         <field ref="description"/>
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
          </field>
@@ -1086,7 +1085,6 @@
       </flag>
       <flag ref="uuid" required="yes"/>
       <model>
-         <field ref="description"/>
 
          <field ref="prop" max-occurs="unbounded">
             <group-as name="properties" in-json="ARRAY"/>
@@ -1187,12 +1185,23 @@
       <description>Identifies content intended for external consumption, such as with leveraged organizations.</description>
       <model>
          <field ref="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
          <assembly ref="provided" min-occurs="0" max-occurs="unbounded">
             <group-as name="provided-group"/>
          </assembly>
          <assembly ref="responsibility" min-occurs="0" max-occurs="unbounded">
             <group-as name="responsibilities"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -1202,9 +1211,20 @@
       <flag ref="uuid" required="yes" />
       <model>
          <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    
@@ -1215,17 +1235,23 @@
       <flag ref="provided-uuid" required="no" />
       <model>
          <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    
-   <define-flag name="provided-uuid">
-      <formal-name>Provided UUID</formal-name>
-      <description>Identifies a 'provided' assembly associated with this assembly.</description>
-   </define-flag>
-
    <define-assembly name="inherited">
       <formal-name>Inherited</formal-name>
       <description>Describes a responsibiity imposed on a leveraging system.</description>
@@ -1233,6 +1259,16 @@
       <flag ref="provided-uuid" required="no" />
       <model>
          <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
@@ -1246,11 +1282,27 @@
       <flag ref="responsibility-uuid" required="no" />
       <model>
          <field ref="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
+   
+   <define-flag name="provided-uuid">
+      <formal-name>Provided UUID</formal-name>
+      <description>Identifies a 'provided' assembly associated with this assembly.</description>
+   </define-flag>
    
    <define-flag name="responsibility-uuid">
       <formal-name>Provided UUID</formal-name>
