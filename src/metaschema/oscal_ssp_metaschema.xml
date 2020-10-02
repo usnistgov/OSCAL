@@ -657,6 +657,10 @@
                   <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
                   <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
                   <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
+                  <!-- names related to inherited component -->
+                  <enum value="implementation-point">Reletave placement of component ('inteneral' or 'external') to the system.</enum>
+                  <enum value="leveraged-authorization-uuid">Title of the Interconnection Security Agreement (ISA).</enum>
+                  <enum value="inherited-uuid">Title of the Interconnection Security Agreement (ISA).</enum>
                </allowed-values>
             </flag>
             <remarks>
