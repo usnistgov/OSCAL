@@ -2998,19 +2998,6 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element name="description" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
@@ -3083,19 +3070,6 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element name="description" minOccurs="0" maxOccurs="1">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Description</m:formal-name>
-                     <m:description>A description supporting the parent item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexType>
-                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-               </xs:complexType>
-            </xs:element>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
@@ -3173,6 +3147,9 @@
             </xs:element>
             <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:export" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oscal-ssp:inherited" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:satisfied" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="oscal-ssp:responsible-role"
                         minOccurs="0"
@@ -3220,6 +3197,308 @@
       <xs:unique name="by-component-set-parameter-keys">
          <xs:selector xpath="oscal-ssp:set-parameter"/>
          <xs:field xpath="@param-id"/>
+      </xs:unique>
+   </xs:element>
+   <xs:element name="export">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Export</m:formal-name>
+            <m:description>Identifies content intended for external consumption, such as with leveraged organizations.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Export</b>: Identifies content intended for external consumption, such as with leveraged organizations.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:provided" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:responsibility" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="provided">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Provided</m:formal-name>
+            <m:description>Describes a capability which may be inherited by a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Provided</b>: Describes a capability which may be inherited by a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:responsible-role"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+      <xs:unique name="provided-responsible-role-keys">
+         <xs:selector xpath="oscal-ssp:responsible-role"/>
+         <xs:field xpath="@role-id"/>
+      </xs:unique>
+   </xs:element>
+   <xs:element name="responsibility">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Responsibility</m:formal-name>
+            <m:description>Describes a responsibiity imposed on a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Responsibility</b>: Describes a responsibiity imposed on a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:responsible-role"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="provided-uuid" type="xs:string">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Provided UUID</m:formal-name>
+                  <m:description>Identifies a 'provided' assembly associated with this assembly.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Provided UUID</b>: Identifies a 'provided' assembly associated with this assembly.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+      <xs:unique name="responsibility-responsible-role-keys">
+         <xs:selector xpath="oscal-ssp:responsible-role"/>
+         <xs:field xpath="@role-id"/>
+      </xs:unique>
+   </xs:element>
+   <xs:element name="inherited">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Inherited</m:formal-name>
+            <m:description>Describes a responsibiity imposed on a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Inherited</b>: Describes a responsibiity imposed on a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:responsible-role"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+         </xs:sequence>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="provided-uuid" type="xs:string">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Provided UUID</m:formal-name>
+                  <m:description>Identifies a 'provided' assembly associated with this assembly.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Provided UUID</b>: Identifies a 'provided' assembly associated with this assembly.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+      <xs:unique name="inherited-responsible-role-keys">
+         <xs:selector xpath="oscal-ssp:responsible-role"/>
+         <xs:field xpath="@role-id"/>
+      </xs:unique>
+   </xs:element>
+   <xs:element name="satisfied">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Satisfied</m:formal-name>
+            <m:description>Describes how this system satisfies a responsibiity imposed by a leveraged system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Satisfied</b>: Describes how this system satisfies a responsibiity imposed by a leveraged system.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="description" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Description</m:formal-name>
+                     <m:description>A description supporting the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Description</b>: A description supporting the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="oscal-ssp:prop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:annotation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:link" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="oscal-ssp:responsible-role"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Remarks</m:formal-name>
+                     <m:description>Additional commentary on the parent item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Remarks</b>: Additional commentary on the parent item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+         <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Universally Unique Identifier</m:formal-name>
+                  <m:description>A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Universally Unique Identifier</b>: A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="responsibility-uuid" type="xs:string">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Provided UUID</m:formal-name>
+                  <m:description>Identifies a 'provided' assembly associated with this assembly.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Provided UUID</b>: Identifies a 'provided' assembly associated with this assembly.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+      <xs:unique name="satisfied-responsible-role-keys">
+         <xs:selector xpath="oscal-ssp:responsible-role"/>
+         <xs:field xpath="@role-id"/>
       </xs:unique>
    </xs:element>
    <xs:group name="PROSE">

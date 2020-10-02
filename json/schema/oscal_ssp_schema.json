@@ -1688,8 +1688,6 @@
           { "title" : "Control Identifier Reference",
             "description" : "A reference to a control identifier.",
             "type" : "string" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1762,8 +1760,6 @@
             "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1831,6 +1827,26 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/annotation" } },
+          "export" : 
+          { "$ref" : "#/definitions/export" },
+          "inherited-group" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/inherited" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/inherited" },
+                "minItems" : 2 } ] },
+          "satisfied-group" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/satisfied" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/satisfied" },
+                "minItems" : 2 } ] },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1853,6 +1869,256 @@
             { "allOf" : 
               [ 
                 { "$ref" : "#/definitions/set-parameter" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "description" ],
+        "additionalProperties" : false },
+      "export" : 
+      { "title" : "Export",
+        "description" : "Identifies content intended for external consumption, such as with leveraged organizations.",
+        "$id" : "#/definitions/export",
+        "type" : "object",
+        "properties" : 
+        { "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "provided-group" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/provided" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/provided" },
+                "minItems" : 2 } ] },
+          "responsibilities" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/responsibility" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/responsibility" },
+                "minItems" : 2 } ] },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
+      "provided" : 
+      { "title" : "Provided",
+        "description" : "Describes a capability which may be inherited by a leveraging system.",
+        "$id" : "#/definitions/provided",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "description" ],
+        "additionalProperties" : false },
+      "responsibility" : 
+      { "title" : "Responsibility",
+        "description" : "Describes a responsibiity imposed on a leveraging system.",
+        "$id" : "#/definitions/responsibility",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "provided-uuid" : 
+          { "title" : "Provided UUID",
+            "description" : "Identifies a 'provided' assembly associated with this assembly.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "description" ],
+        "additionalProperties" : false },
+      "inherited" : 
+      { "title" : "Inherited",
+        "description" : "Describes a responsibiity imposed on a leveraging system.",
+        "$id" : "#/definitions/inherited",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "provided-uuid" : 
+          { "title" : "Provided UUID",
+            "description" : "Identifies a 'provided' assembly associated with this assembly.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } } },
+        "required" : 
+        [ "uuid",
+          "description" ],
+        "additionalProperties" : false },
+      "satisfied" : 
+      { "title" : "Satisfied",
+        "description" : "Describes how this system satisfies a responsibiity imposed by a leveraged system.",
+        "$id" : "#/definitions/satisfied",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "responsibility-uuid" : 
+          { "title" : "Provided UUID",
+            "description" : "Identifies a 'provided' assembly associated with this assembly.",
+            "type" : "string" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "annotations" : 
+          { "anyOf" : 
+            [ 
+              { "$ref" : "#/definitions/annotation" },
+              
+              { "type" : "array",
+                "items" : 
+                { "$ref" : "#/definitions/annotation" },
+                "minItems" : 2 } ] },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-role" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
