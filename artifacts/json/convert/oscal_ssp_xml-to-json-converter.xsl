@@ -1507,12 +1507,6 @@
       <map key="implemented-requirement">
          <xsl:apply-templates mode="as-string" select="@uuid"/>
          <xsl:apply-templates mode="as-string" select="@control-id"/>
-         <xsl:for-each select="description">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">description</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
@@ -1559,12 +1553,6 @@
    <xsl:template match="statement" mode="xml2json">
       <map key="{@statement-id}">
          <xsl:apply-templates mode="as-string" select="@uuid"/>
-         <xsl:for-each select="description">
-            <xsl:call-template name="prose">
-               <xsl:with-param name="key">description</xsl:with-param>
-               <xsl:with-param name="wrapped" select="true()"/>
-            </xsl:call-template>
-         </xsl:for-each>
          <xsl:if test="exists(prop)">
             <array key="properties" m:in-json="ARRAY">
                <xsl:apply-templates select="prop" mode="#current"/>
@@ -1617,6 +1605,17 @@
                <xsl:apply-templates select="annotation" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:apply-templates select="export" mode="#current"/>
+         <xsl:if test="exists(inherited)">
+            <array key="inherited-group">
+               <xsl:apply-templates select="inherited" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(satisfied)">
+            <array key="satisfied-group">
+               <xsl:apply-templates select="satisfied" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:if test="exists(link)">
             <array key="links" m:in-json="ARRAY">
                <xsl:apply-templates select="link" mode="#current"/>
@@ -1629,6 +1628,192 @@
          </xsl:for-each-group>
          <xsl:for-each-group select="set-parameter" group-by="local-name()">
             <map key="parameter-settings">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="export" mode="xml2json">
+      <map key="export">
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(provided)">
+            <array key="provided-group">
+               <xsl:apply-templates select="provided" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(responsibility)">
+            <array key="responsibilities">
+               <xsl:apply-templates select="responsibility" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="provided" mode="xml2json">
+      <map key="provided">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each-group select="responsible-role" group-by="local-name()">
+            <map key="responsible-roles">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="responsibility" mode="xml2json">
+      <map key="responsibility">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:apply-templates mode="as-string" select="@provided-uuid"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each-group select="responsible-role" group-by="local-name()">
+            <map key="responsible-roles">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
+         <xsl:for-each select="remarks">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">remarks</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+      </map>
+   </xsl:template>
+   <xsl:template match="inherited" mode="xml2json">
+      <map key="inherited">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:apply-templates mode="as-string" select="@provided-uuid"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each-group select="responsible-role" group-by="local-name()">
+            <map key="responsible-roles">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
+      </map>
+   </xsl:template>
+   <xsl:template match="satisfied" mode="xml2json">
+      <map key="satisfied">
+         <xsl:apply-templates mode="as-string" select="@uuid"/>
+         <xsl:apply-templates mode="as-string" select="@responsibility-uuid"/>
+         <xsl:for-each select="description">
+            <xsl:call-template name="prose">
+               <xsl:with-param name="key">description</xsl:with-param>
+               <xsl:with-param name="wrapped" select="true()"/>
+            </xsl:call-template>
+         </xsl:for-each>
+         <xsl:if test="exists(prop)">
+            <array key="properties" m:in-json="ARRAY">
+               <xsl:apply-templates select="prop" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(annotation)">
+            <array key="annotations">
+               <xsl:apply-templates select="annotation" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(link)">
+            <array key="links" m:in-json="ARRAY">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:for-each-group select="responsible-role" group-by="local-name()">
+            <map key="responsible-roles">
                <xsl:apply-templates select="current-group()" mode="#current"/>
             </map>
          </xsl:for-each-group>

@@ -1009,7 +1009,7 @@
    <!-- *** Handling flag @uuid *** -->
    <xsl:template match="*[@key='uuid']" priority="6" mode="json2xml"/>
    <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='uuid'] | *[@key='properties']/*[@key='uuid'] | array[@key='properties']/*/*[@key='uuid'] | map[@key='properties']/*/*[@key='uuid'] | *[@key='annotation']/*[@key='uuid'] | *[@key='annotations']/*[@key='uuid'] | array[@key='annotations']/*/*[@key='uuid'] | map[@key='annotations']/*/*[@key='uuid'] | *[@key='location']/*[@key='uuid'] | *[@key='locations']/*[@key='uuid'] | array[@key='locations']/*/*[@key='uuid'] | map[@key='locations']/*/*[@key='uuid'] | *[@key='party']/*[@key='uuid'] | *[@key='parties']/*[@key='uuid'] | array[@key='parties']/*/*[@key='uuid'] | map[@key='parties']/*/*[@key='uuid'] | *[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | array[@key='resources']/*/*[@key='uuid'] | map[@key='resources']/*/*[@key='uuid'] | *[@key='system-security-plan']/*[@key='uuid'] | *[@key='information-type']/*[@key='uuid'] | *[@key='information-types']/*[@key='uuid'] | array[@key='information-types']/*/*[@key='uuid'] | map[@key='information-types']/*/*[@key='uuid'] | *[@key='leveraged-authorization']/*[@key='uuid'] | *[@key='leveraged-authorizations']/*[@key='uuid'] | array[@key='leveraged-authorizations']/*/*[@key='uuid'] | map[@key='leveraged-authorizations']/*/*[@key='uuid'] | *[@key='diagram']/*[@key='uuid'] | *[@key='diagrams']/*[@key='uuid'] | array[@key='diagrams']/*/*[@key='uuid'] | map[@key='diagrams']/*/*[@key='uuid'] | *[@key='user']/*[@key='uuid'] | *[@key='users']/*[@key='uuid'] | array[@key='users']/*/*[@key='uuid'] | map[@key='users']/*/*[@key='uuid'] | *[@key='component']/*[@key='uuid'] | *[@key='components']/*[@key='uuid'] | array[@key='components']/*/*[@key='uuid'] | map[@key='components']/*/*[@key='uuid'] | *[@key='protocol']/*[@key='uuid'] | *[@key='protocols']/*[@key='uuid'] | array[@key='protocols']/*/*[@key='uuid'] | map[@key='protocols']/*/*[@key='uuid'] | *[@key='inventory-item']/*[@key='uuid'] | *[@key='inventory-items']/*[@key='uuid'] | array[@key='inventory-items']/*/*[@key='uuid'] | map[@key='inventory-items']/*/*[@key='uuid'] | *[@key='implemented-requirement']/*[@key='uuid'] | *[@key='implemented-requirements']/*[@key='uuid'] | array[@key='implemented-requirements']/*/*[@key='uuid'] | map[@key='implemented-requirements']/*/*[@key='uuid'] | *[@key='statement']/*[@key='uuid'] | *[@key='statements']/*[@key='uuid'] | array[@key='statements']/*/*[@key='uuid'] | map[@key='statements']/*/*[@key='uuid'] | *[@key='by-component']/*[@key='uuid'] | *[@key='by-components']/*[@key='uuid'] | array[@key='by-components']/*/*[@key='uuid'] | map[@key='by-components']/*/*[@key='uuid']"
+                 match="*[@key='prop']/*[@key='uuid'] | *[@key='properties']/*[@key='uuid'] | array[@key='properties']/*/*[@key='uuid'] | map[@key='properties']/*/*[@key='uuid'] | *[@key='annotation']/*[@key='uuid'] | *[@key='annotations']/*[@key='uuid'] | array[@key='annotations']/*/*[@key='uuid'] | map[@key='annotations']/*/*[@key='uuid'] | *[@key='location']/*[@key='uuid'] | *[@key='locations']/*[@key='uuid'] | array[@key='locations']/*/*[@key='uuid'] | map[@key='locations']/*/*[@key='uuid'] | *[@key='party']/*[@key='uuid'] | *[@key='parties']/*[@key='uuid'] | array[@key='parties']/*/*[@key='uuid'] | map[@key='parties']/*/*[@key='uuid'] | *[@key='resource']/*[@key='uuid'] | *[@key='resources']/*[@key='uuid'] | array[@key='resources']/*/*[@key='uuid'] | map[@key='resources']/*/*[@key='uuid'] | *[@key='system-security-plan']/*[@key='uuid'] | *[@key='information-type']/*[@key='uuid'] | *[@key='information-types']/*[@key='uuid'] | array[@key='information-types']/*/*[@key='uuid'] | map[@key='information-types']/*/*[@key='uuid'] | *[@key='leveraged-authorization']/*[@key='uuid'] | *[@key='leveraged-authorizations']/*[@key='uuid'] | array[@key='leveraged-authorizations']/*/*[@key='uuid'] | map[@key='leveraged-authorizations']/*/*[@key='uuid'] | *[@key='diagram']/*[@key='uuid'] | *[@key='diagrams']/*[@key='uuid'] | array[@key='diagrams']/*/*[@key='uuid'] | map[@key='diagrams']/*/*[@key='uuid'] | *[@key='user']/*[@key='uuid'] | *[@key='users']/*[@key='uuid'] | array[@key='users']/*/*[@key='uuid'] | map[@key='users']/*/*[@key='uuid'] | *[@key='component']/*[@key='uuid'] | *[@key='components']/*[@key='uuid'] | array[@key='components']/*/*[@key='uuid'] | map[@key='components']/*/*[@key='uuid'] | *[@key='protocol']/*[@key='uuid'] | *[@key='protocols']/*[@key='uuid'] | array[@key='protocols']/*/*[@key='uuid'] | map[@key='protocols']/*/*[@key='uuid'] | *[@key='inventory-item']/*[@key='uuid'] | *[@key='inventory-items']/*[@key='uuid'] | array[@key='inventory-items']/*/*[@key='uuid'] | map[@key='inventory-items']/*/*[@key='uuid'] | *[@key='implemented-requirement']/*[@key='uuid'] | *[@key='implemented-requirements']/*[@key='uuid'] | array[@key='implemented-requirements']/*/*[@key='uuid'] | map[@key='implemented-requirements']/*/*[@key='uuid'] | *[@key='statement']/*[@key='uuid'] | *[@key='statements']/*[@key='uuid'] | array[@key='statements']/*/*[@key='uuid'] | map[@key='statements']/*/*[@key='uuid'] | *[@key='by-component']/*[@key='uuid'] | *[@key='by-components']/*[@key='uuid'] | array[@key='by-components']/*/*[@key='uuid'] | map[@key='by-components']/*/*[@key='uuid'] | *[@key='provided']/*[@key='uuid'] | *[@key='provided-group']/*[@key='uuid'] | array[@key='provided-group']/*/*[@key='uuid'] | map[@key='provided-group']/*/*[@key='uuid'] | *[@key='responsibility']/*[@key='uuid'] | *[@key='responsibilities']/*[@key='uuid'] | array[@key='responsibilities']/*/*[@key='uuid'] | map[@key='responsibilities']/*/*[@key='uuid'] | *[@key='inherited']/*[@key='uuid'] | *[@key='inherited-group']/*[@key='uuid'] | array[@key='inherited-group']/*/*[@key='uuid'] | map[@key='inherited-group']/*/*[@key='uuid'] | *[@key='satisfied']/*[@key='uuid'] | *[@key='satisfied-group']/*[@key='uuid'] | array[@key='satisfied-group']/*/*[@key='uuid'] | map[@key='satisfied-group']/*/*[@key='uuid']"
                  mode="as-attribute">
       <xsl:attribute name="uuid">
          <xsl:apply-templates mode="#current"/>
@@ -2204,7 +2204,6 @@
       <xsl:element name="implemented-requirement"
                    namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -2225,7 +2224,6 @@
       <xsl:element name="statement" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -2249,7 +2247,6 @@
       <xsl:element name="statement" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates select="@key" mode="as-attribute"/>
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -2270,6 +2267,9 @@
          <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('export')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('inherited', 'inherited-group')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('satisfied', 'satisfied-group')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current"
                               select="*[@key=('responsible-role', 'responsible-roles')]"/>
@@ -2297,6 +2297,9 @@
          <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('export')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('inherited', 'inherited-group')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('satisfied', 'satisfied-group')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current"
                               select="*[@key=('responsible-role', 'responsible-roles')]"/>
@@ -2314,6 +2317,101 @@
                  match="*[@key='by-component']/*[@key='component-uuid'] | *[@key='by-components']/*[@key='component-uuid'] | *[@key='by-components']/*/*[@key='component-uuid']"
                  mode="as-attribute">
       <xsl:attribute name="component-uuid">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling assembly "export" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='export']" priority="4" mode="json2xml">
+      <xsl:element name="export" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('provided', 'provided-group')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('responsibility', 'responsibilities')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling assembly "provided" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='provided'] | array[@key='provided-group']/* | map[@key='provided-group']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="provided" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('responsible-role', 'responsible-roles')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling assembly "responsibility" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='responsibility'] | array[@key='responsibilities']/* | map[@key='responsibilities']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="responsibility" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('responsible-role', 'responsible-roles')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling assembly "inherited" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='inherited'] | array[@key='inherited-group']/* | map[@key='inherited-group']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="inherited" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('responsible-role', 'responsible-roles')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling assembly "satisfied" *** -->
+   <!-- *** NB - template matching 'array' overrides this one *** -->
+   <xsl:template match="*[@key='satisfied'] | array[@key='satisfied-group']/* | map[@key='satisfied-group']"
+                 priority="4"
+                 mode="json2xml">
+      <xsl:element name="satisfied" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current"
+                              select="*[@key=('responsible-role', 'responsible-roles')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
+      </xsl:element>
+   </xsl:template>
+   <!-- *** Handling flag @provided-uuid *** -->
+   <xsl:template match="*[@key='provided-uuid']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='responsibility']/*[@key='provided-uuid'] | *[@key='responsibilities']/*[@key='provided-uuid'] | array[@key='responsibilities']/*/*[@key='provided-uuid'] | map[@key='responsibilities']/*/*[@key='provided-uuid'] | *[@key='inherited']/*[@key='provided-uuid'] | *[@key='inherited-group']/*[@key='provided-uuid'] | array[@key='inherited-group']/*/*[@key='provided-uuid'] | map[@key='inherited-group']/*/*[@key='provided-uuid']"
+                 mode="as-attribute">
+      <xsl:attribute name="provided-uuid">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- *** Handling flag @responsibility-uuid *** -->
+   <xsl:template match="*[@key='responsibility-uuid']" priority="6" mode="json2xml"/>
+   <xsl:template priority="2"
+                 match="*[@key='satisfied']/*[@key='responsibility-uuid'] | *[@key='satisfied-group']/*[@key='responsibility-uuid'] | array[@key='satisfied-group']/*/*[@key='responsibility-uuid'] | map[@key='satisfied-group']/*/*[@key='responsibility-uuid']"
+                 mode="as-attribute">
+      <xsl:attribute name="responsibility-uuid">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
