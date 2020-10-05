@@ -8,7 +8,7 @@ const colorCodes = {
     P_END: '\x1b[0m', // Reset
   }
   
-  const setupCliInputs = (rootDir: string, argv: any) => {
+ const setupCliInputs = (rootDir: string, argv: any) => {
     // Create a message log to be used with stdout and stderr
     const usage = () => `
       Usage: node ${argv.$0} [options] [metaschema paths]
