@@ -6,8 +6,6 @@ weight: 60
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2
-aliases:
- - /learnmore/concepts/profile/
 ---
 
 A **profile** defines a specific set of selected security control requirements from one or more control catalogs. The term "[profile](#profile)" in OSCAL is also called a *baseline* or *overlay* in other terminology.

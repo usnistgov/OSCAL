@@ -31,7 +31,7 @@ The following image depicts each layer and the corresponding model(s) for each l
 
 Each OSCAL model is represented in multiple, machine readable *formats* (e.g., XML, JSON, YAML), which provide a serialization and encoding mechanism for representing and exchanging OSCAL data, also referred to as *OSCAL content*.
 
-Individual layers are summarized below, with links to additional layer and model information. There is also an [introduction to the OSCAL models](model-concepts/), as well as information related to the [concepts](concepts/) applied to each model and their interaction.
+Individual layers are summarized below, with links to additional layer and model information. There is also an [introduction to the OSCAL models](model-concepts/), as well as information related to the [concepts](../concepts/) applied to each model and their interaction.
 
 ## The OSCAL Layers
 

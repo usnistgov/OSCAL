@@ -11,55 +11,49 @@ aliases:
 
 ## Purpose
 
-The OSCAL catalog model represents the information contained within a control catalog. 
+The OSCAL catalog model represents a collection of [controls](../../../concepts/#control), represented as a control [catalog](../../../concepts/#catalog).
 
-OSCAL is designed to support the standardized representation of control definitions from different sources. The OSCAL catalog model can be used to express different control catalogs in a standardized way, allowing control information to be easily searched, imported, and exported by applications.
+The OSCAL catalog model was designed to represent security and privacy controls in standardized, machine readable formats. The OSCAL catalog model standardizes the representation of control definitions from different sources (e.g., SP 800-53, ISO/IEC 27002, COBIT 5) allowing control information to be easily searched, imported, and exported by applications using a common format.
 
-A *control* is a requirement or guideline intended to reduce  if implemented. An OSCAL catalog also allows parameters, control objectives, and assessment methods to be expressed.
-
-## Concepts
-
-Catalog model concepts are described in [concepts](../../concepts/#catalog-model-concepts).
+The OSCAL catalog model was designed to represent security and privacy controls; however, it may be possible to apply OSCAL to other applications related to safety, health, or other purposes. These other applications have not been explored so far.
 
 ## Authors and Consumers
 
 ### Catalog Authors
 
-<table><tr><td style="background-color:#cccccc; border:none">
-Compliance Framework Authors and Requirements Authors 
-</td></tr></table>
+{{<callout>}}Compliance Framework Authors and Requirements Authors{{</callout>}}
+
 Catalogs are authored by an organization that defines or governs controls, such as NIST's Special Publication (SP) 800-53 controls.
+
 Organizations may also author a catalog when they need to define a control not found in an applicable framework. 
 
 ### Catalog Consumers
 
-<table><tr><td style="background-color:#cccccc; border:none">
-Baseline Authors and Consumers, Component Definition Authors and Consumers, System Security Plan Authors and Consumers, Auditors, Authorizing Officials
-</td></tr></table>
-As the catalog forms the foundation for OSCAL, the authors and consumers of all other OSCAL artifacts are catalog consumers. 
+{{<callout>}}Baseline Authors and Consumers, Component Definition Authors and Consumers, System Security Plan Authors and Consumers, Auditors, Authorizing Officials{{</callout>}}
 
+As the catalog forms the foundation for OSCAL, the authors and consumers of all other OSCAL artifacts are catalog consumers. 
 
 ## Catalog Organization
 
-{{% usa-grid-container %}}
+{{% usa-grid-container class="padding-x-0" %}}
 {{% usa-grid-row %}}
-{{% usa-grid-column class="col-4" %}}
-&nbsp;
-
-![This is the alt text.](catalog-model.svg)
-{{% /usa-grid-column %}}
-{{% usa-grid-column class="col-8, padding-left-2" %}}
-An OSCAL catalog is organized as follows:
+{{% usa-grid-column class="grid-col-fill" %}}
+An OSCAL catalog is organized as follows, which is based on the standard OSCAL [document structure](../../#oscal-file-organization):
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Parameter**: Any parameter applicable to more than one control requirement statement in the catalog may be defined here.
 - **Control**: Each control may contain control-specific parameters, control requirement statements, control objectives, assessment methods, references, and subordinate controls.
 - **Group**: Related controls may be grouped. Parameters related to this group may be defined here. 
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
 {{% /usa-grid-column %}}
+{{% usa-grid-column class="grid-col-auto" %}}
+{{<figure src="catalog-model.svg" alt="This is the alt text." class="maxw-full margin-top-0">}}
+{{% /usa-grid-column %}}
 {{% /usa-grid-row %}}
-
 {{% /usa-grid-container %}}
 
+## Key Concepts
+
+TODO
 
 ## Content Examples
 
