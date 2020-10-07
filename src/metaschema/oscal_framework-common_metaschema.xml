@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
+ root="nominal-root">
+   <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
+   <schema-version>1.0.0-milestone3</schema-version>
+   <short-name>oscal-catalog-common</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   
+   <import href="oscal_metadata_metaschema.xml"/>
+
+   <define-assembly name="nominal-root">
+      <formal-name>Nominal root</formal-name>
+      <description>NOT TO BE USED FOR A BASE METASCHEMA ONLY FOR A MODULE</description>
+      <model>
+         <assembly ref="control-mapping"/>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="control-mapping">
+      <formal-name>Control mapping</formal-name>
+      <description>A mapping of a control or control statement to one or more other concepts.</description>
+      <model>
+         <assembly ref="import-catalog" required="yes"/>
+        <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
+            <group-as name="implemented-requirements" in-json="ARRAY"/>
+        </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="import-catalog">
+      <formal-name>Import Catalog</formal-name>
+      <description>Used to import the OSCAL catalog for which all mappings will be to.</description>
+      <flag ref="href" required="yes"/>
+      <model>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="implemented-requirement">
+      <formal-name>Control-based Requirement</formal-name>
+      <description>Describes how the system satisfies an individual control.</description>
+      <flag ref="uuid" required="yes"/>
+      <flag ref="control-id" required="yes"/>
+      <model>
+         <field ref="description"/>
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+            <!-- TODO: Model specific characteristic names -->
+            <!-- TODO: add: status -->
+            <!-- TODO: add: control-implementation -->
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
+         
+         <assembly ref="statement" max-occurs="unbounded">
+            <group-as name="statements" in-json="BY_KEY"/>
+         </assembly>
+         <!--            <assembly ref="using"/>
+-->            <!-- TODO: Implement parameters -->
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="statement">
+      <formal-name>Specific Statement</formal-name>
+      <description>Identifies which statements within a control are addressed.</description>
+      <json-key flag-name="statement-id"/>
+      <flag ref="statement-id">
+         <description>A reference to the specific implemented statement associated with a control.</description>
+      </flag>
+      <flag ref="uuid" required="yes"/>
+      <model>
+         <field ref="description"/>
+
+         <field ref="prop" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations"/>
+         </assembly>
+         <field ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
+
+</METASCHEMA>
