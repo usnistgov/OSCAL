@@ -1,4 +1,17 @@
-# OSCAL Conversion Utilities
+## Format conversion utilities
+
+These are miscellaneous utilities for generic file (format) conversions, not the model-driven content converters. They were originally developed as part of production pipelines for file conversion (and may have been superseded), but may be still be useful.
+
+`json-compactor.xsl` - refactors XPath JSON for conciseness
+`md-oscal-converter.xsl` - produces OSCAL/HTML markup from Markdown
+`xml-as-json-object.xsl` - 'naive' converter of (generic) XML into a JSON form
+
+## OSCAL Conversion Utilities (not in this directory)
+
+The directions below apply to the content converters, now located here:
+
+XML to JSON: https://github.com/usnistgov/OSCAL/tree/master/json/convert
+JSON to XML: https://github.com/usnistgov/OSCAL/tree/master/xml/convert
 
 XSLT stylesheets offer bi-directional conversion between XML and JSON versions of OSCAL data conformant (in either variant) to schemas derived from an OSCAL metaschema.
 
