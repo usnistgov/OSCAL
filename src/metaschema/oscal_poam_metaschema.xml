@@ -1,127 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
+<?xml-model href="../../toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
- xmlns:o="http://csrc.nist.gov/ns/oscal/example" root="plan-of-action-and-milestones">
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Format</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-poam</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
-      <p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically 
-         provided by an assessor during the preparation for an assessment.</p>
+      <p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
       <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-action-milestones</code>.</p>
    </remarks>
-   
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
    <import href="oscal_ssp_metaschema.xml"/>
    <import href="oscal_assessment-common_metaschema.xml"/>
-   
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="plan-of-action-and-milestones">
       <formal-name>Plan of Action and Milestones (POA&amp;M)</formal-name>
       <description>A plan of action and milestones, such as those required by FedRAMP.</description>
+      <root-name>plan-of-action-and-milestones</root-name>
       <flag ref="uuid" required="yes"/>
       <model>
-         <assembly ref="metadata"  min-occurs="1" max-occurs="1" />
+         <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
          <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
-            <description>Used by the POA&amp;M to import information about the system.</description>
+            <remarks>
+               <p>Used by the POA&amp;M to import information about the system.</p>
+            </remarks>
          </assembly>
-         <field ref="system-id" min-occurs="0" max-occurs="1" />
-         <assembly ref="local-definitions" min-occurs="0" max-occurs="1" />
-         <assembly ref="poam-items"  min-occurs="1" max-occurs="1" />
-         <assembly ref="back-matter" min-occurs="0" max-occurs="1" />
+         <field ref="system-id" min-occurs="0" max-occurs="1"/>
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
+         <assembly ref="poam-items" min-occurs="1" max-occurs="1"/>
+         <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
       <remarks>
          <p>Either an OSCAL-based SSP must be imported, or a unique system-id must be specified. Both may be present.</p>
       </remarks>
    </define-assembly>
-   
    <define-assembly name="local-definitions">
       <formal-name>Local Definitions</formal-name>
       <description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</description>
       <model>
-         <assembly ref="component" min-occurs="0"  max-occurs="unbounded">
-            <description>Used to add any components, not defined via the System Security Plan (AR->AP->SSP)</description>
+         <assembly ref="component" min-occurs="0" max-occurs="unbounded">
             <group-as name="components" in-json="BY_KEY"/>
+            <remarks>
+               <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+            </remarks>
          </assembly>
-         <assembly ref="inventory-item" min-occurs="0"  max-occurs="unbounded" >
-            <description>Used to add any inventory-items, not defined via the System Security Plan (AR->AP->SSP)</description>
+         <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
             <group-as name="inventory-items" in-json="BY_KEY"/>
+            <remarks>
+               <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+            </remarks>
          </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+         <field ref="remarks"
+                in-xml="WITH_WRAPPER"
+                min-occurs="0"
+                max-occurs="1"/>
       </model>
    </define-assembly>
-   
    <define-assembly name="poam-items">
       <formal-name>POA&amp;M Items</formal-name>
       <description>This identifies initial and residual risks, deviations, and disposition.</description>
       <model>
-         <field ref="title"  min-occurs="1" max-occurs="1" />
-         <field ref="description"  min-occurs="1" max-occurs="1" />
-         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+         <field ref="title" min-occurs="1" max-occurs="1"/>
+         <field ref="description" min-occurs="1" max-occurs="1"/>
+         <define-field name="prop" min-occurs="0" max-occurs="unbounded">
+            <formal-name>prop field</formal-name>
             <description>Provided as means of extending the OSCAL syntax.</description>
+            <json-value-key>value</json-value-key>
             <group-as name="properties" in-json="ARRAY"/>
-         </field>
+            <define-flag name="name" required="yes">
+               <formal-name>name flag</formal-name>
+               <description>name flag ... </description>
+               <constraint>
+                  <allowed-values allow-other="yes">
+                     <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
+                  </allowed-values>
+               </constraint>
+            </define-flag>
+            <flag ref="uuid" required="no"/>
+            <flag ref="ns"/>
+            <flag ref="class"/>
+         </define-field>
          <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
-            <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
+            <remarks>
+               <p>Provided as means of extending the OSCAL syntax.</p>
+            </remarks>
          </assembly>
-         <field ref="start" min-occurs="1" max-occurs="1" >
+         <define-field name="start"
+                       as-type="dateTime-with-timezone"
+                       min-occurs="1"
+                       max-occurs="1">
+            <formal-name>start field</formal-name>
             <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
-         </field>
-         <field ref="end" min-occurs="0" max-occurs="1">
+         </define-field>
+         <define-field name="end"
+                       as-type="dateTime-with-timezone"
+                       min-occurs="0"
+                       max-occurs="1">
+            <formal-name>end field</formal-name>
             <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous monitoring scenario, this may be omitted or contain the same value as start if appropriate.</description>
-         </field>
+         </define-field>
          <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
             <group-as name="poam-item-group" in-json="ARRAY"/>
          </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+         <field ref="remarks"
+                in-xml="WITH_WRAPPER"
+                min-occurs="0"
+                max-occurs="1"/>
       </model>
    </define-assembly>
-   
    <define-assembly name="poam-item">
       <formal-name>POA&amp;M Item</formal-name>
       <description>Describes an individual POA&amp;M item.</description>
-      <flag ref="uuid" required="yes" />
+      <flag ref="uuid" required="yes"/>
       <model>
-         <field ref="title"  min-occurs="1" max-occurs="1" />
-         <field ref="description"  min-occurs="1" max-occurs="1" />
-         <field ref="prop"  min-occurs="0" max-occurs="unbounded">
+         <field ref="title" min-occurs="1" max-occurs="1"/>
+         <field ref="description" min-occurs="1" max-occurs="1"/>
+         <define-field name="prop" min-occurs="0" max-occurs="unbounded">
+            <formal-name>prop field</formal-name>
             <description>Provided as means of extending the OSCAL syntax.</description>
+            <json-value-key>value</json-value-key>
             <group-as name="properties" in-json="ARRAY"/>
-         </field>
+            <define-flag name="name" required="yes">
+               <formal-name>name flag</formal-name>
+               <description>name flag ... </description>
+               <constraint>
+                  <allowed-values allow-other="yes">
+                     <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
+                  </allowed-values>
+               </constraint>
+            </define-flag>
+            <flag ref="uuid" required="no"/>
+            <flag ref="ns"/>
+            <flag ref="class"/>
+         </define-field>
          <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
-            <description>Provided as means of extending the OSCAL syntax.</description>
             <group-as name="annotations" in-json="ARRAY"/>
+            <remarks>
+               <p>Provided as means of extending the OSCAL syntax.</p>
+            </remarks>
          </assembly>
-         <field ref="collected" min-occurs="1" max-occurs="1" >
+         <define-field name="collected"
+                       as-type="dateTime-with-timezone"
+                       min-occurs="1"
+                       max-occurs="1">
+            <formal-name>collected field</formal-name>
             <description>Date/time stamp identifying when the finding information was collected.</description>
-         </field>
-         <field ref="expires" min-occurs="0" max-occurs="1" >
+         </define-field>
+         <define-field name="expires"
+                       as-type="dateTime-with-timezone"
+                       min-occurs="0"
+                       max-occurs="1">
+            <formal-name>expires field</formal-name>
             <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
-         </field>
-         <assembly ref="objective-status" min-occurs="0" max-occurs="1"  />
-         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1" />
+         </define-field>
+         <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
+         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
          <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
             <group-as name="observations" in-json="ARRAY"/>
          </assembly>
-         <field ref="threat-id"  min-occurs="0" max-occurs="unbounded">
+         <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
             <group-as name="threat-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
             <group-as name="risks" in-json="ARRAY"/>
          </assembly>
-         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
+         <define-field name="party-uuid"
+                       as-type="uuid"
+                       min-occurs="0"
+                       max-occurs="unbounded">
+            <formal-name>party-uuid field</formal-name>
             <description>The person who collected the evidence or made the observation.</description>
             <group-as name="party-uuids" in-json="ARRAY"/>
-         </field>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+         </define-field>
+         <field ref="remarks"
+                in-xml="WITH_WRAPPER"
+                min-occurs="0"
+                max-occurs="1"/>
       </model>
-   </define-assembly>   
-   
+   </define-assembly>
 </METASCHEMA>
