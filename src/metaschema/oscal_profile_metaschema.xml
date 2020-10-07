@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
-            root="profile">
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Profile Metaschema</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-profile</short-name>
@@ -19,7 +15,11 @@
    <define-assembly name="profile">
       <formal-name>Profile</formal-name>
       <description>Each OSCAL profile is defined by a Profile element</description>
-      <flag ref="uuid" required="yes"/>
+      <root-name>profile</root-name>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Catalog Universally Unique Identifier</formal-name>
+         <description>A globally unique identifier for this profile instance. This UUID should be changed when this document is revised.</description>
+      </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="import" min-occurs="1" max-occurs="unbounded">
@@ -30,35 +30,30 @@
          <assembly ref="back-matter"/>
       </model>
       <remarks>
-         <p>An OSCAL document that describes a selection with possible modification of multiple
-          controls from multiple catalogs. It provides mechanisms by which controls may be selected
-            (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended
-            (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter
-          values for them in application, and even qualify the representation of controls as given
-          in and by a catalog. They may also serve as sources for further
-          modification in and by other profiles, that import them.</p>
+         <p>An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter values for them in application, and even qualify the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
       </remarks>
    </define-assembly>
    <define-assembly name="import">
       <formal-name>Import resource</formal-name>
-      <description>An Import element designates a catalog, profile, or other resource to be
-         included (referenced and potentially modified) by this profile.</description>
-      <flag ref="href" required="yes"/>
+      <description>An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.</description>
+      <define-flag name="href" as-type="uri-reference" required="yes">
+         <formal-name>Catalog or Profile Reference</formal-name>
+         <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
+         <remarks>
+            <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+            <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
+            <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+            <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+         </remarks>
+      </define-flag>
       <model>
          <assembly ref="include"/>
          <assembly ref="exclude"/>
       </model>
       <remarks>
-         <p>An <code>import</code> indicates a source whose controls are to be included (referenced
-          and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports (with possible settings.</p>
-         <p>The contents of the <code>import</code> element indicate which controls
-          from the source will be included. Controls may be either selected (using
-          an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
-          from the source catalog or profile.</p>
-         <p>When no <code>include</code> is given (whether an <code>exclude</code> is given or not),
-            an <code>include</code>/<code>all</code> is assumed (that is, all controls will be
-            included by default).</p>
+         <p>A profile must be based on an existing OSCAL catalog or another OSCAL profile. An <code>import</code> indicates such a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports.</p>
+         <p>The contents of the <code>import</code> element indicate which controls from the source will be included. Controls may be either selected (using an <code>include</code> element) or de-selected (using an <code>exclude</code> element) from the source catalog or profile.</p>
+         <p>When no <code>include</code> is given (whether an <code>exclude</code> is given or not), an <code>include</code>/<code>all</code> is assumed (that is, all controls will be included by default).</p>
       </remarks>
       <example>
          <import xmlns="http://csrc.nist.gov/ns/oscal/example" href="catalog.xml">
@@ -68,7 +63,6 @@
          </import>
       </example>
    </define-assembly>
-   
    <define-assembly name="merge">
       <formal-name>Merge controls</formal-name>
       <description>A Merge element merges controls in resolution.</description>
@@ -80,39 +74,33 @@
          </choice>
       </model>
       <remarks>
-         <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or
-         <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
-         <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a
-         profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element,
-         will not be merged into (will be dropped) in the resulting resolution.</p>
+         <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
+         <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element, will not be merged into (will be dropped) in the resulting resolution.</p>
       </remarks>
    </define-assembly>
    <define-field name="combine" as-type="empty">
       <formal-name>Combination rule</formal-name>
-      <description>A Combine element defines whether and how to combine multiple (competing)
-        versions of the same control</description>
+      <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
       <flag ref="method"/>
       <remarks>
-         <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with
-           clashing invocations (multiple competing versions of a control). </p>
-         <p>This setting permits a profile designer to apply a rule for the resolution of such cases.
-           In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be
-           useful for defining what to do when it occurs.</p>
+         <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
+         <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
       </remarks>
    </define-field>
    <define-field name="as-is" as-type="boolean">
       <formal-name>As is</formal-name>
-      <description>An As-is element indicates that the controls should be structured in resolution as they are
-        structured in their source catalogs. It does not contain any elements or attributes.</description>
+      <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
    </define-field>
    <define-flag name="method" as-type="string">
       <formal-name>Combination method</formal-name>
       <description>How clashing controls should be handled</description>
-      <allowed-values>
-         <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
-         <enum value="merge">Merge - controls with the same ID are combined</enum>
-         <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
-      </allowed-values>
+      <constraint>
+         <allowed-values>
+            <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
+            <enum value="merge">Merge - controls with the same ID are combined</enum>
+            <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
+         </allowed-values>
+      </constraint>
    </define-flag>
    <define-assembly name="custom">
       <formal-name>Custom grouping</formal-name>
@@ -131,23 +119,37 @@
          </choice>
       </model>
       <remarks>
-         <p>The <code>custom</code> element represents a custom arrangement or organization of controls in
-        the resolution of a catalog. </p>
-         <p>While the <code>as-is</code> element provides for a restitution of a control set's organization
-        (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
+         <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog. </p>
+         <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
       </remarks>
    </define-assembly>
    <define-assembly name="group">
       <formal-name>Control group</formal-name>
-      <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
-      <flag ref="id"/>
-      <flag ref="class"/>
+      <description>A group of (selected) controls or of groups of controls</description>
+      <define-flag name="id" as-type="NCName">
+         <formal-name>Group Identifier</formal-name>
+         <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
+      </define-flag>
+      <define-flag name="class" as-type="NCName">
+         <formal-name>Group Class</formal-name>
+         <description>A textual label that provides a sub-type or characterization of the group.</description>
+         <remarks>
+            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
+            <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control content.</p>
+         </remarks>
+      </define-flag>
       <model>
-         <field ref="title"/>
-         <assembly ref="param" max-occurs="unbounded">
+         <define-field name="title" as-type="markup-line" min-occurs="1">
+            <formal-name>Group Title</formal-name>
+            <description>A name given to the group, which may be used by a tool for display and navigation.</description>
+         </define-field>
+         <assembly ref="parameter" max-occurs="unbounded">
+            <!-- QUESTION: Why is this "param" and the plural form is "parameters"? -->
+            <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
-         <field ref="prop" max-occurs="unbounded">
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="part" max-occurs="unbounded">
@@ -158,31 +160,36 @@
                <group-as name="groups" in-json="ARRAY"/>
             </assembly>
             <field ref="call" max-occurs="unbounded">
+               <!-- QUESTION: Why is the singular "call" and the plural "id-selectors"? -->
                <group-as name="id-selectors" in-json="ARRAY"/>
             </field>
             <field ref="match" max-occurs="unbounded">
+               <!-- QUESTION: Why is the singular "match" and the plural "pattern-selectors"? -->
                <group-as name="pattern-selectors" in-json="ARRAY"/>
             </field>
          </choice>
       </model>
+      <remarks>
+         <p>This construct mirrors the same construct that exists in an OSCAL catalog.</p>
+      </remarks>
    </define-assembly>
    <define-assembly name="modify">
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
          <assembly ref="set-parameter" max-occurs="unbounded">
+            <!-- QUESTION: Why is the singular "set-parameter" and the plural "parameter-settings"? -->
             <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="alter" max-occurs="unbounded">
+            <!-- QUESTION: Why is the singular "alter" and the plural "alterations"? -->
             <group-as name="alterations" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
-   
    <define-assembly name="include">
       <formal-name>Include controls</formal-name>
-      <description>Specifies which controls to include from the resource (source catalog) being
-          imported</description>
+      <description>Specifies which controls to include from the resource (source catalog) being imported</description>
       <model>
          <choice>
             <field ref="all"/>
@@ -195,24 +202,16 @@
          </choice>
       </model>
       <remarks>
-         <p>To be schema-valid, this element must contain either (but not both) a single
-            <code>all</code> element, or a sequence of <code>call</code> elements.</p>
-         <p>If this element is not given, it is assumed to be present with contents <code>all</code>
-          (qv); i.e., all controls are included by default, unless the <code>include</code>
-          instruction calls controls specifically.</p>
+         <p>To be schema-valid, this element must contain either (but not both) a single <code>all</code> element, or a sequence of <code>call</code> elements.</p>
+         <p>If this element is not given, it is assumed to be present with contents <code>all</code> (qv); i.e., all controls are included by default, unless the <code>include</code> instruction calls controls specifically.</p>
       </remarks>
    </define-assembly>
-   
    <define-field name="all" as-type="empty">
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
       <flag ref="with-child-controls"/>
       <remarks>
-         <p>This element provides an alternative to calling controls individually
-            from a catalog. But this is also the default behavior when no <code>include</code>
-            element is given in an <code>import</code>; so ordinarily one might not see this element
-            unless it is for purposes of including its <code>with-child-controls</code> flag.
-         </p>
+         <p>This element provides an alternative to calling controls individually from a catalog. But this is also the default behavior when no <code>include</code> element is given in an <code>import</code>; so ordinarily one might not see this element unless it is for purposes of including its <code>with-child-controls</code> flag. </p>
       </remarks>
    </define-field>
    <define-field name="call" as-type="empty">
@@ -221,14 +220,9 @@
       <flag ref="control-id" required="yes"/>
       <flag ref="with-child-controls"/>
       <remarks>
-         <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling
-            <code>call</code>elements need to be used to call any controls appearing within it.
-            Since generally, this is how control enhancements are represented
-            (as controls within controls), this provides a way to include controls with all their
-            dependent controls (enhancements) without having to call them individually.</p>
+         <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
       </remarks>
    </define-field>
-   
    <define-field name="match" as-type="empty">
       <formal-name>Match controls by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
@@ -236,11 +230,9 @@
       <flag ref="order"/>
       <flag ref="with-child-controls"/>
    </define-field>
-   
    <define-assembly name="exclude">
       <formal-name>Exclude controls</formal-name>
-      <description>Which controls to exclude from the resource (source catalog) being
-          imported</description>
+      <description>Which controls to exclude from the resource (source catalog) being imported</description>
       <model>
          <choice>
             <field ref="call" max-occurs="unbounded">
@@ -252,43 +244,65 @@
          </choice>
       </model>
       <remarks>
-         <p>Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
-         However, it also makes no sense to use exclude/call except with include/all; you would not want to
-         include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
+         <p>Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense. However, it also makes no sense to use exclude/call except with include/all; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
       </remarks>
    </define-assembly>
-   
    <define-assembly name="set-parameter">
       <formal-name>Parameter Setting</formal-name>
       <description>A parameter setting, to be propagated to points of insertion</description>
       <json-key flag-name="param-id"/>
-      <flag name="param-id" as-type="NCName">
+      <define-flag required="yes" name="param-id" as-type="NCName">
          <formal-name>Parameter ID</formal-name>
          <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
-      </flag>
-      <flag ref="class"/>
+      </define-flag>
+      <define-flag name="class" as-type="NCName">
+         <formal-name>Parameter Class</formal-name>
+         <description>A textual label that provides a characterization of the parameter.</description>
+         <remarks>
+            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
+         </remarks>
+      </define-flag>
       <flag ref="depends-on"/>
       <model><!-- declarations tbf in the imported schema and to be aligned with it -->
-         <field ref="label"/>
-         <field ref="usage" max-occurs="unbounded">
-            <group-as name="descriptions" in-json="ARRAY"/>
+         <define-field name="label" as-type="markup-line">
+            <formal-name>Parameter Label</formal-name>
+            <description>A short, placeholder name for the parameter, which can be used as a subsitute for a <code>value</code> if no value is assigned.</description>
+            <remarks>
+               <p>The label value should be suitable for inline display in a rendered catalog.</p>
+            </remarks>
+         </define-field>
+         <field ref="parameter-usage" max-occurs="unbounded">
+            <use-name>usage</use-name>
+            <!-- CHANGED from "descriptions" to "usages" -->
+            <group-as name="usages" in-json="ARRAY"/>
          </field>
-         <field ref="constraint" max-occurs="unbounded">
+         <assembly ref="parameter-constraint" max-occurs="unbounded">
+            <use-name>constraint</use-name>
             <group-as name="constraints" in-json="ARRAY"/>
-         </field>
-         <assembly ref="guideline" max-occurs="unbounded">
-            <group-as name="guidance" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="parameter-guideline" max-occurs="unbounded">
+            <use-name>guideline</use-name>
+            <!-- CHANGED from "guidance" to "guidelines" -->
+            <group-as name="guidelines" in-json="ARRAY"/>
          </assembly>
          <choice>
-            <field ref="value"/>
-            <assembly ref="select"/>
+            <field ref="parameter-value" max-occurs="unbounded">
+               <!-- CHANGED cardinality to allow for multiple values -->
+               <use-name>value</use-name>
+               <group-as name="values" in-json="ARRAY"/>
+               <remarks>
+                  <p>Used to (re)define a parameter value.</p>
+               </remarks>
+            </field>
+            <assembly ref="parameter-selection">
+               <use-name>select</use-name>
+            </assembly>
          </choice>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-         </field>
+         </assembly>
       </model>
    </define-assembly>
-   
    <define-assembly name="alter">
       <formal-name>Alteration</formal-name>
       <description>An Alter element specifies changes to be made to an included control when a profile is resolved.</description>
@@ -303,113 +317,111 @@
       </model>
       <remarks>
          <p>Use <code>@control-id</code> to indicate the scope of alteration.</p>
-         <p>It is an error for two <code>alter</code> elements to apply to the same control.
-         In practice, multiple alterations can be applied (together), but it creates confusion.</p>
-         <p>At present, no provision is made for altering many controls at once (for example, to systematically
-            remove properties or add global properties); extending this element to match multiple control
-            IDs could provide for this.</p>
+         <p>It is an error for two <code>alter</code> elements to apply to the same control. In practice, multiple alterations can be applied (together), but it creates confusion.</p>
+         <p>At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple control IDs could provide for this.</p>
       </remarks>
    </define-assembly>
-   
    <define-field name="remove" as-type="empty">
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control, in resolution</description>
-      <flag name="name-ref" as-type="NCName">
+      <define-flag name="name-ref" as-type="NCName">
          <formal-name>Reference by (assigned) name</formal-name>
-         <description>Items to remove, by assigned name</description></flag>
-      <flag name="class-ref" as-type="NCName">
+         <description>Items to remove, by assigned name</description>
+      </define-flag>
+      <define-flag name="class-ref" as-type="NCName">
          <formal-name>Reference by class</formal-name>
          <description>Items to remove, by class. A token match.</description>
-      </flag>
-      <flag name="id-ref"    as-type="NCName">
+      </define-flag>
+      <define-flag name="id-ref" as-type="NCName">
          <formal-name>Reference by ID</formal-name>
-         <description>Items to remove, indicated by their IDs</description></flag>
-      <flag name="item-name" as-type="NCName">
+         <description>Items to remove, indicated by their IDs</description>
+      </define-flag>
+      <define-flag name="item-name" as-type="NCName">
          <formal-name>References by item name or generic identifier</formal-name>
-         <description>Items to remove, by the name of the item's type, or generic identifier, e.g. <code>title</code> or <code>prop</code></description>
-         <!-- TODO: restrict this to known valid values such as 'title' and 'prop' e.g. names of valid elements -->
-      </flag>
+         <description>Items to remove, by the name of the item's type, or generic identifier, e.g. <code>title</code> or <code>prop</code>
+         </description>
+      </define-flag>
       <remarks>
-         <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate
-          class tokens or ID reference, or the formal name, of the component to be removed or erased
-          from a control, when a catalog is resolved. The control affected is indicated by the pointer
-          on the removal's parent (containing) <code>alter</code> element.</p>
-         <p>To change an element, use <code>remove</code> to remove the element, then
-            <code>add</code> to add it back again with changes.</p>
+         <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control, when a catalog is resolved. The control affected is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
+         <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
       </remarks>
    </define-field>
-   
    <define-assembly name="add">
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls, in resolution</description>
-      <flag name="position">
+      <define-flag name="position">
          <formal-name>Position</formal-name>
          <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
-         <allowed-values>
-            <enum value="before">Preceding the id-ref target</enum>
-            <enum value="after">Following the id-ref target</enum>
-            <enum value="starting">Inside the control or id-ref target, at the start</enum>
-            <enum value="ending">Inside the control or id-ref target, at the end</enum>
-         </allowed-values>
-      </flag>
-      <flag name="id-ref"    as-type="NCName">
+         <constraint>
+            <allowed-values>
+               <enum value="before">Preceding the id-ref target</enum>
+               <enum value="after">Following the id-ref target</enum>
+               <enum value="starting">Inside the control or id-ref target, at the start</enum>
+               <enum value="ending">Inside the control or id-ref target, at the end</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <define-flag name="id-ref" as-type="NCName">
          <formal-name>Reference by ID</formal-name>
-         <description>Target location of the addition.</description></flag>
+         <description>Target location of the addition.</description>
+      </define-flag>
       <model>
-         <field ref="title"/>
-         <assembly ref="param" max-occurs="unbounded">
+         <define-field name="title" as-type="markup-line">
+            <formal-name>Title Change</formal-name>
+            <description>A name given to the control, which may be used by a tool for display and navigation.</description>
+         </define-field>
+         <assembly ref="parameter" max-occurs="unbounded">
+            <!-- QUESTION: Why is this "param" and the plural form is "parameters"? -->
+            <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
-         <field ref="prop" max-occurs="unbounded">
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts" in-json="ARRAY"/>
          </assembly>
       </model>
       <remarks>
-         <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration
-         at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting"
-         or "ending" are permitted when there is no <code>id-ref</code>.</p>
-         <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
-         the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
+         <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
+         <p>
+            <code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
       </remarks>
    </define-assembly>
-   
    <define-flag as-type="NCName" name="control-id">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target control</description>
    </define-flag>
-   
    <define-flag as-type="NCName" name="with-child-controls">
       <formal-name>Include contained controls with control</formal-name>
       <description>When a control is included, whether its child (dependent) controls are also included.</description>
-      <allowed-values>
-         <enum value="yes">Include child controls with an included control.</enum>
-         <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
-      </allowed-values>
+      <constraint>
+         <allowed-values>
+            <enum value="yes">Include child controls with an included control.</enum>
+            <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
+         </allowed-values>
+      </constraint>
    </define-flag>
-   
    <define-flag as-type="string" name="pattern">
       <formal-name>Pattern</formal-name>
       <description>A regular expression matching the IDs of one or more controls to be selected</description>
    </define-flag>
-   
    <define-flag as-type="NCName" name="order">
       <formal-name>Order</formal-name>
       <description>A designation of how a selection of controls in a profile is to be ordered.</description>
-      <allowed-values>
-         <enum value="keep"/>
-         <enum value="ascending"/>
-         <enum value="descending"/>
-      </allowed-values>
+      <constraint>
+         <allowed-values>
+            <enum value="keep"/>
+            <enum value="ascending"/>
+            <enum value="descending"/>
+         </allowed-values>
+      </constraint>
    </define-flag>
-   
-   
 </METASCHEMA>
