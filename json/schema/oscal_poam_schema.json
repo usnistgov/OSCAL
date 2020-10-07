@@ -34,7 +34,33 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "prop field ...",
+                "$id" : "#/definitions/prop",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "class" : 
+                  { "title" : "Class",
+                    "description" : "Indicating the type or classification of the containing object",
+                    "type" : "string" },
+                  "value" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "value" ],
+                "additionalProperties" : false } } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -61,7 +87,38 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/responsible-party" },
+                { "type" : "object",
+                  "responsible-party" : 
+                  { "title" : "Responsible Party",
+                    "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
+                    "$id" : "#/definitions/responsible-party",
+                    "type" : "object",
+                    "properties" : 
+                    { "party-uuids" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/party-uuid" } },
+                      "properties" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/prop" } },
+                      "annotations" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/annotation" } },
+                      "links" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/link" } },
+                      "remarks" : 
+                      { "$ref" : "#/definitions/remarks" } },
+                    "required" : 
+                    [ "party-uuids" ],
+                    "additionalProperties" : false } },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -71,7 +128,8 @@
         [ "title",
           "last-modified",
           "version",
-          "oscal-version" ],
+          "oscal-version",
+          "party-uuids" ],
         "additionalProperties" : false },
       "back-matter" : 
       { "title" : "Back matter",
@@ -110,7 +168,33 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/link" } },
+            { "link" : 
+              { "title" : "link field",
+                "description" : "link field ...",
+                "$id" : "#/definitions/link",
+                "type" : "object",
+                "properties" : 
+                { "rel" : 
+                  { "title" : "rel flag",
+                    "description" : "rel flag ...",
+                    "type" : "string",
+                    "enum" : 
+                    [ "source" ] },
+                  "href" : 
+                  { "title" : "hypertext reference",
+                    "description" : "A link to a document or document fragment (actual, nominal or projected)",
+                    "type" : "string",
+                    "format" : "uri-reference" },
+                  "media-type" : 
+                  { "title" : "Media type",
+                    "description" : "Describes the media type of the linked resource",
+                    "type" : "string" },
+                  "text" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "text",
+                  "href" ],
+                "additionalProperties" : false } } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
@@ -170,7 +254,8 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "description" : "Qualifies the kind of document identifier.",
+          { "title" : "type flag",
+            "description" : "Qualifies the kind of document identifier.",
             "type" : "string" },
           "identifier" : 
           { "type" : "string" } },
@@ -185,14 +270,13 @@
         "type" : "object",
         "properties" : 
         { "name" : 
-          { "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+          { "title" : "name flag",
+            "description" : "name flag ...",
             "type" : "string" },
-          "uuid" : 
-          { "title" : "Universally Unique Identifier",
-            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -217,11 +301,10 @@
           { "title" : "Name",
             "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
-          "uuid" : 
-          { "title" : "Universally Unique Identifier",
-            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "id" : 
+          { "title" : "Identifier",
+            "description" : "Unique identifier of the containing object",
+            "type" : "string" },
           "ns" : 
           { "title" : "Namespace",
             "description" : "A namespace qualifying the name.",
@@ -434,7 +517,8 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "description" : "Indicates the type of address.",
+          { "title" : "type flag",
+            "description" : "Indicates the type of address.",
             "type" : "string" },
           "postal-address" : 
           { "type" : "array",
@@ -489,7 +573,8 @@
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "description" : "Indicates the type of phone number.",
+          { "title" : "type flag",
+            "description" : "Indicates the type of phone number.",
             "type" : "string" },
           "number" : 
           { "type" : "string" } },
@@ -631,37 +716,6 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "responsible-party" : 
-      { "title" : "Responsible Party",
-        "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
-        "$id" : "#/definitions/responsible-party",
-        "type" : "object",
-        "properties" : 
-        { "party-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "party-uuids" ],
-        "additionalProperties" : false },
       "title" : 
       { "title" : "Title",
         "description" : "A title for display and navigation",
@@ -669,7 +723,7 @@
         "type" : "string" },
       "base64" : 
       { "title" : "Base64",
-        "description" : "",
+        "description" : "The Base64 alphabet in RFC 2045 - aligned with XSD.",
         "$id" : "#/definitions/base64",
         "type" : "object",
         "properties" : 
@@ -697,35 +751,6 @@
         "description" : "Additional commentary on the parent item.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "responsible-role" : 
-      { "title" : "Responsible Role",
-        "description" : "A reference to one or more roles with responsibility for performing a function relative to the control.",
-        "$id" : "#/definitions/responsible-role",
-        "type" : "object",
-        "properties" : 
-        { "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "party-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
       "system-id" : 
       { "title" : "System Identification",
         "description" : "A unique identifier for the system described by this system security plan.",
@@ -742,32 +767,6 @@
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
-      "status" : 
-      { "title" : "Status",
-        "description" : "Describes the operational status of the system.",
-        "$id" : "#/definitions/status",
-        "type" : "object",
-        "properties" : 
-        { "state" : 
-          { "title" : "State",
-            "description" : "The current operating status.",
-            "type" : "string",
-            "enum" : 
-            [ "operational",
-              "under-development",
-              "under-major-modification",
-              "disposition",
-              "other" ] },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "state" ],
-        "additionalProperties" : false },
-      "role-id" : 
-      { "title" : "Role Identifier Reference",
-        "description" : "A reference to the roles served by the user.",
-        "$id" : "#/definitions/role-id",
-        "type" : "string" },
       "component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
@@ -779,35 +778,167 @@
             "description" : "A category describing the purpose of the component.",
             "type" : "string" },
           "title" : 
-          { "$ref" : "#/definitions/title" },
+          { "title" : 
+            { "title" : "title field",
+              "description" : "A human readable name for the system component.",
+              "$id" : "#/definitions/title",
+              "type" : "string" } },
           "description" : 
-          { "$ref" : "#/definitions/description" },
+          { "description" : 
+            { "title" : "description field",
+              "description" : "A description of the component, including information about its function.",
+              "$id" : "#/definitions/description",
+              "type" : "string" } },
           "purpose" : 
-          { "$ref" : "#/definitions/purpose" },
+          { "purpose" : 
+            { "title" : "purpose field",
+              "description" : "A summary of the technological or business purpose of the component.",
+              "$id" : "#/definitions/purpose",
+              "type" : "string" } },
           "properties" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "prop field ...",
+                "$id" : "#/definitions/prop",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "class" : 
+                  { "title" : "Class",
+                    "description" : "Indicating the type or classification of the containing object",
+                    "type" : "string" },
+                  "value" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "value" ],
+                "additionalProperties" : false } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/annotation" } },
+            { "annotation" : 
+              { "title" : "Annotation",
+                "description" : "A name/value pair with optional explanatory remarks.",
+                "$id" : "#/definitions/annotation",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "value" : 
+                  { "title" : "Value",
+                    "description" : "Indicates the value of the characteristic.",
+                    "type" : "string" },
+                  "remarks" : 
+                  { "$ref" : "#/definitions/remarks" } },
+                "additionalProperties" : false } } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/link" } },
+            { "link" : 
+              { "title" : "link field",
+                "description" : "link field ...",
+                "$id" : "#/definitions/link",
+                "type" : "object",
+                "properties" : 
+                { "rel" : 
+                  { "title" : "rel flag",
+                    "description" : "rel flag ...",
+                    "type" : "string" },
+                  "href" : 
+                  { "title" : "hypertext reference",
+                    "description" : "A link to a document or document fragment (actual, nominal or projected)",
+                    "type" : "string",
+                    "format" : "uri-reference" },
+                  "media-type" : 
+                  { "title" : "Media type",
+                    "description" : "Describes the media type of the linked resource",
+                    "type" : "string" },
+                  "text" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "text",
+                  "href" ],
+                "additionalProperties" : false } } },
           "status" : 
-          { "$ref" : "#/definitions/status" },
+          { "status" : 
+            { "title" : "Status",
+              "description" : "Describes the operational status of the system.",
+              "$id" : "#/definitions/status",
+              "type" : "object",
+              "properties" : 
+              { "state" : 
+                { "title" : "State",
+                  "description" : "XXX",
+                  "type" : "string",
+                  "enum" : 
+                  [ "under-development",
+                    "operational",
+                    "disposition",
+                    "other" ] },
+                "remarks" : 
+                { "$ref" : "#/definitions/remarks" } },
+              "additionalProperties" : false } },
           "responsible-roles" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/responsible-role" },
+                { "type" : "object",
+                  "responsible-role" : 
+                  { "title" : "Responsible Role",
+                    "description" : "A reference to one or more roles with responsibility for performing a function relative to the control.",
+                    "$id" : "#/definitions/responsible-role",
+                    "type" : "object",
+                    "properties" : 
+                    { "properties" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/prop" } },
+                      "annotations" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/annotation" } },
+                      "links" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/link" } },
+                      "party-ids" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/party-uuid" } },
+                      "remarks" : 
+                      { "$ref" : "#/definitions/remarks" } },
+                    "additionalProperties" : false } },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -836,10 +967,15 @@
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "name" : 
-          { "description" : "The short name of the protocol (e.g., TLS).",
+          { "title" : "Name",
+            "description" : "Identifying the purpose and intended use of the property, part or other object.",
             "type" : "string" },
           "title" : 
-          { "$ref" : "#/definitions/title" },
+          { "title" : 
+            { "title" : "title field",
+              "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
+              "$id" : "#/definitions/title",
+              "type" : "string" } },
           "port-ranges" : 
           { "type" : "array",
             "minItems" : 1,
@@ -874,11 +1010,6 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "purpose" : 
-      { "title" : "Purpose",
-        "description" : "Describes the purpose for the service within the system.",
-        "$id" : "#/definitions/purpose",
-        "type" : "string" },
       "inventory-item" : 
       { "title" : "Inventory Item",
         "description" : "A single managed inventory item within the system.",
@@ -895,24 +1026,129 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "prop field ...",
+                "$id" : "#/definitions/prop",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "class" : 
+                  { "title" : "Class",
+                    "description" : "Indicating the type or classification of the containing object",
+                    "type" : "string" },
+                  "value" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "value" ],
+                "additionalProperties" : false } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/annotation" } },
+            { "annotation" : 
+              { "title" : "Annotation",
+                "description" : "A name/value pair with optional explanatory remarks.",
+                "$id" : "#/definitions/annotation",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "value" : 
+                  { "title" : "Value",
+                    "description" : "Indicates the value of the characteristic.",
+                    "type" : "string" },
+                  "remarks" : 
+                  { "$ref" : "#/definitions/remarks" } },
+                "additionalProperties" : false } } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/link" } },
+            { "link" : 
+              { "title" : "link field",
+                "description" : "link field ...",
+                "$id" : "#/definitions/link",
+                "type" : "object",
+                "properties" : 
+                { "rel" : 
+                  { "title" : "rel flag",
+                    "description" : "rel flag ...",
+                    "type" : "string" },
+                  "href" : 
+                  { "title" : "hypertext reference",
+                    "description" : "A link to a document or document fragment (actual, nominal or projected)",
+                    "type" : "string",
+                    "format" : "uri-reference" },
+                  "media-type" : 
+                  { "title" : "Media type",
+                    "description" : "Describes the media type of the linked resource",
+                    "type" : "string" },
+                  "text" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "text",
+                  "href" ],
+                "additionalProperties" : false } } },
           "responsible-parties" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/responsible-party" },
+                { "type" : "object",
+                  "responsible-party" : 
+                  { "title" : "Responsible Party",
+                    "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
+                    "$id" : "#/definitions/responsible-party",
+                    "type" : "object",
+                    "properties" : 
+                    { "party-uuids" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/party-uuid" } },
+                      "properties" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/prop" } },
+                      "annotations" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/annotation" } },
+                      "links" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/link" } },
+                      "remarks" : 
+                      { "$ref" : "#/definitions/remarks" } },
+                    "required" : 
+                    [ "party-uuids" ],
+                    "additionalProperties" : false } },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -922,7 +1158,8 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/implemented-component" },
+                { "type" : "object",
+                  "$ref" : "#/definitions/implemented-component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -930,7 +1167,8 @@
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "asset-id",
-          "description" ],
+          "description",
+          "party-uuids" ],
         "additionalProperties" : false },
       "implemented-component" : 
       { "title" : "Implemented Component",
@@ -946,29 +1184,136 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "prop field ...",
+                "$id" : "#/definitions/prop",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "class" : 
+                  { "title" : "Class",
+                    "description" : "Indicating the type or classification of the containing object",
+                    "type" : "string" },
+                  "value" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "value" ],
+                "additionalProperties" : false } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/annotation" } },
+            { "annotation" : 
+              { "title" : "Annotation",
+                "description" : "A name/value pair with optional explanatory remarks.",
+                "$id" : "#/definitions/annotation",
+                "type" : "object",
+                "properties" : 
+                { "name" : 
+                  { "title" : "name flag",
+                    "description" : "name flag ...",
+                    "type" : "string" },
+                  "id" : 
+                  { "title" : "Identifier",
+                    "description" : "Unique identifier of the containing object",
+                    "type" : "string" },
+                  "ns" : 
+                  { "title" : "Namespace",
+                    "description" : "A namespace qualifying the name.",
+                    "type" : "string" },
+                  "value" : 
+                  { "title" : "Value",
+                    "description" : "Indicates the value of the characteristic.",
+                    "type" : "string" },
+                  "remarks" : 
+                  { "$ref" : "#/definitions/remarks" } },
+                "additionalProperties" : false } } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/link" } },
+            { "link" : 
+              { "title" : "link field",
+                "description" : "link field ...",
+                "$id" : "#/definitions/link",
+                "type" : "object",
+                "properties" : 
+                { "rel" : 
+                  { "title" : "rel flag",
+                    "description" : "rel flag ...",
+                    "type" : "string" },
+                  "href" : 
+                  { "title" : "hypertext reference",
+                    "description" : "A link to a document or document fragment (actual, nominal or projected)",
+                    "type" : "string",
+                    "format" : "uri-reference" },
+                  "media-type" : 
+                  { "title" : "Media type",
+                    "description" : "Describes the media type of the linked resource",
+                    "type" : "string" },
+                  "text" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "text",
+                  "href" ],
+                "additionalProperties" : false } } },
           "responsible-parties" : 
           { "type" : "object",
             "minProperties" : 1,
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/responsible-party" },
+                { "type" : "object",
+                  "responsible-party" : 
+                  { "title" : "Responsible Party",
+                    "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role relative to the parent context.",
+                    "$id" : "#/definitions/responsible-party",
+                    "type" : "object",
+                    "properties" : 
+                    { "party-uuids" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/party-uuid" } },
+                      "properties" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/prop" } },
+                      "annotations" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/annotation" } },
+                      "links" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#/definitions/link" } },
+                      "remarks" : 
+                      { "$ref" : "#/definitions/remarks" } },
+                    "required" : 
+                    [ "party-uuids" ],
+                    "additionalProperties" : false } },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "party-uuids" ],
         "additionalProperties" : false },
       "import-ssp" : 
       { "title" : "Import System Security Plan",
@@ -995,11 +1340,10 @@
         { "uuid-ref" : 
           { "title" : "UUID Reference",
             "description" : "A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+            "type" : "string" },
           "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
+          { "title" : "type flag",
+            "description" : "type flag ...",
             "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
@@ -1055,7 +1399,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1074,17 +1422,29 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/role-id" } },
+            { "role-id" : 
+              { "title" : "role-id field",
+                "description" : "Identifies roles associated with performing this task.",
+                "$id" : "#/definitions/role-id",
+                "type" : "string" } } },
           "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
+            { "party-uuid" : 
+              { "title" : "party-uuid field",
+                "description" : "Identifies people or organizations associated with performing this task.",
+                "$id" : "#/definitions/party-uuid",
+                "type" : "string" } } },
           "location-uuids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/location-uuid" } },
+            { "location-uuid" : 
+              { "title" : "location-uuid field",
+                "description" : "Identifies locations associated with performing this task.",
+                "$id" : "#/definitions/location-uuid",
+                "type" : "string" } } },
           "compare-to" : 
           { "$ref" : "#/definitions/compare-to" },
           "remarks" : 
@@ -1112,6 +1472,139 @@
         "$id" : "#/definitions/activity-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+      "results" : 
+      { "title" : "Assessment Results",
+        "description" : "Used by the assessment results and POA&M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&M, this identifies initial and residual risks, deviations, and disposition.",
+        "$id" : "#/definitions/results",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "start" : 
+          { "start" : 
+            { "title" : "start field",
+              "description" : "Date/time stamp identifying the start of the evidence collection reflected in these results.",
+              "$id" : "#/definitions/start",
+              "type" : "string",
+              "format" : "date-time",
+              "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" } },
+          "end" : 
+          { "end" : 
+            { "title" : "end field",
+              "description" : "Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.",
+              "$id" : "#/definitions/end",
+              "type" : "string",
+              "format" : "date-time",
+              "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" } },
+          "findings" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/finding" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "title",
+          "description",
+          "start",
+          "end",
+          "findings" ],
+        "additionalProperties" : false },
+      "finding" : 
+      { "title" : "Finding",
+        "description" : "Describes an individual finding.",
+        "$id" : "#/definitions/finding",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Universally Unique Identifier",
+            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "title" : 
+          { "$ref" : "#/definitions/title" },
+          "description" : 
+          { "$ref" : "#/definitions/description" },
+          "properties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "date-time-stamp" : 
+          { "date-time-stamp" : 
+            { "title" : "date-time-stamp field",
+              "description" : "Date/time stamp identifying when the finding information was collected.",
+              "$id" : "#/definitions/date-time-stamp",
+              "type" : "string",
+              "format" : "date-time",
+              "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" } },
+          "objective-status" : 
+          { "$ref" : "#/definitions/objective-status" },
+          "implementation-statement-uuid" : 
+          { "$ref" : "#/definitions/implementation-statement-uuid" },
+          "observations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/observation" } },
+          "threat-ids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/threat-id" } },
+          "risks" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/risk" } },
+          "party-uuids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "party-uuid" : 
+              { "title" : "party-uuid field",
+                "description" : "The person who collected the evidence or made the observation.",
+                "$id" : "#/definitions/party-uuid",
+                "type" : "string" } } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "title",
+          "description",
+          "date-time-stamp" ],
+        "additionalProperties" : false },
       "implementation-statement-uuid" : 
       { "title" : "Implementation Statement UUID",
         "description" : "Identifies the implementation statement in the SSP to which this finding is related.",
@@ -1120,22 +1613,8 @@
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
       "date-time-stamp" : 
       { "title" : "Date/Time Stamp",
-        "description" : "Date/time stamp of the associated information.",
-        "$id" : "#/definitions/date-time-stamp",
-        "type" : "string",
-        "format" : "date-time",
-        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "collected" : 
-      { "title" : "Date/Time Collected",
         "description" : "Date/time stamp identifying when the information was collected.",
-        "$id" : "#/definitions/collected",
-        "type" : "string",
-        "format" : "date-time",
-        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "expires" : 
-      { "title" : "Date/Time Expires",
-        "description" : "Date/time identifying when the information expires. Typically used with continuous assessment scenarios.",
-        "$id" : "#/definitions/expires",
+        "$id" : "#/definitions/date-time-stamp",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
@@ -1215,7 +1694,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1245,7 +1728,34 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/origin" } },
+            { "origin" : 
+              { "title" : "origin field",
+                "description" : "Identifies the source of the finding, such as a tool, interviewed person, or activity.",
+                "$id" : "#/definitions/origin",
+                "type" : "object",
+                "properties" : 
+                { "uuid-ref" : 
+                  { "title" : "UUID Reference",
+                    "description" : "A pointer to a relevant item, using it's UUID.",
+                    "type" : "string",
+                    "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+                  "type" : 
+                  { "title" : "type flag",
+                    "description" : "type flag ...",
+                    "type" : "string",
+                    "enum" : 
+                    [ "tool",
+                      "test-method",
+                      "task",
+                      "included-activity",
+                      "other" ] },
+                  "STRVALUE" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "STRVALUE",
+                  "uuid-ref",
+                  "type" ],
+                "additionalProperties" : false } } },
           "evidence-group" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1265,7 +1775,8 @@
         "type" : "object",
         "properties" : 
         { "href" : 
-          { "description" : "Links to evidence as URI. May use a URI fragment to point to a resource in the back-matter.",
+          { "title" : "hypertext reference",
+            "description" : "A link to a document or document fragment (actual, nominal or projected)",
             "type" : "string",
             "format" : "uri-reference" },
           "description" : 
@@ -1274,7 +1785,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1294,41 +1809,12 @@
         { "party-uuid" : 
           { "title" : "Party UUID",
             "description" : "The UUID of the assessor who collected the evidence or made the observation.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+            "type" : "string" },
           "STRVALUE" : 
           { "type" : "string" } },
         "required" : 
         [ "STRVALUE",
           "party-uuid" ],
-        "additionalProperties" : false },
-      "origin" : 
-      { "title" : "Origin",
-        "description" : "Identifies the tool or activity that resulted in the observation.",
-        "$id" : "#/definitions/origin",
-        "type" : "object",
-        "properties" : 
-        { "uuid-ref" : 
-          { "title" : "UUID Reference",
-            "description" : "A pointer to a relevant item, using it's UUID.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
-            "type" : "string",
-            "enum" : 
-            [ "tool",
-              "test-method",
-              "task",
-              "included-activity",
-              "other" ] },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE",
-          "uuid-ref",
-          "type" ],
         "additionalProperties" : false },
       "observation-method" : 
       { "title" : "Observation Method",
@@ -1349,8 +1835,7 @@
         { "system" : 
           { "title" : "Threat Type Identification System",
             "description" : "Specifies the source of the threat information.",
-            "type" : "string",
-            "format" : "uri" },
+            "type" : "string" },
           "uri" : 
           { "title" : "URI",
             "description" : "An optional location for the threat data, from which this ID originates.",
@@ -1381,7 +1866,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1399,8 +1888,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/mitigating-factor" } },
-          "remediation-deadline" : 
-          { "$ref" : "#/definitions/remediation-deadline" },
           "remediation-group" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1424,13 +1911,6 @@
           "risk-statement",
           "risk-status" ],
         "additionalProperties" : false },
-      "remediation-deadline" : 
-      { "title" : "Remediation Deadline",
-        "description" : "The date/time by which the risk must be closed.",
-        "$id" : "#/definitions/remediation-deadline",
-        "type" : "string",
-        "format" : "date-time",
-        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
       "risk-metric" : 
       { "title" : "Risk Metric",
         "description" : "An individual risk metric from a specified system.",
@@ -1438,12 +1918,12 @@
         "type" : "object",
         "properties" : 
         { "name" : 
-          { "title" : "Name",
-            "description" : "Identifying the purpose and intended use of the property, part or other object.",
+          { "title" : "name flag",
+            "description" : "name flag ...",
             "type" : "string" },
           "class" : 
-          { "title" : "Class",
-            "description" : "Indicating the type or classification of the containing object",
+          { "title" : "class flag",
+            "description" : "class flag ...",
             "type" : "string" },
           "system" : 
           { "title" : "System",
@@ -1481,8 +1961,8 @@
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
+          { "title" : "type flag",
+            "description" : "type flag ...",
             "type" : "string" },
           "date-time-stamp" : 
           { "$ref" : "#/definitions/date-time-stamp" },
@@ -1494,7 +1974,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1531,7 +2015,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1592,8 +2080,8 @@
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
+          { "title" : "type flag",
+            "description" : "type flag ...",
             "type" : "string" },
           "title" : 
           { "$ref" : "#/definitions/title" },
@@ -1603,7 +2091,11 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/prop" } },
+            { "prop" : 
+              { "title" : "prop field",
+                "description" : "Provided as means of extending the OSCAL syntax.",
+                "$id" : "#/definitions/prop",
+                "type" : "string" } } },
           "annotations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1613,7 +2105,27 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/remediation-origin" } },
+            { "remediation-origin" : 
+              { "title" : "remediation-origin field",
+                "description" : "Points to the source of the recommendation",
+                "$id" : "#/definitions/remediation-origin",
+                "type" : "object",
+                "properties" : 
+                { "uuid-ref" : 
+                  { "title" : "UUID Reference",
+                    "description" : "A pointer to a relevant item, using it's UUID.",
+                    "type" : "string",
+                    "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+                  "type" : 
+                  { "title" : "type flag",
+                    "description" : "type flag ...",
+                    "type" : "string" },
+                  "STRVALUE" : 
+                  { "type" : "string" } },
+                "required" : 
+                [ "STRVALUE",
+                  "uuid-ref" ],
+                "additionalProperties" : false } } },
           "requirements" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1627,27 +2139,6 @@
         [ "uuid",
           "title",
           "description" ],
-        "additionalProperties" : false },
-      "remediation-origin" : 
-      { "title" : "Remediation Origin",
-        "description" : "Points to the source of the remediation recommendation or plan",
-        "$id" : "#/definitions/remediation-origin",
-        "type" : "object",
-        "properties" : 
-        { "uuid-ref" : 
-          { "title" : "UUID Reference",
-            "description" : "A pointer to a relevant item, using it's UUID.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "type" : 
-          { "title" : "Type",
-            "description" : "Indicating the type of identifier, address, email or other data item.",
-            "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "STRVALUE",
-          "uuid-ref" ],
         "additionalProperties" : false },
       "risk-statement" : 
       { "title" : "Risk Statement",
@@ -1673,14 +2164,14 @@
           { "$ref" : "#/definitions/system-id" },
           "local-definitions" : 
           { "$ref" : "#/definitions/local-definitions" },
-          "poam-items" : 
-          { "$ref" : "#/definitions/poam-items" },
+          "results" : 
+          { "$ref" : "#/definitions/results" },
           "back-matter" : 
           { "$ref" : "#/definitions/back-matter" } },
         "required" : 
         [ "uuid",
           "metadata",
-          "poam-items" ],
+          "results" ],
         "additionalProperties" : false },
       "local-definitions" : 
       { "title" : "Local Definitions",
@@ -1694,7 +2185,8 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/component" },
+                { "type" : "object",
+                  "$ref" : "#/definitions/component" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
@@ -1704,113 +2196,18 @@
             "additionalProperties" : 
             { "allOf" : 
               [ 
-                { "$ref" : "#/definitions/inventory-item" },
+                { "type" : "object",
+                  "$ref" : "#/definitions/inventory-item" },
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "poam-items" : 
-      { "title" : "POA&M Items",
-        "description" : "This identifies initial and residual risks, deviations, and disposition.",
-        "$id" : "#/definitions/poam-items",
-        "type" : "object",
-        "properties" : 
-        { "title" : 
-          { "$ref" : "#/definitions/title" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "start" : 
-          { "$ref" : "#/definitions/start" },
-          "end" : 
-          { "$ref" : "#/definitions/end" },
-          "poam-item-group" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/poam-item" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "title",
-          "description",
-          "start",
-          "poam-item-group" ],
-        "additionalProperties" : false },
-      "poam-item" : 
-      { "title" : "POA&M Item",
-        "description" : "Describes an individual POA&M item.",
-        "$id" : "#/definitions/poam-item",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Universally Unique Identifier",
-            "description" : "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "title" : 
-          { "$ref" : "#/definitions/title" },
-          "description" : 
-          { "$ref" : "#/definitions/description" },
-          "properties" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "collected" : 
-          { "$ref" : "#/definitions/collected" },
-          "expires" : 
-          { "$ref" : "#/definitions/expires" },
-          "objective-status" : 
-          { "$ref" : "#/definitions/objective-status" },
-          "implementation-statement-uuid" : 
-          { "$ref" : "#/definitions/implementation-statement-uuid" },
-          "observations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/observation" } },
-          "threat-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/threat-id" } },
-          "risks" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/risk" } },
-          "party-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "title",
-          "description",
-          "collected" ],
         "additionalProperties" : false } },
     "properties" : 
     { "plan-of-action-and-milestones" : 
       { "$ref" : "#/definitions/plan-of-action-and-milestones" } },
     "required" : 
-    [ "plan-of-action-and-milestones" ] }
+    [ "plan-of-action-and-milestones" ],
+    "additionalProperties" : false,
+    "maxProperties" : 1 }
