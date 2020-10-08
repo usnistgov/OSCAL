@@ -37,7 +37,7 @@ Continuous assessment monitoring practitioners consume the assessment results as
 An OSCAL profile is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import AP**: Identifies the OSCAL-based assessment plan (AP) for this assessment. The AP imports several pieces of information about the system being assessed including the system security plan (SSP), which is also represented according to the OSCAL [SSP model](../../implementation-layer/ssp/). This linking of data eliminates the need to duplicate and maintain the same information in multiple places.
- **Objectives**: : Identifies the controls to be included within the scope of this assessment, as well as the control objectives and assessment methods.
+- **Objectives**: : Identifies the controls to be included within the scope of this assessment, as well as the control objectives and assessment methods.
 - **Assessment Subject**: Identifies the in-scope elements of the system, including locations, components, inventory items, and users.
 - **Assessment Assets**: Identifies the assessor's assets used to perform the assessment, including the team, tool, and rules of engagement content.
 - **Assessment Activities**: Describes the schedule, manual and automated tests, and other activities that may be explicitly be allowed or prohibited. 
@@ -45,7 +45,7 @@ An OSCAL profile is organized as follows:
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics.
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
-{{<figure src="assessment-results-model.svg" alt="A diagram of the assessment results model." class="maxw-full margin-top-0">}}
+{{<figure src="assessment-results-model.svg" alt="A diagram depicting the assessment results model. As described in the text, within the larger assessment results model box, it shows a metadata at the top, followed by an import AP box, objectives box, assessment subject box, assessment assets box, assessment activities box, results box, and finally a back matter box." class="maxw-full margin-top-0">}}
 {{% /usa-grid-column %}}
 {{% /usa-grid-row %}}
 {{% /usa-grid-container %}}

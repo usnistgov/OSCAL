@@ -53,7 +53,7 @@ An OSCAL profile is organized as follows:
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
-{{<figure src="component-model.svg" alt="This is the alt text." class="maxw-full margin-top-0">}}
+{{<figure src="component-model.svg" alt="A diagram depicting the component definition model. As described in the text, within the larger component definition model box, it shows a metadata at the top, followed by an import box, component box, capability box, and finally a back matter box." class="maxw-full margin-top-0">}}
 {{% /usa-grid-column %}}
 {{% /usa-grid-row %}}
 {{% /usa-grid-container %}}

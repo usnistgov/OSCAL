@@ -48,7 +48,7 @@ An OSCAL profile is organized as follows:
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
-{{<figure src="assessment-plan-model.svg" alt="A diagram of the assessment plan model." class="maxw-full margin-top-0">}}
+{{<figure src="assessment-plan-model.svg" alt="A diagram depicting the assessment plan model. As described in the text, within the larger assessment plan model box, it shows a metadata at the top, followed by an import SSP box, objectives box, assessment subject box, assessment assets box, assessment activities box, and finally a back matter box." class="maxw-full margin-top-0">}}
 {{% /usa-grid-column %}}
 {{% /usa-grid-row %}}
 {{% /usa-grid-container %}}

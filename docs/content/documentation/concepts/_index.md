@@ -188,7 +188,7 @@ Using the OSCAL profile model to express a baselines makes the mappings between 
 
 The figure below uses the NIST SP 800-53 low baseline as an example to sketch how a baseline relates to a catalog. The low baseline indicates which controls from the NIST SP 800-53 catalog are required for compliance with this baseline.
 
-![profile-catalog-mapping](profile-catalog-mapping-trivial-example.png)
+![As described in the text, the diagram depicts how a profile maps back to a catalog.](profile-catalog-mapping-trivial-example.png)
 
 {{<todo>}}
 
