@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../toolchains/xslt-M4/validate/metaschema.xsd">
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Assessment Results Format</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-ar</short-name>
@@ -38,6 +38,29 @@
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
+
+   <!-- Assessment Plan Import -->
+   <define-assembly name="import-ap">
+      <formal-name>Import Assessment Plan</formal-name>
+      <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
+      <define-flag name="href" required="yes" as-type="uri-reference">
+         <formal-name>Assessment Plan Reference</formal-name>
+         <description>>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
+         <remarks>
+            <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+            <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
+            <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+            <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+         </remarks>
+      </define-flag>
+      <model>
+         <field ref="remarks"
+            in-xml="WITH_WRAPPER"
+            min-occurs="0"
+            max-occurs="1"/>
+      </model>
+   </define-assembly>
+
    <define-assembly name="assessment-subjects">
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
