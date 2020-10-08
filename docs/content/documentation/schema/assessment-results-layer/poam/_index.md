@@ -13,13 +13,13 @@ The OSCAL Plan of Action and Milestones (POA&M) model defines the information co
 
 ## Authors and Consumers
 
-### Assessment Results Authors
+### POA&M Authors
 
 {{<callout>}}System Information System Security Officers (ISSOs){{</callout>}}
 
 ISSOs use a POA&M to identify risks to the system and track remediation activities on behalf of the system owner.
 
-### Assessment Results Consumers
+### POA&M Consumers
 
 {{<callout>}}System Owners, Authorizing Officials, Continuous Monitoring Practitioners, Customers{{</callout>}}
 
@@ -29,7 +29,7 @@ Authorizing officials consume the POA&M in the adjudication of a system as part 
 
 Continuous monitoring practitioners consume the POA&M as part of monitoring the system's security posture.
 
-##  Assessment Results Organization
+##  POA&M Organization
 
 {{% usa-grid-container %}}
 {{% usa-grid-row %}}
