@@ -364,6 +364,17 @@
       </remarks>
    </define-assembly>
 
+   <define-field name="role-id" as-type="NCName">
+      <formal-name>Role Identifier Reference</formal-name>
+      <description>A reference to the roles served by the user.</description>
+      <constraint>
+         <index-has-key name="index-metadata-role-id" target=".">
+            <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
+            <key-field target="value()"/>
+         </index-has-key>
+      </constraint>
+   </define-field>
+   
    <!-- ############################################### -->
    <!-- # Back Matter Assembly and related constructs # -->
    <!-- ############################################### -->
