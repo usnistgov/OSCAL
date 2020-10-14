@@ -56,7 +56,7 @@
       <formal-name>Control Objectives</formal-name>
       <description>Identifies the controls being assessed and their control objectives. In the assessment plans, these are the planned controls and objectives. In the assessment results, these are the actual controls and objectives, reflecting any changes from the plan.</description>
       <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Control Objective Description</formal-name>
             <description>A human-readable description of control objectives.</description>
          </define-field>
@@ -90,7 +90,7 @@
       <formal-name>Assessed Controls</formal-name>
       <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
       <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Assessed Controls Description</formal-name>
             <description>A human-readable description of in-scope controls specified for assessment.</description>
          </define-field>
@@ -126,7 +126,7 @@
       <formal-name>Referened Control Objectives</formal-name>
       <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
       <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Control Ojectives Description</formal-name>
             <description>A human-readable description of this collection of control objectives.</description>
          </define-field>
@@ -172,7 +172,7 @@
       </define-flag>
       <flag ref="control-id" required="yes"/>
       <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Objective Description</formal-name>
             <description>A human-readable description of this control objective.</description>
          </define-field>
@@ -208,7 +208,7 @@
          <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
       </define-flag>
       <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Assessment Method Description</formal-name>
             <description>A human-readable description of this assessment method.</description>
          </define-field>
@@ -252,7 +252,7 @@
          </remarks>
       </define-flag>
       <model>
-         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Include Subjects Description</formal-name>
             <description>A human-readable description of the collection of subjects being included in this assessment.</description>
          </define-field>
@@ -298,7 +298,7 @@
          </remarks>
       </define-flag>
       <model>
-         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Exclude Subjects Description</formal-name>
             <description>A human-readable description of the collection of subjects being excluded from this assessment.</description>
          </define-field>
@@ -413,7 +413,7 @@
             <description>The title or name for this assessment origination item.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description-->
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Origination Description</formal-name>
             <description>A human-readable description of assessment originiation asset.</description>
          </define-field>
@@ -428,7 +428,7 @@
             </define-flag>
             <define-flag name="name">
                <formal-name>Property Name</formal-name>
-               <description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
+               <description>A textual label that identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
                <constraint>
                   <allowed-values allow-other="yes">
                      <enum value="ipv4-address">Internet Protocol Address (Version 4)</enum>
@@ -497,7 +497,7 @@
             <description>The title or name for this test method.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Test Method Description</formal-name>
             <description>A human-readable description of this test method and collection of test steps.</description>
          </define-field>
@@ -534,7 +534,7 @@
       </define-flag>
       <model>
          <field ref="sequence" min-occurs="0" max-occurs="1"/>
-         <define-field name="description" min-occurs="1" max-occurs="1">
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
             <formal-name>Test Steps Description</formal-name>
             <description>A human-readable description of this test step.</description>
          </define-field>
@@ -591,7 +591,7 @@
             <description>The title for this task.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1">
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
             <formal-name>Task Description</formal-name>
             <description>A human-readable description of this task.</description>
          </define-field>
@@ -611,10 +611,7 @@
          <field ref="activity-uuid" min-occurs="0" max-occurs="unbounded">
             <group-as name="activity-uuids" in-json="ARRAY"/>
          </field>
-         <define-field name="role-id"
-                       as-type="NCName"
-                       min-occurs="0"
-                       max-occurs="unbounded">
+         <define-field name="role-id" as-type="NCName" min-occurs="0" max-occurs="unbounded">
             <formal-name>role-id field</formal-name>
             <description>Identifies roles associated with performing this task.</description>
             <group-as name="role-ids" in-json="ARRAY"/>
@@ -659,7 +656,7 @@
             <description>The title for this included activity.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Included Activity Description</formal-name>
             <description>A human-readable description of this included activity.</description>
          </define-field>
@@ -707,7 +704,7 @@
             <description>The title for this excluded activity.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Excluded Activity Description</formal-name>
             <description>A human-readable description of this excluded activity.</description>
          </define-field>
@@ -756,7 +753,7 @@
             <description>The title for this set of results.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Results Description</formal-name>
             <description>A human-readable description of this set of test results.</description>
          </define-field>
@@ -805,7 +802,7 @@
             <description>The title for this finding.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Finding Description</formal-name>
             <description>A human-readable description of this finding.</description>
          </define-field>
@@ -860,10 +857,12 @@
       <formal-name>Date/Time Stamp</formal-name>
       <description>Date/time stamp of the associated information.</description>
    </define-field>
+   
    <define-field name="collected" as-type="dateTime-with-timezone">
       <formal-name>Date/Time Collected</formal-name>
       <description>Date/time stamp identifying when the information was collected.</description>
    </define-field>
+   
    <define-field name="expires" as-type="dateTime-with-timezone">
       <formal-name>Date/Time Expires</formal-name>
       <description>Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</description>
@@ -880,7 +879,7 @@
             <description>The title for this objective status.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Objective Status Description</formal-name>
             <description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</description>
          </define-field>
@@ -933,7 +932,7 @@
              <description>The title for this observation.</description>
           </define-field>
           <!-- CHANGE: Added WITH_WRAPPER to description -->
-          <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+          <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
              <formal-name>Observaton Description</formal-name>
              <description>A human-readable description of this assessment observation.</description>
           </define-field>
@@ -1003,7 +1002,7 @@
       </define-flag>
       <model>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Relevant Evidence Description</formal-name>
             <description>A human-readable description of this evidence.</description>
          </define-field>
@@ -1028,6 +1027,7 @@
          <description>The UUID of the assessor who collected the evidence or made the observation.</description>
       </define-flag>
    </define-field>
+   
    <define-field name="origin">
       <formal-name>Origin</formal-name>
       <description>Identifies the tool or activity that resulted in the observation.</description>
@@ -1108,7 +1108,7 @@
             <description>The title for this risk.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Risk Description</formal-name>
             <description>A human-readable description of this risk.</description>
          </define-field>
@@ -1286,7 +1286,7 @@
             <formal-name>Tracking Entry Title</formal-name>
             <description>The title for this tracking entry.</description>
          </define-field>
-         <define-field name="description" min-occurs="1" max-occurs="1" >
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" >
             <formal-name>Tracking Entry Description</formal-name>
             <description>A human-readable description of this tracking entry.</description>
          </define-field>
@@ -1323,7 +1323,7 @@
             <description>The title for this required asset.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Description of Required Asset</formal-name>
             <description>A human-readable description of this required asset.</description>
          </define-field>
@@ -1365,7 +1365,7 @@
       <flag ref="implementation-uuid" required="no"/>
       <model>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Mitigating Factor Description</formal-name>
             <description>A human-readable description of this mitigating factor.</description>
          </define-field>
@@ -1411,7 +1411,7 @@
             <description>The title for this remediation activity.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER">
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Remediaiton Description</formal-name>
             <description>A human-readable description of this remediation plan.</description>
          </define-field>
@@ -1464,6 +1464,7 @@
          </constraint>
       </define-flag>
    </define-field>
+   
    <define-field name="risk-statement" as-type="markup-multiline">
       <formal-name>Risk Statement</formal-name>
       <description>Describes the risk.</description>
