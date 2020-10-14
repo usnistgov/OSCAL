@@ -20,7 +20,10 @@
       <formal-name>Security Assessment Results (SAR)</formal-name>
       <description>Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.</description>
       <root-name>assessment-results</root-name>
-      <flag ref="uuid" required="yes"/>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Results Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this assessment results file. This UUID must be changed each time the content of the results changes.</description>
+      </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
          <assembly ref="import-ap" min-occurs="1" max-occurs="1">
