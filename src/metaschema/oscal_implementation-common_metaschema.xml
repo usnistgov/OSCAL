@@ -83,7 +83,7 @@
    </define-assembly>
    <define-assembly name="responsible-role">
       <formal-name>Responsible Role</formal-name>
-      <description>A reference to one or more roles with responsibility for performing a function relative to the control.</description>
+      <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
       <json-key flag-name="role-id"/>
       <define-flag required="yes" name="role-id" as-type="NCName">
          <formal-name>Responsible Role ID</formal-name>
