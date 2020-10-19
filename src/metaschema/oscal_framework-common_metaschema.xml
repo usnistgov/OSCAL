@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- OSCAL CATALOG METASCHEMA -->
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- OSCAL FRAMEWORK METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<?xml-model href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/oscal-m2/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xmlns:o="http://csrc.nist.gov/ns/oscal/example"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/oscal-m2/lib/metaschema.xsd"
- root="nominal-root">
+   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-catalog-common</short-name>
