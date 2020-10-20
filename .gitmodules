@@ -7,3 +7,4 @@
 	path = build/metaschema
 	url = https://github.com/usnistgov/metaschema.git
 	branch = metaschema-m4-integration
+	update = rebase
