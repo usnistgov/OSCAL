@@ -981,8 +981,9 @@
                </constraint>
             </define-flag>
          </define-field>
+         <!-- CHANGE: group-as name from evidence-group to relevant-evidence-group         -->
          <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
-            <group-as name="evidence-group" in-json="ARRAY"/>
+            <group-as name="relevant-evidence-group" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
