@@ -16,7 +16,9 @@
    </remarks>
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_control-common_metaschema.xml"/>
-   <import href="oscal_implementation-common_metaschema.xml"/>
+   <!--   <import href="oscal_implementation-common_metaschema.xml"/>-->
+   <import href="oscal_ssp_metaschema.xml"/>
+   <!--   <import href="oscal_metadata_metaschema.xml"/>-->
    <!-- SSP Import -->
    <define-assembly name="import-ssp">
       <formal-name>Import System Security Plan</formal-name>
