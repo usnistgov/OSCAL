@@ -21,7 +21,10 @@
 
    <import href="oscal_metadata_metaschema.xml"/>
    <import href="oscal_implementation-common_metaschema.xml"/>
-   <!-- TOP LEVEL ASSEMBLY -->
+
+   <!-- ############################################## -->
+   <!-- # The SSP Assembly and supporting constructs # -->
+   <!-- ############################################## -->
    <define-assembly name="system-security-plan">
       <formal-name>System Security Plan (SSP)</formal-name>
       <description>A system security plan, such as those described in NIST SP 800-18</description>
@@ -39,7 +42,10 @@
          <assembly ref="back-matter"/>
       </model>
    </define-assembly>
-   <!-- Profile Import -->
+
+   <!-- ######################################################### -->
+   <!-- # The Import Profile Assembly and supporting constructs # -->
+   <!-- ######################################################### -->
    <define-assembly name="import-profile">
       <formal-name>Import Profile</formal-name>
       <description>Used to import the OSCAL profile representing the system's control baseline.</description>
@@ -52,11 +58,15 @@
             <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
          </remarks>
-      </define-flag>      <model>
+      </define-flag>
+      <model>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   <!-- SYSTEM CHARACTERISTICS -->
+
+   <!-- ################################################################# -->
+   <!-- # The System Characteristics Assembly and supporting constructs # -->
+   <!-- ################################################################# -->
    <define-assembly name="system-characteristics">
       <formal-name>System Characteristics</formal-name>
       <description>Contains the characteristics of the system, such as its name, purpose, and security impact level.</description>
@@ -64,8 +74,14 @@
          <field ref="system-id" min-occurs="1" max-occurs="unbounded">
             <group-as name="system-ids" in-json="ARRAY"/>
          </field>
-         <field ref="system-name" min-occurs="1"/>
-         <field ref="system-name-short"/>
+         <define-field name="system-name" as-type="string" min-occurs="1">
+            <formal-name>System Name - Full</formal-name>
+            <description>The full name of the system.</description>
+         </define-field>
+         <define-field name="system-name-short" as-type="string">
+            <formal-name>System Name - Short</formal-name>
+            <description>A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.</description>
+         </define-field>
          <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
             <formal-name>System Description</formal-name>
             <description>A summary of the system.</description>
@@ -79,10 +95,15 @@
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-            <!-- TODO: Model specific link relationships -->
          </assembly>
          <field ref="date-authorized"/>
-         <field ref="security-sensitivity-level" min-occurs="1"/>
+         <define-field name="security-sensitivity-level" min-occurs="1">
+            <formal-name>Security Sensitivity Level</formal-name>
+            <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
+            <remarks>
+               <p>Often, organizations require the security sensitivity level to correspond with the highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>.</p>
+            </remarks>
+         </define-field>
          <assembly ref="system-information" min-occurs="1"/>
          <assembly ref="security-impact-level" min-occurs="1"/>
          <assembly ref="status" min-occurs="1"/>
@@ -154,28 +175,6 @@
          </constraint>
       </define-flag>
    </define-field>
-   <define-field name="system-name" as-type="string">
-      <formal-name>System Name (Full)</formal-name>
-      <description>The full name of the system.</description>
-   </define-field>
-   <define-field name="system-name-short" as-type="string">
-      <formal-name>System Name (Short)</formal-name>
-      <description>A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.</description>
-   </define-field>
-   <define-field name="security-sensitivity-level">
-      <formal-name>Security Sensitivity Level</formal-name>
-      <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="low">A 'low' sensitivity level, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="moderate">A 'moderate' sensitivity level, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="high">A 'high' sensitivity level, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
-      <remarks>
-         <p>Often, organizations require the security sensitivity level to correspond with the highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>.</p>
-      </remarks>
-   </define-field>
    <define-assembly name="system-information">
       <formal-name>System Information</formal-name>
       <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
@@ -191,9 +190,112 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="information-type" min-occurs="1" max-occurs="unbounded">
+         <define-assembly name="information-type" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Information Type</formal-name>
+            <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
             <group-as name="information-types" in-json="ARRAY"/>
-         </assembly>
+            <define-flag name="uuid" as-type="uuid">
+               <formal-name>Information Type Universally Unique Identifier</formal-name>
+               <description>A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+            </define-flag>
+            <model>
+               <define-field name="title" as-type="markup-line" min-occurs="1">
+                  <formal-name>title field</formal-name>
+                  <description>A human readable name for the information type. This title should be meaningful within the context of the system.</description>
+               </define-field>
+               <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                  <formal-name>Information Type Description</formal-name>
+                  <description>A summary of how this information type is used within the system.</description>
+               </define-field>
+               <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
+                  <formal-name>Information Type Identifier</formal-name>
+                  <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
+                  <json-key flag-name="system"/>
+                  <json-value-key>id</json-value-key>
+                  <group-as name="information-type-ids" in-json="BY_KEY"/>
+                  <define-flag required="yes" name="system">
+                     <formal-name>Information Type Identification System</formal-name>
+                     <description>Specifies the information type identification system used.</description>
+                     <constraint>
+                        <allowed-values allow-other="yes">
+                           <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST Special Publication 800-60 Volume II Revision 1</enum>
+                        </allowed-values>
+                     </constraint>
+                  </define-flag>
+                  <remarks>
+                     <p>The current allowed values are based on those identified in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60 Volume 2</a>
+                     </p>
+                  </remarks>
+               </define-field>
+               <field ref="property" max-occurs="unbounded">
+                  <use-name>prop</use-name>
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <define-assembly name="confidentiality-impact" min-occurs="1">
+                  <formal-name>Confidentiality Impact Level</formal-name>
+                  <description>The expected level of impact resulting from the unauthorized disclosure of information.</description>
+                  <model>
+                     <field ref="property" max-occurs="unbounded">
+                        <use-name>prop</use-name>
+                        <group-as name="properties" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="base" min-occurs="1"/>
+                     <field ref="selected"/>
+                     <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
+                  </model>
+               </define-assembly>
+               <define-assembly name="integrity-impact" min-occurs="1">
+                  <formal-name>Integrity Impact Level</formal-name>
+                  <description>The expected level of impact resulting from the unauthorized modification of information.</description>
+                  <model>
+                     <field ref="property" max-occurs="unbounded">
+                        <use-name>prop</use-name>
+                        <group-as name="properties" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="base" min-occurs="1"/>
+                     <field ref="selected"/>
+                     <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
+                  </model>
+               </define-assembly>
+               <define-assembly name="availability-impact" min-occurs="1">
+                  <formal-name>Availability Impact Level</formal-name>
+                  <description>The expected level of impact resulting from the disruption of access to or use of information or the information system.</description>
+                  <model>
+                     <field ref="property" max-occurs="unbounded">
+                        <use-name>prop</use-name>
+                        <group-as name="properties" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="base" min-occurs="1"/>
+                     <field ref="selected"/>
+                     <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
+                  </model>
+               </define-assembly>
+            </model>
+         </define-assembly>
       </model>
       <constraint>
          <allowed-values target="property/@name" allow-other="yes">
@@ -211,118 +313,25 @@
             <key-field target="@href" pattern="#(.*)"/>
          </index-has-key>
          <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
+         <allowed-values target="security-sensitivity-level|security-impact-level/(security-objective-confidentiality|security-objective-integrity|security-objective-availability)|system-information/information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected}">
+            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
+            <remarks>
+               <p>FIPS-199 taxonomy is provided here as a starting point. We will provide other taxonomies based on community requests.</p>
+            </remarks>
+         </allowed-values>
       </constraint>
    </define-assembly>
-   <define-assembly name="information-type">
-      <formal-name>Information Type</formal-name>
-      <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
-      <define-flag name="uuid" as-type="uuid">
-         <formal-name>Information Type Universally Unique Identifier</formal-name>
-         <description>A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" as-type="markup-line" min-occurs="1">
-            <formal-name>title field</formal-name>
-            <description>A human readable name for the information type. This title should be meaningful within the context of the system.</description>
-         </define-field>
-         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
-            <formal-name>Information Type Description</formal-name>
-            <description>A summary of how this information type is used within the system.</description>
-         </define-field>
-         <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
-            <formal-name>Information Type Identifier</formal-name>
-            <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
-            <json-key flag-name="system"/>
-            <json-value-key>id</json-value-key>
-            <group-as name="information-type-ids" in-json="BY_KEY"/>
-            <define-flag required="yes" name="system">
-               <formal-name>Information Type Identification System</formal-name>
-               <description>Specifies the information type identification system used.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST Special Publication 800-60 Volume II Revision 1</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <remarks>
-               <p>The current allowed values are based on those identified in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60 Volume 2</a>
-               </p>
-            </remarks>
-         </define-field>
-         <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="confidentiality-impact" min-occurs="1"/>
-         <assembly ref="integrity-impact" min-occurs="1"/>
-         <assembly ref="availability-impact" min-occurs="1"/>
-      </model>
-   </define-assembly>
-   <define-assembly name="confidentiality-impact">
-      <formal-name>Confidentiality Impact Level</formal-name>
-      <description>The expected level of impact resulting from the unauthorized disclosure of information.</description>
-      <model>
-         <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <field ref="base" min-occurs="1"/>
-         <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-assembly name="integrity-impact">
-      <formal-name>Integrity Impact Level</formal-name>
-      <description>The expected level of impact resulting from the unauthorized modification of information.</description>
-      <model>
-         <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <field ref="base" min-occurs="1"/>
-         <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-assembly name="availability-impact">
-      <formal-name>Availability Impact Level</formal-name>
-      <description>The expected level of impact resulting from the disruption of access to or use of information or the information system.</description>
-      <model>
-         <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <field ref="base" min-occurs="1"/>
-         <field ref="selected"/>
-         <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
-   <define-field name="base" as-type="string">
+   <define-field name="base" as-type="string" scope="local">
       <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
-      <remarks>
-         <p>FIPS-199 taxonomy is provided here as a starting point. We will provide other taxonomies based on community requests.</p>
-      </remarks>
    </define-field>
-   <define-field name="selected" as-type="string">
+   <define-field name="selected" as-type="string" scope="local">
       <formal-name>Selected Level (Confidentiality, Integrity, or Availability)</formal-name>
       <description>The selected (Confidentiality, Integrity, or Availability) security impact level.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
    </define-field>
-   <define-field name="adjustment-justification" as-type="markup-multiline">
+   <define-field name="adjustment-justification" as-type="markup-multiline" scope="local">
       <formal-name>Adjustment Justification</formal-name>
       <description>If the selected security level is different from the base security level, this contains the justification for the change.</description>
    </define-field>
@@ -330,44 +339,23 @@
       <formal-name>Security Impact Level</formal-name>
       <description>The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.</description>
       <model>
-         <field ref="security-objective-confidentiality"/>
-         <field ref="security-objective-integrity"/>
-         <field ref="security-objective-availability"/>
+         <define-field name="security-objective-confidentiality" as-type="string" min-occurs="1">
+            <!-- CHANGED: cardinality to min 1 -->
+            <formal-name>Security Objective: Confidentiality</formal-name>
+            <description>A target-level of confidentiality for the system, based on the sensitivity of information within the system.</description>
+         </define-field>
+         <define-field name="security-objective-integrity" as-type="string" min-occurs="1">
+            <!-- CHANGED: cardinality to min 1 -->
+            <formal-name>Security Objective: Integrity</formal-name>
+            <description>A target-level of integrity for the system, based on the sensitivity of information within the system.</description>
+         </define-field>
+         <define-field name="security-objective-availability" as-type="string" min-occurs="1">
+            <!-- CHANGED: cardinality to min 1 -->
+            <formal-name>Security Objective: Availability</formal-name>
+            <description>A target-level of availability for the system, based on the sensitivity of information within the system.</description>
+         </define-field>
       </model>
    </define-assembly>
-   <define-field name="security-objective-confidentiality" as-type="string">
-      <formal-name>Security Objective: Confidentiality</formal-name>
-      <description>A target-level of confidentiality for the system, based on the sensitivity of information within the system.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
-   <define-field name="security-objective-integrity" as-type="string">
-      <formal-name>Security Objective: Integrity</formal-name>
-      <description>A target-level of integrity for the system, based on the sensitivity of information within the system.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
-   <define-field name="security-objective-availability" as-type="string">
-      <formal-name>Security Objective: Availability</formal-name>
-      <description>A target-level of availability for the system, based on the sensitivity of information within the system.</description>
-      <constraint>
-         <allowed-values target=".">
-            <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-            <enum value="fips-199-high">A 'high' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
    <define-assembly name="status">
       <formal-name>Status</formal-name>
       <description>Describes the operational status of the system.</description>
@@ -433,9 +421,9 @@
          <matches target="link[@rel='system-security-plan']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
       </constraint>
    </define-assembly>
-   <define-field name="date-authorized" as-type="date">
+   <define-field name="date-authorized" as-type="date" scope="local">
       <formal-name>System Authorization Date</formal-name>
-      <description>The date this system received its authorization.</description>
+      <description>The date the system received its authorization.</description>
    </define-field>
    <define-assembly name="authorization-boundary">
       <formal-name>Authorization Boundary</formal-name>
@@ -937,6 +925,7 @@
    <define-field name="port-range" as-type="empty">
       <formal-name>Port Range</formal-name>
       <description>Where applicable this is the IPv4 port range on which the service operates.</description>
+      <!-- QUESTION: What is the json value key? -->
       <define-flag name="start" as-type="nonNegativeInteger">
          <formal-name>Start</formal-name>
          <description>Indicates the starting port number in a port range</description>
@@ -1260,7 +1249,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1328,10 +1317,10 @@
          </assembly>
          <assembly ref="export" min-occurs="0" max-occurs="1" />
          <assembly ref="inherited" min-occurs="0" max-occurs="unbounded">
-            <group-as name="inherited-group"/>
+            <group-as name="inherited-group" in-json="ARRAY"/>
          </assembly>
          <assembly ref="satisfied" min-occurs="0" max-occurs="unbounded">
-            <group-as name="satisfied-group"/>
+            <group-as name="satisfied-group" in-json="ARRAY"/>
          </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
@@ -1372,17 +1361,17 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </assembly>
          <assembly ref="provided" min-occurs="0" max-occurs="unbounded">
-            <group-as name="provided-group"/>
+            <group-as name="provided-group" in-json="ARRAY"/>
          </assembly>
          <assembly ref="responsibility" min-occurs="0" max-occurs="unbounded">
-            <group-as name="responsibilities"/>
+            <group-as name="responsibilities" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -1405,7 +1394,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1436,7 +1425,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1467,7 +1456,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1497,7 +1486,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
