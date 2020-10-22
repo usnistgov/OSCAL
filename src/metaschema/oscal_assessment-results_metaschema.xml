@@ -36,7 +36,7 @@
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
          <assembly ref="assessment-activities" min-occurs="0" max-occurs="1"/>
          <assembly ref="results" min-occurs="1" max-occurs="unbounded">
-            <group-as name="results_group"/>
+            <group-as name="results_group" in-json="ARRAY"/>
          </assembly>
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>

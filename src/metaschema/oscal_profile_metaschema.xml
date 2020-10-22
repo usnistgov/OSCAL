@@ -81,6 +81,7 @@
    <define-field name="combine" as-type="empty">
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="method"/>
       <remarks>
          <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
@@ -209,6 +210,7 @@
    <define-field name="all" as-type="empty">
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="with-child-controls"/>
       <remarks>
          <p>This element provides an alternative to calling controls individually from a catalog. But this is also the default behavior when no <code>include</code> element is given in an <code>import</code>; so ordinarily one might not see this element unless it is for purposes of including its <code>with-child-controls</code> flag. </p>
@@ -217,6 +219,7 @@
    <define-field name="call" as-type="empty">
       <formal-name>Call</formal-name>
       <description>Call a control by its ID</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="control-id" required="yes"/>
       <flag ref="with-child-controls"/>
       <remarks>
@@ -226,6 +229,7 @@
    <define-field name="match" as-type="empty">
       <formal-name>Match controls by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="pattern"/>
       <flag ref="order"/>
       <flag ref="with-child-controls"/>
@@ -324,6 +328,7 @@
    <define-field name="remove" as-type="empty">
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control, in resolution</description>
+      <!-- QUESTION: What is the json value key? -->
       <define-flag name="name-ref" as-type="NCName">
          <formal-name>Reference by (assigned) name</formal-name>
          <description>Items to remove, by assigned name</description>

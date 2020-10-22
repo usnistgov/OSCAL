@@ -284,6 +284,7 @@
             <define-field name="location-uuid" as-type="uuid" max-occurs="unbounded">
                <formal-name>Location Reference</formal-name>
                <description>References a <code>location</code> defined in <code>metadata</code>.</description>
+               <!-- QUESTION: What is the json value key? -->
                <group-as name="location-uuids" in-json="ARRAY"/>
                <flag ref="location-type">
                   <use-name>type</use-name>
