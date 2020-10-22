@@ -17,6 +17,10 @@
       <formal-name>Component Definition</formal-name>
       <description>A collection of component descriptions, which may optionally be grouped by capability.</description>
       <root-name>component-definition</root-name>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Catalog Universally Unique Identifier</formal-name>
+         <description>A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</description>
+      </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <field ref="import-component-definition" max-occurs="unbounded">
@@ -34,6 +38,7 @@
    <define-field name="import-component-definition" as-type="empty">
       <formal-name>Import Component Definition</formal-name>
       <description>Loads a component definition from another resource.</description>
+      <!-- QUESTION: What is the json value key? -->
       <define-flag name="href" as-type="uri-reference" required="yes">
          <formal-name>Hyperlink Reference</formal-name>
          <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
@@ -59,6 +64,7 @@
          </define-field>
          <field ref="description" min-occurs="1"/>
          <define-field name="prop" max-occurs="unbounded">
+            <!-- TODO: make a reference and add constraints -->
             <formal-name>prop field</formal-name>
             <description>prop field ... </description>
             <group-as name="properties" in-json="ARRAY"/>
@@ -75,6 +81,7 @@
             </define-flag>
          </define-field>
          <define-field name="link" max-occurs="unbounded">
+            <!-- TODO: make a reference and add constraints -->
             <formal-name>link field</formal-name>
             <description>link field ... </description>
             <group-as name="links" in-json="ARRAY"/>
@@ -279,7 +286,7 @@
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations"/>
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <field ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
