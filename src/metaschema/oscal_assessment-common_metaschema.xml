@@ -16,22 +16,10 @@
    </remarks>
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_control-common_metaschema.xml"/>
+   
    <!--   <import href="oscal_implementation-common_metaschema.xml"/>-->
    <import href="oscal_ssp_metaschema.xml"/>
-   <!--   <import href="oscal_metadata_metaschema.xml"/>-->
-   <!-- TOP LEVEL ASSEMBLY -->
-   <define-assembly name="assessment-common">
-      <formal-name>Assessment Common</formal-name>
-      <description>NOT TO BE USED FOR A BASE METASCHEMA ONLY FOR A MODULE</description>
-      <root-name>assessment-common</root-name>
-      <model>
-         <assembly ref="import-ssp"/>
-         <assembly ref="objectives"/>
-         <assembly ref="assets"/>
-         <assembly ref="assessment-activities"/>
-         <assembly ref="results"/>
-      </model>
-   </define-assembly>
+  <!--   <import href="oscal_metadata_metaschema.xml"/>-->
    <!-- SSP Import -->
    <define-assembly name="import-ssp">
       <formal-name>Import System Security Plan</formal-name>
@@ -78,7 +66,7 @@
             <group-as name="control-objective-group" in-json="ARRAY"/>
          </assembly>
          <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
-            <group-as name="objectives"/>
+            <group-as name="objectives" in-json="ARRAY"/>
          </assembly>
          <assembly ref="method" min-occurs="0" max-occurs="unbounded">
             <group-as name="method-definitions" in-json="ARRAY"/>
@@ -109,12 +97,14 @@
          <define-field name="include-control" min-occurs="0" max-occurs="unbounded">
             <formal-name>Include Control</formal-name>
             <description>Identifies an individual control to include.</description>
+            <!-- QUESTION: What is the field value for? -->
             <group-as name="include-controls" in-json="ARRAY"/>
             <flag ref="control-id" required="yes"/>
          </define-field>
          <define-field name="exclude-control" min-occurs="0" max-occurs="unbounded">
             <formal-name>Exclude Control</formal-name>
             <description>Identifies an individual control to exclude.</description>
+            <!-- QUESTION: What is the field value for? -->
             <group-as name="exclude-controls" in-json="ARRAY"/>
             <flag ref="control-id" required="yes"/>
          </define-field>
@@ -145,12 +135,14 @@
          <define-field name="include-objective" min-occurs="0" max-occurs="unbounded">
             <formal-name>Include Objective</formal-name>
             <description>Identifies an individual control objective to include.</description>
+            <!-- QUESTION: What is the field value for? -->
             <group-as name="include-objectives" in-json="ARRAY"/>
             <flag ref="objective-id" required="yes"/>
          </define-field>
          <define-field name="exclude-objective" min-occurs="0" max-occurs="unbounded">
             <formal-name>Exclude Objective</formal-name>
             <description>Identifies an individual control objective to exclude.</description>
+            <!-- QUESTION: What is the field value for? -->
             <group-as name="exclude-objectives" in-json="ARRAY"/>
             <flag ref="objective-id" required="yes"/>
          </define-field>
@@ -191,6 +183,7 @@
          <define-field name="assessment-method" min-occurs="0" max-occurs="unbounded" as-type="string"> 
             <formal-name>Assessment Method</formal-name>
             <description>Identifies a method for assessing the satisfaction of this objective.</description>
+            <!-- QUESTION: What is the field value for? -->
             <group-as name="methods" in-json="ARRAY"/>
             <define-flag name="method-uuid" required="yes" as-type="uuid">
                <formal-name>Method ID</formal-name>
@@ -418,45 +411,10 @@
             <formal-name>Origination Description</formal-name>
             <description>A human-readable description of assessment originiation asset.</description>
          </define-field>
-         <define-field name="property" min-occurs="0" max-occurs="unbounded">
-            <formal-name>Origination Property</formal-name>
-            <description>Properties of this asset, which is used to perform the assessment.</description>
+         <field ref="property"  max-occurs="unbounded">
             <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
-            <define-flag name="uuid" required="no" as-type="uuid">
-               <formal-name>Origination Property Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this defined property. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given property across revisions of the document.</description>
-            </define-flag>
-            <define-flag name="name">
-               <formal-name>Property Name</formal-name>
-               <description>A textual label that identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="ipv4-address">Internet Protocol Address (Version 4)</enum>
-                     <enum value="ipv6-address">Internet Protocol Address (Version 6)</enum>
-                     <enum value="fqdn">Fully Qualified Domain Name</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <define-flag name="ns" as-type="uri">
-               <!-- CHANGED: data type to uri -->
-               <formal-name>Property Namespace</formal-name>
-               <description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</description>
-               <remarks>
-                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated values used in a property. This allows the semantics associated with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-               </remarks>
-            </define-flag>
-            
-            <define-flag name="class" as-type="NCName">
-               <formal-name>Property Class</formal-name>
-               <description>A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>.</description>
-               <remarks>
-                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-               </remarks>
-            </define-flag>
-         </define-field>
+         </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
@@ -464,6 +422,13 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
       </model>
+      <constraint>
+         <allowed-values target="prop/@name">
+            <enum value="ipv4-address">Internet Protocol Address (Version 4)</enum>
+            <enum value="ipv6-address">Internet Protocol Address (Version 6)</enum>
+            <enum value="fqdn">Fully Qualified Domain Name</enum>
+         </allowed-values>
+      </constraint>
    </define-assembly>
    
    <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
@@ -798,30 +763,31 @@
          <description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.</description>
       </define-flag>
       <model>
-         <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
+         <define-field name="title" min-occurs="1" as-type="markup-line">
             <formal-name>Finding Title</formal-name>
             <description>The title for this finding.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+         <define-field name="description" min-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Finding Description</formal-name>
             <description>A human-readable description of this finding.</description>
          </define-field>
-         <define-field name="property" min-occurs="0" max-occurs="unbounded">
-            <formal-name>Finding Property</formal-name>
-            <description>Provided as means of extending the OSCAL syntax.</description>
+         <field ref="property" max-occurs="unbounded">
             <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
             <remarks>
+               <!-- QUESTION: Is this remark appropriate here? -->
                <p>For the FedRAMP SAR, must have prop @name='priority' @ns='https://fedramp.gov/ns/oscal', with a numeric value, where '1' is the highest priority.</p>
             </remarks>
-         </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+         </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="origination" min-occurs="0" max-occurs="1">
+            <!-- CHANGE: moved in sequence -->
          </assembly>
          <define-field name="collected" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
             <formal-name>collected field</formal-name>
@@ -902,16 +868,20 @@
    <define-field name="result">
       <formal-name>Result</formal-name>
       <description>A brief indication as to whether the objective is satisfied or not.</description>
+      <!-- QUESTION: What should the json value key be? -->
       <flag ref="system"/>
    </define-field>
    <define-field name="implementation-status">
       <formal-name>Implementation Status</formal-name>
       <description>Identifies the implementation status of the control or control objective.</description>
+      <!-- QUESTION: What are the valid values? -->
+      <json-value-key>status</json-value-key>
       <flag ref="system"/>
    </define-field>
    <define-flag name="system" as-type="uri">
       <formal-name>Assessment System</formal-name>
       <description>Identifies the framework or rules to which this value conforms.</description>
+      <!-- QUESTION: Why is this needed? Is there a better way? -->
       <constraint>
          <allowed-values allow-other="yes">
             <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
@@ -927,17 +897,18 @@
          <formal-name>Observation Universally Unique Identifier</formal-name>
          <description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</description>
       </define-flag>
-       <model>
-          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-             <formal-name>Observation Title</formal-name>
-             <description>The title for this observation.</description>
-          </define-field>
-          <!-- CHANGE: Added WITH_WRAPPER to description -->
-          <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-             <formal-name>Observaton Description</formal-name>
-             <description>A human-readable description of this assessment observation.</description>
-          </define-field>
-          <field ref="property" min-occurs="0" max-occurs="unbounded">
+      <model>
+         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+            <formal-name>Observation Title</formal-name>
+            <description>The title for this observation.</description>
+         </define-field>
+         <!-- CHANGE: Added WITH_WRAPPER to description -->
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"
+            as-type="markup-multiline">
+            <formal-name>Observaton Description</formal-name>
+            <description>A human-readable description of this assessment observation.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
             <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
@@ -964,7 +935,8 @@
          </assembly>
          <define-field name="origin" min-occurs="0" max-occurs="unbounded">
             <formal-name>origin field</formal-name>
-            <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
+            <description>Identifies the source of the finding, such as a tool, interviewed person,
+               or activity.</description>
             <group-as name="origins" in-json="ARRAY"/>
             <flag ref="uuid-ref" required="yes"/>
             <define-flag name="type" required="yes">
@@ -972,11 +944,16 @@
                <description>type flag ... </description>
                <constraint>
                   <allowed-values allow-other="no">
-                     <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
-                     <enum value="test-method">A test method defined in the assessment-activities section of the assessment plan or results.</enum>
-                     <enum value="task">A task defined in the schedule of the assessment plan or results.</enum>
-                     <enum value="included-activity">An assessment activity defined in the assessment-activities section of the assessment plan or results.</enum>
-                     <enum value="other">The UUID points elsewhere in the this file or an imported file.</enum>
+                     <enum value="tool">An assessment tool, defined in the assets section of the
+                        assessment plan or results.</enum>
+                     <enum value="test-method">A test method defined in the assessment-activities
+                        section of the assessment plan or results.</enum>
+                     <enum value="task">A task defined in the schedule of the assessment plan or
+                        results.</enum>
+                     <enum value="included-activity">An assessment activity defined in the
+                        assessment-activities section of the assessment plan or results.</enum>
+                     <enum value="other">The UUID points elsewhere in the this file or an imported
+                        file.</enum>
                   </allowed-values>
                </constraint>
             </define-flag>
@@ -1024,6 +1001,7 @@
    <define-field name="assessor">
       <formal-name>Assessor</formal-name>
       <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
+      <!-- QUESTION: What is the json value key? Also, why not use responsible-party? -->
       <define-flag name="party-uuid" required="yes">
          <formal-name>Party UUID</formal-name>
          <description>The UUID of the assessor who collected the evidence or made the observation.</description>
@@ -1033,8 +1011,10 @@
    <define-field name="origin">
       <formal-name>Origin</formal-name>
       <description>Identifies the tool or activity that resulted in the observation.</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="uuid-ref" required="yes"/>
       <define-flag name="type" required="yes">
+         <!-- TODO: This documentation needs to be improved -->
          <formal-name>type flag</formal-name>
          <description>type flag ... </description>
          <constraint>
@@ -1085,6 +1065,7 @@
       <define-flag name="system" required="yes">
          <formal-name>Threat Type Identification System</formal-name>
          <description>Specifies the source of the threat information.</description>
+         <!-- QUESTION: What is the json value key? -->
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
