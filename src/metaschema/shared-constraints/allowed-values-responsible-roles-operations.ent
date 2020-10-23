@@ -1,0 +1,10 @@
+<enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+<enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+<!-- CHANGE: from "soc" to "security-operations" -->
+<enum value="security-operations">Members of the security operations center (SOC).</enum>
+<!-- CHANGE: from "noc" to "network-operations" -->
+<enum value="network-operations">Members of the network operations center (NOC).</enum>
+<enum value="incident-response">Responsible for responding to an event that could lead to loss of, or disruption to, an organization's operations, services or functions.</enum>
+<enum value="help-desk">Responsible for providing information and support to users.</enum>
+<!-- CHANGE: from "configuration-management-lead" to "configuration-management" -->
+<enum value="configuration-management">Responsible for the configuration management processes governing changes to the asset.</enum>
