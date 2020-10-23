@@ -134,6 +134,17 @@
       </define-flag>
       <flag ref="depends-on"/>
       <model>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <!-- CHANGE: relative order in sequence -->
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
          <define-field name="label" as-type="markup-line">
             <formal-name>Parameter Label</formal-name>
             <description>A short, placeholder name for the parameter, which can be used as a subsitute for a <code>value</code> if no value is assigned.</description>
@@ -141,7 +152,7 @@
                <p>The label value should be suitable for inline display in a rendered catalog.</p>
             </remarks>
          </define-field>
-         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+         <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
             <formal-name>Parameter Usage Description</formal-name>
             <description>Describes the purpose and use of a parameter</description>
          </define-field>
@@ -170,9 +181,6 @@
                </remarks>
             </assembly>
          </choice>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
          <any/>
       </model>
       <remarks>

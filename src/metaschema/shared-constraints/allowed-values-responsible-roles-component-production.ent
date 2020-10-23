@@ -1,0 +1,2 @@
+<enum value="maintainer">Responsible for the creation and maintenance of a component.</enum>
+<enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>

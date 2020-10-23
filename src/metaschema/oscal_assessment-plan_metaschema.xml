@@ -13,7 +13,6 @@
    </remarks>
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
-   <import href="oscal_implementation-common_metaschema.xml"/>
    <import href="oscal_assessment-common_metaschema.xml"/>
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="assessment-plan">
@@ -59,7 +58,8 @@
       <formal-name>Local Definitions</formal-name>
       <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
       <model>
-         <assembly ref="component" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+            <use-name>component</use-name>
             <group-as name="components" in-json="BY_KEY"/>
             <remarks>
                <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
@@ -71,7 +71,8 @@
                <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
             </remarks>
          </assembly>
-         <assembly ref="user" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+            <use-name>user</use-name>
             <group-as name="users" in-json="BY_KEY"/>
             <remarks>
                <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
