@@ -41,6 +41,9 @@
             </remarks>
          </assembly>
       </model>
+      <constraint>
+         
+      </constraint>
       <remarks>
          <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
          <p>An OSCAL catalog model provides a structured representation of control information.</p>

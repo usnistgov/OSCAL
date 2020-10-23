@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
+   <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
+]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../toolchains/xslt-M4/validate/metaschema.xsd">
+      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+      xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Implementation Component Format</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-component</short-name>
@@ -34,11 +38,15 @@
          </assembly>
          <assembly ref="back-matter"/>
       </model>
+      <constraint>
+         <index name="index-system-component-uuid" target="component">
+            <key-field target="@uuid"/>
+         </index>
+      </constraint>
    </define-assembly>
    <define-field name="import-component-definition" as-type="empty">
       <formal-name>Import Component Definition</formal-name>
       <description>Loads a component definition from another resource.</description>
-      <!-- QUESTION: What is the json value key? -->
       <define-flag name="href" as-type="uri-reference" required="yes">
          <formal-name>Hyperlink Reference</formal-name>
          <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
@@ -50,75 +58,58 @@
       <json-key flag-name="uuid"/>
       <define-flag required="yes" name="uuid">
          <formal-name>Component Identifier</formal-name>
-         <description>A unique identifier for a component.</description>
+         <description>The unique identifier for the component.</description>
       </define-flag>
-      <define-flag name="name" as-type="string" required="yes">
-         <formal-name>Component Name</formal-name>
-         <description>The component's short, human-readable name.</description>
-      </define-flag>
+      <!-- CHANGE: removed "name" -->
       <flag ref="component-type" required="yes"/>
       <model>
-         <define-field name="title" min-occurs="1">
-            <formal-name>title field</formal-name>
-            <description>A longer name for the component.</description>
+         <define-field name="title" as-type="markup-line" min-occurs="1">
+            <formal-name>Component Title</formal-name>
+            <description>A human readable name for the component.</description>
          </define-field>
-         <field ref="description" min-occurs="1"/>
-         <define-field name="prop" max-occurs="unbounded">
-            <!-- TODO: make a reference and add constraints -->
-            <formal-name>prop field</formal-name>
-            <description>prop field ... </description>
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Component Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
+         <define-field name="purpose" as-type="markup-line">
+            <formal-name>Purpose</formal-name>
+            <description>A summary of the technological or business purpose of the component.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
-            <define-flag name="name">
-               <formal-name>name flag</formal-name>
-               <description>name flag ... </description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="version">The version of the component.</enum>
-                     <enum value="model">The model of the component. Useful for 'software', 'hardware', and 'service' components.</enum>
-                     <enum value="release-date">The date the component was released.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-         </define-field>
-         <define-field name="link" max-occurs="unbounded">
-            <!-- TODO: make a reference and add constraints -->
-            <formal-name>link field</formal-name>
-            <description>link field ... </description>
-            <group-as name="links" in-json="ARRAY"/>
-            <define-flag name="rel">
-               <formal-name>rel flag</formal-name>
-               <description>rel flag ... </description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
-                     <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
-                     <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other authorization.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-         </define-field>
-         <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <!--        <flag ref="role-id">
-          <allowed-values allow-other="yes">
-            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
-            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
-          </allowed-values>
-        </flag>
--->
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <!--      <assembly ref="proof-of-compliance" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <!-- CHANGE: from responsible-party to responsible-role -->
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="protocol" max-occurs="unbounded"><!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
+            <group-as name="protocols" in-json="ARRAY"/>
+            <remarks>
+               <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
+            </remarks>
+         </assembly>
+<!--      
+      <assembly ref="proof-of-compliance" max-occurs="unbounded">
         <group-as name="proofs-of-compliance" />
       </assembly>
 -->
          <assembly ref="control-implementation" max-occurs="unbounded">
             <group-as name="control-implementations" in-json="ARRAY"/>
          </assembly>
-         <!--      <assembly ref="supported-profile" max-occurs="unbounded">
+<!--
+      <assembly ref="supported-profile" max-occurs="unbounded">
         <group-as name="supported-profiles" />
       </assembly>
 -->
-         <!--      <assembly ref="configuration" max-occurs="unbounded">
+<!--
+      <assembly ref="configuration" max-occurs="unbounded">
         <group-as name="configurations" in-json="BY_KEY" />
       </assembly>
       <assembly ref="artifact" max-occurs="unbounded">
@@ -127,6 +118,68 @@
 -->
          <field ref="remarks"/>
       </model>
+      <constraint>
+         <allowed-values target="prop/@name" allow-other="yes">
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="version">The version of the component.</enum>
+            <enum value="patch-level">The specific patch level of the component.</enum>
+            <enum value="model">The model of the component.</enum>
+            <!-- CHANGE: @name="date-released" changed to @name="release-date" -->
+            <enum value="release-date">The date the component was released, such as a software release date or policy publication date.</enum>
+            <enum value="asset-type">Simple description of the component's function, such as Router, Storage Array, DNS Server.</enum>
+         </allowed-values>
+
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="baseline-configuration-name">The name of the baseline configuration for the component.</enum>
+            <enum value="allows-authenticated-scan">Can the component be check with an authenticated scan? (yes/no)</enum>
+            <enum value="function">The function provided by the component for the system.</enum>
+         </allowed-values>
+         
+         <allowed-values target="link/@rel" allow-other="yes">
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+            <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+            <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
+            <!-- rel values to also be allowed in implemented-component -->
+            <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+            <enum value="uses-service">This service is used by the referenced component identifier.</enum>
+            <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
+         </allowed-values>
+         
+         <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id||control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            &allowed-values-responsible-roles-operations;
+            &allowed-values-responsible-roles-component-production;
+         </allowed-values>
+         
+         <!-- ========================================================================================================== -->
+         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
+            <enum value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>
+         </allowed-values>
+         
+         <matches target="prop[@name='release-date']/value()" datatype="date"/>
+         
+         <allowed-values target="annotation[@name='allows-authenticated-scan']/@value">
+            <enum value="yes">The component allows an authenticated scan.</enum>
+            <enum value="no">The component does not allow an authenticated scan.</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@component-type='service']/link/@rel" allow-other="yes">
+            <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
+         </allowed-values>
+         
+         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+      </constraint>
       <remarks>
          <p>Components may be products, services, APIs, policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
          <p>The <code>type</code> indicates which of these component types is represented.</p>
@@ -147,20 +200,24 @@
          <description>The capability's human-readable name.</description>
       </define-flag>
       <model>
-         <field ref="description" min-occurs="1"/>
-         <field ref="prop" max-occurs="unbounded">
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Capability Description</formal-name>
+            <description>A summary of the capability.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships for:
           depends-on: component has a dependency on another component
           validated-by:, etc.
         -->
-         </field>
+         </assembly>
          <assembly ref="incorporates-component" max-occurs="unbounded">
             <group-as name="incorporates-components" in-json="BY_KEY"/>
          </assembly>
@@ -174,8 +231,24 @@
          <field ref="remarks"/>
       </model>
    </define-assembly>
+   <define-assembly name="incorporates-component">
+      <formal-name>Incorporates Component</formal-name>
+      <description>TBD</description>
+      <json-key flag-name="component-uuid"/>
+      <define-flag required="yes" name="component-uuid" as-type="uuid">
+         <formal-name>Component Reference</formal-name>
+         <description>A reference to a component by its identifier</description>
+      </define-flag>
+      <model>
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Component Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
+      </model>
+   </define-assembly>
+
    <define-assembly name="control-implementation">
-      <formal-name>Control Implementation</formal-name>
+      <formal-name>Control Implementation Set</formal-name>
       <description>Defines how the component or capability supports a set of controls.</description>
       <define-flag name="uuid" required="yes">
          <formal-name>Control Implementation Set Identifier</formal-name>
@@ -187,80 +260,57 @@
          </remarks>
       </flag>
       <model>
-         <field ref="description" min-occurs="1"/>
-         <field ref="prop" max-occurs="unbounded">
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Control Implementation Description</formal-name>
+            <description>A description of how the spefied set of controls are implemented for the containing component or capability.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
-         </field>
+         </assembly>
          <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
             <group-as name="implemented-requirements" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
    <define-assembly name="implemented-requirement">
-      <formal-name>Control-based Requirement</formal-name>
-      <description>Describes how the component implements an individual control.</description>
-      <flag ref="uuid" required="yes"/>
+      <formal-name>Control Implementation</formal-name>
+      <description>Describes how the containing component or capability implements an individual control.</description>
+      <define-flag name="uuid" required="yes">
+         <formal-name>Control Implementation Identifier</formal-name>
+         <description>A unique identifier for a specific control implementation.</description>
+      </define-flag>
       <flag ref="control-id"/>
       <model>
-         <field ref="description"/>
-         <field ref="prop" max-occurs="unbounded">
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Control Implementation Description</formal-name>
+            <description>A description of how the spefied control is implemented for the containing component or capability.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
-         </field>
-         <!--            <assembly ref="using"/>
+         </assembly>
+<!--
+         <assembly ref="using"/>
 -->
          <!-- TODO: Implement parameters -->
-         <define-assembly name="responsible-role" max-occurs="unbounded">
-            <formal-name>Responsible Role</formal-name>
-            <description>A reference to one or more roles with responsibility for performing a function relative to the control.</description>
-            <json-key flag-name="role-id"/>
+         <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <define-flag required="yes" name="role-id" as-type="NCName">
-               <formal-name>Role identifier</formal-name>
-               <description>Indicates the role assigned to the responsible party.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
-                     <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
-                     <enum value="soc">Members of the security operations center (SOC).</enum>
-                     <enum value="noc">Members of the network operations center (NOC).</enum>
-                     <enum value="incident-response">Members of the incident response team.</enum>
-                     <enum value="help-desk">Members of the help desk.</enum>
-                     <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
-                     <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
-                     <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <model>
-               <field ref="prop" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <field ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </field>
-               <field ref="party-uuid" max-occurs="unbounded">
-                  <group-as name="party-ids" in-json="ARRAY"/>
-               </field>
-               <field ref="remarks" in-xml="WITH_WRAPPER"/>
-            </model>
-         </define-assembly>
+         </assembly>
          <assembly ref="set-parameter" max-occurs="unbounded">
             <group-as name="set-parameters" in-json="BY_KEY"/>
          </assembly>
@@ -271,7 +321,7 @@
       </model>
    </define-assembly>
    <define-assembly name="statement">
-      <formal-name>Specific Statement</formal-name>
+      <formal-name>Control Statement Implementation</formal-name>
       <description>Identifies which statements within a control are addressed.</description>
       <json-key flag-name="statement-id"/>
       <flag ref="statement-id" required="yes">
@@ -279,60 +329,32 @@
             <p>A reference to the specific implemented statement associated with a control.</p>
          </remarks>
       </flag>
-      <flag ref="uuid" required="yes"/>
+      <define-flag name="uuid" required="yes">
+         <formal-name>Control Statement Implementation Identifier</formal-name>
+         <description>A unique identifier for a specific control implementation.</description>
+      </define-flag>
       <model>
-         <field ref="description"/>
-         <field ref="prop" max-occurs="unbounded">
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Statement Implementation Description</formal-name>
+            <description>A summary of how the containing control statement is implemented by the component or capability.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
-         </field>
+         </assembly>
          <!--            <assembly ref="using"/>
 -->
          <!-- TODO: Implement parameters -->
-         <define-assembly name="responsible-role" max-occurs="unbounded">
-            <formal-name>Responsible Role</formal-name>
-            <description>A reference to one or more roles with responsibility for performing a function relative to the control.</description>
-            <json-key flag-name="role-id"/>
+         <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <define-flag required="yes" name="role-id" as-type="NCName">
-               <formal-name>Role identifier</formal-name>
-               <description>Indicates the role assigned to the responsible party.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
-                     <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
-                     <enum value="soc">Members of the security operations center (SOC).</enum>
-                     <enum value="noc">Members of the network operations center (NOC).</enum>
-                     <enum value="incident-response">Members of the incident response team.</enum>
-                     <enum value="help-desk">Members of the help desk.</enum>
-                     <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
-                     <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
-                     <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <model>
-               <field ref="prop" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <field ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </field>
-               <field ref="party-uuid" max-occurs="unbounded">
-                  <group-as name="party-ids" in-json="ARRAY"/>
-               </field>
-               <field ref="remarks" in-xml="WITH_WRAPPER"/>
-            </model>
-         </define-assembly>
+         </assembly>
          <!--         <assembly ref="by-capability" max-occurs="unbounded">
             <group-as name="by-capabilities" in-json="BY_KEY"/>
          </assembly>

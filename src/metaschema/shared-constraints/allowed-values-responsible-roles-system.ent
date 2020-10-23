@@ -1,0 +1,8 @@
+<enum value="authorizing-official">The authorizing official for this system.</enum>
+<enum value="authorizing-official-poc">The authorizing official's designated point of contact (POC) for this system.</enum>
+<enum value="system-owner">The executive ultimately accountable for the system.</enum>
+<enum value="system-poc-management">The primary management-level point of contact (POC) for the system.</enum>
+<enum value="system-poc-technical">The primary technical point of contact (POC) for the system.</enum>
+<enum value="system-poc-other">Other point of contact (POC) for the system that is not the management or technical POC.</enum>
+<enum value="information-system-security-officer">The primary role responsible for ensuring the organization operates the system securely.</enum>
+<enum value="privacy-poc">The point of contact (POC) responsible for identifying privacy information within the system, and ensuring its protection if present.</enum>
