@@ -153,6 +153,12 @@
             <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="part" max-occurs="unbounded">
             <group-as name="parts" in-json="ARRAY"/>
          </assembly>
@@ -267,7 +273,11 @@
          </remarks>
       </define-flag>
       <flag ref="depends-on"/>
-      <model><!-- declarations tbf in the imported schema and to be aligned with it -->
+      <model>
+         <!-- CHANGE: relative order in sequence -->
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
          <define-field name="label" as-type="markup-line">
             <formal-name>Parameter Label</formal-name>
             <description>A short, placeholder name for the parameter, which can be used as a subsitute for a <code>value</code> if no value is assigned.</description>
@@ -275,11 +285,10 @@
                <p>The label value should be suitable for inline display in a rendered catalog.</p>
             </remarks>
          </define-field>
-         <field ref="parameter-usage" max-occurs="unbounded">
-            <use-name>usage</use-name>
-            <!-- CHANGED from "descriptions" to "usages" -->
-            <group-as name="usages" in-json="ARRAY"/>
-         </field>
+         <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Parameter Usage Description</formal-name>
+            <description>Describes the purpose and use of a parameter</description>
+         </define-field>
          <assembly ref="parameter-constraint" max-occurs="unbounded">
             <use-name>constraint</use-name>
             <group-as name="constraints" in-json="ARRAY"/>
@@ -302,9 +311,6 @@
                <use-name>select</use-name>
             </assembly>
          </choice>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
       </model>
    </define-assembly>
    <define-assembly name="alter">

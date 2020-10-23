@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
+   <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
+]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
@@ -10,12 +14,192 @@
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <import href="oscal_metadata_metaschema.xml"/>
 
+
+   <!-- ################################################## -->
+   <!-- # The System Component and supporting constructs # -->
+   <!-- ################################################## -->
+   <define-assembly name="system-component">
+      <formal-name>Component</formal-name>
+      <description>A defined component that can be part of an implemented system.</description>
+      <json-key flag-name="uuid"/>
+      <define-flag required="yes" name="uuid">
+         <formal-name>Component Identifier</formal-name>
+         <description>The unique identifier for the component.</description>
+      </define-flag>
+      <flag ref="component-type" required="yes"/>
+      <model>
+         <define-field name="title" as-type="markup-line" min-occurs="1">
+            <formal-name>Component Title</formal-name>
+            <description>A human readable name for the system component.</description>
+         </define-field>
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Component Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
+         <define-field name="purpose" as-type="markup-line">
+            <formal-name>Purpose</formal-name>
+            <description>A summary of the technological or business purpose of the component.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <define-assembly name="status" min-occurs="1">
+            <!-- QUESTION: Can this be made an annotation? -->
+            <formal-name>Status</formal-name>
+            <description>Describes the operational status of the system component.</description>
+            <define-flag name="state">
+               <formal-name>State</formal-name>
+               <description>The operational status.</description>
+               <constraint>
+                  <allowed-values>
+                     <enum value="under-development">The component is being designed, developed, or implemented.</enum>
+                     <enum value="operational">The component is currently operational and is available for use in the system.</enum>
+                     <enum value="disposition">The component is no longer operational.</enum>
+                     <enum value="other">Some other state.</enum>
+                  </allowed-values>
+               </constraint>
+            </define-flag>
+            <model>
+               <field ref="remarks" in-xml="WITH_WRAPPER"/>
+            </model>
+         </define-assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="protocol" max-occurs="unbounded"><!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
+            <group-as name="protocols" in-json="ARRAY"/>
+            <remarks>
+               <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <allowed-values target="prop/@name" allow-other="yes">
+            <!-- names to also be allowed in implemented-component -->
+            <enum value="public">Identifies if the component is intended to be publicly accessible (yes/no)</enum>
+            <enum value="virtual">Identifies if the component is virtualized (yes/no)</enum>
+            <enum value="vlan-id">Virtual LAN identifier of the component.</enum>
+            <enum value="asset-tag">An asset tag that is unique within the organization for the component.</enum>
+            <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
+            <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
+            <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
+            <!-- names related to inherited component -->
+            <enum value="implementation-point">Reletave placement of component ('inteneral' or 'external') to the system.</enum>
+            <enum value="leveraged-authorization-uuid">UUID of the related leveraged-authorization assembly in this SSP.</enum>
+            <enum value="inherited-uuid">UUID of the component as it was assigned in the leveraged system's SSP.</enum>
+            
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="version">The version of the component.</enum>
+            <enum value="patch-level">The specific patch level of the component.</enum>
+            <enum value="model">The model of the component.</enum>
+            <!-- CHANGE: @name="date-released" changed to @name="release-date" -->
+            <enum value="release-date">The date the component was released, such as a software release date or policy publication date.</enum>
+            <enum value="asset-type">Simple description of the component's function, such as Router, Storage Array, DNS Server.</enum>
+         </allowed-values>
+         
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <enum value="physical-location">The physical location of the component's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="baseline-configuration-name">The name of the baseline configuration for the component.</enum>
+            <enum value="allows-authenticated-scan">Can the component be check with an authenticated scan? (yes/no)</enum>
+            <enum value="function">The function provided by the component for the system.</enum>
+         </allowed-values>
+         
+         <allowed-values target="link/@rel" allow-other="yes">
+            <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
+            <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
+            
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+            <enum value="validated-by">A reference to another component of type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+            <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
+            <!-- rel values to also be allowed in implemented-component -->
+            <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+            <enum value="uses-service">This service is used by the referenced component identifier.</enum>
+            <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
+         </allowed-values>
+         
+         <allowed-values target="responsible-role/@role-id" allow-other="yes">
+            <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
+            <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
+            <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
+            <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
+            <!-- ========================================================================================================== -->
+            <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+            <!-- ========================================================================================================== -->
+            &allowed-values-responsible-roles-operations;
+            &allowed-values-responsible-roles-component-production;
+         </allowed-values>
+         
+         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+         <allowed-values target="prop[@name='public']/value()">
+            <enum value="yes">The component is publicly accessible.</enum>
+            <enum value="no">The component is not publicly accessible.</enum>
+         </allowed-values>
+         <allowed-values target="prop[@name='virtual']/value()">
+            <enum value="yes">The component is virtualized.</enum>
+            <enum value="no">The component is not virtualized.</enum>
+         </allowed-values>
+         <matches target="prop[@name='isa-date']/value()" datatype="dateTime"/>
+         <allowed-values target="prop[@name='implementation-point']/value()">
+            <enum value="inteneral">The component is implemented within the system boundary.</enum>
+            <enum value="external">The component is implemented outside the system boundary.</enum>
+         </allowed-values>
+         <matches target="prop[@name='inherited-uuid']/value()" datatype="uuid" />
+         <index-has-key name="index-metadata-location-uuid" target="annotation[@name='physical-location']">
+            <key-field target="@value"/>
+         </index-has-key>
+         
+         <!-- ========================================================================================================== -->
+         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
+            <enum value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>
+         </allowed-values>
+         
+         <matches target="prop[@name='release-date']/value()" datatype="date"/>
+
+         <allowed-values target="annotation[@name='allows-authenticated-scan']/@value">
+            <enum value="yes">The component allows an authenticated scan.</enum>
+            <enum value="no">The component does not allow an authenticated scan.</enum>
+         </allowed-values>
+
+         <allowed-values target="(.)[@component-type='service']/link/@rel" allow-other="yes">
+            <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
+         </allowed-values>
+         
+         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+      </constraint>
+      <remarks>
+         <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
+         <p>The <code>type</code> indicates which of these component types is represented.</p>
+         <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+         <p>Capabilities are expressed by combining one or more components.</p>-->
+         <p>When defining a <code>service</code> compoenent where are relationship to other components is known, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifer(s) that provide and use the service respectively.</p>
+      </remarks>
+   </define-assembly>
+   
    <define-flag name="component-type" as-type="string">
       <formal-name>Component Type</formal-name>
       <description>A category describing the purpose of the component.</description>
       <constraint>
          <allowed-values allow-other="yes">
-            <enum value="software">Any software, operating system, or firmware</enum>
+            <enum value="this-system">The system as a whole.</enum>
+            <enum value="software">Any software, operating system, or firmware.</enum>
             <enum value="hardware"/>
             <enum value="service">A service that may provide APIs.</enum>
             <enum value="interconnection">A connection to something outside this system.</enum>
@@ -23,12 +207,354 @@
             <enum value="process"/>
             <enum value="procedure"/>
             <enum value="plan"/>
-            <enum value="guidance">Any guideline or recommendation</enum>
+            <enum value="guidance">Any guideline or recommendation.</enum>
             <enum value="standard"/>
             <enum value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>
          </allowed-values>
       </constraint>
    </define-flag>
+   <define-assembly name="protocol">
+      <formal-name>Service Protocol Information</formal-name>
+      <description>Information about the protocol used to provide a service.</description>
+      <define-flag name="uuid" as-type="uuid">
+         <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
+         <description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+      </define-flag>
+      <define-flag name="name" required="yes">
+         <formal-name>Protocol Name</formal-name>
+         <description>The common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">IANA Service Name and Transport Protocol Port Number Registry</a>.</description>
+         <remarks>
+            <p>The short name of the protocol (e.g., https).</p>
+         </remarks>
+      </define-flag>
+      <model>
+         <define-field name="title" as-type="markup-line">
+            <formal-name>title field</formal-name>
+            <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
+         </define-field>
+         <field ref="port-range" max-occurs="unbounded">
+            <group-as name="port-ranges" in-json="ARRAY"/>
+         </field>
+      </model>
+   </define-assembly>
+   <define-field name="port-range" as-type="empty">
+      <formal-name>Port Range</formal-name>
+      <description>Where applicable this is the IPv4 port range on which the service operates.</description>
+      <!-- QUESTION: What is the json value key? -->
+      <define-flag name="start" as-type="nonNegativeInteger">
+         <formal-name>Start</formal-name>
+         <description>Indicates the starting port number in a port range</description>
+         <remarks>
+            <p>Should be a number within a permitted range</p>
+         </remarks>
+      </define-flag>
+      <define-flag name="end" as-type="nonNegativeInteger">
+         <formal-name>End</formal-name>
+         <description>Indicates the ending port number in a port range</description>
+         <remarks>
+            <p>Should be a number within a permitted range</p>
+         </remarks>
+      </define-flag>
+      <define-flag name="transport" as-type="NCName">
+         <formal-name>Transport</formal-name>
+         <description>Indicates the transport type.</description>
+         <constraint>
+            <allowed-values>
+               <enum value="TCP">Transmission Control Protocol</enum>
+               <enum value="UDP">User Datagram Protocol</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <remarks>
+         <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for non-contiguous ranges.</p>
+      </remarks>
+      <example>
+         <service xmlns="http://csrc.nist.gov/ns/oscal/example"
+            id="svc-01"
+            name="Domain Name Service (DNS) Lookup">
+            <protocol name="dns">
+               <port-range start="53" end="53" transport="tcp"/>
+            </protocol>
+         </service>
+      </example>
+   </define-field>
+   
+   <!-- ############################################# -->
+   <!-- # The System User and supporting constructs # -->
+   <!-- ############################################# -->
+   <define-assembly name="system-user">
+      <formal-name>System User</formal-name>
+      <description>A type of user that interacts with the system based on an associated role.</description>
+      <json-key flag-name="uuid"/>
+      <define-flag required="yes" name="uuid">
+         <formal-name>User Identifier</formal-name>
+         <description>The unique identifier for the user class.</description>
+      </define-flag>
+      <model>
+         <define-field name="title" as-type="markup-line">
+            <formal-name>User Title</formal-name>
+            <description>A name given to the user, which may be used by a tool for display and navigation.</description>
+         </define-field>
+         <define-field name="short-name">
+            <formal-name>User Short Name</formal-name>
+            <description>A short common name, abbreviation, or acronym for the user.</description>
+         </define-field>
+         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>User Description</formal-name>
+            <description>A summary of the user's purpose within the system.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+            <!-- TODO: Model specific names? -->
+            <!-- TODO: future: for FedRAMP, have current/future user counts -->
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships? -->
+         </assembly>
+         <field ref="role-id" min-occurs="1" max-occurs="unbounded">
+            <group-as name="role-ids" in-json="ARRAY"/>
+         </field>
+         <assembly ref="authorized-privilege" max-occurs="unbounded">
+            <group-as name="authorized-privileges" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <enum value="type">The type of user, such as internal, external, or general-public.</enum>
+            <enum value="privilege-level">The user's privilege level within the system, such as privileged, non-privileged, no-logical-access.</enum>
+         </allowed-values>
+         <allowed-values target="annotation[@name='type']/@value">
+            <enum value="internal">TODO</enum>
+            <enum value="external">TODO</enum>
+            <enum value="general-public">TODO</enum>
+         </allowed-values>
+         <allowed-values target="annotation[@name='privilege-level']/value()">
+            <enum value="privileged">TODO</enum>
+            <enum value="non-privileged">TODO</enum>
+            <enum value="no-logical-access">TODO</enum>
+         </allowed-values>
+         <allowed-values target="role-id" allow-other="yes">
+            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+            <enum value="soc">Members of the security operations center (SOC).</enum>
+            <enum value="noc">Members of the network operations center (NOC).</enum>
+            <enum value="incident-response">Members of the incident response team.</enum>
+            <enum value="help-desk">Members of the help desk.</enum>
+            <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
+         </allowed-values>
+      </constraint>
+      <remarks>
+         <p>Permissible values to be determined closer to the application, such as by a receiving authority.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="authorized-privilege">
+      <formal-name>Privilege</formal-name>
+      <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
+      <model>
+         <define-field name="title" as-type="markup-line" min-occurs="1">
+            <formal-name>title field</formal-name>
+            <description>A human readable name for the privilege.</description>
+         </define-field>
+         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Privilege Description</formal-name>
+            <description>A summary of the privilege's purpose within the system.</description>
+         </define-field>
+         <field ref="function-performed" min-occurs="1" max-occurs="unbounded">
+            <group-as name="functions-performed" in-json="ARRAY"/>
+         </field>
+      </model>
+   </define-assembly>
+   <define-field name="function-performed" as-type="string">
+      <formal-name>Functions Performed</formal-name>
+      <description>Describes a function performed for a given authorized privilege by this user class.</description>
+   </define-field>
+
+   <!-- ################################################ -->
+   <!-- # The Inventory Item and supporting constructs # -->
+   <!-- ################################################ -->
+   <define-assembly name="inventory-item">
+      <formal-name>Inventory Item</formal-name>
+      <description>A single managed inventory item within the system.</description>
+      <json-key flag-name="uuid"/>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Inventory Item Universally Unique Identifier</formal-name>
+         <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+      </define-flag>
+      <define-flag name="asset-id" required="yes">
+         <formal-name>Asset Identifier</formal-name>
+         <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
+      </define-flag>
+      <model>
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Inventory Item Description</formal-name>
+            <description>A summary of the inventory item stating its purpose within the system.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="implemented-component" max-occurs="unbounded">
+            <group-as name="implemented-components" in-json="BY_KEY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <allowed-values target="prop/@name" allow-other="yes">
+            <enum value="public">Identifies whether the asset is publicly accessible (yes/no)</enum>
+            <enum value="virtual">Identifies whether the asset is virtualized (yes/no)</enum>
+            <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
+            <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
+            <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
+            <enum value="network-id">The network identifier of the asset.</enum>
+            <enum value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
+            <enum value="uri">A Uniform Resource Identifier (URI) for the asset.</enum>
+            <enum value="serial-number">A serial number for the asset.</enum>
+            <enum value="asset-tag">An asset tag that is unique within the organization for the asset.</enum>
+            <enum value="netbios-name">The NetBIOS name for the asset.</enum>
+            <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
+            <!-- This is "name" in the context of a component -->
+            <enum value="os-name">The name of the operating system used by the asset.</enum>
+            <!-- This is "version" in the context of a component -->
+            <enum value="os-version">The version of the operating system used by the asset.</enum>
+            <enum value="asset-type">Simple description of the asset's function, such as Router, Storage Array, DNS Server.</enum>
+            <!-- This is "model" in the context of a component -->
+            <enum value="hardware-model">The model number of the hardware used by the asset.</enum>
+            <!-- This is "name" in the context of a component -->
+            <enum value="software-name">The software product name used by the asset.</enum>
+            <!-- This is "version" in the context of a component -->
+            <enum value="software-version">The software product version used by the asset.</enum>
+            <!-- This is "patch-level" in the context of a component -->
+            <enum value="software-patch-level">The software product patch level used by the asset.</enum>
+         </allowed-values>
+         <!-- TODO: constrain property values based on name -->
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <enum value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
+            <enum value="is-scanned">is the asset subjected to network scans? (yes/no)</enum>
+            <enum value="allows-authenticated-scan">Can the asset be check with an authenticated scan? (yes/no)</enum>
+            <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
+            <enum value="function">The function provided by the asset for the system.</enum>
+         </allowed-values>
+         <!-- TODO: constrain annotation values based on name -->
+         <allowed-values target="link/@rel" allow-other="yes">
+            <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+         </allowed-values>
+         <!-- TODO: constrain link href values based on rel -->
+         <allowed-values target="responsible-party/@role-id" allow-other="yes">
+            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+            <enum value="soc">Members of the security operations center (SOC).</enum>
+            <enum value="noc">Members of the network operations center (NOC).</enum>
+            <enum value="incident-response">Members of the incident response team.</enum>
+            <enum value="help-desk">Members of the help desk.</enum>
+            <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
+            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
+            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+         </allowed-values>
+         <!-- TODO: constrain role-id references to roles defined in the document. -->
+         <!-- TODO: constrain party-id references to parties defined in the document. -->
+      </constraint>
+   </define-assembly>
+   <define-assembly name="implemented-component">
+      <formal-name>Implemented Component</formal-name>
+      <description>The set of componenets that are implemented in a given system inventory item.</description>
+      <json-key flag-name="component-uuid"/>
+      <define-flag required="yes" name="component-uuid" as-type="uuid">
+         <formal-name>Component Universally Unique Identifier Reference</formal-name>
+         <description>A reference to a component that is implemented as part of an inventory item.</description>
+      </define-flag>
+      <define-flag name="use">
+         <formal-name>Implementation Use Type</formal-name>
+         <description>The type of implementation</description>
+         <constraint>
+            <allowed-values allow-other="yes">
+               <enum value="runs-software">The implemented component is a 'software' component that the inventory item has installed and uses.</enum>
+               <enum value="uses-hardware">The implemented component is a 'hardware' component that the inventory item has installed and uses.</enum>
+               <enum value="enforces-policy">The implemented component is a 'policy' component that the inventory item supports and enforces.</enum>
+               <enum value="implements-process">The implemented component is a 'process' component that the inventory item supports and enforces.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <model>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>This construct is used to either: 1) associate a party or parties to a role defined on the component using the <code>responsible-role</code> construct, or 2) to define a party or parties that are responsible for a role defined within the context of the containing <code>inventory-item</code>.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <!-- TODO: constrain component-uuid references to components defined in the document. -->
+         <allowed-values target="prop/@name" allow-other="yes">
+            <!-- TODO: Ask Brian what should be defined here -->
+            <enum value="public">Identifies whether the asset is publicly accessible (yes/no)</enum>
+            <enum value="virtual">Identifies whether the asset is virtualized (yes/no)</enum>
+            <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
+            <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
+            <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
+            <enum value="network-id">The network identifier of the asset.</enum>
+            <enum value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
+            <enum value="uri">A Uniform Resource Identifier (URI) for the asset.</enum>
+            <enum value="serial-number">A serial number for the asset.</enum>
+            <enum value="asset-tag">An asset tag that is unique within the organization for the asset.</enum>
+            <enum value="netbios-name">The NetBIOS name for the asset.</enum>
+            <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
+            <enum value="asset-type">Simple description of the asset's function (e.g., Router, Storage Array, DNS Server, etc.).</enum>
+         </allowed-values>
+         <!-- TODO: constrain property values based on name -->
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <enum value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
+            <enum value="is-scanned">is the asset subjected to network scans? (yes/no)</enum>
+            <enum value="allows-authenticated-scan">Can the asset be check with an authenticated scan? (yes/no)</enum>
+            <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
+            <enum value="function">The function provided by the asset for the system.</enum>
+         </allowed-values>
+         <!-- TODO: constrain annotation values based on name -->
+         <allowed-values target="link/@rel" allow-other="yes">
+            <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+         </allowed-values>
+         <!-- TODO: constrain link href values based on rel -->
+         <allowed-values target="responsible-party/@role-id" allow-other="yes">
+            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+            <enum value="soc">Members of the security operations center (SOC).</enum>
+            <enum value="noc">Members of the network operations center (NOC).</enum>
+            <enum value="incident-response">Members of the incident response team.</enum>
+            <enum value="help-desk">Members of the help desk.</enum>
+            <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
+            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
+            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+         </allowed-values>
+         <!-- TODO: constrain role-id references to roles defined in the document. -->
+         <!-- TODO: constrain party-id references to parties defined in the document. -->
+      </constraint>
+   </define-assembly>
+
    <define-flag name="source" as-type="uri-reference">
       <formal-name>Source Resource Reference</formal-name>
       <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
@@ -47,7 +573,10 @@
          </remarks>
       </flag>
       <model>
-         <field ref="description"/>
+         <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Statement Implementation Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
          <field ref="property" max-occurs="unbounded">
             <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
@@ -55,11 +584,12 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
-         </field>
-         <!--            <assembly ref="using"/>
+         </assembly>
+<!--
+         <assembly ref="using"/>
 -->
          <!-- TODO: Implement parameters -->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -69,18 +599,6 @@
       <formal-name>Control Statement Reference</formal-name>
       <description>A reference to a control statement by its identifier</description>
    </define-flag>
-   <define-assembly name="incorporates-component">
-      <formal-name>Incorporates Component</formal-name>
-      <description>TBD</description>
-      <json-key flag-name="component-uuid"/>
-      <define-flag required="yes" name="component-uuid" as-type="uuid">
-         <formal-name>Component Reference</formal-name>
-         <description>A reference to a component by its identifier</description>
-      </define-flag>
-      <model>
-         <field ref="description" min-occurs="1"/>
-      </model>
-   </define-assembly>
    <define-assembly name="responsible-role">
       <formal-name>Responsible Role</formal-name>
       <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
@@ -97,9 +615,9 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <field ref="link" max-occurs="unbounded">
+         <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <field ref="party-uuid" max-occurs="unbounded">
             <group-as name="party-uuids" in-json="ARRAY"/>
          </field>

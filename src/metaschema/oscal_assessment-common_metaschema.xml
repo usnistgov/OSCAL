@@ -17,8 +17,7 @@
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_control-common_metaschema.xml"/>
    
-   <!--   <import href="oscal_implementation-common_metaschema.xml"/>-->
-   <import href="oscal_ssp_metaschema.xml"/>
+   <import href="oscal_implementation-common_metaschema.xml"/>
   <!--   <import href="oscal_metadata_metaschema.xml"/>-->
    <!-- SSP Import -->
    <define-assembly name="import-ssp">
@@ -392,7 +391,8 @@
       <formal-name>Assessment Assets</formal-name>
       <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
       <model>
-         <assembly ref="component" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+            <use-name>component</use-name>
             <group-as name="components" in-json="BY_KEY"/>
          </assembly>
       </model>
@@ -1135,7 +1135,9 @@
    <define-field name="risk-metric">
       <formal-name>Risk Metric</formal-name>
       <description>An individual risk metric from a specified system.</description>
+      <!-- QUESTION: What is the json value key? -->
       <define-flag name="name" required="yes">
+         <!-- TODO: this documentation needs to be improved -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
          <constraint>
@@ -1411,6 +1413,7 @@
          <define-field name="remediation-origin" min-occurs="0" max-occurs="unbounded">
             <formal-name>remediation-origin field</formal-name>
             <description>Points to the source of the recommendation</description>
+            <!-- QUESTION: What is the json value key? -->
             <group-as name="origins" in-json="ARRAY"/>
             <flag ref="uuid-ref" required="yes"/>
             <define-flag name="type">
@@ -1435,6 +1438,7 @@
    <define-field name="remediation-origin">
       <formal-name>Remediation Origin</formal-name>
       <description>Points to the source of the remediation recommendation or plan</description>
+      <!-- QUESTION: What is the json value key? -->
       <flag ref="uuid-ref" required="yes"/>
       <define-flag name="type">
          <formal-name>type flag</formal-name>
@@ -1462,10 +1466,12 @@
    </define-flag>
    
    <define-assembly name="assessment-part">
+      <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>
       <description>A partition or component of an objective or part</description>
       <use-name>part</use-name>
-      <define-flag name="uuiid" as-type="uuid">
+      <define-flag name="uuid" as-type="uuid">
+         <!-- CHANGE: from uuiid to uuid -->
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
