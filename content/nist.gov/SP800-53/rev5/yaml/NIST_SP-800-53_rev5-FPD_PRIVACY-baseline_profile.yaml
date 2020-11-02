@@ -145,8 +145,6 @@ profile:
           - 
             control-id: pm-31
           - 
-            control-id: pm-33
-          - 
             control-id: pt-1
           - 
             control-id: pt-2

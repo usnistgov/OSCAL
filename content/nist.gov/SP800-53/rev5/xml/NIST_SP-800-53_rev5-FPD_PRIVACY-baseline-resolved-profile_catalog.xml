@@ -2553,35 +2553,6 @@ Organizations notify individuals or their designated representatives when their 
             <p>Continuous monitoring at the organization level facilitates ongoing awareness of the security and privacy posture across the organization to support organizational risk management decisions. The terms continuous and ongoing imply that organizations assess and monitor their controls and risks at a frequency sufficient to support risk-based decisions. Different types of controls may require different monitoring frequencies. The results of continuous monitoring guide and inform risk response actions by organizations. Continuous monitoring programs allow organizations to maintain the authorizations of systems and common controls in highly dynamic environments of operation with changing mission and business needs, threats, vulnerabilities, and technologies. Having access to security- and privacy-related information on a continuing basis through reports and dashboards gives organizational officials the capability to make effective and timely risk management decisions, including ongoing authorization decisions. Monitoring requirements, including the need for specific monitoring, may be referenced in other controls and control enhancements, for example, AC-2g, AC-2(7), AC-2(12)(a), AC-2(7)(b), AC-2(7)(c), AC-17(1), AT-4a, AU-13, AU-13(1), AU-13(2), CA-7, CM-3f, CM-6d, CM-11c, IR-5, MA-2b, MA-3a, MA-4a, PE-3d, PE-6, PE-14b, PE-16, PE-20, PM-6, PM-23, PS-7e, SA-9c, SC-5(3)(b), SC-7a, SC-7(24)(b), SC-18c, SC-43b, SI-4.</p>
          </part>
       </control>
-      <control class="SP800-53" id="pm-33">
-         <title>Privacy Policies on Websites, Applications, and Digital Services</title>
-         <prop name="label">PM-33</prop>
-         <prop name="sort-id">PM-33</prop>
-         <link rel="reference" href="#a646d45d-775f-4887-86d3-5a00ffbc4090">[OMB A-130]</link>
-         <link rel="related" href="#pm-19">PM-19</link>
-         <link rel="related" href="#pm-20">PM-20</link>
-         <link rel="related" href="#pt-6">PT-6</link>
-         <link rel="related" href="#pt-7">PT-7</link>
-         <link rel="related" href="#ra-8">RA-8</link>
-         <part name="statement" id="pm-33_smt">
-            <p>Develop and post privacy policies on all external-facing websites, mobile applications, and other digital services, that:</p>
-            <part name="item" id="pm-33_smt.a">
-               <prop name="label">a.</prop>
-               <p>Are written in plain language and organized in a way that is easy to understand and navigate;</p>
-            </part>
-            <part name="item" id="pm-33_smt.b">
-               <prop name="label">b.</prop>
-               <p>Provide useful information that the public would need to make an informed decision about whether and how to interact with the organization; and</p>
-            </part>
-            <part name="item" id="pm-33_smt.c">
-               <prop name="label">c.</prop>
-               <p>Are updated whenever the organization makes a substantive change to the practices it describes and includes a time/date stamp to inform the public of the date of the most recent changes.</p>
-            </part>
-         </part>
-         <part name="guidance" id="pm-33_gdn">
-            <p>Organizations post privacy policies on all external-facing websites, mobile applications, and other digital services. Organizations should post a link to the relevant privacy policy on any known, major entry points to the website, application, or digital service. In addition, organizations should provide a link to the privacy policy on any webpage that collects personally identifiable information.</p>
-         </part>
-      </control>
    </group>
    <group class="family" id="pt">
       <title>Personally Identifiable Information Processing and Transparency</title>
