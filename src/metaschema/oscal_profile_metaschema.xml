@@ -128,6 +128,7 @@
       <formal-name>Control group</formal-name>
       <description>A group of (selected) controls or of groups of controls</description>
       <define-flag name="id" as-type="NCName">
+         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
          <formal-name>Group Identifier</formal-name>
          <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
       </define-flag>
@@ -262,6 +263,7 @@
       <description>A parameter setting, to be propagated to points of insertion</description>
       <json-key flag-name="param-id"/>
       <define-flag required="yes" name="param-id" as-type="NCName">
+         <!-- This is an id because the idenfier is assigned and managed by humans. -->
          <formal-name>Parameter ID</formal-name>
          <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
       </define-flag>

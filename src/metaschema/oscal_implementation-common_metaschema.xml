@@ -88,6 +88,7 @@
             <enum value="virtual">Identifies if the component is virtualized (yes/no)</enum>
             <enum value="vlan-id">Virtual LAN identifier of the component.</enum>
             <enum value="asset-tag">An asset tag that is unique within the organization for the component.</enum>
+
             <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
             <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
             <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
@@ -340,13 +341,7 @@
             <enum value="no-logical-access">TODO</enum>
          </allowed-values>
          <allowed-values target="role-id" allow-other="yes">
-            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
-            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
-            <enum value="soc">Members of the security operations center (SOC).</enum>
-            <enum value="noc">Members of the network operations center (NOC).</enum>
-            <enum value="incident-response">Members of the incident response team.</enum>
-            <enum value="help-desk">Members of the help desk.</enum>
-            <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
+            &allowed-values-responsible-roles-operations;
          </allowed-values>
       </constraint>
       <remarks>
@@ -387,6 +382,7 @@
          <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
       </define-flag>
       <define-flag name="asset-id" required="yes">
+         <!-- This is an id because the idenfier is assigned and managed externally. -->
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
       </define-flag>
@@ -417,16 +413,18 @@
          <allowed-values target="prop/@name" allow-other="yes">
             <enum value="public">Identifies whether the asset is publicly accessible (yes/no)</enum>
             <enum value="virtual">Identifies whether the asset is virtualized (yes/no)</enum>
+            <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
+            <enum value="asset-tag">An asset tag that is unique within the organization for the component.</enum>
+
             <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
             <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
-            <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
             <enum value="network-id">The network identifier of the asset.</enum>
             <enum value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
             <enum value="uri">A Uniform Resource Identifier (URI) for the asset.</enum>
             <enum value="serial-number">A serial number for the asset.</enum>
-            <enum value="asset-tag">An asset tag that is unique within the organization for the asset.</enum>
             <enum value="netbios-name">The NetBIOS name for the asset.</enum>
             <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
+
             <!-- This is "name" in the context of a component -->
             <enum value="os-name">The name of the operating system used by the asset.</enum>
             <!-- This is "version" in the context of a component -->
@@ -455,21 +453,19 @@
          </allowed-values>
          <!-- TODO: constrain link href values based on rel -->
          <allowed-values target="responsible-party/@role-id" allow-other="yes">
-            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
-            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
-            <enum value="soc">Members of the security operations center (SOC).</enum>
-            <enum value="noc">Members of the network operations center (NOC).</enum>
-            <enum value="incident-response">Members of the incident response team.</enum>
-            <enum value="help-desk">Members of the help desk.</enum>
-            <enum value="configuration-management-lead">Responsible for the configuration management processes governing changes to the asset.</enum>
-            <enum value="maintainer">Organization responsible for the creation and maintenance of the component.</enum>
-            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+            &allowed-values-responsible-roles-operations;
+            &allowed-values-responsible-roles-component-production;
          </allowed-values>
-         <!-- TODO: constrain role-id references to roles defined in the document. -->
-         <!-- TODO: constrain party-id references to parties defined in the document. -->
+         <index-has-key name="index-metadata-role-id" target="responsible-party">
+            <key-field target="@role-id"></key-field>
+         </index-has-key>
+         <index-has-key name="index-metadata-party-uuid" target="responsible-party">
+            <key-field target="@party-uuid"></key-field>
+         </index-has-key>
       </constraint>
    </define-assembly>
    <define-assembly name="implemented-component">
+      <!-- TODO: Sync constraints with system-component; maybe remove this? -->
       <formal-name>Implemented Component</formal-name>
       <description>The set of componenets that are implemented in a given system inventory item.</description>
       <json-key flag-name="component-uuid"/>
@@ -603,7 +599,7 @@
       <formal-name>Responsible Role</formal-name>
       <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
       <json-key flag-name="role-id"/>
-      <define-flag required="yes" name="role-id" as-type="NCName">
+      <define-flag name="role-id" as-type="NCName" required="yes">
          <formal-name>Responsible Role ID</formal-name>
          <description>The role that is responsible for the business function.</description>
       </define-flag>
@@ -639,8 +635,28 @@
          </define-field>
       </model>
    </define-assembly>
+   
+   <!-- ===== FIELDS ===== -->
+   <define-field name="system-id" as-type="string">
+      <!-- This is an id because the idenfier is assigned and managed by humans. -->
+      <formal-name>System Identification</formal-name>
+      <description>A unique identifier for the system described by this system security plan.</description>
+      <json-value-key>id</json-value-key>
+      <define-flag name="identifier-type" as-type="uri">
+         <formal-name>Identification System Type</formal-name>
+         <description>Identifies the identification system from which the provided identifier was assigned.</description>
+         <constraint>
+            <allowed-values allow-other="yes">
+               <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
+               <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique IDentifier (UUID) as defined by RFC4122.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+   </define-field>
+
    <!-- ===== FLAGS ===== -->
    <define-flag name="param-id" as-type="NCName">
+      <!-- This is an id because the idenfier is assigned and managed by humans. -->
       <formal-name>Parameter ID</formal-name>
       <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</description>
       <example>
