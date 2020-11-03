@@ -64,7 +64,7 @@
       <formal-name>Control Group</formal-name>
       <description>A group of controls, or of groups of controls.</description>
       <define-flag name="id" as-type="NCName">
-         <!-- This is an id because the idenfier is managed externally. -->
+         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
          <formal-name>Group Identifier</formal-name>
          <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
       </define-flag>
