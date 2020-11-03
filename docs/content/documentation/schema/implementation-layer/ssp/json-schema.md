@@ -1,14 +1,16 @@
 ---
-title: "System Security Plan JSON Schema Reference"
-heading: "OSCAL System Security Plan (SSP) JSON Schema Reference"
+title: "System Security Plan Model JSON Format Reference"
+heading: "OSCAL System Security Plan (SSP) Model JSON Format Reference"
 description: Object-level definitions of the OSCAL System Security Plan model JSON format.
 aliases:
   - /docs/schemas/oscal-ssp-json/
 weight: 20
 sidenav:
-  title: JSON Schema Reference
+  title: JSON Format Reference
   toc:
     headingselectors: "h2.assembly-header"
+aliases:
+  - /documentation/schema/ssp/json-schema/
 ---
 
 {{<partialCached "generated/oscal-ssp-json-schema.html" >}}
