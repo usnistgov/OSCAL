@@ -381,7 +381,7 @@
          <formal-name>Inventory Item Universally Unique Identifier</formal-name>
          <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
       </define-flag>
-      <define-flag name="asset-id" required="yes">
+      <define-flag name="asset-id">
          <!-- This is an id because the idenfier is assigned and managed externally. -->
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
