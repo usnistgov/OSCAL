@@ -1,12 +1,14 @@
 ---
-title: "Assessment Plan XML Model Map"
+title: "OSCAL Assessment Plan Model XML Format Outline"
 heading: OSCAL Assessment Plan Model XML Format Outline
-description: An outline of the OSCAL Assessment Plan model JSON format.
+description: An outline of the OSCAL Assessment Plan model XML format.
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
 sidenav:
-  title: XML Schema Map
+  title: XML Format Outline
+aliases:
+  - /documentation/schema/assessment-plan/xml-model-map/
 ---
 
 {{<partial "generated/oscal-ap-xml-map.html" >}}

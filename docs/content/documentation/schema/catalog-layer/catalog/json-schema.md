@@ -1,14 +1,16 @@
 ---
-title: "Catalog JSON Schema Reference"
-heading: "OSCAL Control Catalog JSON Schema Reference"
-description: Object-level definitions of the OSCAL Catalog model JSON format.
+title: "Control Catalog Model JSON Format Reference"
+heading: "OSCAL Control Catalog Model JSON Format Reference"
+description: Object-level definitions of the OSCAL Control Catalog model JSON format.
 aliases:
   - /docs/schemas/oscal-catalog-json/
 weight: 20
 sidenav:
-  title: JSON Schema Reference
+  title: JSON Format Reference
   toc:
     headingselectors: "h2.assembly-header"
+aliases:
+  - /documentation/schema/catalog/json-schema/
 ---
 
 {{<partialCached "generated/oscal-catalog-json-schema.html" >}}
