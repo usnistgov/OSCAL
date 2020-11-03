@@ -20,6 +20,7 @@
       <formal-name>Part</formal-name>
       <description>A partition or component of a control or part</description>
       <define-flag name="id" as-type="NCName">
+         <!-- This is an id because the idenfier is intended to be human-raadable. -->
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
@@ -121,6 +122,7 @@
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
       <define-flag name="id" as-type="NCName" required="yes">
+         <!-- This is an id because the idenfier is intended to be human-raadable. -->
          <formal-name>Parameter Identifier</formal-name>
          <description>A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</description>
       </define-flag>

@@ -237,6 +237,7 @@
             <description>A short common name, abbreviation, or acronym for the party.</description>
          </define-field>
          <define-field name="external-id" max-occurs="unbounded">
+            <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
             <formal-name>Party External Identifier</formal-name>
             <description>An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</description>
             <json-value-key>id</json-value-key>
@@ -281,20 +282,9 @@
             <assembly ref="address" max-occurs="unbounded">
                <group-as name="addresses" in-json="ARRAY"/>
             </assembly>
-            <define-field name="location-uuid" as-type="uuid" max-occurs="unbounded">
-               <formal-name>Location Reference</formal-name>
-               <description>References a <code>location</code> defined in <code>metadata</code>.</description>
-               <!-- QUESTION: What is the json value key? -->
+            <field ref="location-uuid" max-occurs="unbounded">
                <group-as name="location-uuids" in-json="ARRAY"/>
-               <flag ref="location-type">
-                  <use-name>type</use-name>
-               </flag>
-               <constraint>
-                  <index-has-key name="index-metadata-location-uuid" target=".">
-                     <key-field target="value()"/>
-                  </index-has-key>
-               </constraint>
-            </define-field>
+            </field>
          </choice>
          <define-field name="member-of-organization" as-type="uuid" max-occurs="unbounded">
             <formal-name>Organizational Affiliation</formal-name>
@@ -328,6 +318,7 @@
       <formal-name>Role</formal-name>
       <description>Defines a function assumed or expected to be assumed by a party in a specific situation.</description>
       <define-flag name="id" as-type="NCName" required="yes">
+         <!-- This is an id because the idenfier is assigned and managed by humans. -->
          <formal-name>Role Identifier</formal-name>
          <description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
          <remarks>
@@ -479,6 +470,16 @@
                <any/>
             </model>
             <constraint>
+               <allowed-values target="prop/@name">
+                  <enum value="type">TODO: (Brian)</enum>
+                  <enum value="version">TODO: (Brian)</enum>
+                  <enum value="published">TODO: (Brian)</enum>
+               </allowed-values>
+               <matches target="prop[@name='published' and (not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal')]/value()" datatype="dateTime"/>
+               <allowed-values target="prop[@name='type']/value()">
+                  <!-- TODO: (brian) add values from spreadsheet -->
+                  <enum value="policy">TODO: (Brian)</enum>
+               </allowed-values>
                <has-cardinality target="rlink|base64" min-occurs="1"/>
                <is-unique name="unique-resource-rlink-href" target="rlink">
                   <key-field target="@href"/>
@@ -863,6 +864,7 @@
    </define-flag>
    
    <define-field name="document-id" scope="local">
+      <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
       <formal-name>Document Identifier</formal-name>
       <description>A document identifier qualified by an identifier <code>type</code>.</description>
       <json-value-key>identifier</json-value-key>

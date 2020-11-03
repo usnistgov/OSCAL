@@ -154,6 +154,7 @@
       <formal-name>Assessment-specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
       <define-flag name="id" required="yes" as-type="NCName" >
+         <!-- This is an id to sync with control syntax -->
          <formal-name>Control Objective Identifier</formal-name>
          <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
          <remarks>
@@ -1060,6 +1061,7 @@
       </constraint>
    </define-field>
    <define-field name="threat-id">
+      <!-- This is an id because it is an externally provided identifier -->
       <formal-name>Threat ID</formal-name>
       <description>A pointer, by ID, to an externally-defined threat.</description>
       <define-flag name="system" required="yes">
@@ -1461,6 +1463,7 @@
       <description>Points to an implementation statement in the SSP.</description>
    </define-flag>
    <define-flag name="objective-id" as-type="NCName">
+      <!-- This is an id to sync with control syntax -->
       <formal-name>Objective ID</formal-name>
       <description>Points to an assessment objective.</description>
    </define-flag>
