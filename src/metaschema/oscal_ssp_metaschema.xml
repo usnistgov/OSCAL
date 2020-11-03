@@ -76,22 +76,9 @@
       <formal-name>System Characteristics</formal-name>
       <description>Contains the characteristics of the system, such as its name, purpose, and security impact level.</description>
       <model>
-         <define-field name="system-id" as-type="string" min-occurs="1" max-occurs="unbounded">
-            <formal-name>System Identification</formal-name>
-            <description>A unique identifier for the system described by this system security plan.</description>
-            <json-value-key>id</json-value-key>
+         <field ref="system-id" min-occurs="1" max-occurs="unbounded">
             <group-as name="system-ids" in-json="ARRAY"/>
-            <define-flag name="identifier-type" as-type="uri">
-               <formal-name>Identification System Type</formal-name>
-               <description>Identifies the identification system from which the provided identifier was assigned.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
-                     <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique IDentifier (UUID) as defined by RFC4122.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-         </define-field>
+         </field>
          <define-field name="system-name" as-type="string" min-occurs="1">
             <formal-name>System Name - Full</formal-name>
             <description>The full name of the system.</description>
@@ -204,6 +191,7 @@
                   <description>A summary of how this information type is used within the system.</description>
                </define-field>
                <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
+                  <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Information Type Identifier</formal-name>
                   <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
                   <json-key flag-name="system"/>
@@ -728,7 +716,7 @@
          <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
             <key-field target="@party-uuid"></key-field>
          </index-has-key>
-         <!-- TODO: Make sure at least one by-component is used at the control or statement level -->
+         <has-cardinality target=".//by-component" min-occurs="1"/>
       </constraint>
    </define-assembly>
    <define-assembly name="statement">
@@ -758,7 +746,10 @@
          </assembly>
          <!--            <assembly ref="using"/>
 -->
-         <!-- TODO: Implement parameters -->
+         <assembly ref="set-parameter" max-occurs="unbounded">
+            <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
+            <group-as name="parameter-settings" in-json="BY_KEY"/>
+         </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
             <group-as name="responsible-roles" in-json="BY_KEY"/>
