@@ -24,7 +24,7 @@
       <formal-name>Control mapping</formal-name>
       <description>A mapping of a control or control statement to one or more other concepts.</description>
       <model>
-         <assembly ref="import-catalog" required="yes"/>
+        <assembly ref="import-catalog" min-occurs="1"/>
         <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
             <group-as name="implemented-requirements" in-json="ARRAY"/>
         </assembly>

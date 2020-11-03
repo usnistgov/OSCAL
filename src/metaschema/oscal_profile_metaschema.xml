@@ -226,7 +226,6 @@
    <define-field name="call" as-type="empty">
       <formal-name>Call</formal-name>
       <description>Call a control by its ID</description>
-      <!-- QUESTION: What is the json value key? -->
       <flag ref="control-id" required="yes"/>
       <flag ref="with-child-controls"/>
       <remarks>
@@ -236,7 +235,6 @@
    <define-field name="match" as-type="empty">
       <formal-name>Match controls by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
-      <!-- QUESTION: What is the json value key? -->
       <flag ref="pattern"/>
       <flag ref="order"/>
       <flag ref="with-child-controls"/>
@@ -336,7 +334,6 @@
    <define-field name="remove" as-type="empty">
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control, in resolution</description>
-      <!-- QUESTION: What is the json value key? -->
       <define-flag name="name-ref" as-type="NCName">
          <formal-name>Reference by (assigned) name</formal-name>
          <description>Items to remove, by assigned name</description>
