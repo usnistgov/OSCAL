@@ -1,0 +1,12 @@
+<!--  CHANGHD "os" to "operating-system" -->
+<enum value="operating-system"></enum>
+<enum value="database"></enum>
+<enum value="web-server"></enum>
+<enum value="dns-server"></enum>
+<enum value="email-server"></enum>
+<enum value="directory-server"></enum>
+<enum value="pbx"></enum>
+<enum value="firewall"></enum>
+<enum value="router"></enum>
+<enum value="switch"></enum>
+<enum value="storage-array"></enum>
