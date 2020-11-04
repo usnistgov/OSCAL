@@ -340,7 +340,7 @@
          </define-field>
       </model>
    </define-assembly>
-   <define-assembly name="status">
+   <define-assembly name="status" scope="local">
       <formal-name>Status</formal-name>
       <description>Describes the operational status of the system.</description>
       <define-flag name="state" required="yes" as-type="string">
@@ -421,6 +421,9 @@
             <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
