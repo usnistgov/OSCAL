@@ -300,7 +300,7 @@
                <p>A phone number used to contact the party.</p>
             </remarks>
          </field>
-         <!-- Changed: ordering of address inside party and made use of address and location-uuid mutually exclusive. -->
+         <!-- CHANGE: ordering of address inside party and made use of address and location-uuid mutually exclusive. -->
          <choice>
             <assembly ref="address" max-occurs="unbounded">
                <group-as name="addresses" in-json="ARRAY"/>
@@ -542,7 +542,6 @@
          </index>
       </constraint>
       <remarks>
-         <!-- QUESTION: Is the following true? -->
          <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference identifier.</p>
       </remarks>
       <example>
@@ -880,7 +879,6 @@
       </model>
    </define-assembly>
    <define-field name="addr-line" scope="local">
-      <!-- TODO: sync with group name -->
       <formal-name>Address line</formal-name>
       <description>A single line of an address.</description>
    </define-field>
