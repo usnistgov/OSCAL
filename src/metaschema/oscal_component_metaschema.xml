@@ -116,7 +116,7 @@
         <group-as name="artifacts" in-json="BY_KEY" />
       </assembly>
 -->
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
          <allowed-values target="prop/@name" allow-other="yes">
@@ -228,7 +228,7 @@
         <group-as name="supported-profiles" />
       </assembly>
 -->
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="incorporates-component">
@@ -317,7 +317,7 @@
          <assembly ref="statement" max-occurs="unbounded">
             <group-as name="statements" in-json="BY_KEY"/>
          </assembly>
-         <field ref="remarks"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
    <define-assembly name="statement">
