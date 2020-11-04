@@ -211,7 +211,7 @@
                   <formal-name>Constraint test</formal-name>
                   <description>A formal (executable) expression of a constraint</description>
                </define-field>
-               <field ref="remarks"/>
+               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
          </define-assembly>
       </model>

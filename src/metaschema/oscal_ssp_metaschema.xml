@@ -963,6 +963,17 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
+         <allowed-values target="annotation[not(@ns) or @ns='http://csrc.nist.gov/ns/oscal']/@name">
+            <enum value="implementation-status">TODO: brian please define</enum>
+         </allowed-values>
+         <allowed-values target="annotation[(not(@ns) or @ns='http://csrc.nist.gov/ns/oscal') and @name='implementation-status']/value()">
+            <enum value="implemented">TODO: brian please define</enum>
+            <enum value="partial">TODO: brian please define</enum>
+            <enum value="planned">TODO: brian please define</enum>
+            <enum value="alternative">TODO: brian please define</enum>
+            <enum value="not-applicable">TODO: brian please define</enum>
+         </allowed-values>
+         
          <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
