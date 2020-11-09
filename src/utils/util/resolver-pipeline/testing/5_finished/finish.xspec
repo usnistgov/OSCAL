@@ -101,7 +101,7 @@
                     <title>Catalog</title>
                 </metadata>
                 <back-matter>
-                    <citation id="cit1">citation</citation>
+                    <resource uuid="cit1">citation</resource>
                 </back-matter>
             </catalog>
         </x:context>
@@ -124,8 +124,8 @@
                     <link href="#citA">link to good citation</link>
                 </control>
                 <back-matter>
-                    <citation id="cit1">unclaimed citation</citation>
-                    <citation id="citA">good citation</citation>
+                    <resource uuid="cit1">unclaimed citation</resource>
+                    <resource uuid="citA">good citation</resource>
                 </back-matter>
             </catalog>
         </x:context>
@@ -139,7 +139,7 @@
                     <link href="#citA">link to good citation</link>
                 </control>
                 <back-matter>
-                    <citation id="citA">good citation</citation>
+                    <resource uuid="citA">good citation</resource>
                 </back-matter>
             </catalog>
         </x:expect>
