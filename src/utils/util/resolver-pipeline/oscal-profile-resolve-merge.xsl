@@ -48,7 +48,7 @@
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
             <xsl:variable name="merged-selections">
-            <xsl:call-template name="o:merge-groups-asis">
+            <xsl:call-template name="o:merge-groups-as-is">
                 <xsl:with-param name="merging" select="selection"/>
             </xsl:call-template>
             </xsl:variable>
@@ -122,9 +122,9 @@
     </xsl:template>
     
     
-    <xsl:template name="o:merge-groups-asis">
+    <xsl:template name="o:merge-groups-as-is">
         <xsl:param name="merging" select="()"/>
-        <xsl:for-each-group select="$merging" group-by="(@opr:id,@id,generate-id())[1]">
+        <xsl:for-each-group select="$merging" group-by="(@uuid,@opr:id,@id,generate-id())[1]">
             <xsl:variable name="merged" select="current-group()"/>
             <xsl:for-each select="$merged[1]">
                 <xsl:copy copy-namespaces="no">
@@ -139,7 +139,7 @@
                         <xsl:with-param name="who" select="$merged/control"/>
                     </xsl:call-template>
                     
-                    <xsl:call-template name="o:merge-groups-asis">
+                    <xsl:call-template name="o:merge-groups-as-is">
                         <xsl:with-param name="merging" select="$merged/group[exists(descendant::control)]"/>
                     </xsl:call-template>
                     

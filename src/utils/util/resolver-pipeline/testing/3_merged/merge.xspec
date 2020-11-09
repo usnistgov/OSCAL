@@ -11,7 +11,7 @@
     <x:scenario label="Single import, no merge (flat)">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                         <group id="x">
                             <title>Group X of XYZ</title>
                             <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -61,7 +61,7 @@
     <x:scenario label="Parallel imports, no merge, keeping all">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -76,7 +76,7 @@
                         </control>
                     </group>
                 </selection>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1">

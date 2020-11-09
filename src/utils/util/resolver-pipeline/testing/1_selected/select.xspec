@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE x:description [
-<!ENTITY filedir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples" >
+<!ENTITY filedir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
 ]>
 
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../oscal-profile-resolve-select.xsl">
@@ -22,32 +22,32 @@
         
         <x:expect label="Select all controls, grouped">
             <profile>
-                <selection id="xyz-tiny_catalog" opr:src="...">
+                <selection uuid="..." opr:src="...">
                     <metadata>
                         <title>XYZ Tiny Catalog</title>
-                        <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
-                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
-                        <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        <control id="x1" opr:id="..."><title>Control X1</title></control>
+                        <control id="x2" opr:id="..."><title>Control X2</title></control>
+                        <control id="x3" opr:id="..."><title>Control X3</title></control>
                     </group>
                     <group opr:id="...">
                         <title>Group Y of XYZ</title>
-                        <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
-                        <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
-                        <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        <control id="y1" opr:id="..."><title>Control Y1</title></control>
+                        <control id="y2" opr:id="..."><title>Control Y2</title></control>
+                        <control id="y3" opr:id="..."><title>Control Y3</title></control>
                     </group>
                     <group opr:id="...">
                         <title>Group Z of XYZ</title>
-                        <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
-                        <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
-                        <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
-                            <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                        <control id="z1" opr:id="..."><title>Control Z1</title></control>
+                        <control id="z2" opr:id="..."><title>Control Z2</title></control>
+                        <control id="z3" opr:id="..."><title>Control Z3</title>
+                            <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
                             </control>
                         </control>
                     </group>
@@ -68,16 +68,16 @@
         
         <x:expect label="Control x1, in its group, with other groups empty">
             <profile>
-                <selection id="xyz-tiny_catalog" opr:src="...">
-                       <metadata>
-                           <title>XYZ Tiny Catalog</title>
-                           <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
-                           <version>1.0</version>
-                           <oscal-version>1.0-MR2</oscal-version>
-                       </metadata>
-                       <group opr:id="...">
+                <selection uuid="..." opr:src="...">
+                    <metadata>
+                        <title>XYZ Tiny Catalog</title>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                        <version>1.0</version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
+                    </metadata>
+                    <group opr:id="...">
                             <title>Group X of XYZ</title>
-                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x1" opr:id="..."><title>Control X1</title></control>
                         </group>
                        <group opr:id="..."><title>Group Y of XYZ</title></group>
                        <group opr:id="..."><title>Group Z of XYZ</title></group>
@@ -100,18 +100,18 @@
         
         <x:expect label="The x controls, matched as such">
             <profile>
-                <selection id="xyz-tiny_catalog" opr:src="...">
+                <selection uuid="..." opr:src="...">
                     <metadata>
                         <title>XYZ Tiny Catalog</title>
-                        <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
-                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
-                        <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        <control id="x1" opr:id="..."><title>Control X1</title></control>
+                        <control id="x2" opr:id="..."><title>Control X2</title></control>
+                        <control id="x3" opr:id="..."><title>Control X3</title></control>
                     </group>
                     <group opr:id="..."><title>Group Y of XYZ</title></group>
                     <group opr:id="..."><title>Group Z of XYZ</title></group>
@@ -135,29 +135,29 @@
         
         <x:expect label="All controls but x1,y1,z1, grouped">
             <profile>
-                <selection id="xyz-tiny_catalog" opr:src="...">
+                <selection uuid="..." opr:src="...">
                     <metadata>
                         <title>XYZ Tiny Catalog</title>
-                        <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
-                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
-                        <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        <control id="x2" opr:id="..."><title>Control X2</title></control>
+                        <control id="x3" opr:id="..."><title>Control X3</title></control>
                     </group>
                     <group opr:id="...">
                         <title>Group Y of XYZ</title>
-                        <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
-                        <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        <control id="y2" opr:id="..."><title>Control Y2</title></control>
+                        <control id="y3" opr:id="..."><title>Control Y3</title></control>
                     </group>
                     <group opr:id="...">
                         <title>Group Z of XYZ</title>
-                        <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
-                        <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
-                            <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                        <control id="z2" opr:id="..."><title>Control Z2</title></control>
+                        <control id="z3" opr:id="..."><title>Control Z3</title>
+                            <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
                             </control>
                         </control>
                     </group>
@@ -184,39 +184,41 @@
         
         <x:expect label="Showing two control selections">
             <profile>
-                <selection id="xyz-tiny_catalog" opr:src="...">
+                <selection uuid="..." opr:src="...">
                     <metadata>
                         <title>XYZ Tiny Catalog</title>
-                        <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        <control id="x1" opr:id="..."><title>Control X1</title></control>
                     </group>
                     <group opr:id="..."><title>Group Y of XYZ</title></group>
                     <group opr:id="..."><title>Group Z of XYZ</title></group>
                 </selection>
-                <selection id="xyz-tiny_catalog" opr:src="...">
+                <selection uuid="..." opr:src="...">
                     <metadata>
                         <title>XYZ Tiny Catalog</title>
-                        <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
                     </group>
                     <group opr:id="...">
                         <title>Group Y of XYZ</title>
-                        <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                        <control id="y1" opr:id="..."><title>Control Y1</title></control>
                     </group>
                     <group opr:id="..."><title>Group Z of XYZ</title></group>
                 </selection>
             </profile>
         </x:expect>
-    </x:scenario><x:scenario label="Loose parameters">
+    </x:scenario>
+    
+    <x:scenario label="Loose parameters">
         <x:context>
             <profile>
                 <import href="&filedir;/abc-full_catalog.xml">
@@ -230,43 +232,44 @@
         
         <x:expect label="Two controls in three groups with back matter and loose parameters">
             <profile>
-                <selection id="abc-full_catalog" opr:src="...">
-                    <metadata>
+                <selection uuid="..." opr:src="...">
+                    <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                         <title>ABC Catalog</title>
-                        <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
+                        <last-modified>2020-05-30T14:51:38.311-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0.0-milestone3</oscal-version>
                     </metadata>
-                    <group opr:id="abc-full_catalog#d25e12">
+                    <group opr:id="...">
                         <title>Group A of C</title>
-                        <param id="param-A.a" opr:id="abc-full_catalog#param-A.a">
+                        <param id="param-A.a" opr:id="...">
                             <label>A.a parameter</label>
                             <value>A.a value</value>
                         </param>
-                        <param id="param-A.b" opr:id="abc-full_catalog#param-A.b">
-                            <label>A.b parameter</label>
-                            <value>A.b value</value>
+                        <param id="param-A.b" opr:id="...">
+                            <select>
+                                <choice>A.b parameter selection choice 1</choice>
+                                <choice>A.b parameter selection choice 2</choice>
+                                <choice>A.b parameter selection choice 3</choice>
+                            </select>
                         </param>
-                        <control id="a1" opr:id="abc-full_catalog#a1">
+                        <control id="a1" opr:id="...">
                             <title>Control A1</title>
-                            <param id="param-a1.a" opr:id="abc-full_catalog#param-a1.a">
+                            <param id="param-a1.a" opr:id="...">
                                 <label>a1.a parameter</label>
                                 <value>a1.a value</value>
                             </param>
                             <prop name="place">first</prop>
                             <part name="statement" id="a1-stmt">
                                 <p>A1 aaaaa aaaaaaaaaa</p>
-                                <p>Parameter A.a is set: <insert param-id="param-A.a"/>
-                                </p>
-                                <p>Parameter a1.a is set: <insert param-id="param-a1.a"/>
-                                </p>
+                                <p>Parameter A.a is set: <insert param-id="param-A.a"/>...</p>
+                                <p>Parameter a1.a is set: <insert param-id="param-a1.a"/>...</p>
                                 <p>Also, we <a href="#citation">refer to a citation</a>.</p>
                             </part>
                         </control>
                     </group>
-                    <group opr:id="abc-full_catalog#d25e68">
+                    <group opr:id="...">
                         <title>Group B of C</title>
-                        <control id="b1" opr:id="abc-full_catalog#b1">
+                        <control id="b1" opr:id="...">
                             <title>Control B1</title>
                             <prop name="place">first</prop>
                             <part name="statement" id="b1-stmt">
@@ -274,13 +277,15 @@
                             </part>
                         </control>
                     </group>
-                    <group opr:id="abc-full_catalog#d25e95">
+                    <group opr:id="...">
                         <title>Group C of C</title>
                     </group>
                     <back-matter>
-                        <citation id="citation">
-                            <desc>A citation to an out of line document.</desc>
-                        </citation>
+                        <resource uuid="...">
+                            <citation>
+                                <text>A citation to an out of line document.</text>
+                            </citation>
+                        </resource>
                     </back-matter>
                 </selection>
             </profile>

@@ -28,7 +28,7 @@
            A post-process (filter) will be applied to remove them in a later stage. -->
     
     <xsl:template match="* | @*" mode="#all">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
@@ -38,7 +38,7 @@
     
 <!-- We catch the unmoded template only once, at the top; other matches will be in mode o:select   -->
     <xsl:template match="profile">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="o:select" select="node() | @*">
                 <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack-in"/>
             </xsl:apply-templates>
@@ -50,7 +50,7 @@
         <xsl:param name="uri-stack" tunnel="yes" select="()"/>
         <xsl:variable name="uri-here" select="document-uri(root())"/>
         <xsl:if test="not($uri-here = $uri-stack)">
-            <xsl:copy>
+            <xsl:copy copy-namespaces="no">
                 <opr:warning>
                     <xsl:text>profile '</xsl:text>
                     <xsl:value-of select="$uri-here"/>
@@ -99,7 +99,7 @@
     
     <!-- We want a group even if there is nothing to put in it, for potential merging downstream  -->
     <xsl:template match="group" mode="o:select">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <!-- add an ID for downstream processing when the source has none -->
             <xsl:call-template name="add-process-id"/>    
             <xsl:apply-templates mode="o:select" select="node() | @*"/>
@@ -115,14 +115,14 @@
     
     <xsl:function name="opr:catalog-identifier" as="xs:string">
         <xsl:param name="catalog" as="element(o:catalog)"/>
-        <xsl:sequence select="$catalog/(@canonical-id,@id,document-uri(root(.)))[1]"/>
+        <xsl:sequence select="$catalog/(@uuid,document-uri(root(.)))[1]"/>
     </xsl:function>
     
     <!-- A control is included if it is selected by the provided import instruction -->
     <xsl:template match="control" mode="o:select">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:if test="o:selects($import-instruction,.)">
-            <xsl:copy>
+            <xsl:copy copy-namespaces="no">
                 <xsl:call-template name="add-process-id"/>    
                 <xsl:apply-templates mode="#current" select="node() | @*"/>
             </xsl:copy>
@@ -131,7 +131,7 @@
     
     <!-- Parameters are always passed through until later stages. -->
     <xsl:template match="param" mode="o:select">
-        <xsl:copy>
+        <xsl:copy copy-namespaces="no">
             <xsl:call-template name="add-process-id"/>    
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>

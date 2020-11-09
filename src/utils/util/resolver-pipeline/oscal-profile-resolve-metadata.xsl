@@ -14,6 +14,7 @@
     <xsl:param name="profile-origin-uri">urn:UNKNOWN</xsl:param>
     
     <xsl:variable name="uuid-service" select="'https://www.uuidgenerator.net/api/version4'"/>
+    
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
