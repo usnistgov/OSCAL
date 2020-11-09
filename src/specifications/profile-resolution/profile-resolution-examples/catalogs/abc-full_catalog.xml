@@ -18,8 +18,11 @@
          <value>A.a value</value>
       </param>
       <param id="param-A.b">
-         <label>A.b parameter</label>
-         <value>A.b value</value>
+         <select>
+            <choice>A.b parameter selection choice 1</choice>
+            <choice>A.b parameter selection choice 2</choice>
+            <choice>A.b parameter selection choice 3</choice>
+         </select>
       </param>
       <control id="a1">
          <title>Control A1</title>

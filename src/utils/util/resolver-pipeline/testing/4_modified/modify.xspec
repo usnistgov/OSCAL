@@ -13,6 +13,74 @@
             <catalog id="abc"/>
         </x:expect>
     </x:scenario>
+
+    <x:scenario label="Setting some parameters">
+        <x:context>
+            <catalog id="abc">
+                <param id="abc-1">
+                    <label>ABC Parameter</label>
+                </param>
+                <param id="abc-select">
+                    <select>
+                        <choice>choice 1</choice>
+                        <choice>choice 2</choice>
+                        <choice>choice 3</choice>
+                    </select>
+                </param>
+                <control id="a123">
+                    <title>Control A</title>
+                    <param id="a123-1">
+                        <label>A 123 Parameter</label>
+                    </param>
+                    <param id="a123-select">
+                        <select>
+                            <choice>choice 1</choice>
+                            <choice>choice 2</choice>
+                            <choice>choice 3</choice>
+                        </select>
+                    </param>
+                    <prop name="rating">AAA</prop>
+                </control>
+                <modify>
+                    <set-parameter param-id="a123-1">
+                        <value>New a123-1</value>
+                    </set-parameter>
+                    <set-parameter param-id="a123-select">
+                        <select>
+                            <choice>choice 1</choice>
+                        </select>
+                    </set-parameter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Adding the new property at the front">
+            <catalog id="abc">
+                <param id="abc-1">
+                    <label>ABC Parameter</label>
+                </param>
+                <param id="abc-select">
+                    <select>
+                        <choice>choice 1</choice>
+                        <choice>choice 2</choice>
+                        <choice>choice 3</choice>
+                    </select>
+                </param>
+                <control id="a123">
+                    <title>Control A</title>
+                    <param id="a123-1">
+                        <label>A 123 Parameter</label>
+                        <value>New a123-1</value>
+                    </param>
+                    <param id="a123-select">
+                        <select>
+                            <choice>choice 1</choice>
+                        </select>
+                    </param>
+                    <prop name="rating">AAA</prop>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
     
     <x:scenario label="Simple property addition to a control, solo">
         <x:context>

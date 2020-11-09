@@ -41,11 +41,11 @@
             <xsl:copy-of select="@*"/>
             <!--param contains: label, usage, constraint, guideline, value, link
             set-parameter contains: label, usage, constraint, value, link-->
-            <xsl:sequence select="label,     $settings/label"/>
+            <xsl:sequence select="($settings/label,label)[1]"/>
             <xsl:sequence select="usage,     $settings/usage"/>
             <xsl:sequence select="constraint,$settings/constraint"/>
             <xsl:sequence select="guideline, $settings/guideline"/>
-            <xsl:sequence select="value,     $settings/value"/>
+            <xsl:sequence select="($settings/(select,value), select, value)[1]"/>
             <xsl:sequence select="link,      $settings/link"/>
         </xsl:copy>
     </xsl:template>

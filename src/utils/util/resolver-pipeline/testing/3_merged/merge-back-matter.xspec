@@ -13,7 +13,7 @@
     <x:scenario label="Merge with back matter">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -80,7 +80,7 @@
     <x:scenario label="Merge as-is with back matter">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
