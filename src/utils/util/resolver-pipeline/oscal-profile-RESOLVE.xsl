@@ -33,7 +33,7 @@
 
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
     
-    <!-- $path-to-source should point back to the source catalog from its result,
+    <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
          so '..' is appropriate when writing results down a directory. -->
     <xsl:param name="path-to-source" as="xs:string?"/>
     
