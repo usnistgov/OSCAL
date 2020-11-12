@@ -76,7 +76,9 @@ In both uses, a catalog defines:
 See [examples](#content-examples) of OSCAL catalogs.
 
 
-{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+{{<callout>}}**IMPORTANT NOTE TO DEVELOPERS**
+
+Every time the content of an OSCAL file changes, the following must also change:
 - A new UUID value must be generated and assigned to the root element's `uuid`.
 - The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
 
