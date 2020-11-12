@@ -7,6 +7,10 @@ aliases:
   - /documentation/schema/assessment-results/
 ---
 
+| Assessment Results Schema | Assessment Results Converters 
+|:--- |:--- |
+| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_assessment-results_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_assessment-results_json-to-xml-converter.xsl)
+
 ## Purpose
 
 The OSCAL Assessment Results model defines the information contained within an assessment report supporting assessment and continuous monitoring capabilities.
@@ -66,3 +70,11 @@ This model was designed to use identical syntax to the [assessment plan model](.
 
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL Assessment Results.
 ![A diagram representing the OSCAL stack from a assessment results' perspective.](OSCAL-stack-assessment_results.svg)
+
+{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+- A new UUID value must be generated and assigned to the root element's `uuid`.
+- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+
+These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
+
+When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}

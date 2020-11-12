@@ -9,6 +9,11 @@ aliases:
   - /documentation/schema/catalog-layer/catalog/examples/
 ---
 
+| Catalog Schema | Catalog Converters 
+|:--- |:--- |
+| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_catalog_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_catalog_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_catalog_json-to-xml-converter.xsl)
+
+
 ## Purpose
 
 The OSCAL catalog model represents a collection of [controls](../../../concepts/#control), represented as a control [catalog](../../../concepts/#catalog).
@@ -70,6 +75,14 @@ In both uses, a catalog defines:
 
 See [examples](#content-examples) of OSCAL catalogs.
 
+
+{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+- A new UUID value must be generated and assigned to the root element's `uuid`.
+- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+
+These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
+
+When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
 
 ## Content Examples
 
