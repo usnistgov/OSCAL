@@ -28,6 +28,5 @@ A Gitter [chat room](https://gitter.im/usnistgov-OSCAL/Lobby) is available for O
 
 NIST hosts a couple of OSCAL mailing lists.
 
-- [oscal-dev@nist.gov](mailto:oscal-dev@nist.gov) for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-subscribe@nist.gov](mailto:oscal-dev-subscribe@nist.gov). To unsubscribe send an email to [oscal-dev-unsubscribe@nist.gov](mailto:oscal-dev-unsubscribe@nist.gov).
-- [oscal-updates@nist.gov](mailto:oscal-updates@nist.gov) for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-subscribe@nist.gov](mailto:oscal-updates-subscribe@nist.gov). To unsubscribe send an email to [oscal-updates-unsubscribe@nist.gov](mailto:oscal-updates-unsubscribe@nist.gov).
-
+- [oscal-dev@nist.gov](mailto:oscal-dev@nist.gov) for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev+subscribe@list.nist.gov](mailto:oscal-dev+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-dev+unsubscribe@list.nist.gov](mailto:oscal-dev+unsubscribe@list.nist.gov).
+- [oscal-updates@list.nist.gov](mailto:oscal-updates@list.nist.gov) for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates+subscribe@list.nist.gov](mailto:oscal-updates+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-updates+unsubscribe@list.nist.gov](mailto:oscal-updates+unsubscribe@list.nist.gov).
