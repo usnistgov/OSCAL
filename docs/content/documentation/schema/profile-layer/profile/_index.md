@@ -8,6 +8,11 @@ aliases:
   - /documentation/schema/profile/
 ---
 
+| Profile Schema | Profile Converters 
+|:--- |:--- |
+| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_profile_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_profile_json-to-xml-converter.xsl)
+
+
 ## Purpose
 
 The OSCAL Profile model represents a [baseline](../../../concepts/#baseline) of selected [controls](../../../concepts/#control) from one or more control [catalogs](../../../concepts/#catalog), which is referred to as a "profile" in OSCAL. The Profile model is the sole model in the OSCAL [Profile](../) layer.
@@ -71,6 +76,14 @@ These three functions are reflected in the organization of a profile document, w
 
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL profile.
 ![A diagram representing the OSCAL stack from a profile's perspective.](OSCAL-stack-profile.svg)
+
+{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+- A new UUID value must be generated and assigned to the root element's `uuid`.
+- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+
+These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
+
+When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
 
 ## Content Examples
 
