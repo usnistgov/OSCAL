@@ -7,6 +7,10 @@ aliases:
   - /documentation/schema/poam/
 ---
 
+| POA&M Schema | POA&M Converters 
+|:--- |:--- |
+| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_poam_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_poam_json-to-xml-converter.xsl)
+
 ## Purpose
 
 The OSCAL Plan of Action and Milestones (POA&M) model defines the information contained within a POA&M. 
@@ -64,3 +68,11 @@ It was designed to use identical syntax to the [assessment results model](/docum
 
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL POA&M.
 ![A diagram representing the OSCAL stack from a system security plan's perspective.](OSCAL-stack-POAM.svg)
+
+{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+- A new UUID value must be generated and assigned to the root element's `uuid`.
+- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+
+These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
+
+When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
