@@ -8,6 +8,10 @@ aliases:
   - /documentation/schema/component/
 ---
 
+| Component Schema | Component Converters 
+|:--- |:--- |
+| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_component_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_component_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_component_json-to-xml-converter.xsl)
+
 ## Purpose
 
 The OSCAL component definition model represents a description of the [controls](../../../concepts/#control) that are supported in a given implementation of a hardware, software, service, policy, process, or procedure. The component definition model is part of the OSCAL [implementation](../) layer.
@@ -81,3 +85,11 @@ A component within a component definition can be used to document and share:
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL Component Definition.
 
 ![A diagram representing the OSCAL stack from a component definition's perspective.](OSCAL-stack-component.svg)
+
+{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+- A new UUID value must be generated and assigned to the root element's `uuid`.
+- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+
+These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
+
+When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
