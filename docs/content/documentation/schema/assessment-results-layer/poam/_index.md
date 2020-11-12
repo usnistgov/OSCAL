@@ -69,7 +69,9 @@ It was designed to use identical syntax to the [assessment results model](/docum
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL POA&M.
 ![A diagram representing the OSCAL stack from a system security plan's perspective.](OSCAL-stack-POAM.svg)
 
-{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+{{<callout>}}**IMPORTANT NOTE TO DEVELOPERS**
+
+Every time the content of an OSCAL file changes, the following must also change:
 - A new UUID value must be generated and assigned to the root element's `uuid`.
 - The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
 
