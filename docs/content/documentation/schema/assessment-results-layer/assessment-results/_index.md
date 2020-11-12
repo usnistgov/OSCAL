@@ -71,7 +71,9 @@ This model was designed to use identical syntax to the [assessment plan model](.
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL Assessment Results.
 ![A diagram representing the OSCAL stack from a assessment results' perspective.](OSCAL-stack-assessment_results.svg)
 
-{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+{{<callout>}}**IMPORTANT NOTE TO DEVELOPERS**
+
+Every time the content of an OSCAL file changes, the following must also change:
 - A new UUID value must be generated and assigned to the root element's `uuid`.
 - The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
 

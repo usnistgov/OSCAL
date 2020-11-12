@@ -49,7 +49,10 @@ An OSCAL file is organized as follows:
 {{% /usa-grid-row %}}
 {{% /usa-grid-container %}}
 
-{{<callout>}}Every time the content of an OSCAL file changes, the following must also change:
+{{<callout>}}
+**IMPORTANT NOTE TO DEVELOPERS**
+
+Every time the content of an OSCAL file changes, the following must also change:
 - A new UUID value must be generated and assigned to the root element's `uuid`.
 - The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
 
@@ -92,7 +95,7 @@ UUIDs are intended to be consistently used to represent the same concept over mu
 #### Referencing Identifiers
 
 Identifiers may be referenced from other locations within OSCAL content using one of the following:
-1. `[_name_]-id` or `[_name_]-uuid`, where _name_ is a prefix indicating the type of referenced element or object;
+1. <code>[<em>name</em>]-id</code> or <code>[<em>name</em>]-uuid</code>, where _name_ is a prefix indicating the type of referenced element or object;
 2. `id-ref` or `uuid-ref`, where the referenced element or object is not always the same type; or
 3. Uniform Resource Identifier (URI) Fragment: A value in a flag or field with a [URI data type](../datatypes/#uri). A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5) starts with a hashtag (#) followed by a unique ID value. When used in an OSCAL file, this must be an ID or UUID.
 
@@ -131,10 +134,45 @@ Models in OSCAL are organized hierarchically. At each level of this hierarchy, O
 
 For any property or annotation identified with the organization's namespace, the organization may use any [NCName](../datatypes/#ncname) value in the property/annotation's `name`. This allows the organization to define the containing content as required. Organizations are strongly encouraged to publish these extensions to their community of OSCAL tool developers.
 
-{{% callout %}}IMPORTANT NOTE TO DEVELOPERS
-Tools should always check for the `ns` assignment with properties and annotations. 
-When no `ns` the default is `http://csrc.nist.gov/ns/oscal`, which means the annotation or property is assumed to be part of the core OSCAL syntax. 
+{{% callout %}}
+**IMPORTANT NOTE TO DEVELOPERS**
 
-This is especially import as organizations extending OSCAL may use the same `name` value as in core OSCAL.
+Tools should always check for the `ns` assignment within properties and annotations. 
+When no `ns` is provided, the default is `http://csrc.nist.gov/ns/oscal`, which means the annotation or property is assumed to be part of the core OSCAL syntax. 
 
-`property[@name='status'][@ns='https://fedramp.gov/ns/oscal']` and `property[@name='status']` are not the same; however, if a tool is only looking for `property[@name='status']`, it will inappropriately find the first property as well as the second.{{% /callout %}}
+This is especially important as organizations extending OSCAL may use the same `name` value, but in a different namespace as compared to core OSCAL.
+
+`property[@name='status'][@ns='https://fedramp.gov/ns/oscal']` and `property[@name='status']` are not the same; however, if a tool is only looking for `property[@name='status']`, it will inappropriately find the first property as well as the second.
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml >}}
+<prop 
+   name="status" 
+   ns="https://fedramp.gov/ns/oscal">fedramp-defined-status</prop>
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json >}}
+{
+   "properties": [
+     {
+       "name": "status",
+       "ns": "https://fedramp.gov/ns/oscal",
+       "value": "fedramp-defined-status"
+     }
+   ]
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml>}}
+properties:
+- name: status
+  ns: https://fedramp.gov/ns/oscal
+  value: fedramp-defined-status
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /callout %}}
