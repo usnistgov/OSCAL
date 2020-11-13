@@ -1,12 +1,12 @@
 <!--  CHANGHD "os" to "operating-system" -->
-<enum value="operating-system"></enum>
-<enum value="database"></enum>
-<enum value="web-server"></enum>
-<enum value="dns-server"></enum>
-<enum value="email-server"></enum>
-<enum value="directory-server"></enum>
-<enum value="pbx"></enum>
-<enum value="firewall"></enum>
-<enum value="router"></enum>
-<enum value="switch"></enum>
-<enum value="storage-array"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="operating-system"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="database"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="web-server"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="dns-server"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="email-server"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="directory-server"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="pbx"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="firewall"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="router"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="switch"></enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="storage-array"></enum>
