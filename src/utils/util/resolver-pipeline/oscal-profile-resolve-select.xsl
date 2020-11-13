@@ -54,18 +54,18 @@
         <xsl:param name="uri-stack" tunnel="yes" select="()"/>
         <xsl:variable name="uri-here" select="base-uri(.)"/>
         <xsl:if test="not($uri-here = $uri-stack)">
-          <xsl:sequence select="o:resolve-profile(.,$uri-stack)"/>
-<!--            <xsl:copy copy-namespaces="no">
+          <!--<xsl:sequence select="o:resolve-profile(.,$uri-stack)"/>-->
+            <xsl:copy copy-namespaces="no">
                 <opr:warning>
                     <xsl:text>profile '</xsl:text>
                     <xsl:value-of select="$uri-here"/>
                     <xsl:text>' picked up - and dropped - on import - we do only catalogs so far</xsl:text>
                 </opr:warning>
-                <!-\-<xsl:apply-templates mode="o:select" select="node() | @*">
+                <!--<xsl:apply-templates mode="o:select" select="node() | @*">
                     <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack,$uri-here"/>
-                </xsl:apply-templates>-\->
+                </xsl:apply-templates>-->
             </xsl:copy>
--->        </xsl:if>
+        </xsl:if>
         
     </xsl:template>
     
@@ -225,7 +225,7 @@
         </xsl:variable>
         <xsl:variable name="runtime" as="map(xs:string, item())">
             <xsl:map>
-                <xsl:map-entry key="'xslt-version'"        select="'3.0'"/>
+                <xsl:map-entry key="'xslt-version'"        select="3.0"/>
                 <xsl:map-entry key="'stylesheet-location'" select="'../oscal-profile-RESOLVE.xsl'"/>
                 <xsl:map-entry key="'source-node'"         select="root($profile)"/>
                 <xsl:map-entry key="'stylesheet-params'"   select="$runtime-params"/>
