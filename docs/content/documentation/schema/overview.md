@@ -99,6 +99,17 @@ Identifiers may be referenced from other locations within OSCAL content using on
 2. `id-ref` or `uuid-ref`, where the referenced element or object is not always the same type; or
 3. Uniform Resource Identifier (URI) Fragment: A value in a flag or field with a [URI data type](../datatypes/#uri). A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5) starts with a hashtag (#) followed by a unique ID value. When used in an OSCAL file, this must be an ID or UUID.
 
+## Accepted Values
+
+To facilitate consistent processing, the value for some fields is limited to a list of _case-sensitive_ acceptable values. For some fields, OSCAL defines acceptable values, which are enforced by OSCAL-based syntax validation mechanisms. 
+
+Where OSCAL does not strictly limit the acceptable values, organizations are free to allow other values. The following is encouraged:
+- If OSCAL offers recommended values, these should be given preference and used whenever applicable.
+- If the organization defines other acceptable values:
+  - these values should be lower case with no spaces and minimal special characters;
+  - dashes are encouraged in place of spaces; and
+  - the organization should publish a list of acceptable values for each field to ensure tool developers and the user community consistent use the same values.
+
 ## Model Formats and Schema
 
 For each OSCAL model, the OSCAL project is supporting XML-, JSON-, and YAML-based formats. The following types of schemas are also provided, which support validation of content expressed in a specific model format:
