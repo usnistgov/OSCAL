@@ -9,7 +9,12 @@ aliases:
 
 | POA&M Schema | POA&M Converters 
 |:--- |:--- |
-| [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json) | [XML to JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_poam_xml-to-json-converter.xsl), [JSON to XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_poam_json-to-xml-converter.xsl)
+| [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_poam_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
+| [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_poam_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
+
+
+
+| [XML](), [JSON]() | [XML to JSON](), [JSON to XML]()
 
 ## Purpose
 
