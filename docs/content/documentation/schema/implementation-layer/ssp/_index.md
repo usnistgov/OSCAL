@@ -71,6 +71,9 @@ These are two mechanisms by which tools can quickly "know" if a file has changed
 
 When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
 
+### Modeling Validation Information
+OSCAL is designed to allow capture relevant details related to independent validation of components. See [Validation Modeling](../validation-modeling) for details.
+
 ## Content Examples
 
 Multiple examples of SSP expressed using the OSCAL SSP model can be found in the OSCAL GitHub repository in [XML](https://github.com/usnistgov/oscal-content/tree/master/ssp-example/xml), 
