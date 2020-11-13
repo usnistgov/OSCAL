@@ -32,8 +32,8 @@ The core OSCAL project team regularly reviews the open issues, prioritizes their
 
 There are two mailing lists for the project:
 
-- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
-- *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
+- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev+subscribe@list.nist.gov](mailto:oscal-dev+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-dev+unsubscribe@list.nist.gov](mailto:oscal-dev+unsubscribe@list.nist.gov).
+- *oscal-updates@list.nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates+subscribe@list.nist.gov](mailto:oscal-updates+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-updates+unsubscribe@list.nist.gov](mailto:oscal-updates+unsubscribe@list.nist.gov).
 
 ## Contributing to the OSCAL repository
 
@@ -56,7 +56,7 @@ This repository consists of the following directories and files pertaining to th
 - [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
 - [content](content): This directory once stored XML, JSON, and YAML content examples. These examples have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/master).
 - [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
-- [src](src): This directory once stored source artifacts used to produce the XML, JSON, and YAML resources that were provided in this repository. These resources have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/master/src).
+- [src](src): This includes the resources used by the NIST OSCAL Team to manage OSCAL development, including the metaschema files used to maintain the OSCAL models across all supported formats. This directory once stored source artifacts used to produce the XML, JSON, and YAML resources that were provided in this repository. These resources have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/master/src).
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
 - [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
 - [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
