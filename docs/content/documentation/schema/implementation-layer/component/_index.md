@@ -95,3 +95,7 @@ Every time the content of an OSCAL file changes, the following must also change:
 These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
 
 When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
+
+### Modeling Validation Information
+OSCAL is designed to allow capture relevant details related to independent validation of components. See [Validation Modeling](../validation-modeling) for details.
+
