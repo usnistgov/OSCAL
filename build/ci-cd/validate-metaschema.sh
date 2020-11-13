@@ -141,7 +141,7 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       echo -e "${P_INFO}Validating metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
     fi
 
-    result=$(xmllint --nowarning --noout --schema "${metaschema_xsd}" "$metaschema" 2>&1)
+    result=$(xmllint --nowarning --noent --noout --schema "${metaschema_xsd}" "$metaschema" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
