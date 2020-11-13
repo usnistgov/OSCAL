@@ -187,3 +187,15 @@ properties:
 {{< /tabs >}}
 
 {{% /callout %}}
+
+## OSCAL Converters
+
+Each publication of the OSCAL models includes the ability to convert OSCAL file between supported formats without content loss.
+This allows developers to use their preferred format. A tool designed for one format can accept other formats by simply converting to the supported format during import and/or converting to the alternative format during export.
+
+Currently, converters are available to convert XML-based OSCAL files to JSON and JSON-based OSCAL files to XML.
+
+- [XML to JSON converters](https://github.com/usnistgov/OSCAL/tree/master/json/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json))
+- [JSON to XML converters](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml))
+
+
