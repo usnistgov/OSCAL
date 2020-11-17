@@ -107,7 +107,7 @@
       </ul>
    </xsl:template>
 
-<xsl:key match="*[exists(@id)]" use="@id" name="by-id"/>
+   <xsl:key match="*[@id]" use="@id" name="by-id"/>
    
    <xsl:template match="o:xref">
       <xsl:text>[See: </xsl:text>
