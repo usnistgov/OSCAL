@@ -303,7 +303,7 @@
           <p>none - no identification (each input control is distinct) - for tracing</p>
         </li>
       </ul>
-      <p><revisit>Brian Ruf suggested we provide a resolution/disambiguation/debugging mode that
+      <p><revisit>Dev team member suggests we provide a resolution/disambiguation/debugging mode that
           produces valid OSCAL by producing new IDs for everything, thereby disambiguating by brute
           force. This is not a bad idea. This proposal offers that feature as 'no identity
           designation', i.e. nothing is found to be identical with anything.</revisit></p>
