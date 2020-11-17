@@ -92,7 +92,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     To install the required Node.js modules globally (for all users), run the following:
 
     ```bash
-    sudo npm install -g prettyjson markdown-link-check json-diff
+    sudo npm install -g prettyjson markdown-link-check json-diff ajv-cli
     ```
 
     Or to install locally
