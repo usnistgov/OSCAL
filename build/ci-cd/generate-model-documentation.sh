@@ -95,9 +95,6 @@ else
   done <"$OSCALDIR/build/ci-cd/config/metaschema"
 fi
 
-# the stylesheet used to generate the documentation
-stylesheet="$OSCALDIR/build/metaschema/toolchains/oscal-m2/xml/produce-and-run-either-documentor.xsl"
-
 # the URL of the github repo where generated artifacts will be accessible
 github_url="/artifacts"
 
@@ -115,15 +112,9 @@ for i in "${!paths[@]}"; do
   filename="${filename%.*}"
   base="${filename/_metaschema/}"
   metaschema_relative=$(realpath --relative-to="$WORKING_DIR" "$metaschema")
-  converter="$WORKING_DIR/json/convert/${base}_xml-to-json-converter.xsl"
-
-  # Make xslt paths relative to current directory
   metaschema_path=$(realpath --relative-to="$PWD" "$metaschema")
-  stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
-  output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
-  # Make converter path relative to the stylesheet
-  stylesheet_dir=$(dirname "$stylesheet")
-  converter_path=$(realpath --relative-to="$stylesheet_dir" "$converter")
+
+  model="${base/oscal_/}"
 
   #split on commas
   IFS_OLD=$IFS
@@ -135,46 +126,126 @@ for i in "${!paths[@]}"; do
       continue
     fi
 
-    # Run the XSL template for the format
+    # Run the model docs XSL template for the format
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "  ${P_INFO}Generating ${format} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+    fi
+
     case $format in
     xml)
+      # the stylesheet used to generate the documentation
+      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-XML-DOCS.xsl"
+      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
+      stylesheet_dir=$(dirname "$stylesheet")
+
+      # Make converter path relative to the stylesheet
       # determine web location of schema
       schema_url="${github_url}/xml/schema/${base}_schema.xsd"
+
+      # determine documentation location
+      output="${schema_doc_dir}/oscal-${model}-xml-schema.html"
+      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
+        "output-path=${output_path}" \
+        "schema-path=${schema_url}" 2>&1)
       ;;
     json)
+      # the stylesheet used to generate the documentation
+      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-JSON-DOCS.xsl"
+      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
+      stylesheet_dir=$(dirname "$stylesheet")
+
+      # the converter used to generate the JSON examples
+      converter="$WORKING_DIR/json/convert/${base}_xml-to-json-converter.xsl"
+      converter_path=$(realpath --relative-to="$stylesheet_dir" "$converter")
+
+      # determine documentation location
+      output="${schema_doc_dir}/oscal-${model}-json-schema.html"
+      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+
       # determine web location of schema
       schema_url="${github_url}/json/schema/${base}_schema.json"
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
+        "example-converter-xslt-path=${converter_path}" \
+        "output-path=${output_path}" \
+        "schema-path=${schema_url}" 2>&1)
       ;;
     *)
       echo -e "${P_WARN}Generating documentation for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
       continue
       ;;
     esac
-
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "  ${P_INFO}Generating ${format} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
-    fi
-    result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
-      "target-format=${format}" \
-      "example-converter-xslt-path=${converter_path}" \
-      "output-path=${output_path}" \
-      "schema-path=${schema_url}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generating ${format} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
       continue
-    else
-      if [ "$VERBOSE" = "true" ]; then
-        echo -e "${P_INFO}${result}${P_END}"
-      fi
-
-      model="${base/oscal_/}"
-      touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
-      touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
-      echo -e "${P_OK}Generated ${format} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
     fi
+
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}${result}${P_END}"
+    fi
+    echo -e "${P_OK}Generated ${format} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+
+    # Run the model map XSL template for the format
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "  ${P_INFO}Generating ${format} model map for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
+    fi
+
+    case $format in
+    xml)
+      # the stylesheet used to generate the documentation
+      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-XML-MAP.xsl"
+      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
+      stylesheet_dir=$(dirname "$stylesheet")
+
+      # determine documentation location
+      output="${schema_doc_dir}/oscal-${model}-xml-map.html"
+      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+
+      # Make converter path relative to the stylesheet
+      # determine web location of schema
+      schema_url="${github_url}/xml/schema/${base}_schema.xsd"
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
+        "output-path=${output_path}" 2>&1)
+      ;;
+    json)
+      # the stylesheet used to generate the documentation
+      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-JSON-MAP.xsl"
+      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
+      stylesheet_dir=$(dirname "$stylesheet")
+
+      # determine documentation location
+      output="${schema_doc_dir}/oscal-${model}-json-map.html"
+      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+
+      # determine web location of schema
+      schema_url="${github_url}/json/schema/${base}_schema.json"
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
+        "output-path=${output_path}" 2>&1)
+      ;;
+    *)
+      echo -e "${P_WARN}Generating model map for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
+      continue
+      ;;
+    esac
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      echo -e "${P_ERROR}Generating ${format} model map failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+      echo -e "${P_ERROR}${result}${P_END}"
+      exitcode=1
+      continue
+    fi
+
+    if [ "$VERBOSE" = "true" ]; then
+      echo -e "${P_INFO}${result}${P_END}"
+    fi
+    echo -e "${P_OK}Generated ${format} model map for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+
+    touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
+    touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
   done
   IFS=$IFS_OLD
 done
