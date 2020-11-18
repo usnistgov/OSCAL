@@ -144,10 +144,9 @@ for i in "${!paths[@]}"; do
 
       # determine documentation location
       output="${schema_doc_dir}/oscal-${model}-xml-schema.html"
-      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+      output_path=$(realpath --relative-to="$PWD" "$output")
 
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
-        "output-path=${output_path}" \
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" \
         "schema-path=${schema_url}" 2>&1)
       ;;
     json)
@@ -162,13 +161,12 @@ for i in "${!paths[@]}"; do
 
       # determine documentation location
       output="${schema_doc_dir}/oscal-${model}-json-schema.html"
-      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+      output_path=$(realpath --relative-to="$PWD" "$output")
 
       # determine web location of schema
       schema_url="${github_url}/json/schema/${base}_schema.json"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" \
         "example-converter-xslt-path=${converter_path}" \
-        "output-path=${output_path}" \
         "schema-path=${schema_url}" 2>&1)
       ;;
     *)
@@ -203,13 +201,12 @@ for i in "${!paths[@]}"; do
 
       # determine documentation location
       output="${schema_doc_dir}/oscal-${model}-xml-map.html"
-      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+      output_path=$(realpath --relative-to="$PWD" "$output")
 
       # Make converter path relative to the stylesheet
       # determine web location of schema
       schema_url="${github_url}/xml/schema/${base}_schema.xsd"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
-        "output-path=${output_path}" 2>&1)
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" 2>&1)
       ;;
     json)
       # the stylesheet used to generate the documentation
@@ -219,12 +216,11 @@ for i in "${!paths[@]}"; do
 
       # determine documentation location
       output="${schema_doc_dir}/oscal-${model}-json-map.html"
-      output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+      output_path=$(realpath --relative-to="$PWD" "$output")
 
       # determine web location of schema
       schema_url="${github_url}/json/schema/${base}_schema.json"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "" \
-        "output-path=${output_path}" 2>&1)
+      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" 2>&1)
       ;;
     *)
       echo -e "${P_WARN}Generating model map for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
