@@ -11,4 +11,4 @@ aliases:
   - /documentation/schema/assessment-plan/xml-schema/
 ---
 
-{{<partial "generated/oscal-ap-xml-schema.html" >}}
+{{<partial "generated/oscal-assessment-plan-xml-schema.html" >}}
