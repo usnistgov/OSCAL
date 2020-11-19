@@ -136,7 +136,8 @@
             <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous monitoring scenario, this may be omitted or contain the same value as start if appropriate.</description>
          </define-field>
          <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
-            <group-as name="poam-item-group" in-json="ARRAY"/>
+            <!-- CHANGED: "poam-item-group" to "poam-items" -->
+            <group-as name="poam-items" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks"
                 in-xml="WITH_WRAPPER"
