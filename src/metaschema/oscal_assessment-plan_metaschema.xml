@@ -30,7 +30,8 @@
                <p>Used by the SAP to import information about the system being assessed.</p>
             </remarks>
          </assembly>
-         <assembly ref="objectives" min-occurs="1" max-occurs="1"/>
+         <!-- CHANGED: "objectives" to "reviewed-controls" -->
+         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
          <assembly ref="assessment-subjects" min-occurs="0" max-occurs="1"/>
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
          <assembly ref="assessment-activities" min-occurs="0" max-occurs="1"/>
