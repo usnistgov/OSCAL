@@ -11,4 +11,4 @@ aliases:
   - /documentation/schema/assessment-results/xml-model-map/
 ---
 
-{{<partial "generated/oscal-ar-xml-map.html" >}}
+{{<partial "generated/oscal-assessment-results-xml-map.html" >}}
