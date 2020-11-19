@@ -190,27 +190,30 @@
                   <formal-name>Information Type Description</formal-name>
                   <description>A summary of how this information type is used within the system.</description>
                </define-field>
-               <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
-                  <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
-                  <formal-name>Information Type Identifier</formal-name>
-                  <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
-                  <json-key flag-name="system"/>
-                  <json-value-key>id</json-value-key>
-                  <group-as name="information-type-ids" in-json="BY_KEY"/>
+               <define-assembly name="categorization" as-type="string" max-occurs="unbounded">
+                  <!-- CHANGED: replaced the information-type-id structure with the current structure -->
+                  <formal-name>Information Type Categorization</formal-name>
+                  <description>A set of information type identifiers qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
+                  <group-as name="categorizations" in-json="ARRAY"/>
                   <define-flag required="yes" name="system">
                      <formal-name>Information Type Identification System</formal-name>
                      <description>Specifies the information type identification system used.</description>
                      <constraint>
                         <allowed-values allow-other="yes">
-                           <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST Special Publication 800-60 Volume II Revision 1</enum>
+                           <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.</enum>
                         </allowed-values>
                      </constraint>
                   </define-flag>
-                  <remarks>
-                     <p>The current allowed values are based on those identified in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60 Volume 2</a>
-                     </p>
-                  </remarks>
-               </define-field>
+                  <model>
+                     <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
+                        <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                        <formal-name>Information Type Systemized Identifier</formal-name>
+                        <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
+                        <json-value-key>id</json-value-key>
+                        <group-as name="information-type-ids" in-json="ARRAY"/>
+                     </define-field>
+                  </model>
+               </define-assembly>
                <field ref="property" max-occurs="unbounded">
                   <use-name>prop</use-name>
                   <group-as name="properties" in-json="ARRAY"/>
@@ -223,7 +226,7 @@
                </assembly>
                <define-assembly name="confidentiality-impact" min-occurs="1">
                   <formal-name>Confidentiality Impact Level</formal-name>
-                  <description>The expected level of impact resulting from the unauthorized disclosure of information.</description>
+                  <description>The expected level of impact resulting from the unauthorized disclosure of the described information.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
                         <use-name>prop</use-name>
@@ -242,7 +245,7 @@
                </define-assembly>
                <define-assembly name="integrity-impact" min-occurs="1">
                   <formal-name>Integrity Impact Level</formal-name>
-                  <description>The expected level of impact resulting from the unauthorized modification of information.</description>
+                  <description>The expected level of impact resulting from the unauthorized modification of the described information.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
                         <use-name>prop</use-name>
@@ -261,7 +264,7 @@
                </define-assembly>
                <define-assembly name="availability-impact" min-occurs="1">
                   <formal-name>Availability Impact Level</formal-name>
-                  <description>The expected level of impact resulting from the disruption of access to or use of information or the information system.</description>
+                  <description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
                         <use-name>prop</use-name>
@@ -822,7 +825,8 @@
                <define-assembly name="provided" max-occurs="unbounded">
                   <formal-name>Provided Control Implementation</formal-name>
                   <description>Describes a capability which may be inherited by a leveraging system.</description>
-                  <group-as name="provided-group" in-json="ARRAY"/>
+                  <!-- CHANGED: "provided-group" to "provided" -->
+                  <group-as name="provided" in-json="ARRAY"/>
                   <define-flag name="uuid" as-type="uuid" required="yes">
                      <formal-name>Provided Universally Unique Identifier</formal-name>
                      <description>A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
@@ -895,7 +899,8 @@
          <define-assembly name="inherited" max-occurs="unbounded">
             <formal-name>Inherited Control Implementation</formal-name>
             <description>Describes a control implementation inherited by a leveraging system.</description>
-            <group-as name="inherited-group" in-json="ARRAY"/>
+            <!-- CHANGED: "inherited-group" to "inherited" -->
+            <group-as name="inherited" in-json="ARRAY"/>
             <define-flag name="uuid" as-type="uuid" required="yes">
                <formal-name>Inherited Universally Unique Identifier</formal-name>
                <description>A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
@@ -925,7 +930,8 @@
          <define-assembly name="satisfied" max-occurs="unbounded">
             <formal-name>Satisfied Control Implementation Responsibility</formal-name>
             <description>Describes how this system satisfies a responsibiity imposed by a leveraged system.</description>
-            <group-as name="satisfied-group" in-json="ARRAY"/>
+            <!-- CHANGED: "satisfied-group" to "satisfied" -->
+            <group-as name="satisfied" in-json="ARRAY"/>
             <define-flag name="uuid" as-type="uuid" required="yes">
                <formal-name>Satisfied Universally Unique Identifier</formal-name>
                <description>A globally unique identifier that can be used to reference this satisfied entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>

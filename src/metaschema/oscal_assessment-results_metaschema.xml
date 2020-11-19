@@ -35,7 +35,10 @@
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
          <assembly ref="assessment-activities" min-occurs="0" max-occurs="1"/>
          <assembly ref="results" min-occurs="1" max-occurs="unbounded">
-            <group-as name="results_group" in-json="ARRAY"/>
+            <!-- CHANGED: "results" to "assessment-result" -->
+            <use-name>assessment-result</use-name>
+            <!-- CHANGED: "results_group" to "assessment-results" -->
+            <group-as name="assessment-results" in-json="ARRAY"/>
          </assembly>
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
@@ -68,10 +71,12 @@
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
       <model>
          <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
-            <group-as name="includes" in-json="ARRAY"/>
+            <!-- CHANGED: "includes" to "include-subjects" -->
+            <group-as name="include-subjects" in-json="ARRAY"/>
          </assembly>
          <assembly ref="exclude-subject" min-occurs="0" max-occurs="unbounded">
-            <group-as name="excludes" in-json="ARRAY"/>
+            <!-- CHANGED: "excludes" to "exclude-subjects" -->
+            <group-as name="exclude-subjects" in-json="ARRAY"/>
          </assembly>
          <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
          <field ref="remarks"
