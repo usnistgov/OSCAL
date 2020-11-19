@@ -11,4 +11,4 @@ aliases:
   - /documentation/schema/assessment-plan/json-schema/
 ---
 
-{{<partialCached "generated/oscal-ap-json-schema.html" >}}
+{{<partialCached "generated/oscal-assessment-plan-json-schema.html" >}}
