@@ -27,7 +27,8 @@
          <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
          <assembly ref="revision" max-occurs="unbounded">
-            <group-as name="revision-history" in-xml="GROUPED" in-json="ARRAY"/>
+            <!-- CHANGED: "revision-histroy" to "revisions" -->
+            <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>
          </assembly>
          <!-- CHANGED from "doc-id" to "document-id" -->
          <field ref="document-id" max-occurs="unbounded">
