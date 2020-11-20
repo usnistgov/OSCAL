@@ -18,7 +18,7 @@
    <!-- TOP LEVEL ASSEMBLY -->
    <define-assembly name="plan-of-action-and-milestones">
       <formal-name>Plan of Action and Milestones (POA&amp;M)</formal-name>
-      <description>A plan of action and milestones, such as those required by FedRAMP.</description>
+      <description>A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</description>
       <root-name>plan-of-action-and-milestones</root-name>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
@@ -33,7 +33,11 @@
          </assembly>
          <field ref="system-id" min-occurs="0" max-occurs="1"/>
          <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
-         <assembly ref="poam-items" min-occurs="1" max-occurs="1"/>
+         <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
+            <!-- CHANGED: removed the top-level "poam-items" -->
+            <!-- CHANGED: "poam-item-group" to "poam-items" -->
+            <group-as name="poam-items" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
       <remarks>
@@ -64,88 +68,6 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="poam-items">
-      <formal-name>POA&amp;M Items</formal-name>
-      <description>This identifies initial and residual risks, deviations, and disposition.</description>
-      <model>
-         <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
-            <formal-name>POA&amp;M Items Title</formal-name>
-            <description>The title this collection of POA&amp;M items.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description-->
-         <!-- CHANGE: Made description optional-->
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>POA&amp;M Items Description</formal-name>
-            <description>A human-readable description of this collection of POA&amp;M items.</description>
-         </define-field>
-
-         <define-field name="prop" min-occurs="0" max-occurs="unbounded">
-            <formal-name>POA&amp;M Items Property</formal-name>
-            <description>Provided as means of extending the OSCAL syntax.</description>
-            <use-name>prop</use-name>
-            <json-value-key>value</json-value-key>
-            <group-as name="properties" in-json="ARRAY"/>
-            <define-flag name="name" required="yes">
-               <formal-name>Property Name</formal-name>
-               <description>A textual label that identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
-            </define-flag>
-            <define-flag name="uuid" required="no" as-type="uuid">
-               <formal-name>POA&amp;M Items Property Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies the property of this collection of POA&amp;M items. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given property across revisions of the document.</description>
-            </define-flag>
-
-            <define-flag name="ns" as-type="uri">
-               <!-- CHANGED: data type to uri -->
-               <formal-name>Property Namespace</formal-name>
-               <description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</description>
-               <remarks>
-                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated values used in a property. This allows the semantics associated with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-               </remarks>
-            </define-flag>
-            
-            <define-flag name="class" as-type="NCName">
-               <formal-name>Property Class</formal-name>
-               <description>A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>.</description>
-               <remarks>
-                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-               </remarks>
-            </define-flag>
-
-
-         </define-field>
-         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-            <remarks>
-               <p>Provided as means of extending the OSCAL syntax.</p>
-            </remarks>
-         </assembly>
-         <define-field name="start"
-                       as-type="dateTime-with-timezone"
-                       min-occurs="1"
-                       max-occurs="1">
-            <formal-name>start field</formal-name>
-            <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
-         </define-field>
-         <define-field name="end"
-                       as-type="dateTime-with-timezone"
-                       min-occurs="0"
-                       max-occurs="1">
-            <formal-name>end field</formal-name>
-            <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous monitoring scenario, this may be omitted or contain the same value as start if appropriate.</description>
-         </define-field>
-         <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
-            <!-- CHANGED: "poam-item-group" to "poam-items" -->
-            <group-as name="poam-items" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks"
-                in-xml="WITH_WRAPPER"
-                min-occurs="0"
-                max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
    <define-assembly name="poam-item">
       <formal-name>POA&amp;M Item</formal-name>
       <description>Describes an individual POA&amp;M item.</description>
@@ -163,6 +85,7 @@
             <formal-name>POA&amp;M Item Description</formal-name>
             <description>A human-readable description of POA&amp;M item.</description>
          </define-field>
+         <!-- TODO: remove this prop in favor of the global prop -->
          <define-field name="prop" min-occurs="0" max-occurs="unbounded">
             <formal-name>prop field</formal-name>
             <description>Provided as means of extending the OSCAL syntax.</description>
@@ -203,6 +126,7 @@
                <p>Provided as means of extending the OSCAL syntax.</p>
             </remarks>
          </assembly>
+         <!-- TODO: add link; check in the other assessment models -->
          <define-field name="collected"
                        as-type="dateTime-with-timezone"
                        min-occurs="1"
