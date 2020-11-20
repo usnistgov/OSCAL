@@ -64,10 +64,10 @@
             <!-- CHANGED: "control-group" to "control-selections" -->
             <group-as name="control-selections" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="control-objectives-selection" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGED: "control-objectives" to "control-objectives-selection" -->
-            <!-- CHANGED: "control-objective-group" to "control-objectives-selections" -->
-            <group-as name="control-objectives-selections" in-json="ARRAY"/>
+         <assembly ref="control-objective-selection" min-occurs="0" max-occurs="unbounded">
+            <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
+            <!-- CHANGED: "control-objective-group" to "control-objective-selections" -->
+            <group-as name="control-objective-selections" in-json="ARRAY"/>
          </assembly>
          <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
             <group-as name="objectives" in-json="ARRAY"/>
@@ -118,8 +118,8 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="control-objectives-selection" scope="local">
-      <!-- CHANGED: "control-objectives" to "control-objectives-selection" -->
+   <define-assembly name="control-objective-selection" scope="local">
+      <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
       <formal-name>Referened Control Objectives</formal-name>
       <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
       <model>
