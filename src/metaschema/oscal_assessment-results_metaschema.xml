@@ -35,15 +35,129 @@
          <assembly ref="assessment-subjects" min-occurs="0" max-occurs="1"/>
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
          <assembly ref="assessment-activities" min-occurs="0" max-occurs="1"/>
-         <assembly ref="results" min-occurs="1" max-occurs="unbounded">
-            <!-- CHANGED: "results" to "assessment-result" -->
-            <use-name>assessment-result</use-name>
-            <!-- CHANGED: "results_group" to "assessment-results" -->
-            <group-as name="assessment-results" in-json="ARRAY"/>
+         <assembly ref="result" min-occurs="1" max-occurs="unbounded">
+            <!-- CHANGED: "results" to "result" -->
+            <use-name>result</use-name>
+            <!-- CHANGED: "results_group" to "results" -->
+            <group-as name="results" in-json="ARRAY"/>
          </assembly>
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
+
+
+   <!-- ********** RESULTS Assembly ********** -->
+   <define-assembly name="result">
+      <formal-name>Assessment Result</formal-name>
+      <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Results Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given set of results across revisions.</description>
+      </define-flag>
+      <model>
+         <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
+            <formal-name>Results Title</formal-name>
+            <description>The title for this set of results.</description>
+         </define-field>
+         <!-- CHANGE: Added WITH_WRAPPER to description -->
+         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+            <formal-name>Results Description</formal-name>
+            <description>A human-readable description of this set of test results.</description>
+         </define-field>
+         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <define-field name="start"
+            as-type="dateTime-with-timezone"
+            min-occurs="1"
+            max-occurs="1">
+            <formal-name>start field</formal-name>
+            <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
+         </define-field>
+         <define-field name="end"
+            as-type="dateTime-with-timezone"
+            min-occurs="1"
+            max-occurs="1">
+            <formal-name>end field</formal-name>
+            <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
+         </define-field>
+         <assembly ref="finding" min-occurs="1" max-occurs="unbounded">
+            <group-as name="findings" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="finding">
+      <formal-name>Finding</formal-name>
+      <description>Describes an individual finding.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Finding Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.</description>
+      </define-flag>
+      <model>
+         <define-field name="title" min-occurs="1" as-type="markup-line">
+            <formal-name>Finding Title</formal-name>
+            <description>The title for this finding.</description>
+         </define-field>
+         <!-- CHANGE: Added WITH_WRAPPER to description -->
+         <define-field name="description" min-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+            <formal-name>Finding Description</formal-name>
+            <description>A human-readable description of this finding.</description>
+         </define-field>
+         <field ref="property" max-occurs="unbounded">
+            <use-name>prop</use-name>
+            <group-as name="properties" in-json="ARRAY"/>
+            <remarks>
+               <!-- QUESTION: Is this remark appropriate here? -->
+               <p>For the FedRAMP SAR, must have prop @name='priority' @ns='https://fedramp.gov/ns/oscal', with a numeric value, where '1' is the highest priority.</p>
+            </remarks>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="origination" min-occurs="0" max-occurs="1">
+            <!-- CHANGE: moved in sequence -->
+         </assembly>
+         <define-field name="collected" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+            <formal-name>collected field</formal-name>
+            <description>Date/time stamp identifying when the finding information was collected.</description>
+         </define-field>
+         <define-field name="expires" as-type="dateTime-with-timezone" min-occurs="0" max-occurs="1">
+            <formal-name>expires field</formal-name>
+            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
+         </define-field>
+         <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
+         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
+         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="observations" in-json="ARRAY"/>
+         </assembly>
+         <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
+            <group-as name="threat-ids" in-json="ARRAY"/>
+         </field>
+         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
+            <group-as name="risks" in-json="ARRAY"/>
+         </assembly>
+         <define-field name="party-uuid" min-occurs="0" max-occurs="unbounded">
+            <formal-name>party-uuid field</formal-name>
+            <description>The person who collected the evidence or made the observation.</description>
+            <group-as name="party-uuids" in-json="ARRAY"/>
+         </define-field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
 
    <!-- Assessment Plan Import -->
    <define-assembly name="import-ap">
