@@ -40,17 +40,13 @@ div.example div.example-content { @extend .usa-accordion__content }
 
 span.model-description { @extend .font-body-xs }
 
-div.remarks-group h3 {
-  padding-top: 0.5rem;
-}
-
 div.remarks { @extend .measure-6;
   @extend .border-base-light;
   @extend .border-left-05;
   @extend .padding-left-1;
   @extend .font-body-xs }
 
-.occurrence { @extends .text-primary }
+.occurrence { @extend .text-primary }
 
 button.schema-link { @extend .usa-button }
 
@@ -72,8 +68,8 @@ div.OM-map div.OM-map {
   margin-left: 2em; }
 
 .OM-entry {
-  border: medium solid #f1f1f1;
-  background-color: #f1f1f1;
+  @extend .bg-base-lighter;
+  @extend .border-base-light;
   padding-right: 0.5rem;
   margin-top: 0rem;
 }
@@ -128,3 +124,138 @@ a.expander-collapser {
 
 a.expander-collapser:hover {
   text-decoration: none; }
+
+
+pre {
+  @extend .bg-base-lighter
+}
+
+pre.json {
+    @extend .bg-primary-lighter
+}
+
+summary { display: list-item;  cursor: pointer }
+
+.define-assembly,
+.define-field,
+.define-flag {
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+    border: thin inset black;
+    padding: 0.5em
+}
+
+.formal-name {
+  @include u-font-family('sans');
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0.5em 0em
+}
+
+.subhead {
+    font-size: 80%;
+    @include u-font-family('sans');
+}
+
+.display-face {
+  @include u-font-family('sans');
+}
+
+.definition > .description { @extend .bg-accent-cool-light; margin: 0.5em 0em;
+  @extend .border-accent-cool-dark; padding: 0.5em; font-size: 90% }
+
+.model-entry .description {
+    font-size: 80%;
+    margin: 0em 0em
+}
+
+.occurrence { @include u-font-family('sans'); font-size: 80%; font-style: italic }
+
+
+.remarks { padding-left: 1em; border-left: thin solid grey 
+}
+
+.remarks p {
+    margin-top: 0.5em
+}
+
+.model {
+    margin-top: 1em
+}
+
+.model .model {
+    margin-top: 0.5ex
+}
+
+.example {
+    margin-top: 1em
+}
+
+.code {
+    display: inline;
+}
+
+.q {
+    display: inline;
+}
+.em {
+    display: inline;
+}
+.strong {
+    display: inline;
+}
+
+.name {
+  @extend .text-accent-cool-darker;
+  @extend .bg-accent-cool-lighter;
+  @extend .font-mono-md;
+}
+
+a {
+    text-decoration: none
+}
+a:hover {
+    text-decoration: underline
+}
+
+ul.e_map {
+  @extend .font-mono-md;
+  list-style-type: none;
+  margin: 0em
+}
+
+.map_label {
+  @extend .font-mono-md;
+  color: darkgrey
+}
+
+
+.model-descr {  margin-top: 0.2em; border-left: thin solid black;
+       border-right: thin solid black;
+       border-top: medium groove black; padding: 0.5em }
+       
+.model-descr:focus { @extend .bg-primary-lighter }
+
+.model-descr div { margin: 0.5em 0em }
+.model-summary { display: grid;
+      grid-template-columns: 1fr 1fr 1fr 3fr;
+      grid-gap: 0.5em; margin: 0em 0em 0.5em 0em }
+
+.usename { @include u-font-family('mono'); }
+
+.frmname { @include u-font-family('sans'); font-weight: bold; font-size: 80% }
+.mtyp    { font-size: 80% }
+
+.deflink { font-style: italic; font-size: 80%; @include u-font-family('sans');  }
+.deflink code { font-style: normal }
+
+.name-link { @include u-font-family('mono'); font-weight: bold }
+
+.description { @extend .bg-primary-lighter; @extend .border-primary-darker; padding: 0.5em; font-size: 90% }
+
+div.constraints * { margin: 0em }
+div.constraints div.constraint { margin-top: 0.5em }
+div.constraint  * { margin: 0em }
+
+.model-summary .description { font-size: 80% }
+
