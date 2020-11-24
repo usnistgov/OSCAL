@@ -81,7 +81,6 @@
    <define-field name="combine" as-type="empty">
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
-      <!-- QUESTION: What is the json value key? -->
       <flag ref="method"/>
       <remarks>
          <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
@@ -146,8 +145,8 @@
             <description>A name given to the group, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- QUESTION: Why is this "param" and the plural form is "parameters"? -->
             <use-name>param</use-name>
+            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
          <field ref="property" max-occurs="unbounded">
@@ -168,12 +167,12 @@
                <group-as name="groups" in-json="ARRAY"/>
             </assembly>
             <field ref="call" max-occurs="unbounded">
-               <!-- QUESTION: Why is the singular "call" and the plural "id-selectors"? -->
-               <group-as name="id-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "id-selectors" to "calls" -->
+               <group-as name="calls" in-json="ARRAY"/>
             </field>
             <field ref="match" max-occurs="unbounded">
-               <!-- QUESTION: Why is the singular "match" and the plural "pattern-selectors"? -->
-               <group-as name="pattern-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "pattern-selectors" to "matches" -->
+               <group-as name="matches" in-json="ARRAY"/>
             </field>
          </choice>
       </model>
@@ -186,11 +185,11 @@
       <description>Set parameters or amend controls in resolution</description>
       <model>
          <assembly ref="set-parameter" max-occurs="unbounded">
-            <!-- QUESTION: Why is the singular "set-parameter" and the plural "parameter-settings"? -->
-            <group-as name="parameter-settings" in-json="BY_KEY"/>
+            <!-- CHANGED: "parameter-settings" to "set-parameters" -->
+            <group-as name="set-parameters" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="alter" max-occurs="unbounded">
-            <!-- QUESTION: Why is the singular "alter" and the plural "alterations"? -->
+            <!-- It is worth it abbreviate "alter" in XML, while keeping "alterations" in JSON. -->
             <group-as name="alterations" in-json="ARRAY"/>
          </assembly>
       </model>
@@ -217,7 +216,6 @@
    <define-field name="all" as-type="empty">
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
-      <!-- QUESTION: What is the json value key? -->
       <flag ref="with-child-controls"/>
       <remarks>
          <p>This element provides an alternative to calling controls individually from a catalog. But this is also the default behavior when no <code>include</code> element is given in an <code>import</code>; so ordinarily one might not see this element unless it is for purposes of including its <code>with-child-controls</code> flag. </p>
@@ -381,7 +379,7 @@
             <description>A name given to the control, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- QUESTION: Why is this "param" and the plural form is "parameters"? -->
+            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
             <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>

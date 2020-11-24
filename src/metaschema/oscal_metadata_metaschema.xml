@@ -570,6 +570,7 @@
    <define-field name="property">
       <formal-name>Property</formal-name>
       <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</description>
+      <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
       <use-name>prop</use-name>
       <json-value-key>value</json-value-key>
       <define-flag name="uuid" as-type="uuid">

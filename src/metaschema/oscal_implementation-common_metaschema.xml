@@ -52,7 +52,6 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          <define-assembly name="status" min-occurs="1">
-            <!-- QUESTION: Can this be made an annotation? -->
             <formal-name>Status</formal-name>
             <description>Describes the operational status of the system component.</description>
             <define-flag name="state">
@@ -248,7 +247,6 @@
    <define-field name="port-range" as-type="empty">
       <formal-name>Port Range</formal-name>
       <description>Where applicable this is the IPv4 port range on which the service operates.</description>
-      <!-- QUESTION: What is the json value key? -->
       <define-flag name="start" as-type="nonNegativeInteger">
          <formal-name>Start</formal-name>
          <description>Indicates the starting port number in a port range</description>
