@@ -35,7 +35,7 @@
             <group-as name="document-ids" in-json="ARRAY"/>
          </field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -126,7 +126,7 @@
          <field ref="version"/>
          <field ref="oscal-version"/>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -186,7 +186,7 @@
             <group-as name="urls" in-json="ARRAY"/>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -278,7 +278,7 @@
             </define-flag>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -370,7 +370,7 @@
             <description>A summary of the role's purpose and associated responsibilities.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -423,7 +423,7 @@
                   <description>A short summary of the resource used to indicate the purpose of the resource.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <use-name>prop</use-name>
+                  <!-- CHANGE: props to properties -->
                   <group-as name="properties" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
@@ -442,7 +442,7 @@
                         <description>A line of citation text.</description>
                      </define-field>
                      <field ref="property" max-occurs="unbounded">
-                        <use-name>prop</use-name>
+                        <!-- CHANGE: props to properties -->
                         <group-as name="properties" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
@@ -726,7 +726,7 @@
             </remarks>
          </field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">

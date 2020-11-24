@@ -63,7 +63,7 @@
             <description>A name given to the part, which may be used by a tool for display and navigation.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -137,7 +137,7 @@
       <flag ref="depends-on"/>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
