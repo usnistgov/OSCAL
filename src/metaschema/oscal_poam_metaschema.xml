@@ -85,47 +85,17 @@
             <formal-name>POA&amp;M Item Description</formal-name>
             <description>A human-readable description of POA&amp;M item.</description>
          </define-field>
-         <!-- TODO: remove this prop in favor of the global prop -->
-         <define-field name="prop" min-occurs="0" max-occurs="unbounded">
-            <formal-name>prop field</formal-name>
-            <description>Provided as means of extending the OSCAL syntax.</description>
-            <json-value-key>value</json-value-key>
+         <field ref="property" max-occurs="unbounded">
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
-            <define-flag name="name" required="yes">
-               <formal-name>name flag</formal-name>
-               <description>name flag ... </description>
-            </define-flag>
-            <define-flag name="uuid" required="no" as-type="uuid">
-               <formal-name>POA&amp;M Item Property Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies the property of this POA&amp;M item. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given property across revisions of the document.</description>
-            </define-flag>
-            
-            <define-flag name="ns" as-type="uri">
-               <!-- CHANGED: data type to uri -->
-               <formal-name>Property Namespace</formal-name>
-               <description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</description>
-               <remarks>
-                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated values used in a property. This allows the semantics associated with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-               </remarks>
-            </define-flag>
-            
-            <define-flag name="class" as-type="NCName">
-               <formal-name>Property Class</formal-name>
-               <description>A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>.</description>
-               <remarks>
-                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-               </remarks>
-            </define-flag>
-            
-         </define-field>
+         </field>
          <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
-            <remarks>
-               <p>Provided as means of extending the OSCAL syntax.</p>
-            </remarks>
          </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         
          <!-- TODO: add link; check in the other assessment models -->
          <define-field name="collected"
                        as-type="dateTime-with-timezone"

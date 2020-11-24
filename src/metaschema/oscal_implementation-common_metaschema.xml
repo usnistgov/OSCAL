@@ -42,7 +42,7 @@
             <description>A summary of the technological or business purpose of the component.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -312,7 +312,7 @@
             <description>A summary of the user's purpose within the system.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
             <!-- TODO: future: for FedRAMP, have current/future user counts -->
@@ -399,7 +399,7 @@
             <description>A summary of the inventory item stating its purpose within the system.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -502,7 +502,7 @@
 -->
       <model>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -554,7 +554,7 @@
             <description>A description of the component, including information about its function.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -585,7 +585,7 @@
       </define-flag>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">

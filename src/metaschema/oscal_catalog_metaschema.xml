@@ -86,7 +86,7 @@
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -149,7 +149,7 @@
          </assembly>
          <!-- TODO: Need to be able to add valid values in context -->
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">

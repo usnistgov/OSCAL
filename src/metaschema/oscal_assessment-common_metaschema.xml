@@ -50,7 +50,6 @@
             <description>A human-readable description of control objectives.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -59,178 +58,183 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="control-selection" min-occurs="1" max-occurs="unbounded">
+         <define-assembly name="control-selection" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Assessed Controls</formal-name>
+            <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
             <!-- CHANGED: "controls" to "control-selection" -->
             <!-- CHANGED: "control-group" to "control-selections" -->
             <group-as name="control-selections" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="control-objective-selection" min-occurs="0" max-occurs="unbounded">
+            <model>
+               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Assessed Controls Description</formal-name>
+                  <description>A human-readable description of in-scope controls specified for assessment.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <field ref="all" min-occurs="0" max-occurs="1"/>
+               <define-field name="include-control" as-type="empty" max-occurs="unbounded">
+                  <formal-name>Include Control</formal-name>
+                  <description>Identifies an individual control to include.</description>
+                  <group-as name="include-controls" in-json="ARRAY"/>
+                  <flag ref="control-id" required="yes"/>
+               </define-field>
+               <define-field name="exclude-control" as-type="empty" max-occurs="unbounded">
+                  <formal-name>Exclude Control</formal-name>
+                  <description>Identifies an individual control to exclude.</description>
+                  <group-as name="exclude-controls" in-json="ARRAY"/>
+                  <flag ref="control-id" required="yes"/>
+               </define-field>
+               
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
+            <formal-name>Referened Control Objectives</formal-name>
+            <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
             <!-- CHANGED: "control-objective-group" to "control-objective-selections" -->
             <group-as name="control-objective-selections" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="objective" min-occurs="0" max-occurs="unbounded">
+            <model>
+               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Control Ojectives Description</formal-name>
+                  <description>A human-readable description of this collection of control objectives.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <field ref="all" min-occurs="0" max-occurs="1"/>
+               <define-field name="include-objective" as-type="empty" max-occurs="unbounded">
+                  <formal-name>Include Objective</formal-name>
+                  <description>Identifies an individual control objective to include.</description>
+                  <group-as name="include-objectives" in-json="ARRAY"/>
+                  <flag ref="objective-id" required="yes"/>
+               </define-field>
+               <define-field name="exclude-objective" as-type="empty" max-occurs="unbounded">
+                  <formal-name>Exclude Objective</formal-name>
+                  <description>Identifies an individual control objective to exclude.</description>
+                  <group-as name="exclude-objectives" in-json="ARRAY"/>
+                  <flag ref="objective-id" required="yes"/>
+               </define-field>
+               
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         <define-assembly name="objective" min-occurs="0" max-occurs="unbounded">
+            <formal-name>Assessment-specific Control Objective</formal-name>
+            <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
             <group-as name="objectives" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="assessment-method" min-occurs="0" max-occurs="unbounded">
+            <define-flag name="id" required="yes" as-type="NCName" >
+               <!-- This is an id to sync with control syntax -->
+               <formal-name>Control Objective Identifier</formal-name>
+               <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
+               <remarks>
+                  <p>In the catalog, control objectives use ID, not UUID. This is the primary source of control objectives relative to an assessment.</p>
+                  <p>While rare, control-objectives may also be defined locally within the assessment-plan and assessment-results models</p>
+                  <p>ID is used to ensure consistent syntax from referencing fields/flags, whether referencing catalog-defined or locally-defined objectives.</p>
+               </remarks>
+            </define-flag>
+            <flag ref="control-id" required="yes"/>
+            <model>
+               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Objective Description</formal-name>
+                  <description>A human-readable description of this control objective.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
+               <define-field name="assessment-method" as-type="empty" max-occurs="unbounded"> 
+                  <formal-name>Assessment Method</formal-name>
+                  <description>Identifies a method for assessing the satisfaction of this objective.</description>
+                  <!-- CHANGED group-as from "methods" to "assessment-methods" -->
+                  <group-as name="assessment-methods" in-json="ARRAY"/>
+                  <define-flag name="method-uuid" required="yes" as-type="uuid">
+                     <formal-name>Method ID</formal-name>
+                     <description>Identifies the assessment method by its UUID value.</description>
+                  </define-flag>
+               </define-field>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         <define-assembly name="assessment-method" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED "method" to "assessment-method" -->
+            <formal-name>Assessment Method</formal-name>
+            <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
             <!-- CHANGED group-as from "method-definitions" to "assessment-methods" -->
             <group-as name="assessment-methods" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="control-selection">
-      <!-- CHANGED: "controls" to "control-selection" -->
-      <formal-name>Assessed Controls</formal-name>
-      <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
-      <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Assessed Controls Description</formal-name>
-            <description>A human-readable description of in-scope controls specified for assessment.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="all" min-occurs="0" max-occurs="1"/>
-         <define-field name="include-control" as-type="empty" max-occurs="unbounded">
-            <formal-name>Include Control</formal-name>
-            <description>Identifies an individual control to include.</description>
-            <group-as name="include-controls" in-json="ARRAY"/>
-            <flag ref="control-id" required="yes"/>
-         </define-field>
-         <define-field name="exclude-control" as-type="empty" max-occurs="unbounded">
-            <formal-name>Exclude Control</formal-name>
-            <description>Identifies an individual control to exclude.</description>
-            <group-as name="exclude-controls" in-json="ARRAY"/>
-            <flag ref="control-id" required="yes"/>
-         </define-field>
-
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="control-objective-selection" scope="local">
-      <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
-      <formal-name>Referened Control Objectives</formal-name>
-      <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
-      <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Control Ojectives Description</formal-name>
-            <description>A human-readable description of this collection of control objectives.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="all" min-occurs="0" max-occurs="1"/>
-         <define-field name="include-objective" as-type="empty" max-occurs="unbounded">
-            <formal-name>Include Objective</formal-name>
-            <description>Identifies an individual control objective to include.</description>
-            <group-as name="include-objectives" in-json="ARRAY"/>
-            <flag ref="objective-id" required="yes"/>
-         </define-field>
-         <define-field name="exclude-objective" as-type="empty" max-occurs="unbounded">
-            <formal-name>Exclude Objective</formal-name>
-            <description>Identifies an individual control objective to exclude.</description>
-            <group-as name="exclude-objectives" in-json="ARRAY"/>
-            <flag ref="objective-id" required="yes"/>
-         </define-field>
-
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-
-   <define-assembly name="objective">
-      <formal-name>Assessment-specific Control Objective</formal-name>
-      <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
-      <define-flag name="id" required="yes" as-type="NCName" >
-         <!-- This is an id to sync with control syntax -->
-         <formal-name>Control Objective Identifier</formal-name>
-         <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
-         <remarks>
-            <p>In the catalog, control objectives use ID, not UUID. This is the primary source of control objectives relative to an assessment.</p>
-            <p>While rare, control-objectives may also be defined locally within the assessment-plan and assessment-results models</p>
-            <p>ID is used to ensure consistent syntax from referencing fields/flags, whether referencing catalog-defined or locally-defined objectives.</p>
-         </remarks>
-      </define-flag>
-      <flag ref="control-id" required="yes"/>
-      <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Objective Description</formal-name>
-            <description>A human-readable description of this control objective.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
-         <define-field name="assessment-method" as-type="empty" max-occurs="unbounded"> 
-            <formal-name>Assessment Method</formal-name>
-            <description>Identifies a method for assessing the satisfaction of this objective.</description>
-            <!-- CHANGED group-as from "methods" to "assessment-methods" -->
-            <group-as name="assessment-methods" in-json="ARRAY"/>
-            <define-flag name="method-uuid" required="yes" as-type="uuid">
-               <formal-name>Method ID</formal-name>
-               <description>Identifies the assessment method by its UUID value.</description>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Assessment Method Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
             </define-flag>
-         </define-field>
+            <model>
+               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Assessment Method Description</formal-name>
+                  <description>A human-readable description of this assessment method.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
-   <define-assembly name="assessment-method">
-      <formal-name>Assessment Method</formal-name>
-      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Assessment Method Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Assessment Method Description</formal-name>
-            <description>A human-readable description of this assessment method.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
+
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
+   <define-assembly name="assessment-subjects">
+      <formal-name>Subject of Assessment</formal-name>
+      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
+      <model>
+         <!-- QUESTION: how does include/exclude work together or in the absence of the other? --> 
+         <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
+            <!-- CHANGED: "includes" to "include-subjects" -->
+            <group-as name="include-subjects" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="exclude-subject" min-occurs="0" max-occurs="unbounded">
+            <!-- CHANGED: "excludes" to "exclude-subjects" -->
+            <group-as name="exclude-subjects" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
+         <field ref="remarks"
+            in-xml="WITH_WRAPPER"
+            min-occurs="0"
+            max-occurs="1"/>
+      </model>
+   </define-assembly>
+
    <define-assembly name="include-subject">
       <formal-name>Included Assessment Subject</formal-name>
       <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
       <define-flag name="name" required="yes">
+         <!-- QUESTION: Should this be "type"? -->
+         <!-- TODO: Improve documentation -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
          <constraint>
@@ -256,7 +260,6 @@
             <description>A human-readable description of the collection of subjects being included in this assessment.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -267,6 +270,7 @@
          </assembly>
          <field ref="all" min-occurs="0" max-occurs="1"/>
          <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+            <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
             <group-as name="subject-references" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -277,6 +281,8 @@
       <formal-name>Excluded Assessment Subject</formal-name>
       <description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
       <define-flag name="name" required="yes">
+         <!-- QUESTION: Should this be "type"? -->
+         <!-- TODO: Improve documentation -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
          <constraint>
@@ -302,7 +308,6 @@
             <description>A human-readable description of the collection of subjects being excluded from this assessment.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -313,13 +318,14 @@
          </assembly>
          <field ref="all" min-occurs="0" max-occurs="1"/>
          <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+            <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
             <group-as name="subject-references" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
    
-   <define-assembly name="subject-reference">
+   <define-assembly name="subject-reference" scope="local">
       <formal-name>Identifies the Subject</formal-name>
       <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
       <define-flag name="uuid-ref" required="yes">
@@ -346,7 +352,6 @@
             <description>The title or name for the referenced subject.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
             <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
@@ -363,19 +368,30 @@
          <p>Tools should check look for the ID in every file imported directly or indirectly.</p>
       </remarks>
    </define-assembly>
-   <define-field name="all">
+   <define-field name="all" as-type="empty">
+      <!-- CHANGED: type to "empty" -->
       <formal-name>All</formal-name>
       <description>A key word to indicate all </description>
    </define-field>
+
    <!-- ********** ASSET Assembly ********** -->
    <define-assembly name="assets">
       <formal-name>Assessment Assets</formal-name>
       <description>Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.</description>
       <model>
-         <assembly ref="tools" min-occurs="0" max-occurs="1"/>
+         <define-assembly name="tools" min-occurs="0" max-occurs="1">
+            <formal-name>Assessment Assets</formal-name>
+            <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
+            <model>
+               <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+                  <use-name>component</use-name>
+                  <group-as name="components" in-json="BY_KEY"/>
+               </assembly>
+            </model>
+         </define-assembly>
          <assembly ref="origination" min-occurs="0" max-occurs="1"/>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -393,18 +409,9 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   <define-assembly name="tools">
-      <formal-name>Assessment Assets</formal-name>
-      <description>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</description>
-      <model>
-         <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
-            <use-name>component</use-name>
-            <group-as name="components" in-json="BY_KEY"/>
-         </assembly>
-      </model>
-   </define-assembly>
    
    <define-assembly name="origination">
+      <!-- QUESTION: what is this for? I think it's broader than what is described below. -->
       <formal-name>Assessment Origination</formal-name>
       <description>Identifies the origination of network-based assessment activities, such as the IP address of the tool performing assessment scans.</description>
       <model>
@@ -418,7 +425,7 @@
             <description>A human-readable description of assessment originiation asset.</description>
          </define-field>
          <field ref="property"  max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -437,15 +444,116 @@
       </constraint>
    </define-assembly>
    
+   <!-- ********** LOCAL DEFINITIONS Assembly ********** -->
+   <define-assembly name="local-definitions">
+      <formal-name>Local Definitions</formal-name>
+      <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
+      <model>
+         <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+            <use-name>component</use-name>
+            <group-as name="components" in-json="BY_KEY"/>
+            <remarks>
+               <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+            </remarks>
+         </assembly>
+         <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+            <group-as name="inventory-items" in-json="BY_KEY"/>
+            <remarks>
+               <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+            </remarks>
+         </assembly>
+         <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+            <use-name>user</use-name>
+            <group-as name="users" in-json="BY_KEY"/>
+            <remarks>
+               <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks"
+            in-xml="WITH_WRAPPER"
+            min-occurs="0"
+            max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
    <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
    <define-assembly name="assessment-activities">
       <formal-name>Assessment Activities</formal-name>
       <description>Identifies the assessment activities and schedule. In the assessment plan, these are planned activities. In the assessment results, these are the actual activities performed.</description>
       <model>
-         <assembly ref="test-method" min-occurs="0" max-occurs="unbounded">
+         <define-assembly name="test-method" min-occurs="0" max-occurs="unbounded">
+            <formal-name>Test Method</formal-name>
+            <description>Identifies an individual test method.</description>
             <group-as name="test-methods" in-json="ARRAY"/>
-         </assembly>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Test Method Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this defined test method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test method across revisions of the document.</description>
+            </define-flag>
+            <model>
+               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                  <formal-name>Test Method Title</formal-name>
+                  <description>The title or name for this test method.</description>
+               </define-field>
+               <!-- CHANGE: Added WITH_WRAPPER to description -->
+               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Test Method Description</formal-name>
+                  <description>A human-readable description of this test method and collection of test steps.</description>
+               </define-field>
+               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <define-assembly name="test-step" min-occurs="0" max-occurs="unbounded">
+                  <formal-name>Test Steps</formal-name>
+                  <description>Identifies an individual test step.</description>
+                  <group-as name="test-steps" in-json="ARRAY"/>
+                  <define-flag name="uuid" required="yes" as-type="uuid">
+                     <formal-name>Test Step Universally Unique Identifier</formal-name>
+                     <description>Uniquely identifies this defined test step. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</description>
+                  </define-flag>
+                  <model>
+                     <define-field name="sequence" as-type="integer" min-occurs="0" max-occurs="1">
+                        <!-- QUESTION: Is this needed, given that the collection of test steps is an array? -->
+                        <formal-name>Sequence Number</formal-name>
+                        <description>Identifies the sequence number for the test step.</description>
+                     </define-field>
+                     <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
+                        <formal-name>Test Steps Description</formal-name>
+                        <description>A human-readable description of this test step.</description>
+                     </define-field>
+                     <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+                     <field ref="property" min-occurs="0" max-occurs="unbounded">
+                        <group-as name="properties" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="role-id" min-occurs="0" max-occurs="unbounded">
+                        <group-as name="role-ids" in-json="ARRAY"/>
+                     </field>
+                     <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
+                        <group-as name="party-uuids" in-json="ARRAY"/>
+                     </field>
+                     <field ref="compare-to" min-occurs="0" max-occurs="1"/>
+                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                  </model>
+               </define-assembly>
+               <field ref="compare-to" min-occurs="0" max-occurs="1"/>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
          <assembly ref="schedule" min-occurs="0" max-occurs="1"/>
+         <!-- TODO: Document and potentially consolidate include/exclude -->
          <assembly ref="include-activity" min-occurs="0" max-occurs="unbounded">
             <group-as name="include-activities" in-json="ARRAY"/>
          </assembly>
@@ -456,87 +564,13 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="test-method">
-      <formal-name>Test Method</formal-name>
-      <description>Identifies an individual test method.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Test Method Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined test method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test method across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Test Method Title</formal-name>
-            <description>The title or name for this test method.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Test Method Description</formal-name>
-            <description>A human-readable description of this test method and collection of test steps.</description>
-         </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="test-step" min-occurs="0" max-occurs="unbounded">
-            <group-as name="test-steps" in-json="ARRAY"/>
-         </assembly>
-         <field ref="compare-to" min-occurs="0" max-occurs="1"/>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-field name="compare-to" as-type="string">
+   <define-field name="compare-to" as-type="string" scope="local">
       <formal-name>Compare To</formal-name>
       <description>Typically used in when copying content from the assessment plan to the assessment results. The uuid should be changed in the assessment results file, and the compare-to field should be set to the original assessment plan uuid value. This enables the plan and results to be compared later to identify what changed between the two.</description>
    </define-field>
    
-   <define-assembly name="test-step">
-      <formal-name>Test Steps</formal-name>
-      <description>Identifies an individual test step.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Test Step Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined test step. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <field ref="sequence" min-occurs="0" max-occurs="1"/>
-         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
-            <formal-name>Test Steps Description</formal-name>
-            <description>A human-readable description of this test step.</description>
-         </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="role-id" min-occurs="0" max-occurs="unbounded">
-            <group-as name="role-ids" in-json="ARRAY"/>
-         </field>
-         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
-            <group-as name="party-uuids" in-json="ARRAY"/>
-         </field>
-         <field ref="compare-to" min-occurs="0" max-occurs="1"/>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   <define-field name="sequence" as-type="integer">
-      <formal-name>Sequence Number</formal-name>
-      <description>Identifies the sequence number for the test step.</description>
-   </define-field>
    
-   <define-assembly name="schedule">
+   <define-assembly name="schedule" scope="local">
       <formal-name>Schedule</formal-name>
       <description>Identifies the schedule for the assessment activities.</description>
       <define-flag name="uuid" required="no" as-type="uuid">
@@ -544,77 +578,70 @@
          <description>Uniquely identifies this schedule. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
       </define-flag>
       <model>
-         <assembly ref="task" min-occurs="1" max-occurs="unbounded">
+         <define-assembly name="task" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Task</formal-name>
+            <description>Identifies an individual task.</description>
             <group-as name="tasks" in-json="ARRAY"/>
-         </assembly>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Task Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this defined task. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given task across revisions of the document.</description>
+            </define-flag>
+            <model>
+               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                  <formal-name>Task Title</formal-name>
+                  <description>The title for this task.</description>
+               </define-field>
+               <!-- CHANGE: Added WITH_WRAPPER to description -->
+               <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
+                  <formal-name>Task Description</formal-name>
+                  <description>A human-readable description of this task.</description>
+               </define-field>
+               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <define-field name="start" as-type="dateTime-with-timezone" max-occurs="1">
+                  <formal-name>Start</formal-name>
+                  <description>Identifies the start of a task.</description>
+               </define-field>
+               <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
+                  <formal-name>End</formal-name>
+                  <description>Identifies the end of a task.</description>
+               </define-field>
+               <define-field name="activity-uuid" as-type="uuid" max-occurs="unbounded">
+                  <formal-name>Activity ID</formal-name>
+                  <description>Links the task to a defined activity.</description>
+                  <group-as name="activity-uuids" in-json="ARRAY"/>
+               </define-field>
+               <define-field name="role-id" as-type="NCName" min-occurs="0" max-occurs="unbounded">
+                  <formal-name>role-id field</formal-name>
+                  <description>Identifies roles associated with performing this task.</description>
+                  <group-as name="role-ids" in-json="ARRAY"/>
+               </define-field>
+               <define-field name="party-uuid" min-occurs="0" max-occurs="unbounded">
+                  <formal-name>party-uuid field</formal-name>
+                  <description>Identifies people or organizations associated with performing this task.</description>
+                  <group-as name="party-uuids" in-json="ARRAY"/>
+               </define-field>
+               <define-field name="location-uuid" min-occurs="0" max-occurs="unbounded">
+                  <formal-name>location-uuid field</formal-name>
+                  <description>Identifies locations associated with performing this task.</description>
+                  <group-as name="location-uuids" in-json="ARRAY"/>
+               </define-field>
+               <field ref="compare-to" min-occurs="0" max-occurs="1"/>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
       </model>
    </define-assembly>
-   
-   <define-assembly name="task">
-      <formal-name>Task</formal-name>
-      <description>Identifies an individual task.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Task Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined task. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given task across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Task Title</formal-name>
-            <description>The title for this task.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
-            <formal-name>Task Description</formal-name>
-            <description>A human-readable description of this task.</description>
-         </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="start" min-occurs="0" max-occurs="1"/>
-         <field ref="end" min-occurs="0" max-occurs="1"/>
-         <field ref="activity-uuid" min-occurs="0" max-occurs="unbounded">
-            <group-as name="activity-uuids" in-json="ARRAY"/>
-         </field>
-         <define-field name="role-id" as-type="NCName" min-occurs="0" max-occurs="unbounded">
-            <formal-name>role-id field</formal-name>
-            <description>Identifies roles associated with performing this task.</description>
-            <group-as name="role-ids" in-json="ARRAY"/>
-         </define-field>
-         <define-field name="party-uuid" min-occurs="0" max-occurs="unbounded">
-            <formal-name>party-uuid field</formal-name>
-            <description>Identifies people or organizations associated with performing this task.</description>
-            <group-as name="party-uuids" in-json="ARRAY"/>
-         </define-field>
-         <define-field name="location-uuid" min-occurs="0" max-occurs="unbounded">
-            <formal-name>location-uuid field</formal-name>
-            <description>Identifies locations associated with performing this task.</description>
-            <group-as name="location-uuids" in-json="ARRAY"/>
-         </define-field>
-         <field ref="compare-to" min-occurs="0" max-occurs="1"/>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   <define-field name="start" as-type="dateTime-with-timezone">
-      <formal-name>Start</formal-name>
-      <description>Identifies the start of a task.</description>
-   </define-field>
-   <define-field name="end" as-type="dateTime-with-timezone">
-      <formal-name>End</formal-name>
-      <description>Identifies the end of a task.</description>
-   </define-field>
-   <define-field name="activity-uuid" as-type="uuid">
-      <formal-name>Activity ID</formal-name>
-      <description>Links the task to a defined activity.</description>
-   </define-field>
-   
+
    <define-assembly name="include-activity">
       <formal-name>Included Activity</formal-name>
       <description>Identifies an assessment activity. In the assessment plan, this is an intended/in-scope activity. In the assessment results, this identifies an activity that was actually performed.</description>
@@ -632,9 +659,9 @@
             <formal-name>Included Activity Description</formal-name>
             <description>A human-readable description of this included activity.</description>
          </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+         <assembly ref="origination" max-occurs="1"/>
+         <field ref="property" max-occurs="unbounded">
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -664,7 +691,7 @@
    </define-assembly>
    
    <define-assembly name="exclude-activity">
-      <formal-name>Included Activity</formal-name>
+      <formal-name>Excluded Activity</formal-name>
       <description>Identifies an activity explicitly excluded from the assessment. In the assessment plan, this clarifies activities that are out-of-scope or prohibited. In the assessment results, this could be used to explicitly identify an activity that was planned, but not performed.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Excluded Activity Universally Unique Identifier</formal-name>
@@ -680,9 +707,9 @@
             <formal-name>Excluded Activity Description</formal-name>
             <description>A human-readable description of this excluded activity.</description>
          </define-field>
-         <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+         <assembly ref="origination" max-occurs="1"/>
+         <field ref="property" max-occurs="unbounded">
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -715,24 +742,11 @@
       <formal-name>Implementation Statement UUID</formal-name>
       <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
    </define-field>
-   <define-field name="date-time-stamp" as-type="dateTime-with-timezone">
-      <formal-name>Date/Time Stamp</formal-name>
-      <description>Date/time stamp of the associated information.</description>
-   </define-field>
-   
-   <define-field name="collected" as-type="dateTime-with-timezone">
-      <formal-name>Date/Time Collected</formal-name>
-      <description>Date/time stamp identifying when the information was collected.</description>
-   </define-field>
-   
-   <define-field name="expires" as-type="dateTime-with-timezone">
-      <formal-name>Date/Time Expires</formal-name>
-      <description>Date/time identifying when the information expires. Typically used with continuous assessment scenarios.</description>
-   </define-field>
    
    <define-assembly name="objective-status">
       <formal-name>Objective Status</formal-name>
       <description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</description>
+      <!-- QUESTION: Should these IDs be required? -->
       <flag ref="objective-id"/>
       <flag ref="control-id"/>
       <model>
@@ -746,7 +760,7 @@
             <description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -755,7 +769,23 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="result" min-occurs="0" max-occurs="1"/>
+         <define-field name="result" min-occurs="0" max-occurs="1">
+            <formal-name>Result</formal-name>
+            <description>A brief indication as to whether the objective is satisfied or not.</description>
+            <json-value-key>value</json-value-key>
+            <define-flag name="system" as-type="uri">
+               <formal-name>Assessment System</formal-name>
+               <description>Identifies the framework or rules to which this value conforms.</description>
+               <!-- QUESTION: Should this be required? Why is this needed? Is there a better way? -->
+               <constraint>
+                  <allowed-values allow-other="yes">
+                     <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
+                     <enum value="https://www.nist.gov">A value conforms to NIST definitions.</enum>
+                  </allowed-values>
+               </constraint>
+            </define-flag>
+            
+         </define-field>
          <define-field name="status" max-occurs="1">
             <!-- CHANGED: "implementation-status" to "status" -->
             <formal-name>Implementation Status</formal-name>
@@ -774,23 +804,6 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   <define-field name="result">
-      <formal-name>Result</formal-name>
-      <description>A brief indication as to whether the objective is satisfied or not.</description>
-      <json-value-key>value</json-value-key>
-      <flag ref="system"/>
-   </define-field>
-   <define-flag name="system" as-type="uri">
-      <formal-name>Assessment System</formal-name>
-      <description>Identifies the framework or rules to which this value conforms.</description>
-      <!-- QUESTION: Why is this needed? Is there a better way? -->
-      <constraint>
-         <allowed-values allow-other="yes">
-            <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
-            <enum value="https://www.nist.gov">A value conforms to NIST definitions.</enum>
-         </allowed-values>
-      </constraint>
-   </define-flag>
    
    <define-assembly name="observation">
       <formal-name>Objective</formal-name>
@@ -811,7 +824,7 @@
             <description>A human-readable description of this assessment observation.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -820,21 +833,51 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="observation-method" min-occurs="1" max-occurs="unbounded">
+         <define-field name="method" min-occurs="1" max-occurs="unbounded">
             <!-- CHANGED "observation-method" to "method" -->
-            <use-name>method</use-name>
+            <formal-name>Observation Method</formal-name>
+            <description>Identifies how the observation was made.</description>
             <!-- CHANGED "observation-methods" to "methods" -->
             <group-as name="methods" in-json="ARRAY"/>
-         </field>
-         <field ref="observation-type" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGED "observation-method" to "method" -->
-            <use-name>type</use-name>
-            <!-- CHANGED "observation-methods" to "methods" -->
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="EXAMINE">An inspection was performed.</enum>
+                  <enum value="INTERVIEW">An interview was performed.</enum>
+                  <enum value="TEST">A manual or automated test was performed.</enum>
+                  <enum value="TEST-MANUAL">A manual test was performed.</enum>
+                  <enum value="TEST-AUTOMATED">An automated test was performed.</enum>
+                  <enum value="MIXED">Only use for historic conversion of old assessment observations that may include a mix of methods.</enum>
+               </allowed-values>
+            </constraint>
+         </define-field>
+         
+         <define-field name="type"  max-occurs="unbounded">
+            <!-- CHANGED "observation-type" to "type" -->
+            <formal-name>Observation Type</formal-name>
+            <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
+            <!-- CHANGED "observation-types" to "types" -->
             <group-as name="types" in-json="ARRAY"/>
-         </field>
-         <field ref="assessor" min-occurs="0" max-occurs="unbounded">
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
+                  <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
+                  <enum value="mitigation">A mitigating factor was identified.</enum>
+                  <enum value="finding">An assessment finding. Used for observations made by tools, penetration testing, and other means.</enum>
+                  <enum value="historic">An observation from a past assessment, which was converted to OSCAL at a later date.</enum>
+               </allowed-values>
+            </constraint>
+         </define-field>
+         
+         <define-field name="assessor" as-type="empty" max-occurs="unbounded">
+            <formal-name>Assessor</formal-name>
+            <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
             <group-as name="assessors" in-json="ARRAY"/>
-         </field>
+            <!-- QUESTION: Also, why not use responsible-party? -->
+            <define-flag name="party-uuid" required="yes">
+               <formal-name>Party UUID</formal-name>
+               <description>The UUID of the assessor who collected the evidence or made the observation.</description>
+            </define-flag>
+         </define-field>
          <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <group-as name="subject-references" in-json="ARRAY"/>
             <remarks>
@@ -846,7 +889,11 @@
             <description>Identifies the source of the finding, such as a tool, interviewed person,
                or activity.</description>
             <group-as name="origins" in-json="ARRAY"/>
-            <flag ref="uuid-ref" required="yes"/>
+            <define-flag name="uuid-ref" as-type="uuid" required="yes">
+               <formal-name>UUID Reference</formal-name>
+               <!-- QUESTION: What does this point to? -->
+               <description>A pointer to a relevant item, using it's UUID.</description>
+            </define-flag>
             <define-flag name="type" required="yes">
                <!-- TODO: need to update this -->
                <formal-name>Universally Unique Identifier Reference Type</formal-name>
@@ -862,96 +909,53 @@
                </constraint>
             </define-flag>
          </define-field>
-         <!-- CHANGE: group-as name from evidence-group to relevant-evidence-group         -->
-         <assembly ref="relevant-evidence" min-occurs="0" max-occurs="unbounded">
+         <define-assembly name="relevant-evidence" max-occurs="unbounded">
+            <formal-name>Relevant Evidence</formal-name>
+            <description>Links this observation to relevant evidence.</description>
             <!-- CHANGED: "relevant-evidence-group" to "relevant-evidence" -->
             <group-as name="relevant-evidence" in-json="ARRAY"/>
-         </assembly>
+            <define-flag name="href" required="no" as-type="uri-reference">
+               <formal-name>Relevant Evidence Reference</formal-name>
+               <description>>A resolvable URL reference to relevant evidence.</description>
+               <remarks>
+                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                  <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
+                  <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+               </remarks>
+            </define-flag>
+            <model>
+               <!-- CHANGE: Added WITH_WRAPPER to description -->
+               <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Relevant Evidence Description</formal-name>
+                  <description>A human-readable description of this evidence.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
-   <define-assembly name="relevant-evidence">
-      <formal-name>Relevant Evidence</formal-name>
-      <description>Links this observation to relevant evidence.</description>
-      <define-flag name="href" required="no" as-type="uri-reference">
-         <formal-name>Relevant Evidence Reference</formal-name>
-         <description>>A resolvable URL reference to relevant evidence.</description>
-         <remarks>
-            <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-            <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-            <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-            <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
-         </remarks>
-      </define-flag>
-      <model>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Relevant Evidence Description</formal-name>
-            <description>A human-readable description of this evidence.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   <define-field name="assessor" as-type="empty">
-      <formal-name>Assessor</formal-name>
-      <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
-      <!-- QUESTION: Also, why not use responsible-party? -->
-      <define-flag name="party-uuid" required="yes">
-         <formal-name>Party UUID</formal-name>
-         <description>The UUID of the assessor who collected the evidence or made the observation.</description>
-      </define-flag>
-   </define-field>
-   <define-flag name="uuid-ref" as-type="uuid">
-      <formal-name>UUID Reference</formal-name>
-      <description>A pointer to a relevant item, using it's UUID.</description>
-   </define-flag>
-   <define-field name="observation-method" scope="local">
-      <formal-name>Observation Method</formal-name>
-      <description>Identifies how the observation was made.</description>
-      <constraint>
-         <allowed-values target="." allow-other="yes">
-            <enum value="EXAMINE">An inspection was performed.</enum>
-            <enum value="INTERVIEW">An interview was performed.</enum>
-            <enum value="TEST">A manual or automated test was performed.</enum>
-            <enum value="TEST-MANUAL">A manual test was performed.</enum>
-            <enum value="TEST-AUTOMATED">An automated test was performed.</enum>
-            <enum value="MIXED">Only use for historic conversion of old assessment observations that may include a mix of methods.</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
-   <define-field name="observation-type" scope="local">
-      <formal-name>Observation Type</formal-name>
-      <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
-      <constraint>
-         <allowed-values target="." allow-other="yes">
-            <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
-            <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
-            <enum value="mitigation">A mitigating factor was identified.</enum>
-            <enum value="finding">An assessment finding. Used for observations made by tools, penetration testing, and other means.</enum>
-            <enum value="historic">An observation from a past assessment, which was converted to OSCAL at a later date.</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
+
    <define-field name="threat-id">
       <!-- This is an id because it is an externally provided identifier -->
       <formal-name>Threat ID</formal-name>
       <description>A pointer, by ID, to an externally-defined threat.</description>
       <json-value-key>id</json-value-key>
-      <define-flag name="system" required="yes">
+      <define-flag name="system" as-type="uri" required="yes">
+         <!-- CHANGED type from "string" to "uri" -->
          <formal-name>Threat Type Identification System</formal-name>
          <description>Specifies the source of the threat information.</description>
-         <!-- QUESTION: What is the json value key? -->
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
@@ -983,7 +987,7 @@
             <description>A human-readable description of this risk.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -996,25 +1000,135 @@
             <!-- CHANGE from a field to an assembly, adding a value flag -->
             <group-as name="risk-metrics" in-json="ARRAY"/>
          </assembly>
-         <field ref="risk-statement" min-occurs="1" max-occurs="1">
+         <define-field name="statement" as-type="markup-multiline" min-occurs="1">
             <!-- CHANGED: from "risk-statement" to "statement" -->
-            <use-name>statement</use-name>
-         </field>
-         <assembly ref="mitigating-factor" min-occurs="0" max-occurs="unbounded">
+            <formal-name>Risk Statement</formal-name>
+            <description>Describes the risk.</description>
+         </define-field>
+         <define-assembly name="mitigating-factor" max-occurs="unbounded">
+            <formal-name>Mitigating Factor</formal-name>
+            <description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</description>
             <group-as name="mitigating-factors" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remediation-deadline" min-occurs="0" max-occurs="1"/>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Mitigating Factor Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given mitigating factor across revisions.</description>
+            </define-flag>
+            <define-flag name="implementation-uuid" as-type="uuid">
+               <formal-name>Implementation UUID</formal-name>
+               <description>Points to an implementation statement in the SSP.</description>
+            </define-flag>
+            <model>
+               <!-- CHANGE: Added WITH_WRAPPER to description -->
+               <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Mitigating Factor Description</formal-name>
+                  <description>A human-readable description of this mitigating factor.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="subject-references" in-json="ARRAY"/>
+                  <remarks>
+                     <p>Links identifiable elements of the system to this mitigating factor, such as an inventory-item or component.</p>
+                  </remarks>
+               </assembly>
+            </model>
+         </define-assembly>
+         
+         <define-field name="remediation-deadline" as-type="dateTime-with-timezone">
+            <formal-name>Remediation Deadline</formal-name>
+            <description>The date/time by which the risk must be closed.</description>
+         </define-field>
+         
          <assembly ref="remediation" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "remediation-group" to "remediations" -->
             <group-as name="remediations" in-json="ARRAY"/>
          </assembly>
-         <field ref="risk-status" min-occurs="1" max-occurs="1">
+         <define-field name="status" min-occurs="1">
             <!-- CHANGED: from "risk-status" to "status" -->
-            <use-name>status</use-name>
-         </field>
-         <field ref="closure-actions" min-occurs="0" max-occurs="1"/>
-         <assembly ref="remediation-tracking" min-occurs="0" max-occurs="1"/>
-         <!-- ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
+            <formal-name>Status</formal-name>
+            <description>Describes the status of the associated risk.</description>
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="open">Open</enum>
+                  <enum value="closed">Closed</enum>
+               </allowed-values>
+            </constraint>
+         </define-field>
+         <define-field name="closure-actions" as-type="markup-multiline">
+            <formal-name>Closer Actions</formal-name>
+            <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
+         </define-field>
+         <define-assembly name="remediation-tracking">
+            <formal-name>Remediation Tracking</formal-name>
+            <description>A log of events and actions taken towards the remediation of the associated risk.</description>
+            <model>
+               <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
+                  <!-- CHANGED "tracking-entry" to "entry", and "tracking-entries" to "entries" -->
+                  <formal-name>Tracking Entry</formal-name>
+                  <description>Individual remediation tracking entry, which logs an event or action taken towards the remediation of the associated risk.</description>
+                  <group-as name="entries" in-json="ARRAY"/>
+                  <define-flag name="uuid" required="no" as-type="uuid">
+                     <formal-name>Tracking Entry Universally Unique Identifier</formal-name>
+                     <description>Uniquely identifies this tracking entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given tracking entry across revisions.</description>
+                  </define-flag>
+                  <!-- CHANGED: removed "type" flag and moved this to prop/@name='type' -->
+                  <model>
+                     <define-field name="date-time-stamp" as-type="dateTime-with-timezone" min-occurs="1">
+                        <!-- QUESTION: Is this named appropriately? -->
+                        <formal-name>Date/Time Stamp</formal-name>
+                        <description>Date/time stamp of the associated information.</description>
+                     </define-field>
+                     <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                        <formal-name>Tracking Entry Title</formal-name>
+                        <description>The title for this tracking entry.</description>
+                     </define-field>
+                     <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" >
+                        <formal-name>Tracking Entry Description</formal-name>
+                        <description>A human-readable description of this tracking entry.</description>
+                     </define-field>
+                     <field ref="property" min-occurs="0" max-occurs="unbounded">
+                        <!-- CHANGE: props to properties -->
+                        <group-as name="properties" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                  </model>
+                  <constraint>
+                     <allowed-values target="prop/@name" allow-other="yes">
+                        <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
+                     </allowed-values>
+                     <allowed-values target="prop/[@name='type']/value()" allow-other="yes">
+                        <!-- TODO: Improve these definitions -->
+                        <enum value="vendor-check-in">Vendor Check-In</enum>
+                        <enum value="status-update">Status Update</enum>
+                        <enum value="milestone-complete">Milestone Complete</enum>
+                        <enum value="mitigation">Mitigation Implemented</enum>
+                        <enum value="remediated">Risk is Remediated</enum>
+                        <enum value="closed">Closed</enum>
+                        <enum value="dr-submission">Deviation Request Submission</enum>
+                        <enum value="dr-updated">Deviation Requested Updated</enum>
+                        <enum value="dr-approved">Deviation Request Approved</enum>
+                        <enum value="dr-rejected">Deviation Request Rejected</enum>
+                     </allowed-values>
+                  </constraint>
+               </define-assembly>
+            </model>
+         </define-assembly>
+         
+         <!-- QUESTION: ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
          <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
             <group-as name="party-uuids" in-json="ARRAY"/>
          </field>
@@ -1023,17 +1137,15 @@
          <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
       </remarks>
    </define-assembly>
-   <define-field name="remediation-deadline" as-type="dateTime-with-timezone">
-      <formal-name>Remediation Deadline</formal-name>
-      <description>The date/time by which the risk must be closed.</description>
-   </define-field>
 
    <define-assembly name="risk-metric" scope="local">
+      <!-- QUESTION: Localize this? -->
       <formal-name>Risk Metric</formal-name>
       <description>An individual risk metric from a specified system.</description>
       <define-flag name="name" required="yes">
          <!-- TODO: this documentation needs to be improved -->
          <!-- TODO: We need to reduce this to a core set for OSCAL -->
+         <!-- QUESTION: Should we use a different structure here that organizes things by concept area? -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
          <constraint>
@@ -1042,6 +1154,7 @@
                <enum value="cvss-2-AV">Access Vector</enum>
                <enum value="cvss-3-AV">Attack Vector</enum>
                <enum value="cvss-3.1-AV">Attack Vector</enum>
+
                <enum value="fedramp-likelihood">Likelihood as defined by FedRAMP. The class can be used to specifiy 'inital' and 'adjusted'.</enum>
                <enum value="impacted-control">Impacted Control</enum>
                <enum value="vulnerability-id">Vulnerability ID</enum>
@@ -1136,7 +1249,7 @@
       </define-flag>
       <model>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -1148,153 +1261,8 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   <define-assembly name="remediation-tracking">
-      <formal-name>Remediation Tracking</formal-name>
-      <description>A log of events and actions taken towards the remediation of the associated risk.</description>
-      <model>
-         <assembly ref="tracking-entry" min-occurs="1" max-occurs="unbounded">
-            <use-name>entry</use-name>
-            <!-- CHANGED "tracking-entry" to "entry", and "tracking-entries" to "entries" -->
-            <group-as name="entries" in-json="ARRAY"/>
-         </assembly>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="tracking-entry">
-      <formal-name>Tracking Entry</formal-name>
-      <description>Individual remediation tracking entry, which logs an event or action taken towards the remediation of the associated risk.</description>
-      <define-flag name="uuid" required="no" as-type="uuid">
-         <formal-name>Tracking Entry Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this tracking entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given tracking entry across revisions.</description>
-      </define-flag>
-      <!-- CHANGED: removed "type" flag and moved this to prop/@name='type' -->
-      <model>
-         <field ref="date-time-stamp" min-occurs="1" max-occurs="1"/>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Tracking Entry Title</formal-name>
-            <description>The title for this tracking entry.</description>
-         </define-field>
-         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" >
-            <formal-name>Tracking Entry Description</formal-name>
-            <description>A human-readable description of this tracking entry.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-      <constraint>
-         <allowed-values target="prop/@name" allow-other="yes">
-            <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
-         </allowed-values>
-         <allowed-values target="prop/[@name='type']/value()" allow-other="yes">
-            <!-- TODO: Improve these definitions -->
-            <enum value="vendor-check-in">Vendor Check-In</enum>
-            <enum value="status-update">Status Update</enum>
-            <enum value="milestone-complete">Milestone Complete</enum>
-            <enum value="mitigation">Mitigation Implemented</enum>
-            <enum value="remediated">Risk is Remediated</enum>
-            <enum value="closed">Closed</enum>
-            <enum value="dr-submission">Deviation Request Submission</enum>
-            <enum value="dr-updated">Deviation Requested Updated</enum>
-            <enum value="dr-approved">Deviation Request Approved</enum>
-            <enum value="dr-rejected">Deviation Request Rejected</enum>
-         </allowed-values>
-      </constraint>
-   </define-assembly>
-   
-   <define-assembly name="required">
-      <formal-name>Required Asset</formal-name>
-      <description>Identifies an asset required to achieve remediation.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Required Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.</description>
-      </define-flag>
-      <model>
-         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-            <group-as name="subject-references" in-json="ARRAY"/>
-            <remarks>
-               <p>Identifies an asset associated with this requirement, such as a party, system component, or inventory-item.</p>
-            </remarks>
-         </assembly>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Title for Required Asset</formal-name>
-            <description>The title for this required asset.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Description of Required Asset</formal-name>
-            <description>A human-readable description of this required asset.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   <define-field name="risk-status">
-      <formal-name>Status</formal-name>
-      <description>Describes the status of the associated risk.</description>
-      <constraint>
-         <allowed-values target="." allow-other="yes">
-            <enum value="open">Open</enum>
-            <enum value="closed">Closed</enum>
-         </allowed-values>
-      </constraint>
-   </define-field>
-   <define-field name="closure-actions" as-type="markup-multiline">
-      <formal-name>Closer Actions</formal-name>
-      <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
-   </define-field>
-   
-   <define-assembly name="mitigating-factor">
-      <formal-name>Mitigating Factor</formal-name>
-      <description>Describes a mitigating factor with an optional link to an implementation statement in the SSP.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Mitigating Factor Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given mitigating factor across revisions.</description>
-      </define-flag>
-      <flag ref="implementation-uuid" required="no"/>
-      <model>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Mitigating Factor Description</formal-name>
-            <description>A human-readable description of this mitigating factor.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-            <group-as name="subject-references" in-json="ARRAY"/>
-            <remarks>
-               <p>Links identifiable elements of the system to this mitigating factor, such as an inventory-item or component.</p>
-            </remarks>
-         </assembly>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="remediation">
+
+   <define-assembly name="remediation" scope="local">
       <formal-name>Remediation</formal-name>
       <description>Describes either recommendation or an actual plan for remediating the risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
@@ -1322,7 +1290,7 @@
             <description>A human-readable description of this remediation plan.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -1336,7 +1304,11 @@
             <formal-name>Remediation Origin</formal-name>
             <description>Points to the source of the recommendation.</description>
             <group-as name="origins" in-json="ARRAY"/>
-            <flag ref="uuid-ref" required="yes"/>
+            <define-flag name="uuid-ref" as-type="uuid" required="yes">
+               <formal-name>UUID Reference</formal-name>
+               <!-- QUESTION: What does this point to? -->
+               <description>A pointer to a relevant item, using it's UUID.</description>
+            </define-flag>
             <define-flag name="type" required="no">
                <formal-name>Universally Unique Identifier Reference Type</formal-name>
                <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
@@ -1349,29 +1321,58 @@
             </define-flag>
             <!-- TODO: document the UUID space that can be referenced. Currently part and tool. -->
          </define-field>
-         <assembly ref="required" min-occurs="0" max-occurs="unbounded">
-            <group-as name="requirements" in-json="ARRAY"/>
-         </assembly>
+         <define-assembly name="required-asset" max-occurs="unbounded">
+            <!-- CHANGED: "required" to "required-asset" -->
+            <formal-name>Required Asset</formal-name>
+            <description>Identifies an asset required to achieve remediation.</description>
+            <!-- CHANGED: "requirements" to "required-assets" -->
+            <group-as name="required-assets" in-json="ARRAY"/>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Required Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.</description>
+            </define-flag>
+            <model>
+               <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="subject-references" in-json="ARRAY"/>
+                  <remarks>
+                     <p>Identifies an asset associated with this requirement, such as a party, system component, or inventory-item.</p>
+                  </remarks>
+               </assembly>
+               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                  <formal-name>Title for Required Asset</formal-name>
+                  <description>The title for this required asset.</description>
+               </define-field>
+               <!-- CHANGE: Added WITH_WRAPPER to description -->
+               <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                  <formal-name>Description of Required Asset</formal-name>
+                  <description>A human-readable description of this required asset.</description>
+               </define-field>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         
          <assembly ref="schedule" min-occurs="0" max-occurs="1"/>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
    
-   <define-field name="risk-statement" as-type="markup-multiline">
-      <formal-name>Risk Statement</formal-name>
-      <description>Describes the risk.</description>
-   </define-field>
-   <define-flag name="implementation-uuid" as-type="uuid">
-      <formal-name>Implementation UUID</formal-name>
-      <description>Points to an implementation statement in the SSP.</description>
-   </define-flag>
-   <define-flag name="objective-id" as-type="NCName">
+   <define-flag name="objective-id" as-type="NCName" scope="local">
       <!-- This is an id to sync with control syntax -->
       <formal-name>Objective ID</formal-name>
       <description>Points to an assessment objective.</description>
    </define-flag>
    
-   <define-assembly name="assessment-part">
+   <define-assembly name="assessment-part" scope="local">
       <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>
       <description>A partition or component of an objective or part</description>
@@ -1416,7 +1417,7 @@
             <description>A name given to the part, which may be used by a tool for display and navigation.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <use-name>prop</use-name>
+            <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
