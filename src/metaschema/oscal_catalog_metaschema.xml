@@ -26,6 +26,7 @@
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="parameter" max-occurs="unbounded">
+            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
             <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
@@ -82,6 +83,7 @@
             <description>A name given to the group, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
+            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
             <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
@@ -144,6 +146,7 @@
             <description>A name given to the control, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
+            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
             <use-name>param</use-name>
             <group-as name="parameters" in-json="ARRAY"/>
          </assembly>
