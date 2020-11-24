@@ -147,7 +147,6 @@
             </remarks>
          </allowed-values>
          <allowed-values target="property[@name='cloud-service-model']/value()">
-            <!-- QUESTION: Change case? -->
             <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="iaas">Infrastructure as a service (IaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
@@ -697,11 +696,9 @@
          </assembly>
 -->
          <assembly ref="responsible-role" max-occurs="unbounded">
-            <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="set-parameter" max-occurs="unbounded">
-            <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
             <group-as name="parameter-settings" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="statement" max-occurs="unbounded">
@@ -752,14 +749,8 @@
          </assembly>
          <!--            <assembly ref="using"/>
 -->
-         <assembly ref="set-parameter" max-occurs="unbounded">
-            <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
-            <group-as name="parameter-settings" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="responsible-role" max-occurs="unbounded">
-            <!-- QUESTION: Should responsible-role and set-parameter only appear on the by-component? -->
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
-         </assembly>
+         <!-- CHANGED: removed "set-parameter" -->
+         <!-- CHANGED: removed "responsible-role" -->
          <assembly ref="by-component" max-occurs="unbounded">
             <group-as name="by-components" in-json="BY_KEY"/>
          </assembly>
@@ -880,6 +871,9 @@
                      </assembly>
                      <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
                         <group-as name="responsible-roles" in-json="BY_KEY"/>
+                        <remarks>
+                           <p>A role defined at the by-component level takes presedence over the same role defined on the parent implemented-requirement or on the referenced component. </p>
+                        </remarks>
                      </assembly>
                      <field ref="remarks" in-xml="WITH_WRAPPER"/>
                   </model>
@@ -962,10 +956,7 @@
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="set-parameter" max-occurs="unbounded">
-            <!-- QUESTION: Is this defined in the correct order? -->
-            <group-as name="parameter-settings" in-json="BY_KEY"/>
-         </assembly>
+         <!-- CHANGED: removed "set-parameter" -->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
@@ -979,7 +970,6 @@
             <enum value="alternative">TODO: brian please define</enum>
             <enum value="not-applicable">TODO: brian please define</enum>
          </allowed-values>
-         
          <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;

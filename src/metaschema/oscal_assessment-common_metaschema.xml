@@ -78,13 +78,15 @@
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
-               <field ref="all" min-occurs="0" max-occurs="1"/>
-               <define-field name="include-control" as-type="empty" max-occurs="unbounded">
-                  <formal-name>Include Control</formal-name>
-                  <description>Identifies an individual control to include.</description>
-                  <group-as name="include-controls" in-json="ARRAY"/>
-                  <flag ref="control-id" required="yes"/>
-               </define-field>
+               <choice>
+                  <field ref="all" min-occurs="1"/>
+                  <define-field name="include-control" as-type="empty" min-occurs="1" max-occurs="unbounded">
+                     <formal-name>Include Control</formal-name>
+                     <description>Identifies an individual control to include.</description>
+                     <group-as name="include-controls" in-json="ARRAY"/>
+                     <flag ref="control-id" required="yes"/>
+                  </define-field>
+               </choice>
                <define-field name="exclude-control" as-type="empty" max-occurs="unbounded">
                   <formal-name>Exclude Control</formal-name>
                   <description>Identifies an individual control to exclude.</description>
@@ -94,6 +96,9 @@
                
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
+            <remarks>
+               <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
+            </remarks>
          </define-assembly>
          <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
@@ -115,13 +120,15 @@
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
-               <field ref="all" min-occurs="0" max-occurs="1"/>
-               <define-field name="include-objective" as-type="empty" max-occurs="unbounded">
-                  <formal-name>Include Objective</formal-name>
-                  <description>Identifies an individual control objective to include.</description>
-                  <group-as name="include-objectives" in-json="ARRAY"/>
-                  <flag ref="objective-id" required="yes"/>
-               </define-field>
+               <choice>
+                  <field ref="all" min-occurs="1"/>
+                  <define-field name="include-objective" as-type="empty" min-occurs="1" max-occurs="unbounded">
+                     <formal-name>Include Objective</formal-name>
+                     <description>Identifies an individual control objective to include.</description>
+                     <group-as name="include-objectives" in-json="ARRAY"/>
+                     <flag ref="objective-id" required="yes"/>
+                  </define-field>
+               </choice>
                <define-field name="exclude-objective" as-type="empty" max-occurs="unbounded">
                   <formal-name>Exclude Objective</formal-name>
                   <description>Identifies an individual control objective to exclude.</description>
@@ -131,6 +138,9 @@
                
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
+            <remarks>
+               <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
+            </remarks>
          </define-assembly>
          <define-assembly name="objective" min-occurs="0" max-occurs="unbounded">
             <formal-name>Assessment-specific Control Objective</formal-name>
@@ -212,7 +222,6 @@
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
       <model>
-         <!-- QUESTION: how does include/exclude work together or in the absence of the other? --> 
          <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
             <!-- CHANGED: "includes" to "include-subjects" -->
             <group-as name="include-subjects" in-json="ARRAY"/>
@@ -227,6 +236,9 @@
             min-occurs="0"
             max-occurs="1"/>
       </model>
+      <remarks>
+         <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
+      </remarks>
    </define-assembly>
 
    <define-assembly name="include-subject">
@@ -268,11 +280,13 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="all" min-occurs="0" max-occurs="1"/>
-         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-            <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
-            <group-as name="subject-references" in-json="ARRAY"/>
-         </assembly>
+         <choice>
+            <field ref="all" min-occurs="1"/>
+            <assembly ref="subject-reference" min-occurs="1" max-occurs="unbounded">
+               <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
+               <group-as name="subject-references" in-json="ARRAY"/>
+            </assembly>
+         </choice>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -316,11 +330,13 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="all" min-occurs="0" max-occurs="1"/>
-         <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-            <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
-            <group-as name="subject-references" in-json="ARRAY"/>
-         </assembly>
+         <choice>
+            <field ref="all" min-occurs="1"/>
+            <assembly ref="subject-reference" min-occurs="1" max-occurs="unbounded">
+               <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
+               <group-as name="subject-references" in-json="ARRAY"/>
+            </assembly>
+         </choice>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -478,6 +494,7 @@
    
    <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
    <define-assembly name="assessment-activities">
+      <!-- TODO: brian is going to refactor this -->
       <formal-name>Assessment Activities</formal-name>
       <description>Identifies the assessment activities and schedule. In the assessment plan, these are planned activities. In the assessment results, these are the actual activities performed.</description>
       <model>
@@ -1133,9 +1150,6 @@
             <group-as name="party-uuids" in-json="ARRAY"/>
          </field>
       </model>
-      <remarks>
-         <p>For the FedRAMP SAR, must have prop @name='risk-reduction-auto-approve' @ns='fedramp', with a value of "yes" or "no". If missing, or no value, the default is "no".</p>
-      </remarks>
    </define-assembly>
 
    <define-assembly name="risk-metric" scope="local">

@@ -116,10 +116,6 @@
          <field ref="property" max-occurs="unbounded">
             <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
-            <remarks>
-               <!-- QUESTION: Is this remark appropriate here? -->
-               <p>For the FedRAMP SAR, must have prop @name='priority' @ns='https://fedramp.gov/ns/oscal', with a numeric value, where '1' is the highest priority.</p>
-            </remarks>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
