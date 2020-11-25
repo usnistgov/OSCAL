@@ -244,11 +244,11 @@
    <define-assembly name="include-subject">
       <formal-name>Included Assessment Subject</formal-name>
       <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
-      <define-flag name="name" required="yes">
-         <!-- QUESTION: Should this be "type"? -->
+      <!-- CHANGED: "name" to "type" -->
+      <define-flag name="type" required="yes">
          <!-- TODO: Improve documentation -->
-         <formal-name>name flag</formal-name>
-         <description>name flag ... </description>
+         <formal-name>Subject Type</formal-name>
+         <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this include statement.</description>
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="component">Component</enum>
@@ -293,12 +293,12 @@
    
    <define-assembly name="exclude-subject">
       <formal-name>Excluded Assessment Subject</formal-name>
-      <description>Identifies what is explicitly excluded from this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
-      <define-flag name="name" required="yes">
-         <!-- QUESTION: Should this be "type"? -->
+      <description>Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
+      <!-- CHANGED: "name" to "type" -->
+      <define-flag name="type" required="yes">
          <!-- TODO: Improve documentation -->
-         <formal-name>name flag</formal-name>
-         <description>name flag ... </description>
+         <formal-name>Subject Type</formal-name>
+         <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this exclude statement.</description>
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="component">Component</enum>
@@ -493,10 +493,16 @@
    </define-assembly>
    
    <!-- ********** ASSESSMENT ACTIVITIES Assembly ********** -->
-   <define-assembly name="assessment-activities">
+   <!-- CHANGE: Renamed "assessment-activities" to "assessment-activity". Changed cardinality from 0 or 1 to 0 or more. -->
+   <define-assembly name="assessment-activity">
       <!-- TODO: brian is going to refactor this -->
-      <formal-name>Assessment Activities</formal-name>
+      <formal-name>Assessment Activity</formal-name>
       <description>Identifies the assessment activities and schedule. In the assessment plan, these are planned activities. In the assessment results, these are the actual activities performed.</description>
+      <!-- CHANGE: Added UUID flag to assessment-activity -->
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Activity Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this defined assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment activity across revisions of the document.</description>
+      </define-flag>
       <model>
          <define-assembly name="test-method" min-occurs="0" max-occurs="unbounded">
             <formal-name>Test Method</formal-name>
@@ -569,7 +575,7 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
-         <assembly ref="schedule" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: Moved "schedule" to top level (from assessment-activities). In AP, it's still "schedule". In AR, it's "assessment-log" -->
          <!-- TODO: Document and potentially consolidate include/exclude -->
          <assembly ref="include-activity" min-occurs="0" max-occurs="unbounded">
             <group-as name="include-activities" in-json="ARRAY"/>
@@ -586,8 +592,8 @@
       <description>Typically used in when copying content from the assessment plan to the assessment results. The uuid should be changed in the assessment results file, and the compare-to field should be set to the original assessment plan uuid value. This enables the plan and results to be compared later to identify what changed between the two.</description>
    </define-field>
    
-   
-   <define-assembly name="schedule" scope="local">
+   <!-- ********** ASSESSMENT SCHEDULE Assembly ********** -->
+   <define-assembly name="schedule">      <!--scope="local"-->
       <formal-name>Schedule</formal-name>
       <description>Identifies the schedule for the assessment activities.</description>
       <define-flag name="uuid" required="no" as-type="uuid">

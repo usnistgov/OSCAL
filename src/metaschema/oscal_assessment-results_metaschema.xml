@@ -34,7 +34,14 @@
          <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
          <assembly ref="assessment-subjects" min-occurs="0" max-occurs="1"/>
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
-         <assembly ref="assessment-activities" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: "assessment-activities" to "assessment-activity", allowed more than one. -->
+         <assembly ref="assessment-activity" min-occurs="0" max-occurs="unbounded">
+            <group-as name="assessment-activities"/>
+         </assembly>
+         <!-- CHANGED: Moved "schedule" to top level (from assessment-activities). Changed name to "assessment-log" -->
+         <assembly ref="schedule" min-occurs="0" max-occurs="1">
+            <use-name>assessment-log</use-name>
+         </assembly>
          <assembly ref="result" min-occurs="1" max-occurs="unbounded">
             <!-- CHANGED: "results" to "result" -->
             <use-name>result</use-name>
