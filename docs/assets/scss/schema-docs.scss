@@ -1,6 +1,8 @@
 
 
 /*.model-entry p { margin-top: units( 0.5 )*/
+  
+summary { display: list-item; cursor: pointer }
 
 .field-header, .assembly-header, .flag-header {
   clear: inherit;
@@ -14,8 +16,10 @@ li.model-entry p {
 
 li.model-entry > *:not(:first-child) { @extend .font-body-xs }
 
+li.model-entry h3 { margin: 0em }
 
 .definition-header { @extend .padding-1; @extend .bg-base-lightest }
+
 div.json-docs .definition-header { @extend .bg-primary-lighter }
 
 
@@ -50,35 +54,29 @@ div.remarks { @extend .measure-6;
 
 button.schema-link { @extend .usa-button }
 
-/* For the model maps */
-
 /* Schema Model Map styles */
+
+
+.OM-map summary {list-style-position: outside }
+
+
 div.OM-map {
   margin-top: 0ex;
   margin-bottom: 0ex;
   @include u-font-family('mono');
-  font-weight: bold;
-  color: #212121;
+  @extend .text-ink;
 }
 
 div.usa-layout-docs-main_content > div.OM-map {
-  border: medium solid #d6d7d9; }
+  @extend .border-base-light; }
 
-div.OM-map div.OM-map {
+div.OM-map {
   margin-left: 2em; }
 
 .OM-entry {
-  @extend .bg-base-lighter;
-  @extend .border-base-light;
   padding-right: 0.5rem;
   margin-top: 0rem;
 }
-
-.OM-entry:hover {
-  border: medium solid #aeb0b5; }
-
-.OM-entry.hide_me:hover {
-  border: medium solid #f1f1f1; }
 
 div.OM-map p {
   margin: 0ex; }
@@ -97,35 +95,27 @@ span.OM-cardinality {
   @include u-font-family('sans');
   font-weight: normal;
   font-style: normal;
-  color: #205493; }
+  @extend .text-primary-vivid; }
+
+span.OM-datatype { @extend .font-sans-sm }
 
 .OM-name {
-  color: #0071bc; }
+  @extend .text-primary; }
 
 .OM-map a {
   text-decoration: none;
-  color: #0071bc; }
+  @extend .text-primary; }
 
 OM-map a:visited {
-  color: #0071bc; }
+  @extend .text-primary; }
 
 a.OM-name:hover {
   text-decoration: underline; }
 
-.hide_me {
-  display: none; }
+details[open] > summary .show-closed {
+    display: none; }
 
-a.expander-collapser {
-  font-size: 120%;
-  font-weight: normal;
-  width: 2em;
-  color: #212121;
-  font-weight: bold; }
-
-a.expander-collapser:hover {
-  text-decoration: none; }
-
-
+    
 pre {
   @extend .bg-base-lighter
 }
@@ -133,8 +123,6 @@ pre {
 pre.json {
     @extend .bg-primary-lighter
 }
-
-summary { display: list-item;  cursor: pointer }
 
 .define-assembly,
 .define-field,
@@ -146,8 +134,7 @@ summary { display: list-item;  cursor: pointer }
 }
 
 .formal-name {
-  @include u-font-family('sans');
-  font-size: 120%;
+  @extend .font-sans-lg;
   font-weight: bold;
   margin: 0.5em 0em
 }
@@ -161,16 +148,7 @@ summary { display: list-item;  cursor: pointer }
   @include u-font-family('sans');
 }
 
-.definition > .description { @extend .bg-accent-cool-light; margin: 0.5em 0em;
-  @extend .border-accent-cool-dark; padding: 0.5em; font-size: 90% }
-
-.model-entry .description {
-    font-size: 80%;
-    margin: 0em 0em
-}
-
-.occurrence { @include u-font-family('sans'); font-size: 80%; font-style: italic }
-
+.occurrence { @extend .font-sans-sm; font-style: italic }
 
 .remarks { padding-left: 1em; border-left: thin solid grey 
 }
@@ -229,10 +207,7 @@ ul.e_map {
   color: darkgrey
 }
 
-
-.model-descr {  margin-top: 0.2em; border-left: thin solid black;
-       border-right: thin solid black;
-       border-top: medium groove black; padding: 0.5em }
+.model-descr { @extend .border-y; @extend .border-primary-dark }
        
 .model-descr:focus { @extend .bg-primary-lighter }
 
@@ -255,7 +230,18 @@ ul.e_map {
 
 div.constraints * { margin: 0em }
 div.constraints div.constraint { margin-top: 0.5em }
-div.constraint  * { margin: 0em }
+div.constraint { margin: 0em; padding: 0em 0.5em; font-size: smaller;
+   @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-vivid;
+   max-height: 3em;
+   overflow: clip; }
 
-.model-summary .description { font-size: 80% }
+div.constraint:hover { max-height: unset; transition-duration: 2s }
+
+.definition > .description { @extend .bg-accent-cool-light; margin: 0.5em 0em;
+  @extend .border-accent-cool-dark; padding: 0.5em; font-size: 90% }
+
+.model-entry .description {
+    font-size: 80%;
+    margin: 0em 0em
+}
 
