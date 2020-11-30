@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>/</link>
+    <description>Recent content on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/fedramp.gov/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/fedramp.gov/readme/</guid>
+      <description>Federal Risk and Authorization Management Program (FedRAMP) Profile Examples The following representations of the &amp;ldquo;High&amp;rdquo;, &amp;ldquo;Moderate&amp;rdquo; and &amp;ldquo;Low&amp;rdquo; baselines (profiles) are derived from source data defined by FedRAMP:
+ FedRAMP High Security Controls FedRAMP MODERATE Security Controls FedRAMP LOW Security Controls  Machine made OSCAL Profile versions:
+ FedRAMP HIGH Baseline OSCAL Profile FedRAMP MODERATE Baseline OSCAL Profile FedRAMP LOW Baseline OSCAL Profile  JSON versions are also available for the OSCAL profiles above containing equivalent content.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/nist.gov/sp800-53/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/nist.gov/sp800-53/readme/</guid>
+      <description>NIST produced OSCAL content for NIST Special Publication 800-53 NIST is maintining OSCAL content for multiple revisions of the NIST Special Publication (SP) 800-53.
+OSCAL XML-, JSON-, and YAML-based content is provided for the following revisions:
+ NIST SP 800-53 Revision 4 OSCAL catalog and baseline profiles content. NIST SP 800-53 Revision 5 Final Public Draft (FPD) OSCAL catalog content.
+Note: In the SP 800-53 Revision 5 FPD, the control catalog and control baselines are separated.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/nist.gov/sp800-53/rev4/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/nist.gov/sp800-53/rev4/readme/</guid>
+      <description>NIST SP 800-53 Examples This subdirectory contains provisional stable, best effort versions of OSCAL catalogs and profiles related to NIST SP800-53. While not authoritative, as examples these are useful as demonstrations (as can be established by comparing them with their originals). The files have been produced by a combination of automated and semi-automated (editorial) processes.
+Note that in many ordinary working scenarios, users of OSCAL will not be writing or creating catalogs or low-level baselines (profiles) such as these, but only referencing them.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/nist.gov/sp800-53/rev5/xml/nist_sp-800-53_rev5-fpd_catalog-preview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/nist.gov/sp800-53/rev5/xml/nist_sp-800-53_rev5-fpd_catalog-preview/</guid>
+      <description>NIST Special Publication 800-53: Security and Privacy Controls for Federal Information Systems and Organizations, Revision 5 Final Public Draft .tag { color: green; font-family: sans-serif; font-size: 80%; font-weight: bold } .UNKNOWN { color: red; font-family: sans-serif; font-size: 80%; font-weight: bold } .UNKNOWN .tag { color: darkred } .lbl { background-color: midnightblue; color: white; font-size: 80%; font-weight: bold; font-family: sans-serif; padding: 0.2em 0.5em; margin: 0em 0.5em 0em 0em } .lbl2 { background-color: white; color: black; border: thin solid black; font-size: 80%; font-weight: bold; font-family: sans-serif; padding: 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/readme/</guid>
+      <description>OSCAL Examples This directory contains OSCAL examples in both XML and JSON formats. Some examples are considered provisional &amp;ldquo;finished&amp;rdquo; versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+The structure and contents of the examples directory are as follows:
+ fedramp.</description>
+    </item>
+    
+  </channel>
+</rss>
