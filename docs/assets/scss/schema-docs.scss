@@ -20,12 +20,15 @@ li.model-entry h3 { margin: 0em }
 
 .definition-header { @extend .padding-1; @extend .bg-base-lightest }
 
+.definition-header * { margin: 0em; clear: left }
+
+.model-summary * { margin: 0em }
+
 div.json-docs .definition-header { @extend .bg-primary-lighter }
 
 
-.definition-header h2 { @extend .text-accent-cool-darker;
-  @extend .margin-bottom-0;
-  @extend .margin-top-0 }
+.definition-header .defining { @extend .text-accent-cool-darker }
+
 
 .crosslink { @extend .float-right }
 
@@ -48,7 +51,12 @@ div.remarks { @extend .measure-6;
   @extend .border-base-light;
   @extend .border-left-05;
   @extend .padding-left-1;
-  @extend .font-body-xs }
+  @extend .font-serif-xs }
+
+
+.remarks p {
+    margin-top: 0.5em
+}
 
 .occurrence { @extend .text-primary }
 
@@ -56,9 +64,7 @@ button.schema-link { @extend .usa-button }
 
 /* Schema Model Map styles */
 
-
 .OM-map summary {list-style-position: outside }
-
 
 div.OM-map {
   margin-top: 0ex;
@@ -71,17 +77,31 @@ div.usa-layout-docs-main_content > div.OM-map {
   @extend .border-base-light; }
 
 div.OM-map {
+  hyphens: none;
   margin-left: 2em; }
+
+div.OM-choice { margin-left: 2em; margin-top: 0em }
 
 .OM-entry {
   padding-right: 0.5rem;
   margin-top: 0rem;
+  @extend .border-right;
+  @extend .border-y-2px;
+  border-color: white  
+}
+
+.OM-entry span.sq { display: inline-block }
+
+.nobr { white-space: nowrap }
+
+.OM-entry:hover { 
+   @extend .border-accent-cool-light
 }
 
 div.OM-map p {
   margin: 0ex; }
 
-span.OM-lit {
+.OM-lit {
   @include u-font-family('sans');
   font-weight: normal;
   font-style: normal; }
@@ -91,17 +111,27 @@ span.OM-emph {
   font-weight: normal;
   font-style: italic; }
 
+p.OM-entry > span { display: inline-block }
+
 span.OM-cardinality {
   @include u-font-family('sans');
   font-weight: normal;
   font-style: normal;
-  @extend .text-primary-vivid; }
+  @extend .text-base-light }
 
-span.OM-datatype { @extend .font-sans-sm }
+.as-xml span.OM-cardinality {
+    display: inline-block;
+    width: 5em }
+  
+  p.indented { margin-left: 4em }
+
+span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
+  font-style: italic;
+  font-size: smaller }
 
 .OM-name {
   @extend .text-primary; }
-
+ 
 .OM-map a {
   text-decoration: none;
   @extend .text-primary; }
@@ -127,10 +157,10 @@ pre.json {
 .define-assembly,
 .define-field,
 .define-flag {
-    margin-top: 1ex;
-    margin-bottom: 1ex;
-    border: thin inset black;
-    padding: 0.5em
+  @extend .margin-top-1;
+  @extend .border;
+  @extend .border-base-lighter;
+  @extend .padding-1 
 }
 
 .formal-name {
@@ -138,6 +168,10 @@ pre.json {
   font-weight: bold;
   margin: 0.5em 0em
 }
+
+.cnstr-tag {
+  @extend .usa-tag;
+  @extend .bg-secondary-darker } 
 
 .subhead {
     font-size: 80%;
@@ -149,13 +183,6 @@ pre.json {
 }
 
 .occurrence { @extend .font-sans-sm; font-style: italic }
-
-.remarks { padding-left: 1em; border-left: thin solid grey 
-}
-
-.remarks p {
-    margin-top: 0.5em
-}
 
 .model {
     margin-top: 1em
@@ -207,7 +234,7 @@ ul.e_map {
   color: darkgrey
 }
 
-.model-descr { @extend .border-y; @extend .border-primary-dark }
+.model-descr { @extend .border-y; @extend .border-base-lighter }
        
 .model-descr:focus { @extend .bg-primary-lighter }
 
@@ -218,27 +245,31 @@ ul.e_map {
 
 .usename { @include u-font-family('mono'); }
 
-.frmname { @include u-font-family('sans'); font-weight: bold; font-size: 80% }
-.mtyp    { font-size: 80% }
+.frmname { @include u-font-family('sans'); font-weight: bold }
 
-.deflink { font-style: italic; font-size: 80%; @include u-font-family('sans');  }
+.mtyp    { font-size: smaller }
+
+.deflink { font-style: italic; font-size: smaller; @include u-font-family('sans');  }
 .deflink code { font-style: normal }
 
 .name-link { @include u-font-family('mono'); font-weight: bold }
 
 .description { @extend .bg-primary-lighter; @extend .border-primary-darker; padding: 0.5em; font-size: 90% }
 
-div.constraints * { margin: 0em }
-div.constraints div.constraint { margin-top: 0.5em }
-div.constraint { margin: 0em; padding: 0em 0.5em; font-size: smaller;
-   @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-vivid;
-   max-height: 3em;
-   overflow: clip; }
+div.constraints { 
+  @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-light }
 
+div.constraint { margin: 0em; font-size: smaller;
+    @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-light;
+    max-height: 2.6em;
+    overflow: clip; }
+ 
 div.constraint:hover { max-height: unset; transition-duration: 2s }
 
-.definition > .description { @extend .bg-accent-cool-light; margin: 0.5em 0em;
-  @extend .border-accent-cool-dark; padding: 0.5em; font-size: 90% }
+div.constraint * { margin: 0em; }
+
+.global.description { @extend .bg-accent-cool-light; 
+  @extend .border-accent-cool-dark }
 
 .model-entry .description {
     font-size: 80%;
