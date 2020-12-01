@@ -19,8 +19,129 @@ In the log below, [M3} indicates the Milestone 3 definitions, while [M2] indicat
 
 Assembly models are noted with DTD (RNC) notation indicating cardinality: suffix '*' indicates zero-or-more, '+' is one-or-more, '?' is zero-or-one (i.e., optional), no indicator is used for one-only (required). So (a, b, b) and (a, b, c) are valid to pattern expression (a, b+, c*), but (a, c) is not.
 
-Changes from Milestone 2 to Milestone 3 OSCAL
-=============================================
+Changes from OSCAL 1.0.0 Milestone 3 (M3) to Release Candidate 1 (RC1)
+======================================================================
+
+## Changes common to all models
+
+- many elements in XML, and properties in JSON and YAML, have been renamed to make the naming more consistent between elements names in XML and property names in JSON and YAML. Now JSON properties that contain an array of objects use a plural form of the XML element name. The one exception is "prop" in XML vs "properties" in JSON and YAML. This decision was made to make the XML use of "prop" more concise, since "prop" elements are used a good deal in OSCAL XML formats.
+
+### Changes to all XML formats:
+
+In {top-level-element}/metadata:
+- renamed "doc-id" to "document-id"
+
+In {top-level-element}/metadata/document-id:
+- renamed "type" to "scheme"
+
+In {top-level-element}/metadata/location:
+- renamed "email" to "email-address"
+- renamed "phone" to "telephone-number"
+
+In {top-level-element}/metadata/party:
+- renamed "party-name" to "name" 
+- renamed "email" to "email-address"
+- renamed "phone" to "telephone-number"
+- changed sequencing of address
+- made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality.
+
+In {top-level-element}/metadata/party/external-id:
+- renamed "type" to "scheme" 
+
+In {top-level-element}/metadata/role:
+- renamed "desc" to "description"
+
+In {top-level-element}/back-matter/resource:
+- renamed "desc" to "description"
+- renamed "doc-id" to "document-id"
+
+In {top-level-element}/metadata/resource/document-id:
+- renamed "type" to "scheme"
+
+Changes to all "prop" elements:
+- changed the data type of "ns" to "uri"
+
+Changes to all "annotation" elements:
+- changed the data type of "ns" to "uri"
+
+### Changes to all JSON and YAML formats:
+
+In {top-level-object}/metadata:
+
+- renamed "revision-history" to "revisions"
+- renamed "props" to "properties"
+
+In {top-level-object}/metadata/revisions:
+- renamed "props" to "properties"
+
+In {top-level-object}/metadata/document-ids:
+- renamed "type" to "scheme" 
+
+In {top-level-object}/metadata/locations
+- changed case from "URLs" to "urls"
+- renamed "props" to "properties"
+
+In {top-level-object}/metadata/parties:
+- renamed "party-name" to "name" 
+- renamed "props" to "properties"
+- made use of addresses and location-uuids mutually exclusive, since either a static address or a reference to location provides similar functionality.
+
+In {top-level-object}/metadata/parties/external-ids:
+- renamed "type" to "scheme" 
+
+In {top-level-object}/metadata/roles:
+- renamed "desc" to "description"
+- renamed "props" to "properties"
+
+In {top-level-object}/back-matter/resources:
+- renamed "desc" to "description"
+- renamed "props" to "properties"
+
+In {top-level-object}/back-matter/resources/document-ids:
+- renamed "type" to "scheme"
+
+In {top-level-object}/back-matter/resources/citation:
+- renamed "props" to "properties"
+
+Changes to all "properties" objects:
+- changed the data type of "ns" to "uri"
+
+Changes to all "annotations" objects:
+- changed the data type of "ns" to "uri"
+
+Changes to all "responsible-party" or "responsible-parties" objects:
+- renamed "props" to "properties"
+
+Changes to all "address" or "addresses" objects:
+- renamed "postal-address" to "addr-lines"
+
+## Changes to common elements in the catalog and profile models
+
+### Changes to the XML formats:
+
+Changes to all "part" elements:
+- changed the data type of "ns" to "uri"
+
+Changes to all "param" elements:
+- changed the sequencing of "link" to be consistent with other elements that include "link".
+- changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
+- changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" attribute.
+
+### Changes to the JSON and YAML formats:
+
+Changes to all "part" or "parts" objects:
+- changed the data type of "ns" to "uri"
+- renamed "props" to "properties"
+
+Changes to all "param" or "params" objects:
+- renamed "props" to "properties"
+- renamed "guidance" to "guidelines"
+- changed the cardinality of "value" to allow for multiple "values". The data type of a value has changed from markup-line to string.
+- renamed "detail" to "description"
+- renamed "test" to "tests", which is now an array of objects. The original "test" string value is now stored in the child object's "expression" property.
+
+Changes from OSCAL 1.0.0 Milestone 2 (M2) to M3
+===============================================
 
 ## New OSCAL models
 
@@ -30,8 +151,6 @@ The following new models have been added to OSCAL.
 - Assessment Plan model: Represents the planning for a periodic or continuous assessment.
 - Assessment Results model: Represents the findings of a periodic or continuous assessment of a specific system.
 - Plan of Action and Milestones (POA&M) model: Represents the known risks for a specific system, as well as the identified deviations, remediation plan, and disposition status of each risk.
-
-
 
 ## Changes to all Models
 
@@ -158,8 +277,6 @@ A new 'id-ref' flag permits targeting an addition to a particular object (branch
 
 [M3] model: title? (field), param* (assembly), prop* (field), annotation* (assembly), link* (field), part* (assembly)
 
-
-
 ## Changes to the System Security Plan (SSP) Model
 
 ### 'system-implementation' changes
@@ -188,8 +305,8 @@ In profile SSP models, the assembly used to set a parameter is consistently call
 
 
 
-OSCAL 1.0.0 Milestone 2
------------------------
+Changes from OSCAL 1.0.0 Milestone 1 (M1) to M2
+===============================================
 
 # New OSCAL Features
 
@@ -246,8 +363,9 @@ Added 'guideline' to profile model. It was omitted in error.
 XXX see Issues #494, #288 (adding 'guideline' to profile model)
 
 
-OSCAL 1.0.0 Milestone 1
------------------------
+OSCAL 1.0.0 Milestone 1 (M1)
+============================
+
 - The first official OSCAL release
 - Provides stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.
 - Includes draft versions of the NIST SP 800-53 revision 4 OSCAL content and FedRAMP baselines in OSCAL XML, JSON, and YAML formats.

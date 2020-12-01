@@ -29,9 +29,8 @@
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
-            <use-name>param</use-name>
-            <group-as name="parameters" in-json="ARRAY"/>
+            <!-- CHANGED: "parameters" to "params" -->
+            <group-as name="params" in-json="ARRAY"/>
          </assembly>
          <assembly ref="control" max-occurs="unbounded">
             <group-as name="controls" in-json="ARRAY"/>
@@ -86,9 +85,8 @@
             <description>A name given to the group, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
-            <use-name>param</use-name>
-            <group-as name="parameters" in-json="ARRAY"/>
+            <!-- CHANGED: "parameters" to "params" -->
+            <group-as name="params" in-json="ARRAY"/>
          </assembly>
          <field ref="property" max-occurs="unbounded">
             <!-- CHANGE: props to properties -->
@@ -155,9 +153,8 @@
             <description>A name given to the control, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
-            <use-name>param</use-name>
-            <group-as name="parameters" in-json="ARRAY"/>
+            <!-- CHANGED: "parameters" to "params" -->
+            <group-as name="params" in-json="ARRAY"/>
          </assembly>
          <!-- TODO: Need to be able to add valid values in context -->
          <field ref="property" max-occurs="unbounded">
