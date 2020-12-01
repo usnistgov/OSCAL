@@ -27,7 +27,7 @@
          <field ref="version" min-occurs="1"/>
          <field ref="oscal-version" min-occurs="1"/>
          <assembly ref="revision" max-occurs="unbounded">
-            <!-- CHANGED: "revision-histroy" to "revisions" -->
+            <!-- CHANGED: "revision-history" to "revisions" -->
             <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>
          </assembly>
          <!-- CHANGED from "doc-id" to "document-id" -->
@@ -482,10 +482,8 @@
                   </define-flag>
                   <flag ref="media-type"/>
                   <model>
-                     <!-- CHANGED: "hash" to "hash-value", and "hashes" to "hash-values" -->
                      <field ref="hash" max-occurs="unbounded">
-                        <use-name>hash-value</use-name>
-                        <group-as name="hash-values" in-json="ARRAY"/>
+                        <group-as name="hashes" in-json="ARRAY"/>
                         <remarks>
                            <p>When appearing as part of a <code>resource/rlink</code>, the hash applies to the resource referenced by the <code>href</code>.</p>
                         </remarks>

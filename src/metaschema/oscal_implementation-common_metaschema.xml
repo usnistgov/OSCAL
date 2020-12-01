@@ -117,6 +117,7 @@
             <!-- CHANGED (BJR): Done -->
             <!-- ========================================================================================================== -->
             &allowed-values-component_component_link-rel;
+            <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
          </allowed-values>
 
          <allowed-values target="responsible-role/@role-id" allow-other="yes">
@@ -229,6 +230,7 @@
             <enum value="this-system">The system as a whole.</enum>
             <enum value="system">An external system, which may be a leveraged system or the other side of an interconnection.</enum>
             &allowed-values-component-type;
+            <enum value="network">A physical or virtual network.</enum>
          </allowed-values>
       </constraint>
    </define-flag>

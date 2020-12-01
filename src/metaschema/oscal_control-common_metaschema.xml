@@ -125,6 +125,8 @@
    <define-assembly name="parameter">
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
+      <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
+      <use-name>param</use-name>
       <define-flag name="id" as-type="NCName" required="yes">
          <!-- This is an id because the idenfier is intended to be human-raadable. -->
          <formal-name>Parameter Identifier</formal-name>
@@ -250,6 +252,7 @@
             <formal-name>Choice</formal-name>
             <description>A value selection among several such options</description>
             <use-name>choice</use-name>
+            <json-value-key>value</json-value-key>
             <!-- CHANGED "alternatives" to "choices" -->
             <group-as name="choice" in-json="ARRAY"/>
          </define-field>

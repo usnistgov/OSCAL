@@ -148,9 +148,8 @@
             <description>A name given to the group, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <use-name>param</use-name>
-            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
-            <group-as name="parameters" in-json="ARRAY"/>
+            <!-- CHANGED: "parameters" to "params" -->
+            <group-as name="params" in-json="ARRAY"/>
          </assembly>
          <field ref="property" max-occurs="unbounded">
             <!-- CHANGE: props to properties -->
@@ -382,9 +381,8 @@
             <description>A name given to the control, which may be used by a tool for display and navigation.</description>
          </define-field>
          <assembly ref="parameter" max-occurs="unbounded">
-            <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
-            <use-name>param</use-name>
-            <group-as name="parameters" in-json="ARRAY"/>
+            <!-- CHANGED: "parameters" to "params" -->
+            <group-as name="params" in-json="ARRAY"/>
          </assembly>
          <field ref="property" max-occurs="unbounded">
             <!-- CHANGE: props to properties -->

@@ -156,6 +156,7 @@
             <!-- CHANGED (BJR): Done -->
             <!-- ========================================================================================================== -->
             &allowed-values-component_component_link-rel;
+            <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
          </allowed-values>
          
          <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id||control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
