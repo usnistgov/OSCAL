@@ -103,7 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-# Typescript output
-lib/
-
 *.js
