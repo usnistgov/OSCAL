@@ -9,7 +9,7 @@
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "bin": {
-    "oscalcli": "oscal-cli-app/index.js"
+    "oscalcli": "oscalcli-index.js"
   },
   "author": "Avril Douglas",
   "license": "ISC",
