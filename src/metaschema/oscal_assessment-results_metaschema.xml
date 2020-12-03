@@ -30,18 +30,57 @@
                <p>Used by the SAR to import information about the original plan for assessing the system.</p>
             </remarks>
          </assembly>
+         <define-assembly name="local-definitions">
+            <!-- CHANGE: added "local-definitions" -->
+            <formal-name>Local Definitions</formal-name>
+            <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+            <model>
+               <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+                  <use-name>component</use-name>
+                  <group-as name="components" in-json="BY_KEY"/>
+                  <remarks>
+                     <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="inventory-items" in-json="BY_KEY"/>
+                  <remarks>
+                     <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+                  <use-name>user</use-name>
+                  <group-as name="users" in-json="BY_KEY"/>
+                  <remarks>
+                     <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
+                  <use-name>objectives</use-name>
+                  <group-as name="objectives" in-json="ARRAY"/>
+               </assembly>
+               
+               <!-- To augmente the assessment plan -->
+               <assembly ref="assets" min-occurs="0" max-occurs="1"/>
+               
+               <!-- CHANGED: implemented new model -->
+               <assembly ref="assessment-activity" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="assessment-activities" in-json="ARRAY"/>
+               </assembly>
+               
+               <assembly ref="assessment-action" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="assessment-actions" in-json="ARRAY"/>
+               </assembly>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
          <!-- CHANGED: "objectives" to "reviewed-controls" -->
          <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
+         <!-- QUESTION: Should this be moved to local definitions? -->
          <assembly ref="assessment-subjects" min-occurs="0" max-occurs="1"/>
+         <!-- QUESTION: Should this be moved to local definitions? -->
          <assembly ref="assets" min-occurs="0" max-occurs="1"/>
          
-         <!-- CHANGED: implemented new model -->
-         <assembly ref="assessment-activity" min-occurs="0" max-occurs="unbounded">
-            <group-as name="assessment-activities" in-json="ARRAY"/>
-            <remarks>
-               <p>Used to capture new or modified assessment activities that are not in the assessment plan.</p>
-            </remarks>
-         </assembly>
          <assembly ref="event" min-occurs="0" max-occurs="unbounded">
             <use-name>assessment-log-item</use-name>
             <group-as name="assessment-log-items" in-json="ARRAY"/>
@@ -169,6 +208,7 @@
    </define-assembly>
 
    <define-assembly name="event">
+      <!-- TODO: point back to the event in the plan. Maybe change compare-to to event-uuid. -->
       <formal-name>Event</formal-name>
       <description>Identifies an assessment event that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
