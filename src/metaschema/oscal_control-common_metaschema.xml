@@ -202,7 +202,7 @@
       <formal-name>Constraint</formal-name>
       <description>A formal or informal expression of a constraint or test</description>
       <model>
-         <!-- CHANGED: was the field value named "detail" -->
+         <!-- CHANGED: renamed "detail" to "description" -->
          <define-field name="description" as-type="markup-multiline">
             <formal-name>Constraint Description</formal-name>
             <description>A textual summary of the constraint to be applied.</description>
