@@ -26,6 +26,7 @@
       </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+         <!-- QUESTION: should this be a choice with system-id? -->
          <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
             <remarks>
                <p>Used by the POA&amp;M to import information about the system.</p>

@@ -38,11 +38,343 @@
       </model>
    </define-assembly>
 
+   <!-- =========== -->
+   <!-- === NEW === -->
+   <!-- =========== -->
+   <define-assembly name="local-objective" min-occurs="0" max-occurs="unbounded">
+      <!-- TODO: refactor this to align with catalog syntax for control objectives -->
+      <formal-name>Assessment-Specific Control Objective</formal-name>
+      <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
+      <define-flag name="id" required="yes" as-type="NCName" >
+         <!-- This is an id to sync with control syntax -->
+         <formal-name>Control Objective Identifier</formal-name>
+         <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
+         <remarks>
+            <p>In the catalog, control objectives use ID, not UUID. This is the primary source of control objectives relative to an assessment.</p>
+            <p>While rare, control-objectives may also be defined locally within the assessment-plan and assessment-results models</p>
+            <p>ID is used to ensure consistent syntax from referencing fields/flags, whether referencing catalog-defined or locally-defined objectives.</p>
+         </remarks>
+      </define-flag>
+      <flag ref="control-id" required="yes"/>
+      <model>
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+            <formal-name>Objective Description</formal-name>
+            <description>A human-readable description of this control objective.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
+         <define-field name="assessment-method" as-type="empty" max-occurs="unbounded"> 
+            <formal-name>Assessment Method</formal-name>
+            <description>Identifies a method for assessing the satisfaction of this objective.</description>
+            <!-- CHANGED group-as from "methods" to "assessment-methods" -->
+            <group-as name="assessment-methods" in-json="ARRAY"/>
+            <define-flag name="method-uuid" required="yes" as-type="uuid">
+               <formal-name>Method ID</formal-name>
+               <description>Identifies the assessment method by its UUID value.</description>
+            </define-flag>
+         </define-field>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   <define-assembly name="assessment-method" min-occurs="0" max-occurs="unbounded">
+      <!-- CHANGED "method" to "assessment-method" -->
+      <formal-name>Assessment Method</formal-name>
+      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
+      <!-- CHANGED group-as from "method-definitions" to "assessment-methods" -->
+<!--      <group-as name="assessment-methods" in-json="ARRAY"/>
+-->      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Method Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
+      </define-flag>
+      <model>
+         <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+            <formal-name>Assessment Method Description</formal-name>
+            <description>A human-readable description of this assessment method.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <!-- ===============================  -->
+   <!-- ========= NEW CONTENT =========  -->
+   <!-- ===============================  -->
+   <define-assembly name="assessment-activity">
+      <formal-name>Assessment Activity</formal-name>
+      <description>Identifies an assessment activity. In the assessment plan, this is an intended activity which may be associated with an assessment event. In the assessment results, this an activity that was actually performed as part of an assessement.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Activity Universally Unique Identifier</formal-name>         <description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.</description>
+      </define-flag>
+      <model>
+         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+            <formal-name>Included Activity Title</formal-name>
+            <description>The title for this included activity.</description>
+         </define-field>
+         <!-- CHANGE: Added WITH_WRAPPER to description -->
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Included Activity Description</formal-name>
+            <description>A human-readable description of this included activity.</description>
+         </define-field>
+         <!-- QUESTION: Should "origination" appear here or on the event? -->
+         <assembly ref="origination" max-occurs="1"/>
+         <field ref="property" max-occurs="unbounded">
+            <!-- CHANGE: props to properties -->
+            <group-as name="properties" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         
+         <!-- CHANGE: Add "step". Replaces "test-step".  -->
+         <define-assembly name="step" min-occurs="0" max-occurs="unbounded">
+            <formal-name>Action</formal-name>
+            <description>Identifies an individual actions, such as test steps or examination procedures.</description>
+            <group-as name="actions" in-json="ARRAY"/>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Action Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies this defined action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</description>
+            </define-flag>
+            <model>
+               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                  <formal-name>Action Title</formal-name>
+                  <description>The title for this action.</description>
+               </define-field>
+               <!-- CHANGED: removed "sequence", since the collection is ordered -->
+               <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
+                  <formal-name>Action Description</formal-name>
+                  <description>A human-readable description of this action.</description>
+               </define-field>
+               <!-- QUESTION: Should "origination" appear here or on the event? It also appears on the parent. -->
+               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="reviewed-controls">
+                  <remarks>
+                     <p>This can be optionally used to define the set of controls and control objectives that are assessed by this action.</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="responsible-role" max-occurs="unbounded">
+                  <!-- CHANGE: Removed "role-id" and "party-uuid" in favor of the standard "responsible-role". -->
+                  <group-as name="responsible-roles" in-json="BY_KEY"/>
+                  <remarks>
+                     <p>Identifies the roles, and optionally the parties, associated with this action that is part of an assessment activity.</p>
+                  </remarks>
+               </assembly>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         <assembly ref="reviewed-controls">
+            <remarks>
+               <p>This can be optionally used to define the set of controls and control objectives that are assessed by this activity.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <!-- CHANGE: Removed "role-id" and "party-uuid" in favor of the standard "responsible-role". -->
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the roles, and optionally the parties, associated with this assessment activity.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+      <constraint>
+         <!-- TODO: Dave to double-check constraints here -->
+         <allowed-values target="prop/@name" allow-other="yes">
+            <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+         </allowed-values>
+         <has-cardinality target="prop[@name='method']" min-occurs="1"/>
+         <allowed-values target="prop[@name='method']/value()">
+            <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
+            <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
+            <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
+         </allowed-values>
+      </constraint>
+   </define-assembly>
+   
+   <define-assembly name="assessment-action">
+      <formal-name>Assessment Action</formal-name>
+      <description>Identifies an assessment event that must occur as part of an assessment plan or an assessment event that occured in an assessment results.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Event Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+      </define-flag>
+      <model>
+         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+            <formal-name>Event Title</formal-name>
+            <description>The title for this event.</description>
+         </define-field>
+         <!-- CHANGE: Added WITH_WRAPPER to description -->
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Event Description</formal-name>
+            <description>A human-readable description of this event.</description>
+         </define-field>
+         
+         <define-assembly name="timing">
+            <formal-name>Event Timing</formal-name>
+            <description>The timing under which the event is intended to occur.</description>
+            <model>
+               <choice>
+                  <define-field name="on-date" as-type="empty">
+                     <formal-name>On Date Condition</formal-name>
+                     <description>The event is intended to occur on the specified date.</description>
+                     <define-flag name="date" as-type="dateTime-with-timezone" required="yes">
+                        <formal-name>On Date Condition</formal-name>
+                        <description>The event must occur on the specified date.</description>
+                     </define-flag>
+                  </define-field>
+                  <define-field name="within-date-range" as-type="empty">
+                     <formal-name>On Date Range Condition</formal-name>
+                     <description>The event is intended to occur within the specified date range.</description>
+                     <define-flag name="start" as-type="dateTime-with-timezone" required="yes">
+                        <formal-name>Start Date Condition</formal-name>
+                        <description>The event must occur on or after the specified date.</description>
+                     </define-flag>
+                     <define-flag name="end" as-type="dateTime-with-timezone" required="yes">
+                        <formal-name>End Date Condition</formal-name>
+                        <description>The event must occur on or before the specified date.</description>
+                     </define-flag>
+                  </define-field>
+                  <define-field name="at-frequency" as-type="empty">
+                     <formal-name>Frequency Condition</formal-name>
+                     <description>The event is intended to occur at the specified frequency.</description>
+                     <define-flag name="period" as-type="positiveInteger" required="yes">
+                        <formal-name>Period</formal-name>
+                        <description>The event must occur after the specified period has elapsed.</description>
+                     </define-flag>
+                     <define-flag name="unit" as-type="dateTime-with-timezone" required="yes">
+                        <formal-name>Time Unit</formal-name>
+                        <description>The unit of time for the period.</description>
+                        <constraint>
+                           <allowed-values>
+                              <enum value="seconds">The period is specified in seconds.</enum>
+                              <enum value="minutes">The period is specified in minutes.</enum>
+                              <enum value="hours">The period is specified in hours.</enum>
+                              <enum value="days">The period is specified in days.</enum>
+                              <enum value="months">The period is specified in calendar months.</enum>
+                              <enum value="years">The period is specified in calendar years.</enum>
+                           </allowed-values>
+                        </constraint>
+                     </define-flag>
+                  </define-field>
+               </choice>
+            </model>
+         </define-assembly>
+         
+         <!-- CHANGED: Added "activity-selection" -->
+         <define-assembly name="activity-instance" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Activity Instance</formal-name>
+            <description>Identifies an individual activity to be performed with this assessment event.</description>
+            <group-as name="activity-instances" in-json="ARRAY"/>
+            <define-flag name="uuid" required="yes" as-type="uuid">
+               <formal-name>Activity Instance Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+            </define-flag>
+            <define-flag name="activity-uuid" required="yes" as-type="uuid">
+               <formal-name>Activity Universally Unique Identifier Reference</formal-name>
+               <description>References an activity defined in the list of activities.</description>
+            </define-flag>
+            <model>
+               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                  <formal-name>Activity Instance Title</formal-name>
+                  <description>The title for this activity instance.</description>
+               </define-field>
+               <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
+                  <formal-name>Activity Instance Description</formal-name>
+                  <description>A human-readable description of this activity instance.</description>
+               </define-field>
+               <!-- QUESTION: Should this be renamed? -->
+               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <!-- CHANGE: props to properties -->
+                  <group-as name="properties" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="responsible-party" max-occurs="unbounded">
+                  <group-as name="responsible-parties" in-json="BY_KEY"/>
+                  <remarks>
+                     <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+                  </remarks>
+               </assembly>
+               <choice>
+                  <assembly ref="assessment-subjects" min-occurs="1"/>
+                  <define-assembly name="assessment-subject-placeholder">
+                     <formal-name>Assessment Subject Placeholder</formal-name>
+                     <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.</description>
+                     <model>
+                        <define-field name="description" as-type="markup-multiline">
+                           <formal-name>Assessment Subject Placeholder Description</formal-name>
+                           <description>A human-readable description of intent of this assessment subject placeholder.</description>
+                        </define-field>
+                        <define-field name="source" as-type="empty" min-occurs="1" max-occurs="unbounded">
+                           <formal-name>Assessment Subject Source</formal-name>
+                           <description>Assessment subjects will be identified while conducting the referenced activity-instance.</description>
+                           <group-as name="sources" in-json="ARRAY"/>
+                           <define-flag name="activity-instance-uuid" required="yes" as-type="uuid">
+                              <formal-name>Activity Instance Universally Unique Identifier</formal-name>
+                              <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+                           </define-flag>
+                        </define-field>
+                        <field ref="property" min-occurs="0" max-occurs="unbounded">
+                           <!-- CHANGE: props to properties -->
+                           <group-as name="properties" in-json="ARRAY"/>
+                        </field>
+                        <assembly ref="annotation" max-occurs="unbounded">
+                           <group-as name="annotations" in-json="ARRAY"/>
+                        </assembly>
+                        <assembly ref="link" max-occurs="unbounded">
+                           <group-as name="links" in-json="ARRAY"/>
+                        </assembly>
+                        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                     </model>
+                  </define-assembly>
+               </choice>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   <!-- =========== -->
+   <!-- = END NEW = -->
+   <!-- =========== -->
+
    <!-- ********** OBJECTIVES Assembly ********** -->
    <define-assembly name="reviewed-controls">
       <!-- CHANGED: "objectives" to "reviewed-controls" -->
       <formal-name>Reviewed Controls and Control Objectives</formal-name>
-      <description>Identifies the controls being assessed and their control objectives. In an assessment plan, these are the controls and objectives that are to be assessed. In an assessment result, these are the actual controls and objectives that were assessed, reflecting any changes from the plan.</description>
+      <description>Identifies the controls being assessed and their control objectives.</description>
       <model>
          <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Control Objective Description</formal-name>
@@ -78,21 +410,27 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <field ref="all" min-occurs="1"/>
-                  <define-field name="include-control" as-type="empty" min-occurs="1" max-occurs="unbounded">
-                     <formal-name>Include Control</formal-name>
-                     <description>Identifies an individual control to include.</description>
-                     <group-as name="include-controls" in-json="ARRAY"/>
-                     <flag ref="control-id" required="yes"/>
+                  <!-- CHANGED: "all" to "include-all" -->
+                  <define-field name="include-all" as-type="empty" min-occurs="1">
+                     <!-- CHANGED: type to "empty" -->
+                     <formal-name>All</formal-name>
+                     <description>A key word to indicate all.</description>
                   </define-field>
+                  <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
+                     <use-name>include-control</use-name>
+                     <group-as name="include-controls" in-json="ARRAY"/>
+                     <remarks>
+                        <p>Used to select a control for inclusion by the control's identifier. Specific control statements can be selected by their statement identifier.</p>
+                     </remarks>
+                  </assembly>
                </choice>
-               <define-field name="exclude-control" as-type="empty" max-occurs="unbounded">
-                  <formal-name>Exclude Control</formal-name>
-                  <description>Identifies an individual control to exclude.</description>
+               <assembly ref="select-control-by-id" max-occurs="unbounded">
+                  <use-name>exclude-control</use-name>
                   <group-as name="exclude-controls" in-json="ARRAY"/>
-                  <flag ref="control-id" required="yes"/>
-               </define-field>
-               
+                  <remarks>
+                     <p>Used to select a control for exclusion by the control's identifier. Specific control statements can be excluded by their statement identifier.</p>
+                  </remarks>
+               </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <remarks>
@@ -102,7 +440,7 @@
          <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
             <formal-name>Referened Control Objectives</formal-name>
-            <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the actual objectives, and reflects any changes from the plan.</description>
+            <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the assessed objectives, and reflects any changes from the plan.</description>
             <!-- CHANGED: "control-objective-group" to "control-objective-selections" -->
             <group-as name="control-objective-selections" in-json="ARRAY"/>
             <model>
@@ -120,20 +458,27 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <field ref="all" min-occurs="1"/>
-                  <define-field name="include-objective" as-type="empty" min-occurs="1" max-occurs="unbounded">
-                     <formal-name>Include Objective</formal-name>
-                     <description>Identifies an individual control objective to include.</description>
-                     <group-as name="include-objectives" in-json="ARRAY"/>
-                     <flag ref="objective-id" required="yes"/>
+                  <!-- CHANGED: "all" to "include-all" -->
+                  <define-field name="include-all" as-type="empty" min-occurs="1">
+                     <!-- CHANGED: type to "empty" -->
+                     <formal-name>All</formal-name>
+                     <description>A key word to indicate all.</description>
                   </define-field>
+                  <field ref="select-objective-by-id" min-occurs="1" max-occurs="unbounded">
+                     <use-name>include-objective</use-name>
+                     <group-as name="include-objectives" in-json="ARRAY"/>
+                     <remarks>
+                        <p>Used to select a control objective for inclusion by the control objective's identifier.</p>
+                     </remarks>
+                  </field>
                </choice>
-               <define-field name="exclude-objective" as-type="empty" max-occurs="unbounded">
-                  <formal-name>Exclude Objective</formal-name>
-                  <description>Identifies an individual control objective to exclude.</description>
+               <field ref="select-objective-by-id" max-occurs="unbounded">
+                  <use-name>exclude-objective</use-name>
                   <group-as name="exclude-objectives" in-json="ARRAY"/>
-                  <flag ref="objective-id" required="yes"/>
-               </define-field>
+                  <remarks>
+                     <p>Used to select a control objective for exclusion by the control objective's identifier.</p>
+                  </remarks>
+               </field>
                
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
@@ -141,80 +486,35 @@
                <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
             </remarks>
          </define-assembly>
-         <define-assembly name="objective" min-occurs="0" max-occurs="unbounded">
-            <formal-name>Assessment-specific Control Objective</formal-name>
-            <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
-            <group-as name="objectives" in-json="ARRAY"/>
-            <define-flag name="id" required="yes" as-type="NCName" >
-               <!-- This is an id to sync with control syntax -->
-               <formal-name>Control Objective Identifier</formal-name>
-               <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
-               <remarks>
-                  <p>In the catalog, control objectives use ID, not UUID. This is the primary source of control objectives relative to an assessment.</p>
-                  <p>While rare, control-objectives may also be defined locally within the assessment-plan and assessment-results models</p>
-                  <p>ID is used to ensure consistent syntax from referencing fields/flags, whether referencing catalog-defined or locally-defined objectives.</p>
-               </remarks>
-            </define-flag>
-            <flag ref="control-id" required="yes"/>
-            <model>
-               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-                  <formal-name>Objective Description</formal-name>
-                  <description>A human-readable description of this control objective.</description>
-               </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
-               <define-field name="assessment-method" as-type="empty" max-occurs="unbounded"> 
-                  <formal-name>Assessment Method</formal-name>
-                  <description>Identifies a method for assessing the satisfaction of this objective.</description>
-                  <!-- CHANGED group-as from "methods" to "assessment-methods" -->
-                  <group-as name="assessment-methods" in-json="ARRAY"/>
-                  <define-flag name="method-uuid" required="yes" as-type="uuid">
-                     <formal-name>Method ID</formal-name>
-                     <description>Identifies the assessment method by its UUID value.</description>
-                  </define-flag>
-               </define-field>
-               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-            </model>
-         </define-assembly>
-         <define-assembly name="assessment-method" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGED "method" to "assessment-method" -->
-            <formal-name>Assessment Method</formal-name>
-            <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
-            <!-- CHANGED group-as from "method-definitions" to "assessment-methods" -->
-            <group-as name="assessment-methods" in-json="ARRAY"/>
-            <define-flag name="uuid" required="yes" as-type="uuid">
-               <formal-name>Assessment Method Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
-            </define-flag>
-            <model>
-               <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-                  <formal-name>Assessment Method Description</formal-name>
-                  <description>A human-readable description of this assessment method.</description>
-               </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
-               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-            </model>
-         </define-assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
+      <remarks>
+         <p>In the context of an assessment plan, this construct is used to identify the controls and control objectives that are to be assessed. In the context of an assessment result, this construct is used to identify the actual controls and objectives that were assessed, reflecting any changes from the plan.</p>
+         <p>When resolving the selection of controls and control objectives, the following processing will occur:</p>
+         <p>1. Controls will be resolved by creating a set of controls based on the control-selections by first handling the includes, and then removing any excluded controls.</p>
+         <p>2. The set of control objectives will be resolved from the set of controls that was generated in the previous step. The set of control objectives is based on the control-objective-selection by first handling the includes, and then removing any excluded control objectives.</p>
+      </remarks>
    </define-assembly>
+
+   <define-assembly name="select-control-by-id" scope="local">
+      <formal-name>Select Control</formal-name>
+      <description>Used to select a control for inclusion/exclusion based on the control's identifier. A set of statement identifiers can be optionally used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</description>
+      <flag ref="control-id" required="yes"/>
+      <model>
+         <define-field name="statement-id" as-type="NCName" max-occurs="unbounded">
+            <formal-name>Include Specific Statements</formal-name>
+            <description>Used to constrain the selection to only specificly identified statements.</description>
+            <group-as name="statement-ids" in-json="ARRAY"/>
+         </define-field>
+      </model>
+   </define-assembly>
+   
+   <define-field name="select-objective-by-id" as-type="empty">
+      <formal-name>Select Objective</formal-name>
+      <description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</description>
+      <flag ref="objective-id" required="yes"/>
+   </define-field>
+   
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
    <define-assembly name="assessment-subjects">
@@ -383,11 +683,6 @@
          <p>Tools should check look for the ID in every file imported directly or indirectly.</p>
       </remarks>
    </define-assembly>
-   <define-field name="all" as-type="empty">
-      <!-- CHANGED: type to "empty" -->
-      <formal-name>All</formal-name>
-      <description>A key word to indicate all </description>
-   </define-field>
 
    <!-- ********** ASSET Assembly ********** -->
    <define-assembly name="assets">
@@ -463,7 +758,7 @@
       </constraint>
    </define-assembly>
    
-   <!-- ********** LOCAL DEFINITIONS Assembly ********** -->
+<!--   <!-\- ********** LOCAL DEFINITIONS Assembly ********** -\->
    <define-assembly name="local-definitions">
       <formal-name>Local Definitions</formal-name>
       <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
@@ -488,13 +783,10 @@
                <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
             </remarks>
          </assembly>
-         <field ref="remarks"
-            in-xml="WITH_WRAPPER"
-            min-occurs="0"
-            max-occurs="1"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-
+-->
 <!--
    <!-\- ********** ASSESSMENT ACTIVITIES Assembly ********** -\->
    <define-assembly name="assessment-activities">
