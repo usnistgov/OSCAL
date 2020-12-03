@@ -1386,7 +1386,7 @@
       <description>Points to an assessment objective.</description>
    </define-flag>
    
-   <define-assembly name="assessment-part" scope="local">
+   <define-assembly name="assessment-part">
       <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>
       <description>A partition or component of an objective or part</description>
