@@ -8,7 +8,7 @@ weight: 20
 sidenav:
   title: JSON Format Reference
   toc:
-    headingselectors: "h2.assembly-header"
+    headingselectors: "h2.toc1, h3.toc2"
 aliases:
   - /documentation/schema/ssp/json-schema/
 ---
