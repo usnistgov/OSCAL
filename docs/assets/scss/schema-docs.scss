@@ -95,7 +95,7 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
 .nobr { white-space: nowrap }
 
 .OM-entry:hover { 
-   @extend .border-accent-cool-light
+   @extend .border-accent-cool-lighter
 }
 
 div.OM-map p {
@@ -117,7 +117,7 @@ span.OM-cardinality {
   @include u-font-family('sans');
   font-weight: normal;
   font-style: normal;
-  @extend .text-base-light }
+  @extend .text-base }
 
 .as-xml span.OM-cardinality {
     display: inline-block;
@@ -254,22 +254,34 @@ ul.e_map {
 
 .name-link { @include u-font-family('mono'); font-weight: bold }
 
-.description { @extend .bg-primary-lighter; @extend .border-primary-darker; padding: 0.5em; font-size: 90% }
-
 div.constraints { 
-  @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-light }
+  @extend .bg-base-lightest;
+  @extend .border-base-light;
+  @extend .border-y;
+}
 
 div.constraint { margin: 0em; font-size: smaller;
-    @extend .bg-secondary-lighter; @extend .border-y; @extend .border-secondary-light;
+//    @extend .bg-secondary-lighter;
+    @extend .border-base-light;
+    @extend .border-y;
     max-height: 2.6em;
-    overflow: clip; }
+    overflow: clip;
+}
  
 div.constraint:hover { max-height: unset; transition-duration: 2s }
 
 div.constraint * { margin: 0em; }
 
-.global.description { @extend .bg-accent-cool-light; 
-  @extend .border-accent-cool-dark }
+
+.description {
+//  @extend .bg-primary-lighter;
+//  @extend .border-primary-darker;
+  padding: 0.5em; font-size: 90% }
+
+.global.description {
+//  @extend .bg-accent-cool-light; 
+//  @extend .border-accent-cool-dark
+}
 
 .model-entry .description {
     font-size: 80%;
