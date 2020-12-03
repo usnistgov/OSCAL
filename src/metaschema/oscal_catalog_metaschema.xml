@@ -46,7 +46,7 @@
          </assembly>
       </model>
       <constraint>
-         
+
       </constraint>
       <remarks>
          <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
@@ -186,6 +186,12 @@
          </allowed-values>
          <allowed-values target="prop[@name='status']/value()">
             <enum value="withdrawn">The control is no longer used.</enum>
+         </allowed-values>
+         <allowed-values target="link/@rel" allow-other="yes">
+            <enum value="reference">The link cites an external resource related to this control.</enum>
+            <enum value="related">The link identifies another control with bearing to this control.</enum>
+            <enum value="required">The link identifies another control that must be present if this control is present.</enum>
+            <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
          </allowed-values>
       </constraint>
       <remarks>
