@@ -59,6 +59,11 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
+         <allowed-values target="link/@rel" allow-other="yes">
+            <enum value="canonical">The link identifies the authoritative location for this file.</enum>
+            <enum value="alternate">The link identifies an alternative location for this file.</enum>
+         </allowed-values>
+         
          <index id="index-metadata-roles" name="index-metadata-role-ids" target="role">
             <key-field target="@id"/>
          </index>
@@ -219,6 +224,7 @@
       <formal-name>Location Reference</formal-name>
       <description>References a <code>location</code> defined in <code>metadata</code>.</description>
       <constraint>
+         <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
          <index-has-key name="index-metadata-location-uuid" target=".">
             <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
             <key-field target="value()"/>
