@@ -1,8 +1,14 @@
 
 
 /*.model-entry p { margin-top: units( 0.5 )*/
-  
+
+
 summary { display: list-item; cursor: pointer }
+
+// overriding Chrome default
+:focus {
+  outline: none;
+}
 
 .field-header, .assembly-header, .flag-header {
   clear: inherit;
@@ -64,8 +70,6 @@ button.schema-link { @extend .usa-button }
 
 /* Schema Model Map styles */
 
-.OM-map summary {list-style-position: outside }
-
 div.OM-map {
   margin-top: 0ex;
   margin-bottom: 0ex;
@@ -90,13 +94,17 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
   border-color: white  
 }
 
+.OM-entry >  summary { list-style-position: outside }
+
 .OM-entry span.sq { display: inline-block }
 
-.nobr { white-space: nowrap }
-
+.OM-entry span.sq:first-child { width: 5em }
+  
 .OM-entry:hover { 
    @extend .border-accent-cool-lighter
 }
+
+.nobr { white-space: nowrap }
 
 div.OM-map p {
   margin: 0ex; }
@@ -106,12 +114,17 @@ div.OM-map p {
   font-weight: normal;
   font-style: normal; }
 
-span.OM-emph {
-  @include u-font-family('sans');
-  font-weight: normal;
-  font-style: italic; }
-
-p.OM-entry > span { display: inline-block }
+  span.OM-emph {
+    @include u-font-family('sans');
+    font-weight: normal;
+    font-style: italic; }
+  
+.OM-map-name {
+      padding-left: 4em;
+      @include u-font-family('sans');
+      font-weight: normal }
+    
+.OM-entry > p { padding-left: 6em }
 
 span.OM-cardinality {
   @include u-font-family('sans');
@@ -119,11 +132,12 @@ span.OM-cardinality {
   font-style: normal;
   @extend .text-base }
 
-.as-xml span.OM-cardinality {
-    display: inline-block;
-    width: 5em }
   
-  p.indented { margin-left: 4em }
+// .as-xml span.OM-cardinality {
+//   display: inline-block;
+//    width: 5em }
+ 
+p.close-tag { padding-left: 5em }
 
 span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
   font-style: italic;
@@ -138,9 +152,6 @@ span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
 
 OM-map a:visited {
   @extend .text-primary; }
-
-a.OM-name:hover {
-  text-decoration: underline; }
 
 details[open] > summary .show-closed {
     display: none; }
@@ -234,8 +245,6 @@ ul.e_map {
   color: darkgrey
 }
 
-.model-descr { @extend .border-y; @extend .border-base-lighter }
-       
 .model-descr:focus { @extend .bg-primary-lighter }
 
 .model-descr div { margin: 0.5em 0em }
@@ -268,23 +277,20 @@ div.constraint { margin: 0em; font-size: smaller;
     overflow: clip;
 }
  
-div.constraint:hover { max-height: unset; transition-duration: 2s }
-
 div.constraint * { margin: 0em; }
 
+div.constraint:hover { max-height: unset; transition-duration: 2s }
+// hiding the gloss when hovered
+div.constraint:hover .gloss { display: none }
 
 .description {
 //  @extend .bg-primary-lighter;
 //  @extend .border-primary-darker;
-  padding: 0.5em; font-size: 90% }
+//  padding: 0.5em;
+    font-size: smaller }
 
-.global.description {
+// .global.description {
 //  @extend .bg-accent-cool-light; 
-//  @extend .border-accent-cool-dark
-}
+//  @extend .border-accent-cool-dark }
 
-.model-entry .description {
-    font-size: 80%;
-    margin: 0em 0em
-}
 
