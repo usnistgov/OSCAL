@@ -513,8 +513,6 @@
             </define-flag>
             <model>
                <assembly ref="origination" min-occurs="0" max-occurs="1"/>
-
-
                <field ref="compare-to" min-occurs="0" max-occurs="1"/>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
@@ -547,7 +545,7 @@
    <!-- ********** ASSESSMENT SCHEDULE Assembly ********** -->
    <define-assembly name="events">      <!--scope="local"-->
       <formal-name>Events</formal-name>
-      <description>Identifies the the sequence and timing of assessment activities.</description>
+      <description>Identifies the sequence and timing of assessment activities.</description>
       <define-flag name="uuid" required="no" as-type="uuid">
          <formal-name>Events Universally Unique Identifier</formal-name>
          <description>Uniquely identifies this series of events. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
@@ -601,12 +599,12 @@
                   <description>Identifies roles associated with performing this task.</description>
                   <group-as name="role-ids" in-json="ARRAY"/>
                </define-field>
-               <define-field name="party-uuid" min-occurs="0" max-occurs="unbounded">
+               <define-field name="party-uuid" as-type="uuid" min-occurs="0" max-occurs="unbounded">
                   <formal-name>party-uuid field</formal-name>
                   <description>Identifies people or organizations associated with performing this task.</description>
                   <group-as name="party-uuids" in-json="ARRAY"/>
                </define-field>
-               <define-field name="location-uuid" min-occurs="0" max-occurs="unbounded">
+               <define-field name="location-uuid" as-type="uuid" min-occurs="0" max-occurs="unbounded">
                   <formal-name>location-uuid field</formal-name>
                   <description>Identifies locations associated with performing this task.</description>
                   <group-as name="location-uuids" in-json="ARRAY"/>
@@ -1348,7 +1346,8 @@
             </model>
          </define-assembly>
          
-         <assembly ref="schedule" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: "schedule" to "events"  -->
+         <assembly ref="events" min-occurs="0" max-occurs="1"/>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -1359,7 +1358,7 @@
       <description>Points to an assessment objective.</description>
    </define-flag>
    
-   <define-assembly name="assessment-part">
+   <define-assembly name="assessment-part"> <!--scope="local"-->
       <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>
       <description>A partition or component of an objective or part</description>
