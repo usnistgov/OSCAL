@@ -75,16 +75,15 @@ div.OM-map {
   margin-bottom: 0ex;
   @include u-font-family('mono');
   @extend .text-ink;
-}
+  hyphens: none;
+  margin-left: 3rem; }
+
 
 div.usa-layout-docs-main_content > div.OM-map {
-  @extend .border-base-light; }
-
-div.OM-map {
-  hyphens: none;
-  margin-left: 2em; }
-
-div.OM-choice { margin-left: 2em; margin-top: 0em }
+    @extend .border-base-light; }
+  
+  
+div.OM-choice { margin-left: 3rem; margin-top: 0em }
 
 .OM-entry {
   padding-right: 0.5rem;
@@ -94,11 +93,11 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
   border-color: white  
 }
 
-.OM-entry >  summary { list-style-position: outside }
+.OM-entry >  summary { list-style-position: outside; display: flex }
 
-.OM-entry span.sq { display: inline-block }
+.OM-entry span.sq { flex: 1 1 5em }
 
-.OM-entry span.sq:first-child { width: 5em }
+.OM-entry span.sq:first-child { flex: 0 0 5em }
   
 .OM-entry:hover { 
    @extend .border-accent-cool-lighter
@@ -120,11 +119,10 @@ div.OM-map p {
     font-style: italic; }
   
 .OM-map-name {
-      padding-left: 4em;
       @include u-font-family('sans');
       font-weight: normal }
     
-.OM-entry > p { padding-left: 6em }
+.OM-entry > p { padding-left: 6rem }
 
 span.OM-cardinality {
   @include u-font-family('sans');
@@ -137,7 +135,7 @@ span.OM-cardinality {
 //   display: inline-block;
 //    width: 5em }
  
-p.close-tag { padding-left: 5em }
+p.close-tag { padding-left: 6rem }
 
 span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
   font-style: italic;
@@ -182,7 +180,7 @@ pre.json {
 
 .cnstr-tag {
   @extend .usa-tag;
-  @extend .bg-secondary-darker } 
+  @extend .bg-primary-dark } 
 
 .subhead {
     font-size: 80%;
