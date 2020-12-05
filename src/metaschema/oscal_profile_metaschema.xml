@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
+]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
@@ -397,6 +400,12 @@
             <group-as name="parts" in-json="ARRAY"/>
          </assembly>
       </model>
+      <constraint>
+         <!-- CHANGE: added allowed values for a property/@name -->
+         <allowed-values target="prop/@name" allow-other="yes">
+            &allowed-values-control-group-property-name;
+         </allowed-values>
+      </constraint>
       <remarks>
          <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
          <p>
