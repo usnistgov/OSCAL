@@ -110,6 +110,10 @@
             <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
             <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
          </allowed-values>
+         <allowed-values target="link/@rel" allow-other="yes">
+            <enum value="canonical">The link identifies the authoritative source for this content.</enum>
+            <enum value="alternative">The link identifies an alternative location or format for this content.</enum>
+         </allowed-values>
       </constraint>
    </define-assembly>
 
@@ -329,6 +333,7 @@
          <allowed-values target="prop/@name">
             <enum value="mail-stop">A mail stop associated with the party.</enum>
             <enum value="office">The name or number of the party's office.</enum>
+            <enum value="job-title">The formal job title of a person.</enum>
          </allowed-values>
       </constraint>
    </define-assembly>
@@ -501,14 +506,39 @@
             </model>
             <constraint>
                <allowed-values target="prop/@name">
-                  <enum value="type">TODO: (Brian)</enum>
-                  <enum value="version">TODO: (Brian)</enum>
-                  <enum value="published">TODO: (Brian)</enum>
+                  <enum value="type">Identifies the type of resource represented.</enum>
+                  <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
+                  <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                </allowed-values>
                <matches target="prop[@name='published' and (not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal')]/value()" datatype="dateTime"/>
-               <allowed-values target="prop[@name='type']/value()">
-                  <!-- TODO: (brian) add values from spreadsheet -->
-                  <enum value="policy">TODO: (Brian)</enum>
+               <!-- CHANGED: Added enumerated choices for the resource type property -->
+               <allowed-values target="prop[@name='type']/value()" allow-other="yes">
+                  <!-- More general. Applies across all models. -->
+                  <enum value="logo">Indicates the resource is an organization's logo.</enum>
+                  <enum value="image">Indicates the resource represents an image.</enum>
+                  <enum value="screen-shot">Indicates the resource represents an image of screen content. </enum>
+                  <enum value="law">Indicates the resource represents an applicable law.</enum>
+                  <enum value="regulation">Indicates the resource represents an applicable regulation.</enum>
+                  <enum value="standard">Indicates the resource represents an applicable standard.</enum>
+                  <enum value="external-guidance">Indicates the resource represents applicable guidance.</enum>
+                  <enum value="acronyms">Indicates the resource provides a list of relevant acronyms.</enum>
+                  <enum value="citation">Indicates the resource cites relevant information.</enum>
+                  <!-- More related to implementation layer. -->
+                  <enum value="policy">Indicates the resource is a policy.</enum>
+                  <enum value="procedure">Indicates the resource is a procedure.</enum>
+                  <enum value="system-guide">Indicates the resource is guidance document related to the subject system of an SSP.</enum>
+                  <enum value="users-guide">Indicates the resource is guidance document a user's guide or administrator's guide.</enum>
+                  <enum value="administrators-guide">Indicates the resource is guidance document a administrator's guide.</enum>
+                  <enum value="rules-of-behavior">Indicates the resource represents rules of behavior content.</enum>
+                  <enum value="plan">Indicates the resource represents a plan.</enum>
+                  <!-- More related to assessment layers. -->
+                  <enum value="artifact">Indicates the resource represents an artifact, such as may be reviewed by an assessor.</enum>
+                  <enum value="evidence">Indicates the resource represents evidence, such as to support an assessment findiing.</enum>
+                  <enum value="tool-output">Indicates the resource represents output from a tool.</enum>
+                  <enum value="raw-data">Indicates the resource represents machine data, which may require a tool or analysis for interpretation or presentation.</enum>
+                  <enum value="interview-notes">Indicates the resource represents notes from an interview, such as may be collected during an assessment.</enum>
+                  <enum value="questionnaire">Indicates the resource is a set of questions, possibly with responses.</enum>
+                  <enum value="report">Indicates the resource is a report.</enum>
                </allowed-values>
                <has-cardinality target="rlink|base64" min-occurs="1"/>
                <is-unique name="unique-resource-rlink-href" target="rlink">
