@@ -119,10 +119,9 @@ div.OM-map p {
     font-style: italic; }
   
 .OM-map-name {
+      padding-left: 3rem;
       @include u-font-family('sans');
       font-weight: normal }
-    
-.OM-entry > p { padding-left: 6rem }
 
 span.OM-cardinality {
   @include u-font-family('sans');
