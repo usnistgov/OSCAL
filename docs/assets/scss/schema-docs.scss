@@ -153,9 +153,8 @@ OM-map a:visited {
   @extend .text-primary; }
 
 details[open] > summary .show-closed {
-    display: none; }
-
-    
+    display: none }
+  
 pre {
   @extend .bg-base-lighter
 }
