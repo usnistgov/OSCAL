@@ -95,7 +95,8 @@ div.OM-choice { margin-left: 3rem; margin-top: 0em }
   border-color: white  
 }
 
-.OM-entry >  summary { list-style-position: outside }
+// only works in FF
+// .OM-entry >  summary { list-style-position: outside }
 
 // .OM-flex { display: flex }
 
