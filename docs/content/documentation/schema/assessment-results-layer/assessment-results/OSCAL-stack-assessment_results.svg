@@ -11,8 +11,8 @@
 		.st1 {fill:#90aadb;stroke:#203864;stroke-width:1.5}
 		.st2 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-weight:bold}
 		.st3 {fill:#9cc3e5;stroke:#1e4e79;stroke-width:1.5}
-		.st4 {fill:#f7cbac;stroke:#833c0b;stroke-width:1.5}
-		.st5 {fill:#ffd965;stroke:#7f6000;stroke-width:1.5}
+		.st4 {fill:#f7cbac;fill-opacity:0.9;stroke:#833c0b;stroke-width:1.5}
+		.st5 {fill:#ffd965;fill-opacity:0.9;stroke:#7f6000;stroke-width:1.5}
 		.st6 {fill:#fbe5d5;stroke:#7f6000;stroke-width:1.5}
 		.st7 {fill:#000000;font-family:Calibri;font-size:0.833336em;font-weight:bold}
 		.st8 {fill:#7f7f7f;stroke:#595959;stroke-width:0.25}
@@ -417,7 +417,7 @@
 						class="st10">Revision History, Prepared By/For<v:lf/></tspan><tspan x="20.39" dy="1.2em" class="st10">Roles, People, Teams, Locations</tspan></text>		</g>
 		<g id="shape1027-184" v:mID="1027" v:groupContext="shape" transform="translate(508.003,-606.192)">
 			<title>Rectangle.1027</title>
-			<desc>Import Profile URI pointing to an SSP</desc>
+			<desc>Import Profile URI pointing to a Profile</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -425,7 +425,7 @@
 			<v:textRect cx="84.9996" cy="721.033" width="170" height="30.9333"/>
 			<rect x="0" y="705.567" width="169.999" height="30.9333" class="st18"/>
 			<text x="55.91" y="717.07" class="st7" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Import Profile<v:newlineChar/><tspan
-						x="39.94" dy="1em" class="st10">URI pointing to an SSP</tspan></text>		</g>
+						x="36.48" dy="1em" class="st10">URI pointing to a Profile</tspan></text>		</g>
 		<g id="shape1029-188" v:mID="1029" v:groupContext="shape" transform="translate(508.003,-298.653)">
 			<title>Rectangle.1029</title>
 			<desc>Back Matter Laws/Regulations, Standards/Guidance Citations an...</desc>

@@ -97,7 +97,7 @@
 						class="st7">Revision History, Prepared By/For<v:lf/></tspan><tspan x="20.39" dy="1.2em" class="st7">Roles, People, Teams, Locations</tspan></text>		</g>
 		<g id="shape1027-43" v:mID="1027" v:groupContext="shape" transform="translate(508.003,-318.192)">
 			<title>Rectangle.1027</title>
-			<desc>Import Profile URI pointing to an SSP</desc>
+			<desc>Import Profile URI pointing to a Profile</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -105,7 +105,7 @@
 			<v:textRect cx="84.9996" cy="430.783" width="170" height="30.9333"/>
 			<rect x="0" y="415.317" width="169.999" height="30.9333" class="st5"/>
 			<text x="55.91" y="426.82" class="st6" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Import Profile<v:newlineChar/><tspan
-						x="39.94" dy="1em" class="st7">URI pointing to an SSP</tspan></text>		</g>
+						x="36.48" dy="1em" class="st7">URI pointing to a Profile</tspan></text>		</g>
 		<g id="shape1029-47" v:mID="1029" v:groupContext="shape" transform="translate(508.003,-10.6532)">
 			<title>Rectangle.1029</title>
 			<desc>Back Matter Laws/Regulations, Standards/Guidance Citations an...</desc>
