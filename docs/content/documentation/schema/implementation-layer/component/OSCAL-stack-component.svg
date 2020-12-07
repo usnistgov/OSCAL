@@ -113,7 +113,7 @@
 						class="st7">Revision History, Prepared By/For<v:lf/></tspan><tspan x="20.39" dy="1.2em" class="st7">Roles, People, Teams, Locations</tspan></text>		</g>
 		<g id="shape1027-49" v:mID="1027" v:groupContext="shape" transform="translate(508.003,-621.942)">
 			<title>Rectangle.1027</title>
-			<desc>Import Profile URI pointing to an SSP</desc>
+			<desc>Import Profile URI pointing to a Profile</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -121,7 +121,7 @@
 			<v:textRect cx="84.9996" cy="734.533" width="170" height="30.9333"/>
 			<rect x="0" y="719.067" width="169.999" height="30.9333" class="st5"/>
 			<text x="55.91" y="730.57" class="st6" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Import Profile<v:newlineChar/><tspan
-						x="39.94" dy="1em" class="st7">URI pointing to an SSP</tspan></text>		</g>
+						x="36.48" dy="1em" class="st7">URI pointing to a Profile</tspan></text>		</g>
 		<g id="shape1029-53" v:mID="1029" v:groupContext="shape" transform="translate(508.003,-314.403)">
 			<title>Rectangle.1029</title>
 			<desc>Back Matter Laws/Regulations, Standards/Guidance Citations an...</desc>
@@ -407,21 +407,23 @@
 			<v:textRect cx="124.594" cy="750" width="249.19" height="0"/>
 			<path d="M0 750 L32.25 732 L32.25 741 L249.19 741 L249.19 750 L249.19 759 L32.25 759 L32.25 768 L0 750 Z" class="st10"/>
 			<text x="8.71" y="753" class="st13" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Arrow identifies source of imported information</text>		</g>
-		<g id="shape1088-175" v:mID="1088" v:groupContext="shape" transform="translate(-70.9687,461.625) rotate(-90)">
+		<g id="shape1088-175" v:mID="1088" v:groupContext="shape" v:layerMember="0"
+				transform="translate(-70.9687,461.625) rotate(-90)">
 			<title>Block Arrow.1088</title>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<path d="M0 750 L23.62 645.55 L0 541.1 L0 750 Z" class="st5"/>
 		</g>
-		<g id="shape1089-177" v:mID="1089" v:groupContext="shape" transform="translate(508.145,-290.063)">
+		<g id="shape1089-177" v:mID="1089" v:groupContext="shape" v:layerMember="0" transform="translate(508.145,-290.063)">
 			<title>Block Arrow.1089</title>
 			<desc>Transfer relevant content</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
 			<v:textRect cx="66.9375" cy="743.469" width="133.88" height="13.0625"/>
 			<rect x="0" y="736.938" width="133.875" height="13.0625" class="st14"/>
 			<text x="5.34" y="749.94" class="st13" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Transfer relevant content</text>		</g>
-		<g id="shape1090-180" v:mID="1090" v:groupContext="shape" transform="translate(-373.188,633.75) rotate(-90)">
+		<g id="shape1090-180" v:mID="1090" v:groupContext="shape" v:layerMember="0"
+				transform="translate(-373.188,633.75) rotate(-90)">
 			<title>Block Arrow.1090</title>
 			<desc>Associates configuration settings with control baselines</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
