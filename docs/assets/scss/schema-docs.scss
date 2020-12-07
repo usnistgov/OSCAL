@@ -95,11 +95,18 @@ div.OM-choice { margin-left: 3rem; margin-top: 0em }
   border-color: white  
 }
 
-.OM-entry >  summary { list-style-position: outside; display: flex }
+.OM-entry >  summary { list-style-position: outside }
 
-.OM-entry span.sq { flex: 1 1 5em }
+// .OM-flex { display: flex }
 
-.OM-entry span.sq:first-child { flex: 0 0 5em }
+// .OM-flex span.sq.cardinality { flex: 0 0 5rem }
+
+// .OM-entry span.sq.cardinality { padding-left: 1em }
+
+  
+// .OM-entry span.sq { flex: 1 1 5em }
+
+// .OM-entry span.sq:first-child { flex: 0 0 5em }
   
 .OM-entry:hover { 
    @extend .border-accent-cool-lighter
@@ -115,13 +122,13 @@ div.OM-map p {
   font-weight: normal;
   font-style: normal; }
 
-  span.OM-emph {
+span.OM-emph {
     @include u-font-family('sans');
     font-weight: normal;
     font-style: italic; }
   
 .OM-map-name {
-      padding-left: 3rem;
+      padding-left: 2rem;
       @include u-font-family('sans');
       font-weight: normal }
 
@@ -136,7 +143,7 @@ span.OM-cardinality {
 //   display: inline-block;
 //    width: 5em }
  
-p.close-tag { padding-left: 6rem }
+p.close-tag { padding-left: 1rem }
 
 span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
   font-style: italic;
