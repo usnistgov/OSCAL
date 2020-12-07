@@ -248,7 +248,16 @@ copy_or_convert_content() {
   local source_path="${source_file/$source_base_dir\//}"
   local source_filename="${source_file##*/}"
   local source_file_relative="$(get_rel_path "${source_dir}" "$source_file")"
-  local target_dir="${working_dir}/${source_path%/${source_format}/*}/${target_format}" # remove filename
+
+  local target_dir_prefix="${source_path%/${source_format}/*}" # remove format dir, extra path, and filename
+  local target_dir_suffix="${source_path#${target_dir_prefix}/${source_format}/}" # prefix and source format
+  target_dir_suffix="${target_dir_suffix%${source_filename}}" # remove the filename
+  target_dir_suffix="${target_dir_suffix%/}" # remove the trailing slash
+
+  local target_dir="${working_dir}/${target_dir_prefix}/${target_format}" # build target
+  if [ ! -z "$target_dir_suffix" ]; then
+    target_dir="${target_dir}/${target_dir_suffix}" # append suffix
+  fi
 
   mkdir -p "$target_dir"
 
