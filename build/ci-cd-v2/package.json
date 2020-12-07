@@ -2,7 +2,7 @@
   "name": "oscal-project",
   "version": "1.0.0",
   "description": "OSCAL project",
-  "main": "index.js",
+  "main": "oscalcli-index.js",
   "scripts": {
     "old": "node ./build/ci-cd-v2/generate-schema",
     "build": "tsc -p .",
