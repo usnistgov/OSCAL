@@ -11,7 +11,7 @@
 		.st1 {fill:#90aadb;stroke:#203864;stroke-width:1.5}
 		.st2 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-weight:bold}
 		.st3 {fill:#9cc3e5;stroke:#1e4e79;stroke-width:1.5}
-		.st4 {fill:#ffd965;stroke:#7f6000;stroke-width:1.5}
+		.st4 {fill:#ffd965;fill-opacity:0.9;stroke:#7f6000;stroke-width:1.5}
 		.st5 {fill:#7f7f7f;stroke:#595959;stroke-width:0.25}
 		.st6 {fill:#feffff;font-family:Calibri;font-size:0.833336em;font-weight:bold}
 		.st7 {font-size:1em;font-weight:normal}
@@ -208,7 +208,7 @@
 						class="st7">Revision History, Prepared By/For<v:lf/></tspan><tspan x="20.39" dy="1.2em" class="st7">Roles, People, Teams, Locations</tspan></text>		</g>
 		<g id="shape1027-96" v:mID="1027" v:groupContext="shape" transform="translate(508.003,-376.692)">
 			<title>Rectangle.1027</title>
-			<desc>Import Profile URI pointing to an SSP</desc>
+			<desc>Import Profile URI pointing to a Profile</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -216,7 +216,7 @@
 			<v:textRect cx="84.9996" cy="491.533" width="170" height="30.9333"/>
 			<rect x="0" y="476.067" width="169.999" height="30.9333" class="st12"/>
 			<text x="55.91" y="487.57" class="st9" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>Import Profile<v:newlineChar/><tspan
-						x="39.94" dy="1em" class="st7">URI pointing to an SSP</tspan></text>		</g>
+						x="36.48" dy="1em" class="st7">URI pointing to a Profile</tspan></text>		</g>
 		<g id="shape1029-100" v:mID="1029" v:groupContext="shape" transform="translate(508.003,-69.1532)">
 			<title>Rectangle.1029</title>
 			<desc>Back Matter Laws/Regulations, Standards/Guidance Citations an...</desc>
