@@ -1,3 +1,4 @@
+import {basename} from "path"
 // Set console log colors
 const colorCodes = {
     P_INFO: '\x1b[37m\x1b[1m', // White
@@ -11,7 +12,7 @@ const colorCodes = {
  const setupCliInputs = (rootDir: string, argv: any) => {
     // Create a message log to be used with stdout and stderr
     const usage = () => `
-      Usage: node ${argv.$0} [options] [metaschema paths]
+      Usage: oscalcli ${basename(argv.$0).replace(".js","")} [options] [metaschema paths]
   
       -h, --help                        Display help
       -w DIR, --working-dir DIR         Generate artifacts in DIR (default: ${rootDir})
