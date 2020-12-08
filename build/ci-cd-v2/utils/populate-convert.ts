@@ -31,7 +31,6 @@ export const populateConvert = (
       sourceFormat = validFormats[0]
       targetFormat = validFormats[1]
     }
-
     // First setup the command line arguments for this script
     const scriptArguments = [
       `--source-format ${sourceFormat}`,
@@ -40,7 +39,6 @@ export const populateConvert = (
       `${workingDirectory}/${convertFile}`,
       `${runMode}`
     ];
-
     // spawnSync('command', ['arg1', 'arg2', 'arg3'], spawn_option)
     const result = spawnSync(`${oscalRootDirectory}/build/metaschema/scripts/generate-content-converter.sh`, scriptArguments, {shell: true, stdio: 'inherit'});
     if (!result || result.status === 1) {
