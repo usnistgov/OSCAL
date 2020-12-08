@@ -1,8 +1,8 @@
 'use strict'
 
-import  {schemaFunction} from '../modules/generate-schema';
+import  {convertFunction} from '../modules/generate-content-converters';
 
-export const command = 'generate-schema'
+export const command = 'generate-converters'
 export const desc = 'Usage: oscalcli command [options] [metaschema paths]'
 export const builder = {
     working_dir: {
@@ -17,5 +17,5 @@ export const builder = {
     }
 }
 export const handler = function (argv: any) {
-    schemaFunction(argv);
+    convertFunction(argv);
 }
