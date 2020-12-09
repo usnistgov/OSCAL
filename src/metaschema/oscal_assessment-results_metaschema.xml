@@ -88,6 +88,7 @@
             <use-name>assessment-log-item</use-name>
             <group-as name="assessment-log-items" in-json="ARRAY"/>
          </assembly>
+
          <!-- CHANGED: Moved "schedule" to top level (from assessment-activities), and changed model to "task" -->
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
             <use-name>completed-task</use-name>
@@ -305,6 +306,15 @@
             <formal-name>end field</formal-name>
             <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
          </define-field>
+         <!-- CHANGE: move "observation" from finding -->
+         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="observations" in-json="ARRAY"/>
+         </assembly>
+         
+         <!-- TODO: move risk to here -->
+         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
+            <group-as name="risks" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="finding" min-occurs="1" max-occurs="unbounded">
             <group-as name="findings" in-json="ARRAY"/>
          </assembly>
@@ -351,16 +361,30 @@
          </define-field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
          <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
-         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
-            <group-as name="observations" in-json="ARRAY"/>
-         </assembly>
+         <!-- TODO: replaced embedded observation with references -->
+         <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
+            <formal-name>Related Observation</formal-name>
+            <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+            <group-as name="related-observations" in-json="ARRAY"/>
+            <define-flag name="observation-uuid" as-type="uuid" required="yes">
+               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+               <description>References an observation defined in the list of observations.</description>
+            </define-flag>
+         </define-field>
          <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
             <group-as name="threat-ids" in-json="ARRAY"/>
          </field>
-         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
-            <group-as name="risks" in-json="ARRAY"/>
-         </assembly>
-         <define-field name="party-uuid" min-occurs="0" max-occurs="unbounded">
+         <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
+         <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
+            <formal-name>Associated Risk</formal-name>
+            <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+            <group-as name="related-risks" in-json="ARRAY"/>
+            <define-flag name="risk-uuid" as-type="uuid" required="yes">
+               <formal-name>Risk Universally Unique Identifier Reference</formal-name>
+               <description>References an risk defined in the list of risks.</description>
+            </define-flag>
+         </define-field>
+         <define-field name="party-uuid" as-type="uuid" min-occurs="0" max-occurs="unbounded">
             <formal-name>party-uuid field</formal-name>
             <description>The person who collected the evidence or made the observation.</description>
             <group-as name="party-uuids" in-json="ARRAY"/>

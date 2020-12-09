@@ -67,7 +67,7 @@
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
       <json-key flag-name="uuid"/>
-      <define-flag name="uuid" required="yes">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Component Identifier</formal-name>
          <description>The unique identifier for the component.</description>
       </define-flag>
@@ -313,7 +313,7 @@
    <define-assembly name="control-implementation">
       <formal-name>Control Implementation Set</formal-name>
       <description>Defines how the component or capability supports a set of controls.</description>
-      <define-flag name="uuid" required="yes">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Control Implementation Set Identifier</formal-name>
          <description>A unique identifier for the set of implemented controls.</description>
       </define-flag>
@@ -345,7 +345,7 @@
    <define-assembly name="implemented-requirement">
       <formal-name>Control Implementation</formal-name>
       <description>Describes how the containing component or capability implements an individual control.</description>
-      <define-flag name="uuid" required="yes">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Control Implementation Identifier</formal-name>
          <description>A unique identifier for a specific control implementation.</description>
       </define-flag>
@@ -390,7 +390,7 @@
             <p>A reference to the specific implemented statement associated with a control.</p>
          </remarks>
       </flag>
-      <define-flag name="uuid" required="yes">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Control Statement Implementation Identifier</formal-name>
          <description>A unique identifier for a specific control implementation.</description>
       </define-flag>

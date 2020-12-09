@@ -928,7 +928,7 @@
       <description>A document identifier qualified by an identifier <code>type</code>.</description>
       <json-value-key>identifier</json-value-key>
       <!-- CHANGE: "type" to "scheme" -->
-      <define-flag name="scheme" required="yes">
+      <define-flag name="scheme" as-type="uri" required="yes">
          <formal-name>Document Identification Scheme</formal-name>
          <description>Qualifies the kind of document identifier.</description>
          <constraint>
