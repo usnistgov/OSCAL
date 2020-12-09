@@ -191,7 +191,7 @@
                   <formal-name>Information Type Categorization</formal-name>
                   <description>A set of information type identifiers qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
                   <group-as name="categorizations" in-json="ARRAY"/>
-                  <define-flag required="yes" name="system">
+                  <define-flag name="system" as-type="uri" required="yes">
                      <formal-name>Information Type Identification System</formal-name>
                      <description>Specifies the information type identification system used.</description>
                      <constraint>
@@ -398,7 +398,7 @@
       <formal-name>Diagram</formal-name>
       <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
       <json-key flag-name="uuid"/>
-      <define-flag required="yes" name="uuid">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Diagram ID</formal-name>
          <description>The identifier for this diagram.</description>
       </define-flag>
@@ -984,12 +984,12 @@
       </constraint>
    </define-assembly>
 
-   <define-flag name="provided-uuid" scope="local">
+   <define-flag name="provided-uuid" as-type="uuid" scope="local">
       <formal-name>Provided UUID</formal-name>
       <description>Identifies a 'provided' assembly associated with this assembly.</description>
    </define-flag>
    
-   <define-flag name="responsibility-uuid" scope="local">
+   <define-flag name="responsibility-uuid" as-type="uuid" scope="local">
       <formal-name>Provided UUID</formal-name>
       <description>Identifies a 'provided' assembly associated with this assembly.</description>
    </define-flag>

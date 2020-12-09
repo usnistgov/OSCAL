@@ -651,11 +651,11 @@
       </define-flag>
 -->
       <model>
-         <define-field name="subject" min-occurs="1" max-occurs="unbounded">
+         <define-field name="subject" as-type="empty" min-occurs="1" max-occurs="unbounded">
             <formal-name>Identifies the Subject</formal-name>
             <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
             <group-as name="subjects" in-json="ARRAY"/>
-            <define-flag name="uuid-ref" required="yes">
+            <define-flag name="uuid-ref" as-type="uuid" required="yes">
                <formal-name>UUID Reference</formal-name>
                <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
             </define-flag>
@@ -1183,7 +1183,7 @@
             <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
             <group-as name="assessors" in-json="ARRAY"/>
             <!-- QUESTION: Also, why not use responsible-party? -->
-            <define-flag name="party-uuid" required="yes">
+            <define-flag name="party-uuid" as-type="uuid" required="yes">
                <formal-name>Party UUID</formal-name>
                <description>The UUID of the assessor who collected the evidence or made the observation.</description>
             </define-flag>
@@ -1256,7 +1256,7 @@
       </model>
    </define-assembly>
 
-   <define-field name="threat-id">
+   <define-field name="threat-id" as-type="uri">
       <!-- This is an id because it is an externally provided identifier -->
       <formal-name>Threat ID</formal-name>
       <description>A pointer, by ID, to an externally-defined threat.</description>
@@ -1437,6 +1437,17 @@
                </define-assembly>
             </model>
          </define-assembly>
+
+         <!-- CHANGE: Added to relate a risk to an observation -->
+         <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
+            <formal-name>Related Observation</formal-name>
+            <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+            <group-as name="related-observations" in-json="ARRAY"/>
+            <define-flag name="observation-uuid" as-type="uuid" required="yes">
+               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+               <description>References an observation defined in the list of observations.</description>
+            </define-flag>
+         </define-field>
          
          <!-- QUESTION: ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
          <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
@@ -1526,6 +1537,7 @@
          </constraint>
       </define-flag>
       <define-flag name="class">
+         <!-- TODO: define me -->
          <formal-name>class flag</formal-name>
          <description>class flag ... </description>
          <constraint>
@@ -1535,7 +1547,8 @@
             </allowed-values>
          </constraint>
       </define-flag>
-      <define-flag name="system" as-type="string">
+      <define-flag name="system" as-type="uri">
+         <!-- TODO: fix these to match URI syntax -->
          <formal-name>System</formal-name>
          <description>Specifies the system represented by this risk metric.</description>
          <constraint>
@@ -1576,6 +1589,7 @@
          <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.</description>
       </define-flag>
       <define-flag name="type" required="no">
+         <!-- TODO: define me -->
          <formal-name>type flag</formal-name>
          <description>type flag ... </description>
          <constraint>
@@ -1605,6 +1619,7 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          <define-field name="origin" as-type="empty" max-occurs="unbounded">
+            <!-- QUESTION: Should this be unified with other similar origins? -->
             <!-- CHANGED "remediation-origin" to "origin" -->
             <formal-name>Remediation Origin</formal-name>
             <description>Points to the source of the recommendation.</description>
@@ -1614,7 +1629,7 @@
                <!-- QUESTION: What does this point to? -->
                <description>A pointer to a relevant item, using it's UUID.</description>
             </define-flag>
-            <define-flag name="type" required="no">
+            <define-flag name="type" as-type="uuid" required="no">
                <formal-name>Universally Unique Identifier Reference Type</formal-name>
                <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
                <constraint>
@@ -1689,7 +1704,7 @@
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
-      <define-flag name="name" required="yes">
+      <define-flag name="name" as-type="uuid" required="yes">
          <formal-name>Part Name</formal-name>
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
@@ -1730,6 +1745,7 @@
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED" min-occurs="1">
+            <!-- QUESTION: Is this the right name? -->
             <formal-name>Part Text</formal-name>
             <description>Permits multiple paragraphs, lists, tables etc.</description>
          </define-field>
