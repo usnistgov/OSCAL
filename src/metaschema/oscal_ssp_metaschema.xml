@@ -658,7 +658,7 @@
                   <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
                   <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
                   <!-- names related to inherited component -->
-                  <enum value="implementation-point">Reletave placement of component ('inteneral' or 'external') to the system.</enum>
+                  <enum value="implementation-point">Relative placement of component ('internal' or 'external') to the system.</enum>
                   <enum value="leveraged-authorization-uuid">UUID of the related leveraged-authorization assembly in this SSP.</enum>
                   <enum value="inherited-uuid">UUID of the component as it was assigned in the leveraged system's SSP.</enum>
                </allowed-values>
