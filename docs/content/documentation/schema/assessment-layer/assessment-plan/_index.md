@@ -74,14 +74,6 @@ It was designed to use syntax identical to the [assessment results model](../../
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL Assessment Plan.
 ![A diagram representing the OSCAL stack from a assessment plan's perspective.](OSCAL-stack-assessment_plan.svg)
 
-{{<callout>}}
-**IMPORTANT NOTE TO DEVELOPERS**
+{{<partial "note-to-developers-uuid.html" >}}
 
-Every time the content of an OSCAL file changes, the following must also change:
-- A new UUID value must be generated and assigned to the root element's `uuid`.
-- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
-
-These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
-
-When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
 
