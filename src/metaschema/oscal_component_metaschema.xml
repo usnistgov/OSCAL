@@ -87,8 +87,7 @@
             <description>A summary of the technological or business purpose of the component.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -270,8 +269,7 @@
             <description>A summary of the capability.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -330,8 +328,7 @@
             <description>A description of how the spefied set of controls are implemented for the containing component or capability.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -359,8 +356,7 @@
             <description>A description of how the spefied control is implemented for the containing component or capability.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -404,8 +400,7 @@
             <description>A summary of how the containing control statement is implemented by the component or capability.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
