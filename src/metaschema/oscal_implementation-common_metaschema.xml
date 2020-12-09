@@ -156,6 +156,7 @@
          <allowed-values target="prop[@name='asset-type']/value()">
             &allowed-values-property-name-asset-type-values;
          </allowed-values>
+         
          <index-has-key name="index-metadata-location-uuid" target="annotation[@name='physical-location']">
             <key-field target="@value"/>
          </index-has-key>
@@ -340,15 +341,13 @@
          <field ref="property" max-occurs="unbounded">
             <!-- CHANGE: props to properties -->
             <group-as name="properties" in-json="ARRAY"/>
-            <!-- TODO: Model specific names? -->
-            <!-- TODO: future: for FedRAMP, have current/future user counts -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-            <!-- TODO: Model specific link relationships? -->
+            <!-- TODO: Model specific link relationships?  (BJR - I don't think we need this now) -->
          </assembly>
          <field ref="role-id" min-occurs="1" max-occurs="unbounded">
             <group-as name="role-ids" in-json="ARRAY"/>
@@ -364,14 +363,14 @@
             <enum value="privilege-level">The user's privilege level within the system, such as privileged, non-privileged, no-logical-access.</enum>
          </allowed-values>
          <allowed-values target="annotation[@name='type']/@value">
-            <enum value="internal">TODO</enum>
-            <enum value="external">TODO</enum>
-            <enum value="general-public">TODO</enum>
+            <enum value="internal">A user account for a person or entity that is part of the organizaiton who owns or operates the system.</enum>
+            <enum value="external">A user account for a person or entity that is not part of the organizaiton who owns or operates the system.</enum>
+            <enum value="general-public">A user of the system considered to be outside </enum>
          </allowed-values>
          <allowed-values target="annotation[@name='privilege-level']/value()">
-            <enum value="privileged">TODO</enum>
-            <enum value="non-privileged">TODO</enum>
-            <enum value="no-logical-access">TODO</enum>
+            <enum value="privileged">This role has elevated access to the system, such as a group or system administrator.</enum>
+            <enum value="non-privileged">This role has typical user-level access to the system without elevated access.</enum>
+            <enum value="no-logical-access">This role has no access to the system, such as a manager who approves acess as part of a process.</enum>
          </allowed-values>
          <allowed-values target="role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
@@ -478,7 +477,7 @@
          <allowed-values target="prop[@name='asset-type']/value()">
             &allowed-values-property-name-asset-type-values;
          </allowed-values>
-         <!-- TODO: constrain property values based on name -->
+         
          <allowed-values target="annotation/@name" allow-other="yes">
             <enum value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
             <enum value="is-scanned">is the asset subjected to network scans? (yes/no)</enum>
@@ -486,15 +485,28 @@
             <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
             <enum value="function">The function provided by the asset for the system.</enum>
          </allowed-values>
-         <!-- TODO: constrain annotation values based on name -->
+         
+         <allowed-values target="annotation[@name='is-scanned']/value()">
+            <enum value="yes">The inventory item is included in periodic vulnerability scanning.</enum>
+            <enum value="no">The inventory item is not included in periodic vulnerability scanning.</enum>
+         </allowed-values>
+         
+         <allowed-values target="annotation[@name='allows-authenticated-scan']/value()">
+            <enum value="yes">It is possible to perform an authenticated vulnerability scan on this inventory item.</enum>
+            <enum value="no">It is not possible to perform an authenticated vulnerability scan on this inventory item.</enum>
+         </allowed-values>
+         
          <allowed-values target="link/@rel" allow-other="yes">
             <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
          </allowed-values>
+
          <!-- TODO: constrain link href values based on rel -->
          <allowed-values target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
          </allowed-values>
+
+
          <index-has-key name="index-metadata-role-id" target="responsible-party">
             <key-field target="@role-id"></key-field>
          </index-has-key>

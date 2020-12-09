@@ -595,6 +595,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
+         <!-- TODO: future: for FedRAMP, have user counts as props: current/internal, current/external, future/internal, future, external -->
          <index name="index-system-implementation-leveraged-authorization-uuid" target="leveraged-authorization">
             <key-field target="@uuid"/>
          </index>
