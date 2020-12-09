@@ -91,8 +91,7 @@
             <description>A summary of the system.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -161,8 +160,7 @@
       <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -213,8 +211,7 @@
                   </model>
                </define-assembly>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -227,8 +224,7 @@
                   <description>The expected level of impact resulting from the unauthorized disclosure of the described information.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -246,8 +242,7 @@
                   <description>The expected level of impact resulting from the unauthorized modification of the described information.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -265,8 +260,7 @@
                   <description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</description>
                   <model>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -377,8 +371,7 @@
             <description>A summary of the system's authorization boundary.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -418,8 +411,7 @@
             </remarks>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -469,8 +461,7 @@
             <description>A summary of the system's network architecture.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -496,8 +487,7 @@
             <description>A summary of the system's data flow.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -523,8 +513,7 @@
       <description>Provides information as to how the system is implemented.</description>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
             <!-- TODO: Model specific names? -->
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
@@ -549,8 +538,7 @@
                   <description>A human readable name for the leveraged authorization in the context of the system.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                   <!-- TODO: Model specific names? -->
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
@@ -681,8 +669,7 @@
       <flag ref="control-id" required="yes"/>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -764,8 +751,7 @@
       </define-flag>
       <model>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -811,8 +797,7 @@
             <description>An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -830,8 +815,7 @@
                   <description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -855,8 +839,7 @@
                         <description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</description>
                      </define-field>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -886,8 +869,7 @@
                         <description>An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</description>
                      </define-field>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -933,8 +915,7 @@
                   <description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -964,8 +945,7 @@
                   <description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>

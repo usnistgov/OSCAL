@@ -35,8 +35,7 @@
             <group-as name="document-ids" in-json="ARRAY"/>
          </field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -135,8 +134,7 @@
          <field ref="version"/>
          <field ref="oscal-version"/>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -195,8 +193,7 @@
             <group-as name="urls" in-json="ARRAY"/>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -288,8 +285,7 @@
             </define-flag>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -381,8 +377,7 @@
             <description>A summary of the role's purpose and associated responsibilities.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -434,8 +429,7 @@
                   <description>A short summary of the resource used to indicate the purpose of the resource.</description>
                </define-field>
                <field ref="property" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -453,8 +447,7 @@
                         <description>A line of citation text.</description>
                      </define-field>
                      <field ref="property" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -761,8 +754,7 @@
             </remarks>
          </field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
