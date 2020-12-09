@@ -29,7 +29,7 @@
       <formal-name>Component</formal-name>
       <description>A defined component that can be part of an implemented system.</description>
       <json-key flag-name="uuid"/>
-      <define-flag required="yes" name="uuid">
+      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Component Identifier</formal-name>
          <description>The unique identifier for the component.</description>
       </define-flag>
@@ -306,8 +306,8 @@
       <formal-name>System User</formal-name>
       <description>A type of user that interacts with the system based on an associated role.</description>
       <json-key flag-name="uuid"/>
-      <define-flag required="yes" name="uuid">
-         <formal-name>User Identifier</formal-name>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>User Universally Unique Identifier</formal-name>
          <description>The unique identifier for the user class.</description>
       </define-flag>
       <model>
