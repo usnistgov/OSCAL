@@ -74,7 +74,7 @@
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="protocol" max-occurs="unbounded"><!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
+         <assembly ref="protocol" max-occurs="unbounded">
             <group-as name="protocols" in-json="ARRAY"/>
             <remarks>
                <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
@@ -90,11 +90,8 @@
             <enum value="vlan-id">Virtual LAN identifier of the component.</enum>
             <enum value="asset-tag">An asset tag that is unique within the organization for the component.</enum>
 
-            <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
-            <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
-            <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
             <!-- names related to inherited component -->
-            <enum value="implementation-point">Reletave placement of component ('inteneral' or 'external') to the system.</enum>
+            <enum value="implementation-point">Relative placement of component ('internal' or 'external') to the system.</enum>
             <enum value="leveraged-authorization-uuid">UUID of the related leveraged-authorization assembly in this SSP.</enum>
             <enum value="inherited-uuid">UUID of the component as it was assigned in the leveraged system's SSP.</enum>
             
@@ -121,9 +118,6 @@
          </allowed-values>
          
          <allowed-values target="link/@rel" allow-other="yes">
-            <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
-            <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
-            
             <!-- ========================================================================================================== -->
             <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
             <!-- ========================================================================================================== -->
@@ -135,12 +129,8 @@
             <enum value="uses-service">This service is used by the referenced component identifier.</enum>
             <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
          </allowed-values>
-         
+
          <allowed-values target="responsible-role/@role-id" allow-other="yes">
-            <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
-            <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
-            <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
-            <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
             <!-- ========================================================================================================== -->
             <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
             <!-- ========================================================================================================== -->
@@ -148,7 +138,6 @@
             &allowed-values-responsible-roles-component-production;
          </allowed-values>
          
-         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
          <allowed-values target="prop[@name='public']/value()">
             <enum value="yes">The component is publicly accessible.</enum>
             <enum value="no">The component is not publicly accessible.</enum>
@@ -157,11 +146,12 @@
             <enum value="yes">The component is virtualized.</enum>
             <enum value="no">The component is not virtualized.</enum>
          </allowed-values>
-         <matches target="prop[@name='isa-date']/value()" datatype="dateTime"/>
+
          <allowed-values target="prop[@name='implementation-point']/value()">
             <enum value="inteneral">The component is implemented within the system boundary.</enum>
             <enum value="external">The component is implemented outside the system boundary.</enum>
          </allowed-values>
+         
          <matches target="prop[@name='inherited-uuid']/value()" datatype="uuid" />
          <allowed-values target="prop[@name='asset-type']/value()">
             &allowed-values-property-name-asset-type-values;
@@ -169,33 +159,69 @@
          <index-has-key name="index-metadata-location-uuid" target="annotation[@name='physical-location']">
             <key-field target="@value"/>
          </index-has-key>
-         
-         <!-- ========================================================================================================== -->
-         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
-         <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
-            <enum value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>
-         </allowed-values>
-         
          <matches target="prop[@name='release-date']/value()" datatype="date"/>
 
          <allowed-values target="annotation[@name='allows-authenticated-scan']/@value">
             <enum value="yes">The component allows an authenticated scan.</enum>
             <enum value="no">The component does not allow an authenticated scan.</enum>
          </allowed-values>
+         
+         <!-- ========================================================================================================== -->
+         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+         <!-- ========================================================================================================== -->
+         <!-- ========================================================================================================== -->
+         <!-- = SOFTWARE: component-type='software' constraints                        = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
+            <enum value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>
+         </allowed-values>
 
+         <!-- ========================================================================================================== -->
+         <!-- = SERVICE: component-type='service' constraints                        = -->
+         <!-- ========================================================================================================== -->
          <allowed-values target="(.)[@component-type='service']/link/@rel" allow-other="yes">
             <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
+            <!-- CHANGE: Added "used-by" -->
+            <enum value="used-by">This service is used by the referenced component identifier.</enum>
          </allowed-values>
-         
+
          <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+
+         <!-- ========================================================================================================== -->
+         <!-- = INTERCONNECTION: component-type='interconnection' constraints                        = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@component-type='interconnection']/prop/@name" allow-other="yes">
+            <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
+            <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
+            <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
+            <enum value="ipv4-address">An Internet Protocol Version 4 interconnection address</enum>
+            <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address</enum>
+         </allowed-values>
+         <allowed-values target="prop[(@name='ipv4-address') or (@name='ipv6-address')]/@class" allow-other="yes">
+            <enum value="local">The identified IP address is for this system.</enum>
+            <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@component-type='interconnection']/link/@rel" allow-other="yes">
+            <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
+            <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@component-type='interconnection']/responsible-role/@role-id" allow-other="yes">
+            <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
+            <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
+            <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
+            <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
+         </allowed-values>
+         <matches target="prop[@name='isa-date']/value()" datatype="dateTime"/>
+         <matches target="prop[@name='ipv4-address']/value()" datatype="ip-v4-address" />
+         <matches target="prop[@name='ipv6-address']/value()" datatype="ip-v6-address" />
+         
       </constraint>
       <remarks>
          <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
          <p>The <code>type</code> indicates which of these component types is represented.</p>
          <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>-->
-         <p>When defining a <code>service</code> compoenent where are relationship to other components is known, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifer(s) that provide and use the service respectively.</p>
+         <p>When defining a <code>service</code> component where are relationship to other components is known, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifier(s) that provide and use the service respectively.</p>
       </remarks>
    </define-assembly>
    
@@ -211,9 +237,9 @@
             <enum value="hardware"/>
             <enum value="service">A service that may provide APIs.</enum>
             <enum value="policy"/>
-            <enum value="physical">A tyangible asset used to provide physical protections or countermeasures.</enum>
+            <enum value="physical">A tangible asset used to provide physical protections or countermeasures.</enum>
             <!-- CHANGED combined "process" and "procedure" as "process-proceedure" -->
-            <enum value="process-proceedure">A list of steps or actions to take to achive some end result.</enum>
+            <enum value="process-proceedure">A list of steps or actions to take to achieve some end result.</enum>
             <enum value="plan"/>
             <enum value="guidance">Any guideline or recommendation.</enum>
             <enum value="standard"/>
@@ -221,12 +247,13 @@
          </allowed-values>
       </constraint>
    </define-flag>
+
    <define-assembly name="protocol">
       <formal-name>Service Protocol Information</formal-name>
       <description>Information about the protocol used to provide a service.</description>
       <define-flag name="uuid" as-type="uuid">
          <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
-         <description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+         <description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
       </define-flag>
       <define-flag name="name" required="yes">
          <formal-name>Protocol Name</formal-name>
@@ -385,13 +412,14 @@
       <json-key flag-name="uuid"/>
       <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Inventory Item Universally Unique Identifier</formal-name>
-         <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+         <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
       </define-flag>
-      <define-flag name="asset-id">
-         <!-- This is an id because the idenfier is assigned and managed externally. -->
+      <!-- CHANGED: Moved to property[@name='asset-id']. -->
+      <!--      <define-flag name="asset-id">
+         <!-\- This is an id because the idenfier is assigned and managed externally. -\->
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
-      </define-flag>
+      </define-flag>  -->
       <model>
          <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
             <formal-name>Inventory Item Description</formal-name>
@@ -441,6 +469,10 @@
             <enum value="software-version">The software product version used by the asset.</enum>
             <!-- This is "patch-level" in the context of a component -->
             <enum value="software-patch-level">The software product patch level used by the asset.</enum>
+
+            <!-- =========================================================================================== -->
+            <!-- = The following is shared with system-component. = -->
+            <!-- =========================================================================================== -->
             &allowed-values-component-inventory_item;
          </allowed-values>
          <allowed-values target="prop[@name='asset-type']/value()">
@@ -475,7 +507,7 @@
    <define-assembly name="component-implemention-reference">
       <!-- TODO: Sync constraints with system-component; maybe remove this? -->
       <formal-name>Implemented Component</formal-name>
-      <description>The set of componenets that are implemented in a given system inventory item.</description>
+      <description>The set of components that are implemented in a given system inventory item.</description>
       <json-key flag-name="component-uuid"/>
       <define-flag required="yes" name="component-uuid" as-type="uuid">
          <formal-name>Component Universally Unique Identifier Reference</formal-name>
@@ -628,7 +660,7 @@
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
-               <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique IDentifier (UUID) as defined by RFC4122.</enum>
+               <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
             </allowed-values>
          </constraint>
       </define-flag>

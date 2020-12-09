@@ -6,7 +6,6 @@
 -->
 <!-- OSCAL Implementation Layer: System Security Plan (SSP) METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
-<!-- TODO: Need to update this model based on the changes that @brianrufgsa is making to support leveraged authorizations. -->
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-responsible-roles-system SYSTEM "shared-constraints/allowed-values-responsible-roles-system.ent">
    <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
@@ -680,8 +679,8 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
             <!-- TODO: Model specific characteristic names -->
-            <!-- TODO: add: status -->
-            <!-- TODO: add: control-implementation -->
+            <!-- CHANGE: added implementation-status -->
+            <!-- CHANGE: added control-origination -->
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -693,8 +692,7 @@
          <!--
          <assembly ref="by-capability" max-occurs="unbounded">
             <group-as name="by-capabilities" in-json="BY_KEY"/>
-         </assembly>
--->
+         </assembly>  -->
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
@@ -704,12 +702,19 @@
          <assembly ref="statement" max-occurs="unbounded">
             <group-as name="statements" in-json="BY_KEY"/>
          </assembly>
-         <!--            <assembly ref="using"/>
--->
+         <!--            <assembly ref="using"/>   -->
+         
          <!-- TODO: Implement parameters -->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
+         <allowed-values target="annotation/@name" allow-other="yes">
+            <enum value="implementation-status">Provides the current state of the control's implementation.</enum>
+            <enum value="control-origination">Identifies the source of the implementated control.</enum>
+         </allowed-values>
+         <allowed-values target="prop/@name" allow-other="yes">
+            <enum value="leveraged-authorization">Idicates all or some portion of this control is inherited from an underlying authorized system.</enum>
+         </allowed-values>
          <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
          </allowed-values>
