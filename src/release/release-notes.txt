@@ -69,21 +69,15 @@ Changes to all "annotation" elements:
 In {top-level-object}/metadata:
 
 - renamed "revision-history" to "revisions"
-- renamed "props" to "properties"
-
-In {top-level-object}/metadata/revisions:
-- renamed "props" to "properties"
 
 In {top-level-object}/metadata/document-ids:
 - renamed "type" to "scheme" 
 
 In {top-level-object}/metadata/locations
-- changed case from "URLs" to "urls"
-- renamed "props" to "properties"
+- renamed "URLs" to "urls"
 
 In {top-level-object}/metadata/parties:
 - renamed "party-name" to "name" 
-- renamed "props" to "properties"
 - made use of addresses and location-uuids mutually exclusive, since either a static address or a reference to location provides similar functionality.
 
 In {top-level-object}/metadata/parties/external-ids:
@@ -91,26 +85,18 @@ In {top-level-object}/metadata/parties/external-ids:
 
 In {top-level-object}/metadata/roles:
 - renamed "desc" to "description"
-- renamed "props" to "properties"
 
 In {top-level-object}/back-matter/resources:
 - renamed "desc" to "description"
-- renamed "props" to "properties"
 
 In {top-level-object}/back-matter/resources/document-ids:
 - renamed "type" to "scheme"
-
-In {top-level-object}/back-matter/resources/citation:
-- renamed "props" to "properties"
 
 Changes to all "properties" objects:
 - changed the data type of "ns" to "uri"
 
 Changes to all "annotations" objects:
 - changed the data type of "ns" to "uri"
-
-Changes to all "responsible-party" or "responsible-parties" objects:
-- renamed "props" to "properties"
 
 Changes to all "address" or "addresses" objects:
 - renamed "postal-address" to "addr-lines"
@@ -131,14 +117,15 @@ Changes to all "param" elements:
 
 Changes to all "part" or "parts" objects:
 - changed the data type of "ns" to "uri"
-- renamed "props" to "properties"
 
 Changes to all "param" or "params" objects:
-- renamed "props" to "properties"
 - renamed "guidance" to "guidelines"
 - changed the cardinality of "value" to allow for multiple "values". The data type of a value has changed from markup-line to string.
 - renamed "detail" to "description"
 - renamed "test" to "tests", which is now an array of objects. The original "test" string value is now stored in the child object's "expression" property.
+- In "select/how-many", renamed "alternatives" to "choices"
+- In "select/how-many/alternatives", renamed "RICHTEXT" property to "value"
+
 
 Changes from OSCAL 1.0.0 Milestone 2 (M2) to M3
 ===============================================
