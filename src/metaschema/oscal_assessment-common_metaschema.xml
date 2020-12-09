@@ -41,7 +41,7 @@
    <!-- =========== -->
    <!-- === NEW === -->
    <!-- =========== -->
-   <define-assembly name="local-objective" min-occurs="0" max-occurs="unbounded">
+   <define-assembly name="local-objective">
       <!-- TODO: refactor this to align with catalog syntax for control objectives -->
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
@@ -62,7 +62,7 @@
             <description>A human-readable description of this control objective.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -84,7 +84,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   <define-assembly name="assessment-method" min-occurs="0" max-occurs="unbounded">
+   <define-assembly name="assessment-method">
       <!-- CHANGED "method" to "assessment-method" -->
       <formal-name>Assessment Method</formal-name>
       <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
@@ -100,7 +100,7 @@
             <description>A human-readable description of this assessment method.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -116,9 +116,9 @@
    <!-- ===============================  -->
    <!-- ========= NEW CONTENT =========  -->
    <!-- ===============================  -->
-   <define-assembly name="assessment-activity">
-      <formal-name>Assessment Activity</formal-name>
-      <description>Identifies an assessment activity. In the assessment plan, this is an intended activity which may be associated with an assessment event. In the assessment results, this an activity that was actually performed as part of an assessement.</description>
+   <define-assembly name="activity">
+      <formal-name>Activity</formal-name>
+      <description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Activity Universally Unique Identifier</formal-name>         <description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.</description>
       </define-flag>
@@ -135,8 +135,7 @@
          <!-- QUESTION: Should "origination" appear here or on the event? -->
          <assembly ref="origination" max-occurs="1"/>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -167,7 +166,7 @@
                <!-- QUESTION: Should "origination" appear here or on the event? It also appears on the parent. -->
                <assembly ref="origination" min-occurs="0" max-occurs="1"/>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -218,9 +217,9 @@
       </constraint>
    </define-assembly>
    
-   <define-assembly name="assessment-action">
-      <formal-name>Assessment Action</formal-name>
-      <description>Identifies an assessment event that must occur as part of an assessment plan or an assessment event that occured in an assessment results.</description>
+   <define-assembly name="action">
+      <formal-name>Action</formal-name>
+      <description>Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Event Universally Unique Identifier</formal-name>
          <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
@@ -241,7 +240,7 @@
             <description>The timing under which the event is intended to occur.</description>
             <model>
                <choice>
-                  <define-field name="on-date" as-type="empty">
+                  <define-field name="on-date" as-type="empty" min-occurs="1">
                      <formal-name>On Date Condition</formal-name>
                      <description>The event is intended to occur on the specified date.</description>
                      <define-flag name="date" as-type="dateTime-with-timezone" required="yes">
@@ -249,7 +248,7 @@
                         <description>The event must occur on the specified date.</description>
                      </define-flag>
                   </define-field>
-                  <define-field name="within-date-range" as-type="empty">
+                  <define-field name="within-date-range" as-type="empty" min-occurs="1">
                      <formal-name>On Date Range Condition</formal-name>
                      <description>The event is intended to occur within the specified date range.</description>
                      <define-flag name="start" as-type="dateTime-with-timezone" required="yes">
@@ -261,7 +260,7 @@
                         <description>The event must occur on or before the specified date.</description>
                      </define-flag>
                   </define-field>
-                  <define-field name="at-frequency" as-type="empty">
+                  <define-field name="at-frequency" as-type="empty" min-occurs="1">
                      <formal-name>Frequency Condition</formal-name>
                      <description>The event is intended to occur at the specified frequency.</description>
                      <define-flag name="period" as-type="positiveInteger" required="yes">
@@ -312,8 +311,7 @@
                <!-- QUESTION: Should this be renamed? -->
                <assembly ref="origination" min-occurs="0" max-occurs="1"/>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -328,7 +326,9 @@
                   </remarks>
                </assembly>
                <choice>
-                  <assembly ref="assessment-subjects" min-occurs="1"/>
+                  <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
+                     <group-as name="assessment-subjects" in-json="ARRAY"/>
+                  </assembly>
                   <define-assembly name="assessment-subject-placeholder">
                      <formal-name>Assessment Subject Placeholder</formal-name>
                      <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.</description>
@@ -347,8 +347,7 @@
                            </define-flag>
                         </define-field>
                         <field ref="property" min-occurs="0" max-occurs="unbounded">
-                           <!-- CHANGE: props to properties -->
-                           <group-as name="properties" in-json="ARRAY"/>
+                           <group-as name="props" in-json="ARRAY"/>
                         </field>
                         <assembly ref="annotation" max-occurs="unbounded">
                            <group-as name="annotations" in-json="ARRAY"/>
@@ -363,6 +362,66 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="task">
+      <formal-name>Task</formal-name>
+      <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
+      <model>
+         <define-field name="title" min-occurs="1" as-type="markup-line">
+            <formal-name>Task Title</formal-name>
+            <description>The title for this task.</description>
+         </define-field>
+         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
+            <formal-name>Task Description</formal-name>
+            <description>A human-readable description of this task.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1">
+            <formal-name>Task Start Date</formal-name>
+            <description>The task must occur on or after the specified date.</description>
+         </define-field>
+         <define-field name="end" as-type="dateTime-with-timezone" min-occurs="1">
+            <formal-name>Task End Date</formal-name>
+            <description>The task must occur on or before the specified date.</description>
+         </define-field>
+         <define-assembly name="associated-action" max-occurs="unbounded">
+            <formal-name>Associated Action</formal-name>
+            <description>An assessment action that is associated with this planned task.</description>
+            <group-as name="associated-actions"/>
+            <define-flag name="assessment-action-uuid" required="yes" as-type="uuid">
+               <formal-name>Assessment Action Universally Unique Identifier Reference</formal-name>
+               <description>References an event defined in the plan.</description>
+            </define-flag>
+            <model>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="props" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+               
+            </model>
+         </define-assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role related to the task.</p>
+            </remarks>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -381,7 +440,7 @@
             <description>A human-readable description of control objectives.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -401,7 +460,7 @@
                   <description>A human-readable description of in-scope controls specified for assessment.</description>
                </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -449,7 +508,7 @@
                   <description>A human-readable description of this collection of control objectives.</description>
                </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -517,37 +576,14 @@
    
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
-   <define-assembly name="assessment-subjects">
+   <define-assembly name="assessment-subject">
       <formal-name>Subject of Assessment</formal-name>
-      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies the planned assessment subject. In the assessment results this is the actual assessment subject, and reflects any changes from the plan.</description>
-      <model>
-         <assembly ref="include-subject" min-occurs="1" max-occurs="unbounded">
-            <!-- CHANGED: "includes" to "include-subjects" -->
-            <group-as name="include-subjects" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="exclude-subject" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGED: "excludes" to "exclude-subjects" -->
-            <group-as name="exclude-subjects" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
-         <field ref="remarks"
-            in-xml="WITH_WRAPPER"
-            min-occurs="0"
-            max-occurs="1"/>
-      </model>
-      <remarks>
-         <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
-      </remarks>
-   </define-assembly>
-
-   <define-assembly name="include-subject">
-      <formal-name>Included Assessment Subject</formal-name>
-      <description>Identifies exactly what will be the focus of this assessment. Anything not explicitly defined is out-of-scope.</description>
+      <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.</description>
       <!-- CHANGED: "name" to "type" -->
       <define-flag name="type" required="yes">
          <!-- TODO: Improve documentation -->
          <formal-name>Subject Type</formal-name>
-         <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this include statement.</description>
+         <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this selection statement.</description>
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="component">Component</enum>
@@ -558,20 +594,74 @@
             </allowed-values>
          </constraint>
       </define-flag>
-      <define-flag name="class" as-type="NCName">
+      <model>
+         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+            <!-- QUESTION: Should this be optional? -->
+            <formal-name>Include Subjects Description</formal-name>
+            <description>A human-readable description of the collection of subjects being included in this assessment.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <choice>
+            <!-- CHANGED: "all" to "include-all" -->
+            <define-field name="include-all" as-type="empty" min-occurs="1">
+               <!-- CHANGED: type to "empty" -->
+               <formal-name>All</formal-name>
+               <description>A key word to indicate all.</description>
+            </define-field>
+            <assembly ref="select-subject-by-id" min-occurs="1" max-occurs="unbounded">
+               <use-name>include-subject</use-name>
+               <!-- CHANGED: "includes" to "include-subjects" -->
+               <group-as name="include-subjects" in-json="ARRAY"/>
+            </assembly>
+         </choice>
+         <assembly ref="select-subject-by-id" min-occurs="0" max-occurs="unbounded">
+            <use-name>exclude-subject</use-name>
+            <!-- CHANGED: "excludes" to "exclude-subjects" -->
+            <group-as name="exclude-subjects" in-json="ARRAY"/>
+         </assembly>
+         <!-- CHANGED: moved "local-definitions" to the top-level -->
+         <field ref="remarks"
+            in-xml="WITH_WRAPPER"
+            min-occurs="0"
+            max-occurs="1"/>
+      </model>
+      <remarks>
+         <p>Processing of an include/excluse pair starts with processing the include, then removing matching entries in the exlcude.</p>
+      </remarks>
+   </define-assembly>
+
+   <define-assembly name="select-subject-by-id">
+      <formal-name>Select Assessment Subject</formal-name>
+      <description>Identifies a set of assessment subjects to include/exclude by UUID.</description>
+      <!-- CHANGED: remove class --> 
+<!--      <define-flag name="class" as-type="NCName">
          <formal-name>Subject Class</formal-name>
          <description>A textual label that provides a sub-type or characterization of the <code>include-subject</code>. This can be used to further distinguish or discriminate between the semantics of multiple include-subjects of the same <code>ns</code>.</description>
          <remarks>
             <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
          </remarks>
       </define-flag>
+-->
       <model>
-         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Include Subjects Description</formal-name>
-            <description>A human-readable description of the collection of subjects being included in this assessment.</description>
-         </define-field>
+         <define-field name="subject" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Identifies the Subject</formal-name>
+            <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
+            <group-as name="subjects" in-json="ARRAY"/>
+            <define-flag name="uuid-ref" required="yes">
+               <formal-name>UUID Reference</formal-name>
+               <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
+            </define-flag>
+         </define-field> 
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -579,63 +669,8 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <choice>
-            <field ref="all" min-occurs="1"/>
-            <assembly ref="subject-reference" min-occurs="1" max-occurs="unbounded">
-               <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
-               <group-as name="subject-references" in-json="ARRAY"/>
-            </assembly>
-         </choice>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="exclude-subject">
-      <formal-name>Excluded Assessment Subject</formal-name>
-      <description>Identifies what is explicitly excluded from the scope of this assessment. Used to remove a subset of items from groups of explicitly included items. Also used to explicitly clarify off-limit items, such as hosts to avoid scanning.</description>
-      <!-- CHANGED: "name" to "type" -->
-      <define-flag name="type" required="yes">
-         <!-- TODO: Improve documentation -->
-         <formal-name>Subject Type</formal-name>
-         <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this exclude statement.</description>
-         <constraint>
-            <allowed-values allow-other="yes">
-               <enum value="component">Component</enum>
-               <enum value="inventory-item">Inventory Item</enum>
-               <enum value="location">Location</enum>
-               <enum value="party">Person to Avoid Interviewing</enum>
-               <enum value="user">User</enum>
-            </allowed-values>
-         </constraint>
-      </define-flag>
-      <define-flag name="class" as-type="NCName">
-         <formal-name>Subject Class</formal-name>
-         <description>A textual label that provides a sub-type or characterization of the <code>exclude-subject</code>. This can be used to further distinguish or discriminate between the semantics of multiple exclude-subjects of the same <code>ns</code>.</description>
-         <remarks>
-            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-         </remarks>
-      </define-flag>
-      <model>
-         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Exclude Subjects Description</formal-name>
-            <description>A human-readable description of the collection of subjects being excluded from this assessment.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="properties" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <choice>
-            <field ref="all" min-occurs="1"/>
-            <assembly ref="subject-reference" min-occurs="1" max-occurs="unbounded">
-               <!-- QUESTION: Should "subject-reference" be used here, since the type is duplicated over what is defined in the selection criteria above? -->
-               <group-as name="subject-references" in-json="ARRAY"/>
-            </assembly>
-         </choice>
+         
+
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -667,8 +702,7 @@
             <description>The title or name for the referenced subject.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -701,8 +735,7 @@
          </define-assembly>
          <assembly ref="origination" min-occurs="0" max-occurs="1"/>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -739,8 +772,7 @@
             <description>A human-readable description of assessment originiation asset.</description>
          </define-field>
          <field ref="property"  max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1040,8 +1072,7 @@
             <description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1104,8 +1135,7 @@
             <description>A human-readable description of this assessment observation.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1211,8 +1241,7 @@
                   <description>A human-readable description of this evidence.</description>
                </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -1267,8 +1296,7 @@
             <description>A human-readable description of this risk.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1304,8 +1332,7 @@
                   <description>A human-readable description of this mitigating factor.</description>
                </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -1379,8 +1406,7 @@
                         <description>A human-readable description of this tracking entry.</description>
                      </define-field>
                      <field ref="property" min-occurs="0" max-occurs="unbounded">
-                        <!-- CHANGE: props to properties -->
-                        <group-as name="properties" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY"/>
                      </field>
                      <assembly ref="annotation" max-occurs="unbounded">
                         <group-as name="annotations" in-json="ARRAY"/>
@@ -1530,8 +1556,7 @@
       </define-flag>
       <model>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1571,8 +1596,7 @@
             <description>A human-readable description of this remediation plan.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
@@ -1629,8 +1653,7 @@
                   <description>A human-readable description of this required asset.</description>
                </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <!-- CHANGE: props to properties -->
-                  <group-as name="properties" in-json="ARRAY"/>
+                  <group-as name="props" in-json="ARRAY"/>
                </field>
                <assembly ref="annotation" max-occurs="unbounded">
                   <group-as name="annotations" in-json="ARRAY"/>
@@ -1642,8 +1665,10 @@
             </model>
          </define-assembly>
          
-         <!-- CHANGED: "schedule" to "events"  -->
-         <assembly ref="events" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: "schedule" to "task", and changed cardinality to unbounded.  -->
+         <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+            <group-as name="tasks" in-json="ARRAY"/>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
@@ -1699,8 +1724,7 @@
             <description>A name given to the part, which may be used by a tool for display and navigation.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
-            <!-- CHANGE: props to properties -->
-            <group-as name="properties" in-json="ARRAY"/>
+            <group-as name="props" in-json="ARRAY"/>
          </field>
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
