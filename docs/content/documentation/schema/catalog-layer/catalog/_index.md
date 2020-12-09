@@ -75,16 +75,7 @@ In both uses, a catalog defines:
 
 See [examples](#content-examples) of OSCAL catalogs.
 
-
-{{<callout>}}**IMPORTANT NOTE TO DEVELOPERS**
-
-Every time the content of an OSCAL file changes, the following must also change:
-- A new UUID value must be generated and assigned to the root element's `uuid`.
-- The `last-modified` field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
-
-These are two mechanisms by which tools can quickly "know" if a file has changed since it was last encountered.
-
-When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.{{</callout>}}
+{{<partial "note-to-developers-uuid.html" >}}
 
 ## Content Examples
 
