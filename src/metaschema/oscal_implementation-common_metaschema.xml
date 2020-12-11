@@ -10,6 +10,7 @@
    <!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
    <!ENTITY allowed-values-component_inventory-item_annotation-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_annotation-name.ent">
    <!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
+   <!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
@@ -186,6 +187,7 @@
             <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
             <enum value="ipv4-address">An Internet Protocol Version 4 interconnection address</enum>
             <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address</enum>
+            <enum value="direction">An Internet Protocol Version 6 interconnection address</enum>
          </allowed-values>
          <allowed-values target="prop[(@name='ipv4-address') or (@name='ipv6-address')]/@class" allow-other="yes">
             <enum value="local">The identified IP address is for this system.</enum>
@@ -204,6 +206,10 @@
          <matches target="prop[@name='isa-date']/value()" datatype="dateTime"/>
          <matches target="prop[@name='ipv4-address']/value()" datatype="ip-v4-address" />
          <matches target="prop[@name='ipv6-address']/value()" datatype="ip-v6-address" />
+         <allowed-values target="prop[@name='direction')]/value()" allow-other="yes">
+            <enum value="incoming">Data from the remote system flows into this system.</enum>
+            <enum value="outgoing">Data from this system flows to the remote system.</enum>
+         </allowed-values>
          
       </constraint>
       <remarks>
@@ -222,18 +228,7 @@
          <allowed-values allow-other="yes">
             <enum value="this-system">The system as a whole.</enum>
             <enum value="system">An external system, which may be a leveraged system or the other side of an interconnection.</enum>
-            <enum value="interconnection">A connection to something outside this system.</enum>
-            <enum value="software">Any software, operating system, or firmware.</enum>
-            <enum value="hardware"/>
-            <enum value="service">A service that may provide APIs.</enum>
-            <enum value="policy"/>
-            <enum value="physical">A tangible asset used to provide physical protections or countermeasures.</enum>
-            <!-- CHANGED combined "process" and "procedure" as "process-proceedure" -->
-            <enum value="process-procedure">A list of steps or actions to take to achieve some end result.</enum>
-            <enum value="plan"/>
-            <enum value="guidance">Any guideline or recommendation.</enum>
-            <enum value="standard"/>
-            <enum value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>
+            &allowed-values-component-type;
          </allowed-values>
       </constraint>
    </define-flag>

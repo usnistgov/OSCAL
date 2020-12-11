@@ -720,6 +720,20 @@
             <enum value="implementation-status">Provides the current state of the control's implementation.</enum>
             <enum value="control-origination">Identifies the source of the implementated control.</enum>
          </allowed-values>
+         <allowed-values target="annotation[@name='implementation-status']/value()">
+            <enum value="implemented">The control is fully implemented.</enum>
+            <enum value="partial">The control is partially implemented.</enum>
+            <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
+            <enum value="alternative">There is an alternative implementaiton for this control as explained in the remarks.</enum>
+            <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+         </allowed-values>
+         <allowed-values target="annotation[@name='control-origination']/value()">
+            <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
+            <enum value="system-specific">The control is implemented specifically to this system.</enum>
+            <enum value="customer-configured">The control is provided by the system, but must be configured by the customer.</enum>
+            <enum value="customer-provided">The control must be implemented by the customer.</enum>
+            <enum value="inherited">This control is inherited from an underlying system.</enum>
+         </allowed-values>
          <allowed-values target="prop/@name" allow-other="yes">
             <enum value="leveraged-authorization">Idicates all or some portion of this control is inherited from an underlying authorized system.</enum>
          </allowed-values>
