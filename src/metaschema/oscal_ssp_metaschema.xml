@@ -637,6 +637,13 @@
          <index-has-key name="index-system-implementation-component-uuid-software" target="component[@type='service']/link[@rel='provided-by']">
             <key-field target="@href"/>
          </index-has-key>
+         
+         <allowed-values target="(system-component | inventory-item)/annotation[@name='allows-authenticated-scan']/@value">
+            <enum value="yes">The component allows an authenticated scan.</enum>
+            <enum value="no">The component does not allow an authenticated scan.</enum>
+         </allowed-values>
+         
+         
       </constraint>
    </define-assembly>
 
