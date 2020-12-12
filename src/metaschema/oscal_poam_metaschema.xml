@@ -112,7 +112,7 @@
             <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </define-field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
-         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
          <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
             <group-as name="observations" in-json="ARRAY"/>
          </assembly>
