@@ -1,10 +1,9 @@
 The OSCAL Project has releases Milestone 3, Milestone 2 and Milestone 1, given here in reverse order of release date.
 
-OSCAL 1.0.0 Milestone 3
------------------------
+# OSCAL 1.0.0 Milestone 3
+--
 
-Understanding this change log
-=============================
+## Understanding this change log
 
 The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON) or as an element or attribute (XML). Similarly, in either case it may be an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network), or alternatively a composite of other objects.
 
@@ -19,31 +18,45 @@ In the log below, [M3} indicates the Milestone 3 definitions, while [M2] indicat
 
 Assembly models are noted with DTD (RNC) notation indicating cardinality: suffix '*' indicates zero-or-more, '+' is one-or-more, '?' is zero-or-one (i.e., optional), no indicator is used for one-only (required). So (a, b, b) and (a, b, c) are valid to pattern expression (a, b+, c*), but (a, c) is not.
 
-Changes from OSCAL 1.0.0 Milestone 3 (M3) to Release Candidate 1 (RC1)
-======================================================================
+# Changes from OSCAL 1.0.0 Milestone 3 (M3) to Release Candidate 1 (RC1)
+
+Changes in this release have been focused on the following major areas:
+- Making naming in XML and JSON/YAML more consistent.
+- Ensuring that all data types and cardinalities are appropriate.
+- Refactoring to cleanup models, making them: 1) more consistent with the other OSCAL models, 2) making them more simple when possible, and 3) providing room for future addition of new features.
 
 ## Changes common to all models
 
 - many elements in XML, and properties in JSON and YAML, have been renamed to make the naming more consistent between elements names in XML and property names in JSON and YAML. Now JSON properties that contain an array of objects use a plural form of the XML element name. The one exception is "prop" in XML vs "properties" in JSON and YAML. This decision was made to make the XML use of "prop" more concise, since "prop" elements are used a good deal in OSCAL XML formats.
 
-### Changes to all XML formats:
+### Changes to all XML formats
 
 In {top-level-element}/metadata:
+- renamed "revision-history" to "revisions"
 - renamed "doc-id" to "document-id"
 
 In {top-level-element}/metadata/document-id:
 - renamed "type" to "scheme"
 
+In {top-level-element}/metadata/link:
+- Defined allowed values for the "rel" property
+
 In {top-level-element}/metadata/location:
 - renamed "email" to "email-address"
 - renamed "phone" to "telephone-number"
+
+In {top-level-element}/metadata/location/prop:
+- Defined allowed values for the "name" attribute. Using the "type" as the name attribute value, you can now specify that a location is a "data-center" location and also use the "class" attribute to qualify the data center location as "primary" or "alternate".
 
 In {top-level-element}/metadata/party:
 - renamed "party-name" to "name" 
 - renamed "email" to "email-address"
 - renamed "phone" to "telephone-number"
 - changed sequencing of address
-- made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality.
+- made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" attribute has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
+
+In {top-level-element}/metadata/party/prop:
+- Defined allowed values for the "name" attribute. This can be used to provide a "mail-stop", "office", or "job-title".
 
 In {top-level-element}/metadata/party/external-id:
 - renamed "type" to "scheme" 
@@ -55,80 +68,201 @@ In {top-level-element}/back-matter/resource:
 - renamed "desc" to "description"
 - renamed "doc-id" to "document-id"
 
+In {top-level-element}/back-matter/resource/prop:
+- defined allowed values "type", "version", and "published" for the "name" property.
+
 In {top-level-element}/metadata/resource/document-id:
 - renamed "type" to "scheme"
 
+In {top-level-element}/back-matter/resource/rlink:
+- changed type from "uri" to "uri-reference"
+- renamed "hash-value" to "hash"
+
 Changes to all "prop" elements:
 - changed the data type of "ns" to "uri"
+- renamed "id" to "uuid" and changed type to "uuid"
 
 Changes to all "annotation" elements:
 - changed the data type of "ns" to "uri"
+- renamed "id" to "uuid" and changed type to "uuid"
 
-### Changes to all JSON and YAML formats:
+### Changes to all JSON and YAML formats
 
 In {top-level-object}/metadata:
-
 - renamed "revision-history" to "revisions"
+- renamed "properties" to "props"
+
+In {top-level-object}/metadata/revisions:
+- renamed "properties" to "props"
 
 In {top-level-object}/metadata/document-ids:
-- renamed "type" to "scheme" 
+- renamed "type" to "scheme" and changed to data type from "string" to "uri"
+
+In {top-level-object}/metadata/links:
+- Defined allowed values for the "rel" property
 
 In {top-level-object}/metadata/locations
 - renamed "URLs" to "urls"
+- renamed "properties" to "props"
+
+In {top-level-object}/metadata/locations/props:
+- Defined allowed values for the "name" property. Using the "type" prop name, you can now specify that a location is a "data-center" location and also use the "class" property to qualify the data center location as "primary" or "alternate".
 
 In {top-level-object}/metadata/parties:
 - renamed "party-name" to "name" 
-- made use of addresses and location-uuids mutually exclusive, since either a static address or a reference to location provides similar functionality.
+- renamed "properties" to "props"
+- made use of addresses and location-uuids mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" property on "location-uuid" has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
+
+In {top-level-object}/metadata/parties/props:
+- defined allowed values for the "name" property. This can be used to provide a "mail-stop", "office", or "job-title".
 
 In {top-level-object}/metadata/parties/external-ids:
 - renamed "type" to "scheme" 
 
 In {top-level-object}/metadata/roles:
 - renamed "desc" to "description"
+- renamed "properties" to "props"
 
 In {top-level-object}/back-matter/resources:
 - renamed "desc" to "description"
+- renamed "properties" to "props"
+
+In {top-level-object}/back-matter/resources/props:
+- defined allowed values "type", "version", and "published" for the "name" property.
+
+In {top-level-object}/back-matter/resources/citation:
+- renamed "properties" to "props"
 
 In {top-level-object}/back-matter/resources/document-ids:
-- renamed "type" to "scheme"
+- renamed "type" to "scheme" and changed to data type from "string" to "uri"
 
-Changes to all "properties" objects:
+In {top-level-object}/back-matter/resources/rlinks:
+- changed type from "uri" to "uri-reference"
+- renamed "hash-values" to "hashes"
+
+Changes to all "props" objects:
 - changed the data type of "ns" to "uri"
 
 Changes to all "annotations" objects:
 - changed the data type of "ns" to "uri"
+- the "value" property is now required.
 
 Changes to all "address" or "addresses" objects:
 - renamed "postal-address" to "addr-lines"
 
-## Changes to common elements in the catalog and profile models
+Changes to all "responsible-party" objects:
+- renamed "properties" to "props"
 
-### Changes to the XML formats:
+## Changes to common to the catalog and profile models
+
+The following changes have been made to format structures that are shared between the formats for the catalog and profile models.
+
+### Changes affecting the catalog and profile XML formats
 
 Changes to all "part" elements:
 - changed the data type of "ns" to "uri"
 
 Changes to all "param" elements:
+- added the "prop" and "link" elements.
 - changed the sequencing of "link" to be consistent with other elements that include "link".
-- changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
+- changed the data type of "usage" from "markup-line" to "markup-multiline"
 - changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" attribute.
+- changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
 
-### Changes to the JSON and YAML formats:
+### Changes affecting the catalog and profile JSON and YAML formats
 
 Changes to all "part" or "parts" objects:
 - changed the data type of "ns" to "uri"
+- renamed "properties" to "props"
+- added allowed values "label" and "sort-id" for props/name.
 
 Changes to all "param" or "params" objects:
+- added the "props" and "links" properties.
+- changed the data type of "usage" from "markup-line" to "markup-multiline"
 - renamed "guidance" to "guidelines"
-- changed the cardinality of "value" to allow for multiple "values". The data type of a value has changed from markup-line to string.
-- renamed "detail" to "description"
-- renamed "test" to "tests", which is now an array of objects. The original "test" string value is now stored in the child object's "expression" property.
-- In "select/how-many", renamed "alternatives" to "choices"
-- In "select/how-many/alternatives", renamed "RICHTEXT" property to "value"
+- renamed "value" to "values". Also, changed the cardinality of "value" to allow for multiple "values". The data type of a value has changed from markup-line to string.
+- changed the sequencing of "link" to align with similar elements in OSCAL.
+
+For params/select/how-many:
+- renamed "alternatives" to "choices"
+
+For params/select/how-many/alternatives:
+- renamed "RICHTEXT" property to "value"
+
+For params/constraints:
+- renamed "detail" to "description". Change the data type from "string" to "markup-multiline".
+- renamed "test" to "tests", which is now an array of objects.
+  - The original "test" string value is now stored in the child object's "expression" property.
+  - Added a new "remarks" property.
 
 
-Changes from OSCAL 1.0.0 Milestone 2 (M2) to M3
-===============================================
+## Changes to the catalog model
+
+### Changes to the catalog XML format
+
+For /catalog//group and /catalog//control:
+- defined allowed values for props/name
+
+### Changes to the catalog JSON and YAML formats
+
+For /catalog, /catalog//groups, and /catalog//controls:
+- renamed "parameters" to "params"
+
+For /catalog//groups and /catalog//controls:
+- renamed "properties" to "props"
+- defined allowed values for props/name
+
+## Changes to the profile model
+
+### Changes to profile XML format
+
+### Changes to profile JSON and YAML formats
+
+
+## Changes to common to the system security plan (SSP) and component definition models
+
+### Changes common to the system security plan (SSP) and component definition XML format
+
+### Changes common to the system security plan (SSP) and component definition JSON and YAML formats
+
+
+## Changes to the SSP model
+
+### Changes to the SSP XML format
+
+### Changes to the SSP JSON and YAML formats
+
+
+## Changes to the component definition model
+
+### Changes to the component definition XML format
+
+### Changes to the component definition JSON and YAML formats
+
+
+## Changes to the assessment plan model
+
+### Changes to the assessment plan XML format
+
+### Changes to the assessment plan JSON and YAML formats
+
+
+## Changes to the assessment results model
+
+### Changes to assessment results XML format
+
+### Changes to assessment results JSON and YAML formats
+
+
+## Changes to the plan of actions and milestones (PO&M) model
+
+### Changes to the plan of actions and milestones XML formats
+
+### Changes to the plan of actions and milestones JSON and YAML formats
+
+
+# Changes from OSCAL 1.0.0 Milestone 2 (M2) to M3
+--
 
 ## New OSCAL models
 
@@ -292,66 +426,66 @@ In profile SSP models, the assembly used to set a parameter is consistently call
 
 
 
-Changes from OSCAL 1.0.0 Milestone 1 (M1) to M2
-===============================================
+# Changes from OSCAL 1.0.0 Milestone 1 (M1) to M2
+--
 
-# New OSCAL Features
+## New OSCAL Features
 
 - A System Security Plan (SSP) model has been added to OSCAL for use by organizations to document the implementation of security and privacy controls in an information system.
 
-# Breaking Changes
+## Breaking Changes
 
 The following content model changes have been made to the catalog and profile models that may break content compatibility:
 
-## Document metadata
+### Document metadata
 
   * `last-modified` is now required. Its value must be a date-time with time zone (i.e., a timestamp). The old element `last-modified-date` is no longer permitted.
   * `published` is permitted for a nominal publication date, as assigned by the owner or publisher of the catalog or resource. An electronic version of a previously published catalog should carry its own publication date, if any, not that of the original resource (which can be described elsewhere with its own metadata).
   * `role-id` is now assigned as an element in the XML, not an attribute. This permits it to be tokenized more explicitly.
 
-## Control structures in the catalog model
+### Control structures in the catalog model
 
-### New property in SP800-53 catalog data
+#### New property in SP800-53 catalog data
 
 In the SP800-53 catalog, we have added a property called `sort-id` to controls and enhancements. Its string value represents the control's ID in a (zero-padded) notation that will sort gracefully against other `sort-id` values. This permits a robust reordering of controls in receiving systems without having to refer to an out-of-line document to restore the canonical order.
 
-### Controls inside controls, but no "subcontrols"
+#### Controls inside controls, but no "subcontrols"
 
 Control enhancements are now represented using `control` not `subcontrol`. The advantages of restricting to two levels of hierarchy (even given groups and parts) became too few in view of the sacrifices to expressiveness so we have gone back to clean recursion.
 
-## Data type handling
+### Data type handling
 
 Data type handling has been extended in several respects to provide for the validating of lexical forms of nominal datatypes. Datatypes for dates and times have been added. Several XML-peculiar datatypes have been removed.
 
-### Value enumeration on terminal nodes
+#### Value enumeration on terminal nodes
 
 The schema has also been extended to support validation against enumerated values, either exclusively (only declared values may appear) or inclusively (enumerations are documented while other values are also permitted). All allowed values now being declared (Milestone 2) are inclusive of other values (user- or application-defined), so this is not a breaking change.
 
 Affected data points (in both models): `prop/name`, `address/type`, `phone/type`, `hash/algorithm`, `role-id`. The enumerated values provided for each are documented.
 
-### Lexical datatyping at points
+#### Lexical datatyping at points
 
 Supported for lexical datatyping has also been added to `link/href`, `rlink/href` (URI references), `published` and `last-modified` (timestamps), `email` (a nominal email address), `url` (a URI), `img/src`.
 
-## Profile model enhancements
+### Profile model enhancements
 
-### Calling control enhancements (old "subcontrols")
+#### Calling control enhancements (old "subcontrols")
 
 From call statements, since `subcontrol` has been dropped from the catalog model, `subcontrol-id` has been replaced with `control-id`, and `with-subcontrols` has been replaced by `with-child-controls` (on `call`, `all` and `match`). Essentially, a subcontrol is now represented as a control that is a child another parent control.
 
-### Expanded model for new groups
+#### Expanded model for new groups
 
 Elements besides control references are now permitted inside `group` within the `merge` construct, so profile authors can provide titles and introductory content to groups they define for their represented aggregate control structures.
 
-### Parameter settings
+#### Parameter settings
 
 Added 'guideline' to profile model. It was omitted in error.
 
 XXX see Issues #494, #288 (adding 'guideline' to profile model)
 
 
-OSCAL 1.0.0 Milestone 1 (M1)
-============================
+# OSCAL 1.0.0 Milestone 1 (M1)
+--
 
 - The first official OSCAL release
 - Provides stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.

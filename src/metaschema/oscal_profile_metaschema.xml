@@ -202,10 +202,12 @@
          <choice>
             <field ref="all"/>
             <field ref="call" max-occurs="unbounded">
-               <group-as name="id-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "id-selectors" to "calls" -->
+               <group-as name="calls" in-json="ARRAY"/>
             </field>
             <field ref="match" max-occurs="unbounded">
-               <group-as name="pattern-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "pattern-selectors" to "matches" -->
+               <group-as name="matches" in-json="ARRAY"/>
             </field>
          </choice>
       </model>
@@ -244,10 +246,12 @@
       <model>
          <choice>
             <field ref="call" max-occurs="unbounded">
-               <group-as name="id-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "id-selectors" to "calls" -->
+               <group-as name="calls" in-json="ARRAY"/>
             </field>
             <field ref="match" max-occurs="unbounded">
-               <group-as name="pattern-selectors" in-json="ARRAY"/>
+               <!-- CHANGED: "pattern-selectors" to "matches" -->
+               <group-as name="matches" in-json="ARRAY"/>
             </field>
          </choice>
       </model>
@@ -318,10 +322,12 @@
       <flag ref="control-id"/>
       <model>
          <field ref="remove" max-occurs="unbounded">
-            <group-as name="removals" in-json="ARRAY"/>
+            <!-- CHANGED: "removals" to "removes" -->
+            <group-as name="removes" in-json="ARRAY"/>
          </field>
          <assembly ref="add" max-occurs="unbounded">
-            <group-as name="additions" in-json="ARRAY"/>
+            <!-- CHANGED: "additions" to "adds" -->
+            <group-as name="adds" in-json="ARRAY"/>
          </assembly>
       </model>
       <remarks>
