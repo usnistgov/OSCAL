@@ -201,7 +201,7 @@ For params/constraints:
 ### Changes to the catalog XML format
 
 For /catalog//group and /catalog//control:
-- defined allowed values for props/name
+- defined allowed values for prop/@name
 
 ### Changes to the catalog JSON and YAML formats
 
@@ -216,8 +216,43 @@ For /catalog//groups and /catalog//controls:
 
 ### Changes to profile XML format
 
+For /profile/merge/custom//groups:
+- added "annotation" and "link"
+
+For /profile/modify/set-parameter:
+- added "prop" and "annotation"
+- change sequencing of "link"
+
+For /profile/modify/alter/add:
+- defined allowed values for prop/@name
+
 ### Changes to profile JSON and YAML formats
 
+For /profile/imports/(include|exclude):
+- renamed "id-selectors" to "calls"
+- renamed "pattern-selectors" to "matches"
+
+For /profile/merge/custom//groups:
+- renamed "parameters" to "params"
+- renamed "properties" to "props"
+- added "annotations" and "links"
+
+For /profile/modify:
+- renamed "parameter-settings" to "set-parameters"
+- renamed "alterations" to "alters"
+
+For /profile/modify/set-parameters:
+- added "props" and "annotations"
+- renamed "usages" to "usage", and changed data type from an array of "string" to "markup-multiline"
+
+For /profile/modify/alters:
+- renamed "removals" to "removes"
+- renamed "additions" to "adds"
+
+For /profile/modify/alters/adds:
+- renamed "parameters" to "params"
+- renamed "properties" to "props"
+- defined allowed values for props/name
 
 ## Changes to common to the system security plan (SSP) and component definition models
 
