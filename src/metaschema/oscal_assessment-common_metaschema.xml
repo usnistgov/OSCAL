@@ -234,7 +234,15 @@
             <formal-name>Event Description</formal-name>
             <description>A human-readable description of this event.</description>
          </define-field>
-         
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
          <define-assembly name="timing">
             <formal-name>Event Timing</formal-name>
             <description>The timing under which the event is intended to occur.</description>
@@ -289,7 +297,7 @@
          <!-- CHANGED: Added "activity-selection" -->
          <define-assembly name="activity-instance" min-occurs="1" max-occurs="unbounded">
             <formal-name>Activity Instance</formal-name>
-            <description>Identifies an individual activity to be performed with this assessment event.</description>
+            <description>Identifies an individual activity to be performed as an assessment action.</description>
             <group-as name="activity-instances" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Activity Instance Universally Unique Identifier</formal-name>
@@ -397,11 +405,12 @@
          </define-field>
          <define-assembly name="associated-action" max-occurs="unbounded">
             <formal-name>Associated Action</formal-name>
-            <description>An assessment action that is associated with this planned task.</description>
-            <group-as name="associated-actions"/>
-            <define-flag name="assessment-action-uuid" required="yes" as-type="uuid">
-               <formal-name>Assessment Action Universally Unique Identifier Reference</formal-name>
-               <description>References an event defined in the plan.</description>
+            <description>An activity instance that is associated with this planned task.</description>
+            <use-name>activity-instance</use-name>
+            <group-as name="activity-instances"/>
+            <define-flag name="activity-instance-uuid" required="yes" as-type="uuid">
+               <formal-name>Activity Instance Universally Unique Identifier Reference</formal-name>
+               <description>References an activity instance defined in the plan.</description>
             </define-flag>
             <model>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
