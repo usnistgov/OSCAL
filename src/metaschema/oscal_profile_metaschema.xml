@@ -190,8 +190,8 @@
             <group-as name="set-parameters" in-json="BY_KEY"/>
          </assembly>
          <assembly ref="alter" max-occurs="unbounded">
-            <!-- It is worth it abbreviate "alter" in XML, while keeping "alterations" in JSON. -->
-            <group-as name="alterations" in-json="ARRAY"/>
+            <!-- CHANGED: "alterations" to "alters" -->
+            <group-as name="alters" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
@@ -278,6 +278,12 @@
       <flag ref="depends-on"/>
       <model>
          <!-- CHANGE: relative order in sequence -->
+         <field ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
