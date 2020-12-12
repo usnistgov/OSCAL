@@ -59,11 +59,6 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
-         <allowed-values target="link/@rel" allow-other="yes">
-            <enum value="canonical">The link identifies the authoritative location for this file.</enum>
-            <enum value="alternate">The link identifies an alternative location for this file.</enum>
-         </allowed-values>
-         
          <index id="index-metadata-roles" name="index-metadata-role-ids" target="role">
             <key-field target="@id"/>
          </index>
@@ -116,8 +111,8 @@
             <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
          </allowed-values>
          <allowed-values target="link/@rel" allow-other="yes">
-            <enum value="canonical">The link identifies the authoritative source for this content.</enum>
-            <enum value="alternative">The link identifies an alternative location or format for this content.</enum>
+            <enum value="canonical">The link identifies the authoritative location for this file.</enum>
+            <enum value="alternate">The link identifies an alternative location or format for this file.</enum>
          </allowed-values>
       </constraint>
    </define-assembly>
@@ -571,7 +566,7 @@
          </index>
       </constraint>
       <remarks>
-         <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference identifier.</p>
+         <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference identifier. Other specialized link "rel" values also use this pattern when indicated in that context of use.</p>
       </remarks>
       <example>
          <!-- TODO: revisit this example -->
@@ -598,7 +593,6 @@
    <define-field name="property">
       <formal-name>Property</formal-name>
       <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</description>
-      <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
       <use-name>prop</use-name>
       <json-value-key>value</json-value-key>
       <define-flag name="uuid" as-type="uuid">
