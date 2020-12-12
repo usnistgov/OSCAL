@@ -28,6 +28,7 @@
          <field ref="oscal-version" min-occurs="1"/>
          <assembly ref="revision" max-occurs="unbounded">
             <!-- CHANGED: "revision-history" to "revisions" -->
+            <!-- QUESTION: Should this be grouped in XML? -->
             <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>
          </assembly>
          <!-- CHANGED from "doc-id" to "document-id" -->
