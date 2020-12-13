@@ -12,10 +12,6 @@ summary:focus { outline: none }
 
 .label { @extend .usa-tag }
 
-li.model-entry p {
-  @extend .margin-top-05;
-  @extend .margin-bottom-0 }
-
 li.model-entry > *:not(:first-child) { @extend .font-body-xs }
 
 li.model-entry h3 { margin: 0em }
@@ -55,11 +51,6 @@ div.remarks { @extend .measure-6;
   @extend .padding-left-1;
   @extend .font-serif-xs }
 
-
-.remarks p {
-    margin-top: 0.5em
-}
-
 .occurrence { @extend .text-primary }
 
 button.schema-link { @extend .usa-button }
@@ -81,6 +72,8 @@ div.usa-layout-docs-main_content > div.OM-map {
 div.OM-map {
   hyphens: none;
   margin-left: 2em; }
+
+div.OM-choices { padding-left: 1em }
 
 div.OM-choice { margin-left: 2em; margin-top: 0em }
 
@@ -173,7 +166,7 @@ pre.json {
 
 .cnstr-tag {
   @extend .usa-tag;
-  @extend .bg-secondary-darker } 
+  @extend .bg-primary-dark } 
 
 .subhead {
     font-size: 80%;
@@ -236,7 +229,7 @@ ul.e_map {
   color: darkgrey
 }
 
-.model-descr { @extend .border-y; @extend .border-base-lighter }
+.model-descr { @extend .border-top; @extend .border-base-lighter }
        
 .model-descr:focus { @extend .bg-primary-lighter }
 
