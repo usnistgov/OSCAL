@@ -208,7 +208,7 @@
          <!-- CHANGED from flag to assembly to allow for future extension -->
          <define-assembly name="test" max-occurs="unbounded">
             <formal-name>Constraint Test</formal-name>
-            <description></description>
+            <description>A test expression which is expected to be evaluated by a tool.</description>
             <group-as name="tests" in-json="ARRAY"/>
             <model>
                <define-field name="expression" as-type="string" min-occurs="1">

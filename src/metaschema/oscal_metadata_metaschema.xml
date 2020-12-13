@@ -768,7 +768,31 @@
          </index-has-key>
       </constraint>
    </define-assembly>
-   
+   <define-assembly name="responsible-role">
+      <formal-name>Responsible Role</formal-name>
+      <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
+      <json-key flag-name="role-id"/>
+      <define-flag name="role-id" as-type="NCName" required="yes">
+         <formal-name>Responsible Role ID</formal-name>
+         <description>The role that is responsible for the business function.</description>
+      </define-flag>
+      <model>
+         <field ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <field ref="party-uuid" max-occurs="unbounded">
+            <group-as name="party-uuids" in-json="ARRAY"/>
+         </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
+
    <define-field name="hash">
       <formal-name>Hash</formal-name>
       <description>A representation of a cryptographic digest generated over a resource using a specified hash algorithm.</description>
