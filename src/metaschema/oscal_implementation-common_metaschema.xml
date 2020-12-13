@@ -33,7 +33,10 @@
          <formal-name>Component Identifier</formal-name>
          <description>The unique identifier for the component.</description>
       </define-flag>
-      <flag ref="component-type" required="yes"/>
+      <flag ref="component-type" required="yes">
+         <!-- CHANGED: "component-type" to "type" -->
+         <use-name>type</use-name>
+      </flag>
       <model>
          <define-field name="title" as-type="markup-line" min-occurs="1">
             <formal-name>Component Title</formal-name>
@@ -334,6 +337,7 @@
             <!-- TODO: Model specific link relationships?  (BJR - I don't think we need this now) -->
          </assembly>
          <field ref="role-id" min-occurs="1" max-occurs="unbounded">
+            <!-- QUESTION: Should this be 0 to many? -->
             <group-as name="role-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="authorized-privilege" max-occurs="unbounded">
@@ -392,8 +396,8 @@
    <define-assembly name="inventory-item">
       <formal-name>Inventory Item</formal-name>
       <description>A single managed inventory item within the system.</description>
-      <json-key flag-name="uuid"/>
-      <define-flag name="uuid" as-type="uuid" required="yes">
+<!--      <json-key flag-name="uuid"/>
+-->      <define-flag name="uuid" as-type="uuid" required="yes">
          <formal-name>Inventory Item Universally Unique Identifier</formal-name>
          <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
       </define-flag>
@@ -502,9 +506,10 @@
          <description>A reference to a component that is implemented as part of an inventory item.</description>
       </define-flag>
 
-      <!-- CHANGED (BJR): Added component-type for alignment with system-component -->
+      <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
+<!--      <!-\- CHANGED (BJR): Added component-type for alignment with system-component -\->
       <flag ref="component-type" required="yes" />
-      
+-->      
 <!-- The following is commented because this is not being used and can be inferred based on the type of the component -->
 <!-- 
       <define-flag name="use">
@@ -546,6 +551,8 @@
          <allowed-values target="prop/@name" allow-other="yes">
             &allowed-values-component_component_property-name;
          </allowed-values>
+         <!-- ensure that at least one asset-id is provided -->
+         <has-cardinality target="prop[@name='asset-id']" min-occurs="1"/>
 
          <!-- TODO: constrain annotation values based on name (CHANGED (BJR): Done.) -->
          <allowed-values target="annotation/@name" allow-other="yes">
@@ -569,7 +576,7 @@
       <formal-name>Control Identifier Reference</formal-name>
       <description>A reference to a control identifier.</description>
    </define-flag>
-   <define-assembly name="only-statement">
+<!--   <define-assembly name="only-statement">
       <formal-name>Specific Statement</formal-name>
       <description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</description>
       <json-key flag-name="statement-id"/>
@@ -591,43 +598,19 @@
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
-            <!-- TODO: Model specific link relationships ((BJR): Was unsure how to do this.) -->
+            <!-\- TODO: Model specific link relationships ((BJR): Was unsure how to do this.) -\->
          </assembly>
-<!--
+<!-\-
          <assembly ref="using"/>
--->
-         <!-- TODO: Implement parameters -->
+-\->
+         <!-\- TODO: Implement parameters -\->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
-   <define-flag name="statement-id" as-type="NCName">
+-->   <define-flag name="statement-id" as-type="NCName">
       <formal-name>Control Statement Reference</formal-name>
       <description>A reference to a control statement by its identifier</description>
    </define-flag>
-   <define-assembly name="responsible-role">
-      <formal-name>Responsible Role</formal-name>
-      <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
-      <json-key flag-name="role-id"/>
-      <define-flag name="role-id" as-type="NCName" required="yes">
-         <formal-name>Responsible Role ID</formal-name>
-         <description>The role that is responsible for the business function.</description>
-      </define-flag>
-      <model>
-         <field ref="property" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="party-uuid" max-occurs="unbounded">
-            <group-as name="party-uuids" in-json="ARRAY"/>
-         </field>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
-   </define-assembly>
    <define-assembly name="set-parameter">
       <formal-name>Set Parameter Value</formal-name>
       <description>Identifies the parameter that will be set by the enclosed value.</description>

@@ -153,6 +153,10 @@ Changes to all "address" or "addresses" objects:
 Changes to all "responsible-party" objects:
 - renamed "properties" to "props"
 
+Changes to all "responsible-role" objects:
+- renamed "properties" to "props"
+- renamed "party-ids" to "party-uuids"
+
 ## Changes to common to the catalog and profile models
 
 The following changes have been made to format structures that are shared between the formats for the catalog and profile models.
@@ -254,26 +258,215 @@ For /profile/modify/alters/adds:
 - renamed "properties" to "props"
 - defined allowed values for props/name
 
-## Changes to common to the system security plan (SSP) and component definition models
-
-### Changes common to the system security plan (SSP) and component definition XML format
-
-### Changes common to the system security plan (SSP) and component definition JSON and YAML formats
-
-
 ## Changes to the SSP model
 
 ### Changes to the SSP XML format
 
+For /system-security-plan/system-characteristics:
+- added allowed values for prop/@name, annotation/@name, link/@rel, and responsible-roles/role-id
+
+For /system-security-plan/system-characteristics/*/diagram:
+- added "annotation"
+- changed the data type of "caption" from "string" to "markup-line"
+- added allowed values for link/@rel="diagram", which allows for the linking of an image to use for the diagram.
+
+For /system-security-plan/system-characteristics/system-information/information-type:
+- renamed "id" to "uuid"
+- changed structure of "information-type-id" to be wrapped by an outer characterization, which now defines the "system" for all referenced information type identifiers.
+- added "annotation"
+
+For /system-security-plan/system-characteristics/system-information/information-type/*-impact:
+- added "annotation" and "link"
+
+For /system-security-plan/system-characteristics/authorization-boundary:
+- the "description" text is now wrapped with a "description" element
+
+For /system-security-plan/system-characteristics/network-architecture:
+- the "description" text is now wrapped with a "description" element
+
+For /system-security-plan/system-characteristics/data-flow:
+- the "description" text is now wrapped with a "description" element
+
+For /system-security-plan/system-implementation/leveraged-authorization:
+- defined additional allowed values "implementation-point", "leveraged-authorization-uuid", "inherited-uuid" for prop/@name, which provides traceability to a leveraged SSP
+- defined allowed values for link/@rel
+
+For /system-security-plan/system-implementation/user:
+- defined allowed values for annotation/@name and role-id
+
+For /system-security-plan/system-implementation/component:
+- renamed "component-type" to "type", and updated allowed values
+- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
+
+For /system-security-plan/system-implementation/inventory-item:
+- moved "@asset-id" to a required prop/@name
+- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
+
+For /system-security-plan/system-implementation/inventory-item/implemented-component:
+- renamed "component-id" to "component-uuid"
+- defined allowed values for prop/@name, annotation/@name, and responsible-party/@role-id
+- removed "use", since this is capturing similar information to the component's type
+
+For /system-security-plan/control-implementation/implemented-requirement:
+- removed "description"
+- added allowed values for annotation/@name including "implementation-status", "control-origination"
+- added allowed values for prop/@name including "leveraged-authorization" to indicate if a control implementation is inherited from an underlying authorized system
+- added allowed values for responsible-role/$role-id
+
+For /system-security-plan/control-implementation/implemented-requirement/by-component:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
+For /system-security-plan/control-implementation/implemented-requirement/statement:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirement/statement/by-component:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
 ### Changes to the SSP JSON and YAML formats
 
+For /system-security-plan/system-characteristics:
+- renamed "properties" to "props"
+- added allowed values for props/name, annotations/name, links/rel, and responsible-roles/role-id
+
+For /system-security-plan/system-characteristics/*/diagrams:
+- added "annotation"
+- changed the data type of "caption" from "string" to "markup-line"
+- added allowed values for link/@rel="diagram", which allows for the linking of an image to use for the diagram.
+
+For /system-security-plan/system-characteristics/system-information:
+- renamed "properties" to "props"
+
+For /system-security-plan/system-characteristics/system-information/information-types:
+- renamed "id" to "uuid"
+- changed structure of "information-type-id" to be wrapped by an outer characterization, which now defines the "system" for all referenced information type identifiers.
+- added "annotations"
+
+For /system-security-plan/system-characteristics/system-information/information-types/*-impact:
+- added "annotations" and "links"
+
+For /system-security-plan/system-characteristics/authorization-boundary:
+- renamed "properties" to "props"
+
+For /system-security-plan/system-characteristics/network-architecture:
+- renamed "properties" to "props"
+
+For /system-security-plan/system-characteristics/data-flow:
+- renamed "properties" to "props"
+
+For /system-security-plan/system-implementation:
+- renamed "properties" to "props"
+
+For /system-security-plan/system-implementation/leveraged-authorizations:
+- defined additional allowed values "implementation-point", "leveraged-authorization-uuid", "inherited-uuid" for prop/name, which provides traceability to a leveraged SSP
+- defined allowed values for links/rel
+
+For /system-security-plan/system-implementation/users:
+- defined allowed values for annotation/name and role-id
+
+For /system-security-plan/system-implementation/components:
+- renamed "component-type" to "type", and updated allowed values
+- defined allowed values for props/name, annotations/name, links/rel, and responsible-roles/role-id
+
+For /system-security-plan/system-implementation/inventory-items:
+- moved "asset-id" to a required props/name
+- defined allowed values for props/name, annotations/name, links/rel, and responsible-parties/role-id
+
+For /system-security-plan/system-implementation/inventory-items/implemented-components:
+- renamed "component-id" to "component-uuid"
+- defined allowed values for props/name, annotations/name, and responsible-parties/role-id
+- removed "use", since this is capturing similar information to the component's type
+
+For /system-security-plan/control-implementation/implemented-requirements:
+- removed "description"
+- renamed "properties" to "props"
+- added allowed values for annotations/name including "implementation-status", "control-origination"
+- added allowed values for props/name including "leveraged-authorization" to indicate if a control implementation is inherited from an underlying authorized system
+- added allowed values for responsible-roles/role-id
+
+For /system-security-plan/control-implementation/implemented-requirements/by-components:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
+For /system-security-plan/control-implementation/implemented-requirements/statements:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirements/statements/by-components:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
 
 ## Changes to the component definition model
 
 ### Changes to the component definition XML format
 
+For /XXX/system-implementation/component:
+- renamed "component-type" to "type", and updated allowed values
+- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
+
+For /XXX/system-implementation/user:
+- defined allowed values for annotation/@name and role-id
+
+For /XXX/system-implementation/inventory-item:
+- moved "@asset-id" to a required prop/@name
+- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
+
+For /XXX/system-implementation/inventory-item/implemented-component:
+- renamed "component-id" to "component-uuid"
+- defined allowed values for prop/@name, annotation/@name, and responsible-party/@role-id
+
+For /system-security-plan/control-implementation/implemented-requirements:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirements/by-component:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
+For /system-security-plan/control-implementation/implemented-requirements/statements:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirements/statements/by-component:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
 ### Changes to the component definition JSON and YAML formats
 
+For /XXX/system-implementation/components:
+- renamed "component-type" to "type", and updated allowed values
+- defined allowed values for props/name, annotations/name, links/rel, and responsible-roles/role-id
+
+For /XXX/system-implementation/users:
+- defined allowed values for annotation/name and role-id
+
+For /XXX/system-implementation/inventory-items:
+- moved "asset-id" to a required props/name
+- defined allowed values for props/name, annotations/name, links/rel, and responsible-parties/role-id
+
+For /XXX/system-implementation/inventory-items/implemented-components:
+- renamed "component-id" to "component-uuid"
+- defined allowed values for props/name, annotations/name, and responsible-parties/role-id
+
+For /system-security-plan/control-implementation/implemented-requirements:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirements/by-components:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
+
+For /system-security-plan/control-implementation/implemented-requirements/statements:
+- removed "description"
+
+For /system-security-plan/control-implementation/implemented-requirements/statements/by-components:
+- renamed "component-id" to "component-uuid"
+- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
+- added "remarks" to allow for adding general commentary
 
 ## Changes to the assessment plan model
 
