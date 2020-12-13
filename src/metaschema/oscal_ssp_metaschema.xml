@@ -14,7 +14,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
-   <schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
+   <schema-name>OSCAL System Security Plan (SSP) Model</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-ssp</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
@@ -119,12 +119,12 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
-         <allowed-values target="property/@name" allow-other="yes">
+         <allowed-values target="prop/@name" allow-other="yes">
             <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
             <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
             <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
          </allowed-values>
-         <allowed-values target="property[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/value()">
+         <allowed-values target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/value()">
             <enum value="1">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
             <enum value="2">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
             <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.</enum>
@@ -133,7 +133,7 @@
             <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
             <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
          </allowed-values>
-         <allowed-values target="property[@name='cloud-deployment-model']/value()">
+         <allowed-values target="prop[@name='cloud-deployment-model']/value()">
             <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="community-cloud">The community cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
@@ -144,7 +144,7 @@
                <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
             </remarks>
          </allowed-values>
-         <allowed-values target="property[@name='cloud-service-model']/value()">
+         <allowed-values target="prop[@name='cloud-service-model']/value()">
             <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
             <enum value="iaas">Infrastructure as a service (IaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.</enum>
@@ -277,10 +277,10 @@
          </define-assembly>
       </model>
       <constraint>
-         <allowed-values target="property/@name" allow-other="yes">
+         <allowed-values target="prop/@name" allow-other="yes">
             <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
          </allowed-values>
-         <allowed-values target="property[@name='privacy-designation']/value()">
+         <allowed-values target="prop[@name='privacy-designation']/value()">
             <enum value="yes">The system is privacy sensitive.</enum>
             <enum value="no">The system isnot privacy sensitive.</enum>
          </allowed-values>
@@ -579,7 +579,12 @@
             <group-as name="capabilities" in-json="BY_KEY"/>
          </assembly>
          -->
-         <assembly ref="system-inventory"/>
+         <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
+            <group-as name="inventory-items" in-json="ARRAY"/>
+            <remarks>
+               <p>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</p>
+            </remarks>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
@@ -626,24 +631,13 @@
             <key-field target="@href"/>
          </index-has-key>
          
-         <allowed-values target="(system-component | inventory-item)/annotation[@name='allows-authenticated-scan']/@value">
+         <allowed-values target="(component | inventory-item)/annotation[@name='allows-authenticated-scan']/@value">
             <enum value="yes">The component allows an authenticated scan.</enum>
             <enum value="no">The component does not allow an authenticated scan.</enum>
          </allowed-values>
          
          
       </constraint>
-   </define-assembly>
-
-   <define-assembly name="system-inventory">
-      <formal-name>System Inventory</formal-name>
-      <description>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</description>
-      <model>
-         <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
-            <group-as name="inventory-items" in-json="BY_KEY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-      </model>
    </define-assembly>
 
    <define-assembly name="control-implementation">
@@ -681,7 +675,8 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </assembly>
-         <assembly ref="by-component" max-occurs="unbounded">
+         <assembly ref="by-component" min-occurs="1" max-occurs="unbounded">
+            <!-- QUESTION: Changed min-occurs to 1. Is this right? -->
             <group-as name="by-components" in-json="BY_KEY"/>
          </assembly>
          <!--
@@ -722,7 +717,7 @@
             <enum value="inherited">This control is inherited from an underlying system.</enum>
          </allowed-values>
          <allowed-values target="prop/@name" allow-other="yes">
-            <enum value="leveraged-authorization">Idicates all or some portion of this control is inherited from an underlying authorized system.</enum>
+            <enum value="leveraged-authorization">Indicates all or some portion of this control is inherited from an underlying authorized system.</enum>
          </allowed-values>
          <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
