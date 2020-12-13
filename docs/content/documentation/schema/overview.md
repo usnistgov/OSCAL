@@ -54,7 +54,8 @@ An OSCAL file is organized as follows:
 
 ### Identifier Use
 
-Identifiers uniquely identify content in OSCAL. They are a critical to defining relationships between pieces of OSCAL content.
+Subjects within OSCAL content are singled out using unique identifiers, which are critical to defining relationships between different pieces of OSCAL content.
+
 The only exception to this is the document-level identifier, which is intended for version control.
 
 The OSCAL models make use of two types of identifiers:
@@ -87,7 +88,7 @@ Fields containing UUIDs tend to be named `uuid` in OSCAL. When an associated sub
 
 UUIDs are intended to be consistently used to represent the same concept over multiple major and minor revisions of the same document; thus, they should only be changed if the underlying identified subject has changed in a significant way that no longer represents the same identified subject.
 
-_Example #1_: If a person's phone number changes, a tool should update the phone number, but leave the party UUID for that person unchanged. Changing the person's phone number does not change their identity, nor its defined relationships in OSCAL content. If the person was replaced by someone new, the original person's party UUID should be retired and a different one used for their replacement. 
+_Example #1_: If a person's phone number changes, a tool should update the phone number, but leave the party UUID for that person unchanged. Changing the person's phone number does not change their identity, or relationships involving this party in OSCAL content. If the person was replaced by someone new, the original person's party UUID should be retired and a different one used for their replacement. 
 
 _Example #2_: If a component represents a database, and the software version is updated, the UUID for that component should remain the same. If the database is replaced by a competing product from a different vendor, the component UUID should be updated.
 
