@@ -186,7 +186,7 @@
                   <formal-name>Information Type Description</formal-name>
                   <description>A summary of how this information type is used within the system.</description>
                </define-field>
-               <define-assembly name="categorization" as-type="string" max-occurs="unbounded">
+               <define-assembly name="categorization" max-occurs="unbounded">
                   <!-- CHANGED: replaced the information-type-id structure with the current structure -->
                   <formal-name>Information Type Categorization</formal-name>
                   <description>A set of information type identifiers qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
@@ -571,7 +571,7 @@
             <use-name>user</use-name>
             <group-as name="users" in-json="BY_KEY"/>
          </assembly>
-         <assembly ref="system-component" max-occurs="unbounded">
+         <assembly ref="system-component" min-occurs="1" max-occurs="unbounded">
             <use-name>component</use-name>
             <group-as name="components" in-json="BY_KEY"/>
          </assembly>
@@ -636,7 +636,7 @@
             <enum value="no">The component does not allow an authenticated scan.</enum>
          </allowed-values>
          
-         
+         <!-- TODO: only allow a single "this-system" component -->
       </constraint>
    </define-assembly>
 

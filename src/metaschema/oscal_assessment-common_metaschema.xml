@@ -1706,7 +1706,7 @@
    <define-assembly name="assessment-part"> <!--scope="local"-->
       <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>
-      <description>A partition or component of an objective or part</description>
+      <description>A partition of an assessment plan or results or a child of another part.</description>
       <use-name>part</use-name>
       <define-flag name="uuid" as-type="uuid">
          <!-- CHANGE: from uuiid to uuid -->
@@ -1718,6 +1718,7 @@
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
             <allowed-values allow-other="yes">
+               <!-- QUESTION: Should this be in sync with control part? Should these be defined here or should they be defined in the context of use? -->
                <enum value="asset">An assessment asset.</enum>
                <enum value="method">An assessment method.</enum>
                <enum value="objective">Describes a set of control objectives.</enum>
@@ -1787,5 +1788,4 @@
          <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
       </remarks>
    </define-assembly>
-   
 </METASCHEMA>

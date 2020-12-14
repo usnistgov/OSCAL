@@ -10,7 +10,7 @@ The models are described using OSCAL Metaschema terminology. Depending on the OS
 Refer to docs on Metaschema language and mappings into data objects, especially 
 [Terminology](https://pages.nist.gov/metaschema/specification/concepts/terminology/) and [Mapping](https://pages.nist.gov/metaschema/specification/mapping/).
 
-Users of object notations should take note that individual objects described in the Metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a grouping key) being assigned to the group of like objects. So a 'prop' object defined in the metaschema appears in the JSON as a member of an object 'properties'.
+Users of object notations should take note that individual objects described in the Metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a grouping key) being assigned to the group of like objects. So a 'prop' object defined in the Metaschema appears in the JSON as a member of an object 'properties'.
 
 ## Notation
 
@@ -170,7 +170,7 @@ Changes to all "param" elements:
 - added the "prop" and "link" elements.
 - changed the sequencing of "link" to be consistent with other elements that include "link".
 - changed the data type of "usage" from "markup-line" to "markup-multiline"
-- changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" attribute.
+- changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" child element of "test". This structure will allow for more extension going forward.
 - changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
 
 ### Changes affecting the catalog and profile JSON and YAML formats
@@ -262,9 +262,11 @@ For /profile/modify/alters/adds:
 - renamed "properties" to "props"
 - defined allowed values for props/name
 
-## Changes to the SSP model
+## Changes to the system security plan (SSP) model
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL system security plan model.
+A number of changes have been made to the SSP model to support the use of leveraged authorizations. Another key change is the use of the "this-system" component to define controls at the system-level. This now means that all SSPs will make use of at least one component.
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL SSP model.
 
 ### Changes to the SSP XML format
 
@@ -278,7 +280,7 @@ For /system-security-plan/system-characteristics/*/diagram:
 
 For /system-security-plan/system-characteristics/system-information/information-type:
 - renamed "id" to "uuid"
-- changed structure of "information-type-id" to be wrapped by an outer characterization, which now defines the "system" for all referenced information type identifiers.
+- changed structure of "information-type-id" to be wrapped by an outer "categorization", which now defines the "system" for all referenced information type identifiers.
 - added "annotation"
 
 For /system-security-plan/system-characteristics/system-information/information-type/*-impact:
@@ -348,7 +350,7 @@ For /system-security-plan/system-characteristics/system-information:
 
 For /system-security-plan/system-characteristics/system-information/information-types:
 - renamed "id" to "uuid"
-- changed structure of "information-type-id" to be wrapped by an outer characterization, which now defines the "system" for all referenced information type identifiers.
+- changed structure of "information-type-ids" to be wrapped by an outer "categorizations", which now defines the "system" for all referenced information type identifiers.
 - added "annotations"
 
 For /system-security-plan/system-characteristics/system-information/information-types/*-impact:
@@ -408,7 +410,9 @@ For /system-security-plan/control-implementation/implemented-requirements/statem
 
 ## Changes to the component definition model
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL component definition model.
+Overall, this model was updated to bring the structure of components into alignment with how components are organized in the system security plan model.
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL component definition model. 
 
 ### Changes to the component definition XML format
 

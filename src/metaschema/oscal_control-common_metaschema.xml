@@ -21,7 +21,7 @@
    <!-- ######################################## -->
    <define-assembly name="part">
       <formal-name>Part</formal-name>
-      <description>A partition or component of a control or part</description>
+      <description>A partition of a control's definition or a child of another part.</description>
       <define-flag name="id" as-type="NCName">
          <!-- This is an id because the idenfier is intended to be human-raadable. -->
          <formal-name>Part Identifier</formal-name>
@@ -32,6 +32,7 @@
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
             <allowed-values allow-other="yes">
+               <!-- QUESTION: "method" doesn't appear in this list, but has a constraint below. Why? -->
                <enum value="overview">An introduction to a control or a group of controls.</enum>
                <enum value="statement">A set of contol implementation requirements.</enum>
                <enum value="item">An individual item within a control statement.</enum>
