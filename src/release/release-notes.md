@@ -202,6 +202,8 @@ For params/constraints:
 
 ## Changes to the catalog model
 
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL catalog model.
+
 ### Changes to the catalog XML format
 
 For /catalog//group and /catalog//control:
@@ -217,6 +219,8 @@ For /catalog//groups and /catalog//controls:
 - defined allowed values for props/name
 
 ## Changes to the profile model
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL profile model.
 
 ### Changes to profile XML format
 
@@ -259,6 +263,8 @@ For /profile/modify/alters/adds:
 - defined allowed values for props/name
 
 ## Changes to the SSP model
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL system security plan model.
 
 ### Changes to the SSP XML format
 
@@ -402,73 +408,69 @@ For /system-security-plan/control-implementation/implemented-requirements/statem
 
 ## Changes to the component definition model
 
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL component definition model.
+
 ### Changes to the component definition XML format
 
-For /XXX/system-implementation/component:
+For /component-definition:
+- added "uuid"
+
+For /component-definition/component:
+- removed "name"
+- changed the data type of "title" from "string" to "markup-line"
+- changed the data type of "description" from "string" to "markup-multiline", added a "description" wrapper.
+- added "prop" and "annotation"
+- changed the sequencing of "link"
+- replaced "responsible-party" with "responsible-role"
+- added "protocol", which can be used to specify protocol information for a "service" or "network" component
+- changed "remarks" adding "remarks" wrapper
+- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
 - renamed "component-type" to "type", and updated allowed values
-- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
 
-For /XXX/system-implementation/user:
-- defined allowed values for annotation/@name and role-id
+For /component-definition/component/control-implementation:
+- changed data type of "uuid" from "string" to "uuid"
+- changed the data type of "description" from "string" to "markup-multiline", added a "description" wrapper.
 
-For /XXX/system-implementation/inventory-item:
-- moved "@asset-id" to a required prop/@name
-- defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
+For /component-definition/component/control-implementation/implemented-requirement:
+- changed data type of "uuid" from "string" to "uuid"
+- changed the data type of "description" from "string" to "markup-multiline", added a "description" wrapper.
 
-For /XXX/system-implementation/inventory-item/implemented-component:
-- renamed "component-id" to "component-uuid"
-- defined allowed values for prop/@name, annotation/@name, and responsible-party/@role-id
-
-For /system-security-plan/control-implementation/implemented-requirements:
-- removed "description"
-
-For /system-security-plan/control-implementation/implemented-requirements/by-component:
-- renamed "component-id" to "component-uuid"
-- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
-- added "remarks" to allow for adding general commentary
-
-For /system-security-plan/control-implementation/implemented-requirements/statements:
-- removed "description"
-
-For /system-security-plan/control-implementation/implemented-requirements/statements/by-component:
-- renamed "component-id" to "component-uuid"
-- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
-- added "remarks" to allow for adding general commentary
+For /component-definition/capabilities:
+- changed the data type of "description" from "string" to "markup-multiline", added a "description" wrapper.
+- changed "remarks" adding "remarks" wrapper
 
 ### Changes to the component definition JSON and YAML formats
 
-For /XXX/system-implementation/components:
-- renamed "component-type" to "type", and updated allowed values
+For /component-definition:
+- added "uuid"
+
+For /component-definition/components:
+- removed "name"
+- changed the data type of "title" from "string" to "markup-line"
+- changed the data type of "description" from "string" to "markup-multiline"
+- added "props" and "annotations"
+- replaced "responsible-parties" with "responsible-roles"
+- added "protocols", which can be used to specify protocol information for a "service" or "network" component
 - defined allowed values for props/name, annotations/name, links/rel, and responsible-roles/role-id
+- renamed "component-type" to "type", and updated allowed values
 
-For /XXX/system-implementation/users:
-- defined allowed values for annotation/name and role-id
+For /component-definition/components/control-implementations:
+- changed data type of "uuid" from "string" to "uuid"
+- changed the data type of "description" from "string" to "markup-multiline"
+- renamed "properties" to "props"
 
-For /XXX/system-implementation/inventory-items:
-- moved "asset-id" to a required props/name
-- defined allowed values for props/name, annotations/name, links/rel, and responsible-parties/role-id
+For /component-definition/components/control-implementations/implemented-requirements:
+- changed data type of "uuid" from "string" to "uuid"
+- changed the data type of "description" from "string" to "markup-multiline"
+- renamed "properties" to "props"
 
-For /XXX/system-implementation/inventory-items/implemented-components:
-- renamed "component-id" to "component-uuid"
-- defined allowed values for props/name, annotations/name, and responsible-parties/role-id
-
-For /system-security-plan/control-implementation/implemented-requirements:
-- removed "description"
-
-For /system-security-plan/control-implementation/implemented-requirements/by-components:
-- renamed "component-id" to "component-uuid"
-- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
-- added "remarks" to allow for adding general commentary
-
-For /system-security-plan/control-implementation/implemented-requirements/statements:
-- removed "description"
-
-For /system-security-plan/control-implementation/implemented-requirements/statements/by-components:
-- renamed "component-id" to "component-uuid"
-- added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
-- added "remarks" to allow for adding general commentary
+For /component-definition/capabilities:
+- changed the data type of "description" from "string" to "markup-multiline"
+- renamed "properties" to "props"
 
 ## Changes to the assessment plan model
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment plan model.
 
 ### Changes to the assessment plan XML format
 
@@ -477,12 +479,16 @@ For /system-security-plan/control-implementation/implemented-requirements/statem
 
 ## Changes to the assessment results model
 
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment results model.
+
 ### Changes to assessment results XML format
 
 ### Changes to assessment results JSON and YAML formats
 
 
 ## Changes to the plan of actions and milestones (PO&M) model
+
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL PO&M model.
 
 ### Changes to the plan of actions and milestones XML formats
 
