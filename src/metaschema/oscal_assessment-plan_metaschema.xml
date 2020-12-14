@@ -63,6 +63,9 @@
                
             </model>
          </define-assembly>
+         <define-assembly name="terms-and-conditions">
+            
+         </define-assembly>
          <!-- CHANGED: "objectives" to "reviewed-controls" -->
          <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">

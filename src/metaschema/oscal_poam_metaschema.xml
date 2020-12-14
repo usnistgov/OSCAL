@@ -34,6 +34,14 @@
          </assembly>
          <field ref="system-id" min-occurs="0" max-occurs="1"/>
          <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGE: move "observation" from poam-item -->
+         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+            <group-as name="observations" in-json="ARRAY"/>
+         </assembly>
+         <!-- CHANGE: move "risk" from poam-item -->
+         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
+            <group-as name="risks" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
             <!-- CHANGED: removed the top-level "poam-items" -->
             <!-- CHANGED: "poam-item-group" to "poam-items" -->
@@ -111,17 +119,31 @@
             <formal-name>expires field</formal-name>
             <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </define-field>
-         <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
+         <!-- CHANGED: removed "objective-status" per brianrufgsa -->
          <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
-         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
-            <group-as name="observations" in-json="ARRAY"/>
-         </assembly>
+         <!-- CHANGED: replaced embedded observation with references -->
+         <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
+            <formal-name>Related Observation</formal-name>
+            <description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</description>
+            <group-as name="related-observations" in-json="ARRAY"/>
+            <define-flag name="observation-uuid" as-type="uuid" required="yes">
+               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+               <description>References an observation defined in the list of observations.</description>
+            </define-flag>
+         </define-field>
          <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
             <group-as name="threat-ids" in-json="ARRAY"/>
          </field>
-         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
-            <group-as name="risks" in-json="ARRAY"/>
-         </assembly>
+         <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
+         <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
+            <formal-name>Associated Risk</formal-name>
+            <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+            <group-as name="related-risks" in-json="ARRAY"/>
+            <define-flag name="risk-uuid" as-type="uuid" required="yes">
+               <formal-name>Risk Universally Unique Identifier Reference</formal-name>
+               <description>References an risk defined in the list of risks.</description>
+            </define-flag>
+         </define-field>
          <define-field name="party-uuid"
                        as-type="uuid"
                        min-occurs="0"
