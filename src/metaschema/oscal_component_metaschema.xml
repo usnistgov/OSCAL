@@ -30,8 +30,8 @@
       <description>A collection of component descriptions, which may optionally be grouped by capability.</description>
       <root-name>component-definition</root-name>
       <define-flag name="uuid" as-type="uuid" required="yes">
-         <formal-name>Catalog Universally Unique Identifier</formal-name>
-         <description>A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</description>
+         <formal-name>Component Definition Universally Unique Identifier</formal-name>
+         <description>A globally unique identifier for this component definition instance. This UUID should be changed when this document is revised.</description>
       </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
