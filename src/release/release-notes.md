@@ -8,9 +8,9 @@ The OSCAL Project has releases Milestone 3, Milestone 2 and Milestone 1, given h
 The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON) or as an element or attribute (XML). Similarly, in either case it may be an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network), or alternatively a composite of other objects.
 
 Refer to docs on Metaschema language and mappings into data objects, especially 
-Terminology [https://pages.nist.gov/metaschema/specification/concepts/terminology/] and Mapping [https://pages.nist.gov/metaschema/specification/mapping/].
+[Terminology](https://pages.nist.gov/metaschema/specification/concepts/terminology/) and [Mapping](https://pages.nist.gov/metaschema/specification/mapping/).
 
-Users of object notations should take note that individual objects described in the metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a grouping key) being assigned to the group of like objects. So a 'prop' object defined in the metaschema appears in the JSON as a member of an object 'properties'.
+Users of object notations should take note that individual objects described in the Metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a grouping key) being assigned to the group of like objects. So a 'prop' object defined in the metaschema appears in the JSON as a member of an object 'properties'.
 
 ## Notation
 
