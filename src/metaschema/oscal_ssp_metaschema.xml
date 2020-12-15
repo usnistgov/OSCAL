@@ -802,6 +802,10 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </assembly>
+         <!-- CHANGED: resequenced "set-parameter" -->
+         <assembly ref="set-parameter" max-occurs="unbounded">
+            <group-as name="parameter-settings" in-json="BY_KEY"/>
+         </assembly>
          <define-assembly name="export" max-occurs="1">
             <formal-name>Export</formal-name>
             <description>Identifies content intended for external consumption, such as with leveraged organizations.</description>
@@ -959,7 +963,6 @@
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
-         <!-- CHANGED: removed "set-parameter" -->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
