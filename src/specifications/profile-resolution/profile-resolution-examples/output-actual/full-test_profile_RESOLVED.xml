@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="full-test_profile-RESOLVED">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="dac1f2ff-33eb-42b8-a52b-e9cf2fe69c9a">
    <metadata>
       <title>Full test Profile</title>
-      <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
+      <last-modified>2020-05-30T14:39:41.149-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0-MR2</oscal-version>
-      <prop name="resolution-timestamp">2019-12-10T15:21:20.451-05:00</prop>
-      <link rel="resolution-source" href="../full-test_profile.xml">Full test Profile</link>
+      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <prop name="resolution-timestamp">2020-12-15T14:31:26.739-05:00</prop>
+      <link rel="resolution-source" href="full-test_profile.xml"/>
    </metadata>
    <param id="param-A.a">
       <label>A.a parameter</label>
@@ -50,9 +51,4 @@
          <p>C3 ccccc cccccccccccccc.</p>
       </part>
    </control>
-   <back-matter>
-      <citation id="citation">
-         <desc>A citation to an out of line document.</desc>
-      </citation>
-   </back-matter>
 </catalog>
