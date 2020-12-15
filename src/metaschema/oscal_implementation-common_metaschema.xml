@@ -166,25 +166,25 @@
          <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
          <!-- ========================================================================================================== -->
          <!-- ========================================================================================================== -->
-         <!-- = SOFTWARE: component-type='software' constraints                        = -->
+         <!-- = SOFTWARE: type='software' constraints                        = -->
          <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
+         <allowed-values target="(.)[@type='software']/prop/@name" allow-other="yes">
             &allowed-values-component_component_software;
          </allowed-values>
          
          <!-- ========================================================================================================== -->
-         <!-- = SERVICE: component-type='service' constraints                        = -->
+         <!-- = SERVICE: type='service' constraints                        = -->
          <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='service']/link/@rel" allow-other="yes">
+         <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
             &allowed-values-component_component_service;
          </allowed-values>
          
-         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+         <expect test="not(exists((.)[not(@type='service')]/protocol))"/>
 
          <!-- ========================================================================================================== -->
-         <!-- = INTERCONNECTION: component-type='interconnection' constraints                        = -->
+         <!-- = INTERCONNECTION: type='interconnection' constraints                        = -->
          <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='interconnection']/prop/@name" allow-other="yes">
+         <allowed-values target="(.)[@type='interconnection']/prop/@name" allow-other="yes">
             <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
             <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
             <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
@@ -196,11 +196,11 @@
             <enum value="local">The identified IP address is for this system.</enum>
             <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
          </allowed-values>
-         <allowed-values target="(.)[@component-type='interconnection']/link/@rel" allow-other="yes">
+         <allowed-values target="(.)[@type='interconnection']/link/@rel" allow-other="yes">
             <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
             <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
          </allowed-values>
-         <allowed-values target="(.)[@component-type='interconnection']/responsible-role/@role-id" allow-other="yes">
+         <allowed-values target="(.)[@type='interconnection']/responsible-role/@role-id" allow-other="yes">
             <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
             <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
             <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>

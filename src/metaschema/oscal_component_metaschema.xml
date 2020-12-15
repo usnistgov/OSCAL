@@ -213,20 +213,20 @@
          <!-- ========================================================================================================== -->
          
          <!-- ========================================================================================================== -->
-         <!-- = SOFTWARE: component-type='software' constraints                        = -->
+         <!-- = SOFTWARE: type='software' constraints                        = -->
          <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='software']/prop/@name" allow-other="yes">
+         <allowed-values target="(.)[@type='software']/prop/@name" allow-other="yes">
             &allowed-values-component_component_software;
          </allowed-values>
          
          <!-- ========================================================================================================== -->
-         <!-- = SERVICE: component-type='service' constraints                        = -->
+         <!-- = SERVICE: type='service' constraints                        = -->
          <!-- ========================================================================================================== -->
-         <allowed-values target="(.)[@component-type='service']/link/@rel" allow-other="yes">
+         <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
             &allowed-values-component_component_service;
          </allowed-values>
          
-         <expect test="not(exists((.)[not(@component-type='service')]/protocol))"/>
+         <expect test="not(exists((.)[not(@type='service')]/protocol))"/>
          
          <!-- ========================================================================================================== -->
          <!-- = TODO: Consider whether INTERCONNECTION constraints are appropriate here.      = -->

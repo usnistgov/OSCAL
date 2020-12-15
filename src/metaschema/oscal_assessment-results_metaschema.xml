@@ -311,7 +311,7 @@
             <group-as name="observations" in-json="ARRAY"/>
          </assembly>
          
-         <!-- TODO: move risk to here -->
+         <!-- CHANGE: move "risk" from finding -->
          <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
             <group-as name="risks" in-json="ARRAY"/>
          </assembly>
@@ -361,7 +361,7 @@
          </define-field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
          <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
-         <!-- TODO: replaced embedded observation with references -->
+         <!-- CHANGED: replaced embedded observation with references -->
          <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
             <formal-name>Related Observation</formal-name>
             <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
