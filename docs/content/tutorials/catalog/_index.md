@@ -741,7 +741,7 @@ Using additional parts, all of the additional content is included. The `Implemen
 
 The same control approach can also be applied to the rest of the controls in the *Sample Security Catalog* (i.e., 1.1.2, 2.1.1 and 2.2.1).
 
-Assembling all of the control content described in this tutorial, we obtain the final structure of the *Sample Security Catalog* ([XML](catalog.xml), [JSON](catalog.json), [YAML](catalog.yml)):
+Assembling all of the control content described in this tutorial, we obtain the final structure of the *Sample Security Catalog* ([XML]({{< param "contentRepoPath" >}}/examples/catalog/xml/basic-catalog.xml), [JSON]({{< param "contentRepoPath" >}}/examples/catalog/json/basic-catalog.json), [YAML]({{< param "contentRepoPath" >}}/examples/catalog/yaml/basic-catalog.yaml)):
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -1426,6 +1426,6 @@ For more information you can review the [OSCAL catalog model documentation](/doc
 
 [catalog-docs]: /documentation/schema/catalog/
 [catalog-definition]: /learnmore/concepts/catalog/
-[catalog-prose-sample]: catalog-sample/
+[catalog-prose-sample]: {{< param "contentRepoPath" >}}/examples/catalog/basic-catalog/
 [oscal-markup-line]: /documentation/schema/datatypes/#markup-line
 [oscal-markup-multiline]: /documentation/schema/datatypes/#markup-multiline

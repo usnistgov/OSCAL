@@ -69,6 +69,6 @@ OSCAL is designed to allow capture relevant details related to independent valid
 
 ## Content Examples
 
-Multiple examples of SSP expressed using the OSCAL SSP model can be found in the OSCAL GitHub repository in [XML](https://github.com/usnistgov/oscal-content/tree/master/ssp-example/xml), 
-[JSON](https://github.com/usnistgov/oscal-content/tree/master/ssp-example/json),
-and [YAML](https://github.com/usnistgov/oscal-content/tree/master/ssp-example/yaml/) formats.
+Multiple examples of SSP expressed using the OSCAL SSP model can be found in the OSCAL GitHub repository in [XML]({{< param "contentRepoPath" >}}/examples/ssp/xml), 
+[JSON]({{< param "contentRepoPath" >}}/examples/ssp/json),
+and [YAML]({{< param "contentRepoPath" >}}/examples/ssp/yaml/) formats.

@@ -1,16 +1,16 @@
 ---
-title: Validation Modeling
-heading: "Modeling Independent Validation of Components"
-description: Provides models that support the description of how controls are [implemented](/documentation/schema/implementation-layer/ssp/) in a given information system or a [distributed component](/documentation/schema/implementation-layer/component/) that can be incorporated into an information system.
+title: Representing Test Validation Information
+heading: "Representing Test Validation Information for Components"
+description: Discussed how test validation information (e.g., ) can be represented for an OSCAL [component](/documentation/schema/implementation-layer/component/).
 weight: 50
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2
 ---
 
-OSCAL's implementation layer models enable authors to capture independent validation information about components. The validation information is represented as a separate component, which is then linked to any component on which the validation was performed.
+OSCAL's implementation layer models enable authors to capture testing validation information about components. The validation information is represented as a separate component, which is then linked to any component on which the validation was performed.
 
-For example, when using a product containing a cryptographic module that has received a FIPS 140-2 validation by NIST Labs, this product is represented as one `component`, and the validation information is represented in a different `component`. The two components are then linked. 
+For example, this approach can be used with a product containing a cryptographic module that has received a FIPS 140-2 validation by a NIST accredited laboratory. The product is represented as one `component`, and the validation information is represented in a different `component`. The two components are then linked as follows:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
