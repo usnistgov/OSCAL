@@ -52,7 +52,7 @@ In {top-level-element}/metadata/party:
 - renamed "party-name" to "name" 
 - renamed "email" to "email-address"
 - renamed "phone" to "telephone-number"
-- changed sequencing of address
+- changed sequencing of where "address" appears
 - made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" attribute has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
 
 In {top-level-element}/metadata/party/prop:
@@ -76,7 +76,6 @@ In {top-level-element}/metadata/resource/document-id:
 
 In {top-level-element}/back-matter/resource/rlink:
 - changed type from "uri" to "uri-reference"
-- renamed "hash-value" to "hash"
 
 Changes to all "prop" elements:
 - changed the data type of "ns" to "uri"
@@ -138,7 +137,6 @@ In {top-level-object}/back-matter/resources/document-ids:
 
 In {top-level-object}/back-matter/resources/rlinks:
 - changed type from "uri" to "uri-reference"
-- renamed "hash-values" to "hashes"
 
 Changes to all "props" objects:
 - changed the data type of "ns" to "uri"
@@ -168,7 +166,7 @@ Changes to all "part" elements:
 
 Changes to all "param" elements:
 - added the "prop" and "link" elements.
-- changed the sequencing of "link" to be consistent with other elements that include "link".
+- changed the sequencing of where "link" appears to be consistent with other elements that include "link".
 - changed the data type of "usage" from "markup-line" to "markup-multiline"
 - changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" child element of "test". This structure will allow for more extension going forward.
 - changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
@@ -185,7 +183,7 @@ Changes to all "param" or "params" objects:
 - changed the data type of "usage" from "markup-line" to "markup-multiline"
 - renamed "guidance" to "guidelines"
 - renamed "value" to "values". Also, changed the cardinality of "value" to allow for multiple "values". The data type of a value has changed from markup-line to string.
-- changed the sequencing of "link" to align with similar elements in OSCAL.
+- changed the sequencing of where "link" appears to align with similar elements in OSCAL.
 
 For params/select/how-many:
 - renamed "alternatives" to "choices"
@@ -229,7 +227,7 @@ For /profile/merge/custom//groups:
 
 For /profile/modify/set-parameter:
 - added "prop" and "annotation"
-- change sequencing of "link"
+- change sequencing of where "link" appears
 
 For /profile/modify/alter/add:
 - defined allowed values for prop/@name
@@ -286,15 +284,6 @@ For /system-security-plan/system-characteristics/system-information/information-
 For /system-security-plan/system-characteristics/system-information/information-type/*-impact:
 - added "annotation" and "link"
 
-For /system-security-plan/system-characteristics/authorization-boundary:
-- the "description" text is now wrapped with a "description" element
-
-For /system-security-plan/system-characteristics/network-architecture:
-- the "description" text is now wrapped with a "description" element
-
-For /system-security-plan/system-characteristics/data-flow:
-- the "description" text is now wrapped with a "description" element
-
 For /system-security-plan/system-implementation/leveraged-authorization:
 - defined additional allowed values "implementation-point", "leveraged-authorization-uuid", "inherited-uuid" for prop/@name, which provides traceability to a leveraged SSP
 - defined allowed values for link/@rel
@@ -325,6 +314,7 @@ For /system-security-plan/control-implementation/implemented-requirement/by-comp
 - renamed "component-id" to "component-uuid"
 - added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
 - added "remarks" to allow for adding general commentary
+- changed the sequencing of where "set-parameter" appears
 
 For /system-security-plan/control-implementation/implemented-requirement/statement:
 - removed "description"
@@ -333,6 +323,7 @@ For /system-security-plan/control-implementation/implemented-requirement/stateme
 - renamed "component-id" to "component-uuid"
 - added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
 - added "remarks" to allow for adding general commentary
+- changed the sequencing of where "set-parameter" appears
 
 ### Changes to the SSP JSON and YAML formats
 
@@ -424,7 +415,7 @@ For /component-definition/component:
 - changed the data type of "title" from "string" to "markup-line"
 - changed the data type of "description" from "string" to "markup-multiline", added a "description" wrapper.
 - added "prop" and "annotation"
-- changed the sequencing of "link"
+- changed the sequencing of where "link" appears
 - replaced "responsible-party" with "responsible-role"
 - added "protocol", which can be used to specify protocol information for a "service" or "network" component
 - changed "remarks" adding "remarks" wrapper
