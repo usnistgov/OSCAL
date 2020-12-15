@@ -16,8 +16,10 @@
     <xsl:mode name="copy" on-no-match="shallow-copy"/>
     
     <xsl:variable select="uuid:randomUUID()" name="new-document-uuid"/>
-    <xsl:variable select="uuid:randomUUID()" name="this-system-component-uuid"/>
+    <xsl:variable select="uuid:randomUUID()" name="new-this-system-component-uuid"/>
     
+    <!-- Grabbing the old UUID or the new UUID if there is no old one. -->
+    <xsl:variable name="this-system-component-uuid" select="(/*/system-implementation/component[(@type|@component-type='this-system')]/@uuid,$new-this-system-component-uuid)[1]"/>
     
 <!-- 
 In {top-level-element}/metadata:
@@ -37,7 +39,18 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
-    
+
+    <xsl:template match="link">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:if test="matches(string(.),'\S')">
+                <text>
+                    <xsl:apply-templates/>
+                </text>
+            </xsl:if>
+        </xsl:copy>
+    </xsl:template>
+
     <xsl:template match="revision-history">
         <revisions>
             <xsl:apply-templates select="@*"/>
@@ -94,7 +107,6 @@ a reordered contents of party
 x renamed "party-name" to "name" 
 x renamed "email" to "email-address"
 x renamed "phone" to "telephone-number"
-? changed sequencing of address [SEE NO CHANGE HERE -wap]
 n made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" attribute has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
 
 In {top-level-element}/metadata/party/prop:
@@ -147,13 +159,11 @@ x renamed "type" to "scheme"
 
 In {top-level-element}/back-matter/resource/rlink:
 n changed type from "uri" to "uri-reference"
-? renamed "hash-value" to "hash"
 
 Changes to all "prop" elements:
 n changed the data type of "ns" to "uri"
 x renamed "id" to "uuid" and changed type to "uuid" (prop has @uuid under M3+)
 a - note, results will not have valid uuids until the UUID refresher is run
-
     
 Changes to all "annotation" elements:
 n changed the data type of "ns" to "uri"
@@ -176,8 +186,7 @@ Changes to all "param" elements:
 n added the "prop" and "link" elements.
 x changed the sequencing of "link" to be consistent with other elements that include "link".
 x changed the data type of "usage" from "markup-line" to "markup-multiline"
-x changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" attribute.
-? (the foregoing says 'attribute' but in the model it's an element)
+x changed "constraint" from an element with a text value, to an element with child elements. The text value is now contained in the "description" element. Also changed the "test" attribute to be a sequence of child "test" elements, with the text value now contained in the "expression" element.
 x changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
 
 -->
@@ -308,7 +317,7 @@ a /system-security-plan/system-implementation/system-inventory element removed f
     </xsl:template>
     
     <xsl:template name="this-system-boilerplate" xmlns:uuid="java:java.util.UUID">
-        <component type="this-system" uuid="{$this-system-component-uuid}">
+        <component type="this-system" uuid="{$new-this-system-component-uuid}">
             <title>This System</title>
             <description>
                 <p>The system described by this SSP.</p>
@@ -331,15 +340,6 @@ a /system-security-plan/system-implementation/system-inventory element removed f
 
 For /system-security-plan/system-characteristics/system-information/information-type/*-impact:
 n added "annotation" and "link"
-
-For /system-security-plan/system-characteristics/authorization-boundary:
-? the "description" text is now wrapped with a "description" element [I SEE THAT ALSO IN M3? wap]
-
-For /system-security-plan/system-characteristics/network-architecture:
-? the "description" text is now wrapped with a "description" element [I SEE THAT ALSO IN M3? wap]
-
-For /system-security-plan/system-characteristics/data-flow:
-? the "description" text is now wrapped with a "description" element [I SEE THAT ALSO IN M3? wap]
 
 For /system-security-plan/system-implementation/leveraged-authorization:
 n defined additional allowed values "implementation-point", "leveraged-authorization-uuid", "inherited-uuid" for prop/@name, which provides traceability to a leveraged SSP
@@ -406,13 +406,50 @@ x removed "use", since this is capturing similar information to the component's 
 
 
 For /system-security-plan/control-implementation/implemented-requirement:
-- removed "description"
+x removed "description"
 n added allowed values for annotation/@name including "implementation-status", "control-origination"
 n added allowed values for prop/@name including "leveraged-authorization" to indicate if a control implementation is inherited from an underlying authorized system
 n added allowed values for responsible-role/$role-id
 
+-->
+
+    <xsl:template match="implemented-requirement/description"/>
+    
+    <xsl:template match="implemented-requirement/statement/description"/>
+
+    <!-- Adding a 'this-system' by-component if we don't already have one...-->
+    <xsl:template match="implemented-requirement | implemented-requirement//statement">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:if test="exists(description) and empty(by-component[@component-uuid=$this-system-component-uuid]) ">
+                <by-component component-uuid="{$this-system-component-uuid}" uuid="{uuid:randomUUID()}">
+                    <xsl:sequence select="description"/>
+                </by-component>
+            </xsl:if>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="implemented-requirement//by-component[@component-uuid=$this-system-component-uuid]">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:for-each select="description">
+                <xsl:copy>
+                    <xsl:apply-templates select="@*"/>
+                    <xsl:copy-of select="../description/*"/>
+                    <xsl:apply-templates/>
+                </xsl:copy>
+            </xsl:for-each>
+            <xsl:if test="empty(description)">
+                <xsl:copy-of select="../description"/>
+            </xsl:if>
+            <xsl:apply-templates select="* except description"/>
+        </xsl:copy>
+    </xsl:template>
+
+<!--
 For /system-security-plan/control-implementation/implemented-requirement/by-component:
-- renamed "component-id" to "component-uuid"
+x renamed "component-id" to "component-uuid"
 n added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
 n added "remarks" to allow for adding general commentary
 
@@ -420,7 +457,7 @@ For /system-security-plan/control-implementation/implemented-requirement/stateme
 - removed "description"
 
 For /system-security-plan/control-implementation/implemented-requirement/statement/by-component:
-- renamed "component-id" to "component-uuid"
+x renamed "component-id" to "component-uuid"
 n added "export", "inherited", and "satisfied" to support documenting leveraged authorizations
 n added "remarks" to allow for adding general commentary
 
@@ -461,31 +498,4 @@ n added "remarks" to allow for adding general commentary
 
     -->
    
-   
-   
-   
-   
-<!-- XXX to be added to change log:
-
-### Changes to all XML formats
-
-In {top-level-element}/metadata:
-a link (text) content is now be wrapped in <text>...</text>
-    -->
-   <xsl:template match="link">
-       <xsl:copy>
-           <xsl:apply-templates select="@*"/>
-           <xsl:if test="matches(string(.),'\S')">
-               <text>
-                   <xsl:apply-templates/>
-               </text>
-           </xsl:if>
-       </xsl:copy>
-   </xsl:template>
-
-    <!-- 
-  
--->
-    
-
 </xsl:stylesheet>
