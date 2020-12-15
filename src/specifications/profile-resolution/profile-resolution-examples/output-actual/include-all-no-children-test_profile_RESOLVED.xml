@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="include-all-no-children-test_profile-RESOLVED">
+         uuid="165f1ac9-3b5b-4768-8e8c-963098acaa86">
    <metadata>
       <title>Test Profile</title>
-      <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
+      <last-modified>2020-05-30T14:39:44.216-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0-MR2</oscal-version>
-      <prop name="resolution-timestamp">2019-12-10T15:21:21.112-05:00</prop>
-      <link rel="resolution-source"
-            href="../include-all-no-children-test_profile.xml">Test Profile</link>
+      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <prop name="resolution-timestamp">2020-12-15T14:31:27.923-05:00</prop>
+      <link rel="resolution-source" href="include-all-no-children-test_profile.xml"/>
    </metadata>
    <param id="param-A.a">
       <label>A.a parameter</label>
       <value>A.a value</value>
    </param>
    <param id="param-A.b">
-      <label>A.b parameter</label>
-      <value>A.b value</value>
+      <select>
+         <choice>A.b parameter selection choice 1</choice>
+         <choice>A.b parameter selection choice 2</choice>
+         <choice>A.b parameter selection choice 3</choice>
+      </select>
    </param>
    <control id="a1">
       <title>Control A1</title>
@@ -82,7 +84,7 @@
    <control id="c2">
       <title>Control C2</title>
       <prop name="place">second</prop>
-      <link rel="citation" href="#citation">Citation</link>
+      <link rel="citation" href="#ef4c1cf0-a3cc-4354-bdd5-690466f61d4f"/>
       <part name="statement" id="c2-stmt">
          <p>C2 cccccccc ccccccccccccccccc.</p>
       </part>
@@ -95,8 +97,10 @@
       </part>
    </control>
    <back-matter>
-      <citation id="citation">
-         <desc>A citation to an out of line document.</desc>
-      </citation>
+      <resource uuid="ef4c1cf0-a3cc-4354-bdd5-690466f61d4f">
+         <citation>
+            <text>A citation to an out of line document.</text>
+         </citation>
+      </resource>
    </back-matter>
 </catalog>
