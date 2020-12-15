@@ -8,7 +8,7 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:48.703-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-milestone3</oscal-version>
+      <oscal-version>1.0.0-release-candidate-1</oscal-version>
    </metadata>
    <import href="#01ecd6cc-e281-472c-bb7a-0394bdf938f2">
       <include>
@@ -23,7 +23,7 @@
       <resource uuid="761205f0-fd61-42d3-9c66-2fb89e844a19">
          <title>Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy</title>
          <prop name="keep">always</prop>
-         <doc-id type="nist-id">SP 800-37 Rev. 2</doc-id>
+         <document-id scheme="https://www.doi.org/">...doi...</document-id>
          <rlink href="https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final"/>
       </resource>
    </back-matter>

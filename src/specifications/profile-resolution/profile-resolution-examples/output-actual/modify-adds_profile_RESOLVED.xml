@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="85670c16-d945-46b5-bfc2-447ca591548e">
+   <metadata>
+      <title>Example</title>
+      <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
+      <version>1.2</version>
+      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <prop name="resolution-timestamp">2020-12-15T14:31:30.288-05:00</prop>
+      <link rel="resolution-source" href="modify-adds_profile.xml"/>
+   </metadata>
+   <group>
+      <title>Group A of C</title>
+      <control id="a1">
+         <title>Control A1</title>
+         <param id="a1_prm1">
+            <label>A1 Parameter 1</label>
+            <constraint>
+               <description>at least every 3 years</description>
+            </constraint>
+         </param>
+         <prop name="CORE" ns="https://fedramp.gov/ns/oscal"/>
+         <prop name="place">first</prop>
+         <part name="statement" id="a1-stmt">
+            <prop name="conformity" ns="https://fedramp.gov/ns/oscal">assessment-objective</prop>
+            <prop name="method" class="fedramp">EXAMINE</prop>
+            <p>A1 aaaaa aaaaaaaaaa</p>
+         </part>
+      </control>
+      <control id="a3">
+         <title>Control A3</title>
+         <param id="a3_prm1">
+            <label>A3 Parameter 1</label>
+            <constraint>
+               <description>at least annually</description>
+            </constraint>
+         </param>
+         <prop name="place">third</prop>
+         <part name="statement" id="a3-stmt">
+            <p>A3 aaaaa aaaaaaaaaa</p>
+         </part>
+      </control>
+   </group>
+</catalog>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="include-match-test_profile-RESOLVED">
+         uuid="0d3fd6ed-2aed-4a77-94d4-1233678bba36">
    <metadata>
       <title>Test Profile</title>
-      <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
+      <last-modified>2020-05-30T14:39:47.217-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0-MR2</oscal-version>
-      <prop name="resolution-timestamp">2019-12-10T15:21:21.742-05:00</prop>
-      <link rel="resolution-source" href="../include-match-test_profile.xml">Test Profile</link>
+      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <prop name="resolution-timestamp">2020-12-15T14:31:29.094-05:00</prop>
+      <link rel="resolution-source" href="include-match-test_profile.xml"/>
    </metadata>
    <control id="a1">
       <title>Control A1</title>
+      <param id="a1_prm1">
+         <label>A1 Parameter 1</label>
+      </param>
       <prop name="place">first</prop>
       <part name="statement" id="a1-stmt">
          <p>A1 aaaaa aaaaaaaaaa</p>
@@ -25,6 +28,9 @@
    </control>
    <control id="a3">
       <title>Control A3</title>
+      <param id="a3_prm1">
+         <label>A3 Parameter 1</label>
+      </param>
       <prop name="place">third</prop>
       <part name="statement" id="a3-stmt">
          <p>A3 aaaaa aaaaaaaaaa</p>

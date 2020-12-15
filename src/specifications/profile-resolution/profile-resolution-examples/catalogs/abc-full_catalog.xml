@@ -94,7 +94,7 @@
       <control id="c2">
          <title>Control C2</title>
          <prop name="place">second</prop>
-         <link rel="citation" href="#ef4c1cf0-a3cc-4354-bdd5-690466f61d4f">Citation</link>
+         <link rel="citation" href="#ef4c1cf0-a3cc-4354-bdd5-690466f61d4f"/>
          <part name="statement" id="c2-stmt">
             <p>C2 cccccccc ccccccccccccccccc.</p>
          </part>
