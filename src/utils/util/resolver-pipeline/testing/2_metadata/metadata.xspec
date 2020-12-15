@@ -33,7 +33,7 @@
                     <oscal-version>1.0-MR2</oscal-version>
                     <prop name="resolution-timestamp">...</prop>
                     <link href="urn:UNKNOWN"
-                        rel="resolution-source">Small Profile for Testing</link>
+                        rel="resolution-source"/>
                 </metadata>
             </catalog>
         </x:expect>
@@ -67,7 +67,7 @@
                     <oscal-version>1.0-MR2</oscal-version>
                     <prop name="resolution-timestamp">...</prop>
                     <link href="urn:UNKNOWN"
-                        rel="resolution-source">Pathological Profile</link>
+                        rel="resolution-source"/>
                 </metadata>
                 <selection uuid="abc-full_catalog"/>
             </catalog>
@@ -106,8 +106,7 @@
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
                     <prop name="resolution-timestamp">...</prop>
-                    <link href="urn:UNKNOWN"
-                        rel="resolution-source">Pathological Profile</link>
+                    <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <party>
                         <org>
                             <org-name>Standing Committee</org-name>
@@ -126,7 +125,7 @@
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
-                    <link href="#internal">Internal link</link>
+                    <link href="#internal"><text>Internal link</text></link>
                     <party>
                         <org>
                             <org-name>Standing Committee</org-name>
@@ -153,8 +152,8 @@
                     <oscal-version>1.0-MR2</oscal-version>
                     <prop name="resolution-timestamp">...</prop>
                     <link href="urn:UNKNOWN"
-                        rel="resolution-source">Pathological Profile</link>
-                    <link href="#internal">Internal link</link>
+                        rel="resolution-source"/>
+                    <link href="#internal"><text>Internal link</text></link>
                     <party>
                         <org>
                             <org-name>Standing Committee</org-name>
