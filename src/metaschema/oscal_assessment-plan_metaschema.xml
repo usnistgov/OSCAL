@@ -64,7 +64,22 @@
             </model>
          </define-assembly>
          <define-assembly name="terms-and-conditions">
-            
+            <formal-name>Assessment Plan Terms and Conditions</formal-name>
+            <description>Used to define various terms and conditions under which an assessment, described by the plan, can be performed. Each child part defines a different type of term or condition.</description>
+            <model>
+               <assembly ref="assessment-part" max-occurs="unbounded">
+                  <group-as name="parts"/>
+               </assembly>
+            </model>
+            <constraint>
+               <allowed-values target="part/@name">
+                  <enum value="rules-of-engagement">TODO: TBD</enum>
+                  <enum value="disclosures">TODO: TBD</enum>
+                  <enum value="testing-inclusions">TODO: TBD</enum>
+                  <enum value="testing-exclusions">TODO: TBD</enum>
+                  <enum value="limitation-of-liability">TODO: TBD</enum>
+               </allowed-values>
+            </constraint>
          </define-assembly>
          <!-- CHANGED: "objectives" to "reviewed-controls" -->
          <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>

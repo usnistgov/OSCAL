@@ -775,6 +775,7 @@
       </constraint>
    </define-assembly>
    <define-assembly name="by-component">
+      <!-- QUESTION: Should set-parameter be moved here to allow component-specific parameter settings? or "this-system" for the whole system? -->
       <formal-name>Component Control Implementation</formal-name>
       <description>Defines how the referenced component implements a set of controls.</description>
       <json-key flag-name="component-uuid"/>
