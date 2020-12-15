@@ -79,13 +79,13 @@ See [examples](#content-examples) of OSCAL catalogs.
 
 ## Content Examples
 
-The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model [examples](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/) in the OSCAL content GitHub repository. These examples are provided in OSCAL XML, JSON, and YAML formats.
+The NIST SP 800-53 revision 4 and 5 control catalogs are provided as catalog model [examples]({{< param "contentRepoPath" >}}/examples/nist.gov/SP800-53/) in the OSCAL content GitHub repository. These examples are provided in OSCAL XML, JSON, and YAML formats.
 
-### NIST SP 800-53 Annotated Example
+### NIST SP 800-53 Revision 4 Annotated Example
 
-{{<callout>}}**Note:** Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL [XML](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml), [JSON](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json), and [YAML](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml) formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.{{</callout>}}
+{{<callout>}}**Note:** Full versions of the NIST SP 800-53 revision 4 catalog are available in OSCAL [XML]({{< param "contentRepoPath" >}}/examples/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml), [JSON]({{< param "contentRepoPath" >}}/examples/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json), and [YAML]({{< param "contentRepoPath" >}}/examples/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml) formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A revision 4.{{</callout>}}
 
-Here is a non-normative, partial illustration showing how control **AC1** from NIST SP 800-53 rev 4 can be rendered in OSCAL Catalog XML format with a `<control>` element. A short walk-through follows.
+Here is a non-normative, partial illustration showing how control **AC-1** from NIST SP 800-53 rev 4 can be rendered in OSCAL Catalog XML format with a `<control>` element. A short walk-through follows.
 
 {{<highlight xml "linenos=table,nowrap=false" >}}
 <control class="SP800-53" id="ac-1">
