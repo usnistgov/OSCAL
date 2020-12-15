@@ -41,11 +41,7 @@
                 <xsl:value-of select="current-dateTime()"/>
             </prop>
             <xsl:apply-templates mode="#current" select="prop"/>
-            <link href="{$profile-origin-uri}" rel="resolution-source">
-                <xsl:for-each select="title">
-                    <xsl:apply-templates/>
-                </xsl:for-each>
-            </link>
+            <link href="{$profile-origin-uri}" rel="resolution-source"/>
             <xsl:apply-templates mode="#current" select="* except ($leaders | prop)"/>
             <!--<xsl:apply-templates select="../selection" mode="imported-metadata"/>-->
         </xsl:copy>

@@ -76,7 +76,7 @@
                 </metadata>
                 <control id="control_A">
                     <title>Control A</title>
-                    <link href="file.xml">A link</link>
+                    <link href="file.xml"><text>A link</text></link>
                     <prop name="somewhat">property</prop>
                 </control>
             </catalog>
@@ -89,7 +89,7 @@
                 <control id="control_A">
                     <title>Control A</title>
                     <prop name="somewhat">property</prop>
-                    <link href="file.xml">A link</link>
+                    <link href="file.xml"><text>A link</text></link>
                 </control>
             </catalog>
         </x:expect>
@@ -121,7 +121,7 @@
                 </metadata>
                 <control>
                     <title>Control A</title>
-                    <link href="#citA">link to good citation</link>
+                    <link href="#citA"><text>link to good citation</text></link>
                 </control>
                 <back-matter>
                     <resource uuid="cit1">unclaimed citation</resource>
@@ -136,7 +136,7 @@
                 </metadata>
                 <control>
                     <title>Control A</title>
-                    <link href="#citA">link to good citation</link>
+                    <link href="#citA"><text>link to good citation</text></link>
                 </control>
                 <back-matter>
                     <resource uuid="citA">good citation</resource>
@@ -149,7 +149,7 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <link href="linkme.pdf">Link Me</link>
+                    <link href="linkme.pdf"><text>Link Me</text></link>
                     <prop name="rating">AAA</prop>
                     <part name="statement"><p>Statement</p></part>
                     <prop name="due_date">2020-02-20</prop>
@@ -162,7 +162,7 @@
                     <title>Control A</title>
                     <prop name="rating">AAA</prop>
                     <prop name="due_date">2020-02-20</prop>
-                    <link href="linkme.pdf">Link Me</link>
+                    <link href="linkme.pdf"><text>Link Me</text></link>
                     <part name="statement"><p>Statement</p></part>
                 </control>
             </catalog>
