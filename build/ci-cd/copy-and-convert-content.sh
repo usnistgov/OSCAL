@@ -95,7 +95,8 @@ CATALOG_SCHEMA="$(get_abs_path "${OSCAL_DIR}/xml/schema/oscal_catalog_schema.xsd
 
 # check for perl
 result=$(which perl 2>&1)
-if [ $? -ne 0 ]; then
+cmd_exitcode=$?
+if [ $cmd_exitcode != 0 ]; then
   echo -e "${P_ERROR}Perl is not installed. Perl is needed by this script.${P_END}"
   exit 1
 fi
@@ -169,7 +170,8 @@ post_process_content() {
       echo -e "${P_INFO}Producing pretty JSON '${P_END}${target_file_pretty_relative}${P_INFO}'.${P_END}"
     fi
     result=$(jq . "$target_file" > "$target_file_pretty" 2>&1)
-    if [ $? -ne 0 ]; then
+    cmd_exitcode=$?
+    if [ $cmd_exitcode != 0 ]; then
       echo -e "${P_ERROR}${result}${P_END}"
       echo -e "${P_ERROR}Unable to execute jq on '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
       return 1;
@@ -179,7 +181,8 @@ post_process_content() {
     perl -pi -e 's,\r,,g' "$target_file_pretty"
 
     result=$(validate_content "$target_file_pretty" "json" "$model" "$oscal_dir")
-    if [ $? -ne 0 ]; then
+    cmd_exitcode=$?
+    if [ $cmd_exitcode != 0 ]; then
       echo -e "${P_ERROR}${result}${P_END}"
       echo -e "${P_ERROR}Unable to validate content '${P_END}${target_file_pretty_relative}${P_ERROR}'.${P_END}"
       return 1;
@@ -281,7 +284,7 @@ copy_or_convert_content() {
     fi
     result=$(cp "$source_file" "$target_file" 2>&1)
     cmd_exitcode=$?
-    if [ $cmd_exitcode -ne 0 ]; then
+    if [ $cmd_exitcode != 0 ]; then
       echo -e "${P_ERROR}${result}${P_END}"
       echo -e "${P_ERROR}Unable to copy '${P_END}${source_file_relative}${P_ERROR}' to '${P_END}${target_file_relative}${P_ERROR}'.${P_END}"
       return 1;
@@ -294,11 +297,11 @@ copy_or_convert_content() {
     fi
 
     result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model" "$oscal_dir")
+    cmd_exitcode=$?
     if [ -n "$result" ]; then
       echo -e "${result}"
     fi
-    cmd_exitcode=$?
-    if [ $cmd_exitcode -ne 0 ]; then
+    if [ $cmd_exitcode != 0 ]; then
       return 1;
     else
       echo -e "${P_OK}Converted ${source_format^^} ${model} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file_relative}${P_OK}'.${P_END}"
@@ -310,10 +313,10 @@ copy_or_convert_content() {
     echo -e "${P_INFO}Post processing ${target_format^^} content '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
   fi
   result=$(post_process_content $source_format $target_format $target_file $working_dir $oscal_dir)
+  cmd_exitcode=$?
   if [ -n "$result" ]; then
     echo -e "${result}"
   fi
-  cmd_exitcode=$?
   if [ $cmd_exitcode != 0 ]; then
     return 1;
   fi
@@ -332,7 +335,7 @@ copy_or_convert_content() {
     
         result=$(xsl_transform "${PROFILE_RESOLVER}" "$source_file" "${resolved_profile}" 2>&1)
         cmd_exitcode=$?
-        if [ $cmd_exitcode -ne 0 ]; then
+        if [ $cmd_exitcode != 0 ]; then
           if [ -n "$result" ]; then
             echo -e "${P_ERROR}${result}${P_END}"
           fi
@@ -341,7 +344,8 @@ copy_or_convert_content() {
         fi
         
         result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
-        if [ $cmd_exitcode -ne 0 ]; then
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
           if [ -n "$result" ]; then
             echo -e "${P_ERROR}${result}${P_END}"
           fi
@@ -357,10 +361,10 @@ copy_or_convert_content() {
           echo -e "${P_INFO}Converting resolved profile '${P_END}${resolved_profile}${P_INFO}' to JSON.${P_END}"
         fi
         result="$(copy_or_convert_content "$source_dir" "$resolved_profile" "$working_dir" $src_format "catalog" $target_format "$working_dir" "$oscal_dir")"
+        cmd_exitcode=$?
         if [ -n "$result" ]; then
           echo -e "${result}"
         fi
-        cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
           return 1;
         fi
@@ -401,10 +405,10 @@ process_paths() {
 #    printf 'converttoformats: %s\n' "${converttoformats[@]}"
 
     result="$(copy_or_convert_content "$ARTIFACT_DIR" "$src_file" "${ARTIFACT_DIR}/src" $src_format $model $src_format "$WORKING_DIR" "$OSCAL_DIR")"
+    cmd_exitcode=$?
     if [ -n "$result" ]; then
       echo -e "${result}"
     fi
-    cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
         exitcode=1
         continue;
@@ -421,10 +425,10 @@ process_paths() {
       fi
 
       result="$(copy_or_convert_content "$ARTIFACT_DIR" "$src_file" "${ARTIFACT_DIR}/src" $src_format $model $to_format "$WORKING_DIR" "$OSCAL_DIR")"
+      cmd_exitcode=$?
       if [ -n "$result" ]; then
         echo -e "${result}"
       fi
-      cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
           exitcode=1
           continue;
