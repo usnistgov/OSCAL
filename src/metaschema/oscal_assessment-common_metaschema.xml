@@ -1354,7 +1354,7 @@
             <description>The date/time by which the risk must be closed.</description>
          </define-field>
          
-         <assembly ref="remediation" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="response" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "remediation-group" to "remediations" -->
             <group-as name="remediations" in-json="ARRAY"/>
          </assembly>
