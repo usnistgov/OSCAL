@@ -75,11 +75,3 @@ Instead of `src/metaschema/file_metaschema.xml|xml,json|xml,json|xml,json` use `
 ```sh
   $ oscalcli generate-schema src/metaschema/file1_metaschema.xml src/metaschema/file2_metaschema.xml --verbose
 ```
-
-- Running from another directory. Change to the desired directory and locate the generate-schema or generate-content-converters file to run it.
-
-```sh
-  $ oscalcli otherDirectory/generate-schema
-
-  $ oscalcli otherDirectory/generate-converters
-```
