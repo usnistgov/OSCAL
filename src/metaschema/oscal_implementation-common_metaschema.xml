@@ -62,7 +62,7 @@
          <define-assembly name="status" min-occurs="1">
             <formal-name>Status</formal-name>
             <description>Describes the operational status of the system component.</description>
-            <define-flag name="state">
+            <define-flag name="state" required="yes">
                <formal-name>State</formal-name>
                <description>The operational status.</description>
                <constraint>
@@ -336,8 +336,7 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships?  (BJR - I don't think we need this now) -->
          </assembly>
-         <field ref="role-id" min-occurs="1" max-occurs="unbounded">
-            <!-- QUESTION: Should this be 0 to many? -->
+         <field ref="role-id" min-occurs="0" max-occurs="unbounded">
             <group-as name="role-ids" in-json="ARRAY"/>
          </field>
          <assembly ref="authorized-privilege" max-occurs="unbounded">

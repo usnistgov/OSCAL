@@ -295,7 +295,7 @@
          </define-assembly>
          
          <!-- CHANGED: Added "activity-selection" -->
-         <define-assembly name="activity-instance" min-occurs="1" max-occurs="unbounded">
+         <define-assembly name="activity-instance" min-occurs="0" max-occurs="unbounded">
             <formal-name>Activity Instance</formal-name>
             <description>Identifies an individual activity to be performed as an assessment action.</description>
             <group-as name="activity-instances" in-json="ARRAY"/>
@@ -377,6 +377,10 @@
    <define-assembly name="task">
       <formal-name>Task</formal-name>
       <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Task Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this assessment task. </description>
+      </define-flag>
       <model>
          <define-field name="title" min-occurs="1" as-type="markup-line">
             <formal-name>Task Title</formal-name>
@@ -1713,7 +1717,7 @@
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
-      <define-flag name="name" as-type="uuid" required="yes">
+      <define-flag name="name" as-type="NCName" required="yes">
          <formal-name>Part Name</formal-name>
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
