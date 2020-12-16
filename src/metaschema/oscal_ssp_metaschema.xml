@@ -579,7 +579,7 @@
             <group-as name="capabilities" in-json="BY_KEY"/>
          </assembly>
          -->
-         <assembly ref="inventory-item" min-occurs="1" max-occurs="unbounded">
+         <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
             <group-as name="inventory-items" in-json="ARRAY"/>
             <remarks>
                <p>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</p>
@@ -675,23 +675,22 @@
             <group-as name="links" in-json="ARRAY"/>
             <!-- TODO: Model specific link relationships -->
          </assembly>
-         <assembly ref="by-component" min-occurs="1" max-occurs="unbounded">
-            <!-- QUESTION: Changed min-occurs to 1. Is this right? -->
+         <assembly ref="set-parameter" max-occurs="unbounded">
+            <group-as name="parameter-settings" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="by-component" min-occurs="0" max-occurs="unbounded">
             <group-as name="by-components" in-json="BY_KEY"/>
+         </assembly>
+         <assembly ref="statement" max-occurs="unbounded">
+            <group-as name="statements" in-json="BY_KEY"/>
          </assembly>
          <!--
          <assembly ref="by-capability" max-occurs="unbounded">
             <group-as name="by-capabilities" in-json="BY_KEY"/>
          </assembly>  -->
-         <assembly ref="responsible-role" max-occurs="unbounded">
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="set-parameter" max-occurs="unbounded">
-            <group-as name="parameter-settings" in-json="BY_KEY"/>
-         </assembly>
-         <assembly ref="statement" max-occurs="unbounded">
-            <group-as name="statements" in-json="BY_KEY"/>
-         </assembly>
          <!--            <assembly ref="using"/>   -->
          
          <!-- TODO: Implement parameters -->
@@ -728,7 +727,11 @@
          <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
             <key-field target="@party-uuid"></key-field>
          </index-has-key>
-         <has-cardinality target=".//by-component" min-occurs="1"/>
+         <has-cardinality target=".//by-component" min-occurs="1">
+            <remarks>
+               <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
+            </remarks>
+         </has-cardinality>
       </constraint>
    </define-assembly>
    <define-assembly name="statement">
