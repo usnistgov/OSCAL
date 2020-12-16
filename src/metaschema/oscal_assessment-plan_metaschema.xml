@@ -95,9 +95,8 @@
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
             <group-as name="assessment-subjects" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="assets" min-occurs="0" max-occurs="1">
+         <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
             <!-- CHANGED: "assets" to "assessment-assets" -->
-            <use-name>assessment-assets</use-name>
          </assembly>
 
          <assembly ref="action" min-occurs="0" max-occurs="unbounded">
