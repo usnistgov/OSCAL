@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
-            abstract="yes">
+   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
+   abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
    <schema-version>1.0.0-milestone3</schema-version>
    <short-name>oscal-assessment-common</short-name>
@@ -1071,9 +1071,9 @@
    <define-assembly name="objective-status">
       <formal-name>Objective Status</formal-name>
       <description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</description>
-      <!-- QUESTION: Should these IDs be required? -->
-      <flag ref="objective-id"/>
-      <flag ref="control-id"/>
+      <!-- QUESTION: Should these IDs be required? One of the two should. (choice) -->
+      <flag ref="objective-id" />
+      <flag ref="control-id" />
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
             <formal-name>Objective Status Title</formal-name>
@@ -1093,29 +1093,11 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="result" min-occurs="0" max-occurs="1">
-            <formal-name>Result</formal-name>
-            <description>A brief indication as to whether the objective is satisfied or not.</description>
-            <json-value-key>value</json-value-key>
-            <define-flag name="system" as-type="uri">
-               <formal-name>Assessment System</formal-name>
-               <description>Identifies the framework or rules to which this value conforms.</description>
-               <!-- QUESTION: Should this be required? Why is this needed? Is there a better way? -->
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
-                     <enum value="https://www.nist.gov">A value conforms to NIST definitions.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            
-         </define-field>
-         <define-field name="status" max-occurs="1">
-            <!-- CHANGED: "implementation-status" to "status" -->
+         <define-field name="result" min-occurs="1" max-occurs="unbounded">
             <formal-name>Implementation Status</formal-name>
-            <description>Identifies the implementation status of the control or control objective.</description>
-            <!-- QUESTION: What are the valid values? -->
+            <description>A brief indication as to whether the objective is satisfied or not within a given system.</description>
             <json-value-key>status</json-value-key>
+            <group-as name="results"/>
             <!-- CHANGED: removed @system flag -->
             <constraint>
                <allowed-values target=".">
@@ -1125,8 +1107,16 @@
                </allowed-values>
             </constraint>
          </define-field>
+         <!-- CHANGED: "implementation-status" to a FedRAMP extension (prop[@name='implementation-status'] in the "objective-status" assembly) -->
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
+      <constraint>
+         <has-cardinality target="@control-id | @objective-id" min-occurs="1" max-occurs="1">
+            <remarks>
+               <p>There should only be a control-id or an objective-id. Not both. This ensures the control-id is not differenat from the control the objective-id relates to.</p>
+            </remarks>
+         </has-cardinality>
+      </constraint>
    </define-assembly>
    
    <define-assembly name="observation">
@@ -1470,84 +1460,14 @@
    </define-assembly>
 
    <define-assembly name="risk-metric" scope="local">
-      <!-- QUESTION: Localize this? -->
       <formal-name>Risk Metric</formal-name>
-      <description>An individual risk metric from a specified system.</description>
+      <description>An individual value relevant to the risk of a specified system.</description>
       <define-flag name="name" required="yes">
          <!-- TODO: this documentation needs to be improved -->
          <!-- TODO: We need to reduce this to a core set for OSCAL -->
          <!-- QUESTION: Should we use a different structure here that organizes things by concept area? -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
-         <constraint>
-            <allowed-values allow-other="yes">
-               <enum value="cve-id">An identifier managed by the CVE program (see <a>https://cve.mitre.org/</a>).</enum>
-               <enum value="cvss-2-AV">Access Vector</enum>
-               <enum value="cvss-3-AV">Attack Vector</enum>
-               <enum value="cvss-3.1-AV">Attack Vector</enum>
-
-               <enum value="fedramp-likelihood">Likelihood as defined by FedRAMP. The class can be used to specifiy 'inital' and 'adjusted'.</enum>
-               <enum value="impacted-control">Impacted Control</enum>
-               <enum value="vulnerability-id">Vulnerability ID</enum>
-               <enum value="source-id">Source ID</enum>
-               <!-- Risk Metrics -->
-               <enum value="likelihood">Likelihood</enum>
-               <enum value="impact">Impact</enum>
-               <enum value="risk">Risk</enum>
-               <!-- CVSS Metrics Values -->
-               <enum value="AV">Access Vector</enum>
-               <enum value="AC">Access Complexity</enum>
-               <enum value="Au">Authentication</enum>
-               <enum value="C">Confidentiality Impact</enum>
-               <enum value="I">Integrity Impact</enum>
-               <enum value="A">Availability Impact</enum>
-               <enum value="RL">Remediation Level</enum>
-               <enum value="RC">Report Confidence</enum>
-               <enum value="CDP">Collateral Damage Potential</enum>
-               <enum value="TD">Target Distribution</enum>
-               <enum value="CR">Confidentiality Requirement</enum>
-               <enum value="IR">Integrity Requirement</enum>
-               <enum value="AR">Availability Requirement</enum>
-               <enum value="PR">Privileges Required</enum>
-               <enum value="UI">User Interaction</enum>
-               <enum value="S">Scope</enum>
-               <enum value="E">Exploit Maturity</enum>
-               <enum value="MAV">Modified Attack Vector</enum>
-               <enum value="MAC">Modified Attack Complexity</enum>
-               <enum value="MPR">Modified Privileges Required</enum>
-               <enum value="MUI">Modified User Interaction</enum>
-               <enum value="MS">Modified Scope</enum>
-               <enum value="MC">Modified Confidentiality</enum>
-               <enum value="MI">Modified Integrity</enum>
-               <enum value="MA">Modified Availability</enum>
-               <enum value="access-vector">Access Vector</enum>
-               <enum value="access-complexity">Access Complexity</enum>
-               <enum value="authentication">Authentication</enum>
-               <enum value="confidentiality-impact">Confidentiality Impact</enum>
-               <enum value="integrity-impact">Integrity Impact</enum>
-               <enum value="availability-impact">Availability Impact</enum>
-               <enum value="exploitability">Exploitability</enum>
-               <enum value="remediation-level">Remediation Level</enum>
-               <enum value="report-confidence">Report Confidence</enum>
-               <enum value="collateral-damage-potential">Collateral Damage Potential</enum>
-               <enum value="target-distribution">Target Distribution</enum>
-               <enum value="confidentiality-requirement">Confidentiality Requirement</enum>
-               <enum value="integrity-requirement">Integrity Requirement</enum>
-               <enum value="availability-requirement">Availability Requirement</enum>
-               <enum value="privileges-required">Privileges Required</enum>
-               <enum value="user-interaction">User Interaction</enum>
-               <enum value="scope">Scope</enum>
-               <enum value="exploit-code-maturity">Exploit Code Maturity</enum>
-               <enum value="modified-attack-vector">Modified Attack Vector</enum>
-               <enum value="modified-attack-complexity">Modified Attack Complexity</enum>
-               <enum value="modified-privileges-required">Modified Privileges Required</enum>
-               <enum value="modified-user-interaction">Modified User Interaction</enum>
-               <enum value="modified-scope">Modified Scope</enum>
-               <enum value="modified-confidentiality">Modified Confidentiality</enum>
-               <enum value="modified-integrity">Modified Integrity</enum>
-               <enum value="modified-availability">Modified Availability</enum>
-            </allowed-values>
-         </constraint>
       </define-flag>
       <define-flag name="class">
          <!-- TODO: define me -->
@@ -1556,23 +1476,23 @@
          <constraint>
             <allowed-values allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                <enum value="initial">Initial</enum>
-               <enum value="residual">Residual</enum>
+               <!-- CHANGED: residual to adjusted -->
+               <enum value="adjusted">Adjusted</enum>
             </allowed-values>
          </constraint>
       </define-flag>
-      <define-flag name="system" as-type="uri">
-         <!-- TODO: fix these to match URI syntax -->
+      <define-flag name="system" as-type="uri" required="yes">
          <formal-name>System</formal-name>
          <description>Specifies the system represented by this risk metric.</description>
          <constraint>
             <allowed-values allow-other="yes"><!-- Other values -->
-               <enum value="https://www.nist.gov"/>
-               <enum value="https://fedramp.gov"/>
-               <enum value="cve"/>
+               <enum value="http://fedramp.gov"/>
+               <enum value="http://csrc.nist.gov/ns/oscal"/>
+               <enum value="http://cve.mitre.org"/>
                <!-- To identify which CVSS values to use -->
-               <enum value="CVSSv2"/>
-               <enum value="CVSSv3"/>
-               <enum value="CVSSv3.1"/>
+               <enum value="http://www.first.org/cvss/v2.0"/>
+               <enum value="http://www.first.org/cvss/v3.0"/>
+               <enum value="http://www.first.org/cvss/v3.1"/>
             </allowed-values>
          </constraint>
       </define-flag>
@@ -1592,6 +1512,201 @@
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
+      <constraint>
+         <allowed-values target="(.)[@system='http://csrc.nist.gov/oscal']/@name" allow-other="yes">
+            <enum value="likelihood">General likelihood rating.</enum>
+            <enum value="impact">General impact rating.</enum>
+            <enum value="risk">General risk rating.</enum>
+            <enum value="severity">General severity rating.</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://fedramp.gov']/@name" allow-other="yes">
+            <!-- CHANGED: "fedramp-likelihood" to "likelihood" -->
+            <enum value="likelihood">Likelihood as defined by FedRAMP. The class can be used to specifiy 'inital' and 'adjusted'.</enum>
+            <enum value="impact">Impact as defined by FedRAMP.</enum>
+            <enum value="risk">Risk as calculated according to FedRAMP.</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://cve.mitre.org']/@name">
+            <enum value="cve-id">An identifier managed by the CVE program (see <a>https://cve.mitre.org/</a>).</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0']/@name">
+            <!-- CHANGED: Only allow the abbreviations. No longer allow the lower-case name values -->
+            <!-- TODO: Expand definitions -->
+            <enum value="access-vector" >Base: Access Vector</enum>
+            <enum value="access-complexity" >Base: Access Complexity</enum>
+            <enum value="authentication" >Base: Authentication</enum>
+            <enum value="confidentiality-impact"  >Base: Confidentiality Impact</enum>
+            <enum value="integrity-impact"  >Base: Integrity Impact</enum>
+            <enum value="availability-impact"  >Base: Availability Impact</enum>
+            <enum value="exploitability"  >Temporal: Exploitability</enum>
+            <enum value="remediation-level" >Temporal: Remediation Level</enum>
+            <enum value="report-confidence" >Temporal: Report Confidence</enum>
+            <enum value="collateral-damage-potential">Environmental: Collateral Damage Potential</enum>
+            <enum value="target-distribution" >Environmental: Target Distribution</enum>
+            <enum value="confidentiality-requirement" >Environmental: Confidentiality Requirement</enum>
+            <enum value="integrity-requirement" >Environmental: Integrity Requirement</enum>
+            <enum value="availability-requirement" >Environmental: Availability Requirement</enum>
+         </allowed-values>
+         <!-- TODO: Expand CVSS definitions for 2.0 and 3.0/3.1 -->
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-vector']/@value">
+            <enum value="local">Local</enum>
+            <enum value="adjacent-network">Network Adjacent</enum>
+            <enum value="network">Network</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-complexity']/@value">
+            <enum value="high">High</enum>
+            <enum value="medium">Medium</enum>
+            <enum value="low">Low</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='authentication']/@value">
+            <enum value="multiple">Multiple</enum>
+            <enum value="single">Single</enum>
+            <enum value="none">None</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
+            <enum value="none">None</enum>
+            <enum value="partial">Partial</enum>
+            <enum value="complete">Complete</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='exploitability']/@value">
+            <enum value="unproven">Unproven</enum>
+            <enum value="proof-of-concept">Proof-of-Concept</enum>
+            <enum value="functional">Functional</enum>
+            <enum value="high">High</enum>
+            <enum value="not-defined">Not Defined</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='remediation-level']/@value">
+            <enum value="official-fix">Official Fix</enum>
+            <enum value="temporary-fix">Temporary Fix</enum>
+            <enum value="workaround">Workaround</enum>
+            <enum value="unavailable">Unavailable</enum>
+            <enum value="not-defined">Not Defined</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='report-confidence']/@value">
+            <enum value="unconfirmed">Unconfirmed</enum>
+            <enum value="uncorroborated">Uncorroborated</enum>
+            <enum value="confirmed">Confirmed</enum>
+            <enum value="not-defined">Not Defined</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='collateral-damage-potential']/@value">
+            <enum value="none">None</enum>
+            <enum value="low">Low (light loss)</enum>
+            <enum value="low-medium">Low Medium</enum>
+            <enum value="medium-high">Medium High</enum>
+            <enum value="high">High (catastrophic loss)</enum>
+            <enum value="not-defined">Not Defined</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('target-distribution', 'confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
+            <enum value="none"></enum>
+            <enum value="low"></enum>
+            <enum value="medium"></enum>
+            <enum value="high"></enum>
+            <enum value="not-defined"></enum>
+         </allowed-values>
+         
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
+            <!-- CHANGED: Only allow the abbreviations. No longer allow the lower-case name values -->
+            <!-- TODO: Add additional constraints for the allowed values of each CVSS metric. -->
+            <enum value="access-vector" >Base: Attack Vector</enum>
+            <enum value="access-complexity" >Base: Attack Complexity</enum>
+            <enum value="privileges-required" >Base: Privileges Required</enum>
+            <enum value="user-interaction" >Base: User Interaction</enum>
+            <enum value="scope"  >Base: Scope</enum>
+            <enum value="confidentiality-impact"  >Base: Confidentiality Impact</enum>
+            <enum value="integrity-impact"  >Base: Integrity Impact</enum>
+            <enum value="availability-impact"  >Base: Availability Impact</enum>
+            <enum value="exploit-code-maturity"  >Temporal: Exploit Code Maturity</enum>
+            <enum value="remediation-level" >Temporal: Remediation Level</enum>
+            <enum value="report-confidence" >Temporal: Report Confidence</enum>
+            <enum value="modified-attack-vector">Environmental: Modified Attack Vector</enum>
+            <enum value="modified-attack-complexity">Environmental: Modified Attack Complexity</enum>
+            <enum value="modified-privileges-required">Environmental: Modified Privileges Required</enum>
+            <enum value="modified-user-interaction">Environmental: Modified User Interaction</enum>
+            <enum value="modified-scope" >Environmental: Modified Scope</enum>
+            <enum value="modified-confidentiality" >Environmental: Modified Confidentiality</enum>
+            <enum value="modified-integrity" >Environmental: Modified Integrity</enum>
+            <enum value="modified-availability" >Environmental: Modified Availability</enum>
+            <enum value="confidentiality-requirement" >Environmental: Confidentiality Requirement Modifier</enum>
+            <enum value="integrity-requirement" >Environmental: Integrity Requirement Modifier</enum>
+            <enum value="availability-requirement" >Environmental: Availability Requirement Modifier</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-vector']/@name">
+            <enum value="network">Network</enum>
+            <enum value="adjacent">Adjacent</enum>
+            <enum value="local">Local</enum>
+            <enum value="physical">Physical</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-complexity']/@name">
+            <enum value="high">High</enum>
+            <enum value="low">Low</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('privileges-required', 'confidentiality-impact', 'integrity-impact', 'availability-impact')]/@name">
+            <enum value="none">None</enum>
+            <enum value="low">Low</enum>
+            <enum value="high">High</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='user-interaction']/@name">
+            <enum value="none">None</enum>
+            <enum value="required">Required</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='scope']/@name">
+            <enum value="unchanged">Unchanged</enum>
+            <enum value="changed">Changed</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='exploit-code-maturity']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="unproven">Unproven</enum>
+            <enum value="proof-of-concept">Proof-of-Concept</enum>
+            <enum value="functional">Functional</enum>
+            <enum value="high">High</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='remediation-level']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="official-fix">Official Fix</enum>
+            <enum value="temporary-fix">Temporary Fix</enum>
+            <enum value="workaround">Workaround</enum>
+            <enum value="unavailable">Unavailable</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='report-confidence']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="unknown">Unknown</enum>
+            <enum value="reasonable">Reasonable</enum>
+            <enum value="confirmed">Confirmed</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="low">Low</enum>
+            <enum value="medium">Medium</enum>
+            <enum value="high">High</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-vector']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="network">Network</enum>
+            <enum value="adjacent">Adjacent</enum>
+            <enum value="local">Local</enum>
+            <enum value="physical">Physical</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-complexity']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="high">High</enum>
+            <enum value="low">Low</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('modified-privileges-required', 'modified-confidentiality', 'modified-integrity', 'modified-availability')]/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="none">None</enum>
+            <enum value="low">Low</enum>
+            <enum value="high">High</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-user-interaction']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="none">None</enum>
+            <enum value="required">Required</enum>
+         </allowed-values>
+         <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-scope']/@name">
+            <enum value="not-defined">Not Defined</enum>
+            <enum value="unchanged">Unchanged</enum>
+            <enum value="changed">Changed</enum>
+         </allowed-values>
+      </constraint>
    </define-assembly>
 
    <define-assembly name="remediation" scope="local">
