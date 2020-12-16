@@ -309,6 +309,7 @@ For /system-security-plan/control-implementation/implemented-requirement:
 - added allowed values for annotation/@name including "implementation-status", "control-origination"
 - added allowed values for prop/@name including "leveraged-authorization" to indicate if a control implementation is inherited from an underlying authorized system
 - added allowed values for responsible-role/$role-id
+- changed the sequencing of "set-parameter" and "responsible-role"
 
 For /system-security-plan/control-implementation/implemented-requirement/by-component:
 - renamed "component-id" to "component-uuid"
