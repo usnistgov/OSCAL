@@ -45,17 +45,11 @@
       <!-- TODO: refactor this to align with catalog syntax for control objectives -->
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
-      <define-flag name="id" required="yes" as-type="NCName" >
-         <!-- This is an id to sync with control syntax -->
-         <formal-name>Control Objective Identifier</formal-name>
-         <description>A unique identifier for the assessment-specific control objective instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
+      <flag ref="control-id" required="yes">
          <remarks>
-            <p>In the catalog, control objectives use ID, not UUID. This is the primary source of control objectives relative to an assessment.</p>
-            <p>While rare, control-objectives may also be defined locally within the assessment-plan and assessment-results models</p>
-            <p>ID is used to ensure consistent syntax from referencing fields/flags, whether referencing catalog-defined or locally-defined objectives.</p>
+            <p>The specified <code>control-id</code> must be a valid value within the baseline identified by the target system's SSP via the <code>import-profile</code> statement.</p>
          </remarks>
-      </define-flag>
-      <flag ref="control-id" required="yes"/>
+      </flag>
       <model>
          <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Objective Description</formal-name>
@@ -70,19 +64,21 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="assessment-part" min-occurs="1" max-occurs="1"/>
-         <define-field name="assessment-method" as-type="empty" max-occurs="unbounded"> 
-            <formal-name>Assessment Method</formal-name>
-            <description>Identifies a method for assessing the satisfaction of this objective.</description>
-            <!-- CHANGED group-as from "methods" to "assessment-methods" -->
-            <group-as name="assessment-methods" in-json="ARRAY"/>
-            <define-flag name="method-uuid" required="yes" as-type="uuid">
-               <formal-name>Method ID</formal-name>
-               <description>Identifies the assessment method by its UUID value.</description>
-            </define-flag>
-         </define-field>
+         <assembly ref="part" min-occurs="1" max-occurs="unbounded">
+            <group-as name="parts" in-json="ARRAY" />
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
+      <constraint>
+         <allowed-values target="part">
+            <enum value="objective"></enum>
+            <enum value="assessment"></enum>
+         </allowed-values>
+         <has-cardinality target="part[@name='objective']" min-occurs="0" max-occurs="1" />
+         <has-cardinality target="part[@name='assessment']/prop[@name='method']" min-occurs="1" max-occurs="1" />         
+         <has-cardinality target="part[@name='assessment']/part[@name='objects']" min-occurs="1" max-occurs="1" />
+         <has-cardinality target="part[@name='objective']/prop[@name='method-id']" min-occurs="1" max-occurs="unbounded" />
+      </constraint>
    </define-assembly>
    <define-assembly name="assessment-method">
       <!-- CHANGED "method" to "assessment-method" -->
@@ -640,10 +636,7 @@
             <group-as name="exclude-subjects" in-json="ARRAY"/>
          </assembly>
          <!-- CHANGED: moved "local-definitions" to the top-level -->
-         <field ref="remarks"
-            in-xml="WITH_WRAPPER"
-            min-occurs="0"
-            max-occurs="1"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <remarks>
          <p>Processing of an include/excluse pair starts with processing the include, then removing matching entries in the exlcude.</p>
@@ -662,16 +655,12 @@
          </remarks>
       </define-flag>
 -->
+      <!-- CHANGED: Flattened assembly by: adding "uuid-ref" flag. Removing "subject/subjects". --> 
+      <define-flag name="uuid-ref" required="yes">
+         <formal-name>UUID Reference</formal-name>
+         <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
+      </define-flag>
       <model>
-         <define-field name="subject" as-type="empty" min-occurs="1" max-occurs="unbounded">
-            <formal-name>Identifies the Subject</formal-name>
-            <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
-            <group-as name="subjects" in-json="ARRAY"/>
-            <define-flag name="uuid-ref" as-type="uuid" required="yes">
-               <formal-name>UUID Reference</formal-name>
-               <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
-            </define-flag>
-         </define-field> 
          <field ref="property" min-occurs="0" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
          </field>
@@ -681,8 +670,6 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         
-
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
