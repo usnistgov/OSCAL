@@ -461,6 +461,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+         
          <define-assembly name="control-selection" min-occurs="1" max-occurs="unbounded">
             <formal-name>Assessed Controls</formal-name>
             <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
@@ -506,9 +507,11 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <remarks>
-               <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
+               <p>The <code>include-all</code>, specifies all control identified in the baseline are included in the scope if this assessment, as specified by the <code>include-profile</code> statement within the linked SSP.</p>
+               <p>Any control specified within <code>exclude-controls</code> must first be within a range of explicitly included controls, via <code>include-controls</code> or <code>include-all</code>.</p>
             </remarks>
          </define-assembly>
+         
          <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
             <formal-name>Referened Control Objectives</formal-name>
@@ -1157,9 +1160,7 @@
                   <enum value="EXAMINE">An inspection was performed.</enum>
                   <enum value="INTERVIEW">An interview was performed.</enum>
                   <enum value="TEST">A manual or automated test was performed.</enum>
-                  <enum value="TEST-MANUAL">A manual test was performed.</enum>
-                  <enum value="TEST-AUTOMATED">An automated test was performed.</enum>
-                  <enum value="MIXED">Only use for historic conversion of old assessment observations that may include a mix of methods.</enum>
+                  <enum value="UNKNOWN">This is only for use when converting historic content to OSCAL, where the conversion process cannot initially identify the appopriate method(s).</enum>
                </allowed-values>
             </constraint>
          </define-field>
@@ -1457,22 +1458,28 @@
             <group-as name="party-uuids" in-json="ARRAY"/>
          </field>
       </model>
+      <constraint>
+         <allowed-values target="prop/@name">
+            <enum value="false-positive">The risk has been confirmed to be a false positive.</enum>
+            <enum value="accepted">The risk has been accepted. No further action will be taken.</enum>
+            <enum value="risk-adjusted">The risk has been adjusted.</enum>
+            <enum value="priority">A numeric value indicating the sequence in which risks should be addressed. (Lower numbers are higher priority)</enum>
+         </allowed-values>
+         <matches target="prop[@name='priority']/value()" datatype="integer" />
+      </constraint>
    </define-assembly>
 
    <define-assembly name="risk-metric" scope="local">
       <formal-name>Risk Metric</formal-name>
       <description>An individual value relevant to the risk of a specified system.</description>
       <define-flag name="name" required="yes">
-         <!-- TODO: this documentation needs to be improved -->
-         <!-- TODO: We need to reduce this to a core set for OSCAL -->
-         <!-- QUESTION: Should we use a different structure here that organizes things by concept area? -->
          <formal-name>name flag</formal-name>
          <description>name flag ... </description>
       </define-flag>
       <define-flag name="class">
          <!-- TODO: define me -->
-         <formal-name>class flag</formal-name>
-         <description>class flag ... </description>
+         <formal-name>Class Flag</formal-name>
+         <description>Class is used to identify </description>
          <constraint>
             <allowed-values allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                <enum value="initial">Initial</enum>
@@ -1709,21 +1716,23 @@
       </constraint>
    </define-assembly>
 
-   <define-assembly name="remediation" scope="local">
-      <formal-name>Remediation</formal-name>
-      <description>Describes either recommendation or an actual plan for remediating the risk.</description>
+   <!-- CHANGED: "remediation" to "response" -->
+   <define-assembly name="response" scope="local">
+      <formal-name>Risk Response</formal-name>
+      <description>Describes either recommended or an actual plan for addressing the risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Remediation Universally Unique Identifier</formal-name>
          <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.</description>
       </define-flag>
-      <define-flag name="type" required="no">
-         <!-- TODO: define me -->
-         <formal-name>type flag</formal-name>
-         <description>type flag ... </description>
+      <!-- CHANGED: type to lifecycle -->
+      <define-flag name="lifecycle" required="yes">
+         <formal-name>Remediation Intent</formal-name>
+         <description>Identifies whether this is a recommendation, such as from an assessor or tool, or an actual plan accepted by the system owner.</description>
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="recommendation">Recommended Remediation</enum>
-               <enum value="planned">Planned Remediation</enum>
+               <enum value="planned">The actions intended to resolve the risk.</enum>
+               <enum value="">This remediation activits were performed to address the risk.</enum>
             </allowed-values>
          </constraint>
       </define-flag>
