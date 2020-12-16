@@ -421,12 +421,13 @@ n added allowed values for responsible-role/$role-id
     <xsl:template match="implemented-requirement | implemented-requirement//statement">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="prop, annotation, link, set-parameter, responsible-role"/>
             <xsl:if test="exists(description) and empty(by-component[@component-uuid=$this-system-component-uuid]) ">
                 <by-component component-uuid="{$this-system-component-uuid}" uuid="{uuid:randomUUID()}">
                     <xsl:sequence select="description"/>
                 </by-component>
             </xsl:if>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="by-component, statement, remarks"/>
         </xsl:copy>
     </xsl:template>
     
