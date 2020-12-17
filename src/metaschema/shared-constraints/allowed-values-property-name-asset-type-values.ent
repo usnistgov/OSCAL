@@ -1,3 +1,4 @@
+<!--  TODO: define values  -->
 <!--  CHANGHD "os" to "operating-system" -->
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="operating-system"></enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="database"></enum>

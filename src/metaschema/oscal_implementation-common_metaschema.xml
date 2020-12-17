@@ -192,7 +192,7 @@
             <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address</enum>
             <enum value="direction">An Internet Protocol Version 6 interconnection address</enum>
          </allowed-values>
-         <allowed-values target="prop[(@name='ipv4-address') or (@name='ipv6-address')]/@class" allow-other="yes">
+         <allowed-values target="prop[(@name=('ipv4-address','ipv6-address')]/@class" allow-other="yes">
             <enum value="local">The identified IP address is for this system.</enum>
             <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
          </allowed-values>

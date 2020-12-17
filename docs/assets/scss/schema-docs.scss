@@ -96,7 +96,9 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
 div.OM-map p {
   margin: 0ex; }
 
-.OM-line { padding-left: 1em }
+.OM-line {
+//  padding-left: 1em
+}
 
 .OM-lit {
   @include u-font-family('sans');
