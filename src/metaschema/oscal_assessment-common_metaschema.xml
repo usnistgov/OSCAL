@@ -27,8 +27,7 @@
          <description>>A resolvable URL reference to the system security plan for the system being assessed.</description>
          <remarks>
             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-            <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-            <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+            <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="../../../assessment-layer/assessment-plan/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
          </remarks>
       </define-flag>
@@ -42,7 +41,6 @@
    <!-- === NEW === -->
    <!-- =========== -->
    <define-assembly name="local-objective">
-      <!-- TODO: refactor this to align with catalog syntax for control objectives -->
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
       <flag ref="control-id" required="yes">
@@ -503,7 +501,7 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <remarks>
-               <p>The <code>include-all</code>, specifies all control identified in the baseline are included in the scope if this assessment, as specified by the <code>include-profile</code> statement within the linked SSP.</p>
+               <p>The <code>include-all</code>, specifies all control identified in the <strong>baseline</strong> are included in the scope if this assessment, as specified by the <code>include-profile</code> statement within the linked SSP.</p>
                <p>Any control specified within <code>exclude-controls</code> must first be within a range of explicitly included controls, via <code>include-controls</code> or <code>include-all</code>.</p>
             </remarks>
          </define-assembly>
@@ -550,11 +548,11 @@
                      <p>Used to select a control objective for exclusion by the control objective's identifier.</p>
                   </remarks>
                </field>
-               
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <remarks>
-               <p>TODO: (brian) document use of all, and how excludes work regarding processing.</p>
+               <p>The <code>include-all</code> field, specifies all control objectives for any in-scope control. In-scope controls are defined in the <code>control-selection</code>.</p>
+               <p>Any control objective specified within <code>exclude-controls</code> must first be within a range of explicitly included control objectives, via <code>include-objectives</code> or <code>include-all</code>.</p>
             </remarks>
          </define-assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -585,7 +583,6 @@
       <description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</description>
       <flag ref="objective-id" required="yes"/>
    </define-field>
-   
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
    <define-assembly name="assessment-subject">
@@ -593,22 +590,20 @@
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.</description>
       <!-- CHANGED: "name" to "type" -->
       <define-flag name="type" required="yes">
-         <!-- TODO: Improve documentation -->
          <formal-name>Subject Type</formal-name>
          <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this selection statement.</description>
          <constraint>
             <allowed-values allow-other="yes">
-               <enum value="component">Component</enum>
-               <enum value="inventory-item">Inventory Item</enum>
-               <enum value="location">Location</enum>
-               <enum value="party">Person to Interview</enum>
-               <enum value="user">User</enum>
+               <enum value="component">The referenced assessment subject is a component defined in the SSP, or in the <code>local-definitions</code> of an Assessment Plan or Assessment Results.</enum>
+               <enum value="inventory-item">The referenced assessment subject is a inventory item defined in the SSP, or in the <code>local-definitions</code> of an Assessment Plan or Assessment Results.</enum>
+               <enum value="location">The referenced assessment subject is a <code>location</code> defined in the <code>metadata</code> of the SSP, Assessment Plan, or Assessment Results.</enum>
+               <enum value="party">The referenced assessment subject is a person or team to interview, who is defined as a <code>party</code> in the <code>metadata</code> of the SSP, Assessment Plan, or Assessment Results.</enum>
+               <enum value="user">The referenced assessment subject is a <code>user</code> defined in the SSP, or in the <code>local-definitions</code> of an Assessment Plan or Assessment Results.</enum>
             </allowed-values>
          </constraint>
       </define-flag>
       <model>
-         <define-field name="description"  min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <!-- QUESTION: Should this be optional? -->
+         <define-field name="description"  min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Include Subjects Description</formal-name>
             <description>A human-readable description of the collection of subjects being included in this assessment.</description>
          </define-field>
@@ -1214,31 +1209,11 @@
                <p>Identifies who was interviewed, or what was tested or inspected.</p>
             </remarks>
          </assembly>
-         <define-field name="origin" as-type="empty" max-occurs="unbounded">
-            <formal-name>Origin</formal-name>
-            <description>Identifies the source of the finding, such as a tool, interviewed person,
-               or activity.</description>
+         
+         <define-field name="origin" max-occurs="unbounded">
             <group-as name="origins" in-json="ARRAY"/>
-            <define-flag name="uuid-ref" as-type="uuid" required="yes">
-               <formal-name>UUID Reference</formal-name>
-               <!-- QUESTION: What does this point to? -->
-               <description>A pointer to a relevant item, using it's UUID.</description>
-            </define-flag>
-            <define-flag name="type" required="yes">
-               <!-- TODO: need to update this -->
-               <formal-name>Universally Unique Identifier Reference Type</formal-name>
-               <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
-               <constraint>
-                  <allowed-values allow-other="no">
-                     <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
-                     <enum value="test-method">A test method defined in the assessment-activities section of the assessment plan or results.</enum>
-                     <enum value="task">A task defined in the schedule of the assessment plan or results.</enum>
-                     <enum value="included-activity">An assessment activity defined in the assessment-activities section of the assessment plan or results.</enum>
-                     <enum value="other">The UUID points elsewhere in the this file or an imported file.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-         </define-field>
+         </define-field>         
+         
          <define-assembly name="relevant-evidence" max-occurs="unbounded">
             <formal-name>Relevant Evidence</formal-name>
             <description>Links this observation to relevant evidence.</description>
@@ -1249,8 +1224,7 @@
                <description>>A resolvable URL reference to relevant evidence.</description>
                <remarks>
                   <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                  <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-                  <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                  <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="../../../assessment-layer/assessment-plan/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
                   <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
                </remarks>
             </define-flag>
@@ -1274,7 +1248,31 @@
          </define-assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
+      <constraint>
+         <allowed-values target="origin/@type" allow-other="no">
+            <!-- CHANGED: "tool" to "******" -->
+            <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
+            <enum value="test-method">A test method defined in the assessment-activities section of the assessment plan or results.</enum>
+            <enum value="task">A task defined in the schedule of the assessment plan or results.</enum>
+            <enum value="included-activity">An assessment activity defined in the assessment-activities section of the assessment plan or results.</enum>
+            <enum value="other">The UUID points elsewhere in the this file or an imported file.</enum>
+         </allowed-values>
+      </constraint>
    </define-assembly>
+
+   <define-field name="origin" as-type="empty">
+      <formal-name>Origin</formal-name>
+      <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
+      <define-flag name="uuid-ref" as-type="uuid" required="yes">
+         <formal-name>UUID Reference</formal-name>
+         <description>A pointer to the a tool, test-method, using it's UUID.</description>
+      </define-flag>
+      <define-flag name="type" required="yes">
+         <formal-name>Universally Unique Identifier Reference Type</formal-name>
+         <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
+      </define-flag>
+   </define-field>
+
 
    <define-field name="threat-id" as-type="uri">
       <!-- This is an id because it is an externally provided identifier -->
@@ -1441,17 +1439,16 @@
                         <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
                      </allowed-values>
                      <allowed-values target="prop/[@name='type']/value()" allow-other="yes">
-                        <!-- TODO: Improve these definitions -->
-                        <enum value="vendor-check-in">Vendor Check-In</enum>
-                        <enum value="status-update">Status Update</enum>
-                        <enum value="milestone-complete">Milestone Complete</enum>
-                        <enum value="mitigation">Mitigation Implemented</enum>
-                        <enum value="remediated">Risk is Remediated</enum>
-                        <enum value="closed">Closed</enum>
-                        <enum value="dr-submission">Deviation Request Submission</enum>
-                        <enum value="dr-updated">Deviation Requested Updated</enum>
-                        <enum value="dr-approved">Deviation Request Approved</enum>
-                        <enum value="dr-rejected">Deviation Request Rejected</enum>
+                        <enum value="vendor-check-in">Contacted vendor to determine the status of a pending fix to a known vulnerability.</enum>
+                        <enum value="status-update">Information related to the current state of response to this risk.</enum>
+                        <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
+                        <enum value="mitigation">An activity was completed that reduces the likelihood or impact of this risk.</enum>
+                        <enum value="remediated">An activitiy was completed that eliminates the likelihood or impact of this risk.</enum>
+                        <enum value="closed">The risk is no longer applicable to the system.</enum>
+                        <enum value="dr-submission">A deviation request was made to the authorizing official.</enum>
+                        <enum value="dr-updated">A previously submitted deviation request has been modified.</enum>
+                        <enum value="dr-approved">The authorizing official approved the deviation.</enum>
+                        <enum value="dr-rejected">The authorizing official rejected the deviation.</enum>
                      </allowed-values>
                   </constraint>
                </define-assembly>
@@ -1493,9 +1490,8 @@
          <description>name flag ... </description>
       </define-flag>
       <define-flag name="class">
-         <!-- TODO: define me -->
          <formal-name>Class Flag</formal-name>
-         <description>Class is used to identify </description>
+         <description>Class is used to differentiate an initial risk value from an adjusted risk value.</description>
          <constraint>
             <allowed-values allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                <enum value="initial">Initial</enum>
@@ -1551,9 +1547,9 @@
          <allowed-values target="(.)[@system='http://cve.mitre.org']/@name">
             <enum value="cve-id">An identifier managed by the CVE program (see <a>https://cve.mitre.org/</a>).</enum>
          </allowed-values>
+         <!-- TODO: Expand CVSS risk-metric name and value definitions for 2.0 and 3.0/3.1 -->
          <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0']/@name">
             <!-- CHANGED: Only allow the abbreviations. No longer allow the lower-case name values -->
-            <!-- TODO: Expand definitions -->
             <enum value="access-vector" >Base: Access Vector</enum>
             <enum value="access-complexity" >Base: Access Complexity</enum>
             <enum value="authentication" >Base: Authentication</enum>
@@ -1569,7 +1565,6 @@
             <enum value="integrity-requirement" >Environmental: Integrity Requirement</enum>
             <enum value="availability-requirement" >Environmental: Availability Requirement</enum>
          </allowed-values>
-         <!-- TODO: Expand CVSS definitions for 2.0 and 3.0/3.1 -->
          <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-vector']/@value">
             <enum value="local">Local</enum>
             <enum value="adjacent-network">Network Adjacent</enum>
@@ -1754,13 +1749,13 @@
       </define-flag>
       <model>
          <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
-            <formal-name>Remediation Title</formal-name>
-            <description>The title for this remediation activity.</description>
+            <formal-name>Response Title</formal-name>
+            <description>The title for this response activity.</description>
          </define-field>
          <!-- CHANGE: Added WITH_WRAPPER to description -->
          <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>Remediaiton Description</formal-name>
-            <description>A human-readable description of this remediation plan.</description>
+            <formal-name>Response Description</formal-name>
+            <description>A human-readable description of this response plan.</description>
          </define-field>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
@@ -1771,29 +1766,13 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="origin" as-type="empty" max-occurs="unbounded">
-            <!-- QUESTION: Should this be unified with other similar origins? -->
-            <!-- CHANGED "remediation-origin" to "origin" -->
-            <formal-name>Remediation Origin</formal-name>
-            <description>Points to the source of the recommendation.</description>
+         <field ref="origin" max-occurs="unbounded" >
             <group-as name="origins" in-json="ARRAY"/>
-            <define-flag name="uuid-ref" as-type="uuid" required="yes">
-               <formal-name>UUID Reference</formal-name>
-               <!-- QUESTION: What does this point to? -->
-               <description>A pointer to a relevant item, using it's UUID.</description>
-            </define-flag>
-            <define-flag name="type" as-type="uuid" required="no">
-               <formal-name>Universally Unique Identifier Reference Type</formal-name>
-               <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
-               <constraint>
-                  <allowed-values allow-other="yes">
-                     <enum value="party">The UUID of the person or organization who made the recommendation</enum>
-                     <enum value="tool">The UUID of the tool that made the recommendation</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <!-- TODO: document the UUID space that can be referenced. Currently part and tool. -->
-         </define-field>
+            <remarks>
+               <p>Points to the source of a recommended or planned response.</p>
+            </remarks>
+         </field>
+         
          <define-assembly name="required-asset" max-occurs="unbounded">
             <!-- CHANGED: "required" to "required-asset" -->
             <formal-name>Required Asset</formal-name>
@@ -1831,6 +1810,12 @@
                </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
+            <constraint>
+               <allowed-values target="origin/@type" allow-other="no">
+                  <enum value="party">The UUID of the person or organization who made the recommendation</enum>
+                  <enum value="tool">The UUID of the tool that made the recommendation</enum>
+               </allowed-values>
+            </constraint>
          </define-assembly>
          
          <!-- CHANGED: "schedule" to "task", and changed cardinality to unbounded.  -->
