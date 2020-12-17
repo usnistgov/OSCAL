@@ -72,7 +72,7 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED" min-occurs="1">
+         <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED">
             <formal-name>Part Text</formal-name>
             <description>Permits multiple paragraphs, lists, tables etc.</description>
          </define-field>
