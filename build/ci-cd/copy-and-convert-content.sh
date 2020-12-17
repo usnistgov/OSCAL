@@ -29,7 +29,7 @@ Usage: $0 [options]
 EOF
 }
 
-OPTS=`getopt -o w:o:c:a:vh --long resolve-profiles,working-dir:,artifact-dir:,oscal-dir:,config-file:,help -n "$0" -- "$@"`
+OPTS=`getopt -o a:o:w:c:hv --long resolve-profiles,artifact-dir:,oscal-dir:,working-dir:,config-file:,help -n "$0" -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
@@ -37,32 +37,32 @@ eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
-    -w|--working-dir)
-      WORKING_DIR="$(realpath "$2")"
-      shift # past path
-      ;;
     --resolve-profiles)
       RESOLVE_PROFILES=true
-      shift # past path
-      ;;
-    -o|--oscal-dir)
-      OSCAL_DIR="$(realpath "$2")"
-      shift # past path
-      ;;
-    -c|--config-file)
-      CONFIG_FILE="$(realpath "$2")"
       shift # past path
       ;;
     -a|--artifact-dir)
       ARTIFACT_DIR="$(realpath "$2")"
       shift # past path
       ;;
-    -v)
-      VERBOSE=true
+    -o|--oscal-dir)
+      OSCAL_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -w|--working-dir)
+      WORKING_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    -c|--config-file)
+      CONFIG_FILE="$(realpath "$2")"
+      shift # past path
       ;;
     -h|--help)
       usage
       exit 0
+      ;;
+    -v)
+      VERBOSE=true
       ;;
     --) # end of options
       shift
@@ -387,7 +387,7 @@ process_paths() {
 #  printf 'models: %s\n' "${models[@]}"
 #  printf 'converttoformats: %s\n' "${conversion_formats[@]}"
 
-  local cmd_exitcode=0;
+  local exitcode=0;
   #shopt -s nullglob
   #shopt -s globstar
 
@@ -436,7 +436,7 @@ process_paths() {
 
     done
   done
-  return $cmd_exitcode;
+  return $exitcode;
 }
 
 process_paths #"${paths[@]}" "${formats[@]}" "${models[@]}" "${conversion_formats[@]}"
