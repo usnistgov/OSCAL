@@ -103,6 +103,12 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+         <assembly ref="origin" max-occurs="unbounded">
+            <group-as name="origins" in-json="ARRAY"/>
+            <remarks>
+               <p>Used to identify the individual and/or tool generated this finding.</p>
+            </remarks>
+         </assembly>         
          
          <!-- TODO: add link; check in the other assessment models -->
          <define-field name="collected"
@@ -143,14 +149,6 @@
                <formal-name>Risk Universally Unique Identifier Reference</formal-name>
                <description>References an risk defined in the list of risks.</description>
             </define-flag>
-         </define-field>
-         <define-field name="party-uuid"
-                       as-type="uuid"
-                       min-occurs="0"
-                       max-occurs="unbounded">
-            <formal-name>party-uuid field</formal-name>
-            <description>The person who collected the evidence or made the observation.</description>
-            <group-as name="party-uuids" in-json="ARRAY"/>
          </define-field>
          <field ref="remarks"
                 in-xml="WITH_WRAPPER"

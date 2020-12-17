@@ -126,8 +126,6 @@
             <formal-name>Included Activity Description</formal-name>
             <description>A human-readable description of this included activity.</description>
          </define-field>
-         <!-- QUESTION: Should "origination" appear here or on the event? -->
-         <assembly ref="origination" max-occurs="1"/>
          <field ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
          </field>
@@ -157,8 +155,6 @@
                   <formal-name>Action Description</formal-name>
                   <description>A human-readable description of this action.</description>
                </define-field>
-               <!-- QUESTION: Should "origination" appear here or on the event? It also appears on the parent. -->
-               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
                </field>
@@ -184,8 +180,9 @@
             </model>
          </define-assembly>
          <assembly ref="reviewed-controls">
+            <use-name>related-controls</use-name>
             <remarks>
-               <p>This can be optionally used to define the set of controls and control objectives that are assessed by this activity.</p>
+               <p>This can be optionally used to define the set of controls and control objectives that are assessed or remediated by this activity.</p>
             </remarks>
          </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
@@ -287,31 +284,28 @@
                </choice>
             </model>
          </define-assembly>
+
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+            </remarks>
+         </assembly>
          
-         <!-- CHANGED: Added "activity-selection" -->
-         <define-assembly name="activity-instance" min-occurs="0" max-occurs="unbounded">
-            <formal-name>Activity Instance</formal-name>
-            <description>Identifies an individual activity to be performed as an assessment action.</description>
-            <group-as name="activity-instances" in-json="ARRAY"/>
+         <!-- CHANGED: Added "associated-activity" -->
+         <define-assembly name="associated-activity" min-occurs="0" max-occurs="unbounded">
+            <formal-name>Associated Activity</formal-name>
+            <description>Identifies an individual activity to be performed as part of an action.</description>
+            <group-as name="associated-activities" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
-               <formal-name>Activity Instance Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+               <formal-name>Associated Activity Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies an activity to be performed as part of the action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
             </define-flag>
             <define-flag name="activity-uuid" required="yes" as-type="uuid">
                <formal-name>Activity Universally Unique Identifier Reference</formal-name>
                <description>References an activity defined in the list of activities.</description>
             </define-flag>
             <model>
-               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-                  <formal-name>Activity Instance Title</formal-name>
-                  <description>The title for this activity instance.</description>
-               </define-field>
-               <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline">
-                  <formal-name>Activity Instance Description</formal-name>
-                  <description>A human-readable description of this activity instance.</description>
-               </define-field>
-               <!-- QUESTION: Should this be renamed? -->
-               <assembly ref="origination" min-occurs="0" max-occurs="1"/>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
                </field>
@@ -401,28 +395,9 @@
             <formal-name>Task End Date</formal-name>
             <description>The task must occur on or before the specified date.</description>
          </define-field>
-         <define-assembly name="associated-action" max-occurs="unbounded">
-            <formal-name>Associated Action</formal-name>
-            <description>An activity instance that is associated with this planned task.</description>
-            <use-name>activity-instance</use-name>
-            <group-as name="activity-instances"/>
-            <define-flag name="activity-instance-uuid" required="yes" as-type="uuid">
-               <formal-name>Activity Instance Universally Unique Identifier Reference</formal-name>
-               <description>References an activity instance defined in the plan.</description>
-            </define-flag>
-            <model>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </assembly>
-               
-            </model>
-         </define-assembly>
+         <assembly ref="related-action" max-occurs="unbounded">
+            <group-as name="related-actions" in-json="ARRAY"/>
+         </assembly>
          <assembly ref="responsible-party" max-occurs="unbounded">
             <group-as name="responsible-parties" in-json="BY_KEY"/>
             <remarks>
@@ -696,6 +671,7 @@
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+            <!-- QUESTION: Is this needed, since the title from the target can be used? -->
             <formal-name>Subject Reference Title</formal-name>
             <description>The title or name for the referenced subject.</description>
          </define-field>
@@ -738,6 +714,10 @@
                <description>Uniquely identifies this assessment Platform.</description>
             </define-flag>
             <model>
+               <define-field name="title" max-occurs="1" as-type="markup-line">
+                  <formal-name>Assessment Platform Title</formal-name>
+                  <description>The title or name for the assessment platform.</description>
+               </define-field>
                <field ref="property" min-occurs="0" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
                </field>
@@ -779,11 +759,11 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="origination">
-      <!-- QUESTION: remove or restructure? -->
+<!--   <define-assembly name="origination">
+      <!-\- QUESTION: remove or restructure? -\->
       <formal-name>Assessment Origination</formal-name>
       <description>Identifies the origination of assessment activities, such as the IP address of the tool performing assessment scans.</description>
-      <!-- CHANGE: Added UUID flag -->
+      <!-\- CHANGE: Added UUID flag -\->
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Origination UUID</formal-name>
          <description>Identifies the assessment method by its UUID value.</description>
@@ -793,7 +773,7 @@
             <formal-name>Oritination Title</formal-name>
             <description>The title or name for this assessment origination item.</description>
          </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description-->
+         <!-\- CHANGE: Added WITH_WRAPPER to description-\->
          <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Origination Description</formal-name>
             <description>A human-readable description of assessment originiation asset.</description>
@@ -817,7 +797,7 @@
       </constraint>
    </define-assembly>
    
-<!--   <!-\- ********** LOCAL DEFINITIONS Assembly ********** -\->
+--><!--   <!-\- ********** LOCAL DEFINITIONS Assembly ********** -\->
    <define-assembly name="local-definitions">
       <formal-name>Local Definitions</formal-name>
       <description>Allows control objectives, users, components, and inventory-items to be defined within the assessment plan or assessment results for circumstances where they are not appropriately defined in the SSP. NOTE: Use the assessment plan or assessment results metadata to define additional locations if needed.</description>
@@ -1192,27 +1172,19 @@
                </allowed-values>
             </constraint>
          </define-field>
-         
-         <define-field name="assessor" as-type="empty" max-occurs="unbounded">
-            <formal-name>Assessor</formal-name>
-            <description>Identifies an individual who gathered the evidence resulting in the observation or risk identification.</description>
-            <group-as name="assessors" in-json="ARRAY"/>
-            <!-- QUESTION: Also, why not use responsible-party? -->
-            <define-flag name="party-uuid" as-type="uuid" required="yes">
-               <formal-name>Party UUID</formal-name>
-               <description>The UUID of the assessor who collected the evidence or made the observation.</description>
-            </define-flag>
-         </define-field>
+         <assembly ref="origin" max-occurs="unbounded">
+            <group-as name="origins" in-json="ARRAY"/>
+            <remarks>
+               <p>Used to identify the individual and/or tool that gathered the evidence resulting in the observation identification.</p>
+            </remarks>
+         </assembly>         
          <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-            <group-as name="subject-references" in-json="ARRAY"/>
+            <use-name>subject</use-name>
+            <group-as name="subjects" in-json="ARRAY"/>
             <remarks>
                <p>Identifies who was interviewed, or what was tested or inspected.</p>
             </remarks>
          </assembly>
-         
-         <define-field name="origin" max-occurs="unbounded">
-            <group-as name="origins" in-json="ARRAY"/>
-         </define-field>         
          
          <define-assembly name="relevant-evidence" max-occurs="unbounded">
             <formal-name>Relevant Evidence</formal-name>
@@ -1246,9 +1218,13 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
+         <assembly ref="related-task" max-occurs="unbounded">
+            <group-as name="related-actions" in-json="ARRAY"/>
+         </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
+         <!-- TODO: review these and figure out where these go -->
          <allowed-values target="origin/@type" allow-other="no">
             <!-- CHANGED: "tool" to "******" -->
             <enum value="tool">An assessment tool, defined in the assets section of the assessment plan or results.</enum>
@@ -1260,18 +1236,56 @@
       </constraint>
    </define-assembly>
 
-   <define-field name="origin" as-type="empty">
+   <define-assembly name="origin">
       <formal-name>Origin</formal-name>
       <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
-      <define-flag name="uuid-ref" as-type="uuid" required="yes">
-         <formal-name>UUID Reference</formal-name>
-         <description>A pointer to the a tool, test-method, using it's UUID.</description>
-      </define-flag>
-      <define-flag name="type" required="yes">
-         <formal-name>Universally Unique Identifier Reference Type</formal-name>
-         <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
-      </define-flag>
-   </define-field>
+      <model>
+         <define-assembly name="actor" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Assessment Actor</formal-name>
+            <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
+            <group-as name="actors" in-json="ARRAY"/>
+            <define-flag name="type" required="yes">
+               <formal-name>Actor Type</formal-name>
+               <description>The kind of actor.</description>
+               <constraint>
+                  <allowed-values>
+                     <!-- QUESTION: Should this point to the platform instead, since the platform is associated with IP addresses? -->
+                     <enum value="tool">A reference to a tool component defined with the assessment assets.</enum>
+                     <enum value="assessment-platform">A reference to an assessment-platform defined with the assessment assets.</enum>
+                     <enum value="party">A reference to a party defined within the document metadata.</enum>
+                  </allowed-values>
+               </constraint>
+            </define-flag>
+            <define-flag name="uuid-ref" as-type="uuid" required="yes">
+               <formal-name>Actor UUID Reference</formal-name>
+               <description>A pointer to the tool or person based on the associated type.</description>
+            </define-flag>
+            <define-flag name="role-id" as-type="NCName">
+               <formal-name>Actor Role</formal-name>
+               <description>For a party, this can optionally be used to specify the role the actor was performing.</description>
+            </define-flag>
+            <model>
+               <field ref="property" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="props" in-json="ARRAY"/>
+               </field>
+               <assembly ref="annotation" max-occurs="unbounded">
+                  <group-as name="annotations" in-json="ARRAY"/>
+               </assembly>
+               <assembly ref="link" max-occurs="unbounded">
+                  <group-as name="links" in-json="ARRAY"/>
+               </assembly>
+            </model>
+         </define-assembly>
+         <!-- CHANGED: Added "related-action" -->
+         <assembly ref="related-action" max-occurs="unbounded">
+            <group-as name="related-actions" in-json="ARRAY"/>
+         </assembly>
+         <!-- CHANGED: Added "related-task" -->
+         <assembly ref="related-task" max-occurs="unbounded">
+            <group-as name="related-tasks" in-json="ARRAY"/>
+         </assembly>
+      </model>
+   </define-assembly>
 
 
    <define-field name="threat-id" as-type="uri">
@@ -1322,12 +1336,36 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+         <define-field name="status" min-occurs="1">
+            <!-- CHANGED: from "risk-status" to "status" -->
+            <formal-name>Status</formal-name>
+            <description>Describes the status of the associated risk.</description>
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="open">The risk has been identified.</enum>
+                  <enum value="investigating">The identified risk is being investigated. (Open risk)</enum>
+                  <enum value="remediating">Remediation activities are underway, but are not yet complete. (Open risk)</enum>
+                  <enum value="deviation-requested">A risk deviation, such as false positive, risk reduction, or operational requirement has been submitted for approval. (Open risk)</enum>
+                  <enum value="deviation-approved">A risk deviation, such as false positive, risk reduction, or operational requirement has been approved. (Open risk)</enum>
+                  <enum value="closed">The risk has been resolved.</enum>
+               </allowed-values>
+            </constraint>
+         </define-field>
+         
+         <assembly ref="origin" max-occurs="unbounded">
+            <group-as name="origins" in-json="ARRAY"/>
+            <remarks>
+               <p>Used to identify the individual and/or tool that identified this risk.</p>
+            </remarks>
+         </assembly>         
+         
          <assembly ref="risk-metric" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGE from a field to an assembly, adding a value flag -->
             <group-as name="risk-metrics" in-json="ARRAY"/>
          </assembly>
          <define-field name="statement" as-type="markup-multiline" min-occurs="1">
             <!-- CHANGED: from "risk-statement" to "statement" -->
+            <!-- QUESTION: how is this different from description? -->
             <formal-name>Risk Statement</formal-name>
             <description>Describes the risk.</description>
          </define-field>
@@ -1359,6 +1397,7 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
+                  <!-- QUESTION: Should this be named "mitigation-subject"? -->
                   <group-as name="subject-references" in-json="ARRAY"/>
                   <remarks>
                      <p>Links identifiable elements of the system to this mitigating factor, such as an inventory-item or component.</p>
@@ -1376,21 +1415,6 @@
             <!-- CHANGED: "remediation-group" to "remediations" -->
             <group-as name="remediations" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" min-occurs="1">
-            <!-- CHANGED: from "risk-status" to "status" -->
-            <formal-name>Status</formal-name>
-            <description>Describes the status of the associated risk.</description>
-            <constraint>
-               <allowed-values target="." allow-other="yes">
-                  <enum value="open">The risk has been identified.</enum>
-                  <enum value="investigating">The identified risk is being investigated. (Open risk)</enum>
-                  <enum value="remediating">Remediation activities are underway, but are not yet complete. (Open risk)</enum>
-                  <enum value="deviation-requested">A risk deviation, such as false positive, risk reduction, or operational requirement has been submitted for approval. (Open risk)</enum>
-                  <enum value="deviation-approved">A risk deviation, such as false positive, risk reduction, or operational requirement has been approved. (Open risk)</enum>
-                  <enum value="closed">The risk has been resolved.</enum>
-               </allowed-values>
-            </constraint>
-         </define-field>
          <define-field name="closure-actions" as-type="markup-multiline">
             <formal-name>Closer Actions</formal-name>
             <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
@@ -1467,9 +1491,7 @@
          </define-field>
          
          <!-- QUESTION: ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
-         <field ref="party-uuid" min-occurs="0" max-occurs="unbounded">
-            <group-as name="party-uuids" in-json="ARRAY"/>
-         </field>
+         <!-- CHANGED: "removed "party-uuid" and replaced with "origin" -->
       </model>
       <constraint>
          <allowed-values target="prop/@name">
@@ -1486,8 +1508,8 @@
       <formal-name>Risk Metric</formal-name>
       <description>An individual value relevant to the risk of a specified system.</description>
       <define-flag name="name" required="yes">
-         <formal-name>name flag</formal-name>
-         <description>name flag ... </description>
+         <formal-name>Risk Metric Name</formal-name>
+         <description>The name of the risk metric within the specified system.</description>
       </define-flag>
       <define-flag name="class">
          <formal-name>Class Flag</formal-name>
@@ -1502,7 +1524,7 @@
       </define-flag>
       <define-flag name="system" as-type="uri" required="yes">
          <formal-name>System</formal-name>
-         <description>Specifies the system represented by this risk metric.</description>
+         <description>Specifies the system under which this risk metric is organized.</description>
          <constraint>
             <allowed-values allow-other="yes"><!-- Other values -->
                <enum value="http://fedramp.gov"/>
@@ -1532,6 +1554,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
+         <!-- TODO: What about "vulnerability-id", "plugin-id"? Should this be added to FedRAMP? -->
          <allowed-values target="(.)[@system='http://csrc.nist.gov/oscal']/@name" allow-other="yes">
             <enum value="likelihood">General likelihood rating.</enum>
             <enum value="impact">General impact rating.</enum>
@@ -1624,7 +1647,7 @@
          <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
             <!-- CHANGED: Only allow the abbreviations. No longer allow the lower-case name values -->
             <!-- TODO: Add additional constraints for the allowed values of each CVSS metric. -->
-            <enum value="access-vector" >Base: Attack Vector</enum>
+            <enum value="attack-vector" >Base: Attack Vector</enum>
             <enum value="access-complexity" >Base: Attack Complexity</enum>
             <enum value="privileges-required" >Base: Privileges Required</enum>
             <enum value="user-interaction" >Base: User Interaction</enum>
@@ -1743,7 +1766,7 @@
             <allowed-values allow-other="yes">
                <enum value="recommendation">Recommended Remediation</enum>
                <enum value="planned">The actions intended to resolve the risk.</enum>
-               <enum value="">This remediation activits were performed to address the risk.</enum>
+               <enum value="completed">This remediation activities were performed to address the risk.</enum>
             </allowed-values>
          </constraint>
       </define-flag>
@@ -1766,14 +1789,15 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="origin" max-occurs="unbounded" >
+         <assembly ref="origin" max-occurs="unbounded">
             <group-as name="origins" in-json="ARRAY"/>
             <remarks>
-               <p>Points to the source of a recommended or planned response.</p>
+               <p>Used to identify the individual and/or tool that generated this recommended or planned response.</p>
             </remarks>
-         </field>
+         </assembly>         
          
          <define-assembly name="required-asset" max-occurs="unbounded">
+            <!-- QUESTION: Do we need to identify a set of remediation assets similar to assessment-assets -->
             <!-- CHANGED: "required" to "required-asset" -->
             <formal-name>Required Asset</formal-name>
             <description>Identifies an asset required to achieve remediation.</description>
@@ -1820,6 +1844,7 @@
          
          <!-- CHANGED: "schedule" to "task", and changed cardinality to unbounded.  -->
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+            <!-- TODO: can this be better integrated with actions/tasks? -->
             <group-as name="tasks" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -1917,4 +1942,71 @@
          <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
       </remarks>
    </define-assembly>
+
+   <define-assembly name="related-action">
+      <formal-name>Action Reference</formal-name>
+      <description>Identifies an individual action for which the containing object is a consequence of.</description>
+      <define-flag name="action-uuid" required="yes" as-type="uuid">
+         <formal-name>Action Universally Unique Identifier Reference</formal-name>
+         <description>References a unique action by UUID.</description>
+      </define-flag>
+      <model>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="assessment-subject" max-occurs="unbounded">
+            <group-as name="assessment-subjects" in-json="ARRAY"/>
+            <remarks>
+               <p>The assessment subjects that the action was performed against.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="related-task">
+      <formal-name>Task Reference</formal-name>
+      <description>Identifies an individual task for which the containing object is a consequence of.</description>
+      <define-flag name="task-uuid" required="yes" as-type="uuid">
+         <formal-name>Task Universally Unique Identifier Reference</formal-name>
+         <description>References a unique task by UUID.</description>
+      </define-flag>
+      <model>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="assessment-subject" max-occurs="unbounded">
+            <group-as name="assessment-subjects" in-json="ARRAY"/>
+            <remarks>
+               <p>The assessment subjects that the action was performed against.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
 </METASCHEMA>
