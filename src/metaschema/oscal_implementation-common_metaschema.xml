@@ -170,6 +170,9 @@
             <enum value="vendor-name">The name of the company or organization </enum>
          </allowed-values>
 
+         <!-- TODO: Add ipv4-subnet property for type='network' - add pattern constraint -->
+         <!-- TODO: Add ipv6-subnet property for type='network' - add pattern constraint -->
+         
          <!-- ========================================================================================================== -->
          <!-- = VALIDATION: type='validation' constraints                        = -->
          <!-- ========================================================================================================== -->
