@@ -63,8 +63,7 @@
 
                <!-- CHANGED: implemented new model -->
                <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
-                  <use-name>assessment-activity</use-name>
-                  <group-as name="assessment-activities" in-json="ARRAY"/>
+                  <group-as name="activities" in-json="ARRAY"/>
                </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
