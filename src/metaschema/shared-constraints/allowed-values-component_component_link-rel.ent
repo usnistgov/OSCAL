@@ -6,4 +6,4 @@
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uses-service">This service is used by the referenced component identifier.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="system-security-plan">A link to the system security plan of the external system.</enum>
-<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation-details">A link to an online information provided by the authorizing body.</enum>
+

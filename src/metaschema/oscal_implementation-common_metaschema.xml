@@ -165,6 +165,18 @@
          <!-- ========================================================================================================== -->
          <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
          <!-- ========================================================================================================== -->
+      
+         <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop/@name" allow-other="yes">
+            <enum value="vendor-name">The name of the company or organization </enum>
+         </allowed-values>
+
+         <!-- ========================================================================================================== -->
+         <!-- = VALIDATION: type='validation' constraints                        = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@type='validation']/link/@rel" allow-other="yes">
+            <enum value="validation-details">A link to an online information provided by the authorizing body.</enum>
+         </allowed-values>
+         
          <!-- ========================================================================================================== -->
          <!-- = SOFTWARE: type='software' constraints                        = -->
          <!-- ========================================================================================================== -->
@@ -462,6 +474,10 @@
          </allowed-values>
          <allowed-values target="prop[@name='asset-type']/value()">
             &allowed-values-property-name-asset-type-values;
+         </allowed-values>
+         
+         <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop/@name" allow-other="yes">
+            <enum value="vendor-name">The name of the company or organization </enum>
          </allowed-values>
          
          <allowed-values target="annotation/@name" allow-other="yes">
