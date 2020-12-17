@@ -61,7 +61,7 @@
                </assembly>
 
                <!-- To augmente the assessment plan -->
-               <assembly ref="assets" min-occurs="0" max-occurs="1"/>
+               <assembly ref="assessment-assets" min-occurs="0" max-occurs="1"/>
                
                <!-- CHANGED: implemented new model -->
                <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
@@ -77,7 +77,13 @@
             </model>
          </define-assembly>
          <!-- CHANGED: "objectives" to "reviewed-controls" -->
-         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
+         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
+            <remarks>
+               <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
+               <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
+               <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
+            </remarks>
+         </assembly>
          
          <!-- QUESTION: Should this be moved to local definitions? -->
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
