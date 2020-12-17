@@ -532,6 +532,7 @@
                   <enum value="interview-notes">Indicates the resource represents notes from an interview, such as may be collected during an assessment.</enum>
                   <enum value="questionnaire">Indicates the resource is a set of questions, possibly with responses.</enum>
                   <enum value="report">Indicates the resource is a report.</enum>
+                  <enum value="agreement">Indicates the resource is a formal agreement between two or more parties.</enum>
                </allowed-values>
                <has-cardinality target="rlink|base64" min-occurs="1"/>
                <is-unique name="unique-resource-rlink-href" target="rlink">
