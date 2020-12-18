@@ -45,22 +45,9 @@
                   <use-name>assessment-activity</use-name>
                   <group-as name="assessment-activities" in-json="ARRAY"/>
                </assembly>
-               
-               <assembly ref="action" min-occurs="0" max-occurs="unbounded">
-                  <use-name>assessment-action</use-name>
-                  <group-as name="assessment-actions" in-json="ARRAY"/>
-               </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
-         <!-- CHANGED: "objectives" to "reviewed-controls" -->
-         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
-            <remarks>
-               <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
-               <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
-               <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
-            </remarks>
-         </assembly>
          <assembly ref="result" min-occurs="1" max-occurs="unbounded">
             <!-- CHANGED: "results" to "result" -->
             <use-name>result</use-name>
@@ -76,82 +63,6 @@
    <!-- ===============================  -->
 
 
-   <define-assembly name="action-result">
-      <!-- TODO: point back to the event in the plan. Maybe change compare-to to event-uuid. -->
-      <formal-name>Action Result</formal-name>
-      <description>Identifies the result of an action that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Action Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Action Title</formal-name>
-            <description>The title for this event.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-            <formal-name>Action Description</formal-name>
-            <description>A human-readable description of this event.</description>
-         </define-field>
-         <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
-            <formal-name>Start</formal-name>
-            <description>Identifies the start date and time of an event.</description>
-         </define-field>
-         <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
-            <formal-name>End</formal-name>
-            <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         
-         <!-- CHANGED: Added "related-action" -->
-         <assembly ref="related-action" max-occurs="unbounded">
-            <group-as name="related-actions" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
- 
-   <define-assembly name="completed-task">
-      <formal-name>Completed Task</formal-name>
-      <description>Used to represent a planned task or milestone, which may be associated with a series of assessment events.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Completed Task Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies a completed task. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
-      </define-flag>
-      <define-flag name="task-uuid" required="yes" as-type="uuid">
-         <formal-name>Task Universally Unique Identifier Reference</formal-name>
-         <description>References an task defined in the plan.</description>
-      </define-flag>
-      <model>
-         <define-field name="start" as-type="dateTime-with-timezone" max-occurs="1">
-            <formal-name>Start</formal-name>
-            <description>Identifies the start date and time of an event.</description>
-         </define-field>
-         <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
-            <formal-name>End</formal-name>
-            <description>Identifies the end date and time of an event.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
    <!-- ===============================  -->
    <!-- ======= END NEW CONTENT =======  -->
    <!-- ===============================  -->
@@ -184,7 +95,6 @@
          </define-field>
          <define-field name="end"
             as-type="dateTime-with-timezone"
-            min-occurs="1"
             max-occurs="1">
             <formal-name>end field</formal-name>
             <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
@@ -224,6 +134,10 @@
                      <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                   </remarks>
                </assembly>
+               <assembly ref="action" min-occurs="0" max-occurs="unbounded">
+                  <use-name>assessment-action</use-name>
+                  <group-as name="assessment-actions" in-json="ARRAY"/>
+               </assembly>
             </model>
          </define-assembly>
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
@@ -235,7 +149,15 @@
                <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
             </remarks>
          </assembly>
-
+         <!-- CHANGED: "objectives" to "reviewed-controls" -->
+         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
+            <remarks>
+               <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
+               <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
+               <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
+            </remarks>
+         </assembly>
+         
          <define-assembly name="attestation" max-occurs="unbounded">
             <formal-name>Attestation Statements</formal-name>
             <description>A set of textual statements, typically written by the assessor.</description>
@@ -251,20 +173,61 @@
                 </assembly>
              </model>
          </define-assembly>
+         <!-- CHANGED: removed "schedule" and replaced with "assessment-log" -->
          <define-assembly name="assessment-log">
             <formal-name>Assessment Log</formal-name>
             <description>A log of all assessment-related actions taken.</description>
             <model>
-               <assembly ref="action-result" min-occurs="0" max-occurs="unbounded">
-                  <use-name>item</use-name>
-                  <group-as name="items" in-json="ARRAY"/>
-               </assembly>
+               <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
+                  <formal-name>Assessment Log Entry</formal-name>
+                  <!-- TODO: improve this description -->
+                  <description>Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</description>
+                  <group-as name="entries" in-json="ARRAY"/>
+                  <define-flag name="uuid" required="yes" as-type="uuid">
+                     <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
+                     <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+                  </define-flag>
+                  <model>
+                     <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                        <formal-name>Action Title</formal-name>
+                        <description>The title for this event.</description>
+                     </define-field>
+                     <!-- CHANGE: Added WITH_WRAPPER to description -->
+                     <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                        <formal-name>Action Description</formal-name>
+                        <description>A human-readable description of this event.</description>
+                     </define-field>
+                     <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+                        <formal-name>Start</formal-name>
+                        <description>Identifies the start date and time of an event.</description>
+                     </define-field>
+                     <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
+                        <formal-name>End</formal-name>
+                        <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
+                     </define-field>
+                     <field ref="property" min-occurs="0" max-occurs="unbounded">
+                        <group-as name="props" in-json="ARRAY"/>
+                     </field>
+                     <assembly ref="annotation" max-occurs="unbounded">
+                        <group-as name="annotations" in-json="ARRAY"/>
+                     </assembly>
+                     <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                     </assembly>
+                     
+                     <!-- CHANGED: Added "related-action" -->
+                     <assembly ref="related-action" max-occurs="unbounded">
+                        <group-as name="related-actions" in-json="ARRAY"/>
+                     </assembly>
+                     <!-- CHANGED: Added "related-task" -->
+                     <assembly ref="related-task" max-occurs="unbounded">
+                        <group-as name="related-tasks" in-json="ARRAY"/>
+                     </assembly>
+                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                  </model>
+               </define-assembly>
             </model>            
          </define-assembly>
-         <!-- CHANGED: Moved "schedule" to top level (from assessment-activities), and changed model to "task" -->
-         <assembly ref="completed-task" min-occurs="0" max-occurs="unbounded">
-            <group-as name="completed-tasks" in-json="ARRAY"/>
-         </assembly>
          
          <!-- CHANGE: move "observation" from finding -->
          <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
@@ -324,7 +287,10 @@
             <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </define-field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
-         <field ref="implementation-statement-uuid" min-occurs="0" max-occurs="1"/>
+         <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
+            <formal-name>Implementation Statement UUID</formal-name>
+            <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
+         </define-field>
          <!-- CHANGED: replaced embedded observation with references -->
          <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
             <formal-name>Related Observation</formal-name>
@@ -335,10 +301,6 @@
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
          </define-field>
-         <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
-            <!-- QUESTION: Should this be moved to risk? -->
-            <group-as name="threat-ids" in-json="ARRAY"/>
-         </field>
          <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
          <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
             <formal-name>Associated Risk</formal-name>

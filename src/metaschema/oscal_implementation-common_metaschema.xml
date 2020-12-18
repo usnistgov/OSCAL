@@ -62,7 +62,7 @@
          <define-assembly name="status" min-occurs="1">
             <formal-name>Status</formal-name>
             <description>Describes the operational status of the system component.</description>
-            <define-flag name="state" required="yes">
+            <define-flag name="state" as-type="NCName" required="yes">
                <formal-name>State</formal-name>
                <description>The operational status.</description>
                <constraint>

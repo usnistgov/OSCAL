@@ -368,7 +368,7 @@
             <description>A short common name, abbreviation, or acronym for the role.</description>
          </define-field>
          <!-- CHANGE "desc" to "description" -->
-         <define-field name="description">
+         <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
             <formal-name>Role Description</formal-name>
             <description>A summary of the role's purpose and associated responsibilities.</description>
          </define-field>
@@ -419,7 +419,7 @@
                   <formal-name>Resource Title</formal-name>
                   <description>A name given to the resource, which may be used by a tool for display and navigation.</description>
                </define-field>
-               <define-field name="description">
+               <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
                   <!-- CHANGED from "desc" to "description" -->
                   <formal-name>Resource Description</formal-name>
                   <description>A short summary of the resource used to indicate the purpose of the resource.</description>
@@ -599,7 +599,7 @@
          <formal-name>Property Universally Unique Identifier</formal-name>
          <description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</description>
       </define-flag>
-      <define-flag name="name" required="yes">
+      <define-flag name="name" as-type="NCName" required="yes">
          <formal-name>Property Name</formal-name>
          <description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
          <constraint>
@@ -633,7 +633,7 @@
    <define-assembly name="annotation">
       <formal-name>Annotated Property</formal-name>
       <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.</description>
-      <define-flag name="name" required="yes">
+      <define-flag name="name" as-type="NCName" required="yes">
          <formal-name>Annotated Property Name</formal-name>
          <description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the annotated property's containing object.</description>
       </define-flag>
@@ -794,6 +794,7 @@
    </define-assembly>
 
    <define-field name="hash">
+      <!-- TODO: need a hex binary type. Maybe base64 binary? -->
       <formal-name>Hash</formal-name>
       <description>A representation of a cryptographic digest generated over a resource using a specified hash algorithm.</description>
       <json-value-key>value</json-value-key>
@@ -930,7 +931,7 @@
       <description>A single line of an address.</description>
    </define-field>
    
-   <define-flag name="location-type" scope="local">
+   <define-flag name="location-type" as-type="NCName" scope="local">
       <formal-name>Address Type</formal-name>
       <description>Indicates the type of address.</description>
       <constraint>

@@ -35,7 +35,7 @@
     </flag>
     <model>
       <field ref="name" min-occurs="1"/>
-      <field ref="description" min-occurs="1"/>
+      <field ref="description" min-occurs="1" in-xml="WITH_WRAPPER" />
       <field ref="model"/>
     </model>
   </define-assembly>

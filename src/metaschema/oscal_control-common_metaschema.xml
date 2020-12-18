@@ -27,7 +27,7 @@
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
-      <define-flag name="name" required="yes">
+      <define-flag name="name" as-type="NCName" required="yes">
          <formal-name>Part Name</formal-name>
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
@@ -202,7 +202,7 @@
       <description>A formal or informal expression of a constraint or test</description>
       <model>
          <!-- CHANGED: renamed "detail" to "description" -->
-         <define-field name="description" as-type="markup-multiline">
+         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
             <formal-name>Constraint Description</formal-name>
             <description>A textual summary of the constraint to be applied.</description>
          </define-field>
