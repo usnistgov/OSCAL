@@ -214,7 +214,9 @@
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
                      </assembly>
-                     
+                     <field ref="logged-by" max-occurs="unbounded">
+                        <group-as name="logged-by" in-json="ARRAY"/>
+                     </field>
                      <!-- CHANGED: Added "related-action" -->
                      <assembly ref="related-action" max-occurs="unbounded">
                         <group-as name="related-actions" in-json="ARRAY"/>
