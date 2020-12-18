@@ -16,11 +16,11 @@
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
       xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
    <schema-name>OSCAL Component Definition Model</schema-name>
-   <schema-version>1.0.0-milestone3</schema-version>
-   <short-name>oscal-component</short-name>
+   <schema-version>1.0.0-rc1</schema-version>
+   <short-name>oscal-component-definition</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
-      <p>The OSCAL Implementation Component format can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
+      <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
       <p>The root of the OSCAL Implementation Component format is <code>component-definition</code>.</p>
       <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
    </remarks>

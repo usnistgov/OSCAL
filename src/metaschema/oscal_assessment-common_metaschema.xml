@@ -5,7 +5,7 @@
    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
    abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
-   <schema-version>1.0.0-milestone3</schema-version>
+   <schema-version>1.0.0-rc1</schema-version>
    <short-name>oscal-assessment-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
