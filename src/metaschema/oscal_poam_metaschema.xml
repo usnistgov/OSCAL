@@ -137,9 +137,6 @@
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
          </define-field>
-         <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
-            <group-as name="threat-ids" in-json="ARRAY"/>
-         </field>
          <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
          <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
             <formal-name>Associated Risk</formal-name>

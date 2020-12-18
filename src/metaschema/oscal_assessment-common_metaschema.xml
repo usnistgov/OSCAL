@@ -1105,7 +1105,8 @@
                </assembly>
                <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
                   <!-- QUESTION: Should this be named "mitigation-subject"? -->
-                  <group-as name="subject-references" in-json="ARRAY"/>
+                  <use-name>subject</use-name>
+                  <group-as name="subjects" in-json="ARRAY"/>
                   <remarks>
                      <p>Links identifiable elements of the system to this mitigating factor, such as an inventory-item or component.</p>
                   </remarks>
@@ -1161,17 +1162,20 @@
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
                      </assembly>
+                     <field ref="logged-by" max-occurs="unbounded">
+                        <group-as name="logged-by" in-json="ARRAY"/>
+                     </field>
                      <field ref="risk-status">
                         <use-name>status-change</use-name>
                         <remarks>
-                           <p>Identifies a change in risk status, which allows the risk's status history to be captured as a sequence of risk log entries.</p>
+                           <p>Identifies a change in risk status made by the action described in this risk log entry. This allows the risk's status history to be captured as a sequence of risk log entries.</p>
                         </remarks>
                      </field>
                      <define-assembly name="related-response" max-occurs="unbounded">
                         <formal-name>Action Reference</formal-name>
                         <description>Identifies an individual risk response that this log entry is for.</description>
                         <group-as name="related-responses" in-json="ARRAY"/>
-                        <define-flag name="action-uuid" required="yes" as-type="uuid">
+                        <define-flag name="response-uuid" required="yes" as-type="uuid">
                            <formal-name>Response Universally Unique Identifier Reference</formal-name>
                            <description>References a unique risk response by UUID.</description>
                         </define-flag>
@@ -1185,6 +1189,7 @@
                            <assembly ref="link" max-occurs="unbounded">
                               <group-as name="links" in-json="ARRAY"/>
                            </assembly>
+                           <!-- CHANGED: Added "related-action" -->
                            <!-- CHANGED: Added "related-action" -->
                            <assembly ref="related-action" max-occurs="unbounded">
                               <group-as name="related-actions" in-json="ARRAY"/>
@@ -1291,6 +1296,19 @@
       </constraint>
    </define-assembly>
 
+   <define-field name="logged-by" as-type="empty">
+      <formal-name>Logged By</formal-name>
+      <description>Used to indicate who created a log entry in what role.</description>
+      <define-flag name="party-uuid" as-type="uuid" required="yes">
+         <formal-name>Party UUID Reference</formal-name>
+         <description>A pointer to the party who is making the log entry.</description>
+      </define-flag>
+      <define-flag name="role-id" as-type="NCName">
+         <formal-name>Actor Role</formal-name>
+         <description>A point to the role-id of the role in which the party is making the log entry.</description>
+      </define-flag>
+   </define-field>
+   
    <define-field name="risk-status" as-type="NCName">
       <!-- CHANGED: from "risk-status" to "status" -->
       <formal-name>Risk Status</formal-name>
@@ -1610,7 +1628,8 @@
             </define-flag>
             <model>
                <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="subject-references" in-json="ARRAY"/>
+                  <use-name>subject</use-name>
+                  <group-as name="subjects" in-json="ARRAY"/>
                   <remarks>
                      <p>Identifies an asset associated with this requirement, such as a party, system component, or inventory-item.</p>
                   </remarks>
@@ -1651,9 +1670,9 @@
       </model>
       <constraint>
          <allowed-values target="prop/@name" allow-other="yes">
-            <enum value="response-type"></enum>
+            <enum value="type"></enum>
          </allowed-values>
-         <allowed-values target="prop[@name='response-type']/@value" allow-other="yes">
+         <allowed-values target="prop[@name='type']/@value" allow-other="yes">
             <enum value="avoid">The risk will be eliminated.</enum>
             <enum value="mitigate">The risk will be reduced.</enum>
             <enum value="transfer">The risk will be transferred to another organization or entity.</enum>
