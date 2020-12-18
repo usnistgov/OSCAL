@@ -10,7 +10,7 @@
             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
             abstract="yes">
    <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
-   <schema-version>1.0.0-milestone3</schema-version>
+   <schema-version>1.0.0-rc1</schema-version>
    <short-name>oscal-catalog-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <import href="oscal_metadata_metaschema.xml"/>
