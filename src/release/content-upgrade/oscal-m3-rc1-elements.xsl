@@ -40,6 +40,24 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
         </xsl:copy>
     </xsl:template>
 
+
+    <xsl:template match="metadata">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates select="title, published"/>
+            <!-- time stamp it at runtime -->
+            <last-modified xsl:expand-text="true">{ current-dateTime() }</last-modified>
+            <xsl:apply-templates select="* except (title | published)"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="last-modified" priority="6"/>
+    
+    <xsl:template match="oscal-version" priority="6">
+        <oscal-version>1.0.0-rc1</oscal-version>
+    </xsl:template>
+    
+    
     <xsl:template match="link">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
