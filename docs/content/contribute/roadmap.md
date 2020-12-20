@@ -58,7 +58,7 @@ The following additional stakeholders can benefit from SSPs formatted based on t
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone3)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model and drafts of the assessment and assessment result layer models.
 
@@ -73,6 +73,16 @@ The following additional stakeholders can benefit from component definitions for
 - **Security and privacy personnel:** Documenting system implementations can import component information related to hardware, software, services, policies, and procedures used to implement their systems saving time and effort
 - **Policy personnel:** Can publish information about their policies as a component formatted using the OSCAL component definition model.
 - **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted component and system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
+
+
+### OSCAL 1.0.0 Release Candidate 1 (RC1)
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Review of draft OSCAL 1.0.0 documentation and formats
+
 
 ### OSCAL 1.0.0 Full Release
 
