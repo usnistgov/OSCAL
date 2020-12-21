@@ -266,7 +266,7 @@
                         <formal-name>Period</formal-name>
                         <description>The event must occur after the specified period has elapsed.</description>
                      </define-flag>
-                     <define-flag name="unit" as-type="dateTime-with-timezone" required="yes">
+                     <define-flag name="unit" as-type="string" required="yes">
                         <formal-name>Time Unit</formal-name>
                         <description>The unit of time for the period.</description>
                         <constraint>

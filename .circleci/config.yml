@@ -79,21 +79,6 @@ commands:
           name: Get Saxon-HE
           command: |
             mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
-      - run:
-          name: Build JSON Validation CLI
-          command: |
-            # update maven version
-            cd /opt
-            sudo wget --no-check-certificate "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
-            sudo tar -xvzf "apache-maven-${MAVEN_VERSION}-bin.tar.gz"
-            sudo mv "apache-maven-${MAVEN_VERSION}" maven
-            export M2_HOME=/opt/maven
-            export PATH=${M2_HOME}/bin:${PATH}
-            cd -
-            # now build
-            cd "${OSCAL_TOOLS_DIR}/json-cli"
-            /opt/maven/bin/mvn dependency:go-offline
-            /opt/maven/bin/mvn install
       - save_cache:
           paths:
             - ~/.m2
@@ -130,13 +115,13 @@ commands:
           name: Get xmllint
           command: |
             sudo apt-get install libxml2-utils
-  #install-npm-ajv:
-  #  description: "Install ajv"
-  #  steps:
-  #    - run:
-  #        name: Get ajv
-  #        command: |
-  #          sudo npm install -g ajv-cli
+  install-npm-ajv:
+    description: "Install ajv"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
   install-npm-json-diff:
     description: "Install json-diff"
     steps:
@@ -259,6 +244,7 @@ jobs: # a collection of
       - install-maven-dependencies
       - apt-update
       - install-apt-xmllint
+      - install-npm-ajv
       - run:
           name: Generate OSCAL schemas
           command: |
@@ -453,6 +439,7 @@ jobs: # a collection of
       - check-skip-build
       - apt-update
       - install-apt-xmllint
+      - install-npm-ajv
       - install-maven-dependencies
       - run:
           name: Run Content Unit Tests
