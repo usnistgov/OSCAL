@@ -2298,7 +2298,7 @@
             </group>
          </xsl:for-each-group>
          <xsl:for-each-group select="add-objectives-and-methods" group-by="true()">
-            <group in-json="ARRAY" key="add-objectives-and-controls">
+            <group in-json="ARRAY" key="add-objectives-and-methods">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>

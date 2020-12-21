@@ -3213,7 +3213,7 @@
                     
                     { "not" : 
                       { "type" : "string" } } ] } },
-              "add-objectives-and-controls" : 
+              "add-objectives-and-methods" : 
               { "type" : "array",
                 "minItems" : 1,
                 "items" : 
