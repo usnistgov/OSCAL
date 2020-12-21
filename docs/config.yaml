@@ -30,7 +30,7 @@ params:
     project_shortname: "OSCAL"
     project_name: "OSCAL: the Open Security Controls Assessment Language"
   # ** Change this on release ***
-  contentRepoPath: https://github.com/usnistgov/oscal-content/tree/metaschema-m4-integration
+  contentRepoPath: https://github.com/usnistgov/oscal-content/tree/master
   searchAffiliate: oscal
   sidenav:
 #    activerenderdepth: 2
