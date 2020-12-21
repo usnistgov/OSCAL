@@ -22,10 +22,10 @@
    </merge>
    <modify>
       <set-parameter param-id="a1_prm1">
-         <constraint><description>at least every 3 years</description></constraint>
+         <constraint><description><p>at least every 3 years</p></description></constraint>
       </set-parameter>
       <set-parameter param-id="a3_prm1">
-         <constraint><description>at least annually</description></constraint>
+         <constraint><description><p>at least annually</p></description></constraint>
       </set-parameter>
       <alter control-id="a1">
          <add position="starting" id-ref="a1">
