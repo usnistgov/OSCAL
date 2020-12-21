@@ -15,7 +15,7 @@ For example, this approach can be used with a product containing a cryptographic
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml >}}
-<component uuid="11111111-0000-4000-a000-000000000001" component-type="hardware">
+<component uuid="11111111-0000-4000-a000-000000000001" type="hardware">
    <title>Product Name</title>
    <description>
       <p>Describe the product's function.</p>
@@ -23,7 +23,7 @@ For example, this approach can be used with a product containing a cryptographic
    <link rel="validation" href="#22222222-0000-4000-a000-000000000002" />
    <status state="operational" />
 </component>
-<component uuid="22222222-0000-4000-a000-000000000002" component-type="validation">
+<component uuid="22222222-0000-4000-a000-000000000002" type="validation">
    <title>Validation Name</title>
    <description>
       <p>Describe the validation.</p>
@@ -40,7 +40,7 @@ For example, this approach can be used with a product containing a cryptographic
 {
    "components": {
      "11111111-0000-4000-a000-000000000001": {
-       "component-type": "hardware",
+       "type": "hardware",
        "title": "Product Name",
        "description": "Describe the product's function.",
        "links": [
@@ -54,10 +54,10 @@ For example, this approach can be used with a product containing a cryptographic
        }
      },
      "22222222-0000-4000-a000-000000000002": {
-       "component-type": "validation",
+       "type": "validation",
        "title": "Validation Name",
        "description": "Describe the validation.",
-       "properties": [
+       "props": [
          {
            "name": "validation-type",
            "value": "fips-140-2"
@@ -85,7 +85,7 @@ For example, this approach can be used with a product containing a cryptographic
 {{< highlight yaml>}}
     components: 
       11111111-0000-4000-a000-000000000001: 
-        component-type: hardware
+        type: hardware
         title:          Product Name
         description:    Describe the product's function.
         links: 
@@ -97,7 +97,7 @@ For example, this approach can be used with a product containing a cryptographic
         component-type: validation
         title:          Validation Name
         description:    Describe the validation.
-        properties: 
+        props: 
           - name:  validation-type
             value: fips-140-2
           - name:  validation-reference
