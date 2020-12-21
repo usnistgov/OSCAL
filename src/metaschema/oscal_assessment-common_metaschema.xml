@@ -1388,7 +1388,7 @@
                <allowed-values target="prop/@name">
                   <enum value="risk-state">Indicates if the risk is 'initial' as first identified, or 'adjusted' indicating that residual risk remains after some adjustments have been made.</enum>
                </allowed-values>
-               <allowed-values target="prop[@name='']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values target="prop[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <!-- CHANGED: residual to adjusted -->
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
