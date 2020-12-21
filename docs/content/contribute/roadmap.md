@@ -79,10 +79,19 @@ The following additional stakeholders can benefit from component definitions for
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1)
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Review of draft OSCAL 1.0.0 documentation and formats
+{{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
 
+This development phase focused on producing:
+
+- Updated stable versions of [catalog](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/) and [profile](https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/) models which provide a structured representation of control catalogs and baselines or overlays.
+- Updated stable version of the [system security plan](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/) model which provides a structured representations of a system&#39;s control-based implementation. This model has been enhanced to support documenting how controls from an existing authorized system can be leveraged in another information system, which supports common control provider and platform as a service (PaaS) use cases.
+- Updated stable version of the [component definition](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/) model which provides a structured representation of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+- Revised drafts of the [assessment plan](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/), [assessment results](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/), [plan of action and milestones](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/) (POA&amp;M) models, which support the structured representation of information used for planning and documenting the results of an information system assessment or continuous monitoring activity. These models have been enhanced to better support continuous assessment; to provide more traceability between the assessment schedule, specific assessment activities, collected data, and resulting findings and identified risks; and to improve the extensibility of these models.
+- Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/master/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/master/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from milestone 3 to RC1.
+
+These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
 ### OSCAL 1.0.0 Full Release
 
