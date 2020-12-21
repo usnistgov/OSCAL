@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-milestone3">
+           version="1.0.0-rc1">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Profile Model</m:schema-name>
-         <m:schema-version>1.0.0-milestone3</m:schema-version>
+         <m:schema-version>1.0.0-rc1</m:schema-version>
          <m:short-name>oscal-profile</m:short-name>
          <m:remarks>
             <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
@@ -355,7 +355,7 @@
                      </xs:simpleType>
                   </xs:element>
                </xs:sequence>
-               <xs:attribute name="type" type="xs:string">
+               <xs:attribute name="type" type="xs:NCName">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Address Type</m:formal-name>
@@ -658,7 +658,7 @@
                         </xs:simpleType>
                      </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="type" type="xs:string">
+                  <xs:attribute name="type" type="xs:NCName">
                      <xs:annotation>
                         <xs:appinfo>
                            <m:formal-name>Address Type</m:formal-name>
@@ -763,17 +763,9 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Role Description</m:formal-name>
-                     <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="xs:string"/>
-            </xs:simpleType>
+            <xs:complexType>
+               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
          </xs:element>
          <xs:element name="prop"
                      type="oscal-profile:property-FIELD"
@@ -850,17 +842,9 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Resource Description</m:formal-name>
-                              <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
+                     <xs:complexType>
+                        <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
                               type="oscal-profile:property-FIELD"
@@ -1059,7 +1043,7 @@
                      <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
                </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="name" use="required" type="xs:string">
+            <xs:attribute name="name" use="required" type="xs:NCName">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Property Name</m:formal-name>
@@ -1116,7 +1100,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="name" use="required" type="xs:string">
+      <xs:attribute name="name" use="required" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Annotated Property Name</m:formal-name>
@@ -1373,7 +1357,7 @@
                <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="name" use="required" type="xs:string">
+      <xs:attribute name="name" use="required" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Name</m:formal-name>
@@ -1432,7 +1416,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
+            <xs:complexType>
                <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
             </xs:complexType>
          </xs:element>
@@ -1497,7 +1481,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
+            <xs:complexType>
                <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
             </xs:complexType>
          </xs:element>
@@ -1975,7 +1959,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
+            <xs:complexType>
                <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
             </xs:complexType>
          </xs:element>
@@ -2138,7 +2122,7 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="position" type="xs:string">
+      <xs:attribute name="position" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Position</m:formal-name>

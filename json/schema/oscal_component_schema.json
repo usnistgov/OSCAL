@@ -1060,54 +1060,54 @@
                 { "not" : 
                   { "type" : "string" } } ] } },
           "implemented-components" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/component-implemention-reference" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "title" : "Implemented Component",
+              "description" : "The set of components that are implemented in a given system inventory item.",
+              "$id" : "#/definitions/implemented-component",
+              "type" : "object",
+              "properties" : 
+              { "component-uuid" : 
+                { "title" : "Component Universally Unique Identifier Reference",
+                  "description" : "A reference to a component that is implemented as part of an inventory item.",
+                  "type" : "string",
+                  "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+                "props" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#/definitions/property" } },
+                "annotations" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#/definitions/annotation" } },
+                "links" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#/definitions/link" } },
+                "responsible-parties" : 
+                { "type" : "object",
+                  "minProperties" : 1,
+                  "additionalProperties" : 
+                  { "allOf" : 
+                    [ 
+                      { "$ref" : "#/definitions/responsible-party" },
+                      
+                      { "not" : 
+                        { "type" : "string" } } ] } },
+                "remarks" : 
+                { "$ref" : "#/definitions/remarks" } },
+              "required" : 
+              [ "component-uuid" ],
+              "additionalProperties" : false } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "uuid",
           "description" ],
-        "additionalProperties" : false },
-      "component-implemention-reference" : 
-      { "title" : "Implemented Component",
-        "description" : "The set of components that are implemented in a given system inventory item.",
-        "$id" : "#/definitions/component-implemention-reference",
-        "type" : "object",
-        "properties" : 
-        { "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "responsible-parties" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-party" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "set-parameter" : 
       { "title" : "Set Parameter Value",
