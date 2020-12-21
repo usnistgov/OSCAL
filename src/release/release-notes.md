@@ -470,7 +470,7 @@ The assessment plan, assessment results, and plan of actions and milestones mode
 
 ## Changes to the assessment plan model
 
-Due to the nature of changes in this model, the following documentation details how the new model roughly maps to the 1.0.0-milestone3 model. The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment plan model.
+Due to the nature of changes in this model, the following documentation details how the new model roughly maps to the older 1.0.0-milestone3 model. The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment plan model.
 
 ### Changes to the assessment plan XML format
 
@@ -566,21 +566,197 @@ Due to the nature of changes in this model, the following documentation details 
 
 ## Changes to the assessment results model
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment results model.
+Due to the nature of changes in this model, the following documentation details how the new model roughly maps to the older 1.0.0-milestone3 model. The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment results model.
 
 ### Changes to assessment results XML format
 
+/assessment-results
+
+- Most of the top-level elements in this model have been relocated under the "result" element or it's children. This allows the assessment details to be specified for each result set. This better supports continuous and evolving assessments.
+
+/assessment-results/local-definitions
+
+- The "objective" element relocates and updates the old element in /assessment-results/objectives/objective allowing new assessment objectives to be defined that were not defined in the catalog supporting the system's baseline or the assessment plan.
+- The new "activity" element is similar to the related one in the assessment plan, and allows an assessment process to be defined. These assessment activities can then be referenced by a specific assessment-action.
+
+/assessment-results/results/local-definitions
+
+- The structures located in /assessment-results/assessment-subjects/local-definitions has been moved here. This includes the "component", "inventory-item", and "user" element constructions. This allows all content that augments the content from the referenced SSP to be located within a top-level element.
+- The "add-objectives-and-methods" element has been added which allow the definitions of new assessment objectives and methods which are to be used in the assessment, but are not located in the catalog for which the system's baseline is generated from. This replaces the original elements located in /assessment-results/objectives/objective and /assessment-results/objectives/method.
+/assessment-results/results/assessment-actions
+- The "assessment-action" element replaces the /assessment-plan/assessment-activities/test-methods element.
+  - The old element required that information about an assessment process was defined by "test-methods". This structure was moved to local-definitions, since this is adding to the actions defined in the assessment plan.
+  - The new construction allows:
+    - The use of "associated-activities" to reference an "activity" defined under /assessment-plan/local-definitions, which allows the same activity to be used multiple times across different assessment-action elements.
+    - Use of "assessment-subjects" to define in a fine-grained the targeting of subjects the assessment-action are to be performed against.
+    - Use of the "responsible-roles" to identify assessment roles and optionally parties which are associated with the action.
+
+/assessment-results/results/reviewed-controls
+
+- This element includes constructs that previously appeared under /assessment-results/objectives in the "controls" and "control-objectives" elements. We believe the inclusion/exclusion syntax used now is simpler, more concise, and easier to process.
+
+/assessment-results/results/assessment-subject
+
+- This element replaces the previous /assessment-results/assessment-subjects element.
+- The old version intermixed included and excluded subjects of different types.
+- The new construction pairs includes/excludes of a given type, which should make processing easier and more straightforward.
+
+/assessment-results/results/assessment-assets
+
+- This new element replaces the previous /assessment-results/assets element.
+- The old element allowed tools to be defined and used "origination" as a way to loosely associate information (e.g., IP addresses used with assessment tools) with these tools.
+- The new construction allows for "assessment-platforms" to be identified, which can combine referenced tool components using "uses-components" in multiple combinations providing more control over defining information about tooling used during an assessment. Information that applies to the platform, such as IP addresses used, can be defined using the "props" object array on an "assessment-platforms" array item object.
+
+/assessment-results/results/attestation
+
+- This new element allows for arbitrary statements to be made in the assessment results.
+
+/assessment-results/results/assessment-log
+
+- This new element implements the functionality previously supported by the /assessment-results/assessment-activities/schedule/tasks element, but in a refactored way.
+- An "entry" can be used to log any event that occurs during an assessment.
+  - An "entry" can be associated with an action or a task. An action is a concrete activity that is performed during an assessment, while a task is a high-level scheduled event used for project management that may be associated with multiple actions. The two can be used together to detail the work accomplished during the assessment.
+  - The "related-action" element can associate the log entry with an action declared in the plan or the results to record progress on or completion of the action. The "related-action" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
+  - The "related-task" element can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject". 
+  - "title" is now required.
+  - "activity-uuids" is replaced with "related-actions".
+  - "party-uuids" and "location-uuids" are now specified on a per-action basis using the referenced "assessment-action" object's "assessment-subjects" array items, which allows both parties and locations to be subjects.
+
+/assessment-results/results/observation
+
+- This element updates the old element located in /assessment-results/results/finding/observation. Observations have been separated out from findings to allow a given observation to be linked to by many findings and risks.
+- renamed "observation-method" to "method"
+- renamed "observation-type" to "type"
+- "assessor" has been replaced with "origin", which allows the tool, assessment-platform, and/or any parties to be identified as one or more "actor" elements. The related action and/or task can also be associated here using "related-action" and "related-task".
+
+/assessment-results/results/risk
+
+- This element updates the old element located in /assessment-results/results/finding/risk. Risks have been separated out from findings to allow a given risk to be linked to by many findings.
+- Renamed "risk-status" to "status"
+- The new "origin" element can be used to describe the tool or party that generated the risk record.
+- Replaced "risk-metric" with "characterization", which allows any risk characteristic to be as a "facet". The specific tool, assessment-platform, and/or any parties producing a characterization can be identified using one or more "actor" elements. The related action and/or task can also be associated here using "related-action" and "related-task".
+- All remediation related contents has been moved to "response", which will be discussed below.
+- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results/risk/remediation-tracking", while proving more robust capabilities. 
+- "party-id" has been replaced with identifying the party as an actor under "origin".
+
+/assessment-results/results/risk/response
+
+- This new element realigns all of the risk/remediation information in a way that supports other risk response activities in addition to remediation.
+- "origin" allows the tool, assessment-platform, and/or party identifying the response to be identified, replacing /assessment-results/results/risk/remediation-origin.
+- "task" is used to define a schedule of events replacing /assessment-results/results/risk/remediation-deadline and /assessment-results/results/risk/remediation/schedule/task. This allows risk responses to be defined in a more fine-grained way.
+- Renamed "required" to "required-asset"
+
+/assessment-results/results/finding
+
+- This element maps to the same element in the old model.
+- Moved the embedded "observation" and "risk" elements to "related-observation" and "associated-risk" references.
+
 ### Changes to assessment results JSON and YAML formats
+
+/assessment-results
+
+- Most of the top-level properties in this model have been relocated under the "results" property or it's child objects. This allows the assessment details to be specified for each result set. This better supports continuous and evolving assessments.
+
+/assessment-results/local-definitions
+
+- The "objectives" object array relocates and updates the old object array in /assessment-results/objectives/objectives allowing new assessment objectives to be defined that were not defined in the catalog supporting the system's baseline or the assessment plan.
+- The new "activities" object array is similar to the related one in the assessment plan, and allows an assessment process to be defined. These assessment activities can then be referenced by a specific assessment-action.
+
+/assessment-results/results/local-definitions
+
+- The structures located in /assessment-results/assessment-subjects/local-definitions has been moved here. This includes the "components", "inventory-items", and "users" property constructions. This allows all content that augments the content from the referenced SSP to be located within a top-level property.
+- The "add-objectives-and-methods" property has been added which allow the definitions of new assessment objectives and methods which are to be used in the assessment, but are not located in the catalog for which the system's baseline is generated from. This replaces the original properties located in /assessment-results/objectives/objectives and /assessment-results/objectives/methods.
+/assessment-results/results/assessment-actions
+- The "assessment-action" property replaces the /assessment-plan/assessment-activities/test-methods property.
+  - The old property required that information about an assessment process was defined by "method-definitions". This structure was moved to local-definitions, since this is adding to the actions defined in the assessment plan.
+  - The new construction allows:
+    - The use of "associated-activities" to reference an "activity" defined under /assessment-plan/local-definitions, which allows the same activity to be used multiple times across different assessment-action properties.
+    - Use of "assessment-subjects" to define in a fine-grained the targeting of subjects the assessment-action are to be performed against.
+    - Use of the "responsible-roles" to identify assessment roles and optionally parties which are associated with the action.
+
+/assessment-results/results/reviewed-controls
+
+- This property includes constructs that previously appeared under /assessment-results/objectives in the "controls_group" and "control-objectives_group" properties. We believe the inclusion/exclusion syntax used now is simpler, more concise, and easier to process.
+
+/assessment-results/results/assessment-subjects
+
+- This property replaces the previous /assessment-results/assessment-subjects property.
+- The old version intermixed included and excluded subjects of different types.
+- The new construction pairs includes/excludes of a given type, which should make processing easier and more straightforward.
+
+/assessment-results/results/assessment-assets
+
+- This new property replaces the previous /assessment-results/assets property.
+- The old property allowed tools to be defined and used "origination" as a way to loosely associate information (e.g., IP addresses used with assessment tools) with these tools.
+- The new construction allows for "assessment-platforms" to be identified, which can combine referenced tool components using "uses-components" in multiple combinations providing more control over defining information about tooling used during an assessment. Information that applies to the platform, such as IP addresses used, can be defined using the "props" object array on an "assessment-platforms" array item object.
+
+/assessment-results/results/attestations
+
+- This new property allows for arbitrary statements to be made in the assessment results.
+
+/assessment-results/results/assessment-log
+
+- This new property implements the functionality previously supported by the /assessment-results/assessment-activities/schedule/tasks property, but in a refactored way.
+- An "entry" can be used to log any event that occurs during an assessment.
+  - An "entry" can be associated with an action or a task. An action is a concrete activity that is performed during an assessment, while a task is a high-level scheduled event used for project management that may be associated with multiple actions. The two can be used together to detail the work accomplished during the assessment.
+  - The "related-actions" property can associate the log entry with an action declared in the plan or the results to record progress on or completion of the action. The "related-action" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
+  - The "related-tasks" property can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject". 
+  - "title" is now required.
+  - "activity-uuids" is replaced with "related-actions".
+  - "party-uuids" and "location-uuids" are now specified on a per-action basis using the referenced "assessment-action" object's "assessment-subjects" array items, which allows both parties and locations to be subjects.
+
+/assessment-results/results/observation
+
+- This property updates the old property located in /assessment-results/results_group/findings/observations. Observations have been separated out from findings to allow a given observation to be linked to by many findings and risks.
+- renamed "observation-method" to "method"
+- renamed "observation-type" to "type"
+- "assessor" has been replaced with "origin", which allows the tool, assessment-platform, and/or any parties to be identified as one or more "actor" properties. The related action and/or task can also be associated here using "related-action" and "related-task".
+
+/assessment-results/results/risks
+
+- This property updates the old property located in /assessment-results/results_group/findings/risks. Risks have been separated out from findings to allow a given risk to be linked to by many findings.
+- Renamed "risk-status" to "status"
+- The new "origin" property can be used to describe the tool or party that generated the risk record.
+- Replaced "risk-metric" with "characterization", which allows any risk characteristic to be as a "facet". The specific tool, assessment-platform, and/or any parties producing a characterization can be identified using one or more "actor" properties. The related action and/or task can also be associated here using "related-action" and "related-task".
+- All remediation related contents has been moved to "response", which will be discussed below.
+- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results_group/risks/remediation-tracking" and "/assessment-results/results_group/risks/closure-actions", while proving more robust capabilities. 
+- "party-ids" has been replaced with identifying the party as an actor under "origin".
+
+/assessment-results/results/risks/responses
+
+- This new property realigns all of the risk/remediation information in a way that supports other risk response activities in addition to remediation.
+- "origin" allows the tool, assessment-platform, and/or party identifying the response to be identified, replacing /assessment-results/results_group/risks/remediation-group/origins.
+- "task" is used to define a schedule of events replacing /assessment-results/results_group/risks/remediation-deadline and /assessment-results/results_group/risks/remediation-group/schedule/tasks. This allows risk responses to be defined in a more fine-grained way.
+- Renamed "required" to "required-asset"
+
+/assessment-results/results/findings
+
+- This property maps to the same property in the old model.
+- Moved the embedded "observation" and "risk" properties to "related-observation" and "associated-risk" references.
 
 
 ## Changes to the plan of actions and milestones (PO&M) model
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL PO&M model.
+Due to the nature of changes in this model, the following documentation details how the new model roughly maps to the older 1.0.0-milestone3 model. The following changes have been made in the XML, JSON, and YAML formats for the OSCAL PO&M model.
 
 ### Changes to the plan of actions and milestones XML formats
 
+- The PO&M XML format has been updated to align with the assessment results XML format. Most of the changes in the previous section related to assessment results apply here.
+
+/plan-of-action-and-milestones/poam-item
+
+- Like the assessment results, the "poam-item" now has the "observation" and "risk" elements broken out as siblings and references to these elements are used instead.
+- Removed "objective-status" and "implementation-status-uuid, since this was added here by mistake and is covered in the assessment results.
+
 ### Changes to the plan of actions and milestones JSON and YAML formats
 
+- The PO&M JSON and YAML format has been updated to align with the assessment results JSON and YAML format. Most of the changes in the previous section related to assessment results apply here.
+
+/plan-of-action-and-milestones/poam-items
+
+- Replaces /plan-of-action-and-milestones/poam-items/poam-item-group
+- Like the assessment results, the "poam-items" now has the "observation" and "risk" elements broken out as siblings and references to these objects are used instead.
+- Removed "objective-status" and "implementation-status-uuid, since this was added here by mistake and is covered in the assessment results.
 
 # Changes from OSCAL 1.0.0 Milestone 2 (M2) to M3
 --

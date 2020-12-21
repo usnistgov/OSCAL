@@ -36,14 +36,14 @@
             <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
             <model>
               <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
-                  <use-name>objectives</use-name>
-                  <group-as name="objectives" in-json="ARRAY"/>
+                 <use-name>add-objectives-and-methods</use-name>
+                 <group-as name="add-objectives-and-methods" in-json="ARRAY"/>
                </assembly>
                
                <!-- CHANGED: implemented new model -->
                <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
-                  <use-name>assessment-activity</use-name>
-                  <group-as name="assessment-activities" in-json="ARRAY"/>
+                  <use-name>activity</use-name>
+                  <group-as name="activities" in-json="ARRAY"/>
                </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
@@ -140,6 +140,14 @@
                </assembly>
             </model>
          </define-assembly>
+         <!-- CHANGED: "objectives" to "reviewed-controls" -->
+         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
+            <remarks>
+               <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
+               <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
+               <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
+            </remarks>
+         </assembly>
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
             <group-as name="assessment-subjects" in-json="ARRAY"/>
          </assembly>
@@ -149,19 +157,11 @@
                <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
             </remarks>
          </assembly>
-         <!-- CHANGED: "objectives" to "reviewed-controls" -->
-         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
-            <remarks>
-               <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
-               <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
-               <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
-            </remarks>
-         </assembly>
          
          <define-assembly name="attestation" max-occurs="unbounded">
             <formal-name>Attestation Statements</formal-name>
             <description>A set of textual statements, typically written by the assessor.</description>
-            <group-as name="attestationa" in-json="ARRAY"/>
+            <group-as name="attestations" in-json="ARRAY"/>
             <model>
                 <assembly ref="responsible-party" max-occurs="unbounded">
                    <group-as name="responsible-parties" in-json="BY_KEY"/>
