@@ -91,7 +91,7 @@
          <xsl:apply-templates select="*[@key='back-matter']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:array[@key='assessment-activities']/j:map/j:string[@key='uuid'] | j:array[@key='results']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:array[@key='assessment-actions']/j:map/j:string[@key='uuid'] | j:array[@key='parts']/j:map/j:string[@key='uuid'] | j:array[@key='observations']/j:map/j:string[@key='uuid'] | j:array[@key='risks']/j:map/j:string[@key='uuid'] | j:array[@key='tasks']/j:map/j:string[@key='uuid'] | j:array[@key='findings']/j:map/j:string[@key='uuid']"><!-- XML match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | assessment-activity/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-action/@uuid | part/@uuid | observation/@uuid | risk/@uuid | task/@uuid | finding/@uuid" -->
+   <xsl:template match="j:map[@key='assessment-results']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:array[@key='activities']/j:map/j:string[@key='uuid'] | j:array[@key='results']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:array[@key='assessment-actions']/j:map/j:string[@key='uuid'] | j:array[@key='parts']/j:map/j:string[@key='uuid'] | j:array[@key='observations']/j:map/j:string[@key='uuid'] | j:array[@key='risks']/j:map/j:string[@key='uuid'] | j:array[@key='tasks']/j:map/j:string[@key='uuid'] | j:array[@key='findings']/j:map/j:string[@key='uuid']"><!-- XML match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | activity/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-action/@uuid | part/@uuid | observation/@uuid | risk/@uuid | task/@uuid | finding/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
@@ -101,7 +101,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:array[@key='assessment-activities']/j:map/j:string[@key='uuid'] | j:array[@key='results']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:array[@key='assessment-actions']/j:map/j:string[@key='uuid'] | j:array[@key='parts']/j:map/j:string[@key='uuid'] | j:array[@key='observations']/j:map/j:string[@key='uuid'] | j:array[@key='risks']/j:map/j:string[@key='uuid'] | j:array[@key='tasks']/j:map/j:string[@key='uuid'] | j:array[@key='findings']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='assessment-results']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:array[@key='activities']/j:map/j:string[@key='uuid'] | j:array[@key='results']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:array[@key='assessment-actions']/j:map/j:string[@key='uuid'] | j:array[@key='parts']/j:map/j:string[@key='uuid'] | j:array[@key='observations']/j:map/j:string[@key='uuid'] | j:array[@key='risks']/j:map/j:string[@key='uuid'] | j:array[@key='tasks']/j:map/j:string[@key='uuid'] | j:array[@key='findings']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="3"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='metadata']">
@@ -443,11 +443,11 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='objectives']/j:map">
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="objectives" -->
+      <!-- XML match="add-objectives-and-methods" -->
       <assembly name="local-objective"
-                gi="objectives"
+                gi="add-objectives-and-methods"
                 formal-name="Assessment-Specific Control Objective">
          <xsl:apply-templates select="*[@key='control-id']"/>
          <xsl:apply-templates select="*[@key='description']"/>
@@ -458,7 +458,7 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='objectives']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='objective-status']/j:string[@key='control-id']"><!-- XML match="objectives/@control-id | assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id | objective-status/@control-id" -->
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='objective-status']/j:string[@key='control-id']"><!-- XML match="add-objectives-and-methods/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id | objective-status/@control-id" -->
       <flag in-json="string"
             as-type="NCName"
             name="control-id"
@@ -468,7 +468,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='objectives']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='objective-status']/j:string[@key='control-id']"
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='objective-status']/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='parts']/j:map">
@@ -487,10 +487,10 @@
          <xsl:apply-templates select="*[@key='links']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='assessment-activities']/j:map">
+   <xsl:template match="j:array[@key='activities']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-activity" -->
-      <assembly name="activity" gi="assessment-activity" formal-name="Activity">
+      <!-- XML match="activity" -->
+      <assembly name="activity" gi="activity" formal-name="Activity">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='description']"/>
@@ -589,10 +589,10 @@
          <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='local-definitions']"/>
+         <xsl:apply-templates select="*[@key='reviewed-controls']"/>
          <xsl:apply-templates select="*[@key='assessment-subjects']"/>
          <xsl:apply-templates select="*[@key='assessment-assets']"/>
-         <xsl:apply-templates select="*[@key='reviewed-controls']"/>
-         <xsl:apply-templates select="*[@key='attestationa']"/>
+         <xsl:apply-templates select="*[@key='attestations']"/>
          <xsl:apply-templates select="*[@key='assessment-log']"/>
          <xsl:apply-templates select="*[@key='observations']"/>
          <xsl:apply-templates select="*[@key='risks']"/>
@@ -2149,15 +2149,15 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">local-definitions</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="*[@key='objectives']"/>
-         <xsl:apply-templates select="*[@key='assessment-activities']"/>
+         <xsl:apply-templates select="*[@key='add-objectives-and-methods']"/>
+         <xsl:apply-templates select="*[@key='activities']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='description']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/objectives/description" -->
+      <!-- XML match="assessment-results/local-definitions/add-objectives-and-methods/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2169,17 +2169,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="6">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/objectives/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/add-objectives-and-methods/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2191,17 +2191,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/objectives//part/title" -->
+      <!-- XML match="assessment-results/local-definitions/add-objectives-and-methods//part/title" -->
       <field name="title"
              gi="title"
              as-type="markup-line"
@@ -2213,16 +2213,16 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for assessment-results/local-definitions/objectives//part-->
+   <!-- matching markup-multiline value for assessment-results/local-definitions/add-objectives-and-methods//part-->
    <xsl:template priority="4"
-                 match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
+                 match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
       <field scope="local"
              name="prose"
              key="prose"
@@ -2233,10 +2233,10 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/objectives//part/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/add-objectives-and-methods//part/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2248,17 +2248,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='objectives']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="10">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/title" -->
+      <!-- XML match="assessment-results/local-definitions/activity/title" -->
       <field name="title"
              gi="title"
              as-type="markup-line"
@@ -2270,17 +2270,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:string[@key='title']"
                  mode="get-value-property"
                  priority="6">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:string[@key='description']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2292,17 +2292,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="6">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2314,17 +2314,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step" -->
       <assembly name="step" gi="step" formal-name="Action">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -2337,8 +2337,8 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='uuid']"
-                 priority="8"><!-- XML match="assessment-results/local-definitions/assessment-activity/step/@uuid" -->
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='uuid']"
+                 priority="8"><!-- XML match="assessment-results/local-definitions/activity/step/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
@@ -2348,13 +2348,13 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='title']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/title" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/title" -->
       <field name="title"
              gi="title"
              as-type="markup-line"
@@ -2366,17 +2366,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='title']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='description']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2388,17 +2388,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2410,17 +2410,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="10">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2432,17 +2432,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2454,17 +2454,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection" -->
       <assembly name="control-selection"
                 gi="control-selection"
                 formal-name="Assessed Controls">
@@ -2478,10 +2478,10 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2493,17 +2493,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2515,17 +2515,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="13">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-all" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-all" -->
       <field as-type="empty"
              name="include-all"
              gi="include-all"
@@ -2536,17 +2536,17 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
                  mode="get-value-property"
                  priority="12">
       <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control" -->
       <assembly name="select-control-by-id"
                 gi="include-control"
                 formal-name="Select Control">
@@ -2554,10 +2554,10 @@
          <xsl:apply-templates select="*[@key='statement-ids']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  priority="15">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control/statement-id" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/statement-id" -->
       <field name="statement-id"
              gi="statement-id"
              as-type="NCName"
@@ -2566,17 +2566,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  mode="get-value-property"
                  priority="15">
       <value as-type="NCName" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control" -->
       <assembly name="select-control-by-id"
                 gi="exclude-control"
                 formal-name="Select Control">
@@ -2584,10 +2584,10 @@
          <xsl:apply-templates select="*[@key='statement-ids']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control/statement-id" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/statement-id" -->
       <field name="statement-id"
              gi="statement-id"
              as-type="NCName"
@@ -2596,17 +2596,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  mode="get-value-property"
                  priority="14">
       <value as-type="NCName" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection" -->
       <assembly name="control-objective-selection"
                 gi="control-objective-selection"
                 formal-name="Referened Control Objectives">
@@ -2620,10 +2620,10 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2635,17 +2635,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2657,17 +2657,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="13">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/include-all" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all" -->
       <field as-type="empty"
              name="include-all"
              gi="include-all"
@@ -2678,17 +2678,17 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
                  mode="get-value-property"
                  priority="12">
       <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/step/responsible-role/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/step/responsible-role/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2700,17 +2700,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="12">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:string[@key='description']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2722,17 +2722,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:string[@key='description']"
                  mode="get-value-property"
                  priority="7">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2744,17 +2744,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection" -->
       <assembly name="control-selection"
                 gi="control-selection"
                 formal-name="Assessed Controls">
@@ -2768,10 +2768,10 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2783,17 +2783,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2805,17 +2805,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-all" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/include-all" -->
       <field as-type="empty"
              name="include-all"
              gi="include-all"
@@ -2826,17 +2826,17 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
                  mode="get-value-property"
                  priority="10">
       <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control" -->
       <assembly name="select-control-by-id"
                 gi="include-control"
                 formal-name="Select Control">
@@ -2844,10 +2844,10 @@
          <xsl:apply-templates select="*[@key='statement-ids']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control/statement-id" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control/statement-id" -->
       <field name="statement-id"
              gi="statement-id"
              as-type="NCName"
@@ -2856,17 +2856,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  mode="get-value-property"
                  priority="13">
       <value as-type="NCName" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control" -->
       <assembly name="select-control-by-id"
                 gi="exclude-control"
                 formal-name="Select Control">
@@ -2874,10 +2874,10 @@
          <xsl:apply-templates select="*[@key='statement-ids']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control/statement-id" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/statement-id" -->
       <field name="statement-id"
              gi="statement-id"
              as-type="NCName"
@@ -2886,17 +2886,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
                  mode="get-value-property"
                  priority="12">
       <value as-type="NCName" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-objective-selection" -->
       <assembly name="control-objective-selection"
                 gi="control-objective-selection"
                 formal-name="Referened Control Objectives">
@@ -2910,10 +2910,10 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/description" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/description" -->
       <field name="description"
              gi="description"
              as-type="markup-multiline"
@@ -2925,17 +2925,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2947,17 +2947,17 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/include-all" -->
+      <!-- XML match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/include-all" -->
       <field as-type="empty"
              name="include-all"
              gi="include-all"
@@ -2968,17 +2968,17 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
                  mode="get-value-property"
                  priority="10">
       <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/local-definitions/assessment-activity/responsible-role/link/text" -->
+      <!-- XML match="assessment-results/local-definitions/activity/responsible-role/link/text" -->
       <field name="text"
              gi="text"
              as-type="markup-line"
@@ -2990,7 +2990,7 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='assessment-activities']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="10">
       <value as-type="markup-line" in-json="string">
@@ -4189,6 +4189,274 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/description" -->
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Control Objective Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/link/text" -->
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection" -->
+      <assembly name="control-selection"
+                gi="control-selection"
+                formal-name="Assessed Controls">
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='include-all']"/>
+         <xsl:apply-templates select="*[@key='include-controls']"/>
+         <xsl:apply-templates select="*[@key='exclude-controls']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/description" -->
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Assessed Controls Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/link/text" -->
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-all" -->
+      <field as-type="empty"
+             name="include-all"
+             gi="include-all"
+             formal-name="All"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
+                 mode="get-value-property"
+                 priority="9">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-control" -->
+      <assembly name="select-control-by-id"
+                gi="include-control"
+                formal-name="Select Control">
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='statement-ids']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-control/statement-id" -->
+      <field name="statement-id"
+             gi="statement-id"
+             as-type="NCName"
+             formal-name="Include Specific Statements"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="NCName" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/exclude-control" -->
+      <assembly name="select-control-by-id"
+                gi="exclude-control"
+                formal-name="Select Control">
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='statement-ids']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/exclude-control/statement-id" -->
+      <field name="statement-id"
+             gi="statement-id"
+             as-type="NCName"
+             formal-name="Include Specific Statements"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="NCName" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection" -->
+      <assembly name="control-objective-selection"
+                gi="control-objective-selection"
+                formal-name="Referened Control Objectives">
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='include-all']"/>
+         <xsl:apply-templates select="*[@key='include-objectives']"/>
+         <xsl:apply-templates select="*[@key='exclude-objectives']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/description" -->
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Control Ojectives Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/link/text" -->
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/include-all" -->
+      <field as-type="empty"
+             name="include-all"
+             gi="include-all"
+             formal-name="All"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
+                 mode="get-value-property"
+                 priority="9">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:string[@key='description']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
@@ -4603,275 +4871,7 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
-                 priority="6">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/description" -->
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Control Objective Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:string[@key='description']"
-                 mode="get-value-property"
-                 priority="6">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection" -->
-      <assembly name="control-selection"
-                gi="control-selection"
-                formal-name="Assessed Controls">
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='include-all']"/>
-         <xsl:apply-templates select="*[@key='include-controls']"/>
-         <xsl:apply-templates select="*[@key='exclude-controls']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
-                 priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/description" -->
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Assessed Controls Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:string[@key='description']"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="10">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="10">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
-                 priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-all" -->
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:[@key='include-all']"
-                 mode="get-value-property"
-                 priority="9">
-      <value>
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map"
-                 priority="10">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-control" -->
-      <assembly name="select-control-by-id"
-                gi="include-control"
-                formal-name="Select Control">
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='statement-ids']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
-                 priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/include-control/statement-id" -->
-      <field name="statement-id"
-             gi="statement-id"
-             as-type="NCName"
-             formal-name="Include Specific Statements"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='statement-ids']/j:string"
-                 mode="get-value-property"
-                 priority="12">
-      <value as-type="NCName" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map"
-                 priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/exclude-control" -->
-      <assembly name="select-control-by-id"
-                gi="exclude-control"
-                formal-name="Select Control">
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='statement-ids']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
-                 priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-selection/exclude-control/statement-id" -->
-      <field name="statement-id"
-             gi="statement-id"
-             as-type="NCName"
-             formal-name="Include Specific Statements"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='statement-ids']/j:string"
-                 mode="get-value-property"
-                 priority="11">
-      <value as-type="NCName" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection" -->
-      <assembly name="control-objective-selection"
-                gi="control-objective-selection"
-                formal-name="Referened Control Objectives">
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='include-all']"/>
-         <xsl:apply-templates select="*[@key='include-objectives']"/>
-         <xsl:apply-templates select="*[@key='exclude-objectives']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
-                 priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/description" -->
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Control Ojectives Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:string[@key='description']"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="10">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="10">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
-                 priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/reviewed-controls/control-objective-selection/include-all" -->
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-objective-selections']/j:map/j:[@key='include-all']"
-                 mode="get-value-property"
-                 priority="9">
-      <value>
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-results/result/attestation" -->
@@ -4882,7 +4882,7 @@
          <xsl:apply-templates select="*[@key='parts']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-results/result/attestation/responsible-party/link/text" -->
@@ -4897,14 +4897,14 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-results/result/attestation//part/title" -->
@@ -4919,7 +4919,7 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-line" in-json="string">
@@ -4928,7 +4928,7 @@
    </xsl:template>
    <!-- matching markup-multiline value for assessment-results/result/attestation//part-->
    <xsl:template priority="4"
-                 match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
+                 match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
       <field scope="local"
              name="prose"
              key="prose"
@@ -4939,7 +4939,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-results/result/attestation//part/link/text" -->
@@ -4954,7 +4954,7 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestationa']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='attestations']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="11">
       <value as-type="markup-line" in-json="string">

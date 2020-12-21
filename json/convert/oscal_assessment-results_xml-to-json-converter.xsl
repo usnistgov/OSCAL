@@ -76,7 +76,7 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="assessment-results metadata revision annotation link role location address party responsible-party import-ap local-definitions objectives part assessment-activity step reviewed-controls control-selection include-control exclude-control control-objective-selection responsible-role related-controls result component status protocol inventory-item implemented-component user authorized-privilege assessment-action timing assessment-subject include-subject exclude-subject associated-activity assessment-subject-placeholder assessment-assets assessment-platform uses-component attestation assessment-log entry related-action related-task observation origin actor subject relevant-evidence risk characterization facet mitigating-factor response required-asset task risk-log related-response finding objective-status back-matter resource citation biblio rlink"/>
+   <xsl:strip-space elements="assessment-results metadata revision annotation link role location address party responsible-party import-ap local-definitions add-objectives-and-methods part activity step reviewed-controls control-selection include-control exclude-control control-objective-selection responsible-role related-controls result component status protocol inventory-item implemented-component user authorized-privilege assessment-action timing assessment-subject include-subject exclude-subject associated-activity assessment-subject-placeholder assessment-assets assessment-platform uses-component attestation assessment-log entry related-action related-task observation origin actor subject relevant-evidence risk characterization facet mitigating-factor response required-asset task risk-log related-response finding objective-status back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA: OSCAL Assessment Results Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
@@ -106,7 +106,7 @@
          <xsl:apply-templates select="back-matter"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | assessment-activity/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-action/@uuid | part/@uuid | observation/@uuid | risk/@uuid | task/@uuid | finding/@uuid"
+   <xsl:template match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | activity/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-action/@uuid | part/@uuid | observation/@uuid | risk/@uuid | task/@uuid | finding/@uuid"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -593,11 +593,11 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="objectives"
+   <xsl:template match="add-objectives-and-methods"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="local-objective"
-                gi="objectives"
+                gi="add-objectives-and-methods"
                 formal-name="Assessment-Specific Control Objective">
          <xsl:apply-templates select="@control-id"/>
          <xsl:apply-templates select="description"/>
@@ -632,7 +632,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="objectives/@control-id | assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id | objective-status/@control-id"
+   <xsl:template match="add-objectives-and-methods/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id | objective-status/@control-id"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="NCName"
@@ -694,10 +694,10 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-activity"
+   <xsl:template match="activity"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="activity" gi="assessment-activity" formal-name="Activity">
+      <assembly name="activity" gi="activity" formal-name="Activity">
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="title"/>
          <xsl:apply-templates select="description"/>
@@ -882,6 +882,7 @@
             </group>
          </xsl:for-each-group>
          <xsl:apply-templates select="local-definitions"/>
+         <xsl:apply-templates select="reviewed-controls"/>
          <xsl:for-each-group select="assessment-subject" group-by="true()">
             <group in-json="ARRAY" key="assessment-subjects">
                <xsl:apply-templates select="current-group()">
@@ -890,9 +891,8 @@
             </group>
          </xsl:for-each-group>
          <xsl:apply-templates select="assessment-assets"/>
-         <xsl:apply-templates select="reviewed-controls"/>
          <xsl:for-each-group select="attestation" group-by="true()">
-            <group in-json="ARRAY" key="attestationa">
+            <group in-json="ARRAY" key="attestations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -2745,15 +2745,15 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">local-definitions</xsl:attribute>
          </xsl:if>
-         <xsl:for-each-group select="objectives" group-by="true()">
-            <group in-json="ARRAY" key="objectives">
+         <xsl:for-each-group select="add-objectives-and-methods" group-by="true()">
+            <group in-json="ARRAY" key="add-objectives-and-methods">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="assessment-activity" group-by="true()">
-            <group in-json="ARRAY" key="assessment-activities">
+         <xsl:for-each-group select="activity" group-by="true()">
+            <group in-json="ARRAY" key="activities">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -2762,7 +2762,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/objectives/description"
+   <xsl:template match="assessment-results/local-definitions/add-objectives-and-methods/description"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2782,7 +2782,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/objectives/link/text"
+   <xsl:template match="assessment-results/local-definitions/add-objectives-and-methods/link/text"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2799,7 +2799,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/objectives//part/title"
+   <xsl:template match="assessment-results/local-definitions/add-objectives-and-methods//part/title"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2816,7 +2816,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/objectives//part/link/text"
+   <xsl:template match="assessment-results/local-definitions/add-objectives-and-methods//part/link/text"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2833,7 +2833,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/title"
+   <xsl:template match="assessment-results/local-definitions/activity/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2850,7 +2850,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/description"
+   <xsl:template match="assessment-results/local-definitions/activity/description"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2870,7 +2870,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/link/text"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2887,7 +2887,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step"
+   <xsl:template match="assessment-results/local-definitions/activity/step"
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2927,7 +2927,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/@uuid"
+   <xsl:template match="assessment-results/local-definitions/activity/step/@uuid"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
@@ -2939,7 +2939,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/title"
+   <xsl:template match="assessment-results/local-definitions/activity/step/title"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2956,7 +2956,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/description"
+   <xsl:template match="assessment-results/local-definitions/activity/step/description"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2976,7 +2976,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/step/link/text"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -2993,7 +2993,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/description"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/description"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3013,7 +3013,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/link/text"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3030,7 +3030,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3077,7 +3077,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/description"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/description"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3097,7 +3097,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/link/text"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3114,7 +3114,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-all"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-all"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3128,7 +3128,7 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3145,7 +3145,7 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/include-control/statement-id"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/statement-id"
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3159,7 +3159,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3176,7 +3176,7 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-selection/exclude-control/statement-id"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/statement-id"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3190,7 +3190,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3237,7 +3237,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/description"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/description"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3257,7 +3257,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/link/text"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3274,7 +3274,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/reviewed-controls/control-objective-selection/include-all"
+   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3288,7 +3288,7 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/step/responsible-role/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/step/responsible-role/link/text"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3305,7 +3305,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/description"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/description"
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3325,7 +3325,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/link/text"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3342,7 +3342,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3389,7 +3389,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/description"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/description"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3409,7 +3409,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/link/text"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3426,7 +3426,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-all"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-all"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3440,7 +3440,7 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3457,7 +3457,7 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/include-control/statement-id"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control/statement-id"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3471,7 +3471,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3488,7 +3488,7 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-selection/exclude-control/statement-id"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/statement-id"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3502,7 +3502,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3549,7 +3549,7 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/description"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/description"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3569,7 +3569,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/link/text"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3586,7 +3586,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/related-controls/control-objective-selection/include-all"
+   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/include-all"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3600,7 +3600,7 @@
          </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/assessment-activity/responsible-role/link/text"
+   <xsl:template match="assessment-results/local-definitions/activity/responsible-role/link/text"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -4686,6 +4686,301 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/description"
+                 priority="6"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Control Objective Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/link/text"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection"
+                 priority="7"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="control-selection"
+                gi="control-selection"
+                formal-name="Assessed Controls">
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="annotation" group-by="true()">
+            <group in-json="ARRAY" key="annotations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="include-all"/>
+         <xsl:for-each-group select="include-control" group-by="true()">
+            <group in-json="ARRAY" key="include-controls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="exclude-control" group-by="true()">
+            <group in-json="ARRAY" key="exclude-controls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/description"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Assessed Controls Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/link/text"
+                 priority="10"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-all"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field as-type="empty"
+             name="include-all"
+             gi="include-all"
+             formal-name="All"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control"
+                 priority="10"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="select-control-by-id"
+                gi="include-control"
+                formal-name="Select Control">
+         <xsl:apply-templates select="@control-id"/>
+         <xsl:for-each-group select="statement-id" group-by="true()">
+            <group in-json="ARRAY" key="statement-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control/statement-id"
+                 priority="12"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="statement-id"
+             gi="statement-id"
+             as-type="NCName"
+             formal-name="Include Specific Statements"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/exclude-control"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="select-control-by-id"
+                gi="exclude-control"
+                formal-name="Select Control">
+         <xsl:apply-templates select="@control-id"/>
+         <xsl:for-each-group select="statement-id" group-by="true()">
+            <group in-json="ARRAY" key="statement-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/exclude-control/statement-id"
+                 priority="11"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="statement-id"
+             gi="statement-id"
+             as-type="NCName"
+             formal-name="Include Specific Statements"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection"
+                 priority="7"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="control-objective-selection"
+                gi="control-objective-selection"
+                formal-name="Referened Control Objectives">
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="annotation" group-by="true()">
+            <group in-json="ARRAY" key="annotations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="include-all"/>
+         <xsl:for-each-group select="include-objective" group-by="true()">
+            <group in-json="ARRAY" key="include-objectives">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="exclude-objective" group-by="true()">
+            <group in-json="ARRAY" key="exclude-objectives">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/description"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="description"
+             gi="description"
+             as-type="markup-multiline"
+             formal-name="Control Ojectives Description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/link/text"
+                 priority="10"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="text"
+             gi="text"
+             as-type="markup-line"
+             formal-name="Link Text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/include-all"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field as-type="empty"
+             name="include-all"
+             gi="include-all"
+             formal-name="All"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
+      </field>
+   </xsl:template>
    <xsl:template match="assessment-results/result/assessment-subject/description"
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -5069,301 +5364,6 @@
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
          </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/description"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Control Objective Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="control-selection"
-                gi="control-selection"
-                formal-name="Assessed Controls">
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="include-all"/>
-         <xsl:for-each-group select="include-control" group-by="true()">
-            <group in-json="ARRAY" key="include-controls">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="exclude-control" group-by="true()">
-            <group in-json="ARRAY" key="exclude-controls">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/description"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Assessed Controls Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/link/text"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-all"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="select-control-by-id"
-                gi="include-control"
-                formal-name="Select Control">
-         <xsl:apply-templates select="@control-id"/>
-         <xsl:for-each-group select="statement-id" group-by="true()">
-            <group in-json="ARRAY" key="statement-ids">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control/statement-id"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="statement-id"
-             gi="statement-id"
-             as-type="NCName"
-             formal-name="Include Specific Statements"
-             in-json="SCALAR">
-         <value as-type="NCName" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/exclude-control"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="select-control-by-id"
-                gi="exclude-control"
-                formal-name="Select Control">
-         <xsl:apply-templates select="@control-id"/>
-         <xsl:for-each-group select="statement-id" group-by="true()">
-            <group in-json="ARRAY" key="statement-ids">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/exclude-control/statement-id"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="statement-id"
-             gi="statement-id"
-             as-type="NCName"
-             formal-name="Include Specific Statements"
-             in-json="SCALAR">
-         <value as-type="NCName" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="control-objective-selection"
-                gi="control-objective-selection"
-                formal-name="Referened Control Objectives">
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="include-all"/>
-         <xsl:for-each-group select="include-objective" group-by="true()">
-            <group in-json="ARRAY" key="include-objectives">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="exclude-objective" group-by="true()">
-            <group in-json="ARRAY" key="exclude-objectives">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/description"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Control Ojectives Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/link/text"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/include-all"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/attestation"
