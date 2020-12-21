@@ -464,13 +464,104 @@ For /component-definition/capabilities:
 - changed the data type of "description" from "string" to "markup-multiline"
 - renamed "properties" to "props"
 
+## Refactoring of the assessment and assessment result layer models
+
+The assessment plan, assessment results, and plan of actions and milestones models have undergone some significant revisions. These revisions have been based on community feedback and a need to provide more extensibility for future growth. Extra review of these models is appreciated as we make preparations for the OSCAL 1.0.0 FINAL release.
+
 ## Changes to the assessment plan model
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment plan model.
+Due to the nature of changes in this model, the following documentation details how the new model roughly maps to the 1.0.0-milestone3 model. The following changes have been made in the XML, JSON, and YAML formats for the OSCAL assessment plan model.
 
 ### Changes to the assessment plan XML format
 
+/assessment-plan/local-definitions
+
+- The structures located in /assessment-plan/assessment-subjects/local-definitions has been moved here. This includes the component, inventory-item, and user element constructions. This allows all content that augments the content from the referenced SSP to be located within a top-level element.
+- The "add-objectives-and-methods" element has been added which allow the definitions of new assessment objectives and methods which are to be used in the assessment, but are not located in the catalog for which the system's baseline is generated from. This replaces the original elements located in /assessment-plan/objectives/objective and /assessment-plan/objectives/method.
+- The "activity" element has been added to allow an assessment process to be defined. These assessment activities can then be referenced by a specific assessment-action.
+
+/assessment-plan/terms-and-conditions
+
+- This new element provides a means to include textual front matter in the assessment plan. This can be used to define rules of engagement, activities to include/exclude from assessments, instructions for delivering results, etc.
+
+/assessment-plan/reviewed-controls
+
+- This element includes constructs that previously appeared under /assessment-plan/objectives in the "controls" and "control-objectives" elements. We believe the inclusion/exclusion syntax used now is simpler, more concise, and easier to process.
+
+/assessment-plan/assessment-subject
+
+- This element replaces the previous /assessment-plan/assessment-subjects element.
+- The old version intermixed included and excluded subjects of different types.
+- The new construction pairs includes/excludes of a given type, which should make processing easier and more straightforward.
+
+/assessment-plan/assessment-assets
+
+- This new element replaces the previous /assessment-plan/assets element.
+- The old element allowed tools to be defined and used "origination" as a way to loosely associate information (e.g., IP addresses used with assessment tools) with these tools.
+- The new construction allows for "assessment-platforms" to be identified, which can combine referenced tool components using "uses-component" in multiple combinations providing more control over defining information about tooling used during an assessment. Information that applies to the platform, such as IP addresses used, can be defined using the "prop" element on the "assessment-platform".
+
+/assessment-plan/assessment-action
+
+- This new element replaces the /assessment-plan/assessment-activities/test-method element.
+- The old element required that information about an assessment process was defined by a "test-method".
+- The new construction allows:
+  - The use of "associated-activity" to reference an "activity" defined under /assessment-plan/local-definitions, which allows the same activity to be used multiple times across different assessment-action elements.
+  - Use of "assessment-subject" to define in a fine-grained the targeting of subjects the assessment-action are to be performed against.
+  - Use of the "responsible-role" element to identify assessment roles and optionally parties which are associated with the action.
+
+/assessment-plan/task
+
+- This element updates the old element located in /assessment-plan/assessment-activities/schedule/task
+- "title" is now required.
+- "activity-uuid" is replaced with "related-action".
+- "party-uuid" and "location-uuid" is now specified on a per-action basis using the referenced "assessment-action" element's "assessment-subject" entries, which allows both parties and locations to be subjects.
+- "compare-to" has been removed, since this was intended to be used in assessment-results only.
+
 ### Changes to the assessment plan JSON and YAML formats
+
+/assessment-plan/local-definitions
+
+- The structures located in /assessment-plan/assessment-subjects/local-definitions has been moved here. This includes the components, inventory-items, and users object constructions. This allows all content that augments the content from the referenced SSP to be located within a top-level element.
+- Use of "protocols" has been removed in lieu of defining "network" or "service" components under local-definitions.
+- The "add-objectives-and-methods" object array has been added which allow the definitions of new assessment objectives and methods which are to be used in the assessment, but are not located in the catalog for which the system's baseline is generated from. This replaces the original objects located in /assessment-plan/objectives/objectives and /assessment-plan/objectives/method-definitions.
+- The "activities" object array has been added to allow an assessment process to be defined. These assessment activities can then be referenced by a specific assessment-action.
+
+/assessment-plan/terms-and-conditions
+
+- This new object provides a means to include textual front matter in the assessment plan. This can be used to define rules of engagement, activities to include/exclude from assessments, instructions for delivering results, etc.
+
+/assessment-plan/reviewed-controls
+
+- This element includes constructs that previously appeared under /assessment-plan/objectives in the "control-group" and "control-objective-group" object arrays. We believe the inclusion/exclusion syntax used now is simpler, more concise, and easier to process.
+
+/assessment-plan/assessment-subject
+
+- This element replaces the previous /assessment-plan/assessment-subjects element.
+- The old version intermixed included and excluded subjects of different types.
+- The new construction pairs includes/excludes of a given type, which should make processing easier and more straightforward.
+
+/assessment-plan/assessment-assets
+
+- This new element replaces the previous /assessment-plan/assets element.
+- The old element allowed tools to be defined and used "origination" as a way to loosely associate information (e.g., IP addresses used with assessment tools) with these tools.
+- The new construction allows for "assessment-platforms" to be identified, which can combine referenced tool components using "uses-components" in multiple combinations providing more control over defining information about tooling used during an assessment. Information that applies to the platform, such as IP addresses used, can be defined using the "props" object array on an "assessment-platforms" array item object.
+
+/assessment-plan/assessment-actions
+
+- This new element replaces the /assessment-plan/assessment-activities/test-methods element.
+- The old element required that information about an assessment process was defined by "test-methods".
+- The new construction allows:
+  - The use of "associated-activities" to reference an "activity" defined under /assessment-plan/local-definitions, which allows the same activity to be used multiple times across different assessment-action elements.
+  - Use of "assessment-subjects" to define in a fine-grained the targeting of subjects the assessment-action are to be performed against.
+  - Use of the "responsible-roles" to identify assessment roles and optionally parties which are associated with the action.
+
+/assessment-plan/tasks
+
+- This element updates the old element located in /assessment-plan/assessment-activities/schedule/tasks
+- "title" is now required.
+- "activity-uuids" is replaced with "related-actions".
+- "party-uuids" and "location-uuids" are now specified on a per-action basis using the referenced "assessment-action" object's "assessment-subjects" array items, which allows both parties and locations to be subjects.
+- "compare-to" has been removed, since this was intended to be used in assessment-results only.
 
 
 ## Changes to the assessment results model

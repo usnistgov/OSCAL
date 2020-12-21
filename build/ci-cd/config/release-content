@@ -1,13 +1,4 @@
 # file to include in the release
-content/fedramp.gov/**/*.xml
-content/fedramp.gov/**/*.json
-content/fedramp.gov/**/*.yaml
-content/nist.gov/**/*.xml
-content/nist.gov/**/*.json
-content/nist.gov/**/*.yaml
-content/ssp-example/**/*.xml
-content/ssp-example/**/*.json
-content/ssp-example/**/*.yaml
 xml/convert/*.xsl
 xml/schema/*.xsd
 json/convert/*.xsl

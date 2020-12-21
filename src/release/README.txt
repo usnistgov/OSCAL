@@ -6,19 +6,20 @@ More information about OSCAL can be found on the OSCAL Project Website: https://
 
 # Release Contents
 
-This release provides 3 types of resources, each located in a different subdirectory:
+This release provides 2 types of resources, each located in a different subdirectory:
 
 - xml: Provides the XML schemas and content converters that are needed to support the OSCAL model XML-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/xml.
 - json: Provides the JSON schemas and content converters that are needed to support the OSCAL model JSON-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/json.
-- content: Offers OSCAL XML, JSON, and YAML content for the NIST SP 800-53 Revision 4 and 5 catalogs, and FedRAMP Baselines. XML, JSON, and YAML examples of a OSCALized System Security Plan (SSP) is also provided in XML, JSON, and YAML.
 
 These directories provide stable, released versions of the resources provided on the OSCAL GitHub repository: https://github.com/usnistgov/OSCAL.
+
+Please note that OSCAL content examples, which were once included in these archives are now located at: https://github.com/usnistgov/oscal-content.
 
 # The OSCAL Roadmap
 
 OSCAL is being developed through a series of milestone releases, which are focused around stabilizing the OSCAL model layers in a progression. While the project is being developed iteratively, the OSCAL team is working to reduce the impact of changes between each milestone release, to provide for early adoption of OSCAL content and the development of tools supporting the lower-layer models.
 
-More information on these milestones and complete OSCAL Roadmap is always available at: https://pages.nist.gov/OSCAL/learnmore/roadmap.
+More information on these milestones and complete OSCAL Roadmap is always available at: https://pages.nist.gov/OSCAL/contribute/roadmap/.
 
 # How to Contribute
 
