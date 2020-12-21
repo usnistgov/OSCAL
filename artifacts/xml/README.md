@@ -25,13 +25,13 @@ The following directories provide:
 
 XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
-- [Catalog XML Schema](schema/oscal_catalog_schema.xsd): Supports the validation of OSCAL XML-based control catalogs.
-- [Profile XML Schema](schema/oscal_profile_schema.xsd): Supports the validation of OSCAL XML-based control baselines.
-- [System Security Plan (SSP) XML Schema](schema/oscal_ssp_schema.xsd): (Experimental) Supports the validation of OSCAL XML-based SSPs.
-- [System Component XML Schema](schema/oscal_component_schema.xsd): (Experimental) Supports the validation of OSCAL XML-based SSPs.
-- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.xsd): (Experimental)
-- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.xsd): (Experimental)
-- [System POA&M XML Schema](schema/oscal_poam_schema.xsd): (Experimental)
+- [Catalog XML Schema](schema/oscal_catalog_schema.xsd) (Draft): Supports the validation of OSCAL XML-based control catalogs.
+- [Profile XML Schema](schema/oscal_profile_schema.xsd) (Draft): Supports the validation of OSCAL XML-based control baselines.
+- [System Security Plan (SSP) XML Schema](schema/oscal_ssp_schema.xsd) (Draft): Supports the validation of OSCAL XML-based SSP content.
+- [System Component XML Schema](schema/oscal_component_schema.xsd) (Draft): Supports the validation of OSCAL XML-based component definition content.
+- [System Assessment Plan (SAP) XML Schema](schema/oscal_assessment-plan_schema.xsd) (Draft): Supports the validation of OSCAL XML-based assessment plan content.
+- [System Assessment Report (SAR) XML Schema](schema/oscal_assessment-results_schema.xsd) (Draft): Supports the validation of OSCAL XML-based assessment results content.
+- [System POA&M XML Schema](schema/oscal_poam_schema.xsd) (Draft): Supports the validation of OSCAL XML-based POA&M content.
 
 ## Validating OSCAL XML Content
 
@@ -49,10 +49,13 @@ The [online documentation](http://xmlsoft.org/xmllint.html) for *xmllint* provid
 
 The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
-- [Catalog JSON-to-XML](convert/oscal_catalog_json-to-xml-converter.xsl): Supports the conversion of OSCAL JSON-based control catalogs to the OSCAL XML catalog format.
-- [Profile JSON-to-XML](convert/oscal_profile_json-to-xml-converter.xsl): Supports the conversion of OSCAL JSON-based control baselines to the OSCAL XML profile format.
-- [System Security Plan (SSP) JSON-to-XML](convert/oscal_ssp_json-to-xml-converter.xsl): (Experimental) Supports the conversion of OSCAL JSON-based SSPs to the OSCAL XML SSP format.
-- Other experimental formats, as applicable.
+- [Catalog JSON-to-XML](convert/oscal_catalog_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based control catalogs to the OSCAL XML catalog format.
+- [Profile JSON-to-XML](convert/oscal_profile_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based control baselines to the OSCAL XML profile format.
+- [System Security Plan (SSP) JSON-to-XML](convert/oscal_ssp_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based SSP content to the OSCAL XML SSP format.
+- [Component Definition JSON-to-XML](convert/oscal_component_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based component definition content to the OSCAL XML content format.
+- [Assessment Plan JSON-to-XML](convert/oscal_assessment-plan_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based component definition content to the OSCAL XML content format.
+- [Assessment Results JSON-to-XML](convert/oscal_assessment-results_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based component definition content to the OSCAL XML content format.
+- [Plan of Action and Milestones (POA&M) JSON-to-XML](convert/oscal_poam_json-to-xml-converter.xsl) (Draft): Supports the conversion of OSCAL JSON-based component definition content to the OSCAL XML content format.
 
 **IMPORTANT** : XSLT 3.0 and XPath 3.1 are only required when using the NIST provided tools for converting OSCAL content between JSON and XML. Any version of XSLT or XPath may be used when transforming or querying OSCAL files for other reasons. These newer versions of XSLT and XPath offer more robust capabilities, that are needed to support the OSCAL converters.
 

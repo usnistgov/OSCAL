@@ -1,339 +1,275 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OSCAL</title><link>https://pages.nist.gov/OSCAL/</link><description>Recent content on OSCAL</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://pages.nist.gov/OSCAL/index.xml" rel="self" type="application/rss+xml"/><item><title>OSCAL Development Roadmap</title><link>https://pages.nist.gov/OSCAL/contribute/roadmap/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/roadmap/</guid><description>OSCAL is a community-driven, NIST-led project, with an open invitation to the community to participate in the framing and development of OSCAL. Feature requests can be created and submitted directly into the project's GitHub repository. Feedback in the form of bug reports are also encouraged and appreciated. If appropriate, we ask you add a comment to an existing relevant issue, and only create a new issue when no relevant issue exists.</description></item><item><title>Assessment Plan Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-model-map/</guid><description>+ assessment-plan: [1]{… }
-- assessment-plan: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>Assessment Results Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-model-map/</guid><description>+ assessment-results: [1]{… }
-- assessment-results: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>Catalog Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</guid><description>+ catalog: [1]{… }
-- catalog: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>Challenges Addressed by OSCAL</title><link>https://pages.nist.gov/OSCAL/learnmore/challenges/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/challenges/</guid><description>OSCAL addresses a number of challenges around security controls and security control assessment.
-Control Information Lacks Standardization The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in information systems in order for the tool to use the information.</description></item><item><title>Component Definition Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-model-map/</guid><description>+ component-definition: [1]{… }
-- component-definition: [1]{
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],
-oscal-version: string [0 or 1],</description></item><item><title>OSCAL Model Overview</title><link>https://pages.nist.gov/OSCAL/documentation/schema/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/overview/</guid><description>OSCAL is organized in a series of layers that each provide a set of models.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OSCAL</title><link>https://pages.nist.gov/OSCAL/</link><description>Recent content on OSCAL</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://pages.nist.gov/OSCAL/index.xml" rel="self" type="application/rss+xml"/><item><title>OSCAL Development Roadmap</title><link>https://pages.nist.gov/OSCAL/contribute/roadmap/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/roadmap/</guid><description>OSCAL is a community-driven, NIST-led project, with an open invitation to the community to participate in the framing and development of OSCAL. Feature requests can be created and submitted directly into the project's GitHub repository. Feedback in the form of bug reports are also encouraged and appreciated. If appropriate, we ask you add a comment to an existing relevant issue, and only create a new issue when no relevant issue exists.</description></item><item><title>Assessment Plan Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-model-map/</guid><description>assessment-plan [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Assessment Results Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-model-map/</guid><description>assessment-results [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Catalog Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-model-map/</guid><description>catalog [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Challenges Addressed by OSCAL</title><link>https://pages.nist.gov/OSCAL/learnmore/challenges/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/challenges/</guid><description>OSCAL addresses a number of challenges around security controls and security control assessment.
+Control Information Lacks Standardization The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in information systems in order for the tool to use the information.</description></item><item><title>Component Definition Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-model-map/</guid><description>component-definition [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>OSCAL Model Overview</title><link>https://pages.nist.gov/OSCAL/documentation/schema/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/overview/</guid><description>OSCAL is organized in a series of layers that each provide a set of models.
 A model represents a information structure supporting a specific operational purpose or concept.
-Each model is comprised of information structures that form an information model for each OSCAL model. This information model is then bound to multiple serialization formats (i.e., XML, JSON, YAML), which represent a concrete data model. Thus, a data model that defines how to represent an OSCAL information model in a serialized format.</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model JSON Format</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-model-map/</guid><description>+ plan-of-action-and-milestones: [1]{… }
-- plan-of-action-and-milestones: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>Profile Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-model-map/</guid><description>+ profile: [1]{… }
-- profile: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>System Security Plan Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-model-map/</guid><description>+ system-security-plan: [1]{… }
-- system-security-plan: [1]{
-uuid: uuid [1],
-+ metadata: [1]{… },
-- metadata: [1]{
-title: markup-line [1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [1],
-version: string [1],
-oscal-version: string [1],
-+ revision-history: [0 to ∞]{… },
-- revision-history: [0 to ∞]{
-title: markup-line [0 or 1],
-published: dateTime-with-timezone [0 or 1],
-last-modified: dateTime-with-timezone [0 or 1],
-version: string [0 or 1],</description></item><item><title>Assessment Plan Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-schema/</guid><description>Schema download oscal_assessment-plan_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-ap
-The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.
+Each model is comprised of information structures that form an information model for each OSCAL model. This information model is then bound to multiple serialization formats (i.e., XML, JSON, YAML), which represent a concrete data model. Thus, a data model that defines how to represent an OSCAL information model in a serialized format.</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model JSON Format</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-model-map/</guid><description>plan-of-action-and-milestones [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Profile Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-model-map/</guid><description>profile [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>System Security Plan Model JSON Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-model-map/</guid><description>system-security-plan [1]: {… }uuid [1]: uuid,
+metadata [1]: {… }, title [1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [1]: dateTime-with-timezone,
+version [1]: string,
+oscal-version [1]: string,
+revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+title [0 or 1]: markup-line,
+published [0 or 1]: dateTime-with-timezone,
+last-modified [0 or 1]: dateTime-with-timezone,
+version [0 or 1]: string,
+oscal-version [0 or 1]: string,
+props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Assessment Plan Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/json-schema/</guid><description>OSCAL model OSCAL Assessment Plan Model
+Version 1.0.0-rc1
+JSON Schema oscal_assessment-plan_schema.json XML to JSON converter oscal_assessment-plan_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.
 The root of the OSCAL assessment plan format is assessment-plan.
-Switch to XML activity-uuid Name Activity ID
-Description Links the task to a defined activity.
-A string property (type uuid).
-This object appears as a property on: task.</description></item><item><title>Assessment Results Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</guid><description>Schema download oscal_assessment-results_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-ar
-The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
+Switch to XML action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>Assessment Results Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</guid><description>OSCAL model OSCAL Assessment Results Model
+Version 1.0.0-rc1
+JSON Schema oscal_assessment-results_schema.json XML to JSON converter oscal_assessment-results_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
 The root of the OSCAL assessment results format is assessment-results.
-Switch to XML activity-uuid Name Activity ID
-Description Links the task to a defined activity.
-A string property (type uuid).
-This object appears as a property on: task.
-Switch to XML addr-line Name Address line</description></item><item><title>Component Definition Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</guid><description>Schema download oscal_component_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-component
-The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</description></item><item><title>Control Catalog Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</guid><description>Schema download oscal_catalog_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-catalog
-The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
-Switch to XML addr-line Name Address line
-Description A single line of an address.
-A string property.
-This object appears as a property on: address.</description></item><item><title>OSCAL Data Types</title><link>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</guid><description>The OSCAL models share a set of data type primitives. These data types are documented in the following sections.
+Switch to XML action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>Component Definition Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/json-schema/</guid><description>OSCAL model OSCAL Component Definition Model
+Version 1.0.0-rc1
+JSON Schema oscal_component_schema.json XML to JSON converter oscal_component_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Component Definition Model can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software.</description></item><item><title>Control Catalog Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</guid><description>OSCAL model OSCAL Control Catalog Model
+Version 1.0.0-rc1
+JSON Schema oscal_catalog_schema.json XML to JSON converter oscal_catalog_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
+Switch to XML annotation formal name Annotated Property An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks.</description></item><item><title>OSCAL Data Types</title><link>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/datatypes/</guid><description>The OSCAL models share a set of data type primitives. These data types are documented in the following sections.
 Simple Data types empty This data type indicates that the model information element contains no value content, but may contain other structured information elements.
 In XML, this may represent an element without text content.
-In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-schema/</guid><description>Schema download oscal_poam_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-poam
-The OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.
-The root of the OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is plan-action-milestones.
-Switch to XML activity-uuid Name Activity ID
-Description Links the task to a defined activity.
-A string property (type uuid).</description></item><item><title>Profile Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</guid><description>Schema download oscal_profile_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-profile
-A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
-Switch to XML add Name Addition
-Description Specifies contents to be added into controls, in resolution
-This object appears as a property on: alter.
-The add object has the following members (properties):</description></item><item><title>System Security Plan Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</guid><description>Schema download oscal_ssp_schema.json
-Schema version 1.0.0-milestone3
-Short name oscal-ssp
-The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
-The root of the OSCAL System Security Plan (SSP) format is system-security-plan.
-Switch to XML addr-line Name Address line
-Description A single line of an address.
-A string property.
-This object appears as a property on: address.</description></item><item><title>Project Goals and Design Principles</title><link>https://pages.nist.gov/OSCAL/learnmore/goals/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/goals/</guid><description>Goals of the OSCAL Project The OSCAL project is working to address the following goals:
+In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/json-schema/</guid><description>OSCAL model OSCAL Plan of Action and Milestones (POA&amp;amp;M) Model
+Version 1.0.0-rc1
+JSON Schema oscal_poam_schema.json XML to JSON converter oscal_poam_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.
+The root of the OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is plan-action-milestones.</description></item><item><title>Profile Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</guid><description>OSCAL model OSCAL Profile Model
+Version 1.0.0-rc1
+JSON Schema oscal_profile_schema.json XML to JSON converter oscal_profile_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
+Switch to XML add formal name Addition Specifies contents to be added into controls, in resolution</description></item><item><title>System Security Plan Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</guid><description>OSCAL model OSCAL System Security Plan (SSP) Model
+Version 1.0.0-rc1
+JSON Schema oscal_ssp_schema.json XML to JSON converter oscal_ssp_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
+The root of the OSCAL System Security Plan (SSP) format is system-security-plan.</description></item><item><title>Project Goals and Design Principles</title><link>https://pages.nist.gov/OSCAL/learnmore/goals/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/goals/</guid><description>Goals of the OSCAL Project The OSCAL project is working to address the following goals:
 Decrease Paperwork Drive a large decrease in the paperwork burden for both information security professionals and vendors.
-Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine readable formats. Allow the sharing of control implementation information across communities. Improve System Security Assessments Improve the efficiency, accuracy, and consistency of system security assessments.</description></item><item><title>OSCAL Assessment Plan Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-model-map/</guid><description>+ &amp;lt;assessment-plan uuid="uuid"&amp;gt; [1]… &amp;lt;/assessment-plan&amp;gt;
-- &amp;lt;assessment-plan uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL Assessment Results Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</guid><description>+ &amp;lt;assessment-results uuid="uuid"&amp;gt; [1]… &amp;lt;/assessment-results&amp;gt;
-- &amp;lt;assessment-results uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL Catalog Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>+ &amp;lt;catalog uuid="uuid"&amp;gt; [1]… &amp;lt;/catalog&amp;gt;
-- &amp;lt;catalog uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL Component Definition Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</guid><description>+ &amp;lt;component-definition&amp;gt; [1]… &amp;lt;/component-definition&amp;gt;
-- &amp;lt;component-definition&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL Profile Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</guid><description>+ &amp;lt;profile uuid="uuid"&amp;gt; [1]… &amp;lt;/profile&amp;gt;
-- &amp;lt;profile uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL System Security Plan Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</guid><description>+ &amp;lt;system-security-plan uuid="uuid"&amp;gt; [1]… &amp;lt;/system-security-plan&amp;gt;
-- &amp;lt;system-security-plan uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-model-map/</guid><description>+ &amp;lt;plan-of-action-and-milestones uuid="uuid"&amp;gt; [1]… &amp;lt;/plan-of-action-and-milestones&amp;gt;
-- &amp;lt;plan-of-action-and-milestones uuid="uuid"&amp;gt; [1]
-+ &amp;lt;metadata&amp;gt; [1]… &amp;lt;/metadata&amp;gt;
-- &amp;lt;metadata&amp;gt; [1]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [1]
-+ &amp;lt;revision-history&amp;gt;[0 or 1]… &amp;lt;/revision-history&amp;gt;
-- &amp;lt;revision-history&amp;gt;[0 or 1]
-+ &amp;lt;revision&amp;gt; [1 to ∞]… &amp;lt;/revision&amp;gt;
-- &amp;lt;revision&amp;gt; [1 to ∞]
-&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt; [0 or 1]
-&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt; [0 or 1]
-&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt; [0 or 1]
-&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt; [0 or 1]
-&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt; [0 or 1]</description></item><item><title>OSCAL Assessment Plan Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/</guid><description>Schema download oscal_assessment-plan_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-ap
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.
+Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine readable formats. Allow the sharing of control implementation information across communities. Improve System Security Assessments Improve the efficiency, accuracy, and consistency of system security assessments.</description></item><item><title>OSCAL Assessment Plan Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-model-map/</guid><description>&amp;lt;assessment-plan uuid="uuid"&amp;gt;… &amp;lt;/assessment-plan&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Assessment Results Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</guid><description>&amp;lt;assessment-results uuid="uuid"&amp;gt;… &amp;lt;/assessment-results&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Catalog Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>&amp;lt;catalog uuid="uuid"&amp;gt;… &amp;lt;/catalog&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Component Definition Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-model-map/</guid><description>&amp;lt;component-definition uuid="uuid"&amp;gt;… &amp;lt;/component-definition&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Profile Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</guid><description>&amp;lt;profile uuid="uuid"&amp;gt;… &amp;lt;/profile&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL System Security Plan Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</guid><description>&amp;lt;system-security-plan uuid="uuid"&amp;gt;… &amp;lt;/system-security-plan&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>Plan of Action and Milestones (POA&amp;M) Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-model-map/</guid><description>&amp;lt;plan-of-action-and-milestones uuid="uuid"&amp;gt;… &amp;lt;/plan-of-action-and-milestones&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[1]
+&amp;lt;revisions&amp;gt;… &amp;lt;/revisions&amp;gt;[0 or 1]&amp;lt;revision&amp;gt;… &amp;lt;/revision&amp;gt;[0 to ∞]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[0 or 1]
+&amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
+&amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
+&amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
+&amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
+&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
+&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/annotation&amp;gt;
+&amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
+&amp;lt;/link&amp;gt;
+&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/revision&amp;gt;
+&amp;lt;/revisions&amp;gt;
+&amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
+&amp;lt;prop uuid="uuid" name="</description></item><item><title>Representing Test Validation Information</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/validation-modeling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/validation-modeling/</guid><description>OSCAL's implementation layer models enable authors to capture testing validation information about components. The validation information is represented as a separate component, which is then linked to any component on which the validation was performed.
+For example, this approach can be used with a product containing a cryptographic module that has received a FIPS 140-2 validation by a NIST accredited laboratory. The product is represented as one component, and the validation information is represented in a different component.</description></item><item><title>OSCAL Assessment Plan Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/</guid><description>OSCAL model OSCAL Assessment Plan Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_assessment-plan_schema.xsd JSON to XML converter oscal_assessment-plan_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.
 The root of the OSCAL assessment plan format is assessment-plan.
-Switch to JSON activity-uuid Name Activity ID
-Description Links the task to a defined activity.
-An element (uuid) This element appears inside: task.</description></item><item><title>OSCAL Assessment Results Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</guid><description>Schema download oscal_assessment-results_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-ar
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
+Switch to JSON assessment-action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>OSCAL Assessment Results Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</guid><description>OSCAL model OSCAL Assessment Results Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_assessment-results_schema.xsd JSON to XML converter oscal_assessment-results_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
 The root of the OSCAL assessment results format is assessment-results.
-Switch to JSON activity-uuid Name Activity ID
-Description Links the task to a defined activity.
-An element (uuid) This element appears inside: task.
-Switch to JSON addr-line Name Address line</description></item><item><title>OSCAL Catalog Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</guid><description>Schema download oscal_catalog_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-catalog
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
-Switch to JSON addr-line Name Address line
-Description A single line of an address.
-An element (string) This element appears inside: address.</description></item><item><title>OSCAL Component Definition Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</guid><description>Schema download oscal_component_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-component
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL Implementation Component format can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</description></item><item><title>OSCAL Plan of Action and Milestones (POA&amp;M) Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-schema/</guid><description>Schema download oscal_poam_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-poam
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.
-The root of the OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is plan-action-milestones.
-Switch to JSON activity-uuid Name Activity ID
-Description Links the task to a defined activity.</description></item><item><title>OSCAL Profile Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</guid><description>Schema download oscal_profile_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-profile
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
-Switch to JSON add Name Addition
-Description Specifies contents to be added into controls, in resolution
-This element appears inside: alter.
-The add element has the following contents (in order):</description></item><item><title>OSCAL System Security Plan Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</guid><description>Schema download oscal_ssp_schema.xsd
-Schema version 1.0.0-milestone3
-Short name oscal-ssp
-XML namespace http://csrc.nist.gov/ns/oscal/1.0
-The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
-The root of the OSCAL System Security Plan (SSP) format is system-security-plan.
-Switch to JSON addr-line Name Address line
-Description A single line of an address.
-An element (string) This element appears inside: address.</description></item><item><title>OSCAL Content Examples</title><link>https://pages.nist.gov/OSCAL/documentation/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/examples/</guid><description>The OSCAL content GitHub repository provides many examples of OSCAL-formatted data including both actual data and mockups for demonstration.</description></item><item><title>Relations to Other Documentary Encoding Standards</title><link>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</guid><description>Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27002, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.
+Switch to JSON assessment-action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>OSCAL Catalog Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/</guid><description>OSCAL model OSCAL Control Catalog Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_catalog_schema.xsd JSON to XML converter oscal_catalog_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.</description></item><item><title>OSCAL Component Definition Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</guid><description>OSCAL model OSCAL Component Definition Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_component_schema.xsd JSON to XML converter oscal_component_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Component Definition Model can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component.</description></item><item><title>OSCAL Plan of Action and Milestones (POA&amp;M) Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/xml-schema/</guid><description>OSCAL model OSCAL Plan of Action and Milestones (POA&amp;amp;M) Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_poam_schema.xsd JSON to XML converter oscal_poam_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.
+The root of the OSCAL Plan of Action and Milestones (POA&amp;amp;M) format is plan-action-milestones.</description></item><item><title>OSCAL Profile Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</guid><description>OSCAL model OSCAL Profile Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_profile_schema.xsd JSON to XML converter oscal_profile_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
+Switch to JSON add formal name Addition Specifies contents to be added into controls, in resolution</description></item><item><title>OSCAL System Security Plan Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</guid><description>OSCAL model OSCAL System Security Plan (SSP) Model
+Version 1.0.0-rc1
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_ssp_schema.xsd JSON to XML converter oscal_ssp_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
+The root of the OSCAL System Security Plan (SSP) format is system-security-plan.</description></item><item><title>OSCAL Content Examples</title><link>https://pages.nist.gov/OSCAL/documentation/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/examples/</guid><description>The OSCAL content GitHub repository provides many examples of OSCAL-formatted data including both actual data and mockups for demonstration.</description></item><item><title>Relations to Other Documentary Encoding Standards</title><link>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/relations-to-other/</guid><description>Professionals working in the security domain are already familiar with numerous standards, specifications, guidelines and regulatory frameworks that define and describe practice in the systems security arena: NIST SP800-53, ISO 27002, FedRAMP, FISMA/FIPS, HIPAA and others. OSCAL's models are designed to capture the full range of these.
 However, OSCAL is not the only text encoding technology available, and it is not always the most suitable, depending on the task at hand.</description></item><item><title>October 8th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-10-08/</link><pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-10-08/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>October 2nd, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-10-02/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-10-02/</guid><description>Continued review of the updated proposed approach for leveraging existing authorizations and composing systems.</description></item><item><title>August 24th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-08-24/</link><pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-08-24/</guid><description>Answered questions on use of OSCAL models during open discussion.</description></item><item><title>September 24th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-09-24/</link><pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-09-24/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>September 18th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-09-18/</link><pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-09-18/</guid><description>Continued review of the updated proposed approach for leveraging existing authorizations and composing systems.</description></item><item><title>September 10th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-09-10/</link><pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-09-10/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>September 4th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-09-04/</link><pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-09-04/</guid><description>Continued review of the updated proposed approach for leveraging existing authorizations and composing systems.</description></item><item><title>August 27th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-08-27/</link><pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-08-27/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>August 13th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-08-13/</link><pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-08-13/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>August 7th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-08-07/</link><pubDate>Fri, 07 Aug 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-08-07/</guid><description>Reviewed the proposed approach for leveraging existing authorizations and composing systems.</description></item><item><title>July 30th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-30/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-30/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>July 24th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-07-24/</link><pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/model-review/meeting-2020-07-24/</guid><description>Reviewed the proposed approach for leveraging existing authorizations and composing systems.</description></item><item><title>July 16th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-16/</link><pubDate>Thu, 16 Jul 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-16/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>July 2nd, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-02/</link><pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-07-02/</guid><description>Reviewed current status, present new OSCAL assessment models, and held open discussion.</description></item><item><title>June 18th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-06-18/</link><pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-06-18/</guid><description>Reviewed current status and held open discussion.</description></item><item><title>June 4th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-06-04/</link><pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-06-04/</guid><description>Reviewed current status, discussed OSCAL Milestone 3 release, and held open discussion.</description></item><item><title>May 21st, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-05-21/</link><pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-05-21/</guid><description>Reviewed current status, discussed how to facilitate more model community feedback, and held open discussion.</description></item><item><title>May 7th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-05-07/</link><pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-05-07/</guid><description>Reviewed current status, discussed how to facilitate more model community feedback, and held open discussion.</description></item><item><title>April 4th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-04-23/</link><pubDate>Thu, 23 Apr 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-04-23/</guid><description>Reviewed current status, discussed renaming the &lt;code>system-security-plan&lt;/code> and &lt;code>plan-of-action-and-milestones&lt;/code> top-level elements in the respective OSCAL models, and held open discussion.</description></item><item><title>April 4th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-04-09/</link><pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-04-09/</guid><description>Reviewed current status, discussed new assessment-related models, and held open discussion.</description></item><item><title>Thursday, March 26th, 2020</title><link>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-03-26/</link><pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/contribute/dev-lunch/meeting-2020-03-26/</guid><description>Reviewed current status and held open discussion on increasing community participation.</description></item><item><title>For Assessors</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/assessors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/assessors/</guid><description>Audit and assessment personnel who validate the accuracy of security plans and assess the implementation of security controls within information systems. OSCAL standardizes the format for documentation of security controls, while establishing a framework for the automated assessment of information systems to be evaluated based the state of the security controls being addressed.
 How Does OSCAL Help Me? Reduces the amount of manual labor need to assess the implementation of controls.</description></item><item><title>For Baseline Authors</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/contentcreators/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/contentcreators/</guid><description>Systems security policy professionals who set requirements for security programs, both across and within organizations and agencies OSCAL provides a standardized solution for building security baselines, through the use of OSCAL profiles, that set the expectations for control implementation within one or more programs and associated information systems.
 How Does OSCAL Help Me? Ensures consistency of control implementation across the enterprise. Improves the transparency of policy implementation by automating reviews of security control implementation and assessments.</description></item><item><title>For Security Professionals</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/securitypros/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/securitypros/</guid><description>Security professionals who document or implement security controls within information systems. OSCAL provides a standardized format for documenting security and privacy controls that maps across multiple compliance frameworks (i.e. NIST, PCI, etc.) and a method for attesting to the implementation of the controls within information systems
 How Does OSCAL Help Me? Enables continuous maintenance of control documentation within a framework designed for that purpose. Reduces the amount of paperwork required to implement multiple compliance frameworks.</description></item><item><title>For Tool Developers</title><link>https://pages.nist.gov/OSCAL/learnmore/stakeholders/tooldevelopers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/learnmore/stakeholders/tooldevelopers/</guid><description>Tool developers who build security compliance systems (Electronic Governance Risk and Compliance [eGRC] systems), or who provide secure infrastructure/software solutions to the Federal Government or to highly regulated industries OSCAL provides standardized formats for consuming control, catalog, profile, and implementation information to visualize and automate security compliance processes. OSCAL provides a standardized means for the automated assessment of infrastructure and software solutions to verify the ongoing effectiveness of the system's security control implementation.</description></item><item><title>OSCAL Profile Resolution</title><link>https://pages.nist.gov/OSCAL/documentation/processing/profile-resolution/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/processing/profile-resolution/</guid><description>These specifications describe how to render an OSCAL profile document in the form of an OSCAL catalog. We call this profile resolution.
-Reading these specificationsTerminologyThese DRAFT specifications take the form of a tag set mapping between the OSCAL profile and OSCAL catalog XML document models. The same mapping (transformation from source to target) can be effected using other expressions of the OSCAL model such as JSON or YAML object serializations. In these specifications, XML terminology is used, with reference to XML constructs such as element and attribute, with examples given using XML syntax: these however are for illustrative purposes only and normative only with respect to the semantic mapping, not the syntax as such.</description></item><item><title>Related Resources</title><link>https://pages.nist.gov/OSCAL/downloads/other-resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/downloads/other-resources/</guid><description>Community Provided OSCAL Content Federal Risk and Authorization Management Program (FedRAMP) Automation GitHub Repository Useful Links GitHub Repository for OSCAL NIST Computer Security Resource Center: OSCAL Videos and Presentations Using Leveraged Authorizations in OSCAL (PDF) OSCAL Model Review - July 24, 2020 OSCAL Assessment Models Overview (PDF) Lunch with the OSCAL Developers - July 2, 2020 NIST OSCAL Workshop - November 5, 2019 Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards News FedRAMP Looks to NIST for Security Control Refinements Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL Federal Business Council Presentation What's Next for FedRAMP?</description></item><item><title>Sample Control Catalog</title><link>https://pages.nist.gov/OSCAL/tutorials/catalog/catalog-sample/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/tutorials/catalog/catalog-sample/</guid><description>The following is a short excerpt from ISO/IEC 27002:2013, Information technology — Security techniques — Code of practice for information security controls. This work is provided here under copyright &amp;quot;fair use&amp;quot; for non-profit, educational purposes only. Copyrights for this work are held by the publisher, the International Organization for Standardization (ISO).
-Version 1.0 Published: 02.02.2020 Last Modified: 02.10.2020 1 Organization of Information Security 1.1 Internal Organization Objective: To establish a management framework to initiate and control the implementation and operation of information security within the organization.</description></item></channel></rss>
+Reading these specificationsTerminologyThese DRAFT specifications take the form of a tag set mapping between the OSCAL profile and OSCAL catalog XML document models. The same mapping (transformation from source to target) can be effected using other expressions of the OSCAL model such as JSON or YAML object serializations. In these specifications, XML terminology is used, with reference to XML constructs such as element and attribute, with examples given using XML syntax: these however are for illustrative purposes only and normative only with respect to the semantic mapping, not the syntax as such.</description></item><item><title>Related Resources</title><link>https://pages.nist.gov/OSCAL/downloads/other-resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/downloads/other-resources/</guid><description>Community Provided OSCAL Content Federal Risk and Authorization Management Program (FedRAMP) Automation GitHub Repository Useful Links GitHub Repository for OSCAL NIST Computer Security Resource Center: OSCAL Videos and Presentations Using Leveraged Authorizations in OSCAL (PDF) OSCAL Model Review - July 24, 2020 OSCAL Assessment Models Overview (PDF) Lunch with the OSCAL Developers - July 2, 2020 NIST OSCAL Workshop - November 5, 2019 Security Automation Simplified via NIST OSCAL: We're Not in Kansas Anymore Docker Government Summit 2018: Automating Security and Compliance via a New Standard of Standards News FedRAMP Looks to NIST for Security Control Refinements Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL Federal Business Council Presentation What's Next for FedRAMP?</description></item></channel></rss>
