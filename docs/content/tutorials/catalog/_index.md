@@ -34,7 +34,7 @@ The examples below illustrate the top-level structure of the OSCAL control catal
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    id="uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef">
+    uuid="edaf664a-e984-4dbf-85ec-1104186fc12f">
     <metadata/>
     <group/>
     <control/>
@@ -59,7 +59,7 @@ A `<catalog>` contains:
 {{< highlight json "linenos=table" >}}
 {
   "catalog": {
-    "id": "uuid-ed364452-47f8-4e70-b3a4-ef54de5f46ef",
+    "uuid": "edaf664a-e984-4dbf-85ec-1104186fc12f",
     "metadata": {},
     "groups": {},
     "controls": {},
@@ -74,7 +74,7 @@ In the example above, the contents of the `catalog` property is provided as empt
 
 The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
-A `catalog` contains the following properties:
+A `catalog` contains the following props:
 
 - `metadata` (required) - Provides document metadata for the catalog. This is explored below in the [defining the catalog's metadata](#defining-the-catalogs-metadata) section of this tutorial.
 - `groups` (optional) - Allows for grouping of `controls` and other `groups` properties. Contains one or more group objects. This is explored below in the [representing groups in a catalog](#representing-groups-in-a-catalog) section of this tutorial.
@@ -85,7 +85,7 @@ A `catalog` contains the following properties:
 {{< highlight yaml "linenos=table" >}}
 ---
 catalog:
-  id: uuid-956c32af-8a15-4732-a4d9-f976a1149c4b
+  uuid: edaf664a-e984-4dbf-85ec-1104186fc12f
   metadata:
   groups:
   controls:
@@ -135,11 +135,11 @@ All of these data items can be represented as follows:
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
-  <title>Sample Security Catalog</title>
+  <title>Sample Security Catalog <em>for Demonstration</em> and Testing</title>
   <published>2020-02-02T11:01:04.736-04:00</published>
-  <last-modified>2020-10-02T11:01:04.736-04:00</last-modified>
+  <last-modified>2020-12-18T16:23:23.811-05:00</last-modified>
   <version>1.0</version>
-  <oscal-version>1.0.0-milestone3</oscal-version>
+  <oscal-version>1.0.0-rc1</oscal-version>
 </metadata>
 {{< /highlight >}}
 
@@ -148,19 +148,19 @@ Breaking this down line-by-line you will notice the following:
 - Line 1: The [`<metadata>`](/documentation/schema/catalog/xml-schema/#oscal-catalog-xml_metadata) element, which contains the document's metadata.
 - Line 2: The document's title (i.e., `Sample Security Catalog`) is provided using `<title>` element. The document's title is a mandatory field for an OSCAL Catalog.
 - Line 3: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using `<published>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 4: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using `<last-modified>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified (i.e., `2020-12-18T16:23:23.811-05:00`) is provided using `<last-modified>` element. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
 - Line 5: The version of the document (i.e., `1.0`) is provided using the `<version>` element. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
-- Line 6: Finally, the OSCAL version is provided using the `<oscal-version>` element, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+- Line 6: Finally, the OSCAL version is provided using the `<oscal-version>` element, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-rc1`.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
   "metadata": {
-    "title": "Sample Security Catalog",
+    "title": "Sample Security Catalog *for Demonstration* and Testing",
     "published": "2020-02-02T11:01:04.736-04:00",
-    "last-modified": "2020-10-02T11:01:04.736-04:00",
+    "last-modified": "2020-12-18T16:23:23.811-05:00",
     "version": "1.0",
-    "oscal-version": "1.0.0-milestone3"
+    "oscal-version": "1.0.0-rc1"
   }
 }
 {{< /highlight >}}
@@ -170,18 +170,18 @@ Breaking this down line-by-line you will notice the following:
 - Line 2: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) property, who's value is an objec which contains properties representing the document's metadata.
 - Line 3: The document's title (i.e., `Sample Security Catalog`) is provided using `title` property. The document's title is a mandatory field for an OSCAL catalog.
 - Line 4: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using the `published` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 5: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 5: The date when the document was last modified (i.e., `2020-12-18T16:23:23.811-05:00`) is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
 - Line 6: The version of the document (i.e., `1.0`) is provided using the `version` property. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
-- Line 7: Finally, the OSCAL version is provided using the `oscal-version` property, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+- Line 7: Finally, the OSCAL version is provided using the `oscal-version` property, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-rc1`.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 metadata:
-  title: Sample Security Catalog
+  title: Sample Security Catalog *for Demonstration* and Testing
   published: '2020-02-02T11:01:04.736-04:00'
-  last-modified: '2020-02-10T11:01:04.736-04:00'
+  last-modified: '2020-12-18T16:23:23.811-05:00'
   version: '1.0'
-  oscal-version: 1.0.0
+  oscal-version: 1.0.0-rc1
 {{< /highlight >}}
 
 Breaking this down line-by-line you will notice the following:
@@ -189,9 +189,9 @@ Breaking this down line-by-line you will notice the following:
 - Line 1: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) block, who's value is a mapping of keys representing the document's metadata.
 - Line 2: The document's title (i.e., `Sample Security Catalog`) is provided using `title` key. The document's title is a mandatory field for an OSCAL Catalog.
 - Line 3: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using the `published` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
-- Line 4: The date when the document was last modified (i.e., `2020-10-02T11:01:04.736-04:00`) is provided using the `last-modified` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
+- Line 4: The date when the document was last modified (i.e., `2020-12-18T16:23:23.811-05:00`) is provided using the `last-modified` key. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
 - Line 5: The version of the document (i.e., `1.0`) is provided using the `version` key. This can be a numeric version, commit hash, or any other suitable version identifier. The document version is a mandatory field for an OSCAL Catalog.
-- Line 6: Finally, the OSCAL version is provided using the `oscal-version` key, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-milestone3`.
+- Line 6: Finally, the OSCAL version is provided using the `oscal-version` key, which represents the revision of the OSCAL Catalog model for which the catalog was created under. The current OSCAL version is `1.0.0-rc1`.
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -262,14 +262,14 @@ Breaking this down line-by-line you will notice the following:
   "groups": [ {
     "id" : "s1",
     "title" : "Organization of Information Security",
-    "properties" : [ {
+    "props" : [ {
       "name" : "label",
       "value" : "1"
     } ],
     "groups" : [ {
       "id" : "s1.1",
       "title" : "Internal Organization",
-      "properties" : [ {
+      "props" : [ {
         "name" : "label",
         "value" : "1.1"
       } ],
@@ -310,13 +310,13 @@ Breaking this down line-by-line you will notice the following:
 groups:
 - id: s1
   title: Organization of Information Security
-  properties:
+  props:
   - name: label
     value: 1
   groups:
   - id: s1.1
     title: Internal Organization
-    properties:
+    props:
     - name: label
       value: 1.1
     parts:
@@ -392,13 +392,13 @@ Section 2 follows suit, resulting in the following representation of both sectio
     "id" : "s1",
     "class" : "section",
     "title" : "Organization of Information Security",
-    "properties" : {
+    "props" : {
       "label" : "1"
     },
     "groups" : {
       "id" : "s1.1",
       "title" : "Internal Organization",
-      "properties" : {
+      "props" : {
         "label" : "1.1"
       },
       "parts" : {
@@ -413,13 +413,13 @@ Section 2 follows suit, resulting in the following representation of both sectio
     "id" : "s2",
     "class" : "section",
     "title" : "Access control",
-    "properties" : {
+    "props" : {
       "label" : "2"
     },
     "groups" : {
       "id" : "s2.1",
       "title" : "Business requirements of access control",
-      "properties" : {
+      "props" : {
         "label" : "2.1"
       },
       "parts" : {
@@ -440,12 +440,12 @@ Section 2 follows suit, resulting in the following representation of both sectio
     - id: s1
       class: section
       title: Organization of Information Security
-      properties:
+      props:
         label: '1'
       groups:
         id: s1.1
         title: Internal Organization
-        properties:
+        props:
           label: '1.1'
         parts:
           id: s1.1_smt
@@ -456,12 +456,12 @@ Section 2 follows suit, resulting in the following representation of both sectio
     - id: s2
       class: section
       title: Access control
-      properties:
+      props:
         label: '2'
       groups:
         id: s2.1
         title: Business requirements of access control
-        properties:
+        props:
           label: '2.1'
         parts:
           id: s2.1_smt
@@ -534,7 +534,7 @@ Finally, a control must have a set of control statements. Shown on lines 4 thru 
   "controls" : [ {
     "id" : "s1.1.1",
     "title" : "Information security roles and responsibilities",
-    "properties" : [ {
+    "props" : [ {
       "name" : "label",
       "value" : "1.1.1"
     } ],
@@ -560,7 +560,7 @@ Finally, a control must have a set of control statements. Shown on lines 9 thru 
 controls:
 - id: s1.1.1
   title: Information security roles and responsibilities
-  properties:
+  props:
   - name: label
     value: 1.1.1
   parts:
@@ -645,7 +645,7 @@ The sample security catalog also has the `Implementation Guidance` and `Other In
 "controls" : [ {
   "id" : "s1.1.1",
   "title" : "Information security roles and responsibilities",
-  "properties" : [ {
+  "props" : [ {
     "name" : "label",
     "value" : "1.1.1"
   } ],
@@ -682,7 +682,7 @@ The sample security catalog also has the `Implementation Guidance` and `Other In
 controls:
 - id: s1.1.1
   title: Information security roles and responsibilities
-  properties:
+  props:
   - name: label
     value: 1.1.1
   parts:
@@ -984,14 +984,14 @@ Assembling all of the control content described in this tutorial, we obtain the 
     "groups" : [ {
       "id" : "s1",
       "title" : "Organization of Information Security",
-      "properties" : [ {
+      "props" : [ {
         "name" : "label",
         "value" : "1"
       } ],
       "groups" : [ {
         "id" : "s1.1",
         "title" : "Internal Organization",
-        "properties" : [ {
+        "props" : [ {
           "name" : "label",
           "value" : "1.1"
         } ],
@@ -1003,7 +1003,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
         "controls" : [ {
           "id" : "s1.1.1",
           "title" : "Information security roles and responsibilities",
-          "properties" : [ {
+          "props" : [ {
             "name" : "label",
             "value" : "1.1.1"
           } ],
@@ -1030,7 +1030,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
           }, {
             "id" : "s1.1.1_inf",
             "name" : "information",
-            "properties" : [ {
+            "props" : [ {
               "name" : "label",
               "value" : "Other information"
             } ],
@@ -1039,7 +1039,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
         }, {
           "id" : "s1.1.2",
           "title" : "Segregation of duties",
-          "properties" : [ {
+          "props" : [ {
             "name" : "label",
             "value" : "1.1.2"
           } ],
@@ -1069,14 +1069,14 @@ Assembling all of the control content described in this tutorial, we obtain the 
     }, {
       "id" : "s2",
       "title" : "Access control",
-      "properties" : [ {
+      "props" : [ {
         "name" : "label",
         "value" : "2"
       } ],
       "groups" : [ {
         "id" : "s2.1",
         "title" : "Business requirements of access control",
-        "properties" : [ {
+        "props" : [ {
           "name" : "label",
           "value" : "2.1"
         } ],
@@ -1088,7 +1088,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
         "controls" : [ {
           "id" : "s2.1.1",
           "title" : "Access control policy",
-          "properties" : [ {
+          "props" : [ {
             "name" : "label",
             "value" : "2.1.1"
           } ],
@@ -1140,7 +1140,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
         }, {
           "id" : "s2.1.2",
           "title" : "Access to networks and network services",
-          "properties" : [ {
+          "props" : [ {
             "name" : "label",
             "value" : "2.1.2"
           } ],
@@ -1182,13 +1182,13 @@ catalog:
   groups:
   - id: s1
     title: Organization of Information Security
-    properties:
+    props:
     - name: label
       value: 1
     groups:
     - id: s1.1
       title: Internal Organization
-      properties:
+      props:
       - name: label
         value: 1.1
       parts:
@@ -1200,7 +1200,7 @@ catalog:
       controls:
       - id: s1.1.1
         title: Information security roles and responsibilities
-        properties:
+        props:
         - name: label
           value: 1.1.1
         parts:
@@ -1241,7 +1241,7 @@ catalog:
               5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.
         - id: s1.1.1_inf
           name: information
-          properties:
+          props:
           - name: label
             value: Other information
           prose: |-
@@ -1254,7 +1254,7 @@ catalog:
             then becomes responsible for its day-to-day protection.
       - id: s1.1.2
         title: Segregation of duties
-        properties:
+        props:
         - name: label
           value: 1.1.2
         parts:
@@ -1288,13 +1288,13 @@ catalog:
             misuse of an organization’s assets.
   - id: s2
     title: Access control
-    properties:
+    props:
     - name: label
       value: 2
     groups:
     - id: s2.1
       title: Business requirements of access control
-      properties:
+      props:
       - name: label
         value: 2.1
       parts:
@@ -1304,7 +1304,7 @@ catalog:
       controls:
       - id: s2.1.1
         title: Access control policy
-        properties:
+        props:
         - name: label
           value: 2.1.1
         parts:
@@ -1380,7 +1380,7 @@ catalog:
               2. Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.
       - id: s2.1.2
         title: Access to networks and network services
-        properties:
+        props:
         - name: label
           value: 2.1.2
         parts:
