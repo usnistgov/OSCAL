@@ -5,7 +5,7 @@
       <title>Example</title>
       <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
       <version>1.2</version>
-      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <oscal-version>1.0.0-rc1</oscal-version>
       <prop name="resolution-timestamp">2020-12-15T14:31:30.288-05:00</prop>
       <link rel="resolution-source" href="modify-adds_profile.xml"/>
    </metadata>
@@ -16,7 +16,9 @@
          <param id="a1_prm1">
             <label>A1 Parameter 1</label>
             <constraint>
-               <description>at least every 3 years</description>
+               <description>
+                  <p>at least every 3 years</p>
+               </description>
             </constraint>
          </param>
          <prop name="CORE" ns="https://fedramp.gov/ns/oscal"/>
@@ -32,7 +34,9 @@
          <param id="a3_prm1">
             <label>A3 Parameter 1</label>
             <constraint>
-               <description>at least annually</description>
+               <description>
+                  <p>at least annually</p>
+               </description>
             </constraint>
          </param>
          <prop name="place">third</prop>

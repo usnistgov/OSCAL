@@ -66,6 +66,12 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
+# configuration
+UNIT_TESTS_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples")"
+EXPECTED_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples/output-expected")"
+PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
+CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
+
 if [ -z "${SCRATCH_DIR+x}" ]; then
   SCRATCH_DIR="$(mktemp -d)"
   if [ "$KEEP_TEMP_SCRATCH_DIR" != "true" ]; then
@@ -95,12 +101,6 @@ fi
 if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
 fi
-
-# configuration
-UNIT_TESTS_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples")"
-EXPECTED_DIR="$(get_abs_path "${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-examples/output-expected")"
-PROFILE_RESOLVER="$(get_abs_path "${OSCALDIR}/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl")"
-CATALOG_SCHEMA="$(get_abs_path "${WORKING_DIR}/xml/schema/oscal_catalog_schema.xsd")"
 
 test_files=()
 while read -r -d $'\0' file; do
@@ -147,12 +147,15 @@ for file in ${test_files[@]}; do
   expected_resolved_profile="${EXPECTED_DIR}/${filename_minus_extension}_RESOLVED.${extension}"
 
   if [[ -z "$expected_resolved_profile" ]]; then
-    echo -e "  ${P_ERROR}The extpected resolved profile '${P_END}${expected_resolved_profile}${P_ERROR}' does not exist.${P_END}"
+    echo -e "  ${P_ERROR}The expected resolved profile '${P_END}${expected_resolved_profile}${P_ERROR}' does not exist.${P_END}"
     exitcode=1
     continue;
   fi
 
-  result=$(diff "${resolved_profile}" "${expected_resolved_profile}")
+  echo "Resolved: ${resolved_profile}"
+  echo "Expected: ${expected_resolved_profile}"
+  result=$(diff -u -Z "${resolved_profile}" "${expected_resolved_profile}")
+  cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then
     if [ -n "$result" ]; then
       echo -e "${result}"
