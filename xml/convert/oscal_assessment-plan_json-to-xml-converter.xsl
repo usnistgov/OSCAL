@@ -678,7 +678,7 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:array[@key='add-objectives-and-controls']/j:map">
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="add-objectives-and-methods" -->
       <assembly name="local-objective"
@@ -693,7 +693,7 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='add-objectives-and-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id']"><!-- XML match="add-objectives-and-methods/@control-id | assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-plan/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-plan/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-plan/reviewed-controls/control-selection/include-control/@control-id | assessment-plan/reviewed-controls/control-selection/exclude-control/@control-id" -->
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id']"><!-- XML match="add-objectives-and-methods/@control-id | assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-plan/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-plan/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-plan/reviewed-controls/control-selection/include-control/@control-id | assessment-plan/reviewed-controls/control-selection/exclude-control/@control-id" -->
       <flag in-json="string"
             as-type="NCName"
             name="control-id"
@@ -703,7 +703,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='add-objectives-and-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id']"
+   <xsl:template match="j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-plan']/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="(j:array[@key='parts']/j:map | (j:array[@key='parts']/j:map | j:map[@key='parts']))">
@@ -1926,7 +1926,7 @@
          <xsl:apply-templates select="*[@key='components']"/>
          <xsl:apply-templates select="*[@key='inventory-items']"/>
          <xsl:apply-templates select="*[@key='users']"/>
-         <xsl:apply-templates select="*[@key='add-objectives-and-controls']"/>
+         <xsl:apply-templates select="*[@key='add-objectives-and-methods']"/>
          <xsl:apply-templates select="*[@key='activities']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -2359,7 +2359,7 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='description']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-plan/local-definitions/add-objectives-and-methods/description" -->
@@ -2374,14 +2374,14 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:string[@key='description']"
                  mode="get-value-property"
                  priority="6">
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-plan/local-definitions/add-objectives-and-methods/link/text" -->
@@ -2396,14 +2396,14 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-plan/local-definitions/add-objectives-and-methods//part/title" -->
@@ -2418,7 +2418,7 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
                  mode="get-value-property"
                  priority="8">
       <value as-type="markup-line" in-json="string">
@@ -2427,7 +2427,7 @@
    </xsl:template>
    <!-- matching markup-multiline value for assessment-plan/local-definitions/add-objectives-and-methods//part-->
    <xsl:template priority="4"
-                 match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
+                 match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
       <field scope="local"
              name="prose"
              key="prose"
@@ -2438,7 +2438,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-plan/local-definitions/add-objectives-and-methods//part/link/text" -->
@@ -2453,7 +2453,7 @@
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='local-definitions']/j:array[@key='add-objectives-and-methods']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="10">
       <value as-type="markup-line" in-json="string">
