@@ -5,7 +5,7 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:48.703-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-release-candidate-1</oscal-version>
+      <oscal-version>1.0.0-rc1</oscal-version>
       <prop name="resolution-timestamp">2020-12-15T14:31:29.659-05:00</prop>
       <link rel="resolution-source" href="merge-keep-resources_profile.xml"/>
    </metadata>
